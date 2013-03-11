@@ -1,0 +1,75 @@
+
+1. System modules (always included into main binary)
+  - System
+    -- uni-atom identify
+    -- load/unload modules
+    -- get/create objects
+  - Memory
+    -- allocate/deallocate memory
+  - Strings
+    -- use utf8, utf16, utf32 strings
+    -- convert to and from mbs byte strings
+    -- compare strings
+2. Core modules (mostly included into main binary)
+  - Params
+    -- use static params
+    -- use dynamic params
+  - Media
+    -- virtual filesystem support
+    -- load/save binary files
+    -- load/save memory objects
+    -- generate memory object from file
+  - Micro TCL
+    -- execute meta programs
+  - Debug/Console
+    -- output debug console
+    -- control console
+3. Main modules (sometimes included into main binary)
+  * Common VFS
+    - Zip VFS read/write
+    - FILE VFS read/write
+  * NET
+    - Socket uni-interface
+    - NET channels
+  * lib2d, lib3d
+    - lib2d      (output/input)
+    - libui      (GUI)
+    - lib3d      (output/input)
+    - libphys    (physics)
+  * libsound, libmusic, libvideo
+    - libsound
+    - libmusic
+    - libvideo
+  * libscript
+    - libscript
+    - libscript-reflection
+4. Aux modules (rare included into main binary)
+  * Uncommon VFS
+    - ID Quake (WAD, pak, pk2) format VFS read/write
+    - WAV and AVI media format VFS read/write
+    - Remote VFS read/write
+  * lib2d, lib3d
+    - file loader common pictures (pcx, tga, bmp)
+    - file loader common-lib pictures (gif, png, jpeg)
+    - file loader ID Quake2 models (bsp (q2), spr(q2), wal, md2)
+    - file loader ID Quake3 models (bsp (q3), md3)
+    - file loader 3ds files
+    - lib2d font unifont
+    - lib2d font bgi
+    - lib2d font ttf
+    - lib3d driver opengl/SDL
+    - lib3d driver directx
+    - libphys driver ODE
+    - libphys driver Bullet
+  * libscript
+    - libscript-squirel
+    - libscript-lua
+    - libscript-angelscript
+    - libscript-jewelscript
+    - libscript-cplusx
+  * libscript fast bindings
+    - libscript-squirel: libmedia,lib2d,lib3d,libphys
+    - libscript-lua: libmedia,lib2d,lib3d,libphys
+    - libscript-angelscript: libmedia,lib2d,lib3d,libphys
+
+

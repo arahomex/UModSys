@@ -1,0 +1,46 @@
+
+W:\Compilers\TinyC\git\win32>echo #define TCC_VERSION "0.9.25" 1>..\config.h 
+
+W:\Compilers\TinyC\git\win32>x86_64-pc-mingw32-gcc -O0 -s -fno-strict-aliasing -DTCC_TARGET_PE -DTCC_TARGET_X86_64 tools/tiny_impdef.c -o tiny_impdef.exe 
+
+W:\Compilers\TinyC\git\win32>x86_64-pc-mingw32-gcc -O0 -s -fno-strict-aliasing -DTCC_TARGET_PE -DTCC_TARGET_X86_64 tools/tiny_libmaker.c -o tiny_libmaker.exe 
+
+W:\Compilers\TinyC\git\win32>if not exist libtcc\nul mkdir libtcc 
+
+W:\Compilers\TinyC\git\win32>copy ..\libtcc.h libtcc\libtcc.h 
+        1 file(s) copied.
+
+W:\Compilers\TinyC\git\win32>x86_64-pc-mingw32-gcc -O0 -s -fno-strict-aliasing -DTCC_TARGET_PE -DTCC_TARGET_X86_64 -shared -DLIBTCC_AS_DLL -DONE_SOURCE ../libtcc.c -o libtcc.dll -Wl,-out-implib,libtcc/libtcc.a 
+
+W:\Compilers\TinyC\git\win32>tiny_impdef libtcc.dll -o libtcc/libtcc.def 
+
+W:\Compilers\TinyC\git\win32>x86_64-pc-mingw32-gcc -O0 -s -fno-strict-aliasing -DTCC_TARGET_PE -DTCC_TARGET_X86_64 ../tcc.c -o tcc.exe -ltcc -Llibtcc 
+
+W:\Compilers\TinyC\git\win32>copy ..\include\*.h include 
+..\include\float.h
+..\include\stdarg.h
+..\include\stdbool.h
+..\include\stddef.h
+..\include\tcclib.h
+..\include\varargs.h
+        6 file(s) copied.
+
+W:\Compilers\TinyC\git\win32>.\tcc -DTCC_TARGET_PE -DTCC_TARGET_X86_64 -c ../lib/libtcc1.c 
+
+W:\Compilers\TinyC\git\win32>.\tcc -DTCC_TARGET_PE -DTCC_TARGET_X86_64 -c lib/crt1.c 
+
+W:\Compilers\TinyC\git\win32>.\tcc -DTCC_TARGET_PE -DTCC_TARGET_X86_64 -c lib/wincrt1.c 
+
+W:\Compilers\TinyC\git\win32>.\tcc -DTCC_TARGET_PE -DTCC_TARGET_X86_64 -c lib/dllcrt1.c 
+
+W:\Compilers\TinyC\git\win32>.\tcc -DTCC_TARGET_PE -DTCC_TARGET_X86_64 -c lib/dllmain.c 
+
+W:\Compilers\TinyC\git\win32>.\tcc -DTCC_TARGET_PE -DTCC_TARGET_X86_64 -c lib/chkstk.S 
+
+W:\Compilers\TinyC\git\win32>goto lib64 
+
+W:\Compilers\TinyC\git\win32>.\tcc -DTCC_TARGET_PE -DTCC_TARGET_X86_64 -c ../lib/alloca86_64.S 
+
+W:\Compilers\TinyC\git\win32>tiny_libmaker lib/libtcc1.a libtcc1.o alloca86_64.o crt1.o wincrt1.o dllcrt1.o dllmain.o chkstk.o 
+
+W:\Compilers\TinyC\git\win32>del *.o 
