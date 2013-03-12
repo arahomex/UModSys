@@ -1,19 +1,19 @@
-#ifndef __NANOUTL_TYPES_STRING_CONST_H
-#define __NANOUTL_TYPES_STRING_CONST_H 1
+#ifndef __UMODSYS_TL_STRING_CONST_H
+#define __UMODSYS_TL_STRING_CONST_H 1
 //*****************************************************
-// nanoutl/types/string_const.h: string const
+// umodsys/types/string_const.h: string const
 //*****************************************************
 
-#include <nanoutl/types/su_base.h>
-#include <nanoutl/types/su_char.h>
-#include <nanoutl/types/su_charw.h>
-#include <nanoutl/types/su_charl.h>
-#include <nanoutl/types/su_comparer.h>
+#include <umodsys/tl/string/su_base.h>
+#include <umodsys/tl/string/su_char.h>
+#include <umodsys/tl/string/su_charw.h>
+#include <umodsys/tl/string/su_charl.h>
+#include <umodsys/tl/string/su_comparer.h>
 
-#include <nanoutl/types/su_coreptr.h>
+#include <umodsys/tl/string/su_coreptr.h>
 
-namespace NanoUTL {
-namespace types {
+namespace UModSys {
+namespace tl {
 
 //***************************************
 // Const string
@@ -22,7 +22,7 @@ namespace types {
 template<typename CoreT, typename Comparer> 
 struct TString : public CoreT, public Comparer {
   typedef typename CoreT::Char CharT;
-  NANOUTL_STRING_CLASS_HEADER(CharT)
+  UMODSYS_STRING_CLASS_HEADER(CharT)
   typedef TString<CoreT, Comparer> Self;
   //
   inline TString(void) {}
@@ -123,7 +123,7 @@ struct TString : public CoreT, public Comparer {
 // 
 //***************************************
 
-} // namespace types
-} // namespace NanoUTL
+} // namespace tl
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_STRING_CONST_H
+#endif // __UMODSYS_TL_STRING_CONST_H

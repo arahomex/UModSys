@@ -1,18 +1,19 @@
-#ifndef __NANOUTL_TYPES_STRUTILS_COREPTR_H
-#define __NANOUTL_TYPES_STRUTILS_COREPTR_H 1
+#ifndef __UMODSYS_TYPES_STRING_UTILS_COREPTR_H
+#define __UMODSYS_TYPES_STRING_UTILS_COREPTR_H 1
 //*****************************************************
-// nanoutl/types/su_corebuffer.h: string utilities 
+// umodsys/types/su_corebuffer.h: string utilities 
 //   [core buffer] [core const]
 //*****************************************************
 
-#include <nanoutl/types/su_base.h>
+#include <umodsys/tl/string/su_base.h>
 
-namespace NanoUTL {
+namespace UModSys {
+namespace tl {
 namespace su {
 
 template<typename CharT> 
 struct TSCoreConst {
-  NANOUTL_STRING_CLASS_HEADER(CharT)
+  UMODSYS_STRING_CLASS_HEADER(CharT)
   typedef TSCoreConst<CharT> Self;
   //
   Str text;
@@ -60,7 +61,7 @@ struct TSCoreConst {
 
 template<typename CharT> 
 struct TSCoreBuffer {
-  NANOUTL_STRING_CLASS_HEADER(CharT)
+  UMODSYS_STRING_CLASS_HEADER(CharT)
   typedef TSCoreBuffer<CharT> Self;
   //
   OStr text;
@@ -120,6 +121,7 @@ struct TSCoreBuffer {
 
 
 } // namespace su
-} // namespace NanoUTL
+} // namespace tl
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_STRUTILS_COREBUFFER_H
+#endif // __UMODSYS_TYPES_STRING_UTILS_COREBUFFER_H

@@ -1,19 +1,19 @@
-#ifndef __NANOUTL_TYPES_STRING_POOL_H
-#define __NANOUTL_TYPES_STRING_POOL_H 1
+#ifndef __UMODSYS_TL_STRING_POOL_H
+#define __UMODSYS_TL_STRING_POOL_H 1
 //*****************************************************
-// nanoutl/types/string_pool.h: string pool/cache
+// umodsys/types/string_pool.h: string pool/cache
 //*****************************************************
 
-#include <nanoutl/types/su_base.h>
-#include <nanoutl/types/su_char.h>
-#include <nanoutl/types/su_charw.h>
-#include <nanoutl/types/su_charl.h>
-#include <nanoutl/types/su_comparer.h>
+#include <umodsys/tl/string/su_base.h>
+#include <umodsys/tl/string/su_char.h>
+#include <umodsys/tl/string/su_charw.h>
+#include <umodsys/tl/string/su_charl.h>
+#include <umodsys/tl/string/su_comparer.h>
 
-#include <nanoutl/types/su_coreptr.h>
+#include <umodsys/tl/string/su_coreptr.h>
 
-namespace NanoUTL {
-namespace types {
+namespace UModSys {
+namespace tl {
 
 //***************************************
 // Buffer string
@@ -24,7 +24,7 @@ namespace types {
 // 
 //***************************************
 
-} // namespace types
-} // namespace NanoUTL
+} // namespace tl
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_STRING_POOL_H
+#endif // __UMODSYS_TL_STRING_POOL_H

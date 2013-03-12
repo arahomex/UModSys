@@ -1,16 +1,18 @@
-#ifndef __NANOUTL_TYPES_STRUTILS_COREALLOC_H
-#define __NANOUTL_TYPES_STRUTILS_COREALLOC_H 1
+#ifndef __UMODSYS_TYPES_STRING_UTILS_COREALLOC_H
+#define __UMODSYS_TYPES_STRING_UTILS_COREALLOC_H 1
 //*****************************************************
-// nanoutl/types/su_corealloc.h: string utilities 
+// umodsys/types/su_corealloc.h: string utilities 
 //  [core alloc]
 //*****************************************************
 
-#include <nanoutl/types/su_base.h>
+#include <umodsys/tl/string/su_base.h>
 
-namespace NanoUTL {
+namespace UModSys {
+namespace tl {
 namespace su {
 
 } // namespace su
-} // namespace NanoUTL
+} // namespace tl
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_STRUTILS_COREALLOC_H
+#endif // __UMODSYS_TYPES_STRING_UTILS_COREALLOC_H

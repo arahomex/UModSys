@@ -1,17 +1,17 @@
-#ifndef __NANOUTL_TYPES_STRINGS_H
-#define __NANOUTL_TYPES_STRINGS_H 1
+#ifndef __UMODSYS_TL_STRINGS_H
+#define __UMODSYS_TL_STRINGS_H 1
 //*****************************************************
-// nanoutl/types/strings.h: strings
+// umodsys/types/strings.h: strings
 //*****************************************************
 
-#include <nanoutl/types/su_coreptr.h>
-#include <nanoutl/types/su_coreprealloc.h>
-#include <nanoutl/types/su_corealloc.h>
-#include <nanoutl/types/su_coreshared.h>
+#include <umodsys/tl/string/su_coreptr.h>
+#include <umodsys/tl/string/su_coreprealloc.h>
+#include <umodsys/tl/string/su_corealloc.h>
+#include <umodsys/tl/string/su_coreshared.h>
 
-#include <nanoutl/types/string_const.h>
-#include <nanoutl/types/string_buffer.h>
-#include <nanoutl/types/string_list.h>
-#include <nanoutl/types/string_pool.h>
+#include <umodsys/tl/string/string_const.h>
+#include <umodsys/tl/string/string_buffer.h>
+#include <umodsys/tl/string/string_list.h>
+#include <umodsys/tl/string/string_pool.h>
 
-#endif // __NANOUTL_TYPES_STRINGS_H
+#endif // __UMODSYS_TL_STRINGS_H

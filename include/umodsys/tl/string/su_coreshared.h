@@ -1,13 +1,14 @@
-#ifndef __NANOUTL_TYPES_STRUTILS_CORESHARED_H
-#define __NANOUTL_TYPES_STRUTILS_CORESHARED_H 1
+#ifndef __UMODSYS_TYPES_STRING_UTILS_CORESHARED_H
+#define __UMODSYS_TYPES_STRING_UTILS_CORESHARED_H 1
 //*****************************************************
-// nanoutl/types/su_coreshared.h: string utilities 
+// umodsys/types/su_coreshared.h: string utilities 
 //   [core shared]
 //*****************************************************
 
-#include <nanoutl/types/su_base.h>
+#include <umodsys/tl/string/su_base.h>
 
-namespace NanoUTL {
+namespace UModSys {
+namespace tl {
 namespace su {
 
 template<typename CharT>
@@ -22,7 +23,7 @@ struct TSharedStringInfo {
 
 template<typename MemAllocT, typename CharT>
 struct TSCoreShared : public MemAllocT {
-  NANOUTL_STRING_CLASS_HEADER(CharT)
+  UMODSYS_STRING_CLASS_HEADER(CharT)
   typedef TSCoreShared<MemAllocT, CharT> Self;
   typedef TSharedStringInfo<CharT> Info;
   //
@@ -109,6 +110,7 @@ inline bool TSCoreShared<MemAllocT,CharT>::info_new(Str s, size_t L)
 }
 
 } // namespace su
-} // namespace NanoUTL
+} // namespace tl
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_STRUTILS_CORESHARED_H
+#endif // __UMODSYS_TYPES_STRING_UTILS_CORESHARED_H

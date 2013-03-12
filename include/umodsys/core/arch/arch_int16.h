@@ -1,0 +1,4 @@
+namespace cpu {
+
+} // namespace cpu
+

@@ -1,15 +1,17 @@
-#ifndef __NANOUTL_TYPES_STRUTILS_CHARL_H
-#define __NANOUTL_TYPES_STRUTILS_CHARL_H 1
+#ifndef __UMODSYS_TYPES_STRING_UTILS_CHARL_H
+#define __UMODSYS_TYPES_STRING_UTILS_CHARL_H 1
 //*****************************************************
-// nanoutl/types/su_charl.h: string utilities [long char]
+// umodsys/types/su_charl.h: string utilities [long char]
 //*****************************************************
 
-#include <nanoutl/types/su_base.h>
+#include <umodsys/tl/string/su_base.h>
 
-namespace NanoUTL {
+namespace UModSys {
+namespace tl {
 namespace su {
 
 } // namespace su
-} // namespace NanoUTL
+} // namespace tl
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_STRUTILS_CHARL_H
+#endif // __UMODSYS_TYPES_STRING_UTILS_CHARL_H

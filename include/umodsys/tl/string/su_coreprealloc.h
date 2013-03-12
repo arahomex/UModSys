@@ -1,18 +1,19 @@
-#ifndef __NANOUTL_TYPES_STRUTILS_COREPREALLOC_H
-#define __NANOUTL_TYPES_STRUTILS_COREPREALLOC_H 1
+#ifndef __UMODSYS_TYPES_STRING_UTILS_COREPREALLOC_H
+#define __UMODSYS_TYPES_STRING_UTILS_COREPREALLOC_H 1
 //*****************************************************
-// nanoutl/types/su_coreprealloc.h: string utilities 
+// umodsys/types/su_coreprealloc.h: string utilities 
 //   [core prealloc]
 //*****************************************************
 
-#include <nanoutl/types/su_base.h>
+#include <umodsys/tl/string/su_base.h>
 
-namespace NanoUTL {
+namespace UModSys {
+namespace tl {
 namespace su {
 
 template<size_t nChars, typename CharT> 
 struct TSCorePrealloc {
-  NANOUTL_STRING_CLASS_HEADER(CharT)
+  UMODSYS_STRING_CLASS_HEADER(CharT)
   enum { N_Chars = nChars };
   struct Buffer {
     Char buffer[nChars];
@@ -75,6 +76,7 @@ struct TSCorePrealloc {
 
 
 } // namespace su
-} // namespace NanoUTL
+} // namespace tl
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_STRUTILS_COREPREALLOC_H
+#endif // __UMODSYS_TYPES_STRING_UTILS_COREPREALLOC_H

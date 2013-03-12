@@ -1,18 +1,17 @@
-#ifndef __NANOUTL_TYPES_STRUTILS_SHARED_H
-#define __NANOUTL_TYPES_STRUTILS_SHARED_H 1
+#ifndef __UMODSYS_TYPES_STRING_UTILS_SHARED_H
+#define __UMODSYS_TYPES_STRING_UTILS_SHARED_H 1
 //*****************************************************
-// nanoutl/types/su_base.h: string utilities base
+// umodsys/types/su_base.h: string utilities base
 //*****************************************************
 
-#include <nanoutl/core/arch.h>
-#include <nanoutl/core/allocator.h>
-//#include <nanoutl/core/cpumem.h>
+#include <umodsys/core/arch.h>
+#include <umodsys/core/allocator.h>
 
 //#define S_STRING_COLLATE_CON const ICharCollate &col=su::collate()
 
 
-namespace NanoUTL {
-
+namespace UModSys {
+namespace tl {
 namespace su {
 //***************************************
 // typedefs
@@ -61,13 +60,11 @@ struct TSCoreAllocBuf;  // string core - allocated (write)
 //***************************************
 // end
 
-}
+} // namespace su
 
 //***************************************
 //***************************************
 //***************************************
-
-namespace types {
 
 //***************************************
 // typedefs
@@ -110,8 +107,6 @@ typedef TPrintBuffer<4096, core::BChar>   DPrintBufLong;
 //***************************************
 // end
 
-} // namespace types
-
 
 //***************************************
 //***************************************
@@ -121,7 +116,7 @@ namespace su {
 
 //***************************************
 
-#define NANOUTL_STRING_CLASS_HEADER(CharT) \
+#define UMODSYS_STRING_CLASS_HEADER(CharT) \
   typedef su::TCharOptions<CharT>       Options; \
   typedef su::TSCoreConst<CharT>        ConstStr;\
   typedef su::TSCoreBuffer<CharT>       BufferStr;\
@@ -257,6 +252,7 @@ int shashlen(const CharT* str, size_t& len) {
 // end
 
 } // namespace su
-} // namespace NanoUTL
+} // namespace tl
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_STRUTILS_SHARED_H
+#endif // __UMODSYS_TYPES_STRING_UTILS_SHARED_H

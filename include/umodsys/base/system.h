@@ -6,7 +6,9 @@
 /*************************************************************/
 
 #include <umodsys/core/stdcore.h>
+
 #include <umodsys/base/console.h>
+#include <umodsys/base/module.h>
 
 namespace UModSys {
 namespace base {
@@ -17,7 +19,8 @@ namespace base {
 
 struct ISystem 
 : public core::IRefObject, 
-  public core::IUniquePointerResolver 
+  public core::IUniquePointerResolver,
+  public IModuleLoader,
 {
 public:
   ~ISystem(void);

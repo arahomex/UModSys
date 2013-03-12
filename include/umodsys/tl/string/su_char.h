@@ -1,12 +1,13 @@
-#ifndef __NANOUTL_TYPES_STRUTILS_CHAR_H
-#define __NANOUTL_TYPES_STRUTILS_CHAR_H 1
+#ifndef __UMODSYS_TYPES_STRING_UTILS_CHAR_H
+#define __UMODSYS_TYPES_STRING_UTILS_CHAR_H 1
 //*****************************************************
-// nanoutl/types/su_char.h: string utilities [char]
+// umodsys/types/su_char.h: string utilities [char]
 //*****************************************************
 
-#include <nanoutl/types/su_base.h>
+#include <umodsys/tl/string/su_base.h>
 
-namespace NanoUTL {
+namespace UModSys {
+namespace tl {
 namespace su {
 
 template<>
@@ -93,6 +94,7 @@ inline const core::BChar* sstr(const core::BChar* a, const core::BChar* ch)
 }
 
 } // namespace su
-} // namespace NanoUTL
+} // namespace tl
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_STRUTILS_CHAR_H
+#endif // __UMODSYS_TYPES_STRING_UTILS_CHAR_H
