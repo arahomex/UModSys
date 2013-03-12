@@ -1,7 +1,6 @@
 
 PLATFORM=$(shell uname).$(shell uname -p)
-BINSUFFIX=
-SOLIBSUFFIX=.so
-CPPFLAGS:=$(CPPFLAGS) -fPIC
+BINSUFFIX=.exe
+SOLIBSUFFIX=.dll
 
 include Makefile.inc

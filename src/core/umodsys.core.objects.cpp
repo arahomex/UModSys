@@ -19,6 +19,10 @@ IRoot::~IRoot(void)
 
 //NANOUTL_ROOT_LUP(NanoUTL::core::IRefObject);
 
+IRefObject::~IRefObject(void) 
+{
+}
+
 //***************************************
 // IModObject::
 //***************************************
