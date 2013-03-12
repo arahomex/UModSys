@@ -1,0 +1,5 @@
+
+PLATFORM=$(shell uname).$(shell uname -p)
+#CPPFLAGS:=$(CPPFLAGS)
+
+include Makefile.inc
