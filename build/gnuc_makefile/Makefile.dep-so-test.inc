@@ -13,7 +13,7 @@ so_test1: $(so_test1)
 #---------------------------- make rules static
 
 $(so_test1): $(so_test1_depends)
-	$(CXX_SO) $(CXXFLAGS) $(CXX_BIN)$@ $^ 
+	$(CXX_LINK_SO) $(CXXFLAGS) $(CXX_BIN)$@ $^ 
 
 #---------------------------- make rules generic
 

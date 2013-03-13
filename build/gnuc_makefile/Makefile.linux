@@ -4,6 +4,6 @@ PLATFORM_ID=linux
 
 BINSUFFIX=
 SOLIBSUFFIX=.so
-CPPFLAGS:=$(CPPFLAGS) -fPIC
+CXXFLAGS += -fPIC #-fvisibility=hidden
 
 include Makefile.inc

@@ -7,13 +7,13 @@ SOLIBSUFFIX=.dll
 LIBSUFFIX=.lib
 OSUFFIX=.obj
 
+NO_CXX_DEP=1
 AR_ADD=lib.exe -nologo -out:
-CXX_DEP=$(RM)
 CXX=cl.exe -nologo
-CXX_SO=cl.exe -nologo -LD
+CXX_LINK=cl.exe -nologo
+CXX_LINK_SO=cl.exe -nologo -LD
 CXX_O=/Fo
 CXX_BIN=/Fe
-NO_CXX_DEP=1
 
 CXX_RELEASE=-Ox -DNDEBUG -MD
 CXX_DEBUG=-Od -D_DEBUG -MDd

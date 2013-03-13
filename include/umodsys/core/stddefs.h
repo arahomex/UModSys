@@ -62,6 +62,8 @@
   #include <new>
   // /includes
 
+//  #pragma GCC visibility push(hidden)
+
 #elif defined(UMODSYS_COMPILER_DEFINES)
 
   #include "umodsys_compiler_defines.h"

@@ -41,8 +41,11 @@ endif
 ifndef CXX_C
 CXX_C=$(CXX) -c 
 endif
-ifndef CXX_SO
-CXX_SO=$(CXX) -shared
+ifndef CXX_LINK_SO
+CXX_LINK_SO=$(CXX) -shared -ldl $(CXX_LINK_FLAGS)
+endif
+ifndef CXX_LINK
+CXX_LINK=$(CXX) -ldl $(CXX_LINK_FLAGS)
 endif
 ifndef CXX_O
 CXX_O=-o 
@@ -60,7 +63,7 @@ CXX_RELEASE=-O0
 endif
 
 
-CXXFLAGS:=$(CXXFLAGS) -I../../include
+CXXFLAGS += -I../../include
 
 ifeq "$(BUILD_MODE)" "Release"
 CXXFLAGS:=$(CXXFLAGS) $(CXX_RELEASE)

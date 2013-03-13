@@ -1,7 +1,8 @@
 #include "../../rsystem/umodsys.base.rsystem.h"
 #include "../../rsystem/umodsys.base.rmodule.h"
 
-#include <windows.h>
+#define _GNU_SOURCE         /* See feature_test_macros(7) */
+#include <dlfcn.h>
 
 using namespace UModSys;
 using namespace UModSys::core;
@@ -11,16 +12,12 @@ using namespace UModSys::base;
 // RModule::
 //***************************************
 
-#if defined(_M_X64) || defined(_M_IA64)
-  #define MODULE_ENTRY_NAME "UModSys_Plugin_Entry2"
-#else
-  #define MODULE_ENTRY_NAME "_UModSys_Plugin_Entry2@8"
-#endif
+#define MODULE_ENTRY_NAME "UModSys_Plugin_Entry2"
 
-typedef IModuleReg* (__stdcall *f_get_moduleinfo)(ISystem* isys, int id);
+typedef IModuleReg* (*f_get_moduleinfo)(ISystem* isys, int id);
 
 struct RModule::PFD_Data_t {
-  HMODULE module;
+  void* module;
   f_get_moduleinfo entry;
   IModuleReg* ireg;
 };
@@ -44,15 +41,11 @@ bool RModule::pfd_load(PFD_Data_t* pfd)
   if(pfd->module!=NULL)
     return false;
 //  SetDllDirectory();
-  pfd->module = LoadLibraryEx(
-    sys_libname, 
-    NULL, 
-    0
-  );
+  pfd->module = dlopen(sys_libname, RTLD_LOCAL|RTLD_NOW);
   if(pfd->module==NULL)
     return false;
   //
-  pfd->entry = (f_get_moduleinfo)(GetProcAddress(pfd->module, MODULE_ENTRY_NAME));
+  pfd->entry = (f_get_moduleinfo)(dlsym(pfd->module, MODULE_ENTRY_NAME));
   if(pfd->entry==NULL) {
     pfd_unload(pfd);
     return false;
@@ -70,7 +63,7 @@ bool RModule::pfd_load(PFD_Data_t* pfd)
 bool RModule::pfd_unload(PFD_Data_t* pfd)
 {
   if(pfd->module!=NULL) {
-    FreeLibrary(pfd->module);
+    dlclose(pfd->module);
     pfd->module = NULL;
   }
   pfd->ireg = NULL;
