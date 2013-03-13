@@ -31,6 +31,13 @@ public:
   int upi_remove(SUniquePointerInfo* upi);
 public:
   IConsole* get_console(void);
+  IMemAlloc* get_sysmem(void);
+  IMemAlloc* get_sharemem(void);
+public:
+  IModule* module_preload(const DCString& sys_name);
+  IModule* module_load(const DCString& name, const SVersion& verno, bool doload);
+  bool module_unload(const DCString& name, const SVersion& verno);
+  bool module_unload(IModule* M);
 public:
   IConsole* console;
   //

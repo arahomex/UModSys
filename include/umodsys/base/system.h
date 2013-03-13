@@ -20,12 +20,14 @@ namespace base {
 struct ISystem 
 : public core::IRefObject, 
   public core::IUniquePointerResolver,
-  public IModuleLoader,
+  public IModuleLoader
 {
 public:
   ~ISystem(void);
 public:
   virtual IConsole* get_console(void) =0;
+  virtual core::IMemAlloc* get_sysmem(void) =0;
+  virtual core::IMemAlloc* get_sharemem(void) =0;
 public:
   UMODSYS_REFOBJECT_INTIMPLEMENT(ISystem, 2, IRefObject);
 };

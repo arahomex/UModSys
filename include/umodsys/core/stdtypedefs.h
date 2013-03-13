@@ -18,6 +18,8 @@ namespace core {
   struct Empty;
 
   struct SSourceContext;         // file&line info for alloc & exceptions
+  struct SVersion;               // version in form hi/lo
+
   struct SUniquePointerInfo;
   struct SUniquePointer;
 
@@ -26,14 +28,16 @@ namespace core {
   struct IModObject;
   struct IGenerator;
 
-  struct IModule;
-
   struct EExceptionBase;
     struct EFatal;
     struct EError;
     struct EWarning;
 
   struct SParameters;
+
+  struct IMemAlloc;
+  struct SIMemAlloc;
+  struct SMemAlloc_Malloc;
 
   //***************************************
   // Outlines
@@ -42,6 +46,21 @@ namespace core {
   unsigned char lost(const void* data);
 
 } // namespace core
+
+namespace base {
+  struct IModule;
+  struct IModuleInfo;
+  struct IModuleLoader;
+  struct SModuleInfo;
+  struct SModuleContext;
+
+  struct ISystem;
+  struct ISystem;
+
+} // namespace base
+
+
+extern base::SModuleContext M;
 
 /*
 namespace objects {

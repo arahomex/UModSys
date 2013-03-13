@@ -5,6 +5,8 @@
 // info: allocator bases
 /*************************************************************/
 
+#include <umodsys/core/stdtypedefs.h>
+
 namespace UModSys {
 namespace core {
 
@@ -30,10 +32,29 @@ struct SCountCalcExact {
 //***************************************
 
 struct SMemAlloc_Malloc {
-  inline static void* mem_alloc(size_t n) { return ::malloc(n); }
-  inline static void* mem_realloc(void* op, size_t n) { return ::realloc(op, n); }
-  inline static void mem_free(void *op) { return ::free(op); }
+  inline static void* mem_alloc(size_t n, const SSourceContext* sctx=NULL) { return ::malloc(n); }
+  inline static void* mem_realloc(void* op, size_t n, const SSourceContext* sctx=NULL) { return ::realloc(op, n); }
+  inline static void mem_free(void *op, const SSourceContext* sctx=NULL) { return ::free(op); }
   inline static const SMemAlloc_Malloc& get_default(void) { static SMemAlloc_Malloc rv; return rv; }
+};
+
+//***************************************
+
+struct IMemAlloc {
+  virtual void* mem_alloc(size_t n, const SSourceContext* sctx) =0;
+  virtual void* mem_realloc(void* op, size_t n, const SSourceContext* sctx) =0;
+  virtual void mem_free(void *op, const SSourceContext* sctx) =0;
+};
+
+struct SIMemAlloc {
+public:
+  IMemAlloc* imem;
+public:
+  inline SIMemAlloc(IMemAlloc *im) : imem(im) {}
+  //
+  inline void* mem_alloc(size_t n, const SSourceContext* sctx=NULL) { return imem->mem_alloc(n, sctx); }
+  inline void* mem_realloc(void* op, size_t n, const SSourceContext* sctx=NULL) { return imem->mem_realloc(op, n, sctx); }
+  inline void mem_free(void *op, const SSourceContext* sctx=NULL) { imem->mem_free(op, sctx); }
 };
 
 //***************************************

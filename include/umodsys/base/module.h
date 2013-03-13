@@ -15,13 +15,13 @@ namespace base {
 //***************************************
 
 struct SModuleInfo {
-  DCString name;
-  SVersion verno;
-  DCString info;
+  core::DCString name;
+  core::SVersion verno;
+  core::DCString info;
   //
-  inline SModuleInfo(const char* n, int vh, int vl, const char *i)
-    : name(n), info(i), verno(vh, vl) {}
-  inline SModuleInfo(void) {}
+  ~SModuleInfo(void);
+  SModuleInfo(const char* n, int vh, int vl, const char *i);
+  SModuleInfo(void);
 };
 
 //***************************************
@@ -34,11 +34,13 @@ struct IModule
 public:
   ~IModule(void);
 public:
-  virtual const DCString& get_sys_libname(void) const =0;
+  virtual const core::DCString& get_sys_libname(void) const =0;
   virtual const SModuleInfo& get_info(void) const =0;
   virtual bool is_loaded(void) const =0;
-  virtual bool load(void);
-  virtual bool unload(void);
+  virtual core::IMemAlloc* get_privmem(void) const =0;
+  //
+  virtual bool load(void) =0;
+  virtual bool unload(void) =0;
 public:
   UMODSYS_REFOBJECT_INTIMPLEMENT(IModule, 2, IRefObject);
 };
@@ -50,7 +52,10 @@ public:
 struct IModuleLoader
 {
 public:
-  IModule* load_module(const DCString& name, 
+  virtual IModule* module_preload(const core::DCString& sys_name) =0;
+  virtual IModule* module_load(const core::DCString& name, const core::SVersion& verno, bool doload=true) =0;
+  virtual bool module_unload(const core::DCString& name, const core::SVersion& verno) =0;
+  virtual bool module_unload(IModule* M) =0;
 };
 
 //***************************************

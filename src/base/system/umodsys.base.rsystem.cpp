@@ -31,6 +31,38 @@ IConsole* RSystem::get_console(void)
   return console;
 }
 
+IMemAlloc* RSystem::get_sysmem(void)
+{
+  return NULL;
+}
+
+IMemAlloc* RSystem::get_sharemem(void)
+{
+  return NULL;
+}
+
+//***************************************
+
+IModule* RSystem::module_preload(const DCString& sys_name)
+{
+  return NULL;
+}
+
+IModule* RSystem::module_load(const DCString& name, const SVersion& verno, bool doload)
+{
+  return NULL;
+}
+
+bool RSystem::module_unload(const DCString& name, const SVersion& verno)
+{
+  return false;
+}
+
+bool RSystem::module_unload(IModule* M)
+{
+  return false;
+}
+
 //***************************************
 //***************************************
 

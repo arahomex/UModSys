@@ -13,6 +13,7 @@
 #include <umodsys/core/uniqueptr.h>
 #include <umodsys/core/common_exceptions.h>
 #include <umodsys/core/objects.h>
+#include <umodsys/core/arch.h>
 
 #include <umodsys/core/stdstrings.h>
 
