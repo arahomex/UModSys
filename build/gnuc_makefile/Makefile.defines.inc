@@ -59,7 +59,7 @@ ifndef CXX_RELEASE
 CXX_RELEASE=-O3
 endif
 ifndef CXX_DEBUG
-CXX_RELEASE=-O0
+CXX_DEBUG=-O0
 endif
 
 
