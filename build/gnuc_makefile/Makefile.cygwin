@@ -1,5 +1,7 @@
 
 PLATFORM=$(shell uname).$(shell uname -p)
+PLATFORM_ID=linux
+
 BINSUFFIX=.exe
 SOLIBSUFFIX=.dll
 

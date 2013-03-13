@@ -13,14 +13,13 @@ SModuleContext::~SModuleContext(void)
 }
 
 SModuleContext::SModuleContext(void)
-: iinfo(NULL), isys(NULL), icon(NULL)
+: isys(NULL), icon(NULL), imem(NULL)
 {
 }
 
-void SModuleContext::Link(ISystem* is, IModuleInfo *imi, IMemAlloc* privmem)
+void SModuleContext::Link(ISystem* is, IMemAlloc* privmem)
 {
   isys = is;
-  iinfo = imi;
   icon = isys!=NULL ? isys->get_console() : NULL;
   imem = privmem;
 }

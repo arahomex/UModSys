@@ -7,6 +7,7 @@
 
 #include <umodsys/base/system.h>
 #include <umodsys/base/console.h>
+#include <umodsys/base/module_impl.h>
 
 namespace UModSys {
 namespace base {
@@ -50,7 +51,6 @@ public:
 public:
   static RSystem s_sys;
 };
-
 
 //***************************************
 // END

@@ -41,6 +41,9 @@ endif
 ifndef CXX_C
 CXX_C=$(CXX) -c 
 endif
+ifndef CXX_SO
+CXX_SO=$(CXX) -shared
+endif
 ifndef CXX_O
 CXX_O=-o 
 endif

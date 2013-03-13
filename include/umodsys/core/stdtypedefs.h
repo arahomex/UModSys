@@ -48,9 +48,11 @@ namespace core {
 } // namespace core
 
 namespace base {
+  struct IModuleReg;
   struct IModule;
-  struct IModuleInfo;
   struct IModuleLoader;
+  //
+  struct SModuleRegChain;
   struct SModuleInfo;
   struct SModuleContext;
 

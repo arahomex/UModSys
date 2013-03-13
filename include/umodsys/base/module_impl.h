@@ -15,7 +15,7 @@ namespace base {
 // IModuleInfo
 //***************************************
 
-struct IModuleInfo {
+struct IModuleReg {
 public:
   SModuleInfo minfo;
   int load_count;
@@ -24,20 +24,32 @@ public:
   virtual bool close(void) =0;
 };
 
+struct SModuleRegChain : public tl::TList2Node<SModuleRegChain> {
+public:
+  IModuleReg* imr;
+  //
+  static SModuleRegChain root;
+  //
+  SModuleRegChain(IModuleReg* r);
+  explicit SModuleRegChain(int v);
+  ~SModuleRegChain(void);
+  //
+  static size_t s_gather(IModuleReg* rlist[], size_t nlist);
+};
+
 //***************************************
 // SModuleContext
 //***************************************
 
 struct SModuleContext {
 protected:
-  IModuleInfo *iinfo;
   ISystem* isys;
   IConsole* icon;
   core::IMemAlloc* imem;
 public:
   ~SModuleContext(void);
   SModuleContext(void);
-  void Link(ISystem* is, IModuleInfo *imi, core::IMemAlloc* privmem);
+  void Link(ISystem* is, core::IMemAlloc* privmem);
   //
   inline operator ISystem*(void) const { return isys; }
   inline operator IConsole*(void) const { return icon; }
@@ -46,11 +58,16 @@ public:
   inline core::IMemAlloc& operator()(void) const { return *imem; }
   //
   inline IConsole& con(void) const { return *icon; }
-  inline IModuleInfo& inf(void) const { return *iinfo; }
-  inline const SModuleInfo& info(void) const { return iinfo->minfo; }
   inline core::IMemAlloc& mem(void) const { return *imem; }
-  //
 };
+
+//***************************************
+// module implementation
+//***************************************
+
+extern int so_entry_enabled_flag;
+
+inline void so_enable(void) { core::lost(&so_entry_enabled_flag); }
 
 //***************************************
 // END

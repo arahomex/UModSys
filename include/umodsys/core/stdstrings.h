@@ -42,9 +42,15 @@ typedef tl::TStringBuf<
 > DStringBufHuge;
 
 
-//typedef tl::TStringBuf<su::TSCoreShared<,core::BChar>, tl::su::TComparerBinaryHash<core::BChar> > 
-//  DStringBufHuge;
+typedef tl::TStringBuf<
+  tl::su::TSCoreShared<SIMemAlloc, core::BChar>, 
+  tl::su::TComparerBinaryHash<core::BChar> 
+> DStringShared;
 
+typedef tl::TStringBuf<
+  tl::su::TSCoreShared<SMemAlloc_Malloc, core::BChar>, 
+  tl::su::TComparerBinaryHash<core::BChar> 
+> DStringSharedMalloc;
 
 //***************************************
 // END

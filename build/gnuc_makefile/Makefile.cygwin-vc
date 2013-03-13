@@ -1,5 +1,6 @@
 
 PLATFORM=$(VC_PLATFORM)
+PLATFORM_ID=win32
 
 BINSUFFIX=.exe
 SOLIBSUFFIX=.dll
@@ -9,6 +10,7 @@ OSUFFIX=.obj
 AR_ADD=lib.exe -nologo -out:
 CXX_DEP=$(RM)
 CXX=cl.exe -nologo
+CXX_SO=cl.exe -nologo -LD
 CXX_O=/Fo
 CXX_BIN=/Fe
 NO_CXX_DEP=1

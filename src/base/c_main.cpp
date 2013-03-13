@@ -1,5 +1,5 @@
-#include "system/umodsys.base.rsystem.h"
-#include "console/umodsys.base.rconsole_std.h"
+#include "rsystem/umodsys.base.rsystem.h"
+#include "rsystem/umodsys.base.rconsole_std.h"
 
 using namespace UModSys;
 using namespace UModSys::core;

@@ -14,7 +14,7 @@ T:=$(TT)/$(PLATFORM).$(BUILD_MODE)
 
 all: target
 
-target: T BINDIR core_lib base_lib main
+target: T BINDIR core_lib base_lib main so_test1
 
 clean:
 	-$(RM) $(T)/*$(OSUFFIX) 
@@ -38,6 +38,8 @@ $(BINDIRA):
 
 include Makefile.dep-core.inc
 include Makefile.dep-base.inc
+
+include Makefile.dep-so-test.inc
 
 #---------------------------- make rules depfiles
 # pull in dependency info for *existing* $(OSUFFIX) files
