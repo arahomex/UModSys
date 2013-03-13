@@ -8,6 +8,10 @@ core_lib_depends := \
 
 core_lib := $(T)/umodsys.core$(LIBSUFFIX)
 
+#---------------------------- so_main
+
+so_main := $(T)/umodsys.so_main.$(PLATFORM_ID)$(OSUFFIX)
+
 #---------------------------- make rules targets
 
 core_lib: $(core_lib) 

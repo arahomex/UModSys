@@ -1,4 +1,5 @@
 #include "umodsys.base.rsystem.h"
+#include "umodsys.base.rmodule.h"
 
 using namespace UModSys;
 using namespace UModSys::core;
@@ -50,7 +51,7 @@ IModule* RSystem::module_preload(const DCString& sys_name)
 
 IModule* RSystem::module_load(const DCString& name, const SVersion& verno, bool doload)
 {
-  return NULL;
+  return new RModule();
 }
 
 bool RSystem::module_unload(const DCString& name, const SVersion& verno)

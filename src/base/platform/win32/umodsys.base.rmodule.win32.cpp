@@ -11,6 +11,12 @@ using namespace UModSys::base;
 // RModule::
 //***************************************
 
+#if defined(_M_X64) || defined(_M_IA64)
+  #define MODULE_ENTRY_NAME "UModSys_Plugin_Entry2"
+#else
+  #define MODULE_ENTRY_NAME "_UModSys_Plugin_Entry2@8"
+#endif
+
 typedef IModuleReg* (__stdcall *f_get_moduleinfo)(ISystem* isys, int id);
 
 struct RModule::PFD_Data_t {
@@ -46,7 +52,7 @@ bool RModule::pfd_load(PFD_Data_t* pfd)
   if(pfd->module==NULL)
     return false;
   //
-  pfd->entry = (f_get_moduleinfo)(GetProcAddress(pfd->module, "UModSys_Plugin_Entry2@8"));
+  pfd->entry = (f_get_moduleinfo)(GetProcAddress(pfd->module, MODULE_ENTRY_NAME));
   if(pfd->entry==NULL) {
     pfd_unload(pfd);
     return false;

@@ -10,7 +10,6 @@ using namespace base;
 
 struct RTest1_ModuleReg : public IModuleReg {
   RTest1_ModuleReg(void) {
-    so_enable();
   }
   ~RTest1_ModuleReg(void) {
   }

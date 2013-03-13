@@ -34,7 +34,7 @@ struct IModule
 public:
   ~IModule(void);
 public:
-  virtual const core::DCString& get_sys_libname(void) const =0;
+  virtual core::DCString get_sys_libname(void) const =0;
   virtual const SModuleInfo& get_info(void) const =0;
   virtual bool is_loaded(void) const =0;
   virtual core::IMemAlloc* get_privmem(void) const =0;

@@ -2,7 +2,7 @@
 
 so_test1_depends := \
   $(T)/plugin_test1$(OSUFFIX) \
-  $(base_lib) $(core_lib) \
+  $(so_main) $(base_lib) $(core_lib) \
 
 so_test1 := $(BINDIR)/plugin_test1.$(PLATFORM).$(BUILD_MODE)$(SOLIBSUFFIX)
 

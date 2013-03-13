@@ -115,9 +115,9 @@ struct TStringBuf : public CoreT, public Comparer {
   inline const Self& operator=(Str R) { set(R); return *this; }
   inline const Self& operator=(const Comparer& cmp) { set(cmp); return *this; }
   template<typename Core2, typename Cmp2> inline void operator=(const TString<Core2, Cmp2>& R) 
-    { set(R); return *this; }
+    { set(R); }
   template<typename Core2, typename Cmp2> inline void operator=(const TStringBuf<Core2, Cmp2>& R) 
-    { set(R); return *this; }
+    { set(R); }
 };
 
 //***************************************

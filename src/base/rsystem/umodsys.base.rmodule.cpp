@@ -1,5 +1,5 @@
 #include "umodsys.base.rsystem.h"
-#include "../system/umodsys.base.rsystem.h"
+#include "umodsys.base.rmodule.h"
 
 using namespace UModSys;
 using namespace UModSys::core;
@@ -15,19 +15,19 @@ int  RModule::ref_links(void) const { return 0; }
 
 //***************************************
 
-const DCString& RModule::get_sys_libname(void) const
+DCString RModule::get_sys_libname(void) const
 {
-  return sys_libname;
+  return DCString(sys_libname);
 }
 
-const SModuleInfo& get_info(void) const
+const SModuleInfo& RModule::get_info(void) const
 {
   return minfo;
 }
 
 bool RModule::is_loaded(void) const
 {
-  return pfd_is_loaded(static_cast<const PFD_Data_t*>(pfd_data));
+  return pfd_is_loaded(reinterpret_cast<const PFD_Data_t*>(pfd_data));
 }
 
 core::IMemAlloc* RModule::get_privmem(void) const
@@ -37,12 +37,12 @@ core::IMemAlloc* RModule::get_privmem(void) const
 
 bool RModule::load(void)
 {
-  return pfd_load(static_cast<PFD_Data_t*>(pfd_data));
+  return pfd_load(reinterpret_cast<PFD_Data_t*>(pfd_data));
 }
 
 bool RModule::unload(void)
 {
-  return pfd_unload(static_cast<PFD_Data_t*>(pfd_data));
+  return pfd_unload(reinterpret_cast<PFD_Data_t*>(pfd_data));
 }
 
 //***************************************
@@ -63,12 +63,12 @@ bool RModule::alloc_minfo(const SModuleInfo &mi2)
 
 RModule::RModule(void)
 {
-  pfd_init(static_cast<PFD_Data_t*>(pfd_data));
+  pfd_init(reinterpret_cast<PFD_Data_t*>(pfd_data));
 }
 
 RModule::~RModule(void)
 {
-  pfd_deinit(static_cast<PFD_Data_t*>(pfd_data));
+  pfd_deinit(reinterpret_cast<PFD_Data_t*>(pfd_data));
 }
 
 

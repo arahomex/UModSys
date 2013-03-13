@@ -27,7 +27,7 @@ public:
   void ref_remove(void) const;
   int  ref_links(void) const;
 public:
-  const DCString& get_sys_libname(void) const;
+  DCString get_sys_libname(void) const;
   const SModuleInfo& get_info(void) const;
   bool is_loaded(void) const;
   IMemAlloc* get_privmem(void) const;
