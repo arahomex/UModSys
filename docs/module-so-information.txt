@@ -1,0 +1,49 @@
+
+
+Module is shared library with 
+ one public symbol available: "UModSys_Plugin_Entry2"
+ this symbol really is following function: 
+   extern "C" IModuleReg* UModSys_Plugin_Entry2(ISystem* isys, int id);
+
+Internally module structure is:
+
+
+  Module object refer to:
+    1. IModuleReg object      (one for each module)
+       - So each module do in the same way whenever combined or not
+    2. SModuleContext object  (one for each so library)
+       - So all uses one private memory and one console object for dump
+
+  Modules included in system binary have the same so
+    - can be addressed as they in separate library
+    - uses system shared memory pool
+
+
+  For the module loader (IModuleLoader) each IModuleReg corresponds to unique IModule:
+    - Each IModule have one IModuleLibrary (multi) reference, one IModuleReg (once) reference.
+    - Each IModuleLibrary have multi IModule references and one handle to so library.
+    - One IModuleLibrary means that module is in system binary.
+
+  One IModuleLibrary have:
+    - 1 handle of so-library
+    - 1 handle of private memory pool
+    - array of reference to IModule loaded for this library
+
+  One IModule have:
+    - module information
+    - array of generated object information
+
+  If one module included more than once (different libraries)
+   then module is found in order of library loaded/scanned.
+  eg. 
+     modules:           m1, m2, m3
+     libraries:         L1{m1, m2}, L2{m1,m3}, system{m2}
+     loaded libraries:  system{m2}, L1{m1}, L2{m3}  
+     -- all other modules not opened during so-lib-load --
+     when loading only L2 and system:
+     loaded libraries:  system{m2}, L2{m1, m3}
+     auto-loading uses special information .conf file determining library load information
+     (also can be done manually):
+       library-name = priority module1 ...
+       module name is name(verhi,verlo)
+       eg. plugin_test = -10 test_module_1(1,2) test_module_2(2,50)
