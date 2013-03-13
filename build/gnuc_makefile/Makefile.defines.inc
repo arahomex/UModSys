@@ -56,10 +56,10 @@ endif
 
 
 ifndef CXX_RELEASE
-CXX_RELEASE=-O3
+CXX_RELEASE=-O3 -s
 endif
 ifndef CXX_DEBUG
-CXX_DEBUG=-O0
+CXX_DEBUG=-O0 -g
 endif
 
 
