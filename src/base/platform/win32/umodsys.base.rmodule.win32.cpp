@@ -19,25 +19,25 @@ using namespace UModSys::base;
 
 typedef IModuleReg* (__stdcall *f_get_moduleinfo)(ISystem* isys, int id);
 
-struct RModuleLibrary::PFD_Data_t {
+struct RModuleLibrary::PFD_Data {
   HMODULE module;
   f_get_moduleinfo entry;
 };
 
-bool RModuleLibrary::pfd_init(PFD_Data_t* pfd)
+bool RModuleLibrary::pfd_init(PFD_Data* pfd)
 {
   pfd->module = NULL;
   pfd->entry = NULL;
   return true;
 }
 
-bool RModuleLibrary::pfd_deinit(PFD_Data_t* pfd)
+bool RModuleLibrary::pfd_deinit(PFD_Data* pfd)
 {
   pfd_unload(pfd);
   return true;
 }
 
-bool RModuleLibrary::pfd_load(PFD_Data_t* pfd)
+bool RModuleLibrary::pfd_load(PFD_Data* pfd)
 {
   if(pfd->module!=NULL)
     return false;
@@ -67,7 +67,7 @@ bool RModuleLibrary::pfd_load(PFD_Data_t* pfd)
   return true;
 }
 
-bool RModuleLibrary::pfd_unload(PFD_Data_t* pfd)
+bool RModuleLibrary::pfd_unload(PFD_Data* pfd)
 {
   if(pfd->module!=NULL) {
     FreeLibrary(pfd->module);
@@ -77,7 +77,7 @@ bool RModuleLibrary::pfd_unload(PFD_Data_t* pfd)
   return true;
 }
 
-bool RModuleLibrary::pfd_is_loaded(const PFD_Data_t* pfd) const
+bool RModuleLibrary::pfd_is_loaded(const PFD_Data* pfd) const
 {
   return pfd->module!=NULL;
 }

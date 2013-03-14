@@ -44,24 +44,19 @@ IMemAlloc* RSystem::get_sharemem(void)
 
 //***************************************
 
-IModule* RSystem::module_preload(const DCString& sys_name)
+size_t RSystem::module_preload(const core::DCString& sys_name)
+{
+  return 0;
+}
+
+size_t RSystem::module_findall(IModule* amodules[], size_t nmodules, const core::DCString& mask)
+{
+  return 0;
+}
+
+IModule* RSystem::module_find(const core::DCString& name, const core::SVersion& verno)
 {
   return NULL;
-}
-
-IModule* RSystem::module_load(const DCString& name, const SVersion& verno, bool doload)
-{
-  return new RModule();
-}
-
-bool RSystem::module_unload(const DCString& name, const SVersion& verno)
-{
-  return false;
-}
-
-bool RSystem::module_unload(IModule* M)
-{
-  return false;
 }
 
 //***************************************
@@ -70,7 +65,8 @@ bool RSystem::module_unload(IModule* M)
 bool RSystem::init(void)
 {
   console->put(0, "RSystem::init()\n");
-  return false;
+  sys_library = new RModuleLibrary();
+  return true;
 }
 
 bool RSystem::exec_args(int argc, char** argv)
@@ -88,14 +84,14 @@ bool RSystem::exec_main(void)
 bool RSystem::deinit(void)
 {
   console->put(0, "RSystem::deinit()\n");
-  return false;
+  return true;
 }
 
 //***************************************
 //***************************************
 
 RSystem::RSystem(void)
-: console(NULL) {
+: console(NULL), sys_library(NULL) {
 }
 
 RSystem::~RSystem(void)

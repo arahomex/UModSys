@@ -117,6 +117,8 @@ RModuleLibrary::~RModuleLibrary(void)
   pfd_deinit(reinterpret_cast<PFD_Data*>(pfd_data));
 }
 
+UMODSYS_REFOBJECT_UNIIMPLEMENT_BODY(RModuleLibrary)
+
 //***************************************
 // ::
 //***************************************

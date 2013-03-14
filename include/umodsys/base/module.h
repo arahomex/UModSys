@@ -73,10 +73,9 @@ public:
 struct IModuleLoader
 {
 public:
-  virtual IModule* module_preload(const core::DCString& sys_name) =0;
-  virtual IModule* module_load(const core::DCString& name, const core::SVersion& verno, bool doload=true) =0;
-  virtual bool module_unload(const core::DCString& name, const core::SVersion& verno) =0;
-  virtual bool module_unload(IModule* M) =0;
+  virtual size_t module_preload(const core::DCString& sys_name) =0;
+  virtual size_t module_findall(IModule* amodules[], size_t nmodules, const core::DCString& mask) =0;
+  virtual IModule* module_find(const core::DCString& name, const core::SVersion& verno) =0;
 };
 
 //***************************************

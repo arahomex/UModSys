@@ -35,12 +35,12 @@ public:
   IMemAlloc* get_sysmem(void);
   IMemAlloc* get_sharemem(void);
 public:
-  IModule* module_preload(const DCString& sys_name);
-  IModule* module_load(const DCString& name, const SVersion& verno, bool doload);
-  bool module_unload(const DCString& name, const SVersion& verno);
-  bool module_unload(IModule* M);
+  size_t module_preload(const core::DCString& sys_name);
+  size_t module_findall(IModule* amodules[], size_t nmodules, const core::DCString& mask);
+  IModule* module_find(const core::DCString& name, const core::SVersion& verno);
 public:
   IConsole* console;
+  IModuleLibrary *sys_library;
   //
   bool init(void);
   bool exec_args(int argc, char** argv);
