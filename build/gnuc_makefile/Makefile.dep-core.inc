@@ -40,3 +40,10 @@ ifndef NO_CXX_DEP
 endif
 
 #---------------------------- /make rules generic
+
+#---------------------------- make rules depfiles
+# pull in dependency info for *existing* $(OSUFFIX) files
+ifndef NO_CXX_DEP
+-include $(core_lib_depends:$(OSUFFIX)=$(OSUFFIX).d)
+-include $(so_main:$(OSUFFIX)=$(OSUFFIX).d)
+endif

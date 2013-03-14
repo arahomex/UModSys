@@ -92,27 +92,53 @@ namespace core {
   UMODSYS_ROOT_IMPLEMENT2(_type, _interface1, _interface2) \
   typedef tl::TRefObject<_type> DSelfP, SelfP; \
 
-#define UMODSYS_REFOBJECT_UNIIMPLEMENT \
+#define UMODSYS_REFOBJECT_UNIIMPLEMENT() \
   mutable int ref_count; \
   inline void ref_add(void) const { ref_count++; } \
   inline void ref_remove(void) const { if(--ref_count==0) const_cast<Self*>(this)->suicide(); } \
   inline int  ref_links(void) const { return ref_count; } \
 
-#define UMODSYS_REFOBJECT_PIMPLEMENT \
-  UMODSYS_REFOBJECT_UNIIMPLEMENT \
-  inline void rc_init(void) { ref_count=0; } \
+#define UMODSYS_REFOBJECT_UNIIMPLEMENT_DEF() \
+  mutable int ref_count; \
+  void ref_add(void) const; \
+  void ref_remove(void) const; \
+  int  ref_links(void) const; \
+
+#define UMODSYS_REFOBJECT_UNIIMPLEMENT_BODY(_type) \
+  void _type::ref_add(void) const { ref_count++; } \
+  void _type::ref_remove(void) const { if(--ref_count==0) const_cast<Self*>(this)->suicide(); } \
+  int  _type::ref_links(void) const { return ref_count; } \
+
+#if 0
 
 #define UMODSYS_REFOBJECT_SIMPLEMENT1(_type, _verno, _interface) \
   UMODSYS_REFOBJECT_IMPLEMENT1(_type, _verno, _interface) \
-  UMODSYS_REFOBJECT_PIMPLEMENT \
+  UMODSYS_REFOBJECT_UNIIMPLEMENT() \
+  UMODSYS_REFOBJECT_PIMPLEMENT() \
   /*UMODSYS_NEW_DELETE()*/ \
   inline virtual void suicide(void) { delete this; } \
 
 #define UMODSYS_REFOBJECT_SIMPLEMENT2(_type, _verno, _interface1, _interface2) \
   UMODSYS_REFOBJECT_IMPLEMENT2(_type, _verno, _interface1, _interface2) \
-  UMODSYS_REFOBJECT_PIMPLEMENT \
+  UMODSYS_REFOBJECT_UNIIMPLEMENT() \
+  UMODSYS_REFOBJECT_PIMPLEMENT() \
   /*UMODSYS_NEW_DELETE()*/ \
   inline virtual void suicide(void) { delete this; } \
+
+#endif
+
+//*************************************** REFOBJECT types
+//***************************************
+
+#define UMODSYS_REFOBJECT_SINGLE() \
+  inline void rc_init(void) { ref_count=0; } \
+  inline virtual void suicide(void) { delete this; }
+
+#define UMODSYS_REFOBJECT_REFOTHER(_type_owner) \
+  typedef _type_owner DOwner; typedef tl::TRefObject<DOwner> DOwnerP; \
+  DOwner *owner; \
+  inline void rc_init(DOwner *own) { owner=own; ref_count=0; } \
+  inline virtual void suicide(void) { DOwnerP p(owner, void_null()); owner=NULL; delete this;  }
 
 //***************************************
 // END

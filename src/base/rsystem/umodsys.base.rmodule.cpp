@@ -9,15 +9,9 @@ using namespace UModSys::base;
 // RModule::
 //***************************************
 
-void RModule::ref_add(void) const {}
-void RModule::ref_remove(void) const {}
-int  RModule::ref_links(void) const { return 0; }
-
-//***************************************
-
-DCString RModule::get_sys_libname(void) const
+IModuleLibrary* RModule::get_library(void) const
 {
-  return DCString(sys_libname);
+  return owner;
 }
 
 const SModuleInfo& RModule::get_info(void) const
@@ -25,24 +19,19 @@ const SModuleInfo& RModule::get_info(void) const
   return minfo;
 }
 
-bool RModule::is_loaded(void) const
+bool RModule::is_open(void) const
 {
-  return pfd_is_loaded(reinterpret_cast<const PFD_Data_t*>(pfd_data));
+  return ireg!=NULL;
 }
 
-core::IMemAlloc* RModule::get_privmem(void) const
+bool RModule::open(void)
 {
-  return NULL;
+  return false;
 }
 
-bool RModule::load(void)
+bool RModule::close(void)
 {
-  return pfd_load(reinterpret_cast<PFD_Data_t*>(pfd_data));
-}
-
-bool RModule::unload(void)
-{
-  return pfd_unload(reinterpret_cast<PFD_Data_t*>(pfd_data));
+  return false;
 }
 
 //***************************************
@@ -61,16 +50,72 @@ bool RModule::alloc_minfo(const SModuleInfo &mi2)
 //***************************************
 //***************************************
 
-RModule::RModule(void)
+RModule::RModule(RModuleLibrary *pv)
+: owner(NULL), ireg(NULL) 
 {
-  pfd_init(reinterpret_cast<PFD_Data_t*>(pfd_data));
+  rc_init(pv);
 }
 
 RModule::~RModule(void)
 {
-  pfd_deinit(reinterpret_cast<PFD_Data_t*>(pfd_data));
 }
 
+UMODSYS_REFOBJECT_UNIIMPLEMENT_BODY(RModule)
+
+//***************************************
+// RModuleLibrary::
+//***************************************
+
+DCString RModuleLibrary::get_sys_libname(void) const
+{
+  return DCString(sys_libname);
+}
+
+core::IMemAlloc* RModuleLibrary::get_privmem(void) const
+{
+  return NULL;
+}
+
+size_t RModuleLibrary::get_module_count(void) const
+{
+  return ~modules;
+}
+
+IModule* RModuleLibrary::get_module(size_t id) const
+{
+  return id>=~modules ? NULL : modules(id)();
+}
+
+bool RModuleLibrary::is_loaded(void) const
+{
+  return pfd_is_loaded(reinterpret_cast<const PFD_Data*>(pfd_data));
+}
+
+bool RModuleLibrary::load(void)
+{
+  return pfd_load(reinterpret_cast<PFD_Data*>(pfd_data));
+}
+
+bool RModuleLibrary::unload(void)
+{
+  return pfd_unload(reinterpret_cast<PFD_Data*>(pfd_data));
+}
+
+//***************************************
+//***************************************
+
+//***************************************
+//***************************************
+
+RModuleLibrary::RModuleLibrary(void)
+{
+  pfd_init(reinterpret_cast<PFD_Data*>(pfd_data));
+}
+
+RModuleLibrary::~RModuleLibrary(void)
+{
+  pfd_deinit(reinterpret_cast<PFD_Data*>(pfd_data));
+}
 
 //***************************************
 // ::

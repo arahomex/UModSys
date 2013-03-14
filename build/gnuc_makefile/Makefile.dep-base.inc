@@ -20,7 +20,6 @@ base_lib := $(T)/umodsys.base$(LIBSUFFIX)
 
 main_depends := \
   $(T)/umodsys.c_main$(OSUFFIX) \
-  $(base_lib) $(core_lib) \
 
 main := $(BINDIR)/umodsysc.$(PLATFORM).$(BUILD_MODE)$(BINSUFFIX)
 
@@ -34,7 +33,7 @@ main: $(main)
 $(base_lib): $(base_lib_depends)
 	$(AR_ADD)$@ $^
 
-$(main): $(main_depends)
+$(main): $(main_depends) $(base_lib) $(core_lib)
 	$(CXX_LINK) $(CXXFLAGS) $(CXX_BIN)$@ $^ 
 
 #---------------------------- make rules generic
@@ -58,3 +57,10 @@ ifndef NO_CXX_DEP
 endif
 
 #---------------------------- /make rules generic
+
+#---------------------------- make rules depfiles
+# pull in dependency info for *existing* $(OSUFFIX) files
+ifndef NO_CXX_DEP
+-include $(base_lib_depends:$(OSUFFIX)=$(OSUFFIX).d)
+-include $(main_depends:$(OSUFFIX)=$(OSUFFIX).d)
+endif

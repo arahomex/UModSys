@@ -1,14 +1,14 @@
-#ifndef __NANOUTL_TYPES_TYPE_CONSTRUCTOR_H
-#define __NANOUTL_TYPES_TYPE_CONSTRUCTOR_H 1
+#ifndef __UMODSYS_TYPES_TYPE_CONSTRUCTOR_H
+#define __UMODSYS_TYPES_TYPE_CONSTRUCTOR_H 1
 /*************************************************************/
 // nanoutl/types/type_constructor.h: type constructor template
 /*************************************************************/
 
-#include <nanoutl/core/typedefs.h>
-#include <nanoutl/types/fast.h>
+#include <umodsys/core/stdtypedefs.h>
+#include <umodsys/tl/util/fast.h>
 
-namespace NanoUTL {
-namespace types {
+namespace UModSys {
+namespace tl {
 
 /*************************************************************/
 
@@ -82,7 +82,7 @@ struct TTypeStaticHolder {
 
 /*************************************************************/
 
-} // namespace types
-} // namespace NanoUTL
+} // namespace tl
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_TYPE_CONSTRUCTOR_H
+#endif // __UMODSYS_TYPES_TYPE_CONSTRUCTOR_H

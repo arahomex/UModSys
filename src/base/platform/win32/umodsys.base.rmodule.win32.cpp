@@ -8,7 +8,7 @@ using namespace UModSys::core;
 using namespace UModSys::base;
 
 //***************************************
-// RModule::
+// RModuleLibrary::
 //***************************************
 
 #if defined(_M_X64) || defined(_M_IA64)
@@ -19,27 +19,25 @@ using namespace UModSys::base;
 
 typedef IModuleReg* (__stdcall *f_get_moduleinfo)(ISystem* isys, int id);
 
-struct RModule::PFD_Data_t {
+struct RModuleLibrary::PFD_Data_t {
   HMODULE module;
   f_get_moduleinfo entry;
-  IModuleReg* ireg;
 };
 
-bool RModule::pfd_init(PFD_Data_t* pfd)
+bool RModuleLibrary::pfd_init(PFD_Data_t* pfd)
 {
   pfd->module = NULL;
   pfd->entry = NULL;
-  pfd->ireg = NULL;
   return true;
 }
 
-bool RModule::pfd_deinit(PFD_Data_t* pfd)
+bool RModuleLibrary::pfd_deinit(PFD_Data_t* pfd)
 {
   pfd_unload(pfd);
   return true;
 }
 
-bool RModule::pfd_load(PFD_Data_t* pfd)
+bool RModuleLibrary::pfd_load(PFD_Data_t* pfd)
 {
   if(pfd->module!=NULL)
     return false;
@@ -58,27 +56,28 @@ bool RModule::pfd_load(PFD_Data_t* pfd)
     return false;
   }
   //
+/*
   pfd->ireg = pfd->entry(&RSystem::s_sys, sys_id);
   if(pfd->ireg==NULL) {
     pfd_unload(pfd);
     return false;
   }
+*/
   //
   return true;
 }
 
-bool RModule::pfd_unload(PFD_Data_t* pfd)
+bool RModuleLibrary::pfd_unload(PFD_Data_t* pfd)
 {
   if(pfd->module!=NULL) {
     FreeLibrary(pfd->module);
     pfd->module = NULL;
   }
-  pfd->ireg = NULL;
   pfd->entry = NULL;
   return true;
 }
 
-bool RModule::pfd_is_loaded(const PFD_Data_t* pfd) const
+bool RModuleLibrary::pfd_is_loaded(const PFD_Data_t* pfd) const
 {
   return pfd->module!=NULL;
 }

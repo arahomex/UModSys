@@ -7,53 +7,83 @@
 
 #include <umodsys/base/system.h>
 #include <umodsys/base/console.h>
+#include <umodsys/tl/composite/array.h>
 
 namespace UModSys {
 namespace base {
 
 using namespace core;
 
+struct RModuleLibrary;
+struct RModule;
+
 //***************************************
-// ISystem
+// RModule
 //***************************************
 
 struct RModule : public IModule
 {
 public:
-  RModule(void);
+  RModule(RModuleLibrary *pv);
   ~RModule(void);
 public:
-  void ref_add(void) const;
-  void ref_remove(void) const;
-  int  ref_links(void) const;
-public:
-  DCString get_sys_libname(void) const;
+  IModuleLibrary* get_library(void) const;
   const SModuleInfo& get_info(void) const;
-  bool is_loaded(void) const;
-  IMemAlloc* get_privmem(void) const;
   //
-  bool load(void);   
-  bool unload(void);
+  bool is_open(void) const;
+  bool open(void);   
+  bool close(void);
 public:
-  DStringSharedMalloc sys_libname, mi_name, mi_info;
+  IModuleReg* ireg;
+  DStringSharedMalloc mi_name, mi_info;
   SModuleInfo minfo;
   int sys_id;
   //
   bool alloc_minfo(const SModuleInfo &mi2);
-  //
-  /* platform-dependent data */
-  struct PFD_Data_t;
-  int pfd_data[16]; 
-  /* platform-dependent functions */
-  bool pfd_init(PFD_Data_t* pfd);
-  bool pfd_deinit(PFD_Data_t* pfd);
-  bool pfd_load(PFD_Data_t* pfd);
-  bool pfd_unload(PFD_Data_t* pfd);
-  bool pfd_is_loaded(const PFD_Data_t* pfd) const;
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(RModule, 2, IModule);
+  UMODSYS_REFOBJECT_UNIIMPLEMENT_DEF()
+  UMODSYS_REFOBJECT_REFOTHER(RModuleLibrary)
 };
 
+//***************************************
+// RModuleLibrary
+//***************************************
+
+struct RModuleLibrary : public IModuleLibrary
+{
+public:
+  RModuleLibrary(void);
+  ~RModuleLibrary(void);
+public:
+  DCString get_sys_libname(void) const;
+  IMemAlloc* get_privmem(void) const;
+  size_t get_module_count(void) const;
+  IModule* get_module(size_t id) const;
+  //
+  bool is_loaded(void) const;
+  bool load(void);   
+  bool unload(void);
+public:
+  struct PFD_Data;
+  typedef tl::TArray<RModule::SelfP> Modules;
+  //
+  Modules modules;
+  DStringSharedMalloc sys_libname;
+  //
+  /* platform-dependent data */
+  int pfd_data[16]; 
+  /* platform-dependent functions */
+  bool pfd_init(PFD_Data* pfd);
+  bool pfd_deinit(PFD_Data* pfd);
+  bool pfd_load(PFD_Data* pfd);
+  bool pfd_unload(PFD_Data* pfd);
+  bool pfd_is_loaded(const PFD_Data* pfd) const;
+public:
+  UMODSYS_REFOBJECT_IMPLEMENT1(RModuleLibrary, 2, IModuleLibrary);
+  UMODSYS_REFOBJECT_UNIIMPLEMENT_DEF()
+  UMODSYS_REFOBJECT_SINGLE()
+};
 
 //***************************************
 // END

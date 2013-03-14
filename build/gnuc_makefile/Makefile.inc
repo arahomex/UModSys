@@ -41,8 +41,3 @@ include Makefile.dep-base.inc
 
 include Makefile.dep-so-test.inc
 
-#---------------------------- make rules depfiles
-# pull in dependency info for *existing* $(OSUFFIX) files
-ifndef NO_CXX_DEP
--include $(OBJS_ALL:$(OSUFFIX)=$(OSUFFIX).d)
-endif

@@ -209,7 +209,7 @@ bool TArray<SNode, Allocator>::free(void)
 {
   if(!resize(0))
     return false;
-  if(!allocator.t_free_array(Base::items, allocated, 0, NANOUTL_SOURCEINFO))
+  if(!allocator.t_free_array(Base::items, allocated, 0, UMODSYS_SOURCEINFO))
     return false;
   return true;
 }
@@ -218,7 +218,7 @@ template<typename SNode, typename Allocator>
 bool TArray<SNode, Allocator>::push(const SNode& def) 
 {
     if(Base::count+1>allocated)
-      if(!allocator.t_realloc_array(Base::items, allocated, Base::count+1, NANOUTL_SOURCEINFO))
+      if(!allocator.t_realloc_array(Base::items, allocated, Base::count+1, UMODSYS_SOURCEINFO))
         return false;
     items_construct(Base::count, 1, def);
     Base::count++;
@@ -234,7 +234,7 @@ bool TArray<SNode, Allocator>::resize(size_t newsize)
     return true;
   if(newsize>Base::count) {
     if(newsize>allocated)
-      if(!allocator.t_realloc_array(Base::items, allocated, newsize, NANOUTL_SOURCEINFO))
+      if(!allocator.t_realloc_array(Base::items, allocated, newsize, UMODSYS_SOURCEINFO))
         return false;
     Base::items_construct(Base::count, newsize-Base::count);
     Base::count = newsize;

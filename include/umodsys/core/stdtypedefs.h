@@ -50,6 +50,7 @@ namespace core {
 namespace base {
   struct IModuleReg;
   struct IModule;
+  struct IModuleLibrary;
   struct IModuleLoader;
   //
   struct SModuleRegChain;

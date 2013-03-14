@@ -59,6 +59,11 @@ inline void _Ref_init(TRef* &obj, TRef2* obj2) {
   obj = obj2;
 }
 
+template<typename TRef, typename TRef2>
+inline void _Ref_init(TRef* &obj, TRef2* obj2, core::Void* flag) {
+  obj = obj2;
+}
+
 //***************************************
 // TRefObject::
 //***************************************
@@ -70,6 +75,7 @@ struct TRefObject {
   inline ~TRefObject(void) { clear(); }
   inline TRefObject(void) : object(NULL) {}
   inline TRefObject(T* obj) { _Ref_init(object, obj); }
+  inline TRefObject(T* obj, core::Void* flag) : object(obj) {}
   inline TRefObject(const TRefObject& R) { _Ref_init(object, R.object); }
   inline const TRefObject& operator=(const TRefObject& R) { set(R.object); return *this; }
   //

@@ -34,15 +34,36 @@ struct IModule
 public:
   ~IModule(void);
 public:
-  virtual core::DCString get_sys_libname(void) const =0;
+  virtual IModuleLibrary* get_library(void) const =0;
   virtual const SModuleInfo& get_info(void) const =0;
-  virtual bool is_loaded(void) const =0;
-  virtual core::IMemAlloc* get_privmem(void) const =0;
   //
+  virtual bool is_open(void) const =0;
+  virtual bool open(void) =0;
+  virtual bool close(void) =0;
+public:
+  UMODSYS_REFOBJECT_INTIMPLEMENT(IModule, 2, IRefObject);
+};
+
+//***************************************
+// IModuleLibrary
+//***************************************
+
+struct IModuleLibrary
+: public core::IRefObject
+{
+public:
+  ~IModuleLibrary(void);
+public:
+  virtual core::DCString get_sys_libname(void) const =0;
+  virtual core::IMemAlloc* get_privmem(void) const =0;
+  virtual size_t get_module_count(void) const =0;
+  virtual IModule* get_module(size_t id) const =0;
+  //
+  virtual bool is_loaded(void) const =0;
   virtual bool load(void) =0;
   virtual bool unload(void) =0;
 public:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(IModule, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(IModuleLibrary, 2, IRefObject);
 };
 
 //***************************************

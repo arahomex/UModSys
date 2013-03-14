@@ -1,13 +1,13 @@
-#ifndef __NANOUTL_TYPES_FASTTYPE_H
-#define __NANOUTL_TYPES_FASTTYPE_H 1
+#ifndef __UMODSYS_TYPES_FASTTYPE_H
+#define __UMODSYS_TYPES_FASTTYPE_H 1
 /*************************************************************/
 // nanoutl/types/fasttype.h: template to define fastest data transfer or init
 /*************************************************************/
 
-#include <nanoutl/core/std.h>
+#include <umodsys/core/stdtypedefs.h>
 
-namespace NanoUTL {
-namespace types {
+namespace UModSys {
+namespace tl {
 
 /*************************************************************/
 /*************************************************************/
@@ -32,8 +32,8 @@ struct TTypeConstructor {
 /*************************************************************/
 /*************************************************************/
 
-// ::NanoUTL::types::
-#define NANOUTL_SCALAR_CONSTRUCTOR(_type) \
+// ::UModSys::types::
+#define UMODSYS_SCALAR_CONSTRUCTOR(_type) \
   template<> struct TTypeConstructor<_type> { \
     typedef _type Type; \
     typedef _type Const; \
@@ -51,23 +51,23 @@ struct TTypeConstructor {
 
 /*************************************************************/
 
-NANOUTL_SCALAR_CONSTRUCTOR(signed char);
-NANOUTL_SCALAR_CONSTRUCTOR(unsigned char);
-NANOUTL_SCALAR_CONSTRUCTOR(char);
-NANOUTL_SCALAR_CONSTRUCTOR(signed int);
-NANOUTL_SCALAR_CONSTRUCTOR(unsigned int);
-NANOUTL_SCALAR_CONSTRUCTOR(signed short);
-NANOUTL_SCALAR_CONSTRUCTOR(unsigned short);
-NANOUTL_SCALAR_CONSTRUCTOR(signed long);
-NANOUTL_SCALAR_CONSTRUCTOR(unsigned long);
-NANOUTL_SCALAR_CONSTRUCTOR(float);
-NANOUTL_SCALAR_CONSTRUCTOR(double);
-NANOUTL_SCALAR_CONSTRUCTOR(bool);
+UMODSYS_SCALAR_CONSTRUCTOR(signed char);
+UMODSYS_SCALAR_CONSTRUCTOR(unsigned char);
+UMODSYS_SCALAR_CONSTRUCTOR(char);
+UMODSYS_SCALAR_CONSTRUCTOR(signed int);
+UMODSYS_SCALAR_CONSTRUCTOR(unsigned int);
+UMODSYS_SCALAR_CONSTRUCTOR(signed short);
+UMODSYS_SCALAR_CONSTRUCTOR(unsigned short);
+UMODSYS_SCALAR_CONSTRUCTOR(signed long);
+UMODSYS_SCALAR_CONSTRUCTOR(unsigned long);
+UMODSYS_SCALAR_CONSTRUCTOR(float);
+UMODSYS_SCALAR_CONSTRUCTOR(double);
+UMODSYS_SCALAR_CONSTRUCTOR(bool);
 
 /*************************************************************/
 /*************************************************************/
 
 } // namespace types
-} // namespace NanoUTL
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_FASTTYPE_H
+#endif // __UMODSYS_TYPES_FASTTYPE_H
