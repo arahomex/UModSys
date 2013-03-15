@@ -159,7 +159,7 @@ bool RSystem::moduledb_save(const core::DCString& cachepath)
 
 size_t RSystem::moduledb_scan(const core::DCString& mask)
 {
-  return 0;
+  return RModuleLibrary::pfd_scan(mod_list, mask);
 }
 
 

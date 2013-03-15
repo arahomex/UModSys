@@ -33,6 +33,7 @@ struct TString : public CoreT, public Comparer {
   inline TString(Str s) { set(s); }
   inline TString(Str s, size_t L) { set(s, L); }
   inline TString(Str s, Str s_end) { set(s, s_end); }
+  inline TString(const ConstStr& R)  { set(R); }
   inline explicit TString(const Comparer& cmp) : Comparer(cmp) { set(); }
   inline TString(const Comparer& cmp, Str s) : Comparer(cmp) { set(s); }
   inline TString(const Comparer& cmp, Str s, size_t L) : Comparer(cmp) { set(s, L); }
@@ -103,6 +104,7 @@ struct TString : public CoreT, public Comparer {
   inline void set(Str s) { CoreT::set(s); update(); }
   inline void set(Str s, int L) { CoreT::set(s, L); update(); }
   inline void set(Str s, Str s_end) { CoreT::set(s, s_end); update(); }
+  inline void set(const ConstStr& R) { CoreT::set(R); }
   inline void set(const Self& R) { CoreT::set(R); Comparer::operator=(R); }
   inline void set(const Comparer& cmp) { Comparer::operator=(cmp); update(); }
   //

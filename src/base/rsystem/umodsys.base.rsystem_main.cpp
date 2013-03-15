@@ -24,6 +24,20 @@ const DCString& RSystem::mod_string(const DCString& v)
 bool RSystem::init(void)
 {
   console->put(0, "RSystem::init()\n");
+  //
+  SUniquePointer::s_resolve(this); // initalize all upis
+  { // list all upis
+    console->put(0, "RSystem::init() -- dump upi {S:%d C:%d}\n", uptr_pool.used_strings(), uptr_pool.used_chars());
+    for(const SUniquePointer* x=SUniquePointer::root.next; x!=&SUniquePointer::root; x=x->next) {
+      if(x==NULL) {
+        console->put(0, "upi NULL\n");
+        break;
+      }
+      console->put(0, "upi{%s %s(%d) %p}\n", x->info.group, x->info.name, x->info.verno, x->upi);
+    }
+    console->put(0, "RSystem::init() -- /dump upi\n");
+  }
+  //
 //  sys_library = new RModuleLibrary();
   return true;
 }
@@ -43,6 +57,9 @@ bool RSystem::exec_main(void)
 bool RSystem::deinit(void)
 {
   console->put(0, "RSystem::deinit()\n");
+  //
+  SUniquePointer::s_unresolve(this); // deinitalize all upis
+  //
   return true;
 }
 
@@ -50,7 +67,7 @@ bool RSystem::deinit(void)
 //***************************************
 
 RSystem::RSystem(void)
-: console(NULL), sys_library(NULL) {
+: console(NULL)/*, sys_library(NULL)*/ {
 }
 
 RSystem::~RSystem(void)

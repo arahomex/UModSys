@@ -37,7 +37,7 @@ bool RModuleLibrary::pfd_deinit(PFD_Data* pfd)
   return true;
 }
 
-bool RModuleLibrary::pfd_load(PFD_Data* pfd)
+bool RModuleLibrary::pfd_load(PFD_Data* pfd, const core::DCString& filename)
 {
   if(pfd->module!=NULL)
     return false;
@@ -77,9 +77,21 @@ bool RModuleLibrary::pfd_unload(PFD_Data* pfd)
   return true;
 }
 
-bool RModuleLibrary::pfd_is_loaded(const PFD_Data* pfd) const
+bool RModuleLibrary::pfd_is_loaded(const PFD_Data* pfd) 
 {
   return pfd->module!=NULL;
+}
+
+//***************************************
+//***************************************
+
+bool RModuleLibrary::pfd_scan(RModuleLibraryArray& la, const core::DCString& mask)
+{
+  PFD_Data pfd;
+  pfd_init(&pfd);
+  //
+  pfd_deinit(&pfd);
+  return false;
 }
 
 //***************************************

@@ -10,6 +10,8 @@ int main(int argc, char **argv)
   RSystem::s_sys.console = &RConsole_std::s_console;
   //
   RSystem::s_sys.init();
+  RSystem::s_sys.moduledb_scan("");
+  RSystem::s_sys.moduledb_scan("*");
   RSystem::s_sys.exec_args(argc, argv);
   RSystem::s_sys.exec_main();
   //

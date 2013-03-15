@@ -41,7 +41,7 @@ public:
   virtual bool open(void) =0;
   virtual bool close(void) =0;
 public:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(IModule, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(base::IModule, 2, IRefObject);
 };
 
 //***************************************
@@ -63,7 +63,7 @@ public:
   virtual bool lib_load(void) =0;
   virtual bool lib_unload(void) =0;
 public:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(IModuleLibrary, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(base::IModuleLibrary, 2, IRefObject);
 };
 
 //***************************************

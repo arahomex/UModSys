@@ -30,7 +30,7 @@ public:
   virtual core::IMemAlloc* get_sharemem(void) =0;
   virtual IConsole* get_console(void) =0;
 public:
-  UMODSYS_ROOT_IMPLEMENT1(ISystem, 2, IRoot);
+  UMODSYS_ROOT_IMPLEMENT1(base::ISystem, 2, IRoot);
 };
 
 //***************************************

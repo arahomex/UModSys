@@ -27,7 +27,7 @@ public:
   virtual bool vget_s(char* buf, size_t len, const char *fmt, va_list va) =0;
   virtual bool get_s(char* buf, size_t len, const char *fmt, ...) =0;
 public:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(IConsole, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(base::IConsole, 2, IRefObject);
 };
 
 //***************************************

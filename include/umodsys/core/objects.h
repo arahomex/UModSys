@@ -109,7 +109,7 @@ public:
     return rv.valid();
   }
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(IRefObject, 2, IRoot);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(core::IRefObject, 2, IRoot);
 };
 
 //***************************************
@@ -119,7 +119,7 @@ protected:
 struct IModObject : public IRefObject {
   virtual base::IModule* get_module(void) const =0;
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(IModObject, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(core::IModObject, 2, IRefObject);
 };
 
 //***************************************
@@ -131,7 +131,7 @@ struct IGenerator : public IModObject {
 //  virtual int get_generated_types(DListStr& list, const DHString& name) const =0; // may have different types per name
 //  virtual bool generate(IRefObject::P& obj, const DHString& type, const SParameters& args) =0;
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(IGenerator, 2, IModObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(core::IGenerator, 2, IModObject);
 };
 
 //***************************************

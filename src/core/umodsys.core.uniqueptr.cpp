@@ -31,6 +31,8 @@ SUniquePointer::~SUniquePointer(void)
 
 void SUniquePointer::s_resolve(IUniquePointerResolver* res) 
 {
+  if(root.next==NULL)
+    s_makeroot(&root);
   for(const SUniquePointer* x=root.next; x!=&root; x=x->next) {
     if(x->upi==NULL) {
       x->upi = res->upi_add(&x->info);

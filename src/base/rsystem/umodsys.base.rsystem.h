@@ -15,9 +15,8 @@ namespace base {
 
 using namespace core;
 
-//***************************************
-// ISystem
-//***************************************
+struct RModule;
+struct RModuleLibrary;
 
 typedef tl::TStaticPool<
   core::BChar,
@@ -25,6 +24,11 @@ typedef tl::TStaticPool<
   core::SMemAlloc_Malloc
 > DSystemStaticPool;
 
+typedef tl::TArray< tl::TRefObject<RModuleLibrary> > RModuleLibraryArray;
+
+//***************************************
+// ISystem
+//***************************************
 
 struct RSystem : 
   public ISystem,
@@ -69,9 +73,12 @@ public:
   size_t moduledb_scan(const core::DCString& mask);
 public:
   IConsole* console;
+  //
   DSystemStaticPool uptr_pool;
-  DSystemStaticPool mod_pool;
   tl::TArray<SUniquePointerInfo> uptr_list;
+  //
+  DSystemStaticPool mod_pool;
+  RModuleLibraryArray mod_list;
   //
   bool init(void);
   bool exec_args(int argc, char** argv);
@@ -81,7 +88,7 @@ public:
   const DCString& uptr_string(const DCString& v);
   const DCString& mod_string(const DCString& v);
 public:
-  UMODSYS_REFOBJECT_IMPLEMENT1(RSystem, 2, ISystem);
+  UMODSYS_REFOBJECT_IMPLEMENT1(base::RSystem, 2, ISystem);
 public:
   static RSystem s_sys;
 };

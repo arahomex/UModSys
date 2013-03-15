@@ -31,7 +31,8 @@ struct TStaticPool : public MemAllocT {
     size_t len, maxlen;
     CharT buffer[1];
     //
-    inline void init(size_t n) { next=NULL; len=0; maxlen=n; }
+    inline CharChunk(size_t n) { next=NULL; len=0; maxlen=n; }
+    //
     inline size_t left(void) const { return maxlen-len; }
     inline CharT* append(Str v, size_t n) {
       CharT* rv = buffer + len;
@@ -46,7 +47,8 @@ struct TStaticPool : public MemAllocT {
     size_t len, maxlen;
     StringElem buffer[1];
     //
-    inline void init(size_t n) { next=NULL; len=0; maxlen=n; }
+    inline StringChunk(size_t n) { next=NULL; len=0; maxlen=n; }
+    //
     inline size_t left(void) const { return maxlen-len; }
     inline StringElem* append(Str vv) {
       StringElem* rv = buffer + len++;
@@ -113,9 +115,12 @@ template<typename CharT, typename Comparer, typename MemAllocT>
 const typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem* 
 TStaticPool<CharT,Comparer,MemAllocT>::append(typename TStaticPool<CharT,Comparer,MemAllocT>::Str v, size_t len)
 {
-  typename TStaticPool<CharT,Comparer,MemAllocT>::StringChunk **px, *x;
-  typename TStaticPool<CharT,Comparer,MemAllocT>::CharChunk **pz, *z;
+  typedef typename TStaticPool<CharT,Comparer,MemAllocT>::StringChunk SC;
+  typedef typename TStaticPool<CharT,Comparer,MemAllocT>::CharChunk CC;
+  SC **px, *x;
+  CC **pz, *z;
   typename TStaticPool<CharT,Comparer,MemAllocT>::Str vv;
+  void *vp;
   //
   const typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem* rv;
   rv = find_s(TStaticPool<CharT,Comparer,MemAllocT>::StringElem(v, len));
@@ -123,7 +128,7 @@ TStaticPool<CharT,Comparer,MemAllocT>::append(typename TStaticPool<CharT,Compare
     return rv;
   //
   // -- find space in allocated char chunks
-  for(pz=&cs, z=cs; z!=NULL; pz=&(*z)->next, z=z->next) {
+  for(pz=&cs, z=cs; z!=NULL; pz=&z->next, z=z->next) {
     if(len<=z->left()) {
       c_len += len+1;
       vv = z->append(v, len);
@@ -132,26 +137,26 @@ TStaticPool<CharT,Comparer,MemAllocT>::append(typename TStaticPool<CharT,Compare
   }
   if(z==NULL) { // allocate new chunk
     size_t clen = len>c_max ? len : c_max;
-    z = MemAllocT::mem_alloc(sizeof(*z)+clen, UMODSYS_SOURCEINFO);
-    if(z==NULL)
+    vp = MemAllocT::mem_alloc(sizeof(*z)+clen, UMODSYS_SOURCEINFO);
+    if(vp==NULL)
       return NULL; // error
-    z->init(clen);
+    z = new(vp) CC(clen);
     c_len += len+1;
     vv = z->append(v, len);
     *pz = z;
   }
   // -- find space in allocated string chunks
-  for(px=&ss, x=ss; x!=NULL; px=&(*x)->next, x=x->next) {
+  for(px=&ss, x=ss; x!=NULL; px=&x->next, x=x->next) {
     if(x->left()) {
       s_len++;
       return x->append(vv);
     }
   }
   // allocate new chunk
-  x = MemAllocT::mem_alloc(sizeof(*x)+s_max, UMODSYS_SOURCEINFO);
-  if(x==NULL)
+  vp = MemAllocT::mem_alloc(sizeof(*x)+s_max, UMODSYS_SOURCEINFO);
+  if(vp==NULL)
     return NULL; // error
-  x->init(s_max);
+  x = new(vp) SC(s_max);
   *px = x;
   s_len++;
   return x->append(vv);
@@ -159,12 +164,13 @@ TStaticPool<CharT,Comparer,MemAllocT>::append(typename TStaticPool<CharT,Compare
 
 template<typename CharT, typename Comparer, typename MemAllocT>
 const typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem* 
-TStaticPool<CharT,Comparer,MemAllocT>::find_s(const typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem& ss) const
+TStaticPool<CharT,Comparer,MemAllocT>::find_s(const typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem& vv) const
 {
   const typename TStaticPool<CharT,Comparer,MemAllocT>::StringChunk *x;
+  //
   for(x=ss; x!=NULL; x=x->next) {
     for(int i=0; i<x->len; i++) {
-      if(x->buffer[i]==ss)
+      if(x->buffer[i]==vv)
         return x->buffer+i;
     }
   }

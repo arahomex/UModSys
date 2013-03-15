@@ -17,7 +17,7 @@ namespace core {
 
 struct SUniquePointerInfo {
 public:
-  inline SUniquePointerInfo(const char *g, const char *n, int vn) : group(g), name(n), verno(vn) {}
+  inline SUniquePointerInfo(const char *g=NULL, const char *n=NULL, int vn=0) : group(g), name(n), verno(vn) {}
   inline explicit SUniquePointerInfo(Void *p) {}
   //
   inline bool operator==(const SUniquePointerInfo& R) const 

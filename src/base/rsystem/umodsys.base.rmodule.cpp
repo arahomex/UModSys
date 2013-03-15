@@ -86,17 +86,17 @@ IModule* RModuleLibrary::get_module(size_t id) const
   return id>=~modules ? NULL : modules(id)();
 }
 
-bool RModuleLibrary::is_loaded(void) const
+bool RModuleLibrary::lib_loaded(void) const
 {
   return pfd_is_loaded(reinterpret_cast<const PFD_Data*>(pfd_data));
 }
 
-bool RModuleLibrary::load(void)
+bool RModuleLibrary::lib_load(void)
 {
-  return pfd_load(reinterpret_cast<PFD_Data*>(pfd_data));
+  return pfd_load(reinterpret_cast<PFD_Data*>(pfd_data), sys_libname.get_s());
 }
 
-bool RModuleLibrary::unload(void)
+bool RModuleLibrary::lib_unload(void)
 {
   return pfd_unload(reinterpret_cast<PFD_Data*>(pfd_data));
 }
@@ -106,6 +106,11 @@ bool RModuleLibrary::unload(void)
 
 //***************************************
 //***************************************
+
+RModuleLibrary::RModuleLibrary(PFD_Data* pfd)
+{
+  pfd_init(reinterpret_cast<PFD_Data*>(pfd_data), pfd);
+}
 
 RModuleLibrary::RModuleLibrary(void)
 {
