@@ -42,10 +42,10 @@ ifndef CXX_C
 CXX_C=$(CXX) -c 
 endif
 ifndef CXX_LINK_SO
-CXX_LINK_SO=$(CXX) -shared -ldl $(CXX_LINK_FLAGS)
+CXX_LINK_SO=$(CXX) -shared -ldl -Wl,-rpath . $(CXX_LINK_FLAGS)
 endif
 ifndef CXX_LINK
-CXX_LINK=$(CXX) -ldl $(CXX_LINK_FLAGS)
+CXX_LINK=$(CXX) -ldl -Wl,-rpath . $(CXX_LINK_FLAGS)
 endif
 ifndef CXX_O
 CXX_O=-o 

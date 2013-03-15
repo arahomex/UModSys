@@ -131,7 +131,7 @@ TStaticPool<CharT,Comparer,MemAllocT>::append(typename TStaticPool<CharT,Compare
     return &s_null;
   //
   const typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem* rv;
-  rv = find_s(TStaticPool<CharT,Comparer,MemAllocT>::StringElem(v, len));
+  rv = find_s(typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem(v, len));
   if(rv!=NULL)
     return rv;
   //

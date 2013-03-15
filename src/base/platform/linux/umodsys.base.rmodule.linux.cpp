@@ -154,7 +154,7 @@ next:;
 size_t RModuleLibrary::pfd_scan(RModuleLibraryArray& la, const core::DCString& mask)
 {
   if(~mask==0) // automatic
-    return s_pfd_scan(la, "*", SO_SUFFIX);
+    return s_pfd_scan(la, "./*", SO_SUFFIX);
   return s_pfd_scan(la, mask, "") + s_pfd_scan(la, mask, SO_SUFFIX);
 }
 
