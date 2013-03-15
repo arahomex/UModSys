@@ -1,117 +1,17 @@
-#ifndef __UMODSYS_TYPES_STRING_UTILS_SHARED_H
-#define __UMODSYS_TYPES_STRING_UTILS_SHARED_H 1
-//*****************************************************
-// umodsys/types/su_base.h: string utilities base
-//*****************************************************
+#ifndef __UMODSYS_TYPES_STRING_UTILS_BASE_H
+#define __UMODSYS_TYPES_STRING_UTILS_BASE_H 1
+/*************************************************************/
+// file: umodsys/tl/string/su_base.h
+// info: string utilities base
+/*************************************************************/
 
-#include <umodsys/core/arch.h>
-#include <umodsys/core/allocator.h>
+#include <umodsys/tl/string/su_typedefs.h>
 
 //#define S_STRING_COLLATE_CON const ICharCollate &col=su::collate()
 
 
 namespace UModSys {
 namespace tl {
-namespace su {
-//***************************************
-// typedefs
-
-
-using core::BChar;
-using core::BCharW;
-using core::BCharL;
-
-template<typename CharT> 
-struct TCharOptions;
-template<typename CharT> 
-struct TComparerBinaryHash;
-template<typename CharT> 
-struct TComparerBinary;
-
-template<typename CharT> 
-struct TSharedStringInfo;
-
-template<typename CharT=core::BChar> 
-struct TSCoreConst;     // string core - const (read)
-
-template<typename CharT=core::BChar> 
-struct TSCoreBuffer;    // string core - buffer (write)
-
-template<size_t nChars, 
-         typename CharT=core::BChar > 
-struct TSCorePrealloc;  // string core - preallocated (read/write)
-
-template<typename MemAllocT=core::SMemAlloc_Malloc, 
-         typename CharT=core::BChar>
-struct TSCoreShared;    // string core - shared (read)
-
-template<typename MemAllocT=core::SMemAlloc_Malloc, 
-         typename CharT=core::BChar>
-struct TSCoreSharedBuf; // string core - shared (write)
-
-template<typename MemAllocT=core::SMemAlloc_Malloc, 
-         typename CharT=core::BChar>
-struct TSCoreAlloc;     // string core - allocated (read)
-
-template<typename MemAllocT=core::SMemAlloc_Malloc, 
-         typename CharT=core::BChar>
-struct TSCoreAllocBuf;  // string core - allocated (write)
-
-//***************************************
-// end
-
-} // namespace su
-
-//***************************************
-//***************************************
-//***************************************
-
-//***************************************
-// typedefs
-
-template<typename CoreT=su::TSCoreConst<core::BChar>, 
-         typename Comparer=su::TComparerBinaryHash<typename CoreT::Char> > 
-struct TString;     // const string
-
-template<typename CoreT=su::TSCoreAlloc<core::BChar>, 
-         typename Comparer=su::TComparerBinaryHash<typename CoreT::Char> >
-struct TStringBuf;    // string buffer
-
-/*
-template<size_t MaxLen, typename CharT=core::BChar>
-struct TPrintBuffer;
-*/
-/*
-template<typename CharT=core::BChar>
-struct TListStr;
-template<typename TString=TString<> >
-struct TListString;
-
-template<size_t N, typename CharT=core::BChar>
-struct TArrayStr;
-template<size_t N, typename TString=TString<> >
-struct TArrayString;
-
-typedef TString<core::BChar>            DString;
-typedef TListStr<core::BChar>           DListStr;
-*/
-
-/*
-typedef TLHAString<core::BChar>           DAString, DLHAString;
-typedef TLHSString<core::BChar>           DSString, DLHSString;
-
-typedef TPrintBuffer<256, core::BChar>    DPrintBufShort;
-typedef TPrintBuffer<4096, core::BChar>   DPrintBufLong;
-*/
-
-//***************************************
-// end
-
-
-//***************************************
-//***************************************
-//***************************************
-
 namespace su {
 
 //***************************************
@@ -255,4 +155,4 @@ int shashlen(const CharT* str, size_t& len) {
 } // namespace tl
 } // namespace UModSys
 
-#endif // __UMODSYS_TYPES_STRING_UTILS_SHARED_H
+#endif // __UMODSYS_TYPES_STRING_UTILS_BASE_H

@@ -1,8 +1,9 @@
 #ifndef __UMODSYS_TYPES_STRING_UTILS_CHAR_H
 #define __UMODSYS_TYPES_STRING_UTILS_CHAR_H 1
-//*****************************************************
-// umodsys/types/su_char.h: string utilities [char]
-//*****************************************************
+/*************************************************************/
+// file: umodsys/tl/string/su_char.h
+// info: string utilities [char/utf8]
+/*************************************************************/
 
 #include <umodsys/tl/string/su_base.h>
 

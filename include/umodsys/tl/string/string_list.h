@@ -1,8 +1,9 @@
 #ifndef __UMODSYS_TL_STRING_LIST_H
 #define __UMODSYS_TL_STRING_LIST_H 1
-//*****************************************************
-// umodsys/types/string_list.h: string lists/arrays
-//*****************************************************
+/*************************************************************/
+// file: umodsys/tl/string/string_list.h
+// info: string list
+/*************************************************************/
 
 #include <umodsys/tl/string/su_base.h>
 #include <umodsys/tl/string/su_char.h>

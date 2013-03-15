@@ -29,7 +29,7 @@ namespace core {
     const IRoot* _get_other_interface(TypeId type) const { return type==_get_interface_type() ? this : _interface::_get_other_interface(type); } \
     IRoot* _get_other_interface(TypeId type) { return type==_get_interface_type() ? this : _interface::_get_other_interface(type); } \
   public: \
-    /*inline static int _get_interface_types(DListStr& list) { list<<#_type; return _interface::_get_interface_types(list)+1; }*/ \
+    inline static int _get_interface_types(DPtrList& list) { list<<_get_interface_type(); return _interface::_get_interface_types(list)+1; } \
     inline static const char* _get_interface_cname(void) { return #_type; } \
     inline static int _get_interface_verno(void) { return _verno; } \
     inline static TypeId _get_interface_type(void) { return tl::TObjectUniqueID<_type>::get_id(); } \
@@ -42,12 +42,14 @@ namespace core {
 #define UMODSYS_ROOT_IMPLEMENT1(_type, _verno, _interface) \
   typedef _interface DParent; \
   typedef _type Self; \
+  inline int _get_interface_types(DPtrList& list) const { list<<_get_interface_type(); return _interface::_get_interface_types(list)+1; } \
   inline static const char* _get_interface_cname(void) { return #_type; } \
   inline static int _get_interface_verno(void) { return _verno; } \
   inline static TypeId _get_interface_name(void) { return tl::TObjectUniqueID<_type>::get_id(); } \
   inline static bool _is_interface_supported(TypeId type) { return type==_get_interface_name() || _interface::_is_interface_supported(type); } \
+  \
   inline TypeId get_interface_name(void) const { return _get_interface_name(); } \
-  /*inline int get_interface_types(DListStr& list) const { list<<#_type; return _interface::_get_interface_types(list)+1; }*/ \
+  inline int get_interface_types(DPtrList& list) const { return get_interface_types(list); } \
   inline const IRoot* get_other_interface(TypeId type) const { return type==_get_interface_name() ? _interface::_get_interface_p() : _interface::_get_other_interface(type); } \
   inline IRoot* get_other_interface(TypeId type) { return type==_get_interface_name() ? _interface::_get_interface_p() : _interface::_get_other_interface(type); } \
 
@@ -56,14 +58,20 @@ namespace core {
   typedef _interface2 DParent2; \
   typedef _type Self; \
   static SUniquePointer s_interface_type; \
+  inline int _get_interface_types(DPtrList& list) const { \
+    list<<_get_interface_type(); \
+    return _interface1::_get_interface_types(list)+_interface2::_get_interface_types(list)+1; \
+  } \
   inline static const char* _get_interface_cname(void) { return #_type; } \
   inline static int _get_interface_verno(void) { return _verno; } \
   inline static TypeId _get_interface_name(void) { return tl::TObjectUniqueID<_type>::get_id(); } \
   inline static bool _is_interface_supported(TypeId type) { \
     return type==_get_interface_name() || _interface1::_is_interface_supported(type) || _interface2::_is_interface_supported(type); \
   } \
+  \
   inline TypeId get_interface_name(void) const { return _get_interface_name(); } \
-  /*inline int get_interface_types(DListStr& list) const { list<<#_type; return _interface::_get_interface_types(list)+1; }*/ \
+  inline int get_interface_types(DPtrList& list) const { return _get_interface_types(list); } \
+  } \
   inline const IRoot* get_other_interface(TypeId type) const { \
     if(type==_get_interface_name()) return _interface1::_get_interface_p(); \
     const IRoot* rv = _interface1::_get_other_interface(type); if(rv) return rv; \

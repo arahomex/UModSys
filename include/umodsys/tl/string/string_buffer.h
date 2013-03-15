@@ -1,8 +1,9 @@
 #ifndef __UMODSYS_TL_STRING_BUFFER_H
 #define __UMODSYS_TL_STRING_BUFFER_H 1
-//*****************************************************
-// umodsys/types/string_buffer.h: string buffer
-//*****************************************************
+/*************************************************************/
+// file: umodsys/tl/string/string_buffer.h
+// info: string buffer
+/*************************************************************/
 
 #include <umodsys/tl/string/su_base.h>
 #include <umodsys/tl/string/su_char.h>

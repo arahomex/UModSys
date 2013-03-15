@@ -1,9 +1,9 @@
 #ifndef __UMODSYS_TYPES_STRING_UTILS_COREPTR_H
 #define __UMODSYS_TYPES_STRING_UTILS_COREPTR_H 1
-//*****************************************************
-// umodsys/types/su_corebuffer.h: string utilities 
-//   [core buffer] [core const]
-//*****************************************************
+/*************************************************************/
+// file: umodsys/tl/string/su_coreptr.h
+// info: string utilities - core pointer and core buffer data
+/*************************************************************/
 
 #include <umodsys/tl/string/su_base.h>
 

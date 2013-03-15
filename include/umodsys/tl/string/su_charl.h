@@ -1,8 +1,9 @@
 #ifndef __UMODSYS_TYPES_STRING_UTILS_CHARL_H
 #define __UMODSYS_TYPES_STRING_UTILS_CHARL_H 1
-//*****************************************************
-// umodsys/types/su_charl.h: string utilities [long char]
-//*****************************************************
+/*************************************************************/
+// file: umodsys/tl/string/su_charl.h
+// info: string utilities [utf32]
+/*************************************************************/
 
 #include <umodsys/tl/string/su_base.h>
 

@@ -9,6 +9,7 @@ base_lib_depends := \
   $(T)/umodsys.base.modulereg$(OSUFFIX) \
   \
   $(T)/umodsys.base.rsystem$(OSUFFIX) \
+  $(T)/umodsys.base.rsystem_main$(OSUFFIX) \
   $(T)/umodsys.base.rmodule$(OSUFFIX) \
   $(T)/umodsys.base.rconsole_std$(OSUFFIX) \
   \

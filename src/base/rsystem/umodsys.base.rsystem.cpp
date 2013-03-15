@@ -9,18 +9,34 @@ using namespace UModSys::base;
 // RSystem::
 //***************************************
 
-void RSystem::ref_add(void) const {}
-void RSystem::ref_remove(void) const {}
-int  RSystem::ref_links(void) const { return 0; }
+//void RSystem::ref_add(void) const {}
+//void RSystem::ref_remove(void) const {}
+//int  RSystem::ref_links(void) const { return 0; }
 
 //***************************************
 
-SUniquePointerInfo* RSystem::upi_add(const SUniquePointerInfo* lupi)
+HUniquePointer RSystem::upi_add(const SUniquePointerInfo* lupi)
 {
-  return NULL;
+  if(lupi==NULL)
+    return NULL; // error
+  const DCString& g = uptr_string(lupi->group);
+  if(&g==NULL)
+    return NULL; // error
+  const DCString& n = uptr_string(lupi->name);
+  if(&n==NULL)
+    return NULL; // error
+  SUniquePointerInfo nv(g, n, lupi->verno);
+  for(int i=0; i<~uptr_list; i++) {
+    const SUniquePointerInfo& x = uptr_list(i);
+    if(x == nv)
+      return &x;
+  }
+  if(!uptr_list.push(nv))
+    return NULL;
+  return &uptr_list.last();
 }
 
-int RSystem::upi_remove(SUniquePointerInfo* upi)
+int RSystem::upi_remove(HUniquePointer upi)
 {
   return -1;
 }
@@ -42,65 +58,110 @@ IMemAlloc* RSystem::get_sharemem(void)
   return NULL;
 }
 
-//***************************************
-
-size_t RSystem::module_preload(const core::DCString& sys_name)
-{
-  return 0;
-}
-
-size_t RSystem::module_findall(IModule* amodules[], size_t nmodules, const core::DCString& mask)
-{
-  return 0;
-}
-
-IModule* RSystem::module_find(const core::DCString& name, const core::SVersion& verno)
+IModuleLibrary* RSystem::get_syslib(void)
 {
   return NULL;
 }
 
-//***************************************
+IModuleLoader* RSystem::get_modloader(void)
+{
+  return this;
+}
+
+IUniquePointerResolver* RSystem::get_upr(void)
+{
+  return this;
+}
+
 //***************************************
 
-bool RSystem::init(void)
+#if 0
+core::DCString RSystem::get_sys_libname(void) const
 {
-  console->put(0, "RSystem::init()\n");
-  sys_library = new RModuleLibrary();
+  return DCString("system");
+}
+
+core::IMemAlloc* RSystem::get_privmem(void) const
+{
+  return get_sharedmem();
+}
+
+size_t RSystem::get_module_count(void) const
+{
+  return 0;
+}
+
+IModule* RSystem::get_module(size_t id) const
+{
+  return NULL;
+}
+
+bool RSystem::lib_loaded(void) const
+{
   return true;
 }
 
-bool RSystem::exec_args(int argc, char** argv)
+bool RSystem::lib_load(void)
 {
-  console->put(0, "RSystem::exec_args(%d)\n", argc);
   return false;
 }
 
-bool RSystem::exec_main(void)
+bool RSystem::lib_unload(void)
 {
-  console->put(0, "RSystem::exec_main()\n");
+  return false;
+}
+#endif
+
+//***************************************
+
+size_t RSystem::moduledb_lib_count(void)
+{
+  return 0;
+}
+
+IModuleLibrary* RSystem::moduledb_lib_get(size_t id) const
+{
+  return NULL;
+}
+
+bool RSystem::moduledb_lib_drop(IModuleLibrary* lib)
+{
   return false;
 }
 
-bool RSystem::deinit(void)
-{
-  console->put(0, "RSystem::deinit()\n");
-  return true;
-}
-
-//***************************************
-//***************************************
-
-RSystem::RSystem(void)
-: console(NULL), sys_library(NULL) {
-}
-
-RSystem::~RSystem(void)
+size_t RSystem::moduledb_module_count(void)
 {
 }
 
-//***************************************
+IModule* RSystem::moduledb_module_get(size_t id) const
+{
+  return NULL;
+}
 
-RSystem RSystem::s_sys;
+IModule* RSystem::module_find(const core::DCString& name, const core::SVersion& verno) const
+{
+  return NULL;
+}
+
+void RSystem::moduledb_clear(void)
+{
+}
+
+bool RSystem::moduledb_load(const core::DCString& cachepath)
+{
+  return false;
+}
+
+bool RSystem::moduledb_save(const core::DCString& cachepath)
+{
+  return false;
+}
+
+size_t RSystem::moduledb_scan(const core::DCString& mask)
+{
+  return 0;
+}
+
 
 //***************************************
 // ::

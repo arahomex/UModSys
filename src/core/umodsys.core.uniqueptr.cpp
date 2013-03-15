@@ -49,5 +49,39 @@ void SUniquePointer::s_unresolve(IUniquePointerResolver* res)
 }
 
 //***************************************
+// SUniquePtrList::
+//***************************************
+
+SUniquePtrList::SUniquePtrList(HUniquePointer *a, size_t n) 
+: arr(a), maxlen(n), curlen(0) 
+{
+}
+
+bool SUniquePtrList::add(HUniquePointer val)
+{
+  if(val==NULL)
+    return false; // never add NULL
+  for(size_t i=0; i<curlen; i++) {
+    if(arr[i]==val)
+      return true; // already added
+  }
+  if(curlen>=maxlen)
+    return false; // overflow
+  arr[curlen++] = val;
+  return true;
+}
+
+size_t SUniquePtrList::find(HUniquePointer val) const
+{
+  if(val==NULL)
+    return array_index_none; // never add NULL
+  for(size_t i=0; i<curlen; i++) {
+    if(arr[i]==val)
+      return i; // already added
+  }
+  return array_index_none;
+}
+
+//***************************************
 // ::
 //***************************************

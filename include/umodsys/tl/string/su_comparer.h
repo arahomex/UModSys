@@ -1,8 +1,9 @@
 #ifndef __UMODSYS_TYPES_STRING_UTILS_COMPARER_H
 #define __UMODSYS_TYPES_STRING_UTILS_COMPARER_H 1
-//*****************************************************
-// umodsys/types/su_comparer.h: string utilities - [comparer]
-//*****************************************************
+/*************************************************************/
+// file: umodsys/tl/string/su_comparer.h
+// info: string utilities - comparission
+/*************************************************************/
 
 #include <umodsys/tl/string/su_base.h>
 

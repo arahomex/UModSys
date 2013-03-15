@@ -1,9 +1,9 @@
 #ifndef __UMODSYS_TYPES_STRING_UTILS_CORESHARED_H
 #define __UMODSYS_TYPES_STRING_UTILS_CORESHARED_H 1
-//*****************************************************
-// umodsys/types/su_coreshared.h: string utilities 
-//   [core shared]
-//*****************************************************
+/*************************************************************/
+// file: umodsys/tl/string/su_coreshared.h
+// info: string utilities - core shared allocated data
+/*************************************************************/
 
 #include <umodsys/tl/string/su_base.h>
 

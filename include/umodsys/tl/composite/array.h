@@ -13,9 +13,9 @@
 namespace UModSys {
 namespace tl {
 
-/*************************************************************/
+using core::array_index_none;
 
-const size_t array_index_none = size_t(-1);
+/*************************************************************/
 
 template<typename SNode>
 struct TArrayAbstract;

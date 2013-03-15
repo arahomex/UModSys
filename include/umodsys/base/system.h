@@ -17,19 +17,20 @@ namespace base {
 // ISystem
 //***************************************
 
-struct ISystem 
-: public core::IRefObject, 
-  public core::IUniquePointerResolver,
-  public IModuleLoader
+struct ISystem : public core::IRoot
 {
 public:
   ~ISystem(void);
 public:
-  virtual IConsole* get_console(void) =0;
+  virtual IModuleLoader* get_modloader(void) =0;
+  virtual core::IUniquePointerResolver* get_upr(void) =0;
+  virtual IModuleLibrary* get_syslib(void) = 0;
+  //
   virtual core::IMemAlloc* get_sysmem(void) =0;
   virtual core::IMemAlloc* get_sharemem(void) =0;
+  virtual IConsole* get_console(void) =0;
 public:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(ISystem, 2, IRefObject);
+  UMODSYS_ROOT_IMPLEMENT1(ISystem, 2, IRoot);
 };
 
 //***************************************

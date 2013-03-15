@@ -15,13 +15,14 @@ namespace core {
 //***************************************
 
 struct IRoot {
-  typedef SUniquePointerInfo* TypeId;
+  typedef HUniquePointer TypeId;
+  typedef SUniquePtrList DPtrList;
   //
   virtual ~IRoot(void);
   virtual TypeId get_interface_name(void) const =0;
   virtual const IRoot* get_other_interface(TypeId type) const =0;
   virtual IRoot* get_other_interface(TypeId type) =0;
-//  virtual int get_interface_types(DListStr& list) const =0;
+  virtual int get_interface_types(DPtrList& list) const =0;
   // INLINES
   template<typename RData>
   inline bool t_get_other_interface(RData* &rv, TypeId type) {
@@ -70,9 +71,11 @@ protected:
 public:
   inline static const char* _get_interface_cname(void) { return "core::IRoot"; } \
   inline static int _get_interface_verno(void) { return 2; } \
-  inline static TypeId _get_interface_type(void) { return tl::TObjectUniqueID<IRoot>::get_id(); } \
+  inline static TypeId _get_interface_type(void) { return tl::TObjectUniqueID<IRoot>::get_id(); }
   inline static bool _is_interface_supported(TypeId type) { return type==_get_interface_type(); }
-//  inline static int _get_interface_types(DListStr& list) { list<<"core::objects::IRoot"; return 1; }
+  inline static int _get_interface_types(DPtrList& list) { list<<_get_interface_type(); return 1; }
+  inline const IRoot* _get_interface_p(void) const { return this; }
+  inline IRoot* _get_interface_p(void) { return this; }
 };
 
 //***************************************

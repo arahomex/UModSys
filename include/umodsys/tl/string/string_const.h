@@ -1,8 +1,9 @@
 #ifndef __UMODSYS_TL_STRING_CONST_H
 #define __UMODSYS_TL_STRING_CONST_H 1
-//*****************************************************
-// umodsys/types/string_const.h: string const
-//*****************************************************
+/*************************************************************/
+// file: umodsys/tl/string/string_const.h
+// info: string const
+/*************************************************************/
 
 #include <umodsys/tl/string/su_base.h>
 #include <umodsys/tl/string/su_char.h>

@@ -22,6 +22,8 @@ namespace core {
 
   struct SUniquePointerInfo;
   struct SUniquePointer;
+  struct SUniquePtrList;
+  typedef const SUniquePointerInfo* HUniquePointer;
 
   struct IRoot;
   struct IRefObject;
@@ -44,6 +46,9 @@ namespace core {
   //***************************************
 
   unsigned char lost(const void* data);
+
+  const size_t array_index_none = size_t(-1);
+ 
 
 } // namespace core
 

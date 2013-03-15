@@ -1,9 +1,9 @@
 #ifndef __UMODSYS_TYPES_STRING_UTILS_COREPREALLOC_H
 #define __UMODSYS_TYPES_STRING_UTILS_COREPREALLOC_H 1
-//*****************************************************
-// umodsys/types/su_coreprealloc.h: string utilities 
-//   [core prealloc]
-//*****************************************************
+/*************************************************************/
+// file: umodsys/tl/string/su_coreprealloc.h
+// info: string utilities - core pre-allocated data
+/*************************************************************/
 
 #include <umodsys/tl/string/su_base.h>
 

@@ -12,30 +12,37 @@ namespace UModSys {
 namespace core {
 
 //***************************************
-// Unique Pointer
+// Unique Pointer Info
 //***************************************
 
 struct SUniquePointerInfo {
+public:
+  inline SUniquePointerInfo(const char *g, const char *n, int vn) : group(g), name(n), verno(vn) {}
+  inline explicit SUniquePointerInfo(Void *p) {}
+  //
+  inline bool operator==(const SUniquePointerInfo& R) const 
+    { return group==R.group && name==R.name && verno==R.verno; }
+public:
   const char *group;
   const char *name;
   int verno;
-  //
-  inline SUniquePointerInfo(const char *g, const char *n, int vn) : group(g), name(n), verno(vn) {}
-  inline explicit SUniquePointerInfo(Void *p) {}
 };
 
+//***************************************
+// Unique Pointer Resolver
+//***************************************
+
 struct IUniquePointerResolver {
-  virtual SUniquePointerInfo* upi_add(const SUniquePointerInfo* lupi) =0;
-  virtual int upi_remove(SUniquePointerInfo* upi) =0;
+  virtual HUniquePointer upi_add(const SUniquePointerInfo* lupi) =0;
+  virtual int upi_remove(HUniquePointer upi) =0;
 };
+
+//***************************************
+// Unique Pointer
+//***************************************
 
 struct SUniquePointer : public tl::TList2Node<SUniquePointer> {
 public:
-  SUniquePointerInfo info;
-  mutable SUniquePointerInfo* upi;
-  //
-  static SUniquePointer root;
-  //
   SUniquePointer(const char *g, const char *n, int vn);
   explicit SUniquePointer(int v);
   ~SUniquePointer(void);
@@ -43,10 +50,39 @@ public:
   static void s_resolve(IUniquePointerResolver* res);
   static void s_unresolve(IUniquePointerResolver* res);
   //
-  operator SUniquePointerInfo*(void) const { return upi; }
-  SUniquePointerInfo* operator()(void) const { return upi; }
-  SUniquePointerInfo* operator*(void) const { return upi; }
-  SUniquePointerInfo* get(void) const { return upi; }
+  operator HUniquePointer(void) const { return upi; }
+  HUniquePointer operator()(void) const { return upi; }
+  HUniquePointer operator*(void) const { return upi; }
+  HUniquePointer get(void) const { return upi; }
+public:
+  SUniquePointerInfo info;
+  mutable HUniquePointer upi;
+  //
+  static SUniquePointer root;
+};
+
+//***************************************
+// Unique Pointer List
+//***************************************
+
+struct SUniquePtrList {
+public:
+  SUniquePtrList(HUniquePointer *a, size_t n);
+  //
+  inline size_t len(void) const { return curlen; }
+  inline size_t operator~(void) const { return curlen; }
+  inline HUniquePointer get(size_t n) const { return arr[n]; }
+  inline HUniquePointer operator[](size_t n) const { return arr[n]; }
+  inline HUniquePointer operator()(size_t n) const { return arr[n]; }
+  //
+  void clear(void) { curlen=0; }
+  bool add(HUniquePointer val);
+  inline SUniquePtrList& operator<<(HUniquePointer val) { add(val); return *this; }
+  size_t find(HUniquePointer val) const;
+  inline size_t operator()(HUniquePointer vv) const { return find(vv); }
+public:
+  HUniquePointer *arr;
+  size_t curlen, maxlen;
 };
 
 //***************************************

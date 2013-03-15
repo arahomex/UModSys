@@ -59,9 +59,9 @@ public:
   virtual size_t get_module_count(void) const =0;
   virtual IModule* get_module(size_t id) const =0;
   //
-  virtual bool is_loaded(void) const =0;
-  virtual bool load(void) =0;
-  virtual bool unload(void) =0;
+  virtual bool lib_loaded(void) const =0;
+  virtual bool lib_load(void) =0;
+  virtual bool lib_unload(void) =0;
 public:
   UMODSYS_REFOBJECT_INTIMPLEMENT(IModuleLibrary, 2, IRefObject);
 };
@@ -73,9 +73,18 @@ public:
 struct IModuleLoader
 {
 public:
-  virtual size_t module_preload(const core::DCString& sys_name) =0;
-  virtual size_t module_findall(IModule* amodules[], size_t nmodules, const core::DCString& mask) =0;
-  virtual IModule* module_find(const core::DCString& name, const core::SVersion& verno) =0;
+  virtual size_t moduledb_lib_count(void) =0;
+  virtual IModuleLibrary* moduledb_lib_get(size_t id) const =0;
+  virtual bool moduledb_lib_drop(IModuleLibrary* lib) =0;
+  //
+  virtual size_t moduledb_module_count(void) =0;
+  virtual IModule* moduledb_module_get(size_t id) const =0;
+  virtual IModule* module_find(const core::DCString& name, const core::SVersion& verno) const =0;
+  //
+  virtual void moduledb_clear(void) =0;
+  virtual bool moduledb_load(const core::DCString& cachepath) =0;
+  virtual bool moduledb_save(const core::DCString& cachepath) =0;
+  virtual size_t moduledb_scan(const core::DCString& mask) =0;
 };
 
 //***************************************
