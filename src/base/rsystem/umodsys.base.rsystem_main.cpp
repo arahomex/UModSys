@@ -23,19 +23,19 @@ const DCString& RSystem::mod_string(const DCString& v)
 
 bool RSystem::init(void)
 {
-  console->put(0, "RSystem::init()\n");
+  dbg_put("RSystem::init()\n");
   //
   SUniquePointer::s_resolve(this); // initalize all upis
   { // list all upis
-    console->put(0, "RSystem::init() -- dump upi {S:%d C:%d}\n", uptr_pool.used_strings(), uptr_pool.used_chars());
+    dbg_put("RSystem::init() -- dump upi {S:%d C:%d}\n", uptr_pool.used_strings(), uptr_pool.used_chars());
     for(const SUniquePointer* x=SUniquePointer::root.next; x!=&SUniquePointer::root; x=x->next) {
       if(x==NULL) {
-        console->put(0, "upi NULL\n");
+        dbg_put("upi NULL\n");
         break;
       }
-      console->put(0, "upi{%s %s(%d) %p}\n", x->info.group, x->info.name, x->info.verno, x->upi);
+      dbg_put("upi{%s %s(%d) %p}\n", x->info.group, x->info.name, x->info.verno, x->upi);
     }
-    console->put(0, "RSystem::init() -- /dump upi\n");
+    dbg_put("RSystem::init() -- /dump upi\n");
   }
   //
 //  sys_library = new RModuleLibrary();
@@ -44,19 +44,19 @@ bool RSystem::init(void)
 
 bool RSystem::exec_args(int argc, char** argv)
 {
-  console->put(0, "RSystem::exec_args(%d)\n", argc);
+  dbg_put("RSystem::exec_args(%d)\n", argc);
   return false;
 }
 
 bool RSystem::exec_main(void)
 {
-  console->put(0, "RSystem::exec_main()\n");
+  dbg_put("RSystem::exec_main()\n");
   return false;
 }
 
 bool RSystem::deinit(void)
 {
-  console->put(0, "RSystem::deinit()\n");
+  dbg_put("RSystem::deinit()\n");
   //
   SUniquePointer::s_unresolve(this); // deinitalize all upis
   //
@@ -77,6 +77,18 @@ RSystem::~RSystem(void)
 //***************************************
 
 RSystem RSystem::s_sys;
+
+//***************************************
+// base::
+//***************************************
+
+void base::dbg_put(const char *fmt, ...)
+{
+  va_list va;
+  va_start(va, fmt);
+  RSystem::s_sys.get_console()->vput(0, fmt, va);
+  va_end(va);
+}
 
 //***************************************
 // ::

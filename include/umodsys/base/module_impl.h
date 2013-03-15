@@ -31,10 +31,12 @@ public:
   static SModuleRegChain root;
   //
   SModuleRegChain(IModuleReg* r);
+  SModuleRegChain(IModuleReg& r);
   explicit SModuleRegChain(int v);
   ~SModuleRegChain(void);
   //
   static size_t s_gather(IModuleReg* rlist[], size_t nlist);
+  static IModuleReg* s_get(size_t id);
 };
 
 //***************************************
@@ -59,6 +61,9 @@ public:
   //
   inline IConsole& con(void) const { return *icon; }
   inline core::IMemAlloc& mem(void) const { return *imem; }
+  //
+public:
+  void dbg_put(const char *fmt, ...);
 };
 
 //***************************************

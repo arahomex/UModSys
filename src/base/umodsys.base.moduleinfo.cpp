@@ -21,6 +21,13 @@ SModuleInfo::SModuleInfo(void)
 {
 }
 
+void SModuleInfo::set(const char* n, int vh, int vl, const char *i)
+{
+  name = n;
+  verno = SVersion(vh, vl);
+  info = i;
+}
+
 //***************************************
 // ::
 //***************************************

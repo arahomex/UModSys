@@ -39,21 +39,28 @@ bool RModule::close(void)
 
 bool RModule::alloc_minfo(const SModuleInfo &mi2)
 {
-  mi_name = mi2.name;
-  mi_info = mi2.info;
-  minfo.name = mi_name;
-  minfo.info = mi_info;
+  dbg_put(
+    "RModule::alloc_minfo({\"%s\", \"%s\", {%d,%d} })\n", 
+    mi2.name(), mi2.info(), mi2.verno.vmajor, mi2.verno.vminor
+  );
+  minfo.name = RSystem::s_sys.mod_string(mi2.name);
+  minfo.info = RSystem::s_sys.mod_string(mi2.info);
   minfo.verno = mi2.verno;
+  //
+  //
   return true;
 }
 
 //***************************************
 //***************************************
 
-RModule::RModule(RModuleLibrary *pv)
-: owner(NULL), ireg(NULL) 
+RModule::RModule(RModuleLibrary *pv, IModuleReg *imr)
+: owner(NULL), ireg(imr)
 {
   rc_init(pv);
+  if(imr!=NULL) {
+    alloc_minfo(imr->minfo);
+  }
 }
 
 RModule::~RModule(void)
@@ -104,12 +111,27 @@ bool RModuleLibrary::lib_unload(void)
 //***************************************
 //***************************************
 
+bool RModuleLibrary::scan_mr(PFD_Data* pfd)
+{
+  dbg_put("scan_mr()\n");
+  for(int i=0; ; i++) {
+    IModuleReg *imr = pfd_getmr(pfd, i);
+    if(imr==NULL)
+      break;
+    dbg_put("scan_mr() i=%d imr=%p\n", i, imr);
+    modules.push(new RModule(this, imr));
+  }
+  dbg_put("/scan_mr()\n");
+  return true;
+}
+
 //***************************************
 //***************************************
 
 RModuleLibrary::RModuleLibrary(PFD_Data* pfd)
 {
   pfd_init(reinterpret_cast<PFD_Data*>(pfd_data), pfd);
+  scan_mr(reinterpret_cast<PFD_Data*>(pfd_data));
 }
 
 RModuleLibrary::RModuleLibrary(void)

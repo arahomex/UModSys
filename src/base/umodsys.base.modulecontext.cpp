@@ -24,6 +24,16 @@ void SModuleContext::Link(ISystem* is, IMemAlloc* privmem)
   imem = privmem;
 }
 
+void SModuleContext::dbg_put(const char *fmt, ...)
+{
+  if(icon==NULL)
+    return;
+  va_list va;
+  va_start(va, fmt);
+  icon->vput(0, fmt, va);
+  va_end(va);
+}
+
 //***************************************
 // ::
 //***************************************

@@ -24,7 +24,7 @@ struct RModule;
 struct RModule : public IModule
 {
 public:
-  RModule(RModuleLibrary *pv);
+  RModule(RModuleLibrary *pv, IModuleReg *imr);
   ~RModule(void);
 public:
   IModuleLibrary* get_library(void) const;
@@ -35,7 +35,6 @@ public:
   bool close(void);
 public:
   IModuleReg* ireg;
-  DStringSharedMalloc mi_name, mi_info;
   SModuleInfo minfo;
   int sys_id;
   //
@@ -73,9 +72,12 @@ public:
   Modules modules;
   DStringSharedMalloc sys_libname;
   //
+  bool scan_mr(PFD_Data* pfd);
+  //
   /* platform-dependent data */
   int pfd_data[16]; 
   /* platform-dependent functions */
+  static IModuleReg* pfd_getmr(PFD_Data* pfd, int id);
   static bool pfd_init(PFD_Data* pfd);
   static bool pfd_init(PFD_Data* pfd, PFD_Data* pfdR);
   static bool pfd_deinit(PFD_Data* pfd);

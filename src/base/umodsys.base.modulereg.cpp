@@ -8,8 +8,18 @@ using namespace UModSys::base;
 // SModuleRegChain::
 //***************************************
 
+SModuleRegChain SModuleRegChain::root(1);
+
 SModuleRegChain::SModuleRegChain(IModuleReg* r)
 : imr(r) 
+{
+  if(root.next==NULL)
+    s_makeroot(&root);
+  s_append(this, &root); 
+}
+
+SModuleRegChain::SModuleRegChain(IModuleReg& r)
+: imr(&r) 
 {
   if(root.next==NULL)
     s_makeroot(&root);
@@ -40,6 +50,17 @@ size_t SModuleRegChain::s_gather(IModuleReg* rlist[], size_t nlist)
     }
   }
   return rv;
+}
+
+IModuleReg* SModuleRegChain::s_get(size_t id)
+{
+  M.dbg_put("SModuleRegChain::s_get(%d)\n", (int)id);
+  for(const SModuleRegChain* x=root.next; x!=&root; x=x->next) {
+    if(id==0)
+      return x->imr;
+    id--;
+  }
+  return NULL;
 }
 
 //***************************************

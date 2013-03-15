@@ -10,6 +10,7 @@ using namespace base;
 
 struct RTest1_ModuleReg : public IModuleReg {
   RTest1_ModuleReg(void) {
+    minfo.set("Test1", 0, 1, "Test 1 module");
   }
   ~RTest1_ModuleReg(void) {
   }
@@ -24,6 +25,7 @@ struct RTest1_ModuleReg : public IModuleReg {
 };
 
 static RTest1_ModuleReg reg;
+static SModuleRegChain reg_chain(reg);
 
 } // namespace UModSys
 } // namespace test1

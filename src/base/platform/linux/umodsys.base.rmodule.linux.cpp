@@ -28,6 +28,14 @@ struct RModuleLibrary::PFD_Data {
   f_get_moduleinfo entry;
 };
 
+IModuleReg* RModuleLibrary::pfd_getmr(PFD_Data* pfd, int id)
+{
+  dbg_put("pfd {m=%p, e=%p}\n", pfd->module, pfd->entry);
+  if(pfd->module==NULL || pfd->entry==NULL)
+    return NULL;
+  return pfd->entry(&RSystem::s_sys, id);
+}
+
 bool RModuleLibrary::pfd_init(PFD_Data* pfd)
 {
   pfd->module = NULL;
@@ -96,7 +104,7 @@ static size_t s_pfd_scan(RModuleLibraryArray& la, core::BStr mask, core::BStr su
 {
   char ls[4096];
   //
-  RSystem::s_sys.get_console()->put(0, "scan so: \"%s%s\"\n", mask, suffix);
+  dbg_put("scan so: \"%s%s\"\n", mask, suffix);
   snprintf(ls, sizeof(ls), "ls %s%s", mask, suffix);
   FILE *f = popen(ls, "r");
   if(f==NULL)
@@ -116,25 +124,26 @@ static size_t s_pfd_scan(RModuleLibraryArray& la, core::BStr mask, core::BStr su
       if(r==0)
         continue;
     }
-    RSystem::s_sys.get_console()->put(0, "  so: \"%s\"\n", line);
+    dbg_put("  so: \"%s\"\n", line);
     //
     if(RModuleLibrary::pfd_load(&pfd, line)) {
-      RSystem::s_sys.get_console()->put(0, "  so loaded: \"%s\"\n", line);
+      dbg_put("  so loaded: \"%s\"\n", line);
       //
       for(int i=0; i<~la; i++) {
         if(reinterpret_cast<RModuleLibrary::PFD_Data*>(la(i)->pfd_data)->module==pfd.module) {
-           RSystem::s_sys.get_console()->put(0, "  so dup with %d\n", i);
+           dbg_put("  so dup with %d\n", i);
            RModuleLibrary::pfd_unload(&pfd);
            goto next;
         }
       }
       //
-      RSystem::s_sys.get_console()->put(0, "  so added\n");
+      dbg_put("  so added\n");
       la.push(new RModuleLibrary(&pfd));
+      gn++;
     }
 next:;
   }
-  RSystem::s_sys.get_console()->put(0, "/scan so: \"%s%s\"\n", mask, suffix);
+  dbg_put("/scan so: \"%s%s\"\n", mask, suffix);
   //
   RModuleLibrary::pfd_deinit(&pfd);
   pclose(f);

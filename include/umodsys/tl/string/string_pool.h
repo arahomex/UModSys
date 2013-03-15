@@ -82,7 +82,7 @@ public:
   //
   //
   const StringElem* append(Str v, size_t len);
-  inline const StringElem* append(Str v) { return append(v, su::slen(v)); }
+  inline const StringElem* append(Str v) { return v!=NULL ? append(v, su::slen(v)) : &s_null; }
   template<typename CoreT, typename Comparer2> 
   inline const StringElem* append(const TString<CoreT, Comparer>& v) 
     { return append(v.get_text(), v.get_length()); }
@@ -96,7 +96,12 @@ public:
   CharChunk *cs;
   StringChunk *ss;
   size_t c_max, c_len, s_max, s_len;
+  static StringElem s_null;
 };
+
+template<typename CharT, typename Comparer, typename MemAllocT>
+typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem
+TStaticPool<CharT,Comparer,MemAllocT>::s_null;
 
 template<typename CharT, typename Comparer, typename MemAllocT>
 const typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem* 
@@ -121,6 +126,9 @@ TStaticPool<CharT,Comparer,MemAllocT>::append(typename TStaticPool<CharT,Compare
   CC **pz, *z;
   typename TStaticPool<CharT,Comparer,MemAllocT>::Str vv;
   void *vp;
+  //
+  if(v==NULL || len==0)
+    return &s_null;
   //
   const typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem* rv;
   rv = find_s(TStaticPool<CharT,Comparer,MemAllocT>::StringElem(v, len));
@@ -168,6 +176,8 @@ TStaticPool<CharT,Comparer,MemAllocT>::find_s(const typename TStaticPool<CharT,C
 {
   const typename TStaticPool<CharT,Comparer,MemAllocT>::StringChunk *x;
   //
+  if(vv.get_length()==0)
+    return NULL;
   for(x=ss; x!=NULL; x=x->next) {
     for(int i=0; i<x->len; i++) {
       if(x->buffer[i]==vv)

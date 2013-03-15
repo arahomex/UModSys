@@ -131,6 +131,7 @@ bool RSystem::moduledb_lib_drop(IModuleLibrary* lib)
 
 size_t RSystem::moduledb_module_count(void)
 {
+  return 0;
 }
 
 IModule* RSystem::moduledb_module_get(size_t id) const

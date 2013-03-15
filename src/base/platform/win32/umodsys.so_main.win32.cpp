@@ -12,7 +12,8 @@ using namespace UModSys::base;
 
 extern "C" __declspec(dllexport) IModuleReg* __stdcall UModSys_Plugin_Entry2(ISystem* isys, int id)
 {
-  return NULL;
+  M.Link(isys, NULL);
+  return SModuleRegChain::s_get(id);
 }
 
 int base::so_entry_enabled_flag = 1;

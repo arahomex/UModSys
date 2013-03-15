@@ -22,6 +22,7 @@ struct SModuleInfo {
   ~SModuleInfo(void);
   SModuleInfo(const char* n, int vh, int vl, const char *i);
   SModuleInfo(void);
+  void set(const char* n, int vh, int vl, const char *i);
 };
 
 //***************************************
