@@ -1,6 +1,8 @@
 #include "../../rsystem/umodsys.base.rsystem.h"
 #include "../../rsystem/umodsys.base.rmodule.h"
 
+#include <umodsys/core/platform/win32/syshlp_win32.h>
+
 #include <windows.h>
 
 using namespace UModSys;
@@ -16,7 +18,10 @@ using namespace UModSys::base;
 
 typedef IModuleReg* (__stdcall *f_get_moduleinfo)(ISystem* isys, int id);
 
-#define MAX_SO_PATH 4096
+const int MAX_SO_PATH = 4096;
+
+typedef syshlp::UniPath<MAX_SO_PATH*2> UniSoName;
+typedef syshlp::WinPath<MAX_SO_PATH> WinSoName;
 
 //***************************************
 // RModuleLibrary::
@@ -59,15 +64,14 @@ bool RModuleLibrary::pfd_load(PFD_Data* pfd, const core::DCString& filename)
   if(pfd->module!=NULL)
     return false;
 //  SetDllDirectory();
-  wchar_t filename16[MAX_SO_PATH+1];
-  int nm = MultiByteToWideChar(CP_UTF8, 0, filename, ~filename, filename16, MAX_SO_PATH);
-  if(nm==0)
-    return false; // path too long
-  filename16[nm] = 0;
+  WinSoName filename16(filename);
+  if(!filename16)
+    return NULL; // path too long
   //
   SetErrorMode(SEM_FAILCRITICALERRORS); 
+  dbg_put("  tryload: \"%ls\"\n", filename16());
   pfd->module = LoadLibraryExW(filename16, NULL, 0);
-  dbg_put("    LoadLibraryExW(\"%ls\", NULL, 0) => %p\n", filename16, pfd->module);
+  dbg_put("    LoadLibraryExW(\"%ls\", NULL, 0) => %p\n", filename16(), pfd->module);
   if(pfd->module==NULL)
     return false;
   //
@@ -76,14 +80,6 @@ bool RModuleLibrary::pfd_load(PFD_Data* pfd, const core::DCString& filename)
     pfd_unload(pfd);
     return false;
   }
-  //
-/*
-  pfd->ireg = pfd->entry(&RSystem::s_sys, sys_id);
-  if(pfd->ireg==NULL) {
-    pfd_unload(pfd);
-    return false;
-  }
-*/
   //
   return true;
 }
@@ -108,48 +104,49 @@ bool RModuleLibrary::pfd_is_loaded(const PFD_Data* pfd)
 
 static size_t s_pfd_scan(RModuleLibraryArray& la, core::BStr mask, core::BStr suffix)
 {
-  char msk8[MAX_SO_PATH+1];
-  wchar_t msk16[MAX_SO_PATH+1];
-  wchar_t path16[MAX_SO_PATH+1], *name16;
-  wchar_t sopath16[MAX_SO_PATH+1];
-  int nm;
-  //
+
   dbg_put("scan so: \"%s%s\"\n", mask, suffix);
-  if(_snprintf_s(msk8, MAX_SO_PATH, MAX_SO_PATH, "%s%s", mask, suffix)<=0)
+  UniSoName mask8(mask, suffix);
+//  dbg_put(" -- !mask8=%d of \"%s\" '%s''%s'\n\n", !mask8, mask8(), mask, suffix);
+  if(!mask8)
     return NULL; // path too long
-  nm = MultiByteToWideChar(CP_UTF8, 0, msk8, strlen(msk8), msk16, MAX_SO_PATH);
-  if(nm==0)
+  WinSoName mask16(mask8);
+//  dbg_put(" -- !mask16=%d of \"%ls\"\n\n", !mask16, mask16());
+  if(!mask16)
     return NULL; // path too long
-  msk16[nm] = 0;
-  nm = GetFullPathNameW(msk16, MAX_SO_PATH, path16, &name16);
-  if(nm>=MAX_SO_PATH)
+  WinSoName path16;
+  //
+  wchar_t *name16;
+  int nm = GetFullPathNameW(mask16, path16.Len, path16, &name16);
+//  dbg_put(" -- nm=%d, path16.Len=%d\n", nm, path16.Len);
+  if(nm>=path16.Len)
     return NULL; // path too long
+  path16.ok();
   //
   size_t gn = 0;
   WIN32_FIND_DATAW ff;
   HANDLE f = FindFirstFileW(path16, &ff);
+//  dbg_put(" -- f=%p of \"%ls\"\n", f, path16());
   if(f==INVALID_HANDLE_VALUE)
     return 0;
   //
   *name16 = 0; // trim to path
-  char fname[4096];
   RModuleLibrary::PFD_Data pfd;
   RModuleLibrary::pfd_init(&pfd);
   //
   do {
     dbg_put("  so: \"%ls\"\n", ff.cFileName);
     //
-    if(_snwprintf_s(msk16, MAX_SO_PATH, MAX_SO_PATH, L"%s%s", path16, ff.cFileName)<=0)
+    WinSoName full16(path16, ff.cFileName);
+    if(!full16)
+      continue; // path too long
+    UniSoName full8(full16);
+    if(!full8)
       continue; // path too long
     //
-    char msk8[MAX_SO_PATH];
-    nm = WideCharToMultiByte(CP_UTF8, 0, msk16, wcslen(msk16), msk8, MAX_SO_PATH, NULL, NULL);
-    if(nm==0)
-      continue; // path too long
-    msk8[nm] = 0;
-    //
-    if(RModuleLibrary::pfd_load(&pfd, msk8)) {
-      dbg_put("  so loaded: \"%s\"\n", msk8);
+//    dbg_put("  tryload: \"%s\"\n", full8());
+    if(RModuleLibrary::pfd_load(&pfd, full8())) {
+      dbg_put("  so loaded: \"%s\"\n", full8());
       //
       for(int i=0; i<~la; i++) {
         if(reinterpret_cast<RModuleLibrary::PFD_Data*>(la(i)->pfd_data)->module==pfd.module) {

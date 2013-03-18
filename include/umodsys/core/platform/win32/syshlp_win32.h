@@ -5,7 +5,7 @@
 // info: sys helper for win32 platform
 /*************************************************************/
 
-#include "../../stddefs.h"
+#include <umodsys/core/syshlp.h>
 
 /*******************************************************************************/
 
@@ -58,7 +58,27 @@ namespace core {
 namespace syshlp {
 
 /////////////////////////////////////////////////////////////////////////////
-// DEFS
+// WINPATH
+
+template<int N>
+struct WinPath : public U16String<N> {
+  typedef U16String<N> B;
+public:
+  WinPath(void) {}
+  WinPath(const char *upath) : B(upath) { path_uni_os(*this); }
+  WinPath(const wchar_t *wpath) : B(wpath) {}
+  WinPath(const wchar_t *wpath, const wchar_t *wsuffix) : B(wpath, wsuffix) {}
+};
+
+template<int N>
+struct UniPath : public U8String<N> {
+  typedef U8String<N> B;
+public:
+  UniPath(void) {}
+  UniPath(const wchar_t *wpath) : B(wpath) { path_os_uni(*this); }
+  UniPath(const char *upath) : B(upath) {}
+  UniPath(const char *upath, const char *usuffix) : B(upath, usuffix) {}
+};
 
 /////////////////////////////////////////////////////////////////////////////
 // OS PATH INLINES
@@ -126,7 +146,6 @@ inline FILE* c_fopen(const char *cfilename, const char *cmode)
   path_uni_os(filename);
   return _wfopen(filename, mode);
 }
-
 
 /////////////////////////////////////////////////////////////////////////////
 // END

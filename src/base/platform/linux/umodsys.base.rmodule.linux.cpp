@@ -71,14 +71,6 @@ bool RModuleLibrary::pfd_load(PFD_Data* pfd, const core::DCString& filename)
     return false;
   }
   //
-/*
-  pfd->ireg = pfd->entry(&RSystem::s_sys, sys_id);
-  if(pfd->ireg==NULL) {
-    pfd_unload(pfd);
-    return false;
-  }
-*/
-  //
   return true;
 }
 
