@@ -148,6 +148,39 @@ int shashlen(const CharT* str, size_t& len) {
   return ((b<<8)&0xff) | a;
 }
 
+template<typename CharT>
+int wildcmp(const CharT* wild, const CharT* string) 
+{
+  register const CharT* cp, *mp;
+
+  while ((*string) && (*wild != '*')) {
+    if ((*wild != *string) && (*wild != '?')) {
+      return 0;
+    }
+    wild++;
+    string++;
+  }
+  while (*string) {
+    if (*wild == '*') {
+      if (!*++wild) {
+        return 1;
+      }
+      mp = wild;
+      cp = string+1;
+    } else if ((*wild == *string) || (*wild == '?')) {
+      wild++;
+      string++;
+    } else {
+      wild = mp;
+      string = cp++;
+    }
+  }
+  while (*wild == '*') {
+    wild++;
+  }
+  return !*wild;
+}
+
 //***************************************
 // end
 

@@ -5,6 +5,13 @@ core_lib_depends := \
   $(T)/umodsys.core.stdtypedefs$(OSUFFIX) \
   $(T)/umodsys.core.uniqueptr$(OSUFFIX) \
   $(T)/umodsys.tl.strings$(OSUFFIX) \
+  \
+  $(T)/umodsys.core.syshlp_chars.$(PLATFORM_ID)$(OSUFFIX) \
+  $(T)/umodsys.core.syshlp_charcode.$(PLATFORM_ID)$(OSUFFIX) \
+  $(T)/umodsys.core.syshlp_files.$(PLATFORM_ID)$(OSUFFIX) \
+  $(T)/umodsys.core.syshlp_proc.$(PLATFORM_ID)$(OSUFFIX) \
+  $(T)/umodsys.core.syshlp_thread.$(PLATFORM_ID)$(OSUFFIX) \
+  $(T)/umodsys.core.syshlp_vars.$(PLATFORM_ID)$(OSUFFIX)
 
 core_lib := $(T)/umodsys.core$(LIBSUFFIX)
 
@@ -27,6 +34,12 @@ $(core_lib): $(core_lib_depends)
 
 $(T)/%$(OSUFFIX) : ../../src/core/%.cpp
 	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $< 
+ifndef NO_CXX_DEP
+	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
+endif
+
+$(T)/%$(OSUFFIX) : ../../src/core/platform/$(PLATFORM_ID)/%.cpp
+	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $<
 ifndef NO_CXX_DEP
 	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
 endif

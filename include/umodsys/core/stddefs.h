@@ -56,6 +56,7 @@
   #include <ctype.h>
   #include <time.h>
   #include <limits.h>
+  #include <wchar.h>
 
   #include <math.h>
 
