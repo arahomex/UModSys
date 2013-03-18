@@ -5,7 +5,7 @@
 // info: sys helper for linuc platform
 /*************************************************************/
 
-#include "../../stddefs.h"
+#include <umodsys/core/syshlp.h>
 
 /*******************************************************************************/
 
@@ -18,6 +18,11 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <errno.h>
+
+#include <fnmatch.h>
+#include <libgen.h>
+#include <dirent.h>
+#include <dlfcn.h>
 
 #define DEFAULT_DIR_MODE 0777
 #define DEFAULT_FILE_MODE 0666
@@ -50,5 +55,5 @@ inline FILE* c_fopen(const char *cfilename, const char *cmode)
 } // namespace core
 } // namespace UModSys
 
-#endif
+#endif // __UMODSYS_CORE_PLATFORM_LINUX_SYSHLP_H
 

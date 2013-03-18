@@ -1,9 +1,7 @@
+#include <umodsys/core/platform/linux/syshlp_linux.h>
+
 #include "../../rsystem/umodsys.base.rsystem.h"
 #include "../../rsystem/umodsys.base.rmodule.h"
-
-//#define _GNU_SOURCE         /* See feature_test_macros(7) */
-#include <dlfcn.h>
-#include <dirent.h> 
 
 using namespace UModSys;
 using namespace UModSys::core;
@@ -94,32 +92,41 @@ bool RModuleLibrary::pfd_is_loaded(const PFD_Data* pfd)
 
 static size_t s_pfd_scan(RModuleLibraryArray& la, core::BStr mask, core::BStr suffix)
 {
-  char ls[4096];
-  //
   dbg_put("scan so: \"%s%s\"\n", mask, suffix);
-  snprintf(ls, sizeof(ls), "ls %s%s", mask, suffix);
-  FILE *f = popen(ls, "r");
+  syshlp::U8String<> ls(mask, suffix), umask(mask, suffix);
+  if(!ls)
+    return 0;
+  char* path = dirname(ls);
+//  dbg_put("   scan so path: \"%s\"\n", path);
+  DIR *f = opendir(path);
   if(f==NULL)
     return 0;
   //
   size_t gn = 0;
-  char line[4096];
   RModuleLibrary::PFD_Data pfd;
   RModuleLibrary::pfd_init(&pfd);
   //
-  while(fgets(line, sizeof(line), f)!=NULL) {
-    size_t r = strlen(line);
-    if(r==0)
-      continue;
-    if(line[r-1]=='\n') {
-      line[--r] = 0;
-      if(r==0)
-        continue;
-    }
-    dbg_put("  so: \"%s\"\n", line);
+  struct dirent de, *d;
+//  dbg_put("   scan so: \"%s%s\"\n", mask, suffix);
+  while(readdir_r(f, &de, &d)==0) {
+    if(d==NULL)
+      break;
+//    dbg_put("   readdir: \"%s\" \n", d->d_name);
+    if(d->d_type!=DT_REG && d->d_type!=DT_UNKNOWN)
+      continue; // not a file
+    if(syshlp::STREQ(d->d_name, ".") || syshlp::STREQ(d->d_name, ".."))
+      continue; // special names
+//    if(fnmatch("filename", ".so")!=0) {}
+    syshlp::U8String<> fullname(path, "/", d->d_name);
+    if(!fullname)
+      continue; // too long or not matched
+//    dbg_put("  match so: \"%s\" like \"%s\"\n", fullname(), umask());
+    if(fnmatch(umask(), fullname(), FNM_NOESCAPE)!=0)
+      continue; // not matched
+    dbg_put("  so: \"%s\"\n", fullname());
     //
-    if(RModuleLibrary::pfd_load(&pfd, line)) {
-      dbg_put("  so loaded: \"%s\"\n", line);
+    if(RModuleLibrary::pfd_load(&pfd, fullname())) {
+      dbg_put("  so loaded: \"%s\"\n", fullname());
       //
       for(int i=0; i<~la; i++) {
         if(reinterpret_cast<RModuleLibrary::PFD_Data*>(la(i)->pfd_data)->module==pfd.module) {
@@ -138,7 +145,7 @@ next:;
   dbg_put("/scan so: \"%s%s\"\n", mask, suffix);
   //
   RModuleLibrary::pfd_deinit(&pfd);
-  pclose(f);
+  closedir(f);
   //
   return gn;
 }

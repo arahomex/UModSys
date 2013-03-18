@@ -10,6 +10,47 @@ using namespace UModSys::core::syshlp;
 // syshlp::
 //***************************************
 
+bool syshlp::gracial_cpy(char *dest, int destsize, const char* src[], int srcnum)
+{
+  int bp = 0;
+  for(int i=0; i<srcnum; i++) {
+    int n = src[i]!=NULL && *src[i] ? (int)strlen(src[i]) : 0;
+    if(n+bp>=destsize) {
+      n = destsize - bp - 1;
+      memcpy(dest+bp, src[i], n);
+      dest[bp+n] = 0;
+      return false;
+    } else {
+      memcpy(dest+bp, src[i], n);
+      dest[bp+n] = 0;
+      bp += n;
+    }
+  }
+  return true;
+}
+
+bool syshlp::gracial_cpy(wchar_t *dest, int destsize, const wchar_t* src[], int srcnum)
+{
+  int bp = 0;
+  for(int i=0; i<srcnum; i++) {
+    int n = src[i]!=NULL && *src[i] ? (int)wcslen(src[i]) : 0;
+    if(n+bp>=destsize) {
+      n = destsize - bp - 1;
+      memcpy(dest+bp, src[i], n*sizeof(wchar_t));
+      dest[bp+n] = 0;
+      return false;
+    } else {
+      memcpy(dest+bp, src[i], n*sizeof(wchar_t));
+      dest[bp+n] = 0;
+      bp += n;
+    }
+  }
+  return true;
+}
+
+//***************************************
+//***************************************
+
 #if 0
 
 void syshlp::path_os_uni(wchar_t* path)

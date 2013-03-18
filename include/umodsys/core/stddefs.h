@@ -47,6 +47,10 @@
   #define snprintf _snprintf
 #elif defined(__GNUC__)
 
+  #ifndef _GNU_SOURCE
+    #define _GNU_SOURCE         /* See feature_test_macros(7) */
+  #endif
+
   // includes
   #include <stdio.h>
   #include <stdlib.h>
@@ -59,6 +63,8 @@
   #include <wchar.h>
 
   #include <math.h>
+
+  #include <stddef.h> // offsetof macro
 
   #include <new>
   // /includes

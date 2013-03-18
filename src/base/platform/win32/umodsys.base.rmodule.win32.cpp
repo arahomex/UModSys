@@ -1,9 +1,7 @@
-#include "../../rsystem/umodsys.base.rsystem.h"
-#include "../../rsystem/umodsys.base.rmodule.h"
-
 #include <umodsys/core/platform/win32/syshlp_win32.h>
 
-#include <windows.h>
+#include "../../rsystem/umodsys.base.rsystem.h"
+#include "../../rsystem/umodsys.base.rmodule.h"
 
 using namespace UModSys;
 using namespace UModSys::core;
@@ -109,18 +107,18 @@ static size_t s_pfd_scan(RModuleLibraryArray& la, core::BStr mask, core::BStr su
   UniSoName mask8(mask, suffix);
 //  dbg_put(" -- !mask8=%d of \"%s\" '%s''%s'\n\n", !mask8, mask8(), mask, suffix);
   if(!mask8)
-    return NULL; // path too long
+    return 0; // path too long
   WinSoName mask16(mask8);
 //  dbg_put(" -- !mask16=%d of \"%ls\"\n\n", !mask16, mask16());
   if(!mask16)
-    return NULL; // path too long
+    return 0; // path too long
   WinSoName path16;
   //
   wchar_t *name16;
   int nm = GetFullPathNameW(mask16, path16.Len, path16, &name16);
 //  dbg_put(" -- nm=%d, path16.Len=%d\n", nm, path16.Len);
   if(nm>=path16.Len)
-    return NULL; // path too long
+    return 0; // path too long
   path16.ok();
   //
   size_t gn = 0;
