@@ -1,6 +1,10 @@
 #include "umodsys.base.rsystem.h"
 #include "umodsys.base.rmodule.h"
 
+#if defined(_DEBUG) && defined(_MSC_VER)
+#include <crtdbg.h>
+#endif
+
 using namespace UModSys;
 using namespace UModSys::core;
 using namespace UModSys::base;
@@ -23,6 +27,13 @@ const DCString& RSystem::mod_string(const DCString& v)
 
 bool RSystem::init(void)
 {
+#if defined(_DEBUG) && defined(_MSC_VER)
+  _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF|_CRTDBG_DELAY_FREE_MEM_DF|_CRTDBG_CHECK_CRT_DF|_CRTDBG_ALLOC_MEM_DF);
+//  _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF|_CRTDBG_DELAY_FREE_MEM_DF|_CRTDBG_CHECK_CRT_DF);
+//  _CrtSetDbgFlag(/*_CRTDBG_DELAY_FREE_MEM_DF|*/_CRTDBG_ALLOC_MEM_DF|_CRTDBG_CHECK_ALWAYS_DF);
+//  _CrtSetDbgFlag(/*_CRTDBG_DELAY_FREE_MEM_DF|*/_CRTDBG_ALLOC_MEM_DF);
+#endif
+  //
   dbg_put("RSystem::init()\n");
   //
   SUniquePointer::s_resolve(this); // initalize all upis

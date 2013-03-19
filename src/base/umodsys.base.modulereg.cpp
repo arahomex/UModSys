@@ -5,62 +5,45 @@ using namespace UModSys::core;
 using namespace UModSys::base;
 
 //***************************************
-// SModuleRegChain::
+// IModuleReg::
 //***************************************
 
-SModuleRegChain SModuleRegChain::root(1);
-
-SModuleRegChain::SModuleRegChain(IModuleReg* r)
-: imr(r) 
+IModuleReg::IModuleReg(void)
 {
-  if(root.next==NULL)
-    s_makeroot(&root);
-  s_append(this, &root); 
 }
 
-SModuleRegChain::SModuleRegChain(IModuleReg& r)
-: imr(&r) 
+IModuleReg::~IModuleReg(void)
 {
-  if(root.next==NULL)
-    s_makeroot(&root);
-  s_append(this, &root); 
 }
 
-SModuleRegChain::SModuleRegChain(int v)
-: tl::TList2Node<SModuleRegChain>(void_null()), imr(NULL) 
+bool IModuleReg::mr_isopen(void) const
 {
-//  s_makeroot(this);  !! DO NOT USE THIS
+  return load_count>0;
 }
 
-SModuleRegChain::~SModuleRegChain(void)
+
+bool IModuleReg::mr_open(void)
 {
-  if(imr) delme();
+  load_count++;
+  return true;
 }
 
-size_t SModuleRegChain::s_gather(IModuleReg* rlist[], size_t nlist)
+bool IModuleReg::mr_close(void)
 {
-  size_t rv = 0;
-  for(const SModuleRegChain* x=root.next; x!=&root; x=x->next) {
-    if(rlist!=NULL) {
-      if(rv>=nlist)
-        return rv;
-      rlist[rv++] = x->imr;
-    } else {
-      rv++;
-    }
-  }
-  return rv;
+  load_count--;
+  return true;
 }
 
-IModuleReg* SModuleRegChain::s_get(size_t id)
+//***************************************
+// IModuleLibraryReg::
+//***************************************
+
+IModuleLibraryReg::IModuleLibraryReg(void)
 {
-  M.dbg_put("SModuleRegChain::s_get(%d)\n", (int)id);
-  for(const SModuleRegChain* x=root.next; x!=&root; x=x->next) {
-    if(id==0)
-      return x->imr;
-    id--;
-  }
-  return NULL;
+}
+
+IModuleLibraryReg::~IModuleLibraryReg(void)
+{
 }
 
 //***************************************

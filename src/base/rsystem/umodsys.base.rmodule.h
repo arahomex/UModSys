@@ -72,18 +72,22 @@ public:
   Modules modules;
   DStringSharedMalloc sys_libname;
   //
-  bool scan_mr(PFD_Data* pfd);
+  bool scan_mr(IModuleLibraryReg* imlr);
+  inline bool eq(const PFD_Data* pfd2) { return pfd_eq(get_pfd(), pfd2); }
   //
   /* platform-dependent data */
-  int pfd_data[16]; 
+  int pfd_data[16];
+  inline PFD_Data* get_pfd(void) { return reinterpret_cast<PFD_Data*>(pfd_data); }
+  inline const PFD_Data* get_pfd(void) const { return reinterpret_cast<const PFD_Data*>(pfd_data); }
   /* platform-dependent functions */
-  static IModuleReg* pfd_getmr(PFD_Data* pfd, int id);
+  static IModuleLibraryReg* pfd_getmlr(const PFD_Data* pfd);
   static bool pfd_init(PFD_Data* pfd);
   static bool pfd_init(PFD_Data* pfd, PFD_Data* pfdR);
   static bool pfd_deinit(PFD_Data* pfd);
   static bool pfd_load(PFD_Data* pfd, const core::DCString& filename);
   static bool pfd_unload(PFD_Data* pfd);
   static bool pfd_is_loaded(const PFD_Data* pfd);
+  static bool pfd_eq(const PFD_Data* pfd, const PFD_Data* pfd2);
   static size_t pfd_scan(RModuleLibraryArray& la, const core::DCString& mask);
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(base::RModuleLibrary, 2, IModuleLibrary);

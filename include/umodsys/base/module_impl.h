@@ -12,7 +12,7 @@ namespace UModSys {
 namespace base {
 
 //***************************************
-// IModuleInfo
+// IModuleReg
 //***************************************
 
 struct IModuleReg {
@@ -20,9 +20,32 @@ public:
   SModuleInfo minfo;
   int load_count;
 public:
-  virtual bool open(ISystem* isys) =0;
-  virtual bool close(void) =0;
+  IModuleReg(void);
+  virtual ~IModuleReg(void);
+  virtual bool mr_isopen(void) const;
+  virtual bool mr_open(void);
+  virtual bool mr_close(void);
 };
+
+//***************************************
+// IModuleLibraryReg
+//***************************************
+
+struct IModuleLibraryReg {
+public:
+public:
+  IModuleLibraryReg(void);
+  virtual ~IModuleLibraryReg(void);
+  virtual size_t mlr_count(void) const =0;
+  virtual IModuleReg* mlr_get(size_t id) const =0;
+  virtual bool mlr_isopen(void) const =0;
+  virtual bool mlr_open(ISystem* isys, core::IMemAlloc* privmem) =0;
+  virtual bool mlr_close(void) =0;
+};
+
+//***************************************
+// SModuleRegChain
+//***************************************
 
 struct SModuleRegChain : public tl::TList2Node<SModuleRegChain> {
 public:
@@ -35,35 +58,26 @@ public:
   explicit SModuleRegChain(int v);
   ~SModuleRegChain(void);
   //
-  static size_t s_gather(IModuleReg* rlist[], size_t nlist);
+/*  static size_t s_gather(IModuleReg* rlist[], size_t nlist);*/
   static IModuleReg* s_get(size_t id);
 };
 
 //***************************************
-// SModuleContext
+// RModuleLibraryReg
 //***************************************
 
-struct SModuleContext {
-protected:
-  ISystem* isys;
-  IConsole* icon;
-  core::IMemAlloc* imem;
+struct RModuleLibraryReg_Chain : public IModuleLibraryReg {
 public:
-  ~SModuleContext(void);
-  SModuleContext(void);
-  void Link(ISystem* is, core::IMemAlloc* privmem);
-  //
-  inline operator ISystem*(void) const { return isys; }
-  inline operator IConsole*(void) const { return icon; }
-  inline operator core::IMemAlloc*(void) const { return imem; }
-  inline ISystem* operator->(void) const { return isys; }
-  inline core::IMemAlloc& operator()(void) const { return *imem; }
-  //
-  inline IConsole& con(void) const { return *icon; }
-  inline core::IMemAlloc& mem(void) const { return *imem; }
-  //
+  RModuleLibraryReg_Chain(void);
+  ~RModuleLibraryReg_Chain(void);
 public:
-  void dbg_put(const char *fmt, ...);
+  size_t mlr_count(void) const;
+  IModuleReg* mlr_get(size_t id) const;
+  bool mlr_isopen(void) const;
+  bool mlr_open(ISystem* isys, core::IMemAlloc* privmem);
+  bool mlr_close(void);
+public:
+  static RModuleLibraryReg_Chain s_library;
 };
 
 //***************************************
@@ -79,8 +93,6 @@ inline void so_enable(void) { core::lost(&so_entry_enabled_flag); }
 //***************************************
 
 } // namespace base
-
-extern base::SModuleContext M;
 
 } // namespace UModSys
 

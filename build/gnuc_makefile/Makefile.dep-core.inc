@@ -1,5 +1,16 @@
 #---------------------------- core lib
 
+core_lib_includes := \
+  $(wildcard ../../include/umodsys/core/*.h) \
+  $(wildcard ../../include/umodsys/arch/*.h) \
+  $(wildcard ../../include/umodsys/platform/$(PLATFORM_ID)/*.h) \
+  \
+  $(wildcard ../../include/umodsys/tl/alloc/*.h) \
+  $(wildcard ../../include/umodsys/tl/composite/*.h) \
+  $(wildcard ../../include/umodsys/tl/math/*.h) \
+  $(wildcard ../../include/umodsys/tl/string/*.h) \
+  $(wildcard ../../include/umodsys/tl/util/*.h) \
+
 core_lib_depends := \
   $(T)/umodsys.core.objects$(OSUFFIX) \
   $(T)/umodsys.core.stdtypedefs$(OSUFFIX) \

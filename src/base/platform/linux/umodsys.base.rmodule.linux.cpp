@@ -15,7 +15,7 @@ using namespace UModSys::base;
 
 #define MODULE_ENTRY_NAME "UModSys_Plugin_Entry2"
 
-typedef IModuleReg* (*f_get_moduleinfo)(ISystem* isys, int id);
+typedef IModuleLibraryReg* (*f_get_moduleinfo)(void);
 
 //***************************************
 // RModule::
@@ -24,20 +24,19 @@ typedef IModuleReg* (*f_get_moduleinfo)(ISystem* isys, int id);
 struct RModuleLibrary::PFD_Data {
   void* module;
   f_get_moduleinfo entry;
+  IModuleLibraryReg* ilib;
 };
 
-IModuleReg* RModuleLibrary::pfd_getmr(PFD_Data* pfd, int id)
+IModuleLibraryReg* RModuleLibrary::pfd_getmlr(const PFD_Data* pfd)
 {
-  dbg_put("pfd {m=%p, e=%p}\n", pfd->module, pfd->entry);
-  if(pfd->module==NULL || pfd->entry==NULL)
-    return NULL;
-  return pfd->entry(&RSystem::s_sys, id);
+  return pfd->ilib;
 }
 
 bool RModuleLibrary::pfd_init(PFD_Data* pfd)
 {
   pfd->module = NULL;
   pfd->entry = NULL;
+  pfd->ilib = NULL;
   return true;
 }
 
@@ -69,6 +68,12 @@ bool RModuleLibrary::pfd_load(PFD_Data* pfd, const core::DCString& filename)
     return false;
   }
   //
+  pfd->ilib = pfd->entry();
+  if(pfd->ilib==NULL) {
+    pfd_unload(pfd);
+    return false;
+  }
+  //
   return true;
 }
 
@@ -79,12 +84,18 @@ bool RModuleLibrary::pfd_unload(PFD_Data* pfd)
     pfd->module = NULL;
   }
   pfd->entry = NULL;
+  pfd->ilib = NULL;
   return true;
 }
 
 bool RModuleLibrary::pfd_is_loaded(const PFD_Data* pfd) 
 {
-  return pfd->module!=NULL;
+  return pfd->ilib!=NULL;
+}
+
+bool RModuleLibrary::pfd_eq(const PFD_Data* pfd, const PFD_Data* pfd2)
+{
+  return pfd->ilib==pfd2->ilib;
 }
 
 //***************************************
@@ -129,7 +140,7 @@ static size_t s_pfd_scan(RModuleLibraryArray& la, core::BStr mask, core::BStr su
       dbg_put("  so loaded: \"%s\"\n", fullname());
       //
       for(int i=0; i<~la; i++) {
-        if(reinterpret_cast<RModuleLibrary::PFD_Data*>(la(i)->pfd_data)->module==pfd.module) {
+        if(RModuleLibrary::pfd_eq(la(i)->get_pfd(), &pfd)) {
            dbg_put("  so dup with %d\n", i);
            RModuleLibrary::pfd_unload(&pfd);
            goto next;

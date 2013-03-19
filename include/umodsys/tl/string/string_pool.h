@@ -145,7 +145,7 @@ TStaticPool<CharT,Comparer,MemAllocT>::append(typename TStaticPool<CharT,Compare
   }
   if(z==NULL) { // allocate new chunk
     size_t clen = len>c_max ? len : c_max;
-    vp = MemAllocT::mem_alloc(sizeof(*z)+clen, UMODSYS_SOURCEINFO);
+    vp = MemAllocT::mem_alloc(sizeof(*z)+clen*sizeof(CharT), UMODSYS_SOURCEINFO);
     if(vp==NULL)
       return NULL; // error
     z = new(vp) CC(clen);
@@ -161,7 +161,7 @@ TStaticPool<CharT,Comparer,MemAllocT>::append(typename TStaticPool<CharT,Compare
     }
   }
   // allocate new chunk
-  vp = MemAllocT::mem_alloc(sizeof(*x)+s_max, UMODSYS_SOURCEINFO);
+  vp = MemAllocT::mem_alloc(sizeof(*x)+s_max*sizeof(StringElem), UMODSYS_SOURCEINFO);
   if(vp==NULL)
     return NULL; // error
   x = new(vp) SC(s_max);

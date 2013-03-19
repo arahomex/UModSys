@@ -21,7 +21,7 @@ const SModuleInfo& RModule::get_info(void) const
 
 bool RModule::is_open(void) const
 {
-  return ireg!=NULL;
+  return ireg!=NULL && ireg->mr_isopen();
 }
 
 bool RModule::open(void)
@@ -46,8 +46,6 @@ bool RModule::alloc_minfo(const SModuleInfo &mi2)
   minfo.name = RSystem::s_sys.mod_string(mi2.name);
   minfo.info = RSystem::s_sys.mod_string(mi2.info);
   minfo.verno = mi2.verno;
-  //
-  //
   return true;
 }
 
@@ -95,27 +93,27 @@ IModule* RModuleLibrary::get_module(size_t id) const
 
 bool RModuleLibrary::lib_loaded(void) const
 {
-  return pfd_is_loaded(reinterpret_cast<const PFD_Data*>(pfd_data));
+  return pfd_is_loaded(get_pfd());
 }
 
 bool RModuleLibrary::lib_load(void)
 {
-  return pfd_load(reinterpret_cast<PFD_Data*>(pfd_data), sys_libname.get_s());
+  return pfd_load(get_pfd(), sys_libname.get_s());
 }
 
 bool RModuleLibrary::lib_unload(void)
 {
-  return pfd_unload(reinterpret_cast<PFD_Data*>(pfd_data));
+  return pfd_unload(get_pfd());
 }
 
 //***************************************
 //***************************************
 
-bool RModuleLibrary::scan_mr(PFD_Data* pfd)
+bool RModuleLibrary::scan_mr(IModuleLibraryReg* imlr)
 {
   dbg_put("scan_mr()\n");
-  for(int i=0; ; i++) {
-    IModuleReg *imr = pfd_getmr(pfd, i);
+  for(int i=0, n=imlr->mlr_count(); i<n; i++) {
+    IModuleReg *imr = imlr->mlr_get(i);
     if(imr==NULL)
       break;
     dbg_put("scan_mr() i=%d imr=%p\n", i, imr);
@@ -130,18 +128,18 @@ bool RModuleLibrary::scan_mr(PFD_Data* pfd)
 
 RModuleLibrary::RModuleLibrary(PFD_Data* pfd)
 {
-  pfd_init(reinterpret_cast<PFD_Data*>(pfd_data), pfd);
-  scan_mr(reinterpret_cast<PFD_Data*>(pfd_data));
+  pfd_init(get_pfd(), pfd);
+  scan_mr( pfd_getmlr(get_pfd()) );
 }
 
 RModuleLibrary::RModuleLibrary(void)
 {
-  pfd_init(reinterpret_cast<PFD_Data*>(pfd_data));
+  pfd_init(get_pfd());
 }
 
 RModuleLibrary::~RModuleLibrary(void)
 {
-  pfd_deinit(reinterpret_cast<PFD_Data*>(pfd_data));
+  pfd_deinit(get_pfd());
 }
 
 UMODSYS_REFOBJECT_UNIIMPLEMENT_BODY(RModuleLibrary)

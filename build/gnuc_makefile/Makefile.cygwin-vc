@@ -16,6 +16,6 @@ CXX_O=/Fo
 CXX_BIN=/Fe
 
 CXX_RELEASE=-Ox -DNDEBUG -MD
-CXX_DEBUG=-Od -D_DEBUG -MDd
+CXX_DEBUG=-Od -D_DEBUG -MDd -Z7
 
 include Makefile.inc

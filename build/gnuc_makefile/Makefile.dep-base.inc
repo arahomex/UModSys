@@ -1,5 +1,8 @@
 #---------------------------- base lib
 
+base_lib_includes := \
+  $(wildcard ../../include/umodsys/base/*.h)
+
 base_lib_depends := \
   $(T)/umodsys.base.system$(OSUFFIX) \
   $(T)/umodsys.base.console$(OSUFFIX) \
@@ -7,6 +10,7 @@ base_lib_depends := \
   $(T)/umodsys.base.modulecontext$(OSUFFIX) \
   $(T)/umodsys.base.moduleinfo$(OSUFFIX) \
   $(T)/umodsys.base.modulereg$(OSUFFIX) \
+  $(T)/umodsys.base.moduleregchain$(OSUFFIX) \
   \
   $(T)/umodsys.base.rsystem$(OSUFFIX) \
   $(T)/umodsys.base.rsystem_main$(OSUFFIX) \
@@ -39,22 +43,27 @@ $(main): $(main_depends) $(base_lib) $(core_lib)
 
 #---------------------------- make rules generic
 
+ifndef NO_CXX_DEP
+
 $(T)/%$(OSUFFIX) : ../../src/base/%.cpp
 	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $<
-ifndef NO_CXX_DEP
 	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
-endif
-
 $(T)/%$(OSUFFIX) : ../../src/base/platform/$(PLATFORM_ID)/%.cpp
 	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $<
-ifndef NO_CXX_DEP
 	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
-endif
-
 $(T)/%$(OSUFFIX) : ../../src/base/rsystem/%.cpp
 	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $< 
-ifndef NO_CXX_DEP
 	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
+
+else
+
+$(T)/%$(OSUFFIX) : ../../src/base/platform/$(PLATFORM_ID)/%.cpp $(base_lib_includes) $(core_lib_includes)
+	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $<
+$(T)/%$(OSUFFIX) : ../../src/base/%.cpp $(base_lib_includes) $(core_lib_includes)
+	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $<
+$(T)/%$(OSUFFIX) : ../../src/base/rsystem/%.cpp $(base_lib_includes) $(core_lib_includes)
+	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $< 
+
 endif
 
 #---------------------------- /make rules generic
