@@ -7,7 +7,7 @@
 
 #include <umodsys/core/stdcore.h>
 #include <umodsys/core/source.h>
-#include <umodsys/core/allocator.h>
+#include <umodsys/core/mem/allocator.h>
 
 namespace UModSys {
 namespace tl {

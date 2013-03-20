@@ -82,6 +82,7 @@ public:
   virtual IModule* moduledb_module_get(size_t id) const =0;
   virtual IModule* module_find(const core::DCString& name, const core::SVersion& verno) const =0;
   //
+  virtual size_t moduledb_cleanup(void) =0;
   virtual void moduledb_clear(void) =0;
   virtual bool moduledb_load(const core::DCString& cachepath) =0;
   virtual bool moduledb_save(const core::DCString& cachepath) =0;
@@ -95,4 +96,4 @@ public:
 } // namespace base
 } // namespace UModSys
 
-#endif // __UMODSYS_BASE_CONSOLE_H
+#endif // __UMODSYS_BASE_MODULE_H

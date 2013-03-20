@@ -146,6 +146,18 @@ IModule* RSystem::module_find(const core::DCString& name, const core::SVersion& 
 
 void RSystem::moduledb_clear(void)
 {
+  mod_list.clear();
+}
+
+size_t RSystem::moduledb_cleanup(void)
+{
+  size_t n, rv = 0;
+  for(n=0; n; n=0) {
+    for(int i=0; i<~mod_list; i++) {
+      n += mod_list(i)->cleanup();
+    }
+  }
+  return rv;
 }
 
 bool RSystem::moduledb_load(const core::DCString& cachepath)

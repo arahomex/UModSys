@@ -113,28 +113,6 @@ protected:
 };
 
 //***************************************
-// IModObject::  - per-module class base
-//***************************************
-
-struct IModObject : public IRefObject {
-  virtual base::IModule* get_module(void) const =0;
-protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(core::IModObject, 2, IRefObject);
-};
-
-//***************************************
-// IModObject::  - generator class base
-//***************************************
-
-struct IGenerator : public IModObject {
-//  virtual int get_generated_names(DListStr& list) const =0; // only names
-//  virtual int get_generated_types(DListStr& list, const DHString& name) const =0; // may have different types per name
-//  virtual bool generate(IRefObject::P& obj, const DHString& type, const SParameters& args) =0;
-protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(core::IGenerator, 2, IModObject);
-};
-
-//***************************************
 // END
 //***************************************
 

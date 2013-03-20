@@ -28,20 +28,15 @@ typedef syshlp::WinPath<MAX_SO_PATH> WinSoName;
 struct RModuleLibrary::PFD_Data {
   HMODULE module;
   f_get_moduleinfo entry;
-  IModuleLibraryReg* ilib;
 };
 
-IModuleLibraryReg* RModuleLibrary::pfd_getmlr(const PFD_Data* pfd)
-{
-  return pfd->ilib;
-}
-
+//***************************************
+//***************************************
 
 bool RModuleLibrary::pfd_init(PFD_Data* pfd)
 {
   pfd->module = NULL;
   pfd->entry = NULL;
-  pfd->ilib = NULL;
   return true;
 }
 
@@ -52,62 +47,49 @@ bool RModuleLibrary::pfd_init(PFD_Data* pfd, PFD_Data* pfdR)
   return true;
 }
 
-bool RModuleLibrary::pfd_deinit(PFD_Data* pfd)
-{
-  pfd_unload(pfd);
-  return true;
-}
+//***************************************
+//***************************************
 
-bool RModuleLibrary::pfd_load(PFD_Data* pfd, const core::DCString& filename)
+IModuleLibraryReg* RModuleLibrary::pfd_load(PFD_Data* pfd, const core::DCString& filename)
 {
   if(pfd->module!=NULL)
-    return false;
+    return NULL;
 //  SetDllDirectory();
   WinSoName filename16(filename);
   if(!filename16)
     return NULL; // path too long
   //
   SetErrorMode(SEM_FAILCRITICALERRORS); 
-  dbg_put("  tryload: \"%ls\"\n", filename16());
+  dbg_put("       tryload: \"%ls\"\n", filename16());
   pfd->module = LoadLibraryExW(filename16, NULL, 0);
-  dbg_put("    LoadLibraryExW(\"%ls\", NULL, 0) => %p\n", filename16(), pfd->module);
+  dbg_put("          LoadLibraryExW(\"%ls\", NULL, 0) => %p\n", filename16(), pfd->module);
   if(pfd->module==NULL)
-    return false;
+    return NULL;
   //
   pfd->entry = (f_get_moduleinfo)(GetProcAddress(pfd->module, MODULE_ENTRY_NAME));
   if(pfd->entry==NULL) {
     pfd_unload(pfd);
-    return false;
+    return NULL;
   }
   //
-  pfd->ilib = pfd->entry();
-  if(pfd->ilib==NULL) {
+  IModuleLibraryReg* ilib = pfd->entry();
+  if(ilib==NULL) {
     pfd_unload(pfd);
-    return false;
+    return NULL;
   }
   //
-  return true;
+  return ilib;
 }
 
 bool RModuleLibrary::pfd_unload(PFD_Data* pfd)
 {
   if(pfd->module!=NULL) {
-    FreeLibrary(pfd->module);
+    BOOL rv = FreeLibrary(pfd->module);
+    dbg_put("          FreeLibrary(%p) => %d\n", pfd->module, (int)rv);
     pfd->module = NULL;
   }
   pfd->entry = NULL;
-  pfd->ilib = NULL;
   return true;
-}
-
-bool RModuleLibrary::pfd_is_loaded(const PFD_Data* pfd) 
-{
-  return pfd->ilib!=NULL;
-}
-
-bool RModuleLibrary::pfd_eq(const PFD_Data* pfd, const PFD_Data* pfd2)
-{
-  return pfd->ilib==pfd2->ilib;
 }
 
 //***************************************
@@ -142,9 +124,6 @@ static size_t s_pfd_scan(RModuleLibraryArray& la, core::BStr mask, core::BStr su
     return 0;
   //
   *name16 = 0; // trim to path
-  RModuleLibrary::PFD_Data pfd;
-  RModuleLibrary::pfd_init(&pfd);
-  //
   do {
     dbg_put("  so: \"%ls\"\n", ff.cFileName);
     //
@@ -154,28 +133,10 @@ static size_t s_pfd_scan(RModuleLibraryArray& la, core::BStr mask, core::BStr su
     UniSoName full8(full16);
     if(!full8)
       continue; // path too long
-    //
-//    dbg_put("  tryload: \"%s\"\n", full8());
-    if(RModuleLibrary::pfd_load(&pfd, full8())) {
-      dbg_put("  so loaded: \"%s\"\n", full8());
-      //
-      for(int i=0; i<~la; i++) {
-        if(RModuleLibrary::pfd_eq(la(i)->get_pfd(), &pfd)) {
-           dbg_put("  so dup with %d\n", i);
-           RModuleLibrary::pfd_unload(&pfd);
-           goto next;
-        }
-      }
-      //
-      dbg_put("  so added\n");
-      la.push(new RModuleLibrary(&pfd));
-      gn++;
-    }
+    gn += RModuleLibrary::s_add(la, full8());
 next:;
   } while(FindNextFileW(f, &ff));
   dbg_put("/scan so: \"%s%s\"\n", mask, suffix);
-  //
-  RModuleLibrary::pfd_deinit(&pfd);
   FindClose(f);
   //
   return gn;

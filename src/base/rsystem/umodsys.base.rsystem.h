@@ -67,6 +67,7 @@ public:
   size_t moduledb_module_count(void);
   IModule* moduledb_module_get(size_t id) const;
   IModule* module_find(const core::DCString& name, const core::SVersion& verno) const;
+  size_t moduledb_cleanup(void);
   void moduledb_clear(void);
   bool moduledb_load(const core::DCString& cachepath);
   bool moduledb_save(const core::DCString& cachepath);

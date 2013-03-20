@@ -69,6 +69,8 @@ bool RSystem::deinit(void)
 {
   dbg_put("RSystem::deinit()\n");
   //
+  moduledb_clear();
+  mod_list.clear();
   SUniquePointer::s_unresolve(this); // deinitalize all upis
   //
   return true;

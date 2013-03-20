@@ -19,6 +19,7 @@ struct IModuleReg {
 public:
   SModuleInfo minfo;
   int load_count;
+  IModule *module;
 public:
   IModuleReg(void);
   virtual ~IModuleReg(void);

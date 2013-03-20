@@ -1,7 +1,7 @@
-#ifndef __UMODSYS_CORE_ALLOCATOR_H
-#define __UMODSYS_CORE_ALLOCATOR_H 1
+#ifndef __UMODSYS_CORE_MEM_ALLOCATOR_H
+#define __UMODSYS_CORE_MEM_ALLOCATOR_H 1
 /*************************************************************/
-// file: umodsys/core/allocator.h
+// file: umodsys/core/mem/allocator.h
 // info: allocator bases
 /*************************************************************/
 

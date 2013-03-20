@@ -9,6 +9,7 @@ using namespace UModSys::base;
 //***************************************
 
 IModuleReg::IModuleReg(void)
+: module(NULL), load_count(0)
 {
 }
 

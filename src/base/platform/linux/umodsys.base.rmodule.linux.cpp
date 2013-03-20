@@ -27,10 +27,8 @@ struct RModuleLibrary::PFD_Data {
   IModuleLibraryReg* ilib;
 };
 
-IModuleLibraryReg* RModuleLibrary::pfd_getmlr(const PFD_Data* pfd)
-{
-  return pfd->ilib;
-}
+//***************************************
+//***************************************
 
 bool RModuleLibrary::pfd_init(PFD_Data* pfd)
 {
@@ -47,34 +45,28 @@ bool RModuleLibrary::pfd_init(PFD_Data* pfd, PFD_Data* pfdR)
   return true;
 }
 
-bool RModuleLibrary::pfd_deinit(PFD_Data* pfd)
-{
-  pfd_unload(pfd);
-  return true;
-}
-
-bool RModuleLibrary::pfd_load(PFD_Data* pfd, const core::DCString& filename)
+IModuleLibraryReg* RModuleLibrary::pfd_load(PFD_Data* pfd, const core::DCString& filename)
 {
   if(pfd->module!=NULL)
-    return false;
+    return NULL;
 //  SetDllDirectory();
   pfd->module = dlopen(filename, RTLD_LOCAL|RTLD_NOW);
   if(pfd->module==NULL)
-    return false;
+    return NULL;
   //
   pfd->entry = (f_get_moduleinfo)(dlsym(pfd->module, MODULE_ENTRY_NAME));
   if(pfd->entry==NULL) {
     pfd_unload(pfd);
-    return false;
+    return NULL;
   }
   //
-  pfd->ilib = pfd->entry();
-  if(pfd->ilib==NULL) {
+  IModuleLibraryReg* ilib = pfd->entry();
+  if(ilib==NULL) {
     pfd_unload(pfd);
-    return false;
+    return NULL;
   }
   //
-  return true;
+  return ilib;
 }
 
 bool RModuleLibrary::pfd_unload(PFD_Data* pfd)
@@ -84,18 +76,7 @@ bool RModuleLibrary::pfd_unload(PFD_Data* pfd)
     pfd->module = NULL;
   }
   pfd->entry = NULL;
-  pfd->ilib = NULL;
   return true;
-}
-
-bool RModuleLibrary::pfd_is_loaded(const PFD_Data* pfd) 
-{
-  return pfd->ilib!=NULL;
-}
-
-bool RModuleLibrary::pfd_eq(const PFD_Data* pfd, const PFD_Data* pfd2)
-{
-  return pfd->ilib==pfd2->ilib;
 }
 
 //***************************************
@@ -114,8 +95,6 @@ static size_t s_pfd_scan(RModuleLibraryArray& la, core::BStr mask, core::BStr su
     return 0;
   //
   size_t gn = 0;
-  RModuleLibrary::PFD_Data pfd;
-  RModuleLibrary::pfd_init(&pfd);
   //
   struct dirent de, *d;
 //  dbg_put("   scan so: \"%s%s\"\n", mask, suffix);
@@ -134,28 +113,11 @@ static size_t s_pfd_scan(RModuleLibraryArray& la, core::BStr mask, core::BStr su
 //    dbg_put("  match so: \"%s\" like \"%s\"\n", fullname(), umask());
     if(fnmatch(umask(), fullname(), FNM_NOESCAPE)!=0)
       continue; // not matched
-    dbg_put("  so: \"%s\"\n", fullname());
-    //
-    if(RModuleLibrary::pfd_load(&pfd, fullname())) {
-      dbg_put("  so loaded: \"%s\"\n", fullname());
-      //
-      for(int i=0; i<~la; i++) {
-        if(RModuleLibrary::pfd_eq(la(i)->get_pfd(), &pfd)) {
-           dbg_put("  so dup with %d\n", i);
-           RModuleLibrary::pfd_unload(&pfd);
-           goto next;
-        }
-      }
-      //
-      dbg_put("  so added\n");
-      la.push(new RModuleLibrary(&pfd));
-      gn++;
-    }
+    gn += RModuleLibrary::s_add(la, fullname());
 next:;
   }
   dbg_put("/scan so: \"%s%s\"\n", mask, suffix);
   //
-  RModuleLibrary::pfd_deinit(&pfd);
   closedir(f);
   //
   return gn;
