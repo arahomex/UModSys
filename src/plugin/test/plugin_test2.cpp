@@ -9,6 +9,7 @@ namespace test2 {
 using namespace core;
 using namespace base;
 
+/*
 struct RTest2_Shell : public IShell {
   RTest2_Shell(void) {
     M.con().put(0, "RTest2_Shell()\n");
@@ -34,8 +35,10 @@ struct RTest2_Shell : public IShell {
 };
 
 static tl::TTypeStaticHolder<RTest2_Shell> shell;
-
+*/
 struct RTest2_ModuleReg : public IModuleReg {
+  UMODSYS_BASE_MODREG_DEF(RTest2_ModuleReg)
+  //
   RTest2_ModuleReg(void) {
     minfo.set("Test2", 0, 1, "Test 2 - module");
 //    M.con().put(0, "RTest2_ModuleReg()\n");
@@ -45,24 +48,21 @@ struct RTest2_ModuleReg : public IModuleReg {
   }
   bool do_open(void) {
     M.con().put(0, "RTest2_ModuleReg::open()\n");
-    shell.init();
-    reg(shell);
+//    shell.init(); reg(shell);
     return true;
   }
   bool do_close(void) {
     M.con().put(0, "RTest2_ModuleReg::close()\n");
-    unreg(shell);
-    shell.deinit();
+//    unreg(shell); shell.deinit();
     return true;
   }
 };
 
-static RTest2_ModuleReg reg;
-static SModuleRegChain reg_chain(reg);
+UMODSYS_BASE_MODREG_BODY(RTest2_ModuleReg)
 
-IModule* RTest2_Shell::get_module(void) const { return reg.module; }
+//IModule* RTest2_Shell::get_module(void) const { return reg.module; }
 
-} // namespace UModSys
 } // namespace test2
+} // namespace UModSys
 
 

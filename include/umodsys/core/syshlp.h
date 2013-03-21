@@ -150,6 +150,8 @@ int codepage_convert_cps(char* out, int outsize, const char *in, int insize, con
 /////////////////////////////////////////////////////////////////////////////
 // OS FILES
 
+FILE* c_fopen(const char *cfilename, const char *cmode);
+
 int get_file(const char *name, void* buffer, int bufsize, int binmode);
 int put_file(const char *name, const void* buffer, int bufsize, int binmode);
 int get_file_list(const char *pathmask, int (*use_fn)(void *ctx, const char *fn, const char *attr, int filesize), void *ctx);

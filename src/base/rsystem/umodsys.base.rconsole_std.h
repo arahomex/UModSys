@@ -35,7 +35,11 @@ public:
   bool vget_s(char* buf, size_t len, const char *fmt, va_list va);
   bool get_s(char* buf, size_t len, const char *fmt, ...);
 public:
+  bool reflect(const char *name);
+public:
   UMODSYS_REFOBJECT_IMPLEMENT1(base::rsystem::RConsole_std, 2, IConsole);
+public:
+  FILE* dump_file;
 public:
   static RConsole_std s_console;
 };

@@ -90,7 +90,7 @@ bool RModuleLibrary::pfd_unload(PFD_Data* pfd)
 //***************************************
 //***************************************
 
-static size_t s_pfd_scan(RModuleLibraryArray& la, core::BStr mask, core::BStr suffix)
+static size_t s_pfd_scan(ISystem* sys, RModuleLibraryArray& la, core::BStr mask, core::BStr suffix)
 {
   dbg_put(rsdl_SoLoad, "scan so: \"%s%s\"\n", mask, suffix);
   syshlp::U8String<> ls(mask, suffix), umask(mask, suffix);
@@ -121,7 +121,7 @@ static size_t s_pfd_scan(RModuleLibraryArray& la, core::BStr mask, core::BStr su
 //    dbg_put("  match so: \"%s\" like \"%s\"\n", fullname(), umask());
     if(fnmatch(umask(), fullname(), FNM_NOESCAPE)!=0)
       continue; // not matched
-    gn += RModuleLibrary::s_add(la, fullname());
+    gn += RModuleLibrary::s_add(sys, la, fullname());
 next:;
   }
   dbg_put(rsdl_SoLoad, "/scan so: \"%s%s\"\n", mask, suffix);
@@ -131,11 +131,11 @@ next:;
   return gn;
 }
 
-size_t RModuleLibrary::pfd_scan(RModuleLibraryArray& la, const core::DCString& mask)
+size_t RModuleLibrary::pfd_scan(ISystem* sys, RModuleLibraryArray& la, const core::DCString& mask)
 {
   if(~mask==0) // automatic
-    return s_pfd_scan(la, "./*", SO_SUFFIX);
-  return s_pfd_scan(la, mask, "") + s_pfd_scan(la, mask, SO_SUFFIX);
+    return s_pfd_scan(sys, la, "./*", SO_SUFFIX);
+  return s_pfd_scan(sys, la, mask, "") + s_pfd_scan(sys, la, mask, SO_SUFFIX);
 }
 
 //***************************************

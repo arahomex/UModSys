@@ -30,8 +30,8 @@ bool RSystem::init(void)
 {
   rsys_dbg.mask = 0;
   rsys_dbg.enable(rsdl_System);
-//  rsys_dbg.enable(rsdl_Module);
-//  rsys_dbg.enable(rsdl_ModuleLibrary);
+  rsys_dbg.enable(rsdl_Module);
+  rsys_dbg.enable(rsdl_ModuleLibrary);
   rsys_dbg.enable(rsdl_SoLoad);
   //
 #if defined(_DEBUG) && defined(_MSC_VER)

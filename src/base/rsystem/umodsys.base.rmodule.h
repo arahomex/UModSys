@@ -57,12 +57,13 @@ public:
   typedef int PFD_Raw[16];
   typedef tl::TArray<RModule::SelfP> Modules;
 public:
-  RModuleLibrary(PFD_Data* pfd, IModuleLibraryReg* imlr);
+  RModuleLibrary(ISystem* sys, PFD_Data* pfd, IModuleLibraryReg* imlr);
   RModuleLibrary(void);
   ~RModuleLibrary(void);
 public:
   DCString get_sys_libname(void) const;
   IMemAlloc* get_privmem(void) const;
+  ISystem* get_system(void) const;
   size_t get_module_count(void) const;
   IModule* get_module(size_t id) const;
   //
@@ -70,19 +71,21 @@ public:
   bool lib_load(void);   
   bool lib_unload(void);
 public:
+  ISystem* sys;
   Modules modules;
   DStringSharedMalloc sys_libname;
   IModuleLibraryReg* ireg;
   int load_count;
+  bool linked;
   //
   size_t cleanup(void);
+  bool scan(void);
   bool link(void);
   bool unlink(void);
-  bool scan_mr(void);
   bool load0(void);
   //
   static size_t s_find_dup(const RModuleLibraryArray& la, IModuleLibraryReg* ireg);
-  static bool s_add(RModuleLibraryArray& la, const char *filename);
+  static bool s_add(ISystem* sys, RModuleLibraryArray& la, const char *filename);
   //
 //  inline bool eq(const PFD_Data* pfd2) { return pfd_eq(get_pfd(), pfd2); }
   //
@@ -98,7 +101,7 @@ public:
   static IModuleLibraryReg* pfd_load(PFD_Data* pfd, const core::DCString& filename);
   static bool pfd_unload(PFD_Data* pfd);
   //
-  static size_t pfd_scan(RModuleLibraryArray& la, const core::DCString& mask);
+  static size_t pfd_scan(ISystem* sys, RModuleLibraryArray& la, const core::DCString& mask);
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(base::rsystem::RModuleLibrary, 2, IModuleLibrary);
   UMODSYS_REFOBJECT_UNIIMPLEMENT_DEF()

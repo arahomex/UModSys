@@ -8,6 +8,7 @@ using namespace UModSys::base::rsystem;
 
 int main(int argc, char **argv)
 {
+  RConsole_std::s_console.reflect("umodsys.log");
   RSystem::s_sys.set_console(&RConsole_std::s_console);
   //
   RSystem::s_sys.init();

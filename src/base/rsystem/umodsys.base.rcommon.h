@@ -9,6 +9,8 @@
 #include <umodsys/base/console.h>
 #include <umodsys/base/module_impl.h>
 
+#include <umodsys/core/syshlp.h>
+
 #include <umodsys/tl/composite/array.h>
 
 namespace UModSys {

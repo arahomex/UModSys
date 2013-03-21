@@ -16,6 +16,7 @@ base_lib_depends := \
   $(T)/umodsys.base.rsystem$(OSUFFIX) \
   $(T)/umodsys.base.rsystem_main$(OSUFFIX) \
   $(T)/umodsys.base.rmodule$(OSUFFIX) \
+  $(T)/umodsys.base.rmodulelib$(OSUFFIX) \
   $(T)/umodsys.base.rconsole_std$(OSUFFIX) \
   \
   $(T)/umodsys.base.rmodule.$(PLATFORM_ID)$(OSUFFIX) \
@@ -40,7 +41,10 @@ $(base_lib): $(base_lib_depends)
 	$(AR_ADD)$@ $^
 
 $(main): $(main_depends) $(base_lib) $(core_lib)
-	$(CXX_LINK) $(CXXFLAGS) $(CXX_BIN)$@ $^ 
+	$(CXX_LINK) $(CXXFLAGS) $(CXX_BIN)$@ $^ $(CXX_LINK_LAST)
+ifdef CXX_LINK_POSTPROCESS
+	$(CXX_LINK_POSTPROCESS) $@
+endif
 
 #---------------------------- make rules generic
 

@@ -29,7 +29,10 @@ struct SModuleInfo {
   SModuleInfo(void);
   void set(const char* n, int vh, int vl, const char *i);
   //
-  inline bool operator==(const SModuleInfo& R) const { return name==R.name && verno==R.verno; }
+  inline bool operator==(const SModuleInfo& R) const 
+    { return name==R.name && verno==R.verno; }
+  inline bool eq(const core::DCString &Rname, const core::SVersion &Rverno) const 
+    { return name==Rname && verno==Rverno; }
 };
 
 //***************************************
@@ -67,6 +70,7 @@ public:
 public:
   virtual core::DCString get_sys_libname(void) const =0;
   virtual core::IMemAlloc* get_privmem(void) const =0;
+  virtual ISystem* get_system(void) const =0;
   virtual size_t get_module_count(void) const =0;
   virtual IModule* get_module(size_t id) const =0;
   //
@@ -84,13 +88,15 @@ public:
 struct IModuleLoader
 {
 public:
+  virtual const core::DCString& moduledb_get_string(const core::DCString &s) =0;
+  //
   virtual size_t moduledb_lib_count(void) =0;
   virtual IModuleLibrary* moduledb_lib_get(size_t id) const =0;
   virtual bool moduledb_lib_drop(IModuleLibrary* lib) =0;
   //
   virtual size_t moduledb_module_count(void) =0;
   virtual IModule* moduledb_module_get(size_t id) const =0;
-  virtual IModule* module_find(const core::DCString& name, const core::SVersion& verno) const =0;
+  virtual IModule* moduledb_find(const core::DCString& name, const core::SVersion& verno) const =0;
   //
   virtual size_t moduledb_cleanup(void) =0;
   virtual void moduledb_clear(void) =0;

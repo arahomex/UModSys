@@ -59,7 +59,7 @@ size_t SModuleRegChain::s_gather(IModuleReg* rlist[], size_t nlist)
 
 IModuleReg* SModuleRegChain::s_get(size_t id)
 {
-  M.dbg_put("SModuleRegChain::s_get(%d)\n", (int)id);
+//  M.dbg_put("SModuleRegChain::s_get(%d)\n", (int)id);
   for(const SModuleRegChain* x=root.next; x!=&root; x=x->next) {
     if(id==0)
       return x->imr;

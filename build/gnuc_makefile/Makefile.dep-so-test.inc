@@ -22,10 +22,16 @@ so_test2: $(so_test2)
 #---------------------------- make rules static
 
 $(so_test1): $(so_test1_depends) $(so_main) $(base_lib) $(core_lib)
-	$(CXX_LINK_SO) $(CXXFLAGS) $(CXX_BIN)$@ $^ 
+	$(CXX_LINK_SO) $(CXXFLAGS) $(CXX_BIN)$@ $^ $(CXX_LINK_LAST)
+ifdef CXX_LINK_POSTPROCESS
+	$(CXX_LINK_POSTPROCESS) $@
+endif
 
 $(so_test2): $(so_test2_depends) $(so_main) $(base_lib) $(core_lib)
-	$(CXX_LINK_SO) $(CXXFLAGS) $(CXX_BIN)$@ $^ 
+	$(CXX_LINK_SO) $(CXXFLAGS) $(CXX_BIN)$@ $^ $(CXX_LINK_LAST)
+ifdef CXX_LINK_POSTPROCESS
+	$(CXX_LINK_POSTPROCESS) $@
+endif
 
 #---------------------------- make rules generic
 

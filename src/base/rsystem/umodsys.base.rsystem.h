@@ -46,12 +46,13 @@ public:
 //  bool lib_load(void);
 //  bool lib_unload(void);
 public:
+  const DCString& moduledb_get_string(const DCString &s);
   size_t moduledb_lib_count(void);
   IModuleLibrary* moduledb_lib_get(size_t id) const;
   bool moduledb_lib_drop(IModuleLibrary* lib);
   size_t moduledb_module_count(void);
   IModule* moduledb_module_get(size_t id) const;
-  IModule* module_find(const core::DCString& name, const core::SVersion& verno) const;
+  IModule* moduledb_find(const core::DCString& name, const core::SVersion& verno) const;
   size_t moduledb_cleanup(void);
   void moduledb_clear(void);
   bool moduledb_load(const core::DCString& cachepath);

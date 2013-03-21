@@ -10,6 +10,8 @@ OSUFFIX=.obj
 NO_CXX_DEP=1
 AR_ADD=lib.exe -nologo -out:
 CXX=cl.exe -nologo
+#CXX_LINK_LAST=-link /IMPLIB:NUL
+CXX_LINK_POSTPROCESS=./vc_clear_libexp.sh
 CXX_LINK=cl.exe -nologo
 CXX_LINK_SO=cl.exe -nologo -LD
 CXX_O=/Fo
@@ -19,3 +21,4 @@ CXX_RELEASE=-Ox -DNDEBUG -MD
 CXX_DEBUG=-Od -D_DEBUG -MDd -Z7
 
 include Makefile.inc
+

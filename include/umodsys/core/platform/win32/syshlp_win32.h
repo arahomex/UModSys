@@ -139,14 +139,6 @@ inline SYSTEMTIME timet_to_systemtime(time_t t, bool local=true)
    return st;
 }
 
-inline FILE* c_fopen(const char *cfilename, const char *cmode)
-{
-  U16String<4096> filename(cfilename);
-  U16String<80> mode(cmode);
-  path_uni_os(filename);
-  return _wfopen(filename, mode);
-}
-
 /////////////////////////////////////////////////////////////////////////////
 // END
 

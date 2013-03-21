@@ -27,8 +27,6 @@ namespace core {
 
   struct IRoot;
   struct IRefObject;
-  struct IModObject;
-  struct IGenerator;
 
   struct EExceptionBase;
     struct EFatal;
@@ -63,7 +61,10 @@ namespace base {
   struct SModuleContext;
 
   struct ISystem;
-  struct ISystem;
+
+  struct IModObject;
+  struct IGenerator;
+  struct IShell;
 
 } // namespace base
 

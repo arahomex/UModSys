@@ -11,6 +11,16 @@ using namespace UModSys::core::syshlp;
 // syshlp::
 //***************************************
 
+FILE* syshlp::c_fopen(const char *cfilename, const char *cmode)
+{
+  U16String<4096> filename(cfilename);
+  U16String<80> mode(cmode);
+  path_uni_os(filename);
+  return _wfopen(filename, mode);
+}
+
+//***************************************
+
 static int sys_list_fill(sys_list_context_t* ctx, WIN32_FIND_DATAW *ff)
 {
   syshlp::gracial_convert(ctx->name, sizeof(ctx->name), ff->cFileName, wcslen(ff->cFileName));

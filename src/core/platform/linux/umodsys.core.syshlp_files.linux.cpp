@@ -11,6 +11,13 @@ using namespace UModSys::core::syshlp;
 // syshlp::
 //***************************************
 
+FILE* syshlp::c_fopen(const char *cfilename, const char *cmode)
+{
+  return fopen(cfilename, cmode);
+}
+
+//***************************************
+
 #if 0
 
 static int sys_list_fill(sys_list_context_t* ctx, WIN32_FIND_DATAW *ff)

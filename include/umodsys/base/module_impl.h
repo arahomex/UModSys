@@ -29,7 +29,7 @@ public:
   //
   virtual bool do_open(void) =0;
   virtual bool do_close(void) =0;
-protected:
+public:
   inline bool reg(IModObject* mo) { return module->reg(mo, true); }
   inline bool reg(IGenerator* g) { return module->reg(g, true); }
   inline bool unreg(IModObject* mo) { return module->reg(mo, false); }

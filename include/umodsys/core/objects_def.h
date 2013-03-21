@@ -42,7 +42,7 @@ namespace core {
 #define UMODSYS_ROOT_IMPLEMENT1(_type, _verno, _interface) \
   typedef _interface DParent; \
   typedef _type Self; \
-  inline int _get_interface_types(DPtrList& list) const { list<<_get_interface_type(); return _interface::_get_interface_types(list)+1; } \
+  inline static int _get_interface_types(DPtrList& list) { list<<_get_interface_type(); return _interface::_get_interface_types(list)+1; } \
   inline static const char* _get_interface_cname(void) { return #_type; } \
   inline static int _get_interface_verno(void) { return _verno; } \
   inline static TypeId _get_interface_name(void) { return tl::TObjectUniqueID<_type>::get_id(); } \
@@ -58,7 +58,7 @@ namespace core {
   typedef _interface2 DParent2; \
   typedef _type Self; \
   static SUniquePointer s_interface_type; \
-  inline int _get_interface_types(DPtrList& list) const { \
+  inline static int _get_interface_types(DPtrList& list) { \
     list<<_get_interface_type(); \
     return _interface1::_get_interface_types(list)+_interface2::_get_interface_types(list)+1; \
   } \
