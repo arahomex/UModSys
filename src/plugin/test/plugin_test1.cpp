@@ -37,19 +37,21 @@ static tl::TTypeStaticHolder<RTest1_Shell> shell;
 
 struct RTest1_ModuleReg : public IModuleReg {
   RTest1_ModuleReg(void) {
-    minfo.set("Test1", 0, 1, "Test 1 module");
+    minfo.set("Test1", 0, 1, "Test 1 - module");
 //    M.con().put(0, "RTest1_ModuleReg()\n");
   }
   ~RTest1_ModuleReg(void) {
 //    M.con().put(0, "~RTest1_ModuleReg()\n");
   }
-  bool open(ISystem* isys) {
-    M.con().put(0, "RTest1_ModuleReg::open(%p)\n", isys);
+  bool do_open(void) {
+    M.con().put(0, "RTest1_ModuleReg::open()\n");
     shell.init();
+    reg(shell);
     return true;
   }
-  bool close(void) {
+  bool do_close(void) {
     M.con().put(0, "RTest1_ModuleReg::close()\n");
+    unreg(shell);
     shell.deinit();
     return true;
   }

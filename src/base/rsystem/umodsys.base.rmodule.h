@@ -5,17 +5,14 @@
 // info: implementation of base module object
 /*************************************************************/
 
-#include <umodsys/base/system.h>
-#include <umodsys/base/console.h>
+#include "umodsys.base.rcommon.h"
 #include <umodsys/tl/composite/array.h>
 
 namespace UModSys {
 namespace base {
+namespace rsystem {
 
 using namespace core;
-
-struct RModuleLibrary;
-struct RModule;
 
 //***************************************
 // RModule
@@ -33,6 +30,9 @@ public:
   bool is_open(void) const;
   bool open(void);   
   bool close(void);
+  //
+  bool reg(IModObject* mo, bool doreg);
+  bool reg(IGenerator* gen, bool doreg);
 public:
   IModuleReg* ireg;
   SModuleInfo minfo;
@@ -41,7 +41,7 @@ public:
   bool alloc_minfo(const SModuleInfo &mi2);
   bool scan(void);
 public:
-  UMODSYS_REFOBJECT_IMPLEMENT1(base::RModule, 2, IModule);
+  UMODSYS_REFOBJECT_IMPLEMENT1(base::rsystem::RModule, 2, IModule);
   UMODSYS_REFOBJECT_UNIIMPLEMENT_DEF()
   UMODSYS_REFOBJECT_REFOTHER(RModuleLibrary)
 };
@@ -79,6 +79,7 @@ public:
   bool link(void);
   bool unlink(void);
   bool scan_mr(void);
+  bool load0(void);
   //
   static size_t s_find_dup(const RModuleLibraryArray& la, IModuleLibraryReg* ireg);
   static bool s_add(RModuleLibraryArray& la, const char *filename);
@@ -99,7 +100,7 @@ public:
   //
   static size_t pfd_scan(RModuleLibraryArray& la, const core::DCString& mask);
 public:
-  UMODSYS_REFOBJECT_IMPLEMENT1(base::RModuleLibrary, 2, IModuleLibrary);
+  UMODSYS_REFOBJECT_IMPLEMENT1(base::rsystem::RModuleLibrary, 2, IModuleLibrary);
   UMODSYS_REFOBJECT_UNIIMPLEMENT_DEF()
   UMODSYS_REFOBJECT_SINGLE()
 };
@@ -108,6 +109,7 @@ public:
 // END
 //***************************************
 
+} // namespace rsystem
 } // namespace base
 } // namespace UModSys
 

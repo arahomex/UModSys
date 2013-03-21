@@ -5,13 +5,26 @@ so_test1_depends := \
 
 so_test1 := $(BINDIR)/plugin_test1.$(PLATFORM).$(BUILD_MODE)$(SOLIBSUFFIX)
 
+#---------------------------- so_test2
+
+so_test2_depends := \
+  $(T)/plugin_test2$(OSUFFIX) \
+
+so_test2 := $(BINDIR)/plugin_test2.$(PLATFORM).$(BUILD_MODE)$(SOLIBSUFFIX)
+
 #---------------------------- make rules targets
 
+so_test_s: so_test1 so_test2
+
 so_test1: $(so_test1)
+so_test2: $(so_test2)
 
 #---------------------------- make rules static
 
 $(so_test1): $(so_test1_depends) $(so_main) $(base_lib) $(core_lib)
+	$(CXX_LINK_SO) $(CXXFLAGS) $(CXX_BIN)$@ $^ 
+
+$(so_test2): $(so_test2_depends) $(so_main) $(base_lib) $(core_lib)
 	$(CXX_LINK_SO) $(CXXFLAGS) $(CXX_BIN)$@ $^ 
 
 #---------------------------- make rules generic

@@ -3,6 +3,7 @@
 using namespace UModSys;
 using namespace UModSys::core;
 using namespace UModSys::base;
+using namespace UModSys::base::rsystem;
 
 //***************************************
 // RConsole_std::

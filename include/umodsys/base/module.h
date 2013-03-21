@@ -10,6 +10,11 @@
 namespace UModSys {
 namespace base {
 
+struct ISystem;
+
+struct IModObject;
+struct IGenerator;
+
 //***************************************
 // SModuleInfo
 //***************************************
@@ -23,6 +28,8 @@ struct SModuleInfo {
   SModuleInfo(const char* n, int vh, int vl, const char *i);
   SModuleInfo(void);
   void set(const char* n, int vh, int vl, const char *i);
+  //
+  inline bool operator==(const SModuleInfo& R) const { return name==R.name && verno==R.verno; }
 };
 
 //***************************************
@@ -41,6 +48,9 @@ public:
   virtual bool is_open(void) const =0;
   virtual bool open(void) =0;
   virtual bool close(void) =0;
+  //
+  virtual bool reg(IModObject* mo, bool doreg) =0;
+  virtual bool reg(IGenerator* gen, bool doreg) =0;
 public:
   UMODSYS_REFOBJECT_INTIMPLEMENT(base::IModule, 2, IRefObject);
 };

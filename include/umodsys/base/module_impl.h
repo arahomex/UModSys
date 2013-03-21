@@ -26,6 +26,14 @@ public:
   virtual bool mr_isopen(void) const;
   virtual bool mr_open(void);
   virtual bool mr_close(void);
+  //
+  virtual bool do_open(void) =0;
+  virtual bool do_close(void) =0;
+protected:
+  inline bool reg(IModObject* mo) { return module->reg(mo, true); }
+  inline bool reg(IGenerator* g) { return module->reg(g, true); }
+  inline bool unreg(IModObject* mo) { return module->reg(mo, false); }
+  inline bool unreg(IGenerator* g) { return module->reg(g, false); }
 };
 
 //***************************************

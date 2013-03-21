@@ -5,26 +5,11 @@
 // info: implementation of base system object
 /*************************************************************/
 
-#include <umodsys/base/system.h>
-#include <umodsys/base/console.h>
-#include <umodsys/base/module_impl.h>
-#include <umodsys/tl/composite/array.h>
+#include "umodsys.base.rcommon.h"
 
 namespace UModSys {
 namespace base {
-
-using namespace core;
-
-struct RModule;
-struct RModuleLibrary;
-
-typedef tl::TStaticPool<
-  core::BChar,
-  tl::su::TComparerBinaryHash<core::BChar>,
-  core::SMemAlloc_Malloc
-> DSystemStaticPool;
-
-typedef tl::TArray< tl::TRefObject<RModuleLibrary> > RModuleLibraryArray;
+namespace rsystem {
 
 //***************************************
 // ISystem
@@ -81,6 +66,7 @@ public:
   DSystemStaticPool mod_pool;
   RModuleLibraryArray mod_list;
   //
+  void set_console(IConsole* console);
   bool init(void);
   bool exec_args(int argc, char** argv);
   bool exec_main(void);
@@ -89,17 +75,16 @@ public:
   const DCString& uptr_string(const DCString& v);
   const DCString& mod_string(const DCString& v);
 public:
-  UMODSYS_REFOBJECT_IMPLEMENT1(base::RSystem, 2, ISystem);
+  UMODSYS_REFOBJECT_IMPLEMENT1(base::rsystem::RSystem, 2, ISystem);
 public:
   static RSystem s_sys;
 };
-
-void dbg_put(const char *fmt, ...);
 
 //***************************************
 // END
 //***************************************
 
+} // namespace rsystem
 } // namespace base
 } // namespace UModSys
 

@@ -15,7 +15,7 @@ typedef float BF32;
 typedef double BF64;
 typedef long double BF80;
 
-#if defined(NANOUTL_ARCH_INTELTYPES)
+#if defined(UMODSYS_ARCH_INTELTYPES)
   typedef signed __int64        sint64;
   typedef unsigned __int64      uint64;
   typedef signed __int32        sint32;

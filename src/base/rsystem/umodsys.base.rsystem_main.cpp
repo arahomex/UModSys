@@ -8,6 +8,7 @@
 using namespace UModSys;
 using namespace UModSys::core;
 using namespace UModSys::base;
+using namespace UModSys::base::rsystem;
 
 //***************************************
 // RSystem::
@@ -27,6 +28,12 @@ const DCString& RSystem::mod_string(const DCString& v)
 
 bool RSystem::init(void)
 {
+  rsys_dbg.mask = 0;
+  rsys_dbg.enable(rsdl_System);
+//  rsys_dbg.enable(rsdl_Module);
+//  rsys_dbg.enable(rsdl_ModuleLibrary);
+  rsys_dbg.enable(rsdl_SoLoad);
+  //
 #if defined(_DEBUG) && defined(_MSC_VER)
   _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF|_CRTDBG_DELAY_FREE_MEM_DF|_CRTDBG_CHECK_CRT_DF|_CRTDBG_ALLOC_MEM_DF);
 //  _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF|_CRTDBG_DELAY_FREE_MEM_DF|_CRTDBG_CHECK_CRT_DF);
@@ -34,19 +41,19 @@ bool RSystem::init(void)
 //  _CrtSetDbgFlag(/*_CRTDBG_DELAY_FREE_MEM_DF|*/_CRTDBG_ALLOC_MEM_DF);
 #endif
   //
-  dbg_put("RSystem::init()\n");
+  dbg_put(rsdl_System, "RSystem::init()\n");
   //
   SUniquePointer::s_resolve(this); // initalize all upis
   { // list all upis
-    dbg_put("RSystem::init() -- dump upi {S:%d C:%d}\n", uptr_pool.used_strings(), uptr_pool.used_chars());
+    dbg_put(rsdl_System, "RSystem::init() -- dump upi {S:%d C:%d}\n", uptr_pool.used_strings(), uptr_pool.used_chars());
     for(const SUniquePointer* x=SUniquePointer::root.next; x!=&SUniquePointer::root; x=x->next) {
       if(x==NULL) {
-        dbg_put("upi NULL\n");
+        dbg_put(rsdl_System, "upi NULL\n");
         break;
       }
-      dbg_put("upi{%s %s(%d) %p}\n", x->info.group, x->info.name, x->info.verno, x->upi);
+      dbg_put(rsdl_System, "upi{%s %s(%d) %p}\n", x->info.group, x->info.name, x->info.verno, x->upi);
     }
-    dbg_put("RSystem::init() -- /dump upi\n");
+    dbg_put(rsdl_System, "RSystem::init() -- /dump upi\n");
   }
   //
 //  sys_library = new RModuleLibrary();
@@ -55,25 +62,33 @@ bool RSystem::init(void)
 
 bool RSystem::exec_args(int argc, char** argv)
 {
-  dbg_put("RSystem::exec_args(%d)\n", argc);
+  dbg_put(rsdl_System, "RSystem::exec_args(%d)\n", argc);
   return false;
 }
 
 bool RSystem::exec_main(void)
 {
-  dbg_put("RSystem::exec_main()\n");
+  dbg_put(rsdl_System, "RSystem::exec_main()\n");
   return false;
 }
 
 bool RSystem::deinit(void)
 {
-  dbg_put("RSystem::deinit()\n");
+  dbg_put(rsdl_System, "RSystem::deinit()\n");
   //
+  dbg_put(rsdl_System, " { mod_list=%d:[] }\n", ~mod_list);
+  moduledb_cleanup();
   moduledb_clear();
   mod_list.clear();
   SUniquePointer::s_unresolve(this); // deinitalize all upis
   //
   return true;
+}
+
+void RSystem::set_console(IConsole* cc)
+{
+  console = cc;
+  rsys_dbg.console = cc;
 }
 
 //***************************************
@@ -92,14 +107,16 @@ RSystem::~RSystem(void)
 RSystem RSystem::s_sys;
 
 //***************************************
-// base::
+// rsystem::
 //***************************************
 
-void base::dbg_put(const char *fmt, ...)
+SDebug rsystem::rsys_dbg;
+
+void rsystem::dbg_put(eRSystemDebugLevels dl, const char *fmt, ...)
 {
   va_list va;
   va_start(va, fmt);
-  RSystem::s_sys.get_console()->vput(0, fmt, va);
+  rsys_dbg.dvput(dl, fmt, va);
   va_end(va);
 }
 

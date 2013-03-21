@@ -4,6 +4,7 @@
 using namespace UModSys;
 using namespace UModSys::core;
 using namespace UModSys::base;
+using namespace UModSys::base::rsystem;
 
 //***************************************
 // RSystem::
@@ -146,15 +147,20 @@ IModule* RSystem::module_find(const core::DCString& name, const core::SVersion& 
 
 void RSystem::moduledb_clear(void)
 {
+  moduledb_cleanup();
   mod_list.clear();
 }
 
 size_t RSystem::moduledb_cleanup(void)
 {
   size_t n, rv = 0;
-  for(n=0; n; n=0) {
+  for(; n; rv += n) {
+    n=0;
     for(int i=0; i<~mod_list; i++) {
-      n += mod_list(i)->cleanup();
+      size_t nn = mod_list(i)->cleanup();
+      if(nn==0)
+        continue;
+      n += nn;
     }
   }
   return rv;
@@ -172,7 +178,12 @@ bool RSystem::moduledb_save(const core::DCString& cachepath)
 
 size_t RSystem::moduledb_scan(const core::DCString& mask)
 {
-  return RModuleLibrary::pfd_scan(mod_list, mask);
+  for(size_t i=0; i<~mod_list; i++) {
+    mod_list(i)->load0();
+  }
+  bool rv = RModuleLibrary::pfd_scan(mod_list, mask);
+  moduledb_cleanup();
+  return rv;
 }
 
 

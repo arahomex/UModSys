@@ -14,7 +14,7 @@ T:=$(TT)/$(PLATFORM).$(BUILD_MODE)
 
 all: target
 
-target: T BINDIR core_lib base_lib main so_test1
+target: T BINDIR core_lib base_lib main so_test_s
 
 clean:
 	-$(RM) $(T)/*$(OSUFFIX) 

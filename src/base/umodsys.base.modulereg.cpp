@@ -25,6 +25,10 @@ bool IModuleReg::mr_isopen(void) const
 
 bool IModuleReg::mr_open(void)
 {
+  if(load_count==0) {
+    if(!do_open())
+      return false;
+  }
   load_count++;
   return true;
 }
@@ -32,6 +36,8 @@ bool IModuleReg::mr_open(void)
 bool IModuleReg::mr_close(void)
 {
   load_count--;
+  if(load_count==0) 
+    return do_close();
   return true;
 }
 

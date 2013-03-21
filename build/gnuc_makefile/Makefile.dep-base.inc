@@ -4,8 +4,9 @@ base_lib_includes := \
   $(wildcard ../../include/umodsys/base/*.h)
 
 base_lib_depends := \
-  $(T)/umodsys.base.system$(OSUFFIX) \
+  $(T)/umodsys.base.debug$(OSUFFIX) \
   $(T)/umodsys.base.console$(OSUFFIX) \
+  $(T)/umodsys.base.system$(OSUFFIX) \
   $(T)/umodsys.base.module$(OSUFFIX) \
   $(T)/umodsys.base.modulecontext$(OSUFFIX) \
   $(T)/umodsys.base.moduleinfo$(OSUFFIX) \

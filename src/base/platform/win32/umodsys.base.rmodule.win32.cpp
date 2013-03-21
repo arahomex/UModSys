@@ -6,6 +6,7 @@
 using namespace UModSys;
 using namespace UModSys::core;
 using namespace UModSys::base;
+using namespace UModSys::base::rsystem;
 
 #if defined(_M_X64) || defined(_M_IA64)
   #define MODULE_ENTRY_NAME "UModSys_Plugin_Entry2"
@@ -60,32 +61,37 @@ IModuleLibraryReg* RModuleLibrary::pfd_load(PFD_Data* pfd, const core::DCString&
     return NULL; // path too long
   //
   SetErrorMode(SEM_FAILCRITICALERRORS); 
-  dbg_put("       tryload: \"%ls\"\n", filename16());
+//  dbg_put("       tryload: \"%ls\"\n", filename16());
   pfd->module = LoadLibraryExW(filename16, NULL, 0);
-  dbg_put("          LoadLibraryExW(\"%ls\", NULL, 0) => %p\n", filename16(), pfd->module);
   if(pfd->module==NULL)
     return NULL;
   //
+//  dbg_put("          LoadLibraryExW(\"%ls\", NULL, 0) => %p\n", filename16(), pfd->module);
+  IModuleLibraryReg* ilib = NULL;
   pfd->entry = (f_get_moduleinfo)(GetProcAddress(pfd->module, MODULE_ENTRY_NAME));
   if(pfd->entry==NULL) {
+    dbg_put(rsdl_SoLoad, "          load so(\"%s\") {%p, %p} => %p\n", filename(), pfd->module, pfd->entry, ilib);
     pfd_unload(pfd);
-    return NULL;
+    return ilib;
   }
   //
-  IModuleLibraryReg* ilib = pfd->entry();
+  ilib = pfd->entry();
   if(ilib==NULL) {
+    dbg_put(rsdl_SoLoad, "          load so(\"%s\") {%p, %p} => %p\n", filename(), pfd->module, pfd->entry, ilib);
     pfd_unload(pfd);
-    return NULL;
+    return ilib;
   }
   //
+  dbg_put(rsdl_SoLoad, "          load so(\"%s\") {%p, %p} => %p\n", filename16(), pfd->module, pfd->entry, ilib);
   return ilib;
 }
 
 bool RModuleLibrary::pfd_unload(PFD_Data* pfd)
 {
   if(pfd->module!=NULL) {
+    dbg_put(rsdl_SoLoad, "          unload so({%p, %p})\n", pfd->module, pfd->entry);
     BOOL rv = FreeLibrary(pfd->module);
-    dbg_put("          FreeLibrary(%p) => %d\n", pfd->module, (int)rv);
+//    dbg_put("          FreeLibrary(%p) => %d\n", pfd->module, (int)rv);
     pfd->module = NULL;
   }
   pfd->entry = NULL;
@@ -98,7 +104,7 @@ bool RModuleLibrary::pfd_unload(PFD_Data* pfd)
 static size_t s_pfd_scan(RModuleLibraryArray& la, core::BStr mask, core::BStr suffix)
 {
 
-  dbg_put("scan so: \"%s%s\"\n", mask, suffix);
+  dbg_put(rsdl_SoLoad, "scan so: \"%s%s\"\n", mask, suffix);
   UniSoName mask8(mask, suffix);
 //  dbg_put(" -- !mask8=%d of \"%s\" '%s''%s'\n\n", !mask8, mask8(), mask, suffix);
   if(!mask8)
@@ -125,7 +131,7 @@ static size_t s_pfd_scan(RModuleLibraryArray& la, core::BStr mask, core::BStr su
   //
   *name16 = 0; // trim to path
   do {
-    dbg_put("  so: \"%ls\"\n", ff.cFileName);
+    dbg_put(rsdl_SoLoad, "  so: \"%ls\"\n", ff.cFileName);
     //
     WinSoName full16(path16, ff.cFileName);
     if(!full16)
@@ -136,7 +142,7 @@ static size_t s_pfd_scan(RModuleLibraryArray& la, core::BStr mask, core::BStr su
     gn += RModuleLibrary::s_add(la, full8());
 next:;
   } while(FindNextFileW(f, &ff));
-  dbg_put("/scan so: \"%s%s\"\n", mask, suffix);
+  dbg_put(rsdl_SoLoad, "/scan so: \"%s%s\"\n", mask, suffix);
   FindClose(f);
   //
   return gn;
