@@ -27,12 +27,12 @@ using core::IRefObject;
   inline void rc_init(DOwner *own) { owner=own; ref_count=0; owner->mod_inc(); } \
   inline virtual void suicide(void) { DOwnerP p(owner, void_null()); owner=NULL; delete this; p->mod_dec();  }
 
-#define UMODSYS_BASE_SHELL_DEFINE(_type, _verno, _interface) \
+#define UMODSYS_BASE_SHELL_IMPLEMENT(_type, _verno, _interface) \
   UMODSYS_REFOBJECT_IMPLEMENT1(_type, _verno, _interface) \
   UMODSYS_REFOBJECT_UNIIMPLEMENT() \
   UMODSYS_REFOBJECT_REFMODULE()
 
-#define UMODSYS_BASE_GENERATOR_DEF(_type, _verno, _interface) \
+#define UMODSYS_BASE_GENERATOR_IMPLEMENT(_type, _verno, _interface) \
   UMODSYS_REFOBJECT_IMPLEMENT1(_type, _verno, _interface) \
   UMODSYS_REFOBJECT_UNIIMPLEMENT() \
   inline void rc_init(void) {} \
@@ -43,25 +43,23 @@ using core::IRefObject;
   bool mod_dec(void) const; \
   typedef tl::TTypeStaticHolder<_type> Holder; \
   static core::SUniquePointer s_uid; \
-  /*static Holder s_gen;*/ \
+  static Holder& s_holder(void); \
   static bool s_reg(IModuleReg* imr); \
   static bool s_unreg(IModuleReg* imr); \
+  static const char* s_name_uid(void) { return #_type ":unique"; }
 
-#define UMODSYS_BASE_MODOBJECT_FUNC(_type, _mod) \
+#define UMODSYS_BASE_MODOBJECT_BODY(_type, _mod) \
   IModule* _type::get_module(void) const { return _mod::s_modreg.module; } \
   bool _type::mod_inc(void) const { return _mod::s_modreg.module->open(); } \
   bool _type::mod_dec(void) const { return _mod::s_modreg.module->close(); } \
-  core::SUniquePointer _type::s_uid("modobject", #_type ":unique", 0); \
-  /*_type::Holder _type::s_gen;*/ \
-  _type::Holder _type##__s_gen; \
-  bool _type::s_reg(IModuleReg* imr) { _type##__s_gen.init(); return imr->reg(_type##__s_gen); } \
-  bool _type::s_unreg(IModuleReg* imr) { bool rv = imr->unreg(_type##__s_gen); _type##__s_gen.init(); return rv; } \
-  /*bool _type::s_reg(IModuleReg* imr) { s_gen.init(); return imr->reg(s_gen); }*/ \
-  /*bool _type::s_unreg(IModuleReg* imr) { bool rv = imr->unreg(s_gen); s_gen.init(); return rv; }*/\
+  core::SUniquePointer _type::s_uid("modobject", _type::s_name_uid(), 0); \
+  _type::Holder& _type::s_holder(void) { static _type::Holder h; return h; } \
+  bool _type::s_reg(IModuleReg* imr) { s_holder().init(); return imr->reg(s_holder()); } \
+  bool _type::s_unreg(IModuleReg* imr) { bool rv = imr->unreg(s_holder()); s_holder().init(); return rv; }
 
 
-#define UMODSYS_BASE_GENERATOR_FUNC(_type, _mod) \
-  UMODSYS_BASE_MODOBJECT_FUNC(_type, _mod)
+#define UMODSYS_BASE_GENERATOR_BODY(_type, _mod) \
+  UMODSYS_BASE_MODOBJECT_BODY(_type, _mod)
   
 
 #define UMODSYS_BASE_MODREG_DEF(_type) \
@@ -81,7 +79,7 @@ struct IModObject : public IRefObject {
   virtual bool mod_inc(void) const =0;
   virtual bool mod_dec(void) const =0;
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(base::IModObject, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IModObject, 2, IRefObject);
 };
 
 //***************************************
@@ -94,7 +92,7 @@ struct IGenerator : public IModObject {
   virtual bool generate(IRefObject::P& obj, TypeId name, const SParameters& args) =0;
 protected:
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(base::IGenerator, 2, IModObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IGenerator, 2, IModObject);
 };
 
 //***************************************
@@ -107,7 +105,7 @@ struct IShell : public IRefObject {
   virtual bool process_tick(const core::STimeMsec& delta) =0;
   virtual bool process_command(int argc, const core::DCString argv[]) =0;
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(base::IShell, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IShell, 2, IRefObject);
 };
 
 //***************************************

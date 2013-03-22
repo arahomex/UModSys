@@ -100,7 +100,7 @@ public:
   const DCString& uptr_string(const DCString& v);
   const DCString& mod_string(const DCString& v);
 public:
-  UMODSYS_REFOBJECT_IMPLEMENT1(base::rsystem::RSystem, 2, ISystem);
+  UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RSystem, 2, ISystem);
 public:
   static RSystem s_sys;
 };

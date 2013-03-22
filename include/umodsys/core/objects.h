@@ -72,7 +72,7 @@ protected:
   inline const IRoot* _get_other_interface(TypeId type) const { return type==_get_interface_type() ? this : NULL; }
   inline IRoot* _get_other_interface(TypeId type) { return type==_get_interface_type() ? this : NULL; }
 public:
-  inline static const char* _get_interface_infoname(void) { return "core::IRoot"; } \
+  inline static const char* _get_interface_infoname(void) { return "UModSys::core::IRoot"; } \
   inline static DVersionNo _get_interface_infover(void) { return 2; } \
   inline static TypeId _get_interface_type(void) { return tl::TObjectUniqueID<IRoot>::get_id(); }
   inline static const TypeInfo& _get_interface_info(void) { return tl::TObjectUniqueID<IRoot>::get_info(); }
@@ -113,7 +113,7 @@ public:
     return rv.valid();
   }
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(core::IRefObject, 2, IRoot);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::core::IRefObject, 2, IRoot);
 };
 
 //***************************************

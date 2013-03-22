@@ -55,7 +55,7 @@ public:
   virtual bool reg(IModObject* mo, bool doreg) =0;
   virtual bool reg(IGenerator* gen, bool doreg) =0;
 public:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(base::IModule, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IModule, 2, IRefObject);
 };
 
 //***************************************
@@ -78,7 +78,7 @@ public:
   virtual bool lib_load(void) =0;
   virtual bool lib_unload(void) =0;
 public:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(base::IModuleLibrary, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IModuleLibrary, 2, IRefObject);
 };
 
 //***************************************

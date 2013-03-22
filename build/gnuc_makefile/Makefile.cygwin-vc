@@ -17,7 +17,7 @@ CXX_LINK_SO=cl.exe -nologo -LD
 CXX_O=/Fo
 CXX_BIN=/Fe
 
-CXXFLAGS += -Werror
+CXXFLAGS += -WX
 CXX_RELEASE=-Ox -DNDEBUG -MD
 CXX_DEBUG=-Od -D_DEBUG -MDd -Z7
 

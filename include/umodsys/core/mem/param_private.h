@@ -46,7 +46,7 @@ struct IParameters : public core::IRefObject {
   virtual bool next(const SParametersData *p, BCStr& name) =0;
   virtual bool next(const SParametersData *p, DCString& name) =0;
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(core::IParameters, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::core::IParameters, 2, IRefObject);
 };
 
 //***************************************

@@ -15,7 +15,7 @@ int main(int argc, char **argv)
   S.init();
   S.moduledb_scan("", false);
   S.moduledb_scan("*", true);
-  S.moduledb_save("moduledb.");
+  S.moduledb_save("moduledb.conf-hdb");
   //
   S.exec_args(argc, argv);
   S.exec_main();

@@ -37,9 +37,16 @@ public:
     : tid(t), uid(t), start_gen(s), count_gen(0), reg_count(0), mo(NULL) {}
 */
   };
+  struct GeneratedObjInfo {
+    TypeId tid;
+    size_t start_elem, count_elem;
+    //
+    GeneratedObjInfo(void) : tid(NULL), start_elem(array_index_none), count_elem(0) {}
+  };
   //
   typedef tl::TArray<ModuleObjInfo> ModObjArray;
-  typedef tl::TArray<TypeId> ModObjGenArray;
+  typedef tl::TArray<GeneratedObjInfo> ModObjGenInfoArray;
+  typedef tl::TArray<TypeId> ModObjGenTypeArray;
 public:
   RModule(RModuleLibrary *pv, IModuleReg *imr);
   ~RModule(void);
@@ -57,7 +64,8 @@ public:
   IModuleReg* ireg;
   SModuleInfo minfo;
   ModObjArray mos;
-  ModObjGenArray mogs;
+  ModObjGenInfoArray mogis;
+  ModObjGenTypeArray mogts;
   //
   ModuleObjInfo* reg_obj(IModObject* mo);
   bool unreg_obj(IModObject* mo);
@@ -67,7 +75,7 @@ public:
   bool scan(void);
   bool save_db(FILE *f);
 public:
-  UMODSYS_REFOBJECT_IMPLEMENT1(base::rsystem::RModule, 2, IModule);
+  UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RModule, 2, IModule);
   UMODSYS_REFOBJECT_UNIIMPLEMENT_DEF()
   UMODSYS_REFOBJECT_REFOTHER(RModuleLibrary)
 };
@@ -130,7 +138,7 @@ public:
   //
   static size_t pfd_scan(ISystem* sys, RModuleLibraryArray& la, const core::DCString& mask);
 public:
-  UMODSYS_REFOBJECT_IMPLEMENT1(base::rsystem::RModuleLibrary, 2, IModuleLibrary);
+  UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RModuleLibrary, 2, IModuleLibrary);
   UMODSYS_REFOBJECT_UNIIMPLEMENT_DEF()
   UMODSYS_REFOBJECT_SINGLE()
 };

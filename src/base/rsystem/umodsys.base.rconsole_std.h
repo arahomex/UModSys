@@ -37,7 +37,7 @@ public:
 public:
   bool reflect(const char *name);
 public:
-  UMODSYS_REFOBJECT_IMPLEMENT1(base::rsystem::RConsole_std, 2, IConsole);
+  UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RConsole_std, 2, IConsole);
 public:
   FILE* dump_file;
 public:

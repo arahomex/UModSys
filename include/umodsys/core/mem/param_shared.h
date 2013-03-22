@@ -91,7 +91,7 @@ struct IParametersShared : public core::IRefObject {
   virtual int           get_count(const SFixedParametersData *p, BCStr name) =0;
   //
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(core::IParametersShared, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::core::IParametersShared, 2, IRefObject);
 };
 
 //***************************************

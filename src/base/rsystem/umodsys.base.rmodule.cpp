@@ -85,23 +85,47 @@ bool RModule::reg_generator(ModuleObjInfo* mi, IGenerator* gen)
 {
   HUniquePointer alist[max_generated_names];
   SUniquePtrList lst(alist, max_generated_names);
-  size_t bn = ~mogs;
+  size_t bn = ~mogis;
   mi->start_gen = bn;
   mi->count_gen = 0;
   if(gen->get_generated_names(lst)==0)
     return true; // empty generator
   size_t nn = ~lst;
-  if(!mogs.pushn(nn)) {
+  if(!mogis.pushn(nn)) {
     err_put(
       rsdl_Module, 
-      "RModule(%p)::reg_generator(%s %p) -- integrity error: no uid\n", 
+      "RModule(%p)::reg_generator(%s %p) -- allocate error: info\n", 
       this, gen->get_interface_info().name, gen
     );
     return false;
   }
-  mi->count_gen = nn;
+  //
   for(size_t i=0; i<nn; i++) {
-    mogs[i+bn] = lst[i];
+    GeneratedObjInfo& gi = mogis[i+bn];
+    gi.tid = lst[i];
+  }
+  mi->count_gen = nn;
+  //
+  for(size_t i=0; i<nn; i++) {
+    GeneratedObjInfo& gi = mogis[i+bn];
+    lst.clear();
+    if(gen->get_generated_types(lst, gi.tid)==0)
+      continue;
+    size_t btn = ~mogts;
+    size_t nt = ~lst;
+    gi.start_elem = btn;
+    if(!mogts.pushn(nt)) {
+      err_put(
+        rsdl_Module, 
+        "RModule(%p)::reg_generator(%s %p) -- allocate error: type\n", 
+        this, gen->get_interface_info().name, gen
+      );
+      return false;
+    }
+    for(size_t k=0; k<nt; k++) {
+      mogts[btn+k] = lst[k];
+    }
+    gi.count_elem = nt;
   }
   return true;
 }
@@ -221,7 +245,7 @@ bool RModule::scan(void)
 
 bool RModule::save_db(FILE *f)
 {
-  fprintf(f, "  BEGIN MODULE %s %d,%d\n", minfo.name(), minfo.verno.vmajor, minfo.verno.vminor);
+  fprintf(f, "  BEGIN MODULE %s(%d,%d)\n", minfo.name(), minfo.verno.vmajor, minfo.verno.vminor);
   for(size_t i=0; i<~mos; i++) {
     const ModuleObjInfo& mi = mos(i);
     dbg_put(
@@ -254,13 +278,21 @@ bool RModule::save_db(FILE *f)
       );
       size_t bp = mi.start_gen;
       for(size_t k=0; k<mi.count_gen; k++) {
+        const GeneratedObjInfo& gi = mogis(bp+k);
         fprintf(
           f, "      BEGIN REFOBJECT %s(%d)\n", 
-          mogs(k+bp)->name, mogs(k+bp)->verno
+          gi.tid->name, gi.tid->verno
         );
+        for(size_t kk=0; kk<gi.count_elem; kk++) {
+          TypeId tid = mogts(gi.start_elem+kk);
+          fprintf(
+            f, "        TYPE %s(%d)\n", 
+            tid->name, tid->verno
+          );
+        }
         fprintf(
           f, "      END REFOBJECT %s(%d)\n", 
-          mogs(k+bp)->name, mogs(k+bp)->verno
+          gi.tid->name, gi.tid->verno
         );
       }
       fprintf(
@@ -270,7 +302,7 @@ bool RModule::save_db(FILE *f)
       );
     }
   }
-  fprintf(f, "  END MODULE %s %d,%d\n", minfo.name(), minfo.verno.vmajor, minfo.verno.vminor);
+  fprintf(f, "  END MODULE %s(%d,%d)\n", minfo.name(), minfo.verno.vmajor, minfo.verno.vminor);
   return true;
 }
 

@@ -12,7 +12,7 @@ using namespace base;
 struct RTest1_Generator;
 
 struct RTest1_Shell : public IShell {
-  UMODSYS_BASE_SHELL_DEFINE(test1::RTest1_Shell, 1, IShell)
+  UMODSYS_BASE_SHELL_IMPLEMENT(UModSys::test1::RTest1_Shell, 1, IShell)
   //
   RTest1_Shell(DOwner *own) {
     rc_init(own);
@@ -59,7 +59,7 @@ struct RTest1_Generator : public IGenerator {
     return false;
   }
   //
-  UMODSYS_BASE_GENERATOR_DEF(test1::RTest1_Generator, 1, IGenerator)
+  UMODSYS_BASE_GENERATOR_IMPLEMENT(UModSys::test1::RTest1_Generator, 1, IGenerator)
 };
 
 struct RTest1_ModuleReg : public IModuleReg {
@@ -85,7 +85,7 @@ struct RTest1_ModuleReg : public IModuleReg {
 };
 
 UMODSYS_BASE_MODREG_BODY(RTest1_ModuleReg)
-UMODSYS_BASE_GENERATOR_FUNC(RTest1_Generator, RTest1_ModuleReg)
+UMODSYS_BASE_GENERATOR_BODY(RTest1_Generator, RTest1_ModuleReg)
 
 } // namespace test1
 } // namespace UModSys
