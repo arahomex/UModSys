@@ -23,6 +23,9 @@ struct TArrayAbstract;
 template<typename SNode, typename Allocator=TAllocator<> >
 struct TArray;
 
+template<typename SNode, typename Allocator=TAllocator<> >
+struct TArrayChunked;
+
 template<typename SNode, size_t nSize>
 struct TArrayFixed;
 
@@ -126,9 +129,11 @@ public:
   //
   bool push(const SNode& def);
   inline bool push(void) { return resize(Base::count+1); }
+  inline bool pushn(size_t n=1) { return resize(Base::count+n); }
   //
   inline bool pop(SNode& def) { if(Base::count==0) return false; def = Base::last(); return resize(Base::count-1); }
   inline bool pop(void) { return resize(Base::count-1); }
+  inline bool popn(size_t n=1) { return resize(Base::count-n); }
   //
   bool resize(size_t newsize);
   bool free(void);

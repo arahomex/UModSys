@@ -18,8 +18,28 @@ using namespace core;
 // RModule
 //***************************************
 
+const size_t max_generated_names = 1024;
+
 struct RModule : public IModule
 {
+public:
+  struct ModuleObjInfo {
+    TypeId tid, uid;
+    size_t start_gen, count_gen;
+    int reg_count;
+    IModObject* mo;
+    //
+    ModuleObjInfo(void) 
+    : tid(NULL), uid(NULL), reg_count(0), mo(NULL), 
+      start_gen(array_index_none), count_gen(array_index_none) {}
+/*
+    ModuleObjInfo(TypeId t, size_t s=array_index_none) 
+    : tid(t), uid(t), start_gen(s), count_gen(0), reg_count(0), mo(NULL) {}
+*/
+  };
+  //
+  typedef tl::TArray<ModuleObjInfo> ModObjArray;
+  typedef tl::TArray<TypeId> ModObjGenArray;
 public:
   RModule(RModuleLibrary *pv, IModuleReg *imr);
   ~RModule(void);
@@ -36,10 +56,16 @@ public:
 public:
   IModuleReg* ireg;
   SModuleInfo minfo;
-  int sys_id;
+  ModObjArray mos;
+  ModObjGenArray mogs;
+  //
+  ModuleObjInfo* reg_obj(IModObject* mo);
+  bool unreg_obj(IModObject* mo);
+  bool reg_generator(ModuleObjInfo* mi, IGenerator* gen);
   //
   bool alloc_minfo(const SModuleInfo &mi2);
   bool scan(void);
+  bool save_db(FILE *f);
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(base::rsystem::RModule, 2, IModule);
   UMODSYS_REFOBJECT_UNIIMPLEMENT_DEF()
@@ -83,6 +109,7 @@ public:
   bool link(void);
   bool unlink(void);
   bool load0(void);
+  bool save_db(FILE *f);
   //
   static size_t s_find_dup(const RModuleLibraryArray& la, IModuleLibraryReg* ireg);
   static bool s_add(ISystem* sys, RModuleLibraryArray& la, const char *filename);

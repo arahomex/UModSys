@@ -70,15 +70,17 @@ public:
   SUniquePtrList(HUniquePointer *a, size_t n);
   //
   inline size_t len(void) const { return curlen; }
-  inline size_t operator~(void) const { return curlen; }
   inline HUniquePointer get(size_t n) const { return arr[n]; }
-  inline HUniquePointer operator[](size_t n) const { return arr[n]; }
-  inline HUniquePointer operator()(size_t n) const { return arr[n]; }
   //
   void clear(void) { curlen=0; }
   bool add(HUniquePointer val);
-  inline SUniquePtrList& operator<<(HUniquePointer val) { add(val); return *this; }
   size_t find(HUniquePointer val) const;
+  //
+  inline SUniquePtrList& operator<<(HUniquePointer val) { add(val); return *this; }
+  //
+  inline size_t operator~(void) const { return curlen; }
+  inline HUniquePointer operator()(size_t i) const { return arr[i]; }
+  inline HUniquePointer operator[](size_t i) const { return arr[i]; }
   inline size_t operator()(HUniquePointer vv) const { return find(vv); }
 public:
   HUniquePointer *arr;

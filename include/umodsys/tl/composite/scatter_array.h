@@ -1,14 +1,14 @@
-#ifndef __NANOUTL_TYPES_SCATTER_ARRAY_H
-#define __NANOUTL_TYPES_SCATTER_ARRAY_H 1
-//*****************************************************
-// nanoutl/types/scatter_array.h: scatter array type
-//*****************************************************
+#ifndef __UMODSYS_TL_SCATTER_ARRAY_H
+#define __UMODSYS_TL_SCATTER_ARRAY_H 1
+/*************************************************************/
+// file: umodsys/tl/composite/tree_rb.h
+// info: scatter array type based on tree-rb
+/*************************************************************/
 
-#include <nanoutl/types/tree_rb.h>
-#include <nanoutl/types/allocator.h>
+#include <umodsys/tl/composite/tree_rb.h>
 
-namespace NanoUTL {
-namespace types {
+namespace UModSys {
+namespace tl {
 
 //***************************************
 
@@ -197,7 +197,7 @@ protected:
 
 //***************************************
 
-} // namespace types
-} // namespace NanoUTL
+} // namespace tl
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_SCATTER_ARRAY_H
+#endif // __UMODSYS_TL_SCATTER_ARRAY_H

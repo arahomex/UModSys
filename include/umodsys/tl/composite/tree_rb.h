@@ -1,14 +1,17 @@
-#ifndef __NANOUTL_TYPES_TREE_RB_H
-#define __NANOUTL_TYPES_TREE_RB_H 1
-//*****************************************************
-// nanoutl/types/tree_rb.h: Tree red-black
-//*****************************************************
+#ifndef __UMODSYS_TL_TREE_RB_H
+#define __UMODSYS_TL_TREE_RB_H 1
+/*************************************************************/
+// file: umodsys/tl/composite/tree_rb.h
+// info: Tree red-black
+/*************************************************************/
 
-#include <nanoutl/types/type_constructor.h>
-#include <nanoutl/types/allocator.h>
+#include <umodsys/core/stdcore.h>
 
-namespace NanoUTL {
-namespace types {
+#include <umodsys/tl/util/type_constructor.h>
+#include <umodsys/tl/alloc/allocator.h>
+
+namespace UModSys {
+namespace tl {
 
 //***************************************
 
@@ -843,7 +846,7 @@ public:
 
 //***************************************
 
-} // namespace types
-} // namespace NanoUTL
+} // namespace tl
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_TREE_RB_H
+#endif // __UMODSYS_TL_TREE_RB_H

@@ -8,10 +8,12 @@
 #include <umodsys/base/system.h>
 #include <umodsys/base/console.h>
 #include <umodsys/base/module_impl.h>
+#include <umodsys/base/bobjects.h>
 
 #include <umodsys/core/syshlp.h>
 
 #include <umodsys/tl/composite/array.h>
+#include <umodsys/tl/composite/scatter_array.h>
 
 namespace UModSys {
 namespace base {
@@ -22,13 +24,6 @@ using namespace core;
 struct RModuleLibrary;
 struct RModule;
 struct RConsole_std;
-
-
-typedef tl::TStaticPool<
-  core::BChar,
-  tl::su::TComparerBinaryHash<core::BChar>,
-  core::SMemAlloc_Malloc
-> DSystemStaticPool;
 
 typedef tl::TArray< tl::TRefObject<RModuleLibrary> > RModuleLibraryArray;
 
@@ -46,6 +41,7 @@ enum eRSystemDebugLevels {
 extern SDebug rsys_dbg;
 
 void dbg_put(eRSystemDebugLevels dl, const char *fmt, ...);
+void err_put(eRSystemDebugLevels dl, const char *fmt, ...);
 
 //***************************************
 // END

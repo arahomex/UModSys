@@ -102,7 +102,7 @@ public:
   virtual void moduledb_clear(void) =0;
   virtual bool moduledb_load(const core::DCString& cachepath) =0;
   virtual bool moduledb_save(const core::DCString& cachepath) =0;
-  virtual size_t moduledb_scan(const core::DCString& mask) =0;
+  virtual size_t moduledb_scan(const core::DCString& mask, bool docleanup=true) =0;
 };
 
 //***************************************

@@ -57,9 +57,12 @@ bool RModuleLibrary::lib_unload(void)
   if(load_count-->0)
     return true;
   load_count = 0;
+/*
   bool rv1 = unlink();
   bool rv2 = pfd_unload(get_pfd());
   return rv1 && rv2;
+*/
+  return true;
 }
 
 //***************************************
@@ -67,18 +70,20 @@ bool RModuleLibrary::lib_unload(void)
 
 size_t RModuleLibrary::cleanup(void)
 {
+/*
   dbg_put(
     rsdl_ModuleLibrary,
     "RModuleLibrary(%p)::cleanup() { ireg=%p, load_count=%d, sys_libname=\"%s\" }\n", 
     this, ireg, load_count, sys_libname()
   );
+*/
   if(ireg==NULL)
     return 0;
   if(load_count==0) {
     unlink();
     pfd_unload(get_pfd());
   }
-  return 0;
+  return 1;
 }
 
 bool RModuleLibrary::load0(void)
@@ -154,6 +159,19 @@ bool RModuleLibrary::scan(void)
   for(size_t i=0; i<~modules; i++) {
     modules(i)->scan();
   }
+  return true;
+}
+
+bool RModuleLibrary::save_db(FILE *f)
+{
+  fprintf(f, "BEGIN LIBRARY %s\n", sys_libname());
+  for(size_t i=0; i<~modules; i++) {
+    if(!modules(i).valid())
+      continue;
+    if(!modules(i)->save_db(f))
+      return false;
+  }
+  fprintf(f, "END LIBRARY %s\n", sys_libname());
   return true;
 }
 

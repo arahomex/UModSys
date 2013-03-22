@@ -21,10 +21,10 @@ namespace tl {
 //***************************************
 
 template<typename CharT, typename Comparer, typename MemAllocT>
-struct TStaticPool : public MemAllocT {
+struct TStaticStringPool : public MemAllocT {
   UMODSYS_STRING_CLASS_HEADER(CharT)
   typedef TString<su::TSCoreConst<CharT>, Comparer> StringElem;
-  typedef TStaticPool<CharT, Comparer, MemAllocT> Self;
+  typedef TStaticStringPool<CharT, Comparer, MemAllocT> Self;
   //
   struct CharChunk {
     CharChunk* next;
@@ -57,12 +57,12 @@ struct TStaticPool : public MemAllocT {
     }
   };
 public:
-  inline ~TStaticPool(void) { release(); }
-  inline TStaticPool(size_t cm=0x1000, size_t sm=0x100) 
+  inline ~TStaticStringPool(void) { release(); }
+  inline TStaticStringPool(size_t cm=0x1000, size_t sm=0x100) 
   : cs(NULL), ss(NULL), c_max(cm), s_max(sm), c_len(0), s_len(0) {}
-  inline TStaticPool(const MemAllocT& ma, size_t cm=0x1000, size_t sm=0x100) 
+  inline TStaticStringPool(const MemAllocT& ma, size_t cm=0x1000, size_t sm=0x100) 
   : MemAllocT(ma), cs(NULL), ss(NULL), c_max(cm), s_max(sm), c_len(0), s_len(0) {}
-  inline TStaticPool(const Self& R) 
+  inline TStaticStringPool(const Self& R) 
   : MemAllocT(R), cs(NULL), ss(NULL), c_max(R.c_max), s_max(R.s_max), c_len(0), s_len(0) { copyfrom(R); }
   //
   inline void operator=(const Self& R) { copyfrom(R); }
@@ -100,14 +100,14 @@ public:
 };
 
 template<typename CharT, typename Comparer, typename MemAllocT>
-typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem
-TStaticPool<CharT,Comparer,MemAllocT>::s_null;
+typename TStaticStringPool<CharT,Comparer,MemAllocT>::StringElem
+TStaticStringPool<CharT,Comparer,MemAllocT>::s_null;
 
 template<typename CharT, typename Comparer, typename MemAllocT>
-const typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem* 
-TStaticPool<CharT,Comparer,MemAllocT>::get_s(size_t n) const
+const typename TStaticStringPool<CharT,Comparer,MemAllocT>::StringElem* 
+TStaticStringPool<CharT,Comparer,MemAllocT>::get_s(size_t n) const
 {
-  const typename TStaticPool<CharT,Comparer,MemAllocT>::StringChunk *x;
+  const typename TStaticStringPool<CharT,Comparer,MemAllocT>::StringChunk *x;
   for(x=ss; x!=NULL; x=x->next) {
     if(n<x->len)
       return &x->buffer[n];
@@ -117,21 +117,21 @@ TStaticPool<CharT,Comparer,MemAllocT>::get_s(size_t n) const
 }
 
 template<typename CharT, typename Comparer, typename MemAllocT>
-const typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem* 
-TStaticPool<CharT,Comparer,MemAllocT>::append(typename TStaticPool<CharT,Comparer,MemAllocT>::Str v, size_t len)
+const typename TStaticStringPool<CharT,Comparer,MemAllocT>::StringElem* 
+TStaticStringPool<CharT,Comparer,MemAllocT>::append(typename TStaticStringPool<CharT,Comparer,MemAllocT>::Str v, size_t len)
 {
-  typedef typename TStaticPool<CharT,Comparer,MemAllocT>::StringChunk SC;
-  typedef typename TStaticPool<CharT,Comparer,MemAllocT>::CharChunk CC;
+  typedef typename TStaticStringPool<CharT,Comparer,MemAllocT>::StringChunk SC;
+  typedef typename TStaticStringPool<CharT,Comparer,MemAllocT>::CharChunk CC;
   SC **px, *x;
   CC **pz, *z;
-  typename TStaticPool<CharT,Comparer,MemAllocT>::Str vv;
+  typename TStaticStringPool<CharT,Comparer,MemAllocT>::Str vv;
   void *vp;
   //
   if(v==NULL || len==0)
     return &s_null;
   //
-  const typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem* rv;
-  rv = find_s(typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem(v, len));
+  const typename TStaticStringPool<CharT,Comparer,MemAllocT>::StringElem* rv;
+  rv = find_s(typename TStaticStringPool<CharT,Comparer,MemAllocT>::StringElem(v, len));
   if(rv!=NULL)
     return rv;
   //
@@ -171,10 +171,10 @@ TStaticPool<CharT,Comparer,MemAllocT>::append(typename TStaticPool<CharT,Compare
 }
 
 template<typename CharT, typename Comparer, typename MemAllocT>
-const typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem* 
-TStaticPool<CharT,Comparer,MemAllocT>::find_s(const typename TStaticPool<CharT,Comparer,MemAllocT>::StringElem& vv) const
+const typename TStaticStringPool<CharT,Comparer,MemAllocT>::StringElem* 
+TStaticStringPool<CharT,Comparer,MemAllocT>::find_s(const typename TStaticStringPool<CharT,Comparer,MemAllocT>::StringElem& vv) const
 {
-  const typename TStaticPool<CharT,Comparer,MemAllocT>::StringChunk *x;
+  const typename TStaticStringPool<CharT,Comparer,MemAllocT>::StringChunk *x;
   //
   if(vv.get_length()==0)
     return NULL;
@@ -188,15 +188,15 @@ TStaticPool<CharT,Comparer,MemAllocT>::find_s(const typename TStaticPool<CharT,C
 }
 
 template<typename CharT, typename Comparer, typename MemAllocT>
-void TStaticPool<CharT,Comparer,MemAllocT>::copyfrom(const typename TStaticPool<CharT,Comparer,MemAllocT>::Self& R)
+void TStaticStringPool<CharT,Comparer,MemAllocT>::copyfrom(const typename TStaticStringPool<CharT,Comparer,MemAllocT>::Self& R)
 {
 }
 
 template<typename CharT, typename Comparer, typename MemAllocT>
-void TStaticPool<CharT,Comparer,MemAllocT>::release(void)
+void TStaticStringPool<CharT,Comparer,MemAllocT>::release(void)
 {
-  typename TStaticPool<CharT,Comparer,MemAllocT>::StringChunk *x, *xx;
-  typename TStaticPool<CharT,Comparer,MemAllocT>::CharChunk *z, *zz;
+  typename TStaticStringPool<CharT,Comparer,MemAllocT>::StringChunk *x, *xx;
+  typename TStaticStringPool<CharT,Comparer,MemAllocT>::CharChunk *z, *zz;
   //
   for(x=ss, ss=NULL; x!=NULL; x=xx) {
     xx = x->next;

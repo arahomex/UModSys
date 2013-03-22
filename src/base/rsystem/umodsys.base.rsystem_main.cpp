@@ -120,6 +120,14 @@ void rsystem::dbg_put(eRSystemDebugLevels dl, const char *fmt, ...)
   va_end(va);
 }
 
+void rsystem::err_put(eRSystemDebugLevels dl, const char *fmt, ...)
+{
+  va_list va;
+  va_start(va, fmt);
+  rsys_dbg.vput(dl, cl_Error, fmt, va);
+  va_end(va);
+}
+
 //***************************************
 // ::
 //***************************************

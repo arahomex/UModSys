@@ -9,16 +9,19 @@ using namespace UModSys::base::rsystem;
 int main(int argc, char **argv)
 {
   RConsole_std::s_console.reflect("umodsys.log");
-  RSystem::s_sys.set_console(&RConsole_std::s_console);
+  RSystem& S = RSystem::s_sys;
+  S.set_console(&RConsole_std::s_console);
   //
-  RSystem::s_sys.init();
-  RSystem::s_sys.moduledb_scan("");
-  RSystem::s_sys.moduledb_scan("*");
-  RSystem::s_sys.exec_args(argc, argv);
-  RSystem::s_sys.exec_main();
+  S.init();
+  S.moduledb_scan("", false);
+  S.moduledb_scan("*", true);
+  S.moduledb_save("moduledb.");
   //
-  RSystem::s_sys.deinit();
-  RSystem::s_sys.set_console(NULL);
+  S.exec_args(argc, argv);
+  S.exec_main();
+  //
+  S.deinit();
+  S.set_console(NULL);
   return 0;
 }
 

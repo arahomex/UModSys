@@ -38,17 +38,20 @@ using core::IRefObject;
   inline void rc_init(void) {} \
   inline virtual void suicide(void) {} \
   IModule* get_module(void) const; \
+  TypeId get_uid(void) const { return s_uid; } \
   bool mod_inc(void) const; \
   bool mod_dec(void) const; \
   typedef tl::TTypeStaticHolder<_type> Holder; \
+  static core::SUniquePointer s_uid; \
   /*static Holder s_gen;*/ \
   static bool s_reg(IModuleReg* imr); \
-  static bool s_unreg(IModuleReg* imr);
+  static bool s_unreg(IModuleReg* imr); \
 
 #define UMODSYS_BASE_MODOBJECT_FUNC(_type, _mod) \
   IModule* _type::get_module(void) const { return _mod::s_modreg.module; } \
   bool _type::mod_inc(void) const { return _mod::s_modreg.module->open(); } \
   bool _type::mod_dec(void) const { return _mod::s_modreg.module->close(); } \
+  core::SUniquePointer _type::s_uid("modobject", #_type ":unique", 0); \
   /*_type::Holder _type::s_gen;*/ \
   _type::Holder _type##__s_gen; \
   bool _type::s_reg(IModuleReg* imr) { _type##__s_gen.init(); return imr->reg(_type##__s_gen); } \
@@ -74,6 +77,7 @@ using core::IRefObject;
 
 struct IModObject : public IRefObject {
   virtual IModule* get_module(void) const =0;
+  virtual TypeId get_uid(void) const =0;
   virtual bool mod_inc(void) const =0;
   virtual bool mod_dec(void) const =0;
 protected:

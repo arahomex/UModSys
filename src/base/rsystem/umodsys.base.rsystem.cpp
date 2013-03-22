@@ -26,15 +26,42 @@ HUniquePointer RSystem::upi_add(const SUniquePointerInfo* lupi)
   const DCString& n = uptr_string(lupi->name);
   if(&n==NULL)
     return NULL; // error
+  //
+  SUniquePointerInfo* rv;
   SUniquePointerInfo nv(g, n, lupi->verno);
-  for(int i=0; i<~uptr_list; i++) {
-    const SUniquePointerInfo& x = uptr_list(i);
-    if(x == nv)
-      return &x;
+//  dbg_put(
+//    rsdl_System, "RSystem::upi_add(%p:{\"%s\",\"%s\",%d})...\n", 
+//    lupi, lupi->group, lupi->name, lupi->verno
+//  );
+  {
+    int idx = 0;
+    SUniPtrHolder *h, *lh = NULL;
+    if(uptr_list.first(idx, h)) {
+      do {
+        for(size_t i=0; i<h->used; i++) {
+          const SUniquePointerInfo& x = h->elems[i];
+          if(x == nv)
+            return &x;
+        }
+        lh = h;
+      } while(uptr_list.next(idx, h));
+    }
+    if(lh==NULL || lh->used>=upi_quant) {
+      idx++;
+      lh = uptr_list[idx];
+      if(lh==NULL) {
+        return NULL; // ERROR
+      }
+    }
+    rv = &lh->elems[lh->used++];
   }
-  if(!uptr_list.push(nv))
-    return NULL;
-  return &uptr_list.last();
+  //
+  *rv = nv;
+//  dbg_put(
+//    rsdl_System, "RSystem::upi_add(%p:{\"%s\",\"%s\",%d}) => %p\n", 
+//    lupi, lupi->group, lupi->name, lupi->verno, rv
+//  );
+  return rv;
 }
 
 int RSystem::upi_remove(HUniquePointer upi)
@@ -186,7 +213,8 @@ void RSystem::moduledb_clear(void)
 
 size_t RSystem::moduledb_cleanup(void)
 {
-  size_t n, rv = 0;
+//  dbg_put(rsdl_System, "RSystem::moduledb_cleanup()\n");
+  size_t n, rv = 0, s=0;
   do {
     n=0;
     for(int i=0; i<~mod_list; i++) {
@@ -196,7 +224,15 @@ size_t RSystem::moduledb_cleanup(void)
       n += nn;
     }
     rv += n;
+//    dbg_put(rsdl_System, "RSystem::moduledb_cleanup() { n=%d }\n", n);
   } while(n);
+  for(int i=0; i<~mod_list; i++) {
+    if(!mod_list(i).valid()) {
+      mod_list.remove_at(i);
+      i--; s++;
+    }
+  }
+  dbg_put(rsdl_System, "RSystem::moduledb_cleanup() {removed %d} => %d\n", s, rv);
   return rv;
 }
 
@@ -207,16 +243,31 @@ bool RSystem::moduledb_load(const core::DCString& cachepath)
 
 bool RSystem::moduledb_save(const core::DCString& cachepath)
 {
-  return false;
+  FILE *f = syshlp::c_fopen(cachepath, "wb");
+  if(f==NULL)
+    return false;
+  for(size_t i=0; i<~mod_list; i++) {
+    RModuleLibrary* ml = mod_list(i);
+    if(ml==NULL)
+      continue;
+    if(!ml->save_db(f)) {
+      fclose(f);
+      return false;
+    }
+  }
+  fclose(f);
+  return true;
 }
 
-size_t RSystem::moduledb_scan(const core::DCString& mask)
+size_t RSystem::moduledb_scan(const core::DCString& mask, bool docleanup)
 {
   for(size_t i=0; i<~mod_list; i++) {
     mod_list(i)->load0();
   }
   bool rv = RModuleLibrary::pfd_scan(this, mod_list, mask);
-  moduledb_cleanup();
+  if(docleanup) {
+    moduledb_cleanup();
+  }
   return rv;
 }
 

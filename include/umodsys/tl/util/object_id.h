@@ -22,14 +22,16 @@ struct TObjectUniqueID;
 template<typename Object>
 struct TObjectUniqueID {
   static core::SUniquePointer s_id;
-  static core::HUniquePointer get_id(void) { return s_id; }
+  //
+  inline static const core::HUniquePointer get_id(void) { return s_id; }
+  inline static const core::SUniquePointerInfo& get_info(void) { return s_id.info; }
 };
 
 template<typename Object>
 core::SUniquePointer TObjectUniqueID<Object>::s_id(
   "typeinfo", 
-  Object::_get_interface_cname(), 
-  Object::_get_interface_verno() 
+  Object::_get_interface_infoname(), 
+  Object::_get_interface_infover() 
 );
 
 /*************************************************************/

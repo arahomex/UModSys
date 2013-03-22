@@ -6,6 +6,7 @@
 /*************************************************************/
 
 #include "umodsys.base.rcommon.h"
+#include "umodsys.base.rmodule.h"
 
 namespace UModSys {
 namespace base {
@@ -20,6 +21,29 @@ struct RSystem :
   public IUniquePointerResolver,
   public IModuleLoader
 {
+public:
+  enum { 
+    upi_quant = 0x100 
+  };
+  typedef tl::TStaticStringPool<
+    core::BChar,
+    tl::su::TComparerBinaryHash<core::BChar>,
+    core::SMemAlloc_Malloc
+  > DSystemStaticPool;
+  //
+  struct SUniPtrHolder {
+    size_t used;
+    SUniquePointerInfo elems[upi_quant];
+    SUniPtrHolder(void) : used(0) {}
+  };
+  typedef tl::TScatterArray<
+    SUniPtrHolder, 
+    int,
+    tl::TNodeDeleter< 
+      tl::TScatterArrayNode<SUniPtrHolder, int >,
+      core::SMemAlloc_Malloc
+    >
+  > DUniPtrArray;
 public:
   RSystem(void);
   ~RSystem(void);
@@ -57,12 +81,12 @@ public:
   void moduledb_clear(void);
   bool moduledb_load(const core::DCString& cachepath);
   bool moduledb_save(const core::DCString& cachepath);
-  size_t moduledb_scan(const core::DCString& mask);
+  size_t moduledb_scan(const core::DCString& mask, bool docleanup);
 public:
   IConsole* console;
   //
   DSystemStaticPool uptr_pool;
-  tl::TArray<SUniquePointerInfo> uptr_list;
+  DUniPtrArray uptr_list;
   //
   DSystemStaticPool mod_pool;
   RModuleLibraryArray mod_list;

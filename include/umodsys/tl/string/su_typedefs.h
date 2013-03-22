@@ -102,7 +102,7 @@ struct TArrayStr; // array of const [char] pointers
 template<typename CharT = core::BChar, 
          typename Comparer=su::TComparerBinaryHash<CharT>, 
          typename MemAllocT=core::SMemAlloc_Malloc >
-struct TStaticPool; // static pool of string data
+struct TStaticStringPool; // static pool of string data
 
 
 /*

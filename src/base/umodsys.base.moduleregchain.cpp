@@ -90,11 +90,13 @@ IModuleReg* RModuleLibraryReg_Chain::mlr_get(size_t id) const
 bool RModuleLibraryReg_Chain::mlr_open(ISystem* isys, core::IMemAlloc* privmem)
 {
   M.Link(isys, privmem);
+  SUniquePointer::s_resolve(M->get_upr()); // initalize all upis
   return true;
 }
 
 bool RModuleLibraryReg_Chain::mlr_close(void)
 {
+  SUniquePointer::s_unresolve(M->get_upr()); // deinitalize all upis
   M.Link(NULL, NULL);
   return true;
 }
