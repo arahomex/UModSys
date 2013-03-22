@@ -1,0 +1,63 @@
+
+conf-hdb mean "Configuration hierarhial database".
+
+conf-hdb file format includes following:
+
+1. It is line oriented file format.
+2. It have "#" as comment, ignores empty lines, ignores spaces at start.
+3. Line can be:
+  1. Data line <tag> <arg> ....
+  2. Begin block BEGIN <tag> <arg> ....
+  3. End block END <tag> <arg> ....
+  4. Continue line . <text>, previous line must be ended with '\'
+
+
+Example:
+
+BEGIN DIR a
+  BEGIN DIR \
+  . b
+    BEGIN FILE "f1 f2"
+      DATA abc \
+      . cde \
+      # comment inside and next is empty line
+
+      . 123 \
+      . zzz
+    END FILE f1
+  END DIR b
+  LINK \
+  . "f1 f2" \
+  . b/f1
+END DIR a
+
+Parsing as following:
+
+  x = parser_find (NULL, BLOCK "DIR")
+  # x->raw = -1 -- all args is space-separated
+  ca = x->begin (NULL, ["a"])
+
+  x = parser_find (ca, BLOCK "DIR")
+  # x->raw = -1 -- all args is space-separated
+  cb = x->begin (ca, ["b"])
+
+  x = parser_find (cb, BLOCK "FILE")
+  # x->raw = -1 -- all args is space-separated
+  cc = x->begin (cb, ["f1 f2"])
+
+  x = parser_find (cc, DATA "DATA")
+  # x->raw = 0 -- one line treated as one arg
+  x->data (cc, ["abc" "cde" "123" "zzz"])
+
+  cc->end ()
+
+  cb->end ()
+
+  x = parser_find (ca, DATA "LINK")
+  # x->raw = -1 -- all args is space-separated
+  x->data (ca, ["f1 f2" "b/f1"])
+
+  ca->end ()
+
+End example.
+
