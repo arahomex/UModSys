@@ -8,6 +8,7 @@ base_lib_depends := \
   $(T)/umodsys.base.console$(OSUFFIX) \
   $(T)/umodsys.base.system$(OSUFFIX) \
   $(T)/umodsys.base.module$(OSUFFIX) \
+  $(T)/umodsys.base.moduleloader$(OSUFFIX) \
   $(T)/umodsys.base.modulecontext$(OSUFFIX) \
   $(T)/umodsys.base.moduleinfo$(OSUFFIX) \
   $(T)/umodsys.base.modulereg$(OSUFFIX) \
@@ -17,6 +18,7 @@ base_lib_depends := \
   $(T)/umodsys.base.rsystem_main$(OSUFFIX) \
   $(T)/umodsys.base.rmodule$(OSUFFIX) \
   $(T)/umodsys.base.rmodulelib$(OSUFFIX) \
+  $(T)/umodsys.base.rmoduleloader$(OSUFFIX) \
   $(T)/umodsys.base.rconsole_std$(OSUFFIX) \
   \
   $(T)/umodsys.base.rmodule.$(PLATFORM_ID)$(OSUFFIX) \

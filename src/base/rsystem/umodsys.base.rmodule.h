@@ -74,6 +74,9 @@ public:
   bool alloc_minfo(const SModuleInfo &mi2);
   bool scan(void);
   bool save_db(FILE *f);
+  //
+  size_t mod_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound);
+  bool mod_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args);
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RModule, 2, IModule);
   UMODSYS_REFOBJECT_UNIIMPLEMENT_DEF()
@@ -104,6 +107,9 @@ public:
   bool lib_loaded(void) const;
   bool lib_load(void);   
   bool lib_unload(void);
+  //
+  size_t lib_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound);
+  bool lib_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args);
 public:
   ISystem* sys;
   Modules modules;
@@ -141,6 +147,43 @@ public:
   UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RModuleLibrary, 2, IModuleLibrary);
   UMODSYS_REFOBJECT_UNIIMPLEMENT_DEF()
   UMODSYS_REFOBJECT_SINGLE()
+};
+
+//***************************************
+// RModuleLoader
+//***************************************
+
+struct RModuleLoader : public IModuleLoader
+{
+public:
+  RModuleLoader(ISystem* sys);
+  ~RModuleLoader(void);
+public:
+  size_t moduledb_findobjname(IRefObject::TypeId intr, IRefObject::TypeId found[], size_t nfound);
+  bool moduledb_generate(IRefObject::P& obj, IRefObject::TypeId name, const SParameters& args);
+  //
+  size_t moduledb_lib_count(void);
+  IModuleLibrary* moduledb_lib_get(size_t id) const;
+  bool moduledb_lib_drop(IModuleLibrary* lib);
+  //
+  size_t moduledb_module_count(void);
+  IModule* moduledb_module_get(size_t id) const;
+  IModule* moduledb_find(const core::DCString& name, const core::SVersion& verno) const;
+  //
+  size_t moduledb_cleanup(void);
+  void moduledb_clear(void);
+  bool moduledb_load(const core::DCString& cachepath);
+  bool moduledb_save(const core::DCString& cachepath);
+  size_t moduledb_scan(const core::DCString& mask, bool docleanup);
+  const DCString& moduledb_get_string(const DCString &s);
+public:
+  ISystem* sys;
+  DSystemStaticPool mod_pool;
+  RModuleLibraryArray mod_list;
+  //
+  const DCString& get_string(const DCString& v);
+  void cleanup(void);
+public:
 };
 
 //***************************************

@@ -18,18 +18,12 @@ namespace rsystem {
 
 struct RSystem : 
   public ISystem,
-  public IUniquePointerResolver,
-  public IModuleLoader
+  public IUniquePointerResolver
 {
 public:
   enum { 
     upi_quant = 0x100 
   };
-  typedef tl::TStaticStringPool<
-    core::BChar,
-    tl::su::TComparerBinaryHash<core::BChar>,
-    core::SMemAlloc_Malloc
-  > DSystemStaticPool;
   //
   struct SUniPtrHolder {
     size_t used;
@@ -70,26 +64,12 @@ public:
 //  bool lib_load(void);
 //  bool lib_unload(void);
 public:
-  const DCString& moduledb_get_string(const DCString &s);
-  size_t moduledb_lib_count(void);
-  IModuleLibrary* moduledb_lib_get(size_t id) const;
-  bool moduledb_lib_drop(IModuleLibrary* lib);
-  size_t moduledb_module_count(void);
-  IModule* moduledb_module_get(size_t id) const;
-  IModule* moduledb_find(const core::DCString& name, const core::SVersion& verno) const;
-  size_t moduledb_cleanup(void);
-  void moduledb_clear(void);
-  bool moduledb_load(const core::DCString& cachepath);
-  bool moduledb_save(const core::DCString& cachepath);
-  size_t moduledb_scan(const core::DCString& mask, bool docleanup);
-public:
   IConsole* console;
+  //
+  RModuleLoader moddb;
   //
   DSystemStaticPool uptr_pool;
   DUniPtrArray uptr_list;
-  //
-  DSystemStaticPool mod_pool;
-  RModuleLibraryArray mod_list;
   //
   void set_console(IConsole* console);
   bool init(void);
@@ -98,7 +78,7 @@ public:
   bool deinit(void);
   //
   const DCString& uptr_string(const DCString& v);
-  const DCString& mod_string(const DCString& v);
+  const DCString& mod_string(const DCString& v) { return moddb.get_string(v); }
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RSystem, 2, ISystem);
 public:

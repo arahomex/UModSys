@@ -65,6 +65,34 @@ bool RModuleLibrary::lib_unload(void)
   return true;
 }
 
+size_t RModuleLibrary::lib_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound)
+{
+  size_t n = 0;
+  for(size_t i=0; i<~modules; i++) {
+    RModule* m = modules(i);
+    if(m==NULL)
+      continue;
+    if(found!=NULL) {
+      n += m->mod_findobjname(intr, found+n, nfound-n);
+    } else {
+      n += m->mod_findobjname(intr, NULL, nfound);
+    }
+  }
+  return n;
+}
+
+bool RModuleLibrary::lib_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args)
+{
+  for(size_t i=0; i<~modules; i++) {
+    RModule* m = modules(i);
+    if(m==NULL)
+      continue;
+    if(m->mod_generate(obj, name, args))
+      return true;
+  }
+  return false;
+}
+
 //***************************************
 //***************************************
 

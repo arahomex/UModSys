@@ -25,7 +25,15 @@ struct RModuleLibrary;
 struct RModule;
 struct RConsole_std;
 
-typedef tl::TArray< tl::TRefObject<RModuleLibrary> > RModuleLibraryArray;
+typedef tl::TArray< 
+  tl::TRefObject<RModuleLibrary> 
+> RModuleLibraryArray;
+
+typedef tl::TStaticStringPool<
+  core::BChar,
+  tl::su::TComparerBinaryHash<core::BChar>,
+  core::SMemAlloc_Malloc
+> DSystemStaticPool;
 
 //***************************************
 // DEBUG CONST

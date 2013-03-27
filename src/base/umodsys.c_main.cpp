@@ -13,9 +13,9 @@ int main(int argc, char **argv)
   S.set_console(&RConsole_std::s_console);
   //
   S.init();
-  S.moduledb_scan("", false);
-  S.moduledb_scan("*", true);
-  S.moduledb_save("moduledb.conf-hdb");
+  S.get_modloader()->moduledb_scan("", false);
+  S.get_modloader()->moduledb_scan("*", true);
+  S.get_modloader()->moduledb_save("moduledb.conf-hdb");
   //
   S.exec_args(argc, argv);
   S.exec_main();

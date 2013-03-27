@@ -19,11 +19,6 @@ const DCString& RSystem::uptr_string(const DCString& v)
   return *uptr_pool.append(v);
 }
 
-const DCString& RSystem::mod_string(const DCString& v)
-{
-  return *mod_pool.append(v);
-}
-
 //***************************************
 
 bool RSystem::init(void)
@@ -76,10 +71,7 @@ bool RSystem::deinit(void)
 {
   dbg_put(rsdl_System, "RSystem::deinit()\n");
   //
-  dbg_put(rsdl_System, " { mod_list=%d:[] }\n", ~mod_list);
-  moduledb_cleanup();
-  moduledb_clear();
-  mod_list.clear();
+  moddb.cleanup();
   SUniquePointer::s_unresolve(this); // deinitalize all upis
   //
   return true;
@@ -95,7 +87,7 @@ void RSystem::set_console(IConsole* cc)
 //***************************************
 
 RSystem::RSystem(void)
-: console(NULL)/*, sys_library(NULL)*/ {
+: console(NULL), moddb(this) /*, sys_library(NULL)*/ {
 }
 
 RSystem::~RSystem(void)

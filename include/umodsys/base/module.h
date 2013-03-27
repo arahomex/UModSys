@@ -54,6 +54,9 @@ public:
   //
   virtual bool reg(IModObject* mo, bool doreg) =0;
   virtual bool reg(IGenerator* gen, bool doreg) =0;
+  //
+  virtual size_t mod_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound) =0;
+  virtual bool mod_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args) =0;
 public:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IModule, 2, IRefObject);
 };
@@ -77,6 +80,9 @@ public:
   virtual bool lib_loaded(void) const =0;
   virtual bool lib_load(void) =0;
   virtual bool lib_unload(void) =0;
+  //
+  virtual size_t lib_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound) =0;
+  virtual bool lib_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args) =0;
 public:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IModuleLibrary, 2, IRefObject);
 };
@@ -88,7 +94,10 @@ public:
 struct IModuleLoader
 {
 public:
-  virtual const core::DCString& moduledb_get_string(const core::DCString &s) =0;
+  virtual ~IModuleLoader(void);
+public:
+  virtual size_t moduledb_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound) =0;
+  virtual bool moduledb_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args) =0;
   //
   virtual size_t moduledb_lib_count(void) =0;
   virtual IModuleLibrary* moduledb_lib_get(size_t id) const =0;
@@ -103,6 +112,7 @@ public:
   virtual bool moduledb_load(const core::DCString& cachepath) =0;
   virtual bool moduledb_save(const core::DCString& cachepath) =0;
   virtual size_t moduledb_scan(const core::DCString& mask, bool docleanup=true) =0;
+  virtual const core::DCString& moduledb_get_string(const core::DCString &s) =0;
 };
 
 //***************************************

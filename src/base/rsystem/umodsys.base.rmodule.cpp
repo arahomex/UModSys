@@ -79,6 +79,18 @@ bool RModule::reg(IGenerator* gen, bool doreg)
 }
 
 //***************************************
+
+size_t RModule::mod_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound)
+{
+  return 0;
+}
+
+bool RModule::mod_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args)
+{
+  return false;
+}
+
+//***************************************
 //***************************************
 
 bool RModule::reg_generator(ModuleObjInfo* mi, IGenerator* gen)
