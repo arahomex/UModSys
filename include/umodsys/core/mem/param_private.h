@@ -141,8 +141,8 @@ struct TParametersA : public SParameters {
 public:
   inline TParametersA(IParameters* w) 
     : SParameters(w, buffer, nsize) {}
-//  inline TParametersA(ISystem* s) 
-//    : SParameters(s->get_paramworker(), buffer, nsize) {}
+  inline TParametersA(void) 
+    : SParameters(get_paramworker(), buffer, nsize) {}
   inline TParametersA(const SParameters& r) 
     : SParameters(r, buffer, nsize) {}
   inline TParametersA(const TParametersA& r) 

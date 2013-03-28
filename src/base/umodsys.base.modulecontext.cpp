@@ -41,5 +41,14 @@ void SModuleContext::dbg_put(const char *fmt, ...)
 base::SModuleContext UModSys::M;
 
 //***************************************
+// SParameters::
+//***************************************
+
+IParameters* SParameters::get_paramworker(void)
+{
+  return M->get_params();
+}
+
+//***************************************
 // ::
 //***************************************

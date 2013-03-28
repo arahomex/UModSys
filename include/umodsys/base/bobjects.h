@@ -90,7 +90,16 @@ struct IGenerator : public IModObject {
   virtual int get_generated_names(DPtrList& list) const =0; // only names
   virtual int get_generated_types(DPtrList& list, TypeId name) const =0; // may have different types per name
   virtual bool generate(IRefObject::P& obj, TypeId name, const SParameters& args) =0;
-protected:
+public:
+  template<typename RData>
+  inline bool t_generate(tl::TRefObject<RData> &rv, TypeId name, const SParameters& args) {
+    IRefObject::P& obj;
+    if(!generate(obj, name, args) || !obj.valid())
+      return false;
+    if(!obj->t_get_other_interface_ref(rv))
+      return false;
+    return true;
+  }
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IGenerator, 2, IModObject);
 };

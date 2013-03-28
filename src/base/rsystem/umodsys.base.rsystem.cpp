@@ -71,6 +71,11 @@ int RSystem::upi_remove(HUniquePointer upi)
 
 //***************************************
 
+IParameters* RSystem::get_params(void)
+{
+  return params;
+}
+
 IConsole* RSystem::get_console(void)
 {
   return console;

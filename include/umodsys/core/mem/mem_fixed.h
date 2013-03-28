@@ -346,6 +346,39 @@ struct SMemChunk : private SMem {
   inline void t_data(T* &value, int shift) const {
     value = reinterpret_cast<T*>( reinterpret_cast<byte*>(data) + shift );
   }
+  //
+public:
+  template<typename SAlloc>
+  inline bool t_alloc(SAlloc& a, size_t n, const SSourceContext* sctx=NULL) {
+    if(data!=NULL)
+      t_free(a, sctx);
+    void* p = a.mem_alloc(n, sctx);
+    if(p==NULL)
+      return false;
+    data = p;
+    size = n;
+    return true;
+  }
+  //
+  template<typename SAlloc>
+  inline bool t_free(SAlloc& a, const SSourceContext* sctx=NULL) {
+    if(data==NULL)
+      return true;
+    a.mem_free(data, sctx);
+    data = NULL;
+    size = 0;
+    return true;
+  }
+  //
+  template<typename SAlloc>
+  inline bool t_realloc(SAlloc& a, size_t n, const SSourceContext* sctx=NULL) {
+    void* p = a.mem_realloc(data, n, sctx);
+    if(p==NULL)
+      return false;
+    data = p;
+    size = n;
+    return true;
+  }
 };
 
 //***************************************

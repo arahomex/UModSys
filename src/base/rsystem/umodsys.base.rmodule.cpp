@@ -1,4 +1,3 @@
-#include "umodsys.base.rsystem.h"
 #include "umodsys.base.rmodule.h"
 
 using namespace UModSys;
@@ -82,11 +81,61 @@ bool RModule::reg(IGenerator* gen, bool doreg)
 
 size_t RModule::mod_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound)
 {
-  return 0;
+  size_t rv=0;
+  for(size_t i=0; i<~mogts; i++) {
+    if(mogts(i)!=intr)
+      continue;
+    if(found!=NULL) {
+      if(rv>=nfound) 
+        break;
+      for(size_t j=0; j<~mogis; j++) {
+        const GeneratedObjInfo& x = mogis(j);
+        if(x.start_elem<=i && i<x.start_elem+x.count_elem) {
+          found[rv++] = x.tid;
+          break;
+        }
+      }
+    } else {
+      rv++;
+    }
+  }
+  return rv;
 }
 
 bool RModule::mod_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args)
 {
+  for(size_t j=0; j<~mogis; j++) {
+    const GeneratedObjInfo& x = mogis(j);
+    if(x.tid!=name)
+      continue;
+    for(size_t k=0; k<~mos; k++) {
+      const ModuleObjInfo& mi = mos(k);
+      if(mi.start_gen<=j && j<mi.start_gen+mi.count_gen) {
+        bool fld = false;
+        if(!is_open()) {
+          if(!open())
+            return false; // this module fails
+          fld = true;
+          dbg_put(rsdl_Module, "RModule(%p):: pre-loaded\n", this);
+        }
+        IGenerator* g = static_cast<IGenerator*>(mi.mo);
+        if(g==NULL) {
+          if(fld)
+            close();
+          return false; // internal error
+        }
+        dbg_put(rsdl_Module, "RModule(%p)::generate() { gen=%p }\n", this, g);
+        if(g->generate(obj, name, args)) {
+          if(fld)
+            close();
+          return true;
+        }
+        if(fld)
+          close();
+        break; // try next generator
+      }
+    }
+  }
   return false;
 }
 

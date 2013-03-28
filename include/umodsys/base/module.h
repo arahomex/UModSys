@@ -113,6 +113,16 @@ public:
   virtual bool moduledb_save(const core::DCString& cachepath) =0;
   virtual size_t moduledb_scan(const core::DCString& mask, bool docleanup=true) =0;
   virtual const core::DCString& moduledb_get_string(const core::DCString &s) =0;
+public:
+  template<typename RData>
+  inline bool t_moduledb_generate(tl::TRefObject<RData> &rv, core::IRefObject::TypeId name, const core::SParameters& args) {
+    core::IRefObject::P obj;
+    if(!moduledb_generate(obj, name, args) || !obj.valid())
+      return false;
+    if(!obj->t_get_other_interface_ref(rv))
+      return false;
+    return true;
+  }
 };
 
 //***************************************

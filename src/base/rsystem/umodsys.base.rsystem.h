@@ -7,6 +7,7 @@
 
 #include "umodsys.base.rcommon.h"
 #include "umodsys.base.rmodule.h"
+#include "umodsys.base.rparameters.h"
 
 namespace UModSys {
 namespace base {
@@ -55,6 +56,7 @@ public:
   IMemAlloc* get_sysmem(void);
   IMemAlloc* get_sharemem(void);
   IConsole* get_console(void);
+  IParameters* get_params(void);
 public:
 //  core::DCString get_sys_libname(void) const;
 //  core::IMemAlloc* get_privmem(void) const;
@@ -67,6 +69,7 @@ public:
   IConsole* console;
   //
   RModuleLoader moddb;
+  RParameters::SelfP params;
   //
   DSystemStaticPool uptr_pool;
   DUniPtrArray uptr_list;
@@ -75,10 +78,15 @@ public:
   bool init(void);
   bool exec_args(int argc, char** argv);
   bool exec_main(void);
+  bool exec_tests(void);
   bool deinit(void);
+  //
+  size_t find_shells(IRefObject::TypeId tids[], size_t ntids);
   //
   const DCString& uptr_string(const DCString& v);
   const DCString& mod_string(const DCString& v) { return moddb.get_string(v); }
+public:
+  bool exec_test_shells(void);
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RSystem, 2, ISystem);
 public:

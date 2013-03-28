@@ -84,10 +84,19 @@ void RSystem::set_console(IConsole* cc)
 }
 
 //***************************************
+
+size_t RSystem::find_shells(IRefObject::TypeId tids[], size_t ntids)
+{
+  return moddb.moduledb_findobjname(IShell::_get_interface_type(), tids, ntids);
+}
+
+//***************************************
 //***************************************
 
 RSystem::RSystem(void)
-: console(NULL), moddb(this) /*, sys_library(NULL)*/ {
+: console(NULL), moddb(this) /*, sys_library(NULL)*/ 
+{
+  params = new RParameters(this);
 }
 
 RSystem::~RSystem(void)
