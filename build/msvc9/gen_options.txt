@@ -1,0 +1,78 @@
+generator msvc9
+
+solution umodsys
+
+  set path-root ../.. 
+  set path-tmp $(path_root)/tmp
+  set path-bin $(path_root)/bin
+  set path-src $(path_root)/src
+  set path-sbase $(path_src)/src/base
+  set path-score $(path_src)/src/core
+  set path-splugin $(path_src)/src/plugin
+
+  set path-out-bin \$(SolutionDir)../../tmp/win32vc9_\$(ConfigurationName)_\$(PlatformName)
+  set path-out-lib \$(SolutionDir)../../tmp/win32vc9_\$(ConfigurationName)_\$(PlatformName)
+
+  option project * IntermediateDirectory \$(SolutionDir)../../tmp/win32vc9_\$(ConfigurationName)_\$(PlatformName)/\$(ProjectName)
+  option project * VCCLCompilerTool.AdditionalIncludeDirectories \$(SolutionDir)../../include
+  option project * VCLinkerTool.AdditionalLibraryDirectories \$(IntDir)/..
+  option project Platforms Win32 x64
+  option project Configurations Debug Release ReleaseSpace
+
+  project umodsysc
+    mode console
+    option * OutputDirectory $(path-out-bin)
+    option * VCLinkerTool.AdditionalDependencies umodsys_lib_core.lib umodsys_lib_base.lib
+    filter src
+      file $(path-sbase)/umodsys.c_main.cpp
+
+  project umodsys_lib_core
+    mode lib
+    option * OutputDirectory $(path-out-lib)
+    filter src
+      file $(path-score)/umodsys.core.objects.cpp
+      file $(path-score)/umodsys.core.stdtypedefs.cpp
+      file $(path-score)/umodsys.core.uniqueptr.cpp
+      file $(path-score)/umodsys.tl.strings.cpp
+    filter src-win32
+      file $(path-score)/platform/win32/umodsys.core.syshlp_chars.win32.cpp
+      file $(path-score)/platform/win32/umodsys.core.syshlp_charcode.win32.cpp
+      file $(path-score)/platform/win32/umodsys.core.syshlp_files.win32.cpp
+      file $(path-score)/platform/win32/umodsys.core.syshlp_proc.win32.cpp
+      file $(path-score)/platform/win32/umodsys.core.syshlp_thread.win32.cpp
+      file $(path-score)/platform/win32/umodsys.core.syshlp_vars.win32.cpp
+
+  project umodsys_lib_base
+    mode lib
+    option * OutputDirectory $(path-out-lib)
+    filter src-shared
+      file $(path-sbase)/umodsys.base.debug.cpp
+      file $(path-sbase)/umodsys.base.console.cpp
+      file $(path-sbase)/umodsys.base.system.cpp
+      file $(path-sbase)/umodsys.base.module.cpp
+      file $(path-sbase)/umodsys.base.moduleloader.cpp
+      file $(path-sbase)/umodsys.base.modulecontext.cpp
+      file $(path-sbase)/umodsys.base.moduleinfo.cpp
+      file $(path-sbase)/umodsys.base.modulereg.cpp
+      file $(path-sbase)/umodsys.base.moduleregchain.cpp
+    filter src
+      file $(path-sbase)/umodsys.base.rsystem.cpp
+      file $(path-sbase)/umodsys.base.rsystem_main.cpp
+      file $(path-sbase)/umodsys.base.rsystem_tests.cpp
+      file $(path-sbase)/umodsys.base.rmodule.cpp
+      file $(path-sbase)/umodsys.base.rmodulelib.cpp
+      file $(path-sbase)/umodsys.base.rmoduleloader.cpp
+      file $(path-sbase)/umodsys.base.rparameters.cpp
+      file $(path-sbase)/umodsys.base.rconsole_std.cpp
+    filter src-win32
+      file $(path-sbase)/platform/win32/umodsys.base.rmodule.win32.cpp
+
+  project plugin_test1
+    mode dll
+    filter src
+      file $(path-splugin)/plugin_test1/test/plugin_test1.cpp
+
+  project plugin_test2
+    mode dll
+    filter src
+      file $(path-splugin)/plugin_test1/test/plugin_test2.cpp

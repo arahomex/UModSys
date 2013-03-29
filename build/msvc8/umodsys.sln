@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plugin_test1", "plugin_test1/plugin_test1.vcproj", "{918EF585-DE22-29C6-4687-42A7EC916F98}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DFB8BEBE-7230-5A8D-BB86-429D64F0C6DB} = {DFB8BEBE-7230-5A8D-BB86-429D64F0C6DB}
+		{D8549366-B72D-153F-74B0-1C258B946404} = {D8549366-B72D-153F-74B0-1C258B946404}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "plugin_test2", "plugin_test2/plugin_test2.vcproj", "{CA1A20AB-150B-F0CD-068C-277A61D6279C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DFB8BEBE-7230-5A8D-BB86-429D64F0C6DB} = {DFB8BEBE-7230-5A8D-BB86-429D64F0C6DB}
+		{D8549366-B72D-153F-74B0-1C258B946404} = {D8549366-B72D-153F-74B0-1C258B946404}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "umodsys_lib_base", "umodsys_lib_base/umodsys_lib_base.vcproj", "{D8549366-B72D-153F-74B0-1C258B946404}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "umodsys_lib_core", "umodsys_lib_core/umodsys_lib_core.vcproj", "{DFB8BEBE-7230-5A8D-BB86-429D64F0C6DB}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "umodsysc", "umodsysc/umodsysc.vcproj", "{2BBBBFF9-18AB-DED6-93CA-C92AB1335E67}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DFB8BEBE-7230-5A8D-BB86-429D64F0C6DB} = {DFB8BEBE-7230-5A8D-BB86-429D64F0C6DB}
+		{D8549366-B72D-153F-74B0-1C258B946404} = {D8549366-B72D-153F-74B0-1C258B946404}
+	EndProjectSection
+EndProject
+
