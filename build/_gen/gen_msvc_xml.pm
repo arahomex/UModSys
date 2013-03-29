@@ -1,4 +1,5 @@
 use strict;
+use File::Basename;
 
 my $uitf8_header = "\xEF\xBB\xBF";
 
@@ -17,6 +18,31 @@ sub msvc_xml_new_guid
   );
 }
 
+sub msvc_xml_setopt
+{
+   my ($opts, $conf, $name, $value) = @_;
+   my $c;
+   if(exists $opts->{$conf}) {
+     $c = $opts->{$conf};
+   } else {
+     $c = {};
+     $opts->{$conf} = $c;
+   }
+   $c->{$name} = $value;
+}
+
+sub msvc_xml_getopt
+{
+  my ($conf, $optname, @refs) = @_;
+  print "find opt '$conf'.'$optname' at #".@refs."\n";
+  for my $ref (@refs) {
+    next if not exists $ref->{$conf};
+    next if not exists $ref->{$conf}->{$optname};
+    return $ref->{$conf}->{$optname};
+  }
+  return undef;
+}
+
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------
@@ -27,6 +53,7 @@ sub msvc_xml_solution_generate
   my ($filename, $projects) = ($sol->{'filename'}, $sol->{'projects'});
 
   my ($fout);
+  make_filename_dir($filename);
   open $fout,'>',$filename or die "File '$filename' create error.";
   print $fout $uitf8_header;
   print $fout $template->{'solution-begin'};
@@ -76,6 +103,12 @@ sub msvc_xml_solution_option
     srand $seed;
     print "Random seed is set to $seed\n";
     return;
+  } elsif($name eq 'project') {
+    my $conf = get_configuration_arg(\$args);
+    my $name = get_configuration_arg(\$args);
+    my $value = get_configuration_arg_exp(\$args, $this);
+    msvc_xml_setopt($this->{'solution'}->{'project-opts'}, $conf, $name, $value);
+    print "setopt '$conf'.'$name' => '$value'\n";
   }
 }
 
@@ -89,11 +122,14 @@ sub msvc_xml_solution_begin
 {
   my ($this, $keyname, $args) = @_;
   my $name = get_configuration_arg(\$args);
+  my $project_opts = {};
   my $rv = {
     'sets' => set_new($this),
     'name' => $name,
     'filename' => "$name.sln",
     'projects' => {},
+    'project-opts' => $project_opts,
+    'a-project-opts' => [$project_opts, $this->{'a-project-opts'}],
   };
   return {
     'type' => 'solution',
@@ -122,8 +158,70 @@ sub msvc_xml_solution_begin
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------
 
+sub msvc_xml_project_generate_files
+{
+  my ($proj, $template, $fout, $filters, $FF_PAD) = @_;
+  my $line;
+  #
+  for my $FILTER_NAME (sort keys %$filters) {
+    my $filter = $filters->{$FILTER_NAME};
+    #
+    $line = eval("<<EOT\n".$template->{'project-ff-begin'}."EOT");
+    print $fout $line;
+    #
+    msvc_xml_project_generate_files($proj, $template, $fout, $filter->{'filters'}, $FF_PAD."\t");
+    #
+    for my $FILE_PATH (@{$filter->{'files'}}) {
+      $line = eval("<<EOT\n".$template->{'project-ff-file'}."EOT");
+      print $fout $line;
+    }
+    #
+    $line = eval("<<EOT\n".$template->{'project-ff-end'}."EOT");
+    print $fout $line;
+  }
+}
+
 sub msvc_xml_project_generate
 {
+  my ($proj, $template) = @_;
+  my ($filename, $filters) = ($proj->{'filename'}, );
+
+  my ($fout, $line);
+  make_filename_dir($filename);
+  open $fout,'>',$filename or die "File '$filename' create error.";
+#  print $fout $uitf8_header;
+  #
+  #------------------- BEGIN
+  my ($PROJECT_NAME, $PROJECT_GUID) = ($proj->{'name'}, $proj->{'GUID'});
+  $line = eval("<<EOT\n".$template->{'project-begin'}."EOT");
+  print $fout $line;
+  #
+  #------------------- PLATFORMS
+  my @platforms = split / /, msvc_xml_getopt('[]', 'Platforms', @{$proj->{'a-opts'}});
+  $line = eval("<<EOT\n".$template->{'project-platforms-begin'}."EOT");
+  print $fout $line;
+  for my $PLATFORM_NAME (@platforms) {
+    $line = eval("<<EOT\n".$template->{'project-platforms-entry'}."EOT");
+    print $fout $line;
+  }
+  $line = eval("<<EOT\n".$template->{'project-platforms-end'}."EOT");
+  print $fout $line;
+  #
+  #
+  #------------------- FILES
+  $line = eval("<<EOT\n".$template->{'project-files-begin'}."EOT");
+  print $fout $line;
+  msvc_xml_project_generate_files($proj, $template, $fout, $proj->{'filters'}, '');
+  $line = eval("<<EOT\n".$template->{'project-files-end'}."EOT");
+  print $fout $line;
+  #
+  #------------------- END
+  $line = eval("<<EOT\n".$template->{'project-end'}."EOT");
+  print $fout $line;
+  #
+  print $fout "\n";
+  close $fout;
+  print "Written project file '$filename'\n";
 }
 
 sub msvc_xml_project_cmd
@@ -140,12 +238,17 @@ sub msvc_xml_project_cmd
 sub msvc_xml_project_option
 {
   my ($this, $cmd, $args) = @_;
+  my $conf = get_configuration_arg(\$args);
+  my $name = get_configuration_arg(\$args);
+  my $value = get_configuration_arg_exp(\$args, $this);
+  msvc_xml_setopt($this->{'opts'}, $conf, $name, $value);
 }
 
 sub msvc_xml_project_begin
 {
   my ($this, $keyname, $args) = @_;
   my $name = get_configuration_arg(\$args);
+  my $opts = {};
   my $rv = {
     'sets' => set_new($this),
     'solution' => $this,
@@ -156,6 +259,8 @@ sub msvc_xml_project_begin
     'platforms' => {},
     'configurations' => {},
     'depends' => [],
+    'opts' => $opts,
+    'a-opts' => [$opts, (@{$this->{'solution'}->{'a-project-opts'}})], 
   };
   $this->{'projects'}->{$name} = $rv;
   return {
@@ -189,6 +294,8 @@ sub msvc_xml_project_begin
 sub msvc_xml_filter_file
 {
   my ($this, $cmd, $args) = @_;
+  my $name = get_configuration_arg_exp(\$args, $this);
+  push @{$this->{'filter'}->{'files'}}, $name;
 }
 
 sub msvc_xml_filter_begin
@@ -200,7 +307,7 @@ sub msvc_xml_filter_begin
     'parent' => $this,
     'name' => $name,
     'filters' => {},
-    'files' => {},
+    'files' => [],
   };
   $this->{'filters'}->{$name} = $rv;
   return {

@@ -15,7 +15,7 @@ sub set_get
   for my $ss (@$sets) {
     return $ss->{$var} if exists $ss->{$var};
   }
-#  print "  got none\n";
+  print "  got none for '$var' at #".@$sets."\n";
   return undef;
 }
 
@@ -25,13 +25,13 @@ sub set_explode
   my $rv = '';
   while($line ne '') {
     if($line =~ /^\$\((.*?)\)(.*)$/) {
-      print "['$1'] '$2'\n";
+#      print "['$1'] '$2'\n";
       $line = $2;
       $rv .= set_get($this, $1);
       next;
     }
     if($line =~ /(.*?[^\\])\$\((.*?)\)(.*)$/) {
-      print "'$1' ['$2'] '$3'\n";
+#      print "'$1' ['$2'] '$3'\n";
       $rv .= $1; 
       $line = $3;
       $rv .= set_get($this, $2);
@@ -49,7 +49,7 @@ sub set_value
   my $var = get_configuration_arg(\$args);
   $args =~ s/\s*$//;
   my $value =  set_explode($this, $args);
-  print "set '$args' '$var'='$value'\n";
+#  print "set '$args' '$var'='$value'\n";
   $this->{'sets'}->[0]->{$var} = $value;
 }
 
@@ -64,10 +64,18 @@ sub get_configuration_arg
 {
   my ($line) = @_;
   return undef if not defined $$line; 
-  return $1 if $$line =~ s/^\"(.+?)\"\s+(.*)/$2/;
-  return $1 if $$line =~ s/^\'(.+?)\'\s+(.*)/$2/;
-  return $1 if $$line =~ s/^\`(.+?)\`\s+(.*)/$2/;
-  return $1 if $$line =~ s/^(.+?)\s+(.*)/$2/;
+  #
+  if($$line =~ s/^[\"](.*?)[\"]\s+// or $$line =~ s/^[\'](.*?)[\']\s+// or $$line =~ s/^[\`](.*?)[\`]\s+//) {
+    return $1;
+  }
+  #
+  if($$line =~ s/^[\"](.*?)[\"]// or $$line =~ s/^[\'](.*?)[\']// or s/^[\`](.*?)[\`]//) {
+    $$line = '';
+    return $1;
+  }
+  #
+  return $1 if $$line =~ s/^(.+?)\s+//;
+  #
   my $rv = $$line;
   $$line = '';
   return $rv;
@@ -79,6 +87,13 @@ sub get_configuration_arg_exp
   my $rv = get_configuration_arg($line);
   return $rv if not defined $rv;
   return set_explode($this, $rv);
+}
+
+sub make_filename_dir
+{
+  my ($filename) = @_;
+  my ($n, $path, $x) = fileparse($filename);
+  mkdir $path;
 }
 
 #---------------------------------

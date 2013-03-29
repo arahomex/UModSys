@@ -6,18 +6,22 @@ require "$script_path/gen_msvc_xml.pm";
 
 $generators->{'msvc8'} = {
   'templates' => {
+    #-------------------------------
+    #-------------------------------
     'project-type-c++' => '{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}',
     'solution-begin' => <<'EOT',
 
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 EOT
+    #-------------------------------
     'solution-project-begin' => <<'EOT',
 Project("$PROJECT_TYPE_GUID") = "$PROJECT_NAME", "$PROJECT_PATH", "$PROJECT_GUID"
 EOT
     'solution-project-end' => <<'EOT',
 EndProject
 EOT
+    #-------------------------------
     'solution-project-dep-begin' => <<'EOT',
 	ProjectSection(ProjectDependencies) = postProject
 EOT
@@ -27,7 +31,220 @@ EOT
     'solution-project-dep-entry' => <<'EOT',
 		$PROJECT_DEP_GUID = $PROJECT_DEP_GUID
 EOT
+    #-------------------------------
+    #-------------------------------
+    'project-begin' => <<'EOT',
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="8,00"
+	Name="$PROJECT_NAME"
+	ProjectGUID="$PROJECT_GUID"
+	RootNamespace="$PROJECT_NAME"
+	>
+EOT
+    'project-end' => <<'EOT',
+	<Globals>
+	</Globals>
+</VisualStudioProject>
+EOT
+    #-------------------------------
+    'project-platforms-begin' => <<'EOT',
+	<Platforms>
+EOT
+    'project-platforms-end' => <<'EOT',
+	</Platforms>
+EOT
+    'project-platforms-entry' => <<'EOT',
+		<Platform
+			Name="$PLATFORM_NAME"
+		/>
+EOT
+    #-------------------------------
+    'project-config-begin' => <<'EOT',
+		<Configuration
+			Name="$CONF_NAME|$PLATFORM_NAME"
+			OutputDirectory="$OPT_OutputDirectory"
+			IntermediateDirectory="$OPT_IntermediateDirectory"
+			ConfigurationType="$OPT_ConfigurationType"
+			CharacterSet="$OPT_CharacterSet"
+			>
+EOT
+    'project-config-end' => <<'EOT',
+	</Configurations>
+EOT
+    'project-config-aux' => <<'EOT',
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+				Name="VCBscMakeTool"
+				OutputFile="$(IntDir)/$(ProjectName).bsc"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+EOT
+    'project-config-compiler' => <<'EOT',
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="$OPT_Compiler_Optimization"
+				WholeProgramOptimization="$OPT_Compiler_WholeProgramOptimization"
+				AdditionalIncludeDirectories="$OPT_Compiler_AdditionalIncludeDirectories"
+				PreprocessorDefinitions="$OPT_Compiler_PreprocessorDefinitions"
+				StringPooling="$OPT_Compiler_StringPooling"
+				MinimalRebuild="$OPT_Compiler_MinimalRebuild"
+				BasicRuntimeChecks="$OPT_Compiler_BasicRuntimeChecks"
+				RuntimeLibrary="$OPT_Compiler_RuntimeLibrary"
+				RuntimeTypeInfo="$OPT_Compiler_RuntimeTypeInfo"
+				UsePrecompiledHeader="$OPT_Compiler_UsePrecompiledHeader"
+				PrecompiledHeaderFile="$OPT_Compiler_PrecompiledHeaderFile"
+				AssemblerListingLocation="$OPT_Compiler_AssemblerListingLocation"
+				ProgramDataBaseFileName="$OPT_Compiler_ProgramDataBaseFileName"
+				BrowseInformation="$OPT_Compiler_BrowseInformation"
+				WarningLevel="$OPT_Compiler_WarningLevel"
+				WarnAsError="$OPT_Compiler_WarnAsError"
+				Detect64BitPortabilityProblems="$OPT_Compiler_Detect64BitPortabilityProblems"
+				DebugInformationFormat="$OPT_Compiler_DebugInformationFormat"
+				CompileAs="$OPT_Compiler_CompileAs"
+				EnablePREfast="$OPT_Compiler_EnablePREfast"
+			/>
+EOT
+    'project-config-linker' => <<'EOT',
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="$OPT_Linker_AdditionalDependencies"
+				OutputFile="$OPT_Linker_OutputFile"
+				LinkIncremental="$OPT_Linker_LinkIncremental"
+				AdditionalLibraryDirectories="$OPT_Linker_AdditionalLibraryDirectories"
+				GenerateDebugInformation="$OPT_Linker_GenerateDebugInformation"
+				ProgramDatabaseFile="$OPT_Linker_ProgramDatabaseFile"
+				GenerateMapFile="$OPT_Linker_GenerateMapFile"
+				MapFileName="$OPT_Linker_MapFileName"
+				MapExports="$OPT_Linker_MapExports"
+				SubSystem="$OPT_Linker_SubSystem"
+				LinkTimeCodeGeneration="$OPT_Linker_LinkTimeCodeGeneration"
+			/>
+EOT
+    'project-config-librarian' => <<'EOT',
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$OPT_Librarian_OutputFile"
+			/>
+	</Configurations>
+EOT
+    #-------------------------------
+    'project-files-begin' => <<'EOT',
+	<Files>
+EOT
+    'project-files-end' => <<'EOT',
+	</Files>
+EOT
+    #-------------------------------
+    'project-ff-begin' => <<'EOT',
+$FF_PAD		<Filter
+$FF_PAD			Name="$FILTER_NAME"
+$FF_PAD			>
+EOT
+    'project-ff-end' => <<'EOT',
+$FF_PAD		</Filter>
+EOT
+    'project-ff-file' => <<'EOT',
+$FF_PAD			<File
+$FF_PAD				RelativePath="$FILE_PATH"
+$FF_PAD				>
+$FF_PAD			</File>
+EOT
+    #-------------------------------
+    #-------------------------------
   },
+  #-------------------------------
+  #-------------------------------
+  'a-project-opts' => {
+    '[]' => {
+      'Platforms'      => 'Win32 X64 IA64',
+      'Configurations' => 'Debug Release ReleaseSpace ReleaseStatic',
+    },
+    '#' => {
+      'OutputDirectory'                  => '',
+      'IntermediateDirectory'            => '',
+      'ConfigurationType'                => '',
+      'ConfigurationType'                => '',
+      'CharacterSet'                     => '',
+      #-------------------------------
+      'Optimization'                     => '',
+      'WholeProgramOptimization'         => '',
+      'AdditionalIncludeDirectories'     => '',
+      'PreprocessorDefinitions'          => '',
+      'StringPooling'                    => '',
+      'MinimalRebuild'                   => '',
+      'BasicRuntimeChecks'               => '',
+      'RuntimeLibrary'                   => '',
+      'RuntimeTypeInfo'                  => '',
+      'UsePrecompiledHeader'             => '',
+      'PrecompiledHeaderFile'            => '',
+      'AssemblerListingLocation'         => '',
+      'ProgramDataBaseFileName'          => '',
+      'BrowseInformation'                => '',
+      'WarningLevel'                     => '',
+      'WarnAsError'                      => '',
+      'Detect64BitPortabilityProblems'   => '',
+      'DebugInformationFormat'           => '',
+      'CompileAs'                        => '',
+      'EnablePREfast'                    => '',
+      #-------------------------------
+      'AdditionalDependencies'           => '',
+      'OutputFile'                       => '',
+      'LinkIncremental'                  => '',
+      'AdditionalLibraryDirectories'     => '',
+      'GenerateDebugInformation'         => '',
+      'ProgramDatabaseFile'              => '',
+      'GenerateMapFile'                  => '',
+      'MapFileName'                      => '',
+      'MapExports'                       => '',
+      'SubSystem'                        => '',
+      'LinkTimeCodeGeneration'           => '',
+      #-------------------------------
+      'OutputFile'                       => '',
+    },
+    '*' => {
+    },
+    'Debug' => {
+    },
+    'Release' => {
+    },
+    'ReleaseSpace' => {
+    },
+    'ReleaseStatic' => {
+    },
+  },
+  #-------------------------------
+  #-------------------------------
+  #-------------------------------
+  #-------------------------------
   'open' => sub {
     my ($this) = @_;
     return $this;
@@ -39,27 +256,5 @@ EOT
   'sets' => [{}],
 };
 
-
-q^
-  'generator' => sub {
-    my ($this, $config) = @_;
-    my $template = $this->{'templates'};
-    my $projects = {
-      'p1' => {
-        'name' => 'p1',
-        'GUID' => '{AE16F973-229C-446C-9DAD-A19C1A35E6CF}',
-        'filename' => 'p1\p1.vcproj',
-        'depends' => [],
-      },
-      'p0' => {
-        'name' => 'p0',
-        'GUID' => '{ED3D9AA7-91B7-41B1-A1C9-226EACAE0341}',
-        'filename' => 'p0\p0.vcproj',
-        'depends' => ['p1'],
-      }
-    };
-    generate_msvc_xml_solution('sol.sln', $template, $projects);
-  },
-^ if 0;
 
 return 1;

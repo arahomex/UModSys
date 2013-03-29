@@ -15,15 +15,15 @@ begin solution umodsys
   set path-out-lib \$(SolutionDir)../../tmp/win32vc8_\$(ConfigurationName)_\$(PlatformName)
 
   option project * IntermediateDirectory \$(SolutionDir)../../tmp/win32vc8_\$(ConfigurationName)_\$(PlatformName)/\$(ProjectName)
-  option project * VCCLCompilerTool.AdditionalIncludeDirectories \$(SolutionDir)../../include
-  option project * VCLinkerTool.AdditionalLibraryDirectories \$(IntDir)/..
-  option project Platforms Win32 x64
-  option project Configurations Debug Release ReleaseSpace
+  option project * VCCLCompilerTool_AdditionalIncludeDirectories \$(SolutionDir)../../include
+  option project * VCLinkerTool_AdditionalLibraryDirectories \$(IntDir)/..
+  option project [] Platforms "Win32 x64"
+  option project [] Configurations "Debug Release ReleaseSpace"
 
   begin project umodsysc
     mode console
     option * OutputDirectory $(path-out-bin)
-    option * VCLinkerTool.AdditionalDependencies umodsys_lib_core.lib umodsys_lib_base.lib
+    option * VCLinkerTool_AdditionalDependencies umodsys_lib_core.lib umodsys_lib_base.lib
     begin filter src
       file $(path-sbase)/umodsys.c_main.cpp
     end
