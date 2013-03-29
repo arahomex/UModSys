@@ -3,13 +3,13 @@ generator msvc8
 begin solution umodsys
   option random-seed 0
 
-  set path-root ../../.. 
+  set path-root ../.. 
   set path-tmp $(path-root)/tmp
   set path-bin $(path-root)/bin
   set path-src $(path-root)/src
-  set path-sbase $(path-src)/base
-  set path-score $(path-src)/core
-  set path-splugin $(path-src)/plugin
+  set path-sbase $(path-src)/src/base
+  set path-score $(path-src)/src/core
+  set path-splugin $(path-src)/src/plugin
 
   set path-out-bin \$(SolutionDir)../../tmp/win32vc8_\$(ConfigurationName)_\$(PlatformName)
   set path-out-lib \$(SolutionDir)../../tmp/win32vc8_\$(ConfigurationName)_\$(PlatformName)

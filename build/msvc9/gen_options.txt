@@ -1,51 +1,59 @@
 generator msvc9
 
-solution umodsys
+begin solution umodsys
+  option random-seed 0
 
-  set path-root ../.. 
-  set path-tmp $(path_root)/tmp
-  set path-bin $(path_root)/bin
-  set path-src $(path_root)/src
-  set path-sbase $(path_src)/src/base
-  set path-score $(path_src)/src/core
-  set path-splugin $(path_src)/src/plugin
+  set path-root ../../.. 
+  set path-tmp $(path-root)/tmp
+  set path-bin $(path-root)/bin
+  set path-src $(path-root)/src
+  set path-sbase $(path-src)/base
+  set path-score $(path-src)/core
+  set path-splugin $(path-src)/plugin
 
-  set path-out-bin \$(SolutionDir)../../tmp/win32vc9_\$(ConfigurationName)_\$(PlatformName)
-  set path-out-lib \$(SolutionDir)../../tmp/win32vc9_\$(ConfigurationName)_\$(PlatformName)
+  set path-out-bin \$(SolutionDir)../../tmp/win32vc8_\$(ConfigurationName)_\$(PlatformName)
+  set path-out-lib \$(SolutionDir)../../tmp/win32vc8_\$(ConfigurationName)_\$(PlatformName)
 
-  option project * IntermediateDirectory \$(SolutionDir)../../tmp/win32vc9_\$(ConfigurationName)_\$(PlatformName)/\$(ProjectName)
-  option project * VCCLCompilerTool.AdditionalIncludeDirectories \$(SolutionDir)../../include
-  option project * VCLinkerTool.AdditionalLibraryDirectories \$(IntDir)/..
-  option project Platforms Win32 x64
-  option project Configurations Debug Release ReleaseSpace
+  option project * IntermediateDirectory \$(SolutionDir)../../tmp/win32vc8_\$(ConfigurationName)_\$(PlatformName)/\$(ProjectName)
+  option project * VCCLCompilerTool_AdditionalIncludeDirectories \$(SolutionDir)../../include
+  option project * VCLinkerTool_AdditionalLibraryDirectories \$(IntDir)/..
+  option project [] Platforms "Win32 x64"
+  option project [] Configurations "Debug Release ReleaseSpace"
 
-  project umodsysc
+  begin project umodsysc
     mode console
     option * OutputDirectory $(path-out-bin)
-    option * VCLinkerTool.AdditionalDependencies umodsys_lib_core.lib umodsys_lib_base.lib
-    filter src
+    option * VCLinkerTool_AdditionalDependencies umodsys_lib_core.lib umodsys_lib_base.lib
+    begin filter src
       file $(path-sbase)/umodsys.c_main.cpp
+    end
+    depend umodsys_lib_core
+    depend umodsys_lib_base
+  end
 
-  project umodsys_lib_core
+  begin project umodsys_lib_core
     mode lib
     option * OutputDirectory $(path-out-lib)
-    filter src
+    begin filter src
       file $(path-score)/umodsys.core.objects.cpp
       file $(path-score)/umodsys.core.stdtypedefs.cpp
       file $(path-score)/umodsys.core.uniqueptr.cpp
       file $(path-score)/umodsys.tl.strings.cpp
-    filter src-win32
+    end
+    begin filter src-win32
       file $(path-score)/platform/win32/umodsys.core.syshlp_chars.win32.cpp
       file $(path-score)/platform/win32/umodsys.core.syshlp_charcode.win32.cpp
       file $(path-score)/platform/win32/umodsys.core.syshlp_files.win32.cpp
       file $(path-score)/platform/win32/umodsys.core.syshlp_proc.win32.cpp
       file $(path-score)/platform/win32/umodsys.core.syshlp_thread.win32.cpp
       file $(path-score)/platform/win32/umodsys.core.syshlp_vars.win32.cpp
+    end
+  end
 
-  project umodsys_lib_base
+  begin project umodsys_lib_base
     mode lib
     option * OutputDirectory $(path-out-lib)
-    filter src-shared
+    begin filter src-shared
       file $(path-sbase)/umodsys.base.debug.cpp
       file $(path-sbase)/umodsys.base.console.cpp
       file $(path-sbase)/umodsys.base.system.cpp
@@ -55,7 +63,8 @@ solution umodsys
       file $(path-sbase)/umodsys.base.moduleinfo.cpp
       file $(path-sbase)/umodsys.base.modulereg.cpp
       file $(path-sbase)/umodsys.base.moduleregchain.cpp
-    filter src
+    end
+    begin filter src
       file $(path-sbase)/umodsys.base.rsystem.cpp
       file $(path-sbase)/umodsys.base.rsystem_main.cpp
       file $(path-sbase)/umodsys.base.rsystem_tests.cpp
@@ -64,15 +73,28 @@ solution umodsys
       file $(path-sbase)/umodsys.base.rmoduleloader.cpp
       file $(path-sbase)/umodsys.base.rparameters.cpp
       file $(path-sbase)/umodsys.base.rconsole_std.cpp
-    filter src-win32
+    end
+    begin filter src-win32
       file $(path-sbase)/platform/win32/umodsys.base.rmodule.win32.cpp
+    end
+  end
 
-  project plugin_test1
+  begin project plugin_test1
     mode dll
-    filter src
+    begin filter src
       file $(path-splugin)/plugin_test1/test/plugin_test1.cpp
+    end
+    depend umodsys_lib_core
+    depend umodsys_lib_base
+  end
 
-  project plugin_test2
+  begin project plugin_test2
     mode dll
-    filter src
+    begin filter src
       file $(path-splugin)/plugin_test1/test/plugin_test2.cpp
+    end
+    depend umodsys_lib_core
+    depend umodsys_lib_base
+  end
+
+end

@@ -61,6 +61,12 @@ EOT
 		/>
 EOT
     #-------------------------------
+    'project-configs-begin' => <<'EOT',
+	<Configurations>
+EOT
+    'project-configs-end' => <<'EOT',
+	</Configurations>
+EOT
     'project-config-begin' => <<'EOT',
 		<Configuration
 			Name="$CONF_NAME|$PLATFORM_NAME"
@@ -71,7 +77,7 @@ EOT
 			>
 EOT
     'project-config-end' => <<'EOT',
-	</Configurations>
+		</Configuration>
 EOT
     'project-config-aux' => <<'EOT',
 			<Tool
@@ -101,8 +107,9 @@ EOT
 			<Tool
 				Name="VCXDCMakeTool"
 			/>
+			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(IntDir)/$(ProjectName).bsc"
+				OutputFile="\$(IntDir)/\$(ProjectName).bsc"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -111,7 +118,12 @@ EOT
     'project-config-compiler' => <<'EOT',
 			<Tool
 				Name="VCCLCompilerTool"
+				AdditionalOptions="$OPT_Compiler_AdditionalOptions"
 				Optimization="$OPT_Compiler_Optimization"
+				Optimization="$OPT_Compiler_FavorSizeOrSpeed"
+				InlineFunctionExpansion="$OPT_Compiler_FavorSizeOrSpeed"
+				EnableIntrinsicFunctions="$OPT_Compiler_FavorSizeOrSpeed"
+				FavorSizeOrSpeed="$OPT_Compiler_FavorSizeOrSpeed"
 				WholeProgramOptimization="$OPT_Compiler_WholeProgramOptimization"
 				AdditionalIncludeDirectories="$OPT_Compiler_AdditionalIncludeDirectories"
 				PreprocessorDefinitions="$OPT_Compiler_PreprocessorDefinitions"
@@ -119,6 +131,7 @@ EOT
 				MinimalRebuild="$OPT_Compiler_MinimalRebuild"
 				BasicRuntimeChecks="$OPT_Compiler_BasicRuntimeChecks"
 				RuntimeLibrary="$OPT_Compiler_RuntimeLibrary"
+				BufferSecurityCheck="$OPT_Compiler_BufferSecurityCheck"
 				RuntimeTypeInfo="$OPT_Compiler_RuntimeTypeInfo"
 				UsePrecompiledHeader="$OPT_Compiler_UsePrecompiledHeader"
 				PrecompiledHeaderFile="$OPT_Compiler_PrecompiledHeaderFile"
@@ -154,7 +167,6 @@ EOT
 				Name="VCLibrarianTool"
 				OutputFile="$OPT_Librarian_OutputFile"
 			/>
-	</Configurations>
 EOT
     #-------------------------------
     'project-files-begin' => <<'EOT',
@@ -187,58 +199,161 @@ EOT
     '[]' => {
       'Platforms'      => 'Win32 X64 IA64',
       'Configurations' => 'Debug Release ReleaseSpace ReleaseStatic',
+      '#' => {
+        'OutputDirectory'                           => '',
+        'IntermediateDirectory'                     => '',
+        'ConfigurationType'                         => '',
+        'ConfigurationType'                         => '',
+        'CharacterSet'                              => '',
+        #-------------------------------
+        'Compiler_Optimization'                     => '',
+        'Compiler_InlineFunctionExpansion'          => '',
+        'Compiler_EnableIntrinsicFunctions'         => '',
+        'Compiler_FavorSizeOrSpeed'                 => '',
+        'Compiler_WholeProgramOptimization'         => '',
+        'Compiler_AdditionalIncludeDirectories'     => '',
+        'Compiler_PreprocessorDefinitions'          => '',
+        'Compiler_StringPooling'                    => '',
+        'Compiler_MinimalRebuild'                   => '',
+        'Compiler_BasicRuntimeChecks'               => '',
+	'Compiler_BufferSecurityCheck'              => '',
+        'Compiler_RuntimeLibrary'                   => '',
+        'Compiler_RuntimeTypeInfo'                  => '',
+        'Compiler_UsePrecompiledHeader'             => '',
+        'Compiler_PrecompiledHeaderFile'            => '',
+        'Compiler_AssemblerListingLocation'         => '',
+        'Compiler_ProgramDataBaseFileName'          => '',
+        'Compiler_BrowseInformation'                => '',
+        'Compiler_WarningLevel'                     => '',
+        'Compiler_WarnAsError'                      => '',
+        'Compiler_Detect64BitPortabilityProblems'   => '',
+        'Compiler_DebugInformationFormat'           => '',
+        'Compiler_CompileAs'                        => '',
+        'Compiler_EnablePREfast'                    => '',
+        #-------------------------------
+        'Linker_AdditionalDependencies'             => '',
+        'Linker_OutputFile'                         => '',
+        'Linker_LinkIncremental'                    => '',
+        'Linker_AdditionalLibraryDirectories'       => '',
+        'Linker_GenerateDebugInformation'           => '',
+        'Linker_ProgramDatabaseFile'                => '',
+        'Linker_GenerateMapFile'                    => '',
+        'Linker_MapFileName'                        => '',
+        'Linker_MapExports'                         => '',
+        'Linker_SubSystem'                          => '',
+        'Linker_LinkTimeCodeGeneration'             => '',
+        #-------------------------------
+        'Librarian_OutputFile'                      => '',
+      },
     },
-    '#' => {
-      'OutputDirectory'                  => '',
-      'IntermediateDirectory'            => '',
-      'ConfigurationType'                => '',
-      'ConfigurationType'                => '',
-      'CharacterSet'                     => '',
-      #-------------------------------
-      'Optimization'                     => '',
-      'WholeProgramOptimization'         => '',
-      'AdditionalIncludeDirectories'     => '',
-      'PreprocessorDefinitions'          => '',
-      'StringPooling'                    => '',
-      'MinimalRebuild'                   => '',
-      'BasicRuntimeChecks'               => '',
-      'RuntimeLibrary'                   => '',
-      'RuntimeTypeInfo'                  => '',
-      'UsePrecompiledHeader'             => '',
-      'PrecompiledHeaderFile'            => '',
-      'AssemblerListingLocation'         => '',
-      'ProgramDataBaseFileName'          => '',
-      'BrowseInformation'                => '',
-      'WarningLevel'                     => '',
-      'WarnAsError'                      => '',
-      'Detect64BitPortabilityProblems'   => '',
-      'DebugInformationFormat'           => '',
-      'CompileAs'                        => '',
-      'EnablePREfast'                    => '',
-      #-------------------------------
-      'AdditionalDependencies'           => '',
-      'OutputFile'                       => '',
-      'LinkIncremental'                  => '',
-      'AdditionalLibraryDirectories'     => '',
-      'GenerateDebugInformation'         => '',
-      'ProgramDatabaseFile'              => '',
-      'GenerateMapFile'                  => '',
-      'MapFileName'                      => '',
-      'MapExports'                       => '',
-      'SubSystem'                        => '',
-      'LinkTimeCodeGeneration'           => '',
-      #-------------------------------
-      'OutputFile'                       => '',
-    },
+    #
     '*' => {
+      'OutputDirectory'                             => '\$(SolutionDir)../../tmp/win32vc8_\$(ConfigurationName)_\$(PlatformName)',
+      'IntermediateDirectory'                       => '\$(SolutionDir)../../tmp/win32vc8_\$(ConfigurationName)_\$(PlatformName)/\$(ProjectName)',
+      'CharacterSet'                                => '2',
+      #                                            
+      'Compiler_AdditionalOptions'                  => '/MP',
+      'Compiler_AdditionalIncludeDirectories'       => '\$(SolutionDir)../../include',
+      'Compiler_StringPooling'                      => 'true',
+      'Compiler_MinimalRebuild'                     => 'false',
+      'Compiler_RuntimeTypeInfo'                    => 'true',
+      'Compiler_UsePrecompiledHeader'               => '0',
+      'Compiler_PrecompiledHeaderFile'              => '\$(IntDir)/\$(ProjectName).pch',
+      'Compiler_AssemblerListingLocation'           => '\$(IntDir)/',
+      'Compiler_ProgramDataBaseFileName'            => '\$(IntDir)/',
+      'Compiler_Detect64BitPortabilityProblems'     => 'true',
+      'Compiler_CompileAs'                          => '0',
+      'Compiler_EnablePREfast'                      => 'false',
+      #
+      'Librarian_OutputFile'                        => '\$(OutDir)/\$(ProjectName).lib',
+      #
+      'Linker_AdditionalDependencies'               => 'Winmm.lib ws2_32.lib',
+      'Linker_OutputFile'                           => '\$(OutDir)/\$(ProjectName).exe',
+      'Linker_AdditionalLibraryDirectories'         => '\$(IntDir)/..',
+      'Linker_ProgramDatabaseFile'                  => '\$(OutDir)/\$(ProjectName).pdb',
+      'Linker_MapFileName'                          => '\$(IntDir)/\$(ProjectName).map',
+      'Linker_MapExports'                           => 'true',
+      'Linker_SubSystem'                            => '1',
     },
     'Debug' => {
+      'Compiler_Optimization'                       => '0',
+      'Compiler_InlineFunctionExpansion'            => '0',
+      'Compiler_EnableIntrinsicFunctions'           => 'false',
+      'Compiler_FavorSizeOrSpeed'                   => '0',
+      'Compiler_WholeProgramOptimization'           => 'false',
+      'Compiler_PreprocessorDefinitions'            => 'WIN32;_DEBUG',
+      'Compiler_BasicRuntimeChecks'                 => '3',
+      'Compiler_BufferSecurityCheck'                => 'true',
+      'Compiler_RuntimeLibrary'                     => '3',
+      'Compiler_BrowseInformation'                  => '1',
+      'Compiler_WarningLevel'                       => '3',
+      'Compiler_WarnAsError'                        => 'true',
+      'Compiler_DebugInformationFormat'             => '3',
+      #
+      'Linker_LinkIncremental'                      => '1',
+      'Linker_GenerateDebugInformation'             => 'true',
+      'Linker_GenerateMapFile'                      => 'true',
+      'Linker_LinkTimeCodeGeneration'               => '0',
     },
     'Release' => {
+      'Compiler_Optimization'                       => '3',
+      'Compiler_InlineFunctionExpansion'            => '2',
+      'Compiler_EnableIntrinsicFunctions'           => 'true',
+      'Compiler_FavorSizeOrSpeed'                   => '1',
+      'Compiler_WholeProgramOptimization'           => 'true',
+      'Compiler_PreprocessorDefinitions'            => 'WIN32;NDEBUG',
+      'Compiler_BasicRuntimeChecks'                 => '0',
+      'Compiler_BufferSecurityCheck'                => 'false',
+      'Compiler_RuntimeLibrary'                     => '2',
+      'Compiler_BrowseInformation'                  => '0',
+      'Compiler_WarningLevel'                       => '1',
+      'Compiler_WarnAsError'                        => 'true',
+      'Compiler_DebugInformationFormat'             => '0',
+      #
+      'Linker_LinkIncremental'                      => '0',
+      'Linker_GenerateDebugInformation'             => 'false',
+      'Linker_GenerateMapFile'                      => 'false',
+      'Linker_LinkTimeCodeGeneration'               => '1',
     },
     'ReleaseSpace' => {
+      'Compiler_Optimization'                       => '1',
+      'Compiler_InlineFunctionExpansion'            => '0',
+      'Compiler_EnableIntrinsicFunctions'           => 'false',
+      'Compiler_FavorSizeOrSpeed'                   => '2',
+      'Compiler_WholeProgramOptimization'           => 'true',
+      'Compiler_PreprocessorDefinitions'            => 'WIN32;NDEBUG',
+      'Compiler_BasicRuntimeChecks'                 => '0',
+      'Compiler_BufferSecurityCheck'                => 'false',
+      'Compiler_RuntimeLibrary'                     => '2',
+      'Compiler_BrowseInformation'                  => '0',
+      'Compiler_WarningLevel'                       => '1',
+      'Compiler_WarnAsError'                        => 'true',
+      'Compiler_DebugInformationFormat'             => '0',
+      #
+      'Linker_LinkIncremental'                      => '0',
+      'Linker_GenerateDebugInformation'             => 'false',
+      'Linker_GenerateMapFile'                      => 'false',
+      'Linker_LinkTimeCodeGeneration'               => '1',
     },
     'ReleaseStatic' => {
+      'Compiler_Optimization'                       => '3',
+      'Compiler_InlineFunctionExpansion'            => '2',
+      'Compiler_EnableIntrinsicFunctions'           => 'true',
+      'Compiler_FavorSizeOrSpeed'                   => '1',
+      'Compiler_WholeProgramOptimization'           => 'true',
+      'Compiler_PreprocessorDefinitions'            => 'WIN32;NDEBUG',
+      'Compiler_BasicRuntimeChecks'                 => '0',
+      'Compiler_BufferSecurityCheck'                => 'false',
+      'Compiler_RuntimeLibrary'                     => '0',
+      'Compiler_BrowseInformation'                  => '0',
+      'Compiler_WarningLevel'                       => '1',
+      'Compiler_WarnAsError'                        => 'true',
+      'Compiler_DebugInformationFormat'             => '0',
+      #
+      'Linker_LinkIncremental'                      => '0',
+      'Linker_GenerateDebugInformation'             => 'false',
+      'Linker_GenerateMapFile'                      => 'false',
+      'Linker_LinkTimeCodeGeneration'               => '1',
     },
   },
   #-------------------------------

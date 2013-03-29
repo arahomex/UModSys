@@ -96,6 +96,16 @@ sub make_filename_dir
   mkdir $path;
 }
 
+sub write_eval_strings
+{
+  my ($fout, $eval_lines) = @_;
+  for my $eval_line (@$eval_lines) {
+    print $@ if $@; 
+    print $fout eval("<<EOT\n${eval_line}EOT");
+  }
+}
+
+
 #---------------------------------
 #---------------------------------
 #---------------------------------

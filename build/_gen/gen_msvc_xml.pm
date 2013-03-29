@@ -34,7 +34,7 @@ sub msvc_xml_setopt
 sub msvc_xml_getopt
 {
   my ($conf, $optname, @refs) = @_;
-  print "find opt '$conf'.'$optname' at #".@refs."\n";
+#  print "find opt '$conf'.'$optname' at #".@refs."\n";
   for my $ref (@refs) {
     next if not exists $ref->{$conf};
     next if not exists $ref->{$conf}->{$optname};
@@ -108,7 +108,7 @@ sub msvc_xml_solution_option
     my $name = get_configuration_arg(\$args);
     my $value = get_configuration_arg_exp(\$args, $this);
     msvc_xml_setopt($this->{'solution'}->{'project-opts'}, $conf, $name, $value);
-    print "setopt '$conf'.'$name' => '$value'\n";
+#    print "setopt '$conf'.'$name' => '$value'\n";
   }
 }
 
@@ -193,11 +193,14 @@ sub msvc_xml_project_generate
   #
   #------------------- BEGIN
   my ($PROJECT_NAME, $PROJECT_GUID) = ($proj->{'name'}, $proj->{'GUID'});
+  my @confs = split / /, msvc_xml_getopt('[]', 'Configurations', @{$proj->{'a-opts'}});
+  my @platforms = split / /, msvc_xml_getopt('[]', 'Platforms', @{$proj->{'a-opts'}});
+  my $opt_vars = msvc_xml_getopt('[]', '#', @{$proj->{'a-opts'}});
+  #
   $line = eval("<<EOT\n".$template->{'project-begin'}."EOT");
   print $fout $line;
   #
   #------------------- PLATFORMS
-  my @platforms = split / /, msvc_xml_getopt('[]', 'Platforms', @{$proj->{'a-opts'}});
   $line = eval("<<EOT\n".$template->{'project-platforms-begin'}."EOT");
   print $fout $line;
   for my $PLATFORM_NAME (@platforms) {
@@ -207,6 +210,56 @@ sub msvc_xml_project_generate
   $line = eval("<<EOT\n".$template->{'project-platforms-end'}."EOT");
   print $fout $line;
   #
+  #
+  #------------------- CONFIGURATIONS
+  $line = eval("<<EOT\n".$template->{'project-configs-begin'}."EOT");
+  print $fout $line;
+  for my $PLATFORM_NAME (@platforms) {
+    for my $CONF_NAME (@confs) {
+      #
+      my $opt_var_all = '';
+      for my $opt_var (keys $opt_vars) {
+        my $opt_var_val = msvc_xml_getopt($CONF_NAME, $opt_var, @{$proj->{'a-opts'}});
+        $opt_var_val = msvc_xml_getopt('*', $opt_var, @{$proj->{'a-opts'}}) if not defined $opt_var_val;
+        $opt_var_val = $opt_vars->{$opt_var} if not defined $opt_var_val;
+        $opt_var_all .= "my \$OPT_$opt_var = \"$opt_var_val\";\n";
+      }
+      #
+      if($proj->{'mode'} eq 'console') {
+        $opt_var_all .= '$OPT_ConfigurationType="1";';
+      } elsif($proj->{'mode'} eq 'lib') {
+        $opt_var_all .= '$OPT_ConfigurationType="4";';
+      } elsif($proj->{'mode'} eq 'solib') {
+        $opt_var_all .= '$OPT_ConfigurationType="2";';
+      } elsif($proj->{'mode'} eq 'app') {
+        $opt_var_all .= '$OPT_ConfigurationType="1";';
+      } else {
+        $opt_var_all .= '$OPT_ConfigurationType="1";';
+      }
+      #
+      my $list = [
+        $template->{'project-config-begin'},
+        $template->{'project-config-compiler'},
+        $template->{'project-config-linker'},
+        $template->{'project-config-librarian'},
+        $template->{'project-config-aux'},
+        $template->{'project-config-end'},
+      ];
+      $opt_var_all .= <<'EOT_END';
+        for my $eval_line (@$list) {
+          print $@ if $@; 
+          print $fout eval("<<EOT\n${eval_line}EOT");
+        }
+EOT_END
+#      print $opt_var_all;
+no strict 'vars';
+      eval $opt_var_all;
+      print $@ if $@; 
+use strict 'vars';
+    }
+  }
+  $line = eval("<<EOT\n".$template->{'project-configs-end'}."EOT");
+  print $fout $line;
   #
   #------------------- FILES
   $line = eval("<<EOT\n".$template->{'project-files-begin'}."EOT");
@@ -231,7 +284,8 @@ sub msvc_xml_project_cmd
     my $name = get_configuration_arg(\$args);
     push @{$this->{'project'}->{'depends'}}, $name;
   } elsif($cmd eq 'mode') {
-    my $name = get_configuration_arg(\$args);
+    my $mode = get_configuration_arg(\$args);
+    $this->{'project'}->{'mode'} = $mode;
   }
 }
 
@@ -253,6 +307,7 @@ sub msvc_xml_project_begin
     'sets' => set_new($this),
     'solution' => $this,
     'name' => $name,
+    'mode' => '',
     'GUID' => msvc_xml_new_guid(),
     'filename' => "$name/$name.vcproj",
     'filters' => {},
