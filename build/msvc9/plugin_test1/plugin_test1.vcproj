@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="plugin_test1"
-	ProjectGUID="{918EF585-DE22-29C6-4687-42A7EC916F98}"
+	ProjectGUID="{2657D1E7-4E14-DD88-3F0A-D67249EEA6DD}"
 	RootNamespace="plugin_test1"
 	>
 	<Platforms>
@@ -17,9 +17,9 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)"
-			IntermediateDirectory="$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
-			ConfigurationType="1"
+			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
+			ConfigurationType="2"
 			CharacterSet="2"
 			>
 			<Tool
@@ -45,7 +45,7 @@
 				BrowseInformation="1"
 				WarningLevel="3"
 				WarnAsError="true"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 				CompileAs="0"
 				EnablePREfast="false"
@@ -53,7 +53,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
-				OutputFile="$(OutDir)/$(ProjectName).exe"
+				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="true"
@@ -66,7 +66,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/$(ProjectName).lib"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
 			/>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -105,9 +105,9 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)"
-			IntermediateDirectory="$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
-			ConfigurationType="1"
+			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
+			ConfigurationType="2"
 			CharacterSet="2"
 			>
 			<Tool
@@ -133,7 +133,7 @@
 				BrowseInformation="0"
 				WarningLevel="1"
 				WarnAsError="true"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
 				CompileAs="0"
 				EnablePREfast="false"
@@ -141,7 +141,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
-				OutputFile="$(OutDir)/$(ProjectName).exe"
+				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
@@ -154,7 +154,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/$(ProjectName).lib"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
 			/>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -193,9 +193,9 @@
 		</Configuration>
 		<Configuration
 			Name="ReleaseSpace|Win32"
-			OutputDirectory="$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)"
-			IntermediateDirectory="$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
-			ConfigurationType="1"
+			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
+			ConfigurationType="2"
 			CharacterSet="2"
 			>
 			<Tool
@@ -221,7 +221,7 @@
 				BrowseInformation="0"
 				WarningLevel="1"
 				WarnAsError="true"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
 				CompileAs="0"
 				EnablePREfast="false"
@@ -229,7 +229,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
-				OutputFile="$(OutDir)/$(ProjectName).exe"
+				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
@@ -242,7 +242,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/$(ProjectName).lib"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
 			/>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -281,9 +281,9 @@
 		</Configuration>
 		<Configuration
 			Name="Debug|x64"
-			OutputDirectory="$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)"
-			IntermediateDirectory="$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
-			ConfigurationType="1"
+			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
+			ConfigurationType="2"
 			CharacterSet="2"
 			>
 			<Tool
@@ -309,7 +309,7 @@
 				BrowseInformation="1"
 				WarningLevel="3"
 				WarnAsError="true"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 				CompileAs="0"
 				EnablePREfast="false"
@@ -317,7 +317,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
-				OutputFile="$(OutDir)/$(ProjectName).exe"
+				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="true"
@@ -330,7 +330,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/$(ProjectName).lib"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
 			/>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -369,9 +369,9 @@
 		</Configuration>
 		<Configuration
 			Name="Release|x64"
-			OutputDirectory="$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)"
-			IntermediateDirectory="$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
-			ConfigurationType="1"
+			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
+			ConfigurationType="2"
 			CharacterSet="2"
 			>
 			<Tool
@@ -397,7 +397,7 @@
 				BrowseInformation="0"
 				WarningLevel="1"
 				WarnAsError="true"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
 				CompileAs="0"
 				EnablePREfast="false"
@@ -405,7 +405,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
-				OutputFile="$(OutDir)/$(ProjectName).exe"
+				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
@@ -418,7 +418,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/$(ProjectName).lib"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
 			/>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -457,9 +457,9 @@
 		</Configuration>
 		<Configuration
 			Name="ReleaseSpace|x64"
-			OutputDirectory="$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)"
-			IntermediateDirectory="$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
-			ConfigurationType="1"
+			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
+			ConfigurationType="2"
 			CharacterSet="2"
 			>
 			<Tool
@@ -485,7 +485,7 @@
 				BrowseInformation="0"
 				WarningLevel="1"
 				WarnAsError="true"
-				Detect64BitPortabilityProblems="true"
+				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
 				CompileAs="0"
 				EnablePREfast="false"
@@ -493,7 +493,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
-				OutputFile="$(OutDir)/$(ProjectName).exe"
+				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
@@ -506,7 +506,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/$(ProjectName).lib"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
 			/>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -549,7 +549,7 @@
 			Name="src"
 			>
 			<File
-				RelativePath="../../../src/plugin/plugin_test1/test/plugin_test1.cpp"
+				RelativePath="..\..\..\src\plugin\test\plugin_test1.cpp"
 				>
 			</File>
 		</Filter>

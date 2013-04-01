@@ -1,7 +1,7 @@
 use strict;
 
-our $config;
 our $generators;
+use Data::Dumper;
 
 #---------------------------------
 #---------------------------------
@@ -96,14 +96,14 @@ sub make_filename_dir
   mkdir $path;
 }
 
-sub write_eval_strings
-{
-  my ($fout, $eval_lines) = @_;
-  for my $eval_line (@$eval_lines) {
-    print $@ if $@; 
-    print $fout eval("<<EOT\n${eval_line}EOT");
-  }
-}
+#sub write_eval_strings
+#{
+#  my ($fout, $eval_lines) = @_;
+#  for my $eval_line (@$eval_lines) {
+#    print $fout eval("<<EOT\n".$eval_line.'EOT');
+#    print $@ if $@; 
+#  }
+#}
 
 
 #---------------------------------
@@ -112,7 +112,7 @@ sub write_eval_strings
 
 sub init_configuration
 {
-  $config = {
+  return {
     'lines' => undef,
     'lineno' => undef,
     'generator' => undef,
@@ -122,7 +122,7 @@ sub init_configuration
 
 sub read_configuration
 {
-  my ($filename) = @_;
+  my ($config, $filename) = @_;
   my ($line, $fin);
   #
   my ($lines, $lineno) = ([], 0);
@@ -139,7 +139,8 @@ sub read_configuration
 
 sub apply_configuration
 {
-  my ($lineno, $G, $ctx) = (0, undef, undef);
+  my ($config, $ctx) = @_;
+  my ($lineno, $G) = (0, undef);
   my @stack;
   for my $line (@{$config->{'lines'}}) {
     $lineno++;
@@ -151,7 +152,7 @@ sub apply_configuration
     #
     my $args = $line;
     my $cmd = get_configuration_arg(\$args);
-    if(not defined $config->{'generator'}) {
+    if(not defined $ctx and not defined $config->{'generator'}) {
       if($cmd eq 'generator') {
         my $genid = get_configuration_arg(\$args);
         die "Line $lineno: No generator named '$genid'" if not exists $generators->{$genid};
@@ -159,6 +160,7 @@ sub apply_configuration
         $config->{'generator'} = $G;
         die "Line $lineno: No open for generator" if not exists $G->{'open'};
         $ctx = $G->{'open'}($G);
+#        print Data::Dumper->Dump([$ctx], [qw(ctx)]);
         $config->{'block'} = $ctx;
         @stack = ();
         print "Using generator '$genid'\n";
@@ -187,7 +189,8 @@ sub apply_configuration
         $ctx->{'option'}($ctx, $cmd, $args);
         next;
       } else {
-        die "Line $lineno: Can't use command '$cmd' $args" if (not exists $ctx->{'commands'}) or (not exists $ctx->{'commands'}->{$cmd});
+        die "Line $lineno: Can't use commands '$cmd' $args" if not exists $ctx->{'commands'};
+        die "Line $lineno: Can't use command '$cmd' $args" if not exists $ctx->{'commands'}->{$cmd};
         $ctx->{'commands'}->{$cmd}($ctx, $cmd, $args);
         next;
       }
@@ -195,6 +198,12 @@ sub apply_configuration
     die "Line $lineno: Invalid configuration line '$line'\n";
   }
   $ctx->{'close'}($ctx) if (defined $ctx) and (exists $ctx->{'close'});
+  return $ctx;
+}
+
+sub exec_generator {
+  my ($config, $ctx) = @_;
+  $ctx->{'generate'}($ctx, $config) if (defined $ctx) and (exists $ctx->{'generate'});
 }
 
 return 1;

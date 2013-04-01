@@ -1,0 +1,75 @@
+begin project-group umodsys
+  set path-tmp $(path-root)/tmp
+  set path-bin $(path-root)/bin
+
+  set path-src $(path-root)/src
+  set path-s-base $(path-src)/base
+  set path-s-core $(path-src)/core
+  set path-s-tl $(path-src)/tl
+  set path-s-plugin $(path-src)/plugin
+
+  begin project umodsysc
+    mode binary
+    begin file-group src
+      file $(path-s-base)/umodsys.c_main.cpp
+    end
+    depend umodsys_lib_core
+    depend umodsys_lib_base
+  end
+
+  begin project umodsys_lib_core
+    mode lib
+    begin file-group src
+      file $(path-s-core)/umodsys.core.objects.cpp
+      file $(path-s-core)/umodsys.core.stdtypedefs.cpp
+      file $(path-s-core)/umodsys.core.uniqueptr.cpp
+    end
+    begin file-group src-tl
+      file $(path-s-tl)/umodsys.tl.strings.cpp
+    end
+  end
+
+  begin project umodsys_lib_base
+    mode lib
+    begin file-group src-shared
+      file $(path-s-base)/umodsys.base.debug.cpp
+      file $(path-s-base)/umodsys.base.console.cpp
+      file $(path-s-base)/umodsys.base.system.cpp
+      file $(path-s-base)/umodsys.base.module.cpp
+      file $(path-s-base)/umodsys.base.moduleloader.cpp
+      file $(path-s-base)/umodsys.base.modulecontext.cpp
+      file $(path-s-base)/umodsys.base.moduleinfo.cpp
+      file $(path-s-base)/umodsys.base.modulereg.cpp
+      file $(path-s-base)/umodsys.base.moduleregchain.cpp
+    end
+    begin file-group src
+      file $(path-s-base)/rsystem/umodsys.base.rsystem.cpp
+      file $(path-s-base)/rsystem/umodsys.base.rsystem_main.cpp
+      file $(path-s-base)/rsystem/umodsys.base.rsystem_tests.cpp
+      file $(path-s-base)/rsystem/umodsys.base.rmodule.cpp
+      file $(path-s-base)/rsystem/umodsys.base.rmodulelib.cpp
+      file $(path-s-base)/rsystem/umodsys.base.rmoduleloader.cpp
+      file $(path-s-base)/rsystem/umodsys.base.rparameters.cpp
+      file $(path-s-base)/rsystem/umodsys.base.rconsole_std.cpp
+    end
+  end
+
+  begin project plugin_test1
+    mode shared
+    begin file-group src
+      file $(path-s-plugin)/test/plugin_test1.cpp
+    end
+    depend umodsys_lib_core
+    depend umodsys_lib_base
+  end
+
+  begin project plugin_test2
+    mode shared
+    begin file-group src
+      file $(path-s-plugin)/test/plugin_test2.cpp
+    end
+    depend umodsys_lib_core
+    depend umodsys_lib_base
+  end
+
+end

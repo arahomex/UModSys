@@ -1,7 +1,11 @@
 use strict;
 use File::Basename;
+use Storable qw(dclone);
 
 my $uitf8_header = "\xEF\xBB\xBF";
+
+our $script_path;
+require "$script_path/util_crc32.pm";
 
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------
@@ -35,13 +39,77 @@ sub msvc_xml_getopt
 {
   my ($conf, $optname, @refs) = @_;
 #  print "find opt '$conf'.'$optname' at #".@refs."\n";
+  my $lev = 0;
   for my $ref (@refs) {
+    $lev++;
     next if not exists $ref->{$conf};
     next if not exists $ref->{$conf}->{$optname};
+#    print "  found opt '$conf'.'$optname' => '".$ref->{$conf}->{$optname}." at #$lev'\n";
     return $ref->{$conf}->{$optname};
   }
   return undef;
 }
+
+sub msvc_xml_clone
+{
+  my $rv = {};
+  while(my $base = shift) {
+    for my $k (keys $base) {
+      my $value = $base->{$k};
+      my $refv = ref($value);
+      if($refv eq 'HASH') {
+#        print "[$k] is ref HASH\n";
+        $rv->{$k} = {} if not exists $rv->{$k};
+#        print "[$k] deep clone\n";
+        $rv->{$k} = msvc_xml_clone($rv->{$k}, $value);
+#        print "/[$k] deep clone\n";
+      } elsif($refv eq 'ARRAY') {
+#        print "[$k] is ref ARRAY\n";
+        $rv->{$k} = dclone($value);
+      } elsif($refv eq 'CODE') {
+#        print "[$k] is ref CODE\n";
+        $rv->{$k} = $value;
+      } elsif($refv eq '') {
+#        print "[$k] is not ref\n";
+        $rv->{$k} = $value;
+      } else {
+#        print "[$k] is ref $refv\n";
+        $rv->{$k} = dclone($value);
+      }
+    }
+  }
+  return $rv;
+}
+
+sub msvc_xml_gen_include {
+  my ($this, $cmd, $args) = @_;
+  my $name = get_configuration_arg(\$args);
+  #
+  my $config = init_configuration();
+  read_configuration($config, $name);
+  apply_configuration($config, $this);
+}
+
+sub msvc_xml_gen_generate {
+  my ($this, $config) = @_;
+#       print "{".$this->{'type'}.",".$this->{'G'}->{'type'}.",".$this->{'G'}->{'templates'}->{'type'}."}\n";
+  my $sols = $this->{'subs'};
+  for my $sn (keys %$sols) {
+    my $sol = $sols->{$sn};
+    msvc_xml_solution_generate($sol->{'solution'}, $this->{'templates'});
+    for my $pid (keys $sol->{'projects'}) {
+#      print "Processing project $pid\n";
+      msvc_xml_project_generate($sol->{'projects'}->{$pid}, $this->{'templates'});
+    }
+  }
+}
+
+sub msvc_xml_path_win32 {
+  my ($filename) = @_;
+  while($filename =~ s/\//\\/) {
+  }
+  return $filename;
+};
 
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------
@@ -51,7 +119,6 @@ sub msvc_xml_solution_generate
 {
   my ($sol, $template) = @_;
   my ($filename, $projects) = ($sol->{'filename'}, $sol->{'projects'});
-
   my ($fout);
   make_filename_dir($filename);
   open $fout,'>',$filename or die "File '$filename' create error.";
@@ -99,9 +166,11 @@ sub msvc_xml_solution_option
   my $name = get_configuration_arg(\$args);
 #  print "option $name $args\n";
   if($name eq 'random-seed') {
-    my $seed = int($args);
+    my $seed = int(get_configuration_arg(\$args));
+    my $basestr = get_configuration_arg(\$args);
+    $seed ^= crc32($basestr) if $basestr ne '';
     srand $seed;
-    print "Random seed is set to $seed\n";
+    print "Random seed is set to $seed for '$basestr'\n";
     return;
   } elsif($name eq 'project') {
     my $conf = get_configuration_arg(\$args);
@@ -122,6 +191,11 @@ sub msvc_xml_solution_begin
 {
   my ($this, $keyname, $args) = @_;
   my $name = get_configuration_arg(\$args);
+  if(exists $this->{'subs'}->{$name}) {
+#    print "Re-use $name of type ".$this->{'subs'}->{$name}->{'type'}."\n";
+    return $this->{'subs'}->{$name};
+  }
+  #
   my $project_opts = {};
   my $rv = {
     'sets' => set_new($this),
@@ -131,18 +205,18 @@ sub msvc_xml_solution_begin
     'project-opts' => $project_opts,
     'a-project-opts' => [$project_opts, $this->{'a-project-opts'}],
   };
-  return {
-    'type' => 'solution',
+  my $ret = {
+    'type' => 'project-group',
     'G' => $this,
     'name' => $name,
+    'subs' => {},
+    #
     'solution' => $rv,
     'projects' => $rv->{'projects'},
     'sets' => $rv->{'sets'},
     #
     'end' => sub {
        my ($this) = @_;
-#       print "{".$this->{'type'}.",".$this->{'G'}->{'type'}.",".$this->{'G'}->{'templates'}->{'type'}."}\n";
-       msvc_xml_solution_generate($this->{'solution'}, $this->{'G'}->{'templates'});
     },
     'set' => \&set_value,
     'option' => \&msvc_xml_solution_option,
@@ -152,6 +226,8 @@ sub msvc_xml_solution_begin
     'commands' => {
     },
   };
+  $this->{'subs'}->{$name} = $ret;
+  return $ret;
 };
 
 #--------------------------------------------------------------------
@@ -225,17 +301,30 @@ sub msvc_xml_project_generate
         $opt_var_all .= "my \$OPT_$opt_var = \"$opt_var_val\";\n";
       }
       #
-      if($proj->{'mode'} eq 'console') {
-        $opt_var_all .= '$OPT_ConfigurationType="1";';
+      #
+      if($proj->{'mode'} eq 'console' or $proj->{'mode'} eq 'binary') {
+        $opt_var_all .= '$OPT_ConfigurationType="1"; ';
+        $opt_var_all .= '$OPT_Linker_OutputFile = \'$(OutDir)/$(ProjectName).exe\';';
       } elsif($proj->{'mode'} eq 'lib') {
-        $opt_var_all .= '$OPT_ConfigurationType="4";';
-      } elsif($proj->{'mode'} eq 'solib') {
-        $opt_var_all .= '$OPT_ConfigurationType="2";';
-      } elsif($proj->{'mode'} eq 'app') {
-        $opt_var_all .= '$OPT_ConfigurationType="1";';
+        $opt_var_all .= '$OPT_ConfigurationType="4"; ';
+        $opt_var_all .= '$OPT_Librarian_OutputFile = \'$(OutDir)/$(ProjectName).lib\';';
+      } elsif($proj->{'mode'} eq 'solib' or $proj->{'mode'} eq 'shared') {
+        $opt_var_all .= '$OPT_ConfigurationType="2"; ';
+        $opt_var_all .= '$OPT_Linker_OutputFile = \'$(OutDir)/$(ProjectName).dll\';';
+      } elsif($proj->{'mode'} eq 'app' or $proj->{'mode'} eq 'gui') {
+        $opt_var_all .= '$OPT_ConfigurationType="1"; ';
+        $opt_var_all .= '$OPT_Linker_OutputFile = \'$(OutDir)/$(ProjectName).exe\';';
       } else {
-        $opt_var_all .= '$OPT_ConfigurationType="1";';
+        $opt_var_all .= '$OPT_ConfigurationType="1" ;';
+        $opt_var_all .= '$OPT_Linker_OutputFile = \'$(OutDir)/$(ProjectName).exe\';';
       }
+      #
+      $opt_var_all .= "\n";
+      $opt_var_all .= '$OPT_OutputDirectory = msvc_xml_path_win32($OPT_OutputDirectory);';
+      $opt_var_all .= '$OPT_IntermediateDirectory = msvc_xml_path_win32($OPT_IntermediateDirectory);';
+      $opt_var_all .= '$OPT_Linker_OutputFile = msvc_xml_path_win32($OPT_Linker_OutputFile);';
+      $opt_var_all .= '$OPT_Librarian_OutputFile = msvc_xml_path_win32($OPT_Librarian_OutputFile);';
+      $opt_var_all .= "\n";
       #
       my $list = [
         $template->{'project-config-begin'},
@@ -246,9 +335,10 @@ sub msvc_xml_project_generate
         $template->{'project-config-end'},
       ];
       $opt_var_all .= <<'EOT_END';
+
         for my $eval_line (@$list) {
-          print $@ if $@; 
           print $fout eval("<<EOT\n${eval_line}EOT");
+          print $@ if $@; 
         }
 EOT_END
 #      print $opt_var_all;
@@ -295,13 +385,18 @@ sub msvc_xml_project_option
   my $conf = get_configuration_arg(\$args);
   my $name = get_configuration_arg(\$args);
   my $value = get_configuration_arg_exp(\$args, $this);
-  msvc_xml_setopt($this->{'opts'}, $conf, $name, $value);
+  msvc_xml_setopt($this->{'project'}->{'opts'}, $conf, $name, $value);
 }
 
 sub msvc_xml_project_begin
 {
   my ($this, $keyname, $args) = @_;
   my $name = get_configuration_arg(\$args);
+  if(exists $this->{'subs'}->{$name}) {
+#    print "Re-use $name of type ".$this->{'subs'}->{$name}->{'type'}."\n";
+    return $this->{'subs'}->{$name};
+  }
+  #
   my $opts = {};
   my $rv = {
     'sets' => set_new($this),
@@ -317,29 +412,33 @@ sub msvc_xml_project_begin
     'opts' => $opts,
     'a-opts' => [$opts, (@{$this->{'solution'}->{'a-project-opts'}})], 
   };
-  $this->{'projects'}->{$name} = $rv;
-  return {
+  my $ret = {
     'type' => 'project',
     'G' => $this->{'G'},
     'name' => $name,
+    'subs' => {},
+    #
     'project' => $rv,
     'filters' => $rv->{'filters'},
     'sets' => $rv->{'sets'},
     #
     'end' => sub {
        my ($this) = @_;
-       msvc_xml_project_generate($this->{'project'}, $this->{'G'}->{'templates'});
+#       msvc_xml_project_generate($this->{'project'}, $this->{'G'}->{'templates'});
     },
     'set' => \&set_value,
     'option' => \&msvc_xml_project_option,
     'begins' => {
-      'filter' => \&msvc_xml_filter_begin
+      'file-group' => \&msvc_xml_filter_begin
     },
     'commands' => {
       'mode' => \&msvc_xml_project_cmd,
       'depend' => \&msvc_xml_project_cmd,
     },
   };
+  $this->{'projects'}->{$name} = $rv;
+  $this->{'subs'}->{$name} = $ret;
+  return $ret;
 };
 
 #--------------------------------------------------------------------
@@ -350,13 +449,18 @@ sub msvc_xml_filter_file
 {
   my ($this, $cmd, $args) = @_;
   my $name = get_configuration_arg_exp(\$args, $this);
-  push @{$this->{'filter'}->{'files'}}, $name;
+  push @{$this->{'filter'}->{'files'}}, msvc_xml_path_win32($name);
 }
 
 sub msvc_xml_filter_begin
 {
   my ($this, $keyname, $args) = @_;
   my $name = get_configuration_arg(\$args);
+  if(exists $this->{'subs'}->{$name}) {
+#    print "Re-use $name of type ".$this->{'subs'}->{$name}->{'type'}."\n";
+    return $this->{'subs'}->{$name};
+  }
+  #
   my $rv = {
     'sets' => set_new($this),
     'parent' => $this,
@@ -364,23 +468,27 @@ sub msvc_xml_filter_begin
     'filters' => {},
     'files' => [],
   };
-  $this->{'filters'}->{$name} = $rv;
-  return {
-    'type' => 'filter',
+  my $ret = {
+    'type' => 'file-group',
     'G' => $this->{'G'},
     'name' => $name,
+    'subs' => {},
+    #
     'filter' => $rv,
     'filters' => $rv->{'filters'},
     'sets' => $rv->{'sets'},
     #
     'set' => \&set_value,
     'begins' => {
-      'filter' => \&msvc_xml_filter_begin
+      'file-group' => \&msvc_xml_filter_begin
     },
     'commands' => {
       'file' => \&msvc_xml_filter_file,
     },
   };
+  $this->{'filters'}->{$name} = $rv;
+  $this->{'subs'}->{$name} = $ret;
+  return $ret;
 };
 
 #--------------------------------------------------------------------

@@ -160,7 +160,7 @@ size_t RModuleLoader::moduledb_scan(const core::DCString& mask, bool docleanup)
   for(size_t i=0; i<~mod_list; i++) {
     mod_list(i)->load0();
   }
-  bool rv = RModuleLibrary::pfd_scan(sys, mod_list, mask);
+  size_t rv = RModuleLibrary::pfd_scan(sys, mod_list, mask);
   if(docleanup) {
     moduledb_cleanup();
   }

@@ -140,7 +140,7 @@ static size_t s_pfd_scan(ISystem* sys, RModuleLibraryArray& la, core::BStr mask,
     if(!full8)
       continue; // path too long
     gn += RModuleLibrary::s_add(sys, la, full8());
-next:;
+//next:;
   } while(FindNextFileW(f, &ff));
   dbg_put(rsdl_SoLoad, "/scan so: \"%s%s\"\n", mask, suffix);
   FindClose(f);
