@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="umodsys_lib_core"
-	ProjectGUID="{665E01F6-F87E-737F-7ED4-B23E68652186}"
+	ProjectGUID="{06C933A9-FF27-9401-7A85-B3EB81C71D63}"
 	RootNamespace="umodsys_lib_core"
 	>
 	<Platforms>

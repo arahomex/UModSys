@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="plugin_test2"
-	ProjectGUID="{658B0453-8A76-9693-9042-A86491051A29}"
+	ProjectGUID="{11E6F9D8-C0CE-740B-6058-767FA07F6E18}"
 	RootNamespace="plugin_test2"
 	>
 	<Platforms>

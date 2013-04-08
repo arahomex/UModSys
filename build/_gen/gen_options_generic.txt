@@ -8,6 +8,8 @@ begin project-group umodsys
   set path-s-tl $(path-src)/tl
   set path-s-plugin $(path-src)/plugin
 
+  option project-order umodsysc
+
   begin project umodsysc
     mode binary
     begin file-group src

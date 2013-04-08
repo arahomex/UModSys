@@ -115,6 +115,46 @@ sub msvc_xml_path_win32 {
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------
 
+sub msvc_xml_solution_generatesproj
+{
+  my ($sol, $template, $fout, $projects, $proj_name, $uproj) = @_;
+  return if exists $uproj->{$proj_name};
+  return if not exists $projects->{$proj_name};
+  #
+  print "\$proj_name=`$proj_name`\n";
+  #
+  my $line;
+  my $proj = $projects->{$proj_name};
+  my ($PROJECT_TYPE_GUID, $PROJECT_NAME, $PROJECT_PATH, $PROJECT_GUID) = (
+    $template->{'project-type-c++'}, 
+    $proj->{'name'}, 
+    $proj->{'filename'},
+    $proj->{'GUID'},
+  );
+  #
+  $line = eval("<<EOT\n".$template->{'solution-project-begin'}."EOT");
+  print $fout $line;
+  #
+  if(@{$proj->{'depends'}}) {
+    $line = eval("<<EOT\n".$template->{'solution-project-dep-begin'}."EOT");
+    print $fout $line;
+    foreach my $dpn (@{$proj->{'depends'}}) {
+      die "Depends resolution for project $proj_name ref $dpn failed" if not exists $projects->{$dpn};
+      my $proj2 = $projects->{$dpn};
+      my $PROJECT_DEP_GUID = $proj2->{'GUID'};
+      die "Depends resolution for project $proj_name ref $dpn failed due to null GUID" if $PROJECT_DEP_GUID eq '';
+      $line = eval("<<EOT\n".$template->{'solution-project-dep-entry'}."EOT");
+      print $fout $line;
+    }
+    $line = eval("<<EOT\n".$template->{'solution-project-dep-end'}."EOT");
+    print $fout $line;
+  }
+  #
+  $line = eval("<<EOT\n".$template->{'solution-project-end'}."EOT");
+  print $fout $line;
+  $uproj->{$proj_name} = $proj_name;
+}
+
 sub msvc_xml_solution_generate
 {
   my ($sol, $template) = @_;
@@ -124,36 +164,12 @@ sub msvc_xml_solution_generate
   open $fout,'>',$filename or die "File '$filename' create error.";
   print $fout $uitf8_header;
   print $fout $template->{'solution-begin'};
+  my $uproj = {};
+  foreach my $proj_name (@{$sol->{'project-order'}}) {
+    msvc_xml_solution_generatesproj($sol, $template, $fout, $projects, $proj_name, $uproj);
+  }
   foreach my $proj_name (sort keys %$projects) {
-    my $line;
-    my $proj = $projects->{$proj_name};
-    my ($PROJECT_TYPE_GUID, $PROJECT_NAME, $PROJECT_PATH, $PROJECT_GUID) = (
-      $template->{'project-type-c++'}, 
-      $proj->{'name'}, 
-      $proj->{'filename'},
-      $proj->{'GUID'},
-    );
-    #
-    $line = eval("<<EOT\n".$template->{'solution-project-begin'}."EOT");
-    print $fout $line;
-    #
-    if(@{$proj->{'depends'}}) {
-      $line = eval("<<EOT\n".$template->{'solution-project-dep-begin'}."EOT");
-      print $fout $line;
-      foreach my $dpn (@{$proj->{'depends'}}) {
-        die "Depends resolution for project $proj_name ref $dpn failed" if not exists $projects->{$dpn};
-        my $proj2 = $projects->{$dpn};
-        my $PROJECT_DEP_GUID = $proj2->{'GUID'};
-        die "Depends resolution for project $proj_name ref $dpn failed due to null GUID" if $PROJECT_DEP_GUID eq '';
-        $line = eval("<<EOT\n".$template->{'solution-project-dep-entry'}."EOT");
-        print $fout $line;
-      }
-      $line = eval("<<EOT\n".$template->{'solution-project-dep-end'}."EOT");
-      print $fout $line;
-    }
-    #
-    $line = eval("<<EOT\n".$template->{'solution-project-end'}."EOT");
-    print $fout $line;
+    msvc_xml_solution_generatesproj($sol, $template, $fout, $projects, $proj_name, $uproj);
   }
   print $fout "\n";
   close $fout;
@@ -172,6 +188,9 @@ sub msvc_xml_solution_option
     srand $seed;
     print "Random seed is set to $seed for '$basestr'\n";
     return;
+  } elsif($name eq 'project-order') {
+    my @po = split / /, $args;
+    $this->{'solution'}->{'project-order'} = \@po;
   } elsif($name eq 'project') {
     my $conf = get_configuration_arg(\$args);
     my $name = get_configuration_arg(\$args);
@@ -202,6 +221,7 @@ sub msvc_xml_solution_begin
     'name' => $name,
     'filename' => "$name.sln",
     'projects' => {},
+    'project-order' => [],
     'project-opts' => $project_opts,
     'a-project-opts' => [$project_opts, $this->{'a-project-opts'}],
   };
