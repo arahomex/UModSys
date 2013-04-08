@@ -224,6 +224,7 @@ RModule::ModuleObjInfo* RModule::reg_obj(IModObject* mo)
           mo, uid, mi.mo, mi.uid
         );
       }
+      mi.mo = mo;
       mi.reg_count++;
       return &mi; // already registered
     }
