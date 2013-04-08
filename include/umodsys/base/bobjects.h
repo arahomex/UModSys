@@ -63,10 +63,12 @@ using core::IRefObject;
   
 
 #define UMODSYS_BASE_MODREG_DEF(_type) \
-  static _type s_modreg; static SModuleRegChain s_modreg_chain;
+  static _type s_modreg; static SModuleRegChain s_modreg_chain; \
+  void so_reg(void);
 
 #define UMODSYS_BASE_MODREG_BODY(_type) \
-  _type _type::s_modreg; SModuleRegChain _type::s_modreg_chain(_type::s_modreg);
+  _type _type::s_modreg; SModuleRegChain _type::s_modreg_chain(_type::s_modreg); \
+  void _type::so_reg(void) { core::lost(&so_entry_enabled_flag); }
 
 
 //***************************************

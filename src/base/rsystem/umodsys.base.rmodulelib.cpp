@@ -153,6 +153,7 @@ bool RModuleLibrary::link(void)
       modules.push(m);
     } else {
       mm->ireg = imr;
+      imr->module = mm;
     }
   }
   for(size_t i=0; i<~modules; i++) {

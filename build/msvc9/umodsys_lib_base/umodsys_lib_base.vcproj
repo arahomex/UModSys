@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="umodsys_lib_base"
-	ProjectGUID="{CCE5BBB0-BA59-F0EC-64A2-9CE4DDAC06ED}"
+	ProjectGUID="{2E8014F1-9504-3FDD-CBBC-AD554F572673}"
 	RootNamespace="umodsys_lib_base"
 	>
 	<Platforms>
@@ -626,6 +626,10 @@
 			>
 			<File
 				RelativePath="..\..\..\src\base\platform\win32\umodsys.base.rmodule.win32.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\base\platform\win32\umodsys.so_main.win32.cpp"
 				>
 			</File>
 		</Filter>

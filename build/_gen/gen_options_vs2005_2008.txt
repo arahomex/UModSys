@@ -29,6 +29,7 @@ begin project-group umodsys
     option * OutputDirectory $(path-out-lib)
     begin file-group src-win32
       file $(path-s-base)/platform/win32/umodsys.base.rmodule.win32.cpp
+      file $(path-s-base)/platform/win32/umodsys.so_main.win32.cpp
     end
   end
 
