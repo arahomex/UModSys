@@ -307,6 +307,7 @@ bool RModule::scan(void)
 
 bool RModule::save_db(FILE *f)
 {
+#if 0
   fprintf(f, "  BEGIN MODULE %s(%d,%d)\n", minfo.name(), minfo.verno.vmajor, minfo.verno.vminor);
   for(size_t i=0; i<~mos; i++) {
     const ModuleObjInfo& mi = mos(i);
@@ -365,6 +366,66 @@ bool RModule::save_db(FILE *f)
     }
   }
   fprintf(f, "  END MODULE %s(%d,%d)\n", minfo.name(), minfo.verno.vmajor, minfo.verno.vminor);
+#else
+  fprintf(f, "  MODULE %s(%d,%d) {\n", minfo.name(), minfo.verno.vmajor, minfo.verno.vminor);
+  for(size_t i=0; i<~mos; i++) {
+    const ModuleObjInfo& mi = mos(i);
+    dbg_put(
+      rsdl_Module, 
+      "RModule(%p)::save_db(...) -- { %p %p }\n", 
+      this,
+      mi.tid, 
+      mi.uid
+    );
+/*
+    dbg_put(
+      rsdl_Module, 
+      "RModule(%p)::save_db(...) -- { %p:%s(%d) %p:%s(%d) }\n", 
+      this,
+      mi.tid, mi.tid->name, mi.tid->verno,
+      mi.uid, mi.uid->name, mi.uid->verno
+    );
+*/
+    if(mi.start_gen==array_index_none) { // modobjects
+      fprintf(
+        f, "    MODOBJECT %s(%d) %s(%d)\n", 
+        mi.tid->name, mi.tid->verno,
+        mi.uid->name, mi.uid->verno
+      );
+    } else {
+      fprintf(
+        f, "    GENERATOR %s(%d) %s(%d) {\n", 
+        mi.tid->name, mi.tid->verno,
+        mi.uid->name, mi.uid->verno
+      );
+      size_t bp = mi.start_gen;
+      for(size_t k=0; k<mi.count_gen; k++) {
+        const GeneratedObjInfo& gi = mogis(bp+k);
+        fprintf(
+          f, "      REFOBJECT %s(%d) {\n", 
+          gi.tid->name, gi.tid->verno
+        );
+        for(size_t kk=0; kk<gi.count_elem; kk++) {
+          TypeId tid = mogts(gi.start_elem+kk);
+          fprintf(
+            f, "        TYPE %s(%d)\n", 
+            tid->name, tid->verno
+          );
+        }
+        fprintf(
+          f, "      } # REFOBJECT %s(%d)\n", 
+          gi.tid->name, gi.tid->verno
+        );
+      }
+      fprintf(
+        f, "    } # GENERATOR %s(%d) %s(%d)\n", 
+        mi.tid->name, mi.tid->verno,
+        mi.uid->name, mi.uid->verno
+      );
+    }
+  }
+  fprintf(f, "  } # MODULE %s(%d,%d)\n", minfo.name(), minfo.verno.vmajor, minfo.verno.vminor);
+#endif
   return true;
 }
 

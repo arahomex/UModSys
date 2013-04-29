@@ -192,6 +192,7 @@ bool RModuleLibrary::scan(void)
 
 bool RModuleLibrary::save_db(FILE *f)
 {
+#if 0
   fprintf(f, "BEGIN LIBRARY \"%s\"\n", sys_libname());
   for(size_t i=0; i<~modules; i++) {
     if(!modules(i).valid())
@@ -200,6 +201,16 @@ bool RModuleLibrary::save_db(FILE *f)
       return false;
   }
   fprintf(f, "END LIBRARY \"%s\"\n", sys_libname());
+#else
+  fprintf(f, "LIBRARY \"%s\" {\n", sys_libname());
+  for(size_t i=0; i<~modules; i++) {
+    if(!modules(i).valid())
+      continue;
+    if(!modules(i)->save_db(f))
+      return false;
+  }
+  fprintf(f, "} # END LIBRARY \"%s\"\n\n", sys_libname());
+#endif
   return true;
 }
 

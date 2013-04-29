@@ -142,6 +142,7 @@ bool RModuleLoader::moduledb_save(const core::DCString& cachepath)
   FILE *f = syshlp::c_fopen(cachepath, "wb");
   if(f==NULL)
     return false;
+  fprintf(f, "# LIST OF LIBRARY MODULES:\n\n");
   for(size_t i=0; i<~mod_list; i++) {
     RModuleLibrary* ml = mod_list(i);
     if(ml==NULL)
