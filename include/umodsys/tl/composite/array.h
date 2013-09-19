@@ -20,10 +20,10 @@ using core::array_index_none;
 template<typename SNode>
 struct TArrayAbstract;
 
-template<typename SNode, typename Allocator=TAllocator<> >
+template<typename SNode, typename Allocator=DAllocatorFast >
 struct TArray;
 
-template<typename SNode, typename Allocator=TAllocator<> >
+template<typename SNode, typename Allocator=DAllocatorFast >
 struct TArrayChunked;
 
 template<typename SNode, size_t nSize>
@@ -32,7 +32,7 @@ struct TArrayFixed;
 template<typename SNode, size_t nSize>
 struct TArrayPtrFixed;
 
-template<typename SNode, typename Allocator=TAllocator<> >
+template<typename SNode, typename Allocator=DAllocatorFast >
 struct TArrayCache;
 
 /*************************************************************/
@@ -121,7 +121,7 @@ protected:
   size_t allocated;
   Allocator allocator;
 public:
-  inline TArray(void) : Base(NULL, 0), allocated(0), allocator() {}
+  TArray(void);
   inline TArray(const Allocator& a) : Base(NULL, 0), allocated(0), allocator(a) {}
   inline ~TArray(void) { free(); }
   //
@@ -141,6 +141,10 @@ public:
   bool remove_at(size_t id);
   bool insert_at(size_t id);
 };
+
+template<typename SNode, typename Allocator>
+inline TArray<SNode,Allocator>::TArray(void) 
+: Base(NULL, 0), allocated(0), allocator() {}
 
 /*************************************************************/
 

@@ -26,7 +26,8 @@ struct RModule;
 struct RConsole_std;
 
 typedef tl::TArray< 
-  tl::TRefObject<RModuleLibrary> 
+  tl::TRefObject<RModuleLibrary>,
+  tl::DAllocatorMallocFast
 > RModuleLibraryArray;
 
 typedef tl::TStaticStringPool<

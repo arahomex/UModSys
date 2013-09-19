@@ -51,6 +51,7 @@ public:
   IMemAlloc* imem;
 public:
   inline SIMemAlloc(IMemAlloc *im) : imem(im) {}
+  SIMemAlloc(void); // use module information
   //
   inline void* mem_alloc(size_t n, const SSourceContext* sctx=NULL) { return imem->mem_alloc(n, sctx); }
   inline void* mem_realloc(void* op, size_t n, const SSourceContext* sctx=NULL) { return imem->mem_realloc(op, n, sctx); }

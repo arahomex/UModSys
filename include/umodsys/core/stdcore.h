@@ -19,6 +19,7 @@
 #include <umodsys/core/common_exceptions.h>
 #include <umodsys/core/objects.h>
 #include <umodsys/core/stdstrings.h>
+#include <umodsys/core/stdtl.h>
 #include <umodsys/core/params.h>
 
 #endif // __UMODSYS_CORE_STDCORE_H

@@ -16,8 +16,14 @@ namespace tl {
 
 using core::SSourceContext;
 
-template<typename MemAlloc=core::SMemAlloc_Malloc, typename CountCalc=core::SCountCalcPower2>
+template<typename MemAlloc, typename CountCalc=core::SCountCalcPower2>
 struct TAllocator;
+
+typedef TAllocator<core::SMemAlloc_Malloc, core::SCountCalcPower2>    DAllocatorMallocFast;
+typedef TAllocator<core::SMemAlloc_Malloc, core::SCountCalcExact>     DAllocatorMallocTight;
+
+typedef TAllocator<core::SIMemAlloc, core::SCountCalcPower2>          DAllocatorFast;
+typedef TAllocator<core::SIMemAlloc, core::SCountCalcExact>           DAllocatorTight;
 
 /*************************************************************/
 /*************************************************************/

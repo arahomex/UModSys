@@ -1,0 +1,26 @@
+Initialization scriptin can be done by:
+
+
+1. meta-tcl language.
+2. meta-conf language.
+
+
+Example of following algorithm:
+  1. Load plugin cache from dir "plugin_cache".
+  2. Load all unregistered plugins from dir "plugins".
+  3. Save plugin cache to dir "plugin_cache".
+  4. Plugin cleanup.
+  4. Use plugin "Main" as shell "main".
+  5. Execute "main" function from "main" shell.
+
+
+meta-tcl:
+  plugin-cache -load "plugin_cache"
+  plugin -load-unregistered "plugins"
+  plugin-cache -save "plugin_cache"
+  plugin -cleanup
+  shell "main" "Main"
+  main main
+
+meta-conf:
+
