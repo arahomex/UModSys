@@ -1,75 +1,89 @@
-
+                                                                 New      Old
 1. System modules (always included into main binary)
   - System
-    -- uni-atom identify
-    -- load/unload modules
-    -- get/create objects
+    -- uni-atom identify                                        [done]   [done]
+    -- load/unload modules                                      [done]   [done]
+    -- load/unload module info                                  [    ]   [done]
+    -- get/create objects                                       [    ]   [done]
   - Memory
-    -- allocate/deallocate memory
+    -- allocate/deallocate memory                               [    ]   [done]
   - Strings
-    -- use utf8, utf16, utf32 strings
-    -- convert to and from mbs byte strings
-    -- compare strings
+    -- use utf8, utf16, utf32 strings                           [    ]   [done]
+    -- convert to and from mbs byte strings                     [    ]   [done]
+    -- compare strings                                          [    ]   [done]
 2. Core modules (mostly included into main binary)
   - Params
-    -- use static params
-    -- use dynamic params
+    -- use static params                                        [    ]   [done]
+    -- use dynamic params                                       [    ]   [done]
   - Media
-    -- virtual filesystem support
-    -- load/save binary files
-    -- load/save memory objects
-    -- generate memory object from file
+    -- virtual filesystem support                               [    ]   [done]
+    -- load/save binary files                                   [    ]   [done]
+    -- load/save memory objects                                 [    ]   [done]
+    -- generate memory object from file                         [    ]   [done]
   - Micro TCL
-    -- execute meta programs
+    -- execute meta programs                                    [    ]   [pre ]
   - Debug/Console
-    -- output debug console
-    -- control console
+    -- output debug console                                     [    ]   [done]
+    -- control console                                          [    ]   [done]
 3. Main modules (sometimes included into main binary)
   * Common VFS
-    - Zip VFS read/write
-    - FILE VFS read/write
+    - Zip VFS read/write                                        [    ]   [done]
+    - FILE VFS read/write                                       [    ]   [done]
   * NET
-    - Socket uni-interface
-    - NET channels
+    - Socket uni-interface                                      [    ]   [done]
+    - NET channels                                              [    ]   [done]
   * lib2d, lib3d
-    - lib2d      (output/input)
-    - libui      (GUI)
-    - lib3d      (output/input)
-    - libphys    (physics)
+    - lib2d      (output/input)                                 [    ]   [done]
+    - libui      (GUI)                                          [    ]   [done]
+    - lib3d      (output/input)                                 [    ]   [done]
+    - libphys    (physics)                                      [    ]   [done]
   * libsound, libmusic, libvideo
-    - libsound
-    - libmusic
-    - libvideo
+    - libsound                                                  [    ]   [    ]
+    - libmusic                                                  [    ]   [    ]
+    - libvideo                                                  [    ]   [    ]
   * libscript
-    - libscript
-    - libscript-reflection
+    - libscript                                                 [    ]   [part]
+    - libscript-reflection                                      [    ]   [part]
 4. Aux modules (rare included into main binary)
   * Uncommon VFS
-    - ID Quake (WAD, pak, pk2) format VFS read/write
-    - WAV and AVI media format VFS read/write
-    - Remote VFS read/write
+    - ID Quake (WAD, pak, pk2) format VFS read/write            [    ]   [done]
+    - WAV and AVI media format VFS read/write                   [    ]   [pre ]
+    - Remote VFS read/write                                     [    ]   [    ]
   * lib2d, lib3d
-    - file loader common pictures (pcx, tga, bmp)
-    - file loader common-lib pictures (gif, png, jpeg)
-    - file loader ID Quake2 models (bsp (q2), spr(q2), wal, md2)
-    - file loader ID Quake3 models (bsp (q3), md3)
-    - file loader 3ds files
-    - lib2d font unifont
-    - lib2d font bgi
-    - lib2d font ttf
-    - lib3d driver opengl/SDL
-    - lib3d driver directx
-    - libphys driver ODE
-    - libphys driver Bullet
+    - file loader common pictures (pcx, tga, bmp)               [    ]   [done]
+    - file loader common-lib pictures (gif, png, jpeg)          [    ]   [done]
+    - file loader ID Quake2 models (bsp (q2), spr(q2), wal, md2)[    ]   [done]
+    - file loader ID Quake3 models (bsp (q3), md3)              [    ]   [pre ]
+    - file loader 3ds files                                     [    ]   [done]
+    - lib2d font unifont                                        [    ]   [done]
+    - lib2d font bgi                                            [    ]   [    ]
+    - lib2d font ttf                                            [    ]   [    ]
+    - lib3d driver opengl/SDL                                   [    ]   [done]
+    - lib3d driver directx                                      [    ]   [    ]
+    - libphys driver ODE                                        [    ]   [done]
+    - libphys driver Bullet                                     [    ]   [done]
   * libscript
-    - libscript-squirel
-    - libscript-lua
-    - libscript-angelscript
-    - libscript-jewelscript
-    - libscript-cplusx
+    - libscript-squirel                                         [    ]   [done]
+    - libscript-tinyc                                           [    ]   [done]
+    - libscript-lua                                             [    ]   [    ]
+    - libscript-angelscript                                     [    ]   [    ]
+    - libscript-jewelscript                                     [    ]   [    ]
+    - libscript-cplusx                                          [    ]   [    ]
   * libscript fast bindings
-    - libscript-squirel: libmedia,lib2d,lib3d,libphys
-    - libscript-lua: libmedia,lib2d,lib3d,libphys
-    - libscript-angelscript: libmedia,lib2d,lib3d,libphys
-
+    - libscript-squirel: libmedia,lib2d,lib3d,libphys           [    ]   [done]
+    - libscript-lua: libmedia,lib2d,lib3d,libphys               [    ]   [    ]
+    - libscript-angelscript: libmedia,lib2d,lib3d,libphys       [    ]   [    ]
+  * libsound, libmusic, libvideo
+    - libsound driver winmm
+    - libsound driver alsa
+    - libsound driver openal
+    - libsound driver directx
+    - libmusic driver timidity
+    - libmusic driver winmm
+    - libsound module mp3
+    - libsound module ogg
+    - libsound module wav
+    - libsound module mp3
+    - libsound module ogg
+    - libsound module wav
 
