@@ -1,4 +1,4 @@
-#include "../../rsystem/umodsys.base.rsystem.h"
+#include <umodsys/base/module_impl.h>
 
 using namespace UModSys;
 using namespace UModSys::core;

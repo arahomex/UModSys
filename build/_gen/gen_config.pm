@@ -206,4 +206,37 @@ sub exec_generator {
   $ctx->{'generate'}($ctx, $config) if (defined $ctx) and (exists $ctx->{'generate'});
 }
 
+
+sub filename_search_files
+{
+  my ($path, $mask) = @_;
+#  my @fn = glob "'${path}/${mask}'";
+  my @fn = glob "${path}/${mask}";
+#  print "search at: '$path/$mask': @fn\n";
+#  return undef if (not defined @fn) or (@fn==0);
+  return undef if @fn==0;
+  return \@fn;
+}
+
+sub filename_mask_match
+{
+  my ($mask, $path) = @_;
+#  print "match $mask in $path\n";
+  return 1 if $path =~ /$mask/;
+  return 0;
+}
+
+sub filename_skipdirs
+{
+  my ($path, $skip) = @_;
+#  print "path skip $skip: '$path'\n";
+  for(my $i=0; $i<$skip; $i++) {
+    last if not ($path =~ /[^\/]*?[\/](.*)$/);
+    $path = $1;
+  }
+#  print "=> '$path'\n";
+  return $path;
+}
+
+
 return 1;

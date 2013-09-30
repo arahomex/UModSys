@@ -1,44 +1,63 @@
 begin project-group umodsys
   option random-seed 0 umodsys-vs2008
 
+  set ppath platform/win32
+  set spname src-win32
+
   option project * IntermediateDirectory $(path-out-tmp)
   option project * VCCLCompilerTool_AdditionalIncludeDirectories \$(SolutionDir)../../include
   option project * VCLinkerTool_AdditionalLibraryDirectories \$(IntDir)/..
   option project [] Platforms "Win32 x64"
   option project [] Configurations "Debug Release ReleaseSpace"
 
+  begin project all
+    GUID-gen 0 umodsys.dummy.all
+  end
+
   begin project umodsysc
+    GUID-gen 0 umodsys.umodsysc
     mode console
     option * OutputDirectory $(path-out-bin)
-    option * VCLinkerTool_AdditionalDependencies umodsys_lib_core.lib umodsys_lib_base.lib
+    option * VCLinkerTool_AdditionalDependencies umodsys_lib_core.lib umodsys_lib_base.lib umodsys_lib_system.lib
   end
 
   begin project umodsys_lib_core
+    GUID-gen 0 umodsys.lib_core
     option * OutputDirectory $(path-out-lib)
-    begin file-group src-win32
-      file $(path-s-core)/platform/win32/umodsys.core.syshlp_chars.win32.cpp
-      file $(path-s-core)/platform/win32/umodsys.core.syshlp_charcode.win32.cpp
-      file $(path-s-core)/platform/win32/umodsys.core.syshlp_files.win32.cpp
-      file $(path-s-core)/platform/win32/umodsys.core.syshlp_proc.win32.cpp
-      file $(path-s-core)/platform/win32/umodsys.core.syshlp_thread.win32.cpp
-      file $(path-s-core)/platform/win32/umodsys.core.syshlp_vars.win32.cpp
+    begin file-group $(spname)
+      file $(path-s-core)/$(ppath)/umodsys.core.syshlp_chars.win32.cpp
+      file $(path-s-core)/$(ppath)/umodsys.core.syshlp_charcode.win32.cpp
+      file $(path-s-core)/$(ppath)/umodsys.core.syshlp_files.win32.cpp
+      file $(path-s-core)/$(ppath)/umodsys.core.syshlp_proc.win32.cpp
+      file $(path-s-core)/$(ppath)/umodsys.core.syshlp_thread.win32.cpp
+      file $(path-s-core)/$(ppath)/umodsys.core.syshlp_vars.win32.cpp
     end
   end
 
   begin project umodsys_lib_base
+    GUID-gen 0 umodsys.lib_base
     option * OutputDirectory $(path-out-lib)
-    begin file-group src-win32
-      file $(path-s-base)/platform/win32/umodsys.base.rmodule.win32.cpp
-      file $(path-s-base)/platform/win32/umodsys.so_main.win32.cpp
+    begin file-group $(spname)
+      file $(path-s-base)/$(ppath)/umodsys.so_main.win32.cpp
+    end
+  end
+
+  begin project umodsys_lib_basesys
+    GUID-gen 0 umodsys.lib_basesys
+    option * OutputDirectory $(path-out-lib)
+    begin file-group $(spname)
+      file $(path-s-basesys)/$(ppath)/umodsys.base.rmodule.win32.cpp
     end
   end
 
   begin project plugin_test1
+    GUID-gen 0 umodsys.plugin_test1
     option * OutputDirectory $(path-out-bin)
     option * VCLinkerTool_AdditionalDependencies umodsys_lib_core.lib umodsys_lib_base.lib
   end
 
   begin project plugin_test2
+    GUID-gen 0 umodsys.plugin_test2
     option * OutputDirectory $(path-out-bin)
     option * VCLinkerTool_AdditionalDependencies umodsys_lib_core.lib umodsys_lib_base.lib
   end

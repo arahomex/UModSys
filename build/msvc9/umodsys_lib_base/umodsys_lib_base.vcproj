@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="umodsys_lib_base"
-	ProjectGUID="{3FD6ADD6-6553-BC01-CAC6-2F05855BD40D}"
+	ProjectGUID="{42FB2C6D-0839-8C78-780F-B614ED351715}"
 	RootNamespace="umodsys_lib_base"
 	>
 	<Platforms>
@@ -40,6 +40,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
@@ -128,6 +129,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -216,6 +218,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -304,6 +307,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
@@ -392,6 +396,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -480,6 +485,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -546,43 +552,15 @@
 	</Configurations>
 	<Files>
 		<Filter
-			Name="src"
+			Name="$(spname)"
 			>
 			<File
-				RelativePath="..\..\..\src\base\rsystem\umodsys.base.rsystem.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\base\rsystem\umodsys.base.rsystem_main.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\base\rsystem\umodsys.base.rsystem_tests.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\base\rsystem\umodsys.base.rmodule.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\base\rsystem\umodsys.base.rmodulelib.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\base\rsystem\umodsys.base.rmoduleloader.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\base\rsystem\umodsys.base.rparameters.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\base\rsystem\umodsys.base.rconsole_std.cpp"
+				RelativePath="..\..\..\src\base\platform\win32\umodsys.so_main.win32.cpp"
 				>
 			</File>
 		</Filter>
 		<Filter
-			Name="src-shared"
+			Name="src"
 			>
 			<File
 				RelativePath="..\..\..\src\base\umodsys.base.debug.cpp"
@@ -618,18 +596,6 @@
 			</File>
 			<File
 				RelativePath="..\..\..\src\base\umodsys.base.moduleregchain.cpp"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="src-win32"
-			>
-			<File
-				RelativePath="..\..\..\src\base\platform\win32\umodsys.base.rmodule.win32.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\base\platform\win32\umodsys.so_main.win32.cpp"
 				>
 			</File>
 		</Filter>

@@ -13,13 +13,31 @@ require "$script_path/util_crc32.pm";
 
 sub msvc_xml_new_guid
 {
+  my ($args) = @_;
+  if(defined $args) {
+    my $seed = msvc_xml_calc_seed($args);
+    srand $seed;
+#    print "Random seed is set to $seed for '$args'\n";
+#    print sprintf("rand(0x10000)=%04x\n", rand(0x10000));
+  }
   # 8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942
-  return sprintf(
+  my $guid = sprintf(
     "{%04X%04X-%04X-%04X-%04X-%04X%04X%04X}",
     int(rand(0x10000)), int(rand(0x10000)),
     int(rand(0x10000)), int(rand(0x10000)), int(rand(0x10000)),
     int(rand(0x10000)), int(rand(0x10000)), int(rand(0x10000))
   );
+#  print "GUID=$guid\n";
+  return $guid;
+}
+
+sub msvc_xml_calc_seed
+{
+  my ($args) = @_;
+  my $seed = int(get_configuration_arg(\$args));
+  my $basestr = get_configuration_arg(\$args);
+  $seed ^= crc32($basestr) if $basestr ne '';
+  return $seed;
 }
 
 sub msvc_xml_setopt
@@ -182,11 +200,9 @@ sub msvc_xml_solution_option
   my $name = get_configuration_arg(\$args);
 #  print "option $name $args\n";
   if($name eq 'random-seed') {
-    my $seed = int(get_configuration_arg(\$args));
-    my $basestr = get_configuration_arg(\$args);
-    $seed ^= crc32($basestr) if $basestr ne '';
+    my $seed = msvc_xml_calc_seed($args);
     srand $seed;
-    print "Random seed is set to $seed for '$basestr'\n";
+    print "Random seed is set to $seed for '$args'\n";
     return;
   } elsif($name eq 'project-order') {
     my @po = split / /, $args;
@@ -267,8 +283,49 @@ sub msvc_xml_project_generate_files
     #
     msvc_xml_project_generate_files($proj, $template, $fout, $filter->{'filters'}, $FF_PAD."\t");
     #
-    for my $FILE_PATH (@{$filter->{'files'}}) {
-      $line = eval("<<EOT\n".$template->{'project-ff-file'}."EOT");
+    for my $file_info (@{$filter->{'files'}}) {
+      my $FILE_PATH = $file_info->{'filename'};
+      my $xopts = $file_info->{'xopts'};
+      $line = eval("<<EOT\n".$template->{'project-ff-file-begin'}."EOT");
+      print $fout $line;
+      if(defined $xopts) {
+        my $platforms = $proj->{'.platforms'};
+        my $confs = $proj->{'.confs'};
+        for my $PLATFORM_NAME (@$platforms) {
+          for my $CONF_NAME (@$confs) {
+            $line = eval("<<EOT\n".$template->{'project-ff-file-xopt-begin'}."EOT");
+            print $fout $line;
+            #
+            my $tools = {};
+            for my $xok (keys %$xopts) {
+              my ($tool, $key) = split '\_', $xok;
+              if(exists $tools->{$tool}) {
+                $tools->{$tool}->{$key} = $xopts->{$xok};
+              } else {
+                $tools->{$tool} = { $key => $xopts->{$xok} };
+              }
+            }
+            #
+            for my $TOOL_ID (keys %$tools) {
+              $line = eval("<<EOT\n".$template->{'project-ff-file-xopt-tbegin-'.$TOOL_ID}."EOT");
+              print $fout $line;
+              my $tool = $tools->{$TOOL_ID};
+              for my $KEY (keys %$tool) {
+                my $VALUE = $tool->{$KEY};
+                $line = eval("<<EOT\n".$template->{'project-ff-file-xopt-tvalue'}."EOT");
+                print $fout $line;
+              }
+              $line = eval("<<EOT\n".$template->{'project-ff-file-xopt-tend'}."EOT");
+              print $fout $line;
+            }
+            #
+            $line = eval("<<EOT\n".$template->{'project-ff-file-xopt-end'}."EOT");
+            print $fout $line;
+          }
+        }
+      
+      }
+      $line = eval("<<EOT\n".$template->{'project-ff-file-end'}."EOT");
       print $fout $line;
     }
     #
@@ -292,6 +349,8 @@ sub msvc_xml_project_generate
   my @confs = split / /, msvc_xml_getopt('[]', 'Configurations', @{$proj->{'a-opts'}});
   my @platforms = split / /, msvc_xml_getopt('[]', 'Platforms', @{$proj->{'a-opts'}});
   my $opt_vars = msvc_xml_getopt('[]', '#', @{$proj->{'a-opts'}});
+  $proj->{'.platforms'} = \@platforms;
+  $proj->{'.confs'} = \@confs;
   #
   $line = eval("<<EOT\n".$template->{'project-begin'}."EOT");
   print $fout $line;
@@ -307,6 +366,16 @@ sub msvc_xml_project_generate
   print $fout $line;
   #
   #
+  #------------------- INCLUDES, DEFINES
+  my $INCLUDES = '';
+  if({$proj->{'includes'}}) {
+    $INCLUDES = join ';', @{$proj->{'includes'}};
+  }
+  my $DEFINES = '';
+  if({$proj->{'defines'}}) {
+    $DEFINES = join ';', @{$proj->{'defines'}};
+  }
+  #
   #------------------- CONFIGURATIONS
   $line = eval("<<EOT\n".$template->{'project-configs-begin'}."EOT");
   print $fout $line;
@@ -315,10 +384,17 @@ sub msvc_xml_project_generate
       #
       my $opt_var_all = '';
       for my $opt_var (keys $opt_vars) {
-        my $opt_var_val = msvc_xml_getopt($CONF_NAME, $opt_var, @{$proj->{'a-opts'}});
+        my $opt_var_val;
+        $opt_var_val = msvc_xml_getopt('!*', $opt_var, @{$proj->{'a-opts'}}) if not defined $opt_var_val;
+        $opt_var_val = msvc_xml_getopt($CONF_NAME, $opt_var, @{$proj->{'a-opts'}}) if not defined $opt_var_val;
         $opt_var_val = msvc_xml_getopt('*', $opt_var, @{$proj->{'a-opts'}}) if not defined $opt_var_val;
         $opt_var_val = $opt_vars->{$opt_var} if not defined $opt_var_val;
         $opt_var_all .= "my \$OPT_$opt_var = \"$opt_var_val\";\n";
+        #
+        $opt_var_all .= "\$OPT_Compiler_AdditionalIncludeDirectories .= ';'.\$INCLUDES;\n"
+          if ($opt_var eq 'Compiler_AdditionalIncludeDirectories') and ($INCLUDES ne '');
+        $opt_var_all .= "\$OPT_Compiler_PreprocessorDefinitions .= ';'.\$DEFINES;\n"
+          if ($opt_var eq 'Compiler_PreprocessorDefinitions') and ($DEFINES ne '');
       }
       #
       #
@@ -393,9 +469,19 @@ sub msvc_xml_project_cmd
   if($cmd eq 'depend') {
     my $name = get_configuration_arg(\$args);
     push @{$this->{'project'}->{'depends'}}, $name;
+  } elsif($cmd eq 'includes') {
+    while(my $name = get_configuration_arg_exp(\$args, $this)) {
+      push @{$this->{'project'}->{'includes'}}, msvc_xml_path_win32($name);
+    }
+  } elsif($cmd eq 'defines') {
+    while(my $name = get_configuration_arg(\$args)) {
+      push @{$this->{'project'}->{'defines'}}, $name;
+    }
   } elsif($cmd eq 'mode') {
     my $mode = get_configuration_arg(\$args);
     $this->{'project'}->{'mode'} = $mode;
+  } elsif($cmd eq 'GUID-gen') {
+    $this->{'project'}->{'GUID'} = msvc_xml_new_guid($args);
   }
 }
 
@@ -429,6 +515,8 @@ sub msvc_xml_project_begin
     'platforms' => {},
     'configurations' => {},
     'depends' => [],
+    'includes' => [],
+    'defines' => [],
     'opts' => $opts,
     'a-opts' => [$opts, (@{$this->{'solution'}->{'a-project-opts'}})], 
   };
@@ -454,6 +542,9 @@ sub msvc_xml_project_begin
     'commands' => {
       'mode' => \&msvc_xml_project_cmd,
       'depend' => \&msvc_xml_project_cmd,
+      'includes' => \&msvc_xml_project_cmd,
+      'defines' => \&msvc_xml_project_cmd,
+      'GUID-gen' => \&msvc_xml_project_cmd,
     },
   };
   $this->{'projects'}->{$name} = $rv;
@@ -465,11 +556,30 @@ sub msvc_xml_project_begin
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------
 
+sub msvc_xml_filter_fileinfo
+{
+  my ($filename, $xopts) = @_;
+  $xopts = undef if (defined $xopts) and (%$xopts==0);
+  return {
+    'filename' => msvc_xml_path_win32($filename),
+    'xopts' => $xopts
+  };
+}
+
+sub msvc_xml_filter_option
+{
+  my ($this, $cmd, $args) = @_;
+  my $conf = get_configuration_arg(\$args);
+  my $name = get_configuration_arg(\$args);
+  my $value = get_configuration_arg_exp(\$args, $this);
+  msvc_xml_setopt($this->{'filter'}->{'opts'}, $conf, $name, $value);
+}
+
 sub msvc_xml_filter_file
 {
   my ($this, $cmd, $args) = @_;
   my $name = get_configuration_arg_exp(\$args, $this);
-  push @{$this->{'filter'}->{'files'}}, msvc_xml_path_win32($name);
+  push @{$this->{'filter'}->{'files'}}, msvc_xml_filter_fileinfo($name);
 }
 
 sub msvc_xml_filter_begin
@@ -481,12 +591,14 @@ sub msvc_xml_filter_begin
     return $this->{'subs'}->{$name};
   }
   #
+  my $opts = {};
   my $rv = {
     'sets' => set_new($this),
     'parent' => $this,
     'name' => $name,
     'filters' => {},
     'files' => [],
+    'opts' => $opts,
   };
   my $ret = {
     'type' => 'file-group',
@@ -497,10 +609,12 @@ sub msvc_xml_filter_begin
     'filter' => $rv,
     'filters' => $rv->{'filters'},
     'sets' => $rv->{'sets'},
+    'option' => \&msvc_xml_filter_option,
     #
     'set' => \&set_value,
     'begins' => {
-      'file-group' => \&msvc_xml_filter_begin
+      'file-group' => \&msvc_xml_filter_begin,
+      'mask' => \&msvc_xml_mask_begin,
     },
     'commands' => {
       'file' => \&msvc_xml_filter_file,
@@ -508,6 +622,78 @@ sub msvc_xml_filter_begin
   };
   $this->{'filters'}->{$name} = $rv;
   $this->{'subs'}->{$name} = $ret;
+  return $ret;
+};
+
+#--------------------------------------------------------------------
+#--------------------------------------------------------------------
+#--------------------------------------------------------------------
+
+sub msvc_xml_mask_end
+{
+  my ($this) = @_;
+  my $pfiles = $this->{'parent'}->{'filter'}->{'files'};
+  for my $file (@{$this->{'files'}}) {
+    push @$pfiles, msvc_xml_filter_fileinfo($file, $this->{'xopts'});
+  }
+}
+
+sub msvc_xml_mask_cmd
+{
+  my ($this, $cmd, $args) = @_;
+  if($cmd eq 'include') {
+    while(my $mask = get_configuration_arg_exp(\$args, $this->{'parent'})) {
+      my $mypath = $this->{'name'};
+      my $path = filename_skipdirs($mypath, $this->{'skip'});
+      my $files = filename_search_files($path, $mask);
+      if(defined $files) {
+        my $nv = $this->{'files'};
+        for my $file (@$files) {
+          push @$nv, $mypath . (substr $file, length $path);
+        }
+      }
+    }
+  } elsif($cmd eq 'exclude') {
+    while(my $mask = get_configuration_arg_exp(\$args, $this->{'parent'})) {
+      my $nv = [];
+      for my $file (@{$this->{'files'}}) {
+        push @$nv, $file if not filename_mask_match($mask, $file);
+      }
+      $this->{'files'} = $nv;
+    }
+  }
+}
+
+sub msvc_xml_mask_xoption
+{
+  my ($this, $cmd, $args) = @_;
+  my $name = get_configuration_arg(\$args);
+  my $value = get_configuration_arg_exp(\$args, $this);
+  $this->{'xopts'}->{$name} = $value;
+}
+
+sub msvc_xml_mask_begin
+{
+  my ($this, $keyname, $args) = @_;
+  my $skip = int(get_configuration_arg_exp(\$args, $this));
+  my $path = get_configuration_arg_exp(\$args, $this);
+  #
+  my $ret = {
+    'type' => 'file-mask',
+    'name' => $path,
+    'skip' => $skip,
+    #
+    'parent' => $this,
+    'files' => [],
+    'xopts' => {},
+    #
+    'end' => \&msvc_xml_mask_end,
+    'commands' => {
+      'include' => \&msvc_xml_mask_cmd,
+      'exclude' => \&msvc_xml_mask_cmd,
+      'xoption' => \&msvc_xml_mask_xoption,
+    },
+  };
   return $ret;
 };
 

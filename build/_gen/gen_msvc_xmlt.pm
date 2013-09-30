@@ -121,6 +121,7 @@ EOT
 				RuntimeTypeInfo="$OPT_Compiler_RuntimeTypeInfo"
 				UsePrecompiledHeader="$OPT_Compiler_UsePrecompiledHeader"
 				PrecompiledHeaderFile="$OPT_Compiler_PrecompiledHeaderFile"
+				PrecompiledHeaderThrough="$OPT_Compiler_PrecompiledHeaderThrough"
 				AssemblerListingLocation="$OPT_Compiler_AssemblerListingLocation"
 				ProgramDataBaseFileName="$OPT_Compiler_ProgramDataBaseFileName"
 				BrowseInformation="$OPT_Compiler_BrowseInformation"
@@ -170,13 +171,32 @@ EOT
     'project-ff-end' => <<'EOT',
 $FF_PAD		</Filter>
 EOT
-    'project-ff-file' => <<'EOT',
+    'project-ff-file-begin' => <<'EOT',
 $FF_PAD			<File
 $FF_PAD				RelativePath="$FILE_PATH"
 $FF_PAD				>
+EOT
+    'project-ff-file-end' => <<'EOT',
 $FF_PAD			</File>
 EOT
-    #-------------------------------
+    'project-ff-file-xopt-begin' => <<'EOT',
+$FF_PAD				<FileConfiguration
+$FF_PAD					Name="$CONF_NAME|$PLATFORM_NAME"
+$FF_PAD					>
+EOT
+    'project-ff-file-xopt-end' => <<'EOT',
+$FF_PAD				</FileConfiguration>
+EOT
+    'project-ff-file-xopt-tbegin-Compiler' => <<'EOT',
+$FF_PAD					<Tool
+$FF_PAD						Name="VCCLCompilerTool"
+EOT
+    'project-ff-file-xopt-tend' => <<'EOT',
+$FF_PAD					/>
+EOT
+    'project-ff-file-xopt-tvalue' => <<'EOT',
+$FF_PAD						$KEY="$VALUE"
+EOT
     #-------------------------------
   },
   #-------------------------------
@@ -185,7 +205,9 @@ EOT
     '[]' => {
       'Platforms'      => 'Win32 X64 IA64',
       'Configurations' => 'Debug Release ReleaseSpace ReleaseStatic',
+      #
       '#' => {
+        'Defines'                                   => '',
         'OutputDirectory'                           => '',
         'IntermediateDirectory'                     => '',
         'ConfigurationType'                         => '',
@@ -207,6 +229,7 @@ EOT
         'Compiler_RuntimeTypeInfo'                  => '',
         'Compiler_UsePrecompiledHeader'             => '',
         'Compiler_PrecompiledHeaderFile'            => '',
+        'Compiler_PrecompiledHeaderThrough'         => '',
         'Compiler_AssemblerListingLocation'         => '',
         'Compiler_ProgramDataBaseFileName'          => '',
         'Compiler_BrowseInformation'                => '',
@@ -245,6 +268,7 @@ EOT
       'Compiler_RuntimeTypeInfo'                    => 'true',
       'Compiler_UsePrecompiledHeader'               => '0',
       'Compiler_PrecompiledHeaderFile'              => '\$(IntDir)/\$(ProjectName).pch',
+      'Compiler_PrecompiledHeaderThrough'           => 'StdAfx.h',
       'Compiler_AssemblerListingLocation'           => '\$(IntDir)/',
       'Compiler_ProgramDataBaseFileName'            => '\$(IntDir)/',
       'Compiler_Detect64BitPortabilityProblems'     => 'true',

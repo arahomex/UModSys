@@ -4,19 +4,34 @@ begin project-group umodsys
 
   set path-src $(path-root)/src
   set path-s-base $(path-src)/base
+  set path-s-basesys $(path-src)/basesys
   set path-s-core $(path-src)/core
   set path-s-tl $(path-src)/tl
   set path-s-plugin $(path-src)/plugin
 
   option project-order umodsysc
 
+  begin project all
+    mode lib
+    #
+    depend umodsys_lib_core
+    depend umodsys_lib_base
+    depend umodsys_lib_basesys
+    #
+    depend umodsysc
+    #
+    depend plugin_test1
+    depend plugin_test2
+  end
+
   begin project umodsysc
     mode binary
     begin file-group src
-      file $(path-s-base)/umodsys.c_main.cpp
+      file $(path-s-basesys)/umodsys.c_main.cpp
     end
     depend umodsys_lib_core
     depend umodsys_lib_base
+    depend umodsys_lib_basesys
   end
 
   begin project umodsys_lib_core
@@ -31,9 +46,23 @@ begin project-group umodsys
     end
   end
 
+  begin project umodsys_lib_basesys
+    mode lib
+    begin file-group src
+      file $(path-s-basesys)/umodsys.base.rsystem.cpp
+      file $(path-s-basesys)/umodsys.base.rsystem_main.cpp
+      file $(path-s-basesys)/umodsys.base.rsystem_tests.cpp
+      file $(path-s-basesys)/umodsys.base.rmodule.cpp
+      file $(path-s-basesys)/umodsys.base.rmodulelib.cpp
+      file $(path-s-basesys)/umodsys.base.rmoduleloader.cpp
+      file $(path-s-basesys)/umodsys.base.rparameters.cpp
+      file $(path-s-basesys)/umodsys.base.rconsole_std.cpp
+    end
+  end
+
   begin project umodsys_lib_base
     mode lib
-    begin file-group src-shared
+    begin file-group src
       file $(path-s-base)/umodsys.base.debug.cpp
       file $(path-s-base)/umodsys.base.console.cpp
       file $(path-s-base)/umodsys.base.system.cpp
@@ -43,16 +72,6 @@ begin project-group umodsys
       file $(path-s-base)/umodsys.base.moduleinfo.cpp
       file $(path-s-base)/umodsys.base.modulereg.cpp
       file $(path-s-base)/umodsys.base.moduleregchain.cpp
-    end
-    begin file-group src
-      file $(path-s-base)/rsystem/umodsys.base.rsystem.cpp
-      file $(path-s-base)/rsystem/umodsys.base.rsystem_main.cpp
-      file $(path-s-base)/rsystem/umodsys.base.rsystem_tests.cpp
-      file $(path-s-base)/rsystem/umodsys.base.rmodule.cpp
-      file $(path-s-base)/rsystem/umodsys.base.rmodulelib.cpp
-      file $(path-s-base)/rsystem/umodsys.base.rmoduleloader.cpp
-      file $(path-s-base)/rsystem/umodsys.base.rparameters.cpp
-      file $(path-s-base)/rsystem/umodsys.base.rconsole_std.cpp
     end
   end
 

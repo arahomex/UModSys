@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="umodsysc"
-	ProjectGUID="{D9E49178-277F-FF72-8191-633744054BE0}"
+	ProjectGUID="{DDE0A57B-168D-E629-E7AF-9DB0B98E779F}"
 	RootNamespace="umodsysc"
 	>
 	<Platforms>
@@ -40,6 +40,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
@@ -128,6 +129,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -216,6 +218,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -304,6 +307,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
@@ -392,6 +396,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -480,6 +485,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -549,7 +555,7 @@
 			Name="src"
 			>
 			<File
-				RelativePath="..\..\..\src\base\umodsys.c_main.cpp"
+				RelativePath="..\..\..\src\basesys\umodsys.c_main.cpp"
 				>
 			</File>
 		</Filter>

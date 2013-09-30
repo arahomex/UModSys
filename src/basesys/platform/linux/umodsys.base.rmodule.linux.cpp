@@ -1,7 +1,7 @@
 #include <umodsys/core/platform/linux/syshlp_linux.h>
 
-#include "../../rsystem/umodsys.base.rsystem.h"
-#include "../../rsystem/umodsys.base.rmodule.h"
+#include "../../umodsys.base.rsystem.h"
+#include "../../umodsys.base.rmodule.h"
 
 using namespace UModSys;
 using namespace UModSys::core;

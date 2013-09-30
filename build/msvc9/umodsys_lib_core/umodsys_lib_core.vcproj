@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="9,00"
 	Name="umodsys_lib_core"
-	ProjectGUID="{06C933A9-FF27-9401-7A85-B3EB81C71D63}"
+	ProjectGUID="{6EC344E4-D2FF-0F9C-113D-5B0A4ED83211}"
 	RootNamespace="umodsys_lib_core"
 	>
 	<Platforms>
@@ -40,6 +40,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
@@ -128,6 +129,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -216,6 +218,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -304,6 +307,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
@@ -392,6 +396,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -480,6 +485,7 @@
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -546,31 +552,7 @@
 	</Configurations>
 	<Files>
 		<Filter
-			Name="src"
-			>
-			<File
-				RelativePath="..\..\..\src\core\umodsys.core.objects.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\core\umodsys.core.stdtypedefs.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\core\umodsys.core.uniqueptr.cpp"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="src-tl"
-			>
-			<File
-				RelativePath="..\..\..\src\tl\umodsys.tl.strings.cpp"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="src-win32"
+			Name="$(spname)"
 			>
 			<File
 				RelativePath="..\..\..\src\core\platform\win32\umodsys.core.syshlp_chars.win32.cpp"
@@ -594,6 +576,30 @@
 			</File>
 			<File
 				RelativePath="..\..\..\src\core\platform\win32\umodsys.core.syshlp_vars.win32.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="src"
+			>
+			<File
+				RelativePath="..\..\..\src\core\umodsys.core.objects.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\core\umodsys.core.stdtypedefs.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\core\umodsys.core.uniqueptr.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="src-tl"
+			>
+			<File
+				RelativePath="..\..\..\src\tl\umodsys.tl.strings.cpp"
 				>
 			</File>
 		</Filter>

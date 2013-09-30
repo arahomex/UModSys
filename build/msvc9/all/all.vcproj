@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="plugin_test2"
-	ProjectGUID="{391A18A0-DA40-F27F-AC0F-8D5CE602E343}"
-	RootNamespace="plugin_test2"
+	Name="all"
+	ProjectGUID="{325B1575-D8BE-7567-354A-155AEE147E57}"
+	RootNamespace="all"
 	>
 	<Platforms>
 		<Platform
@@ -17,9 +17,9 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc8_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="2"
 			>
 			<Tool
@@ -54,7 +54,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="true"
@@ -106,9 +106,9 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc8_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="2"
 			>
 			<Tool
@@ -143,7 +143,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
@@ -195,9 +195,9 @@
 		</Configuration>
 		<Configuration
 			Name="ReleaseSpace|Win32"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc8_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="2"
 			>
 			<Tool
@@ -232,7 +232,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
@@ -284,9 +284,9 @@
 		</Configuration>
 		<Configuration
 			Name="Debug|x64"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc8_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="2"
 			>
 			<Tool
@@ -321,7 +321,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="true"
@@ -373,9 +373,9 @@
 		</Configuration>
 		<Configuration
 			Name="Release|x64"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc8_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="2"
 			>
 			<Tool
@@ -410,7 +410,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
@@ -462,9 +462,9 @@
 		</Configuration>
 		<Configuration
 			Name="ReleaseSpace|x64"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc8_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="2"
 			>
 			<Tool
@@ -499,7 +499,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
@@ -551,14 +551,6 @@
 		</Configuration>
 	</Configurations>
 	<Files>
-		<Filter
-			Name="src"
-			>
-			<File
-				RelativePath="..\..\..\src\plugin\test\plugin_test2.cpp"
-				>
-			</File>
-		</Filter>
 	</Files>
 	<Globals>
 	</Globals>
