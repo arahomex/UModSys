@@ -19,13 +19,16 @@ namespace rsystem {
 
 struct RSystem : 
   public ISystem,
-  public IUniquePointerResolver
+  public IUniquePointerResolver,
+  public ISourceContextAdapter
 {
 public:
   enum { 
-    upi_quant = 0x100 
+    upi_quant = 0x100, 
+    sc_quant  = 0x100
   };
   //
+/*
   struct SUniPtrHolder {
     size_t used;
     SUniquePointerInfo elems[upi_quant];
@@ -39,6 +42,18 @@ public:
       core::SMemAlloc_Malloc
     >
   > DUniPtrArray;
+*/
+  typedef tl::TQuantArrayUnique<
+    SUniquePointerInfo,
+    upi_quant,
+    core::SMemAlloc_Malloc
+  > DUniPtrArray;
+  //
+  typedef tl::TQuantArrayUnique<
+    SSourceContext,
+    sc_quant,
+    core::SMemAlloc_Malloc
+  > DSrcContextArray;
 public:
   RSystem(void);
   ~RSystem(void);
@@ -50,8 +65,11 @@ public:
   HUniquePointer upi_add(const SUniquePointerInfo* lupi);
   int upi_remove(HUniquePointer upi);
 public:
-  IModuleLoader* get_modloader(void);
+  const core::SSourceContext* persist_ctx(const core::SSourceContext* sc);
+public:
+  ISourceContextAdapter* get_sca(void);
   IUniquePointerResolver* get_upr(void);
+  IModuleLoader* get_modloader(void);
   IModuleLibrary* get_syslib(void);
   IMemAlloc* get_sysmem(void);
   IMemAlloc* get_sharemem(void);
@@ -71,8 +89,11 @@ public:
   RModuleLoader moddb;
   RParameters::SelfP params;
   //
-  DSystemStaticPool uptr_pool;
+  DSystemStaticPool uptr_strings;
   DUniPtrArray uptr_list;
+  //
+  DSystemStaticPool sc_strings;
+  DSrcContextArray sc_list;
   //
   void set_console(IConsole* console);
   bool init(void);
@@ -83,7 +104,8 @@ public:
   //
   size_t find_shells(IRefObject::TypeId tids[], size_t ntids);
   //
-  const DCString& uptr_string(const DCString& v);
+  const DCString& uptr_string(const DCString& v) { return *uptr_strings.append(v); }
+  const DCString& sc_string(const DCString& v) { return *sc_strings.append(v); }
   const DCString& mod_string(const DCString& v) { return moddb.get_string(v); }
 public:
   bool exec_test_shells(void);

@@ -35,7 +35,7 @@ inline void t_set_array1(T *a, T value, size_t size)
 }
 
 template<typename T>
-inline void set_array(T* arr, size_t N, const T& v) 
+inline void t_set_array(T* arr, size_t N, const T& v) 
 {
   while(N--) {
     *arr++ = v;

@@ -11,7 +11,7 @@ namespace UModSys {
 
 namespace core {
   //***************************************
-  // Types
+  // core types
   //***************************************
 
   struct Void;
@@ -45,12 +45,30 @@ namespace core {
 
   unsigned char lost(const void* data);
 
+  // defined in 'stdinlines.h'
+  template<typename T> int ptr_compare(T a, T b);
+  template<typename T> int scalar_compare(T a, T b);
+  template<typename T1, typename T2> int any_ptr_compare_null(const T1* a, const T2* b);
+  template<typename T> T scalar_min(T a, T b);
+  template<typename T> T scalar_max(T a, T b);
+  Void* void_null(void);
+  Void& void_obj(void);
+  template<typename T> void t_set_array1(T *a, T value, size_t size);
+  template<typename T> void t_set_array(T* arr, size_t N, const T& v);
+
+
+
+
   const size_t array_index_none = size_t(-1);
  
 
 } // namespace core
 
 namespace base {
+  //***************************************
+  // base types
+  //***************************************
+
   struct IModuleReg;
   struct IModule;
   struct IModuleLibrary;

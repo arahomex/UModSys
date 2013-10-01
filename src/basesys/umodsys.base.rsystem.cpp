@@ -27,6 +27,7 @@ HUniquePointer RSystem::upi_add(const SUniquePointerInfo* lupi)
   if(&n==NULL)
     return NULL; // error
   //
+/*
   SUniquePointerInfo* rv;
   SUniquePointerInfo nv(g, n, lupi->verno);
 //  dbg_put(
@@ -62,11 +63,47 @@ HUniquePointer RSystem::upi_add(const SUniquePointerInfo* lupi)
 //    lupi, lupi->group, lupi->name, lupi->verno, rv
 //  );
   return rv;
+*/
+  const SUniquePointerInfo* rv;
+  SUniquePointerInfo nv(g, n, lupi->verno);
+  //
+  rv = uptr_list.find(nv);
+  if(rv!=NULL)
+    return rv;
+  rv = uptr_list.add(nv);
+  if(rv!=NULL)
+    return rv;
+  return NULL;
 }
 
 int RSystem::upi_remove(HUniquePointer upi)
 {
   return -1;
+}
+
+//***************************************
+
+const core::SSourceContext* RSystem::persist_ctx(const core::SSourceContext* sc)
+{
+  if(sc==NULL)
+    return NULL;
+  const DCString& ff = sc_string(sc->file);
+  if(&ff==NULL)
+    return NULL; // error
+  const DCString& fu = sc_string(sc->function);
+  if(&fu==NULL)
+    return NULL; // error
+  //
+  const SSourceContext* rv;
+  SSourceContext nv(ff, sc->line, fu);
+  //
+  rv = sc_list.find(nv);
+  if(rv!=NULL)
+    return rv;
+  rv = sc_list.add(nv);
+  if(rv!=NULL)
+    return rv;
+  return NULL;
 }
 
 //***************************************
@@ -102,6 +139,11 @@ IModuleLoader* RSystem::get_modloader(void)
 }
 
 IUniquePointerResolver* RSystem::get_upr(void)
+{
+  return this;
+}
+
+ISourceContextAdapter* RSystem::get_sca(void)
 {
   return this;
 }

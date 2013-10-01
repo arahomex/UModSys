@@ -6,6 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/core/stdtypedefs.h>
+#include <umodsys/core/stdinlines.h>
 #include <umodsys/tl/composite/list2.h>
 
 namespace UModSys {
@@ -53,7 +54,7 @@ public:
   operator HUniquePointer(void) const { return upi; }
   HUniquePointer operator()(void) const { return upi; }
   HUniquePointer operator*(void) const { return upi; }
-  HUniquePointer get(void) const { return upi; }
+  HUniquePointer get(void) const { return upi; }                                                    
 public:
   SUniquePointerInfo info;
   mutable HUniquePointer upi;
@@ -86,6 +87,30 @@ public:
   HUniquePointer *arr;
   size_t curlen, maxlen;
 };
+
+//***************************************
+// INLINES
+//***************************************
+
+inline int scalar_compare(const SUniquePointerInfo &p1, const SUniquePointerInfo &p2)
+{
+  int rv = scalar_compare(p1.group, p2.group);
+  if(rv!=0)
+    return rv;
+  rv = scalar_compare(p1.name, p2.name);
+  if(rv!=0)
+    return rv;
+  return core::scalar_compare(p1.verno, p2.verno);
+}
+
+inline int scalar_compare(const SUniquePointerInfo *p1, const SUniquePointerInfo *p2)
+{
+  if(p1==NULL)
+    return p2!=NULL ? -1 : 0;
+  if(p2==NULL)
+    return 1;
+  return core::scalar_compare(*p1, *p2);
+}
 
 //***************************************
 // END

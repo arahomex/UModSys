@@ -14,6 +14,7 @@
 
 #include <umodsys/tl/composite/array.h>
 #include <umodsys/tl/composite/scatter_array.h>
+#include <umodsys/tl/composite/quant_array.h>
 
 namespace UModSys {
 namespace base {

@@ -14,13 +14,6 @@ using namespace UModSys::base::rsystem;
 // RSystem::
 //***************************************
 
-const DCString& RSystem::uptr_string(const DCString& v)
-{
-  return *uptr_pool.append(v);
-}
-
-//***************************************
-
 bool RSystem::init(void)
 {
   rsys_dbg.mask = 0;
@@ -40,7 +33,7 @@ bool RSystem::init(void)
   //
   SUniquePointer::s_resolve(this); // initalize all upis
   { // list all upis
-    dbg_put(rsdl_System, "RSystem::init() -- dump upi {S:%d C:%d}\n", uptr_pool.used_strings(), uptr_pool.used_chars());
+    dbg_put(rsdl_System, "RSystem::init() -- dump upi {S:%d C:%d}\n", uptr_strings.used_strings(), uptr_strings.used_chars());
     for(const SUniquePointer* x=SUniquePointer::root.next; x!=&SUniquePointer::root; x=x->next) {
       if(x==NULL) {
         dbg_put(rsdl_System, "upi NULL\n");

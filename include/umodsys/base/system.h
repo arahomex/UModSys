@@ -22,8 +22,10 @@ struct ISystem : public core::IRoot
 public:
   ~ISystem(void);
 public:
-  virtual IModuleLoader* get_modloader(void) =0;
   virtual core::IUniquePointerResolver* get_upr(void) =0;
+  virtual core::ISourceContextAdapter* get_sca(void) =0;
+  //
+  virtual IModuleLoader* get_modloader(void) =0;
   virtual IModuleLibrary* get_syslib(void) = 0;
   //
   virtual core::IMemAlloc* get_sysmem(void) =0;
@@ -31,7 +33,7 @@ public:
   virtual IConsole* get_console(void) =0;
   virtual core::IParameters* get_params(void) =0;
 public:
-  UMODSYS_ROOT_IMPLEMENT1(base::ISystem, 2, IRoot);
+  UMODSYS_ROOT_IMPLEMENT1(base::ISystem, 3, IRoot);
 };
 
 //***************************************
