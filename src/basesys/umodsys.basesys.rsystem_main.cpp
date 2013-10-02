@@ -1,5 +1,5 @@
-#include "umodsys.base.rsystem.h"
-#include "umodsys.base.rmodule.h"
+#include "umodsys.basesys.rsystem.h"
+#include "umodsys.basesys.rmodule.h"
 
 #if defined(_DEBUG) && defined(_MSC_VER)
 #include <crtdbg.h>
@@ -32,17 +32,7 @@ bool RSystem::init(void)
   dbg_put(rsdl_System, "RSystem::init()\n");
   //
   SUniquePointer::s_resolve(this); // initalize all upis
-  { // list all upis
-    dbg_put(rsdl_System, "RSystem::init() -- dump upi {S:%d C:%d}\n", uptr_strings.used_strings(), uptr_strings.used_chars());
-    for(const SUniquePointer* x=SUniquePointer::root.next; x!=&SUniquePointer::root; x=x->next) {
-      if(x==NULL) {
-        dbg_put(rsdl_System, "upi NULL\n");
-        break;
-      }
-      dbg_put(rsdl_System, "upi{%s %s(%d) %p}\n", x->info.group, x->info.name, x->info.verno, x->upi);
-    }
-    dbg_put(rsdl_System, "RSystem::init() -- /dump upi\n");
-  }
+  dump_upis(); // list all upis
   //
 //  sys_library = new RModuleLibrary();
   return true;
@@ -86,8 +76,35 @@ size_t RSystem::find_shells(IRefObject::TypeId tids[], size_t ntids)
 //***************************************
 //***************************************
 
+void RSystem::dump_upis(void)
+{
+  dbg_put(rsdl_System, "RSystem::dump_upis() {S:%d C:%d} %u\n", uptr_strings.used_strings(), uptr_strings.used_chars(), (unsigned)~uptr_list);
+/*
+  for(const SUniquePointer* x=SUniquePointer::root.next; x!=&SUniquePointer::root; x=x->next) {
+    if(x==NULL) {
+      dbg_put(rsdl_System, "upi NULL\n");
+      break;
+    }
+    dbg_put(rsdl_System, "upi{%s %s(%d) %p}\n", x->info.group, x->info.name, x->info.verno, x->upi);
+  }
+*/
+  for(size_t i=0, n=~uptr_list; i<n; i++) {
+    const SUniquePointerInfo* x = uptr_list(i);
+    if(x==NULL) {
+      dbg_put(rsdl_System, "  %u upi NULL\n", (unsigned)i);
+      continue;
+    }
+    dbg_put(rsdl_System, "  %u %p upi{%s %s(%d)}\n", (unsigned)i, x, x->group, x->name, x->verno);
+  }
+  dbg_put(rsdl_System, "RSystem::dump_upis() / \n");
+}
+
+//***************************************
+//***************************************
+
 RSystem::RSystem(void)
-: console(NULL), moddb(this) /*, sys_library(NULL)*/ 
+: console(NULL), moddb(this), /* sys_library(NULL),*/ 
+  mema_shared(NULL), mema_system(NULL)
 {
   params = new RParameters(this);
 }

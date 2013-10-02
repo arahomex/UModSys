@@ -49,14 +49,14 @@ begin project-group umodsys
   begin project umodsys_lib_basesys
     mode lib
     begin file-group src
-      file $(path-s-basesys)/umodsys.base.rsystem.cpp
-      file $(path-s-basesys)/umodsys.base.rsystem_main.cpp
-      file $(path-s-basesys)/umodsys.base.rsystem_tests.cpp
-      file $(path-s-basesys)/umodsys.base.rmodule.cpp
-      file $(path-s-basesys)/umodsys.base.rmodulelib.cpp
-      file $(path-s-basesys)/umodsys.base.rmoduleloader.cpp
-      file $(path-s-basesys)/umodsys.base.rparameters.cpp
-      file $(path-s-basesys)/umodsys.base.rconsole_std.cpp
+      file $(path-s-basesys)/umodsys.basesys.rsystem.cpp
+      file $(path-s-basesys)/umodsys.basesys.rsystem_main.cpp
+      file $(path-s-basesys)/umodsys.basesys.rsystem_tests.cpp
+      file $(path-s-basesys)/umodsys.basesys.rmodule.cpp
+      file $(path-s-basesys)/umodsys.basesys.rmodulelib.cpp
+      file $(path-s-basesys)/umodsys.basesys.rmoduleloader.cpp
+      file $(path-s-basesys)/umodsys.basesys.rparameters.cpp
+      file $(path-s-basesys)/umodsys.basesys.rconsole_std.cpp
     end
   end
 

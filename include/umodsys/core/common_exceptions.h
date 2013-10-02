@@ -11,6 +11,37 @@ namespace UModSys {
 namespace core {
 
 //***************************************
+// Exception handler
+//***************************************
+
+struct IExceptionHandler {
+  virtual bool consume(const EExceptionBase& e) =0;
+  //
+  template<typename Err>
+  inline void process(const Err& e) {
+    if(this!=NULL && consume(e))
+      return;
+    throw e;
+  }
+};
+
+//***************************************
+// Common exception codes
+//***************************************
+
+enum eCommonExceptionCodes {
+  cec_Null               = 0x0001,
+  cec_NotNull            = 0x0002,
+  cec_NotInit            = 0x0010,
+  cec_Unsupported        = 0x00ff,
+  cec_Memory             = 0x0100,
+  cec_MemoryDamaged      = 0x0101,
+  cec_MemoryLow          = 0x0102,
+  cec_FileOpenError      = 0x0200,
+  cec_FileCreateError    = 0x0201,
+};
+
+//***************************************
 // Exception base
 //***************************************
 

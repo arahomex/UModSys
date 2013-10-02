@@ -1,5 +1,5 @@
-#include "umodsys.base.rsystem.h"
-#include "umodsys.base.rmodule.h"
+#include "umodsys.basesys.rsystem.h"
+#include "umodsys.basesys.rmodule.h"
 
 using namespace UModSys;
 using namespace UModSys::core;
@@ -120,12 +120,12 @@ IConsole* RSystem::get_console(void)
 
 IMemAlloc* RSystem::get_sysmem(void)
 {
-  return NULL;
+  return &mema_system;
 }
 
 IMemAlloc* RSystem::get_sharemem(void)
 {
-  return NULL;
+  return &mema_shared;
 }
 
 IModuleLibrary* RSystem::get_syslib(void)

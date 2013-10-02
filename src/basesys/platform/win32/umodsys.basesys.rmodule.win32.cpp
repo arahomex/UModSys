@@ -1,7 +1,7 @@
 #include <umodsys/core/platform/win32/syshlp_win32.h>
 
-#include "../../umodsys.base.rsystem.h"
-#include "../../umodsys.base.rmodule.h"
+#include "../../umodsys.basesys.rsystem.h"
+#include "../../umodsys.basesys.rmodule.h"
 
 using namespace UModSys;
 using namespace UModSys::core;

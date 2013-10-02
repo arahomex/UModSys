@@ -57,6 +57,12 @@ inline int any_ptr_compare_null(const T1* a, const T2* b)
 template<typename T> inline T scalar_min(T a, T b) { return a>b ? b : a; }
 template<typename T> inline T scalar_max(T a, T b) { return a<b ? b : a; }
 
+template<typename T> inline T scalar_min(T a, T b, T c) { return a>b ? scalar_min(b,c) : scalar_min(a,c); }
+template<typename T> inline T scalar_max(T a, T b, T c) { return a<b ? scalar_min(b,c) : scalar_min(a,c); }
+
+template<typename T> inline T scalar_min(T a, T b, T c, T d) { return a>b ? scalar_min(b,c,d) : scalar_min(a,c,d); }
+template<typename T> inline T scalar_max(T a, T b, T c, T d) { return a<b ? scalar_min(b,c,d) : scalar_min(a,c,d); }
+
 //***************************************
 // END
 //***************************************

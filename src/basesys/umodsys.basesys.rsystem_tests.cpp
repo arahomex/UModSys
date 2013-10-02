@@ -1,5 +1,5 @@
-#include "umodsys.base.rsystem.h"
-#include "umodsys.base.rmodule.h"
+#include "umodsys.basesys.rsystem.h"
+#include "umodsys.basesys.rmodule.h"
 
 #if defined(_DEBUG) && defined(_MSC_VER)
 #include <crtdbg.h>
@@ -38,6 +38,7 @@ bool RSystem::exec_test_shells(void)
 
 bool RSystem::exec_tests(void)
 {
+  dump_upis();
   exec_test_shells();
   return true;
 }

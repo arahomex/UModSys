@@ -46,7 +46,7 @@ begin project-group umodsys
     GUID-gen 0 umodsys.lib_basesys
     option * OutputDirectory $(path-out-lib)
     begin file-group $(spname)
-      file $(path-s-basesys)/$(ppath)/umodsys.base.rmodule.win32.cpp
+      file $(path-s-basesys)/$(ppath)/umodsys.basesys.rmodule.win32.cpp
     end
   end
 

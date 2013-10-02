@@ -5,7 +5,9 @@
 // info: implementation of base module object
 /*************************************************************/
 
-#include "umodsys.base.rcommon.h"
+#include "umodsys.basesys.rcommon.h"
+#include "umodsys.basesys.rmemalloc.h"
+
 #include <umodsys/tl/composite/array.h>
 
 namespace UModSys {
@@ -13,6 +15,16 @@ namespace base {
 namespace rsystem {
 
 using namespace core;
+
+typedef TRMemAlloc_CC<
+  TMemAllocHeader<
+    mem_headers::SMagic, 
+    mem_headers::TPool<void>, 
+    mem_headers::SDebug
+  >,
+  SMemAlloc_Malloc
+> DRMemAlloc;
+
 
 //***************************************
 // RModule
@@ -117,6 +129,7 @@ public:
   IModuleLibraryReg* ireg;
   int load_count;
   bool linked;
+  mutable DRMemAlloc mema;
   //
   size_t cleanup(void);
   bool scan(void);

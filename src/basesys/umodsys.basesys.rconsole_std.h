@@ -5,7 +5,7 @@
 // info: implementation of stdin/stdout console
 /*************************************************************/
 
-#include "umodsys.base.rcommon.h"
+#include "umodsys.basesys.rcommon.h"
 
 namespace UModSys {
 namespace base {

@@ -55,11 +55,19 @@ public:
   TData* add(const TData& val);
   bool remove(const TData* it);
   //
+  const TData* get(size_t index) const;
+  TData* get(size_t index);
+  inline const TData* operator[](size_t index) const { return get(index); }
+  inline const TData* operator()(size_t index) const { return get(index); }
+  inline TData* operator[](size_t index) { return get(index); }
+  //
   inline bool nonempty(void) const { return hold.nonempty(); }
   inline bool empty(void) const { return hold.empty(); }
 protected:
   Holder hold;
   size_t cur_size;
+  //
+  inline static int s_last(const Node* a, const Node* b) { return 1; }
 };
 
 
@@ -85,6 +93,7 @@ TData* TQuantArrayUnique<TData, Quant, TMemAlloc>::add(const TData& val)
       continue;
     TData* rv = &x->elems[x->used++];
     *rv = val;
+    cur_size++;
     return rv;
   }
   x = new(hold.node_del.op_new()) TQuantArrayNode<TData, Quant>();
@@ -92,6 +101,8 @@ TData* TQuantArrayUnique<TData, Quant, TMemAlloc>::add(const TData& val)
     return NULL;
   TData* rv = &x->elems[x->used++];
   *rv = val;
+  cur_size++;
+  hold.insert_node_m(x, s_last);
   return rv;
 }
 
@@ -99,6 +110,34 @@ template<typename TData, size_t Quant, typename TMemAlloc>
 bool TQuantArrayUnique<TData, Quant, TMemAlloc>::remove(const TData* it)
 {
   return false;
+}
+
+template<typename TData, size_t Quant, typename TMemAlloc>
+const TData* TQuantArrayUnique<TData, Quant, TMemAlloc>::get(size_t index) const
+{
+  TQuantArrayNode<TData, Quant> *x;
+  for(x=hold.min_node(); x!=NULL; x=hold.next_node(x)) {
+    if(index>=x->used) {
+      index--;
+      continue;
+    }
+    return &x->elems[index];
+  }
+  return NULL;
+}
+
+template<typename TData, size_t Quant, typename TMemAlloc>
+TData* TQuantArrayUnique<TData, Quant, TMemAlloc>::get(size_t index)
+{
+  TQuantArrayNode<TData, Quant> *x;
+  for(x=hold.min_node(); x!=NULL; x=hold.next_node(x)) {
+    if(index>=x->used) {
+      index--;
+      continue;
+    }
+    return &x->elems[index];
+  }
+  return NULL;
 }
 
 //***************************************

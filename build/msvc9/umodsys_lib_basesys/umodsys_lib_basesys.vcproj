@@ -555,7 +555,7 @@
 			Name="$(spname)"
 			>
 			<File
-				RelativePath="..\..\..\src\basesys\platform\win32\umodsys.base.rmodule.win32.cpp"
+				RelativePath="..\..\..\src\basesys\platform\win32\umodsys.basesys.rmodule.win32.cpp"
 				>
 			</File>
 		</Filter>
@@ -563,35 +563,35 @@
 			Name="src"
 			>
 			<File
-				RelativePath="..\..\..\src\basesys\umodsys.base.rsystem.cpp"
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rsystem.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\basesys\umodsys.base.rsystem_main.cpp"
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rsystem_main.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\basesys\umodsys.base.rsystem_tests.cpp"
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rsystem_tests.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\basesys\umodsys.base.rmodule.cpp"
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rmodule.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\basesys\umodsys.base.rmodulelib.cpp"
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rmodulelib.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\basesys\umodsys.base.rmoduleloader.cpp"
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rmoduleloader.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\basesys\umodsys.base.rparameters.cpp"
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rparameters.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\basesys\umodsys.base.rconsole_std.cpp"
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rconsole_std.cpp"
 				>
 			</File>
 		</Filter>

@@ -14,11 +14,15 @@ struct RTest1_Generator;
 struct RTest1_Shell : public IShell {
   UMODSYS_BASE_SHELL_IMPLEMENT(UModSys::test1::RTest1_Shell, 1, IShell)
   //
+  void* memblock;
+  //
   RTest1_Shell(DOwner *own) {
     rc_init(own);
     M.con().put(0, "RTest1_Shell()\n");
+    memblock = M().mem_alloc(1024, _UMODSYS_SOURCEINFO);
   }
   ~RTest1_Shell(void) {
+    M().mem_free(memblock, _UMODSYS_SOURCEINFO);
     M.con().put(0, "~RTest1_Shell()\n");
   }
   //

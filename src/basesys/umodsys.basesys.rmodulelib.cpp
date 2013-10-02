@@ -1,4 +1,4 @@
-#include "umodsys.base.rmodule.h"
+#include "umodsys.basesys.rmodule.h"
 
 using namespace UModSys;
 using namespace UModSys::core;
@@ -16,7 +16,7 @@ DCString RModuleLibrary::get_sys_libname(void) const
 
 core::IMemAlloc* RModuleLibrary::get_privmem(void) const
 {
-  return NULL;
+  return &mema;
 }
 
 ISystem* RModuleLibrary::get_system(void) const
@@ -256,13 +256,13 @@ bool RModuleLibrary::s_add(ISystem* sys, RModuleLibraryArray& la, const char *fi
 //***************************************
 
 RModuleLibrary::RModuleLibrary(ISystem* s, PFD_Data* pfd, IModuleLibraryReg* imlr)
-: ireg(imlr), load_count(0), linked(false), sys(s)
+: ireg(imlr), load_count(0), linked(false), sys(s), mema(NULL)
 {
   pfd_init(get_pfd(), pfd);
 }
 
 RModuleLibrary::RModuleLibrary(void)
-: ireg(NULL), load_count(0), linked(false), sys(NULL)
+: ireg(NULL), load_count(0), linked(false), sys(NULL), mema(NULL)
 {
   pfd_init(get_pfd());
 }

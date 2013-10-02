@@ -33,7 +33,7 @@ public:
   virtual IConsole* get_console(void) =0;
   virtual core::IParameters* get_params(void) =0;
 public:
-  UMODSYS_ROOT_IMPLEMENT1(base::ISystem, 3, IRoot);
+  UMODSYS_ROOT_IMPLEMENT1(UModSys::base::ISystem, 3, IRoot);
 };
 
 //***************************************

@@ -5,9 +5,9 @@
 // info: implementation of base system object
 /*************************************************************/
 
-#include "umodsys.base.rcommon.h"
-#include "umodsys.base.rmodule.h"
-#include "umodsys.base.rparameters.h"
+#include "umodsys.basesys.rcommon.h"
+#include "umodsys.basesys.rmodule.h"
+#include "umodsys.basesys.rparameters.h"
 
 namespace UModSys {
 namespace base {
@@ -95,12 +95,16 @@ public:
   DSystemStaticPool sc_strings;
   DSrcContextArray sc_list;
   //
+  DRMemAlloc mema_shared, mema_system;
+  //
   void set_console(IConsole* console);
   bool init(void);
   bool exec_args(int argc, char** argv);
   bool exec_main(void);
   bool exec_tests(void);
   bool deinit(void);
+  //
+  void dump_upis(void);
   //
   size_t find_shells(IRefObject::TypeId tids[], size_t ntids);
   //
