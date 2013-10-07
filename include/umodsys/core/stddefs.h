@@ -19,6 +19,8 @@
   #pragma warning(disable:4018) // warning C4018: 'op' : signed/unsigned mismatch
 
   #pragma warning(disable:4996) // warning C4996: 'func' was declared deprecated
+  #pragma warning(disable:4290) // warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
+
   #define _CRT_SECURE_NO_DEPRECATE // exclude deprecated ones
 //  #pragma message ("Visual studio warnings disabled")
 
@@ -44,6 +46,9 @@
   #include <new>
   // /includes
 
+  #define UMODSYS_THROW(_x) throw _x
+  #define UMODSYS_NOTHROW() throw()
+
   #define snprintf _snprintf
 #elif defined(__GNUC__)
 
@@ -68,6 +73,9 @@
 
   #include <new>
   // /includes
+
+  #define UMODSYS_THROW(_x) throw _x
+  #define UMODSYS_NOTHROW(_x) throw()
 
 //  #pragma GCC visibility push(hidden)
 
