@@ -1,0 +1,12 @@
+Template library classes:
+
+1. std::vector replacement:
+  - ArrayDynamic      -- single block array dynamic
+  - ArrayChunked      -- multiple block array dynamic
+2. std::array replacement:
+  - ArrayFixed        -- single block array based on fixed memory
+2. std::map replacement:
+  - ArraySparse       -- sparse array in the same std::map functionality
+
+  - ArrayQuantUnique
+  - QuantArray
