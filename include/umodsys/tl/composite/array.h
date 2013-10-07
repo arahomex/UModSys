@@ -165,22 +165,22 @@ public:
   bool insert_at(size_t id) UMODSYS_NOTHROW();
 public:
   // stl typedefs
-  inline size_type max_size(void) const UMODSYS_NOTHROW() { return allocated; }
-  void reserve(size_t newmaxsize) { if(!set_maxlen(newmaxlen)) throw_memoryerror(); }
+  inline typename Base::size_type max_size(void) const UMODSYS_NOTHROW() { return allocated; }
+  void reserve(typename Base::size_type newmaxlen) { if(!set_maxlen(newmaxlen)) throw_memoryerror(); }
   //
-  inline void push_back(Base::const_reference def) { if(!push(def)) throw_memoryerror(); }
-  inline void pop_back(void) { if(!pop(def)) throw_memoryerror(); }
+  inline void push_back(typename Base::const_reference def) { if(!push(def)) throw_memoryerror(); }
+  inline void pop_back(void) { if(!pop()) throw_memoryerror(); }
   //
-  void insert(Base::iterator pos, Base::const_reference v);
-  void insert(Base::iterator pos, Base::size_type n, Base::const_reference v);
-  template <class InputIterator> void insert(Base::iterator pos, InputIterator first, InputIterator last);
+  void insert(typename Base::iterator pos, typename Base::const_reference v);
+  void insert(typename Base::iterator pos, typename Base::size_type n, typename Base::const_reference v);
+  template <class InputIterator> void insert(typename Base::iterator pos, InputIterator first, InputIterator last);
   //
-  void erase(Base::iterator pos);
-  void erase(Base::iterator first, Base::iterator last);
+  void erase(typename Base::iterator pos);
+  void erase(typename Base::iterator first, typename Base::iterator last);
 };
 
 template<typename SNode, typename Allocator>
-inline TArrayDynamic<SNode,Allocator>::TArrayDynamic(void) 
+inline TArrayDynamic<SNode,Allocator>::TArrayDynamic(void) UMODSYS_NOTHROW()
 : Base(NULL, 0), allocated(0), allocator() {}
 
 /*************************************************************/
@@ -231,7 +231,7 @@ struct TArrayCache {
 /*************************************************************/
 
 template<typename SNode, typename Allocator>
-bool TArrayDynamic<SNode, Allocator>::insert_at(size_t id) 
+bool TArrayDynamic<SNode, Allocator>::insert_at(size_t id) UMODSYS_NOTHROW()
 {
     if(id==array_index_none || id>Base::count)
       return false;
@@ -239,7 +239,7 @@ bool TArrayDynamic<SNode, Allocator>::insert_at(size_t id)
 }
 
 template<typename SNode, typename Allocator>
-bool TArrayDynamic<SNode, Allocator>::remove_at(size_t id) 
+bool TArrayDynamic<SNode, Allocator>::remove_at(size_t id) UMODSYS_NOTHROW()
 {
     if(id==array_index_none || id>=Base::count)
       return false;
@@ -251,7 +251,7 @@ bool TArrayDynamic<SNode, Allocator>::remove_at(size_t id)
 }
 
 template<typename SNode, typename Allocator>
-bool TArrayDynamic<SNode, Allocator>::free(void) 
+bool TArrayDynamic<SNode, Allocator>::free(void) UMODSYS_NOTHROW()
 {
   if(!resize(0))
     return false;
@@ -261,7 +261,7 @@ bool TArrayDynamic<SNode, Allocator>::free(void)
 }
 
 template<typename SNode, typename Allocator>
-bool TArrayDynamic<SNode, Allocator>::push(const SNode& def) 
+bool TArrayDynamic<SNode, Allocator>::push(const SNode& def) UMODSYS_NOTHROW()
 {
     if(Base::count+1>allocated)
       if(!allocator.t_realloc_array(Base::items, allocated, Base::count+1, UMODSYS_SOURCEINFO))
@@ -272,7 +272,7 @@ bool TArrayDynamic<SNode, Allocator>::push(const SNode& def)
 }
 
 template<typename SNode, typename Allocator>
-bool TArrayDynamic<SNode, Allocator>::set_maxlen(size_t newsize)
+bool TArrayDynamic<SNode, Allocator>::set_maxlen(size_t newsize) UMODSYS_NOTHROW()
 {
   if(newsize>Base::allocated) {
     if(!allocator.t_realloc_array(Base::items, allocated, newsize, UMODSYS_SOURCEINFO))
@@ -289,7 +289,7 @@ bool TArrayDynamic<SNode, Allocator>::set_maxlen(size_t newsize)
 }
 
 template<typename SNode, typename Allocator>
-bool TArrayDynamic<SNode, Allocator>::resize(size_t newsize) 
+bool TArrayDynamic<SNode, Allocator>::resize(size_t newsize) UMODSYS_NOTHROW()
 {
   if(newsize==array_index_none)
     return false;

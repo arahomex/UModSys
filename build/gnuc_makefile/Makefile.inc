@@ -38,6 +38,7 @@ $(BINDIRA):
 
 include Makefile.dep-core.inc
 include Makefile.dep-base.inc
+include Makefile.dep-basesys.inc
 
 include Makefile.dep-so-test.inc
 
