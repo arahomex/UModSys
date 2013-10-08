@@ -150,7 +150,7 @@ bool RModuleLibrary::link(void)
     if(mm==NULL) {
       dbg_put(rsdl_ModuleLibrary, "RModuleLibrary(%p)::link() -- add new mr\n", this);
       RModule::SelfP m = new RModule(this, imr);
-      modules.push(m);
+      modules.Push(m);
     } else {
       mm->ireg = imr;
       imr->module = mm;
@@ -236,7 +236,7 @@ bool RModuleLibrary::s_add(ISystem* sys, RModuleLibraryArray& la, const char *fi
     size_t dup = RModuleLibrary::s_find_dup(la, ilib);
     if(dup==array_index_none) {
       RModuleLibrary::SelfP lib = new RModuleLibrary(sys, pfd, ilib);
-      la.push(lib);
+      la.Push(lib);
       lib->sys_libname = filename;
       lib->link();
       lib->scan();

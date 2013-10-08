@@ -152,7 +152,7 @@ bool RModule::reg_generator(ModuleObjInfo* mi, IGenerator* gen)
   if(gen->get_generated_names(lst)==0)
     return true; // empty generator
   size_t nn = ~lst;
-  if(!mogis.pushn(nn)) {
+  if(!mogis.PushN(nn)) {
     err_put(
       rsdl_Module, 
       "RModule(%p)::reg_generator(%s %p) -- allocate error: info\n", 
@@ -175,7 +175,7 @@ bool RModule::reg_generator(ModuleObjInfo* mi, IGenerator* gen)
     size_t btn = ~mogts;
     size_t nt = ~lst;
     gi.start_elem = btn;
-    if(!mogts.pushn(nt)) {
+    if(!mogts.PushN(nt)) {
       err_put(
         rsdl_Module, 
         "RModule(%p)::reg_generator(%s %p) -- allocate error: type\n", 
@@ -230,7 +230,7 @@ RModule::ModuleObjInfo* RModule::reg_obj(IModObject* mo)
     }
   }
   //
-  if(!mos.push()) {
+  if(!mos.Push()) {
     err_put(
       rsdl_Module, 
       "RModule(%p)::reg_obj(%s %p) -- alloc error\n", 
@@ -239,7 +239,7 @@ RModule::ModuleObjInfo* RModule::reg_obj(IModObject* mo)
     return NULL;
   }
   //
-  ModuleObjInfo* rv = &mos.last();
+  ModuleObjInfo* rv = &mos.Last();
   rv->mo = mo;
   rv->tid = tid;
   rv->uid = uid;

@@ -56,9 +56,9 @@ public:
     GeneratedObjInfo(void) : tid(NULL), start_elem(array_index_none), count_elem(0) {}
   };
   //
-  typedef tl::TArrayDynamic<ModuleObjInfo, tl::DAllocatorMallocFast>    ModObjArray;
-  typedef tl::TArrayDynamic<GeneratedObjInfo, tl::DAllocatorMallocFast> ModObjGenInfoArray;
-  typedef tl::TArrayDynamic<TypeId, tl::DAllocatorMallocFast>           ModObjGenTypeArray;
+  typedef tl::TArrayContDynamic<ModuleObjInfo, tl::DAllocatorMallocFast>    ModObjArray;
+  typedef tl::TArrayContDynamic<GeneratedObjInfo, tl::DAllocatorMallocFast> ModObjGenInfoArray;
+  typedef tl::TArrayContDynamic<TypeId, tl::DAllocatorMallocFast>           ModObjGenTypeArray;
 public:
   RModule(RModuleLibrary *pv, IModuleReg *imr);
   ~RModule(void);
@@ -104,7 +104,7 @@ struct RModuleLibrary : public IModuleLibrary
 public:
   struct PFD_Data;
   typedef int PFD_Raw[16];
-  typedef tl::TArrayDynamic<RModule::SelfP, tl::DAllocatorMallocFast> Modules;
+  typedef tl::TArrayContDynamic<RModule::SelfP, tl::DAllocatorMallocFast> Modules;
 public:
   RModuleLibrary(ISystem* sys, PFD_Data* pfd, IModuleLibraryReg* imlr);
   RModuleLibrary(void);

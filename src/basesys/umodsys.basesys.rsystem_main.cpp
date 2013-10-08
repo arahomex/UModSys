@@ -57,6 +57,14 @@ bool RSystem::deinit(void)
   moddb.cleanup();
   SUniquePointer::s_unresolve(this); // deinitalize all upis
   //
+  params.clear();
+  //
+  uptr_strings.free();
+  uptr_list.free();
+  //
+  sc_strings.free();
+  sc_list.free();
+  //
   return true;
 }
 

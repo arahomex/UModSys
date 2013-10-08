@@ -45,7 +45,7 @@ public:
 public:
   inline TQuantArrayUnique(void) : cur_size(0) {}
   inline TQuantArrayUnique(const TMemAlloc& ma) : hold(NodeDeleter(ma)), cur_size(0) {}
-  inline ~TQuantArrayUnique(void) {}
+  inline ~TQuantArrayUnique(void) { free(); }
   //
   inline size_t count(void) const { return cur_size; }
   inline size_t len(void) const { return cur_size; }
@@ -54,6 +54,7 @@ public:
   const TData* find(const TData& val);
   TData* add(const TData& val);
   bool remove(const TData* it);
+  inline void free(void) { hold.clear(); }
   //
   const TData* get(size_t index) const;
   TData* get(size_t index);

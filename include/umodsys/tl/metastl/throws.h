@@ -2,7 +2,7 @@
 #define __UMODSYS_TL_METASTL_THROWS_H 1
 /*************************************************************/
 // file: umodsys/tl/metastl/throws.h
-// info: array of elements
+// info: throws exception
 /*************************************************************/
 
 #include <umodsys/core/stdcore.h>

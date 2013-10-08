@@ -57,7 +57,7 @@ struct TStaticStringPool : public MemAllocT {
     }
   };
 public:
-  inline ~TStaticStringPool(void) { release(); }
+  inline ~TStaticStringPool(void) { free(); }
   inline TStaticStringPool(size_t cm=0x1000, size_t sm=0x100) 
   : cs(NULL), ss(NULL), c_max(cm), s_max(sm), c_len(0), s_len(0) {}
   inline TStaticStringPool(const MemAllocT& ma, size_t cm=0x1000, size_t sm=0x100) 
@@ -91,7 +91,7 @@ public:
     { return append(v.get_text(), v.get_length()); }
   //
   void copyfrom(const Self &R);
-  void release(void);
+  void free(void);
 public:
   CharChunk *cs;
   StringChunk *ss;
@@ -193,7 +193,7 @@ void TStaticStringPool<CharT,Comparer,MemAllocT>::copyfrom(const typename TStati
 }
 
 template<typename CharT, typename Comparer, typename MemAllocT>
-void TStaticStringPool<CharT,Comparer,MemAllocT>::release(void)
+void TStaticStringPool<CharT,Comparer,MemAllocT>::free(void)
 {
   typename TStaticStringPool<CharT,Comparer,MemAllocT>::StringChunk *x, *xx;
   typename TStaticStringPool<CharT,Comparer,MemAllocT>::CharChunk *z, *zz;

@@ -23,31 +23,43 @@ struct TTypeConstructor {
   inline static void constructcopy(Type* p, const Type& cp) { new(p) Type(cp); }
   inline static void copy(Type* p, const Type& cp) { *p = cp; }
   //
-  inline static void aconstruct(Type* p, int count) { for(int i=0; i<count; i++) new(p++) Type; }
-  inline static void aconstructcopy(Type* p, int count, const Type& cp) { for(int i=0; i<count; i++) new(p++) Type(cp); }
-  inline static void aconstructcopya(Type* p, int count, const Type* cp) { for(int i=0; i<count; i++) new(p++) Type(*cp++); }
-  inline static void adestruct(Type* p, int count) { for(int i=0; i<count; i++) (p++)->~Type(); }
+  inline static void aconstruct(Type* p, size_t count) { for(size_t i=0; i<count; i++) new(p++) Type; }
+  inline static void aconstructcopy(Type* p, size_t count, const Type& cp) { for(size_t i=0; i<count; i++) new(p++) Type(cp); }
+  inline static void aconstructcopya(Type* p, size_t count, const Type* cp) { for(size_t i=0; i<count; i++) new(p++) Type(*cp++); }
+  inline static void adestruct(Type* p, size_t count) { for(size_t i=0; i<count; i++) (p++)->~Type(); }
+  inline static void acopy(Type* p, size_t count, const Type* p2) { for(size_t i=0; i<count; i++) *p++ = *p2++; }
+  inline static void acopy1(Type* p, size_t count, const Type& x) { for(size_t i=0; i<count; i++) *p++ = x; }
+  //
+  template <typename P> inline static void atcopy(Type* p, size_t count, P p2) { for(size_t i=0; i<count; i++) *p++ = *p2++; }
+};
+
+template<typename T>
+struct TTypeConstructorBinaryFast {
+  typedef T Type;
+  typedef T Const;
+  typedef T& Variable;
+  //
+  inline static void construct(Type* p) {}
+  inline static void destruct(Type* p) {}
+  inline static void constructcopy(Type* p, const Type& cp) { *p=cp; }
+  inline static void copy(Type* p, const Type& cp) { *p=cp; }
+  //
+  inline static void aconstruct(Type* p, size_t count) {}
+  inline static void aconstructcopy(Type* p, size_t count, const Type& cp) { for(size_t i=0; i<count; i++) *p++=cp; }
+  inline static void aconstructcopya(Type* p, size_t count, const Type* cp) { memcpy(p, cp, count*sizeof(Type)); }
+  inline static void adestruct(Type* p, size_t count) {}
+  inline static void acopy(Type* p, size_t count, const Type* cp) { memcpy(p, cp, count*sizeof(Type)); }
+  inline static void acopy1(Type* p, size_t count, const Type& x) { for(size_t i=0; i<count; i++) *p++ = x; }
+  //
+  template <typename P> inline static void atcopy(Type* p, size_t count, P p2) { for(size_t i=0; i<count; i++) *p++ = *p2++; }
 };
 
 /*************************************************************/
 /*************************************************************/
 
-// ::UModSys::types::
-#define UMODSYS_SCALAR_CONSTRUCTOR(_type) \
-  template<> struct TTypeConstructor<_type> { \
-    typedef _type Type; \
-    typedef _type Const; \
-    typedef _type& Variable; \
-    inline static void construct(Type* p) {} \
-    inline static void constructcopy(Type* p, const Type& cp) { *p=cp; } \
-    inline static void copy(Type* p, const Type& cp) { *p=cp; } \
-    inline static void aconstruct(Type* p, int count) {} \
-    inline static void aconstructcopy(Type* p, int count, const Type& cp) { for(int i=0; i<count; i++) *p++=cp; } \
-    inline static void aconstructcopya(Type* p, int count, const Type* cp) { for(int i=0; i<count; i++) *p++=*cp++; } \
-    inline static void destruct(Type* p) {} \
-    inline static void adestruct(Type* p, int count) {} \
-  }
 
+// ::UModSys::types::
+#define UMODSYS_SCALAR_CONSTRUCTOR(_type) template<> struct TTypeConstructor<_type> : public TTypeConstructorBinaryFast<_type> {};
 
 /*************************************************************/
 

@@ -26,6 +26,7 @@ int main(int argc, char **argv)
   //
   S.deinit();
   S.set_console(NULL);
+  RConsole_std::s_console.reflect(NULL);
   return 0;
 }
 

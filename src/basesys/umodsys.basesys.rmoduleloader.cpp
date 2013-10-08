@@ -104,7 +104,7 @@ IModule* RModuleLoader::moduledb_find(const core::DCString& name, const core::SV
 void RModuleLoader::moduledb_clear(void)
 {
   moduledb_cleanup();
-  mod_list.clear();
+  mod_list.Clear();
 }
 
 size_t RModuleLoader::moduledb_cleanup(void)
@@ -124,7 +124,7 @@ size_t RModuleLoader::moduledb_cleanup(void)
   } while(n);
   for(int i=0; i<~mod_list; i++) {
     if(!mod_list(i).valid()) {
-      mod_list.remove_at(i);
+      mod_list.RemoveAt(i);
       i--; s++;
     }
   }
@@ -187,7 +187,7 @@ void RModuleLoader::cleanup(void)
   dbg_put(rsdl_System, " { mod_list=%d:[] }\n", ~mod_list);
   moduledb_cleanup();
   moduledb_clear();
-  mod_list.clear();
+  mod_list.Clear();
 }
 
 //***************************************

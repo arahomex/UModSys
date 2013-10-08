@@ -16,8 +16,7 @@ namespace tl {
 
 using core::SSourceContext;
 
-template<typename MemAlloc, typename CountCalc=core::SCountCalcPower2>
-struct TAllocator;
+template<typename MemAlloc, typename CountCalc=core::SCountCalcPower2> struct TAllocator;
 
 typedef TAllocator<core::SMemAlloc_Malloc, core::SCountCalcPower2>    DAllocatorMallocFast;
 typedef TAllocator<core::SMemAlloc_Malloc, core::SCountCalcExact>     DAllocatorMallocTight;
@@ -30,6 +29,8 @@ typedef TAllocator<core::SIMemAlloc, core::SCountCalcExact>           DAllocator
 
 template<typename MemAlloc, typename CountCalc>
 struct TAllocator : public MemAlloc {
+  typedef MemAlloc Allocator;
+  //
   template<typename Elem>
   inline Elem* t_alloc_one(Elem* &elem, SSourceContext *ctx) {
     elem = static_cast<Elem*>( MemAlloc::mem_alloc(sizeof(Elem)) );
@@ -62,7 +63,7 @@ struct TAllocator : public MemAlloc {
   }
   //
   template<typename Elem>
-  inline bool t_free_array(Elem* &items, size_t &oldcount, size_t newcount, SSourceContext *ctx) {
+  inline bool t_free_array(Elem* &items, size_t &oldcount, SSourceContext *ctx) {
     MemAlloc::mem_free(items);
     items = NULL;
     oldcount = 0;
@@ -73,7 +74,7 @@ struct TAllocator : public MemAlloc {
 /*************************************************************/
 /*************************************************************/
 
-} // namespace types
+} // namespace tl
 } // namespace NanoUTL
 
 #endif // __UMODSYS_TL_ALLOCATE_ALLOCATOR_H

@@ -9,7 +9,9 @@
 
 #include <umodsys/tl/util/type_constructor.h>
 #include <umodsys/tl/alloc/allocator.h>
+
 #include <umodsys/tl/metastl/throws.h>
+#include <umodsys/tl/metastl/reverse_iterator.h>
 
 namespace UModSys {
 namespace tl {
@@ -18,173 +20,190 @@ using core::array_index_none;
 
 /*************************************************************/
 
-template<typename SNode> struct TArrayAbstract;
+//template<typename SNode, typename Allocator=DAllocatorFast > struct TArrayCache;
 
-template<typename SNode, typename Allocator=DAllocatorFast > struct TArrayDynamic;
-template<typename SNode, typename Allocator=DAllocatorFast > struct TArrayChunked;
-template<typename SNode, typename Allocator=DAllocatorFast > struct TArrayCache;
+template<typename SNode, size_t max_len> struct TArrayHolderFixed;
+template<typename SNode, typename FunAlloc=DAllocatorFast> struct TArrayHolderDynamic;
 
-template<typename SNode, size_t nSize> struct TArrayFixed;
+template<typename SHolder> struct TArrayCont; // template array basis
 
+template<typename SNode, typename FunAlloc=DAllocatorFast> struct TArrayContDynamic;
 
 /*************************************************************/
 
-template<typename SNode>
-struct TArrayAbstract {
+template<typename SNode, size_t max_len>
+struct TArrayHolderFixed {
+public:
+  typedef core::Void MemAlloc;
+  typedef SNode ItemType;
+  typedef ItemType* Iter;
+  typedef const ItemType* CIter;
 protected:
-  typedef TTypeConstructor<SNode> TC;
+  size_t buffer[UMODSYS_DIVUP(sizeof(SNode)*max_len, sizeof(size_t))];
+public:
+  inline TArrayHolderFixed(void) UMODSYS_NOTHROW() {}
+  inline TArrayHolderFixed(const MemAlloc &a) UMODSYS_NOTHROW() {}
+  inline ~TArrayHolderFixed(void) UMODSYS_NOTHROW() {}
+  //
+  inline ItemType* get(void) UMODSYS_NOTHROW() { return reinterpret_cast<ItemType*>(buffer); }
+  inline size_t maxlen(void) const UMODSYS_NOTHROW() { return max_len; }
+  inline bool maxlen(size_t sz) UMODSYS_NOTHROW() { return sz<=max_len; }
+  inline bool free(void) UMODSYS_NOTHROW() { return true; }
+  inline bool compact(void) UMODSYS_NOTHROW() { return true; }
+};
+
+/*************************************************************/
+
+template<typename SNode, typename FunAlloc>
+struct TArrayHolderDynamic : public FunAlloc {
+public:
+  typedef FunAlloc DAllocator;
+  typedef typename FunAlloc::Allocator MemAlloc;
+  typedef SNode ItemType;
+  typedef ItemType* Iter;
+  typedef const ItemType* CIter;
+protected:
+  SNode* allocated;
+  size_t maxsize;
+public:
+  inline TArrayHolderDynamic(void) UMODSYS_NOTHROW() : maxsize(0), allocated(NULL) {}
+  inline TArrayHolderDynamic(const MemAlloc& a) UMODSYS_NOTHROW() : FunAlloc(a), maxsize(0), allocated(NULL) {}
+  inline ~TArrayHolderDynamic(void) UMODSYS_NOTHROW() { free(); }
+  //
+  inline ItemType* get(void) UMODSYS_NOTHROW() { return allocated; }
+  inline size_t maxlen(void) const UMODSYS_NOTHROW() { return maxsize; }
+  bool maxlen(size_t sz) UMODSYS_NOTHROW() { return DAllocator::t_realloc_array(allocated, maxsize, sz, UMODSYS_SOURCEINFO); }
+  bool free(void) UMODSYS_NOTHROW() { return DAllocator::t_free_array(allocated, maxsize, UMODSYS_SOURCEINFO); }
+};
+
+/*************************************************************/
+
+template<typename SHolder>
+struct TArrayCont {
+public:
+  typedef SHolder Holder;
+  typedef typename Holder::ItemType Node;
+  typedef typename Holder::Allocator MemAlloc;
+  typedef TTypeConstructor<Node> TC;
+  //
   // stl typedefs
-  typedef SNode value_type;
-  typedef SNode& reference;
-  typedef const SNode& const_reference;
-  typedef SNode* pointer;
-  typedef const SNode& const_pointer;
-  typedef pointer iterator;
-  typedef const_pointer const_iterator;
-  typedef pointer reverse_iterator;
-  typedef const_pointer const_reverse_iterator;
+  typedef Node value_type;
+  typedef Node& reference;
+  typedef const Node& const_reference;
+  typedef Node* pointer;
+  typedef const Node* const_pointer;
   typedef ptrdiff_t difference_type;
   typedef size_t size_type;
   //
-  SNode *items;
-  size_t count;
+  typedef typename Holder::Iter iterator;
+  typedef ReverseIterator<iterator, value_type, difference_type> reverse_iterator;
+  typedef typename Holder::CIter const_iterator;
+  typedef ReverseIterator<const_iterator, const value_type, difference_type> const_reverse_iterator;
+protected:
+  Holder holder;
+  Node *items;
+  size_t length;
 public:
-  inline TArrayAbstract(SNode *i, size_t n=0) UMODSYS_NOTHROW() : items(i), count(n) {}
-  inline ~TArrayAbstract(void) UMODSYS_NOTHROW() {}
+  inline TArrayCont(void) UMODSYS_NOTHROW() : items(NULL), length(0) { items = holder.get(); }
+  inline TArrayCont(const MemAlloc& a) UMODSYS_NOTHROW() : holder(a), items(NULL), length(0) { items = holder.get(); }
+  inline ~TArrayCont(void) UMODSYS_NOTHROW() { Free(); items = holder.get(); }
   //
-  inline const SNode* get_all(void) const UMODSYS_NOTHROW() { return items; }
-  inline SNode* get_all(void) UMODSYS_NOTHROW() { return items; }
-  inline const SNode* _all(void) const UMODSYS_NOTHROW() { return items; }
-  inline SNode* _all(void) UMODSYS_NOTHROW() { return items; }
-  inline const SNode* operator->(void) const UMODSYS_NOTHROW() { return items; }
-  inline SNode* operator->(void) UMODSYS_NOTHROW() { return items; }
+  inline const Node* All(void) const UMODSYS_NOTHROW() { return items; }
+  inline Node* All(void) UMODSYS_NOTHROW() { return items; }
   //
-  inline const SNode& get(size_t no) const UMODSYS_NOTHROW() { return items[no]; }
-  inline SNode& get(size_t no) UMODSYS_NOTHROW() { return items[no]; }
-  inline const SNode& operator()(size_t no) const UMODSYS_NOTHROW() { return items[no]; }
-  inline const SNode& operator[](size_t no) const UMODSYS_NOTHROW() { return items[no]; }
-  inline SNode& operator[](size_t no) UMODSYS_NOTHROW() { return items[no]; }
+  inline const Node& CGet(size_t no) const UMODSYS_NOTHROW() { return items[no]; }
+  inline const Node& Get(size_t no) const UMODSYS_NOTHROW() { return items[no]; }
+  inline Node& Get(size_t no) UMODSYS_NOTHROW() { return items[no]; }
+  inline const Node& operator()(size_t no) const UMODSYS_NOTHROW() { return items[no]; }
+  inline const Node& operator[](size_t no) const UMODSYS_NOTHROW() { return items[no]; }
+  inline Node& operator[](size_t no) UMODSYS_NOTHROW() { return items[no]; }
   //
-  inline const SNode& last(void) const UMODSYS_NOTHROW() { return items[count-1]; }
-  inline SNode& last(void) UMODSYS_NOTHROW() { return items[count-1]; }
-  inline const SNode& first(void) const UMODSYS_NOTHROW() { return items[0]; }
-  inline SNode& first(void) UMODSYS_NOTHROW() { return items[0]; }
+  inline const Node& Last(void) const UMODSYS_NOTHROW() { return items[length - 1]; }
+  inline Node& Last(void) UMODSYS_NOTHROW() { return items[length - 1]; }
+  inline const Node& First(void) const UMODSYS_NOTHROW() { return items[0]; }
+  inline Node& First(void) UMODSYS_NOTHROW() { return items[0]; }
   //
-  inline size_t last_index(void) const UMODSYS_NOTHROW() { return count-1; }
-  inline size_t first_index(void) const UMODSYS_NOTHROW() { return 0; }
+  inline size_t FirstIndex(void) const UMODSYS_NOTHROW() { return 0; }
+  inline size_t LastIndex(void) const UMODSYS_NOTHROW() { return length - 1; }
   //
-  inline size_t len(void) const UMODSYS_NOTHROW() { return count; }
-  inline size_t operator~(void) const UMODSYS_NOTHROW() { return count; }
+  inline size_t Len(void) const UMODSYS_NOTHROW() { return length; }
+  inline size_t operator~(void) const UMODSYS_NOTHROW() { return length; }
   //
-  inline void copy(const SNode* ritems, size_t ecount) {
-    if(ecount<count)
-      ecount = count;
-    TC::copy(items, ritems, ecount);
-  }
+  inline size_t MaxLen(void) const UMODSYS_NOTHROW() { return holder.maxlen(); }
+  //
+  inline bool Push(void) UMODSYS_NOTHROW() { return ResizeRel(1); }
+  inline bool PushN(size_t n=1) UMODSYS_NOTHROW() { return ResizeRel(n); }
+  //
+  inline bool Pop(Node& def) UMODSYS_NOTHROW() { if(length==0) return false; def = Base::last(); return ResizeRel(-1); }
+  inline bool Pop(void) UMODSYS_NOTHROW() { return ResizeRel(-1); }
+  inline bool PopN(size_t n=1) UMODSYS_NOTHROW() { return ResizeRel(-static_cast<ptr_diff_t>(n)); }
+  //
+  inline bool Resize(size_t newsize) UMODSYS_NOTHROW() { return newsize==array_index_none ? false : ResizeRel(newsize - length); }
+  inline bool Clear(void) UMODSYS_NOTHROW() { return Resize(0); }
+  inline bool Compact(void) UMODSYS_NOTHROW() { return ReLink(length); }
+  inline bool Free(void) UMODSYS_NOTHROW() { return Resize(0) && holder.free() && ReLink(0); }
+  //
+  bool Push(const Node& def) UMODSYS_NOTHROW();
+  bool Reserve(size_t newsize) UMODSYS_NOTHROW();
+  bool ResizeRel(ptrdiff_t add) UMODSYS_NOTHROW();
+  bool RemoveAt(size_t id, size_t n=1) UMODSYS_NOTHROW();
+  bool InsertAt(size_t id, size_t n=1) UMODSYS_NOTHROW();
 public:
   // stl typedefs
   inline iterator begin(void) UMODSYS_NOTHROW() { return items; }
-  inline iterator end(void) UMODSYS_NOTHROW() { return items+count; }
+  inline iterator end(void) UMODSYS_NOTHROW() { return items + length; }
   inline const_iterator begin(void) const UMODSYS_NOTHROW() { return items; }
-  inline const_iterator end(void) const UMODSYS_NOTHROW() { return items+count; }
+  inline const_iterator end(void) const UMODSYS_NOTHROW() { return items + length; }
   inline const_iterator cbegin(void) const UMODSYS_NOTHROW() { return items; }
-  inline const_iterator cend(void) const UMODSYS_NOTHROW() { return items+count; }
+  inline const_iterator cend(void) const UMODSYS_NOTHROW() { return items + length; }
   //
-  inline reverse_iterator rend(void) UMODSYS_NOTHROW() { return items-1; }
-  inline reverse_iterator rbegin(void) UMODSYS_NOTHROW() { return items+count-1; }
-  inline const_reverse_iterator rbegin(void) const UMODSYS_NOTHROW() { return items+count-1; }
-  inline const_reverse_iterator rend(void) const UMODSYS_NOTHROW() { return items-1; }
-  inline const_reverse_iterator crbegin(void) const UMODSYS_NOTHROW() { return items+count-1; }
-  inline const_reverse_iterator crend(void) const UMODSYS_NOTHROW() { return items-1; }
+  inline reverse_iterator rend(void) UMODSYS_NOTHROW() { return reverse_iterator(items + length - 1); }
+  inline reverse_iterator rbegin(void) UMODSYS_NOTHROW() { return reverse_iterator(items - 1); }
+  inline const_reverse_iterator rbegin(void) const UMODSYS_NOTHROW() { return reverse_iterator(items + length - 1); }
+  inline const_reverse_iterator rend(void) const UMODSYS_NOTHROW() { return reverse_iterator(items - 1); }
+  inline const_reverse_iterator crbegin(void) const UMODSYS_NOTHROW() { return reverse_iterator(items + length - 1); }
+  inline const_reverse_iterator crend(void) const UMODSYS_NOTHROW() { return reverse_iterator(items - 1); }
   //
-  inline size_type size(void) const UMODSYS_NOTHROW() { return count; }
-  inline bool empty(void) const UMODSYS_NOTHROW() { return count==0; }
+  inline size_type size(void) const UMODSYS_NOTHROW() { return length; }
+  inline bool empty(void) const UMODSYS_NOTHROW() { return length==0; }
   inline const_pointer data(void) const UMODSYS_NOTHROW() { return items; }
   inline pointer data(void) UMODSYS_NOTHROW() { return items; }
   //
-  inline const_reference at(size_type n) const UMODSYS_NOTHROW() { return get(n); }
-  inline reference at(size_type n) UMODSYS_NOTHROW() { return get(n); }
-  inline const_reference front(void) const UMODSYS_NOTHROW() { return first(); }
-  inline reference front(void) UMODSYS_NOTHROW() { return first(); }
-  inline const_reference back(void) const UMODSYS_NOTHROW() { return last(); }
-  inline reference back(void) UMODSYS_NOTHROW() { return last(); }
-protected:
-  inline void item_construct(size_t no) { TC::construct(items+no); }
-  inline void item_construct(size_t no, const SNode& def) { TC::construct(items+no, def); }
-  inline void item_destruct(size_t no) { TC::destruct(items+no); }
-  inline void items_construct(size_t no, size_t count) { TC::aconstruct(items+no, count); }
-  inline void items_construct(size_t no, size_t count, const SNode& def) { TC::aconstructcopy(items+no, count, def); }
-  inline void items_construct(size_t no, size_t count, const SNode* def) { TC::aconstructcopya(items+no, count, def); }
-  inline void items_destruct(size_t no, size_t count) { TC::adestruct(items+no, count); }
-};
-
-/*************************************************************/
-
-template<typename SNode, size_t nSize>
-struct TArrayFixed : public TArrayAbstract<SNode> {
-protected:
-  typedef TArrayAbstract<SNode> Base;
-  SNode fixed[nSize];
-public:
-  inline TArrayFixed(void) UMODSYS_NOTHROW() : Base(fixed, nSize) {}
-  inline ~TArrayFixed(void) UMODSYS_NOTHROW() {}
-public:
-  // stl typedefs
-};
-
-
-/*************************************************************/
-
-template<typename SNode, typename Allocator>
-struct TArrayDynamic : public TArrayAbstract<SNode> {
-protected:
-  typedef TArrayAbstract<SNode> Base;
+  inline const_reference at(size_type n) const UMODSYS_NOTHROW() { return items[n]; }
+  inline reference at(size_type n) UMODSYS_NOTHROW() { return items[n]; }
+  inline const_reference front(void) const UMODSYS_NOTHROW() { return items[0]; }
+  inline reference front(void) UMODSYS_NOTHROW() { return items[0]; }
+  inline const_reference back(void) const UMODSYS_NOTHROW() { return items[length-1]; }
+  inline reference back(void) UMODSYS_NOTHROW() { return items[length-1]; }
   //
-  size_t allocated;
-  Allocator allocator;
-public:
-  TArrayDynamic(void) UMODSYS_NOTHROW();
-  inline TArrayDynamic(const Allocator& a) UMODSYS_NOTHROW() : Base(NULL, 0), allocated(0), allocator(a) {}
-  inline ~TArrayDynamic(void) UMODSYS_NOTHROW() { free(); }
+  inline size_type max_size(void) const UMODSYS_NOTHROW() { return holder.maxlen(); }
+  inline void reserve(size_type newmaxlen) { if(!Reserve(newmaxlen)) throw_memoryerror(); }
+  inline void resize(size_type newlen) { if(!Resize(newmaxlen)) throw_memoryerror(); }
   //
-  inline size_t maxlen(void) const UMODSYS_NOTHROW() { return allocated; }
-  bool set_maxlen(size_t newmaxsize) UMODSYS_NOTHROW();
-  //
-  bool push(const SNode& def) UMODSYS_NOTHROW();
-  inline bool push(void) UMODSYS_NOTHROW() { return resize(Base::count+1); }
-  inline bool pushn(size_t n=1) UMODSYS_NOTHROW() { return resize(Base::count+n); }
-  //
-  inline bool pop(SNode& def) UMODSYS_NOTHROW() { if(Base::count==0) return false; def = Base::last(); return resize(Base::count-1); }
-  inline bool pop(void) UMODSYS_NOTHROW() { return resize(Base::count-1); }
-  inline bool popn(size_t n=1) UMODSYS_NOTHROW() { return resize(Base::count-n); }
-  //
-  bool resize(size_t newsize) UMODSYS_NOTHROW();
-  bool free(void) UMODSYS_NOTHROW();
-  bool clear(void) UMODSYS_NOTHROW() { return free(); }
-  bool remove_at(size_t id) UMODSYS_NOTHROW();
-  bool insert_at(size_t id) UMODSYS_NOTHROW();
-public:
-  // stl typedefs
-  inline typename Base::size_type max_size(void) const UMODSYS_NOTHROW() { return allocated; }
-  void reserve(typename Base::size_type newmaxlen) { if(!set_maxlen(newmaxlen)) throw_memoryerror(); }
-  //
-  inline void push_back(typename Base::const_reference def) { if(!push(def)) throw_memoryerror(); }
+  inline void push_back(const_reference v) { if(!push(v)) throw_memoryerror(); }
   inline void pop_back(void) { if(!pop()) throw_memoryerror(); }
   //
-  void insert(typename Base::iterator pos, typename Base::const_reference v);
-  void insert(typename Base::iterator pos, typename Base::size_type n, typename Base::const_reference v);
-  template <class InputIterator> void insert(typename Base::iterator pos, InputIterator first, InputIterator last);
+  inline void insert(iterator pos, const_reference v) { size_t p = pos - items; if(!InsertAt(p)) throw_memoryerror(); items[p] = v; }
+  inline void insert(iterator pos, size_type n, const_reference v) { size_t p = first - items, n = last - first; if(!InsertAt(p, n)) throw_memoryerror(); TC::acopy1(items+p, n, v); }
+  template <typename InputIterator> inline void insert(iterator pos, InputIterator first, InputIterator last) { size_t p = pos - items, n = last - first; if(!InsertAt(p, n)) throw_memoryerror(); TC::atcopy(items+p, n, first); }
   //
-  void erase(typename Base::iterator pos);
-  void erase(typename Base::iterator first, typename Base::iterator last);
+  inline void erase(iterator pos) { size_t p = pos - items; if(!RemoveAt(p)) throw_memoryerror(); }
+  inline void erase(iterator first, iterator last) { size_t p = first - items, n = last - first; if(!RemoveAt(p, n)) throw_memoryerror(); }
+protected:
+  inline bool ReLink(size_t sz) { if(!holder.maxlen(sz)) return false; items = holder.get(); return true; }
+  //
+  inline void item_construct(size_t no) UMODSYS_NOTHROW() { TC::construct(items+no); }
+  inline void item_construct(size_t no, const Node& def) UMODSYS_NOTHROW() { TC::construct(items+no, def); }
+  inline void item_destruct(size_t no) UMODSYS_NOTHROW() { TC::destruct(items+no); }
+  inline void items_construct(size_t no, size_t count) UMODSYS_NOTHROW() { TC::aconstruct(items+no, count); }
+  inline void items_construct(size_t no, size_t count, const Node& def) UMODSYS_NOTHROW() { TC::aconstructcopy(items+no, count, def); }
+  inline void items_construct(size_t no, size_t count, const Node* def) UMODSYS_NOTHROW() { TC::aconstructcopya(items+no, count, def); }
+  inline void items_destruct(size_t no, size_t count) UMODSYS_NOTHROW() { TC::adestruct(items+no, count); }
+//  template<typename Iter> inline void copy(Iter ritems, size_t ecount) { if(ecount<count) ecount = count; TC::copy(items, ritems, ecount); }
 };
 
-template<typename SNode, typename Allocator>
-inline TArrayDynamic<SNode,Allocator>::TArrayDynamic(void) UMODSYS_NOTHROW()
-: Base(NULL, 0), allocated(0), allocator() {}
-
 /*************************************************************/
-
+/*
 template<typename SNode, typename Allocator> 
 struct TArrayCache {
   typedef SNode _Type, Type;
@@ -225,104 +244,93 @@ struct TArrayCache {
   inline const _Type* operator()(void) const { return cvalues; }
   inline size_t operator~(void) const { return count; }
 };
+*/
+
+
+template<typename SNode, typename FunAlloc>
+struct TArrayContDynamic : public TArrayCont< TArrayHolderDynamic<SNode, FunAlloc> > {
+public:
+  typedef TArrayCont< TArrayHolderDynamic<SNode, FunAlloc> > Array;
+  //
+  inline TArrayContDynamic(void) UMODSYS_NOTHROW() {}
+  inline TArrayContDynamic(const typename Array::MemAlloc& a) UMODSYS_NOTHROW() : Array(a) {}
+  inline ~TArrayContDynamic(void) UMODSYS_NOTHROW() {}
+};
 
 /*************************************************************/
 // INLINES/OUTLINES
 /*************************************************************/
 
-template<typename SNode, typename Allocator>
-bool TArrayDynamic<SNode, Allocator>::insert_at(size_t id) UMODSYS_NOTHROW()
-{
-    if(id==array_index_none || id>Base::count)
-      return false;
-    return true;
-}
 
-template<typename SNode, typename Allocator>
-bool TArrayDynamic<SNode, Allocator>::remove_at(size_t id) UMODSYS_NOTHROW()
-{
-    if(id==array_index_none || id>=Base::count)
-      return false;
-    Base::item_destruct(id);
-    Base::count--;
-    if(id<Base::count)
-      memmove(Base::items+id, Base::items+id+1, (Base::count-id)*sizeof(SNode));
-    return true;
-}
+/**************************/
+// TArrayCont::
+/**************************/
 
-template<typename SNode, typename Allocator>
-bool TArrayDynamic<SNode, Allocator>::free(void) UMODSYS_NOTHROW()
+template<typename SHolder>
+inline bool TArrayCont<SHolder>::Reserve(size_t newsize) UMODSYS_NOTHROW()
 {
-  if(!resize(0))
+  if(newsize==holder.maxlen())
     return false;
-  if(!allocator.t_free_array(Base::items, allocated, 0, UMODSYS_SOURCEINFO))
-    return false;
-  return true;
-}
-
-template<typename SNode, typename Allocator>
-bool TArrayDynamic<SNode, Allocator>::push(const SNode& def) UMODSYS_NOTHROW()
-{
-    if(Base::count+1>allocated)
-      if(!allocator.t_realloc_array(Base::items, allocated, Base::count+1, UMODSYS_SOURCEINFO))
-        return false;
-    items_construct(Base::count, 1, def);
-    Base::count++;
-    return true;
-}
-
-template<typename SNode, typename Allocator>
-bool TArrayDynamic<SNode, Allocator>::set_maxlen(size_t newsize) UMODSYS_NOTHROW()
-{
-  if(newsize>Base::allocated) {
-    if(!allocator.t_realloc_array(Base::items, allocated, newsize, UMODSYS_SOURCEINFO))
-      return false;
-  } else if(newsize<Base::allocated) {
-    if(newsize<Base::count) {
-      Base::items_destruct(newsize, Base::count-newsize);
-      Base::count = newsize;
-    }
-    if(!allocator.t_realloc_array(Base::items, allocated, newsize, UMODSYS_SOURCEINFO))
-      return false;
+  if(newsize<length) {
+    tems_destruct(newsize, length-newsize);
+    length = newsize;
   }
-  return true;
+  return ReLink(newsize);
 }
 
-template<typename SNode, typename Allocator>
-bool TArrayDynamic<SNode, Allocator>::resize(size_t newsize) UMODSYS_NOTHROW()
+template<typename SHolder>
+inline bool TArrayCont<SHolder>::ResizeRel(ptrdiff_t add) UMODSYS_NOTHROW()
 {
-  if(newsize==array_index_none)
-    return false;
-  if(newsize==Base::count)
+  if(add==0)
     return true;
-  if(newsize>Base::count) {
-    if(newsize>allocated)
-      if(!allocator.t_realloc_array(Base::items, allocated, newsize, UMODSYS_SOURCEINFO))
-        return false;
-    Base::items_construct(Base::count, newsize-Base::count);
-    Base::count = newsize;
+  size_t newsize = length + add;
+  if(add>0) {
+    if(newsize > holder.maxlen() && !ReLink(newsize))
+      return false;
+    items_construct(length, add);
+    length = newsize;
   } else {
-    Base::items_destruct(newsize, Base::count-newsize);
-    Base::count = newsize;
+    items_destruct(newsize, -add);
+    length = newsize;
   }
   return true;
 }
 
-/*************************************************************/
-
-template<typename SNode, typename Allocator>
-inline void TArrayDynamic<SNode, Allocator>::insert(typename Base::iterator pos, typename Base::const_reference v) 
+template<typename SHolder>
+inline bool TArrayCont<SHolder>::InsertAt(size_t id, size_t n) UMODSYS_NOTHROW()
 {
-  size_t p = pos-Base::begin();
-  if(!insert_at(p)) throw_memoryerror();
-  Base::at(p) = v;
+  if(id==array_index_none || id>length)
+    return false;
+  if(id!=length-1) {
+    memmove(items+id+n, items+id, (length-id-1)*sizeof(typename Node));
+  }
+  items_construct(id, n);
+  length += n;
+  return true;
 }
 
-template<typename SNode, typename Allocator>
-inline void TArrayDynamic<SNode, Allocator>::erase(typename Base::iterator pos) 
+template<typename SHolder>
+inline bool TArrayCont<SHolder>::RemoveAt(size_t id, size_t n) UMODSYS_NOTHROW()
 {
-  size_t p = pos-Base::begin();
-  if(!remove_at(p)) throw_memoryerror();
+  size_t len = length;
+  if(id==array_index_none || id+n>len)
+    return false;
+  items_destruct(id, n);
+  if(id+n!=length) {
+    memmove(items+id, items+id+n, (length-id)*sizeof(typename Node));
+  }
+  length -= n;
+  return true;
+}
+
+template<typename SHolder>
+inline bool TArrayCont<SHolder>::Push(const typename Node& def) UMODSYS_NOTHROW()
+{
+  if(length+1>holder.maxlen() && !ReLink(length+1))
+    return false;
+  items_construct(length, 1, def);
+  length++;
+  return true;
 }
 
 /*************************************************************/

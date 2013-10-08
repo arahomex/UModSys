@@ -26,7 +26,7 @@ struct RModuleLibrary;
 struct RModule;
 struct RConsole_std;
 
-typedef tl::TArrayDynamic< 
+typedef tl::TArrayContDynamic<
   tl::TRefObject<RModuleLibrary>,
   tl::DAllocatorMallocFast
 > RModuleLibraryArray;
