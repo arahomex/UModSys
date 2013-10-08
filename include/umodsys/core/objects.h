@@ -21,6 +21,7 @@ struct IRoot {
   typedef int DVersionNo;
   //
   virtual ~IRoot(void);
+  virtual void suicide(void);
   virtual const TypeInfo& get_interface_info(void) const =0;
   virtual TypeId get_interface_type(void) const =0;
   virtual const IRoot* get_other_interface(TypeId type) const =0;
@@ -80,6 +81,21 @@ public:
   inline static size_t _get_interface_types(DPtrList& list) { list<<_get_interface_type(); return 1; }
   inline const IRoot* _get_interface_p(void) const { return this; }
   inline IRoot* _get_interface_p(void) { return this; }
+private:
+  inline void* operator new(size_t size) { return NULL; }
+  inline void operator delete(void *op) {}
+public:
+  inline void* operator new(size_t size, void *sp) { return sp; }
+  inline void operator delete(void *op, void *sp) {}
+  void* operator new(size_t size, const SMemAlloc_Malloc& m);
+  void operator delete(void *op, const SMemAlloc_Malloc& m);
+  void* operator new(size_t size, const SIMemAlloc& m);
+  void operator delete(void *op, const SIMemAlloc& m);
+  //
+  inline static void _delete(IRoot* p, const SIMemAlloc& m) { p->~IRoot(); operator delete(p, m); }
+  inline static void _delete(IRoot* p, const SMemAlloc_Malloc& m) { p->~IRoot(); operator delete(p, m); }
+  inline void _delete(const SIMemAlloc& m) { _delete(this, m); }
+  inline void _delete(const SMemAlloc_Malloc& m) { _delete(this, m); }
 };
 
 //***************************************

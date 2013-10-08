@@ -23,19 +23,18 @@ using core::IRefObject;
 
 #define UMODSYS_REFOBJECT_REFMODULE() \
   typedef IModObject DOwner; typedef tl::TRefObject<IModObject> DOwnerP; \
-  DOwner *owner; \
-  inline void rc_init(DOwner *own) { owner=own; ref_count=0; owner->mod_inc(); } \
-  inline virtual void suicide(void) { DOwnerP p(owner, void_null()); owner=NULL; delete this; p->mod_dec();  }
+  tl::TRefObjectLinksPModule<Self, IModObject> refs; \
+  UMODSYS_REFOBJECT_UNIIMPLEMENT() \
+  inline virtual void suicide(void) { DOwnerP p(refs.owner, void_null()); refs.owner=NULL; refs.obj_delete(this); p->mod_dec();  }
 
 #define UMODSYS_BASE_SHELL_IMPLEMENT(_type, _verno, _interface) \
   UMODSYS_REFOBJECT_IMPLEMENT1(_type, _verno, _interface) \
-  UMODSYS_REFOBJECT_UNIIMPLEMENT() \
   UMODSYS_REFOBJECT_REFMODULE()
 
 #define UMODSYS_BASE_GENERATOR_IMPLEMENT(_type, _verno, _interface) \
   UMODSYS_REFOBJECT_IMPLEMENT1(_type, _verno, _interface) \
+  tl::TRefObjectLinks<Self> refs; \
   UMODSYS_REFOBJECT_UNIIMPLEMENT() \
-  inline void rc_init(void) {} \
   inline virtual void suicide(void) {} \
   IModule* get_module(void) const; \
   TypeId get_uid(void) const { return s_uid; } \

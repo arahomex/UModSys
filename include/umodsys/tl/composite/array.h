@@ -72,7 +72,7 @@ public:
   //
   inline ItemType* get(void) UMODSYS_NOTHROW() { return allocated; }
   inline size_t maxlen(void) const UMODSYS_NOTHROW() { return maxsize; }
-  bool maxlen(size_t sz) UMODSYS_NOTHROW() { return DAllocator::t_realloc_array(allocated, maxsize, sz, UMODSYS_SOURCEINFO); }
+   bool maxlen(size_t sz) UMODSYS_NOTHROW() { return DAllocator::t_realloc_array(allocated, maxsize, sz, UMODSYS_SOURCEINFO); }
   bool free(void) UMODSYS_NOTHROW() { return DAllocator::t_free_array(allocated, maxsize, UMODSYS_SOURCEINFO); }
 };
 
@@ -141,7 +141,7 @@ public:
   inline bool Resize(size_t newsize) UMODSYS_NOTHROW() { return newsize==array_index_none ? false : ResizeRel(newsize - length); }
   inline bool Clear(void) UMODSYS_NOTHROW() { return Resize(0); }
   inline bool Compact(void) UMODSYS_NOTHROW() { return ReLink(length); }
-  inline bool Free(void) UMODSYS_NOTHROW() { return Resize(0) && holder.free() && ReLink(0); }
+  inline bool Free(void) UMODSYS_NOTHROW() { return Resize(0) && holder.free() && ReLink(); }
   //
   bool Push(const Node& def) UMODSYS_NOTHROW();
   bool Reserve(size_t newsize) UMODSYS_NOTHROW();
@@ -191,6 +191,7 @@ public:
   inline void erase(iterator first, iterator last) { size_t p = first - items, n = last - first; if(!RemoveAt(p, n)) throw_memoryerror(); }
 protected:
   inline bool ReLink(size_t sz) { if(!holder.maxlen(sz)) return false; items = holder.get(); return true; }
+  inline bool ReLink(void) { items = holder.get(); return true; }
   //
   inline void item_construct(size_t no) UMODSYS_NOTHROW() { TC::construct(items+no); }
   inline void item_construct(size_t no, const Node& def) UMODSYS_NOTHROW() { TC::construct(items+no, def); }

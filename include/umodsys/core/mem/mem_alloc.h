@@ -1,11 +1,12 @@
 #ifndef __UMODSYS_CORE_MEM_ALLOCATOR_H
 #define __UMODSYS_CORE_MEM_ALLOCATOR_H 1
 /*************************************************************/
-// file: umodsys/core/mem/allocator.h
+// file: umodsys/core/mem/mem_alloc.h
 // info: allocator bases
 /*************************************************************/
 
 #include <umodsys/core/stdtypedefs.h>
+#include <umodsys/core/source.h>
 
 namespace UModSys {
 namespace core {
@@ -32,9 +33,9 @@ struct SCountCalcExact {
 //***************************************
 
 struct SMemAlloc_Malloc {
-  inline static void* mem_alloc(size_t n, const SSourceContext* sctx=NULL) { return ::malloc(n); }
-  inline static void* mem_realloc(void* op, size_t n, const SSourceContext* sctx=NULL) { return ::realloc(op, n); }
-  inline static void mem_free(void *op, const SSourceContext* sctx=NULL) { return ::free(op); }
+  inline static void* mem_alloc(size_t n, const SSourceContext* sctx) { return sctx ? UMODSYS_MALLOC(n, sctx->file, sctx->line) : UMODSYS_MALLOC(n, __FILE__, __LINE__); }
+  inline static void* mem_realloc(void* op, size_t n, const SSourceContext* sctx) { return sctx ? UMODSYS_REALLOC(op, n, sctx->file, sctx->line) : UMODSYS_REALLOC(op, n, __FILE__, __LINE__); }
+  inline static void mem_free(void *op, const SSourceContext* sctx) { return sctx ? UMODSYS_FREE(op, sctx->file, sctx->line) : UMODSYS_FREE(op, __FILE__, __LINE__); }
   inline static const SMemAlloc_Malloc& get_default(void) { static SMemAlloc_Malloc rv; return rv; }
 };
 
@@ -53,9 +54,9 @@ public:
   inline SIMemAlloc(IMemAlloc *im) : imem(im) {}
   SIMemAlloc(void); // use module information
   //
-  inline void* mem_alloc(size_t n, const SSourceContext* sctx=NULL) { return imem->mem_alloc(n, sctx); }
-  inline void* mem_realloc(void* op, size_t n, const SSourceContext* sctx=NULL) { return imem->mem_realloc(op, n, sctx); }
-  inline void mem_free(void *op, const SSourceContext* sctx=NULL) { imem->mem_free(op, sctx); }
+  inline void* mem_alloc(size_t n, const SSourceContext* sctx) const { return imem->mem_alloc(n, sctx); }
+  inline void* mem_realloc(void* op, size_t n, const SSourceContext* sctx) const { return imem->mem_realloc(op, n, sctx); }
+  inline void mem_free(void *op, const SSourceContext* sctx) const { imem->mem_free(op, sctx); }
 };
 
 //***************************************

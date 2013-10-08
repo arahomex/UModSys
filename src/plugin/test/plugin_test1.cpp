@@ -16,8 +16,7 @@ struct RTest1_Shell : public IShell {
   //
   void* memblock;
   //
-  RTest1_Shell(DOwner *own) {
-    rc_init(own);
+  RTest1_Shell(DOwner *own) : refs(own) {
     M.con().put(0, "RTest1_Shell()\n");
     memblock = M().mem_alloc(1024, _UMODSYS_SOURCEINFO);
   }
@@ -57,7 +56,7 @@ struct RTest1_Generator : public IGenerator {
   }
   bool generate(IRefObject::P& obj, TypeId name, const SParameters& args) {
     if(name==RTest1_Shell::_get_interface_type()) {
-      obj = new RTest1_Shell(this);
+      obj = new(M()) RTest1_Shell(this);
       return obj.valid();
     }
     return false;

@@ -104,7 +104,13 @@ IModule* RModuleLoader::moduledb_find(const core::DCString& name, const core::SV
 void RModuleLoader::moduledb_clear(void)
 {
   moduledb_cleanup();
-  mod_list.Clear();
+  for(int i=0; i<~mod_list; i++) {
+    if(mod_list(i).valid()) {
+      mod_list(i)->lib_free();
+    }
+  }
+  mod_list.Free();
+  mod_pool.free();
 }
 
 size_t RModuleLoader::moduledb_cleanup(void)

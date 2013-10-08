@@ -106,21 +106,9 @@ namespace core {
   typedef tl::TRefObject<_type> DSelfP, SelfP; \
 
 #define UMODSYS_REFOBJECT_UNIIMPLEMENT() \
-  mutable int ref_count; \
-  inline void ref_add(void) const { ref_count++; } \
-  inline void ref_remove(void) const { if(--ref_count==0) const_cast<Self*>(this)->suicide(); } \
-  inline int  ref_links(void) const { return ref_count; } \
-
-#define UMODSYS_REFOBJECT_UNIIMPLEMENT_DEF() \
-  mutable int ref_count; \
-  void ref_add(void) const; \
-  void ref_remove(void) const; \
-  int  ref_links(void) const; \
-
-#define UMODSYS_REFOBJECT_UNIIMPLEMENT_BODY(_type) \
-  void _type::ref_add(void) const { ref_count++; } \
-  void _type::ref_remove(void) const { if(--ref_count==0) const_cast<Self*>(this)->suicide(); } \
-  int  _type::ref_links(void) const { return ref_count; } \
+  inline void ref_add(void) const { refs.ref_add(); } \
+  inline void ref_remove(void) const { refs.ref_remove( const_cast<Self*>(this) ); } \
+  inline int  ref_links(void) const { return refs.ref_links(); } \
 
 #if 0
 
@@ -144,14 +132,15 @@ namespace core {
 //***************************************
 
 #define UMODSYS_REFOBJECT_SINGLE() \
-  inline void rc_init(void) { ref_count=0; } \
-  inline virtual void suicide(void) { delete this; }
+  tl::TRefObjectLinks<Self> refs; \
+  UMODSYS_REFOBJECT_UNIIMPLEMENT() \
+  inline virtual void suicide(void) { refs.obj_delete(this); }
 
 #define UMODSYS_REFOBJECT_REFOTHER(_type_owner) \
   typedef _type_owner DOwner; typedef tl::TRefObject<DOwner> DOwnerP; \
-  DOwner *owner; \
-  inline void rc_init(DOwner *own) { owner=own; ref_count=0; } \
-  inline virtual void suicide(void) { DOwnerP p(owner, void_null()); owner=NULL; delete this;  }
+  tl::TRefObjectLinksParent<Self, DOwner> refs; \
+  UMODSYS_REFOBJECT_UNIIMPLEMENT() \
+  inline virtual void suicide(void) { DOwnerP p(refs.owner, void_null()); refs.owner = NULL; refs.obj_delete(this); }
 
 //***************************************
 // END

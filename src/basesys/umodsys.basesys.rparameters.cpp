@@ -382,14 +382,11 @@ bool RParameters::get(const SParametersData *p, BCStr name, IRefObject* &value) 
 RParameters::RParameters(ISystem* s)
 : sys(s), strict(true) 
 {
-  rc_init();
 }
 
 RParameters::~RParameters(void)
 {
 }
-
-UMODSYS_REFOBJECT_UNIIMPLEMENT_BODY(RParameters)
 
 //***************************************
 // ::

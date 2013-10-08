@@ -44,7 +44,7 @@ struct SModuleContext {
 protected:
   ISystem* isys;
   IConsole* icon;
-  core::IMemAlloc* imem;
+  core::SIMemAlloc smem;
 public:
   ~SModuleContext(void);
   SModuleContext(void);
@@ -52,14 +52,15 @@ public:
   //
   inline operator ISystem*(void) const { return isys; }
   inline operator IConsole*(void) const { return icon; }
-  inline operator core::IMemAlloc*(void) const { return imem; }
+  inline operator core::IMemAlloc*(void) const { return smem.imem; }
   inline ISystem* operator->(void) const { return isys; }
-  inline core::IMemAlloc& operator()(void) const { return *imem; }
+  inline const core::SIMemAlloc& operator()(void) const { return smem; }
   inline ISystem* operator*(void) const { return isys; }
   //
   inline ISystem& sys(void) const { return *isys; }
   inline IConsole& con(void) const { return *icon; }
-  inline core::IMemAlloc& mem(void) const { return *imem; }
+  inline core::IMemAlloc& imem(void) const { return *smem.imem; }
+  inline const core::SIMemAlloc& mem(void) const { return smem; }
   //
 public:
   void dbg_put(const char *fmt, ...);

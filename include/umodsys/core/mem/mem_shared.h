@@ -7,7 +7,7 @@
 
 #include <umodsys/core/stdtypedefs.h>
 #include <umodsys/core/mem/mem_fixed.h>
-#include <umodsys/core/mem/allocator.h>
+#include <umodsys/core/mem/mem_alloc.h>
 
 namespace UModSys {
 namespace core {

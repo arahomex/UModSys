@@ -91,7 +91,6 @@ public:
   bool mod_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args);
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RModule, 2, IModule);
-  UMODSYS_REFOBJECT_UNIIMPLEMENT_DEF()
   UMODSYS_REFOBJECT_REFOTHER(RModuleLibrary)
 };
 
@@ -119,6 +118,7 @@ public:
   bool lib_loaded(void) const;
   bool lib_load(void);   
   bool lib_unload(void);
+  bool lib_free(void);
   //
   size_t lib_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound);
   bool lib_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args);
@@ -158,7 +158,6 @@ public:
   static size_t pfd_scan(ISystem* sys, RModuleLibraryArray& la, const core::DCString& mask);
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RModuleLibrary, 2, IModuleLibrary);
-  UMODSYS_REFOBJECT_UNIIMPLEMENT_DEF()
   UMODSYS_REFOBJECT_SINGLE()
 };
 

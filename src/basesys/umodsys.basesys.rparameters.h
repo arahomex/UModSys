@@ -94,7 +94,6 @@ public:
   ~RParameters(void);
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RParameters, 2, IParameters);
-  UMODSYS_REFOBJECT_UNIIMPLEMENT_DEF()
   UMODSYS_REFOBJECT_SINGLE()
 };
 

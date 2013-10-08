@@ -6,7 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/core/arch.h>
-#include <umodsys/core/mem/allocator.h>
+#include <umodsys/core/mem/mem_alloc.h>
 
 namespace UModSys {
 namespace tl {

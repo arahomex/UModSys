@@ -32,6 +32,19 @@
   #endif
 
   // includes
+  #ifdef _DEBUG
+//    #define _CRTDBG_MAP_ALLOC
+    #include <crtdbg.h>
+    //
+//    #define UMODSYS_MALLOC(s, _f, _l)      ::_malloc_dbg(s, _NORMAL_BLOCK, _f, _l)
+//    #define UMODSYS_FREE(p, _f, _l)        ::_free_dbg(p, _NORMAL_BLOCK)
+//    #define UMODSYS_REALLOC(p, s, _f, _l)  ::_realloc_dbg(p, s, _NORMAL_BLOCK, _f, _l)
+    #define UMODSYS_MALLOC(s, _f, _l)      ::_malloc_dbg(s, _CLIENT_BLOCK, _f, _l)
+    #define UMODSYS_FREE(p, _f, _l)        ::_free_dbg(p, _CLIENT_BLOCK)
+    #define UMODSYS_REALLOC(p, s, _f, _l)  ::_realloc_dbg(p, s, _CLIENT_BLOCK, _f, _l)
+
+  #endif
+
   #include <stdio.h>
   #include <stdlib.h>
   #include <stdarg.h>
@@ -45,6 +58,11 @@
 
   #include <new>
   // /includes
+
+  #ifdef free
+    #undef free
+    namespace UModSys { inline void free(void* p) { _free_dbg(p, _NORMAL_BLOCK); } }
+  #endif
 
   #define UMODSYS_THROW(_x) throw _x
   #define UMODSYS_NOTHROW() throw()
@@ -95,7 +113,6 @@
 
 #define UMODSYS_DIVUP(_x, _y) ((_x)/(_y)+((_x)%(_y)!=0))
 
-
 //#ifndef M_PI
 //#define M_PI 3.1415926535897932384626433832795
 //#endif
@@ -117,6 +134,16 @@
     #define UMODSYS_SOURCEINFON _UMODSYS_SOURCEINFOZ
     #define UMODSYS_SOURCEINFOZ _UMODSYS_SOURCEINFOZ
   #endif
+#endif
+
+#ifndef UMODSYS_MALLOC
+  #define UMODSYS_MALLOC(s, f, l)      ::malloc(s)
+#endif
+#ifndef UMODSYS_FREE
+  #define UMODSYS_FREE(p, f, l)        ::free(p)
+#endif
+#ifndef UMODSYS_REALLOC
+  #define UMODSYS_REALLOC(p, s, f, l)  ::realloc(p, s)
 #endif
 
 //***************************************

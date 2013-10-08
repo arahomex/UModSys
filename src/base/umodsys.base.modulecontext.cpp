@@ -13,7 +13,7 @@ SModuleContext::~SModuleContext(void)
 }
 
 SModuleContext::SModuleContext(void)
-: isys(NULL), icon(NULL), imem(NULL)
+: isys(NULL), icon(NULL), smem(NULL)
 {
 }
 
@@ -21,7 +21,7 @@ void SModuleContext::Link(ISystem* is, IMemAlloc* privmem)
 {
   isys = is;
   icon = isys!=NULL ? isys->get_console() : NULL;
-  imem = privmem;
+  smem.imem = privmem;
 }
 
 void SModuleContext::dbg_put(const char *fmt, ...)

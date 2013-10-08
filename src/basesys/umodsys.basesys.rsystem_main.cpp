@@ -23,7 +23,7 @@ bool RSystem::init(void)
   rsys_dbg.enable(rsdl_SoLoad);
   //
 #if defined(_DEBUG) && defined(_MSC_VER)
-  _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF|_CRTDBG_DELAY_FREE_MEM_DF|_CRTDBG_CHECK_CRT_DF|_CRTDBG_ALLOC_MEM_DF);
+  _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF|_CRTDBG_DELAY_FREE_MEM_DF|_CRTDBG_ALLOC_MEM_DF);
 //  _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF|_CRTDBG_DELAY_FREE_MEM_DF|_CRTDBG_CHECK_CRT_DF);
 //  _CrtSetDbgFlag(/*_CRTDBG_DELAY_FREE_MEM_DF|*/_CRTDBG_ALLOC_MEM_DF|_CRTDBG_CHECK_ALWAYS_DF);
 //  _CrtSetDbgFlag(/*_CRTDBG_DELAY_FREE_MEM_DF|*/_CRTDBG_ALLOC_MEM_DF);
@@ -33,6 +33,7 @@ bool RSystem::init(void)
   //
   SUniquePointer::s_resolve(this); // initalize all upis
   dump_upis(); // list all upis
+  params = new(M()) RParameters(this);
   //
 //  sys_library = new RModuleLibrary();
   return true;
@@ -50,6 +51,20 @@ bool RSystem::exec_main(void)
   return false;
 }
 
+#if defined(_DEBUG) && defined(_MSC_VER)
+static void s_dumper(void *pHeap, void *pSystem)
+{
+  long rq;
+  char *fn;
+  int line;
+  size_t len = _msize_dbg(pHeap, _CLIENT_BLOCK);
+  int rv = _CrtIsMemoryBlock(pHeap, len, &rq, &fn, &line);
+  if(rv) {
+    dbg_put(rsdl_System, "  leak: %p:%ld @%ld %s(%d)\n", pHeap, (long)len, rq, fn, line);
+  }
+}
+#endif
+
 bool RSystem::deinit(void)
 {
   dbg_put(rsdl_System, "RSystem::deinit()\n");
@@ -65,6 +80,12 @@ bool RSystem::deinit(void)
   sc_strings.free();
   sc_list.free();
   //
+#if defined(_DEBUG) && defined(_MSC_VER)
+//  UMODSYS_MALLOC(10, __FILE__, __LINE__);
+  _CrtDoForAllClientObjects(s_dumper, this);
+//  _CrtDumpMemoryLeaks();
+  _CrtSetDbgFlag(0);
+#endif
   return true;
 }
 
@@ -114,7 +135,6 @@ RSystem::RSystem(void)
 : console(NULL), moddb(this), /* sys_library(NULL),*/ 
   mema_shared(NULL), mema_system(NULL)
 {
-  params = new RParameters(this);
 }
 
 RSystem::~RSystem(void)

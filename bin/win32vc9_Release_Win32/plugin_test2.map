@@ -1,11 +1,11 @@
  plugin_test2
 
- Timestamp is 52528000 (Mon Oct 07 12:33:52 2013)
+ Timestamp is 525421b6 (Tue Oct 08 18:16:06 2013)
 
  Preferred load address is 10000000
 
  Start         Length     Name                   Class
- 0001:00000000 00000f21H .text                   CODE
+ 0001:00000000 00000f27H .text                   CODE
  0001:00000f30 00000201H .text$yc                CODE
  0001:00001140 0000010aH .text$yd                CODE
  0002:00000000 00000094H .idata$5                DATA
@@ -37,15 +37,15 @@
  0000:00000000       ___ImageBase               10000000     <linker-defined>
  0001:00000000       ?do_open@RTest2_ModuleReg@test2@UModSys@@UAE_NXZ 10001000 f i plugin_test2.obj
  0001:00000020       ?do_close@RTest2_ModuleReg@test2@UModSys@@UAE_NXZ 10001020 f i plugin_test2.obj
- 0001:00000040       ??_GRTest2_ModuleReg@test2@UModSys@@UAEPAXI@Z 10001040 f i plugin_test2.obj
  0001:00000040       ??_ERTest2_ModuleReg@test2@UModSys@@UAEPAXI@Z 10001040 f i  CIL library: CIL module
+ 0001:00000040       ??_GRTest2_ModuleReg@test2@UModSys@@UAEPAXI@Z 10001040 f i plugin_test2.obj
  0001:00000070       ??$shash@D@su@tl@UModSys@@YAHPBDI@Z 10001070 f i umodsys_lib_base:umodsys.base.moduleinfo.obj
- 0001:000000a0       ??_ERModuleLibraryReg_Chain@base@UModSys@@UAEPAXI@Z 100010a0 f i  CIL library: CIL module
  0001:000000a0       ??_GRModuleLibraryReg_Chain@base@UModSys@@UAEPAXI@Z 100010a0 f i umodsys_lib_base:umodsys.base.moduleregchain.obj
- 0001:000000c0       ??_GIModuleReg@base@UModSys@@UAEPAXI@Z 100010c0 f i umodsys_lib_base:umodsys.base.modulereg.obj
+ 0001:000000a0       ??_ERModuleLibraryReg_Chain@base@UModSys@@UAEPAXI@Z 100010a0 f i  CIL library: CIL module
  0001:000000c0       ??_EIModuleReg@base@UModSys@@UAEPAXI@Z 100010c0 f i  CIL library: CIL module
- 0001:000000e0       ??_GIModuleLibraryReg@base@UModSys@@UAEPAXI@Z 100010e0 f i umodsys_lib_base:umodsys.base.modulereg.obj
+ 0001:000000c0       ??_GIModuleReg@base@UModSys@@UAEPAXI@Z 100010c0 f i umodsys_lib_base:umodsys.base.modulereg.obj
  0001:000000e0       ??_EIModuleLibraryReg@base@UModSys@@UAEPAXI@Z 100010e0 f i  CIL library: CIL module
+ 0001:000000e0       ??_GIModuleLibraryReg@base@UModSys@@UAEPAXI@Z 100010e0 f i umodsys_lib_base:umodsys.base.modulereg.obj
  0001:000000fe       __onexit                   100010fe f   MSVCRT:atonexit.obj
  0001:000001a3       _atexit                    100011a3 f   MSVCRT:atonexit.obj
  0001:000001ba       ??3@YAXPAX@Z               100011ba f   MSVCRT:MSVCR90.dll
@@ -76,8 +76,8 @@
  0001:00000990       @__security_check_cookie@4 10001990 f   MSVCRT:secchk.obj
  0001:000009a0       __except_handler4_common   100019a0 f   MSVCRT:MSVCR90.dll
  0001:000009a6       ?terminate@@YAXXZ          100019a6 f   MSVCRT:MSVCR90.dll
- 0001:000009ac       ?_type_info_dtor_internal_method@type_info@@QAEXXZ 100019ac f   MSVCRT:MSVCR90.dll
  0001:000009ac       ??1type_info@@UAE@XZ       100019ac f   MSVCRT:MSVCR90.dll
+ 0001:000009ac       ?_type_info_dtor_internal_method@type_info@@QAEXXZ 100019ac f   MSVCRT:MSVCR90.dll
  0001:000009b2       ___clean_type_info_names_internal 100019b2 f   MSVCRT:MSVCR90.dll
  0001:000009b8       ___report_gsfailure        100019b8 f   MSVCRT:gs_report.obj
  0001:00000abe       __crt_debugger_hook        10001abe f   MSVCRT:MSVCR90.dll
@@ -109,8 +109,8 @@
  0001:00000e40       ?set@SModuleInfo@base@UModSys@@QAEXPBDHH0@Z 10001e40 f   umodsys_lib_base:umodsys.base.moduleinfo.obj
  0001:00000eb0       ??0SModuleInfo@base@UModSys@@QAE@XZ 10001eb0 f   umodsys_lib_base:umodsys.base.moduleinfo.obj
  0001:00000ed0       ?Link@SModuleContext@base@UModSys@@QAEXPAUISystem@23@PAUIMemAlloc@core@3@@Z 10001ed0 f   umodsys_lib_base:umodsys.base.modulecontext.obj
- 0001:00000f00       ??0SModuleContext@base@UModSys@@QAE@XZ 10001f00 f   umodsys_lib_base:umodsys.base.modulecontext.obj
- 0001:00000f20       ??1SModuleContext@base@UModSys@@QAE@XZ 10001f20 f   umodsys_lib_base:umodsys.base.modulecontext.obj
+ 0001:00000f00       ??1SModuleContext@base@UModSys@@QAE@XZ 10001f00 f   umodsys_lib_base:umodsys.base.modulecontext.obj
+ 0001:00000f10       ??0SModuleContext@base@UModSys@@QAE@XZ 10001f10 f   umodsys_lib_base:umodsys.base.modulecontext.obj
  0002:00000000       __imp__SetUnhandledExceptionFilter@4 10003000     kernel32:KERNEL32.dll
  0002:00000004       __imp__UnhandledExceptionFilter@4 10003004     kernel32:KERNEL32.dll
  0002:00000008       __imp__GetCurrentProcess@0 10003008     kernel32:KERNEL32.dll

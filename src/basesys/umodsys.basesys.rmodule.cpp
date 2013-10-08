@@ -11,7 +11,7 @@ using namespace UModSys::base::rsystem;
 
 IModuleLibrary* RModule::get_library(void) const
 {
-  return owner;
+  return refs.owner;
 }
 
 const SModuleInfo& RModule::get_info(void) const
@@ -31,11 +31,11 @@ bool RModule::open(void)
   dbg_put(rsdl_Module, "RModule(%p)::open()\n", this);
   if(ireg!=NULL)
     return ireg->mr_open();
-  if(!owner->lib_load())
+  if(!refs.owner->lib_load())
     return false;
   if(ireg!=NULL && ireg->mr_open())
     return true;
-  owner->lib_unload();
+  refs.owner->lib_unload();
   return false;
 }
 
@@ -46,7 +46,7 @@ bool RModule::close(void)
     return false;
   ireg->mr_close();
   if(!ireg->mr_isopen())
-    owner->lib_unload();
+    refs.owner->lib_unload();
   return true;
 }
 
@@ -287,8 +287,8 @@ bool RModule::alloc_minfo(const SModuleInfo &mi2)
     rsdl_Module, "RModule::alloc_minfo({\"%s\", \"%s\", {%d,%d} })\n", 
     mi2.name(), mi2.info(), mi2.verno.vmajor, mi2.verno.vminor
   );
-  minfo.name = owner->sys->get_modloader()->moduledb_get_string(mi2.name);
-  minfo.info = owner->sys->get_modloader()->moduledb_get_string(mi2.info);
+  minfo.name = refs.owner->sys->get_modloader()->moduledb_get_string(mi2.name);
+  minfo.info = refs.owner->sys->get_modloader()->moduledb_get_string(mi2.info);
   minfo.verno = mi2.verno;
   return true;
 }
@@ -433,9 +433,8 @@ bool RModule::save_db(FILE *f)
 //***************************************
 
 RModule::RModule(RModuleLibrary *pv, IModuleReg *imr)
-: owner(NULL), ireg(imr)
+: ireg(imr), refs(pv)
 {
-  rc_init(pv);
   if(ireg!=NULL) {
     alloc_minfo(ireg->minfo);
     ireg->module = this;
@@ -449,8 +448,6 @@ RModule::~RModule(void)
     ireg = NULL;
   }
 }
-
-UMODSYS_REFOBJECT_UNIIMPLEMENT_BODY(RModule)
 
 //***************************************
 // ::

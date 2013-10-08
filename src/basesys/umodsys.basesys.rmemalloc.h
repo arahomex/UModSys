@@ -182,7 +182,7 @@ void* TRMemAlloc_CC<Header, SubAllocator>::mem_realloc(void* op, size_t n, const
     return NULL; // no memory
   memcpy(rv, op, scalar_min(n, olds));
   h->clear(); h->init(sctx);
-  SubAllocator::mem_free(h);
+  SubAllocator::mem_free(h, sctx);
   return rv;
 }
 
@@ -199,7 +199,7 @@ void TRMemAlloc_CC<Header, SubAllocator>::mem_free(void *op, const SSourceContex
     return; 
   }
   h->clear(); h->init(sctx);
-  SubAllocator::mem_free(h);
+  SubAllocator::mem_free(h, sctx);
   return;
 }
 

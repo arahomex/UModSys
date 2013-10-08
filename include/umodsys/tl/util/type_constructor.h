@@ -31,10 +31,10 @@ struct TNodeDeleter : public MemAlloc {
   inline TNodeDeleter(const MemAlloc& aa) : mema(aa) {}
   static TNodeDeleter get_default(void) { return TNodeDeleter(); }
   //
-  int operator()(Node* node) const { node->~Node(); mema.mem_free(node); return 1; }
+  int operator()(Node* node) const { node->~Node(); mema.mem_free(node, UMODSYS_SOURCEINFO); return 1; }
   //
-  void* op_new(void) const { return mema.mem_alloc(sizeof(Node)); }
-  void* op_new(size_t add) const { return mema.mem_alloc(sizeof(Node)+add); }
+  void* op_new(void) const { return mema.mem_alloc(sizeof(Node), UMODSYS_SOURCEINFO); }
+  void* op_new(size_t add) const { return mema.mem_alloc(sizeof(Node)+add, UMODSYS_SOURCEINFO); }
 };
 
 template<typename Node, typename MemAlloc>
@@ -45,10 +45,10 @@ struct TNodeDeleterExtra : public MemAlloc {
   inline TNodeDeleterExtra(void) : mema(MemAlloc::get_default()) {}
   inline TNodeDeleterExtra(const MemAlloc& aa, size_t x) : mema(aa), extra(x) {}
   //
-  int operator()(Node* node) const { node->~Node(); mema.mem_free(node); return 1; }
+  int operator()(Node* node) const { node->~Node(); mema.mem_free(node, UMODSYS_SOURCEINFO); return 1; }
   //
-  void* op_new(void) const { return mema.mem_alloc(sizeof(Node)+extra); }
-  void* op_new(size_t add) const { return mema.mem_alloc(sizeof(Node)+add+extra); }
+  void* op_new(void) const { return mema.mem_alloc(sizeof(Node)+extra, UMODSYS_SOURCEINFO); }
+  void* op_new(size_t add) const { return mema.mem_alloc(sizeof(Node)+add+extra, UMODSYS_SOURCEINFO); }
 };
 
 /*************************************************************/
@@ -72,7 +72,7 @@ struct TTypeStaticHolder {
   inline bool valid(void) const { return finit; }
   inline bool invalid(void) const { return !finit; }
   //
-  inline void _construct(void) { new(pointer) T(); }
+  inline void _construct(void) { ::new(pointer) T(); }
   inline void _destruct(void) { pointer->~T(); }
   //
   inline void clear(void) { deinit(); }

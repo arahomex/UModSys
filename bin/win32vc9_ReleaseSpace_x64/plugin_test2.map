@@ -1,6 +1,6 @@
  plugin_test2
 
- Timestamp is 52527ffc (Mon Oct 07 12:33:48 2013)
+ Timestamp is 525421b3 (Tue Oct 08 18:16:03 2013)
 
  Preferred load address is 0000000180000000
 
@@ -39,23 +39,23 @@
  0000:00000000       __ImageBase                0000000180000000     <linker-defined>
  0001:00000000       ?do_open@RTest2_ModuleReg@test2@UModSys@@UEAA_NXZ 0000000180001000 f i plugin_test2.obj
  0001:00000024       ?do_close@RTest2_ModuleReg@test2@UModSys@@UEAA_NXZ 0000000180001024 f i plugin_test2.obj
- 0001:00000048       ??_GRTest2_ModuleReg@test2@UModSys@@UEAAPEAXI@Z 0000000180001048 f i plugin_test2.obj
- 0001:00000048       ??_EIModuleReg@base@UModSys@@UEAAPEAXI@Z 0000000180001048 f i  CIL library: CIL module
- 0001:00000048       ??_GIModuleReg@base@UModSys@@UEAAPEAXI@Z 0000000180001048 f i umodsys_lib_base:umodsys.base.modulereg.obj
- 0001:00000048       ??_ERTest2_ModuleReg@test2@UModSys@@UEAAPEAXI@Z 0000000180001048 f i  CIL library: CIL module
- 0001:00000070       ?mlr_count@RModuleLibraryReg_Chain@base@UModSys@@UEBA_KXZ 0000000180001070 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
- 0001:000000a8       ?mlr_get@RModuleLibraryReg_Chain@base@UModSys@@UEBAPEAUIModuleReg@23@_K@Z 00000001800010a8 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
- 0001:000000d4       ?mlr_open@RModuleLibraryReg_Chain@base@UModSys@@UEAA_NPEAUISystem@23@PEAUIMemAlloc@core@3@@Z 00000001800010d4 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
- 0001:00000180       ?mlr_close@RModuleLibraryReg_Chain@base@UModSys@@UEAA_NXZ 0000000180001180 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
- 0001:000001f8       ?mlr_isopen@RModuleLibraryReg_Chain@base@UModSys@@UEBA_NXZ 00000001800011f8 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
- 0001:00000208       UModSys_Plugin_Entry2      0000000180001208 f   umodsys_lib_base:umodsys.so_main.win32.obj
+ 0001:00000048       ?mlr_count@RModuleLibraryReg_Chain@base@UModSys@@UEBA_KXZ 0000000180001048 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
+ 0001:00000080       ?mlr_get@RModuleLibraryReg_Chain@base@UModSys@@UEBAPEAUIModuleReg@23@_K@Z 0000000180001080 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
+ 0001:000000ac       ?mlr_open@RModuleLibraryReg_Chain@base@UModSys@@UEAA_NPEAUISystem@23@PEAUIMemAlloc@core@3@@Z 00000001800010ac f   umodsys_lib_base:umodsys.base.moduleregchain.obj
+ 0001:00000158       ?mlr_close@RModuleLibraryReg_Chain@base@UModSys@@UEAA_NXZ 0000000180001158 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
+ 0001:000001d0       ?mlr_isopen@RModuleLibraryReg_Chain@base@UModSys@@UEBA_NXZ 00000001800011d0 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
+ 0001:000001e0       UModSys_Plugin_Entry2      00000001800011e0 f   umodsys_lib_base:umodsys.so_main.win32.obj
+ 0001:000001e8       ??_GIModuleReg@base@UModSys@@UEAAPEAXI@Z 00000001800011e8 f i umodsys_lib_base:umodsys.base.modulereg.obj
+ 0001:000001e8       ??_GRTest2_ModuleReg@test2@UModSys@@UEAAPEAXI@Z 00000001800011e8 f i plugin_test2.obj
+ 0001:000001e8       ??_ERTest2_ModuleReg@test2@UModSys@@UEAAPEAXI@Z 00000001800011e8 f i  CIL library: CIL module
+ 0001:000001e8       ??_EIModuleReg@base@UModSys@@UEAAPEAXI@Z 00000001800011e8 f i  CIL library: CIL module
  0001:00000210       ?mr_isopen@IModuleReg@base@UModSys@@UEBA_NXZ 0000000180001210 f   umodsys_lib_base:umodsys.base.modulereg.obj
  0001:0000021c       ?mr_open@IModuleReg@base@UModSys@@UEAA_NXZ 000000018000121c f   umodsys_lib_base:umodsys.base.modulereg.obj
  0001:00000240       ?mr_close@IModuleReg@base@UModSys@@UEAA_NXZ 0000000180001240 f   umodsys_lib_base:umodsys.base.modulereg.obj
  0001:0000025c       ??_EIModuleLibraryReg@base@UModSys@@UEAAPEAXI@Z 000000018000125c f i  CIL library: CIL module
- 0001:0000025c       ??_GIModuleLibraryReg@base@UModSys@@UEAAPEAXI@Z 000000018000125c f i umodsys_lib_base:umodsys.base.modulereg.obj
  0001:0000025c       ??_GRModuleLibraryReg_Chain@base@UModSys@@UEAAPEAXI@Z 000000018000125c f i umodsys_lib_base:umodsys.base.moduleregchain.obj
  0001:0000025c       ??_ERModuleLibraryReg_Chain@base@UModSys@@UEAAPEAXI@Z 000000018000125c f i  CIL library: CIL module
+ 0001:0000025c       ??_GIModuleLibraryReg@base@UModSys@@UEAAPEAXI@Z 000000018000125c f i umodsys_lib_base:umodsys.base.modulereg.obj
  0001:00000284       ??0SUniquePointer@core@UModSys@@QEAA@PEBD0H@Z 0000000180001284 f   umodsys_lib_core:umodsys.core.uniqueptr.obj
  0001:000002d4       ??1SUniquePointer@core@UModSys@@QEAA@XZ 00000001800012d4 f   umodsys_lib_core:umodsys.core.uniqueptr.obj
  0001:000002fc       _onexit                    00000001800012fc f   MSVCRT:atonexit.obj

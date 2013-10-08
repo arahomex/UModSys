@@ -80,6 +80,7 @@ public:
   virtual bool lib_loaded(void) const =0;
   virtual bool lib_load(void) =0;
   virtual bool lib_unload(void) =0;
+  virtual bool lib_free(void) =0;
   //
   virtual size_t lib_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound) =0;
   virtual bool lib_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args) =0;

@@ -75,7 +75,7 @@ inline void TSCoreShared<MemAllocT,CharT>::info_release(void)
 {
   if(info!=NULL && info->ref_count>=0 && --info->ref_count<=0) {
     if(info!=get_null()) {
-      MemAllocT::mem_free(info);
+      MemAllocT::mem_free(info, UMODSYS_SOURCEINFO);
     }
   }
   info = get_null();
@@ -94,7 +94,7 @@ template<typename MemAllocT, typename CharT>
 inline bool TSCoreShared<MemAllocT,CharT>::info_new(Str s, size_t L)
 {
   info_release();
-  info = static_cast<Info*>( MemAllocT::mem_alloc(sizeof(Info)+L) );
+  info = static_cast<Info*>( MemAllocT::mem_alloc(sizeof(Info)+L, UMODSYS_SOURCEINFO) );
   if(info==NULL) {
     info = get_null();
     return false;

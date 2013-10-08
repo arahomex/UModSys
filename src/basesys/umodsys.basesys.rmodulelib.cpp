@@ -64,6 +64,14 @@ bool RModuleLibrary::lib_unload(void)
   return true;
 }
 
+bool RModuleLibrary::lib_free(void)
+{
+  if(linked)
+    return false;
+  modules.Clear();
+  return true;
+}
+
 size_t RModuleLibrary::lib_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound)
 {
   size_t n = 0;
@@ -149,7 +157,7 @@ bool RModuleLibrary::link(void)
     }
     if(mm==NULL) {
       dbg_put(rsdl_ModuleLibrary, "RModuleLibrary(%p)::link() -- add new mr\n", this);
-      RModule::SelfP m = new RModule(this, imr);
+      RModule::SelfP m = new(M()) RModule(this, imr);
       modules.Push(m);
     } else {
       mm->ireg = imr;
@@ -235,7 +243,7 @@ bool RModuleLibrary::s_add(ISystem* sys, RModuleLibraryArray& la, const char *fi
     dbg_put(rsdl_ModuleLibrary, "    so loaded: \"%s\"\n", filename);
     size_t dup = RModuleLibrary::s_find_dup(la, ilib);
     if(dup==array_index_none) {
-      RModuleLibrary::SelfP lib = new RModuleLibrary(sys, pfd, ilib);
+      RModuleLibrary::SelfP lib = new(M()) RModuleLibrary(sys, pfd, ilib);
       la.Push(lib);
       lib->sys_libname = filename;
       lib->link();
@@ -272,8 +280,6 @@ RModuleLibrary::~RModuleLibrary(void)
   unlink();
   pfd_unload(get_pfd());
 }
-
-UMODSYS_REFOBJECT_UNIIMPLEMENT_BODY(RModuleLibrary)
 
 //***************************************
 // ::
