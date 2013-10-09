@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="all"
-	ProjectGUID="{325B1575-D8BE-7567-354A-155AEE147E57}"
-	RootNamespace="all"
+	Name="umodsys_lib_libmedia"
+	ProjectGUID="{71DCE4DD-BC48-4CAD-6432-C081E4D64B5D}"
+	RootNamespace="umodsys_lib_libmedia"
 	>
 	<Platforms>
 		<Platform
@@ -17,7 +17,7 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc8_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
 			ConfigurationType="4"
 			CharacterSet="2"
@@ -106,7 +106,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc8_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
 			ConfigurationType="4"
 			CharacterSet="2"
@@ -195,7 +195,7 @@
 		</Configuration>
 		<Configuration
 			Name="ReleaseSpace|Win32"
-			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc8_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
 			ConfigurationType="4"
 			CharacterSet="2"
@@ -284,7 +284,7 @@
 		</Configuration>
 		<Configuration
 			Name="Debug|x64"
-			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc8_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
 			ConfigurationType="4"
 			CharacterSet="2"
@@ -373,7 +373,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|x64"
-			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc8_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
 			ConfigurationType="4"
 			CharacterSet="2"
@@ -462,7 +462,7 @@
 		</Configuration>
 		<Configuration
 			Name="ReleaseSpace|x64"
-			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc8_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
 			ConfigurationType="4"
 			CharacterSet="2"
@@ -551,6 +551,14 @@
 		</Configuration>
 	</Configurations>
 	<Files>
+		<Filter
+			Name="src"
+			>
+			<File
+				RelativePath="..\..\..\src\lib\libmedia\umodsys.libmedia.common.cpp"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>
