@@ -23,10 +23,13 @@ using core::array_index_none;
 //template<typename SNode, typename Allocator=DAllocatorFast > struct TArrayCache;
 
 template<typename SNode, size_t max_len> struct TArrayHolderFixed;
+template<typename SNode, size_t max_len> struct TArrayHolderStatic;
 template<typename SNode, typename FunAlloc=DAllocatorFast> struct TArrayHolderDynamic;
 
 template<typename SHolder> struct TArrayCont; // template array basis
 
+template<typename SNode, size_t max_len> struct TArrayContFixed;
+template<typename SNode, size_t max_len> struct TArrayContStatic;
 template<typename SNode, typename FunAlloc=DAllocatorFast> struct TArrayContDynamic;
 
 /*************************************************************/
@@ -46,6 +49,27 @@ public:
   inline ~TArrayHolderFixed(void) UMODSYS_NOTHROW() {}
   //
   inline ItemType* get(void) UMODSYS_NOTHROW() { return reinterpret_cast<ItemType*>(buffer); }
+  inline size_t maxlen(void) const UMODSYS_NOTHROW() { return max_len; }
+  inline bool maxlen(size_t sz) UMODSYS_NOTHROW() { return sz<=max_len; }
+  inline bool free(void) UMODSYS_NOTHROW() { return true; }
+  inline bool compact(void) UMODSYS_NOTHROW() { return true; }
+};
+
+template<typename SNode, size_t max_len>
+struct TArrayHolderStatic {
+public:
+  typedef core::Void MemAlloc;
+  typedef SNode ItemType;
+  typedef ItemType* Iter;
+  typedef const ItemType* CIter;
+protected:
+  SNode buffer[max_len];
+public:
+  inline TArrayHolderStatic(void) UMODSYS_NOTHROW() {}
+  inline TArrayHolderStatic(const MemAlloc &a) UMODSYS_NOTHROW() {}
+  inline ~TArrayHolderStatic(void) UMODSYS_NOTHROW() {}
+  //
+  inline ItemType* get(void) UMODSYS_NOTHROW() { return buffer; }
   inline size_t maxlen(void) const UMODSYS_NOTHROW() { return max_len; }
   inline bool maxlen(size_t sz) UMODSYS_NOTHROW() { return sz<=max_len; }
   inline bool free(void) UMODSYS_NOTHROW() { return true; }
@@ -248,6 +272,8 @@ struct TArrayCache {
 */
 
 
+/*************************************************************/
+
 template<typename SNode, typename FunAlloc>
 struct TArrayContDynamic : public TArrayCont< TArrayHolderDynamic<SNode, FunAlloc> > {
 public:
@@ -256,6 +282,24 @@ public:
   inline TArrayContDynamic(void) UMODSYS_NOTHROW() {}
   inline TArrayContDynamic(const typename Array::MemAlloc& a) UMODSYS_NOTHROW() : Array(a) {}
   inline ~TArrayContDynamic(void) UMODSYS_NOTHROW() {}
+};
+
+template<typename SNode, size_t max_len>
+struct TArrayContFixed : public TArrayCont< TArrayHolderFixed<SNode, max_len> > {
+public:
+  typedef TArrayCont< TArrayHolderFixed<SNode, max_len> > Array;
+  //
+  inline TArrayContFixed(void) UMODSYS_NOTHROW() {}
+  inline ~TArrayContFixed(void) UMODSYS_NOTHROW() {}
+};
+
+template<typename SNode, size_t max_len>
+struct TArrayContStatic : public TArrayCont< TArrayHolderStatic<SNode, max_len> > {
+public:
+  typedef TArrayCont< TArrayHolderStatic<SNode, max_len> > Array;
+  //
+  inline TArrayContStatic(void) UMODSYS_NOTHROW() {}
+  inline ~TArrayContStatic(void) UMODSYS_NOTHROW() {}
 };
 
 /*************************************************************/

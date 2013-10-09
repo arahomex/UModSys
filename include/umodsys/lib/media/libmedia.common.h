@@ -6,6 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/core/stdcore.h>
+#include <umodsys/tl/composite/isockets.h>
 
 namespace UModSys {
 namespace media {
@@ -263,7 +264,7 @@ public:
   virtual IStreamReader::P load_reader(const DCString& media_name, int flags=mf_Default) =0;
   virtual bool save_data(const SMemShared& mem, const DCString& media_name, int flags=mf_Default) =0;
   virtual IStreamWriter::P save_writer(const DCString& media_name, int flags=mf_Default) =0;
-//  virtual bool get_entrylist(const DCString &mask, SMediaFileInfoArray& list) = 0;
+  virtual bool get_entrylist(const DCString &mask, tl::TIStackSocket<SFileInfo>& list) = 0;
   virtual int get_permissions(void) = 0;
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::media::IDataArchive, 2, IRefObject);

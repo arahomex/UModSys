@@ -128,9 +128,40 @@ public:
     rv = static_cast<const RData*>( get_other_interface(RData::_get_interface_name()) );
     return rv.valid();
   }
+public:
+  //
+  //
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::core::IRefObject, 2, IRoot);
 };
+
+//***************************************
+//***************************************
+
+template<typename Obj, typename XObj>
+bool ValidateConstruction(tl::TRefObject<Obj> &rv, tl::TRefObject<XObj> pobj) 
+{
+  if(!obj.valid())
+    return false;
+  if(!obj->validate_construction()) {
+    return false;
+  }
+  rv = obj;
+  return true;
+}
+
+template<typename Obj, typename XObj>
+bool ValidateConstruction(tl::TRefObject<Obj> &rv, XObj* pobj) 
+{
+  if(pobj == NULL)
+    return false;
+  tl::TRefObject<XObj> obj = pobj;
+  if(!pobj->validate_construction()) {
+    return false;
+  }
+  rv = obj;
+  return true;
+}
 
 //***************************************
 // END

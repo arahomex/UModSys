@@ -552,10 +552,18 @@
 	</Configurations>
 	<Files>
 		<Filter
-			Name="src"
+			Name="lib_media"
 			>
 			<File
-				RelativePath="..\..\..\src\lib\libmedia\umodsys.libmedia.common.cpp"
+				RelativePath="..\..\..\src\lib\media\umodsys.lib.media.common.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="mod_stdio"
+			>
+			<File
+				RelativePath="..\..\..\src\module\media.stdio\umodsys.mod.media.stdio.cpp"
 				>
 			</File>
 		</Filter>

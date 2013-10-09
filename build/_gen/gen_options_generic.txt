@@ -7,9 +7,10 @@ begin project-group umodsys
   set path-s-basesys $(path-src)/basesys
   set path-s-core $(path-src)/core
   set path-s-tl $(path-src)/tl
-  set path-s-plugin $(path-src)/plugin
 
-  set path-lib $(path-src)/lib
+  set path-s-lib $(path-src)/lib
+  set path-s-mod $(path-src)/module
+  set path-s-plugin $(path-src)/plugin
 
   option project-order umodsysc
 
@@ -81,8 +82,11 @@ begin project-group umodsys
 
   begin project umodsys_lib_libmedia
     mode lib
-    begin file-group src
-      file $(path-lib)/libmedia/umodsys.libmedia.common.cpp
+    begin file-group lib_media
+      file $(path-s-lib)/media/umodsys.lib.media.common.cpp
+    end
+    begin file-group mod_stdio
+      file $(path-s-mod)/media.stdio/umodsys.mod.media.stdio.cpp
     end
   end
 
