@@ -38,8 +38,10 @@ bool RSystem::exec_test_shells(void)
 
 bool RSystem::exec_tests(void)
 {
-  dump_upis();
+//  dump_upis();
+  dbg_put(rsdl_System, "******************************* TESTS {\n");
   exec_test_shells();
+  dbg_put(rsdl_System, "******************************* } TESTS\n");
   return true;
 }
 

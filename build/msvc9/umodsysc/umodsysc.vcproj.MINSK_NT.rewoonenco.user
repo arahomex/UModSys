@@ -10,7 +10,7 @@
 			>
 			<DebugSettings
 				Command="$(TargetPath)"
-				WorkingDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+				WorkingDirectory="$(SolutionDir)..\..\data"
 				CommandArguments=""
 				Attach="false"
 				DebuggerType="3"

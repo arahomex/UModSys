@@ -1,5 +1,10 @@
 #include <umodsys/core/syshlp.h>
 
+#include <io.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <fcntl.h>
+
 #include <umodsys/core/platform/win32/syshlp_win32.h>
 #include <umodsys/core/stdstrings.h>
 
@@ -10,6 +15,26 @@ using namespace UModSys::core::syshlp;
 //***************************************
 // syshlp::
 //***************************************
+
+static DWORD s_oldCP = 0;
+
+void syshlp::setup_console(void)
+{
+  if(s_oldCP==0)
+    s_oldCP = GetConsoleOutputCP();
+  if(!SetConsoleOutputCP(CP_UTF8)) {
+    DWORD err = GetLastError();         
+  }
+}
+
+void syshlp::restore_console(void)
+{
+  if(s_oldCP==0)
+    return;
+  if(!SetConsoleOutputCP(s_oldCP)) {
+    DWORD err = GetLastError();         
+  }
+}
 
 FILE* syshlp::c_fopen(const char *cfilename, const char *cmode)
 {

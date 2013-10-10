@@ -60,7 +60,7 @@ public:
   typedef tl::TDynarrayDynamic<GeneratedObjInfo, tl::DAllocatorMallocFast> ModObjGenInfoArray;
   typedef tl::TDynarrayDynamic<TypeId, tl::DAllocatorMallocFast>           ModObjGenTypeArray;
 public:
-  RModule(RModuleLibrary *pv, IModuleReg *imr);
+  RModule(IModuleLibraryUni *pv, IModuleReg *imr);
   ~RModule(void);
 public:
   IModuleLibrary* get_library(void) const;
@@ -91,23 +91,20 @@ public:
   bool mod_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args);
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RModule, 2, IModule);
-  UMODSYS_REFOBJECT_REFOTHER(RModuleLibrary)
+  UMODSYS_REFOBJECT_REFOTHER(IModuleLibraryUni)
 };
 
 //***************************************
 // RModuleLibrary
 //***************************************
 
-struct RModuleLibrary : public IModuleLibrary
+struct IModuleLibraryUni : public IModuleLibrary
 {
 public:
-  struct PFD_Data;
-  typedef int PFD_Raw[16];
   typedef tl::TDynarrayDynamic<RModule::SelfP, tl::DAllocatorMallocFast> Modules;
 public:
-  RModuleLibrary(ISystem* sys, PFD_Data* pfd, IModuleLibraryReg* imlr);
-  RModuleLibrary(void);
-  ~RModuleLibrary(void);
+  IModuleLibraryUni(ISystem* sys, IModuleLibraryReg* imlr);
+  ~IModuleLibraryUni(void);
 public:
   DCString get_sys_libname(void) const;
   IMemAlloc* get_privmem(void) const;
@@ -123,6 +120,11 @@ public:
   size_t lib_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound);
   bool lib_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args);
 public:
+  virtual bool uni_load(void) =0;
+  virtual bool uni_unload(void) =0;
+  virtual bool uni_open(void) =0;
+  virtual bool uni_close(void) =0;
+public:
   ISystem* sys;
   Modules modules;
   DStringSharedMalloc sys_libname;
@@ -130,16 +132,35 @@ public:
   int load_count;
   bool linked;
   mutable DRMemAlloc mema;
-  //
+public:
   size_t cleanup(void);
   bool scan(void);
   bool link(void);
   bool unlink(void);
   bool load0(void);
   bool save_db(FILE *f);
+public:
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::rsystem::IModuleLibraryUni, 2, IModuleLibrary);
+};
+
+struct RModuleLibrarySO : public IModuleLibraryUni
+{
+public:
+  struct PFD_Data;
+  typedef int PFD_Raw[16];
+  typedef tl::TDynarrayDynamic<RModule::SelfP, tl::DAllocatorMallocFast> Modules;
+public:
+  RModuleLibrarySO(ISystem* sys, PFD_Data* pfd, IModuleLibraryReg* imlr);
+  RModuleLibrarySO(ISystem* sys);
+  ~RModuleLibrarySO(void);
   //
-  static size_t s_find_dup(const RModuleLibraryArray& la, IModuleLibraryReg* ireg);
-  static bool s_add(ISystem* sys, RModuleLibraryArray& la, const char *filename);
+  bool uni_load(void);
+  bool uni_unload(void);
+  bool uni_open(void);
+  bool uni_close(void);
+public:
+  static size_t s_find_dup(const RModuleLibrarySOArray& la, IModuleLibraryReg* ireg);
+  static bool s_add(ISystem* sys, RModuleLibrarySOArray& la, const char *filename);
   //
 //  inline bool eq(const PFD_Data* pfd2) { return pfd_eq(get_pfd(), pfd2); }
   //
@@ -155,9 +176,25 @@ public:
   static IModuleLibraryReg* pfd_load(PFD_Data* pfd, const core::DCString& filename);
   static bool pfd_unload(PFD_Data* pfd);
   //
-  static size_t pfd_scan(ISystem* sys, RModuleLibraryArray& la, const core::DCString& mask);
+  static size_t pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, const core::DCString& mask);
 public:
-  UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RModuleLibrary, 2, IModuleLibrary);
+  UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RModuleLibrarySO, 1, IModuleLibraryUni);
+  UMODSYS_REFOBJECT_SINGLE()
+};
+
+struct RModuleLibraryThis : public IModuleLibraryUni
+{
+public:
+  RModuleLibraryThis(ISystem* sys);
+  RModuleLibraryThis(void);
+  ~RModuleLibraryThis(void);
+  //
+  bool uni_load(void);
+  bool uni_unload(void);
+  bool uni_open(void);
+  bool uni_close(void);
+public:
+  UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RModuleLibraryThis, 1, IModuleLibraryUni);
   UMODSYS_REFOBJECT_SINGLE()
 };
 
@@ -191,7 +228,8 @@ public:
 public:
   ISystem* sys;
   DSystemStaticPool mod_pool;
-  RModuleLibraryArray mod_list;
+  RModuleLibrarySOArray mod_list;
+  RModuleLibraryThis::SelfP mod_this;
   //
   const DCString& get_string(const DCString& v);
   void cleanup(void);

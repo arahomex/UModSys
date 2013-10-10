@@ -147,7 +147,7 @@ public:
 public:
   typedef TArray< SNode > Array;
   //
-  inline TArrayFixed(size_t n=0) UMODSYS_NOTHROW() : Array(buffer, max_length, n) {}
+  inline TArrayFixed(size_t n=0) UMODSYS_NOTHROW() : Array(buffer, max_len, n) {}
   inline ~TArrayFixed(void) UMODSYS_NOTHROW() {}
 };
 

@@ -552,34 +552,6 @@
 	</Configurations>
 	<Files>
 		<Filter
-			Name="$(spname)"
-			>
-			<File
-				RelativePath="..\..\..\src\core\platform\win32\umodsys.core.syshlp_chars.win32.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\core\platform\win32\umodsys.core.syshlp_charcode.win32.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\core\platform\win32\umodsys.core.syshlp_files.win32.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\core\platform\win32\umodsys.core.syshlp_proc.win32.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\core\platform\win32\umodsys.core.syshlp_thread.win32.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\core\platform\win32\umodsys.core.syshlp_vars.win32.cpp"
-				>
-			</File>
-		</Filter>
-		<Filter
 			Name="src"
 			>
 			<File
@@ -604,6 +576,34 @@
 			>
 			<File
 				RelativePath="..\..\..\src\tl\umodsys.tl.strings.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="src-win32"
+			>
+			<File
+				RelativePath="..\..\..\src\core\platform\win32\umodsys.core.syshlp_chars.win32.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\core\platform\win32\umodsys.core.syshlp_charcode.win32.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\core\platform\win32\umodsys.core.syshlp_files.win32.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\core\platform\win32\umodsys.core.syshlp_proc.win32.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\core\platform\win32\umodsys.core.syshlp_thread.win32.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\core\platform\win32\umodsys.core.syshlp_vars.win32.cpp"
 				>
 			</File>
 		</Filter>

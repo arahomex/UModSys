@@ -12,8 +12,13 @@ using namespace UModSys::base::rsystem;
 size_t RModuleLoader::moduledb_findobjname(IRefObject::TypeId intr, IRefObject::TypeId found[], size_t nfound)
 {
   size_t n = 0;
+  if(found!=NULL) {
+    n += mod_this->lib_findobjname(intr, found+n, nfound-n);
+  } else {
+    n += mod_this->lib_findobjname(intr, NULL, nfound);
+  }
   for(size_t i=0; i<~mod_list; i++) {
-    RModuleLibrary* ml = mod_list(i);
+    RModuleLibrarySO* ml = mod_list(i);
     if(ml==NULL)
       continue;
     if(found!=NULL) {
@@ -27,8 +32,10 @@ size_t RModuleLoader::moduledb_findobjname(IRefObject::TypeId intr, IRefObject::
 
 bool RModuleLoader::moduledb_generate(IRefObject::P& obj, IRefObject::TypeId name, const SParameters& args)
 {
+  if(mod_this->lib_generate(obj, name, args))
+    return true;
   for(size_t i=0; i<~mod_list; i++) {
-    RModuleLibrary* ml = mod_list(i);
+    RModuleLibrarySO* ml = mod_list(i);
     if(ml==NULL)
       continue;
     if(ml->lib_generate(obj, name, args))
@@ -41,12 +48,16 @@ bool RModuleLoader::moduledb_generate(IRefObject::P& obj, IRefObject::TypeId nam
 
 size_t RModuleLoader::moduledb_lib_count(void)
 {
-  return ~mod_list;
+  return ~mod_list + 1;
 }
 
 IModuleLibrary* RModuleLoader::moduledb_lib_get(size_t id) const
 {
-  return id<~mod_list ? mod_list(id)() : NULL;
+  if(id==0)
+    return mod_this();
+  if(id<=~mod_list)
+    return mod_list(id-1)();
+  return NULL;
 }
 
 bool RModuleLoader::moduledb_lib_drop(IModuleLibrary* lib)
@@ -58,9 +69,9 @@ bool RModuleLoader::moduledb_lib_drop(IModuleLibrary* lib)
 
 size_t RModuleLoader::moduledb_module_count(void)
 {
-  size_t n = 0;
+  size_t n = ~mod_this->modules;
   for(size_t i=0; i<~mod_list; i++) {
-    RModuleLibrary* ml = mod_list(i);
+    RModuleLibrarySO* ml = mod_list(i);
     if(ml==NULL)
       continue;
     n += ~ml->modules;
@@ -70,8 +81,12 @@ size_t RModuleLoader::moduledb_module_count(void)
 
 IModule* RModuleLoader::moduledb_module_get(size_t id) const
 {
+  if(id<~mod_this->modules) {
+    return mod_this->modules(id);
+  }
+  id -= ~mod_this->modules;
   for(size_t i=0; i<~mod_list; i++) {
-    RModuleLibrary* ml = mod_list(i);
+    RModuleLibrarySO* ml = mod_list(i);
     if(ml==NULL)
       continue;
     if(id<~ml->modules) {
@@ -84,8 +99,15 @@ IModule* RModuleLoader::moduledb_module_get(size_t id) const
 
 IModule* RModuleLoader::moduledb_find(const core::DCString& name, const core::SVersion& verno) const
 {
+  for(size_t k=0; k<~mod_this->modules; k++) {
+    RModule* m = mod_this->modules(k);
+    if(m==NULL)
+      continue;
+    if(m->minfo.eq(name, verno))
+      return m;
+  }
   for(size_t i=0; i<~mod_list; i++) {
-    RModuleLibrary* ml = mod_list(i);
+    RModuleLibrarySO* ml = mod_list(i);
     if(ml==NULL)
       continue;
     for(size_t k=0; k<~ml->modules; k++) {
@@ -109,6 +131,9 @@ void RModuleLoader::moduledb_clear(void)
       mod_list(i)->lib_free();
     }
   }
+  mod_this->lib_free();
+  //
+  mod_this.clear();
   mod_list.Free();
   mod_pool.free();
 }
@@ -118,12 +143,9 @@ size_t RModuleLoader::moduledb_cleanup(void)
 //  dbg_put(rsdl_System, "RModuleLoader::moduledb_cleanup()\n");
   size_t n, rv = 0, s=0;
   do {
-    n=0;
+    n = mod_this->cleanup();
     for(int i=0; i<~mod_list; i++) {
-      size_t nn = mod_list(i)->cleanup();
-      if(nn==0)
-        continue;
-      n += nn;
+      n += mod_list(i)->cleanup();
     }
     rv += n;
 //    dbg_put(rsdl_System, "RModuleLoader::moduledb_cleanup() { n=%d }\n", n);
@@ -149,8 +171,12 @@ bool RModuleLoader::moduledb_save(const core::DCString& cachepath)
   if(f==NULL)
     return false;
   fprintf(f, "# LIST OF LIBRARY MODULES:\n\n");
+  if(!mod_this->save_db(f)) {
+    fclose(f);
+    return false;
+  }
   for(size_t i=0; i<~mod_list; i++) {
-    RModuleLibrary* ml = mod_list(i);
+    RModuleLibrarySO* ml = mod_list(i);
     if(ml==NULL)
       continue;
     if(!ml->save_db(f)) {
@@ -164,10 +190,11 @@ bool RModuleLoader::moduledb_save(const core::DCString& cachepath)
 
 size_t RModuleLoader::moduledb_scan(const core::DCString& mask, bool docleanup)
 {
+  mod_this->load0();
   for(size_t i=0; i<~mod_list; i++) {
     mod_list(i)->load0();
   }
-  size_t rv = RModuleLibrary::pfd_scan(sys, mod_list, mask);
+  size_t rv = RModuleLibrarySO::pfd_scan(sys, mod_list, mask);
   if(docleanup) {
     moduledb_cleanup();
   }
@@ -200,7 +227,7 @@ void RModuleLoader::cleanup(void)
 //***************************************
 
 RModuleLoader::RModuleLoader(ISystem* s)
-: sys(s) 
+: sys(s)
 {
 }
 

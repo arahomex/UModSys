@@ -68,6 +68,7 @@ public:
   WinPath(const char *upath) : B(upath) { path_uni_os(*this); }
   WinPath(const wchar_t *wpath) : B(wpath) {}
   WinPath(const wchar_t *wpath, const wchar_t *wsuffix) : B(wpath, wsuffix) {}
+  WinPath(const wchar_t *wpath, const wchar_t *wsuffix, const wchar_t *wsuffix2) : B(wpath, wsuffix) {}
 };
 
 template<int N>
@@ -78,6 +79,7 @@ public:
   UniPath(const wchar_t *wpath) : B(wpath) { path_os_uni(*this); }
   UniPath(const char *upath) : B(upath) {}
   UniPath(const char *upath, const char *usuffix) : B(upath, usuffix) {}
+  UniPath(const char *upath, const char *usuffix, const char *usuffix2) : B(upath, usuffix, usuffix2) {}
 };
 
 /////////////////////////////////////////////////////////////////////////////

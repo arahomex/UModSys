@@ -18,7 +18,7 @@ begin project-group umodsys
     GUID-gen 0 umodsys.umodsysc
     mode console
     option * OutputDirectory $(path-out-bin)
-    option * VCLinkerTool_AdditionalDependencies umodsys_lib_core.lib umodsys_lib_base.lib umodsys_lib_system.lib
+    option * VCLinkerTool_AdditionalDependencies umodsys_lib_core.lib umodsys_lib_base.lib umodsys_lib_system.lib umodsys_lib_libmedia.lib
   end
 
   begin project umodsys_lib_core

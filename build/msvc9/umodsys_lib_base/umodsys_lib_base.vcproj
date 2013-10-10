@@ -552,14 +552,6 @@
 	</Configurations>
 	<Files>
 		<Filter
-			Name="$(spname)"
-			>
-			<File
-				RelativePath="..\..\..\src\base\platform\win32\umodsys.so_main.win32.cpp"
-				>
-			</File>
-		</Filter>
-		<Filter
 			Name="src"
 			>
 			<File
@@ -596,6 +588,14 @@
 			</File>
 			<File
 				RelativePath="..\..\..\src\base\umodsys.base.moduleregchain.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="src-win32"
+			>
+			<File
+				RelativePath="..\..\..\src\base\platform\win32\umodsys.so_main.win32.cpp"
 				>
 			</File>
 		</Filter>

@@ -432,7 +432,7 @@ bool RModule::save_db(FILE *f)
 //***************************************
 //***************************************
 
-RModule::RModule(RModuleLibrary *pv, IModuleReg *imr)
+RModule::RModule(IModuleLibraryUni *pv, IModuleReg *imr)
 : ireg(imr), refs(pv)
 {
   if(ireg!=NULL) {

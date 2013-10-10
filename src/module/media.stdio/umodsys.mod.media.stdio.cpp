@@ -2,6 +2,9 @@
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/core/syshlp.h>
 
+UMODSYS_DEFINE_MODULE(Media_StdIo)
+UMODSYS_BODY_MODULE(Media_StdIo)
+
 namespace UModSys {
 namespace media {
 

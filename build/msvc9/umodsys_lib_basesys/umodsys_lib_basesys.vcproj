@@ -552,14 +552,6 @@
 	</Configurations>
 	<Files>
 		<Filter
-			Name="$(spname)"
-			>
-			<File
-				RelativePath="..\..\..\src\basesys\platform\win32\umodsys.basesys.rmodule.win32.cpp"
-				>
-			</File>
-		</Filter>
-		<Filter
 			Name="src"
 			>
 			<File
@@ -583,6 +575,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rmodulelibso.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rmodulelibthis.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\basesys\umodsys.basesys.rmoduleloader.cpp"
 				>
 			</File>
@@ -592,6 +592,14 @@
 			</File>
 			<File
 				RelativePath="..\..\..\src\basesys\umodsys.basesys.rconsole_std.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="src-win32"
+			>
+			<File
+				RelativePath="..\..\..\src\basesys\platform\win32\umodsys.basesys.rmodule.win32.cpp"
 				>
 			</File>
 		</Filter>

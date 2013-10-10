@@ -45,6 +45,7 @@ protected:
   ISystem* isys;
   IConsole* icon;
   core::SIMemAlloc smem;
+  IModuleLoader* imodloader;
 public:
   ~SModuleContext(void);
   SModuleContext(void);
@@ -64,6 +65,36 @@ public:
   //
 public:
   void dbg_put(const char *fmt, ...);
+  //
+  inline size_t findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound) {
+    if(imodloader==NULL)
+      return 0;
+    return imodloader->moduledb_findobjname(intr, found, nfound);
+  }
+  //
+  template<typename Intr, typename Array>
+  inline bool t_findobjname(Array& found) {
+    core::IRefObject::TypeId intr = Intr::_get_interface_type();
+    found.Resize(0);
+    if(imodloader==NULL)
+      return false;
+    size_t rv = imodloader->moduledb_findobjname(intr, found.All(), found.MaxLen());
+    if(!found.Resize(rv) || rv==0)
+      return false;
+    return true;
+  }
+  //
+  template<typename RData>
+  inline bool t_generate(tl::TRefObject<RData> &rv, core::IRefObject::TypeId name, const core::SParameters& args) {
+    if(imodloader==NULL)
+      return false;
+    core::IRefObject::P obj;
+    if(!imodloader->moduledb_generate(obj, name, args) || !obj.valid())
+      return false;
+    if(!obj->t_get_other_interface_ref(rv))
+      return false;
+    return true;
+  }
 };
 
 //***************************************

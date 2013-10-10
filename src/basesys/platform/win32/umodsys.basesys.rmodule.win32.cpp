@@ -22,11 +22,24 @@ const int MAX_SO_PATH = 4096;
 typedef syshlp::UniPath<MAX_SO_PATH*2> UniSoName;
 typedef syshlp::WinPath<MAX_SO_PATH> WinSoName;
 
+static UniSoName s_pwd;
+
+static void s_pwd_init(void)
+{
+  if(**s_pwd==0) {
+    wchar_t pwd[MAX_SO_PATH], pwd2[MAX_SO_PATH], *fn;
+    if(GetModuleFileNameW(NULL, pwd, MAX_SO_PATH)!=0 && GetFullPathNameW(pwd, MAX_SO_PATH, pwd2, &fn)!=0) {
+      *fn = 0;
+      s_pwd.set(pwd2);
+    }
+  }
+}
+
 //***************************************
-// RModuleLibrary::
+// RModuleLibrarySO::
 //***************************************
 
-struct RModuleLibrary::PFD_Data {
+struct RModuleLibrarySO::PFD_Data {
   HMODULE module;
   f_get_moduleinfo entry;
 };
@@ -34,14 +47,14 @@ struct RModuleLibrary::PFD_Data {
 //***************************************
 //***************************************
 
-bool RModuleLibrary::pfd_init(PFD_Data* pfd)
+bool RModuleLibrarySO::pfd_init(PFD_Data* pfd)
 {
   pfd->module = NULL;
   pfd->entry = NULL;
   return true;
 }
 
-bool RModuleLibrary::pfd_init(PFD_Data* pfd, PFD_Data* pfdR)
+bool RModuleLibrarySO::pfd_init(PFD_Data* pfd, PFD_Data* pfdR)
 {
   *pfd = *pfdR;
   pfd_init(pfdR);
@@ -51,7 +64,7 @@ bool RModuleLibrary::pfd_init(PFD_Data* pfd, PFD_Data* pfdR)
 //***************************************
 //***************************************
 
-IModuleLibraryReg* RModuleLibrary::pfd_load(PFD_Data* pfd, const core::DCString& filename)
+IModuleLibraryReg* RModuleLibrarySO::pfd_load(PFD_Data* pfd, const core::DCString& filename)
 {
   if(pfd->module!=NULL)
     return NULL;
@@ -86,7 +99,7 @@ IModuleLibraryReg* RModuleLibrary::pfd_load(PFD_Data* pfd, const core::DCString&
   return ilib;
 }
 
-bool RModuleLibrary::pfd_unload(PFD_Data* pfd)
+bool RModuleLibrarySO::pfd_unload(PFD_Data* pfd)
 {
   if(pfd->module!=NULL) {
     dbg_put(rsdl_SoLoad, "          unload so({%p, %p})\n", pfd->module, pfd->entry);
@@ -101,11 +114,11 @@ bool RModuleLibrary::pfd_unload(PFD_Data* pfd)
 //***************************************
 //***************************************
 
-static size_t s_pfd_scan(ISystem* sys, RModuleLibraryArray& la, core::BStr mask, core::BStr suffix)
+static size_t s_pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, core::BStr path, core::BStr mask, core::BStr suffix)
 {
-
-  dbg_put(rsdl_SoLoad, "scan so: \"%s%s\"\n", mask, suffix);
-  UniSoName mask8(mask, suffix);
+  s_pwd_init();
+  dbg_put(rsdl_SoLoad, "scan so: \"%s%s%s\"\n", path, mask, suffix);
+  UniSoName mask8(path, mask, suffix);
 //  dbg_put(" -- !mask8=%d of \"%s\" '%s''%s'\n\n", !mask8, mask8(), mask, suffix);
   if(!mask8)
     return 0; // path too long
@@ -131,15 +144,24 @@ static size_t s_pfd_scan(ISystem* sys, RModuleLibraryArray& la, core::BStr mask,
   //
   *name16 = 0; // trim to path
   do {
-    dbg_put(rsdl_SoLoad, "  so: \"%ls\"\n", ff.cFileName);
+    if(ff.dwFileAttributes & (FILE_ATTRIBUTE_DIRECTORY|FILE_ATTRIBUTE_DEVICE|FILE_ATTRIBUTE_OFFLINE))
+      continue;
+//    dbg_put(rsdl_SoLoad, "  so: \"%ls\"\n", ff.cFileName);
     //
     WinSoName full16(path16, ff.cFileName);
     if(!full16)
       continue; // path too long
+    SetErrorMode(SEM_FAILCRITICALERRORS); 
+    HMODULE m = LoadLibraryExW(full16, NULL, DONT_RESOLVE_DLL_REFERENCES|LOAD_LIBRARY_AS_DATAFILE);
+    if(m==NULL)
+      continue;
+    FreeLibrary(m);
+    if(m==GetModuleHandleW(NULL))
+      continue; // this executable
     UniSoName full8(full16);
     if(!full8)
       continue; // path too long
-    gn += RModuleLibrary::s_add(sys, la, full8());
+    gn += RModuleLibrarySO::s_add(sys, la, full8());
 //next:;
   } while(FindNextFileW(f, &ff));
   dbg_put(rsdl_SoLoad, "/scan so: \"%s%s\"\n", mask, suffix);
@@ -148,7 +170,13 @@ static size_t s_pfd_scan(ISystem* sys, RModuleLibraryArray& la, core::BStr mask,
   return gn;
 }
 
-size_t RModuleLibrary::pfd_scan(ISystem* sys, RModuleLibraryArray& la, const core::DCString& mask)
+inline static size_t s_pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, core::BStr mask, core::BStr suffix)
+{
+  s_pwd_init();
+  return s_pfd_scan(sys, la, "./", mask, suffix) + s_pfd_scan(sys, la, s_pwd, mask, suffix);
+}
+
+size_t RModuleLibrarySO::pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, const core::DCString& mask)
 {
   if(~mask==0) // automatic
     return s_pfd_scan(sys, la, "*", SO_SUFFIX);

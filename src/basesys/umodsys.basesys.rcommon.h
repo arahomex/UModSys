@@ -5,11 +5,7 @@
 // info: common constants and variables
 /*************************************************************/
 
-#include <umodsys/base/system.h>
-#include <umodsys/base/console.h>
-#include <umodsys/base/module_impl.h>
-#include <umodsys/base/bobjects.h>
-
+#include <umodsys/stdbase.h>
 #include <umodsys/core/syshlp.h>
 
 #include <umodsys/tl/composite/dynarray.h>
@@ -22,14 +18,18 @@ namespace rsystem {
 
 using namespace core;
 
-struct RModuleLibrary;
+struct IModuleLibraryUni;
+
+struct RModuleLibrarySO;
+struct RModuleLibraryThis;
+
 struct RModule;
 struct RConsole_std;
 
 typedef tl::TDynarrayDynamic<
-  tl::TRefObject<RModuleLibrary>,
+  tl::TRefObject<RModuleLibrarySO>,
   tl::DAllocatorMallocFast
-> RModuleLibraryArray;
+> RModuleLibrarySOArray;
 
 typedef tl::TStaticStringPool<
   core::BChar,

@@ -20,7 +20,13 @@ SModuleContext::SModuleContext(void)
 void SModuleContext::Link(ISystem* is, IMemAlloc* privmem)
 {
   isys = is;
-  icon = isys!=NULL ? isys->get_console() : NULL;
+  if(isys!=NULL) {
+    icon = isys->get_console();
+    imodloader = isys->get_modloader();
+  } else {
+    icon = NULL;
+    imodloader = NULL;
+  }
   smem.imem = privmem;
 }
 

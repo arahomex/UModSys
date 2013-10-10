@@ -1,7 +1,5 @@
-#include <umodsys/base/system.h>
-#include <umodsys/base/console.h>
-#include <umodsys/base/module_impl.h>
-#include <umodsys/base/bobjects.h>
+#include <umodsys/stdbase.h>
+#include <umodsys/lib/media/libmedia.common.h>
 
 namespace UModSys {
 namespace test1 {
@@ -15,10 +13,39 @@ struct RTest1_Shell : public IShell {
   UMODSYS_BASE_SHELL_IMPLEMENT(UModSys::test1::RTest1_Shell, 1, IShell)
   //
   void* memblock;
+  media::IStreamReader::P fr;
   //
   RTest1_Shell(DOwner *own) : refs(own) {
-    M.con().put(0, "RTest1_Shell()\n");
+    M.con().put(0, "RTest1_Shell() {\n");
     memblock = M().mem_alloc(1024, _UMODSYS_SOURCEINFO);
+    //
+    {
+      tl::TArrayFixed<TypeId, 1000> lst;
+      if(M.t_findobjname<media::IStreamReader>(lst)) {
+        TypeId found = NULL;
+        for(size_t i=0; i<~lst; i++) {
+          if(tl::su::sstr(lst(i)->name, "_FILE")!=NULL) {
+            found = lst(i);
+            break;
+          }
+        }
+        if(found!=NULL) {
+          M.con().put(0, "  found reader: %s\n", found->name);
+          TParametersA<1024> params;
+          params.add("filename", "read-test.txt");
+          M.t_generate(fr, found, params);
+        }
+      }
+      if(fr.valid()) {
+        char line[1024];
+        size_t req = core::scalar_min(sizeof(line)-1, size_t(fr->reader_size()));
+        line[req] = 0;
+        if(fr->reader_read(line, req)) {
+          M.con().put(0, "  read: {%s}\n", line);
+        }
+      }
+    }
+    M.con().put(0, "} // RTest1_Shell()\n");
   }
   ~RTest1_Shell(void) {
     M().mem_free(memblock, _UMODSYS_SOURCEINFO);

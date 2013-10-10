@@ -86,6 +86,8 @@ struct U16String {
     { correct = gracial_cpy(buf, Length+1, a, (int)n); }
   U16String(void) : correct(false) {}
   //
+  void set(const char *text) { if(text==NULL) text=""; correct = gracial_convert(buf, Length+1, text, strlen(text)); }
+  //
   operator const wchar_t*(void) const { return buf; }
   operator wchar_t*(void) { return buf; }
   const wchar_t* operator*(void) const { return buf; }
@@ -115,6 +117,8 @@ struct U8String {
   U8String(const char *a[], size_t n) 
     { correct = gracial_cpy(buf, Length+1, a, (int)n); }
   U8String(void) : correct(false) {}
+  //
+  void set(const wchar_t *text) { if(text==NULL) text=L""; correct = gracial_convert(buf, Length+1, text, wcslen(text)); }
   //
   operator const char*(void) const { return buf; }
   operator char*(void) { return buf; }
@@ -149,6 +153,9 @@ int codepage_convert_cps(char* out, int outsize, const char *in, int insize, con
 
 /////////////////////////////////////////////////////////////////////////////
 // OS FILES
+
+void setup_console(void);
+void restore_console(void);
 
 FILE* c_fopen(const char *cfilename, const char *cmode);
 

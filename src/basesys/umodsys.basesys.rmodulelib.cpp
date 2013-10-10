@@ -6,40 +6,40 @@ using namespace UModSys::base;
 using namespace UModSys::base::rsystem;
 
 //***************************************
-// RModuleLibrary::
+// IModuleLibraryUni::
 //***************************************
 
-DCString RModuleLibrary::get_sys_libname(void) const
+DCString IModuleLibraryUni::get_sys_libname(void) const
 {
   return DCString(sys_libname);
 }
 
-core::IMemAlloc* RModuleLibrary::get_privmem(void) const
+core::IMemAlloc* IModuleLibraryUni::get_privmem(void) const
 {
   return &mema;
 }
 
-ISystem* RModuleLibrary::get_system(void) const
+ISystem* IModuleLibraryUni::get_system(void) const
 {
   return sys;
 }
 
-size_t RModuleLibrary::get_module_count(void) const
+size_t IModuleLibraryUni::get_module_count(void) const
 {
   return ~modules;
 }
 
-IModule* RModuleLibrary::get_module(size_t id) const
+IModule* IModuleLibraryUni::get_module(size_t id) const
 {
   return id>=~modules ? NULL : modules(id)();
 }
 
-bool RModuleLibrary::lib_loaded(void) const
+bool IModuleLibraryUni::lib_loaded(void) const
 {
   return ireg!=NULL;
 }
 
-bool RModuleLibrary::lib_load(void)
+bool IModuleLibraryUni::lib_load(void)
 {
   if(ireg!=NULL) {
     load_count++;
@@ -51,20 +51,15 @@ bool RModuleLibrary::lib_load(void)
   return true;
 }
 
-bool RModuleLibrary::lib_unload(void)
+bool IModuleLibraryUni::lib_unload(void)
 {
   if(load_count-->0)
     return true;
   load_count = 0;
-/*
-  bool rv1 = unlink();
-  bool rv2 = pfd_unload(get_pfd());
-  return rv1 && rv2;
-*/
   return true;
 }
 
-bool RModuleLibrary::lib_free(void)
+bool IModuleLibraryUni::lib_free(void)
 {
   if(linked)
     return false;
@@ -72,7 +67,7 @@ bool RModuleLibrary::lib_free(void)
   return true;
 }
 
-size_t RModuleLibrary::lib_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound)
+size_t IModuleLibraryUni::lib_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound)
 {
   size_t n = 0;
   for(size_t i=0; i<~modules; i++) {
@@ -88,7 +83,7 @@ size_t RModuleLibrary::lib_findobjname(core::IRefObject::TypeId intr, core::IRef
   return n;
 }
 
-bool RModuleLibrary::lib_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args)
+bool IModuleLibraryUni::lib_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args)
 {
   for(size_t i=0; i<~modules; i++) {
     RModule* m = modules(i);
@@ -103,12 +98,12 @@ bool RModuleLibrary::lib_generate(core::IRefObject::P& obj, core::IRefObject::Ty
 //***************************************
 //***************************************
 
-size_t RModuleLibrary::cleanup(void)
+size_t IModuleLibraryUni::cleanup(void)
 {
 /*
   dbg_put(
     rsdl_ModuleLibrary,
-    "RModuleLibrary(%p)::cleanup() { ireg=%p, load_count=%d, sys_libname=\"%s\" }\n", 
+    "IModuleLibraryUni(%p)::cleanup() { ireg=%p, load_count=%d, sys_libname=\"%s\" }\n", 
     this, ireg, load_count, sys_libname()
   );
 */
@@ -116,35 +111,34 @@ size_t RModuleLibrary::cleanup(void)
     return 0;
   if(load_count==0) {
     unlink();
-    pfd_unload(get_pfd());
+    uni_unload();
   }
   return 1;
 }
 
-bool RModuleLibrary::load0(void)
+bool IModuleLibraryUni::load0(void)
 {
   if(ireg!=NULL)
     return true;
-  ireg = pfd_load(get_pfd(), sys_libname.get_s());
-  if(ireg==NULL)
+  if(!uni_load())
     return false;
   load_count = 0;
   linked = false;
   if(!link()) {
     unlink();
-    pfd_unload(get_pfd());
+    uni_unload();
     return false;
   }
   return true;
 }
 
-bool RModuleLibrary::link(void)
+bool IModuleLibraryUni::link(void)
 {
   if(ireg==NULL)
     return false;
   if(linked)
     return true;
-  if(!ireg->mlr_open(sys, get_privmem()))
+  if(!uni_open())
     return false;
   for(int i=0, n=ireg->mlr_count(); i<n; i++) {
     IModuleReg *imr = ireg->mlr_get(i);
@@ -156,7 +150,7 @@ bool RModuleLibrary::link(void)
       }
     }
     if(mm==NULL) {
-      dbg_put(rsdl_ModuleLibrary, "RModuleLibrary(%p)::link() -- add new mr\n", this);
+      dbg_put(rsdl_ModuleLibrary, "IModuleLibraryUni(%p)::link() -- add new mr\n", this);
       RModule::SelfP m = new(M()) RModule(this, imr);
       modules.Push(m);
     } else {
@@ -173,20 +167,20 @@ bool RModuleLibrary::link(void)
   return true;
 }
 
-bool RModuleLibrary::unlink(void)
+bool IModuleLibraryUni::unlink(void)
 {
   if(ireg==NULL)
     return false;
   for(size_t i=0; i<~modules; i++) {
     modules(i)->ireg = NULL;
   }
-  ireg->mlr_close();
+  uni_close();
   ireg = NULL;
   linked = false;
   return true;
 }
 
-bool RModuleLibrary::scan(void)
+bool IModuleLibraryUni::scan(void)
 {
   if(ireg==NULL)
     return false;
@@ -198,7 +192,7 @@ bool RModuleLibrary::scan(void)
   return true;
 }
 
-bool RModuleLibrary::save_db(FILE *f)
+bool IModuleLibraryUni::save_db(FILE *f)
 {
 #if 0
   fprintf(f, "BEGIN LIBRARY \"%s\"\n", sys_libname());
@@ -222,63 +216,16 @@ bool RModuleLibrary::save_db(FILE *f)
   return true;
 }
 
-size_t RModuleLibrary::s_find_dup(const RModuleLibraryArray& la, IModuleLibraryReg* ireg)
-{
-  for(size_t i=0; i<~la; i++) {
-    if(la(i)->ireg==ireg)
-      return i;
-  }
-  return array_index_none;
-}
-
-bool RModuleLibrary::s_add(ISystem* sys, RModuleLibraryArray& la, const char *filename)
-{
-  PFD_Raw raw_data;
-  PFD_Data *pfd = reinterpret_cast<PFD_Data*>(raw_data);
-  RModuleLibrary::pfd_init(pfd);
-  //
-  dbg_put(rsdl_ModuleLibrary, "  so: \"%s\"\n", filename);
-  IModuleLibraryReg* ilib = RModuleLibrary::pfd_load(pfd, filename);
-  if(ilib!=NULL) {
-    dbg_put(rsdl_ModuleLibrary, "    so loaded: \"%s\"\n", filename);
-    size_t dup = RModuleLibrary::s_find_dup(la, ilib);
-    if(dup==array_index_none) {
-      RModuleLibrary::SelfP lib = new(M()) RModuleLibrary(sys, pfd, ilib);
-      la.Push(lib);
-      lib->sys_libname = filename;
-      lib->link();
-      lib->scan();
-      dbg_put(rsdl_ModuleLibrary, "    so added\n");
-    } else {
-      dbg_put(rsdl_ModuleLibrary, "    so dup with %d\n", (int)dup);
-    }
-    RModuleLibrary::pfd_unload(pfd);
-    return true;
-  }
-  //
-  RModuleLibrary::pfd_unload(pfd);
-  return false;
-}
-
 //***************************************
 //***************************************
 
-RModuleLibrary::RModuleLibrary(ISystem* s, PFD_Data* pfd, IModuleLibraryReg* imlr)
+IModuleLibraryUni::IModuleLibraryUni(ISystem* s, IModuleLibraryReg* imlr = NULL)
 : ireg(imlr), load_count(0), linked(false), sys(s), mema(NULL)
 {
-  pfd_init(get_pfd(), pfd);
 }
 
-RModuleLibrary::RModuleLibrary(void)
-: ireg(NULL), load_count(0), linked(false), sys(NULL), mema(NULL)
+IModuleLibraryUni::~IModuleLibraryUni(void)
 {
-  pfd_init(get_pfd());
-}
-
-RModuleLibrary::~RModuleLibrary(void)
-{
-  unlink();
-  pfd_unload(get_pfd());
 }
 
 //***************************************

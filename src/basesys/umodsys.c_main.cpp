@@ -6,8 +6,16 @@ using namespace UModSys::core;
 using namespace UModSys::base;
 using namespace UModSys::base::rsystem;
 
+UMODSYS_DEFINE_MODULE(Media_StdIo);
+
+static void refer(void)
+{
+  UMODSYS_USE_MODULE(Media_StdIo);
+}
+
 int main(int argc, char **argv)
 {
+  syshlp::setup_console();
   RConsole_std::s_console.reflect("umodsys.log");
   RSystem& S = RSystem::s_sys;
   //
@@ -27,6 +35,9 @@ int main(int argc, char **argv)
   S.deinit();
   S.set_console(NULL);
   RConsole_std::s_console.reflect(NULL);
+  //
+  syshlp::restore_console();
+  lost_func(refer);
   return 0;
 }
 

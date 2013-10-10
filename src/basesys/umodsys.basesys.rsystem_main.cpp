@@ -32,8 +32,12 @@ bool RSystem::init(void)
   dbg_put(rsdl_System, "RSystem::init()\n");
   //
   SUniquePointer::s_resolve(this); // initalize all upis
-  dump_upis(); // list all upis
+//  dump_upis(); // list all upis
   params = new(M()) RParameters(this);
+  moddb.mod_this = new(M()) RModuleLibraryThis(this);
+  moddb.mod_this->load0();
+  moddb.mod_this->scan();
+  moddb.mod_this->cleanup();
   //
 //  sys_library = new RModuleLibrary();
   return true;

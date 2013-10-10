@@ -585,7 +585,8 @@ sub msvc_xml_filter_file
 sub msvc_xml_filter_begin
 {
   my ($this, $keyname, $args) = @_;
-  my $name = get_configuration_arg(\$args);
+  my $name = get_configuration_arg_exp(\$args, $this);
+#  print "group{$name}\n";
   if(exists $this->{'subs'}->{$name}) {
 #    print "Re-use $name of type ".$this->{'subs'}->{$name}->{'type'}."\n";
     return $this->{'subs'}->{$name};

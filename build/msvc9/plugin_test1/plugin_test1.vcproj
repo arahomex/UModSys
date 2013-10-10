@@ -5,7 +5,6 @@
 	Name="plugin_test1"
 	ProjectGUID="{4DF896FF-847E-A490-6CEE-0EED94CD460A}"
 	RootNamespace="plugin_test1"
-	TargetFrameworkVersion="0"
 	>
 	<Platforms>
 		<Platform
@@ -15,8 +14,6 @@
 			Name="x64"
 		/>
 	</Platforms>
-	<ToolFiles>
-	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
@@ -26,26 +23,11 @@
 			CharacterSet="2"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions=""
 				Optimization="0"
 				InlineFunctionExpansion="0"
-				EnableIntrinsicFunctions="false"
+				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories="$(SolutionDir)../../include"
@@ -57,8 +39,8 @@
 				BufferSecurityCheck="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				PrecompiledHeaderThrough="StdAfx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
@@ -68,15 +50,6 @@
 				DebugInformationFormat="3"
 				CompileAs="0"
 				EnablePREfast="false"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
@@ -93,35 +66,9 @@
 				LinkTimeCodeGeneration="0"
 			/>
 			<Tool
-				Name="VCALinkTool"
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
 			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-				OutputFile="$(IntDir)/$(ProjectName).bsc"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-		</Configuration>
-		<Configuration
-			Name="Debug|x64"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
-			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
-			CharacterSet="2"
-			>
 			<Tool
 				Name="VCPreBuildEventTool"
 			/>
@@ -138,35 +85,6 @@
 				Name="VCMIDLTool"
 			/>
 			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalOptions=""
-				Optimization="0"
-				InlineFunctionExpansion="0"
-				EnableIntrinsicFunctions="false"
-				FavorSizeOrSpeed="0"
-				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include"
-				PreprocessorDefinitions="WIN32;_DEBUG"
-				StringPooling="true"
-				MinimalRebuild="false"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
-				BufferSecurityCheck="true"
-				RuntimeTypeInfo="true"
-				UsePrecompiledHeader="0"
-				PrecompiledHeaderThrough="StdAfx.h"
-				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
-				AssemblerListingLocation="$(IntDir)/"
-				ProgramDataBaseFileName="$(IntDir)/"
-				BrowseInformation="1"
-				WarningLevel="3"
-				WarnAsError="true"
-				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="3"
-				CompileAs="0"
-				EnablePREfast="false"
-			/>
-			<Tool
 				Name="VCManagedResourceCompilerTool"
 			/>
 			<Tool
@@ -176,26 +94,6 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="$(IntDir)/.."
-				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
-				GenerateMapFile="true"
-				MapFileName="$(IntDir)/$(ProjectName).map"
-				MapExports="true"
-				SubSystem="1"
-				LinkTimeCodeGeneration="0"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
@@ -203,13 +101,7 @@
 				OutputFile="$(IntDir)/$(ProjectName).bsc"
 			/>
 			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
+				Name="VCALinkTool"
 			/>
 		</Configuration>
 		<Configuration
@@ -220,26 +112,11 @@
 			CharacterSet="2"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions=""
 				Optimization="3"
 				InlineFunctionExpansion="1"
-				EnableIntrinsicFunctions="true"
+				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="$(SolutionDir)../../include"
@@ -251,8 +128,8 @@
 				BufferSecurityCheck="false"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				PrecompiledHeaderThrough="StdAfx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -262,15 +139,6 @@
 				DebugInformationFormat="0"
 				CompileAs="0"
 				EnablePREfast="false"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
@@ -287,35 +155,9 @@
 				LinkTimeCodeGeneration="1"
 			/>
 			<Tool
-				Name="VCALinkTool"
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
 			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-				OutputFile="$(IntDir)/$(ProjectName).bsc"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-			/>
-		</Configuration>
-		<Configuration
-			Name="Release|x64"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
-			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
-			CharacterSet="2"
-			>
 			<Tool
 				Name="VCPreBuildEventTool"
 			/>
@@ -332,35 +174,6 @@
 				Name="VCMIDLTool"
 			/>
 			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalOptions=""
-				Optimization="3"
-				InlineFunctionExpansion="1"
-				EnableIntrinsicFunctions="true"
-				FavorSizeOrSpeed="1"
-				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include"
-				PreprocessorDefinitions="WIN32;NDEBUG"
-				StringPooling="true"
-				MinimalRebuild="false"
-				BasicRuntimeChecks="0"
-				RuntimeLibrary="2"
-				BufferSecurityCheck="false"
-				RuntimeTypeInfo="true"
-				UsePrecompiledHeader="0"
-				PrecompiledHeaderThrough="StdAfx.h"
-				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
-				AssemblerListingLocation="$(IntDir)/"
-				ProgramDataBaseFileName="$(IntDir)/"
-				BrowseInformation="0"
-				WarningLevel="1"
-				WarnAsError="true"
-				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="0"
-				CompileAs="0"
-				EnablePREfast="false"
-			/>
-			<Tool
 				Name="VCManagedResourceCompilerTool"
 			/>
 			<Tool
@@ -370,26 +183,6 @@
 				Name="VCPreLinkEventTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
-				LinkIncremental="0"
-				AdditionalLibraryDirectories="$(IntDir)/.."
-				GenerateDebugInformation="false"
-				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
-				GenerateMapFile="false"
-				MapFileName="$(IntDir)/$(ProjectName).map"
-				MapExports="true"
-				SubSystem="1"
-				LinkTimeCodeGeneration="1"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
 				Name="VCXDCMakeTool"
 			/>
 			<Tool
@@ -397,13 +190,7 @@
 				OutputFile="$(IntDir)/$(ProjectName).bsc"
 			/>
 			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
+				Name="VCALinkTool"
 			/>
 		</Configuration>
 		<Configuration
@@ -414,26 +201,11 @@
 			CharacterSet="2"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions=""
 				Optimization="1"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="true"
+				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="$(SolutionDir)../../include"
@@ -445,8 +217,8 @@
 				BufferSecurityCheck="false"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				PrecompiledHeaderThrough="StdAfx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -456,15 +228,6 @@
 				DebugInformationFormat="0"
 				CompileAs="0"
 				EnablePREfast="false"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
@@ -481,10 +244,32 @@
 				LinkTimeCodeGeneration="1"
 			/>
 			<Tool
-				Name="VCALinkTool"
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
 			/>
 			<Tool
-				Name="VCManifestTool"
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -494,13 +279,185 @@
 				OutputFile="$(IntDir)/$(ProjectName).bsc"
 			/>
 			<Tool
-				Name="VCFxCopTool"
+				Name="VCALinkTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug|x64"
+			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
+			ConfigurationType="2"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=""
+				Optimization="0"
+				InlineFunctionExpansion="0"
+				EnableIntrinsicFunctions="0"
+				FavorSizeOrSpeed="0"
+				WholeProgramOptimization="false"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include"
+				PreprocessorDefinitions="WIN32;_DEBUG"
+				StringPooling="true"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				BufferSecurityCheck="true"
+				RuntimeTypeInfo="true"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
+				AssemblerListingLocation="$(IntDir)/"
+				ProgramDataBaseFileName="$(IntDir)/"
+				BrowseInformation="1"
+				WarningLevel="3"
+				WarnAsError="true"
+				Detect64BitPortabilityProblems="false"
+				DebugInformationFormat="3"
+				CompileAs="0"
+				EnablePREfast="false"
 			/>
 			<Tool
-				Name="VCAppVerifierTool"
+				Name="VCLinkerTool"
+				AdditionalDependencies="Winmm.lib ws2_32.lib"
+				OutputFile="$(OutDir)\$(ProjectName).dll"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="$(IntDir)/.."
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
+				GenerateMapFile="true"
+				MapFileName="$(IntDir)/$(ProjectName).map"
+				MapExports="true"
+				SubSystem="1"
+				LinkTimeCodeGeneration="0"
 			/>
 			<Tool
-				Name="VCPostBuildEventTool"
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
+			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+				OutputFile="$(IntDir)/$(ProjectName).bsc"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|x64"
+			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
+			ConfigurationType="2"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=""
+				Optimization="3"
+				InlineFunctionExpansion="1"
+				EnableIntrinsicFunctions="1"
+				FavorSizeOrSpeed="1"
+				WholeProgramOptimization="true"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include"
+				PreprocessorDefinitions="WIN32;NDEBUG"
+				StringPooling="true"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="2"
+				BufferSecurityCheck="false"
+				RuntimeTypeInfo="true"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
+				AssemblerListingLocation="$(IntDir)/"
+				ProgramDataBaseFileName="$(IntDir)/"
+				BrowseInformation="0"
+				WarningLevel="1"
+				WarnAsError="true"
+				Detect64BitPortabilityProblems="false"
+				DebugInformationFormat="0"
+				CompileAs="0"
+				EnablePREfast="false"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="Winmm.lib ws2_32.lib"
+				OutputFile="$(OutDir)\$(ProjectName).dll"
+				LinkIncremental="0"
+				AdditionalLibraryDirectories="$(IntDir)/.."
+				GenerateDebugInformation="false"
+				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
+				GenerateMapFile="false"
+				MapFileName="$(IntDir)/$(ProjectName).map"
+				MapExports="true"
+				SubSystem="1"
+				LinkTimeCodeGeneration="1"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
+			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+				OutputFile="$(IntDir)/$(ProjectName).bsc"
+			/>
+			<Tool
+				Name="VCALinkTool"
 			/>
 		</Configuration>
 		<Configuration
@@ -511,26 +468,11 @@
 			CharacterSet="2"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions=""
 				Optimization="1"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="true"
+				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="$(SolutionDir)../../include"
@@ -542,8 +484,8 @@
 				BufferSecurityCheck="false"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				PrecompiledHeaderThrough="StdAfx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -553,15 +495,6 @@
 				DebugInformationFormat="0"
 				CompileAs="0"
 				EnablePREfast="false"
-			/>
-			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCLinkerTool"
@@ -578,10 +511,32 @@
 				LinkTimeCodeGeneration="1"
 			/>
 			<Tool
-				Name="VCALinkTool"
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
 			/>
 			<Tool
-				Name="VCManifestTool"
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -591,18 +546,10 @@
 				OutputFile="$(IntDir)/$(ProjectName).bsc"
 			/>
 			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
+				Name="VCALinkTool"
 			/>
 		</Configuration>
 	</Configurations>
-	<References>
-	</References>
 	<Files>
 		<Filter
 			Name="src"
@@ -616,3 +563,4 @@
 	<Globals>
 	</Globals>
 </VisualStudioProject>
+
