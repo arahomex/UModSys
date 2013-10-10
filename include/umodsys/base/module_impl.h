@@ -5,7 +5,7 @@
 // info: base module object implementation
 /*************************************************************/
 
-#include <umodsys/core/stdcore.h>
+#include <umodsys/stdcore.h>
 #include <umodsys/base/system.h>
 
 namespace UModSys {

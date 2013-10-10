@@ -5,7 +5,7 @@
 // info: reverse iterator
 /*************************************************************/
 
-#include <umodsys/core/stdcore.h>
+#include <umodsys/core/stdtypedefs.h>
 
 namespace UModSys {
 namespace tl {

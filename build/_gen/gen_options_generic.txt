@@ -45,6 +45,7 @@ begin project-group umodsys
       file $(path-s-core)/umodsys.core.objects.cpp
       file $(path-s-core)/umodsys.core.stdtypedefs.cpp
       file $(path-s-core)/umodsys.core.uniqueptr.cpp
+      file $(path-s-core)/umodsys.core.uniqueptrlist.cpp
     end
     begin file-group src-tl
       file $(path-s-tl)/umodsys.tl.strings.cpp

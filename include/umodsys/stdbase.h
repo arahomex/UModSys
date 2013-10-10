@@ -5,7 +5,7 @@
 // info: base std
 /*************************************************************/
 
-#include <umodsys/core/stdcore.h>
+#include <umodsys/stdcore.h>
 
 #include <umodsys/base/bobjects.h>
 #include <umodsys/base/console.h>

@@ -5,7 +5,7 @@
 // info: dynamic array of elements
 /*************************************************************/
 
-#include <umodsys/core/stdcore.h>
+#include <umodsys/core/stdtypedefs.h>
 
 #include <umodsys/tl/util/type_constructor.h>
 #include <umodsys/tl/alloc/allocator.h>
@@ -100,6 +100,8 @@ public:
   typedef ReverseIterator<iterator, value_type, difference_type> reverse_iterator;
   typedef typename Holder::CIter const_iterator;
   typedef ReverseIterator<const_iterator, const value_type, difference_type> const_reverse_iterator;
+  //
+  static size_t None(void) UMODSYS_NOTHROW() { return array_index_none; }
 protected:
   Holder holder;
   Node *items;
@@ -158,8 +160,8 @@ public:
   inline const_iterator cbegin(void) const UMODSYS_NOTHROW() { return items; }
   inline const_iterator cend(void) const UMODSYS_NOTHROW() { return items + length; }
   //
-  inline reverse_iterator rend(void) UMODSYS_NOTHROW() { return reverse_iterator(items + length - 1); }
-  inline reverse_iterator rbegin(void) UMODSYS_NOTHROW() { return reverse_iterator(items - 1); }
+  inline reverse_iterator rbegin(void) UMODSYS_NOTHROW() { return reverse_iterator(items + length - 1); }
+  inline reverse_iterator rend(void) UMODSYS_NOTHROW() { return reverse_iterator(items - 1); }
   inline const_reverse_iterator rbegin(void) const UMODSYS_NOTHROW() { return reverse_iterator(items + length - 1); }
   inline const_reverse_iterator rend(void) const UMODSYS_NOTHROW() { return reverse_iterator(items - 1); }
   inline const_reverse_iterator crbegin(void) const UMODSYS_NOTHROW() { return reverse_iterator(items + length - 1); }

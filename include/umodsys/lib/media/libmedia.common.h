@@ -5,7 +5,7 @@
 // info: media common structures
 /*************************************************************/
 
-#include <umodsys/core/stdcore.h>
+#include <umodsys/stdcore.h>
 #include <umodsys/tl/composite/isockets.h>
 
 namespace UModSys {

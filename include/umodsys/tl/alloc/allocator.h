@@ -5,7 +5,7 @@
 // info: simple allocator
 /*************************************************************/
 
-#include <umodsys/core/stdcore.h>
+#include <umodsys/stdcore.h>
 #include <umodsys/core/source.h>
 #include <umodsys/core/mem/mem_alloc.h>
 

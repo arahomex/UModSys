@@ -17,6 +17,11 @@ namespace core {
 struct Void {};
 struct Empty {};
 
+template<typename T>
+struct TScalarCompare {
+  static int compare(const T& a, const T& b);
+};
+
 //***************************************
 // Inlines
 //***************************************
@@ -62,6 +67,9 @@ template<typename T> inline T scalar_max(T a, T b, T c) { return a<b ? scalar_mi
 
 template<typename T> inline T scalar_min(T a, T b, T c, T d) { return a>b ? scalar_min(b,c,d) : scalar_min(a,c,d); }
 template<typename T> inline T scalar_max(T a, T b, T c, T d) { return a<b ? scalar_min(b,c,d) : scalar_min(a,c,d); }
+
+template<typename T> inline int TScalarCompare<T>::compare(const T& a, const T& b) { return scalar_compare(a, b); }
+
 
 //***************************************
 // END

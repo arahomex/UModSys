@@ -5,7 +5,7 @@
 // info: base console object
 /*************************************************************/
 
-#include <umodsys/core/stdcore.h>
+#include <umodsys/stdcore.h>
 
 namespace UModSys {
 namespace base {

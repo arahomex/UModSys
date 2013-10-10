@@ -8,6 +8,8 @@
 #include <umodsys/core/stdtypedefs.h>
 #include <umodsys/core/stdinlines.h>
 #include <umodsys/tl/composite/list2.h>
+#include <umodsys/tl/composite/array.h>
+#include <umodsys/tl/composite/set.h>
 
 namespace UModSys {
 namespace core {
@@ -68,24 +70,24 @@ public:
 
 struct SUniquePtrList {
 public:
+  typedef tl::TSet< tl::TArray<HUniquePointer> > DSet;
+  DSet values;
+  //
   SUniquePtrList(HUniquePointer *a, size_t n);
   //
-  inline size_t len(void) const { return curlen; }
-  inline HUniquePointer get(size_t n) const { return arr[n]; }
+  inline size_t len(void) const { return ~values; }
+  inline HUniquePointer get(size_t n) const { return values.Get(n); }
   //
-  void clear(void) { curlen=0; }
+  void clear(void) { values.Clear(); }
   bool add(HUniquePointer val);
   size_t find(HUniquePointer val) const;
   //
   inline SUniquePtrList& operator<<(HUniquePointer val) { add(val); return *this; }
   //
-  inline size_t operator~(void) const { return curlen; }
-  inline HUniquePointer operator()(size_t i) const { return arr[i]; }
-  inline HUniquePointer operator[](size_t i) const { return arr[i]; }
+  inline size_t operator~(void) const { return ~values; }
+  inline HUniquePointer operator()(size_t i) const { return values.Get(i); }
+  inline HUniquePointer operator[](size_t i) const { return values.Get(i); }
   inline size_t operator()(HUniquePointer vv) const { return find(vv); }
-public:
-  HUniquePointer *arr;
-  size_t curlen, maxlen;
 };
 
 //***************************************

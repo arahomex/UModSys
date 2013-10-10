@@ -5,7 +5,7 @@
 // info: fixed array of elements
 /*************************************************************/
 
-#include <umodsys/core/stdcore.h>
+#include <umodsys/core/stdtypedefs.h>
 
 #include <umodsys/tl/util/type_constructor.h>
 
@@ -46,6 +46,8 @@ public:
   typedef ReverseIterator<iterator, value_type, difference_type> reverse_iterator;
   typedef CIter const_iterator;
   typedef ReverseIterator<const_iterator, const value_type, difference_type> const_reverse_iterator;
+  //
+  static size_t None(void) UMODSYS_NOTHROW() { return array_index_none; }
 protected:
   Node *items;
   size_t length, maxlength;
@@ -102,8 +104,8 @@ public:
   inline const_iterator cbegin(void) const UMODSYS_NOTHROW() { return items; }
   inline const_iterator cend(void) const UMODSYS_NOTHROW() { return items + length; }
   //
-  inline reverse_iterator rend(void) UMODSYS_NOTHROW() { return reverse_iterator(items + length - 1); }
-  inline reverse_iterator rbegin(void) UMODSYS_NOTHROW() { return reverse_iterator(items - 1); }
+  inline reverse_iterator rbegin(void) UMODSYS_NOTHROW() { return reverse_iterator(items + length - 1); }
+  inline reverse_iterator rend(void) UMODSYS_NOTHROW() { return reverse_iterator(items - 1); }
   inline const_reverse_iterator rbegin(void) const UMODSYS_NOTHROW() { return reverse_iterator(items + length - 1); }
   inline const_reverse_iterator rend(void) const UMODSYS_NOTHROW() { return reverse_iterator(items - 1); }
   inline const_reverse_iterator crbegin(void) const UMODSYS_NOTHROW() { return reverse_iterator(items + length - 1); }
@@ -134,18 +136,6 @@ public:
   //
   inline void erase(iterator pos) { size_t p = pos - items; if(!RemoveAt(p)) throw_memoryerror(); }
   inline void erase(iterator first, iterator last) { size_t p = first - items, n = last - first; if(!RemoveAt(p, n)) throw_memoryerror(); }
-protected:
-  inline bool ReLink(size_t sz) { if(!holder.maxlen(sz)) return false; items = holder.get(); return true; }
-  inline bool ReLink(void) { items = holder.get(); return true; }
-  //
-  inline void item_construct(size_t no) UMODSYS_NOTHROW() { TC::construct(items+no); }
-  inline void item_construct(size_t no, const Node& def) UMODSYS_NOTHROW() { TC::construct(items+no, def); }
-  inline void item_destruct(size_t no) UMODSYS_NOTHROW() { TC::destruct(items+no); }
-  inline void items_construct(size_t no, size_t count) UMODSYS_NOTHROW() { TC::aconstruct(items+no, count); }
-  inline void items_construct(size_t no, size_t count, const Node& def) UMODSYS_NOTHROW() { TC::aconstructcopy(items+no, count, def); }
-  inline void items_construct(size_t no, size_t count, const Node* def) UMODSYS_NOTHROW() { TC::aconstructcopya(items+no, count, def); }
-  inline void items_destruct(size_t no, size_t count) UMODSYS_NOTHROW() { TC::adestruct(items+no, count); }
-//  template<typename Iter> inline void copy(Iter ritems, size_t ecount) { if(ecount<count) ecount = count; TC::copy(items, ritems, ecount); }
 };
 
 /*************************************************************/

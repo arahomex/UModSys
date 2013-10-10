@@ -6,6 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/core/objects_def.h>
+#include <umodsys/core/uniqueptr.h>
 
 namespace UModSys {
 namespace core {

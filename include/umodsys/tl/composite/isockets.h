@@ -5,7 +5,7 @@
 // info: sockets to composite objects
 /*************************************************************/
 
-#include <umodsys/core/stdcore.h>
+#include <umodsys/core/stdtypedefs.h>
 
 namespace UModSys {
 namespace tl {
