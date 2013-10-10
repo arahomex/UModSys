@@ -7,7 +7,7 @@
 
 #include <umodsys/core/objects.h>
 #include <umodsys/base/module.h>
-#include <umodsys/tl/util/type_constructor.h>
+#include <umodsys/tl/util/static_holder.h>
 
 namespace UModSys {
 namespace base {

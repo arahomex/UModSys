@@ -12,7 +12,7 @@
 
 #include <umodsys/core/syshlp.h>
 
-#include <umodsys/tl/composite/array.h>
+#include <umodsys/tl/composite/dynarray.h>
 #include <umodsys/tl/composite/scatter_array.h>
 #include <umodsys/tl/composite/quant_array.h>
 
@@ -26,7 +26,7 @@ struct RModuleLibrary;
 struct RModule;
 struct RConsole_std;
 
-typedef tl::TArrayContDynamic<
+typedef tl::TDynarrayDynamic<
   tl::TRefObject<RModuleLibrary>,
   tl::DAllocatorMallocFast
 > RModuleLibraryArray;

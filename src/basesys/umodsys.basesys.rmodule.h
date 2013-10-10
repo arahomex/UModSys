@@ -8,7 +8,7 @@
 #include "umodsys.basesys.rcommon.h"
 #include "umodsys.basesys.rmemalloc.h"
 
-#include <umodsys/tl/composite/array.h>
+#include <umodsys/tl/composite/dynarray.h>
 
 namespace UModSys {
 namespace base {
@@ -56,9 +56,9 @@ public:
     GeneratedObjInfo(void) : tid(NULL), start_elem(array_index_none), count_elem(0) {}
   };
   //
-  typedef tl::TArrayContDynamic<ModuleObjInfo, tl::DAllocatorMallocFast>    ModObjArray;
-  typedef tl::TArrayContDynamic<GeneratedObjInfo, tl::DAllocatorMallocFast> ModObjGenInfoArray;
-  typedef tl::TArrayContDynamic<TypeId, tl::DAllocatorMallocFast>           ModObjGenTypeArray;
+  typedef tl::TDynarrayDynamic<ModuleObjInfo, tl::DAllocatorMallocFast>    ModObjArray;
+  typedef tl::TDynarrayDynamic<GeneratedObjInfo, tl::DAllocatorMallocFast> ModObjGenInfoArray;
+  typedef tl::TDynarrayDynamic<TypeId, tl::DAllocatorMallocFast>           ModObjGenTypeArray;
 public:
   RModule(RModuleLibrary *pv, IModuleReg *imr);
   ~RModule(void);
@@ -103,7 +103,7 @@ struct RModuleLibrary : public IModuleLibrary
 public:
   struct PFD_Data;
   typedef int PFD_Raw[16];
-  typedef tl::TArrayContDynamic<RModule::SelfP, tl::DAllocatorMallocFast> Modules;
+  typedef tl::TDynarrayDynamic<RModule::SelfP, tl::DAllocatorMallocFast> Modules;
 public:
   RModuleLibrary(ISystem* sys, PFD_Data* pfd, IModuleLibraryReg* imlr);
   RModuleLibrary(void);

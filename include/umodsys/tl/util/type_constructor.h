@@ -1,88 +1,164 @@
-#ifndef __UMODSYS_TYPES_TYPE_CONSTRUCTOR_H
-#define __UMODSYS_TYPES_TYPE_CONSTRUCTOR_H 1
+#ifndef __UMODSYS_TL_UTIL_TYPECONSTRUCTOR_H
+#define __UMODSYS_TL_UTIL_TYPECONSTRUCTOR_H 1
 /*************************************************************/
-// nanoutl/types/type_constructor.h: type constructor template
+// file: umodsys/tl/util/type_constructor.h
+// info: contruct types
 /*************************************************************/
 
 #include <umodsys/core/stdtypedefs.h>
-#include <umodsys/tl/util/fast.h>
 
 namespace UModSys {
 namespace tl {
 
 /*************************************************************/
-
-template<typename Node>
-struct TNodeDeleter0 {
-  inline TNodeDeleter0(void) {}
-  //
-  int operator()(Node* node) const { delete node; return 1; }
-  //
-  static void* op_new(void) { return ::operator new(sizeof(Node)); }
-  static void* op_new(size_t add) { return ::operator new(sizeof(Node)+add); }
-};
-
-template<typename Node, typename MemAlloc>
-struct TNodeDeleter : public MemAlloc {
-  const MemAlloc& mema;
-  //
-  inline TNodeDeleter(void) : mema(MemAlloc::get_default()) {}
-  inline TNodeDeleter(const TNodeDeleter& R) : mema(R.mema) {}
-  inline TNodeDeleter(const MemAlloc& aa) : mema(aa) {}
-  static TNodeDeleter get_default(void) { return TNodeDeleter(); }
-  //
-  int operator()(Node* node) const { node->~Node(); mema.mem_free(node, UMODSYS_SOURCEINFO); return 1; }
-  //
-  void* op_new(void) const { return mema.mem_alloc(sizeof(Node), UMODSYS_SOURCEINFO); }
-  void* op_new(size_t add) const { return mema.mem_alloc(sizeof(Node)+add, UMODSYS_SOURCEINFO); }
-};
-
-template<typename Node, typename MemAlloc>
-struct TNodeDeleterExtra : public MemAlloc {
-  const MemAlloc& mema;
-  size_t extra;
-  //
-  inline TNodeDeleterExtra(void) : mema(MemAlloc::get_default()) {}
-  inline TNodeDeleterExtra(const MemAlloc& aa, size_t x) : mema(aa), extra(x) {}
-  //
-  int operator()(Node* node) const { node->~Node(); mema.mem_free(node, UMODSYS_SOURCEINFO); return 1; }
-  //
-  void* op_new(void) const { return mema.mem_alloc(sizeof(Node)+extra, UMODSYS_SOURCEINFO); }
-  void* op_new(size_t add) const { return mema.mem_alloc(sizeof(Node)+add+extra, UMODSYS_SOURCEINFO); }
-};
-
 /*************************************************************/
 
 template<typename T>
-struct TTypeStaticHolder {
+struct TTypeConstructor {
   typedef T Type;
+  typedef const T& Const;
+  typedef T& Variable;
   //
-  T* pointer;
-  char binary[sizeof(T)];
-  bool finit;
+  inline static void construct(Type* p) { new(p) Type; }
+  inline static void destruct(Type* p) { p->~Type(); }
+  inline static void constructcopy(Type* p, const Type& cp) { new(p) Type(cp); }
+  inline static void copy(Type* p, const Type& cp) { *p = cp; }
   //
-  inline TTypeStaticHolder(void) : finit(false) { pointer=reinterpret_cast<T*>(binary); }
-  inline ~TTypeStaticHolder(void) { clear(); }
+  inline static void aconstruct(Type* p, size_t count) { 
+    while(count--)
+      new(p++) Type; 
+  }
+  inline static void aconstructcopy(Type* p, size_t count, const Type& cp) { 
+    while(count--)
+      new(p++) Type(cp); 
+  }
+  inline static void aconstructcopya(Type* p, size_t count, const Type* cp) { 
+    while(count--)
+      Type(*cp++); 
+  }
+  inline static void adestruct(Type* p, size_t count) { 
+    while(count--)
+      (p++)->~Type(); 
+  }
+  inline static void acopy(Type* p, size_t count, const Type* p2) { 
+    while(count--)
+      *p++ = *p2++; 
+  }
+  inline static void acopy1(Type* p, size_t count, const Type& x) { 
+    while(count--)
+      *p++ = x; 
+  }
   //
-  inline T* operator->(void) { return finit ? pointer : NULL; }
-  inline const T* operator->(void) const { return finit ? pointer : NULL; }
-  inline operator T*(void) { return finit ? pointer : NULL; }
-  inline operator const T*(void) const { return finit ? pointer : NULL; }
+  inline static void acopyright(Type* p, size_t dest, size_t src, size_t count) { 
+    Type *p1 = p + dest + count, *p2 = p + src + count;
+    while(count--)
+      *--p1 = *--p2;
+  }
+  inline static void acopyleft(Type* p, size_t dest, size_t src, size_t count) { 
+    Type *p1 = p + dest, *p2 = p + src;
+    while(count--)
+      *p1++ = *p2++;
+  }
+  inline static void amoveright(Type* p, size_t dest, size_t src, size_t count) { 
+    Type *p1 = p + dest + count, *p2 = p + src + count;
+    while(count--) {
+      new(p1) Type(*p2);
+      p2->~Type();
+      --p1; --p2;
+    }
+  }
+  inline static void amoveleft(Type* p, size_t dest, size_t src, size_t count) { 
+    Type *p1 = p + dest, *p2 = p + src;
+    while(count--) {
+      new(p1) Type(*p2);
+      p2->~Type();
+      ++p1; ++p2;
+    }
+  }
   //
-  inline bool valid(void) const { return finit; }
-  inline bool invalid(void) const { return !finit; }
-  //
-  inline void _construct(void) { ::new(pointer) T(); }
-  inline void _destruct(void) { pointer->~T(); }
-  //
-  inline void clear(void) { deinit(); }
-  inline T* init(void) { if(!finit) { _construct(); finit=true; } return pointer; }
-  inline void deinit(void) { if(finit) { _destruct(); finit=false; } }
+  template <typename P> inline static void atcopy(Type* p, size_t count, P p2) { 
+    while(count--)
+      *p++ = *p2++; 
+  }
 };
 
+template<typename T>
+struct TTypeConstructorBinaryFast {
+  typedef T Type;
+  typedef T Const;
+  typedef T& Variable;
+  //
+  inline static void construct(Type* p) {}
+  inline static void destruct(Type* p) {}
+  inline static void constructcopy(Type* p, const Type& cp) { *p=cp; }
+  inline static void copy(Type* p, const Type& cp) { *p=cp; }
+  //
+  inline static void aconstruct(Type* p, size_t count) {}
+  inline static void aconstructcopy(Type* p, size_t count, const Type& cp) { 
+    while(count--)
+      *p++ = cp; 
+  }
+  inline static void aconstructcopya(Type* p, size_t count, const Type* cp) { 
+    memcpy(p, cp, count*sizeof(Type)); 
+  }
+  inline static void adestruct(Type* p, size_t count) {}
+  inline static void acopy(Type* p, size_t count, const Type* cp) { 
+    memcpy(p, cp, count*sizeof(Type)); 
+  }
+  inline static void acopy1(Type* p, size_t count, const Type& x) { 
+    while(count--)
+      *p++ = x; 
+  }
+  //
+  inline static void acopyright(Type* p, size_t dest, size_t src, size_t count) { 
+    memmove(p+dest, p+src, count*sizeof(T)); 
+  }
+  inline static void acopyleft(Type* p, size_t dest, size_t src, size_t count) { 
+    memmove(p+dest, p+src, count*sizeof(T)); 
+  }
+  inline static void amoveright(Type* p, size_t dest, size_t src, size_t count) { 
+    memmove(p+dest, p+src, count*sizeof(T)); 
+  }
+  inline static void amoveleft(Type* p, size_t dest, size_t src, size_t count) { 
+    memmove(p+dest, p+src, count*sizeof(T)); 
+  }
+  //
+  template <typename P> inline static void atcopy(Type* p, size_t count, P p2) { 
+    while(count--)
+      *p++ = *p2++; 
+  }
+};
+
+/*************************************************************/
+/*************************************************************/
+
+
+// 
+#define UMODSYS_SCALAR_CONSTRUCTOR(_type) \
+  template<> struct ::UModSys::tl::TTypeConstructor<_type> : public ::UModSys::tl::TTypeConstructorBinaryFast<_type> {};
+
+/*************************************************************/
+
+template<typename BaseType> struct TTypeConstructor<BaseType*> : public TTypeConstructorBinaryFast<BaseType*> {};
+template<typename BaseType> struct TTypeConstructor<const BaseType*> : public TTypeConstructorBinaryFast<const BaseType*> {};
+
+UMODSYS_SCALAR_CONSTRUCTOR(signed char);
+UMODSYS_SCALAR_CONSTRUCTOR(unsigned char);
+UMODSYS_SCALAR_CONSTRUCTOR(char);
+UMODSYS_SCALAR_CONSTRUCTOR(signed int);
+UMODSYS_SCALAR_CONSTRUCTOR(unsigned int);
+UMODSYS_SCALAR_CONSTRUCTOR(signed short);
+UMODSYS_SCALAR_CONSTRUCTOR(unsigned short);
+UMODSYS_SCALAR_CONSTRUCTOR(signed long);
+UMODSYS_SCALAR_CONSTRUCTOR(unsigned long);
+UMODSYS_SCALAR_CONSTRUCTOR(float);
+UMODSYS_SCALAR_CONSTRUCTOR(double);
+UMODSYS_SCALAR_CONSTRUCTOR(bool);
+
+/*************************************************************/
 /*************************************************************/
 
 } // namespace tl
 } // namespace UModSys
 
-#endif // __UMODSYS_TYPES_TYPE_CONSTRUCTOR_H
+#endif // __UMODSYS_TL_UTIL_TYPECONSTRUCTOR_H

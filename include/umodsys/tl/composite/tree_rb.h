@@ -7,7 +7,7 @@
 
 #include <umodsys/core/stdcore.h>
 
-#include <umodsys/tl/util/type_constructor.h>
+#include <umodsys/tl/util/node_deleter.h>
 #include <umodsys/tl/alloc/allocator.h>
 
 namespace UModSys {
