@@ -74,6 +74,12 @@ struct TFlagOption {
     Default = mfo_Default << shift,
     Parent = mfo_Parent << shift
   };
+  //
+  inline static bool yes(int flags) { return ((flags>>shift)&mfo_Mask)==mfo_Yes; }
+  inline static bool no(int flags) { return ((flags>>shift)&mfo_Mask)==mfo_No; }
+  inline static bool def(int flags) { return ((flags>>shift)&mfo_Mask)==mfo_Default; }
+  inline static bool par(int flags) { return ((flags>>shift)&mfo_Mask)==mfo_Parent; }
+  //
   inline static eFlagOptions get(int flags) { return eFlagOptions((flags>>shift)&mfo_Mask); }
   inline static eFlagOptions gets(int flags, int shift) { return eFlagOptions((flags>>shift)&mfo_Mask); }
   inline static eFlagOptions getS(int flags, int shift) { return eFlagOptions((flags>>(shift<<1))&mfo_Mask); }
@@ -162,6 +168,8 @@ struct SFileInfo {
   }
 };
 
+typedef tl::TIStackSocket<SFileInfo> DIFileInfoArray;
+
 //***************************************
 
 struct SVFileName {
@@ -180,9 +188,9 @@ struct SVFileName {
   void operator=(BCStr filename);
   //
   SVFileName(BCStr whole="", bool dir=false);
-  SVFileName(const DCString &whole, bool dir=false);
-  SVFileName(const DCString &prefix, BCStr suffix);
-  SVFileName(const DCString &prefix, const DCString& suffix);
+  SVFileName(const DCString &whole, bool dir);
+  SVFileName(const DCString &prefix, BCStr suffix, bool dir);
+  SVFileName(const DCString &prefix, const DCString& suffix, bool dir);
 };
 
 struct SVComplexFileName {
@@ -264,7 +272,7 @@ public:
   virtual IStreamReader::P load_reader(const DCString& media_name, int flags=mf_Default) =0;
   virtual bool save_data(const SMemShared& mem, const DCString& media_name, int flags=mf_Default) =0;
   virtual IStreamWriter::P save_writer(const DCString& media_name, int flags=mf_Default) =0;
-  virtual bool get_entrylist(const DCString &mask, tl::TIStackSocket<SFileInfo>& list) = 0;
+  virtual bool get_entrylist(const DCString &mask, DIFileInfoArray& list) = 0;
   virtual int get_permissions(void) = 0;
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IDataArchive, 2, IRefObject);

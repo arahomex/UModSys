@@ -1,14 +1,14 @@
  plugin_test1
 
- Timestamp is 5257f04b (Fri Oct 11 15:34:19 2013)
+ Timestamp is 525821c3 (Fri Oct 11 19:05:23 2013)
 
  Preferred load address is 0000000180000000
 
  Start         Length     Name                   Class
- 0001:00000000 0000161cH .text                   CODE
- 0001:00001620 00000214H .text$x                 CODE
- 0001:00001834 0000043cH .text$yc                CODE
- 0001:00001c70 00000198H .text$yd                CODE
+ 0001:00000000 000015ccH .text                   CODE
+ 0001:000015d0 00000234H .text$x                 CODE
+ 0001:00001804 0000043cH .text$yc                CODE
+ 0001:00001c40 00000198H .text$yd                CODE
  0002:00000000 000000e8H .idata$5                DATA
  0002:000000e8 00000008H .CRT$XCA                DATA
  0002:000000f0 00000218H .CRT$XCU                DATA
@@ -22,119 +22,120 @@
  0002:00001068 00000008H .rtc$IZZ                DATA
  0002:00001070 00000008H .rtc$TAA                DATA
  0002:00001078 00000008H .rtc$TZZ                DATA
- 0002:00001080 000002b4H .xdata                  DATA
- 0002:00001334 00000028H .idata$2                DATA
- 0002:0000135c 00000014H .idata$3                DATA
- 0002:00001370 000000e8H .idata$4                DATA
- 0002:00001458 00000214H .idata$6                DATA
- 0002:00001670 00000059H .edata                  DATA
+ 0002:00001080 000002ccH .xdata                  DATA
+ 0002:0000134c 00000028H .idata$2                DATA
+ 0002:00001374 00000014H .idata$3                DATA
+ 0002:00001388 000000e8H .idata$4                DATA
+ 0002:00001470 00000214H .idata$6                DATA
+ 0002:00001690 00000059H .edata                  DATA
  0003:00000000 00000368H .data                   DATA
  0003:00000368 000003d8H .bss                    DATA
- 0004:00000000 00000354H .pdata                  DATA
+ 0004:00000000 00000360H .pdata                  DATA
 
   Address         Publics by Value              Rva+Base               Lib:Object
 
- 0000:00000000       ___safe_se_handler_count   0000000000000000     <absolute>
  0000:00000000       ___safe_se_handler_table   0000000000000000     <absolute>
+ 0000:00000000       ___safe_se_handler_count   0000000000000000     <absolute>
  0000:00000000       __ImageBase                0000000180000000     <linker-defined>
  0001:00000000       ??6SUniquePtrList@core@UModSys@@QEAAAEAU012@PEBUSUniquePointerInfo@12@@Z 0000000180001000 f i plugin_test1.obj
  0001:000000b8       ?get_interface_info@RTest1_Shell@test1@test@modules@UModSys@@UEBAAEBUSUniquePointerInfo@core@5@XZ 00000001800010b8 f i plugin_test1.obj
  0001:000000c0       ?get_interface_type@RTest1_Shell@test1@test@modules@UModSys@@UEBAPEBUSUniquePointerInfo@core@5@XZ 00000001800010c0 f i plugin_test1.obj
- 0001:000000c8       ?get_interface_types@RTest1_Shell@test1@test@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 00000001800010c8 f i plugin_test1.obj
  0001:000000c8       ?get_interface_types@RGenerator@test1@test@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 00000001800010c8 f i plugin_test1.obj
- 0001:000000d0       ?get_other_interface@RTest1_Shell@test1@test@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 00000001800010d0 f i plugin_test1.obj
+ 0001:000000c8       ?get_interface_types@RTest1_Shell@test1@test@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 00000001800010c8 f i plugin_test1.obj
  0001:000000d0       ?get_other_interface@RTest1_Shell@test1@test@modules@UModSys@@UEBAPEBUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 00000001800010d0 f i plugin_test1.obj
- 0001:00000100       ?ref_remove@RTest1_Shell@test1@test@modules@UModSys@@UEBAXXZ 0000000180001100 f i plugin_test1.obj
- 0001:00000100       ?ref_remove@RGenerator@test1@test@modules@UModSys@@UEBAXXZ 0000000180001100 f i plugin_test1.obj
- 0001:00000118       ?ref_links@RGenerator@test1@test@modules@UModSys@@UEBAHXZ 0000000180001118 f i plugin_test1.obj
- 0001:00000118       ?ref_links@RTest1_Shell@test1@test@modules@UModSys@@UEBAHXZ 0000000180001118 f i plugin_test1.obj
- 0001:0000011c       ?suicide@RTest1_Shell@test1@test@modules@UModSys@@UEAAXXZ 000000018000111c f i plugin_test1.obj
- 0001:00000178       ?file_test@RTest1_Shell@test1@test@modules@UModSys@@QEAAXXZ 0000000180001178 f i plugin_test1.obj
- 0001:000005a0       ?connect@RTest1_Shell@test1@test@modules@UModSys@@UEAA_NXZ 00000001800015a0 f i plugin_test1.obj
- 0001:000005c4       ?disconnect@RTest1_Shell@test1@test@modules@UModSys@@UEAA_NXZ 00000001800015c4 f i plugin_test1.obj
- 0001:000005e8       ?process_tick@RTest1_Shell@test1@test@modules@UModSys@@UEAA_NAEBUSTimeMsec@core@5@@Z 00000001800015e8 f i plugin_test1.obj
- 0001:00000620       ?process_command@RTest1_Shell@test1@test@modules@UModSys@@UEAA_NHQEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@@Z 0000000180001620 f i plugin_test1.obj
- 0001:00000644       ??1?$TParametersA@$0EAA@@core@UModSys@@QEAA@XZ 0000000180001644 f i plugin_test1.obj
- 0001:00000660       ??_ERTest1_Shell@test1@test@modules@UModSys@@UEAAPEAXI@Z 0000000180001660 f i  CIL library: CIL module
- 0001:00000660       ??_GRTest1_Shell@test1@test@modules@UModSys@@UEAAPEAXI@Z 0000000180001660 f i plugin_test1.obj
- 0001:000006e0       ??1IShell@base@UModSys@@UEAA@XZ 00000001800016e0 f i plugin_test1.obj
- 0001:000006ec       ??_EIRoot@core@UModSys@@UEAAPEAXI@Z 00000001800016ec f i  CIL library: CIL module
- 0001:000006ec       ??_ERGenerator@test1@test@modules@UModSys@@UEAAPEAXI@Z 00000001800016ec f i  CIL library: CIL module
- 0001:000006ec       ??_GRGenerator@test1@test@modules@UModSys@@UEAAPEAXI@Z 00000001800016ec f i plugin_test1.obj
- 0001:000006ec       ??_GIRoot@core@UModSys@@UEAAPEAXI@Z 00000001800016ec f i plugin_test1.obj
- 0001:000006fc       ?get_generated_names@RGenerator@test1@test@modules@UModSys@@UEBAHAEAUSUniquePtrList@core@5@@Z 00000001800016fc f i plugin_test1.obj
- 0001:0000071c       ?get_generated_types@RGenerator@test1@test@modules@UModSys@@UEBAHAEAUSUniquePtrList@core@5@PEBUSUniquePointerInfo@75@@Z 000000018000171c f i plugin_test1.obj
- 0001:00000778       ?generate@RGenerator@test1@test@modules@UModSys@@UEAA_NAEAU?$TRefObject@UIRefObject@core@UModSys@@@tl@5@PEBUSUniquePointerInfo@core@5@AEBUSParameters@95@@Z 0000000180001778 f i plugin_test1.obj
- 0001:000008bc       ?get_interface_info@RGenerator@test1@test@modules@UModSys@@UEBAAEBUSUniquePointerInfo@core@5@XZ 00000001800018bc f i plugin_test1.obj
- 0001:000008c4       ?get_interface_type@RGenerator@test1@test@modules@UModSys@@UEBAPEBUSUniquePointerInfo@core@5@XZ 00000001800018c4 f i plugin_test1.obj
- 0001:000008cc       ?get_other_interface@RGenerator@test1@test@modules@UModSys@@UEBAPEBUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 00000001800018cc f i plugin_test1.obj
- 0001:000008cc       ?get_other_interface@RGenerator@test1@test@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 00000001800018cc f i plugin_test1.obj
- 0001:00000904       ?ref_add@RTest1_Shell@test1@test@modules@UModSys@@UEBAXXZ 0000000180001904 f i plugin_test1.obj
- 0001:00000904       ?ref_add@RGenerator@test1@test@modules@UModSys@@UEBAXXZ 0000000180001904 f i plugin_test1.obj
- 0001:00000908       ?suicide@RGenerator@test1@test@modules@UModSys@@UEAAXXZ 0000000180001908 f i plugin_test1.obj
- 0001:00000908       ?suicide@IRoot@core@UModSys@@UEAAXXZ 0000000180001908 f i umodsys_lib_core:umodsys.core.objects.obj
- 0001:0000090c       ?get_uid@RGenerator@test1@test@modules@UModSys@@UEBAPEBUSUniquePointerInfo@core@5@XZ 000000018000190c f i plugin_test1.obj
- 0001:00000914       ?do_open@RModuleReg@test1@test@modules@UModSys@@UEAA_NXZ 0000000180001914 f i plugin_test1.obj
- 0001:00000998       ?do_close@RModuleReg@test1@test@modules@UModSys@@UEAA_NXZ 0000000180001998 f i plugin_test1.obj
- 0001:00000a10       ??_GIModuleReg@base@UModSys@@UEAAPEAXI@Z 0000000180001a10 f i umodsys_lib_base:umodsys.base.modulereg.obj
- 0001:00000a10       ??_ERModuleReg@test1@test@modules@UModSys@@UEAAPEAXI@Z 0000000180001a10 f i  CIL library: CIL module
- 0001:00000a10       ??_GRModuleReg@test1@test@modules@UModSys@@UEAAPEAXI@Z 0000000180001a10 f i plugin_test1.obj
- 0001:00000a10       ??_EIModuleReg@base@UModSys@@UEAAPEAXI@Z 0000000180001a10 f i  CIL library: CIL module
- 0001:00000a38       ?get_module@RGenerator@test1@test@modules@UModSys@@UEBAPEAUIModule@base@5@XZ 0000000180001a38 f   plugin_test1.obj
- 0001:00000a40       ?mod_inc@RGenerator@test1@test@modules@UModSys@@UEBA_NXZ 0000000180001a40 f   plugin_test1.obj
- 0001:00000a50       ?mod_dec@RGenerator@test1@test@modules@UModSys@@UEBA_NXZ 0000000180001a50 f   plugin_test1.obj
- 0001:00000a60       ?s_holder@RGenerator@test1@test@modules@UModSys@@SAAEAU?$TTypeStaticHolder@URGenerator@test1@test@modules@UModSys@@@tl@5@XZ 0000000180001a60 f   plugin_test1.obj
- 0001:00000aa4       ??1?$TRefObject@UIModObject@base@UModSys@@@tl@UModSys@@QEAA@XZ 0000000180001aa4 f i plugin_test1.obj
- 0001:00000aa4       ??1?$TRefObject@UIStreamReader@libmedia@UModSys@@@tl@UModSys@@QEAA@XZ 0000000180001aa4 f i plugin_test1.obj
- 0001:00000aa4       ??1?$TRefObject@UIStreamWriter@libmedia@UModSys@@@tl@UModSys@@QEAA@XZ 0000000180001aa4 f i plugin_test1.obj
- 0001:00000aa4       ??1?$TRefObject@UIRefObject@core@UModSys@@@tl@UModSys@@QEAA@XZ 0000000180001aa4 f i plugin_test1.obj
- 0001:00000ac8       ?Link@SModuleContext@base@UModSys@@QEAAXPEAUISystem@23@PEAUIMemAlloc@core@3@@Z 0000000180001ac8 f   umodsys_lib_base:umodsys.base.modulecontext.obj
- 0001:00000b20       ?mlr_count@RModuleLibraryReg_Chain@base@UModSys@@UEBA_KXZ 0000000180001b20 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
- 0001:00000b58       ?mlr_get@RModuleLibraryReg_Chain@base@UModSys@@UEBAPEAUIModuleReg@23@_K@Z 0000000180001b58 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
- 0001:00000b84       ?mlr_open@RModuleLibraryReg_Chain@base@UModSys@@UEAA_NPEAUISystem@23@PEAUIMemAlloc@core@3@@Z 0000000180001b84 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
- 0001:00000c08       ?mlr_close@RModuleLibraryReg_Chain@base@UModSys@@UEAA_NXZ 0000000180001c08 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
- 0001:00000c88       ?mlr_isopen@RModuleLibraryReg_Chain@base@UModSys@@UEBA_NXZ 0000000180001c88 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
- 0001:00000c98       ??_EIModuleLibraryReg@base@UModSys@@UEAAPEAXI@Z 0000000180001c98 f i  CIL library: CIL module
- 0001:00000c98       ??_GIModuleLibraryReg@base@UModSys@@UEAAPEAXI@Z 0000000180001c98 f i umodsys_lib_base:umodsys.base.modulereg.obj
- 0001:00000c98       ??_GRModuleLibraryReg_Chain@base@UModSys@@UEAAPEAXI@Z 0000000180001c98 f i umodsys_lib_base:umodsys.base.moduleregchain.obj
- 0001:00000c98       ??_ERModuleLibraryReg_Chain@base@UModSys@@UEAAPEAXI@Z 0000000180001c98 f i  CIL library: CIL module
- 0001:00000cc0       UModSys_Plugin_Entry2      0000000180001cc0 f   umodsys_lib_base:umodsys.so_main.win32.obj
- 0001:00000cc8       ?mr_isopen@IModuleReg@base@UModSys@@UEBA_NXZ 0000000180001cc8 f   umodsys_lib_base:umodsys.base.modulereg.obj
- 0001:00000cd4       ?mr_open@IModuleReg@base@UModSys@@UEAA_NXZ 0000000180001cd4 f   umodsys_lib_base:umodsys.base.modulereg.obj
- 0001:00000cf8       ?mr_close@IModuleReg@base@UModSys@@UEAA_NXZ 0000000180001cf8 f   umodsys_lib_base:umodsys.base.modulereg.obj
- 0001:00000d14       ??0SUniquePointer@core@UModSys@@QEAA@PEBD0H@Z 0000000180001d14 f   umodsys_lib_core:umodsys.core.uniqueptr.obj
- 0001:00000d60       ??1SUniquePointer@core@UModSys@@QEAA@XZ 0000000180001d60 f   umodsys_lib_core:umodsys.core.uniqueptr.obj
- 0001:00000d88       ??3IRoot@core@UModSys@@SAXPEAXAEBUSIMemAlloc@12@@Z 0000000180001d88 f   umodsys_lib_core:umodsys.core.objects.obj
- 0001:00000d9c       _onexit                    0000000180001d9c f   MSVCRT:atonexit.obj
- 0001:00000e4c       atexit                     0000000180001e4c f   MSVCRT:atonexit.obj
- 0001:00000e64       _purecall                  0000000180001e64 f   MSVCRT:MSVCR90.dll
- 0001:00000e6a       ??3@YAXPEAX@Z              0000000180001e6a f   MSVCRT:MSVCR90.dll
- 0001:00000e70       ??_Etype_info@@UEAAPEAXI@Z 0000000180001e70 f i MSVCRT:ti_inst.obj
- 0001:00000f3c       _CRT_INIT                  0000000180001f3c f   MSVCRT:crtdll.obj
- 0001:000012d0       _DllMainCRTStartup         00000001800022d0 f   MSVCRT:crtdll.obj
- 0001:0000130e       __C_specific_handler       000000018000230e f   MSVCRT:MSVCR90.dll
- 0001:00001314       _unlock                    0000000180002314 f   MSVCRT:MSVCR90.dll
- 0001:0000131a       __dllonexit                000000018000231a f   MSVCRT:MSVCR90.dll
- 0001:00001320       _lock                      0000000180002320 f   MSVCRT:MSVCR90.dll
- 0001:00001328       ?__ArrayUnwind@@YAXPEAX_KHP6AX0@Z@Z 0000000180002328 f   MSVCRT:ehvecdtr.obj
- 0001:00001374       ??_M@YAXPEAX_KHP6AX0@Z@Z   0000000180002374 f   MSVCRT:ehvecdtr.obj
- 0001:000013d4       __clean_type_info_names    00000001800023d4 f   MSVCRT:tncleanup.obj
- 0001:000013e0       _RTC_Initialize            00000001800023e0 f   MSVCRT:_initsect_.obj
- 0001:00001418       _RTC_Terminate             0000000180002418 f   MSVCRT:_initsect_.obj
- 0001:00001450       _ValidateImageBase         0000000180002450 f   MSVCRT:pesect.obj
- 0001:00001480       _FindPESection             0000000180002480 f   MSVCRT:pesect.obj
- 0001:000014d0       _IsNonwritableInCurrentImage 00000001800024d0 f   MSVCRT:pesect.obj
- 0001:00001512       _initterm                  0000000180002512 f   MSVCRT:MSVCR90.dll
- 0001:00001518       _initterm_e                0000000180002518 f   MSVCRT:MSVCR90.dll
- 0001:0000151e       _amsg_exit                 000000018000251e f   MSVCRT:MSVCR90.dll
- 0001:00001524       __CppXcptFilter            0000000180002524 f   MSVCRT:MSVCR90.dll
- 0001:0000152c       DllMain                    000000018000252c f   MSVCRT:dllmain.obj
- 0001:00001550       __security_init_cookie     0000000180002550 f   MSVCRT:gs_support.obj
- 0001:00001604       ?terminate@@YAXXZ          0000000180002604 f   MSVCRT:MSVCR90.dll
- 0001:0000160a       ?_type_info_dtor_internal_method@type_info@@QEAAXXZ 000000018000260a f   MSVCRT:MSVCR90.dll
- 0001:0000160a       ??1type_info@@UEAA@XZ      000000018000260a f   MSVCRT:MSVCR90.dll
- 0001:00001610       __clean_type_info_names_internal 0000000180002610 f   MSVCRT:MSVCR90.dll
- 0001:00001616       __CxxFrameHandler3         0000000180002616 f   MSVCRT:MSVCR90.dll
+ 0001:000000d0       ?get_other_interface@RTest1_Shell@test1@test@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 00000001800010d0 f i plugin_test1.obj
+ 0001:00000100       ?suicide@RTest1_Shell@test1@test@modules@UModSys@@UEAAXXZ 0000000180001100 f i plugin_test1.obj
+ 0001:0000015c       ?file_test2@RTest1_Shell@test1@test@modules@UModSys@@QEAAXXZ 000000018000115c f i plugin_test1.obj
+ 0001:00000528       ?connect@RTest1_Shell@test1@test@modules@UModSys@@UEAA_NXZ 0000000180001528 f i plugin_test1.obj
+ 0001:0000054c       ?disconnect@RTest1_Shell@test1@test@modules@UModSys@@UEAA_NXZ 000000018000154c f i plugin_test1.obj
+ 0001:00000570       ?process_tick@RTest1_Shell@test1@test@modules@UModSys@@UEAA_NAEBUSTimeMsec@core@5@@Z 0000000180001570 f i plugin_test1.obj
+ 0001:000005a8       ?process_command@RTest1_Shell@test1@test@modules@UModSys@@UEAA_NHQEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@@Z 00000001800015a8 f i plugin_test1.obj
+ 0001:000005cc       ??1?$TParametersA@$0EAA@@core@UModSys@@QEAA@XZ 00000001800015cc f i plugin_test1.obj
+ 0001:000005e8       ??_ERTest1_Shell@test1@test@modules@UModSys@@UEAAPEAXI@Z 00000001800015e8 f i  CIL library: CIL module
+ 0001:000005e8       ??_GRTest1_Shell@test1@test@modules@UModSys@@UEAAPEAXI@Z 00000001800015e8 f i plugin_test1.obj
+ 0001:00000668       ??1IShell@base@UModSys@@UEAA@XZ 0000000180001668 f i plugin_test1.obj
+ 0001:00000674       ??_GRGenerator@test1@test@modules@UModSys@@UEAAPEAXI@Z 0000000180001674 f i plugin_test1.obj
+ 0001:00000674       ??_GIRoot@core@UModSys@@UEAAPEAXI@Z 0000000180001674 f i plugin_test1.obj
+ 0001:00000674       ??_EIRoot@core@UModSys@@UEAAPEAXI@Z 0000000180001674 f i  CIL library: CIL module
+ 0001:00000674       ??_ERGenerator@test1@test@modules@UModSys@@UEAAPEAXI@Z 0000000180001674 f i  CIL library: CIL module
+ 0001:00000684       ?get_generated_names@RGenerator@test1@test@modules@UModSys@@UEBAHAEAUSUniquePtrList@core@5@@Z 0000000180001684 f i plugin_test1.obj
+ 0001:000006a4       ?get_generated_types@RGenerator@test1@test@modules@UModSys@@UEBAHAEAUSUniquePtrList@core@5@PEBUSUniquePointerInfo@75@@Z 00000001800016a4 f i plugin_test1.obj
+ 0001:00000700       ?generate@RGenerator@test1@test@modules@UModSys@@UEAA_NAEAU?$TRefObject@UIRefObject@core@UModSys@@@tl@5@PEBUSUniquePointerInfo@core@5@AEBUSParameters@95@@Z 0000000180001700 f i plugin_test1.obj
+ 0001:00000844       ?get_interface_info@RGenerator@test1@test@modules@UModSys@@UEBAAEBUSUniquePointerInfo@core@5@XZ 0000000180001844 f i plugin_test1.obj
+ 0001:0000084c       ?get_interface_type@RGenerator@test1@test@modules@UModSys@@UEBAPEBUSUniquePointerInfo@core@5@XZ 000000018000184c f i plugin_test1.obj
+ 0001:00000854       ?get_other_interface@RGenerator@test1@test@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000180001854 f i plugin_test1.obj
+ 0001:00000854       ?get_other_interface@RGenerator@test1@test@modules@UModSys@@UEBAPEBUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000180001854 f i plugin_test1.obj
+ 0001:0000088c       ?ref_add@RTest1_Shell@test1@test@modules@UModSys@@UEBAXXZ 000000018000188c f i plugin_test1.obj
+ 0001:0000088c       ?ref_add@RGenerator@test1@test@modules@UModSys@@UEBAXXZ 000000018000188c f i plugin_test1.obj
+ 0001:00000890       ?ref_remove@RGenerator@test1@test@modules@UModSys@@UEBAXXZ 0000000180001890 f i plugin_test1.obj
+ 0001:00000890       ?ref_remove@RTest1_Shell@test1@test@modules@UModSys@@UEBAXXZ 0000000180001890 f i plugin_test1.obj
+ 0001:000008a8       ?ref_links@RGenerator@test1@test@modules@UModSys@@UEBAHXZ 00000001800018a8 f i plugin_test1.obj
+ 0001:000008a8       ?ref_links@RTest1_Shell@test1@test@modules@UModSys@@UEBAHXZ 00000001800018a8 f i plugin_test1.obj
+ 0001:000008ac       ?get_uid@RGenerator@test1@test@modules@UModSys@@UEBAPEBUSUniquePointerInfo@core@5@XZ 00000001800018ac f i plugin_test1.obj
+ 0001:000008b4       ?do_open@RModuleReg@test1@test@modules@UModSys@@UEAA_NXZ 00000001800018b4 f i plugin_test1.obj
+ 0001:00000938       ?do_close@RModuleReg@test1@test@modules@UModSys@@UEAA_NXZ 0000000180001938 f i plugin_test1.obj
+ 0001:000009b0       ?get_module@RGenerator@test1@test@modules@UModSys@@UEBAPEAUIModule@base@5@XZ 00000001800019b0 f   plugin_test1.obj
+ 0001:000009b8       ?mod_inc@RGenerator@test1@test@modules@UModSys@@UEBA_NXZ 00000001800019b8 f   plugin_test1.obj
+ 0001:000009c8       ?mod_dec@RGenerator@test1@test@modules@UModSys@@UEBA_NXZ 00000001800019c8 f   plugin_test1.obj
+ 0001:000009d8       ?s_holder@RGenerator@test1@test@modules@UModSys@@SAAEAU?$TTypeStaticHolder@URGenerator@test1@test@modules@UModSys@@@tl@5@XZ 00000001800019d8 f   plugin_test1.obj
+ 0001:00000a1c       ??1?$TRefObject@UIStreamWriter@libmedia@UModSys@@@tl@UModSys@@QEAA@XZ 0000000180001a1c f i plugin_test1.obj
+ 0001:00000a1c       ??1?$TRefObject@UIRefObject@core@UModSys@@@tl@UModSys@@QEAA@XZ 0000000180001a1c f i plugin_test1.obj
+ 0001:00000a1c       ??1?$TRefObject@UIDataArchive@libmedia@UModSys@@@tl@UModSys@@QEAA@XZ 0000000180001a1c f i plugin_test1.obj
+ 0001:00000a1c       ??1?$TRefObject@UIModObject@base@UModSys@@@tl@UModSys@@QEAA@XZ 0000000180001a1c f i plugin_test1.obj
+ 0001:00000a1c       ??1?$TRefObject@UIStreamReader@libmedia@UModSys@@@tl@UModSys@@QEAA@XZ 0000000180001a1c f i plugin_test1.obj
+ 0001:00000a40       ?Link@SModuleContext@base@UModSys@@QEAAXPEAUISystem@23@PEAUIMemAlloc@core@3@@Z 0000000180001a40 f   umodsys_lib_base:umodsys.base.modulecontext.obj
+ 0001:00000a98       ?mlr_count@RModuleLibraryReg_Chain@base@UModSys@@UEBA_KXZ 0000000180001a98 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
+ 0001:00000ad0       ?mlr_get@RModuleLibraryReg_Chain@base@UModSys@@UEBAPEAUIModuleReg@23@_K@Z 0000000180001ad0 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
+ 0001:00000afc       ?mlr_open@RModuleLibraryReg_Chain@base@UModSys@@UEAA_NPEAUISystem@23@PEAUIMemAlloc@core@3@@Z 0000000180001afc f   umodsys_lib_base:umodsys.base.moduleregchain.obj
+ 0001:00000b80       ?mlr_close@RModuleLibraryReg_Chain@base@UModSys@@UEAA_NXZ 0000000180001b80 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
+ 0001:00000c00       ?mlr_isopen@RModuleLibraryReg_Chain@base@UModSys@@UEBA_NXZ 0000000180001c00 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
+ 0001:00000c10       ??_ERModuleLibraryReg_Chain@base@UModSys@@UEAAPEAXI@Z 0000000180001c10 f i  CIL library: CIL module
+ 0001:00000c10       ??_GRModuleLibraryReg_Chain@base@UModSys@@UEAAPEAXI@Z 0000000180001c10 f i umodsys_lib_base:umodsys.base.moduleregchain.obj
+ 0001:00000c10       ??_GIModuleLibraryReg@base@UModSys@@UEAAPEAXI@Z 0000000180001c10 f i umodsys_lib_base:umodsys.base.modulereg.obj
+ 0001:00000c10       ??_EIModuleLibraryReg@base@UModSys@@UEAAPEAXI@Z 0000000180001c10 f i  CIL library: CIL module
+ 0001:00000c38       UModSys_Plugin_Entry2      0000000180001c38 f   umodsys_lib_base:umodsys.so_main.win32.obj
+ 0001:00000c40       ??_GIModuleReg@base@UModSys@@UEAAPEAXI@Z 0000000180001c40 f i umodsys_lib_base:umodsys.base.modulereg.obj
+ 0001:00000c40       ??_ERModuleReg@test1@test@modules@UModSys@@UEAAPEAXI@Z 0000000180001c40 f i  CIL library: CIL module
+ 0001:00000c40       ??_GRModuleReg@test1@test@modules@UModSys@@UEAAPEAXI@Z 0000000180001c40 f i plugin_test1.obj
+ 0001:00000c40       ??_EIModuleReg@base@UModSys@@UEAAPEAXI@Z 0000000180001c40 f i  CIL library: CIL module
+ 0001:00000c68       ?mr_isopen@IModuleReg@base@UModSys@@UEBA_NXZ 0000000180001c68 f   umodsys_lib_base:umodsys.base.modulereg.obj
+ 0001:00000c74       ?mr_open@IModuleReg@base@UModSys@@UEAA_NXZ 0000000180001c74 f   umodsys_lib_base:umodsys.base.modulereg.obj
+ 0001:00000c98       ?mr_close@IModuleReg@base@UModSys@@UEAA_NXZ 0000000180001c98 f   umodsys_lib_base:umodsys.base.modulereg.obj
+ 0001:00000cb4       ??0SUniquePointer@core@UModSys@@QEAA@PEBD0H@Z 0000000180001cb4 f   umodsys_lib_core:umodsys.core.uniqueptr.obj
+ 0001:00000d00       ??1SUniquePointer@core@UModSys@@QEAA@XZ 0000000180001d00 f   umodsys_lib_core:umodsys.core.uniqueptr.obj
+ 0001:00000d28       ?suicide@IRoot@core@UModSys@@UEAAXXZ 0000000180001d28 f   umodsys_lib_core:umodsys.core.objects.obj
+ 0001:00000d28       ?suicide@RGenerator@test1@test@modules@UModSys@@UEAAXXZ 0000000180001d28 f   plugin_test1.obj
+ 0001:00000d2c       ??3IRoot@core@UModSys@@SAXPEAXAEBUSIMemAlloc@12@@Z 0000000180001d2c f   umodsys_lib_core:umodsys.core.objects.obj
+ 0001:00000d40       _onexit                    0000000180001d40 f   MSVCRT:atonexit.obj
+ 0001:00000df0       atexit                     0000000180001df0 f   MSVCRT:atonexit.obj
+ 0001:00000e08       _purecall                  0000000180001e08 f   MSVCRT:MSVCR90.dll
+ 0001:00000e0e       ??3@YAXPEAX@Z              0000000180001e0e f   MSVCRT:MSVCR90.dll
+ 0001:00000e14       ??_Etype_info@@UEAAPEAXI@Z 0000000180001e14 f i MSVCRT:ti_inst.obj
+ 0001:00000ee0       _CRT_INIT                  0000000180001ee0 f   MSVCRT:crtdll.obj
+ 0001:00001274       _DllMainCRTStartup         0000000180002274 f   MSVCRT:crtdll.obj
+ 0001:000012b2       __C_specific_handler       00000001800022b2 f   MSVCRT:MSVCR90.dll
+ 0001:000012b8       _unlock                    00000001800022b8 f   MSVCRT:MSVCR90.dll
+ 0001:000012be       __dllonexit                00000001800022be f   MSVCRT:MSVCR90.dll
+ 0001:000012c4       _lock                      00000001800022c4 f   MSVCRT:MSVCR90.dll
+ 0001:000012cc       ?__ArrayUnwind@@YAXPEAX_KHP6AX0@Z@Z 00000001800022cc f   MSVCRT:ehvecdtr.obj
+ 0001:00001318       ??_M@YAXPEAX_KHP6AX0@Z@Z   0000000180002318 f   MSVCRT:ehvecdtr.obj
+ 0001:00001378       __clean_type_info_names    0000000180002378 f   MSVCRT:tncleanup.obj
+ 0001:00001384       _RTC_Initialize            0000000180002384 f   MSVCRT:_initsect_.obj
+ 0001:000013bc       _RTC_Terminate             00000001800023bc f   MSVCRT:_initsect_.obj
+ 0001:00001400       _ValidateImageBase         0000000180002400 f   MSVCRT:pesect.obj
+ 0001:00001430       _FindPESection             0000000180002430 f   MSVCRT:pesect.obj
+ 0001:00001480       _IsNonwritableInCurrentImage 0000000180002480 f   MSVCRT:pesect.obj
+ 0001:000014c2       _initterm                  00000001800024c2 f   MSVCRT:MSVCR90.dll
+ 0001:000014c8       _initterm_e                00000001800024c8 f   MSVCRT:MSVCR90.dll
+ 0001:000014ce       _amsg_exit                 00000001800024ce f   MSVCRT:MSVCR90.dll
+ 0001:000014d4       __CppXcptFilter            00000001800024d4 f   MSVCRT:MSVCR90.dll
+ 0001:000014dc       DllMain                    00000001800024dc f   MSVCRT:dllmain.obj
+ 0001:00001500       __security_init_cookie     0000000180002500 f   MSVCRT:gs_support.obj
+ 0001:000015b4       ?terminate@@YAXXZ          00000001800025b4 f   MSVCRT:MSVCR90.dll
+ 0001:000015ba       ??1type_info@@UEAA@XZ      00000001800025ba f   MSVCRT:MSVCR90.dll
+ 0001:000015ba       ?_type_info_dtor_internal_method@type_info@@QEAAXXZ 00000001800025ba f   MSVCRT:MSVCR90.dll
+ 0001:000015c0       __clean_type_info_names_internal 00000001800025c0 f   MSVCRT:MSVCR90.dll
+ 0001:000015c6       __CxxFrameHandler3         00000001800025c6 f   MSVCRT:MSVCR90.dll
  0002:00000000       __imp_GetCurrentProcessId  0000000180003000     kernel32:KERNEL32.dll
  0002:00000008       __imp_GetCurrentThreadId   0000000180003008     kernel32:KERNEL32.dll
  0002:00000010       __imp_GetTickCount         0000000180003010     kernel32:KERNEL32.dll
@@ -188,31 +189,32 @@
  0002:000004e0       ??_C@_0CM@LNHNHIJB@UModSys?3?3modules?3?3test?3?3test1?3?3R@ 00000001800034e0     plugin_test1.obj
  0002:00000510       ??_C@_0M@LAGNAJEJ@?$CK?3?3stdio?3?3?$CK?$AA@ 0000000180003510     plugin_test1.obj
  0002:00000520       ??_C@_0O@CMKKEPPD@read?9test?4txt?$AA@ 0000000180003520     plugin_test1.obj
- 0002:00000530       ??_C@_08BABJIOEM@filename?$AA@ 0000000180003530     plugin_test1.obj
- 0002:00000540       ??_C@_0BK@JMHCEPK@?5?5found?5reader?3?5?$CFs?5?$DN?$DO?5?$CFp?6?$AA@ 0000000180003540     plugin_test1.obj
- 0002:00000560       ??_C@_0P@HIBABMLC@write?9test?4txt?$AA@ 0000000180003560     plugin_test1.obj
- 0002:00000570       ??_C@_04FAOFCKOL@safe?$AA@ 0000000180003570     plugin_test1.obj
- 0002:00000578       ??_C@_0BK@ONIPKACL@?5?5found?5writer?3?5?$CFs?5?$DN?$DO?5?$CFp?6?$AA@ 0000000180003578     plugin_test1.obj
- 0002:00000598       ??_C@_0O@OKDOBIEG@?5?5read?3?5?$HL?$CFs?$HN?6?$AA@ 0000000180003598     plugin_test1.obj
- 0002:000005a8       ??_C@_0L@BBJPPDJK@?5?5written?6?$AA@ 00000001800035a8     plugin_test1.obj
- 0002:000005b8       ??_C@_0BC@NIGGCDMG@RTest1_Shell?$CI?$CJ?5?$HL?6?$AA@ 00000001800035b8     plugin_test1.obj
- 0002:000005d0       ??_C@_0DK@JIEMIEKA@UModSys?3?3modules?3?3test?3?3test1?3?3R@ 00000001800035d0     plugin_test1.obj
- 0002:00000610       ??_C@_0CK@OICDGBDJ@?4?4?2?4?4?2?4?4?2src?2plugin?2test?2plugin_@ 0000000180003610     plugin_test1.obj
- 0002:00000640       ??_C@_0BF@BMCPNMPN@?$HN?5?1?1?5RTest1_Shell?$CI?$CJ?6?$AA@ 0000000180003640     plugin_test1.obj
- 0002:00000658       ??_C@_0DL@OIAHAJF@UModSys?3?3modules?3?3test?3?3test1?3?3R@ 0000000180003658     plugin_test1.obj
- 0002:00000698       ??_C@_0BB@MLDFLEML@?$HORTest1_Shell?$CI?$CJ?6?$AA@ 0000000180003698     plugin_test1.obj
- 0002:000006b0       ??_C@_0BJ@CCPCJEPP@RTest1_Shell?3?3connect?$CI?$CJ?6?$AA@ 00000001800036b0     plugin_test1.obj
- 0002:000006d0       ??_C@_0BM@KBDBHLN@RTest1_Shell?3?3disconnect?$CI?$CJ?6?$AA@ 00000001800036d0     plugin_test1.obj
- 0002:000006f0       ??_C@_0BI@PGLACHLJ@RTest1_Shell?3?3tick?$CI?$CFg?$CJ?6?$AA@ 00000001800036f0     plugin_test1.obj
- 0002:00000708       ??_C@_0BM@JFIEEBE@RTest1_Shell?3?3command?$CI?$CD?$CFd?$CJ?6?$AA@ 0000000180003708     plugin_test1.obj
- 0002:00000728       ??_C@_0CK@DEJPICLK@UModSys?3?3modules?3?3test?3?3test1?3?3R@ 0000000180003728     plugin_test1.obj
- 0002:00000758       ??_C@_0DD@HMBJLEH@UMODSYS_MODULE_NAME?$CItest?0test1?$CJ?3@ 0000000180003758     plugin_test1.obj
- 0002:00000790       ??_C@_0BA@NMEBLMNE@Test?51?5?9?5module?$AA@ 0000000180003790     plugin_test1.obj
- 0002:000007a0       ??_C@_05GENPCEMM@Test1?$AA@ 00000001800037a0     plugin_test1.obj
- 0002:000007a8       ??_C@_0BE@HJEBHPIG@RModuleReg?3?3open?$CI?$CJ?6?$AA@ 00000001800037a8     plugin_test1.obj
- 0002:000007c0       ??_C@_0BF@KIBBFLP@RModuleReg?3?3close?$CI?$CJ?6?$AA@ 00000001800037c0     plugin_test1.obj
- 0002:000007d8       ??_C@_09JGNMLHG@modobject?$AA@ 00000001800037d8     plugin_test1.obj
- 0002:000007e8       ??_C@_08FCBDOIAH@typeinfo?$AA@ 00000001800037e8     plugin_test1.obj
+ 0002:00000530       ??_C@_0P@HIBABMLC@write?9test?4txt?$AA@ 0000000180003530     plugin_test1.obj
+ 0002:00000540       ??_C@_0O@OKDOBIEG@?5?5read?3?5?$HL?$CFs?$HN?6?$AA@ 0000000180003540     plugin_test1.obj
+ 0002:00000550       ??_C@_0L@BBJPPDJK@?5?5written?6?$AA@ 0000000180003550     plugin_test1.obj
+ 0002:0000055c       ??_C@_01LFCBOECM@?4?$AA@   000000018000355c     plugin_test1.obj
+ 0002:00000560       ??_C@_08PEIJGPHF@pathname?$AA@ 0000000180003560     plugin_test1.obj
+ 0002:00000570       ??_C@_0BL@DDNILKEO@?5?5found?5archive?3?5?$CFs?5?$DN?$DO?5?$CFp?6?$AA@ 0000000180003570     plugin_test1.obj
+ 0002:00000590       ??_C@_0BC@MCEOIEIN@?5?5gen?5reader?3?5?$CFp?6?$AA@ 0000000180003590     plugin_test1.obj
+ 0002:000005a8       ??_C@_0BC@GCDHCAFA@?5?5gen?5writer?3?5?$CFp?6?$AA@ 00000001800035a8     plugin_test1.obj
+ 0002:000005c0       ??_C@_0BC@NIGGCDMG@RTest1_Shell?$CI?$CJ?5?$HL?6?$AA@ 00000001800035c0     plugin_test1.obj
+ 0002:000005d8       ??_C@_0DK@JIEMIEKA@UModSys?3?3modules?3?3test?3?3test1?3?3R@ 00000001800035d8     plugin_test1.obj
+ 0002:00000618       ??_C@_0CK@OICDGBDJ@?4?4?2?4?4?2?4?4?2src?2plugin?2test?2plugin_@ 0000000180003618     plugin_test1.obj
+ 0002:00000648       ??_C@_0BF@BMCPNMPN@?$HN?5?1?1?5RTest1_Shell?$CI?$CJ?6?$AA@ 0000000180003648     plugin_test1.obj
+ 0002:00000660       ??_C@_0DL@OIAHAJF@UModSys?3?3modules?3?3test?3?3test1?3?3R@ 0000000180003660     plugin_test1.obj
+ 0002:000006a0       ??_C@_0BB@MLDFLEML@?$HORTest1_Shell?$CI?$CJ?6?$AA@ 00000001800036a0     plugin_test1.obj
+ 0002:000006b8       ??_C@_0BJ@CCPCJEPP@RTest1_Shell?3?3connect?$CI?$CJ?6?$AA@ 00000001800036b8     plugin_test1.obj
+ 0002:000006d8       ??_C@_0BM@KBDBHLN@RTest1_Shell?3?3disconnect?$CI?$CJ?6?$AA@ 00000001800036d8     plugin_test1.obj
+ 0002:000006f8       ??_C@_0BI@PGLACHLJ@RTest1_Shell?3?3tick?$CI?$CFg?$CJ?6?$AA@ 00000001800036f8     plugin_test1.obj
+ 0002:00000710       ??_C@_0BM@JFIEEBE@RTest1_Shell?3?3command?$CI?$CD?$CFd?$CJ?6?$AA@ 0000000180003710     plugin_test1.obj
+ 0002:00000730       ??_C@_0CK@DEJPICLK@UModSys?3?3modules?3?3test?3?3test1?3?3R@ 0000000180003730     plugin_test1.obj
+ 0002:00000760       ??_C@_0DD@HMBJLEH@UMODSYS_MODULE_NAME?$CItest?0test1?$CJ?3@ 0000000180003760     plugin_test1.obj
+ 0002:00000798       ??_C@_0BA@NMEBLMNE@Test?51?5?9?5module?$AA@ 0000000180003798     plugin_test1.obj
+ 0002:000007a8       ??_C@_05GENPCEMM@Test1?$AA@ 00000001800037a8     plugin_test1.obj
+ 0002:000007b0       ??_C@_0BE@HJEBHPIG@RModuleReg?3?3open?$CI?$CJ?6?$AA@ 00000001800037b0     plugin_test1.obj
+ 0002:000007c8       ??_C@_0BF@KIBBFLP@RModuleReg?3?3close?$CI?$CJ?6?$AA@ 00000001800037c8     plugin_test1.obj
+ 0002:000007e0       ??_C@_09JGNMLHG@modobject?$AA@ 00000001800037e0     plugin_test1.obj
+ 0002:000007f0       ??_C@_08FCBDOIAH@typeinfo?$AA@ 00000001800037f0     plugin_test1.obj
  0002:00000808       ??_7IRoot@core@UModSys@@6B@ 0000000180003808     plugin_test1.obj
  0002:00000848       ??_7RTest1_Shell@test1@test@modules@UModSys@@6B@ 0000000180003848     plugin_test1.obj
  0002:000008c8       ??_7RGenerator@test1@test@modules@UModSys@@6B@ 00000001800038c8     plugin_test1.obj
@@ -269,9 +271,9 @@
  0002:00001068       __rtc_izz                  0000000180004068     MSVCRT:_initsect_.obj
  0002:00001070       __rtc_taa                  0000000180004070     MSVCRT:_initsect_.obj
  0002:00001078       __rtc_tzz                  0000000180004078     MSVCRT:_initsect_.obj
- 0002:00001334       __IMPORT_DESCRIPTOR_MSVCR90 0000000180004334     MSVCRT:MSVCR90.dll
- 0002:00001348       __IMPORT_DESCRIPTOR_KERNEL32 0000000180004348     kernel32:KERNEL32.dll
- 0002:0000135c       __NULL_IMPORT_DESCRIPTOR   000000018000435c     MSVCRT:MSVCR90.dll
+ 0002:0000134c       __IMPORT_DESCRIPTOR_MSVCR90 000000018000434c     MSVCRT:MSVCR90.dll
+ 0002:00001360       __IMPORT_DESCRIPTOR_KERNEL32 0000000180004360     kernel32:KERNEL32.dll
+ 0002:00001374       __NULL_IMPORT_DESCRIPTOR   0000000180004374     MSVCRT:MSVCR90.dll
  0003:00000000       ??_R0?AVtype_info@@@8      0000000180005000     MSVCRT:ti_inst.obj
  0003:00000020       __native_dllmain_reason    0000000180005020     MSVCRT:natstart.obj
  0003:00000024       __native_vcclrit_reason    0000000180005024     MSVCRT:natstart.obj
@@ -320,73 +322,74 @@
  0003:00000730       __onexitend                0000000180005730     <common>
  0003:00000738       __onexitbegin              0000000180005738     <common>
 
- entry point at        0001:000012d0
+ entry point at        0001:00001274
 
  Static symbols
 
- 0001:00000edc       pre_c_init                 0000000180001edc f   MSVCRT:crtdll.obj
- 0001:00001198       __DllMainCRTStartup        0000000180002198 f   MSVCRT:crtdll.obj
- 0001:00001620       _onexit$fin$0              0000000180002620 f   MSVCRT:atonexit.obj
- 0001:00001639       __DllMainCRTStartup$filt$0 0000000180002639 f   MSVCRT:crtdll.obj
- 0001:00001669       __DllMainCRTStartup$fin$1  0000000180002669 f   MSVCRT:crtdll.obj
- 0001:00001682       ?filt$0@?0??__ArrayUnwind@@YAXPEAX_KHP6AX0@Z@Z@4HA 0000000180002682 f   MSVCRT:ehvecdtr.obj
- 0001:000016c1       ?fin$0@?0???_M@YAXPEAX_KHP6AX0@Z@Z@4HA 00000001800026c1 f   MSVCRT:ehvecdtr.obj
- 0001:000016f0       _IsNonwritableInCurrentImage$filt$0 00000001800026f0 f   MSVCRT:pesect.obj
- 0001:00001711       ?dtor$0@?0???_GRTest1_Shell@test1@test@modules@UModSys@@UEAAPEAXI@Z@4HA 0000000180002711 f    CIL library: CIL module
- 0001:00001729       ?dtor$0@?0??suicide@RTest1_Shell@test1@test@modules@UModSys@@UEAAXXZ@4HA 0000000180002729 f    CIL library: CIL module
- 0001:00001741       ?dtor$0@?0??file_test@RTest1_Shell@test1@test@modules@UModSys@@QEAAXXZ@4HA 0000000180002741 f    CIL library: CIL module
- 0001:00001761       ?dtor$1@?0??file_test@RTest1_Shell@test1@test@modules@UModSys@@QEAAXXZ@4HA 0000000180002761 f    CIL library: CIL module
- 0001:00001781       ?dtor$2@?0??file_test@RTest1_Shell@test1@test@modules@UModSys@@QEAAXXZ@4HA 0000000180002781 f    CIL library: CIL module
- 0001:000017a1       ?dtor$5@?0??file_test@RTest1_Shell@test1@test@modules@UModSys@@QEAAXXZ@4HA 00000001800027a1 f    CIL library: CIL module
- 0001:000017c1       ?dtor$3@?0??file_test@RTest1_Shell@test1@test@modules@UModSys@@QEAAXXZ@4HA 00000001800027c1 f    CIL library: CIL module
- 0001:000017e1       ?dtor$8@?0??file_test@RTest1_Shell@test1@test@modules@UModSys@@QEAAXXZ@4HA 00000001800027e1 f    CIL library: CIL module
- 0001:000017fc       ?dtor$0@?0??generate@RGenerator@test1@test@modules@UModSys@@UEAA_NAEAU?$TRefObject@UIRefObject@core@UModSys@@@tl@5@PEBUSUniquePointerInfo@core@5@AEBUSParameters@95@@Z@4HA 00000001800027fc f    CIL library: CIL module
- 0001:0000181c       ?dtor$1@?0??generate@RGenerator@test1@test@modules@UModSys@@UEAA_NAEAU?$TRefObject@UIRefObject@core@UModSys@@@tl@5@PEBUSUniquePointerInfo@core@5@AEBUSParameters@95@@Z@4HA 000000018000281c f    CIL library: CIL module
- 0001:00001834       ??__E?s_modreg@RModuleReg@test1@test@modules@UModSys@@2U12345@A@@YAXXZ 0000000180002834 f    CIL library: CIL module
- 0001:000018c4       ??__E?s_modreg_chain@RModuleReg@test1@test@modules@UModSys@@2USModuleRegChain@base@5@A@@YAXXZ 00000001800028c4 f    CIL library: CIL module
- 0001:00001900       ??__E?s_uid@RGenerator@test1@test@modules@UModSys@@2USUniquePointer@core@5@A@@YAXXZ 0000000180002900 f    CIL library: CIL module
- 0001:00001934       ??__E?s_id@?$TObjectUniqueID@UIRoot@core@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002934 f    CIL library: CIL module
- 0001:00001968       ??__E?s_id@?$TObjectUniqueID@UIRefObject@core@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002968 f    CIL library: CIL module
- 0001:0000199c       ??__E?s_id@?$TObjectUniqueID@UIParameters@core@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 000000018000299c f    CIL library: CIL module
- 0001:000019d0       ??__E?s_id@?$TObjectUniqueID@UIModule@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 00000001800029d0 f    CIL library: CIL module
- 0001:00001a04       ??__E?s_id@?$TObjectUniqueID@UIModuleLibrary@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002a04 f    CIL library: CIL module
- 0001:00001a38       ??__E?s_id@?$TObjectUniqueID@UIModObject@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002a38 f    CIL library: CIL module
- 0001:00001a6c       ??__E?s_id@?$TObjectUniqueID@UIGenerator@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002a6c f    CIL library: CIL module
- 0001:00001aa0       ??__E?s_id@?$TObjectUniqueID@UIShell@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002aa0 f    CIL library: CIL module
- 0001:00001ad4       ??__E?s_id@?$TObjectUniqueID@UIConsole@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002ad4 f    CIL library: CIL module
- 0001:00001b08       ??__E?s_id@?$TObjectUniqueID@UISystem@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002b08 f    CIL library: CIL module
- 0001:00001b3c       ??__E?s_id@?$TObjectUniqueID@UIStreamReader@libmedia@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002b3c f    CIL library: CIL module
- 0001:00001b70       ??__E?s_id@?$TObjectUniqueID@UIStreamWriter@libmedia@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002b70 f    CIL library: CIL module
- 0001:00001ba4       ??__E?s_id@?$TObjectUniqueID@UIDataArchive@libmedia@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002ba4 f    CIL library: CIL module
- 0001:00001bd8       ??__E?s_id@?$TObjectUniqueID@URTest1_Shell@test1@test@modules@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002bd8 f    CIL library: CIL module
- 0001:00001c0c       ??__E?s_id@?$TObjectUniqueID@URGenerator@test1@test@modules@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002c0c f    CIL library: CIL module
- 0001:00001c40       ??__EM@UModSys@@YAXXZ      0000000180002c40 f    CIL library: CIL module
- 0001:00001c4c       ??__E?root@SModuleRegChain@base@UModSys@@2U123@A@@YAXXZ 0000000180002c4c f    CIL library: CIL module
- 0001:00001c58       ??__E?s_library@RModuleLibraryReg_Chain@base@UModSys@@2U123@A@@YAXXZ 0000000180002c58 f    CIL library: CIL module
- 0001:00001c64       ??__E?root@SUniquePointer@core@UModSys@@2U123@A@@YAXXZ 0000000180002c64 f    CIL library: CIL module
- 0001:00001c70       ??__F?s_modreg@RModuleReg@test1@test@modules@UModSys@@2U12345@A@@YAXXZ 0000000180002c70 f    CIL library: CIL module
- 0001:00001c80       ??__F?s_modreg_chain@RModuleReg@test1@test@modules@UModSys@@2USModuleRegChain@base@5@A@@YAXXZ 0000000180002c80 f    CIL library: CIL module
- 0001:00001cc0       ??__F?s_uid@RGenerator@test1@test@modules@UModSys@@2USUniquePointer@core@5@A@@YAXXZ 0000000180002cc0 f    CIL library: CIL module
- 0001:00001ccc       ??__Fh@?1??s_holder@RGenerator@test1@test@modules@UModSys@@SAAEAU?$TTypeStaticHolder@URGenerator@test1@test@modules@UModSys@@@tl@5@XZ@YAXXZ 0000000180002ccc f    CIL library: CIL module
- 0001:00001cf4       ??__F?s_id@?$TObjectUniqueID@URGenerator@test1@test@modules@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002cf4 f    CIL library: CIL module
- 0001:00001d00       ??__F?s_id@?$TObjectUniqueID@URTest1_Shell@test1@test@modules@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d00 f    CIL library: CIL module
- 0001:00001d0c       ??__F?s_id@?$TObjectUniqueID@UIDataArchive@libmedia@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d0c f    CIL library: CIL module
- 0001:00001d18       ??__F?s_id@?$TObjectUniqueID@UIStreamWriter@libmedia@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d18 f    CIL library: CIL module
- 0001:00001d24       ??__F?s_id@?$TObjectUniqueID@UIStreamReader@libmedia@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d24 f    CIL library: CIL module
- 0001:00001d30       ??__F?s_id@?$TObjectUniqueID@UISystem@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d30 f    CIL library: CIL module
- 0001:00001d3c       ??__F?s_id@?$TObjectUniqueID@UIConsole@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d3c f    CIL library: CIL module
- 0001:00001d48       ??__F?s_id@?$TObjectUniqueID@UIShell@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d48 f    CIL library: CIL module
- 0001:00001d54       ??__F?s_id@?$TObjectUniqueID@UIGenerator@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d54 f    CIL library: CIL module
- 0001:00001d60       ??__F?s_id@?$TObjectUniqueID@UIModObject@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d60 f    CIL library: CIL module
- 0001:00001d6c       ??__F?s_id@?$TObjectUniqueID@UIModuleLibrary@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d6c f    CIL library: CIL module
- 0001:00001d78       ??__F?s_id@?$TObjectUniqueID@UIModule@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d78 f    CIL library: CIL module
- 0001:00001d84       ??__F?s_id@?$TObjectUniqueID@UIParameters@core@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d84 f    CIL library: CIL module
- 0001:00001d90       ??__F?s_id@?$TObjectUniqueID@UIRefObject@core@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d90 f    CIL library: CIL module
- 0001:00001d9c       ??__F?s_id@?$TObjectUniqueID@UIRoot@core@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d9c f    CIL library: CIL module
- 0001:00001da8       ??__FM@UModSys@@YAXXZ      0000000180002da8 f    CIL library: CIL module
- 0001:00001dac       ??__F?root@SModuleRegChain@base@UModSys@@2U123@A@@YAXXZ 0000000180002dac f    CIL library: CIL module
- 0001:00001dec       ??__F?s_library@RModuleLibraryReg_Chain@base@UModSys@@2U123@A@@YAXXZ 0000000180002dec f    CIL library: CIL module
- 0001:00001dfc       ??__F?root@SUniquePointer@core@UModSys@@2U123@A@@YAXXZ 0000000180002dfc f    CIL library: CIL module
+ 0001:00000e80       pre_c_init                 0000000180001e80 f   MSVCRT:crtdll.obj
+ 0001:0000113c       __DllMainCRTStartup        000000018000213c f   MSVCRT:crtdll.obj
+ 0001:000015d0       _onexit$fin$0              00000001800025d0 f   MSVCRT:atonexit.obj
+ 0001:000015e9       __DllMainCRTStartup$filt$0 00000001800025e9 f   MSVCRT:crtdll.obj
+ 0001:00001619       __DllMainCRTStartup$fin$1  0000000180002619 f   MSVCRT:crtdll.obj
+ 0001:00001632       ?filt$0@?0??__ArrayUnwind@@YAXPEAX_KHP6AX0@Z@Z@4HA 0000000180002632 f   MSVCRT:ehvecdtr.obj
+ 0001:00001671       ?fin$0@?0???_M@YAXPEAX_KHP6AX0@Z@Z@4HA 0000000180002671 f   MSVCRT:ehvecdtr.obj
+ 0001:000016a0       _IsNonwritableInCurrentImage$filt$0 00000001800026a0 f   MSVCRT:pesect.obj
+ 0001:000016c1       ?dtor$0@?0???_GRTest1_Shell@test1@test@modules@UModSys@@UEAAPEAXI@Z@4HA 00000001800026c1 f    CIL library: CIL module
+ 0001:000016d9       ?dtor$0@?0??suicide@RTest1_Shell@test1@test@modules@UModSys@@UEAAXXZ@4HA 00000001800026d9 f    CIL library: CIL module
+ 0001:000016f1       ?dtor$0@?0??file_test2@RTest1_Shell@test1@test@modules@UModSys@@QEAAXXZ@4HA 00000001800026f1 f    CIL library: CIL module
+ 0001:00001711       ?dtor$1@?0??file_test2@RTest1_Shell@test1@test@modules@UModSys@@QEAAXXZ@4HA 0000000180002711 f    CIL library: CIL module
+ 0001:00001731       ?dtor$2@?0??file_test2@RTest1_Shell@test1@test@modules@UModSys@@QEAAXXZ@4HA 0000000180002731 f    CIL library: CIL module
+ 0001:00001751       ?dtor$3@?0??file_test2@RTest1_Shell@test1@test@modules@UModSys@@QEAAXXZ@4HA 0000000180002751 f    CIL library: CIL module
+ 0001:00001771       ?dtor$7@?0??file_test2@RTest1_Shell@test1@test@modules@UModSys@@QEAAXXZ@4HA 0000000180002771 f    CIL library: CIL module
+ 0001:00001791       ?dtor$4@?0??file_test2@RTest1_Shell@test1@test@modules@UModSys@@QEAAXXZ@4HA 0000000180002791 f    CIL library: CIL module
+ 0001:000017b1       ?dtor$5@?0??file_test2@RTest1_Shell@test1@test@modules@UModSys@@QEAAXXZ@4HA 00000001800027b1 f    CIL library: CIL module
+ 0001:000017cc       ?dtor$0@?0??generate@RGenerator@test1@test@modules@UModSys@@UEAA_NAEAU?$TRefObject@UIRefObject@core@UModSys@@@tl@5@PEBUSUniquePointerInfo@core@5@AEBUSParameters@95@@Z@4HA 00000001800027cc f    CIL library: CIL module
+ 0001:000017ec       ?dtor$1@?0??generate@RGenerator@test1@test@modules@UModSys@@UEAA_NAEAU?$TRefObject@UIRefObject@core@UModSys@@@tl@5@PEBUSUniquePointerInfo@core@5@AEBUSParameters@95@@Z@4HA 00000001800027ec f    CIL library: CIL module
+ 0001:00001804       ??__E?s_modreg@RModuleReg@test1@test@modules@UModSys@@2U12345@A@@YAXXZ 0000000180002804 f    CIL library: CIL module
+ 0001:00001894       ??__E?s_modreg_chain@RModuleReg@test1@test@modules@UModSys@@2USModuleRegChain@base@5@A@@YAXXZ 0000000180002894 f    CIL library: CIL module
+ 0001:000018d0       ??__E?s_uid@RGenerator@test1@test@modules@UModSys@@2USUniquePointer@core@5@A@@YAXXZ 00000001800028d0 f    CIL library: CIL module
+ 0001:00001904       ??__E?s_id@?$TObjectUniqueID@UIRoot@core@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002904 f    CIL library: CIL module
+ 0001:00001938       ??__E?s_id@?$TObjectUniqueID@UIRefObject@core@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002938 f    CIL library: CIL module
+ 0001:0000196c       ??__E?s_id@?$TObjectUniqueID@UIParameters@core@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 000000018000296c f    CIL library: CIL module
+ 0001:000019a0       ??__E?s_id@?$TObjectUniqueID@UIModule@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 00000001800029a0 f    CIL library: CIL module
+ 0001:000019d4       ??__E?s_id@?$TObjectUniqueID@UIModuleLibrary@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 00000001800029d4 f    CIL library: CIL module
+ 0001:00001a08       ??__E?s_id@?$TObjectUniqueID@UIModObject@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002a08 f    CIL library: CIL module
+ 0001:00001a3c       ??__E?s_id@?$TObjectUniqueID@UIGenerator@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002a3c f    CIL library: CIL module
+ 0001:00001a70       ??__E?s_id@?$TObjectUniqueID@UIShell@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002a70 f    CIL library: CIL module
+ 0001:00001aa4       ??__E?s_id@?$TObjectUniqueID@UIConsole@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002aa4 f    CIL library: CIL module
+ 0001:00001ad8       ??__E?s_id@?$TObjectUniqueID@UISystem@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002ad8 f    CIL library: CIL module
+ 0001:00001b0c       ??__E?s_id@?$TObjectUniqueID@UIStreamReader@libmedia@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002b0c f    CIL library: CIL module
+ 0001:00001b40       ??__E?s_id@?$TObjectUniqueID@UIStreamWriter@libmedia@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002b40 f    CIL library: CIL module
+ 0001:00001b74       ??__E?s_id@?$TObjectUniqueID@UIDataArchive@libmedia@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002b74 f    CIL library: CIL module
+ 0001:00001ba8       ??__E?s_id@?$TObjectUniqueID@URTest1_Shell@test1@test@modules@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002ba8 f    CIL library: CIL module
+ 0001:00001bdc       ??__E?s_id@?$TObjectUniqueID@URGenerator@test1@test@modules@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002bdc f    CIL library: CIL module
+ 0001:00001c10       ??__EM@UModSys@@YAXXZ      0000000180002c10 f    CIL library: CIL module
+ 0001:00001c1c       ??__E?root@SModuleRegChain@base@UModSys@@2U123@A@@YAXXZ 0000000180002c1c f    CIL library: CIL module
+ 0001:00001c28       ??__E?s_library@RModuleLibraryReg_Chain@base@UModSys@@2U123@A@@YAXXZ 0000000180002c28 f    CIL library: CIL module
+ 0001:00001c34       ??__E?root@SUniquePointer@core@UModSys@@2U123@A@@YAXXZ 0000000180002c34 f    CIL library: CIL module
+ 0001:00001c40       ??__F?s_modreg@RModuleReg@test1@test@modules@UModSys@@2U12345@A@@YAXXZ 0000000180002c40 f    CIL library: CIL module
+ 0001:00001c50       ??__F?s_modreg_chain@RModuleReg@test1@test@modules@UModSys@@2USModuleRegChain@base@5@A@@YAXXZ 0000000180002c50 f    CIL library: CIL module
+ 0001:00001c90       ??__F?s_uid@RGenerator@test1@test@modules@UModSys@@2USUniquePointer@core@5@A@@YAXXZ 0000000180002c90 f    CIL library: CIL module
+ 0001:00001c9c       ??__Fh@?1??s_holder@RGenerator@test1@test@modules@UModSys@@SAAEAU?$TTypeStaticHolder@URGenerator@test1@test@modules@UModSys@@@tl@5@XZ@YAXXZ 0000000180002c9c f    CIL library: CIL module
+ 0001:00001cc4       ??__F?s_id@?$TObjectUniqueID@URGenerator@test1@test@modules@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002cc4 f    CIL library: CIL module
+ 0001:00001cd0       ??__F?s_id@?$TObjectUniqueID@URTest1_Shell@test1@test@modules@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002cd0 f    CIL library: CIL module
+ 0001:00001cdc       ??__F?s_id@?$TObjectUniqueID@UIDataArchive@libmedia@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002cdc f    CIL library: CIL module
+ 0001:00001ce8       ??__F?s_id@?$TObjectUniqueID@UIStreamWriter@libmedia@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002ce8 f    CIL library: CIL module
+ 0001:00001cf4       ??__F?s_id@?$TObjectUniqueID@UIStreamReader@libmedia@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002cf4 f    CIL library: CIL module
+ 0001:00001d00       ??__F?s_id@?$TObjectUniqueID@UISystem@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d00 f    CIL library: CIL module
+ 0001:00001d0c       ??__F?s_id@?$TObjectUniqueID@UIConsole@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d0c f    CIL library: CIL module
+ 0001:00001d18       ??__F?s_id@?$TObjectUniqueID@UIShell@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d18 f    CIL library: CIL module
+ 0001:00001d24       ??__F?s_id@?$TObjectUniqueID@UIGenerator@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d24 f    CIL library: CIL module
+ 0001:00001d30       ??__F?s_id@?$TObjectUniqueID@UIModObject@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d30 f    CIL library: CIL module
+ 0001:00001d3c       ??__F?s_id@?$TObjectUniqueID@UIModuleLibrary@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d3c f    CIL library: CIL module
+ 0001:00001d48       ??__F?s_id@?$TObjectUniqueID@UIModule@base@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d48 f    CIL library: CIL module
+ 0001:00001d54       ??__F?s_id@?$TObjectUniqueID@UIParameters@core@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d54 f    CIL library: CIL module
+ 0001:00001d60       ??__F?s_id@?$TObjectUniqueID@UIRefObject@core@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d60 f    CIL library: CIL module
+ 0001:00001d6c       ??__F?s_id@?$TObjectUniqueID@UIRoot@core@UModSys@@@tl@UModSys@@2USUniquePointer@core@3@A@@YAXXZ 0000000180002d6c f    CIL library: CIL module
+ 0001:00001d78       ??__FM@UModSys@@YAXXZ      0000000180002d78 f    CIL library: CIL module
+ 0001:00001d7c       ??__F?root@SModuleRegChain@base@UModSys@@2U123@A@@YAXXZ 0000000180002d7c f    CIL library: CIL module
+ 0001:00001dbc       ??__F?s_library@RModuleLibraryReg_Chain@base@UModSys@@2U123@A@@YAXXZ 0000000180002dbc f    CIL library: CIL module
+ 0001:00001dcc       ??__F?root@SUniquePointer@core@UModSys@@2U123@A@@YAXXZ 0000000180002dcc f    CIL library: CIL module
 
  Exports
 

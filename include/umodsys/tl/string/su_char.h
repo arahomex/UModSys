@@ -25,7 +25,6 @@ inline size_t slen(const core::BChar* s)
 { 
   return ::strlen(s);
 }
-
 template<>
 inline size_t slen(const core::BChar* s, size_t maxn)
 {
@@ -38,7 +37,6 @@ inline void scpy(core::BChar* x, const core::BChar* s)
 { 
   ::strcpy(x, s); 
 }
-
 template<>
 inline void scpy(core::BChar* x, const core::BChar* s, size_t maxn)
 { 
@@ -50,13 +48,11 @@ inline int scmp(const core::BChar* a, const core::BChar* b)
 {
   return ::strcmp(a, b);
 }
-
 template<>
 inline int scmp(const core::BChar* a, const core::BChar* b, size_t maxn)
 {
   return ::strncmp(a, b, maxn);
 }
-
 template<>
 inline int scmp(const core::BChar* a, size_t la, const core::BChar* b)
 {
@@ -69,13 +65,11 @@ inline bool seq(const core::BChar* a, const core::BChar* b)
 {
   return ::strcmp(a, b)==0;
 }
-
 template<>
 inline bool seq(const core::BChar* a, const core::BChar* b, size_t maxn)
 {
   return ::strncmp(a, b, maxn)==0;
 }
-
 template<>
 inline bool seq(const core::BChar* a, size_t la, const core::BChar* b)
 {
@@ -87,9 +81,19 @@ inline const core::BChar* schr(const core::BChar* a, core::BChar ch)
 { 
   return ::strchr(a, ch); 
 }
+template<>
+inline core::BChar* schr(core::BChar* a, core::BChar ch)
+{ 
+  return ::strchr(a, ch); 
+}
 
 template<>
 inline const core::BChar* sstr(const core::BChar* a, const core::BChar* ch)
+{
+  return ::strstr(a, ch);
+}
+template<>
+inline core::BChar* sstr(core::BChar* a, const core::BChar* ch)
 {
   return ::strstr(a, ch);
 }

@@ -1,0 +1,102 @@
+
+//***************************************
+// RStreamReader_FILE::
+//***************************************
+
+#define OSDIR_START(rfail, name, req) \
+  if((pm & req)==0 || ~name==0) \
+    return rfail; \
+  SVFileName xname(prefix(), name, false); \
+  if(!xname.valid) \
+    return rfail; \
+
+struct RDataArchiver_OsDir : public IDataArchive 
+{
+  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(media,stdio)::RDataArchiver_OsDir, 1, IDataArchive)
+  UMODSYS_REFOBJECT_REFOTHER(RGenerator);
+  //
+  int pm;
+  DStringShared prefix;
+  //
+  RDataArchiver_OsDir(DOwner *own, const SParameters& args)
+  : refs(own) {
+    open(args);
+  }
+  ~RDataArchiver_OsDir(void) {
+  }
+  //
+  static bool scan_entries(const DCString &prefix, const DCString &mask, DIFileInfoArray& list) {
+#if 0
+    SMediaFileInfo tmp, *x = list.list ? &tmp : NULL;
+    if(platform::_fs_scan(prefix, "", mask, false, x, &list, use_scan))
+      return true;
+#endif
+    return false;
+  }
+  static bool use_scan(void *context, BCStr path, BCStr name, SFileInfo* inf) {
+#if 0
+    DIFileInfoArray* s = (DIFileInfoArray*)context;
+    if(s->list==NULL) {
+      s->count++;
+      return true;
+    }
+    if(inf==NULL)
+      return false; // bad INF
+    //
+    if(s->count>=s->max_count)
+      return false;
+    SMediaFileInfo& x = s->list[s->count++];
+    x = *inf;
+    x.name.alloc(name);
+#endif
+    return true;
+  }
+  //
+  inline void open(const SParameters& args) { 
+    BCStr filename = "."; pm = mp_All;
+    if(args.get("path", filename) || args.get("pathname", filename)) {
+//      open(filename);
+    }
+    args.get("permissions", pm);
+    SVFileName xname(filename, true);
+    prefix = xname+1;
+  }
+  inline bool validate_construction(void) const { return true; }
+  //
+  bool load_data(SMemShared& mem, const DCString& media_name, int flags) {
+    OSDIR_START(false, media_name, mp_Read);
+    return false;
+  }
+  IStreamReader::P load_reader(const DCString& media_name, int flags) {
+    OSDIR_START(NULL, media_name, mp_Read);
+    IStreamReader::P rv;
+    if(!ValidateConstruction(rv, new(M()) RStreamReader_FILE(refs.owner, xname)))
+      return NULL;
+    return rv;
+  }
+  bool save_data(const SMemShared& mem, const DCString& media_name, int flags) {
+    OSDIR_START(false, media_name, mp_Write);
+    return false;
+  }
+  IStreamWriter::P save_writer(const DCString& media_name, int flags) {
+    OSDIR_START(NULL, media_name, mp_Write);
+    IStreamWriter::P rv;
+    // mf(flags, mf_safe::shift)
+    if(!ValidateConstruction(rv, new(M()) RStreamWriter_FILE(refs.owner, xname, mf_safe::yes(flags))))
+      return NULL;
+    return rv;
+  }
+  bool get_entrylist(const DCString &mask, tl::TIStackSocket<SFileInfo>& list) {
+    OSDIR_START(0, mask, mp_List);
+    return false;
+  }
+  int get_permissions(void) {
+    return pm;
+  }
+};
+
+#undef OSDIR_START
+
+//***************************************
+// END
+//***************************************

@@ -13,7 +13,7 @@ struct RTest1_Shell : public IShell {
   //
   void* memblock;
   //
-  void file_test(void)
+  void file_test1(void)
   {
     libmedia::IStreamReader::P fr;
     libmedia::IStreamWriter::P fw;
@@ -44,13 +44,44 @@ struct RTest1_Shell : public IShell {
       }
     }
   }
+  void file_test2(void)
+  {
+    libmedia::IStreamReader::P fr;
+    libmedia::IStreamWriter::P fw;
+    libmedia::IDataArchive::P arch;
+    if(TypeId found=M.t_firstobjname<libmedia::IDataArchive>("*::stdio::*")) {
+      TParametersA<1024> params;
+      params.add("pathname", ".");
+      M.t_generate(arch, found, params);
+      M.con().put(0, "  found archive: %s => %p\n", found->name, arch());
+    }
+    if(arch.valid()) {
+      fr = arch->load_reader("read-test.txt");
+      M.con().put(0, "  gen reader: %p\n", fr());
+      fw = arch->save_writer("write-test.txt", libmedia::mf_safe::Yes);
+      M.con().put(0, "  gen writer: %p\n", fw());
+    }
+    if(fr.valid()) {
+      char line[1024];
+      size_t req = core::scalar_min(sizeof(line)-1, size_t(fr->reader_size()));
+      line[req] = 0;
+      if(fr->reader_read(line, req)) {
+        M.con().put(0, "  read: {%s}\n", line);
+      }
+      if(fw.valid()) {
+        fw->writer_copy(fr, 0, fr->reader_size());
+        fw->writer_close();
+        M.con().put(0, "  written\n");
+      }
+    }
+  }
   //
-
   RTest1_Shell(DOwner *own) : refs(own) {
     M.con().put(0, "RTest1_Shell() {\n");
     memblock = M().mem_alloc(1024, _UMODSYS_SOURCEINFO);
     //
-    file_test();
+//    file_test1();
+    file_test2();
     //
     M.con().put(0, "} // RTest1_Shell()\n");
   }

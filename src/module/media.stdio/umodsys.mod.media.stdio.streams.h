@@ -22,12 +22,16 @@ struct RStreamReader_FILE : public IStreamReader
   FILE *file;
   DFilePosition endsize;
   //
+  ~RStreamReader_FILE(void) {
+    reader_close();
+  }
   RStreamReader_FILE(DOwner *own, const SParameters& args)
   : refs(own), file(NULL), endsize(0) {
     open(args);
   }
-  ~RStreamReader_FILE(void) {
-    reader_close();
+  RStreamReader_FILE(DOwner *own, BCStr osname)
+  : refs(own), file(NULL), endsize(0) {
+    open(osname);
   }
   //
   inline void open(const SParameters& args) { 
@@ -36,7 +40,7 @@ struct RStreamReader_FILE : public IStreamReader
       open(filename);
     }
   }
-  inline void open(const BCStr osname) { file = syshlp::c_fopen(osname, "rb"); get_size(); }
+  inline void open(BCStr osname) { file = syshlp::c_fopen(osname, "rb"); get_size(); }
   inline void open(FILE *f) { file = f; get_size(); }
   inline bool validate_construction(void) const { return file!=NULL; }
   inline void get_size(void) { endsize = file_get_size(file); }
@@ -90,12 +94,16 @@ struct RStreamWriter_FILE : public IStreamWriter
   BWStr handle;
   DFilePosition endsize;
   //
+  ~RStreamWriter_FILE(void) {
+    writer_close();
+  }
   RStreamWriter_FILE(DOwner *own, const SParameters& args)
   : refs(own), handle(NULL), file(NULL), endsize(0), changed(true) {
     open(args);
   }
-  ~RStreamWriter_FILE(void) {
-    writer_close();
+  RStreamWriter_FILE(DOwner *own, BCStr osname, bool safe)
+  : refs(own), handle(NULL), file(NULL), endsize(0), changed(true) {
+    open(osname, safe);
   }
   //
   inline void open(const SParameters& args) { 
@@ -106,7 +114,7 @@ struct RStreamWriter_FILE : public IStreamWriter
       open(filename, safe);
     }
   }
-  inline void open(const BCStr osname, bool safe) { 
+  inline void open(BCStr osname, bool safe) { 
     if(safe) {
       file = syshlp::c_fopentemp(handle, osname);
     } else {

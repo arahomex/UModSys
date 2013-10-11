@@ -51,6 +51,23 @@ bool syshlp::gracial_cpy(wchar_t *dest, int destsize, const wchar_t* src[], int 
 //***************************************
 //***************************************
 
+size_t syshlp::safe_vsnprintf(char* buf, size_t nbuf, const char* fmt, va_list va)
+{
+  size_t rv = _vsnprintf(buf, nbuf, fmt, va);
+  if(rv<0) { *buf = 0; rv=0; } else if(rv==nbuf) buf[nbuf-1] = 0;
+  return rv;
+}
+
+size_t syshlp::safe_vsnprintf(wchar_t* buf, size_t nbuf, const wchar_t* fmt, va_list va)
+{
+  size_t rv = _vsnwprintf(buf, nbuf, fmt, va);
+  if(rv<0) { *buf = 0; rv=0; } else if(rv==nbuf) buf[nbuf-1] = 0;
+  return rv;
+}
+
+//***************************************
+//***************************************
+
 void syshlp::path_os_uni(wchar_t* path)
 {
   register wchar_t *p;

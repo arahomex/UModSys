@@ -46,47 +46,29 @@ struct TCharOptions {
 //***************************************
 // string processor functions
 
-template<typename CharT>
-size_t slen(const CharT* s);
+template<typename CharT> size_t slen(const CharT* s);
+template<typename CharT> size_t slen(const CharT* s, size_t maxn);
 
-template<typename CharT>
-size_t slen(const CharT* s, size_t maxn);
+template<typename CharT> void scpy(CharT* x, const CharT* s);
+template<typename CharT> void scpy(CharT* x, const CharT* s, size_t maxn);
 
-template<typename CharT>
-void scpy(CharT* x, const CharT* s);
+template<typename CharT> int scmp(const CharT* a, const CharT* b);
+template<typename CharT> int scmp(const CharT* a, const CharT* b, size_t maxn);
+template<typename CharT> int scmp(const CharT* a, size_t la, const CharT* b);
 
-template<typename CharT>
-void scpy(CharT* x, const CharT* s, size_t maxn);
+template<typename CharT> bool seq(const CharT* a, const CharT* b);
+template<typename CharT> bool seq(const CharT* a, const CharT* b, size_t maxn);
+template<typename CharT> bool seq(const CharT* a, size_t la, const CharT* b);
 
-template<typename CharT>
-int scmp(const CharT* a, const CharT* b);
+template<typename CharT> const CharT* schr(const CharT* a, CharT ch);
+template<typename CharT> const CharT* schr(const CharT* a, CharT ch, size_t maxn);
+template<typename CharT> CharT* schr(CharT* a, CharT ch);
+template<typename CharT> CharT* schr(CharT* a, CharT ch, size_t maxn);
 
-template<typename CharT>
-int scmp(const CharT* a, const CharT* b, size_t maxn);
-
-template<typename CharT>
-int scmp(const CharT* a, size_t la, const CharT* b);
-
-template<typename CharT>
-bool seq(const CharT* a, const CharT* b);
-
-template<typename CharT>
-bool seq(const CharT* a, const CharT* b, size_t maxn);
-
-template<typename CharT>
-bool seq(const CharT* a, size_t la, const CharT* b);
-
-template<typename CharT>
-const CharT* schr(const CharT* a, CharT ch);
-
-template<typename CharT>
-const CharT* schr(const CharT* a, CharT ch, size_t maxn);
-
-template<typename CharT>
-const CharT* sstr(const CharT* a, const CharT* ch);
-
-template<typename CharT>
-const CharT* sstr(const CharT* a, const CharT* ch, size_t maxn);
+template<typename CharT> const CharT* sstr(const CharT* a, const CharT* ch);
+template<typename CharT> const CharT* sstr(const CharT* a, const CharT* ch, size_t maxn);
+template<typename CharT> CharT* sstr(CharT* a, const CharT* ch);
+template<typename CharT> CharT* sstr(CharT* a, const CharT* ch, size_t maxn);
 
 template<typename CharT>
 inline void scpyz(CharT* x, const CharT* s, size_t maxn) 

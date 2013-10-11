@@ -19,11 +19,14 @@ const int MAX_FILENAME_LEN = 1024;
 template<size_t Length=4096> struct U8String;
 template<size_t Length=1024> struct U16String;
 
-extern bool gracial_convert(wchar_t *dest, int destsize, const char* src, int srcsize); // add NULL at end
-extern bool gracial_convert(char *dest, int destsize, const wchar_t* src, int srcsize); // add NULL at end
+bool gracial_convert(wchar_t *dest, int destsize, const char* src, int srcsize); // add NULL at end
+bool gracial_convert(char *dest, int destsize, const wchar_t* src, int srcsize); // add NULL at end
 
-extern bool gracial_cpy(char *dest, int destsize, const char* src[], int srcnum); // add NULL at end
-extern bool gracial_cpy(wchar_t *dest, int destsize, const wchar_t* src[], int srcnum); // add NULL at end
+bool gracial_cpy(char *dest, int destsize, const char* src[], int srcnum); // add NULL at end
+bool gracial_cpy(wchar_t *dest, int destsize, const wchar_t* src[], int srcnum); // add NULL at end
+
+size_t safe_vsnprintf(char* buf, size_t nbuf, const char* fmt, va_list va);
+size_t safe_vsnprintf(wchar_t* buf, size_t nbuf, const wchar_t* fmt, va_list va);
 
 typedef struct sys_list_context_s sys_list_context_t;
 
@@ -150,6 +153,17 @@ inline bool STREQ(const wchar_t *a, const wchar_t *b) { return wcscmp(a,b)==0; }
 
 int codepage_convert_cpi(char* out, int outsize, const char *in, int insize, int codepage1, int codepage2);
 int codepage_convert_cps(char* out, int outsize, const char *in, int insize, const char *codepage1, const char *codepage2);
+
+template<typename CharT>
+size_t safe_snprintf(CharT* buf, size_t nbuf, const CharT* fmt, ...)
+{
+  va_list va;
+  va_start(va, fmt);
+  size_t rv = safe_vsnprintf(buf, nbuf, fmt, va);
+  va_end(va);
+  return rv;
+}
+
 
 /////////////////////////////////////////////////////////////////////////////
 // OS FILES
