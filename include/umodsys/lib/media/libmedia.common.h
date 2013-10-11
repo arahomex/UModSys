@@ -9,7 +9,7 @@
 #include <umodsys/tl/composite/isockets.h>
 
 namespace UModSys {
-namespace media {
+namespace libmedia {
 
 using namespace core;
 
@@ -226,7 +226,7 @@ struct IStreamReader
   inline bool reader_read(const SMemChunk& m) { return reader_read(m.get_data(), m.get_size()); }
   inline bool reader_read(const SMemShared& m) { return reader_read(m.get_data(), m.get_size()); }
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::media::IStreamReader, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IStreamReader, 2, IRefObject);
 };
 
 //***************************************
@@ -251,7 +251,7 @@ public:
   inline bool writer_write(const SMemChunk& m) { return writer_write(m.get_data(), m.get_size()); }
   inline bool writer_write(const SMemShared& m) { return writer_write(m.get_data(), m.get_size()); }
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::media::IStreamWriter, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IStreamWriter, 2, IRefObject);
 };
 
 //***************************************
@@ -267,7 +267,7 @@ public:
   virtual bool get_entrylist(const DCString &mask, tl::TIStackSocket<SFileInfo>& list) = 0;
   virtual int get_permissions(void) = 0;
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::media::IDataArchive, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IDataArchive, 2, IRefObject);
 };
 
 //***************************************
@@ -338,7 +338,7 @@ inline bool SVComplexFileName::next(void)
 // END
 //***************************************
 
-} // namespace media
+} // namespace libmedia
 } // namespace UModSys
 
 #endif // __UMODSYS_LIBMEDIA_COMMON_H

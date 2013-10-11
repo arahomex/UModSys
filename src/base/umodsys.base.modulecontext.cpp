@@ -46,6 +46,11 @@ void SModuleContext::dbg_put(const char *fmt, ...)
 
 base::SModuleContext UModSys::M;
 
+const core::SIMemAlloc& UModSys::local_memory(void)
+{
+  return M();
+}
+
 //***************************************
 // SParameters::
 //***************************************

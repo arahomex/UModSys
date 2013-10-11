@@ -36,12 +36,57 @@ void syshlp::restore_console(void)
   }
 }
 
+//***************************************
+
 FILE* syshlp::c_fopen(const char *cfilename, const char *cmode)
 {
   U16String<4096> filename(cfilename);
   U16String<80> mode(cmode);
   path_uni_os(filename);
   return _wfopen(filename, mode);
+}
+
+FILE* syshlp::c_fopentemp(char* &handle, const char *msk)
+{
+  size_t L = strlen(msk)+1;
+  handle = static_cast<char*>(local_memory().mem_alloc(L*2+10, UMODSYS_SOURCEINFO));
+  if(handle==NULL) {
+    return NULL;
+  }
+  strcpy(handle, msk);
+  strcpy(handle+L, msk);
+  strcpy(handle+L*2-1, ".tmp");
+  FILE *f = c_fopen(handle+L, "wb");
+  if(f==NULL) {
+    local_memory().mem_free(handle, UMODSYS_SOURCEINFO);
+    handle = NULL;
+    return NULL;
+  }
+  return f;
+}
+
+bool syshlp::c_fendtemp(FILE* &f, char* &handle, bool gracial)
+{
+  bool ok = true;
+  if(f) {
+    ::fclose(f);
+    f = NULL;
+  }
+  if(handle) {
+    BCStr n1 = handle;
+    BCStr n2 = handle+strlen(handle)+1;
+    //
+    if(gracial) {
+      ok = ::remove(n1)==0 && ok;
+      ok = ::rename(n2, n1)==0 && ok;
+      ::remove(n2);
+    } else {
+      ok = ::remove(n2)==0 && ok;
+    }
+    local_memory().mem_free(handle, UMODSYS_SOURCEINFO);
+    handle = NULL;
+  }
+  return ok;
 }
 
 //***************************************

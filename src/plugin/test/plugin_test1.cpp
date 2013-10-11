@@ -1,8 +1,7 @@
 #include <umodsys/stdbase.h>
 #include <umodsys/lib/media/libmedia.common.h>
 
-namespace UModSys {
-namespace test1 {
+UMODSYS_MODULE_BEGIN(test, test1)
 
 using namespace core;
 using namespace base;
@@ -10,41 +9,49 @@ using namespace base;
 struct RTest1_Generator;
 
 struct RTest1_Shell : public IShell {
-  UMODSYS_BASE_SHELL_IMPLEMENT(UModSys::test1::RTest1_Shell, 1, IShell)
+  UMODSYS_BASE_SHELL_IMPLEMENT(UMODSYS_MODULE_NAME(test,test1)::RTest1_Shell, 1, IShell)
   //
   void* memblock;
-  media::IStreamReader::P fr;
   //
+  void file_test(void)
+  {
+    libmedia::IStreamReader::P fr;
+    libmedia::IStreamWriter::P fw;
+    if(TypeId found=M.t_firstobjname<libmedia::IStreamReader>("*::stdio::*")) {
+      TParametersA<1024> params;
+      params.add("filename", "read-test.txt");
+      M.t_generate(fr, found, params);
+      M.con().put(0, "  found reader: %s => %p\n", found->name, fr());
+    }
+    if(TypeId found=M.t_firstobjname<libmedia::IStreamWriter>("*::stdio::*")) {
+      TParametersA<1024> params;
+      params.add("filename", "write-test.txt");
+      params.add("safe", true);
+      M.t_generate(fw, found, params);
+      M.con().put(0, "  found writer: %s => %p\n", found->name, fw());
+    }
+    if(fr.valid()) {
+      char line[1024];
+      size_t req = core::scalar_min(sizeof(line)-1, size_t(fr->reader_size()));
+      line[req] = 0;
+      if(fr->reader_read(line, req)) {
+        M.con().put(0, "  read: {%s}\n", line);
+      }
+      if(fw.valid()) {
+        fw->writer_copy(fr, 0, fr->reader_size());
+        fw->writer_close();
+        M.con().put(0, "  written\n");
+      }
+    }
+  }
+  //
+
   RTest1_Shell(DOwner *own) : refs(own) {
     M.con().put(0, "RTest1_Shell() {\n");
     memblock = M().mem_alloc(1024, _UMODSYS_SOURCEINFO);
     //
-    {
-      tl::TArrayFixed<TypeId, 1000> lst;
-      if(M.t_findobjname<media::IStreamReader>(lst)) {
-        TypeId found = NULL;
-        for(size_t i=0; i<~lst; i++) {
-          if(tl::su::sstr(lst(i)->name, "_FILE")!=NULL) {
-            found = lst(i);
-            break;
-          }
-        }
-        if(found!=NULL) {
-          M.con().put(0, "  found reader: %s\n", found->name);
-          TParametersA<1024> params;
-          params.add("filename", "read-test.txt");
-          M.t_generate(fr, found, params);
-        }
-      }
-      if(fr.valid()) {
-        char line[1024];
-        size_t req = core::scalar_min(sizeof(line)-1, size_t(fr->reader_size()));
-        line[req] = 0;
-        if(fr->reader_read(line, req)) {
-          M.con().put(0, "  read: {%s}\n", line);
-        }
-      }
-    }
+    file_test();
+    //
     M.con().put(0, "} // RTest1_Shell()\n");
   }
   ~RTest1_Shell(void) {
@@ -70,7 +77,7 @@ struct RTest1_Shell : public IShell {
   }
 };
 
-struct RTest1_Generator : public IGenerator {
+struct RGenerator : public IGenerator {
   //
   int get_generated_names(DPtrList& list) const {
     list<<RTest1_Shell::_get_interface_type();
@@ -89,35 +96,34 @@ struct RTest1_Generator : public IGenerator {
     return false;
   }
   //
-  UMODSYS_BASE_GENERATOR_IMPLEMENT(UModSys::test1::RTest1_Generator, 1, IGenerator)
+  UMODSYS_BASE_GENERATOR_IMPLEMENT(UMODSYS_MODULE_NAME(test,test1)::RGenerator, 1, IGenerator)
 };
 
-struct RTest1_ModuleReg : public IModuleReg {
-  UMODSYS_BASE_MODREG_DEF(RTest1_ModuleReg)
+struct RModuleReg : public IModuleReg {
+  UMODSYS_BASE_MODREG_DEF(RModuleReg)
   //
-  RTest1_ModuleReg(void) {
+  RModuleReg(void) {
     minfo.set("Test1", 0, 1, "Test 1 - module");
-//    M.con().put(0, "RTest1_ModuleReg()\n");
+//    M.con().put(0, "RModuleReg()\n");
   }
-  ~RTest1_ModuleReg(void) {
-//    M.con().put(0, "~RTest1_ModuleReg()\n");
+  ~RModuleReg(void) {
+//    M.con().put(0, "~RModuleReg()\n");
   }
   bool do_open(void) {
-    M.con().put(0, "RTest1_ModuleReg::open()\n");
-    RTest1_Generator::s_reg(this);
+    M.con().put(0, "RModuleReg::open()\n");
+    RGenerator::s_reg(this);
     return true;
   }
   bool do_close(void) {
-    M.con().put(0, "RTest1_ModuleReg::close()\n");
-    RTest1_Generator::s_unreg(this);
+    M.con().put(0, "RModuleReg::close()\n");
+    RGenerator::s_unreg(this);
     return true;
   }
 };
 
-UMODSYS_BASE_MODREG_BODY(RTest1_ModuleReg)
-UMODSYS_BASE_GENERATOR_BODY(RTest1_Generator, RTest1_ModuleReg)
+UMODSYS_BASE_MODREG_BODY(RModuleReg)
+UMODSYS_BASE_GENERATOR_BODY(RGenerator, RModuleReg)
 
-} // namespace test1
-} // namespace UModSys
+UMODSYS_MODULE_END()
 
 

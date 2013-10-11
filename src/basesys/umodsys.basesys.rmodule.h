@@ -87,7 +87,7 @@ public:
   bool scan(void);
   bool save_db(FILE *f);
   //
-  size_t mod_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound);
+  size_t mod_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound, BCStr mask);
   bool mod_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args);
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RModule, 2, IModule);
@@ -117,7 +117,7 @@ public:
   bool lib_unload(void);
   bool lib_free(void);
   //
-  size_t lib_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound);
+  size_t lib_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound, BCStr mask);
   bool lib_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args);
 public:
   virtual bool uni_load(void) =0;
@@ -208,7 +208,7 @@ public:
   RModuleLoader(ISystem* sys);
   ~RModuleLoader(void);
 public:
-  size_t moduledb_findobjname(IRefObject::TypeId intr, IRefObject::TypeId found[], size_t nfound);
+  size_t moduledb_findobjname(IRefObject::TypeId intr, IRefObject::TypeId found[], size_t nfound, BCStr mask);
   bool moduledb_generate(IRefObject::P& obj, IRefObject::TypeId name, const SParameters& args);
   //
   size_t moduledb_lib_count(void);

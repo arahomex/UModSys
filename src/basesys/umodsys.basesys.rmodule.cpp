@@ -79,9 +79,10 @@ bool RModule::reg(IGenerator* gen, bool doreg)
 
 //***************************************
 
-size_t RModule::mod_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound)
+size_t RModule::mod_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound, core::BCStr mask)
 {
   size_t rv=0;
+  bool fmask = mask!=NULL && *mask!=0;
   for(size_t i=0; i<~mogts; i++) {
     if(mogts(i)!=intr)
       continue;
@@ -91,8 +92,20 @@ size_t RModule::mod_findobjname(core::IRefObject::TypeId intr, core::IRefObject:
       for(size_t j=0; j<~mogis; j++) {
         const GeneratedObjInfo& x = mogis(j);
         if(x.start_elem<=i && i<x.start_elem+x.count_elem) {
-          found[rv++] = x.tid;
-          break;
+          if(!fmask || tl::su::wildcmp(mask, x.tid->name)) {
+            found[rv++] = x.tid;
+            break;
+          }
+        }
+      }
+    } else if(fmask) {
+      for(size_t j=0; j<~mogis; j++) {
+        const GeneratedObjInfo& x = mogis(j);
+        if(x.start_elem<=i && i<x.start_elem+x.count_elem) {
+          if(tl::su::wildcmp(mask, x.tid->name)) {
+            rv++;
+            break;
+          }
         }
       }
     } else {

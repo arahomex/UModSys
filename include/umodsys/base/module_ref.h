@@ -14,13 +14,26 @@ namespace modules {
 } // namespace modules
 } // namespace UModSys
 
-#define UMODSYS_DEFINE_MODULE(modulename) \
-  namespace UModSys { namespace modules { extern char module_ ## modulename; } }
-  
-#define UMODSYS_BODY_MODULE(modulename) \
-  char ::UModSys::modules::module_ ## modulename = 0;
+#define UMODSYS_MODULE_BEGIN(_modulegroup, _modulename) \
+  namespace UModSys { namespace modules { \
+  namespace _modulegroup { namespace _modulename { \
+  extern char fmodule;
 
-#define UMODSYS_USE_MODULE(modulename) \
-  ::UModSys::core::lost(&::UModSys::modules::module_ ## modulename)
+#define UMODSYS_MODULE_END() \
+  } } } }
+
+#define UMODSYS_MODULE_DEF(_modulegroup, _modulename) \
+  UMODSYS_MODULE_BEGIN(_modulegroup, _modulename) UMODSYS_MODULE_END()
+
+#define UMODSYS_MODULE_NAME(_modulegroup, _modulename) UModSys::modules::_modulegroup::_modulename
+  
+#define UMODSYS_MODULE_BODY(_modulegroup, _modulename) \
+  char ::UMODSYS_MODULE_NAME(_modulegroup, _modulename)::fmodule = 0;
+
+#define UMODSYS_MODULE_BODY0() \
+  char fmodule = 0;
+
+#define UMODSYS_MODULE_USE(_modulegroup, _modulename) \
+  ::UModSys::core::lost(&::UMODSYS_MODULE_NAME(_modulegroup, _modulename)::fmodule)
 
 #endif // __UMODSYS_BASE_MODULEREF_H

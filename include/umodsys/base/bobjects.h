@@ -102,6 +102,28 @@ public:
     return true;
   }
 protected:
+  template<typename Type> 
+  static int t_names(DPtrList& list) { 
+    list<<Type::_get_interface_type(); return 1; 
+  }
+  //
+  template<typename Type> 
+  static bool t_types(int &rv, DPtrList& list, TypeId name) {
+    if(name==Type::_get_interface_type()) {
+      rv = Type::_get_interface_types(list);
+      return true;
+    }
+    return false;
+  }
+  //
+  template<typename Type, typename TOwn> 
+  bool t_gen_param(TOwn* own, IRefObject::P& obj, TypeId name, const SParameters& args) {
+    if(name==Type::_get_interface_type()) {
+      return ValidateConstruction(obj, new(local_memory()) Type(own, args));
+    }
+    return false;
+  }
+protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IGenerator, 2, IModObject);
 };
 

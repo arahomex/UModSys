@@ -149,7 +149,7 @@ int shashlen(const CharT* str, size_t& len) {
 }
 
 template<typename CharT>
-int wildcmp(const CharT* wild, const CharT* string) 
+bool wildcmp(const CharT* wild, const CharT* string) 
 {
   register const CharT* cp, *mp;
 

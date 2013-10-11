@@ -41,6 +41,9 @@ public:
 //***************************************
 
 struct SModuleContext {
+public:
+  typedef core::IRefObject::TypeId TypeId;
+  typedef core::BCStr BCStr;
 protected:
   ISystem* isys;
   IConsole* icon;
@@ -66,26 +69,47 @@ public:
 public:
   void dbg_put(const char *fmt, ...);
   //
-  inline size_t findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound) {
+  inline size_t findobjname(TypeId intr, TypeId found[], size_t nfound, BCStr mask=NULL) {
     if(imodloader==NULL)
       return 0;
-    return imodloader->moduledb_findobjname(intr, found, nfound);
+    return imodloader->moduledb_findobjname(intr, found, nfound, mask);
   }
   //
   template<typename Intr, typename Array>
-  inline bool t_findobjname(Array& found) {
-    core::IRefObject::TypeId intr = Intr::_get_interface_type();
+  inline bool t_findobjname(Array& found, BCStr mask=NULL) {
+    TypeId intr = Intr::_get_interface_type();
     found.Resize(0);
     if(imodloader==NULL)
       return false;
-    size_t rv = imodloader->moduledb_findobjname(intr, found.All(), found.MaxLen());
+    size_t rv = imodloader->moduledb_findobjname(intr, found.All(), found.MaxLen(), mask);
     if(!found.Resize(rv) || rv==0)
       return false;
     return true;
   }
   //
+  template<typename Intr>
+  inline TypeId t_firstobjname(BCStr mask=NULL) {
+    TypeId intr = Intr::_get_interface_type(), tid;
+    if(imodloader==NULL)
+      return NULL;
+    if(imodloader->moduledb_findobjname(intr, &tid, 1, mask)==0)
+      return NULL;
+    return tid;
+  }
+  //
+  template<typename Intr>
+  inline bool t_firstobjname(TypeId &tid, core::BCStr mask=NULL) {
+    tid = NULL;
+    TypeId intr = Intr::_get_interface_type();
+    if(imodloader==NULL)
+      return false;
+    if(imodloader->moduledb_findobjname(intr, &tid, 1, mask)==0)
+      return false;
+    return true;
+  }
+  //
   template<typename RData>
-  inline bool t_generate(tl::TRefObject<RData> &rv, core::IRefObject::TypeId name, const core::SParameters& args) {
+  inline bool t_generate(tl::TRefObject<RData> &rv, TypeId name, const core::SParameters& args) {
     if(imodloader==NULL)
       return false;
     core::IRefObject::P obj;

@@ -158,6 +158,8 @@ void setup_console(void);
 void restore_console(void);
 
 FILE* c_fopen(const char *cfilename, const char *cmode);
+FILE* c_fopentemp(char* &handle, const char *msk);
+bool c_fendtemp(FILE* &f, char* &handle, bool gracial);
 
 int get_file(const char *name, void* buffer, int bufsize, int binmode);
 int put_file(const char *name, const void* buffer, int bufsize, int binmode);

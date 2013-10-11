@@ -9,22 +9,22 @@ using namespace UModSys::base::rsystem;
 // RModuleLoader::
 //***************************************
 
-size_t RModuleLoader::moduledb_findobjname(IRefObject::TypeId intr, IRefObject::TypeId found[], size_t nfound)
+size_t RModuleLoader::moduledb_findobjname(IRefObject::TypeId intr, IRefObject::TypeId found[], size_t nfound, core::BCStr mask)
 {
   size_t n = 0;
   if(found!=NULL) {
-    n += mod_this->lib_findobjname(intr, found+n, nfound-n);
+    n += mod_this->lib_findobjname(intr, found+n, nfound-n, mask);
   } else {
-    n += mod_this->lib_findobjname(intr, NULL, nfound);
+    n += mod_this->lib_findobjname(intr, NULL, nfound, mask);
   }
   for(size_t i=0; i<~mod_list; i++) {
     RModuleLibrarySO* ml = mod_list(i);
     if(ml==NULL)
       continue;
     if(found!=NULL) {
-      n += ml->lib_findobjname(intr, found+n, nfound-n);
+      n += ml->lib_findobjname(intr, found+n, nfound-n, mask);
     } else {
-      n += ml->lib_findobjname(intr, NULL, nfound);
+      n += ml->lib_findobjname(intr, NULL, nfound, mask);
     }
   }
   return n;

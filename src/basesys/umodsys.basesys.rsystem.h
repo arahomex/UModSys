@@ -106,7 +106,7 @@ public:
   //
   void dump_upis(void);
   //
-  size_t find_shells(IRefObject::TypeId tids[], size_t ntids);
+  size_t find_shells(IRefObject::TypeId tids[], size_t ntids, BCStr mask);
   //
   const DCString& uptr_string(const DCString& v) { return *uptr_strings.append(v); }
   const DCString& sc_string(const DCString& v) { return *sc_strings.append(v); }

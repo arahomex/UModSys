@@ -88,6 +88,7 @@ namespace base {
 
 
 extern base::SModuleContext M;
+extern const core::SIMemAlloc& local_memory(void);
 
 /*
 namespace objects {

@@ -17,7 +17,7 @@ using namespace UModSys::base::rsystem;
 bool RSystem::exec_test_shells(void)
 {
   IRefObject::TypeId tids[0x100];
-  size_t ns = find_shells(tids, 0x100);
+  size_t ns = find_shells(tids, 0x100, NULL);
   dbg_put(rsdl_System, "shells found: %d\n", ns);
   for(size_t i=0; i<ns; i++) {
     dbg_put(rsdl_System, "  shell: %p %s\n", tids[i], tids[i]->name);

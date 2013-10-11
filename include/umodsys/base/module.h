@@ -55,7 +55,7 @@ public:
   virtual bool reg(IModObject* mo, bool doreg) =0;
   virtual bool reg(IGenerator* gen, bool doreg) =0;
   //
-  virtual size_t mod_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound) =0;
+  virtual size_t mod_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound, core::BCStr mask) =0;
   virtual bool mod_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args) =0;
 public:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IModule, 2, IRefObject);
@@ -82,7 +82,7 @@ public:
   virtual bool lib_unload(void) =0;
   virtual bool lib_free(void) =0;
   //
-  virtual size_t lib_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound) =0;
+  virtual size_t lib_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound, core::BCStr mask) =0;
   virtual bool lib_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args) =0;
 public:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IModuleLibrary, 2, IRefObject);
@@ -97,7 +97,7 @@ struct IModuleLoader
 public:
   virtual ~IModuleLoader(void);
 public:
-  virtual size_t moduledb_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound) =0;
+  virtual size_t moduledb_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound, core::BCStr mask) =0;
   virtual bool moduledb_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args) =0;
   //
   virtual size_t moduledb_lib_count(void) =0;

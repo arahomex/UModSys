@@ -17,10 +17,10 @@ using namespace UModSys::base::rsystem;
 bool RSystem::init(void)
 {
   rsys_dbg.mask = 0;
-  rsys_dbg.enable(rsdl_System);
-  rsys_dbg.enable(rsdl_Module);
-  rsys_dbg.enable(rsdl_ModuleLibrary);
-  rsys_dbg.enable(rsdl_SoLoad);
+//  rsys_dbg.enable(rsdl_System);
+//  rsys_dbg.enable(rsdl_Module);
+//  rsys_dbg.enable(rsdl_ModuleLibrary);
+//  rsys_dbg.enable(rsdl_SoLoad);
   //
 #if defined(_DEBUG) && defined(_MSC_VER)
   _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF|_CRTDBG_DELAY_FREE_MEM_DF|_CRTDBG_ALLOC_MEM_DF);
@@ -101,9 +101,9 @@ void RSystem::set_console(IConsole* cc)
 
 //***************************************
 
-size_t RSystem::find_shells(IRefObject::TypeId tids[], size_t ntids)
+size_t RSystem::find_shells(IRefObject::TypeId tids[], size_t ntids, BCStr mask)
 {
-  return moddb.moduledb_findobjname(IShell::_get_interface_type(), tids, ntids);
+  return moddb.moduledb_findobjname(IShell::_get_interface_type(), tids, ntids, mask);
 }
 
 //***************************************

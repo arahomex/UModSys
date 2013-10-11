@@ -6,11 +6,11 @@ using namespace UModSys::core;
 using namespace UModSys::base;
 using namespace UModSys::base::rsystem;
 
-UMODSYS_DEFINE_MODULE(Media_StdIo);
+UMODSYS_MODULE_DEF(media,stdio);
 
 static void refer(void)
 {
-  UMODSYS_USE_MODULE(Media_StdIo);
+  UMODSYS_MODULE_USE(media,stdio);
 }
 
 int main(int argc, char **argv)
@@ -19,8 +19,8 @@ int main(int argc, char **argv)
   RConsole_std::s_console.reflect("umodsys.log");
   RSystem& S = RSystem::s_sys;
   //
-  M.Link(&S, S.get_sharemem());
   S.set_console(&RConsole_std::s_console);
+  M.Link(&S, S.get_sharemem());
   //
   S.init();
   S.get_modloader()->moduledb_scan("", false);
