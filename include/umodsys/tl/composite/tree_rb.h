@@ -761,8 +761,8 @@ public:
   TTreeHoldRBD(void);
   TTreeHoldRBD(const NodeDeleter& nd);
   //
-  inline void clear(void) { process_nodes(node_del); Hold::root=NULL; }
-  inline void delete_all_nodes(void) { process_nodes(node_del); Hold::root=NULL; }
+  inline void clear(void) { this->process_nodes(node_del); Hold::root=NULL; }
+  inline void delete_all_nodes(void) { this->process_nodes(node_del); Hold::root=NULL; }
   inline void delete_node(Node *n) { remove_node(n); node_del(n); }
   //
   template<typename tCmp>

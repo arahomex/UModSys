@@ -1,7 +1,7 @@
 #include <umodsys/core/platform/linux/syshlp_linux.h>
 
-#include "../../umodsys.base.rsystem.h"
-#include "../../umodsys.base.rmodule.h"
+#include "../../umodsys.basesys.rsystem.h"
+#include "../../umodsys.basesys.rmodule.h"
 
 using namespace UModSys;
 using namespace UModSys::core;
@@ -22,7 +22,7 @@ typedef IModuleLibraryReg* (*f_get_moduleinfo)(void);
 // RModule::
 //***************************************
 
-struct RModuleLibrary::PFD_Data {
+struct RModuleLibrarySO::PFD_Data {
   void* module;
   f_get_moduleinfo entry;
   IModuleLibraryReg* ilib;
@@ -31,7 +31,7 @@ struct RModuleLibrary::PFD_Data {
 //***************************************
 //***************************************
 
-bool RModuleLibrary::pfd_init(PFD_Data* pfd)
+bool RModuleLibrarySO::pfd_init(PFD_Data* pfd)
 {
   pfd->module = NULL;
   pfd->entry = NULL;
@@ -39,14 +39,14 @@ bool RModuleLibrary::pfd_init(PFD_Data* pfd)
   return true;
 }
 
-bool RModuleLibrary::pfd_init(PFD_Data* pfd, PFD_Data* pfdR)
+bool RModuleLibrarySO::pfd_init(PFD_Data* pfd, PFD_Data* pfdR)
 {
   *pfd = *pfdR;
   pfd_init(pfdR);
   return true;
 }
 
-IModuleLibraryReg* RModuleLibrary::pfd_load(PFD_Data* pfd, const core::DCString& filename)
+IModuleLibraryReg* RModuleLibrarySO::pfd_load(PFD_Data* pfd, const core::DCString& filename)
 {
   if(pfd->module!=NULL)
     return NULL;
@@ -75,7 +75,7 @@ IModuleLibraryReg* RModuleLibrary::pfd_load(PFD_Data* pfd, const core::DCString&
   return ilib;
 }
 
-bool RModuleLibrary::pfd_unload(PFD_Data* pfd)
+bool RModuleLibrarySO::pfd_unload(PFD_Data* pfd)
 {
   if(pfd->module!=NULL) {
     dbg_put(rsdl_SoLoad, "          unload so({%p, %p})\n", pfd->module, pfd->entry);
@@ -90,7 +90,7 @@ bool RModuleLibrary::pfd_unload(PFD_Data* pfd)
 //***************************************
 //***************************************
 
-static size_t s_pfd_scan(ISystem* sys, RModuleLibraryArray& la, core::BStr mask, core::BStr suffix)
+static size_t s_pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, core::BStr mask, core::BStr suffix)
 {
   dbg_put(rsdl_SoLoad, "scan so: \"%s%s\"\n", mask, suffix);
   syshlp::U8String<> ls(mask, suffix), umask(mask, suffix);
@@ -121,7 +121,7 @@ static size_t s_pfd_scan(ISystem* sys, RModuleLibraryArray& la, core::BStr mask,
 //    dbg_put("  match so: \"%s\" like \"%s\"\n", fullname(), umask());
     if(fnmatch(umask(), fullname(), FNM_NOESCAPE)!=0)
       continue; // not matched
-    gn += RModuleLibrary::s_add(sys, la, fullname());
+    gn += RModuleLibrarySO::s_add(sys, la, fullname());
 next:;
   }
   dbg_put(rsdl_SoLoad, "/scan so: \"%s%s\"\n", mask, suffix);
@@ -131,7 +131,7 @@ next:;
   return gn;
 }
 
-size_t RModuleLibrary::pfd_scan(ISystem* sys, RModuleLibraryArray& la, const core::DCString& mask)
+size_t RModuleLibrarySO::pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, const core::DCString& mask)
 {
   if(~mask==0) // automatic
     return s_pfd_scan(sys, la, "./*", SO_SUFFIX);

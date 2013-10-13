@@ -137,9 +137,9 @@ public:
   inline bool Push(void) UMODSYS_NOTHROW() { return ResizeRel(1); }
   inline bool PushN(size_t n=1) UMODSYS_NOTHROW() { return ResizeRel(n); }
   //
-  inline bool Pop(Node& def) UMODSYS_NOTHROW() { if(length==0) return false; def = Base::last(); return ResizeRel(-1); }
+  inline bool Pop(Node& def) UMODSYS_NOTHROW() { if(length==0) return false; def = Last(); return ResizeRel(-1); }
   inline bool Pop(void) UMODSYS_NOTHROW() { return ResizeRel(-1); }
-  inline bool PopN(size_t n=1) UMODSYS_NOTHROW() { return ResizeRel(-static_cast<ptr_diff_t>(n)); }
+  inline bool PopN(size_t n=1) UMODSYS_NOTHROW() { return ResizeRel(-static_cast<ptrdiff_t>(n)); }
   //
   inline bool Resize(size_t newsize) UMODSYS_NOTHROW() { return newsize==array_index_none ? false : ResizeRel(newsize - length); }
   inline bool Clear(void) UMODSYS_NOTHROW() { return Resize(0); }
@@ -181,13 +181,13 @@ public:
   //
   inline size_type max_size(void) const UMODSYS_NOTHROW() { return holder.maxlen(); }
   inline void reserve(size_type newmaxlen) { if(!Reserve(newmaxlen)) throw_memoryerror(); }
-  inline void resize(size_type newlen) { if(!Resize(newmaxlen)) throw_memoryerror(); }
+  inline void resize(size_type newlen) { if(!Resize(newlen)) throw_memoryerror(); }
   //
   inline void push_back(const_reference v) { if(!push(v)) throw_memoryerror(); }
-  inline void pop_back(void) { if(!pop()) throw_memoryerror(); }
+  inline void pop_back(void) { if(!Pop()) throw_memoryerror(); }
   //
   inline void insert(iterator pos, const_reference v) { size_t p = pos - items; if(!InsertAt(p)) throw_memoryerror(); items[p] = v; }
-  inline void insert(iterator pos, size_type n, const_reference v) { size_t p = first - items, n = last - first; if(!InsertAt(p, n)) throw_memoryerror(); TC::acopy1(items+p, n, v); }
+  inline void insert(iterator pos, size_type n, const_reference v) { size_t p = pos - items; if(!InsertAt(p, n)) throw_memoryerror(); TC::acopy1(items+p, n, v); }
   template <typename InputIterator> inline void insert(iterator pos, InputIterator first, InputIterator last) { size_t p = pos - items, n = last - first; if(!InsertAt(p, n)) throw_memoryerror(); TC::atcopy(items+p, n, first); }
   //
   inline void erase(iterator pos) { size_t p = pos - items; if(!RemoveAt(p)) throw_memoryerror(); }
@@ -287,7 +287,7 @@ inline bool TDynarray<SHolder>::Reserve(size_t newsize) UMODSYS_NOTHROW()
   if(newsize==holder.maxlen())
     return false;
   if(newsize<length) {
-    tems_destruct(newsize, length-newsize);
+    items_destruct(newsize, length-newsize);
     length = newsize;
   }
   return ReLink(newsize);
@@ -339,7 +339,7 @@ inline bool TDynarray<SHolder>::RemoveAt(size_t id, size_t n) UMODSYS_NOTHROW()
 }
 
 template<typename SHolder>
-inline bool TDynarray<SHolder>::Push(const typename Node& def) UMODSYS_NOTHROW()
+inline bool TDynarray<SHolder>::Push(const typename TDynarray<SHolder>::Node& def) UMODSYS_NOTHROW()
 {
   if(length+1>holder.maxlen() && !ReLink(length+1))
     return false;

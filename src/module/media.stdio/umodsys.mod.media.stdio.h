@@ -5,8 +5,6 @@
 // info: base module object
 /*************************************************************/
 
-#include <io.h>
-
 #include <umodsys/stdbase.h>
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/core/syshlp.h>

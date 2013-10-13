@@ -6,7 +6,7 @@ libmedia_lib_includes := \
 libmedia_lib_depends := \
   $(T)/umodsys.lib.media.common$(OSUFFIX) \
   \
-  $(T)/media.stdio/umodsys.mod.media.stdio$(OSUFFIX) \
+  $(T)/umodsys.mod.media.stdio$(OSUFFIX) \
 
 libmedia_lib := $(T)/umodsys.libmedia$(LIBSUFFIX)
 
@@ -29,13 +29,13 @@ ifndef NO_CXX_DEP
 	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
 endif
 
-$(T)/%$(OSUFFIX) : ../../src/module/media.libmedia/$(PLATFORM_ID)/%.cpp
+$(T)/%$(OSUFFIX) : ../../src/module/media.libmedia/%.cpp
 	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $<
 ifndef NO_CXX_DEP
 	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
 endif
 
-$(T)/%$(OSUFFIX) : ../../src/module/media.stdio/$(PLATFORM_ID)/%.cpp
+$(T)/%$(OSUFFIX) : ../../src/module/media.stdio/%.cpp
 	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $<
 ifndef NO_CXX_DEP
 	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
