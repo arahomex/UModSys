@@ -83,8 +83,9 @@ public:
   inline const IRoot* _get_interface_p(void) const { return this; }
   inline IRoot* _get_interface_p(void) { return this; }
 private:
-  inline void* operator new(size_t size) UMODSYS_NOTHROW() { return NULL; }
-  inline void operator delete(void *op) UMODSYS_NOTHROW() {}
+  inline void* operator new(size_t size) UMODSYS_NOTHROW() { return operator new(size, local_memory()); }
+protected:
+  inline void operator delete(void *op) UMODSYS_NOTHROW() { operator delete(op, local_memory()); }
 public:
   inline void* operator new(size_t size, void *sp) UMODSYS_NOTHROW() { return sp; }
   inline void operator delete(void *op, void *sp) UMODSYS_NOTHROW() {}
