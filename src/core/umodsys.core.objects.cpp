@@ -20,22 +20,22 @@ void IRoot::suicide(void)
 
 //***************************************
 
-void* IRoot::operator new(size_t size, const SMemAlloc_Malloc& m)
+void* IRoot::operator new(size_t size, const SMemAlloc_Malloc& m) UMODSYS_NOTHROW()
 {
   return m.mem_alloc(size, UMODSYS_SOURCEINFO);
 }
 
-void IRoot::operator delete(void *op, const SMemAlloc_Malloc& m)
+void IRoot::operator delete(void *op, const SMemAlloc_Malloc& m) UMODSYS_NOTHROW()
 {
   m.mem_free(op, UMODSYS_SOURCEINFO);
 }
 
-void* IRoot::operator new(size_t size, const SIMemAlloc& m)
+void* IRoot::operator new(size_t size, const SIMemAlloc& m) UMODSYS_NOTHROW()
 {
   return m.mem_alloc(size, UMODSYS_SOURCEINFO);
 }
 
-void IRoot::operator delete(void *op, const SIMemAlloc& m)
+void IRoot::operator delete(void *op, const SIMemAlloc& m) UMODSYS_NOTHROW()
 {
   m.mem_free(op, UMODSYS_SOURCEINFO);
 }

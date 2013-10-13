@@ -33,7 +33,7 @@ main: $(main)
 $(basesys_lib): $(basesys_lib_depends)
 	$(AR_ADD)$@ $^
 
-$(main): $(main_depends) $(basesys_lib) $(base_lib) $(core_lib)
+$(main): $(main_depends) $(basesys_lib) $(base_lib) $(core_lib) $(libmedia_lib)
 	$(CXX_LINK) $(CXXFLAGS) $(CXX_BIN)$@ $^ $(CXX_LINK_LAST)
 ifdef CXX_LINK_POSTPROCESS
 	$(CXX_LINK_POSTPROCESS) $@

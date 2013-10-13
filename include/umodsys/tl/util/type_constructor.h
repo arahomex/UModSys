@@ -134,8 +134,9 @@ struct TTypeConstructorBinaryFast {
 
 
 // 
+//  template<> struct ::UModSys::tl::TTypeConstructor<_type> : public ::UModSys::tl::TTypeConstructorBinaryFast<_type> {};
 #define UMODSYS_SCALAR_CONSTRUCTOR(_type) \
-  template<> struct ::UModSys::tl::TTypeConstructor<_type> : public ::UModSys::tl::TTypeConstructorBinaryFast<_type> {};
+  template<> struct TTypeConstructor<_type> : public ::UModSys::tl::TTypeConstructorBinaryFast<_type> {};
 
 /*************************************************************/
 

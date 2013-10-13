@@ -83,20 +83,20 @@ public:
   inline const IRoot* _get_interface_p(void) const { return this; }
   inline IRoot* _get_interface_p(void) { return this; }
 private:
-  inline void* operator new(size_t size) { return NULL; }
-  inline void operator delete(void *op) {}
+  inline void* operator new(size_t size) UMODSYS_NOTHROW() { return NULL; }
+  inline void operator delete(void *op) UMODSYS_NOTHROW() {}
 public:
-  inline void* operator new(size_t size, void *sp) { return sp; }
-  inline void operator delete(void *op, void *sp) {}
-  void* operator new(size_t size, const SMemAlloc_Malloc& m);
-  void operator delete(void *op, const SMemAlloc_Malloc& m);
-  void* operator new(size_t size, const SIMemAlloc& m);
-  void operator delete(void *op, const SIMemAlloc& m);
+  inline void* operator new(size_t size, void *sp) UMODSYS_NOTHROW() { return sp; }
+  inline void operator delete(void *op, void *sp) UMODSYS_NOTHROW() {}
+  void* operator new(size_t size, const SMemAlloc_Malloc& m) UMODSYS_NOTHROW();
+  void operator delete(void *op, const SMemAlloc_Malloc& m) UMODSYS_NOTHROW();
+  void* operator new(size_t size, const SIMemAlloc& m) UMODSYS_NOTHROW();
+  void operator delete(void *op, const SIMemAlloc& m) UMODSYS_NOTHROW();
   //
-  inline static void _delete(IRoot* p, const SIMemAlloc& m) { p->~IRoot(); operator delete(p, m); }
-  inline static void _delete(IRoot* p, const SMemAlloc_Malloc& m) { p->~IRoot(); operator delete(p, m); }
-  inline void _delete(const SIMemAlloc& m) { _delete(this, m); }
-  inline void _delete(const SMemAlloc_Malloc& m) { _delete(this, m); }
+  inline static void _delete(IRoot* p, const SIMemAlloc& m) UMODSYS_NOTHROW() { p->~IRoot(); operator delete(p, m); }
+  inline static void _delete(IRoot* p, const SMemAlloc_Malloc& m) UMODSYS_NOTHROW() { p->~IRoot(); operator delete(p, m); }
+  inline void _delete(const SIMemAlloc& m) UMODSYS_NOTHROW() { _delete(this, m); }
+  inline void _delete(const SMemAlloc_Malloc& m) UMODSYS_NOTHROW() { _delete(this, m); }
 };
 
 //***************************************
@@ -142,12 +142,12 @@ protected:
 template<typename Obj, typename XObj>
 bool ValidateConstruction(tl::TRefObject<Obj> &rv, tl::TRefObject<XObj> pobj) 
 {
-  if(!obj.valid())
+  if(!pobj.valid())
     return false;
-  if(!obj->validate_construction()) {
+  if(!pobj->validate_construction()) {
     return false;
   }
-  rv = obj;
+  rv = pobj();
   return true;
 }
 
@@ -160,7 +160,7 @@ bool ValidateConstruction(tl::TRefObject<Obj> &rv, XObj* pobj)
   if(!pobj->validate_construction()) {
     return false;
   }
-  rv = obj;
+  rv = pobj;
   return true;
 }
 
