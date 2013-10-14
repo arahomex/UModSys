@@ -42,12 +42,12 @@ struct SMem {
   inline BByte* get_data(size_t shift) const { return reinterpret_cast<BByte*>(data)+shift; }
   inline BByte* get_data(void) const { return reinterpret_cast<BByte*>(data); }
   template<typename T> T* get_tdata(void) const { return reinterpret_cast<T*>(data); }
-  template<typename T> T* get_tdata(int shift) const { return reinterpret_cast<T*>(reinterpret_cast<BByte*>(data)+shift); }
+  template<typename T> T* get_tdata(ptrdiff_t shift) const { return reinterpret_cast<T*>(reinterpret_cast<BByte*>(data)+shift); }
   template<typename T> size_t get_tsize(void) const { return size ? size/sizeof(T) : 0; }
   //
-  inline void move(int n) { size-=n; data=reinterpret_cast<BByte*>(data)+n; }
+  inline void move(ptrdiff_t n) { size-=n; data=reinterpret_cast<BByte*>(data)+n; }
   inline void move(size_t n) { size-=n; data=reinterpret_cast<BByte*>(data)+n; }
-  inline void framemove(int n) { data=reinterpret_cast<BByte*>(data)+n; }
+  inline void framemove(ptrdiff_t n) { data=reinterpret_cast<BByte*>(data)+n; }
   inline bool split(SMem& v, size_t n) {
     if(n>size)
       return false;
@@ -61,12 +61,12 @@ struct SMem {
     value = reinterpret_cast<T*>(data);
   }
   template<typename T>
-  inline void t_datasize(T* &value, int &count) const {
+  inline void t_datasize(T* &value, ptrdiff_t &count) const {
     value = reinterpret_cast<T*>(data);
     count = size/sizeof(T);
   }
   template<typename T>
-  inline void t_data(T* &value, int shift) const {
+  inline void t_data(T* &value, ptrdiff_t shift) const {
     value = reinterpret_cast<T*>( reinterpret_cast<BByte*>(data) + shift );
   }
   //
@@ -75,12 +75,12 @@ struct SMem {
     value = reinterpret_cast<const T*>(data);
   }
   template<typename T>
-  inline void t_cdatasize(const T* &value, int &count) const {
+  inline void t_cdatasize(const T* &value, ptrdiff_t &count) const {
     value = reinterpret_cast<const T*>(data);
     count = size/sizeof(T);
   }
   template<typename T>
-  inline void t_cdata(const T* &value, int shift) const {
+  inline void t_cdata(const T* &value, ptrdiff_t shift) const {
     value = reinterpret_cast<const T*>( reinterpret_cast<const BByte*>(data) + shift );
   }
   //
@@ -104,6 +104,11 @@ struct SMem {
   inline bool ucopy(SCMem& rv, const SCMem& R) const;
   inline bool put(const SCMem& R);
   inline bool put(const SMem& R);
+  //
+  inline size_t operator~(void) const { return size; }
+  inline const void* operator()(void) const { return data; }
+  inline const void* operator()(ptrdiff_t shift) const { return get_data(shift); }
+  inline BByte operator[](ptrdiff_t shift) const { return get_tdata<BByte>()[shift]; }
 };
 
 struct SCMem {
@@ -124,12 +129,12 @@ struct SCMem {
   inline const BByte* get_data(size_t shift) const { return reinterpret_cast<const BByte*>(data)+shift; }
   inline const BByte* get_data(void) const { return reinterpret_cast<const BByte*>(data); }
   template<typename T> const T* get_tdata(void) const { return reinterpret_cast<const T*>(data); }
-  template<typename T> const T* get_tdata(int shift) const { return reinterpret_cast<const T*>(reinterpret_cast<const BByte*>(data)+shift); }
+  template<typename T> const T* get_tdata(ptrdiff_t shift) const { return reinterpret_cast<const T*>(reinterpret_cast<const BByte*>(data)+shift); }
   template<typename T> size_t get_tsize(void) const { return size ? size/sizeof(T) : 0; }
   //
-  inline void move(int n) { size-=n; data=reinterpret_cast<const BByte*>(data)+n; }
+  inline void move(ptrdiff_t n) { size-=n; data=reinterpret_cast<const BByte*>(data)+n; }
   inline void move(size_t n) { size-=n; data=reinterpret_cast<const BByte*>(data)+n; }
-  inline void framemove(int n) { data=reinterpret_cast<const BByte*>(data)+n; }
+  inline void framemove(ptrdiff_t n) { data=reinterpret_cast<const BByte*>(data)+n; }
   inline bool split(SCMem& v, size_t n) {
     if(n>size)
       return false;
@@ -143,12 +148,12 @@ struct SCMem {
     value = reinterpret_cast<const T*>(data);
   }
   template<typename T>
-  inline void t_datasize(const T* &value, int &count) const {
+  inline void t_datasize(const T* &value, ptrdiff_t &count) const {
     value = reinterpret_cast<const T*>(data);
     count = size/sizeof(T);
   }
   template<typename T>
-  inline void t_data(const T* &value, int shift) const {
+  inline void t_data(const T* &value, ptrdiff_t shift) const {
     value = reinterpret_cast<const T*>( reinterpret_cast<const BByte*>(data) + shift );
   }
   //
@@ -168,6 +173,11 @@ struct SCMem {
     size -= n; data = reinterpret_cast<const BByte*>(data) + n;
     return true;
   }
+  //
+  inline size_t operator~(void) const { return size; }
+  inline const void* operator()(void) const { return data; }
+  inline const void* operator()(ptrdiff_t shift) const { return get_data(shift); }
+  inline BByte operator[](ptrdiff_t shift) const { return get_tdata<BByte>()[shift]; }
 };
 
 inline bool SMem::ucopy(SCMem& rv, const SCMem& R) const 
@@ -343,7 +353,7 @@ struct SMemChunk : private SMem {
     value = reinterpret_cast<T*>(data);
   }
   template<typename T>
-  inline void t_data(T* &value, int shift) const {
+  inline void t_data(T* &value, ptrdiff_t shift) const {
     value = reinterpret_cast<T*>( reinterpret_cast<byte*>(data) + shift );
   }
   //

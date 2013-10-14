@@ -61,5 +61,30 @@ IParameters* SParameters::get_paramworker(void)
 }
 
 //***************************************
+// SMemorySharedData::
+//***************************************
+
+void SMemorySharedData::link(const SSourceContext* sctx)
+{
+  rc_count++;
+}
+
+void SMemorySharedData::unlink(const SSourceContext* sctx)
+{
+  if(--rc_count<0) {
+    heap->mem_free(this, sctx);
+  }
+}
+
+SMemorySharedData* SMemorySharedData::new_data(size_t num, const SSourceContext* sctx)
+{
+  void *rv = local_memory().mem_alloc(num + sizeof(SMemorySharedData), sctx);
+  if(rv==NULL)
+    return NULL;
+  return static_cast<SMemorySharedData*>(rv)->init(num, local_memory().imem);
+}
+
+
+//***************************************
 // ::
 //***************************************

@@ -7,6 +7,8 @@
 
 #include <umodsys/stdcore.h>
 #include <umodsys/tl/composite/isockets.h>
+#include <umodsys/tl/util/flags4state.h>
+
 
 namespace UModSys {
 namespace libmedia {
@@ -41,6 +43,7 @@ typedef sint64 DFilePosition;
 
 const size_t MaxFilenameSize = 0x1000;
 
+/*
 enum ePhase {
   mph_Null,
   mph_Parent,
@@ -53,7 +56,6 @@ enum ePhase {
   mph_ObjFilter,
   mph_Unknown
 };
-
 enum eFlagOptions {
   mfo_Default = 0,
   mfo_Yes     = 1,
@@ -61,67 +63,33 @@ enum eFlagOptions {
   mfo_Parent  = 3,
   mfo_Mask    = 3
 };
+*/
 
 //***************************************
 //***************************************
 
-template<int base_shift> 
-struct TFlagOption {
-  enum {
-    shift = base_shift<<1,
-    Yes = mfo_Yes << shift,
-    No = mfo_No << shift,
-    Default = mfo_Default << shift,
-    Parent = mfo_Parent << shift
-  };
-  //
-  inline static bool yes(int flags) { return ((flags>>shift)&mfo_Mask)==mfo_Yes; }
-  inline static bool no(int flags) { return ((flags>>shift)&mfo_Mask)==mfo_No; }
-  inline static bool def(int flags) { return ((flags>>shift)&mfo_Mask)==mfo_Default; }
-  inline static bool par(int flags) { return ((flags>>shift)&mfo_Mask)==mfo_Parent; }
-  //
-  inline static eFlagOptions get(int flags) { return eFlagOptions((flags>>shift)&mfo_Mask); }
-  inline static eFlagOptions gets(int flags, int shift) { return eFlagOptions((flags>>shift)&mfo_Mask); }
-  inline static eFlagOptions getS(int flags, int shift) { return eFlagOptions((flags>>(shift<<1))&mfo_Mask); }
-};
+struct SMediaFlagUid {};
+typedef tl::TFlags4State<SMediaFlagUid, uint32> DMediaFlags;
 
 // binary operations
-typedef struct TFlagOption< 0> mf_archive;     // get binary from archives
-typedef struct TFlagOption< 1> mf_cache;       // get binary from cache
-typedef struct TFlagOption< 2> mf_failwrite;   // record binary failures
-typedef struct TFlagOption< 3> mf_failuse;     // use binary failures
-typedef struct TFlagOption< 4> mf_cachesave;   // update binary cache
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  0> mf_archive;     // get binary from archives
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  1> mf_cache;       // get binary from cache
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  2> mf_failwrite;   // record binary failures
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  3> mf_failuse;     // use binary failures
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  4> mf_cachesave;   // update binary cache
 // object operations
-typedef struct TFlagOption< 5> mf_filter;      // get object from filter
-typedef struct TFlagOption< 6> mf_objects;     // get object from object cache
-typedef struct TFlagOption< 7> mf_nullwrite;   // record object failures
-typedef struct TFlagOption< 8> mf_nulluse;     // use object failures
-typedef struct TFlagOption< 9> mf_objsave;     // update object cache
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  5> mf_filter;      // get object from filter
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  6> mf_objects;     // get object from object cache
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  7> mf_nullwrite;   // record object failures
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  8> mf_nulluse;     // use object failures
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  9> mf_objsave;     // update object cache
 // miscelaneous operations
-typedef struct TFlagOption<10> mf_safe;        // safe writes
-typedef struct TFlagOption<11> mf_relpath;     // relative pathes
-typedef struct TFlagOption<12> mf_relname;     // relative names
-typedef struct TFlagOption<13> mf_groupnew;    // auto-create groups
-typedef struct TFlagOption<14> mf_reserved1;   // R1
-typedef struct TFlagOption<15> mf_reserved2;   // R2
-
-enum eFlags {
-  mf_Default          = 0
-/*
-  mf_NoArchiveData    = 0x00000100,     // don't use archives
-  mf_NoFilterData     = 0x00000200,     // don't use filters
-  mf_NoRecordData     = 0x00000400,     // don't save binary data
-  mf_NoRecordObject   = 0x00000800,     // don't save objects
-  mf_CachedData       = mf_NoArchiveData | mf_NoFilterData,
-  mf_RecordFailed     = 0x00001000,     // record failed attempts
-  mf_RequestFailed    = 0x00002000,     // request failed attempts
-  mf_NoCreateGroup    = 0x00004000,     // don't auto-create group
-  mf_RelativePath     = 0x00010000,     // use relative pathes 
-  mf_RelativeName     = 0x00020000,     // use relative names
-  mf_Relative         = mf_RelativePath | mf_RelativeName,
-  mf_SafeFileWrite    = 0x01000000,     // safe file operations (transactions)
-*/
-};
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 10> mf_safe;        // safe writes
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 11> mf_relpath;     // relative pathes
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 12> mf_relname;     // relative names
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 13> mf_groupnew;    // auto-create groups
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 14> mf_reserved1;   // R1
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 15> mf_reserved2;   // R2
 
 enum ePermissions {
   mp_Read             = 0x0001,
@@ -219,6 +187,34 @@ struct SVComplexFileName {
 // INTERFACES
 //***************************************
 
+struct SFlags {
+  struct IResolver {
+    virtual DMediaFlags::eStates get_parent_flag(int shift) const =0;
+  };
+  //
+  DMediaFlags mf;
+  const IResolver *ir;
+  //
+  inline SFlags(const DMediaFlags f=DMediaFlags(), const IResolver *r=NULL) : mf(f), ir(r) {}
+  //
+  inline const DMediaFlags& operator*(void) const { return mf; }
+  //
+  template<typename T> 
+  bool is_flag(const DMediaFlags &auto_values, DMediaFlags::eStates desired) const { 
+    DMediaFlags::eStates v = T::get(mf);
+    if(v==DMediaFlags::Default) {
+      if(ir!=NULL)
+        return ir->get_parent_flag(T::base_shift)==desired;
+      return T::get(auto_values)==desired;
+    }
+    return v==desired; 
+  }
+  template<typename T> bool yes(const DMediaFlags &auto_values) const { return is_flag<T>(auto_values, DMediaFlags::Yes); }
+  template<typename T> bool no(void) const { return is_flag<T>(auto_values, DMediaFlags::No); }
+};
+
+//***************************************
+
 struct IStreamReader 
 : public IRefObject 
 {
@@ -268,10 +264,10 @@ struct IDataArchive
 : public IRefObject 
 {
 public:
-  virtual bool load_data(SMemShared& mem, const DCString& media_name, int flags=mf_Default) =0;
-  virtual IStreamReader::P load_reader(const DCString& media_name, int flags=mf_Default) =0;
-  virtual bool save_data(const SMemShared& mem, const DCString& media_name, int flags=mf_Default) =0;
-  virtual IStreamWriter::P save_writer(const DCString& media_name, int flags=mf_Default) =0;
+  virtual bool load_data(const DCString& media_name, SCMemShared& mem, const SFlags& flags=SFlags()) =0;
+  virtual IStreamReader::P load_reader(const DCString& media_name, const SFlags& flags=SFlags()) =0;
+  virtual bool save_data(const DCString& media_name, const SCMem& mem, const SFlags& flags=SFlags()) =0;
+  virtual IStreamWriter::P save_writer(const DCString& media_name, const SFlags& flags=SFlags()) =0;
   virtual bool get_entrylist(const DCString &mask, DIFileInfoArray& list) = 0;
   virtual int get_permissions(void) = 0;
 protected:

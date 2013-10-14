@@ -89,6 +89,7 @@ enum {
 
 
 const size_t mem_quant = sizeof(int)*2;
+const size_t mem_max_allocation = (~size_t(0)) - 0x1000; // max allocation allowed is ~0 less 4K
 
 struct STimeMsec {
   BSI64 time;
@@ -104,4 +105,5 @@ inline long operator-(const STimeMsec& A, const STimeMsec& B) { return A.time - 
 inline STimeMsec operator+(const STimeMsec& A, long dt) { return STimeMsec(A.time, dt); }
 inline STimeMsec operator+(const STimeMsec& A, float dt) { return STimeMsec(A.time, long(dt*1000)); }
 inline STimeMsec operator+(const STimeMsec& A, double dt) { return STimeMsec(A.time, long(dt*1000)); }
+
 
