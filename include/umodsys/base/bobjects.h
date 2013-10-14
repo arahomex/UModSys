@@ -33,8 +33,8 @@ using core::IRefObject;
 
 #define UMODSYS_BASE_GENERATOR_IMPLEMENT(_type, _verno, _interface) \
   UMODSYS_REFOBJECT_IMPLEMENT1(_type, _verno, _interface) \
-  tl::TRefObjectLinks<Self> refs; \
-  UMODSYS_REFOBJECT_UNIIMPLEMENT() \
+  tl::TRefObjectLinksPure<Self> refs; \
+  UMODSYS_REFOBJECT_UNIIMPLEMENT0() \
   inline virtual void suicide(void) {} \
   IModule* get_module(void) const; \
   TypeId get_uid(void) const { return s_uid; } \
@@ -54,7 +54,7 @@ using core::IRefObject;
   core::SUniquePointer _type::s_uid("modobject", _type::s_name_uid(), 0); \
   _type::Holder& _type::s_holder(void) { static _type::Holder h; return h; } \
   bool _type::s_reg(IModuleReg* imr) { s_holder().init(); return imr->reg(s_holder()); } \
-  bool _type::s_unreg(IModuleReg* imr) { bool rv = imr->unreg(s_holder()); s_holder().init(); return rv; }
+  bool _type::s_unreg(IModuleReg* imr) { bool rv = imr->unreg(s_holder()); s_holder().deinit(); return rv; }
 
 
 #define UMODSYS_BASE_GENERATOR_BODY(_type, _mod) \

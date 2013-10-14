@@ -36,7 +36,7 @@ bool RModuleLibraryThis::uni_close(void)
 //***************************************
 
 RModuleLibraryThis::RModuleLibraryThis(ISystem* s)
-: IModuleLibraryUni(s, NULL)
+: refs(M), IModuleLibraryUni(s, NULL)
 {
 }
 

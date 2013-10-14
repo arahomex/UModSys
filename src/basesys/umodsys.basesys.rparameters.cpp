@@ -380,7 +380,7 @@ bool RParameters::get(const SParametersData *p, BCStr name, IRefObject* &value) 
 //***************************************
 
 RParameters::RParameters(ISystem* s)
-: sys(s), strict(true) 
+: refs(M), sys(s), strict(true) 
 {
 }
 

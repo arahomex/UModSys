@@ -16,28 +16,26 @@ IRoot::~IRoot(void)
 
 void IRoot::suicide(void)
 {
+  _delete();
+}
+
+IMemAlloc* IRoot::get_heap_allocator(void) const
+{
+  return local_memory().imem;
 }
 
 //***************************************
 
-void* IRoot::operator new(size_t size, const SMemAlloc_Malloc& m) UMODSYS_NOTHROW()
+void* IRoot::operator new(size_t size, IMemAlloc* m) UMODSYS_NOTHROW()
 {
-  return m.mem_alloc(size, UMODSYS_SOURCEINFO);
+  return m ? m->mem_alloc(size, UMODSYS_SOURCEINFO) : NULL;
 }
 
-void IRoot::operator delete(void *op, const SMemAlloc_Malloc& m) UMODSYS_NOTHROW()
+void IRoot::operator delete(void *op, IMemAlloc* m) UMODSYS_NOTHROW()
 {
-  m.mem_free(op, UMODSYS_SOURCEINFO);
-}
-
-void* IRoot::operator new(size_t size, const SIMemAlloc& m) UMODSYS_NOTHROW()
-{
-  return m.mem_alloc(size, UMODSYS_SOURCEINFO);
-}
-
-void IRoot::operator delete(void *op, const SIMemAlloc& m) UMODSYS_NOTHROW()
-{
-  m.mem_free(op, UMODSYS_SOURCEINFO);
+  if(m) {
+    m->mem_free(op, UMODSYS_SOURCEINFO);
+  }
 }
 
 //***************************************
@@ -49,6 +47,7 @@ void IRoot::operator delete(void *op, const SIMemAlloc& m) UMODSYS_NOTHROW()
 IRefObject::~IRefObject(void) 
 {
 }
+
 
 //***************************************
 // IModObject::

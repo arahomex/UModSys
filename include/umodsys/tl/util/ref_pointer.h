@@ -76,55 +76,69 @@ inline void _Ref_init(TRef* &obj, TRef2* obj2, core::Void* flag) {
 //***************************************
 
 template<typename Self> 
-struct TRefObjectLinks {
+struct TRefObjectLinksPure {
   mutable int ref_count;
-  core::SIMemAlloc mem_allocator;
   //
   inline void ref_add(void) const { ref_count++; }
   inline void ref_remove(Self* p) const;
-  inline void obj_delete(Self* p) const;
   inline int  ref_links(void) const { return ref_count; }
   //
-  inline TRefObjectLinks(void) : ref_count(0) {}
+  inline TRefObjectLinksPure(void) : ref_count(0) {}
+};
+
+template<typename Self> 
+struct TRefObjectLinks : public TRefObjectLinksPure<Self> {
+  mutable int ref_count;
+  core::IMemAlloc* heap;
+  //
+  inline void obj_delete(Self* p) const;
+  //
+  inline TRefObjectLinks(core::IMemAlloc* h) : heap(h) {}
 };
 
 template<typename Self, typename Owner> 
 struct TRefObjectLinksParent : public TRefObjectLinks<Self> {
   Owner* owner;
   //
-  inline TRefObjectLinksParent(Owner* pv);
+  TRefObjectLinksParent(core::IMemAlloc* h, Owner* pv);
 };
 
 template<typename Self, typename Owner> 
 struct TRefObjectLinksPModule : public TRefObjectLinks<Self> {
   Owner* owner;
   //
-  inline TRefObjectLinksPModule(Owner* pv);
+  TRefObjectLinksPModule(core::IMemAlloc* h, Owner* pv);
 };
 
 //***************************************
 
 template<typename Self> 
-inline void TRefObjectLinks<Self>::ref_remove(Self* p) const 
+inline void TRefObjectLinksPure<Self>::ref_remove(Self* p) const 
 { 
   if(--ref_count==0) p->suicide(); 
 }
 
+//**********************
+
 template<typename Self> 
 inline void TRefObjectLinks<Self>::obj_delete(Self* p) const
 {
-  p->_delete(mem_allocator);
+  p->_delete(heap);
 }
 
+//**********************
+
 template<typename Self, typename Owner> 
-inline TRefObjectLinksParent<Self, Owner>::TRefObjectLinksParent(Owner* pv) 
-: owner(pv) {
+inline TRefObjectLinksParent<Self, Owner>::TRefObjectLinksParent(core::IMemAlloc* h, Owner* pv) 
+: TRefObjectLinks<Self>(h), owner(pv) {
   owner->ref_add();
 }
 
+//**********************
+
 template<typename Self, typename Owner> 
-inline TRefObjectLinksPModule<Self, Owner>::TRefObjectLinksPModule(Owner* pv) 
-: owner(pv) {
+inline TRefObjectLinksPModule<Self, Owner>::TRefObjectLinksPModule(core::IMemAlloc* h, Owner* pv) 
+: TRefObjectLinks<Self>(h), owner(pv) {
   owner->ref_add();
   owner->mod_inc();
 }

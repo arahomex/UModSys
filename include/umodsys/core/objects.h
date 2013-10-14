@@ -22,7 +22,10 @@ struct IRoot {
   typedef int DVersionNo;
   //
   virtual ~IRoot(void);
-  virtual void suicide(void);
+  //
+  virtual void suicide(void); // must be overloaded if custom memory allocation is used
+  virtual IMemAlloc* get_heap_allocator(void) const; // must be overloaded if custom memory allocation is used
+  //
   virtual const TypeInfo& get_interface_info(void) const =0;
   virtual TypeId get_interface_type(void) const =0;
   virtual const IRoot* get_other_interface(TypeId type) const =0;
@@ -83,21 +86,24 @@ public:
   inline const IRoot* _get_interface_p(void) const { return this; }
   inline IRoot* _get_interface_p(void) { return this; }
 private:
-  inline void* operator new(size_t size) UMODSYS_NOTHROW() { return operator new(size, local_memory()); }
+  inline static void* operator new(size_t size) UMODSYS_NOTHROW() { return operator new(size, local_memory().imem); } // default
 protected:
-  inline void operator delete(void *op) UMODSYS_NOTHROW() { operator delete(op, local_memory()); }
+  inline static void operator delete(void *op) UMODSYS_NOTHROW() {}  // do nothing
 public:
-  inline void* operator new(size_t size, void *sp) UMODSYS_NOTHROW() { return sp; }
-  inline void operator delete(void *op, void *sp) UMODSYS_NOTHROW() {}
-  void* operator new(size_t size, const SMemAlloc_Malloc& m) UMODSYS_NOTHROW();
-  void operator delete(void *op, const SMemAlloc_Malloc& m) UMODSYS_NOTHROW();
-  void* operator new(size_t size, const SIMemAlloc& m) UMODSYS_NOTHROW();
-  void operator delete(void *op, const SIMemAlloc& m) UMODSYS_NOTHROW();
+  // normal
+  inline static void* operator new(size_t size, void *sp) UMODSYS_NOTHROW() { return sp; } 
+  inline static void operator delete(void *op, void *sp) UMODSYS_NOTHROW() {} // normal
+  // heap-based
+  inline static void* operator new(size_t size, const SIMemAlloc& m) UMODSYS_NOTHROW() { return operator new(size, m.imem); }
+  inline static void operator delete(void *op, const SIMemAlloc& m) UMODSYS_NOTHROW() { operator delete(op, m.imem); }
   //
-  inline static void _delete(IRoot* p, const SIMemAlloc& m) UMODSYS_NOTHROW() { p->~IRoot(); operator delete(p, m); }
-  inline static void _delete(IRoot* p, const SMemAlloc_Malloc& m) UMODSYS_NOTHROW() { p->~IRoot(); operator delete(p, m); }
-  inline void _delete(const SIMemAlloc& m) UMODSYS_NOTHROW() { _delete(this, m); }
-  inline void _delete(const SMemAlloc_Malloc& m) UMODSYS_NOTHROW() { _delete(this, m); }
+  static void* operator new(size_t size, IMemAlloc* m) UMODSYS_NOTHROW();
+  static void operator delete(void *op, IMemAlloc* m) UMODSYS_NOTHROW();
+  //
+  inline static void _delete(IRoot* p, IMemAlloc* h) UMODSYS_NOTHROW() { if(p!=NULL) { p->~IRoot(); operator delete(p, h); } }
+  inline void _delete(IMemAlloc* h) UMODSYS_NOTHROW() { _delete(this, h); }
+  inline static void _delete(IRoot* p) UMODSYS_NOTHROW() { if(p!=NULL) { _delete(p, p->get_heap_allocator()); } }
+  inline void _delete(void) UMODSYS_NOTHROW() { _delete(this); }
 };
 
 //***************************************

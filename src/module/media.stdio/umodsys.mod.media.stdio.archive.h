@@ -20,7 +20,7 @@ struct RDataArchiver_OsDir : public IDataArchive
   DMediaFlags auto_values;
   //
   RDataArchiver_OsDir(DOwner *own, const SParameters& args, DMediaFlags av=DMediaFlags())
-  : refs(own), auto_values(av) {
+  : refs(M, own), auto_values(av) {
     open(args);
   }
   ~RDataArchiver_OsDir(void) {

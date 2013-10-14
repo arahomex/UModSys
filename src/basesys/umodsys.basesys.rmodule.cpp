@@ -446,7 +446,7 @@ bool RModule::save_db(FILE *f)
 //***************************************
 
 RModule::RModule(IModuleLibraryUni *pv, IModuleReg *imr)
-: ireg(imr), refs(pv)
+: refs(M, pv), ireg(imr)
 {
   if(ireg!=NULL) {
     alloc_minfo(ireg->minfo);
