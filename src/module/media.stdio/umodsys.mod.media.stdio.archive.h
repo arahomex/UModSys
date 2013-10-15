@@ -13,7 +13,7 @@
 struct RDataArchiver_OsDir : public IDataArchive 
 {
   UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(media,stdio)::RDataArchiver_OsDir, 1, IDataArchive)
-  UMODSYS_REFOBJECT_REFOTHER(RGenerator);
+  UMODSYS_REFOBJECT_REFMODULE()
   //
   int pm;
   DStringShared prefix;

@@ -111,6 +111,7 @@ size_t IModuleLibraryUni::cleanup(void)
     return 0;
   if(load_count==0) {
     unlink();
+    mema.check_leaks(true);
     uni_unload();
   }
   return 1;
@@ -126,6 +127,7 @@ bool IModuleLibraryUni::load0(void)
   linked = false;
   if(!link()) {
     unlink();
+    mema.check_leaks(true);
     uni_unload();
     return false;
   }

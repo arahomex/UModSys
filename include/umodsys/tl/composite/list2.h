@@ -23,7 +23,7 @@ public:
   SNode *next, *prev;
   //
   inline void delme(void) { next->prev = prev; prev->next = next; next = prev = NULL; }
-  inline static void s_append(SNode *x, SNode* me) { x->next = me->next; x->prev = me; me->next = x; }
+  inline static void s_append(SNode *x, SNode* r) { x->next = r->next; x->prev = r; x->next->prev = x; r->next = x; }
   inline static void s_makeroot(SNode* me) { me->next = me->prev = me; }
   inline void clear(void) { next = prev = NULL; }
   inline bool isempty(void) const { return next==prev; }

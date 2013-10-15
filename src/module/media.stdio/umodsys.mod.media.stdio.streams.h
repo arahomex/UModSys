@@ -17,7 +17,7 @@ inline DFilePosition file_get_size(FILE* file)
 struct RStreamReader_FILE : public IStreamReader 
 {
   UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(media,stdio)::RStreamReader_FILE, 1, IStreamReader)
-  UMODSYS_REFOBJECT_REFOTHER(RGenerator);
+  UMODSYS_REFOBJECT_REFMODULE()
   //
   FILE *file;
   DFilePosition endsize;
@@ -87,7 +87,7 @@ struct RStreamReader_FILE : public IStreamReader
 struct RStreamWriter_FILE : public IStreamWriter
 {
   UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(media,stdio)::RStreamWriter_FILE, 1, IStreamWriter)
-  UMODSYS_REFOBJECT_REFOTHER(RGenerator);
+  UMODSYS_REFOBJECT_REFMODULE()
   //
   bool changed;
   FILE *file;

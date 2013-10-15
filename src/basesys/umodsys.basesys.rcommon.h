@@ -42,6 +42,8 @@ typedef tl::TStaticStringPool<
 //***************************************
 
 enum eRSystemDebugLevels {
+  rsdl_SystemTests,
+  rsdl_MemoryError,
   rsdl_System,
   rsdl_Module,
   rsdl_ModuleLibrary,

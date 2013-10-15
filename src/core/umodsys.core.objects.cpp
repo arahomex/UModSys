@@ -25,7 +25,7 @@ void* IRoot::operator new(size_t size, IMemAlloc* m) UMODSYS_NOTHROW()
 {
   if(m==NULL)
     return NULL;
-  UObjectHeader* mh = static_cast<UObjectHeader*>(m->mem_alloc(size, UMODSYS_SOURCEINFO));
+  UObjectHeader* mh = static_cast<UObjectHeader*>(m->mem_alloc(size + sizeof(UObjectHeader), UMODSYS_SOURCEINFO));
   if(mh==NULL)
     return NULL;
   mh->mem = m;
@@ -38,7 +38,7 @@ void IRoot::operator delete(void *op, IMemAlloc* m) UMODSYS_NOTHROW()
     return;
   UObjectHeader* mh = static_cast<UObjectHeader*>(op) - 1;
   mh->mem = NULL;
-  m->mem_free(op, UMODSYS_SOURCEINFO);
+  m->mem_free(mh, UMODSYS_SOURCEINFO);
 }
 
 void IRoot::operator delete(void *op) UMODSYS_NOTHROW()
@@ -50,7 +50,7 @@ void IRoot::operator delete(void *op) UMODSYS_NOTHROW()
   if(m==NULL)
     return; // fatal error
   mh->mem = NULL;
-  m->mem_free(op, UMODSYS_SOURCEINFO);
+  m->mem_free(mh, UMODSYS_SOURCEINFO);
 }
 
 //***************************************
