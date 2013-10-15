@@ -119,6 +119,12 @@ public:
   static RSystem s_sys;
 };
 
+template<typename Header, typename SubAllocator>
+const core::SSourceContext* TRMemAlloc_CC<Header, SubAllocator>::persist_ctx(const core::SSourceContext* sc)
+{
+  return RSystem::s_sys.persist_ctx(sc);
+}
+
 //***************************************
 // END
 //***************************************

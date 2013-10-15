@@ -185,6 +185,7 @@ struct RTest1_Shell : public IShell {
   RTest1_Shell(DOwner *own) : refs(own) {
     M.con().put(0, "RTest1_Shell() {\n");
     memblock = M().mem_alloc(1024, _UMODSYS_SOURCEINFO);
+    M().mem_alloc(511, _UMODSYS_SOURCEINFO);
     //
 //    file_test1();
 //    file_test2();

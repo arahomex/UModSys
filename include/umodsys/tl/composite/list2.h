@@ -27,6 +27,7 @@ public:
   inline static void s_makeroot(SNode* me) { me->next = me->prev = me; }
   inline void clear(void) { next = prev = NULL; }
   inline bool isempty(void) const { return next==prev; }
+  inline bool isnull(void) const { return next==NULL || prev==NULL; }
 public:
   inline explicit TList2Node(core::Void* vv) {}
   inline TList2Node(void) : next(NULL), prev(NULL) {}

@@ -70,7 +70,7 @@ struct TMain : public tl::TList2Node<Header> {
   inline void init(const SSourceContext* d) {}
   //
   template<typename Pool> inline void pinit(Pool* p) {}
-  template<typename Pool> inline bool valid(const Pool* p) const { return !isempty(); }
+  template<typename Pool> inline bool valid(const Pool* p) const { return !isnull(); }
   //
   inline size_t getsize(void) const { return allocated; }
 };
@@ -142,6 +142,7 @@ public:
   IExceptionHandler* err_handler;
 public:
   size_t check_leaks(bool isdump, IExceptionHandler* eh=NULL);
+  const core::SSourceContext* persist_ctx(const core::SSourceContext* sc);
 };
 
 
@@ -159,6 +160,9 @@ TRMemAlloc_CC<Header, SubAllocator>::~TRMemAlloc_CC(void)
 template<typename Header, typename SubAllocator>
 void* TRMemAlloc_CC<Header, SubAllocator>::mem_alloc(size_t n, const SSourceContext* sctx)
 {
+   if(n==0)
+     return NULL;
+   sctx = persist_ctx(sctx);
    Header *h = static_cast<Header*>(SubAllocator::mem_alloc(n + sizeof(Header), sctx));
    if(h==NULL)
      return NULL;
@@ -176,6 +180,7 @@ void* TRMemAlloc_CC<Header, SubAllocator>::mem_realloc(void* op, size_t n, const
       return NULL;
     return mem_alloc(n, sctx);
   }
+  sctx = persist_ctx(sctx);
   Header *h = static_cast<Header*>(op) - 1;
   if(!h->valid(this)) {
     // report about error
@@ -212,6 +217,7 @@ void TRMemAlloc_CC<Header, SubAllocator>::mem_free(void *op, const SSourceContex
 {
   if(op==NULL)
     return;
+  sctx = persist_ctx(sctx);
   Header *h = static_cast<Header*>(op) - 1;
   if(!h->valid(this)) {
     // report about error
