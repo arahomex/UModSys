@@ -105,17 +105,15 @@ namespace core {
   UMODSYS_ROOT_IMPLEMENT2(_type, _interface1, _interface2) \
   typedef tl::TRefObject<_type> DSelfP, SelfP; \
 
-#define UMODSYS_REFOBJECT_UNIIMPLEMENT() \
-  inline void ref_add(void) const { refs.ref_add(); } \
-  inline void ref_remove(void) const { refs.ref_remove( const_cast<Self*>(this) ); } \
-  inline int  ref_links(void) const { return refs.ref_links(); } \
-  inline IMemAlloc* get_heap_allocator(void) const { return refs.heap; } \
-
 #define UMODSYS_REFOBJECT_UNIIMPLEMENT0() \
-  inline void ref_add(void) const { refs.ref_add(); } \
+  inline void ref_add(void) const { refs.ref_add( const_cast<Self*>(this) ); } \
   inline void ref_remove(void) const { refs.ref_remove( const_cast<Self*>(this) ); } \
   inline int  ref_links(void) const { return refs.ref_links(); } \
-  inline IMemAlloc* get_heap_allocator(void) const { return NULL; } \
+  inline bool ref_weak(WeakPointer& wp) const { return refs.ref_weak( const_cast<Self*>(this), wp); } \
+
+#define UMODSYS_REFOBJECT_UNIIMPLEMENT() \
+  UMODSYS_REFOBJECT_UNIIMPLEMENT0() \
+  inline void suicide(void) { refs.obj_delete(this); }
 
 #if 0
 
@@ -141,13 +139,11 @@ namespace core {
 #define UMODSYS_REFOBJECT_SINGLE() \
   tl::TRefObjectLinks<Self> refs; \
   UMODSYS_REFOBJECT_UNIIMPLEMENT() \
-  inline void suicide(void) { refs.obj_delete(this); }
 
 #define UMODSYS_REFOBJECT_REFOTHER(_type_owner) \
   typedef _type_owner DOwner; typedef tl::TRefObject<DOwner> DOwnerP; \
   tl::TRefObjectLinksParent<Self, DOwner> refs; \
   UMODSYS_REFOBJECT_UNIIMPLEMENT() \
-  inline void suicide(void) { DOwnerP p(refs.owner, void_null()); refs.owner = NULL; refs.obj_delete(this); }
 
 //***************************************
 // END

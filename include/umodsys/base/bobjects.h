@@ -23,9 +23,8 @@ using core::IRefObject;
 
 #define UMODSYS_REFOBJECT_REFMODULE() \
   typedef IModObject DOwner; typedef tl::TRefObject<IModObject> DOwnerP; \
-  tl::TRefObjectLinksPModule<Self, IModObject> refs; \
+  tl::TRefObjectLinksModObject<Self, IModObject> refs; \
   UMODSYS_REFOBJECT_UNIIMPLEMENT() \
-  inline virtual void suicide(void) { DOwnerP p(refs.owner, void_null()); refs.owner=NULL; refs.obj_delete(this); p->mod_dec();  }
 
 #define UMODSYS_BASE_SHELL_IMPLEMENT(_type, _verno, _interface) \
   UMODSYS_REFOBJECT_IMPLEMENT1(_type, _verno, _interface) \
@@ -33,7 +32,7 @@ using core::IRefObject;
 
 #define UMODSYS_BASE_GENERATOR_IMPLEMENT(_type, _verno, _interface) \
   UMODSYS_REFOBJECT_IMPLEMENT1(_type, _verno, _interface) \
-  tl::TRefObjectLinksPure<Self> refs; \
+  tl::TRefObjectLinks<Self> refs; \
   UMODSYS_REFOBJECT_UNIIMPLEMENT0() \
   inline virtual void suicide(void) {} \
   IModule* get_module(void) const; \

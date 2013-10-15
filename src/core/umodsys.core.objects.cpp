@@ -16,33 +16,46 @@ IRoot::~IRoot(void)
 
 void IRoot::suicide(void)
 {
-  _delete();
-}
-
-IMemAlloc* IRoot::get_heap_allocator(void) const
-{
-  return local_memory().imem;
+  delete this;
 }
 
 //***************************************
 
 void* IRoot::operator new(size_t size, IMemAlloc* m) UMODSYS_NOTHROW()
 {
-  return m ? m->mem_alloc(size, UMODSYS_SOURCEINFO) : NULL;
+  if(m==NULL)
+    return NULL;
+  UObjectHeader* mh = static_cast<UObjectHeader*>(m->mem_alloc(size, UMODSYS_SOURCEINFO));
+  if(mh==NULL)
+    return NULL;
+  mh->mem = m;
+  return mh+1;
 }
 
 void IRoot::operator delete(void *op, IMemAlloc* m) UMODSYS_NOTHROW()
 {
-  if(m) {
-    m->mem_free(op, UMODSYS_SOURCEINFO);
-  }
+  if(m==NULL || op==NULL)
+    return;
+  UObjectHeader* mh = static_cast<UObjectHeader*>(op) - 1;
+  mh->mem = NULL;
+  m->mem_free(op, UMODSYS_SOURCEINFO);
+}
+
+void IRoot::operator delete(void *op) UMODSYS_NOTHROW()
+{
+  if(op==NULL)
+    return;
+  UObjectHeader* mh = static_cast<UObjectHeader*>(op) - 1;
+  IMemAlloc* m = mh->mem;
+  if(m==NULL)
+    return; // fatal error
+  mh->mem = NULL;
+  m->mem_free(op, UMODSYS_SOURCEINFO);
 }
 
 //***************************************
 // IRefObject::
 //***************************************
-
-//NANOUTL_ROOT_LUP(NanoUTL::core::IRefObject);
 
 IRefObject::~IRefObject(void) 
 {
@@ -53,13 +66,9 @@ IRefObject::~IRefObject(void)
 // IModObject::
 //***************************************
 
-//NANOUTL_ROOT_LUP(NanoUTL::core::IModObject);
-
 //***************************************
 // IGenerator::
 //***************************************
-
-//NANOUTL_ROOT_LUP(NanoUTL::core::IGenerator);
 
 //***************************************
 // ::

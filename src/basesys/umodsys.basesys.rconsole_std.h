@@ -26,6 +26,7 @@ public:
   void ref_add(void) const;
   void ref_remove(void) const;
   int  ref_links(void) const;
+  bool ref_weak(WeakPointer& wp) const;
 public:
 public:
   bool vput(int level, const char* fmt, va_list va);

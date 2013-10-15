@@ -77,13 +77,13 @@ bool RModuleLibrarySO::s_add(ISystem* sys, RModuleLibrarySOArray& la, const char
 //***************************************
 
 RModuleLibrarySO::RModuleLibrarySO(ISystem* s, PFD_Data* pfd, IModuleLibraryReg* imlr)
-: refs(M), IModuleLibraryUni(s, imlr)
+: IModuleLibraryUni(s, imlr)
 {
   pfd_init(get_pfd(), pfd);
 }
 
 RModuleLibrarySO::RModuleLibrarySO(ISystem* s)
-: refs(M), IModuleLibraryUni(s, NULL)
+: IModuleLibraryUni(s, NULL)
 {
   pfd_init(get_pfd());
 }

@@ -12,6 +12,7 @@ using namespace UModSys::base::rsystem;
 void RConsole_std::ref_add(void) const {}
 void RConsole_std::ref_remove(void) const {}
 int  RConsole_std::ref_links(void) const { return 0; }
+bool RConsole_std::ref_weak(WeakPointer& wp) const { return false; }
 
 //***************************************
 //***************************************

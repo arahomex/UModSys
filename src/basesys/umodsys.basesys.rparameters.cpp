@@ -72,8 +72,7 @@ void RParameters::free_elems(void *data, int max)
   //
   for(Elem* x = reinterpret_cast<Elem*>(data); x->end_size(data)<=max; x = x->next()) {
     if(x->type==et_RefObject) { // free it
-      IRefObject* &obj = x->oval();
-      tl::_Ref_remove(obj);
+      DRefObjFunc::s_remove( x->oval() );
     }
     if(x->end_size(data)==max)
       break;
@@ -86,9 +85,8 @@ void RParameters::alloc_elems(void *data, int max)
     return; // nothing check
   //
   for(Elem* x = reinterpret_cast<Elem*>(data); x->end_size(data)<=max; x = x->next()) {
-    if(x->type==et_RefObject) { // free it
-      IRefObject* obj = x->oval();
-      if(obj) obj->ref_add();
+    if(x->type==et_RefObject) { // addref it
+      DRefObjFunc::s_add( x->oval() );
     }
     if(x->end_size(data)==max)
       break;
@@ -112,7 +110,7 @@ bool RParameters::add_last(SParametersData *p, BCStr name, const void *value, in
         const_cast<Elem*>(found)->dval() = *reinterpret_cast<const double*>(value);
         return true;
       case et_RefObject:
-        tl::_Ref_set(const_cast<Elem*>(found)->oval(), *reinterpret_cast<IRefObject*const*>(value));
+        DRefObjFunc::s_set( const_cast<Elem*>(found)->oval(), *reinterpret_cast<IRefObject*const*>(value) );
         return true;
       case et_String:
         const_cast<Elem*>(found)->type = et_Null; 
@@ -148,9 +146,7 @@ bool RParameters::add_last(SParametersData *p, BCStr name, const void *value, in
       break;
     case et_RefObject: {
       IRefObject* obj = *reinterpret_cast<IRefObject*const*>(value);
-      last->oval() = obj;
-      if(obj)
-        obj->ref_add();
+      DRefObjFunc::s_init( last->oval(), obj );
     } break;
     case et_String: {
       ElemSValue& v = last->sval();
@@ -176,7 +172,7 @@ void RParameters::p_deinit(SParametersData *p)
   p->amem.t_free(*sys->get_sharemem(), UMODSYS_SOURCEINFO);
   p->mem.clear();
   p->mem_used = 0;
-  tl::_Ref_remove(p->worker);
+  DParametersFunc::s_remove(p->worker);
 }
 
 void RParameters::p_init(SParametersData *p, int defalloc) 
@@ -184,7 +180,7 @@ void RParameters::p_init(SParametersData *p, int defalloc)
   p->mem_used = 0;
   p->amem.t_alloc(*sys->get_sharemem(), defalloc, UMODSYS_SOURCEINFO);
   p->mem = p->amem.get();
-  tl::_Ref_init(p->worker, this);
+  DParametersFunc::s_init(p->worker, this);
 }
 
 void RParameters::p_init(SParametersData *p, const SParametersData& r) 
@@ -200,7 +196,7 @@ void RParameters::p_init(SParametersData *p, const SParametersData& r)
     memcpy(p->mem.data, r.mem.data, r.mem_used);
     alloc_elems(p->mem.data, p->mem_used);
   }
-  tl::_Ref_init(p->worker, this);
+  DParametersFunc::s_init(p->worker, this);
 }
 
 void RParameters::p_copy(SParametersData *p, const SParametersData& r) 
@@ -236,7 +232,7 @@ void RParameters::p_init_s(SParametersData *p, void* buffer, int nalloc)
 { // static
   p->mem_used = 0;
   p->mem.assign(buffer, nalloc);
-  tl::_Ref_init(p->worker, this);
+  DParametersFunc::s_init(p->worker, this);
 }
 
 void RParameters::p_init_s(SParametersData *p, const SParametersData& r, void *buffer, int nalloc) 
@@ -251,7 +247,7 @@ void RParameters::p_init_s(SParametersData *p, const SParametersData& r, void *b
     memcpy(p->mem.data, r.mem.data, r.mem_used);
     alloc_elems(p->mem.data, p->mem_used);
   }
-  tl::_Ref_init(p->worker, this);
+  DParametersFunc::s_init(p->worker, this);
 }
 
 bool RParameters::next(const SParametersData *p, BCStr &name) 
@@ -380,7 +376,7 @@ bool RParameters::get(const SParametersData *p, BCStr name, IRefObject* &value) 
 //***************************************
 
 RParameters::RParameters(ISystem* s)
-: refs(M), sys(s), strict(true) 
+: sys(s), strict(true) 
 {
 }
 

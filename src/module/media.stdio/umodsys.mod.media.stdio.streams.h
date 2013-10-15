@@ -26,11 +26,11 @@ struct RStreamReader_FILE : public IStreamReader
     reader_close();
   }
   RStreamReader_FILE(DOwner *own, const SParameters& args)
-  : refs(M, own), file(NULL), endsize(0) {
+  : refs(own), file(NULL), endsize(0) {
     open(args);
   }
   RStreamReader_FILE(DOwner *own, BCStr osname)
-  : refs(M, own), file(NULL), endsize(0) {
+  : refs(own), file(NULL), endsize(0) {
     open(osname);
   }
   //
@@ -98,11 +98,11 @@ struct RStreamWriter_FILE : public IStreamWriter
     writer_close();
   }
   RStreamWriter_FILE(DOwner *own, const SParameters& args)
-  : refs(M, own), handle(NULL), file(NULL), endsize(0), changed(true) {
+  : refs(own), handle(NULL), file(NULL), endsize(0), changed(true) {
     open(args);
   }
   RStreamWriter_FILE(DOwner *own, BCStr osname, bool safe)
-  : refs(M, own), handle(NULL), file(NULL), endsize(0), changed(true) {
+  : refs(own), handle(NULL), file(NULL), endsize(0), changed(true) {
     open(osname, safe);
   }
   //

@@ -182,7 +182,7 @@ struct RTest1_Shell : public IShell {
     }
   }
   //
-  RTest1_Shell(DOwner *own) : refs(M, own) {
+  RTest1_Shell(DOwner *own) : refs(own) {
     M.con().put(0, "RTest1_Shell() {\n");
     memblock = M().mem_alloc(1024, _UMODSYS_SOURCEINFO);
     //

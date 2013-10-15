@@ -18,6 +18,10 @@ using namespace core;
 //***************************************
 
 struct RParameters : public IParameters {
+  //
+  typedef tl::TRefObjectFunc<IRefObject> DRefObjFunc;
+  typedef tl::TRefObjectFunc<IParameters> DParametersFunc;
+  //
   // SParametersData
   void p_deinit(SParametersData *p);
   void p_init(SParametersData *p, int defalloc);

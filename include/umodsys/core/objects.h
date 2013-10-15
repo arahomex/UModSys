@@ -24,7 +24,6 @@ struct IRoot {
   virtual ~IRoot(void);
   //
   virtual void suicide(void); // must be overloaded if custom memory allocation is used
-  virtual IMemAlloc* get_heap_allocator(void) const; // must be overloaded if custom memory allocation is used
   //
   virtual const TypeInfo& get_interface_info(void) const =0;
   virtual TypeId get_interface_type(void) const =0;
@@ -85,11 +84,11 @@ public:
   inline static size_t _get_interface_types(DPtrList& list) { list<<_get_interface_type(); return 1; }
   inline const IRoot* _get_interface_p(void) const { return this; }
   inline IRoot* _get_interface_p(void) { return this; }
-private:
-  inline static void* operator new(size_t size) UMODSYS_NOTHROW() { return operator new(size, local_memory().imem); } // default
-protected:
-  inline static void operator delete(void *op) UMODSYS_NOTHROW() {}  // do nothing
 public:
+  union UObjectHeader {
+    size_t filler;
+    IMemAlloc* mem;
+  };
   // normal
   inline static void* operator new(size_t size, void *sp) UMODSYS_NOTHROW() { return sp; } 
   inline static void operator delete(void *op, void *sp) UMODSYS_NOTHROW() {} // normal
@@ -100,10 +99,8 @@ public:
   static void* operator new(size_t size, IMemAlloc* m) UMODSYS_NOTHROW();
   static void operator delete(void *op, IMemAlloc* m) UMODSYS_NOTHROW();
   //
-  inline static void _delete(IRoot* p, IMemAlloc* h) UMODSYS_NOTHROW() { if(p!=NULL) { p->~IRoot(); operator delete(p, h); } }
-  inline void _delete(IMemAlloc* h) UMODSYS_NOTHROW() { _delete(this, h); }
-  inline static void _delete(IRoot* p) UMODSYS_NOTHROW() { if(p!=NULL) { _delete(p, p->get_heap_allocator()); } }
-  inline void _delete(void) UMODSYS_NOTHROW() { _delete(this); }
+  inline static void* operator new(size_t size) UMODSYS_NOTHROW() { return operator new(size, local_memory().imem); } // default
+  static void operator delete(void *op) UMODSYS_NOTHROW();
 };
 
 //***************************************
@@ -111,10 +108,37 @@ public:
 //***************************************
 
 struct IRefObject : public IRoot {
+public:
+  struct WeakPointer {
+    IRefObject* obj;
+    WeakPointer *next, *prev;
+    //
+    inline WeakPointer(void) : obj(NULL), next(NULL), prev(NULL) {}
+    //
+    inline void fix(IRefObject* p) { obj=p; }
+    inline void insert(WeakPointer& r, IRefObject* p) { insert(r); fix(p); }
+    template<typename X> inline X* t_obj(void) { return static_cast<X*>(obj); }
+    //
+    inline void insert(WeakPointer& r) { 
+      WeakPointer &fw = *r.next;
+      next = &fw; prev = &r;
+      fw.prev = this; r.next = this;
+    }
+    inline void remove(void) { 
+      if(next && prev) { 
+        next->prev = prev; 
+        prev->next = next; 
+        next = prev = NULL; 
+      } 
+      obj=NULL; 
+    }
+  };
+public:
   ~IRefObject(void);
   virtual void ref_add(void) const =0;
   virtual void ref_remove(void) const =0;
   virtual int  ref_links(void) const =0;
+  virtual bool ref_weak(WeakPointer& wp) const =0;
 public:
   template<typename RData>
   inline bool t_get_other_interface_ref(tl::TRefObject<RData> &rv) {
