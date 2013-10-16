@@ -64,27 +64,27 @@ struct RDataArchiver_OsDir : public IDataArchive
   }
   inline bool validate_construction(void) const { return true; }
   //
-  bool load_data(const DCString& media_name, SCMemShared& mem, const SFlags& flags) {
+  bool data_load(const DCString& media_name, SCMemShared& mem, const SFlags& flags) {
     return archive_load_data(*this, media_name, mem, flags);
   }
-  IStreamReader::P load_reader(const DCString& media_name, const SFlags& flags) {
+  bool data_save(const DCString& media_name, const SCMem& mem, const SFlags& flags) {
+    return archive_save_data(*this, media_name, mem, flags);
+  }
+  IStreamReader::P data_reader(const DCString& media_name, const SFlags& flags) {
     OSDIR_START(NULL, media_name, mp_Read);
     IStreamReader::P rv;
     if(!ValidateConstruction(rv, new(M()) RStreamReader_FILE(refs.owner, xname)))
       return NULL;
     return rv;
   }
-  bool save_data(const DCString& media_name, const SCMem& mem, const SFlags& flags) {
-    return archive_save_data(*this, media_name, mem, flags);
-  }
-  IStreamWriter::P save_writer(const DCString& media_name, const SFlags& flags) {
+  IStreamWriter::P data_writer(const DCString& media_name, const SFlags& flags) {
     OSDIR_START(NULL, media_name, mp_Write);
     IStreamWriter::P rv;
     if(!ValidateConstruction(rv, new(M()) RStreamWriter_FILE(refs.owner, xname, flags.yes<mf_safe>(auto_values) )))
       return NULL;
     return rv;
   }
-  bool get_entrylist(const DCString &mask, tl::TIStackSocket<SFileInfo>& list) {
+  bool data_list(const DCString &mask, DIFileInfoArray& list) {
     OSDIR_START(0, mask, mp_List);
     return false;
   }

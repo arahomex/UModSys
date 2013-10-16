@@ -133,9 +133,9 @@ struct RTest1_Shell : public IShell {
       M.con().put(0, "  found archive: %s => %p\n", found->name, arch());
     }
     if(arch.valid()) {
-      fr = arch->load_reader("read-test.txt");
+      fr = arch->data_reader("read-test.txt");
       M.con().put(0, "  gen reader: %p\n", fr());
-      fw = arch->save_writer("write-test.txt", libmedia::SFlags(libmedia::mf_safe::yes()) );
+      fw = arch->data_writer("write-test.txt", libmedia::SFlags(libmedia::mf_safe::yes()) );
       M.con().put(0, "  gen writer: %p\n", fw());
     }
     if(fr.valid()) {
@@ -165,7 +165,7 @@ struct RTest1_Shell : public IShell {
       M.con().put(0, "  found archive: %s => %p\n", found->name, arch());
     }
     if(arch.valid()) {
-      bool f = arch->load_data("read-test.txt", mem_block);
+      bool f = arch->data_load("read-test.txt", mem_block);
       if(f) {
         M.con().put(0, "  load file size:%u {", int(~mem_block));
         dump_str(mem_block.get_tdata<char>(), ~mem_block);
@@ -173,7 +173,7 @@ struct RTest1_Shell : public IShell {
       } else {
         M.con().put(0, "  not load file\n");
       }
-      f = arch->save_data("write-test.txt", mem_block, libmedia::SFlags(libmedia::mf_safe::yes()) );
+      f = arch->data_save("write-test.txt", mem_block, libmedia::SFlags(libmedia::mf_safe::yes()) );
       if(f) {
         M.con().put(0, "  size file size:%u {", ~mem_block);
       } else {

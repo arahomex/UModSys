@@ -20,7 +20,7 @@ bool RSystem::init(void)
   rsys_dbg.enable(rsdl_SystemTests);
   rsys_dbg.enable(rsdl_MemoryError);
 //  rsys_dbg.enable(rsdl_System);
-  rsys_dbg.enable(rsdl_Module);
+//  rsys_dbg.enable(rsdl_Module);
 //  rsys_dbg.enable(rsdl_ModuleLibrary);
 //  rsys_dbg.enable(rsdl_SoLoad);
   //

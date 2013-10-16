@@ -18,7 +18,7 @@ namespace libmedia {
 inline bool archive_load_data(IDataArchive& a, const DCString& media_name, SCMemShared& mem, const SFlags& flags) 
 {
   mem.clear();
-  IStreamReader::P rv = a.load_reader(media_name, flags);
+  IStreamReader::P rv = a.data_reader(media_name, flags);
   DFilePosition sz = rv->reader_size();
   if(sz>mem_max_allocation) {
     rv->reader_close();
@@ -42,7 +42,7 @@ inline bool archive_load_data(IDataArchive& a, const DCString& media_name, SCMem
 
 inline bool archive_save_data(IDataArchive& a, const DCString& media_name, const SCMem& mem, const SFlags& flags) 
 {
-  IStreamWriter::P rv = a.save_writer(media_name, flags);
+  IStreamWriter::P rv = a.data_writer(media_name, flags);
   if(!rv->writer_write(mem.data, mem.size)) {
     rv->writer_abort();
     return false;
