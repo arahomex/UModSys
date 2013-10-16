@@ -10,7 +10,7 @@ using namespace UModSys::core::syshlp;
 // syshlp::
 //***************************************
 
-void syshlp::delay(int msec)
+void syshlp::t_delay(int msec)
 {
   if(msec) {
 //    log_put(DL_MAIN_AUX, "{wait %d msec...}\n", msec);
@@ -18,6 +18,12 @@ void syshlp::delay(int msec)
 //    log_put(DL_MAIN_AUX, "{done %d}\n", msec);
   }
 }
+
+unsigned long syshlp::t_msec(void) // overflowed msec timer
+{
+  return timeGetTime();
+}
+
 
 //***************************************
 // ::

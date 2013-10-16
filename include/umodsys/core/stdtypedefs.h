@@ -56,11 +56,7 @@ namespace core {
   template<typename T> void t_set_array1(T *a, T value, size_t size);
   template<typename T> void t_set_array(T* arr, size_t N, const T& v);
 
-
-
-
   const size_t array_index_none = size_t(-1);
- 
 
 } // namespace core
 
@@ -89,6 +85,7 @@ namespace base {
 
 extern base::SModuleContext M;
 extern const core::SIMemAlloc& local_memory(void);
+extern const core::SIMemAlloc& shared_memory(void);
 
 /*
 namespace objects {

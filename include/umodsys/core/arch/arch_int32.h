@@ -89,7 +89,6 @@ enum {
 
 
 const size_t mem_quant = sizeof(int)*2;
-const size_t mem_max_allocation = (~size_t(0)) - 0x1000; // max allocation allowed is ~0 less 4K
 
 struct STimeMsec {
   BSI64 time;

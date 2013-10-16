@@ -57,6 +57,8 @@ namespace UModSys {
 namespace core {
 namespace syshlp {
 
+const int MAX_PATH_LEN = 4096;
+
 /////////////////////////////////////////////////////////////////////////////
 // WINPATH
 
@@ -84,6 +86,77 @@ public:
 
 /////////////////////////////////////////////////////////////////////////////
 // OS PATH INLINES
+
+struct SListContext {
+  const char *path;
+  const char *mask;
+  HANDLE hScan;
+  WIN32_FIND_DATAW ff;
+  char found_name[MAX_PATH_LEN];
+  int options;
+  bool isParent;
+  //
+  SListContext(const char *p, const char *m, int options);
+  ~SListContext(void);
+  bool close(void);
+  bool open(bool usemask);
+  bool next(void);
+  bool fill(IListAccepter::Filename& fn, bool checkmask);
+  //
+  template<typename Performer>
+  bool use_normal(Performer& pf) {
+    if(!open(true))
+      return false;
+    do {
+      IListAccepter::Filename fn;
+      if(!fill(fn, true))
+        continue;
+      if(pf(this, fn))
+        break;
+    } while(next());
+    close();
+    return true;
+  }
+  //
+  template<typename Performer>
+  bool use_recursive(Performer& pf) {
+    if(!open(false))
+      return false;
+    do {
+      IListAccepter::Filename fn;
+      if(!fill(fn, false))
+        continue;
+      if(tl::su::wildcmp(mask, found_name)) {
+        if(pf(this, fn))
+          break;
+      }
+      if(!isParent && (ff.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
+        SListContext sub(fn.filename, mask, options);
+        if(!use_recursive(pf))
+          break;
+      }
+    } while(next());
+    close();
+    return true;
+  }
+  //
+  template<typename Performer>
+  inline static bool use(const char *path, const char *mask, Performer& pf, int options) {
+    if(options & IListAccepter::o_Recursive)
+      return SListContext(path, mask, options).use_recursive(pf);
+    return SListContext(path, mask, options).use_normal(pf);
+  }
+  //
+  struct SList {
+    IListAccepter& la;
+    int counter;
+    //
+    inline SList(IListAccepter& a) : la(a), counter(0) {}
+    inline bool operator()(SListContext* pctx, IListAccepter::Filename& fn) { return la.process_file(pctx->path, pctx->mask, fn, pctx->options, pctx->isParent); }
+    inline int operator()(void) const { return counter; }
+  };
+};
+
 
 /////////////////////////////////////////////////////////////////////////////
 // INLINES

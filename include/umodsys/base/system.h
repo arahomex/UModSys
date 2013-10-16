@@ -48,6 +48,7 @@ protected:
   ISystem* isys;
   IConsole* icon;
   core::SIMemAlloc smem;
+  core::SIMemAlloc smem_shared;
   IModuleLoader* imodloader;
 public:
   ~SModuleContext(void);
@@ -65,6 +66,8 @@ public:
   inline IConsole& con(void) const { return *icon; }
   inline core::IMemAlloc& imem(void) const { return *smem.imem; }
   inline const core::SIMemAlloc& mem(void) const { return smem; }
+  inline core::IMemAlloc& imem_shared(void) const { return *smem_shared.imem; }
+  inline const core::SIMemAlloc& mem_shared(void) const { return smem_shared; }
   //
 public:
   void dbg_put(const char *fmt, ...);

@@ -32,10 +32,12 @@ struct SMemorySharedData  {
 
   void link(const SSourceContext* sctx);
   void unlink(const SSourceContext* sctx);
-  static SMemorySharedData* new_data(size_t num, const SSourceContext* sctx);
+  static SMemorySharedData* new_data(IMemAlloc *h, size_t num, const SSourceContext* sctx);
+  //
   inline void* data(void) { return this+1; }
   inline void* data(ptrdiff_t add) { return static_cast<BByte*>(data())+add; }
   inline SMemorySharedData* init(size_t sz, IMemAlloc *h) { rc_count=0; size=sz; heap = h; return this; }
+  inline static SMemorySharedData* new_data(size_t num, const SSourceContext* sctx) { return new_data(shared_memory(), num, sctx); }
 };
 
 /*************************************************************/
@@ -47,6 +49,8 @@ struct SMemShared {
   inline SMemShared(const SMemShared& M) : data(M.data) { if(data) data->link(UMODSYS_SOURCEINFO); }
   inline SMemShared(SMemorySharedData *adata) : data(adata) { if(data) data->link(UMODSYS_SOURCEINFO); }
   inline SMemShared(size_t ns) : data(SMemorySharedData::new_data(ns, UMODSYS_SOURCEINFO)) { if(data) data->link(UMODSYS_SOURCEINFO); }
+  inline SMemShared(IMemAlloc *h, size_t ns) : data(SMemorySharedData::new_data(h, ns, UMODSYS_SOURCEINFO)) { if(data) data->link(UMODSYS_SOURCEINFO); }
+  //
   inline const SMemShared& operator=(const SMemShared& M)
     { if(M.data!=data) { if(data) data->unlink(UMODSYS_SOURCEINFO); data=M.data; if(data) data->link(UMODSYS_SOURCEINFO); } return *this; }
   inline const SMemShared& operator=(SMemorySharedData *adata)
@@ -90,6 +94,7 @@ struct SCMemShared {
   inline SCMemShared(void) : data(NULL) {}
   inline SCMemShared(const SMemShared& M) : data(M._get()) { if(data) data->link(UMODSYS_SOURCEINFO); }
   inline SCMemShared(const SCMemShared& M) : data(M.data) { if(data) data->link(UMODSYS_SOURCEINFO); }
+  //
   inline const SCMemShared& operator=(const SCMemShared& M)
     { if(M.data!=data) { if(data) data->unlink(UMODSYS_SOURCEINFO); data=M.data; if(data) data->link(UMODSYS_SOURCEINFO); } return *this; }
   inline const SCMemShared& operator=(const SMemShared& M)

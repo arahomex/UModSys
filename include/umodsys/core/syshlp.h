@@ -6,65 +6,28 @@
 /*************************************************************/
 
 #include <umodsys/core/stddefs.h>
+#include <umodsys/core/mem/mem_alloc.h>
 
 namespace UModSys {
 namespace core {
 namespace syshlp {
 
 /////////////////////////////////////////////////////////////////////////////
-// DEFS
+// DEFS / FORWARDS
 
 const int MAX_FILENAME_LEN = 1024;
 
 template<size_t Length=4096> struct U8String;
 template<size_t Length=1024> struct U16String;
 
-bool gracial_convert(wchar_t *dest, int destsize, const char* src, int srcsize); // add NULL at end
-bool gracial_convert(char *dest, int destsize, const wchar_t* src, int srcsize); // add NULL at end
+extern bool gracial_convert(wchar_t *dest, int destsize, const char* src, int srcsize); // add NULL at end
+extern bool gracial_convert(char *dest, int destsize, const wchar_t* src, int srcsize); // add NULL at end
 
-bool gracial_cpy(char *dest, int destsize, const char* src[], int srcnum); // add NULL at end
-bool gracial_cpy(wchar_t *dest, int destsize, const wchar_t* src[], int srcnum); // add NULL at end
+extern bool gracial_cpy(char *dest, int destsize, const char* src[], int srcnum); // add NULL at end
+extern bool gracial_cpy(wchar_t *dest, int destsize, const wchar_t* src[], int srcnum); // add NULL at end
 
-size_t safe_vsnprintf(char* buf, size_t nbuf, const char* fmt, va_list va);
-size_t safe_vsnprintf(wchar_t* buf, size_t nbuf, const wchar_t* fmt, va_list va);
-
-typedef struct sys_list_context_s sys_list_context_t;
-
-enum {
-  slt_Unknown   = 0x01,
-  slt_File      = 0x01,
-  slt_Directory = 0x02,
-  slt_HardLink  = 0x03,
-  slt_SymLink   = 0x04,
-  slt_SerialDev = 0x05,
-  slt_BlockDev  = 0x06,
-  slt_Pipe      = 0x07,
-  slt_Socket    = 0x08,
-  slt_Mount     = 0x09,
-  //
-  slp_Read      = 0x01,
-  slp_Write     = 0x02,
-  slp_ListExec  = 0x04,
-  slp_Options   = 0x08,
-  //
-  slo_Recursive  = 0x001,
-  slo_ShowLink   = 0x002,
-  slo_Normal     = 0x000
-};
-
-struct sys_list_context_s {
-  char name[MAX_FILENAME_LEN];
-  long long file_size;
-  unsigned char type, perm, userattr;
-  time_t time_modified, time_created, time_accessed;
-  //
-  const char *path;
-  const char *mask;
-  int options;
-  //
-  void *puser;
-  int *iuser;
-};
+extern size_t safe_vsnprintf(char* buf, size_t nbuf, const char* fmt, va_list va);
+extern size_t safe_vsnprintf(wchar_t* buf, size_t nbuf, const wchar_t* fmt, va_list va);
 
 /////////////////////////////////////////////////////////////////////////////
 // STRING TYPES
@@ -148,6 +111,15 @@ int eols_prepare(char *out, int outsize, const char* in, int insize);
 /////////////////////////////////////////////////////////////////////////////
 // OS STRING
 
+bool gracial_convert(wchar_t *dest, int destsize, const char* src, int srcsize); // add NULL at end
+bool gracial_convert(char *dest, int destsize, const wchar_t* src, int srcsize); // add NULL at end
+
+bool gracial_cpy(char *dest, int destsize, const char* src[], int srcnum); // add NULL at end
+bool gracial_cpy(wchar_t *dest, int destsize, const wchar_t* src[], int srcnum); // add NULL at end
+
+size_t safe_vsnprintf(char* buf, size_t nbuf, const char* fmt, va_list va);
+size_t safe_vsnprintf(wchar_t* buf, size_t nbuf, const wchar_t* fmt, va_list va);
+
 inline bool STREQ(const char *a, const char *b) { return strcmp(a,b)==0; }
 inline bool STREQ(const wchar_t *a, const wchar_t *b) { return wcscmp(a,b)==0; }
 
@@ -168,31 +140,69 @@ size_t safe_snprintf(CharT* buf, size_t nbuf, const CharT* fmt, ...)
 /////////////////////////////////////////////////////////////////////////////
 // OS FILES
 
+struct IListAccepter {
+  enum {
+    // type
+    t_Unknown   = 0x01,
+    t_File      = 0x01,
+    t_Directory = 0x02,
+    t_HardLink  = 0x03,
+    t_SymLink   = 0x04,
+    t_SerialDev = 0x05,
+    t_BlockDev  = 0x06,
+    t_Pipe      = 0x07,
+    t_Socket    = 0x08,
+    t_Mount     = 0x09,
+    // perm
+    p_Read      = 0x01,
+    p_Write     = 0x02,
+    p_ListExec  = 0x04,
+    p_Options   = 0x08,
+    // options
+    o_Recursive  = 0x0001,
+    o_ShowLink   = 0x0002,
+    o_ShowParent = 0x0004,
+    o_Normal     = 0x0000
+  };
+  //
+  struct Filename {
+    const char *filename;
+    fpos_t file_size;
+    unsigned char type, perm;
+    unsigned userattr;
+    time_t time_modified, time_created, time_accessed;
+  };
+  //
+  virtual bool process_file(const char* path, const char* mask, const Filename& fn, int options, bool isParent) =0;
+};
+
 void setup_console(void);
 void restore_console(void);
 
-FILE* c_fopen(const char *cfilename, const char *cmode);
-FILE* c_fopentemp(char* &handle, const char *msk);
-bool c_fendtemp(FILE* &f, char* &handle, bool gracial);
+FILE* u_fopen(const char *cfilename, const char *cmode);
+FILE* u_fopentemp(char* &handle, const char *msk);
+bool u_fendtemp(FILE* &f, char* &handle, bool gracial);
 
-int get_file(const char *name, void* buffer, int bufsize, int binmode);
-int put_file(const char *name, const void* buffer, int bufsize, int binmode);
-int get_file_list(const char *pathmask, int (*use_fn)(void *ctx, const char *fn, const char *attr, int filesize), void *ctx);
+bool u_mkdir_recursive(const char *dira);
+bool u_erase(const char *filedir);
+bool u_chdir(const char *dira);
+bool u_curdir(char *dira, size_t maxlen);
 
-int change_dir(const char *dir);
-int mkdir_recursive(const char *dira);
-int erase(const char *filedir);
-int curdir(char *dira, size_t maxlen);
-int chdir(const char *dira);
+bool u_fullpath(const char* relname, char *dira, size_t maxlen);
 
-int list_begin(sys_list_context_t* ctx, const char *path, const char *mask, int options);
-int list_next(sys_list_context_t* ctx);
-int list_end(sys_list_context_t* ctx);
+int u_list(const char *path, const char *mask, IListAccepter &fna, int options);
+
+bool get_file_size(const char *name, size_t& size, bool ftext=false);
+bool get_file(const char *name, size_t& size, void*& buffer, IMemAlloc* imem, bool ftext=false);
+bool get_file(const char *name, size_t& size, void* buffer, size_t bufsize, bool ftext=false);
+bool put_file(const char *name, const void* buffer, size_t bufsize, size_t& size, bool ftext=false, bool append=false);
+bool put_file(const char *name, const void* buffer, size_t bufsize, bool ftext=false, bool append=false);
 
 /////////////////////////////////////////////////////////////////////////////
 // OS thread
 
-void delay(int msec);
+void t_delay(int msec);
+unsigned long t_msec(void); // overflowed msec timer
 
 /////////////////////////////////////////////////////////////////////////////
 // OS process

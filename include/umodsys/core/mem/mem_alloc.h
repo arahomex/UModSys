@@ -5,11 +5,15 @@
 // info: allocator bases
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
 #include <umodsys/core/source.h>
 
 namespace UModSys {
 namespace core {
+
+//***************************************
+//***************************************
+
+const size_t mem_max_allocation = (~size_t(0)) - 0x100; // max allocation allowed is ~0 less 4K
 
 //***************************************
 //***************************************
@@ -57,6 +61,10 @@ public:
   inline void* mem_alloc(size_t n, const SSourceContext* sctx) const { return imem->mem_alloc(n, sctx); }
   inline void* mem_realloc(void* op, size_t n, const SSourceContext* sctx) const { return imem->mem_realloc(op, n, sctx); }
   inline void mem_free(void *op, const SSourceContext* sctx) const { imem->mem_free(op, sctx); }
+  //
+  inline operator IMemAlloc*(void) const { return imem; }
+  inline IMemAlloc* operator ->(void) const { return imem; }
+  inline IMemAlloc* operator *(void) const { return imem; }
 };
 
 //***************************************

@@ -65,30 +65,7 @@ struct RDataArchiver_OsDir : public IDataArchive
   inline bool validate_construction(void) const { return true; }
   //
   bool load_data(const DCString& media_name, SCMemShared& mem, const SFlags& flags) {
-    OSDIR_START(false, media_name, mp_Read);
-    IStreamReader::P rv;
-    mem.clear();
-    if(!ValidateConstruction(rv, new(M()) RStreamReader_FILE(refs.owner, xname)))
-      return false;
-    DFilePosition sz = rv->reader_size();
-    if(sz>mem_max_allocation) {
-      rv->reader_close();
-      return false; // max size not allowed
-    }
-    size_t msize = size_t(sz);
-    if(msize==0)
-      return true; // ok to load zero size file
-    SMemShared m2(msize);
-    if(!m2.valid() || m2.get_size()!=msize) {
-      rv->reader_close();
-      return false; // max size not allowed
-    }
-    if(!rv->reader_read(m2.get_data(), m2.get_size())) {
-      rv->reader_close();
-      return false; // max size not allowed
-    }
-    mem = m2;
-    return true;
+    return archive_load_data(*this, media_name, mem, flags);
   }
   IStreamReader::P load_reader(const DCString& media_name, const SFlags& flags) {
     OSDIR_START(NULL, media_name, mp_Read);
@@ -98,16 +75,7 @@ struct RDataArchiver_OsDir : public IDataArchive
     return rv;
   }
   bool save_data(const DCString& media_name, const SCMem& mem, const SFlags& flags) {
-    OSDIR_START(false, media_name, mp_Write);
-    IStreamWriter::P rv;
-    if(!ValidateConstruction(rv, new(M()) RStreamWriter_FILE(refs.owner, xname, flags.yes<mf_safe>(auto_values) )))
-      return false;
-    if(!rv->writer_write(mem.data, mem.size)) {
-      rv->writer_abort();
-      return false;
-    }
-    rv->writer_close();
-    return true;
+    return archive_save_data(*this, media_name, mem, flags);
   }
   IStreamWriter::P save_writer(const DCString& media_name, const SFlags& flags) {
     OSDIR_START(NULL, media_name, mp_Write);

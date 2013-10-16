@@ -23,9 +23,11 @@ void SModuleContext::Link(ISystem* is, IMemAlloc* privmem)
   if(isys!=NULL) {
     icon = isys->get_console();
     imodloader = isys->get_modloader();
+    smem_shared.imem = is->get_sharemem();
   } else {
     icon = NULL;
     imodloader = NULL;
+    smem_shared.imem = NULL;
   }
   smem.imem = privmem;
 }
@@ -49,6 +51,11 @@ base::SModuleContext UModSys::M;
 const core::SIMemAlloc& UModSys::local_memory(void)
 {
   return M();
+}
+
+const core::SIMemAlloc& UModSys::shared_memory(void)
+{
+  return M.mem_shared();
 }
 
 //***************************************
@@ -76,12 +83,12 @@ void SMemorySharedData::unlink(const SSourceContext* sctx)
   }
 }
 
-SMemorySharedData* SMemorySharedData::new_data(size_t num, const SSourceContext* sctx)
+SMemorySharedData* SMemorySharedData::new_data(IMemAlloc* h, size_t num, const SSourceContext* sctx)
 {
-  void *rv = local_memory().mem_alloc(num + sizeof(SMemorySharedData), sctx);
+  void *rv = h->mem_alloc(num + sizeof(SMemorySharedData), sctx);
   if(rv==NULL)
     return NULL;
-  return static_cast<SMemorySharedData*>(rv)->init(num, local_memory().imem);
+  return static_cast<SMemorySharedData*>(rv)->init(num, h);
 }
 
 

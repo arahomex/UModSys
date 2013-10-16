@@ -82,7 +82,7 @@ bool RConsole_std::reflect(const char *name)
     name++;
     mode = "wt";
   }
-  dump_file = core::syshlp::c_fopen(name, mode);
+  dump_file = core::syshlp::u_fopen(name, mode);
   if(dump_file==NULL)
     return false;
   return true;

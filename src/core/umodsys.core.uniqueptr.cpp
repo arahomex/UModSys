@@ -42,7 +42,8 @@ void SUniquePointer::s_resolve(IUniquePointerResolver* res)
 
 void SUniquePointer::s_unresolve(IUniquePointerResolver* res) 
 {
-  for(const SUniquePointer* x=root.next; x!=&root; x=x->next) {
+  size_t n = 0;
+  for(const SUniquePointer* x=root.next, *y=x; x!=&root; y=x, x=x->next, n++) {
     if(x->upi!=NULL) {
       res->upi_remove(x->upi);
       x->upi = NULL;

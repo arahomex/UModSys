@@ -6,6 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/core/stdtypedefs.h>
+#include <umodsys/core/source.h>
 
 namespace UModSys {
 namespace core {
@@ -72,6 +73,27 @@ template<typename T> inline T scalar_max(T a, T b, T c, T d) { return a<b ? scal
 
 template<typename T> inline int TScalarCompare<T>::compare(const T& a, const T& b) { return scalar_compare(a, b); }
 
+//***************************************
+
+inline int scalar_compare(const SSourceContext &p1, const SSourceContext &p2)
+{
+  int rv = scalar_compare(p1.file, p2.file);
+  if(rv!=0)
+    return rv;
+  rv = scalar_compare(p1.function, p2.function);
+  if(rv!=0)
+    return rv;
+  return scalar_compare(p1.line, p2.line);
+}
+
+inline int scalar_compare(const SSourceContext *p1, const SSourceContext *p2)
+{
+  if(p1==NULL)
+    return p2!=NULL ? -1 : 0;
+  if(p2==NULL)
+    return 1;
+  return scalar_compare(*p1, *p2);
+}
 
 //***************************************
 // END

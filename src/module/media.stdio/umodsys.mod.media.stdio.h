@@ -7,6 +7,7 @@
 
 #include <umodsys/stdbase.h>
 #include <umodsys/lib/media/libmedia.common.h>
+#include <umodsys/lib/media/libmedia.utils.h>
 #include <umodsys/core/syshlp.h>
 
 UMODSYS_MODULE_BEGIN(media, stdio)

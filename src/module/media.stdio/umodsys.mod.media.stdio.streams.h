@@ -40,7 +40,7 @@ struct RStreamReader_FILE : public IStreamReader
       open(filename);
     }
   }
-  inline void open(BCStr osname) { file = syshlp::c_fopen(osname, "rb"); get_size(); }
+  inline void open(BCStr osname) { file = syshlp::u_fopen(osname, "rb"); get_size(); }
   inline void open(FILE *f) { file = f; get_size(); }
   inline bool validate_construction(void) const { return file!=NULL; }
   inline void get_size(void) { endsize = file_get_size(file); }
@@ -116,9 +116,9 @@ struct RStreamWriter_FILE : public IStreamWriter
   }
   inline void open(BCStr osname, bool safe) { 
     if(safe) {
-      file = syshlp::c_fopentemp(handle, osname);
+      file = syshlp::u_fopentemp(handle, osname);
     } else {
-      file = syshlp::c_fopen(osname, "wb"); 
+      file = syshlp::u_fopen(osname, "wb"); 
     }
     get_size();
   }
@@ -184,7 +184,7 @@ struct RStreamWriter_FILE : public IStreamWriter
   }
   void writer_close(void) {
     if(handle) {
-      syshlp::c_fendtemp(file, handle, true);
+      syshlp::u_fendtemp(file, handle, true);
     }
     if(file) {
       fclose(file);
@@ -193,7 +193,7 @@ struct RStreamWriter_FILE : public IStreamWriter
   }
   void writer_abort(void) {
     if(handle) {
-      syshlp::c_fendtemp(file, handle, false);
+      syshlp::u_fendtemp(file, handle, false);
     }
     if(file) {
       fclose(file);
