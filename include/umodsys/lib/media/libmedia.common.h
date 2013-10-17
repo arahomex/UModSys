@@ -19,16 +19,14 @@ using namespace core;
 // FORWARDS
 //***************************************
 
-struct IDataLibrary;       // access to data by name (VFS)
-struct IDataCache;         // cache data in memory
-struct IDataArchive;       // data<>storage
-
 struct IStreamReader;      // read binary data
 struct IStreamWriter;      // write binary data
 
-struct IObjectLibrary;     // access to object by name (VOS)
-struct IObjectCache;       // cache objects in memory
+struct IDataArchive;       // data<>storage
 struct IObjectFilter;      // convert object<>data
+
+struct IDataLibrary;       // access to data by name (VFS)
+struct IObjectLibrary;     // access to object by name (VOS)
 
 typedef tl::TStringBuf<
   tl::su::TSCorePrealloc<cStringBufMedium, core::BChar>, 
@@ -259,32 +257,6 @@ protected:
 };
 
 //***************************************
-
-/*
-struct IDataLibrary
-: public IRefObject 
-{
-public:
-  virtual IMediaReader::P data_reader(const DCString& media_name, const SFlags& flags=SFlags()) =0;
-  virtual IMediaWriter::P data_writer(const DCString& media_name, const SFlags& flags=SFlags()) =0;
-  virtual bool data_load(SCMemShared& mem, const DCString& media_name, const SFlags& flags=SFlags()) =0; // load binary data
-  virtual bool data_save(const SCMem& mem, const DCString& media_name, const SFlags& flags=SFlags()) =0; // save binary data
-//  virtual bool file_info(SMediaFileInfo& info, const DHString& media_name, const SFlags& flags=SFlags()) =0; // determine attributes
-//  virtual bool file_info(SMediaFileInfoArray& info, const DHString& media_mask, const SFlags& flags=SFlags()) =0; // determine attributes
-  virtual bool archive_add(BCStr mountpoint, IMediaArchive* archive, int permit=mp_RL, int order=0) =0;
-protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IDataLibrary, 2, IRefObject);
-};
-
-struct IDataCache
-: public IRefObject 
-{
-public:
-protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IDataLibrary, 2, IRefObject);
-};
-*/
-
 //***************************************
 
 struct IDataArchive 
@@ -302,6 +274,35 @@ protected:
 };
 
 //***************************************
+
+struct IDataLibrary
+: public IRefObject 
+{
+public:
+  // data functions
+  virtual IMediaReader::P data_reader(const DCString& media_name, const SFlags& flags=SFlags()) =0;
+  virtual IMediaWriter::P data_writer(const DCString& media_name, const SFlags& flags=SFlags()) =0;
+  virtual bool data_load(SCMemShared& mem, const DCString& media_name, const SFlags& flags=SFlags()) =0; // load binary data
+  virtual bool data_save(const SCMemShared& mem, const DCString& media_name, const SFlags& flags=SFlags()) =0; // save binary data
+//  virtual bool file_info(SMediaFileInfo& info, const DHString& media_name, const SFlags& flags=SFlags()) =0; // determine attributes
+//  virtual bool file_info(SMediaFileInfoArray& info, const DHString& media_mask, const SFlags& flags=SFlags()) =0; // determine attributes
+  // sub-archives
+  virtual bool archives_get(const DCString& mountpoint, IDataArchive::P* archive, int *permit, int order=0) const =0;
+  virtual bool archives_add(const DCString& mountpoint, IDataArchive* archive, int permit=mp_RL, int order=0) =0;
+  virtual bool archives_remove(const DCString& mountpoint, int order=0) =0;
+  virtual bool archives_clear(void) =0;
+  // binary cache 
+  virtual bool bincache_get(SCMemShared& mem, const DCString& media_name) const =0; // get cache element
+  virtual bool bincache_add(const SCMemShared& mem, const DCString& media_name) =0; // put cache element
+  virtual bool bincache_remove(const DCString& media_name)=0; // clear cache element
+  virtual bool bincache_clear(void)=0; // clear all cache
+  // united libraries
+protected:
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IDataLibrary, 2, IRefObject);
+};
+
+//***************************************
+
 
 #if 0
 struct IObjectFilter 
@@ -345,6 +346,33 @@ public:
 //  virtual bool set_params(const DHString &kind, const SParameters* filter_params) = 0;
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IObjectFilter, 2, IRefObject);
+};
+
+struct IDataLibrary
+: public IObjectLibrary
+{
+public:
+  // object loading
+  virtual bool obj_get(IRefObject::P& obj, const DCString& group, const DCString& media_name, 
+                       const SParameters* params, int flags=mf_Default) =0;
+  virtual bool obj_load(IRefObject* obj, const DCString& group, const DCString& media_name, 
+                        const SParameters* params, int flags=mf_Default, const DCString& typehint=NULL) =0;
+  virtual bool obj_save(IRefObject* obj, const DCString& group, const DCString& media_name, 
+                        const SParameters* params, int flags=mf_Default, const DCString& typehint=NULL) =0;
+  // object filtering
+  virtual bool filters_add(IObjectFilter* filter, const SParameters* filter_params=NULL, int order=0) =0;
+  virtual bool filters_remove(IMediaFilter* filter, int order=0) =0;
+  virtual bool filters_clear(void)=0; // clear all cache
+  virtual bool filters_load(IRefObject::P& obj, const SMediaFilter& info) =0;
+  virtual bool filters_load(IRefObject* obj, const SMediaFilter& info) =0;
+  virtual bool filters_save(IRefObject* obj, SMediaFilter& info) =0;
+  // object cache 
+  virtual bool objcache_get(IRefObject::P& obj, const DCString& media_name) const =0; // get cache element
+  virtual bool objcache_add(IRefObject* obj, const DCString& media_name) =0; // put cache element
+  virtual bool objcache_remove(const DCString& media_name)=0; // clear cache element
+  virtual bool objcache_clear(void)=0; // clear all cache
+protected:
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IDataLibrary, 2, IObjectLibrary);
 };
 #endif
 
