@@ -19,6 +19,8 @@ inline bool archive_load_data(IBinArchive& a, const DCString& media_name, SCMemS
 {
   mem.clear();
   IStreamReader::P rv = a.data_reader(media_name, flags);
+  if(rv.invalid())
+    return false;
   DFilePosition sz = rv->reader_size();
   if(sz>mem_max_allocation) {
     rv->reader_close();
@@ -43,6 +45,8 @@ inline bool archive_load_data(IBinArchive& a, const DCString& media_name, SCMemS
 inline bool archive_save_data(IBinArchive& a, const DCString& media_name, const SCMem& mem, const SFlags& flags) 
 {
   IStreamWriter::P rv = a.data_writer(media_name, flags);
+  if(rv.invalid())
+    return false;
   if(!rv->writer_write(mem.data, mem.size)) {
     rv->writer_abort();
     return false;

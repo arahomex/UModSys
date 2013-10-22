@@ -95,6 +95,9 @@ struct ILibraryLayered
     int pm;
     ILibrary::P lib;
     DCString tag;
+    //
+    inline SLayer(ILibrary* l, int p=mp_All, const DCString t=NULL)
+      : tag(t), lib(l), pm(p) {}
   };
 public:
   // sub-elements, use highest cast [IDataLibrary]

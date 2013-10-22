@@ -16,7 +16,7 @@ struct RLibraryBinTree : public ILibraryBinTree
     inline SMountIndex(const DCString &m, int o) : mnt(m), order(o) {}
     //
     static int compare(const SMountIndex& L, const SMountIndex& R) { 
-      int rv = scalar_compare(L.order, R.order);
+      int rv = -scalar_compare(L.order, R.order); // revert order, a>b mean a before b
       if(rv) return rv;
       return scalar_compare(L.mnt, R.mnt);
     }
