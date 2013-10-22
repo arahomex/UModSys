@@ -7,10 +7,12 @@ using namespace UModSys::base;
 using namespace UModSys::base::rsystem;
 
 UMODSYS_MODULE_DEF(media,stdio);
+UMODSYS_MODULE_DEF(media,std);
 
 static void refer(void)
 {
   UMODSYS_MODULE_USE(media,stdio);
+  UMODSYS_MODULE_USE(media,std);
 }
 
 int main(int argc, char **argv)

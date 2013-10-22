@@ -7,6 +7,9 @@
 
 #include <umodsys/tl/composite/tree_rb.h>
 
+#include <umodsys/tl/alloc/allocator.h>
+#include <umodsys/tl/metastl/throws.h>
+
 namespace UModSys {
 namespace tl {
 
@@ -16,28 +19,41 @@ template<typename TData, typename TIndex=int>
 struct TScatterArrayNode;
 
 template<typename TData, typename TIndex=int, 
+         typename Comparer = TObjectCompare< TScatterArrayNode<TData,TIndex> >,
          typename TNodeDeleter = TNodeDeleter0< TScatterArrayNode<TData,TIndex> > >
 struct TScatterArray;
 
 template<typename TData, typename TIndex=int, 
-         typename MemAlloc = core::SMemAlloc_Malloc >
+         typename Comparer = TObjectCompare< TScatterArrayNode<TData,TIndex> >,
+         typename MemAlloc = core::SIMemAlloc >
 struct TScatterArrayD1;
 
 //***************************************
 
 template<typename Data, typename Index>
 struct TScatterArrayNode : public TTreeNodeRB< TScatterArrayNode<Data, Index> > {
+  typedef TScatterArrayNode<Data, Index> Self;
+  //
   Index index;
   Data value;
   //
-  inline TScatterArrayNode(Index id) : index(id) {}
-  inline TScatterArrayNode(Index id, const Data& v) : index(id), value(v) {}
+  inline TScatterArrayNode(const Index& id) : index(id) {}
+  inline TScatterArrayNode(const Index& id, const Data& v) : index(id), value(v) {}
   inline ~TScatterArrayNode(void) {}
+  //
+  inline static Data* cast(Self* x) { return &x->value; }
+  inline static const Data* cast(const Self* x) { return &x->value; }
+  int compare(const Node& r) const;
 };
+
+template<typename Data, typename Index>
+inline int TScatterArrayNode<Data, Index>::compare(const Node& r) const {
+  return core::scalar_compare(index, r.index);
+}
 
 //***************************************
 
-template<typename TData, typename TIndex, typename TNodeDeleter>
+template<typename TData, typename TIndex, typename Comparer, typename TNodeDeleter>
 struct TScatterArray {
 public:
   struct Cmp;
@@ -50,25 +66,43 @@ public:
   typedef TNodeDeleter NodeDeleter;
   typedef TTreeHoldRBD<Node, NodeDeleter> Holder;
   //
+  // stl typedefs
+  typedef Index key_type;
+  typedef Value value_type;
+  typedef Value& reference;
+  typedef const Value& const_reference;
+  typedef Value* pointer;
+  typedef const Value* const_pointer;
+//  typedef ptrdiff_t difference_type;
+//  typedef size_t size_type;
+  //
+  typedef TTreeIterRB<Node, Value, Node> Iter;
+  typedef TTreeIterRB<const Node, const Value, Node> CIter;
+  //
+  typedef Iter iterator;
+  typedef ReverseIterator<iterator, value_type, core::Void> reverse_iterator;
+  typedef CIter const_iterator;
+  typedef ReverseIterator<const_iterator, const value_type, core::Void> const_reverse_iterator;
+  //
+  static Node* None(void) UMODSYS_NOTHROW() { return NULL; }
+  //
   struct Cmp {
     const Index& index;
     //
     inline Cmp(const Index& x) : index(x) {}
-    inline int operator()(const Node *r) const { return core::scalar_compare(index, r->index); }
+    inline int operator()(const Node *r) const { return Comparer::compare(index, r->index); }
   };
   //
   struct Gen {
     const Value &value;
     //
     inline Gen(const Value &d0) : value(d0) {}
-    inline Node* operator()(const Cmp& c, const Holder& h) const 
-      { return new(h.node_del.op_new()) Node(c.index, value); }
+    inline Node* operator()(const Cmp& c, const Holder& h) const { return new(h.node_del.op_new()) Node(c.index, value); }
   };
   //
   struct Gen0 {
     inline Gen0(void) {}
-    inline Node* operator()(const Cmp& c, const Holder& h) const 
-      { return new(h.node_del.op_new()) Node(c.index); }
+    inline Node* operator()(const Cmp& c, const Holder& h) const { return new(h.node_del.op_new()) Node(c.index); }
   };
   //
   template<typename X>
@@ -85,21 +119,16 @@ public:
   inline TScatterArray(const NodeDeleter& nd) : hold(nd) {}
   inline ~TScatterArray(void) {}
   //
-  inline size_t count(void) const { return hold.process_nodes(STreeProcCounter()); }
-  inline size_t len(void) const { return count(); }
+  inline size_t Count(void) const { return hold.process_nodes(STreeProcCounter()); }
+  inline size_t Len(void) const { return count(); }
   inline size_t operator~(void) const { return count(); }
   //
   inline Value* operator()(const Index& index, const Value& v) {
     Node *n = hold.genx_node(Cmp(index), Gen(v));
     return n==NULL ? NULL : &n->value;
   }
-  inline Value* operator[](const Index& index) {
+  inline Value* operator()(const Index& index, core::Void* v) {
     Node *n = hold.genx_node(Cmp(index), Gen0());
-    return n==NULL ? NULL : &n->value;
-  }
-  //
-  inline Value* operator[](const Index& index) const {
-    Node *n = hold.find_node_u(Cmp(index));
     return n==NULL ? NULL : &n->value;
   }
   inline Value* operator()(const Index& index) const {
@@ -107,25 +136,25 @@ public:
     return n==NULL ? NULL : &n->value;
   }
   //
-  inline bool remove(const Index& index) {
+  inline bool Remove(const Index& index) {
     Node *n = hold.find_node_u(Cmp(index));
     if(n==NULL) return false;
     hold.delete_node(n);
     return true;
   }
-  inline bool clear(void) {
+  inline bool Clear(void) {
     hold.delete_all_nodes();
     return true;
   }
   //
-  inline bool first(Index &index) const {
+  inline bool First(Index &index) const {
     Node *n = hold.min_node();
     if(n==NULL)
       return false;
     index = n->index;
     return true;
   }
-  inline bool next(Index &index) const {
+  inline bool Next(Index &index) const {
     Node *n = hold.first_node_u(Cmp(index+1));
     if(n==NULL)
       return false;
@@ -133,7 +162,7 @@ public:
     return true;
   }
   //
-  inline bool first(Index &index, const Value* &d) const {
+  inline bool First(Index &index, const Value* &d) const {
     Node *n = hold.min_node();
     if(n==NULL)
       return false;
@@ -141,24 +170,7 @@ public:
     d = &n->value;
     return true;
   }
-  inline bool next(Index &index, const Value* &d) const {
-    Node *n = hold.first_node_u(Cmp(index+1));
-    if(n==NULL)
-      return false;
-    index = n->index;
-    d = &n->value;
-    return true;
-  }
-  //
-  inline bool first(Index &index, Value* &d) const {
-    Node *n = hold.min_node();
-    if(n==NULL)
-      return false;
-    index = n->index;
-    d = &n->value;
-    return true;
-  }
-  inline bool next(Index &index, Value* &d) const {
+  inline bool Next(Index &index, const Value* &d) const {
     Node *n = hold.first_node_u(Cmp(index+1));
     if(n==NULL)
       return false;
@@ -167,7 +179,24 @@ public:
     return true;
   }
   //
-  inline bool first(Index &index, Value &d) const {
+  inline bool First(Index &index, Value* &d) const {
+    Node *n = hold.min_node();
+    if(n==NULL)
+      return false;
+    index = n->index;
+    d = &n->value;
+    return true;
+  }
+  inline bool Next(Index &index, Value* &d) const {
+    Node *n = hold.first_node_u(Cmp(index+1));
+    if(n==NULL)
+      return false;
+    index = n->index;
+    d = &n->value;
+    return true;
+  }
+  //
+  inline bool First(Index &index, Value &d) const {
     Node *n = hold.min_node();
     if(n==NULL)
       return false;
@@ -175,7 +204,7 @@ public:
     d = n->value;
     return true;
   }
-  inline bool next(Index &index, Value &d) const {
+  inline bool Next(Index &index, Value &d) const {
     Node *n = hold.first_node_u(Cmp(index+1));
     if(n==NULL)
       return false;
@@ -184,13 +213,47 @@ public:
     return true;
   }
   //
-  inline bool nonempty(void) const { return hold.nonempty(); }
-  inline bool empty(void) const { return hold.empty(); }
+  inline bool NonEmpty(void) const { return hold.nonempty(); }
+  inline bool Empty(void) const { return hold.empty(); }
   //
   template<typename tProcessor>
-  inline int process_items(const tProcessor& proc) {
+  inline int t_process_items(const tProcessor& proc) {
     return hold.process_nodes(NodeProc<tProcessor>(proc));
   }
+public:
+  // stl typedefs
+  inline iterator begin(void) UMODSYS_NOTHROW() { return hold.min_node(); }
+  inline iterator end(void) UMODSYS_NOTHROW() { return NULL; }
+  inline const_iterator begin(void) const UMODSYS_NOTHROW() { return hold.min_node(); }
+  inline const_iterator end(void) const UMODSYS_NOTHROW() { return NULL; }
+  inline const_iterator cbegin(void) const UMODSYS_NOTHROW() { return hold.min_node(); }
+  inline const_iterator cend(void) const UMODSYS_NOTHROW() { return NULL; }
+  //
+  inline reverse_iterator rbegin(void) UMODSYS_NOTHROW() { return reverse_iterator(hold.max_node()); }
+  inline reverse_iterator rend(void) UMODSYS_NOTHROW() { return reverse_iterator(NULL); }
+  inline const_reverse_iterator rbegin(void) const UMODSYS_NOTHROW() { return reverse_iterator(hold.max_node()); }
+  inline const_reverse_iterator rend(void) const UMODSYS_NOTHROW() { return reverse_iterator(NULL); }
+  inline const_reverse_iterator crbegin(void) const UMODSYS_NOTHROW() { return reverse_iterator(hold.max_node()); }
+  inline const_reverse_iterator crend(void) const UMODSYS_NOTHROW() { return reverse_iterator(NULL); }
+  //
+  inline bool empty(void) const UMODSYS_NOTHROW() { return hold.empty(); }
+  inline void clear(void) UMODSYS_NOTHROW() { hold.delete_all_nodes(); }
+  //
+  inline iterator find(const key_type& n) UMODSYS_NOTHROW() { return hold.find_node_u(Cmp(n)); }
+  inline const_iterator find(const key_type& n) const UMODSYS_NOTHROW() { return hold.find_node_u(Cmp(n)); }
+  //
+//  inline void insert(iterator pos, const_reference v) { size_t p = pos - items; if(!InsertAt(p)) throw_memoryerror(); items[p] = v; }
+//  inline void insert(iterator position, const value_type& val) { size_t p = pos - items; if(!InsertAt(p, n)) throw_memoryerror(); TC::acopy1(items+p, n, v); }
+//  template<typename InputIterator> inline void insert(iterator pos, InputIterator first, InputIterator last) { size_t p = pos - items, n = last - first; if(!InsertAt(p, n)) throw_memoryerror(); TC::atcopy(items+p, n, first); }
+  //
+  inline void erase(iterator pos) { hold.delete_node(pos.node); }
+  inline void erase(const key_type& k) { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(); hold.delete_node(n); }
+  inline void erase(iterator first, iterator last) { for(iterator x=first; x!=last;) { x++; hold.delete_node(first.node); first=x; } }
+  //
+  inline Value& operator[](const key_type& index) { Node *n = hold.genx_node(Cmp(index), Gen0()); if(n==NULL) throw_memoryerror(); return n->value; }
+  inline const Value& operator[](const key_type& index) const { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(); return n->value; }
+  inline Value& at(const key_type& index) { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(); return n->value; }
+  inline const Value& at(const key_type& index) const { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(); return n->value; }
 protected:
   Holder hold;
 };

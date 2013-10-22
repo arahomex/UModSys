@@ -43,6 +43,29 @@ protected:
   Iter iter;
 };
 
+template<typename Iter, typename Obj>
+struct ReverseIterator<Iter, Obj, core::Void> {
+public:
+  typedef ReverseIterator<Iter, Obj, core::Void> Self;
+  //
+  inline ReverseIterator(Iter x) UMODSYS_NOTHROW() : iter(x) {}
+  inline ~ReverseIterator(void) UMODSYS_NOTHROW() {}
+  //
+  inline Self operator++(void) UMODSYS_NOTHROW() { return Self(iter--); }
+  inline Self operator--(void) UMODSYS_NOTHROW() { return Self(iter++); }
+  //
+  inline const Self& operator++(int x) UMODSYS_NOTHROW() { --iter; return *this; }
+  inline const Self& operator--(int x) UMODSYS_NOTHROW() { ++iter; return *this; }
+  //
+  inline Obj& operator*(void) const UMODSYS_NOTHROW()  { return *iter; }
+  inline Obj* operator->(void) const UMODSYS_NOTHROW() { return iter; }
+  //
+  inline bool operator==(const Self& R) const UMODSYS_NOTHROW() { return iter == R.iter; }
+  inline bool operator!=(const Self& R) const UMODSYS_NOTHROW() { return iter != R.iter; }
+protected:
+  Iter iter;
+};
+
 /*************************************************************/
 
 } // namespace tl

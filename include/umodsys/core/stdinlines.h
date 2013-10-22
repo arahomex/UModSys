@@ -23,6 +23,11 @@ struct TScalarCompare {
   static int compare(const T& a, const T& b);
 };
 
+template<typename T>
+struct TObjectCompare {
+  static int compare(const T& a, const T& b);
+};
+
 //***************************************
 // Inlines
 //***************************************
@@ -72,6 +77,7 @@ template<typename T> inline T scalar_min(T a, T b, T c, T d) { return a>b ? scal
 template<typename T> inline T scalar_max(T a, T b, T c, T d) { return a<b ? scalar_min(b,c,d) : scalar_min(a,c,d); }
 
 template<typename T> inline int TScalarCompare<T>::compare(const T& a, const T& b) { return scalar_compare(a, b); }
+template<typename T> inline int TObjectCompare<T>::compare(const T& a, const T& b) { return a.compare(b); }
 
 //***************************************
 

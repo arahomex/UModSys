@@ -21,7 +21,8 @@ public:
   int load_count;
   IModule *module;
 public:
-  IModuleReg(void);
+  IModuleReg(const SModuleInfo &mi);
+  IModuleReg(const char* n, int vh, int vl, const char *i);
   virtual ~IModuleReg(void);
   virtual bool mr_isopen(void) const;
   virtual bool mr_open(void);

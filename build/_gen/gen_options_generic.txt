@@ -94,6 +94,9 @@ begin project-group umodsys
     begin file-group mod_stdio
       file $(path-s-mod)/media.stdio/umodsys.mod.media.stdio.cpp
     end
+    begin file-group mod_std
+      file $(path-s-mod)/media.std/umodsys.mod.media.std.cpp
+    end
   end
 
   begin project plugin_test1

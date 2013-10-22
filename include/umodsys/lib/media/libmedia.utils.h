@@ -15,7 +15,7 @@ namespace libmedia {
 // INLINES
 //***************************************
 
-inline bool archive_load_data(IDataArchive& a, const DCString& media_name, SCMemShared& mem, const SFlags& flags) 
+inline bool archive_load_data(IBinArchive& a, const DCString& media_name, SCMemShared& mem, const SFlags& flags) 
 {
   mem.clear();
   IStreamReader::P rv = a.data_reader(media_name, flags);
@@ -40,7 +40,7 @@ inline bool archive_load_data(IDataArchive& a, const DCString& media_name, SCMem
   return true;
 }
 
-inline bool archive_save_data(IDataArchive& a, const DCString& media_name, const SCMem& mem, const SFlags& flags) 
+inline bool archive_save_data(IBinArchive& a, const DCString& media_name, const SCMem& mem, const SFlags& flags) 
 {
   IStreamWriter::P rv = a.data_writer(media_name, flags);
   if(!rv->writer_write(mem.data, mem.size)) {
@@ -49,6 +49,24 @@ inline bool archive_save_data(IDataArchive& a, const DCString& media_name, const
   }
   rv->writer_close();
   return true;
+}
+
+//***************************************
+// ILibrary::
+
+inline bool ILibrary::obj_std_get(IRefObject::P& obj, const DCString& media_name, const SObjOptions& opts)
+{
+  return false;
+}
+
+inline bool ILibrary::obj_std_load(IRefObject* obj, const DCString& media_name, const SObjOptions& opts)
+{
+  return false;
+}
+
+inline bool ILibrary::obj_std_save(IRefObject* obj, const DCString& media_name, const SObjOptions& opts)
+{
+  return false;
 }
 
 //***************************************

@@ -1,5 +1,6 @@
 #include <umodsys/stdbase.h>
 #include <umodsys/lib/media/libmedia.common.h>
+#include <umodsys/lib/media/libmedia.library.h>
 
 UMODSYS_MODULE_BEGIN(test, test1)
 
@@ -125,8 +126,8 @@ struct RTest1_Shell : public IShell {
   {
     libmedia::IStreamReader::P fr;
     libmedia::IStreamWriter::P fw;
-    libmedia::IDataArchive::P arch;
-    if(TypeId found=M.t_firstobjname<libmedia::IDataArchive>("*::stdio::*")) {
+    libmedia::IBinArchive::P arch;
+    if(TypeId found=M.t_firstobjname<libmedia::IBinArchive>("*::stdio::*")) {
       TParametersA<1024> params;
       params.add("pathname", ".");
       M.t_generate(arch, found, params);
@@ -156,9 +157,9 @@ struct RTest1_Shell : public IShell {
   }
   void file_test3(void)
   {
-    libmedia::IDataArchive::P arch;
+    libmedia::IBinArchive::P arch;
     SCMemShared mem_block;
-    if(TypeId found=M.t_firstobjname<libmedia::IDataArchive>("*::stdio::*")) {
+    if(TypeId found=M.t_firstobjname<libmedia::IBinArchive>("*::stdio::*")) {
       TParametersA<1024> params;
       params.add("pathname", ".");
       M.t_generate(arch, found, params);
@@ -181,6 +182,40 @@ struct RTest1_Shell : public IShell {
       }
     }
   }
+  void file_test4(void)
+  {
+    libmedia::ILibraryBinTree::P lib_vfs;
+    if(TypeId found=M.t_firstobjname<libmedia::ILibraryBinTree>("*::std::*")) {
+      TParametersA<1024> params;
+      M.t_generate(lib_vfs, found, params);
+      M.con().put(0, "  found lib(bin-tree): %s => %p\n", found->name, lib_vfs());
+    }
+    if(lib_vfs.valid()) {
+      libmedia::IBinArchive::P arch;
+      if(TypeId found=M.t_firstobjname<libmedia::IBinArchive>("*::stdio::*")) {
+        TParametersA<1024> params;
+        params.add("pathname", ".");
+        M.t_generate(arch, found, params);
+        M.con().put(0, "  found archive: %s => %p\n", found->name, arch());
+      }
+      if(arch.valid()) {
+        lib_vfs->mount_add(libmedia::ILibraryBinTree::SMountPoint(arch, libmedia::mp_Read), "/");
+      }
+      //
+      SCMemShared mem_block;
+      bool f = lib_vfs->bin_load(mem_block, "/read-test.txt");
+      if(f) {
+        M.con().put(0, "  load file size:%u {", int(~mem_block));
+        dump_str(mem_block.get_tdata<char>(), ~mem_block);
+        M.con().put(0, "}\n");
+      } else {
+        M.con().put(0, "  not load file\n");
+      }
+      
+    }
+  }
+  //
+  // ----------------------------------------------------------------------------------
   //
   RTest1_Shell(DOwner *own) : refs(own) {
     M.con().put(0, "RTest1_Shell() {\n");
@@ -189,7 +224,8 @@ struct RTest1_Shell : public IShell {
     //
 //    file_test1();
 //    file_test2();
-    file_test3();
+//    file_test3();
+    file_test4();
     //
     M.con().put(0, "} // RTest1_Shell()\n");
   }
@@ -241,7 +277,7 @@ struct RGenerator : public IGenerator {
 struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)
   //
-  RModuleReg(void) {
+  RModuleReg(void) : IModuleReg("tests::test1", 1, 0, "") {
     minfo.set("Test1", 0, 1, "Test 1 - module");
 //    M.con().put(0, "RModuleReg()\n");
   }

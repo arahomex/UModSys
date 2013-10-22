@@ -560,6 +560,14 @@
 			</File>
 		</Filter>
 		<Filter
+			Name="mod_std"
+			>
+			<File
+				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
 			Name="mod_stdio"
 			>
 			<File

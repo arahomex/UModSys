@@ -8,8 +8,13 @@ using namespace UModSys::base;
 // IModuleReg::
 //***************************************
 
-IModuleReg::IModuleReg(void)
-: module(NULL), load_count(0)
+IModuleReg::IModuleReg(const SModuleInfo &mi)
+: minfo(mi), module(NULL), load_count(0)
+{
+}
+
+IModuleReg::IModuleReg(const char* n, int vh, int vl, const char *i)
+: minfo(n, vh, vl, i), module(NULL), load_count(0)
 {
 }
 

@@ -33,7 +33,7 @@ struct TNodeDeleterExtra;
 template<typename Node, typename NodeDeleter=TNodeDeleter0<Node> >
 struct TTreeHoldRBD;
 
-template<typename Node>
+template<typename tNode, typename tValue, typename CastValue>
 struct TTreeIterRB;
 
 //***************************************
@@ -78,8 +78,65 @@ public:
 
 //***************************************
 
+template<typename tNode, typename tValue, typename CastValue>
+struct TTreeIterRB {
+public:
+  typedef TTreeIterRB<tNode, tValue, CastValue> Self;
+public:
+  inline TTreeIterRB(tNode* n) : node(n) {}
+  //
+  template<typename N2, typename V2, typename C2> inline TTreeIterRB(const TTreeIterRB<N2, V2, C2>& R) : node(R.get_node()) {}
+  template<typename N2, typename V2, typename C2> inline void operator=(const TTreeIterRB<N2, V2, C2>& R) { node = R.get_node(); }
+  //
+  inline Self operator++(void) UMODSYS_NOTHROW() { return Self(node = next(node)); }
+  inline Self operator--(void) UMODSYS_NOTHROW() { return Self(node = prev(node)); }
+  //
+  inline const Self& operator++(int x) UMODSYS_NOTHROW() { node = next(node); return *this; }
+  inline const Self& operator--(int x) UMODSYS_NOTHROW() { node = prev(node); return *this; }
+  //
+  tValue& operator*(void) const UMODSYS_NOTHROW();
+  tValue* operator->(void) const UMODSYS_NOTHROW();
+  //
+  inline bool operator==(const Self& R) const UMODSYS_NOTHROW() { return node == R.node; }
+  inline bool operator!=(const Self& R) const UMODSYS_NOTHROW() { return node != R.node; }
+  //
+  tNode* get_node(void) const { return node; }
+protected:
+  static tNode* next(tNode* x);
+  static tNode* prev(tNode* x);
+  //
+  tNode *node;
+};
+
+template<typename tNode, typename tValue, typename CastValue>
+inline tValue& TTreeIterRB<tNode, tValue, CastValue>::operator*(void) const UMODSYS_NOTHROW() 
+{ 
+  return *CastValue::cast(node); 
+}
+
+template<typename tNode, typename tValue, typename CastValue>
+inline tValue* TTreeIterRB<tNode, tValue, CastValue>::operator->(void) const UMODSYS_NOTHROW()
+{ 
+  return CastValue::cast(node);
+}
+
+template<typename tNode, typename tValue, typename CastValue>
+inline tNode* TTreeIterRB<tNode, tValue, CastValue>::next(tNode* x)
+{
+  return tNode::node_get_next(x);
+}
+
+template<typename tNode, typename tValue, typename CastValue>
+inline tNode* TTreeIterRB<tNode, tValue, CastValue>::prev(tNode* x)
+{
+  return tNode::node_get_prev(x);
+}
+
+//***************************************
+
 template<typename tNode>
 struct TTreeHoldRB {
+public:
 protected:
   tNode *root;
   //
@@ -816,6 +873,7 @@ inline TTreeHoldRBD<Node,NodeDeleter>::TTreeHoldRBD(const NodeDeleter& nd)
 
 //***************************************
 
+/*
 template<typename TNode>
 struct TTreeIterRB {
 public:
@@ -843,6 +901,7 @@ public:
   inline TTreeIterRB(Node* n=NULL) : node(n) {}
   inline TTreeIterRB(const Hold& h, bool left=true) : node(left ? h.min_node() : h.max_node()) {}
 };
+*/
 
 //***************************************
 
