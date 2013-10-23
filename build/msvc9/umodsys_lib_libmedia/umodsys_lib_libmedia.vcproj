@@ -552,8 +552,40 @@
 	</Configurations>
 	<Files>
 		<Filter
+			Name="headers_media"
+			>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\media\libmedia.common.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\media\libmedia.library.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\media\libmedia.utils.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\media\media.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\media\media_archive.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\media\media~.h"
+				>
+			</File>
+		</Filter>
+		<Filter
 			Name="lib_media"
 			>
+			<File
+				RelativePath="..\..\..\src\lib\media\umodsys.lib.media.common.cpp"
+				>
+			</File>
 			<File
 				RelativePath="..\..\..\src\lib\media\umodsys.lib.media.common.cpp"
 				>
@@ -566,12 +598,48 @@
 				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.cpp"
 				>
 			</File>
+			<File
+				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.libbincache.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.libbintree.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.liblayered.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.libobjcache.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.libobjfilter.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="mod_stdio"
 			>
 			<File
 				RelativePath="..\..\..\src\module\media.stdio\umodsys.mod.media.stdio.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media.stdio\umodsys.mod.media.stdio.archive.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media.stdio\umodsys.mod.media.stdio.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media.stdio\umodsys.mod.media.stdio.streams.h"
 				>
 			</File>
 		</Filter>

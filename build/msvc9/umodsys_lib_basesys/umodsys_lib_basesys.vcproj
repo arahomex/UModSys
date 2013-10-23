@@ -555,15 +555,7 @@
 			Name="src"
 			>
 			<File
-				RelativePath="..\..\..\src\basesys\umodsys.basesys.rsystem.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\basesys\umodsys.basesys.rsystem_main.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\basesys\umodsys.basesys.rsystem_tests.cpp"
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rconsole_std.cpp"
 				>
 			</File>
 			<File
@@ -591,7 +583,43 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\basesys\umodsys.basesys.rconsole_std.cpp"
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rsystem.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rsystem_main.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rsystem_tests.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\basesys\umodsys.c_main.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rcommon.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rconsole_std.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rmemalloc.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rmodule.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rparameters.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\basesys\umodsys.basesys.rsystem.h"
 				>
 			</File>
 		</Filter>

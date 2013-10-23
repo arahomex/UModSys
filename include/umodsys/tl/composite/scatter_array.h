@@ -6,6 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/tl/composite/tree_rb.h>
+#include <umodsys/tl/composite/pair.h>
 
 #include <umodsys/tl/alloc/allocator.h>
 #include <umodsys/tl/metastl/throws.h>
@@ -31,24 +32,24 @@ struct TScatterArrayD1;
 //***************************************
 
 template<typename Data, typename Index>
-struct TScatterArrayNode : public TTreeNodeRB< TScatterArrayNode<Data, Index> > {
+struct TScatterArrayNode 
+: public TTreeNodeRB< TScatterArrayNode<Data, Index> >,
+  public TPair<Index, Data>
+{
   typedef TScatterArrayNode<Data, Index> Self;
+  typedef TPair<Index, Data> Pair;
   //
-  Index index;
-  Data value;
-  //
-  inline TScatterArrayNode(const Index& id) : index(id) {}
-  inline TScatterArrayNode(const Index& id, const Data& v) : index(id), value(v) {}
+  inline TScatterArrayNode(const Index& id) : Pair(id, Data()) {}
+  inline TScatterArrayNode(const Index& id, const Data& v) : Pair(id, v) {}
   inline ~TScatterArrayNode(void) {}
   //
-  inline static Data* cast(Self* x) { return &x->value; }
-  inline static const Data* cast(const Self* x) { return &x->value; }
   int compare(const Node& r) const;
 };
 
 template<typename Data, typename Index>
-inline int TScatterArrayNode<Data, Index>::compare(const Node& r) const {
-  return core::scalar_compare(index, r.index);
+inline int TScatterArrayNode<Data, Index>::compare(const Node& r) const 
+{
+  return core::scalar_compare(first, r.first);
 }
 
 //***************************************
@@ -65,19 +66,22 @@ public:
   typedef TScatterArrayNode<TData, TIndex> Node;
   typedef TNodeDeleter NodeDeleter;
   typedef TTreeHoldRBD<Node, NodeDeleter> Holder;
+  typedef const TPairM<TIndex, TData> Pair;
+  typedef const TPair<TIndex, TData> CPair;
   //
   // stl typedefs
   typedef Index key_type;
-  typedef Value value_type;
-  typedef Value& reference;
-  typedef const Value& const_reference;
-  typedef Value* pointer;
-  typedef const Value* const_pointer;
+  typedef Value mapped_type;
+  typedef Pair value_type;
+  typedef Pair& reference;
+  typedef const Pair& const_reference;
+  typedef Pair* pointer;
+  typedef const Pair* const_pointer;
 //  typedef ptrdiff_t difference_type;
 //  typedef size_t size_type;
   //
-  typedef TTreeIterRB<Node, Value, Node> Iter;
-  typedef TTreeIterRB<const Node, const Value, Node> CIter;
+  typedef TTreeIterRB<Node, Pair> Iter;
+  typedef TTreeIterRB<const Node, CPair> CIter;
   //
   typedef Iter iterator;
   typedef ReverseIterator<iterator, value_type, core::Void> reverse_iterator;
@@ -90,7 +94,7 @@ public:
     const Index& index;
     //
     inline Cmp(const Index& x) : index(x) {}
-    inline int operator()(const Node *r) const { return Comparer::compare(index, r->index); }
+    inline int operator()(const Node *r) const { return Comparer::compare(index, r->first); }
   };
   //
   struct Gen {
@@ -110,8 +114,8 @@ public:
     const X& proc;
     //
     inline NodeProc(const X& p) : proc(p) {}
-    inline bool operator()(Node* n) const { return proc(n->value); }
-    inline bool operator()(const Node* n) const { return proc(n->value); }
+    inline bool operator()(Node* n) const { return proc(n->second); }
+    inline bool operator()(const Node* n) const { return proc(n->second); }
   };
 public:
   
@@ -120,21 +124,26 @@ public:
   inline ~TScatterArray(void) {}
   //
   inline size_t Count(void) const { return hold.process_nodes(STreeProcCounter()); }
-  inline size_t Len(void) const { return count(); }
-  inline size_t operator~(void) const { return count(); }
+  inline size_t Len(void) const { return Count(); }
+  inline size_t operator~(void) const { return Count(); }
   //
   inline Value* operator()(const Index& index, const Value& v) {
     Node *n = hold.genx_node(Cmp(index), Gen(v));
-    return n==NULL ? NULL : &n->value;
+    return n==NULL ? NULL : &n->second;
   }
   inline Value* operator()(const Index& index, core::Void* v) {
     Node *n = hold.genx_node(Cmp(index), Gen0());
-    return n==NULL ? NULL : &n->value;
+    return n==NULL ? NULL : &n->second;
   }
   inline Value* operator()(const Index& index) const {
     Node *n = hold.find_node_u(Cmp(index));
-    return n==NULL ? NULL : &n->value;
+    return n==NULL ? NULL : &n->second;
   }
+  inline Iter operator()(void) { return hold.min_node(); }
+  inline CIter operator()(void) const { return hold.min_node(); }
+  //
+  inline Iter First(void) { return hold.min_node(); }
+  inline CIter First(void) const { return hold.min_node(); }
   //
   inline bool Remove(const Index& index) {
     Node *n = hold.find_node_u(Cmp(index));

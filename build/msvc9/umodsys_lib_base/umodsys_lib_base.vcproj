@@ -552,26 +552,50 @@
 	</Configurations>
 	<Files>
 		<Filter
+			Name="headers"
+			>
+			<Filter
+				Name="base"
+				>
+				<File
+					RelativePath="..\..\..\include\umodsys\base\bobjects.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\umodsys\base\console.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\umodsys\base\module.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\umodsys\base\module_impl.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\umodsys\base\module_ref.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\umodsys\base\system.h"
+					>
+				</File>
+			</Filter>
+		</Filter>
+		<Filter
 			Name="src"
 			>
-			<File
-				RelativePath="..\..\..\src\base\umodsys.base.debug.cpp"
-				>
-			</File>
 			<File
 				RelativePath="..\..\..\src\base\umodsys.base.console.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\base\umodsys.base.system.cpp"
+				RelativePath="..\..\..\src\base\umodsys.base.debug.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\..\..\src\base\umodsys.base.module.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\base\umodsys.base.moduleloader.cpp"
 				>
 			</File>
 			<File
@@ -583,11 +607,19 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\base\umodsys.base.moduleloader.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\base\umodsys.base.modulereg.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\..\..\src\base\umodsys.base.moduleregchain.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\base\umodsys.base.system.cpp"
 				>
 			</File>
 		</Filter>

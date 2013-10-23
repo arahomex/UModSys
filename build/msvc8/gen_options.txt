@@ -1,6 +1,7 @@
 generator msvc8
 
 set path-root ../../..
+set path-skip +1
 
 set path-out-bin \$(SolutionDir)../../bin/win32vc8_\$(ConfigurationName)_\$(PlatformName)
 set path-out-lib \$(SolutionDir)../../tmp/win32vc8_\$(ConfigurationName)_\$(PlatformName)

@@ -23,11 +23,12 @@ struct TCharOptions<core::BChar> {
 template<>
 inline size_t slen(const core::BChar* s)
 { 
-  return ::strlen(s);
+  return s==NULL ? 0 : ::strlen(s);
 }
 template<>
 inline size_t slen(const core::BChar* s, size_t maxn)
 {
+  if(s==NULL) return 0;
   const core::BChar* x = reinterpret_cast<const core::BChar*>(::memchr(s, 0, maxn)); 
   return x==NULL ? maxn : x-s; 
 }

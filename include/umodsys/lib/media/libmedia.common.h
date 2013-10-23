@@ -44,33 +44,25 @@ typedef sint64 DFilePosition;
 //***************************************
 
 const size_t MaxFilenameSize = 0x1000;
-
-/*
-enum ePhase {
-  mph_Null,
-  mph_Parent,
-  mph_System,
-  mph_BinCache,
-  mph_BinCacheUpdate,
-  mph_BinArchive,
-  mph_ObjCache,
-  mph_ObjCacheUpdate,
-  mph_ObjFilter,
-  mph_Unknown
-};
-enum eFlagOptions {
-  mfo_Default = 0,
-  mfo_Yes     = 1,
-  mfo_No      = 2,
-  mfo_Parent  = 3,
-  mfo_Mask    = 3
-};
-*/
-
-//***************************************
-//***************************************
-
 struct SMediaFlagUid {};
+
+enum ePermissions {
+  mp_Read             = 0x0001,
+  mp_Write            = 0x0002,
+  mp_List             = 0x0004,
+  mp_Filter           = 0x0008,
+  //
+  mp_RW               = mp_Read | mp_Write,
+  mp_RL               = mp_Read | mp_List,
+  mp_WL               = mp_Write | mp_List,
+  mp_RWL              = mp_Read | mp_Write | mp_List,
+  //
+  mp_All              = mp_Read | mp_Write | mp_List | mp_Filter
+};
+
+//***************************************
+//***************************************
+
 typedef tl::TFlags4State<SMediaFlagUid, uint32> DMediaFlags;
 
 // binary operations
@@ -92,20 +84,6 @@ typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 12> mf_relname;     
 typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 13> mf_groupnew;    // auto-create groups
 typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 14> mf_reserved1;   // R1
 typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 15> mf_reserved2;   // R2
-
-enum ePermissions {
-  mp_Read             = 0x0001,
-  mp_Write            = 0x0002,
-  mp_List             = 0x0004,
-  mp_Filter           = 0x0008,
-  //
-  mp_RW               = mp_Read | mp_Write,
-  mp_RL               = mp_Read | mp_List,
-  mp_WL               = mp_Write | mp_List,
-  mp_RWL              = mp_Read | mp_Write | mp_List,
-  //
-  mp_All              = mp_Read | mp_Write | mp_List | mp_Filter
-};
 
 //***************************************
 
@@ -189,8 +167,15 @@ struct SVComplexFileName {
 
 struct SFlags {
   struct IResolver {
-    virtual DMediaFlags::eStates get_parent_flag(int shift) const =0;
+    virtual DMediaFlags::eStates get_flag(int shift) const =0;
   };
+  struct IResolverAuto : public IResolver {
+    virtual DMediaFlags get_flags_auto(void) const =0;
+  };
+  struct ISetter : public IResolverAuto {
+    virtual DMediaFlags::eStates set_flag(int shift, DMediaFlags::eStates flag) =0;
+  };
+  //
   //
   DMediaFlags mf;
   const IResolver *ir;
@@ -200,17 +185,47 @@ struct SFlags {
   inline const DMediaFlags& operator*(void) const { return mf; }
   //
   template<typename T> 
-  bool is_flag(const DMediaFlags &auto_values, DMediaFlags::eStates desired) const { 
+  inline bool is_flag(const IResolverAuto *crx, DMediaFlags::eStates desired) const { 
     DMediaFlags::eStates v = T::get(mf);
     if(v==DMediaFlags::Default) {
-      if(ir!=NULL)
-        return ir->get_parent_flag(T::base_shift)==desired;
-      return T::get(auto_values)==desired;
+      if(crx!=NULL)
+        v = crx->get_flag(T::base_shift);
+      if(v==DMediaFlags::Default && ir!=NULL)
+        v = ir->get_flag(T::base_shift);
+      if(v==DMediaFlags::Default && crx!=NULL)
+        v = T::get(crx->get_flags_auto());
     }
     return v==desired; 
   }
-  template<typename T> bool yes(const DMediaFlags &auto_values) const { return is_flag<T>(auto_values, DMediaFlags::Yes); }
-  template<typename T> bool no(void) const { return is_flag<T>(auto_values, DMediaFlags::No); }
+  template<typename T> 
+  inline bool yes(const IResolverAuto *crx) const { 
+    return is_flag<T>(crx, DMediaFlags::Yes); 
+  }
+  template<typename T> 
+  inline bool no(const IResolverAuto *crx) const { 
+    return is_flag<T>(crx, DMediaFlags::No); 
+  }
+};
+
+struct SFlagsChain : public SFlags {
+  struct RResolverChain : public IResolver {
+    const IResolver *next;
+    const IResolver *cur;
+    //
+    inline RResolverChain(const IResolver *c, const IResolver *n) : next(n), cur(c) {}
+    //
+    DMediaFlags::eStates get_flag(int shift) const {
+      DMediaFlags::eStates rv = cur->get_flag(shift);
+      if(rv!=DMediaFlags::Default)
+        return rv;
+      return next==NULL ? DMediaFlags::Auto : next->get_flag(shift);
+    }
+  };
+  //
+  //
+  RResolverChain rc;
+  //
+  SFlagsChain(const SFlags& pf, const IResolver* r) : rc(r, pf.ir), SFlags(pf.mf, &rc) {}
 };
 
 //***************************************
@@ -221,7 +236,7 @@ struct SFlags {
 // IStreamReader::
 
 struct IStreamReader
-: public IRefObject 
+: public IRefObject
 {
   virtual bool reader_seek(DFilePosition pos) =0;
   virtual bool reader_seekend(DFilePosition pos) =0;
@@ -268,14 +283,15 @@ protected:
 // IDataArchive::
 
 struct IBinArchive 
-: public IRefObject 
+: public IRefObject, 
+  public SFlags::ISetter
 {
 public:
   virtual IStreamReader::P data_reader(const DCString& media_name, const SFlags& flags=SFlags()) =0;
   virtual IStreamWriter::P data_writer(const DCString& media_name, const SFlags& flags=SFlags()) =0;
   virtual bool data_load(const DCString& media_name, SCMemShared& mem, const SFlags& flags=SFlags()) =0;
   virtual bool data_save(const DCString& media_name, const SCMem& mem, const SFlags& flags=SFlags()) =0;
-  virtual bool data_list(const DCString &mask, DIFileInfoArray& list) = 0;
+  virtual bool data_list(const DCString& mask, DIFileInfoArray& list, const SFlags& flags=SFlags()) = 0;
   virtual int get_permissions(void) = 0;
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IBinArchive, 2, IRefObject);
@@ -285,7 +301,8 @@ protected:
 // IObjectFilter::
 
 struct IBinObjFilter 
-: public IRefObject 
+: public IRefObject,
+  public SFlags::ISetter
 {
 public:
 //  struct SRegistry {
@@ -316,9 +333,9 @@ public:
 */
   };
 public:
-  virtual bool filter_load(IRefObject::P& obj, const SInfo& info) =0;
-  virtual bool filter_load(IRefObject* obj, const SInfo& info) =0;
-  virtual bool filter_save(IRefObject* obj, SInfo& info) =0;
+  virtual bool filter_load(const SInfo& info, IRefObject::P& obj) =0;
+  virtual bool filter_load(const SInfo& info, IRefObject* obj) =0;
+  virtual bool filter_save(SInfo& info, IRefObject* obj) =0;
 //  virtual bool set_paramb(const DHString &kind, const DHString &name, const SCMem& memory) = 0;
 //  virtual bool set_params(const DHString &kind, const SParameters* filter_params) = 0;
 protected:
@@ -331,75 +348,83 @@ protected:
 
 struct ILibrary
 : public IRefObject,
-  public SFlags::IResolver
+  public SFlags::ISetter
 {
 public:
   struct SObjOptions : public SFlags {
     DCString typehint;
+    TypeId reqtype;
     const SParameters* params;
     //
     inline SObjOptions(
+      TypeId rt = NULL,
       const DMediaFlags f=DMediaFlags(), const IResolver *r=NULL,
       const SParameters* p=NULL, const DCString& th=NULL
-    ) : SFlags(f, r), typehint(th), params(p) {}
+    ) : SFlags(f, r), reqtype(rt), typehint(th), params(p) {}
   };
 public:
   // general data functions
   virtual IStreamReader::P bin_reader(const DCString& media_name, const SFlags& flags) =0;
   virtual IStreamWriter::P bin_writer(const DCString& media_name, const SFlags& flags) =0;
-  virtual bool bin_load(SCMemShared& mem, const DCString& media_name, const SFlags& flags) =0; // load binary data
-  virtual bool bin_save(const SCMem& mem, const DCString& media_name, const SFlags& flags) =0; // save binary data
-//  virtual bool bin_info(SMediaFileInfo& info, const DCString& media_name, const SFlags& flags) =0; // determine attributes
-//  virtual bool bin_info(SMediaFileInfoArray& info, const DHString& media_mask, const SFlags& flags) =0; // determine attributes
-  virtual bool bin_get(SCMemShared& mem, const DCString& media_name) =0; // get cache element
-  virtual bool bin_put(const SCMemShared& mem, const DCString& media_name) =0; // put cache element
+  virtual bool bin_load(const DCString& media_name, SCMemShared& mem, const SFlags& flags) =0; // load binary data
+  virtual bool bin_save(const DCString& media_name, const SCMem& mem, const SFlags& flags) =0; // save binary data
+  virtual bool bin_info(const DCString& media_name, SFileInfo& info, const SFlags& flags) =0; // determine attributes
+  virtual bool bin_info(const DCString& media_mask, DIFileInfoArray& info, const SFlags& flags) =0; // get full list
+  virtual bool bin_get(const DCString& media_name, SCMemShared& mem, bool isinv=false) =0; // get cache element
+  virtual bool bin_put(const DCString& media_name, const SCMemShared* mem) =0; // put cache element
   // general object functions
-  virtual bool obj_fget(IRefObject::P& obj, const IBinObjFilter::SInfo& info) =0;
-  virtual bool obj_fload(IRefObject* obj, const IBinObjFilter::SInfo& info) =0;
-  virtual bool obj_fsave(IRefObject* obj, IBinObjFilter::SInfo& info) =0;
-  virtual bool obj_cget(IRefObject::P& obj, const DCString& media_name) =0; // get cache element
-  virtual bool obj_cput(IRefObject* obj, const DCString& media_name) =0; // put cache element
+  virtual bool obj_fget(const IBinObjFilter::SInfo& info, IRefObject::P& obj) =0;
+  virtual bool obj_fload(const IBinObjFilter::SInfo& info, IRefObject* obj) =0;
+  virtual bool obj_fsave(IBinObjFilter::SInfo& info, IRefObject* obj) =0;
+  virtual bool obj_cget(const DCString& media_name, IRefObject::P& obj, bool isinv=false) =0; // get cache element
+  virtual bool obj_cput(const DCString& media_name, IRefObject* obj) =0; // put cache element
   // universal object functions
-  virtual bool obj_get(IRefObject::P& obj, const DCString& media_name, const SObjOptions& opts) =0;
-  virtual bool obj_load(IRefObject* obj, const DCString& media_name, const SObjOptions& opts) =0;
-  virtual bool obj_save(IRefObject* obj, const DCString& media_name, const SObjOptions& opts) =0;
+  virtual bool obj_get(const DCString& media_name, IRefObject::P& obj, const SObjOptions& opts) =0;
+  virtual bool obj_load(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) =0;
+  virtual bool obj_save(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) =0;
 public:
-  inline bool obj_get(IRefObject::P& obj, const DCString& media_name, 
-                      const SParameters* params = NULL, 
-                      const DMediaFlags& flags = DMediaFlags(), 
-                      const DCString& typehint = NULL) {
-    return obj_get(obj, media_name, SObjOptions(flags, this, params, typehint));
-  }
-  inline bool obj_load(IRefObject* obj, const DCString& media_name, 
-                       const SParameters* params = NULL, 
-                       const DMediaFlags& flags = DMediaFlags(), 
-                       const DCString& typehint = NULL) {
-    return obj_load(obj, media_name, SObjOptions(flags, this, params, typehint));
-  }                      
-  inline bool obj_save(IRefObject* obj, const DCString& media_name, 
-                       const SParameters* params = NULL, 
-                       const DMediaFlags& flags = DMediaFlags(), 
-                       const DCString& typehint = NULL) {
-    return obj_save(obj, media_name, SObjOptions(flags, this, params, typehint));
-  }
-  //
   inline IStreamReader::P bin_reader(const DCString& media_name, const DMediaFlags& flags = DMediaFlags()) {
     return bin_reader(media_name, SFlags(flags, this));
   }
   inline IStreamWriter::P bin_writer(const DCString& media_name, const DMediaFlags& flags = DMediaFlags()) {
     return bin_writer(media_name, SFlags(flags, this));
   }
-  inline bool bin_load(SCMemShared& mem, const DCString& media_name, const DMediaFlags& flags = DMediaFlags()) {
-    return bin_load(mem, media_name, SFlags(flags, this));
+  inline bool bin_load(const DCString& media_name, SCMemShared& mem, const DMediaFlags& flags = DMediaFlags()) {
+    return bin_load(media_name, mem, SFlags(flags, this));
   }
-  inline bool bin_save(const SCMemShared& mem, const DCString& media_name, const DMediaFlags& flags = DMediaFlags()) {
-    return bin_save(mem, media_name, SFlags(flags, this));
+  inline bool bin_save(const DCString& media_name, const SCMemShared& mem, const DMediaFlags& flags = DMediaFlags()) {
+    return bin_save(media_name, mem, SFlags(flags, this));
   }
-protected:
-  // this is std (non-array) functionality
-  bool obj_std_get(IRefObject::P& obj, const DCString& media_name, const SObjOptions& opts);
-  bool obj_std_load(IRefObject* obj, const DCString& media_name, const SObjOptions& opts);
-  bool obj_std_save(IRefObject* obj, const DCString& media_name, const SObjOptions& opts);
+  //
+  inline bool obj_load(const DCString& media_name, IRefObject* obj,
+                       const SParameters* params = NULL, 
+                       const DMediaFlags& flags = DMediaFlags(), 
+                       const DCString& typehint = NULL) {
+    return obj_load(media_name, obj, SObjOptions(NULL, flags, this, params, typehint));
+  }                      
+  inline bool obj_save(const DCString& media_name, IRefObject* obj, 
+                       const SParameters* params = NULL, 
+                       const DMediaFlags& flags = DMediaFlags(), 
+                       const DCString& typehint = NULL) {
+    return obj_save(media_name, obj, SObjOptions(NULL, flags, this, params, typehint));
+  }
+  inline bool obj_get(const DCString& media_name, IRefObject::P& obj, 
+                      const SParameters* params = NULL, 
+                      const DMediaFlags& flags = DMediaFlags(), 
+                      const DCString& typehint = NULL) {
+    return obj_get(media_name, obj, SObjOptions(NULL, flags, this, params, typehint));
+  }
+  template<typename T>
+  inline bool t_obj_get(const DCString& media_name, tl::TRefObject<T>& obj, 
+                        const DMediaFlags f=DMediaFlags(), const SParameters* par=NULL,
+                        const DCString& typehint=NULL) {
+    IRefObject::P ro;
+    if(!obj_get(media_name, ro, SObjOptions(T::_get_interface_type(), f, this, par, typehint)))
+      return false;
+    if(!ro->t_get_other_interface_ref(obj))
+      return false;
+    return true;
+  }
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::ILibrary, 2, IRefObject);
 };

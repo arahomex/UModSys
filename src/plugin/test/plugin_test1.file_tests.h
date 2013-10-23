@@ -58,22 +58,30 @@ libmedia::ILibraryLayered::P RTest1_Shell::media_lay(void)
   return NULL;
 }
 
+void RTest1_Shell::test_op_file(bool f, const DCString &fname, const DCString &operation)
+{
+  if(f) {
+    M.con().put(0, "  %s file {%s} ok\n", operation(), fname());
+  } else {
+    M.con().put(0, "  ERROR %s file {%s}\n", operation(), fname());
+  }
+}
 
 void RTest1_Shell::test_op_file(bool f, const DCString &fname, SCMemShared& mem_block, bool isRead)
 {
   if(isRead) {
     if(f) {
-      M.con().put(0, "  load file {%s} size:%u {", fname(), int(~mem_block));
+      M.con().put(0, "  load file {%s} ok, size:%u {", fname(), int(~mem_block));
       dump_str(mem_block.get_tdata<char>(), ~mem_block);
       M.con().put(0, "}\n");
     } else {
-      M.con().put(0, "  not load file {%s}\n", fname());
+      M.con().put(0, "  ERROR load file {%s}\n", fname());
     }
   } else {
     if(f) {
-      M.con().put(0, "  save file {%s} size:%u\n", fname(), ~mem_block);
+      M.con().put(0, "  save file {%s} ok, size:%u\n", fname(), ~mem_block);
     } else {
-      M.con().put(0, "  not save file {%s}\n", fname());
+      M.con().put(0, "  ERROR save file {%s}\n", fname());
     }
   }
 }
@@ -163,23 +171,23 @@ void RTest1_Shell::file_test4(void)
   libmedia::ILibraryBinTree::P lib_vfs = media_vfs();
   if(!lib_vfs.valid())
     return;
-  lib_vfs->mount_add(libmedia::ILibraryBinTree::SMountPoint(media_arch_stdio("."), libmedia::mp_Read), "/");
-  lib_vfs->mount_add(libmedia::ILibraryBinTree::SMountPoint(media_arch_stdio("./write-dir"), libmedia::mp_RWL), "/", 1);
+  lib_vfs->mount_add(libmedia::ILibraryBinTree::SId("/"), libmedia::ILibraryBinTree::SPoint(media_arch_stdio("."), libmedia::mp_Read));
+  lib_vfs->mount_add(libmedia::ILibraryBinTree::SId("/", 1), libmedia::ILibraryBinTree::SPoint(media_arch_stdio("./write-dir"), libmedia::mp_RWL));
   //
   // test order
   SCMemShared mem_block;
   test_op_file(
-    lib_vfs->bin_load(mem_block, "/read-test.txt"), 
+    lib_vfs->bin_load("/read-test.txt", mem_block), 
     "/read-test.txt", mem_block, true
   );
   SCMemShared mem_block2(~mem_block/2);
   memcpy((void*)mem_block2.get_data(), mem_block.get_data(), mem_block2.get_size());
   test_op_file(
-    lib_vfs->bin_save(mem_block2, "/write-test.txt", libmedia::DMediaFlags(libmedia::mf_safe::yes()) ),
+    lib_vfs->bin_save("/write-test.txt", mem_block2, libmedia::DMediaFlags(libmedia::mf_safe::yes()) ),
     "/write-test.txt", mem_block2, false
   );
   test_op_file(
-    lib_vfs->bin_load(mem_block, "/write-test.txt"), 
+    lib_vfs->bin_load("/write-test.txt", mem_block), 
     "/write-test.txt", mem_block, true
   );
 }
@@ -195,8 +203,8 @@ void RTest1_Shell::file_test5(void)
     libmedia::ILibraryBinTree::P lib_vfs = media_vfs();
     if(!lib_vfs.valid())
       return;
-    lib_vfs->mount_add(libmedia::ILibraryBinTree::SMountPoint(media_arch_stdio("."), libmedia::mp_Read), "/");
-    lib_vfs->mount_add(libmedia::ILibraryBinTree::SMountPoint(media_arch_stdio("./write-dir"), libmedia::mp_RWL), "/", 1);
+    lib_vfs->mount_add("/", media_arch_stdio("."), libmedia::mp_Read);
+    lib_vfs->mount_add("/", 1, media_arch_stdio("./write-dir"), libmedia::mp_RWL);
     lib->layer_insert( libmedia::ILibraryLayered::SLayer(lib_vfs) );
   }
   //
@@ -211,21 +219,33 @@ void RTest1_Shell::file_test5(void)
   }
   //
   // test order
-/*
   SCMemShared mem_block;
   test_op_file(
-    lib_vfs->bin_load(mem_block, "/read-test.txt"), 
+    lib->bin_load("/read-test.txt", mem_block), 
     "/read-test.txt", mem_block, true
   );
   SCMemShared mem_block2(~mem_block/2);
   memcpy((void*)mem_block2.get_data(), mem_block.get_data(), mem_block2.get_size());
   test_op_file(
-    lib_vfs->bin_save(mem_block2, "/write-test.txt", libmedia::DMediaFlags(libmedia::mf_safe::yes()) ),
+    lib->bin_save("/write-test.txt", mem_block2, libmedia::DMediaFlags(libmedia::mf_safe::yes()) ),
     "/write-test.txt", mem_block2, false
   );
   test_op_file(
-    lib_vfs->bin_load(mem_block, "/write-test.txt"), 
+    lib->bin_load("/write-test.txt", mem_block), 
     "/write-test.txt", mem_block, true
   );
-*/
+  //
+  // load lines
+  ILines::P lines;
+  test_op_file(
+    lib->t_obj_get("/read-test.txt", lines), 
+    "/read-test.txt", "new object [ILines]"
+  );
+  if(lines.valid()) {
+    M.con().put(0, "  ILines: %p {\n", lines());
+    for(size_t i=0; i<~lines->lines; i++) {
+      M.con().put(0, "    line %u: %s\n", (int)i, lines->lines(i)());
+    }
+    M.con().put(0, "  } ILines: %p \n", lines());
+  }
 }

@@ -11,22 +11,26 @@ struct RLibraryBinCache : public ILibraryBinCache
   struct SCacheElem {
     DStringShared name;
     SCMemShared bin;
+    bool valid;
+    //
+    SCacheElem(void) : valid(false) {}
   };
   typedef tl::TScatterArray< SCacheElem, DCString > DCache;
   //
   DCache cache;
-  DMediaFlags auto_values;
+  DMediaFlags flags;
+  static DMediaFlags auto_flags;
   //
   RLibraryBinCache(DOwner *own, const SParameters& args, DMediaFlags av=DMediaFlags())
-  : refs(own), auto_values(av)/*, cache(local_memory())*/ {
+  : refs(own), flags(av)/*, cache(local_memory())*/ {
   }
   ~RLibraryBinCache(void) {
   }
   //
-  // SFlags::IResolver
-  DMediaFlags::eStates get_parent_flag(int shift) const {
-    return auto_values.get_s(shift);
-  }
+  // SFlags::ISetter
+  DMediaFlags::eStates get_flag(int shift) const { return flags.get_s(shift); }
+  DMediaFlags get_flags_auto(void) const { return auto_flags; }
+  DMediaFlags::eStates set_flag(int shift, DMediaFlags::eStates flag) { return flags.getset_s(shift, flag); }
   //
   // general data functions
   IStreamReader::P bin_reader(const DCString& media_name, const SFlags& flags) {
@@ -35,69 +39,83 @@ struct RLibraryBinCache : public ILibraryBinCache
   IStreamWriter::P bin_writer(const DCString& media_name, const SFlags& flags) {
     return NULL;
   }
-  bool bin_load(SCMemShared& mem, const DCString& media_name, const SFlags& flags) {
-    if(!flags.yes<mf_cache>(auto_values))
+  bool bin_load(const DCString& media_name, SCMemShared& mem, const SFlags& flags) {
+    if(!flags.yes<mf_cache>(this))
       return false;
-    return bincache_get(mem, media_name);
+    bool v;
+    if(!bincache_get(media_name, &mem, &v))
+      return false;
+    if(!v && !flags.yes<mf_failuse>(this))
+      return false;
+    return true;
   }
-  bool bin_save(const SCMem& mem, const DCString& media_name, const SFlags& flags) {
+  bool bin_save(const DCString& media_name, const SCMem& mem, const SFlags& flags) {
     return false;
   }
-//  virtual bool bin_info(SMediaFileInfo& info, const DCString& media_name, const SFlags& flags=SFlags()) =0; // determine attributes
-//  virtual bool bin_info(SMediaFileInfoArray& info, const DHString& media_mask, const SFlags& flags=SFlags()) =0; // determine attributes
-  bool bin_get(SCMemShared& mem, const DCString& media_name) {
-    return bincache_get(mem, media_name);
+  bool bin_info(const DCString& media_name, SFileInfo& info, const SFlags& flags) {
+    return false;
   }
-  bool bin_put(const SCMemShared& mem, const DCString& media_name) {
-    return bincache_add(mem, media_name);
+  bool bin_info(const DCString& media_mask, DIFileInfoArray& info, const SFlags& flags) {
+    return false;
+  }
+  bool bin_get(const DCString& media_name, SCMemShared& mem, bool isinv) {
+    bool v;
+    if(!bincache_get(media_name, &mem, &v))
+      return false;
+    if(!v && !isinv)
+      return false;
+    return true;
+  }
+  bool bin_put(const DCString& media_name, const SCMemShared* mem) {
+    if(mem==NULL)
+      return bincache_add(media_name);
+    return bincache_add(media_name, *mem);
   }
   // general object functions
-  bool obj_fget(IRefObject::P& obj, const IBinObjFilter::SInfo& info) {
+  bool obj_fget(const IBinObjFilter::SInfo& info, IRefObject::P& obj) {
     return false;
   }
-  bool obj_fload(IRefObject* obj, const IBinObjFilter::SInfo& info) {
+  bool obj_fload(const IBinObjFilter::SInfo& info, IRefObject* obj) {
     return false;
   }
-  bool obj_fsave(IRefObject* obj, IBinObjFilter::SInfo& info) {
+  bool obj_fsave(IBinObjFilter::SInfo& info, IRefObject* obj) {
     return false;
   }
-  bool obj_cget(IRefObject::P& obj, const DCString& media_name) {
+  bool obj_cget(const DCString& media_name, IRefObject::P& obj, bool isinv) {
     return false;
   }
-  bool obj_cput(IRefObject* obj, const DCString& media_name) {
+  bool obj_cput(const DCString& media_name, IRefObject* obj) {
     return false;
   }
   // universal object functions
-  bool obj_get(IRefObject::P& obj, const DCString& media_name, const SObjOptions& opts) {
-    return obj_std_get(obj, media_name, opts);
+  bool obj_get(const DCString& media_name, IRefObject::P& obj, const SObjOptions& opts) {
+    return false;
   }
-  bool obj_load(IRefObject* obj, const DCString& media_name, const SObjOptions& opts) {
-    return obj_std_load(obj, media_name, opts);
+  bool obj_load(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) {
+    return false;
   }
-  bool obj_save(IRefObject* obj, const DCString& media_name, const SObjOptions& opts) {
-    return obj_std_save(obj, media_name, opts);
+  bool obj_save(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) {
+    return false;
   }
   //
   // binary cache
-  bool bincache_get(SCMemShared& mem, const DCString& media_name) const {
-    mem.clear();
+  bool bincache_get(const DCString& media_name, SCMemShared* mem, bool *valid) const {
+    if(mem!=NULL)
+      mem->clear();
     SCacheElem* e = cache(media_name);
     if(e==NULL)
       return false;
-    mem = e->bin;
+    if(mem!=NULL)
+      *mem = e->bin;
+    if(valid!=NULL)
+      *valid = e->valid;
     return false;
   }
-  bool bincache_add(const SCMemShared& mem, const DCString& media_name) {
-    SCacheElem* e = cache(media_name);
-    if(e==NULL) {
-      DStringShared n2 = media_name;
-      e = cache(n2(), void_null());
-      if(e==NULL)
-        return false;
-      e->name = n2;
-    }
-    e->bin = mem;
-    return true;
+  bool bincache_add(const DCString& media_name) {
+    return bincache_add(media_name, SCMemShared(), false);
+  }
+  bool bincache_add(const DCString& media_name, const SCMemShared& mem) {
+    return bincache_add(media_name, mem, true);
   }
   bool bincache_remove(const DCString& media_name) {
     return cache.Remove(media_name);
@@ -107,6 +125,20 @@ struct RLibraryBinCache : public ILibraryBinCache
     return true;
   }
   //
+  inline bool bincache_add(const DCString& media_name, const SCMemShared& mem, bool valid)
+  {
+    SCacheElem* e = cache(media_name);
+    if(e==NULL) {
+      DStringShared n2 = media_name;
+      e = cache(n2(), void_null());
+      if(e==NULL)
+        return false;
+      e->name = n2;
+    }
+    e->bin = mem;
+    e->valid = valid;
+    return true;
+  }
   //
   inline bool validate_construction(void) const { return true; }
 };

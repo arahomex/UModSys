@@ -2,6 +2,8 @@ begin project-group umodsys
   set path-tmp $(path-root)/tmp
   set path-bin $(path-root)/bin
 
+  set path-inc $(path-root)/include/umodsys
+
   set path-src $(path-root)/src
   set path-s-base $(path-src)/base
   set path-s-basesys $(path-src)/basesys
@@ -53,56 +55,122 @@ begin project-group umodsys
     begin file-group src-tl
       file $(path-s-tl)/umodsys.tl.strings.cpp
     end
+    begin file-group headers
+      begin file-group core
+        begin mask $(path-skip) $(path-inc)/core
+          include *.h
+        end
+        begin file-group arch
+          begin mask $(path-skip) $(path-inc)/core/arch
+            include *.h
+          end
+        end
+        begin file-group mem
+          begin mask $(path-skip) $(path-inc)/core/mem
+            include *.h
+          end
+        end
+        begin file-group util
+          begin mask $(path-skip) $(path-inc)/core/util
+            include *.h
+          end
+        end
+      end
+      #
+      begin file-group tl
+        begin file-group composite
+          begin mask $(path-skip) $(path-inc)/tl/composite
+            include *.h
+          end
+        end
+        begin file-group alloc
+          begin mask $(path-skip) $(path-inc)/tl/alloc
+            include *.h
+          end
+        end
+        begin file-group math
+          begin mask $(path-skip) $(path-inc)/tl/math
+            include *.h
+          end
+        end
+        begin file-group metastl
+          begin mask $(path-skip) $(path-inc)/tl/metastl
+            include *.h
+          end
+        end
+        begin file-group string
+          begin mask $(path-skip) $(path-inc)/tl/string
+            include *.h
+          end
+        end
+        begin file-group util
+          begin mask $(path-skip) $(path-inc)/tl/util
+            include *.h
+          end
+        end
+      end
+    end
   end
 
   begin project umodsys_lib_basesys
     mode lib
     begin file-group src
-      file $(path-s-basesys)/umodsys.basesys.rsystem.cpp
-      file $(path-s-basesys)/umodsys.basesys.rsystem_main.cpp
-      file $(path-s-basesys)/umodsys.basesys.rsystem_tests.cpp
-      file $(path-s-basesys)/umodsys.basesys.rmodule.cpp
-      file $(path-s-basesys)/umodsys.basesys.rmodulelib.cpp
-      file $(path-s-basesys)/umodsys.basesys.rmodulelibso.cpp
-      file $(path-s-basesys)/umodsys.basesys.rmodulelibthis.cpp
-      file $(path-s-basesys)/umodsys.basesys.rmoduleloader.cpp
-      file $(path-s-basesys)/umodsys.basesys.rparameters.cpp
-      file $(path-s-basesys)/umodsys.basesys.rconsole_std.cpp
+      begin mask $(path-skip) $(path-s-basesys)
+        include *.cpp
+        include *.h
+      end
     end
   end
 
   begin project umodsys_lib_base
     mode lib
     begin file-group src
-      file $(path-s-base)/umodsys.base.debug.cpp
-      file $(path-s-base)/umodsys.base.console.cpp
-      file $(path-s-base)/umodsys.base.system.cpp
-      file $(path-s-base)/umodsys.base.module.cpp
-      file $(path-s-base)/umodsys.base.moduleloader.cpp
-      file $(path-s-base)/umodsys.base.modulecontext.cpp
-      file $(path-s-base)/umodsys.base.moduleinfo.cpp
-      file $(path-s-base)/umodsys.base.modulereg.cpp
-      file $(path-s-base)/umodsys.base.moduleregchain.cpp
+      begin mask $(path-skip) $(path-s-base)
+        include *.cpp
+        include *.h
+      end
+    end
+    begin file-group headers
+      begin file-group base
+        begin mask $(path-skip) $(path-inc)/base
+          include *.h
+        end
+      end
     end
   end
 
   begin project umodsys_lib_libmedia
     mode lib
+    begin file-group headers_media
+      begin mask $(path-skip) $(path-inc)/lib/media
+        include *.h
+      end
+    end
     begin file-group lib_media
       file $(path-s-lib)/media/umodsys.lib.media.common.cpp
+      begin mask $(path-skip) $(path-s-lib)/media
+        include *.cpp *.h 
+      end
     end
     begin file-group mod_stdio
-      file $(path-s-mod)/media.stdio/umodsys.mod.media.stdio.cpp
+      begin mask $(path-skip) $(path-s-mod)/media.stdio
+        include *.cpp *.h 
+      end
     end
     begin file-group mod_std
-      file $(path-s-mod)/media.std/umodsys.mod.media.std.cpp
+      begin mask $(path-skip) $(path-s-mod)/media.std
+        include *.cpp *.h 
+      end
     end
   end
 
   begin project plugin_test1
     mode shared
     begin file-group src
-      file $(path-s-plugin)/test/plugin_test1.cpp
+      begin mask $(path-skip) $(path-s-plugin)/test
+        include plugin_test1.cpp
+        include plugin_test1.*.h
+      end
     end
     depend umodsys_lib_core
     depend umodsys_lib_base
@@ -111,7 +179,10 @@ begin project-group umodsys
   begin project plugin_test2
     mode shared
     begin file-group src
-      file $(path-s-plugin)/test/plugin_test2.cpp
+      begin mask $(path-skip) $(path-s-plugin)/test
+        include plugin_test2.cpp
+        include plugin_test2.*.h
+      end
     end
     depend umodsys_lib_core
     depend umodsys_lib_base

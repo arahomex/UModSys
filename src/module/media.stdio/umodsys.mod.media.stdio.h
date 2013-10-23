@@ -29,6 +29,8 @@ struct RGenerator;
 #include "umodsys.mod.media.stdio.streams.h"
 #include "umodsys.mod.media.stdio.archive.h"
 
+DMediaFlags RDataArchiver_OsDir::auto_flags( mf_safe::Yes );
+
 //***************************************
 // RGenerator
 //***************************************

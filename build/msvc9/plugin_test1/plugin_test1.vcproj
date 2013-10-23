@@ -558,6 +558,18 @@
 				RelativePath="..\..\..\src\plugin\test\plugin_test1.cpp"
 				>
 			</File>
+			<File
+				RelativePath="..\..\..\src\plugin\test\plugin_test1.common.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\plugin\test\plugin_test1.file_tests.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\plugin\test\plugin_test1.obj_load.h"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

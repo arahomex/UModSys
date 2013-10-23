@@ -2,7 +2,7 @@ begin project-group umodsys
   option random-seed 0 umodsys-vs2008
 
   set ppath platform/win32
-  set spname src-win32
+  set spname win32
 
   option project * IntermediateDirectory $(path-out-tmp)
   option project * VCCLCompilerTool_AdditionalIncludeDirectories \$(SolutionDir)../../include
@@ -24,20 +24,22 @@ begin project-group umodsys
   begin project umodsys_lib_core
     GUID-gen 0 umodsys.lib_core
     option * OutputDirectory $(path-out-lib)
-    begin file-group $(spname)
-      file $(path-s-core)/$(ppath)/umodsys.core.syshlp_chars.win32.cpp
-      file $(path-s-core)/$(ppath)/umodsys.core.syshlp_charcode.win32.cpp
-      file $(path-s-core)/$(ppath)/umodsys.core.syshlp_files.win32.cpp
-      file $(path-s-core)/$(ppath)/umodsys.core.syshlp_proc.win32.cpp
-      file $(path-s-core)/$(ppath)/umodsys.core.syshlp_thread.win32.cpp
-      file $(path-s-core)/$(ppath)/umodsys.core.syshlp_vars.win32.cpp
+    begin file-group src-$(spname)
+      begin mask $(path-skip) $(path-s-core)/$(ppath)
+        include *.cpp *.h
+      end
+    end
+    begin file-group headers-$(spname)
+      begin mask $(path-skip) $(path-inc)/core/$(ppath)
+        include *.h
+      end
     end
   end
 
   begin project umodsys_lib_base
     GUID-gen 0 umodsys.lib_base
     option * OutputDirectory $(path-out-lib)
-    begin file-group $(spname)
+    begin file-group src-$(spname)
       file $(path-s-base)/$(ppath)/umodsys.so_main.win32.cpp
     end
   end
@@ -45,7 +47,7 @@ begin project-group umodsys
   begin project umodsys_lib_basesys
     GUID-gen 0 umodsys.lib_basesys
     option * OutputDirectory $(path-out-lib)
-    begin file-group $(spname)
+    begin file-group src-$(spname)
       file $(path-s-basesys)/$(ppath)/umodsys.basesys.rmodule.win32.cpp
     end
   end

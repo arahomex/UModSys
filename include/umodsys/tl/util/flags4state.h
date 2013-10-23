@@ -41,7 +41,10 @@ struct TFlags4State
   //
   template<typename T> inline eStates get(void) const { return T::get(*this); }
 //  template<int nshift> F4S operator |(typename TFlags4StateShift<Uid,Base,nshift>::eState s) const { return F4S( value | s); }
+  //
   inline eStates get_s(int shift) const { return eStates( (value >> (shift<<1)) & MMask ); }
+  inline void set_s(int shift, eStates nv) { value &= ~(MMask<<(shift<<1)); value |= nv<<(shift<<1); }
+  inline eStates getset_s(int shift, eStates nv) { eStates rv = get_s(shift); set_s(shift, nv); return rv; }
 };
 
 template<typename Uid, typename Base, int nshift> 

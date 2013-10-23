@@ -27,6 +27,7 @@ struct RTest1_Shell : public IShell {
   libmedia::ILibraryBinTree::P media_vfs(void);
   libmedia::ILibraryObjFilter::P media_flt(void);
   libmedia::ILibraryLayered::P media_lay(void);
+  void test_op_file(bool f, const DCString &fname, const DCString &operation);
   void test_op_file(bool f, const DCString &fname, SCMemShared& mem_block, bool isRead);
   //
   void file_test1(void);

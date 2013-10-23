@@ -1,6 +1,6 @@
 
 //***************************************
-// RLibraryBinCache::
+// RLibraryBinTree::
 //***************************************
 
 struct RLibraryBinTree : public ILibraryBinTree
@@ -8,135 +8,133 @@ struct RLibraryBinTree : public ILibraryBinTree
   UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(media,std)::RLibraryBinTree, 1, ILibraryBinTree)
   UMODSYS_REFOBJECT_REFMODULE()
   //
-  struct SMountIndex {
-    int order;
-    DCString mnt;
-    //
-    inline SMountIndex(int o, const DCString &m) : mnt(m), order(o) {}
-    inline SMountIndex(const DCString &m, int o) : mnt(m), order(o) {}
-    //
-    static int compare(const SMountIndex& L, const SMountIndex& R) { 
-      int rv = -scalar_compare(L.order, R.order); // revert order, a>b mean a before b
-      if(rv) return rv;
-      return scalar_compare(L.mnt, R.mnt);
-    }
-  };
-  struct SMountInfo : SMountPoint {
+  typedef SId SMountIndex;
+  //
+  struct SMountInfo : SPoint {
     DStringShared mount_name;
     //
-    void operator=(const SMountPoint& r) { SMountPoint::operator=(r); }
+    void operator=(const SPoint& r) { SPoint::operator=(r); }
   };
   typedef tl::TScatterArray< SMountInfo, SMountIndex, SMountIndex > DMounts;
   //
   DMounts mounts;
-  DMediaFlags auto_values;
+  DMediaFlags flags;
+  static DMediaFlags auto_flags;
   //
   RLibraryBinTree(DOwner *own, const SParameters& args, DMediaFlags av=DMediaFlags())
-  : refs(own), auto_values(av)/*, cache(local_memory())*/ {
+  : refs(own), flags(av)/*, cache(local_memory())*/ {
   }
   ~RLibraryBinTree(void) {
   }
   //
-  // SFlags::IResolver
-  DMediaFlags::eStates get_parent_flag(int shift) const {
-    return auto_values.get_s(shift);
-  }
+  // SFlags::ISetter
+  DMediaFlags::eStates get_flag(int shift) const { return flags.get_s(shift); }
+  DMediaFlags get_flags_auto(void) const { return auto_flags; }
+  DMediaFlags::eStates set_flag(int shift, DMediaFlags::eStates flag) { return flags.getset_s(shift, flag); }
   //
   // general data functions
   IStreamReader::P bin_reader(const DCString& media_name, const SFlags& flags) {
-    for(DMounts::const_iterator x=mounts.begin(), e=mounts.end(); x!=e; x++) {
-      const DCString &mnt = x->mount_name();
+    for(DMounts::CIter x=mounts(); x; ++x) {
+      const SMountInfo& mi = x->second;
+      const DCString &mnt = mi.mount_name();
       if(~media_name<=~mnt || !tl::su::seq(mnt(), media_name(), ~mnt) 
-         || !x->archive.valid() || !(x->pm & mp_Read))
+         || !mi.archive.valid() || !(mi.pm & mp_Read))
         continue;
-      IStreamReader::P rv = x->archive->data_reader(media_name + ~mnt, flags);
+      IStreamReader::P rv = mi.archive->data_reader(media_name + ~mnt, flags);
       if(rv.valid())
         return rv;
     }
     return NULL;
   }
   IStreamWriter::P bin_writer(const DCString& media_name, const SFlags& flags) {
-    for(DMounts::const_iterator x=mounts.begin(), e=mounts.end(); x!=e; x++) {
-      const DCString &mnt = x->mount_name();
+    for(DMounts::CIter x=mounts(); x; ++x) {
+      const SMountInfo& mi = x->second;
+      const DCString &mnt = mi.mount_name();
       if(~media_name<=~mnt || !tl::su::seq(mnt(), media_name(), ~mnt) 
-         || !x->archive.valid() || !(x->pm & mp_Write))
+         || !mi.archive.valid() || !(mi.pm & mp_Write))
         continue;
-      IStreamWriter::P rv = x->archive->data_writer(media_name + ~mnt, flags);
+      IStreamWriter::P rv = mi.archive->data_writer(media_name + ~mnt, flags);
       if(rv.valid())
         return rv;
     }
     return NULL;
   }
-  bool bin_load(SCMemShared& mem, const DCString& media_name, const SFlags& flags) {
+  bool bin_load(const DCString& media_name, SCMemShared& mem, const SFlags& flags) {
     mem.clear();
-    for(DMounts::const_iterator x=mounts.begin(), e=mounts.end(); x!=e; x++) {
-      const DCString &mnt = x->mount_name();
+    for(DMounts::CIter x=mounts(); x; ++x) {
+      const SMountInfo& mi = x->second;
+      const DCString &mnt = mi.mount_name();
       if(~media_name<=~mnt || !tl::su::seq(mnt(), media_name(), ~mnt) 
-         || !x->archive.valid() || !(x->pm & mp_Read))
+         || !mi.archive.valid() || !(mi.pm & mp_Read))
         continue;
-      if(x->archive->data_load(media_name + ~mnt, mem, flags))
+      if(mi.archive->data_load(media_name + ~mnt, mem, flags))
         return true;
     }
     return false;
   }
-  bool bin_save(const SCMem& mem, const DCString& media_name, const SFlags& flags) {
-    for(DMounts::const_iterator x=mounts.begin(), e=mounts.end(); x!=e; x++) {
-      const DCString &mnt = x->mount_name();
+  bool bin_save(const DCString& media_name, const SCMem& mem, const SFlags& flags) {
+    for(DMounts::CIter x=mounts(); x; ++x) {
+      const SMountInfo& mi = x->second;
+      const DCString &mnt = mi.mount_name();
       if(~media_name<=~mnt || !tl::su::seq(mnt(), media_name(), ~mnt) 
-         || !x->archive.valid() || !(x->pm & mp_Read))
+         || !mi.archive.valid() || !(mi.pm & mp_Read))
         continue;
-      if(x->archive->data_save(media_name + ~mnt, mem, flags))
+      if(mi.archive->data_save(media_name + ~mnt, mem, flags))
         return true;
     }
     return false;
   }
-//  virtual bool bin_info(SMediaFileInfo& info, const DCString& media_name, const SFlags& flags=SFlags()) =0; // determine attributes
-//  virtual bool bin_info(SMediaFileInfoArray& info, const DHString& media_mask, const SFlags& flags=SFlags()) =0; // determine attributes
-  bool bin_get(SCMemShared& mem, const DCString& media_name) {
+  bool bin_info(const DCString& media_name, SFileInfo& info, const SFlags& flags) {
     return false;
   }
-  bool bin_put(const SCMemShared& mem, const DCString& media_name) {
+  bool bin_info(const DCString& media_mask, DIFileInfoArray& info, const SFlags& flags) {
+    return false;
+  }
+  bool bin_get(const DCString& media_name, SCMemShared& mem, bool isinv) {
+    return false;
+  }
+  bool bin_put(const DCString& media_name, const SCMemShared* mem) {
     return false;
   }
   // general object functions
-  bool obj_fget(IRefObject::P& obj, const IBinObjFilter::SInfo& info) {
+  bool obj_fget(const IBinObjFilter::SInfo& info, IRefObject::P& obj) {
     return false;
   }
-  bool obj_fload(IRefObject* obj, const IBinObjFilter::SInfo& info) {
+  bool obj_fload(const IBinObjFilter::SInfo& info, IRefObject* obj) {
     return false;
   }
-  bool obj_fsave(IRefObject* obj, IBinObjFilter::SInfo& info) {
+  bool obj_fsave(IBinObjFilter::SInfo& info, IRefObject* obj) {
     return false;
   }
-  bool obj_cget(IRefObject::P& obj, const DCString& media_name) {
+  bool obj_cget(const DCString& media_name, IRefObject::P& obj, bool isinv) {
     return false;
   }
-  bool obj_cput(IRefObject* obj, const DCString& media_name) {
+  bool obj_cput(const DCString& media_name, IRefObject* obj) {
     return false;
   }
   // universal object functions
-  bool obj_get(IRefObject::P& obj, const DCString& media_name, const SObjOptions& opts) {
-    return obj_std_get(obj, media_name, opts);
+  bool obj_get(const DCString& media_name, IRefObject::P& obj, const SObjOptions& opts) {
+    return false;
   }
-  bool obj_load(IRefObject* obj, const DCString& media_name, const SObjOptions& opts) {
-    return obj_std_load(obj, media_name, opts);
+  bool obj_load(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) {
+    return false;
   }
-  bool obj_save(IRefObject* obj, const DCString& media_name, const SObjOptions& opts) {
-    return obj_std_save(obj, media_name, opts);
+  bool obj_save(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) {
+    return false;
   }
   //
   // sub-archives
-  SMountPoint mount_get(const DCString& mountpoint, int order) const {
-    const SMountInfo* x = mounts(SMountIndex(mountpoint, order));
+  SPoint mount_get(const SId& id) const {
+    const SMountInfo* x = mounts(id);
     if(x==NULL)
-      return SMountPoint();
+      return SPoint();
     return *x;
   }
-  bool mount_add(const SMountPoint& mp, const DCString& mountpoint, int order) {
-    SMountInfo* x = mounts(SMountIndex(mountpoint, order));
+  bool mount_add(const SId& id, const SPoint& mp) {
+    SMountInfo* x = mounts(id);
     if(x==NULL) {
-      DStringShared mn2 = mountpoint;
-      x = mounts(SMountIndex(mn2(), order), void_null());
+      DStringShared mn2 = id.mountpoint;
+      x = mounts(SId(mn2(), id.order), void_null());
       if(x==NULL)
         return false;
       x->mount_name = mn2;
@@ -144,8 +142,8 @@ struct RLibraryBinTree : public ILibraryBinTree
     *x = mp;
     return true;
   }
-  bool mount_remove(const DCString& mountpoint, int order) {
-    return mounts.Remove(SMountIndex(mountpoint, order));
+  bool mount_remove(const SId& id) {
+    return mounts.Remove(id);
   }
   bool mount_clear(void) {
     mounts.Clear();

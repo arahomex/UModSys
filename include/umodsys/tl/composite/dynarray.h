@@ -316,8 +316,10 @@ inline bool TDynarray<SHolder>::InsertAt(size_t id, size_t n) UMODSYS_NOTHROW()
 {
   if(id==array_index_none || id>length)
     return false;
-  if(id!=length-1) {
-    TC::amoveleft(items, id+n, id, length-id-1);
+  if(length+n>holder.maxlen() && !ReLink(length+n))
+    return false;
+  if(id!=length) {
+    TC::amoveright(items, id+n, id, length-id);
   }
   items_construct(id, n);
   length += n;
@@ -332,7 +334,7 @@ inline bool TDynarray<SHolder>::RemoveAt(size_t id, size_t n) UMODSYS_NOTHROW()
     return false;
   items_destruct(id, n);
   if(id+n!=length) {
-    TC::amoveright(items, id, id+n, length-id);
+    TC::amoveleft(items, id, id+n, length-id);
   }
   length -= n;
   return true;

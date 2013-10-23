@@ -17,10 +17,11 @@ struct RDataArchiver_OsDir : public IBinArchive
   //
   int pm;
   DStringShared prefix;
-  DMediaFlags auto_values;
+  DMediaFlags flags;
+  static DMediaFlags auto_flags;
   //
-  RDataArchiver_OsDir(DOwner *own, const SParameters& args, DMediaFlags av=DMediaFlags())
-  : refs(own), auto_values(av) {
+  RDataArchiver_OsDir(DOwner *own, const SParameters& args, DMediaFlags ff=DMediaFlags())
+  : refs(own), flags(ff) {
     open(args);
   }
   ~RDataArchiver_OsDir(void) {
@@ -64,6 +65,11 @@ struct RDataArchiver_OsDir : public IBinArchive
   }
   inline bool validate_construction(void) const { return true; }
   //
+  // SFlags::ISetter
+  DMediaFlags::eStates get_flag(int shift) const { return flags.get_s(shift); }
+  DMediaFlags get_flags_auto(void) const { return auto_flags; }
+  DMediaFlags::eStates set_flag(int shift, DMediaFlags::eStates flag) { return flags.getset_s(shift, flag); }
+  //
   bool data_load(const DCString& media_name, SCMemShared& mem, const SFlags& flags) {
     return archive_load_data(*this, media_name, mem, flags);
   }
@@ -80,11 +86,11 @@ struct RDataArchiver_OsDir : public IBinArchive
   IStreamWriter::P data_writer(const DCString& media_name, const SFlags& flags) {
     OSDIR_START(NULL, media_name, mp_Write);
     IStreamWriter::P rv;
-    if(!ValidateConstruction(rv, new(M()) RStreamWriter_FILE(refs.owner, xname, flags.yes<mf_safe>(auto_values) )))
+    if(!ValidateConstruction(rv, new(M()) RStreamWriter_FILE(refs.owner, xname, flags.yes<mf_safe>(this) )))
       return NULL;
     return rv;
   }
-  bool data_list(const DCString &mask, DIFileInfoArray& list) {
+  bool data_list(const DCString& mask, DIFileInfoArray& list, const SFlags& flags) {
     OSDIR_START(0, mask, mp_List);
     return false;
   }

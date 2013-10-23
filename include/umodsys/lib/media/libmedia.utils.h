@@ -56,24 +56,6 @@ inline bool archive_save_data(IBinArchive& a, const DCString& media_name, const 
 }
 
 //***************************************
-// ILibrary::
-
-inline bool ILibrary::obj_std_get(IRefObject::P& obj, const DCString& media_name, const SObjOptions& opts)
-{
-  return false;
-}
-
-inline bool ILibrary::obj_std_load(IRefObject* obj, const DCString& media_name, const SObjOptions& opts)
-{
-  return false;
-}
-
-inline bool ILibrary::obj_std_save(IRefObject* obj, const DCString& media_name, const SObjOptions& opts)
-{
-  return false;
-}
-
-//***************************************
 // END
 //***************************************
 
