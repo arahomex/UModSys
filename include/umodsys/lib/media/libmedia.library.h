@@ -39,7 +39,7 @@ struct ILibraryBinTree
     static int compare(const SId& L, const SId& R) { 
       int rv = -scalar_compare(L.order, R.order); // revert order, a>b mean a before b
       if(rv) return rv;
-      return scalar_compare(L.mountpoint, R.mountpoint);
+      return L.mountpoint.compare(R.mountpoint);
     }
   };
 public:
@@ -90,7 +90,7 @@ public:
   virtual bool filters_clear(void)=0; // clear all cache
   virtual bool filters_load(const IBinObjFilter::SInfo& info, IRefObject::P& obj) =0;
   virtual bool filters_load(const IBinObjFilter::SInfo& info, IRefObject* obj) =0;
-  virtual bool filters_save(IBinObjFilter::SInfo& info, IRefObject* obj) =0;
+  virtual bool filters_save(IBinObjFilter::SInfo& info, const IRefObject* obj) =0;
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::ILibraryObjFilter, 2, ILibrary);
 };
@@ -131,6 +131,12 @@ public:
   virtual bool layer_remove(size_t idx) =0;
   virtual bool layer_clear(void) =0;
   //
+  inline bool layer_push(ILibrary* l, int p=mp_All, const DCString& t=NULL) {
+    return layer_insert(SLayer(l, p, t));
+  }
+  inline bool layer_insert(size_t idx, ILibrary* l, int p=mp_All, const DCString& t=NULL) {
+    return layer_insert(SLayer(l, p, t), idx);
+  }
 public:
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::ILibraryLayered, 2, ILibrary);

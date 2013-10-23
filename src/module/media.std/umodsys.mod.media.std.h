@@ -39,7 +39,7 @@ struct RGenerator;
 
 DMediaFlags RLibraryBinCache::auto_flags;
 DMediaFlags RLibraryBinTree::auto_flags;
-//DMediaFlags RLibraryObjCache::auto_flags;
+DMediaFlags RLibraryObjCache::auto_flags;
 DMediaFlags RLibraryObjFilter::auto_flags;
 DMediaFlags RLibraryLayered::auto_flags( mf_safe::Yes );
 
@@ -55,6 +55,7 @@ struct RGenerator : public IGenerator {
          + t_names<RLibraryBinTree>(list)
          + t_names<RLibraryLayered>(list)
          + t_names<RLibraryObjFilter>(list)
+         + t_names<RLibraryObjCache>(list)
     ;
   }
   int get_generated_types(DPtrList& list, TypeId name) const {
@@ -63,6 +64,7 @@ struct RGenerator : public IGenerator {
       || t_types<RLibraryBinTree>(rv, list, name)
       || t_types<RLibraryLayered>(rv, list, name)
       || t_types<RLibraryObjFilter>(rv, list, name)
+      || t_types<RLibraryObjCache>(rv, list, name)
     ;
     return rv;
   }
@@ -71,6 +73,7 @@ struct RGenerator : public IGenerator {
         || t_gen_param<RLibraryBinTree>(this, obj, name, args)
         || t_gen_param<RLibraryLayered>(this, obj, name, args)
         || t_gen_param<RLibraryObjFilter>(this, obj, name, args)
+        || t_gen_param<RLibraryObjCache>(this, obj, name, args)
     ;
   }
   //

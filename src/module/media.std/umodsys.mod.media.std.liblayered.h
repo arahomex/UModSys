@@ -166,7 +166,7 @@ struct RLibraryLayered : public ILibraryLayered
     }
     return false;
   }
-  bool obj_fsave(IBinObjFilter::SInfo& info, IRefObject* obj) {
+  bool obj_fsave(IBinObjFilter::SInfo& info, const IRefObject* obj) {
 //    SFlagsChain f2(flags, this);
     for(DLayers::const_iterator x=layers.begin(), e=layers.end(); x!=e; ++x) {
       const SLayerX& lx = *x;
@@ -199,16 +199,62 @@ struct RLibraryLayered : public ILibraryLayered
   }
   // universal object functions
   bool obj_get(const DCString& media_name, IRefObject::P& obj, const SObjOptions& opts) {
-//    SFlagsChain f2(flags, this);
-    return false;
+    SFlagsChain f2(opts, this);
+    if(f2.yes<mf_objects>(this) && obj_cget(media_name, obj, f2.yes<mf_nulluse>(this)))
+      return true;
+    IBinObjFilter::SInfo info;
+    if(!bin_load(media_name, info.binary, flags)) {
+      if(f2.yes<mf_nullwrite>(this)) {
+        obj_cput(media_name, NULL);
+      }
+      return false;
+    }
+    info.flags = f2;
+    info.common_type = opts.typehint;
+    info.media_name = media_name;
+    info.params = opts.params;
+    info.reqtype = opts.reqtype;
+    if(!obj_fget(info, obj)) {
+      if(f2.yes<mf_nullwrite>(this)) {
+        obj_cput(media_name, NULL);
+      }
+      return false;
+    }
+    if(f2.yes<mf_objsave>(this)) {
+      obj_cput(media_name, obj);
+    }
+    return true;
   }
   bool obj_load(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) {
-//    SFlagsChain f2(flags, this);
-    return false;
+    SFlagsChain f2(opts, this);
+    IBinObjFilter::SInfo info;
+    if(!bin_load(media_name, info.binary, flags))
+      return false;
+    info.flags = f2;
+    info.common_type = opts.typehint;
+    info.media_name = media_name;
+    info.params = opts.params;
+    info.reqtype = opts.reqtype;
+    if(!obj_fload(info, obj))
+      return false;
+    return true;
   }
-  bool obj_save(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) {
-//    SFlagsChain f2(flags, this);
-    return false;
+  bool obj_save(const DCString& media_name, const IRefObject* obj, const SObjOptions& opts) {
+    SFlagsChain f2(opts, this);
+    IBinObjFilter::SInfo info;
+    info.flags = f2;
+    info.common_type = opts.typehint;
+    info.media_name = media_name;
+    info.params = opts.params;
+    info.reqtype = opts.reqtype;
+    if(!obj_fsave(info, obj))
+      return false;
+    if(!bin_save(media_name, info.binary, flags))
+      return false;
+    if(f2.yes<mf_objsave>(this)) {
+      obj_cput(media_name, const_cast<IRefObject*>(obj));
+    }
+    return true;
   }
   //
   // sub-elements, use highest cast [IDataLibrary]

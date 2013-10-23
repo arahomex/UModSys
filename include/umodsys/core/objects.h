@@ -30,6 +30,7 @@ struct IRoot {
   virtual const IRoot* get_other_interface(TypeId type) const =0;
   virtual IRoot* get_other_interface(TypeId type) =0;
   virtual size_t get_interface_types(DPtrList& list) const =0;
+  virtual bool is_interface_supported(TypeId type) const =0;
   // INLINES
   template<typename RData>
   inline bool t_get_other_interface(RData* &rv, TypeId type) {
@@ -71,6 +72,10 @@ struct IRoot {
   inline bool t_get_other_interface_n(const RData* &rv) const {
     rv = static_cast<const RData*>( get_other_interface(RData::_get_interface_name()) );
     return rv!=NULL;
+  }
+  template<typename RData>
+  inline bool t_is_interface_supported(void) const {
+    return is_interface_supported(RData::_get_interface_name());
   }
 protected:
   inline const IRoot* _get_other_interface(TypeId type) const { return type==_get_interface_type() ? this : NULL; }

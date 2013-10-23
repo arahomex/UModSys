@@ -52,7 +52,7 @@ struct TStringBuf : public CoreT, public Comparer {
   inline bool operator>(Str s) const { return cmp(s)>0; }
   inline bool operator>=(Str s) const { return cmp(s)>=0; }
   //
-  template<typename Core2, typename Cmp2> inline int cmp(const TString<Core2, Cmp2>& s) 
+  template<typename Core2, typename Cmp2> inline int cmp(const TString<Core2, Cmp2>& s) const 
     { return Comparer::cmp2(CoreT::get_text(), CoreT::get_length(), s.get_text(), s.get_length()); }
   template<typename Core2, typename Cmp2> inline bool eq(const TString<Core2, Cmp2>& s) const 
     { return Comparer::eq2(CoreT::get_text(), CoreT::get_length(), s.get_text(), s.get_length()); }
@@ -69,7 +69,7 @@ struct TStringBuf : public CoreT, public Comparer {
   template<typename Core2, typename Cmp2> inline bool operator>=(const TString<Core2, Cmp2>& s) const 
     { return cmp(s)>=0; }
   //
-  template<typename Core2, typename Cmp2> inline int cmp(const TStringBuf<Core2, Cmp2>& s) 
+  template<typename Core2, typename Cmp2> inline int cmp(const TStringBuf<Core2, Cmp2>& s) const 
     { return Comparer::cmp2(CoreT::get_text(), CoreT::get_length(), s.get_text(), s.get_length()); }
   template<typename Core2, typename Cmp2> inline bool eq(const TStringBuf<Core2, Cmp2>& s) const 
     { return Comparer::eq2(CoreT::get_text(), CoreT::get_length(), s.get_text(), s.get_length(), s.get_comparer()); }
@@ -86,7 +86,12 @@ struct TStringBuf : public CoreT, public Comparer {
   template<typename Core2, typename Cmp2> inline bool operator>=(const TStringBuf<Core2, Cmp2>& s) const 
     { return cmp(s)>=0; }
   //
-  template<typename Core2> inline int cmp(const TStringBuf<Core2, Comparer>& s) { 
+  template<typename Core2> inline int cmp(const TStringBuf<Core2, Comparer>& s) const { 
+    if(Comparer::same(s.get_comparer()))
+      return Comparer::cmp3(CoreT::get_text(), CoreT::get_length(), s.get_text(), s.get_length(), s.get_comparer()); 
+    return Comparer::cmp2(CoreT::get_text(), CoreT::get_length(), s.get_text(), s.get_length()); 
+  }
+  template<typename Core2> inline int compare(const TStringBuf<Core2, Comparer>& s) const { 
     if(Comparer::same(s.get_comparer()))
       return Comparer::cmp3(CoreT::get_text(), CoreT::get_length(), s.get_text(), s.get_length(), s.get_comparer()); 
     return Comparer::cmp2(CoreT::get_text(), CoreT::get_length(), s.get_text(), s.get_length()); 
@@ -126,6 +131,15 @@ struct TStringBuf : public CoreT, public Comparer {
 //***************************************
 
 } // namespace tl
+
+namespace core {
+
+  template<typename CoreT, typename Comparer>
+  inline int scalar_compare(const tl::TStringBuf<CoreT,Comparer>& L, const tl::TStringBuf<CoreT,Comparer>& R) 
+    { return L.compare(R); }
+
+} // namespace core
+
 } // namespace UModSys
 
 #endif // __UMODSYS_TL_STRING_BUFFER_H

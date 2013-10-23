@@ -58,6 +58,32 @@ libmedia::ILibraryLayered::P RTest1_Shell::media_lay(void)
   return NULL;
 }
 
+libmedia::ILibrary::P RTest1_Shell::media_cache(bool isobj)
+{
+  if(isobj) {
+    libmedia::ILibraryObjCache::P lib;
+    if(TypeId found=M.t_firstobjname<libmedia::ILibraryObjCache>("*::std::*")) {
+      TParametersA<1024> params;
+      if(M.t_generate(lib, found, params)) {
+        M.con().put(0, "  found lib(obj-cache): %s => %p\n", found->name, lib());
+        return lib();
+      }
+    }
+    M.con().put(0, "  fail lib(obj-cache)\n");
+  } else {
+    libmedia::ILibraryBinCache::P lib;
+    if(TypeId found=M.t_firstobjname<libmedia::ILibraryBinCache>("*::std::*")) {
+      TParametersA<1024> params;
+      if(M.t_generate(lib, found, params)) {
+        M.con().put(0, "  found lib(bin-cache): %s => %p\n", found->name, lib());
+        return lib();
+      }
+    }
+    M.con().put(0, "  fail lib(bin-cache)\n");
+  }
+  return NULL;
+}
+
 void RTest1_Shell::test_op_file(bool f, const DCString &fname, const DCString &operation)
 {
   if(f) {
@@ -205,7 +231,7 @@ void RTest1_Shell::file_test5(void)
       return;
     lib_vfs->mount_add("/", media_arch_stdio("."), libmedia::mp_Read);
     lib_vfs->mount_add("/", 1, media_arch_stdio("./write-dir"), libmedia::mp_RWL);
-    lib->layer_insert( libmedia::ILibraryLayered::SLayer(lib_vfs) );
+    lib->layer_push( lib_vfs );
   }
   //
   {
@@ -215,7 +241,11 @@ void RTest1_Shell::file_test5(void)
     TParametersA<1024> params;
     libmedia::IBinObjFilter::P flt = new RLines_Filter(refs.owner, params);
     lib_flt->filters_add(flt, &params, 0);
-    lib->layer_insert( libmedia::ILibraryLayered::SLayer(lib_flt) );
+    lib->layer_push( lib_flt );
+  }
+  {
+    lib->layer_push( media_cache(false) );
+    lib->layer_push( media_cache(true) );
   }
   //
   // test order
@@ -235,17 +265,26 @@ void RTest1_Shell::file_test5(void)
     "/write-test.txt", mem_block, true
   );
   //
+  lib->set_flag(libmedia::mf_objects::base_shift, libmedia::DMediaFlags::Yes);
+  lib->set_flag(libmedia::mf_objsave::base_shift, libmedia::DMediaFlags::Yes);
+  //
   // load lines
-  ILines::P lines;
-  test_op_file(
-    lib->t_obj_get("/read-test.txt", lines), 
-    "/read-test.txt", "new object [ILines]"
-  );
-  if(lines.valid()) {
-    M.con().put(0, "  ILines: %p {\n", lines());
-    for(size_t i=0; i<~lines->lines; i++) {
-      M.con().put(0, "    line %u: %s\n", (int)i, lines->lines(i)());
+  for(int ii=0; ii<2; ii++) {
+    ILines::P lines;
+    test_op_file(
+      lib->t_obj_get("/read-test.txt", lines), 
+      "/read-test.txt", "new object [ILines]"
+    );
+    if(lines.valid()) {
+      M.con().put(0, "  ILines: %p {\n", lines());
+      for(size_t i=0; i<~lines->lines; i++) {
+        M.con().put(0, "    line %u: %s\n", (int)i, lines->lines(i)());
+      }
+      M.con().put(0, "  } ILines: %p \n", lines());
+      test_op_file(
+        lib->obj_save("/write-test-2.txt", lines), 
+        "/write-test-2.txt", "save object [ILines]"
+      );
     }
-    M.con().put(0, "  } ILines: %p \n", lines());
   }
 }

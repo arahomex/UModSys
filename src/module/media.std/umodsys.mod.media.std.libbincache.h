@@ -15,7 +15,7 @@ struct RLibraryBinCache : public ILibraryBinCache
     //
     SCacheElem(void) : valid(false) {}
   };
-  typedef tl::TScatterArray< SCacheElem, DCString > DCache;
+  typedef tl::TScatterArray< SCacheElem, DCString, TObjectCompare<DCString> > DCache;
   //
   DCache cache;
   DMediaFlags flags;
@@ -78,7 +78,7 @@ struct RLibraryBinCache : public ILibraryBinCache
   bool obj_fload(const IBinObjFilter::SInfo& info, IRefObject* obj) {
     return false;
   }
-  bool obj_fsave(IBinObjFilter::SInfo& info, IRefObject* obj) {
+  bool obj_fsave(IBinObjFilter::SInfo& info, const IRefObject* obj) {
     return false;
   }
   bool obj_cget(const DCString& media_name, IRefObject::P& obj, bool isinv) {
@@ -94,7 +94,7 @@ struct RLibraryBinCache : public ILibraryBinCache
   bool obj_load(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) {
     return false;
   }
-  bool obj_save(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) {
+  bool obj_save(const DCString& media_name, const IRefObject* obj, const SObjOptions& opts) {
     return false;
   }
   //
@@ -109,7 +109,7 @@ struct RLibraryBinCache : public ILibraryBinCache
       *mem = e->bin;
     if(valid!=NULL)
       *valid = e->valid;
-    return false;
+    return true;
   }
   bool bincache_add(const DCString& media_name) {
     return bincache_add(media_name, SCMemShared(), false);

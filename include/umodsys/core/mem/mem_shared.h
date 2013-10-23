@@ -79,6 +79,7 @@ struct SMemShared {
   inline void* get_data(void) const { return data ? data->data() : NULL; }
   inline void* get_data(ptrdiff_t shift) const { return data ? data->data(shift) : NULL; }
   template<typename T> T* get_tdata(void) const { return data ? reinterpret_cast<T*>(data->data()) : NULL; }
+  template<typename T> T* get_tdata(ptrdiff_t shift) const { return data ? reinterpret_cast<T*>(data->data(shift)) : NULL; }
   template<typename T> size_t get_tsize(void) const { return data ? data->size/sizeof(T) : 0; }
   //
   inline size_t operator~(void) const { return get_size(); }
@@ -122,6 +123,7 @@ struct SCMemShared {
   inline const void* get_data(void) const { return data ? data->data() : NULL; }
   inline const void* get_data(ptrdiff_t shift) const { return data ? data->data(shift) : NULL; }
   template<typename T> const T* get_tdata(void) const { return data ? reinterpret_cast<const T*>(data->data()) : NULL; }
+  template<typename T> const T* get_tdata(ptrdiff_t shift) const { return data ? reinterpret_cast<const T*>(data->data(shift)) : NULL; }
   template<typename T> size_t get_tsize(void) const { return data ? data->size/sizeof(T) : 0; }
   //
   inline size_t operator~(void) const { return get_size(); }

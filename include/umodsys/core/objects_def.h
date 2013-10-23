@@ -56,6 +56,7 @@ namespace core {
   inline size_t get_interface_types(DPtrList& list) const { return get_interface_types(list); } \
   inline const IRoot* get_other_interface(TypeId type) const { return type==_get_interface_type() ? _interface::_get_interface_p() : _interface::_get_other_interface(type); } \
   inline IRoot* get_other_interface(TypeId type) { return type==_get_interface_type() ? _interface::_get_interface_p() : _interface::_get_other_interface(type); } \
+  inline bool is_interface_supported(TypeId type) const { return _is_interface_supported(type); } \
 
 #define UMODSYS_ROOT_IMPLEMENT2(_type, _verno, _interface1, _interface2) \
   typedef _interface1 DParent1; \
@@ -87,6 +88,7 @@ namespace core {
     IRoot* rv = _interface1::_get_other_interface(type); if(rv) return rv; \
     return _interface2::_get_other_interface(type); \
   } \
+  inline bool is_interface_supported(TypeId type) const { return _is_interface_supported(type); } \
 
 //*************************************** ANY REFOBJECT
 //***************************************

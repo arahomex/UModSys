@@ -316,6 +316,7 @@ public:
     DCString common_type;
     const SParameters* params;
     SFlags flags;
+    TypeId reqtype;
     //
 /*
     inline SInfo(IMediaGroup *g, const UMS_CSMem& b, const SParameters* p,
@@ -335,7 +336,7 @@ public:
 public:
   virtual bool filter_load(const SInfo& info, IRefObject::P& obj) =0;
   virtual bool filter_load(const SInfo& info, IRefObject* obj) =0;
-  virtual bool filter_save(SInfo& info, IRefObject* obj) =0;
+  virtual bool filter_save(SInfo& info, const IRefObject* obj) =0;
 //  virtual bool set_paramb(const DHString &kind, const DHString &name, const SCMem& memory) = 0;
 //  virtual bool set_params(const DHString &kind, const SParameters* filter_params) = 0;
 protected:
@@ -375,13 +376,13 @@ public:
   // general object functions
   virtual bool obj_fget(const IBinObjFilter::SInfo& info, IRefObject::P& obj) =0;
   virtual bool obj_fload(const IBinObjFilter::SInfo& info, IRefObject* obj) =0;
-  virtual bool obj_fsave(IBinObjFilter::SInfo& info, IRefObject* obj) =0;
+  virtual bool obj_fsave(IBinObjFilter::SInfo& info, const IRefObject* obj) =0;
   virtual bool obj_cget(const DCString& media_name, IRefObject::P& obj, bool isinv=false) =0; // get cache element
   virtual bool obj_cput(const DCString& media_name, IRefObject* obj) =0; // put cache element
   // universal object functions
   virtual bool obj_get(const DCString& media_name, IRefObject::P& obj, const SObjOptions& opts) =0;
   virtual bool obj_load(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) =0;
-  virtual bool obj_save(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) =0;
+  virtual bool obj_save(const DCString& media_name, const IRefObject* obj, const SObjOptions& opts) =0;
 public:
   inline IStreamReader::P bin_reader(const DCString& media_name, const DMediaFlags& flags = DMediaFlags()) {
     return bin_reader(media_name, SFlags(flags, this));
@@ -402,7 +403,7 @@ public:
                        const DCString& typehint = NULL) {
     return obj_load(media_name, obj, SObjOptions(NULL, flags, this, params, typehint));
   }                      
-  inline bool obj_save(const DCString& media_name, IRefObject* obj, 
+  inline bool obj_save(const DCString& media_name, const IRefObject* obj, 
                        const SParameters* params = NULL, 
                        const DMediaFlags& flags = DMediaFlags(), 
                        const DCString& typehint = NULL) {

@@ -73,7 +73,7 @@ struct RLibraryObjFilter : public ILibraryObjFilter
   bool obj_fload(const IBinObjFilter::SInfo& info, IRefObject* obj) {
     return filters_load(info, obj);
   }
-  bool obj_fsave(IBinObjFilter::SInfo& info, IRefObject* obj) {
+  bool obj_fsave(IBinObjFilter::SInfo& info, const IRefObject* obj) {
     return filters_save(info, obj);
   }
   bool obj_cget(const DCString& media_name, IRefObject::P& obj, bool isinv) {
@@ -89,7 +89,7 @@ struct RLibraryObjFilter : public ILibraryObjFilter
   bool obj_load(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) {
     return false;
   }
-  bool obj_save(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) {
+  bool obj_save(const DCString& media_name, const IRefObject* obj, const SObjOptions& opts) {
     return false;
   }
   //
@@ -134,7 +134,7 @@ struct RLibraryObjFilter : public ILibraryObjFilter
     }
     return false;
   }
-  bool filters_save(IBinObjFilter::SInfo& info, IRefObject* obj) {
+  bool filters_save(IBinObjFilter::SInfo& info, const IRefObject* obj) {
     for(DFilters::CIter x = filters(); x; ++x) {
       const SFilter& f = x->second;
       if(f.filter.invalid())

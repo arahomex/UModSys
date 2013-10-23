@@ -20,12 +20,12 @@ template<typename TData, typename TIndex=int>
 struct TScatterArrayNode;
 
 template<typename TData, typename TIndex=int, 
-         typename Comparer = TObjectCompare< TScatterArrayNode<TData,TIndex> >,
+         typename Comparer = TScalarCompare< TIndex >,
          typename TNodeDeleter = TNodeDeleter0< TScatterArrayNode<TData,TIndex> > >
 struct TScatterArray;
 
 template<typename TData, typename TIndex=int, 
-         typename Comparer = TObjectCompare< TScatterArrayNode<TData,TIndex> >,
+         typename Comparer = TScalarCompare< TIndex >,
          typename MemAlloc = core::SIMemAlloc >
 struct TScatterArrayD1;
 
@@ -42,15 +42,7 @@ struct TScatterArrayNode
   inline TScatterArrayNode(const Index& id) : Pair(id, Data()) {}
   inline TScatterArrayNode(const Index& id, const Data& v) : Pair(id, v) {}
   inline ~TScatterArrayNode(void) {}
-  //
-  int compare(const Node& r) const;
 };
-
-template<typename Data, typename Index>
-inline int TScatterArrayNode<Data, Index>::compare(const Node& r) const 
-{
-  return core::scalar_compare(first, r.first);
-}
 
 //***************************************
 

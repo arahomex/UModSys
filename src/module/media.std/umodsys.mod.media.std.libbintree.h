@@ -103,7 +103,7 @@ struct RLibraryBinTree : public ILibraryBinTree
   bool obj_fload(const IBinObjFilter::SInfo& info, IRefObject* obj) {
     return false;
   }
-  bool obj_fsave(IBinObjFilter::SInfo& info, IRefObject* obj) {
+  bool obj_fsave(IBinObjFilter::SInfo& info, const IRefObject* obj) {
     return false;
   }
   bool obj_cget(const DCString& media_name, IRefObject::P& obj, bool isinv) {
@@ -119,7 +119,7 @@ struct RLibraryBinTree : public ILibraryBinTree
   bool obj_load(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) {
     return false;
   }
-  bool obj_save(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) {
+  bool obj_save(const DCString& media_name, const IRefObject* obj, const SObjOptions& opts) {
     return false;
   }
   //
