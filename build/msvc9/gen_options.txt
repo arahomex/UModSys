@@ -10,3 +10,5 @@ set path-out-tmp \$(SolutionDir)../../tmp/win32vc9_\$(ConfigurationName)_\$(Plat
 include ../_gen/gen_options_generic.txt
 include ../_gen/gen_options_vs2005_2008.txt
 
+include ../_gen/gen_options_depends_generic.txt
+include ../_gen/gen_options_depends_vs2005_2008.txt

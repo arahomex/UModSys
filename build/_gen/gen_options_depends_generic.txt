@@ -1,0 +1,116 @@
+begin project-group umodsys_Depends
+  set path-tmp $(path-root)/tmp
+  set path-bin $(path-root)/bin
+
+  set path-depends $(path-root)/depends
+  set path-d-SDL2 $(path-depends)/SDL2
+
+  option project-order umodsysc
+
+  begin project all
+    mode lib
+    #
+    depend libSDL2
+    #
+#    depend libZlib
+#    depend libPng
+#    depend libJpeg
+    #
+#    depend libSquirrel
+#    depend libTinyC
+#    depend libAngelScript
+#    depend libLua
+    #
+  end
+
+  begin project libSDL2
+    mode shared
+    begin file-group include
+      begin mask $(path-skip) $(path-d-SDL2)/include
+        include *.h
+      end
+    end
+    begin file-group src
+      begin mask $(path-skip) $(path-d-SDL2)/src
+        include *.c *.h
+      end
+      begin file-group atomic
+        begin mask $(path-skip) $(path-d-SDL2)/src/atomic
+          include *.c *.h
+        end
+      end
+      begin file-group audio
+        begin mask $(path-skip) $(path-d-SDL2)/src/audio
+          include *.c *.h
+        end
+      end
+      begin file-group cpuinfo
+        begin mask $(path-skip) $(path-d-SDL2)/src/cpuinfo
+          include *.c *.h
+        end
+      end
+      begin file-group events
+        begin mask $(path-skip) $(path-d-SDL2)/src/events
+          include *.c *.h
+        end
+      end
+      begin file-group file
+        begin mask $(path-skip) $(path-d-SDL2)/src/file
+          include *.c *.h
+        end
+      end
+      begin file-group haptic
+        begin mask $(path-skip) $(path-d-SDL2)/src/haptic
+          include *.c *.h
+        end
+      end
+      begin file-group joystick
+        begin mask $(path-skip) $(path-d-SDL2)/src/joystick
+          include *.c *.h
+        end
+      end
+      begin file-group libm
+        begin mask $(path-skip) $(path-d-SDL2)/src/libm
+          include *.c *.h
+        end
+      end
+      begin file-group power
+        begin mask $(path-skip) $(path-d-SDL2)/src/power
+          include *.c *.h
+        end
+      end
+      begin file-group render
+        begin mask $(path-skip) $(path-d-SDL2)/src/render
+          include *.c *.h
+        end
+      end
+      begin file-group stdlib
+        begin mask $(path-skip) $(path-d-SDL2)/src/stdlib
+#          include SDL_getenv.c
+#          include SDL_iconv.c
+#          include SDL_malloc.c
+#          include SDL_qsort.c
+#          include SDL_stdlib.c
+#          include SDL_string.c
+          include *.c *.h
+        end
+      end
+      begin file-group thread
+        begin mask $(path-skip) $(path-d-SDL2)/src/thread
+          include *.c *.h
+        end
+      end
+      begin file-group timer
+        begin mask $(path-skip) $(path-d-SDL2)/src/timer
+          include *.c *.h
+        end
+      end
+      begin file-group video
+        begin mask $(path-skip) $(path-d-SDL2)/src/video
+          include *.c *.h
+        end
+      end
+    end
+  end
+
+end

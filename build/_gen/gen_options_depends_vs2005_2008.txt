@@ -1,0 +1,109 @@
+begin project-group umodsys_Depends
+  option random-seed 0 umodsys-vs2008-depends
+
+  set ppath platform/win32
+  set spname win32
+
+  option project * IntermediateDirectory $(path-out-tmp)
+  option project * VCLinkerTool_AdditionalLibraryDirectories \$(IntDir)/..
+  option project [] Platforms "Win32 x64"
+  option project [] Configurations "Debug Release ReleaseSpace"
+
+  option project-order all
+
+  begin project all
+    mode lib
+    #
+    depend libSDL2
+    #
+#    depend libZlib
+#    depend libPng
+#    depend libJpeg
+    #
+#    depend libSquirrel
+#    depend libTinyC
+#    depend libAngelScript
+#    depend libLua
+    #
+  end
+
+  begin project libSDL2
+    GUID-gen 0 umodsys.depends.libSDL2
+    option * OutputDirectory $(path-out-bin)
+#    option !* Compiler_WholeProgramOptimization false
+    option !* Compiler_WarnAsError false
+    option !* Compiler_WarningLevel 0
+    option !* Linker_AdditionalDependencies "user32.lib gdi32.lib shell32.lib winmm.lib Imm32.lib Version.lib"
+    option * Compiler_AdditionalIncludeDirectories \$(SolutionDir)../../include;\$(SolutionDir)../../depends/SDL2/include
+    defines HAVE_LIBC
+    #
+    begin file-group src-$(spname)
+      begin file-group audio
+        begin mask $(path-skip) $(path-d-SDL2)/src/audio
+          include directsound/*.c directsound/*.h
+          include disk/*.c disk/*.h
+          include dummy/*.c dummy/*.h
+          include winmm/*.c winmm/*.h
+          include xaudio2/*.c xaudio2/*.h
+        end
+      end
+      begin file-group core
+        begin mask $(path-skip) $(path-d-SDL2)/src/core
+          include windows/*.c windows/*.h
+        end
+      end
+      begin file-group filesystem
+        begin mask $(path-skip) $(path-d-SDL2)/src/filesystem
+          include windows/*.c windows/*.h
+        end
+      end
+      begin file-group haptic
+        begin mask $(path-skip) $(path-d-SDL2)/src/haptic
+#          include dummy/*.c dummy/*.h
+          include windows/*.c windows/*.h
+        end
+      end
+      begin file-group joystick
+        begin mask $(path-skip) $(path-d-SDL2)/src/joystick
+#          include dummy/*.c dummy/*.h
+          include windows/*.c windows/*.h
+        end
+      end
+      begin file-group loadso
+        begin mask $(path-skip) $(path-d-SDL2)/src/loadso
+          include windows/*.c windows/*.h
+        end
+      end
+      begin file-group power
+        begin mask $(path-skip) $(path-d-SDL2)/src/power
+          include windows/*.c windows/*.h
+        end
+      end
+      begin file-group render
+        begin mask $(path-skip) $(path-d-SDL2)/src/render
+          include direct3d/*.c direct3d/*.h
+          include opengl/*.c opengl/*.h
+          include software/*.c software/*.h
+        end
+      end
+      begin file-group thread
+        begin mask $(path-skip) $(path-d-SDL2)/src/thread
+          include windows/*.c windows/*.h
+          include generic/SDL_syscond.c
+        end
+      end
+      begin file-group timer
+        begin mask $(path-skip) $(path-d-SDL2)/src/timer
+          include windows/*.c windows/*.h
+        end
+      end
+      begin file-group video
+        begin mask $(path-skip) $(path-d-SDL2)/src/video
+          include dummy/*.c dummy/*.h
+          include windows/*.c windows/*.h
+        end
+      end
+    end
+  end
+
+end
