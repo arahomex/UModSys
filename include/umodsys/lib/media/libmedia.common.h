@@ -420,9 +420,9 @@ public:
                         const DMediaFlags f=DMediaFlags(), const SParameters* par=NULL,
                         const DCString& typehint=NULL) {
     IRefObject::P ro;
-    if(!obj_get(media_name, ro, SObjOptions(T::_get_interface_type(), f, this, par, typehint)))
+    if(!obj_get(media_name, ro, SObjOptions(T::_root_get_interface_type(), f, this, par, typehint)))
       return false;
-    if(!ro->t_get_other_interface_ref(obj))
+    if(!ro->t_root_get_other_interface_ref(obj))
       return false;
     return true;
   }

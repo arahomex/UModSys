@@ -1,50 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "all", "all\all.vcproj", "{325B1575-D8BE-7567-354A-155AEE147E57}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "all", "all/all.vcproj", "{993D71C6-7D58-5369-3494-4C28C9B4BA9D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80} = {425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}
 		{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80} = {425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libSDL2", "libSDL2\libSDL2.vcproj", "{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libSDL2", "libSDL2/libSDL2.vcproj", "{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}"
 EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Win32 = Debug|Win32
-		Debug|x64 = Debug|x64
-		Release|Win32 = Release|Win32
-		Release|x64 = Release|x64
-		ReleaseSpace|Win32 = ReleaseSpace|Win32
-		ReleaseSpace|x64 = ReleaseSpace|x64
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{325B1575-D8BE-7567-354A-155AEE147E57}.Debug|Win32.ActiveCfg = Debug|Win32
-		{325B1575-D8BE-7567-354A-155AEE147E57}.Debug|Win32.Build.0 = Debug|Win32
-		{325B1575-D8BE-7567-354A-155AEE147E57}.Debug|x64.ActiveCfg = Debug|x64
-		{325B1575-D8BE-7567-354A-155AEE147E57}.Debug|x64.Build.0 = Debug|x64
-		{325B1575-D8BE-7567-354A-155AEE147E57}.Release|Win32.ActiveCfg = Release|Win32
-		{325B1575-D8BE-7567-354A-155AEE147E57}.Release|Win32.Build.0 = Release|Win32
-		{325B1575-D8BE-7567-354A-155AEE147E57}.Release|x64.ActiveCfg = Release|x64
-		{325B1575-D8BE-7567-354A-155AEE147E57}.Release|x64.Build.0 = Release|x64
-		{325B1575-D8BE-7567-354A-155AEE147E57}.ReleaseSpace|Win32.ActiveCfg = ReleaseSpace|Win32
-		{325B1575-D8BE-7567-354A-155AEE147E57}.ReleaseSpace|Win32.Build.0 = ReleaseSpace|Win32
-		{325B1575-D8BE-7567-354A-155AEE147E57}.ReleaseSpace|x64.ActiveCfg = ReleaseSpace|x64
-		{325B1575-D8BE-7567-354A-155AEE147E57}.ReleaseSpace|x64.Build.0 = ReleaseSpace|x64
-		{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}.Debug|Win32.ActiveCfg = Debug|Win32
-		{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}.Debug|Win32.Build.0 = Debug|Win32
-		{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}.Debug|x64.ActiveCfg = Debug|x64
-		{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}.Debug|x64.Build.0 = Debug|x64
-		{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}.Release|Win32.ActiveCfg = Release|Win32
-		{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}.Release|Win32.Build.0 = Release|Win32
-		{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}.Release|x64.ActiveCfg = Release|x64
-		{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}.Release|x64.Build.0 = Release|x64
-		{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}.ReleaseSpace|Win32.ActiveCfg = ReleaseSpace|Win32
-		{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}.ReleaseSpace|Win32.Build.0 = ReleaseSpace|Win32
-		{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}.ReleaseSpace|x64.ActiveCfg = ReleaseSpace|x64
-		{425EA4DF-CEAB-2FAF-60C4-CC5A37D6BA80}.ReleaseSpace|x64.Build.0 = ReleaseSpace|x64
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-EndGlobal
+

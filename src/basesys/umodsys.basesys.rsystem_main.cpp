@@ -105,7 +105,7 @@ void RSystem::set_console(IConsole* cc)
 
 size_t RSystem::find_shells(IRefObject::TypeId tids[], size_t ntids, BCStr mask)
 {
-  return moddb.moduledb_findobjname(IShell::_get_interface_type(), tids, ntids, mask);
+  return moddb.moduledb_findobjname(IShell::_root_get_interface_type(), tids, ntids, mask);
 }
 
 //***************************************

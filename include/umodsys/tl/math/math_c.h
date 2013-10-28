@@ -1,16 +1,15 @@
-#ifndef __NANOUTL_TYPES_MATHC_H
-#define __NANOUTL_TYPES_MATHC_H 1
-//*****************************************************
-// nanoutl/types/math_c.h: common mathematics 
-//                         (randoms, calcs, etc)
-//*****************************************************
+#ifndef __UMODSYS_TL_MATH_MATHC_H
+#define __UMODSYS_TL_MATH_MATHC_H 1
+/*************************************************************/
+// file: umodsys/tl/math/math_c.h
+// info: common mathematics (randoms, calcs, etc)
+/*************************************************************/
 
 #ifndef M_PI
 //#define M_PI 3.1415926535897932384626433832795
 #endif
 
-
-namespace NanoUTL {
+namespace UModSys {
 namespace mathc {
 
 //***************************************
@@ -123,6 +122,6 @@ struct SRandomGenerator {
 //***************************************
 
 } // namespace mathc
-} // namespace NanoUTL
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_MATHC_H
+#endif // __UMODSYS_TL_MATH_MATHC_H

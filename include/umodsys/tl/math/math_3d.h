@@ -1,13 +1,13 @@
-#ifndef __NANOUTL_TYPES_MATH_3D_H
-#define __NANOUTL_TYPES_MATH_3D_H 1
-//*****************************************************
-// nanoutl/types/math_3d.h: common 3d & 2d mathematics used 
-//                          in renderers etc.
-//*****************************************************
+#ifndef __UMODSYS_TL_MATH_MATH3D_H
+#define __UMODSYS_TL_MATH_MATH3D_H 1
+/*************************************************************/
+// file: umodsys/tl/math/math_3d.h
+// info: math 3d classes / fast functions
+/*************************************************************/
 
-#include <nanoutl/types/math_c.h>
+#include <umodsys/tl/math/math_c.h>
 
-namespace NanoUTL {
+namespace UModSys {
 namespace math3d {
 
 using namespace mathc;
@@ -903,6 +903,6 @@ inline unsigned int one_bit_container(unsigned int value) {
 //***************************************
 
 } // namespace math3d
-} // namespace NanoUTL
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_MATH_3D_H
+#endif // __UMODSYS_TL_MATH_MATH3D_H

@@ -30,8 +30,8 @@ struct TObjectUniqueID {
 template<typename Object>
 core::SUniquePointer TObjectUniqueID<Object>::s_id(
   "typeinfo", 
-  Object::_get_interface_infoname(), 
-  Object::_get_interface_infover() 
+  Object::_root_get_interface_infoname(), 
+  Object::_root_get_interface_infover() 
 );
 
 /*************************************************************/

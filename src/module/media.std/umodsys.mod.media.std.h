@@ -50,7 +50,7 @@ DMediaFlags RLibraryLayered::auto_flags( mf_safe::Yes );
 struct RGenerator : public IGenerator {
   //
   int get_generated_names(DPtrList& list) const {
-//    M.dbg_put("{{RStreamReader_FILE::_get_interface_type()->name=\"%s\"}}\n", RStreamReader_FILE::_get_interface_type()->name);
+//    M.dbg_put("{{RStreamReader_FILE::_root_get_interface_type()->name=\"%s\"}}\n", RStreamReader_FILE::_root_get_interface_type()->name);
     return t_names<RLibraryBinCache>(list)
          + t_names<RLibraryBinTree>(list)
          + t_names<RLibraryLayered>(list)

@@ -1,12 +1,13 @@
-#ifndef __NANOUTL_TYPES_MATH_U3D_H
-#define __NANOUTL_TYPES_MATH_U3D_H 1
-//*****************************************************
-// nanoutl/types/math_3du.h: utils
-//*****************************************************
+#ifndef __UMODSYS_TL_MATH_MATH3DU_H
+#define __UMODSYS_TL_MATH_MATH3DU_H 1
+/*************************************************************/
+// file: umodsys/tl/math/math_3df.h
+// info: math 3d utility functions
+/*************************************************************/
 
-#include <nanoutl/types/math_3d.h>
+#include <umodsys/tl/math/math_3d.h>
 
-namespace NanoUTL {
+namespace UModSys {
 namespace math3d {
 namespace utils3d {
 
@@ -137,6 +138,6 @@ inline const TMatrix44<C>& add_scale(TMatrix44<C> &M, const TVector3<C>& s)
 //***************************************
 } // namespace utils3d
 } // namespace math3d
-} // namespace NanoUTL
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_MATH_U3D_H
+#endif // __UMODSYS_TL_MATH_MATH3DU_H

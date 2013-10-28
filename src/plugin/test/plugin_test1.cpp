@@ -81,16 +81,16 @@ struct RTest1_Shell : public IShell {
 struct RGenerator : public IGenerator {
   //
   int get_generated_names(DPtrList& list) const {
-    list<<RTest1_Shell::_get_interface_type();
+    list<<RTest1_Shell::_root_get_interface_type();
     return 1;
   }
   int get_generated_types(DPtrList& list, TypeId name) const {
-    if(name==RTest1_Shell::_get_interface_type())
-      return RTest1_Shell::_get_interface_types(list);
+    if(name==RTest1_Shell::_root_get_interface_type())
+      return RTest1_Shell::_root_get_interface_types(list);
     return 0;
   }
   bool generate(IRefObject::P& obj, TypeId name, const SParameters& args) {
-    if(name==RTest1_Shell::_get_interface_type()) {
+    if(name==RTest1_Shell::_root_get_interface_type()) {
       obj = new(M()) RTest1_Shell(this);
       return obj.valid();
     }

@@ -24,6 +24,7 @@ begin project-group umodsys
     depend umodsys_lib_basesys
     #
     depend umodsys_lib_libmedia
+    depend umodsys_lib_lib2d
     #
     depend umodsysc
     #
@@ -147,7 +148,6 @@ begin project-group umodsys
       end
     end
     begin file-group lib_media
-      file $(path-s-lib)/media/umodsys.lib.media.common.cpp
       begin mask $(path-skip) $(path-s-lib)/media
         include *.cpp *.h 
       end
@@ -159,6 +159,20 @@ begin project-group umodsys
     end
     begin file-group mod_std
       begin mask $(path-skip) $(path-s-mod)/media.std
+        include *.cpp *.h 
+      end
+    end
+  end
+
+  begin project umodsys_lib_lib2d
+    mode lib
+    begin file-group headers_2d
+      begin mask $(path-skip) $(path-inc)/lib/2d
+        include *.h
+      end
+    end
+    begin file-group lib_2d
+      begin mask $(path-skip) $(path-s-lib)/2d
         include *.cpp *.h 
       end
     end

@@ -26,69 +26,69 @@ namespace core {
 
 #define UMODSYS_ROOT_INTIMPLEMENT(_type, _verno, _interface) \
   protected: \
-    const IRoot* _get_other_interface(TypeId type) const { return type==_get_interface_type() ? this : _interface::_get_other_interface(type); } \
-    IRoot* _get_other_interface(TypeId type) { return type==_get_interface_type() ? this : _interface::_get_other_interface(type); } \
+    const IRoot* _root_get_other_interface(TypeId type) const { return type==_root_get_interface_type() ? this : _interface::_root_get_other_interface(type); } \
+    IRoot* _root_get_other_interface(TypeId type) { return type==_root_get_interface_type() ? this : _interface::_root_get_other_interface(type); } \
   public: \
-    inline static const char* _get_interface_infoname(void) { return #_type; } \
-    inline static DVersionNo _get_interface_infover(void) { return _verno; } \
-    inline static const TypeInfo& _get_interface_info(void) { return tl::TObjectUniqueID<_type>::get_info(); } \
-    inline static TypeId _get_interface_type(void) { return tl::TObjectUniqueID<_type>::get_id(); } \
-    inline static size_t _get_interface_types(DPtrList& list) { list<<_get_interface_type(); return _interface::_get_interface_types(list)+1; } \
-    inline static bool _is_interface_supported(TypeId type) { return type==_get_interface_type() || _interface::_is_interface_supported(type); } \
+    inline static const char* _root_get_interface_infoname(void) { return #_type; } \
+    inline static DVersionNo _root_get_interface_infover(void) { return _verno; } \
+    inline static const TypeInfo& _root_get_interface_info(void) { return tl::TObjectUniqueID<_type>::get_info(); } \
+    inline static TypeId _root_get_interface_type(void) { return tl::TObjectUniqueID<_type>::get_id(); } \
+    inline static size_t _root_get_interface_types(DPtrList& list) { list<<_root_get_interface_type(); return _interface::_root_get_interface_types(list)+1; } \
+    inline static bool _root_is_interface_supported(TypeId type) { return type==_root_get_interface_type() || _interface::_root_is_interface_supported(type); } \
     inline const IRoot* _get_interface_p(void) const { return this; } \
     inline IRoot* _get_interface_p(void) { return this; } \
-    inline static TypeId _get_interface_basetype(void) { return _get_interface_type(); } \
+    inline static TypeId _get_interface_basetype(void) { return _root_get_interface_type(); } \
     typedef _type DInterface; \
   protected: \
 
 #define UMODSYS_ROOT_IMPLEMENT1(_type, _verno, _interface) \
   typedef _interface DParent; \
   typedef _type Self; \
-  inline static const char* _get_interface_infoname(void) { return #_type; } \
-  inline static DVersionNo _get_interface_infover(void) { return _verno; } \
-  inline static const TypeInfo& _get_interface_info(void) { return tl::TObjectUniqueID<_type>::get_info(); } \
-  inline static TypeId _get_interface_type(void) { return tl::TObjectUniqueID<_type>::get_id(); } \
-  inline static size_t _get_interface_types(DPtrList& list) { list<<_get_interface_type(); return _interface::_get_interface_types(list)+1; } \
-  inline static bool _is_interface_supported(TypeId type) { return type==_get_interface_type() || _interface::_is_interface_supported(type); } \
+  inline static const char* _root_get_interface_infoname(void) { return #_type; } \
+  inline static DVersionNo _root_get_interface_infover(void) { return _verno; } \
+  inline static const TypeInfo& _root_get_interface_info(void) { return tl::TObjectUniqueID<_type>::get_info(); } \
+  inline static TypeId _root_get_interface_type(void) { return tl::TObjectUniqueID<_type>::get_id(); } \
+  inline static size_t _root_get_interface_types(DPtrList& list) { list<<_root_get_interface_type(); return _interface::_root_get_interface_types(list)+1; } \
+  inline static bool _root_is_interface_supported(TypeId type) { return type==_root_get_interface_type() || _interface::_root_is_interface_supported(type); } \
   \
-  inline const TypeInfo& get_interface_info(void) const { return _get_interface_info(); } \
-  inline TypeId get_interface_type(void) const { return _get_interface_type(); } \
-  inline size_t get_interface_types(DPtrList& list) const { return get_interface_types(list); } \
-  inline const IRoot* get_other_interface(TypeId type) const { return type==_get_interface_type() ? _interface::_get_interface_p() : _interface::_get_other_interface(type); } \
-  inline IRoot* get_other_interface(TypeId type) { return type==_get_interface_type() ? _interface::_get_interface_p() : _interface::_get_other_interface(type); } \
-  inline bool is_interface_supported(TypeId type) const { return _is_interface_supported(type); } \
+  inline const TypeInfo& root_get_interface_info(void) const { return _root_get_interface_info(); } \
+  inline TypeId root_get_interface_type(void) const { return _root_get_interface_type(); } \
+  inline size_t root_get_interface_types(DPtrList& list) const { return root_get_interface_types(list); } \
+  inline const IRoot* root_get_other_interface(TypeId type) const { return type==_root_get_interface_type() ? _interface::_get_interface_p() : _interface::_root_get_other_interface(type); } \
+  inline IRoot* root_get_other_interface(TypeId type) { return type==_root_get_interface_type() ? _interface::_get_interface_p() : _interface::_root_get_other_interface(type); } \
+  inline bool root_is_interface_supported(TypeId type) const { return _root_is_interface_supported(type); } \
 
 #define UMODSYS_ROOT_IMPLEMENT2(_type, _verno, _interface1, _interface2) \
   typedef _interface1 DParent1; \
   typedef _interface2 DParent2; \
   typedef _type Self; \
   static SUniquePointer s_interface_type; \
-  inline static const char* _get_interface_infoname(void) { return #_type; } \
-  inline static DVersionNo _get_interface_infover(void) { return _verno; } \
-  inline static const TypeInfo& _get_interface_info(void) { return tl::TObjectUniqueID<_type>::get_info(); } \
-  inline static TypeId _get_interface_type(void) { return tl::TObjectUniqueID<_type>::get_id(); } \
-  inline static size_t _get_interface_types(DPtrList& list) { \
-    list<<_get_interface_type(); \
-    return _interface1::_get_interface_types(list)+_interface2::_get_interface_types(list)+1; \
+  inline static const char* _root_get_interface_infoname(void) { return #_type; } \
+  inline static DVersionNo _root_get_interface_infover(void) { return _verno; } \
+  inline static const TypeInfo& _root_get_interface_info(void) { return tl::TObjectUniqueID<_type>::get_info(); } \
+  inline static TypeId _root_get_interface_type(void) { return tl::TObjectUniqueID<_type>::get_id(); } \
+  inline static size_t _root_get_interface_types(DPtrList& list) { \
+    list<<_root_get_interface_type(); \
+    return _interface1::_root_get_interface_types(list)+_interface2::_root_get_interface_types(list)+1; \
   } \
-  inline static bool _is_interface_supported(TypeId type) { \
-    return type==_get_interface_type() || _interface1::_is_interface_supported(type) || _interface2::_is_interface_supported(type); \
+  inline static bool _root_is_interface_supported(TypeId type) { \
+    return type==_root_get_interface_type() || _interface1::_root_is_interface_supported(type) || _interface2::_root_is_interface_supported(type); \
   } \
   \
-  inline const TypeInfo& get_interface_info(void) const { return _get_interface_info(); } \
-  inline TypeId get_interface_type(void) const { return _get_interface_type(); } \
-  inline size_t get_interface_types(DPtrList& list) const { return _get_interface_types(list); } \
-  inline const IRoot* get_other_interface(TypeId type) const { \
-    if(type==_get_interface_type()) return _interface1::_get_interface_p(); \
-    const IRoot* rv = _interface1::_get_other_interface(type); if(rv) return rv; \
-    return _interface2::_get_other_interface(type); \
+  inline const TypeInfo& root_get_interface_info(void) const { return _root_get_interface_info(); } \
+  inline TypeId root_get_interface_type(void) const { return _root_get_interface_type(); } \
+  inline size_t root_get_interface_types(DPtrList& list) const { return _root_get_interface_types(list); } \
+  inline const IRoot* root_get_other_interface(TypeId type) const { \
+    if(type==_root_get_interface_type()) return _interface1::_get_interface_p(); \
+    const IRoot* rv = _interface1::_root_get_other_interface(type); if(rv) return rv; \
+    return _interface2::_root_get_other_interface(type); \
   } \
-  inline IRoot* get_other_interface(TypeId type) { \
-    if(type==_get_interface_type()) return _interface1::_get_interface_p(); \
-    IRoot* rv = _interface1::_get_other_interface(type); if(rv) return rv; \
-    return _interface2::_get_other_interface(type); \
+  inline IRoot* root_get_other_interface(TypeId type) { \
+    if(type==_root_get_interface_type()) return _interface1::_get_interface_p(); \
+    IRoot* rv = _interface1::_root_get_other_interface(type); if(rv) return rv; \
+    return _interface2::_root_get_other_interface(type); \
   } \
-  inline bool is_interface_supported(TypeId type) const { return _is_interface_supported(type); } \
+  inline bool root_is_interface_supported(TypeId type) const { return _root_is_interface_supported(type); } \
 
 //*************************************** ANY REFOBJECT
 //***************************************

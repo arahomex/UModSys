@@ -169,7 +169,7 @@ bool RModule::reg_generator(ModuleObjInfo* mi, IGenerator* gen)
     err_put(
       rsdl_Module, 
       "RModule(%p)::reg_generator(%s %p) -- allocate error: info\n", 
-      this, gen->get_interface_info().name, gen
+      this, gen->root_get_interface_info().name, gen
     );
     return false;
   }
@@ -192,7 +192,7 @@ bool RModule::reg_generator(ModuleObjInfo* mi, IGenerator* gen)
       err_put(
         rsdl_Module, 
         "RModule(%p)::reg_generator(%s %p) -- allocate error: type\n", 
-        this, gen->get_interface_info().name, gen
+        this, gen->root_get_interface_info().name, gen
       );
       return false;
     }
@@ -209,11 +209,11 @@ RModule::ModuleObjInfo* RModule::reg_obj(IModObject* mo)
   if(mo==NULL)
     return NULL;
   TypeId uid = mo->get_uid();
-  TypeId tid = mo->get_interface_type();
+  TypeId tid = mo->root_get_interface_type();
   dbg_put(
     rsdl_Module, 
     "RModule(%p)::reg_obj(%s %p) -- { %p:%s(%d) %p:%s(%d) }\n", 
-    this, mo->get_interface_info().name, mo,
+    this, mo->root_get_interface_info().name, mo,
     tid, tid->name, tid->verno,
     uid, uid->name, uid->verno
   );
@@ -221,7 +221,7 @@ RModule::ModuleObjInfo* RModule::reg_obj(IModObject* mo)
     err_put(
       rsdl_Module, 
       "RModule(%p)::reg_obj(%s %p) -- integrity error: no uid\n", 
-      this, mo->get_interface_info().name, mo
+      this, mo->root_get_interface_info().name, mo
     );
     return NULL;
   }
@@ -233,7 +233,7 @@ RModule::ModuleObjInfo* RModule::reg_obj(IModObject* mo)
         err_put(
           rsdl_Module, 
           "RModule(%p)::reg_obj(%s %p) -- integrity error: invalid mo/uid xref mo{%p uid=%p} reg{%p uid=%p}\n", 
-          this, mo->get_interface_info().name, mo,
+          this, mo->root_get_interface_info().name, mo,
           mo, uid, mi.mo, mi.uid
         );
       }
@@ -247,7 +247,7 @@ RModule::ModuleObjInfo* RModule::reg_obj(IModObject* mo)
     err_put(
       rsdl_Module, 
       "RModule(%p)::reg_obj(%s %p) -- alloc error\n", 
-      this, mo->get_interface_info().name, mo
+      this, mo->root_get_interface_info().name, mo
     );
     return NULL;
   }
@@ -269,7 +269,7 @@ bool RModule::unreg_obj(IModObject* mo)
     err_put(
       rsdl_Module, 
       "RModule(%p)::unreg_obj(%s %p) -- integrity error: no uid\n", 
-      this, mo->get_interface_info().name, mo
+      this, mo->root_get_interface_info().name, mo
     );
     return false;
   }
@@ -280,7 +280,7 @@ bool RModule::unreg_obj(IModObject* mo)
         err_put(
           rsdl_Module, 
           "RModule(%p)::unreg_obj(%s %p) -- integrity error: invalid mo/uid xref mo{%p uid=%p} reg{%p uid=%p}\n", 
-          this, mo->get_interface_info().name, mo,
+          this, mo->root_get_interface_info().name, mo,
           mo, uid, mi.mo, mi.uid
         );
         return false; // integrity error

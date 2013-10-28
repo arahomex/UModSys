@@ -1,14 +1,13 @@
-#ifndef __NANOUTL_TYPES_MATH_3DF_H
-#define __NANOUTL_TYPES_MATH_3DF_H 1
-//*****************************************************
-// nanoutl/types/math_3df.h: common 3d & 2d mathematics used
-//                           in renderers etc.
-//                           functions implementation
-//*****************************************************
+#ifndef __UMODSYS_TL_MATH_MATH3DF_H
+#define __UMODSYS_TL_MATH_MATH3DF_H 1
+/*************************************************************/
+// file: umodsys/tl/math/math_3df.h
+// info: math 3d slow/rare functions
+/*************************************************************/
 
-#include <nanoutl/types/math_3d.h>
+#include <umodsys/tl/math/math_3d.h>
 
-namespace NanoUTL {
+namespace UModSys {
 namespace math3d {
 
 //***************************************
@@ -635,6 +634,6 @@ bool TMatrix33<_Type>::set_inversed(const Self& R) {
 
 //***************************************
 } // namespace math3d
-} // namespace NanoUTL
+} // namespace UModSys
 
-#endif // __NANOUTL_TYPES_MATH_3DF_H
+#endif // __UMODSYS_TL_MATH_MATH3DF_H

@@ -53,8 +53,13 @@ begin project-group umodsys
   end
 
   begin project umodsys_lib_libmedia
-    option * OutputDirectory $(path-out-lib)
     GUID-gen 0 umodsys.lib_libmedia
+    option * OutputDirectory $(path-out-lib)
+  end
+
+  begin project umodsys_lib_lib2d
+    GUID-gen 0 umodsys.lib_lib2d
+    option * OutputDirectory $(path-out-lib)
   end
 
   begin project plugin_test1

@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="umodsys_lib_libmedia"
-	ProjectGUID="{71DCE4DD-BC48-4CAD-6432-C081E4D64B5D}"
-	RootNamespace="umodsys_lib_libmedia"
+	Name="umodsys_lib_lib2d"
+	ProjectGUID="{AE83E52B-6E3E-5800-BBED-E89B836A0208}"
+	RootNamespace="umodsys_lib_lib2d"
 	>
 	<Platforms>
 		<Platform
@@ -552,90 +552,34 @@
 	</Configurations>
 	<Files>
 		<Filter
-			Name="headers_media"
+			Name="headers_2d"
 			>
 			<File
-				RelativePath="..\..\..\include\umodsys\lib\media\libmedia.common.h"
+				RelativePath="..\..\..\include\umodsys\lib\2d\convert.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\include\umodsys\lib\media\libmedia.library.h"
+				RelativePath="..\..\..\include\umodsys\lib\2d\driver2.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\include\umodsys\lib\media\libmedia.utils.h"
+				RelativePath="..\..\..\include\umodsys\lib\2d\emul_convert.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\include\umodsys\lib\media\media.h"
+				RelativePath="..\..\..\include\umodsys\lib\2d\lib2d.common.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\include\umodsys\lib\media\media_archive.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\include\umodsys\lib\media\media~.h"
+				RelativePath="..\..\..\include\umodsys\lib\2d\lib2d.image.h"
 				>
 			</File>
 		</Filter>
 		<Filter
-			Name="lib_media"
+			Name="lib_2d"
 			>
 			<File
-				RelativePath="..\..\..\src\lib\media\umodsys.lib.media.common.cpp"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="mod_std"
-			>
-			<File
-				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.libbincache.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.libbintree.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.liblayered.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.libobjcache.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.libobjfilter.h"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="mod_stdio"
-			>
-			<File
-				RelativePath="..\..\..\src\module\media.stdio\umodsys.mod.media.stdio.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media.stdio\umodsys.mod.media.stdio.archive.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media.stdio\umodsys.mod.media.stdio.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media.stdio\umodsys.mod.media.stdio.streams.h"
+				RelativePath="..\..\..\src\lib\2d\umodsys.lib.2d.common.cpp"
 				>
 			</File>
 		</Filter>

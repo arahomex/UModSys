@@ -31,7 +31,7 @@ struct RLines_Filter : public libmedia::IBinObjFilter {
   libmedia::DMediaFlags::eStates set_flag(int shift, libmedia::DMediaFlags::eStates flag) { return flags.getset_s(shift, flag); }
   //
   bool filter_load(const SInfo& info, IRefObject::P& obj) {
-    if(info.reqtype==ILines::_get_interface_type() || info.common_type=="test1::ILines") {
+    if(info.reqtype==ILines::_root_get_interface_type() || info.common_type=="test1::ILines") {
       RLines::P rv = new(M()) RLines(refs.owner, *info.params);
       if(!filter_load( info, rv() ))
         return false;
@@ -44,7 +44,7 @@ struct RLines_Filter : public libmedia::IBinObjFilter {
     if(obj==NULL)
       return false;
     ILines *lines;
-    if(obj->t_get_other_interface(lines)) {
+    if(obj->t_root_get_other_interface(lines)) {
       const char *text = info.binary.get_tdata<char>();
       size_t text_len = info.binary.get_size();
       size_t start=0, end=0;
@@ -67,7 +67,7 @@ struct RLines_Filter : public libmedia::IBinObjFilter {
     if(obj==NULL)
       return false;
     const ILines *lines;
-    if(obj->t_get_other_interface(lines)) {
+    if(obj->t_root_get_other_interface(lines)) {
       size_t req = 0;
       for(size_t i=0; i<~lines->lines; i++) {
         req += 1 + ~lines->lines(i);

@@ -80,7 +80,7 @@ public:
   //
   template<typename Intr, typename Array>
   inline bool t_findobjname(Array& found, BCStr mask=NULL) {
-    TypeId intr = Intr::_get_interface_type();
+    TypeId intr = Intr::_root_get_interface_type();
     found.Resize(0);
     if(imodloader==NULL)
       return false;
@@ -92,7 +92,7 @@ public:
   //
   template<typename Intr>
   inline TypeId t_firstobjname(BCStr mask=NULL) {
-    TypeId intr = Intr::_get_interface_type(), tid;
+    TypeId intr = Intr::_root_get_interface_type(), tid;
     if(imodloader==NULL)
       return NULL;
     if(imodloader->moduledb_findobjname(intr, &tid, 1, mask)==0)
@@ -103,7 +103,7 @@ public:
   template<typename Intr>
   inline bool t_firstobjname(TypeId &tid, core::BCStr mask=NULL) {
     tid = NULL;
-    TypeId intr = Intr::_get_interface_type();
+    TypeId intr = Intr::_root_get_interface_type();
     if(imodloader==NULL)
       return false;
     if(imodloader->moduledb_findobjname(intr, &tid, 1, mask)==0)
@@ -118,7 +118,7 @@ public:
     core::IRefObject::P obj;
     if(!imodloader->moduledb_generate(obj, name, args) || !obj.valid())
       return false;
-    if(!obj->t_get_other_interface_ref(rv))
+    if(!obj->t_root_get_other_interface_ref(rv))
       return false;
     return true;
   }
