@@ -555,23 +555,23 @@
 			Name="headers_2d"
 			>
 			<File
-				RelativePath="..\..\..\include\umodsys\lib\2d\convert.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\include\umodsys\lib\2d\driver2.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\include\umodsys\lib\2d\emul_convert.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\..\include\umodsys\lib\2d\lib2d.common.h"
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\include\umodsys\lib\2d\lib2d.convertor.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\2d\lib2d.driver.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\include\umodsys\lib\2d\lib2d.image.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\2d\lib2d.utils.h"
 				>
 			</File>
 		</Filter>

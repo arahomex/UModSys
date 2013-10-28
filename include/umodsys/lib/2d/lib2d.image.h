@@ -5,21 +5,18 @@
 // info: 2d images (pictures)
 /*************************************************************/
 
-#include <umodsys/stdcore.h>
-#include <umodsys/tl/composite/isockets.h>
-
+#include <umodsys/lib/2d/lib2d.common.h>
 
 namespace UModSys {
 namespace lib2d {
-
-using namespace core;
 
 //***************************************
 // TYPES
 //***************************************
 
 //***************************************
-// SImageCellInfo::  -- Image common
+// -- Image common
+// SImageCellInfo::  
 // SImagePatchInfo::
 
 struct SImageCellInfo {
@@ -90,7 +87,7 @@ struct IImage : public IRefObject {
   template<typename HWInfo>
   inline HWInfo* tget_hwinfo(const void* hint) { return static_cast<HWInfo*>(get_hwinfo(hint)); }
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib2d::lib2d::IImage, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib2d::IImage, 2, IRefObject);
 };
 
 //***************************************
@@ -105,7 +102,7 @@ struct IMultiImage : public IRefObject {
   virtual bool get_cell_size(int idx, DPoint &size, DPoint* ofs=NULL) =0;
   virtual bool get_max_cell_size(DPoint &size) =0;
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib2d::lib2d::IMultiImage, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib2d::IMultiImage, 2, IRefObject);
 };
 
 //***************************************

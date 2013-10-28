@@ -37,11 +37,12 @@ public:
 public:
   virtual bool vput(int level, const char* fmt, va_list va) =0;
   virtual bool put(int level, const char* fmt, ...) =0;
+  //
   virtual bool vget_c(int* ch, const char *fmt, va_list va) =0;
   virtual bool get_c(int* ch, const char *fmt, ...) =0;
   virtual bool vget_s(char* buf, size_t len, const char *fmt, va_list va) =0;
   virtual bool get_s(char* buf, size_t len, const char *fmt, ...) =0;
-public:
+protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IConsole, 2, IRefObject);
 };
 

@@ -1,4 +1,8 @@
 #include <umodsys/lib/2d/lib2d.common.h>
+#include <umodsys/lib/2d/lib2d.image.h>
+#include <umodsys/lib/2d/lib2d.convertor.h>
+#include <umodsys/lib/2d/lib2d.driver.h>
+#include <umodsys/lib/2d/lib2d.utils.h>
 #include <umodsys/core/syshlp.h>
 
 using namespace UModSys;
