@@ -12,12 +12,29 @@
 namespace UModSys {
 
 namespace lib3d {
-  struct IRenderDriver;
+  struct IRenderDriver; // render 3d image
+  struct ICaptureDriver; // capture 3d image
 } // namespace lib3d
 
 namespace lib2d {
-  struct IRenderDriver;
+  struct IRenderDriver;  // render 2d image
+  struct ICaptureDriver; // capture 2d image
 } // namespace lib3d
+
+namespace libsound {
+  struct IRenderDriver;  // render sound
+  struct ICaptureDriver; // capture sound
+} // namespace libsound
+
+namespace libmusic {
+  struct IRenderDriver;  // render music
+  struct ICaptureDriver; // capture music
+} // namespace libmusic
+
+namespace libmovie {
+  struct IRenderDriver;  // render movie
+  struct ICaptureDriver; // capture movie
+} // namespace libmovie
 
 namespace libui {
 
@@ -32,17 +49,20 @@ struct ITerminal;      // UI console have input & output included
 struct IKeyboardClient;
 struct IJoystickClient;
 struct IMouseClient;
+struct ITouchClient;
 
 struct IKeyboardController;
 struct IJoystickController;
 struct IMouseController;
+struct ITouchController;
 
 struct SKeyboardInputRaw;
 struct SKeyboardInputC;
 struct SKeyboardInputW;
-struct SKeyboardInputU;
-struct SMouseInput;
+struct SKeyboardInputL;
 struct SJoystickInput;
+struct SMouseInput;
+struct STouchInput;
 
 //***************************************
 // ENUM/CONST
@@ -95,13 +115,12 @@ enum {
 
 //***************************************
 // Keyboard input
-//***************************************
 
 struct IKeyboardClient {
   virtual bool key_pressed(const SKeyboardInputRaw& key) =0;
   virtual bool key_charc(const SKeyboardInputC& key) =0;
   virtual bool key_charw(const SKeyboardInputW& key) =0;
-  virtual bool key_charu(const SKeyboardInputU& key) =0;
+  virtual bool key_charl(const SKeyboardInputL& key) =0;
 };
 
 struct IKeyboardController : public IRefObject {
@@ -122,21 +141,20 @@ struct SKeyboardInputRaw {
 
 struct SKeyboardInputC {
   BByte len;
-  BChar keyc[su::utf_max8len+1];
+  tl::su::utf8 keyc[tl::su::utf_max8len+1];
 };
 
 struct SKeyboardInputW {
   BByte len;
-  BCharW keyw[su::utf_max16len+1];
+  tl::su::utf16 keyw[tl::su::utf_max16len+1];
 };
 
-struct SKeyboardInputU {
-  BCharU keyu;
+struct SKeyboardInputL {
+  tl::su::utf32 keyu;
 };
 
 //***************************************
 // Mouse input
-//***************************************
 
 struct IMouseClient {
   virtual bool mouse_event(const SMouseInput& ms) =0;
@@ -165,7 +183,6 @@ struct SMouseInput {
 
 //***************************************
 // Joystick input
-//***************************************
 
 struct IJoystickClient {
   virtual bool joystick_event(const SJoystickInput& ms) =0;
@@ -191,14 +208,14 @@ struct SJoystickInput {
 
 //***************************************
 // Terminal Connection
-//***************************************
 
 template<typename CType>
-struct TTerminalConnection {
-  virtual int get_count(void) =0;
-  virtual CType* get_handler(int id) =0;
-  virtual CType* get_handler(BCStr name) =0;
-  virtual TRefObject<CType> create_handler(BCStr name, const SParameters* params) =0;
+struct TITerminalConnection {
+  virtual size_t get_count(void) const =0;
+  virtual CType* get_handler(size_t id) const =0;
+  virtual CType* get_handler(BCStr name) const =0;
+  virtual CType* get_friend_handler(IRefObject *obj) const =0; // map handlers
+  virtual tl::TRefObject<CType> create_handler(BCStr name, const SParameters* params) =0;
 };
 
 //***************************************
@@ -215,12 +232,21 @@ struct ITerminal : public IRefObject {
   virtual bool wait(float sec) = 0;
   virtual bool terminal_reset(void) = 0;
   // get or create inputs
-  virtual TTerminalConnection<IKeyboardController>& get_input_keyboard(void) = 0;
-  virtual TTerminalConnection<IMouseController>& get_input_mouse(void) = 0;
-  virtual TTerminalConnection<IJoystickController>& get_input_joystick(void) = 0;
+  virtual TITerminalConnection<IKeyboardController>& get_input_keyboard(void) = 0;
+  virtual TITerminalConnection<IMouseController>& get_input_mouse(void) = 0;
+  virtual TITerminalConnection<ITouchController>& get_input_touch(void) = 0;
+  virtual TITerminalConnection<IJoystickController>& get_input_joystick(void) = 0;
+  virtual TITerminalConnection<lib2d::ICaptureDriver>& get_input_2d(void) = 0;
+  virtual TITerminalConnection<lib3d::ICaptureDriver>& get_input_3d(void) = 0;
+  virtual TITerminalConnection<libmovie::ICaptureDriver>& get_input_movie(void) = 0;
+  virtual TITerminalConnection<libsound::ICaptureDriver>& get_input_sound(void) = 0;
+  virtual TITerminalConnection<libmusic::ICaptureDriver>& get_input_music(void) = 0;
   // get or create outputs
-  virtual TTerminalConnection<lib3d::IRenderDriver>& get_output_3d(void) = 0;
-  virtual TTerminalConnection<lib2d::IRenderDriver>& get_output_2d(void) = 0;
+  virtual TITerminalConnection<lib3d::IRenderDriver>& get_output_3d(void) = 0;
+  virtual TITerminalConnection<lib2d::IRenderDriver>& get_output_2d(void) = 0;
+  virtual TITerminalConnection<libmovie::IRenderDriver>& get_output_movie(void) = 0;
+  virtual TITerminalConnection<libsound::IRenderDriver>& get_output_sound(void) = 0;
+  virtual TITerminalConnection<libmusic::IRenderDriver>& get_output_music(void) = 0;
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libui::ITerminal, 2, IRefObject);
 };
@@ -229,7 +255,7 @@ protected:
 // Re-tracers
 //***************************************
 
-struct IConsoleHelperInput_UIKey : public IConsoleHelperInput, public IKeyboardClient {
+struct IConsoleHelperInput_UIKey : public base::IConsoleHelperInput, public IKeyboardClient {
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libui::IConsoleHelperInput_UIKey, 2, IConsoleHelperInput);
 };

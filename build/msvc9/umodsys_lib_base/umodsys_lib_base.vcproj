@@ -566,6 +566,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\..\include\umodsys\base\console_ext.h"
+					>
+				</File>
+				<File
 					RelativePath="..\..\..\include\umodsys\base\module.h"
 					>
 				</File>

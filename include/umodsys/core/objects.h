@@ -43,6 +43,11 @@ struct IRoot {
     return rv!=NULL;
   }
   template<typename RData>
+  inline RData* t_root_get_other_interface(void) {
+    RData* rv = static_cast<RData*>( root_get_other_interface(RData::_root_get_interface_type()) );
+    return rv;
+  }
+  template<typename RData>
   inline bool t_root_get_other_interface(const RData* &rv, TypeId type) const {
     rv = static_cast<const RData*>( root_get_other_interface(type) );
     return rv!=NULL;
@@ -51,6 +56,11 @@ struct IRoot {
   inline bool t_root_get_other_interface(const RData* &rv) const {
     rv = static_cast<const RData*>( root_get_other_interface(RData::_root_get_interface_type()) );
     return rv!=NULL;
+  }
+  template<typename RData>
+  inline const RData* t_root_get_other_interface(void) const {
+    const RData* rv = static_cast<const RData*>( root_get_other_interface(RData::_root_get_interface_type()) );
+    return rv;
   }
   // INLINES
   template<typename RData>

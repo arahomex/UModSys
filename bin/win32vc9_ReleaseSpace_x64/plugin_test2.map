@@ -1,6 +1,6 @@
  plugin_test2
 
- Timestamp is 5267ede5 (Wed Oct 23 18:40:21 2013)
+ Timestamp is 526e649a (Mon Oct 28 16:20:26 2013)
 
  Preferred load address is 0000000180000000
 
@@ -34,8 +34,8 @@
 
   Address         Publics by Value              Rva+Base               Lib:Object
 
- 0000:00000000       ___safe_se_handler_count   0000000000000000     <absolute>
  0000:00000000       ___safe_se_handler_table   0000000000000000     <absolute>
+ 0000:00000000       ___safe_se_handler_count   0000000000000000     <absolute>
  0000:00000000       __ImageBase                0000000180000000     <linker-defined>
  0001:00000000       ?do_open@RTest2_ModuleReg@test2@UModSys@@UEAA_NXZ 0000000180001000 f i plugin_test2.obj
  0001:00000024       ?do_close@RTest2_ModuleReg@test2@UModSys@@UEAA_NXZ 0000000180001024 f i plugin_test2.obj
@@ -46,17 +46,17 @@
  0001:000001a4       ?mlr_close@RModuleLibraryReg_Chain@base@UModSys@@UEAA_NXZ 00000001800011a4 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
  0001:0000022c       ?mlr_isopen@RModuleLibraryReg_Chain@base@UModSys@@UEBA_NXZ 000000018000122c f   umodsys_lib_base:umodsys.base.moduleregchain.obj
  0001:0000023c       UModSys_Plugin_Entry2      000000018000123c f   umodsys_lib_base:umodsys.so_main.win32.obj
- 0001:00000244       ??_GIModuleReg@base@UModSys@@UEAAPEAXI@Z 0000000180001244 f i umodsys_lib_base:umodsys.base.modulereg.obj
- 0001:00000244       ??_ERTest2_ModuleReg@test2@UModSys@@UEAAPEAXI@Z 0000000180001244 f i  CIL library: CIL module
  0001:00000244       ??_GRTest2_ModuleReg@test2@UModSys@@UEAAPEAXI@Z 0000000180001244 f i plugin_test2.obj
  0001:00000244       ??_EIModuleReg@base@UModSys@@UEAAPEAXI@Z 0000000180001244 f i  CIL library: CIL module
+ 0001:00000244       ??_ERTest2_ModuleReg@test2@UModSys@@UEAAPEAXI@Z 0000000180001244 f i  CIL library: CIL module
+ 0001:00000244       ??_GIModuleReg@base@UModSys@@UEAAPEAXI@Z 0000000180001244 f i umodsys_lib_base:umodsys.base.modulereg.obj
  0001:0000026c       ?mr_isopen@IModuleReg@base@UModSys@@UEBA_NXZ 000000018000126c f   umodsys_lib_base:umodsys.base.modulereg.obj
  0001:00000278       ?mr_open@IModuleReg@base@UModSys@@UEAA_NXZ 0000000180001278 f   umodsys_lib_base:umodsys.base.modulereg.obj
  0001:0000029c       ?mr_close@IModuleReg@base@UModSys@@UEAA_NXZ 000000018000129c f   umodsys_lib_base:umodsys.base.modulereg.obj
- 0001:000002b8       ??_GIModuleLibraryReg@base@UModSys@@UEAAPEAXI@Z 00000001800012b8 f i umodsys_lib_base:umodsys.base.modulereg.obj
+ 0001:000002b8       ??_EIModuleLibraryReg@base@UModSys@@UEAAPEAXI@Z 00000001800012b8 f i  CIL library: CIL module
  0001:000002b8       ??_ERModuleLibraryReg_Chain@base@UModSys@@UEAAPEAXI@Z 00000001800012b8 f i  CIL library: CIL module
  0001:000002b8       ??_GRModuleLibraryReg_Chain@base@UModSys@@UEAAPEAXI@Z 00000001800012b8 f i umodsys_lib_base:umodsys.base.moduleregchain.obj
- 0001:000002b8       ??_EIModuleLibraryReg@base@UModSys@@UEAAPEAXI@Z 00000001800012b8 f i  CIL library: CIL module
+ 0001:000002b8       ??_GIModuleLibraryReg@base@UModSys@@UEAAPEAXI@Z 00000001800012b8 f i umodsys_lib_base:umodsys.base.modulereg.obj
  0001:000002e0       ??0SUniquePointer@core@UModSys@@QEAA@PEBD0H@Z 00000001800012e0 f   umodsys_lib_core:umodsys.core.uniqueptr.obj
  0001:00000334       ??1SUniquePointer@core@UModSys@@QEAA@XZ 0000000180001334 f   umodsys_lib_core:umodsys.core.uniqueptr.obj
  0001:0000035c       _onexit                    000000018000135c f   MSVCRT:atonexit.obj
@@ -85,8 +85,8 @@
  0001:00000aec       DllMain                    0000000180001aec f   MSVCRT:dllmain.obj
  0001:00000b10       __security_init_cookie     0000000180001b10 f   MSVCRT:gs_support.obj
  0001:00000bc4       ?terminate@@YAXXZ          0000000180001bc4 f   MSVCRT:MSVCR90.dll
- 0001:00000bca       ?_type_info_dtor_internal_method@type_info@@QEAAXXZ 0000000180001bca f   MSVCRT:MSVCR90.dll
  0001:00000bca       ??1type_info@@UEAA@XZ      0000000180001bca f   MSVCRT:MSVCR90.dll
+ 0001:00000bca       ?_type_info_dtor_internal_method@type_info@@QEAAXXZ 0000000180001bca f   MSVCRT:MSVCR90.dll
  0001:00000bd0       __clean_type_info_names_internal 0000000180001bd0 f   MSVCRT:MSVCR90.dll
  0002:00000000       __imp_GetCurrentProcessId  0000000180003000     kernel32:KERNEL32.dll
  0002:00000008       __imp_GetCurrentThreadId   0000000180003008     kernel32:KERNEL32.dll
@@ -121,8 +121,8 @@
  0002:00000210       __xi_a                     0000000180003210     MSVCRT:cinitexe.obj
  0002:00000220       __xi_z                     0000000180003220     MSVCRT:cinitexe.obj
  0002:00000230       ??_7type_info@@6B@         0000000180003230     MSVCRT:ti_inst.obj
- 0002:00000238       _pDefaultRawDllMain        0000000180003238     MSVCRT:crtdll.obj
  0002:00000238       _pRawDllMain               0000000180003238     MSVCRT:crtdll.obj
+ 0002:00000238       _pDefaultRawDllMain        0000000180003238     MSVCRT:crtdll.obj
  0002:00000240       ??_C@_0P@GHFPNOJB@bad?5allocation?$AA@ 0000000180003240     plugin_test2.obj
  0002:00000250       ??_C@_0BF@OCNNAADO@UModSys?3?3core?3?3IRoot?$AA@ 0000000180003250     plugin_test2.obj
  0002:00000268       ??_C@_0BK@EMIJFOPA@UModSys?3?3core?3?3IRefObject?$AA@ 0000000180003268     plugin_test2.obj

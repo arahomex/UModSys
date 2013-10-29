@@ -10,15 +10,6 @@
 #include <umodsys/tl/math/math_3d.h>
 
 namespace UModSys {
-
-// foreign ones
-namespace libui {
-  struct ITerminal;
-  struct IKeyboardController;
-  struct IJoystickController;
-  struct IMouseController;
-} // namespace libui
-
 namespace lib2d {
 
 using namespace core;

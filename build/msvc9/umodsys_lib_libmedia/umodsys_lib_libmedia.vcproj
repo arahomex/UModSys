@@ -30,7 +30,7 @@
 				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\depends\jpeglib;..\..\..\depends\libpng;..\..\..\depends\zlib"
 				PreprocessorDefinitions="WIN32;_DEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -119,7 +119,7 @@
 				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\depends\jpeglib;..\..\..\depends\libpng;..\..\..\depends\zlib"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -208,7 +208,7 @@
 				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\depends\jpeglib;..\..\..\depends\libpng;..\..\..\depends\zlib"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -297,7 +297,7 @@
 				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\depends\jpeglib;..\..\..\depends\libpng;..\..\..\depends\zlib"
 				PreprocessorDefinitions="WIN32;_DEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -386,7 +386,7 @@
 				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\depends\jpeglib;..\..\..\depends\libpng;..\..\..\depends\zlib"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -475,7 +475,7 @@
 				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\depends\jpeglib;..\..\..\depends\libpng;..\..\..\depends\zlib"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -584,6 +584,30 @@
 			>
 			<File
 				RelativePath="..\..\..\src\lib\media\umodsys.lib.media.common.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="mod_images_std"
+			>
+			<File
+				RelativePath="..\..\..\src\module\media.images_std\umodsys.mod.media.images_std.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media.images_std\umodsys.mod.media.images_std.filter.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media.images_std\umodsys.mod.media.images_std.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media.images_std\umodsys.mod.media.images_std.jpeg.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media.images_std\umodsys.mod.media.images_std.png.h"
 				>
 			</File>
 		</Filter>

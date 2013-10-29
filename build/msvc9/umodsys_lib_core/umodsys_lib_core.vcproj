@@ -896,6 +896,10 @@
 						RelativePath="..\..\..\include\umodsys\tl\string\su_typedefs.h"
 						>
 					</File>
+					<File
+						RelativePath="..\..\..\include\umodsys\tl\string\su_utf.h"
+						>
+					</File>
 				</Filter>
 				<Filter
 					Name="util"
@@ -964,6 +968,10 @@
 			>
 			<File
 				RelativePath="..\..\..\src\tl\umodsys.tl.strings.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\tl\umodsys.tl.utf.cpp"
 				>
 			</File>
 		</Filter>

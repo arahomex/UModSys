@@ -16,6 +16,11 @@ namespace su {
 
 //***************************************
 
+int utf8_cmp_nocase(const BChar* a, const BChar *b);
+int utf8_cmp_nocase(const BChar* a, const BChar *b, size_t num);
+
+//***************************************
+
 #define UMODSYS_STRING_CLASS_HEADER(CharT) \
   typedef su::TCharOptions<CharT>       Options; \
   typedef su::TSCoreConst<CharT>        ConstStr;\
@@ -56,9 +61,17 @@ template<typename CharT> int scmp(const CharT* a, const CharT* b);
 template<typename CharT> int scmp(const CharT* a, const CharT* b, size_t maxn);
 template<typename CharT> int scmp(const CharT* a, size_t la, const CharT* b);
 
+template<typename CharT> int scmp_nocase(const CharT* a, const CharT* b);
+template<typename CharT> int scmp_nocase(const CharT* a, const CharT* b, size_t maxn);
+template<typename CharT> int scmp_nocase(const CharT* a, size_t la, const CharT* b);
+
 template<typename CharT> bool seq(const CharT* a, const CharT* b);
 template<typename CharT> bool seq(const CharT* a, const CharT* b, size_t maxn);
 template<typename CharT> bool seq(const CharT* a, size_t la, const CharT* b);
+
+template<typename CharT> bool seq_nocase(const CharT* a, const CharT* b);
+template<typename CharT> bool seq_nocase(const CharT* a, const CharT* b, size_t maxn);
+template<typename CharT> bool seq_nocase(const CharT* a, size_t la, const CharT* b);
 
 template<typename CharT> const CharT* schr(const CharT* a, CharT ch);
 template<typename CharT> const CharT* schr(const CharT* a, CharT ch, size_t maxn);

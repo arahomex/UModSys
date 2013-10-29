@@ -96,7 +96,7 @@ public:
   struct SColorInfo {
     float fore[4], back[4]; // rgba
     int bold, italic, underline, striked;
-    BCStr fontname, fontext;
+    core::BCStr fontname, fontext;
     int fontmap, fontstyle;
   };
   //
@@ -158,13 +158,13 @@ protected:
 // IConsoleHelper
 //***************************************
 
-struct IConsoleHelper : public IRefObject {
+struct IConsoleHelper : public core::IRefObject {
 public:
   virtual bool link(IConsoleExt *cext) = 0;   
   // private parameters setup
-  virtual bool set_parameters(const SParameters& params) = 0;
+  virtual bool set_parameters(const core::SParameters& params) = 0;
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IConsoleHelper, 1, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IConsoleHelper, 1, core::IRefObject);
 };
 
 //***************************************
@@ -173,10 +173,10 @@ protected:
 
 struct IConsoleHelperHistory : public IConsoleHelper {
 public:
-  virtual bool append(BCStr line) =0;
-  virtual BCStr get(int index) =0;
+  virtual bool append(core::BCStr line) =0;
+  virtual core::BCStr get(int index) =0;
   virtual int count(void) =0;
-  virtual int find(BCStr line, bool partial=false) =0;
+  virtual int find(core::BCStr line, bool partial=false) =0;
 /*
   virtual bool load(IMediaReader* file, int changedsize=0) = 0;
   virtual bool save(IMediaWriter* file) = 0;
@@ -203,18 +203,17 @@ protected:
 
 struct IConsoleHelperOutput : public IConsoleHelper {
 public:
-  typedef IConsole::ColorInfoAtom ColorInfoAtom;
+  typedef IConsoleExt::ColorInfoAtom ColorInfoAtom;
+  typedef IConsoleExt::SColorInfo SColorInfo;
 public:
   // setup console host
   virtual bool update(void) =0;             // flag that console need to be redrawn
   virtual bool draw(void) =0;               // forced redraw
-  // private parameters setup
-  virtual bool set_parameters(const SParameters& params) = 0;
   // selection of color index, char index, return 0 if fails
-  virtual bool map_colorinfo(ColorInfoAtom start, ColorInfoAtom count, const SConsoleColorInfo* inf) =0;
+  virtual bool map_colorinfo(ColorInfoAtom start, ColorInfoAtom count, const SColorInfo* inf) =0;
   // character/draw operation
-  virtual bool put_chars(int x, int y, BCStrL cha, int count, const ColorInfoAtom* chc) =0;
-  virtual bool put_chars(int x, int y, BCStrL cha, int count, ColorInfoAtom chc, int cursor=-1) =0;
+  virtual bool put_chars(int x, int y, core::BCStrL cha, int count, const ColorInfoAtom* chc) =0;
+  virtual bool put_chars(int x, int y, core::BCStrL cha, int count, ColorInfoAtom chc, int cursor=-1) =0;
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IConsoleHelperOutput, 1, IConsoleHelper);
 };

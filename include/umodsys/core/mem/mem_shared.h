@@ -71,6 +71,21 @@ struct SMemShared {
     return *this; 
   }
   //
+  inline bool alloc(size_t sz, SSourceContext* ctx) { 
+    SMemorySharedData *p = SMemorySharedData::new_data(sz, ctx); 
+    if(p==NULL)
+      return false;
+    *this = p;
+    return true;
+  }
+  inline bool alloc(IMemAlloc *h, size_t sz, SSourceContext* ctx) { 
+    SMemorySharedData *p = SMemorySharedData::new_data(h, sz, ctx); 
+    if(p==NULL)
+      return false;
+    *this = p;
+    return true;
+  }
+  //
   inline bool valid(void) const { return data!=NULL; }
   inline operator SCMem(void) const { return data ? SCMem(data->data(), data->size) : SCMem(); }
   inline operator SMem(void) const { return data ? SMem(data->data(), data->size) : SMem(); }

@@ -62,6 +62,23 @@ inline int scmp(const core::BChar* a, size_t la, const core::BChar* b)
 }
 
 template<>
+inline int scmp_nocase(const core::BChar* a, const core::BChar* b)
+{
+  return utf8_cmp_nocase(a, b);
+}
+template<>
+inline int scmp_nocase(const core::BChar* a, const core::BChar* b, size_t maxn)
+{
+  return utf8_cmp_nocase(a, b, maxn);
+}
+template<>
+inline int scmp_nocase(const core::BChar* a, size_t la, const core::BChar* b)
+{
+  int rv = utf8_cmp_nocase(a, b, la);
+  return rv ? rv : core::scalar_compare(core::BCharIndex(0), core::BCharIndex(b[la]));
+}
+
+template<>
 inline bool seq(const core::BChar* a, const core::BChar* b)
 {
   return ::strcmp(a, b)==0;
@@ -75,6 +92,22 @@ template<>
 inline bool seq(const core::BChar* a, size_t la, const core::BChar* b)
 {
   return ::strncmp(a, b, la)==0 && b[la]==0;
+}
+
+template<>
+inline bool seq_nocase(const core::BChar* a, const core::BChar* b)
+{
+  return utf8_cmp_nocase(a, b)==0;
+}
+template<>
+inline bool seq_nocase(const core::BChar* a, const core::BChar* b, size_t maxn)
+{
+  return utf8_cmp_nocase(a, b, maxn)==0;
+}
+template<>
+inline bool seq_nocase(const core::BChar* a, size_t la, const core::BChar* b)
+{
+  return utf8_cmp_nocase(a, b, la)==0 && b[la]==0;
 }
 
 template<>

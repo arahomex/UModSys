@@ -434,25 +434,23 @@ protected:
 // core media utilities
 //***************************************
 
-/*
 inline bool is_extension_case(const DCString& name, const DCString& ext) 
 {
   if(~name<~ext)
     return false;
-  if(tl::su::sncmp(name.text+~name-~ext, ext.text, ~ext)==0)
+  if(tl::su::scmp(name.text+~name-~ext, ext.text, ~ext)==0)
     return true;
   return false;
 }
 
-inline bool is_extension_nocase(const DLString& name, const DCString& ext) 
+inline bool is_extension_nocase(const DCString& name, const DCString& ext) 
 {
   if(~name<~ext)
     return false;
-  if(tl::su::snicmp(name.text+~name-~ext, ext.text, ~ext)==0)
+  if(tl::su::seq_nocase(name.text+~name-~ext, ext.text, ~ext))
     return true;
   return false;
 }
-*/
 
 //***************************************
 // INLINES/OUTLINES

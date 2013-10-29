@@ -9,6 +9,7 @@
 #include <umodsys/tl/string/su_coreprealloc.h>
 #include <umodsys/tl/string/su_corealloc.h>
 #include <umodsys/tl/string/su_coreshared.h>
+#include <umodsys/tl/string/su_utf.h>
 
 #include <umodsys/tl/string/string_const.h>
 #include <umodsys/tl/string/string_buffer.h>

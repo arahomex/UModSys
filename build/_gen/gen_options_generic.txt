@@ -1,8 +1,13 @@
 begin project-group umodsys
   set path-tmp $(path-root)/tmp
   set path-bin $(path-root)/bin
+  set path-dep $(path-root)/depends
 
   set path-inc $(path-root)/include/umodsys
+
+  set path-dep-jpeg-inc $(path-dep)/jpeglib
+  set path-dep-png-inc $(path-dep)/libpng
+  set path-dep-zlib-inc $(path-dep)/zlib
 
   set path-src $(path-root)/src
   set path-s-base $(path-src)/base
@@ -55,6 +60,7 @@ begin project-group umodsys
     end
     begin file-group src-tl
       file $(path-s-tl)/umodsys.tl.strings.cpp
+      file $(path-s-tl)/umodsys.tl.utf.cpp
     end
     begin file-group headers
       begin file-group core
@@ -142,6 +148,9 @@ begin project-group umodsys
 
   begin project umodsys_lib_libmedia
     mode lib
+    includes $(path-dep-jpeg-inc)
+    includes $(path-dep-png-inc)
+    includes $(path-dep-zlib-inc)
     begin file-group headers_media
       begin mask $(path-skip) $(path-inc)/lib/media
         include *.h
@@ -162,6 +171,11 @@ begin project-group umodsys
         include *.cpp *.h 
       end
     end
+    begin file-group mod_images_std
+      begin mask $(path-skip) $(path-s-mod)/media.images_std
+        include *.cpp *.h 
+      end
+    end
   end
 
   begin project umodsys_lib_lib2d
@@ -173,6 +187,16 @@ begin project-group umodsys
     end
     begin file-group lib_2d
       begin mask $(path-skip) $(path-s-lib)/2d
+        include *.cpp *.h 
+      end
+    end
+    begin file-group headers_ui
+      begin mask $(path-skip) $(path-inc)/lib/ui
+        include *.h
+      end
+    end
+    begin file-group lib_ui
+      begin mask $(path-skip) $(path-s-lib)/ui
         include *.cpp *.h 
       end
     end

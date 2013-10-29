@@ -576,10 +576,42 @@
 			</File>
 		</Filter>
 		<Filter
+			Name="headers_ui"
+			>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\ui\libui.common.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\ui\libui.frames.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\ui\libui.keymap.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\ui\libui.term_con.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\ui\libui.theme.h"
+				>
+			</File>
+		</Filter>
+		<Filter
 			Name="lib_2d"
 			>
 			<File
 				RelativePath="..\..\..\src\lib\2d\umodsys.lib.2d.common.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="lib_ui"
+			>
+			<File
+				RelativePath="..\..\..\src\lib\ui\umodsys.lib.ui.common.cpp"
 				>
 			</File>
 		</Filter>

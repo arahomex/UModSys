@@ -9,6 +9,10 @@
 #include <umodsys/lib/2d/lib2d.image.h>
 
 namespace UModSys {
+// foreign ones
+namespace libui { struct ITerminal; } // namespace libui
+// end foreign ones
+
 namespace lib2d {
 
 //***************************************
@@ -35,16 +39,15 @@ public:
   };
 public:
   // -- UI
-  virtual libui::ITerminal* get_terminal(void) =0;
-  virtual libui::IKeyboardController* get_controller_keyboard(void) =0;
-  virtual libui::IMouseController* get_controller_mouse(void) =0;
+  virtual libui::ITerminal* get_terminal(void) const =0;
+  virtual IRefObject* get_controller(TypeId ctrl) const =0;
   //
   // -- main ones
   virtual void begin(void) =0; // frame begin
   virtual void end(void) =0; // frame end and show
   // -- information
-  virtual const SParameters* get_max_values(void) =0;
-  virtual const SParameters* get_frame_values(void) =0;
+  virtual const SParameters* get_max_values(void) const =0;
+  virtual const SParameters* get_frame_values(void) const =0;
   virtual bool set_parameters(BCStr mode, const SParameters& P) =0;
   //
   // -- setup next primitives
@@ -72,6 +75,12 @@ public:
   virtual void render_rect(const DPoint& a, const DPoint& b) =0;
   //
 public:
+  template<typename T>
+  inline T* t_get_controller(void) const {
+    IRefObject rv = get_controller(T::_root_get_interface_type());
+    return rv ? rv->t_root_get_other_interface<T>() : NULL;
+  }
+  //
   inline int get_max_int(BCStr name) { int rv=0; get_max_values()->get(name, rv); return rv; }
   inline int get_frame_int(BCStr name) { int rv=0; get_frame_values()->get(name, rv); return rv; }
   //
