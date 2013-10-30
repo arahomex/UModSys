@@ -1,0 +1,1 @@
+@perl ../_gen/update_versions.pl %1 %2 %3 gen_options.txt
