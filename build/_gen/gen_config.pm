@@ -22,6 +22,7 @@ sub set_get
 sub set_explode
 {
   my ($this, $line) = @_;
+#  my $ln = $line;
   my $rv = '';
   while($line ne '') {
     if($line =~ /^\$\((.*?)\)(.*)$/) {
@@ -37,9 +38,16 @@ sub set_explode
       $rv .= set_get($this, $2);
       next;
     }
+    if($line =~ /(.*?)[\\]\$(.*?)$/) {
+#      print "'$1' ['$2'] '$3'\n";
+      $rv .= $1.'$'; 
+      $line = $2;
+      next;
+    }
     $rv .= $line;
     last;
   }
+#  print "exploded '$ln' to '$rv'\n";
   return $rv;
 }
 

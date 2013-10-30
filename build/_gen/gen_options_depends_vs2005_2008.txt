@@ -1,9 +1,6 @@
 begin project-group umodsys_Depends
   option random-seed 0 umodsys-vs2008-depends
 
-  set ppath platform/win32
-  set spname win32
-
   option project * IntermediateDirectory $(path-out-tmp)
   option project * VCLinkerTool_AdditionalLibraryDirectories \$(IntDir)/..
   option project [] Platforms "Win32 x64"
@@ -12,29 +9,47 @@ begin project-group umodsys_Depends
   option project-order all
 
   begin project all
-    mode lib
-    #
-    depend libSDL2
-    #
-#    depend libZlib
-#    depend libPng
-#    depend libJpeg
-    #
-#    depend libSquirrel
-#    depend libTinyC
-#    depend libAngelScript
-#    depend libLua
-    #
+    GUID-gen 0 umodsys.depends.dummy.all
   end
 
-  begin project libSDL2
-    GUID-gen 0 umodsys.depends.libSDL2
+  begin project lib_zlib
+    GUID-gen 0 umodsys.depends.lib_zlib
+    #
+    defines ZLIB_DLL
+    #
+    option !* Compiler_WarningLevel 0
+    option * OutputDirectory $(path-out-bin)
+  end
+
+  begin project lib_libpng
+    GUID-gen 0 umodsys.depends.lib_libpng
+    #
+    libpath $(path-out-bin) $(path-out-tmp)
+#    libs lib_zlib
+    #
+    option !* Compiler_WarningLevel 0
+    option * OutputDirectory $(path-out-bin)
+  end
+
+  begin project lib_jpeglib
+    GUID-gen 0 umodsys.depends.lib_jpeglib
+    #
+    libpath $(path-out-bin) $(path-out-tmp)
+    #
+    option !* Compiler_WarningLevel 0
+    option * OutputDirectory $(path-out-bin)
+  end
+
+  begin project lib_SDL2
+    GUID-gen 0 umodsys.depends.lib_SDL2
+    #
+    libpath $(path-out-bin) $(path-out-tmp)
+    libs user32 gdi32 shell32 winmm Imm32 Version
+    #
     option * OutputDirectory $(path-out-bin)
 #    option !* Compiler_WholeProgramOptimization false
-    option !* Compiler_WarnAsError false
+#    option !* Compiler_WarnAsError false
     option !* Compiler_WarningLevel 0
-    option !* Linker_AdditionalDependencies "user32.lib gdi32.lib shell32.lib winmm.lib Imm32.lib Version.lib"
-    option * Compiler_AdditionalIncludeDirectories \$(SolutionDir)../../include;\$(SolutionDir)../../depends/SDL2/include
     defines HAVE_LIBC
     #
     begin file-group src-$(spname)

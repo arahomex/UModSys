@@ -96,7 +96,7 @@ EOT
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="\$(IntDir)/\$(ProjectName).bsc"
+				OutputFile="$OPT_BscMake_OutputFile"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -253,37 +253,41 @@ EOT
         'Linker_LinkTimeCodeGeneration'             => '',
         #-------------------------------
         'Librarian_OutputFile'                      => '',
+        #
+        'BscMake_OutputFile'                        => '',
       },
     },
     #
     '*' => {
-      'OutputDirectory'                             => '\$(SolutionDir)../../tmp/win32vc8_\$(ConfigurationName)_\$(PlatformName)',
-      'IntermediateDirectory'                       => '\$(SolutionDir)../../tmp/win32vc8_\$(ConfigurationName)_\$(PlatformName)/\$(ProjectName)',
+      'OutputDirectory'                             => '$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)',
+      'IntermediateDirectory'                       => '$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)/$(ProjectName)',
       'CharacterSet'                                => '2',
       #                                            
       'Compiler_AdditionalOptions'                  => '/MP',
-      'Compiler_AdditionalIncludeDirectories'       => '\$(SolutionDir)../../include',
+      'Compiler_AdditionalIncludeDirectories'       => '$(SolutionDir)../../include',
       'Compiler_StringPooling'                      => 'true',
       'Compiler_MinimalRebuild'                     => 'false',
       'Compiler_RuntimeTypeInfo'                    => 'true',
       'Compiler_UsePrecompiledHeader'               => '0',
-      'Compiler_PrecompiledHeaderFile'              => '\$(IntDir)/\$(ProjectName).pch',
+      'Compiler_PrecompiledHeaderFile'              => '$(IntDir)/$(ProjectName).pch',
       'Compiler_PrecompiledHeaderThrough'           => 'StdAfx.h',
-      'Compiler_AssemblerListingLocation'           => '\$(IntDir)/',
-      'Compiler_ProgramDataBaseFileName'            => '\$(IntDir)/',
+      'Compiler_AssemblerListingLocation'           => '$(IntDir)/',
+      'Compiler_ProgramDataBaseFileName'            => '$(IntDir)/',
       'Compiler_Detect64BitPortabilityProblems'     => 'true',
       'Compiler_CompileAs'                          => '0',
       'Compiler_EnablePREfast'                      => 'false',
       #
-      'Librarian_OutputFile'                        => '\$(OutDir)/\$(ProjectName).lib',
+      'Librarian_OutputFile'                        => '$(OutDir)/$(ProjectName).lib',
       #
       'Linker_AdditionalDependencies'               => 'Winmm.lib ws2_32.lib',
-      'Linker_OutputFile'                           => '\$(OutDir)/\$(ProjectName).exe',
-      'Linker_AdditionalLibraryDirectories'         => '\$(IntDir)/..',
-      'Linker_ProgramDatabaseFile'                  => '\$(OutDir)/\$(ProjectName).pdb',
-      'Linker_MapFileName'                          => '\$(IntDir)/\$(ProjectName).map',
+      'Linker_OutputFile'                           => '$(OutDir)/$(ProjectName).exe',
+      'Linker_AdditionalLibraryDirectories'         => '$(IntDir)/..',
+      'Linker_ProgramDatabaseFile'                  => '$(OutDir)/$(ProjectName).pdb',
+      'Linker_MapFileName'                          => '$(IntDir)/$(ProjectName).map',
       'Linker_MapExports'                           => 'true',
       'Linker_SubSystem'                            => '1',
+      #
+      'BscMake_OutputFile'                          => '$(IntDir)/$(ProjectName).bsc',
     },
     'Debug' => {
       'Compiler_Optimization'                       => '0',

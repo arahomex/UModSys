@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="plugin_test2"
-	ProjectGUID="{391A18A0-DA40-F27F-AC0F-8D5CE602E343}"
-	RootNamespace="plugin_test2"
+	Name="lib_png"
+	ProjectGUID="{4C61D10B-B0EA-7C7F-0803-61B92C1C4C19}"
+	RootNamespace="lib_png"
 	>
 	<Platforms>
 		<Platform
@@ -30,7 +30,7 @@
 				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\depends\zlib;..\..\..\depends\libpng"
 				PreprocessorDefinitions="WIN32;_DEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -44,7 +44,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
-				WarningLevel="3"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -53,10 +53,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib"
+				AdditionalDependencies="lib_zlib.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName)"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="true"
@@ -119,7 +119,7 @@
 				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\depends\zlib;..\..\..\depends\libpng"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -133,7 +133,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="1"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -142,10 +142,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib"
+				AdditionalDependencies="lib_zlib.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="0"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName)"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="false"
@@ -208,7 +208,7 @@
 				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\depends\zlib;..\..\..\depends\libpng"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -222,7 +222,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="1"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -231,10 +231,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib"
+				AdditionalDependencies="lib_zlib.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="0"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName)"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="false"
@@ -297,7 +297,7 @@
 				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\depends\zlib;..\..\..\depends\libpng"
 				PreprocessorDefinitions="WIN32;_DEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -311,7 +311,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
-				WarningLevel="3"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -320,10 +320,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib"
+				AdditionalDependencies="lib_zlib.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName)"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="true"
@@ -386,7 +386,7 @@
 				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\depends\zlib;..\..\..\depends\libpng"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -400,7 +400,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="1"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -409,10 +409,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib"
+				AdditionalDependencies="lib_zlib.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="0"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName)"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="false"
@@ -475,7 +475,7 @@
 				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\depends\zlib;..\..\..\depends\libpng"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -489,7 +489,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="1"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -498,10 +498,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib"
+				AdditionalDependencies="lib_zlib.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="0"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName)"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="false"
@@ -552,10 +552,102 @@
 	</Configurations>
 	<Files>
 		<Filter
+			Name="include"
+			>
+			<File
+				RelativePath="..\..\..\depends\libpng\png.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngconf.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngdebug.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pnginfo.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngpriv.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngstruct.h"
+				>
+			</File>
+		</Filter>
+		<Filter
 			Name="src"
 			>
 			<File
-				RelativePath="..\..\..\src\plugin\test\plugin_test2.cpp"
+				RelativePath="..\..\..\depends\libpng\example.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\png.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngerror.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngget.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngmem.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngpread.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngread.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngrio.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngrtran.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngrutil.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngset.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngtest.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngtrans.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngwio.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngwrite.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngwtran.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\libpng\pngwutil.c"
 				>
 			</File>
 		</Filter>

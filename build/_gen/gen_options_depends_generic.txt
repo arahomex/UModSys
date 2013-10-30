@@ -1,20 +1,24 @@
 begin project-group umodsys_Depends
   set path-tmp $(path-root)/tmp
   set path-bin $(path-root)/bin
+  set path-include $(path-root)/include
 
   set path-depends $(path-root)/depends
   set path-d-SDL2 $(path-depends)/SDL2
+  set path-d-zlib $(path-depends)/zlib
+  set path-d-png $(path-depends)/libpng
+  set path-d-jpeg $(path-depends)/jpeglib
 
   option project-order umodsysc
 
   begin project all
     mode lib
     #
-    depend libSDL2
+    depend lib_SDL2
     #
-#    depend libZlib
-#    depend libPng
-#    depend libJpeg
+    depend lib_zlib
+    depend lib_libpng
+    depend lib_jpeglib
     #
 #    depend libSquirrel
 #    depend libTinyC
@@ -23,8 +27,74 @@ begin project-group umodsys_Depends
     #
   end
 
-  begin project libSDL2
+  begin project lib_zlib
     mode shared
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-zlib)
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-zlib)
+        include *.h
+      end
+    end
+    begin file-group src
+      begin mask $(path-skip) $(path-d-zlib)
+        include *.c
+      end
+    end
+  end
+
+  begin project lib_libpng
+    mode shared
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-zlib)
+    includes $(path-d-png)
+    depend lib_zlib
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-png)
+        include *.h
+      end
+    end
+    begin file-group src
+      begin mask $(path-skip) $(path-d-png)
+        include *.c
+      end
+    end
+  end
+
+  begin project lib_jpeglib
+    mode shared
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-jpeg)
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-jpeg)
+        include *.h
+      end
+    end
+    begin file-group src
+      begin mask $(path-skip) $(path-d-jpeg)
+        include j*.c
+        exclude jmemdos.c jmemmac.c jmemname.c jmemnobs.c
+        exclude jpegtran.c
+      end
+    end
+  end
+
+  begin project lib_SDL2
+    mode shared
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-SDL2)/include
+    #
     begin file-group include
       begin mask $(path-skip) $(path-d-SDL2)/include
         include *.h

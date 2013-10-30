@@ -375,6 +375,14 @@ sub msvc_xml_project_generate
   if({$proj->{'defines'}}) {
     $DEFINES = join ';', @{$proj->{'defines'}};
   }
+  my $LIB_INCLUDES = '';
+  if({$proj->{'libpath'}}) {
+    $LIB_INCLUDES = join ';', @{$proj->{'libpath'}};
+  }
+  my $LIBS = '';
+  if({$proj->{'libs'}}) {
+    $LIBS = join ' ', @{$proj->{'libs'}};
+  }
   #
   #------------------- CONFIGURATIONS
   $line = eval("<<EOT\n".$template->{'project-configs-begin'}."EOT");
@@ -389,12 +397,21 @@ sub msvc_xml_project_generate
         $opt_var_val = msvc_xml_getopt($CONF_NAME, $opt_var, @{$proj->{'a-opts'}}) if not defined $opt_var_val;
         $opt_var_val = msvc_xml_getopt('*', $opt_var, @{$proj->{'a-opts'}}) if not defined $opt_var_val;
         $opt_var_val = $opt_vars->{$opt_var} if not defined $opt_var_val;
-        $opt_var_all .= "my \$OPT_$opt_var = \"$opt_var_val\";\n";
+        $opt_var_all .= "my \$OPT_$opt_var = \'$opt_var_val\';\n";
         #
         $opt_var_all .= "\$OPT_Compiler_AdditionalIncludeDirectories .= ';'.\$INCLUDES;\n"
           if ($opt_var eq 'Compiler_AdditionalIncludeDirectories') and ($INCLUDES ne '');
         $opt_var_all .= "\$OPT_Compiler_PreprocessorDefinitions .= ';'.\$DEFINES;\n"
           if ($opt_var eq 'Compiler_PreprocessorDefinitions') and ($DEFINES ne '');
+        $opt_var_all .= "\$OPT_Linker_AdditionalDependencies .= ' '.\$LIBS;\n"
+          if ($opt_var eq 'Linker_AdditionalDependencies') and ($LIBS ne '');
+        $opt_var_all .= "\$OPT_Linker_AdditionalLibraryDirectories .= ';'.\$LIB_INCLUDES;\n"
+          if ($opt_var eq 'Linker_AdditionalLibraryDirectories') and ($LIB_INCLUDES ne '');
+        #
+#        print "\$OPT_Linker_AdditionalDependencies .= ' '.\"$LIBS\";\n"
+#          if ($opt_var eq 'Linker_AdditionalDependencies') and ($LIBS ne '');
+#        print "\$OPT_Linker_AdditionalLibraryDirectories .= ';'.\"$LIB_INCLUDES\";\n"
+#          if ($opt_var eq 'Linker_AdditionalLibraryDirectories') and ($LIB_INCLUDES ne '');
       }
       #
       #
@@ -437,6 +454,7 @@ sub msvc_xml_project_generate
           print $@ if $@; 
         }
 EOT_END
+
 #      print $opt_var_all;
 no strict 'vars';
       eval $opt_var_all;
@@ -467,18 +485,26 @@ sub msvc_xml_project_cmd
 {
   my ($this, $cmd, $args) = @_;
   if($cmd eq 'depend') {
-    my $name = get_configuration_arg(\$args);
+    my $name = get_configuration_arg_exp(\$args, $this);
     push @{$this->{'project'}->{'depends'}}, $name;
   } elsif($cmd eq 'includes') {
     while(my $name = get_configuration_arg_exp(\$args, $this)) {
       push @{$this->{'project'}->{'includes'}}, msvc_xml_path_win32($name);
     }
   } elsif($cmd eq 'defines') {
-    while(my $name = get_configuration_arg(\$args)) {
+    while(my $name = get_configuration_arg_exp(\$args, $this)) {
       push @{$this->{'project'}->{'defines'}}, $name;
     }
+  } elsif($cmd eq 'libpath') {
+    while(my $name = get_configuration_arg_exp(\$args, $this)) {
+      push @{$this->{'project'}->{'libpath'}}, $name;
+    }
+  } elsif($cmd eq 'libs') {
+    while(my $name = get_configuration_arg_exp(\$args, $this)) {
+      push @{$this->{'project'}->{'libs'}}, $name.'.lib';
+    }
   } elsif($cmd eq 'mode') {
-    my $mode = get_configuration_arg(\$args);
+    my $mode = get_configuration_arg_exp(\$args, $this);
     $this->{'project'}->{'mode'} = $mode;
   } elsif($cmd eq 'GUID-gen') {
     $this->{'project'}->{'GUID'} = msvc_xml_new_guid($args);
@@ -515,8 +541,12 @@ sub msvc_xml_project_begin
     'platforms' => {},
     'configurations' => {},
     'depends' => [],
+    #
     'includes' => [],
     'defines' => [],
+    'libpath' => [],
+    'libs' => [],
+    #
     'opts' => $opts,
     'a-opts' => [$opts, (@{$this->{'solution'}->{'a-project-opts'}})], 
   };
@@ -544,6 +574,8 @@ sub msvc_xml_project_begin
       'depend' => \&msvc_xml_project_cmd,
       'includes' => \&msvc_xml_project_cmd,
       'defines' => \&msvc_xml_project_cmd,
+      'libpath' => \&msvc_xml_project_cmd,
+      'libs' => \&msvc_xml_project_cmd,
       'GUID-gen' => \&msvc_xml_project_cmd,
     },
   };

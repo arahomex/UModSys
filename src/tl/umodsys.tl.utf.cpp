@@ -31,12 +31,12 @@ const su::utf32 su::utf_offsetsFromUTF8[6] =	{
 // comparission nocase
 //***************************************
 
-int utf8_cmp_nocase(const BChar* a, const BChar *b)
+int su::utf8_cmp_nocase(const BChar* a, const BChar *b)
 {
   return ::strcmp(a, b);
 }
 
-int utf8_cmp_nocase(const BChar* a, const BChar *b, size_t num)
+int su::utf8_cmp_nocase(const BChar* a, const BChar *b, size_t num)
 {
   return ::strncmp(a, b, num);
 }

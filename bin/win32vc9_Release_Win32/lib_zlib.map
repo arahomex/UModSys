@@ -1,0 +1,478 @@
+ lib_zlib
+
+ Timestamp is 5270a61c (Wed Oct 30 09:24:28 2013)
+
+ Preferred load address is 10000000
+
+ Start         Length     Name                   Class
+ 0001:00000000 0000a141H .text                   CODE
+ 0002:00000000 000000c0H .idata$5                DATA
+ 0002:000000c0 00000004H .CRT$XCA                DATA
+ 0002:000000c4 00000004H .CRT$XCZ                DATA
+ 0002:000000c8 00000004H .CRT$XIA                DATA
+ 0002:000000cc 00000004H .CRT$XIAA               DATA
+ 0002:000000d0 00000004H .CRT$XIZ                DATA
+ 0002:000000d8 00004158H .rdata                  DATA
+ 0002:00004230 00000004H .rdata$sxdata           DATA
+ 0002:00004234 00000004H .rtc$IAA                DATA
+ 0002:00004238 00000004H .rtc$IZZ                DATA
+ 0002:0000423c 00000004H .rtc$TAA                DATA
+ 0002:00004240 00000004H .rtc$TZZ                DATA
+ 0002:00004248 00000064H .xdata$x                DATA
+ 0002:000042ac 00000028H .idata$2                DATA
+ 0002:000042d4 00000014H .idata$3                DATA
+ 0002:000042e8 000000c0H .idata$4                DATA
+ 0002:000043a8 00000306H .idata$6                DATA
+ 0002:000046b0 00000661H .edata                  DATA
+ 0003:00000000 00000050H .data                   DATA
+ 0003:00000050 0000034cH .bss                    DATA
+
+  Address         Publics by Value              Rva+Base       Lib:Object
+
+ 0000:00000001       ___safe_se_handler_count   00000001     <absolute>
+ 0000:00000000       ___ImageBase               10000000     <linker-defined>
+ 0001:0000004f       __CRT_INIT@12              1000104f f   MSVCRT:crtdll.obj
+ 0001:0000038b       __DllMainCRTStartup@12     1000138b f   MSVCRT:crtdll.obj
+ 0001:000003ae       ___clean_type_info_names   100013ae f   MSVCRT:tncleanup.obj
+ 0001:000003ba       __onexit                   100013ba f   MSVCRT:atonexit.obj
+ 0001:0000045f       _atexit                    1000145f f   MSVCRT:atonexit.obj
+ 0001:00000476       __RTC_Initialize           10001476 f   MSVCRT:_initsect_.obj
+ 0001:0000049c       __RTC_Terminate            1000149c f   MSVCRT:_initsect_.obj
+ 0001:000004d0       __ValidateImageBase        100014d0 f   MSVCRT:pesect.obj
+ 0001:00000510       __FindPESection            10001510 f   MSVCRT:pesect.obj
+ 0001:00000560       __IsNonwritableInCurrentImage 10001560 f   MSVCRT:pesect.obj
+ 0001:0000061e       __initterm                 1000161e f   MSVCRT:MSVCR90.dll
+ 0001:00000624       __initterm_e               10001624 f   MSVCRT:MSVCR90.dll
+ 0001:0000062a       __amsg_exit                1000162a f   MSVCRT:MSVCR90.dll
+ 0001:00000630       ___CppXcptFilter           10001630 f   MSVCRT:MSVCR90.dll
+ 0001:00000636       _DllMain@12                10001636 f   MSVCRT:dllmain.obj
+ 0001:0000065c       __SEH_prolog4              1000165c f   MSVCRT:sehprolg4.obj
+ 0001:000006a1       __SEH_epilog4              100016a1 f   MSVCRT:sehprolg4.obj
+ 0001:000006b5       __except_handler4          100016b5 f   MSVCRT:chandler4gs.obj
+ 0001:000006da       ___security_init_cookie    100016da f   MSVCRT:gs_support.obj
+ 0001:00000770       ___clean_type_info_names_internal 10001770 f   MSVCRT:MSVCR90.dll
+ 0001:00000776       __unlock                   10001776 f   MSVCRT:MSVCR90.dll
+ 0001:0000077c       ___dllonexit               1000177c f   MSVCRT:MSVCR90.dll
+ 0001:00000782       __lock                     10001782 f   MSVCRT:MSVCR90.dll
+ 0001:00000788       @__security_check_cookie@4 10001788 f   MSVCRT:secchk.obj
+ 0001:00000798       __except_handler4_common   10001798 f   MSVCRT:MSVCR90.dll
+ 0001:0000079e       ___report_gsfailure        1000179e f   MSVCRT:gs_report.obj
+ 0001:000008a4       __crt_debugger_hook        100018a4 f   MSVCRT:MSVCR90.dll
+ 0001:000008b0       _zcfree                    100018b0 f   zutil.obj
+ 0001:000008c0       _zcalloc                   100018c0 f   zutil.obj
+ 0001:000008e0       _zError                    100018e0 f   zutil.obj
+ 0001:00000900       _zlibCompileFlags          10001900 f   zutil.obj
+ 0001:00000910       _zlibVersion               10001910 f   zutil.obj
+ 0001:00000eb0       __tr_align                 10001eb0 f   trees.obj
+ 0001:00000fa0       __tr_flush_bits            10001fa0 f   trees.obj
+ 0001:00001a00       __tr_stored_block          10002a00 f   trees.obj
+ 0001:00001ef0       __tr_init                  10002ef0 f   trees.obj
+ 0001:00002020       __tr_flush_block           10003020 f   trees.obj
+ 0001:00002220       _inflate_table             10003220 f   inftrees.obj
+ 0001:00002690       _inflateMark               10003690 f   inflate.obj
+ 0001:000026f0       _inflateUndermine          100036f0 f   inflate.obj
+ 0001:00002720       _inflateCopy               10003720 f   inflate.obj
+ 0001:00002870       _inflateSyncPoint          10003870 f   inflate.obj
+ 0001:000028f0       _inflateGetHeader          100038f0 f   inflate.obj
+ 0001:00002920       _inflateEnd                10003920 f   inflate.obj
+ 0001:00002a80       _inflatePrime              10003a80 f   inflate.obj
+ 0001:00002ae0       _inflateResetKeep          10003ae0 f   inflate.obj
+ 0001:00002b60       _inflateSetDictionary      10003b60 f   inflate.obj
+ 0001:00002c20       _inflate                   10003c20 f   inflate.obj
+ 0001:000041c0       _inflateReset              100051c0 f   inflate.obj
+ 0001:000041f0       _inflateSync               100051f0 f   inflate.obj
+ 0001:000042d0       _inflateReset2             100052d0 f   inflate.obj
+ 0001:00004360       _inflateInit2_             10005360 f   inflate.obj
+ 0001:00004410       _inflateInit_              10005410 f   inflate.obj
+ 0001:00004430       _inflate_fast              10005430 f   inffast.obj
+ 0001:00004880       _inflateBackEnd            10005880 f   infback.obj
+ 0001:000048e0       _inflateBackInit_          100058e0 f   infback.obj
+ 0001:000049a0       _inflateBack               100059a0 f   infback.obj
+ 0001:000056d0       _gz_error                  100066d0 f   gzlib.obj
+ 0001:000057c0       _gzclearerr                100067c0 f   gzlib.obj
+ 0001:00005800       _gzerror                   10006800 f   gzlib.obj
+ 0001:00005840       _gzeof                     10006840 f   gzlib.obj
+ 0001:00005870       _gzoffset64                10006870 f   gzlib.obj
+ 0001:000058d0       _gztell64                  100068d0 f   gzlib.obj
+ 0001:00005920       _gzbuffer                  10006920 f   gzlib.obj
+ 0001:000059a0       _gzoffset                  100069a0 f   gzlib.obj
+ 0001:000059d0       _gztell                    100069d0 f   gzlib.obj
+ 0001:00005a00       _gzrewind                  10006a00 f   gzlib.obj
+ 0001:00005d40       _gzseek64                  10006d40 f   gzlib.obj
+ 0001:00005ed0       _gzopen_w                  10006ed0 f   gzlib.obj
+ 0001:00005ef0       _gzdopen                   10006ef0 f   gzlib.obj
+ 0001:00005f40       _gzopen64                  10006f40 f   gzlib.obj
+ 0001:00005f60       _gzopen                    10006f60 f   gzlib.obj
+ 0001:00005f80       _gzseek                    10006f80 f   gzlib.obj
+ 0001:000061b0       _deflateEnd                100071b0 f   deflate.obj
+ 0001:00006300       _deflateBound              10007300 f   deflate.obj
+ 0001:000063e0       _deflateTune               100073e0 f   deflate.obj
+ 0001:00006420       _deflatePrime              10007420 f   deflate.obj
+ 0001:000064a0       _deflatePending            100074a0 f   deflate.obj
+ 0001:000064e0       _deflateSetHeader          100074e0 f   deflate.obj
+ 0001:00006580       _deflateCopy               10007580 f   deflate.obj
+ 0001:00006720       _deflateResetKeep          10007720 f   deflate.obj
+ 0001:00006970       _deflateReset              10007970 f   deflate.obj
+ 0001:000069a0       _deflateSetDictionary      100079a0 f   deflate.obj
+ 0001:00006b40       _deflateInit2_             10007b40 f   deflate.obj
+ 0001:00006d70       _deflateInit_              10007d70 f   deflate.obj
+ 0001:00007a50       _deflate                   10008a50 f   deflate.obj
+ 0001:00008290       _deflateParams             10009290 f   deflate.obj
+ 0001:000089a0       _crc32                     100099a0 f   crc32.obj
+ 0001:000089c0       _get_crc_table             100099c0 f   crc32.obj
+ 0001:00008b10       _crc32_combine             10009b10 f   crc32.obj
+ 0001:00008b30       _compressBound             10009b30 f   compress.obj
+ 0001:00008b50       _compress2                 10009b50 f   compress.obj
+ 0001:00008c00       _compress                  10009c00 f   compress.obj
+ 0001:00008cd0       _adler32                   10009cd0 f   adler32.obj
+ 0001:00008f40       _adler32_combine           10009f40 f   adler32.obj
+ 0001:00008f60       _gzclose_r                 10009f60 f   gzread.obj
+ 0001:00009320       _gzdirect                  1000a320 f   gzread.obj
+ 0001:00009440       _gzgets                    1000a440 f   gzread.obj
+ 0001:00009550       _gzungetc                  1000a550 f   gzread.obj
+ 0001:00009630       _gzread                    1000a630 f   gzread.obj
+ 0001:000097b0       _gzgetc                    1000a7b0 f   gzread.obj
+ 0001:00009810       _gzgetc_                   1000a810 f   gzread.obj
+ 0001:00009ad0       _gzclose_w                 1000aad0 f   gzwrite.obj
+ 0001:00009b90       _gzsetparams               1000ab90 f   gzwrite.obj
+ 0001:00009c40       _gzflush                   1000ac40 f   gzwrite.obj
+ 0001:00009cb0       _gzprintf                  1000acb0 f   gzwrite.obj
+ 0001:00009d70       _gzwrite                   1000ad70 f   gzwrite.obj
+ 0001:00009e80       _gzputs                    1000ae80 f   gzwrite.obj
+ 0001:00009ec0       _gzputc                    1000aec0 f   gzwrite.obj
+ 0001:00009f60       _uncompress                1000af60 f   uncompr.obj
+ 0001:0000a020       _gzclose                   1000b020 f   gzclose.obj
+ 0001:0000a04a       _memcpy                    1000b04a f   MSVCRT:MSVCR90.dll
+ 0001:0000a050       _memset                    1000b050 f   MSVCRT:MSVCR90.dll
+ 0001:0000a060       __allrem                   1000b060 f   MSVCRT:llrem.obj
+ 0001:0000a120       __allshr                   1000b120 f   MSVCRT:llshr.obj
+ 0002:00000000       __imp__SetUnhandledExceptionFilter@4 1000c000     kernel32:KERNEL32.dll
+ 0002:00000004       __imp__UnhandledExceptionFilter@4 1000c004     kernel32:KERNEL32.dll
+ 0002:00000008       __imp__GetCurrentProcess@0 1000c008     kernel32:KERNEL32.dll
+ 0002:0000000c       __imp__TerminateProcess@8  1000c00c     kernel32:KERNEL32.dll
+ 0002:00000010       __imp__GetSystemTimeAsFileTime@4 1000c010     kernel32:KERNEL32.dll
+ 0002:00000014       __imp__GetCurrentProcessId@0 1000c014     kernel32:KERNEL32.dll
+ 0002:00000018       __imp__GetCurrentThreadId@0 1000c018     kernel32:KERNEL32.dll
+ 0002:0000001c       __imp__GetTickCount@0      1000c01c     kernel32:KERNEL32.dll
+ 0002:00000020       __imp__QueryPerformanceCounter@4 1000c020     kernel32:KERNEL32.dll
+ 0002:00000024       __imp__DisableThreadLibraryCalls@4 1000c024     kernel32:KERNEL32.dll
+ 0002:00000028       __imp__InterlockedCompareExchange@12 1000c028     kernel32:KERNEL32.dll
+ 0002:0000002c       __imp__Sleep@4             1000c02c     kernel32:KERNEL32.dll
+ 0002:00000030       __imp__InterlockedExchange@8 1000c030     kernel32:KERNEL32.dll
+ 0002:00000034       __imp__IsDebuggerPresent@0 1000c034     kernel32:KERNEL32.dll
+ 0002:00000038       \177KERNEL32_NULL_THUNK_DATA 1000c038     kernel32:KERNEL32.dll
+ 0002:0000003c       __imp___initterm_e         1000c03c     MSVCRT:MSVCR90.dll
+ 0002:00000040       __imp___amsg_exit          1000c040     MSVCRT:MSVCR90.dll
+ 0002:00000044       __imp___adjust_fdiv        1000c044     MSVCRT:MSVCR90.dll
+ 0002:00000048       __imp____CppXcptFilter     1000c048     MSVCRT:MSVCR90.dll
+ 0002:0000004c       __imp___initterm           1000c04c     MSVCRT:MSVCR90.dll
+ 0002:00000050       __imp___unlock             1000c050     MSVCRT:MSVCR90.dll
+ 0002:00000054       __imp____dllonexit         1000c054     MSVCRT:MSVCR90.dll
+ 0002:00000058       __imp___lock               1000c058     MSVCRT:MSVCR90.dll
+ 0002:0000005c       __imp___onexit             1000c05c     MSVCRT:MSVCR90.dll
+ 0002:00000060       __imp___except_handler4_common 1000c060     MSVCRT:MSVCR90.dll
+ 0002:00000064       __imp___crt_debugger_hook  1000c064     MSVCRT:MSVCR90.dll
+ 0002:00000068       __imp___decode_pointer     1000c068     MSVCRT:MSVCR90.dll
+ 0002:0000006c       __imp___encoded_null       1000c06c     MSVCRT:MSVCR90.dll
+ 0002:00000070       __imp___malloc_crt         1000c070     MSVCRT:MSVCR90.dll
+ 0002:00000074       __imp___encode_pointer     1000c074     MSVCRT:MSVCR90.dll
+ 0002:00000078       __imp___vsnprintf          1000c078     MSVCRT:MSVCR90.dll
+ 0002:00000078       __imp__vsnprintf           1000c078     MSVCRT:MSVCR90.dll
+ 0002:0000007c       __imp___errno              1000c07c     MSVCRT:MSVCR90.dll
+ 0002:00000080       __imp__memchr              1000c080     MSVCRT:MSVCR90.dll
+ 0002:00000084       __imp__strerror            1000c084     MSVCRT:MSVCR90.dll
+ 0002:00000088       __imp__wcstombs            1000c088     MSVCRT:MSVCR90.dll
+ 0002:0000008c       __imp__malloc              1000c08c     MSVCRT:MSVCR90.dll
+ 0002:00000090       __imp__free                1000c090     MSVCRT:MSVCR90.dll
+ 0002:00000094       __imp___wopen              1000c094     MSVCRT:MSVCR90.dll
+ 0002:00000098       __imp___lseeki64           1000c098     MSVCRT:MSVCR90.dll
+ 0002:0000009c       __imp____clean_type_info_names_internal 1000c09c     MSVCRT:MSVCR90.dll
+ 0002:000000a0       __imp__sprintf             1000c0a0     MSVCRT:MSVCR90.dll
+ 0002:000000a4       __imp___open               1000c0a4     MSVCRT:MSVCR90.dll
+ 0002:000000a4       __imp__open                1000c0a4     MSVCRT:MSVCR90.dll
+ 0002:000000a8       __imp___read               1000c0a8     MSVCRT:MSVCR90.dll
+ 0002:000000a8       __imp__read                1000c0a8     MSVCRT:MSVCR90.dll
+ 0002:000000ac       __imp__close               1000c0ac     MSVCRT:MSVCR90.dll
+ 0002:000000ac       __imp___close              1000c0ac     MSVCRT:MSVCR90.dll
+ 0002:000000b0       __imp___write              1000c0b0     MSVCRT:MSVCR90.dll
+ 0002:000000b0       __imp__write               1000c0b0     MSVCRT:MSVCR90.dll
+ 0002:000000b4       __imp__memcpy              1000c0b4     MSVCRT:MSVCR90.dll
+ 0002:000000b8       __imp__memset              1000c0b8     MSVCRT:MSVCR90.dll
+ 0002:000000bc       \177MSVCR90_NULL_THUNK_DATA 1000c0bc     MSVCRT:MSVCR90.dll
+ 0002:000000c0       ___xc_a                    1000c0c0     MSVCRT:cinitexe.obj
+ 0002:000000c4       ___xc_z                    1000c0c4     MSVCRT:cinitexe.obj
+ 0002:000000c8       ___xi_a                    1000c0c8     MSVCRT:cinitexe.obj
+ 0002:000000d0       ___xi_z                    1000c0d0     MSVCRT:cinitexe.obj
+ 0002:000000d8       __pDefaultRawDllMain       1000c0d8     MSVCRT:crtdll.obj
+ 0002:000000d8       __pRawDllMain              1000c0d8     MSVCRT:crtdll.obj
+ 0002:000000e4       ??_C@_05HBMOAMF@1?42?47?$AA@ 1000c0e4     compress.obj
+ 0002:000000f0       _z_errmsg                  1000c0f0     zutil.obj
+ 0002:00000760       __dist_code                1000c760     trees.obj
+ 0002:00000960       __length_code              1000c960     trees.obj
+ 0002:00000b50       _inflate_copyright         1000cb50     inftrees.obj
+ 0002:00001dd0       _deflate_copyright         1000ddd0     deflate.obj
+ 0002:00003e98       ??_C@_07EBNKNFJN@?$DMfd?3?$CFd?$DO?$AA@ 1000fe98     gzlib.obj
+ 0002:00003ea0       ??_C@_00CNPNBAHC@?$AA@     1000fea0     gzlib.obj
+ 0002:00003ea4       ??_C@_0O@BNNCBLEN@out?5of?5memory?$AA@ 1000fea4     gzlib.obj
+ 0002:00003eb4       ??_C@_02LMMGGCAJ@?3?5?$AA@ 1000feb4     gzlib.obj
+ 0002:00003eb8       ??_C@_0BH@CFIIDOJD@unexpected?5end?5of?5file?$AA@ 1000feb8     gzread.obj
+ 0002:00003ed0       ??_C@_0CH@CPOLIEKA@internal?5error?3?5inflate?5stream?5c@ 1000fed0     gzread.obj
+ 0002:00003ef8       ??_C@_0BG@HCKBMIHF@compressed?5data?5error?$AA@ 1000fef8     gzread.obj
+ 0002:00003f10       ??_C@_0CF@MLPJFDMM@requested?5length?5does?5not?5fit?5in@ 1000ff10     gzread.obj
+ 0002:00003f38       ??_C@_0BP@IIKIGMCC@out?5of?5room?5to?5push?5characters?$AA@ 1000ff38     gzread.obj
+ 0002:00003f58       ??_C@_0CH@DEEGAHIB@internal?5error?3?5deflate?5stream?5c@ 1000ff58     gzwrite.obj
+ 0002:00003f80       ??_C@_0BD@PJCBIDD@invalid?5block?5type?$AA@ 1000ff80     infback.obj
+ 0002:00003f94       ??_C@_0BN@LGAADGOK@invalid?5stored?5block?5lengths?$AA@ 1000ff94     infback.obj
+ 0002:00003fb4       ??_C@_0CE@GMIGFPBB@too?5many?5length?5or?5distance?5symb@ 1000ffb4     infback.obj
+ 0002:00003fd8       ??_C@_0BJ@HDEPPGOH@invalid?5code?5lengths?5set?$AA@ 1000ffd8     infback.obj
+ 0002:00003ff4       ??_C@_0BK@BMMPFBBH@invalid?5bit?5length?5repeat?$AA@ 1000fff4     infback.obj
+ 0002:00004010       ??_C@_0CF@DGDMADCD@invalid?5code?5?9?9?5missing?5end?9of?9b@ 10010010     infback.obj
+ 0002:00004038       ??_C@_0BM@IIMGAINC@invalid?5literal?1lengths?5set?$AA@ 10010038     infback.obj
+ 0002:00004054       ??_C@_0BG@GMDFCBGP@invalid?5distances?5set?$AA@ 10010054     infback.obj
+ 0002:0000406c       ??_C@_0BM@FFFLPBBC@invalid?5literal?1length?5code?$AA@ 1001006c     infback.obj
+ 0002:00004088       ??_C@_0BG@LBKINIKP@invalid?5distance?5code?$AA@ 10010088     infback.obj
+ 0002:000040a0       ??_C@_0BO@ECPMAOGG@invalid?5distance?5too?5far?5back?$AA@ 100100a0     infback.obj
+ 0002:000040c0       ??_C@_0BH@LIBMMIGA@incorrect?5header?5check?$AA@ 100100c0     inflate.obj
+ 0002:000040d8       ??_C@_0BL@IHKGDAEE@unknown?5compression?5method?$AA@ 100100d8     inflate.obj
+ 0002:000040f4       ??_C@_0BE@EMOGCLGO@invalid?5window?5size?$AA@ 100100f4     inflate.obj
+ 0002:00004108       ??_C@_0BJ@BLBBCOMO@unknown?5header?5flags?5set?$AA@ 10010108     inflate.obj
+ 0002:00004124       ??_C@_0BE@GONKLEPM@header?5crc?5mismatch?$AA@ 10010124     inflate.obj
+ 0002:00004138       ??_C@_0BF@MEIGEHBE@incorrect?5data?5check?$AA@ 10010138     inflate.obj
+ 0002:00004150       ??_C@_0BH@FGKKJGOC@incorrect?5length?5check?$AA@ 10010150     inflate.obj
+ 0002:00004168       ??_C@_0BF@CJFPCCEG@incompatible?5version?$AA@ 10010168     zutil.obj
+ 0002:00004180       ??_C@_0N@DFPGLBGC@buffer?5error?$AA@ 10010180     zutil.obj
+ 0002:00004190       ??_C@_0BE@OGGJBMCE@insufficient?5memory?$AA@ 10010190     zutil.obj
+ 0002:000041a4       ??_C@_0L@HAHMBNLP@data?5error?$AA@ 100101a4     zutil.obj
+ 0002:000041b0       ??_C@_0N@MKKNPMJD@stream?5error?$AA@ 100101b0     zutil.obj
+ 0002:000041c0       ??_C@_0L@KIJFAKBJ@file?5error?$AA@ 100101c0     zutil.obj
+ 0002:000041cc       ??_C@_0L@FNAOCBOG@stream?5end?$AA@ 100101cc     zutil.obj
+ 0002:000041d8       ??_C@_0BA@MOKMMFOD@need?5dictionary?$AA@ 100101d8     zutil.obj
+ 0002:000041e8       __load_config_used         100101e8     MSVCRT:loadcfg.obj
+ 0002:00004230       ___safe_se_handler_table   10010230     <linker-defined>
+ 0002:00004234       ___rtc_iaa                 10010234     MSVCRT:_initsect_.obj
+ 0002:00004238       ___rtc_izz                 10010238     MSVCRT:_initsect_.obj
+ 0002:0000423c       ___rtc_taa                 1001023c     MSVCRT:_initsect_.obj
+ 0002:00004240       ___rtc_tzz                 10010240     MSVCRT:_initsect_.obj
+ 0002:000042ac       __IMPORT_DESCRIPTOR_MSVCR90 100102ac     MSVCRT:MSVCR90.dll
+ 0002:000042c0       __IMPORT_DESCRIPTOR_KERNEL32 100102c0     kernel32:KERNEL32.dll
+ 0002:000042d4       __NULL_IMPORT_DESCRIPTOR   100102d4     MSVCRT:MSVCR90.dll
+ 0003:00000000       ___native_dllmain_reason   10011000     MSVCRT:natstart.obj
+ 0003:00000004       ___native_vcclrit_reason   10011004     MSVCRT:natstart.obj
+ 0003:00000008       ___security_cookie         10011008     MSVCRT:gs_cookie.obj
+ 0003:0000000c       ___security_cookie_complement 1001100c     MSVCRT:gs_cookie.obj
+ 0003:00000054       __forceCRTManifestRTM      10011054     MSVCRT:crtmanifestrtm.obj
+ 0003:00000058       ?__type_info_root_node@@3U__type_info_node@@A 10011058     MSVCRT:tncleanup.obj
+ 0003:00000384       __adjust_fdiv              10011384     <common>
+ 0003:00000388       ___native_startup_state    10011388     <common>
+ 0003:0000038c       ___native_startup_lock     1001138c     <common>
+ 0003:00000390       ___onexitend               10011390     <common>
+ 0003:00000394       ___onexitbegin             10011394     <common>
+ 0003:00000398       ___dyn_tls_init_callback   10011398     <common>
+
+ entry point at        0001:0000038b
+
+ Static symbols
+
+ 0001:00000000       _pre_c_init                10001000 f   MSVCRT:crtdll.obj
+ 0001:00000275       ___DllMainCRTStartup       10001275 f   MSVCRT:crtdll.obj
+ 0001:00000920       _bi_windup                 10001920 f    CIL library: CIL module
+ 0001:00000980       _bi_flush                  10001980 f    CIL library: CIL module
+ 0001:00000a00       _bi_reverse                10001a00 f    CIL library: CIL module
+ 0001:00000a20       _detect_data_type          10001a20 f    CIL library: CIL module
+ 0001:00000a90       _compress_block            10001a90 f    CIL library: CIL module
+ 0001:00000fb0       _send_tree                 10001fb0 f    CIL library: CIL module
+ 0001:000014c0       _scan_tree                 100024c0 f    CIL library: CIL module
+ 0001:000015a0       _gen_codes                 100025a0 f    CIL library: CIL module
+ 0001:00001600       _gen_bitlen                10002600 f    CIL library: CIL module
+ 0001:00001820       _pqdownheap                10002820 f    CIL library: CIL module
+ 0001:000018f0       _init_block                100028f0 f    CIL library: CIL module
+ 0001:00001970       _tr_static_init            10002970 f    CIL library: CIL module
+ 0001:00001980       _copy_block                10002980 f    CIL library: CIL module
+ 0001:00001a90       _send_all_trees            10002a90 f    CIL library: CIL module
+ 0001:00001cf0       _build_tree                10002cf0 f    CIL library: CIL module
+ 0001:00001f50       _build_bl_tree             10002f50 f    CIL library: CIL module
+ 0001:000028a0       _syncsearch                100038a0 f    CIL library: CIL module
+ 0001:00002970       _updatewindow              10003970 f    CIL library: CIL module
+ 0001:00002a60       _fixedtables               10003a60 f    CIL library: CIL module
+ 0001:000048c0       _fixedtables               100058c0 f    CIL library: CIL module
+ 0001:00005960       _gz_reset                  10006960 f    CIL library: CIL module
+ 0001:00005a60       _gz_open                   10006a60 f    CIL library: CIL module
+ 0001:00005fc0       _longest_match             10006fc0 f    CIL library: CIL module
+ 0001:00006120       _lm_init                   10007120 f    CIL library: CIL module
+ 0001:00006280       _flush_pending             10007280 f    CIL library: CIL module
+ 0001:000062d0       _putShortMSB               100072d0 f    CIL library: CIL module
+ 0001:00006510       _read_buf                  10007510 f    CIL library: CIL module
+ 0001:000067b0       _fill_window               100077b0 f    CIL library: CIL module
+ 0001:00006da0       _deflate_huff              10007da0 f    CIL library: CIL module
+ 0001:00006f00       _deflate_rle               10007f00 f    CIL library: CIL module
+ 0001:000071b0       _deflate_slow              100081b0 f    CIL library: CIL module
+ 0001:000075a0       _deflate_fast              100085a0 f    CIL library: CIL module
+ 0001:000078d0       _deflate_stored            100088d0 f    CIL library: CIL module
+ 0001:00008370       _gf2_matrix_times          10009370 f    CIL library: CIL module
+ 0001:00008390       _crc32_big                 10009390 f    CIL library: CIL module
+ 0001:000086c0       _crc32_little              100096c0 f    CIL library: CIL module
+ 0001:000089d0       _gf2_matrix_square         100099d0 f    CIL library: CIL module
+ 0001:00008a00       _crc32_combine_            10009a00 f    CIL library: CIL module
+ 0001:00008c20       _adler32_combine_          10009c20 f    CIL library: CIL module
+ 0001:00008ff0       _gz_load                   10009ff0 f    CIL library: CIL module
+ 0001:00009060       _gz_avail                  1000a060 f    CIL library: CIL module
+ 0001:000090d0       _gz_decomp                 1000a0d0 f    CIL library: CIL module
+ 0001:000091c0       _gz_look                   1000a1c0 f    CIL library: CIL module
+ 0001:00009350       _gz_fetch                  1000a350 f    CIL library: CIL module
+ 0001:000093d0       _gz_skip                   1000a3d0 f    CIL library: CIL module
+ 0001:00009820       _gz_init                   1000a820 f    CIL library: CIL module
+ 0001:00009900       _gz_comp                   1000a900 f    CIL library: CIL module
+ 0001:00009a20       _gz_zero                   1000aa20 f    CIL library: CIL module
+
+ Exports
+
+  ordinal    name
+
+        1    _adler32
+               exported name: adler32
+        2    _adler32_combine
+               exported name: adler32_combine
+        3    _compress
+               exported name: compress
+        4    _compress2
+               exported name: compress2
+        5    _compressBound
+               exported name: compressBound
+        6    _crc32
+               exported name: crc32
+        7    _crc32_combine
+               exported name: crc32_combine
+        8    _deflate
+               exported name: deflate
+        9    _deflateBound
+               exported name: deflateBound
+       10    _deflateCopy
+               exported name: deflateCopy
+       11    _deflateEnd
+               exported name: deflateEnd
+       12    _deflateInit2_
+               exported name: deflateInit2_
+       13    _deflateInit_
+               exported name: deflateInit_
+       14    _deflateParams
+               exported name: deflateParams
+       15    _deflatePending
+               exported name: deflatePending
+       16    _deflatePrime
+               exported name: deflatePrime
+       17    _deflateReset
+               exported name: deflateReset
+       18    _deflateResetKeep
+               exported name: deflateResetKeep
+       19    _deflateSetDictionary
+               exported name: deflateSetDictionary
+       20    _deflateSetHeader
+               exported name: deflateSetHeader
+       21    _deflateTune
+               exported name: deflateTune
+       22    _get_crc_table
+               exported name: get_crc_table
+       23    _gzbuffer
+               exported name: gzbuffer
+       24    _gzclearerr
+               exported name: gzclearerr
+       25    _gzclose
+               exported name: gzclose
+       26    _gzclose_r
+               exported name: gzclose_r
+       27    _gzclose_w
+               exported name: gzclose_w
+       28    _gzdirect
+               exported name: gzdirect
+       29    _gzdopen
+               exported name: gzdopen
+       30    _gzeof
+               exported name: gzeof
+       31    _gzerror
+               exported name: gzerror
+       32    _gzflush
+               exported name: gzflush
+       33    _gzgetc
+               exported name: gzgetc
+       34    _gzgetc_
+               exported name: gzgetc_
+       35    _gzgets
+               exported name: gzgets
+       36    _gzoffset
+               exported name: gzoffset
+       37    _gzoffset64
+               exported name: gzoffset64
+       38    _gzopen
+               exported name: gzopen
+       39    _gzopen64
+               exported name: gzopen64
+       40    _gzopen_w
+               exported name: gzopen_w
+       41    _gzprintf
+               exported name: gzprintf
+       42    _gzputc
+               exported name: gzputc
+       43    _gzputs
+               exported name: gzputs
+       44    _gzread
+               exported name: gzread
+       45    _gzrewind
+               exported name: gzrewind
+       46    _gzseek
+               exported name: gzseek
+       47    _gzseek64
+               exported name: gzseek64
+       48    _gzsetparams
+               exported name: gzsetparams
+       49    _gztell
+               exported name: gztell
+       50    _gztell64
+               exported name: gztell64
+       51    _gzungetc
+               exported name: gzungetc
+       52    _gzwrite
+               exported name: gzwrite
+       53    _inflate
+               exported name: inflate
+       54    _inflateBack
+               exported name: inflateBack
+       55    _inflateBackEnd
+               exported name: inflateBackEnd
+       56    _inflateBackInit_
+               exported name: inflateBackInit_
+       57    _inflateCopy
+               exported name: inflateCopy
+       58    _inflateEnd
+               exported name: inflateEnd
+       59    _inflateGetHeader
+               exported name: inflateGetHeader
+       60    _inflateInit2_
+               exported name: inflateInit2_
+       61    _inflateInit_
+               exported name: inflateInit_
+       62    _inflateMark
+               exported name: inflateMark
+       63    _inflatePrime
+               exported name: inflatePrime
+       64    _inflateReset
+               exported name: inflateReset
+       65    _inflateReset2
+               exported name: inflateReset2
+       66    _inflateResetKeep
+               exported name: inflateResetKeep
+       67    _inflateSetDictionary
+               exported name: inflateSetDictionary
+       68    _inflateSync
+               exported name: inflateSync
+       69    _inflateSyncPoint
+               exported name: inflateSyncPoint
+       70    _inflateUndermine
+               exported name: inflateUndermine
+       71    _uncompress
+               exported name: uncompress
+       72    _zError
+               exported name: zError
+       73    _zlibCompileFlags
+               exported name: zlibCompileFlags
+       74    _zlibVersion
+               exported name: zlibVersion

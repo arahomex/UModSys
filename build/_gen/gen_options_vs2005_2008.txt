@@ -1,9 +1,6 @@
 begin project-group umodsys
   option random-seed 0 umodsys-vs2008
 
-  set ppath platform/win32
-  set spname win32
-
   option project * IntermediateDirectory $(path-out-tmp)
   option project * VCCLCompilerTool_AdditionalIncludeDirectories \$(SolutionDir)../../include
   option project * VCLinkerTool_AdditionalLibraryDirectories \$(IntDir)/..
@@ -12,13 +9,6 @@ begin project-group umodsys
 
   begin project all
     GUID-gen 0 umodsys.dummy.all
-  end
-
-  begin project umodsysc
-    GUID-gen 0 umodsys.umodsysc
-    mode console
-    option * OutputDirectory $(path-out-bin)
-    option * VCLinkerTool_AdditionalDependencies umodsys_lib_core.lib umodsys_lib_base.lib umodsys_lib_system.lib umodsys_lib_libmedia.lib
   end
 
   begin project umodsys_lib_core
@@ -64,14 +54,32 @@ begin project-group umodsys
 
   begin project plugin_test1
     GUID-gen 0 umodsys.plugin_test1
+    #
+    libpath $(path-out-bin) $(path-out-tmp)
+#    libs umodsys_lib_core umodsys_lib_base
+    #
     option * OutputDirectory $(path-out-bin)
-    option * VCLinkerTool_AdditionalDependencies umodsys_lib_core.lib umodsys_lib_base.lib
   end
 
   begin project plugin_test2
     GUID-gen 0 umodsys.plugin_test2
+    #
+    libpath $(path-out-bin) $(path-out-tmp)
+#    libs umodsys_lib_core umodsys_lib_base
+    #
     option * OutputDirectory $(path-out-bin)
     option * VCLinkerTool_AdditionalDependencies umodsys_lib_core.lib umodsys_lib_base.lib
+  end
+
+  begin project umodsysc
+    GUID-gen 0 umodsys.umodsysc
+    mode console
+    #
+    libpath $(path-out-bin) $(path-out-tmp)
+#    libs umodsys_lib_core umodsys_lib_base umodsys_lib_system umodsys_lib_libmedia
+    libs lib_zlib lib_libpng lib_jpeglib
+    #
+    option * OutputDirectory $(path-out-bin)
   end
 
 end

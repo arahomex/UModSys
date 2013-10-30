@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="plugin_test2"
-	ProjectGUID="{391A18A0-DA40-F27F-AC0F-8D5CE602E343}"
-	RootNamespace="plugin_test2"
+	Name="lib_zlib"
+	ProjectGUID="{82CE3F0A-94EC-86A8-65E8-2CA99E91C9AE}"
+	RootNamespace="lib_zlib"
 	>
 	<Platforms>
 		<Platform
@@ -30,8 +30,8 @@
 				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
-				PreprocessorDefinitions="WIN32;_DEBUG"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\zlib"
+				PreprocessorDefinitions="WIN32;_DEBUG;ZLIB_DLL"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="3"
@@ -44,7 +44,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
-				WarningLevel="3"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -56,7 +56,7 @@
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="true"
@@ -119,8 +119,8 @@
 				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
-				PreprocessorDefinitions="WIN32;NDEBUG"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\zlib"
+				PreprocessorDefinitions="WIN32;NDEBUG;ZLIB_DLL"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -133,7 +133,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="1"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -145,7 +145,7 @@
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="0"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="false"
@@ -208,8 +208,8 @@
 				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
-				PreprocessorDefinitions="WIN32;NDEBUG"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\zlib"
+				PreprocessorDefinitions="WIN32;NDEBUG;ZLIB_DLL"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -222,7 +222,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="1"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -234,7 +234,7 @@
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="0"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="false"
@@ -297,8 +297,8 @@
 				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
-				PreprocessorDefinitions="WIN32;_DEBUG"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\zlib"
+				PreprocessorDefinitions="WIN32;_DEBUG;ZLIB_DLL"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="3"
@@ -311,7 +311,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
-				WarningLevel="3"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -323,7 +323,7 @@
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="true"
@@ -386,8 +386,8 @@
 				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
-				PreprocessorDefinitions="WIN32;NDEBUG"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\zlib"
+				PreprocessorDefinitions="WIN32;NDEBUG;ZLIB_DLL"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -400,7 +400,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="1"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -412,7 +412,7 @@
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="0"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="false"
@@ -475,8 +475,8 @@
 				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
-				PreprocessorDefinitions="WIN32;NDEBUG"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\zlib"
+				PreprocessorDefinitions="WIN32;NDEBUG;ZLIB_DLL"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -489,7 +489,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="1"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -501,7 +501,7 @@
 				AdditionalDependencies="Winmm.lib ws2_32.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="0"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="false"
@@ -552,10 +552,114 @@
 	</Configurations>
 	<Files>
 		<Filter
+			Name="include"
+			>
+			<File
+				RelativePath="..\..\..\depends\zlib\crc32.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\deflate.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\gzguts.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\inffast.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\inffixed.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\inflate.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\inftrees.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\trees.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\zconf.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\zlib.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\zutil.h"
+				>
+			</File>
+		</Filter>
+		<Filter
 			Name="src"
 			>
 			<File
-				RelativePath="..\..\..\src\plugin\test\plugin_test2.cpp"
+				RelativePath="..\..\..\depends\zlib\adler32.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\compress.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\crc32.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\deflate.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\gzclose.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\gzlib.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\gzread.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\gzwrite.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\infback.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\inffast.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\inflate.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\inftrees.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\trees.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\uncompr.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\zlib\zutil.c"
 				>
 			</File>
 		</Filter>

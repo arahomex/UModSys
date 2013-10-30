@@ -3,6 +3,7 @@ begin project-group umodsys
   set path-bin $(path-root)/bin
   set path-dep $(path-root)/depends
 
+  set path-include $(path-root)/include
   set path-inc $(path-root)/include/umodsys
 
   set path-dep-jpeg-inc $(path-dep)/jpeglib
@@ -39,6 +40,10 @@ begin project-group umodsys
 
   begin project umodsysc
     mode binary
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
     begin file-group src
       file $(path-s-basesys)/umodsys.c_main.cpp
     end
@@ -52,6 +57,10 @@ begin project-group umodsys
 
   begin project umodsys_lib_core
     mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
     begin file-group src
       file $(path-s-core)/umodsys.core.objects.cpp
       file $(path-s-core)/umodsys.core.stdtypedefs.cpp
@@ -121,6 +130,10 @@ begin project-group umodsys
 
   begin project umodsys_lib_basesys
     mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
     begin file-group src
       begin mask $(path-skip) $(path-s-basesys)
         include *.cpp
@@ -131,6 +144,10 @@ begin project-group umodsys
 
   begin project umodsys_lib_base
     mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
     begin file-group src
       begin mask $(path-skip) $(path-s-base)
         include *.cpp
@@ -148,9 +165,13 @@ begin project-group umodsys
 
   begin project umodsys_lib_libmedia
     mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
     includes $(path-dep-jpeg-inc)
     includes $(path-dep-png-inc)
     includes $(path-dep-zlib-inc)
+    #
     begin file-group headers_media
       begin mask $(path-skip) $(path-inc)/lib/media
         include *.h
@@ -180,6 +201,10 @@ begin project-group umodsys
 
   begin project umodsys_lib_lib2d
     mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
     begin file-group headers_2d
       begin mask $(path-skip) $(path-inc)/lib/2d
         include *.h
@@ -204,6 +229,10 @@ begin project-group umodsys
 
   begin project plugin_test1
     mode shared
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
     begin file-group src
       begin mask $(path-skip) $(path-s-plugin)/test
         include plugin_test1.cpp
@@ -216,6 +245,10 @@ begin project-group umodsys
 
   begin project plugin_test2
     mode shared
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
     begin file-group src
       begin mask $(path-skip) $(path-s-plugin)/test
         include plugin_test2.cpp

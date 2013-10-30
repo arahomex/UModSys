@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="plugin_test2"
-	ProjectGUID="{391A18A0-DA40-F27F-AC0F-8D5CE602E343}"
-	RootNamespace="plugin_test2"
+	Name="lib_jpeglib"
+	ProjectGUID="{BC5E9FDD-613C-E7ED-72BA-15BFF9F9C281}"
+	RootNamespace="lib_jpeglib"
 	>
 	<Platforms>
 		<Platform
@@ -30,7 +30,7 @@
 				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\jpeglib"
 				PreprocessorDefinitions="WIN32;_DEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -44,7 +44,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
-				WarningLevel="3"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -119,7 +119,7 @@
 				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\jpeglib"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -133,7 +133,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="1"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -208,7 +208,7 @@
 				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\jpeglib"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -222,7 +222,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="1"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -297,7 +297,7 @@
 				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\jpeglib"
 				PreprocessorDefinitions="WIN32;_DEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -311,7 +311,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
-				WarningLevel="3"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -386,7 +386,7 @@
 				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\jpeglib"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -400,7 +400,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="1"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -475,7 +475,7 @@
 				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\jpeglib"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -489,7 +489,7 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="1"
+				WarningLevel="0"
 				WarnAsError="true"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -552,10 +552,234 @@
 	</Configurations>
 	<Files>
 		<Filter
+			Name="include"
+			>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\cderror.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\cdjpeg.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdct.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jerror.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jinclude.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jmemsys.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jpegint.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jpeglib.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jversion.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\transupp.h"
+				>
+			</File>
+		</Filter>
+		<Filter
 			Name="src"
 			>
 			<File
-				RelativePath="..\..\..\src\plugin\test\plugin_test2.cpp"
+				RelativePath="..\..\..\depends\jpeglib\jaricom.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jcapimin.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jcapistd.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jcarith.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jccoefct.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jccolor.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jcdctmgr.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jchuff.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jcinit.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jcmainct.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jcmarker.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jcmaster.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jcomapi.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jcparam.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jcprepct.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jcsample.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jctrans.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdapimin.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdapistd.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdarith.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdatadst.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdatasrc.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdcoefct.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdcolor.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jddctmgr.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdhuff.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdinput.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdmainct.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdmarker.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdmaster.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdmerge.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdpostct.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdsample.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jdtrans.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jerror.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jfdctflt.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jfdctfst.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jfdctint.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jidctflt.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jidctfst.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jidctint.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jmemansi.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jmemmgr.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jquant1.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jquant2.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\jpeglib\jutils.c"
 				>
 			</File>
 		</Filter>
