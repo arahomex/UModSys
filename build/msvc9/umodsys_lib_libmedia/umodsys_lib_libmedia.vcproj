@@ -591,23 +591,23 @@
 			Name="mod_images_std"
 			>
 			<File
-				RelativePath="..\..\..\src\module\media.images_std\umodsys.mod.media.images_std.cpp"
+				RelativePath="..\..\..\src\module\media\images_std\umodsys.mod.media.images_std.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media.images_std\umodsys.mod.media.images_std.filter.h"
+				RelativePath="..\..\..\src\module\media\images_std\umodsys.mod.media.images_std.filter.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media.images_std\umodsys.mod.media.images_std.h"
+				RelativePath="..\..\..\src\module\media\images_std\umodsys.mod.media.images_std.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media.images_std\umodsys.mod.media.images_std.jpeg.h"
+				RelativePath="..\..\..\src\module\media\images_std\umodsys.mod.media.images_std.jpeg.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media.images_std\umodsys.mod.media.images_std.png.h"
+				RelativePath="..\..\..\src\module\media\images_std\umodsys.mod.media.images_std.png.h"
 				>
 			</File>
 		</Filter>
@@ -615,31 +615,31 @@
 			Name="mod_std"
 			>
 			<File
-				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.cpp"
+				RelativePath="..\..\..\src\module\media\std\umodsys.mod.media.std.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.h"
+				RelativePath="..\..\..\src\module\media\std\umodsys.mod.media.std.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.libbincache.h"
+				RelativePath="..\..\..\src\module\media\std\umodsys.mod.media.std.libbincache.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.libbintree.h"
+				RelativePath="..\..\..\src\module\media\std\umodsys.mod.media.std.libbintree.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.liblayered.h"
+				RelativePath="..\..\..\src\module\media\std\umodsys.mod.media.std.liblayered.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.libobjcache.h"
+				RelativePath="..\..\..\src\module\media\std\umodsys.mod.media.std.libobjcache.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media.std\umodsys.mod.media.std.libobjfilter.h"
+				RelativePath="..\..\..\src\module\media\std\umodsys.mod.media.std.libobjfilter.h"
 				>
 			</File>
 		</Filter>
@@ -647,19 +647,19 @@
 			Name="mod_stdio"
 			>
 			<File
-				RelativePath="..\..\..\src\module\media.stdio\umodsys.mod.media.stdio.cpp"
+				RelativePath="..\..\..\src\module\media\stdio\umodsys.mod.media.stdio.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media.stdio\umodsys.mod.media.stdio.archive.h"
+				RelativePath="..\..\..\src\module\media\stdio\umodsys.mod.media.stdio.archive.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media.stdio\umodsys.mod.media.stdio.h"
+				RelativePath="..\..\..\src\module\media\stdio\umodsys.mod.media.stdio.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media.stdio\umodsys.mod.media.stdio.streams.h"
+				RelativePath="..\..\..\src\module\media\stdio\umodsys.mod.media.stdio.streams.h"
 				>
 			</File>
 		</Filter>
