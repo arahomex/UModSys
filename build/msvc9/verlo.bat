@@ -1,2 +1,1 @@
-@call %~d0%~p0_update_versions.bat LO
-
+@call %~d0%~p0_update_versions.bat --lo

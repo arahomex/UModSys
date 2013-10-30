@@ -1,0 +1,18 @@
+
+file src/basesys/auto_version.h
+  check src/basesys/ *.cpp *.h
+  check src/basesys/ !*c_main*
+
+file src/base/auto_version.h
+  check src/base/ *.cpp *.h 
+  check include/umodsys/base/ *.h
+  check include/umodsys/ stdcore.h
+
+file src/core/auto_version.h
+  check src/core/ *.h *.cpp $platform/*.cpp $platform/*.h
+  check include/umodsys/core/ *.h arch/*.h mem/*.h util/*.h $platform/*.h 
+  check include/umodsys/ stdcore.h
+
+file src/tl/auto_version.h
+  check src/tl/ *.h *.cpp
+  check include/umodsys/tl/ alloc/*.h composite/*.h math/*.h metastl/*.h string/*.h util/*.h
