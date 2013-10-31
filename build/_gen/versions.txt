@@ -1,18 +1,22 @@
 
-file src/basesys/auto_version.h
-  check src/basesys/ *.cpp *.h
-  check src/basesys/ !*c_main*
+version basesys
+  file-h     src/basesys/auto_version.h
+  check-date src/basesys/ *.cpp *.h !*c_main*
 
-file src/base/auto_version.h
-  check src/base/ *.cpp *.h 
-  check include/umodsys/base/ *.h
-  check include/umodsys/ stdcore.h
+version base
+  file-h     src/base/auto_version.h
+  check-date src/base/ *.cpp *.h 
+  check-date include/umodsys/base/ *.h
+  check-date include/umodsys/ stdcore.h
 
-file src/core/auto_version.h
-  check src/core/ *.h *.cpp $platform/*.cpp $platform/*.h
-  check include/umodsys/core/ *.h arch/*.h mem/*.h util/*.h $platform/*.h 
-  check include/umodsys/ stdcore.h
+version core
+  file-h     src/core/auto_version.h
+  check-date src/core/ *.h *.cpp $(platform)/*.cpp $(platform)/*.h
+  check-date include/umodsys/core/ *.h arch/*.h mem/*.h util/*.h $(platform)/*.h 
+  check-date include/umodsys/ stdcore.h
 
-file src/tl/auto_version.h
-  check src/tl/ *.h *.cpp
-  check include/umodsys/tl/ alloc/*.h composite/*.h math/*.h metastl/*.h string/*.h util/*.h
+version tl
+  file-h     src/tl/auto_version.h
+  check-date src/tl/ *.h *.cpp
+  check-date include/umodsys/tl/ alloc/*.h composite/*.h math/*.h metastl/*.h string/*.h util/*.h
+

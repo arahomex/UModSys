@@ -626,6 +626,10 @@
 				RelativePath="..\..\..\src\base\umodsys.base.system.cpp"
 				>
 			</File>
+			<File
+				RelativePath="..\..\..\src\base\auto_version.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="src-win32"

@@ -599,6 +599,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\basesys\auto_version.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\basesys\umodsys.basesys.rcommon.h"
 				>
 			</File>

@@ -1,2 +1,4 @@
-#define VERSION_LO 4
-#define VERSION_HI 0
+#define VERSION_MAJOR 0
+#define VERSION_MINOR 0
+#define VERSION_BUILD 1
+#define VERSION_TIME 1383222710
