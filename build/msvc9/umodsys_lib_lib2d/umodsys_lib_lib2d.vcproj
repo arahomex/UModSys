@@ -106,7 +106,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto lib2d libui mod-2d-lib2d mod-ui-libui"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib2d mod-2d-lib2d"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -220,7 +220,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto lib2d libui mod-2d-lib2d mod-ui-libui"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib2d mod-2d-lib2d"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -334,7 +334,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto lib2d libui mod-2d-lib2d mod-ui-libui"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib2d mod-2d-lib2d"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -448,7 +448,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto lib2d libui mod-2d-lib2d mod-ui-libui"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib2d mod-2d-lib2d"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -562,7 +562,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto lib2d libui mod-2d-lib2d mod-ui-libui"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib2d mod-2d-lib2d"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -676,7 +676,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto lib2d libui mod-2d-lib2d mod-ui-libui"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib2d mod-2d-lib2d"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -726,30 +726,6 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="headers_ui"
-			>
-			<File
-				RelativePath="..\..\..\include\umodsys\lib\ui\libui.common.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\include\umodsys\lib\ui\libui.frames.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\include\umodsys\lib\ui\libui.keymap.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\include\umodsys\lib\ui\libui.term_con.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\include\umodsys\lib\ui\libui.theme.h"
-				>
-			</File>
-		</Filter>
-		<Filter
 			Name="lib_2d"
 			>
 			<File
@@ -758,18 +734,6 @@
 			</File>
 			<File
 				RelativePath="..\..\..\src\lib\2d\version_library.h"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="lib_ui"
-			>
-			<File
-				RelativePath="..\..\..\src\lib\ui\umodsys.lib.ui.common.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\lib\ui\version_library.h"
 				>
 			</File>
 		</Filter>

@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
-	Name="plugin_test1"
-	ProjectGUID="{4DF896FF-847E-A490-6CEE-0EED94CD460A}"
-	RootNamespace="plugin_test1"
+	Name="umodsys_lib_lib3d"
+	ProjectGUID="{9EE8D9EE-0437-D1C3-CDA3-D041798430D2}"
+	RootNamespace="umodsys_lib_lib3d"
 	>
 	<Platforms>
 		<Platform
@@ -17,9 +17,9 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="2"
 			>
 			<Tool
@@ -53,10 +53,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
+				AdditionalDependencies="Winmm.lib ws2_32.lib"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="true"
@@ -106,7 +106,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-lib3d"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -131,9 +131,9 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="2"
 			>
 			<Tool
@@ -167,10 +167,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
+				AdditionalDependencies="Winmm.lib ws2_32.lib"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="0"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="false"
@@ -220,7 +220,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-lib3d"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -245,9 +245,9 @@
 		</Configuration>
 		<Configuration
 			Name="ReleaseSpace|Win32"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="2"
 			>
 			<Tool
@@ -281,10 +281,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
+				AdditionalDependencies="Winmm.lib ws2_32.lib"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="0"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="false"
@@ -334,7 +334,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-lib3d"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -359,9 +359,9 @@
 		</Configuration>
 		<Configuration
 			Name="Debug|x64"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="2"
 			>
 			<Tool
@@ -395,10 +395,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
+				AdditionalDependencies="Winmm.lib ws2_32.lib"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="true"
@@ -448,7 +448,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-lib3d"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -473,9 +473,9 @@
 		</Configuration>
 		<Configuration
 			Name="Release|x64"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="2"
 			>
 			<Tool
@@ -509,10 +509,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
+				AdditionalDependencies="Winmm.lib ws2_32.lib"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="0"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="false"
@@ -562,7 +562,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-lib3d"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -587,9 +587,9 @@
 		</Configuration>
 		<Configuration
 			Name="ReleaseSpace|x64"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			OutputDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)"
 			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
+			ConfigurationType="4"
 			CharacterSet="2"
 			>
 			<Tool
@@ -623,10 +623,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
+				AdditionalDependencies="Winmm.lib ws2_32.lib"
+				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="0"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				AdditionalLibraryDirectories="$(IntDir)/.."
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="false"
@@ -676,7 +676,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-lib3d"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -702,28 +702,12 @@
 	</Configurations>
 	<Files>
 		<Filter
-			Name="src"
+			Name="headers_3d"
 			>
-			<File
-				RelativePath="..\..\..\src\plugin\test\plugin_test1.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\plugin\test\plugin_test1.common.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\plugin\test\plugin_test1.file_tests.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\plugin\test\plugin_test1.obj_load.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\plugin\test\plugin_test1.ui_tests.h"
-				>
-			</File>
+		</Filter>
+		<Filter
+			Name="lib_3d"
+			>
 		</Filter>
 	</Files>
 	<Globals>

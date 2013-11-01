@@ -215,7 +215,7 @@ struct TITerminalConnection {
   virtual CType* get_handler(size_t id) const =0;
   virtual CType* get_handler(BCStr name) const =0;
   virtual CType* get_friend_handler(IRefObject *obj) const =0; // map handlers
-  virtual tl::TRefObject<CType> create_handler(BCStr name, const SParameters* params) =0;
+  virtual bool create_handler(tl::TRefObject<CType> &rv, BCStr name, const SParameters* params) =0;
 };
 
 //***************************************
@@ -231,11 +231,12 @@ struct ITerminal : public IRefObject {
   virtual double get_clock(void) = 0;
   virtual bool wait(float sec) = 0;
   virtual bool terminal_reset(void) = 0;
-  // get or create inputs
+  // get or create pure inputs
   virtual TITerminalConnection<IKeyboardController>& get_input_keyboard(void) = 0;
   virtual TITerminalConnection<IMouseController>& get_input_mouse(void) = 0;
   virtual TITerminalConnection<ITouchController>& get_input_touch(void) = 0;
   virtual TITerminalConnection<IJoystickController>& get_input_joystick(void) = 0;
+  // get or create inputs
   virtual TITerminalConnection<lib2d::ICaptureDriver>& get_input_2d(void) = 0;
   virtual TITerminalConnection<lib3d::ICaptureDriver>& get_input_3d(void) = 0;
   virtual TITerminalConnection<libmovie::ICaptureDriver>& get_input_movie(void) = 0;

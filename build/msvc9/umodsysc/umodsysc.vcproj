@@ -53,7 +53,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib"
+				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
@@ -167,7 +167,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib"
+				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
@@ -281,7 +281,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib"
+				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
@@ -395,7 +395,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib"
+				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
@@ -509,7 +509,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib"
+				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
@@ -623,7 +623,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib"
+				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"

@@ -8,13 +8,11 @@ using namespace UModSys::base::rsystem;
 
 UMODSYS_MODULE_DEF(media,stdio);
 UMODSYS_MODULE_DEF(media,std);
-UMODSYS_MODULE_DEF(media,images_std);
 
 static void refer(void)
 {
   UMODSYS_MODULE_USE(media,stdio);
   UMODSYS_MODULE_USE(media,std);
-  UMODSYS_MODULE_USE(media,images_std);
 }
 
 int main(int argc, char **argv)

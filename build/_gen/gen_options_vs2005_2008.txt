@@ -52,10 +52,22 @@ begin project-group umodsys
     option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-std mod-media-stdio mod-media-images_std"
   end
 
+  begin project umodsys_lib_libui
+    GUID-gen 0 umodsys.lib_libui
+    option * OutputDirectory $(path-out-lib)
+    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto libui mod-ui-libui mod-ui-SDL_core"
+  end
+
   begin project umodsys_lib_lib2d
     GUID-gen 0 umodsys.lib_lib2d
     option * OutputDirectory $(path-out-lib)
-    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto lib2d libui mod-2d-lib2d mod-ui-libui"
+    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto lib2d mod-2d-lib2d"
+  end
+
+  begin project umodsys_lib_lib3d
+    GUID-gen 0 umodsys.lib_lib3d
+    option * OutputDirectory $(path-out-lib)
+    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto lib3d mod-3d-lib3d"
   end
 
   begin project plugin_test1
@@ -63,6 +75,7 @@ begin project-group umodsys
     #
     libpath $(path-out-bin) $(path-out-tmp)
 #    libs umodsys_lib_core umodsys_lib_base
+    libs lib_zlib lib_libpng lib_jpeglib lib_SDL2
     #
     option * OutputDirectory $(path-out-bin)
     option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto plugin-test1"
@@ -85,7 +98,7 @@ begin project-group umodsys
     #
     libpath $(path-out-bin) $(path-out-tmp)
 #    libs umodsys_lib_core umodsys_lib_base umodsys_lib_system umodsys_lib_libmedia
-    libs lib_zlib lib_libpng lib_jpeglib
+    libs lib_zlib lib_libpng lib_jpeglib lib_SDL2
     #
     option * OutputDirectory $(path-out-bin)
     option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto umodsysc"

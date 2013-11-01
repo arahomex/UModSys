@@ -45,19 +45,27 @@ version libmedia
   check-date include/umodsys/lib/media/ *.h
   check-date src/lib/media/ *.h *.cpp
 
-# --------------------------------- modules: lib2d, libui, lib3d
+# --------------------------------- modules: libui
+
+version mod-ui-libui
+  file-h     src/module/ui/libui/version_module.h prefix:UMODSYS_VERSION_MOD_UI_LIBUI
+  check-date src/module/ui/libui *.h *.cpp
+
+version mod-ui-sdl_core
+  file-h     src/module/ui/SDL_core/version_module.h prefix:UMODSYS_VERSION_MOD_UI_SDLCORE
+  check-date src/module/ui/SDL_core *.h *.cpp
+
+# --------------------------------- modules: lib2d
 
 version mod-2d-lib2d
   file-h     src/module/2d/lib2d/version_module.h prefix:UMODSYS_VERSION_MOD_2D_LIB2D
   check-date src/module/2d/lib2d *.h *.cpp
 
+# --------------------------------- modules: lib3d
+
 version mod-3d-lib3d
   file-h     src/module/3d/lib3d/version_module.h prefix:UMODSYS_VERSION_MOD_3D_LIB3D
   check-date src/module/3d/lib3d *.h *.cpp
-
-version mod-ui-libui
-  file-h     src/module/ui/libui/version_module.h prefix:UMODSYS_VERSION_MOD_UI_LIBUI
-  check-date src/module/ui/libui *.h *.cpp
 
 # --------------------------------- modules: libmedia
 

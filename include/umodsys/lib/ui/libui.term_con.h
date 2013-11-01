@@ -23,7 +23,7 @@ struct TRTerminalConnectionNull : public TITerminalConnection<CType> {
   inline CType* get_handler(size_t id) const { return NULL; }
   inline CType* get_handler(BCStr name) const { return NULL; }
   inline CType* get_friend_handler(IRefObject *obj) const { return NULL; }
-  inline tl::TRefObject<CType> create_handler(BCStr name, const SParameters* params) { return NULL; }
+  inline bool create_handler(tl::TRefObject<CType> &rv, BCStr name, const SParameters* params) { return false; }
   //
   inline TRTerminalConnectionNull(void) {}
 };
@@ -41,7 +41,7 @@ struct TRTerminalConnectionComposite : public TITerminalConnection<CType> {
   CType* get_handler(size_t id) const;
   CType* get_handler(BCStr name) const;
   CType* get_friend_handler(IRefObject *obj) const;
-  tl::TRefObject<CType> create_handler(BCStr name, const SParameters* params);
+  bool create_handler(tl::TRefObject<CType> &rv, BCStr name, const SParameters* params);
   //
   inline TRTerminalConnectionComposite(CTerminal *pv) : link(pv) {}
   //
@@ -75,9 +75,9 @@ inline CType* TRTerminalConnectionComposite<CType, CTerminal>::get_friend_handle
 }
 
 template<typename CType, typename CTerminal>
-inline tl::TRefObject<CType> TRTerminalConnectionComposite<CType, CTerminal>::create_handler(BCStr name, const SParameters* params)
+inline bool TRTerminalConnectionComposite<CType, CTerminal>::create_handler(tl::TRefObject<CType> &rv, BCStr name, const SParameters* params)
 { 
-  return link->connection_create_handler(vp, name, params);
+  return link->connection_create_handler(rv, vp, name, params);
 }
 
 //***************************************

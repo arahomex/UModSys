@@ -2,8 +2,17 @@
 #include <umodsys/tl/composite/dynarray.h>
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.library.h>
+#include <umodsys/lib/ui/libui.common.h>
 
 #include "version_plugin_test1.h"
+
+UMODSYS_MODULE_DEF(media,images_std);
+UMODSYS_MODULE_DEF(ui,SDL_core);
+static void refer(void)
+{
+  UMODSYS_MODULE_USE(media,images_std);
+  UMODSYS_MODULE_USE(ui,SDL_core);
+}
 
 UMODSYS_MODULE_BEGIN(test, test1)
 
@@ -22,6 +31,7 @@ struct RTest1_Shell : public IShell {
   UMODSYS_BASE_SHELL_IMPLEMENT(UMODSYS_MODULE_NAME(test,test1)::RTest1_Shell, 1, IShell)
   //
   void* memblock;
+  // ----------------------------------------------------------------------------------
   //
   void dump_str(const char *s, size_t n);
   //
@@ -41,16 +51,26 @@ struct RTest1_Shell : public IShell {
   //
   // ----------------------------------------------------------------------------------
   //
+  libui::ITerminal::P ui_newterm(const DCString &mask, const SParameters& args);
+  //
+  void ui_test1(void);
+  //
+  // ----------------------------------------------------------------------------------
+  //
   RTest1_Shell(DOwner *own) : refs(own) {
     M.con().put(0, "RTest1_Shell() {\n");
     memblock = M().mem_alloc(1024, _UMODSYS_SOURCEINFO);
     M().mem_alloc(511, _UMODSYS_SOURCEINFO);
     //
+#if 0
     file_test1();
     file_test2();
     file_test3();
     file_test4();
     file_test5();
+#endif
+    //
+    ui_test1();
     //
     M.con().put(0, "} // RTest1_Shell()\n");
   }
@@ -79,6 +99,7 @@ struct RTest1_Shell : public IShell {
 
 #include "plugin_test1.common.h"
 #include "plugin_test1.file_tests.h"
+#include "plugin_test1.ui_tests.h"
 
 struct RGenerator : public IGenerator {
   //
@@ -112,6 +133,7 @@ struct RModuleReg : public IModuleReg {
     UMODSYS_VERSION_PLUGIN_TEST_TEST1_MINOR, 
     "Test 1 - module"
     ) {
+    lost_func(refer);
 //    M.con().put(0, "RModuleReg()\n");
   }
   ~RModuleReg(void) {
