@@ -101,6 +101,31 @@ EOT
 			<Tool
 				Name="VCALinkTool"
 			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="$OPT_PreBuild_Description"
+				CommandLine="$OPT_PreBuild_CommandLine"
+				ExcludedFromBuild="$OPT_PreBuild_Excluded"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="$OPT_PreLink_Description"
+				CommandLine="$OPT_PreLink_CommandLine"
+				ExcludedFromBuild="$OPT_PreLink_Excluded"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="$OPT_PostBuild_Description"
+				CommandLine="$OPT_PostBuild_CommandLine"
+				ExcludedFromBuild="$OPT_PostBuild_Excluded"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="$OPT_CustomBuild_Description"
+				CommandLine="$OPT_CustomBuild_CommandLine"
+				AdditionalDependencies="$OPT_CustomBuild_AdditionalDependencies"
+				Outputs="$OPT_CustomBuild_Outputs"
+			/>
 EOT
     'project-config-compiler' => <<'EOT',
 			<Tool
@@ -255,6 +280,24 @@ EOT
         'Librarian_OutputFile'                      => '',
         #
         'BscMake_OutputFile'                        => '',
+        #-------------------------------
+        'PreBuild_Description'                      => '',
+        'PreBuild_CommandLine'                      => '',
+        'PreBuild_Excluded'                         => '',
+        #
+        'PreLink_Description'                       => '',
+        'PreLink_CommandLine'                       => '',
+        'PreLink_Excluded'                          => '',
+        #
+        'PostBuild_Description'                     => '',
+        'PostBuild_CommandLine'                     => '',
+        'PostBuild_Excluded'                        => '',
+        #
+        'CustomBuild_Description'                   => '',
+        'CustomBuild_CommandLine'                   => '',
+        'CustomBuild_AdditionalDependencies'        => '',
+        'CustomBuild_Outputs'                       => '',
+        #-------------------------------
       },
     },
     #
@@ -288,6 +331,23 @@ EOT
       'Linker_SubSystem'                            => '1',
       #
       'BscMake_OutputFile'                          => '$(IntDir)/$(ProjectName).bsc',
+      #
+      'PreBuild_Description'                        => 'Pre Build',
+      'PreBuild_CommandLine'                        => '',
+      'PreBuild_Excluded'                           => 'false',
+      #
+      'PreLink_Description'                         => 'Pre Link',
+      'PreLink_CommandLine'                         => '',
+      'PreLink_Excluded'                            => 'false',
+      #
+      'PostBuild_Description'                       => 'Post Build',
+      'PostBuild_CommandLine'                       => '',
+      'PostBuild_Excluded'                          => 'false',
+      #
+      'CustomBuild_Description'                     => 'Custom Build',
+      'CustomBuild_CommandLine'                     => '',
+      'CustomBuild_AdditionalDependencies'          => '',
+      'CustomBuild_Outputs'                         => '',
     },
     'Debug' => {
       'Compiler_Optimization'                       => '0',

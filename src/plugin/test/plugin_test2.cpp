@@ -3,6 +3,8 @@
 #include <umodsys/base/module_impl.h>
 #include <umodsys/base/bobjects.h>
 
+#include "version_plugin_test2.h"
+
 namespace UModSys {
 namespace test2 {
 
@@ -39,8 +41,13 @@ static tl::TTypeStaticHolder<RTest2_Shell> shell;
 struct RTest2_ModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RTest2_ModuleReg)
   //
-  RTest2_ModuleReg(void) : IModuleReg("tests::test2", 1, 0, "") {
-    minfo.set("Test2", 0, 1, "Test 2 - module");
+  RTest2_ModuleReg(void) 
+  : IModuleReg(
+      "tests::test2", 
+      UMODSYS_VERSION_PLUGIN_TEST_TEST2_MAJOR, 
+      UMODSYS_VERSION_PLUGIN_TEST_TEST2_MINOR, 
+      "Test 2 - module"
+    ) {
 //    M.con().put(0, "RTest2_ModuleReg()\n");
   }
   ~RTest2_ModuleReg(void) {

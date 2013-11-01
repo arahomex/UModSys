@@ -4,6 +4,7 @@ begin project-group umodsys
   option project * IntermediateDirectory $(path-out-tmp)
   option project * VCCLCompilerTool_AdditionalIncludeDirectories \$(SolutionDir)../../include
   option project * VCLinkerTool_AdditionalLibraryDirectories \$(IntDir)/..
+  option project * PreBuild_Description "Version Increment..."
   option project [] Platforms "Win32 x64"
   option project [] Configurations "Debug Release ReleaseSpace"
 
@@ -24,6 +25,7 @@ begin project-group umodsys
         include *.h
       end
     end
+    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto core"
   end
 
   begin project umodsys_lib_base
@@ -32,6 +34,7 @@ begin project-group umodsys
     begin file-group src-$(spname)
       file $(path-s-base)/$(ppath)/umodsys.so_main.win32.cpp
     end
+    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto base"
   end
 
   begin project umodsys_lib_basesys
@@ -40,16 +43,19 @@ begin project-group umodsys
     begin file-group src-$(spname)
       file $(path-s-basesys)/$(ppath)/umodsys.basesys.rmodule.win32.cpp
     end
+    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto basesys"
   end
 
   begin project umodsys_lib_libmedia
     GUID-gen 0 umodsys.lib_libmedia
     option * OutputDirectory $(path-out-lib)
+    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-std mod-media-stdio mod-media-images_std"
   end
 
   begin project umodsys_lib_lib2d
     GUID-gen 0 umodsys.lib_lib2d
     option * OutputDirectory $(path-out-lib)
+    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto lib2d libui mod-2d-lib2d mod-ui-libui"
   end
 
   begin project plugin_test1
@@ -59,6 +65,7 @@ begin project-group umodsys
 #    libs umodsys_lib_core umodsys_lib_base
     #
     option * OutputDirectory $(path-out-bin)
+    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto plugin-test1"
   end
 
   begin project plugin_test2
@@ -69,6 +76,7 @@ begin project-group umodsys
     #
     option * OutputDirectory $(path-out-bin)
     option * VCLinkerTool_AdditionalDependencies umodsys_lib_core.lib umodsys_lib_base.lib
+    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto plugin-test2"
   end
 
   begin project umodsysc
@@ -80,6 +88,7 @@ begin project-group umodsys
     libs lib_zlib lib_libpng lib_jpeglib
     #
     option * OutputDirectory $(path-out-bin)
+    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto umodsysc"
   end
 
 end

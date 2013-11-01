@@ -103,6 +103,31 @@
 			<Tool
 				Name="VCALinkTool"
 			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto basesys"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
@@ -191,6 +216,31 @@
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto basesys"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
 			/>
 		</Configuration>
 		<Configuration
@@ -281,6 +331,31 @@
 			<Tool
 				Name="VCALinkTool"
 			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto basesys"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
+			/>
 		</Configuration>
 		<Configuration
 			Name="Debug|x64"
@@ -369,6 +444,31 @@
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto basesys"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
 			/>
 		</Configuration>
 		<Configuration
@@ -459,6 +559,31 @@
 			<Tool
 				Name="VCALinkTool"
 			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto basesys"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
+			/>
 		</Configuration>
 		<Configuration
 			Name="ReleaseSpace|x64"
@@ -548,6 +673,31 @@
 			<Tool
 				Name="VCALinkTool"
 			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto basesys"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
+			/>
 		</Configuration>
 	</Configurations>
 	<Files>
@@ -599,10 +749,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\basesys\auto_version.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\..\src\basesys\umodsys.basesys.rcommon.h"
 				>
 			</File>
@@ -624,6 +770,14 @@
 			</File>
 			<File
 				RelativePath="..\..\..\src\basesys\umodsys.basesys.rsystem.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\basesys\version_library.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\basesys\version_main.h"
 				>
 			</File>
 		</Filter>

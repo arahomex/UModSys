@@ -80,9 +80,9 @@ our $version_files = {
       my $args = $verfile->{'args'};
       my $prefix = 'VERSION';
       my @kw = ( "_MAJOR", "_MINOR", "_BUILD", "_TIME" );
-      if($args =~ s/^(\S+)\s+$//) {
+      if($args =~ s/^(\S+)\s+//) {
         $verfile->{'filename'} = $1;
-        while($args =~ s/(\w+):(\S+)\s+$//) {
+        while(($args =~ s/^(\w+)\:(\S+)\s+//) or ($args =~ s/^(\w+)\:(\S+)//)) {
           my ($key,$value) = ($1,$2);
           if($key eq 'prefix') {
             $prefix = $value,
@@ -209,6 +209,8 @@ sub process_file($)
     $line =~ s/\n$//; $line =~ s/\r$//;
     $lineno++;
     next if $line eq '';
+    next if substr($line,0,1) eq '#';
+    next if substr($line,0,1) eq ';';
     #
     if($line =~ /^\s*version\s+?(.*?)$/) {
       my $name = $1;
@@ -540,4 +542,4 @@ for my $fn (@files) {
   process_file($fn);
 }
 
-print "Version generator version 0.04 done\n";
+print "Version generator version 0.05 done\n";

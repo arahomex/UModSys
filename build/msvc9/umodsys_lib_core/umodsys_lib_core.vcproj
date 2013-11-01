@@ -103,6 +103,31 @@
 			<Tool
 				Name="VCALinkTool"
 			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto core"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
@@ -191,6 +216,31 @@
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto core"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
 			/>
 		</Configuration>
 		<Configuration
@@ -281,6 +331,31 @@
 			<Tool
 				Name="VCALinkTool"
 			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto core"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
+			/>
 		</Configuration>
 		<Configuration
 			Name="Debug|x64"
@@ -369,6 +444,31 @@
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto core"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
 			/>
 		</Configuration>
 		<Configuration
@@ -459,6 +559,31 @@
 			<Tool
 				Name="VCALinkTool"
 			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto core"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
+			/>
 		</Configuration>
 		<Configuration
 			Name="ReleaseSpace|x64"
@@ -547,6 +672,31 @@
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto core"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
 			/>
 		</Configuration>
 	</Configurations>
@@ -967,11 +1117,11 @@
 			Name="src-tl"
 			>
 			<File
-				RelativePath="..\..\..\src\tl\umodsys.tl.strings.cpp"
+				RelativePath="..\..\..\src\core\umodsys.tl.strings.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\tl\umodsys.tl.utf.cpp"
+				RelativePath="..\..\..\src\core\umodsys.tl.utf.cpp"
 				>
 			</File>
 		</Filter>

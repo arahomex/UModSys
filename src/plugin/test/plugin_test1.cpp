@@ -3,6 +3,8 @@
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.library.h>
 
+#include "version_plugin_test1.h"
+
 UMODSYS_MODULE_BEGIN(test, test1)
 
 using namespace core;
@@ -103,8 +105,13 @@ struct RGenerator : public IGenerator {
 struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)
   //
-  RModuleReg(void) : IModuleReg("tests::test1", 1, 0, "") {
-    minfo.set("Test1", 0, 1, "Test 1 - module");
+  RModuleReg(void) 
+  : IModuleReg(
+    "tests::test1", 
+    UMODSYS_VERSION_PLUGIN_TEST_TEST1_MAJOR, 
+    UMODSYS_VERSION_PLUGIN_TEST_TEST1_MINOR, 
+    "Test 1 - module"
+    ) {
 //    M.con().put(0, "RModuleReg()\n");
   }
   ~RModuleReg(void) {

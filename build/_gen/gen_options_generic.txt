@@ -14,7 +14,6 @@ begin project-group umodsys
   set path-s-base $(path-src)/base
   set path-s-basesys $(path-src)/basesys
   set path-s-core $(path-src)/core
-  set path-s-tl $(path-src)/tl
 
   set path-s-lib $(path-src)/lib
   set path-s-mod $(path-src)/module
@@ -68,8 +67,8 @@ begin project-group umodsys
       file $(path-s-core)/umodsys.core.uniqueptrlist.cpp
     end
     begin file-group src-tl
-      file $(path-s-tl)/umodsys.tl.strings.cpp
-      file $(path-s-tl)/umodsys.tl.utf.cpp
+      file $(path-s-core)/umodsys.tl.strings.cpp
+      file $(path-s-core)/umodsys.tl.utf.cpp
     end
     begin file-group headers
       begin file-group core
