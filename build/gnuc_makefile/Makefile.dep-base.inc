@@ -53,4 +53,5 @@ endif
 # pull in dependency info for *existing* $(OSUFFIX) files
 ifndef NO_CXX_DEP
 -include $(base_lib_depends:$(OSUFFIX)=$(OSUFFIX).d)
+-include $(so_main:$(OSUFFIX)=$(OSUFFIX).d)
 endif

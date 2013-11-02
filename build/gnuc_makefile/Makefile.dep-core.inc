@@ -16,6 +16,7 @@ core_lib_depends := \
   $(T)/umodsys.core.stdtypedefs$(OSUFFIX) \
   $(T)/umodsys.core.uniqueptr$(OSUFFIX) \
   $(T)/umodsys.tl.strings$(OSUFFIX) \
+  $(T)/umodsys.tl.utf$(OSUFFIX) \
   \
   $(T)/umodsys.core.syshlp_chars.$(PLATFORM_ID)$(OSUFFIX) \
   $(T)/umodsys.core.syshlp_charcode.$(PLATFORM_ID)$(OSUFFIX) \
@@ -55,19 +56,10 @@ ifndef NO_CXX_DEP
 	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
 endif
 
-#---------------- tl lib path
-
-$(T)/%$(OSUFFIX) : ../../src/tl/%.cpp
-	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $< 
-ifndef NO_CXX_DEP
-	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
-endif
-
 #---------------------------- /make rules generic
 
 #---------------------------- make rules depfiles
 # pull in dependency info for *existing* $(OSUFFIX) files
 ifndef NO_CXX_DEP
 -include $(core_lib_depends:$(OSUFFIX)=$(OSUFFIX).d)
--include $(so_main:$(OSUFFIX)=$(OSUFFIX).d)
 endif
