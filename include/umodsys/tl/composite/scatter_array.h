@@ -5,10 +5,12 @@
 // info: scatter array type based on tree-rb
 /*************************************************************/
 
+#include <umodsys/core/stdinlines.h>
+
 #include <umodsys/tl/composite/tree_rb.h>
 #include <umodsys/tl/composite/pair.h>
-
 #include <umodsys/tl/alloc/allocator.h>
+#include <umodsys/tl/util/node_deleter.h>
 #include <umodsys/tl/metastl/throws.h>
 
 namespace UModSys {
@@ -20,12 +22,12 @@ template<typename TData, typename TIndex=int>
 struct TScatterArrayNode;
 
 template<typename TData, typename TIndex=int, 
-         typename Comparer = TScalarCompare< TIndex >,
+         typename TComparer = core::TScalarCompare< TIndex >,
          typename TNodeDeleter = TNodeDeleter0< TScatterArrayNode<TData,TIndex> > >
 struct TScatterArray;
 
 template<typename TData, typename TIndex=int, 
-         typename Comparer = TScalarCompare< TIndex >,
+         typename TComparer = core::TScalarCompare< TIndex >,
          typename MemAlloc = core::SIMemAlloc >
 struct TScatterArrayD1;
 

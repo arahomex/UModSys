@@ -4,6 +4,6 @@ PLATFORM_ID=linux
 
 BINSUFFIX=
 SOLIBSUFFIX=.so
-CXXFLAGS += -fPIC -fvisibility=hidden -Werror
+CXXFLAGS += -fPIC -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64
 
 include Makefile.inc

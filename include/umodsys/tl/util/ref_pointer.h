@@ -6,6 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/core/mem/mem_alloc.h>
+#include <umodsys/core/stdtypedefs.h>
 
 namespace UModSys {
 
@@ -115,7 +116,7 @@ struct TRefObjectWeakFunc {
   typedef typename T::WeakPointer WeakPointer;
   //
   struct Data : public WeakPointer {
-    T* get(void) { return t_get<T>(); }
+    T* get(void) { return WeakPointer::t_get(static_cast<T*>(NULL)); }
   };
   //
   inline static void s_init(Data &obj, Object obj2);
@@ -161,7 +162,7 @@ struct TRefObject {
   inline void clear(void) { RefFunc::s_remove(object);  }
   inline void set(Object obj) { RefFunc::s_set(object, obj); }
   //
-  inline Object detach(void) { return RefFunc::s_detach(object) }
+  inline Object detach(void) { return RefFunc::s_detach(object); }
   inline void attach(Object obj) { RefFunc::s_remove(object); object=obj;  }
 protected:
 };
@@ -392,7 +393,7 @@ inline TRefObjectLinksParent<Self, Owner>::TRefObjectLinksParent(Owner* pv)
 template<typename Self, typename Owner> 
 inline void TRefObjectLinksParent<Self, Owner>::obj_delete(Self* p) const
 {
-  TRefObject<Owner> pv(owner, void_null());
+  TRefObject<Owner> pv(owner, core::void_null());
   owner = NULL;
   delete p;
 }
@@ -409,7 +410,7 @@ inline TRefObjectLinksModObject<Self, Owner>::TRefObjectLinksModObject(Owner* pv
 template<typename Self, typename Owner> 
 inline void TRefObjectLinksModObject<Self, Owner>::obj_delete(Self* p) const
 {
-  TRefObject<Owner, TModObjectFunc<Owner> > pv(owner, void_null());
+  TRefObject<Owner, TModObjectFunc<Owner> > pv(owner, core::void_null());
   owner = NULL;
   delete p;
 }

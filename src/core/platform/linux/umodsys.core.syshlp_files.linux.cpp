@@ -11,188 +11,32 @@ using namespace UModSys::core::syshlp;
 // syshlp::
 //***************************************
 
-FILE* syshlp::c_fopen(const char *cfilename, const char *cmode)
+FILE* syshlp::u_fopen(const char *cfilename, const char *cmode)
 {
   return fopen(cfilename, cmode);
 }
 
 //***************************************
 
-#if 0
-
-static int sys_list_fill(sys_list_context_t* ctx, WIN32_FIND_DATAW *ff)
-{
-  syshlp::gracial_convert(ctx->name, sizeof(ctx->name), ff->cFileName, wcslen(ff->cFileName));
-  if(!tl::su::wildcmp(ctx->mask, ctx->name))
-    return 0;
-  ctx->file_size = ((long long)ff->nFileSizeHigh<<32) + ff->nFileSizeLow;
-  ctx->time_accessed = filetime_to_timet(ff->ftLastAccessTime);
-  ctx->time_modified = filetime_to_timet(ff->ftLastWriteTime);
-  ctx->time_created = filetime_to_timet(ff->ftCreationTime);
-  //
-  ctx->perm = 0;
-  if(ff->dwFileAttributes & FILE_ATTRIBUTE_READONLY) {
-    ctx->perm = ~0 & ~slp_Write;
-  } else {
-    ctx->perm = ~0;
-  }
-  //
-  if(ff->dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
-    ctx->type = slt_Directory;
-  } else if(ff->dwFileAttributes & FILE_ATTRIBUTE_DEVICE) {
-    ctx->type = slt_SerialDev;
-  } else if(ff->dwFileAttributes & FILE_ATTRIBUTE_REPARSE_POINT) {
-    if(ff->dwReserved0==IO_REPARSE_TAG_SYMLINK)
-      ctx->type = slt_SymLink;
-    else if(ff->dwReserved0==IO_REPARSE_TAG_MOUNT_POINT)
-      ctx->type = slt_Mount;
-    else
-      ctx->type = slt_SymLink;
-  } else {
-    ctx->type = slt_File;
-  }
-  ctx->userattr = ff->dwFileAttributes;
-  return 1;
-}
-
-int syshlp::list_begin(sys_list_context_t* ctx, const char *path, const char *mask, int options)
-{
-  if(ctx==NULL)
-    return -1;
-  if(path==NULL || *path==0) 
-    path = ".";
-  if(mask==NULL || *mask==0) 
-    mask = "*";
-  //
-  ctx->path = path;
-  ctx->mask = mask;
-  ctx->options = options;
-  //
-  char longdir[4096];
-  _snprintf(longdir, sizeof(longdir), "%s\\*", path, mask);
-  U16String<4096> dir(longdir);
-  path_os_uni(dir);
-  WIN32_FIND_DATAW ff;
-  ctx->puser = INVALID_HANDLE_VALUE;
-  //
-  ctx->puser = FindFirstFileW(dir, &ff);
-  if(ctx->puser == INVALID_HANDLE_VALUE)
-    return -9;
-  //
-  do {
-    if(sys_list_fill(ctx, &ff))
-      return 0;
-  } while(FindNextFileW(HANDLE(ctx->puser), &ff));
-  FindClose(HANDLE(ctx->puser));
-  ctx->puser = INVALID_HANDLE_VALUE;
-  return -9;
-}
-
-int syshlp::list_next(sys_list_context_t* ctx)
-{
-  if(ctx==NULL)
-    return -1;
-  if(ctx->puser==NULL || ctx->puser==INVALID_HANDLE_VALUE)
-    return -2;
-  //
-  WIN32_FIND_DATAW ff;
-  while(FindNextFileW(HANDLE(ctx->puser), &ff)) {
-    if(sys_list_fill(ctx, &ff))
-      return 0;
-  }
-  FindClose(HANDLE(ctx->puser));
-  ctx->puser = INVALID_HANDLE_VALUE;
-  return -9;
-}
-
-int syshlp::list_end(sys_list_context_t* ctx)
-{
-  if(ctx==NULL)
-    return -1;
-  if(ctx->puser==NULL || ctx->puser==INVALID_HANDLE_VALUE)
-    return -2;
-  FindClose(HANDLE(ctx->puser));
-  ctx->puser = INVALID_HANDLE_VALUE;
-  return 0;
-}
-
 //***************************************
 //***************************************
 
-/*
-int syshlp::file_list(const char *pathmask, int (*use_fn)(void *ctx, const char *fn, const char *attr, int filesize), void *ctx)
-{
-  U16String<4096> wpm(pathmask);
-  path_uni_os(wpm);
-  WIN32_FIND_DATAW info;
-  int n = 0;
-  HANDLE find = FindFirstFileW(wpm, &info);
-
-  if(find==INVALID_HANDLE_VALUE)
-    return 0;
-  do {
-    if(wcscmp(info.cFileName, L".")==0 || wcscmp(info.cFileName, L"..")==0)
-      continue; // skip system files
-    //
-    U8String<16384> filename(info.cFileName);
-    char attr[16] = {0};
-    if(info.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
-      strcat(attr, "D");
-    }
-    if(info.dwFileAttributes & FILE_ATTRIBUTE_REPARSE_POINT) {
-      strcat(attr, "L");
-    }
-    if(info.dwFileAttributes & FILE_ATTRIBUTE_COMPRESSED) {
-      strcat(attr, "C");
-    }
-    if(info.dwFileAttributes & FILE_ATTRIBUTE_ENCRYPTED) {
-      strcat(attr, "E");
-    }
-    if(info.dwFileAttributes & FILE_ATTRIBUTE_READONLY) {
-      strcat(attr, "R");
-    } else {
-      strcat(attr, "RW");
-    }
-    int rv = use_fn(ctx, filename, attr, info.nFileSizeLow);
-    if(rv<0) {
-      n = rv;
-      break;
-    }
-    if(rv==0)
-      break;
-    n++;
-  } while(FindNextFile(find, &info));
-  FindClose(find);
-  return n;
-}
-*/
-
-#endif
-
-//***************************************
-//***************************************
-
-int syshlp::change_dir(const char *dira)
-{
-  return ::chdir(dira)==0;
-}
-
-int syshlp::erase(const char *filedir)
+bool syshlp::u_erase(const char *filedir)
 {
   return ::remove(filedir)==0;
 }
 
-int syshlp::curdir(char *dira, size_t maxlen)
+bool syshlp::u_curdir(char *dira, size_t maxlen)
 {
   return getcwd(dira, maxlen)!=NULL;
 }
 
-int syshlp::chdir(const char *dira)
+bool syshlp::u_chdir(const char *dira)
 {
   return ::chdir(dira)==0;
 }
 
-int syshlp::mkdir_recursive(const char *dira)
+bool syshlp::u_mkdir_recursive(const char *dira)
 {
   int err = 0;
   size_t len;
@@ -230,107 +74,128 @@ int syshlp::mkdir_recursive(const char *dira)
     *slash = '/' ;
   }
 quit:
-  return (err) ? -err : cnt;
+  return (err) ? false : true;
 }
 
 //***************************************
 //***************************************
 
-int syshlp::get_file(const char *name, void* buffer, int bufsize, int binmode)
+bool syshlp::get_file_size(const char *name, size_t& size, bool ftext)
 {
-  FILE *f;
-  int rv;
-  const char *mode;
-
-  switch(binmode) {
-    case 0:
-    case 't':
-      mode = "rt"; 
-      break;
-    case 1:
-    case 'b':
-      mode = "rb"; 
-      break;
-  }
-
-  f = c_fopen(name, mode);
-
+  FILE *f = u_fopen(name, ftext ? "rt" : "rb");
   if(f==NULL)
-    return -1; // not found
-
-  if(buffer==NULL) {
-    fseek(f, 0, SEEK_END);
-    rv = ftell(f);
-    fclose(f);
-    if(!binmode)
-      rv++;
-    return rv;
+    return false;
+  size = 0;
+  off_t endpos;
+  if(::fseek(f, 0, SEEK_END) 
+    || (endpos=::ftell(f))<0 
+    || endpos>mem_max_allocation) {
+    ::fclose(f);
+    return false;
   }
-
-  if(binmode)
-  {
-    rv = fread(buffer, 1, bufsize, f);
-    if(rv<0) {
-      fclose(f);
-      return 0; // fail
-    }
-    fclose(f);
-    return rv; // real size read
-  }
-
-  rv = fread(buffer, 1, bufsize-1, f);
-  if(rv<0) {
-    *(char*)buffer = 0;
-    fclose(f);
-    return 0; // fail
-  }
-
-  ((char*)buffer)[rv] = 0;
-  fclose(f);
-  return rv+1; // real size read
+  size = size_t(endpos);
+  ::fclose(f);
+  return true;
 }
 
-int syshlp::put_file(const char *name, const void* buffer, int bufsize, int binmode)
+bool syshlp::get_file(const char *name, size_t& size, void*& buffer, IMemAlloc* imem, bool ftext)
 {
-  FILE *f;
-  int rv;
-  const char* mode = "wt";
-
-  // root is com cache path
-  switch(binmode) {
-    case 'a':
-    case 'A':
-      mode = "at"; 
-      break;
-    case 0:
-    case 't':
-      mode = "wt"; 
-      break;
-    case 1:
-    case 'b':
-      mode = "wb"; 
-      break;
-  }
-  
-
-  f = c_fopen(name, mode);
-
+  if(name==NULL || imem==NULL)
+    return false;
+  buffer = NULL; size = 0;
+  FILE *f = u_fopen(name, ftext ? "rt" : "rb");
   if(f==NULL)
-    return -1; // not found
-
-  if(bufsize>0) {
-    rv = fwrite(buffer, 1, bufsize, f);
-    if(rv<0) {
-      fclose(f);
-      return 0; // fail
+    return false;
+  try {
+    off_t endpos;
+    if(::fseek(f, 0, SEEK_END) 
+       || (endpos=::ftell(f))<0 
+       || ::fseek(f, 0, SEEK_SET) 
+       || endpos>mem_max_allocation) {
+      ::fclose(f);
+      return false;
     }
-  } else {
-    rv = 0;
+    size = size_t(endpos);
+    if(size==0) {
+      ::fclose(f);
+      return true;
+    }
+    buffer = imem->mem_alloc(size + (ftext!=0), UMODSYS_SOURCEINFO);
+    if(buffer==NULL) {
+      ::fclose(f);
+      return false;
+    }
+    if(ftext)
+      static_cast<char*>(buffer)[size] = 0;
+    if(fread(buffer, 1, size, f)!=size) {
+      imem->mem_free(buffer, UMODSYS_SOURCEINFO);
+      ::fclose(f);
+      return false;
+    }
+    ::fclose(f);
+    return true;
+  } catch(...) {
+    ::fclose(f);
+    if(buffer!=NULL)
+      imem->mem_free(buffer, UMODSYS_SOURCEINFO);
+    throw;
   }
-
-  fclose(f);
-  return rv; // real size written
 }
+
+bool syshlp::get_file(const char *name, size_t& size, void* buffer, size_t bufsize, bool ftext)
+{
+  if(buffer==NULL)
+    return get_file_size(name, size);
+  if(name==NULL || bufsize<=(ftext-1))
+    return false;
+  size = 0;
+  FILE *f = u_fopen(name, ftext ? "rt" : "rb");
+  if(f==NULL)
+    return false;
+  off_t endpos;
+  if(::fseek(f, 0, SEEK_END) 
+     || (endpos=::ftell(f))<0 
+     || ::fseek(f, 0, SEEK_SET) 
+     || endpos>bufsize-(ftext!=0)) {
+    ::fclose(f);
+    return false;
+  }
+  size = size_t(endpos);
+  if(size==0) {
+    if(ftext)
+      static_cast<char*>(buffer)[size] = 0;
+    ::fclose(f);
+    return true;
+  }
+  if(fread(buffer, 1, bufsize-1, f)!=size) {
+    ::fclose(f);
+    return false;
+  }
+  if(ftext)
+    static_cast<char*>(buffer)[size] = 0;
+  ::fclose(f);
+  return true;
+}
+
+bool syshlp::put_file(const char *name, const void* buffer, size_t bufsize, bool ftext, bool append)
+{
+  return put_file(name, buffer, bufsize, *static_cast<size_t*>(NULL), ftext, append);
+}
+
+bool syshlp::put_file(const char *name, const void* buffer, size_t bufsize, size_t& size, bool ftext, bool append)
+{
+  if(name==NULL || buffer==NULL)
+    return false;
+  FILE *f = u_fopen(name, ftext ? (append ? "at" : "wt" ) : (append ? "ab" : "wb"));
+  if(f==NULL)
+    return false;
+  size_t rv = ::fwrite(buffer, 1, bufsize, f);
+  ::fclose(f);
+  if(rv==size_t(-1) || rv!=bufsize && &size==NULL)
+    return false;
+  return true;  
+}
+
 
 //***************************************
 // ::
