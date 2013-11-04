@@ -1,7 +1,10 @@
 @echo off
 pushd %~d0%~p0
 perl ../_gen/gen_build.pl generator.txt
+rem pp perl build/_gen/update_versions.pl update_versions.exe
+rem bash -c "pp -o update_versions.exe ../_gen/update_versions.pl"
 popd
+exit
 pushd %~d0%~p0..\..
 if not exist %~d0%~p0\Versions\nul mkdir %~d0%~p0\Versions
 del %~d0%~p0\Versions\*.bat
