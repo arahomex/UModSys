@@ -51,7 +51,7 @@ struct TRefObjectLinks {
   bool ref_weak(Self* p, Weak& wp) const;
   void obj_delete(Self* p) const;
   //
-  inline TRefObjectLinks(void) : ref_count(0) {}
+  inline TRefObjectLinks(void) : ref_count(0) { ref_weak_root.root_mode(); }
 };
 
 template<typename Self, typename Owner> 
@@ -116,7 +116,9 @@ struct TRefObjectWeakFunc {
   typedef typename T::WeakPointer WeakPointer;
   //
   struct Data : public WeakPointer {
-    T* get(void) { return WeakPointer::t_get(static_cast<T*>(NULL)); }
+    inline Data(void) {}
+    inline Data(core::Void *hint) {}
+    inline T* get(void) const { return WeakPointer::t_obj(static_cast<T*>(NULL)); }
   };
   //
   inline static void s_init(Data &obj, Object obj2);
@@ -147,8 +149,8 @@ struct TRefObject {
   inline TRefObject(const TRefObject& R) { RefFunc::s_init(object, R.object); }
   inline const TRefObject& operator=(const TRefObject& R) { set(R.object); return *this; }
   //
-  inline const TRefObject& operator=(T* R) { set(R); return *this; }
-  inline const TRefObject& operator<<=(T* R) { attach(R); return *this; }
+  inline const TRefObject& operator=(Object R) { set(R); return *this; }
+  inline const TRefObject& operator<<=(Object R) { attach(R); return *this; }
   //
   inline Object operator->(void) const { return RefFunc::s_get(object); }
   inline Object operator()(void) const { return RefFunc::s_get(object); }
@@ -163,7 +165,7 @@ struct TRefObject {
   inline void set(Object obj) { RefFunc::s_set(object, obj); }
   //
   inline Object detach(void) { return RefFunc::s_detach(object); }
-  inline void attach(Object obj) { RefFunc::s_remove(object); object=obj;  }
+  inline void attach(Object obj) { RefFunc::s_remove(object); RefFunc::s_attach(object, obj);  }
 protected:
 };
 

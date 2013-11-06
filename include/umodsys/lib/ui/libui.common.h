@@ -10,32 +10,6 @@
 #include <umodsys/base/console_ext.h>
 
 namespace UModSys {
-
-namespace lib3d {
-  struct IRenderDriver; // render 3d image
-  struct ICaptureDriver; // capture 3d image
-} // namespace lib3d
-
-namespace lib2d {
-  struct IRenderDriver;  // render 2d image
-  struct ICaptureDriver; // capture 2d image
-} // namespace lib3d
-
-namespace libsound {
-  struct IRenderDriver;  // render sound
-  struct ICaptureDriver; // capture sound
-} // namespace libsound
-
-namespace libmusic {
-  struct IRenderDriver;  // render music
-  struct ICaptureDriver; // capture music
-} // namespace libmusic
-
-namespace libmovie {
-  struct IRenderDriver;  // render movie
-  struct ICaptureDriver; // capture movie
-} // namespace libmovie
-
 namespace libui {
 
 using namespace core;
@@ -57,9 +31,7 @@ struct IMouseController;
 struct ITouchController;
 
 struct SKeyboardInputRaw;
-struct SKeyboardInputC;
-struct SKeyboardInputW;
-struct SKeyboardInputL;
+struct SKeyboardInputText;
 struct SJoystickInput;
 struct SMouseInput;
 struct STouchInput;
@@ -73,8 +45,11 @@ enum eTerminalState {
   ts_Inactive,
   ts_Paused,
   ts_Offline,
+  ts_SoftTerminate,
   ts_Terminated,
-  ts_Unknown
+  ts_Reset,
+  ts_Unknown,
+  ts_MaxStates = 16
 };
 
 enum eButtonInputStatus {
@@ -105,7 +80,7 @@ enum eMouseEvent {
 enum {
   max_mouse_buttons     = 16,
   max_key_modifiers     = 16,
-  max_joystick_buttons  = 16,
+  max_joystick_buttons  = 32,
   max_joystick_axes     = 16
 };
 
@@ -118,9 +93,7 @@ enum {
 
 struct IKeyboardClient {
   virtual bool key_pressed(const SKeyboardInputRaw& key) =0;
-  virtual bool key_charc(const SKeyboardInputC& key) =0;
-  virtual bool key_charw(const SKeyboardInputW& key) =0;
-  virtual bool key_charl(const SKeyboardInputL& key) =0;
+  virtual bool key_text(const SKeyboardInputText& key) =0;
 };
 
 struct IKeyboardController : public IRefObject {
@@ -139,18 +112,8 @@ struct SKeyboardInputRaw {
   int code, status, os_code, special;
 };
 
-struct SKeyboardInputC {
-  BByte len;
-  tl::su::utf8 keyc[tl::su::utf_max8len+1];
-};
-
-struct SKeyboardInputW {
-  BByte len;
-  tl::su::utf16 keyw[tl::su::utf_max16len+1];
-};
-
-struct SKeyboardInputL {
-  tl::su::utf32 keyu;
+struct SKeyboardInputText {
+  tl::su::utf32 text;
 };
 
 //***************************************
@@ -201,21 +164,9 @@ protected:
 struct SJoystickInput {
   int eventid, button_count;
   // coordinates
-  lib2d::DPoint axis[max_joystick_axes];
+  lib2d::DPoint axis[max_joystick_axes]; // trackpad, joy have 2 axis
   // buttons states
-  int buttons[max_joystick_buttons];
-};
-
-//***************************************
-// Terminal Connection
-
-template<typename CType>
-struct TITerminalConnection {
-  virtual size_t get_count(void) const =0;
-  virtual CType* get_handler(size_t id) const =0;
-  virtual CType* get_handler(BCStr name) const =0;
-  virtual CType* get_friend_handler(IRefObject *obj) const =0; // map handlers
-  virtual bool create_handler(tl::TRefObject<CType> &rv, BCStr name, const SParameters* params) =0;
+  sint8 buttons[max_joystick_buttons]; // hat have 2 buttons
 };
 
 //***************************************
@@ -224,32 +175,73 @@ struct TITerminalConnection {
 
 struct ITerminal : public IRefObject {
   // special functions
+  virtual bool get_terminal_state(eTerminalState state) = 0;
+  virtual bool set_terminal_state(eTerminalState state, bool flag=true) = 0;
+  //
   virtual bool poll_events(int maxcount=-1) = 0;
-  virtual eTerminalState get_terminal_state(void) = 0;
-  virtual bool set_terminal_state(eTerminalState state) = 0;
-  virtual bool set_terminal_caption(BCStr caption) = 0;
   virtual double get_clock(void) = 0;
   virtual bool wait(float sec) = 0;
-  virtual bool terminal_reset(void) = 0;
-  // get or create pure inputs
-  virtual TITerminalConnection<IKeyboardController>& get_input_keyboard(void) = 0;
-  virtual TITerminalConnection<IMouseController>& get_input_mouse(void) = 0;
-  virtual TITerminalConnection<ITouchController>& get_input_touch(void) = 0;
-  virtual TITerminalConnection<IJoystickController>& get_input_joystick(void) = 0;
-  // get or create inputs
-  virtual TITerminalConnection<lib2d::ICaptureDriver>& get_input_2d(void) = 0;
-  virtual TITerminalConnection<lib3d::ICaptureDriver>& get_input_3d(void) = 0;
-  virtual TITerminalConnection<libmovie::ICaptureDriver>& get_input_movie(void) = 0;
-  virtual TITerminalConnection<libsound::ICaptureDriver>& get_input_sound(void) = 0;
-  virtual TITerminalConnection<libmusic::ICaptureDriver>& get_input_music(void) = 0;
-  // get or create outputs
-  virtual TITerminalConnection<lib3d::IRenderDriver>& get_output_3d(void) = 0;
-  virtual TITerminalConnection<lib2d::IRenderDriver>& get_output_2d(void) = 0;
-  virtual TITerminalConnection<libmovie::IRenderDriver>& get_output_movie(void) = 0;
-  virtual TITerminalConnection<libsound::IRenderDriver>& get_output_sound(void) = 0;
-  virtual TITerminalConnection<libmusic::IRenderDriver>& get_output_music(void) = 0;
+  //
+  virtual size_t get_count(TypeId tid) const =0;
+  virtual IRefObject* get_handler(TypeId tid, size_t id) const =0;
+  virtual IRefObject* get_handler(TypeId tid, BCStr name) const =0;
+  virtual IRefObject* get_friend_handler(TypeId tid, IRefObject *obj) const =0; // map handlers
+  virtual bool create_handler(TypeId tid, IRefObject::P &rv, BCStr name, const SParameters* params) =0;
+public:
+  template<typename CType>
+  inline size_t t_get_count(void) const { 
+    return get_count(CType::_root_get_interface_type()); 
+  }
+  template<typename CType>
+  inline CType* t_get_handler(size_t id) const { 
+    IRefObject *ao = get_handler(CType::_root_get_interface_type(), id); 
+    CType* rv; 
+    return ao!=NULL && ao->t_root_get_other_interface(&rv) ? rv : NULL; 
+  }
+  template<typename CType>
+  inline CType* t_get_handler(BCStr name) const { 
+    IRefObject *ao = get_handler(CType::_root_get_interface_type(), name); 
+    CType* rv; 
+    return ao!=NULL && ao->t_root_get_other_interface(&rv) ? rv : NULL; 
+  }
+  template<typename CType>
+  inline CType* t_get_friend_handler(IRefObject *obj) const { 
+    IRefObject *ao = get_friend_handler(CType::_root_get_interface_type(), obj); 
+    CType* rv; 
+    return ao!=NULL && ao->t_root_get_other_interface(&rv) ? rv : NULL; 
+  }
+  template<typename CType>
+  inline bool t_create_handler(tl::TRefObject<CType> &rv, BCStr name, const SParameters* params) { 
+    IRefObject::P ao; 
+    return create_handler(CType::_root_get_interface_type(), ao, name, params) 
+        && ao->t_ref_get_other_interface(rv); 
+  }
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libui::ITerminal, 2, IRefObject);
+};
+
+//***************************************
+// Terminal Connection
+
+template<typename CType>
+struct TTerminalConnection {
+public:
+  typedef IRoot::TypeId TypeId;
+protected:
+  ITerminal::P term;
+public:
+  inline TTerminalConnection(ITerminal* t) : term(t) {}
+  inline ~TTerminalConnection(void) {}
+  //
+  inline operator ITerminal*(void) const { return term; }
+  inline ITerminal* operator ->(void) const { return term; }
+  inline bool valid(void) const { return term.valid(); }
+  //
+  inline size_t get_count(void) const { return term->t_get_count<CType>(); }
+  inline CType* get_handler(size_t id) const { return term->t_get_handler<CType>(name); }
+  inline CType* get_handler(BCStr name) const { return term->t_get_handler<CType>(name); }
+  inline CType* get_friend_handler(IRefObject *obj) const { return term->t_get_friend_handler<CType>(obj); }
+  inline bool create_handler(tl::TRefObject<CType> &rv, BCStr name, const SParameters* params) const { return term->t_create_handler(rv, name, params); }
 };
 
 //***************************************

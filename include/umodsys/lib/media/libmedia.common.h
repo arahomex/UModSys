@@ -422,7 +422,7 @@ public:
     IRefObject::P ro;
     if(!obj_get(media_name, ro, SObjOptions(T::_root_get_interface_type(), f, this, par, typehint)))
       return false;
-    if(!ro->t_root_get_other_interface_ref(obj))
+    if(!ro->t_ref_get_other_interface(obj))
       return false;
     return true;
   }

@@ -130,9 +130,12 @@ public:
     //
     inline WeakPointer(void) : obj(NULL), next(NULL), prev(NULL) {}
     //
+    inline void root_mode(void) { next = prev = this; }
     inline void fix(IRefObject* p) { obj=p; }
     inline void insert(WeakPointer& r, IRefObject* p) { insert(r); fix(p); }
-    template<typename X> inline X* t_obj(void) { return static_cast<X*>(obj); }
+    //
+    template<typename X> inline X* t_obj(void) const { return static_cast<X*>(obj); }
+    template<typename X> inline X* t_obj(X* hint) const { return static_cast<X*>(obj); }
     //
     inline void insert(WeakPointer& r) { 
       WeakPointer &fw = *r.next;
@@ -155,23 +158,23 @@ public:
   virtual int  ref_links(void) const =0;
   virtual bool ref_weak(WeakPointer& wp) const =0;
 public:
-  template<typename RData>
-  inline bool t_root_get_other_interface_ref(tl::TRefObject<RData> &rv) {
+  template<typename RData, typename RefFunc>
+  inline bool t_ref_get_other_interface(tl::TRefObject<RData, RefFunc> &rv) {
     rv = static_cast<RData*>( root_get_other_interface(RData::_root_get_interface_type()) );
     return rv.valid();
   }
-  template<typename RData>
-  inline bool t_root_get_other_interface_ref(tl::TRefObject<const RData> &rv) const {
+  template<typename RData, typename RefFunc>
+  inline bool t_ref_get_other_interface(tl::TRefObject<const RData, RefFunc> &rv) const {
     rv = static_cast<const RData*>( root_get_other_interface(RData::_root_get_interface_type()) );
     return rv.valid();
   }
-  template<typename RData>
-  inline bool t_root_get_other_interface_ref_n(tl::TRefObject<RData> &rv) {
+  template<typename RData, typename RefFunc>
+  inline bool t_ref_get_other_interface_n(tl::TRefObject<RData, RefFunc> &rv) {
     rv = static_cast<RData*>( root_get_other_interface(RData::_get_interface_name()) );
     return rv.valid();
   }
-  template<typename RData>
-  inline bool t_root_get_other_interface_ref_n(tl::TRefObject<const RData> &rv) const {
+  template<typename RData, typename RefFunc>
+  inline bool t_ref_get_other_interface_n(tl::TRefObject<const RData, RefFunc> &rv) const {
     rv = static_cast<const RData*>( root_get_other_interface(RData::_get_interface_name()) );
     return rv.valid();
   }

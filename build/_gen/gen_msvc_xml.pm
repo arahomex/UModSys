@@ -139,7 +139,7 @@ sub msvc_xml_solution_generatesproj
   return if exists $uproj->{$proj_name};
   return if not exists $projects->{$proj_name};
   #
-  print "\$proj_name=`$proj_name`\n";
+#  print "\$proj_name=`$proj_name`\n";
   #
   my $line;
   my $proj = $projects->{$proj_name};

@@ -139,6 +139,9 @@ public:
   inline Iter First(void) { return hold.min_node(); }
   inline CIter First(void) const { return hold.min_node(); }
   //
+  inline Iter Last(void) { return hold.max_node(); }
+  inline CIter Last(void) const { return hold.max_node(); }
+  //
   inline bool Remove(const Index& index) {
     Node *n = hold.find_node_u(Cmp(index));
     if(n==NULL) return false;

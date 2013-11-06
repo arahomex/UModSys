@@ -721,6 +721,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\include\umodsys\lib\2d\lib2d.typedefs.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\include\umodsys\lib\2d\lib2d.utils.h"
 				>
 			</File>

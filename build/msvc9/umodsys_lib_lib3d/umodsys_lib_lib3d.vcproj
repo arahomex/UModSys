@@ -704,6 +704,10 @@
 		<Filter
 			Name="headers_3d"
 			>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.typedefs.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="lib_3d"

@@ -6,14 +6,13 @@
 /*************************************************************/
 
 #include <umodsys/stdbase.h>
+#include <umodsys/tl/composite/scatter_array.h>
+//#include <umodsys/core/syshlp.h>
+
 #include <umodsys/lib/ui/libui.common.h>
-#include <umodsys/lib/ui/libui.term_con.h>
+#include <umodsys/lib/2d/lib2d.driver.h>
 
 #include "SDL.h"
-extern "C" {
-} // extern "C"
-
-#include <umodsys/core/syshlp.h>
 
 UMODSYS_MODULE_BEGIN(ui, SDL_core)
 
@@ -24,6 +23,7 @@ UMODSYS_MODULE_BEGIN(ui, SDL_core)
 using namespace core;
 using namespace base;
 using namespace libui;
+using namespace lib2d;
 
 struct RGenerator;
 
@@ -31,8 +31,12 @@ struct RGenerator;
 // INCLUDE COMPONENTS
 //***************************************
 
-#include "umodsys.mod.ui.SDL_core.terminal.h"
 #include "umodsys.mod.ui.SDL_core.utils.h"
+#include "umodsys.mod.ui.SDL_core.window.h"
+#include "umodsys.mod.ui.SDL_core.mouse.h"
+#include "umodsys.mod.ui.SDL_core.keyboard.h"
+#include "umodsys.mod.ui.SDL_core.terminal.h"
+#include "umodsys.mod.ui.SDL_core.inlines.h"
 
 //***************************************
 // RGenerator

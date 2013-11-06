@@ -92,6 +92,8 @@ struct TVector4 {
     { v[0] = a1; v[1] = a2; v[2] = a3; v[3] = a4; }
   inline void set(Type a)
     { v[0] = a; v[1] = a; v[2] = a; v[3] = a; }
+  inline void set3(Type a1, Type a2, Type a3)
+    { v[0] = a1; v[1] = a2; v[2] = a3; }
   inline void set4(Type a)
     { v[3] = a; }
   inline void setp(const Type* a)

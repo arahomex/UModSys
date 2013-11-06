@@ -6,6 +6,8 @@
 /*************************************************************/
 
 #include <umodsys/lib/ui/libui.common.h>
+#include <umodsys/lib/2d/lib2d.typedefs.h>
+#include <umodsys/lib/3d/lib3d.typedefs.h>
 
 namespace UModSys {
 namespace libui {

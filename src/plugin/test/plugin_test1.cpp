@@ -3,6 +3,8 @@
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.library.h>
 #include <umodsys/lib/ui/libui.common.h>
+#include <umodsys/lib/2d/lib2d.driver.h>
+//#include <umodsys/lib/ui/lib3d.common.h>
 
 #include "version_plugin_test1.h"
 

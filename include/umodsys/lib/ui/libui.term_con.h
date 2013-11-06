@@ -13,7 +13,7 @@ namespace libui {
 //***************************************
 // TYPES
 //***************************************
-
+#if 0
 //***************************************
 // TRTerminalConnectionNull
 
@@ -83,6 +83,7 @@ inline bool TRTerminalConnectionComposite<CType, CTerminal>::create_handler(tl::
 //***************************************
 // INLINES/OUTLINES
 //***************************************
+#endif
 
 //***************************************
 // END

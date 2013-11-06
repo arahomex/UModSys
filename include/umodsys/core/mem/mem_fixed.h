@@ -133,7 +133,6 @@ struct SCMem {
   template<typename T> size_t get_tsize(void) const { return size ? size/sizeof(T) : 0; }
   //
   inline void move(ptrdiff_t n) { size-=n; data=reinterpret_cast<const BByte*>(data)+n; }
-  inline void move(size_t n) { size-=n; data=reinterpret_cast<const BByte*>(data)+n; }
   inline void framemove(ptrdiff_t n) { data=reinterpret_cast<const BByte*>(data)+n; }
   inline bool split(SCMem& v, size_t n) {
     if(n>size)

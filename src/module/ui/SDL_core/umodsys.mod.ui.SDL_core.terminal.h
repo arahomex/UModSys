@@ -7,40 +7,21 @@ struct RTerminal_SDL_core : public ITerminal {
   UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(ui,SDL_core)::RTerminal_SDL_core, 2, ITerminal)
   UMODSYS_REFOBJECT_REFMODULE()
 public:  
-  TRTerminalConnectionNull<IKeyboardController> ctrl_key;
-  TRTerminalConnectionNull<IMouseController> ctrl_mouse;
-  TRTerminalConnectionNull<ITouchController> ctrl_touch;
-  TRTerminalConnectionNull<IJoystickController> ctrl_joy;
+  typedef tl::TRefObject<RRenderDriver2D_SDL_core, tl::TRefObjectWeakFunc<RRenderDriver2D_SDL_core> > PWDriver2D;
   //
-  TRTerminalConnectionNull<lib2d::ICaptureDriver> ctrl_2in;
-  TRTerminalConnectionNull<lib3d::ICaptureDriver> ctrl_3in;
-  TRTerminalConnectionNull<libmovie::ICaptureDriver> ctrl_vin;
-  TRTerminalConnectionNull<libsound::ICaptureDriver> ctrl_sin;
-  TRTerminalConnectionNull<libmusic::ICaptureDriver> ctrl_min;
-  //
-  TRTerminalConnectionNull<lib3d::IRenderDriver> ctrl_3out;
-  TRTerminalConnectionNull<lib2d::IRenderDriver> ctrl_2out;
-  TRTerminalConnectionNull<libmovie::IRenderDriver> ctrl_vout;
-  TRTerminalConnectionNull<libsound::IRenderDriver> ctrl_sout;
-  TRTerminalConnectionNull<libmusic::IRenderDriver> ctrl_mout;
-  //
-  SDL_Window *wnd;
-  eTerminalState state;
+  tl::TScatterArray<PWDriver2D> list_2d;
+  int states;
 public:  
   RTerminal_SDL_core(DOwner *own, const SParameters& args)
-  : refs(own), wnd(NULL) {
-    state = ts_Active;
+  : refs(own) {
     SDL_Init(SDL_INIT_EVERYTHING);
-    wnd = SDL_CreateWindow("SDL", 20, 20, 640, 480, 0);
+    states = 1<<ts_Active;
   }
   ~RTerminal_SDL_core(void) {
-    if(wnd!=NULL) {
-      SDL_DestroyWindow(wnd);
-      wnd = NULL;
-    }
     SDL_Quit();
   }
-  bool validate_construction(void) { return true; }
+  inline bool validate_construction(void) { return true; }
+  //
 public:  
   // special functions
   bool poll_events(int maxcount) { 
@@ -51,29 +32,35 @@ public:
       SDL_PumpEvents();
       int n = SDL_PeepEvents(&ev, 1, SDL_GETEVENT, SDL_FIRSTEVENT, SDL_LASTEVENT);
       if(n==0)
-        break;
+        return false;
       if(ev.common.type==SDL_APP_TERMINATING) {
-        state = ts_Terminated;
+        states |= 1<<ts_Terminated;
+      } else if(ev.common.type==SDL_QUIT) {
+        states |= 1<<ts_SoftTerminate;
       } else if(ev.common.type==SDL_WINDOWEVENT && ev.window.event==SDL_WINDOWEVENT_CLOSE) {
-        state = ts_Terminated;
+        states |= 1<<ts_SoftTerminate;
       }
     }
     return true; 
   }
-  eTerminalState get_terminal_state(void) { return state; }
-  bool set_terminal_state(eTerminalState ss) {
+  //
+  bool get_terminal_state(eTerminalState state) {
+    return (states & (1<<state))!=0;
+  }
+  bool set_terminal_state(eTerminalState state, bool flag) {
     if(state==ts_Terminated) {
-      if(wnd!=NULL) {
-        SDL_DestroyWindow(wnd);
-        wnd = NULL;
+      if(flag) {
+        t_close(list_2d);
       }
     }
-    state = ss;
-    return true; 
+    if(flag) {
+      states |= 1<<state;
+    } else {
+      states &= ~(1<<state);
+    }
+    return true;
   }
-  bool set_terminal_caption(BCStr caption) { 
-    return false; 
-  }
+  //
   double get_clock(void) { 
     return SDL_GetTicks(); 
   }
@@ -81,26 +68,40 @@ public:
     SDL_Delay(sec*1000);
     return true; 
   }
-  bool terminal_reset(void) { 
-    return false; 
+  //
+  size_t get_count(TypeId tid) const {
+    if(tid==lib2d::IRenderDriver::_root_get_interface_type()) {
+      return t_count(list_2d);
+    }
+    return 0;
   }
-  // get or create pure inputs
-  TITerminalConnection<IKeyboardController>& get_input_keyboard(void) { return ctrl_key; }
-  TITerminalConnection<IMouseController>& get_input_mouse(void) { return ctrl_mouse; }
-  TITerminalConnection<ITouchController>& get_input_touch(void) { return ctrl_touch; }
-  TITerminalConnection<IJoystickController>& get_input_joystick(void) { return ctrl_joy; }
-  // get or create inputs
-  TITerminalConnection<lib2d::ICaptureDriver>& get_input_2d(void) { return ctrl_2in; }
-  TITerminalConnection<lib3d::ICaptureDriver>& get_input_3d(void) { return ctrl_3in; }
-  TITerminalConnection<libmovie::ICaptureDriver>& get_input_movie(void) { return ctrl_vin; }
-  TITerminalConnection<libsound::ICaptureDriver>& get_input_sound(void) { return ctrl_sin; }
-  TITerminalConnection<libmusic::ICaptureDriver>& get_input_music(void) { return ctrl_min; }
-  // get or create outputs
-  TITerminalConnection<lib3d::IRenderDriver>& get_output_3d(void) { return ctrl_3out; }
-  TITerminalConnection<lib2d::IRenderDriver>& get_output_2d(void) { return ctrl_2out; }
-  TITerminalConnection<libmovie::IRenderDriver>& get_output_movie(void) { return ctrl_vout; }
-  TITerminalConnection<libsound::IRenderDriver>& get_output_sound(void) { return ctrl_sout; }
-  TITerminalConnection<libmusic::IRenderDriver>& get_output_music(void) { return ctrl_mout; }
+  IRefObject* get_handler(TypeId tid, size_t id) const {
+    if(tid==lib2d::IRenderDriver::_root_get_interface_type()) {
+      return t_get(list_2d, id);
+    }
+    return NULL;
+  }
+  IRefObject* get_handler(TypeId tid, BCStr name) const {
+    if(tid==lib2d::IRenderDriver::_root_get_interface_type()) {
+      return t_get(list_2d, name);
+    }
+    return NULL;
+  }
+  IRefObject* get_friend_handler(TypeId tid, IRefObject *obj) const {
+    if(tid==lib2d::IRenderDriver::_root_get_interface_type()) {
+      return t_getfr(list_2d, obj);
+    }
+    return NULL;
+  }
+  bool create_handler(TypeId tid, IRefObject::P &rv, BCStr name, const SParameters* params) {
+    if(tid==lib2d::IRenderDriver::_root_get_interface_type()) {
+      RRenderDriver2D_SDL_core::SelfP val = new RRenderDriver2D_SDL_core(this, *params);
+      if(!ValidateConstruction(rv, val))
+        return false;
+      return t_add(list_2d, val());
+    }
+    return false;
+  }
 public:  
 };
 

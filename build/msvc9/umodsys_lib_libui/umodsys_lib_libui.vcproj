@@ -749,11 +749,27 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\module\ui\SDL_core\umodsys.mod.ui.SDL_core.inlines.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\SDL_core\umodsys.mod.ui.SDL_core.keyboard.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\SDL_core\umodsys.mod.ui.SDL_core.mouse.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\module\ui\SDL_core\umodsys.mod.ui.SDL_core.terminal.h"
 				>
 			</File>
 			<File
 				RelativePath="..\..\..\src\module\ui\SDL_core\umodsys.mod.ui.SDL_core.utils.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\SDL_core\umodsys.mod.ui.SDL_core.window.h"
 				>
 			</File>
 			<File
