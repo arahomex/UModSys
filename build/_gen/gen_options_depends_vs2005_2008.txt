@@ -17,7 +17,7 @@ begin project-group umodsys_Depends
     #
     defines ZLIB_DLL
     #
-    option !* Compiler_WarningLevel 0
+    option !* Compiler_WarnAsError false
     option * OutputDirectory $(path-out-bin)
   end
 
@@ -27,7 +27,7 @@ begin project-group umodsys_Depends
     libpath $(path-out-bin) $(path-out-tmp)
 #    libs lib_zlib
     #
-    option !* Compiler_WarningLevel 0
+    option !* Compiler_WarnAsError false
     option * OutputDirectory $(path-out-bin)
   end
 
@@ -36,7 +36,17 @@ begin project-group umodsys_Depends
     #
     libpath $(path-out-bin) $(path-out-tmp)
     #
-    option !* Compiler_WarningLevel 0
+    option !* Compiler_WarnAsError false
+    option * OutputDirectory $(path-out-bin)
+  end
+
+  begin project lib_freetype
+    GUID-gen 0 umodsys.depends.lib_freetype
+    #
+    defines _CRT_SECURE_NO_WARNINGS _CRT_SECURE_NO_DEPRECATE
+    libpath $(path-out-bin) $(path-out-tmp)
+    #
+    option !* Compiler_WarnAsError false
     option * OutputDirectory $(path-out-bin)
   end
 
@@ -48,8 +58,7 @@ begin project-group umodsys_Depends
     #
     option * OutputDirectory $(path-out-bin)
 #    option !* Compiler_WholeProgramOptimization false
-#    option !* Compiler_WarnAsError false
-    option !* Compiler_WarningLevel 0
+    option !* Compiler_WarnAsError false
     defines HAVE_LIBC
     #
     begin file-group src-$(spname)

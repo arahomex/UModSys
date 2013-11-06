@@ -30,7 +30,7 @@
 				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf\include;..\..\..\depends\freetype\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;HAVE_LIBC"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -44,8 +44,8 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
-				WarningLevel="0"
-				WarnAsError="true"
+				WarningLevel="3"
+				WarnAsError="false"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 				CompileAs="0"
@@ -144,7 +144,7 @@
 				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf\include;..\..\..\depends\freetype\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;HAVE_LIBC"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -158,8 +158,8 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="0"
-				WarnAsError="true"
+				WarningLevel="1"
+				WarnAsError="false"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
 				CompileAs="0"
@@ -258,7 +258,7 @@
 				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf\include;..\..\..\depends\freetype\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;HAVE_LIBC"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -272,8 +272,8 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="0"
-				WarnAsError="true"
+				WarningLevel="1"
+				WarnAsError="false"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
 				CompileAs="0"
@@ -372,7 +372,7 @@
 				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf\include;..\..\..\depends\freetype\include"
 				PreprocessorDefinitions="WIN32;_DEBUG;HAVE_LIBC"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -386,8 +386,8 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
-				WarningLevel="0"
-				WarnAsError="true"
+				WarningLevel="3"
+				WarnAsError="false"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
 				CompileAs="0"
@@ -486,7 +486,7 @@
 				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf\include;..\..\..\depends\freetype\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;HAVE_LIBC"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -500,8 +500,8 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="0"
-				WarnAsError="true"
+				WarningLevel="1"
+				WarnAsError="false"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
 				CompileAs="0"
@@ -600,7 +600,7 @@
 				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf\include;..\..\..\depends\freetype\include"
 				PreprocessorDefinitions="WIN32;NDEBUG;HAVE_LIBC"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -614,8 +614,8 @@
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
-				WarningLevel="0"
-				WarnAsError="true"
+				WarningLevel="1"
+				WarnAsError="false"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
 				CompileAs="0"
@@ -701,6 +701,18 @@
 		</Configuration>
 	</Configurations>
 	<Files>
+		<Filter
+			Name="SDL_ttf"
+			>
+			<File
+				RelativePath="..\..\..\depends\SDL2_ttf\SDL_ttf.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\depends\SDL2_ttf\SDL_ttf.h"
+				>
+			</File>
+		</Filter>
 		<Filter
 			Name="include"
 			>

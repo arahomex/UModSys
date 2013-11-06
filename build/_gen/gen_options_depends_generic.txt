@@ -4,10 +4,14 @@ begin project-group umodsys_Depends
   set path-include $(path-root)/include
 
   set path-depends $(path-root)/depends
+
   set path-d-SDL2 $(path-depends)/SDL2
+  set path-d-SDL2_ttf $(path-depends)/SDL2_ttf
+
   set path-d-zlib $(path-depends)/zlib
   set path-d-png $(path-depends)/libpng
   set path-d-jpeg $(path-depends)/jpeglib
+  set path-d-freetype $(path-depends)/freetype
 
   option project-order umodsysc
 
@@ -19,6 +23,7 @@ begin project-group umodsys_Depends
     depend lib_zlib
     depend lib_libpng
     depend lib_jpeglib
+    depend lib_freetype
     #
 #    depend libSquirrel
 #    depend libTinyC
@@ -88,12 +93,162 @@ begin project-group umodsys_Depends
     end
   end
 
+  begin project lib_freetype
+    mode shared
+    #
+    defines FT_DEBUG_LEVEL_ERROR FT_DEBUG_LEVEL_TRACE FT2_BUILD_LIBRARY
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-freetype)/include
+    depend lib_zlib
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-freetype)/include
+        include *.h
+        include freetype/*.h
+        include freetype/config/*.h
+        include freetype/internal/*.h
+        include freetype/services/*.h
+      end
+    end
+    begin file-group xsrc
+      begin file-group bzip2
+        begin mask $(path-skip) $(path-d-freetype)/src/bzip2
+          include *.c *.h
+        end
+      end
+      begin file-group gzip
+        begin mask $(path-skip) $(path-d-freetype)/src/gzip
+#          include *.c *.h
+          include ftgzip.c
+        end
+      end
+      begin file-group lzw
+        begin mask $(path-skip) $(path-d-freetype)/src/lzw
+          include *.c *.h
+          exclude ftzopen.c 
+        end
+      end
+#      begin file-group tools
+#        begin mask $(path-skip) $(path-d-freetype)/src/tools
+#          include *.c *.h
+#        end
+#      end
+      begin file-group winfonts
+        begin mask $(path-skip) $(path-d-freetype)/src/winfonts
+          include *.c *.h
+        end
+      end
+    end
+    begin file-group src
+      begin file-group autofit
+        begin mask $(path-skip) $(path-d-freetype)/src/autofit
+          include autofit.c *.h 
+        end
+      end
+      begin file-group base
+        begin mask $(path-skip) $(path-d-freetype)/src/base
+          include ftbase.c *.h 
+          include ftdebug.c ftsystem.c ftbitmap.c ftglyph.c ftinit.c ftstroke.c
+        end
+      end
+      begin file-group bdf
+        begin mask $(path-skip) $(path-d-freetype)/src/bdf
+          include bdf.c *.h 
+        end
+      end
+      begin file-group cache
+        begin mask $(path-skip) $(path-d-freetype)/src/cache
+          include ftcache.c *.h
+        end
+      end
+      begin file-group cff
+        begin mask $(path-skip) $(path-d-freetype)/src/cff
+          include cff.c *.h
+        end
+      end
+      begin file-group cid
+        begin mask $(path-skip) $(path-d-freetype)/src/cid
+          include type1cid.c *.h
+        end
+      end
+      begin file-group gxvalid
+        begin mask $(path-skip) $(path-d-freetype)/src/gxvalid
+          include gxvalid.c *.h
+        end
+      end
+      begin file-group otvalid
+        begin mask $(path-skip) $(path-d-freetype)/src/otvalid
+          include otvalid.c *.h
+        end
+      end
+      begin file-group pcf
+        begin mask $(path-skip) $(path-d-freetype)/src/pcf
+          include pcf.c *.h
+        end
+      end
+      begin file-group pfr
+        begin mask $(path-skip) $(path-d-freetype)/src/pfr
+          include pfr.c *.h
+        end
+      end
+      begin file-group psaux
+        begin mask $(path-skip) $(path-d-freetype)/src/psaux
+          include psaux.c *.h
+        end
+      end
+      begin file-group pshinter
+        begin mask $(path-skip) $(path-d-freetype)/src/pshinter
+          include pshinter.c *.h
+        end
+      end
+      begin file-group psnames
+        begin mask $(path-skip) $(path-d-freetype)/src/psnames
+          include psnames.c *.h
+        end
+      end
+      begin file-group raster
+        begin mask $(path-skip) $(path-d-freetype)/src/raster
+          include raster.c *.h
+        end
+      end
+      begin file-group sfnt
+        begin mask $(path-skip) $(path-d-freetype)/src/sfnt
+          include sfnt.c *.h
+        end
+      end
+      begin file-group smooth
+        begin mask $(path-skip) $(path-d-freetype)/src/smooth
+          include smooth.c *.h
+        end
+      end
+      begin file-group truetype
+        begin mask $(path-skip) $(path-d-freetype)/src/truetype
+          include truetype.c *.h
+        end
+      end
+      begin file-group type1
+        begin mask $(path-skip) $(path-d-freetype)/src/type1
+          include type1.c *.h
+        end
+      end
+      begin file-group type42
+        begin mask $(path-skip) $(path-d-freetype)/src/type42
+          include type42.c *.h
+        end
+      end
+    end
+  end
+
   begin project lib_SDL2
     mode shared
     #
     includes $(path-include)
     includes $(path-include)/$(ppath)
     includes $(path-d-SDL2)/include
+    includes $(path-d-SDL2_ttf)/include
+    includes $(path-d-freetype)/include
+    depend lib_freetype
     #
     begin file-group include
       begin mask $(path-skip) $(path-d-SDL2)/include
@@ -179,6 +334,11 @@ begin project-group umodsys_Depends
         begin mask $(path-skip) $(path-d-SDL2)/src/video
           include *.c *.h
         end
+      end
+    end
+    begin file-group SDL_ttf
+      begin mask $(path-skip) $(path-d-SDL2_ttf)
+        include SDL_ttf.c SDL_ttf.h
       end
     end
   end
