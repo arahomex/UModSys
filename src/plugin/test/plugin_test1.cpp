@@ -54,6 +54,7 @@ struct RTest1_Shell : public IShell {
   // ----------------------------------------------------------------------------------
   //
   libui::ITerminal::P ui_newterm(const DCString &mask, const SParameters& args);
+  lib2d::IMultiImage::P ui_newfont(const DCString &mask, const SParameters& args);
   //
   void ui_test1(void);
   //

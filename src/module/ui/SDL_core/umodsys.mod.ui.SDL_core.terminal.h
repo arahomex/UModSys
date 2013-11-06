@@ -15,9 +15,11 @@ public:
   RTerminal_SDL_core(DOwner *own, const SParameters& args)
   : refs(own) {
     SDL_Init(SDL_INIT_EVERYTHING);
+    TTF_Init();
     states = 1<<ts_Active;
   }
   ~RTerminal_SDL_core(void) {
+    TTF_Quit();
     SDL_Quit();
   }
   inline bool validate_construction(void) { return true; }

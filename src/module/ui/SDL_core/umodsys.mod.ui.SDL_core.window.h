@@ -12,6 +12,8 @@ protected:
   DColorAlphaf cur_color;
   DColorAlphaf clear_color;
   int cur_tm;
+  //
+  RMultiImage2D_SDL_ttf::SelfP cur_font_ttf;
 public:
   RRenderDriver2D_SDL_core(DOwner *own, const SParameters& args)
   : refs(own), 
@@ -111,6 +113,11 @@ public:
   bool setup_font(IMultiImage* font, const DPointf* scale) {
     if(!valid())
       return false;
+    cur_font_ttf = NULL;
+    if(font==NULL)
+      return true;
+    if(font->t_ref_get_other_interface(cur_font_ttf))
+      return true;
     return false;
   }
   void setup_color(const DColorf& c) {
@@ -172,6 +179,27 @@ public:
   bool render_text_advanced(TextInfo &info, BCStrL piclist, int count) {
     if(!valid())
       return false;
+    if(piclist==NULL || *piclist==0)
+      return true;
+    if(cur_font_ttf.valid()) {
+      BCharW plx[256];
+      size_t n = tl::su::utf_32to16(plx, 255, piclist, count);
+      if(n==0)
+        return false;
+      plx[n] = 0;
+      SDL_Surface* surf = TTF_RenderUNICODE_Blended(cur_font_ttf->get_font(), reinterpret_cast<const Uint16*>(plx), color(cur_color));
+      if(surf==NULL)
+        return false;
+      SDL_Texture* tex = SDL_CreateTextureFromSurface(rend, surf);
+      if(tex==NULL) {
+        SDL_FreeSurface(surf);
+        return false;
+      }
+      SDL_RenderCopy(rend, tex, NULL, &rect(info.a->v[0], info.a->v[1], surf->w, surf->h));
+      SDL_DestroyTexture(tex);
+      SDL_FreeSurface(surf);
+      return true;
+    }
     return false;
   }
   //

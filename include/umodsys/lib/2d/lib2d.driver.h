@@ -84,8 +84,9 @@ public:
   inline int get_max_int(BCStr name) { int rv=0; get_max_values()->get(name, rv); return rv; }
   inline int get_frame_int(BCStr name) { int rv=0; get_frame_values()->get(name, rv); return rv; }
   //
-  inline bool render_text(const DPoint& a, BCStrL piclist, int count, const DPointf* scale=NULL)
-    { return render_text_advanced(TextInfo(a, scale), piclist, count); }
+  inline bool render_text(const DPoint& a, BCStrL piclist, int count, const DPointf* scale=NULL) { 
+    return render_text_advanced(TextInfo(a, scale), piclist, count); 
+  }
   //
   inline bool render_text_size(DBox &size, const DPoint& a, BCStrL piclist, int count, const DPointf* scale=NULL) { 
     TextInfo info(a, scale); info.set_option(to_DontDraw|to_CalcSize); 

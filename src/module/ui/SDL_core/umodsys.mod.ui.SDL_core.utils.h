@@ -9,24 +9,48 @@ struct RRenderDriver2D_SDL_core;
 //***************************************
 //***************************************
 
-inline SDL_Rect rect(int x, int y, int dx, int dy) {
+inline SDL_Rect rect(int x, int y, int dx, int dy) 
+{
   SDL_Rect rv;
   rv.x = x; rv.y = y;
   rv.w = dx; rv.h = dy;
   return rv;
 }
 
-inline SDL_Rect rect(const lib2d::DPoint& a, const lib2d::DPoint& b) {
+inline SDL_Rect rect(const lib2d::DPoint& a, const lib2d::DPoint& b) 
+{
   SDL_Rect rv;
   rv.x = a(0); rv.y = a(1);
   rv.w = b(0)-a(0); rv.h = b(1)-a(1);
   return rv;
 }
 
-inline SDL_Rect rect(const lib2d::DBox& a) {
+inline SDL_Rect rect(const lib2d::DBox& a) 
+{
   SDL_Rect rv;
   rv.x = a.originx(); rv.y = a.originy();
   rv.w = a.sizex(); rv.h = a.sizey();
+  return rv;
+}
+
+inline SDL_Color color(int r, int g, int b, int a) 
+{
+  SDL_Color rv;
+  rv.r = r; rv.g = g; rv.b = b; rv.a = a;
+  return rv;
+}
+
+inline SDL_Color color(const lib2d::DColorAlphaf& a) 
+{
+  SDL_Color rv;
+  rv.r = a(0)*255; rv.g = a(1)*255; rv.b = a(2)*255; rv.a = a(3)*255;
+  return rv;
+}
+
+inline SDL_Color color(const lib2d::DColorAlpha& a) 
+{
+  SDL_Color rv;
+  rv.r = a(0); rv.g = a(1); rv.b = a(2); rv.a = a(3);
   return rv;
 }
 
