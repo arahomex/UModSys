@@ -41,6 +41,8 @@ public:
   // -- UI
   virtual libui::ITerminal* get_terminal(void) const =0;
   virtual IRefObject* get_controller(TypeId ctrl) const =0;
+  virtual IMultiImage::P new_font(const SParameters& params, const DCString &tagname = NULL) =0;
+  virtual IImage::P new_picture(const SParameters& params, const DCString &tagname = NULL) =0;
   //
   // -- main ones
   virtual void begin(void) =0; // frame begin

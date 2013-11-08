@@ -48,20 +48,20 @@ struct RGenerator : public IGenerator {
   //
   int get_generated_names(DPtrList& list) const {
     return t_names<RTerminal_SDL_core>(list)
-         + t_names<RMultiImage2D_SDL_ttf>(list)
+//         + t_names<RMultiImage2D_SDL_ttf>(list)
     ;
     return 0;
   }
   int get_generated_types(DPtrList& list, TypeId name) const {
     int rv = 0;
     t_types<RTerminal_SDL_core>(rv, list, name) 
-    || t_types<RMultiImage2D_SDL_ttf>(rv, list, name) 
+//    || t_types<RMultiImage2D_SDL_ttf>(rv, list, name) 
     ;
     return rv;
   }
   bool generate(IRefObject::P& obj, TypeId name, const SParameters& args) {
     return t_gen_param<RTerminal_SDL_core>(this, obj, name, args)
-      || t_gen_param<RMultiImage2D_SDL_ttf>(this, obj, name, args)
+//      || t_gen_param<RMultiImage2D_SDL_ttf>(this, obj, name, args)
     ;
     return false;
   }

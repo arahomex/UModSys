@@ -60,6 +60,7 @@ struct TRefObjectLinksParent : public TRefObjectLinks<Self> {
   //
   void obj_delete(Self* p) const;
   inline Owner* operator*(void) const { return owner; }
+  inline Owner* operator->(void) const { return owner; }
   //
   TRefObjectLinksParent(Owner* pv);
 };
@@ -70,6 +71,7 @@ struct TRefObjectLinksModObject : public TRefObjectLinks<Self> {
   //
   void obj_delete(Self* p) const;
   inline Owner* operator*(void) const { return owner; }
+  inline Owner* operator->(void) const { return owner; }
   //
   TRefObjectLinksModObject(Owner* pv);
 };

@@ -79,12 +79,15 @@ public:
     }
     SDL_SetRenderDrawBlendMode(rend, SDL_BlendMode(bm));
   }
+  inline SDL_Renderer* get_rend(void) const { return rend; }
 public:  
   // -- UI
   libui::ITerminal* get_terminal(void) const; /* IN INLINES */
   IRefObject* get_controller(TypeId ctrl) const {
     return NULL;
   }
+  IMultiImage::P new_font(const SParameters& params, const DCString &tagname); /* IN INLINES */
+  IImage::P new_picture(const SParameters& params, const DCString &tagname); /* IN INLINES */
   //
   // -- main ones
   void begin(void) {
@@ -182,22 +185,18 @@ public:
     if(piclist==NULL || *piclist==0)
       return true;
     if(cur_font_ttf.valid()) {
-      BCharW plx[256];
-      size_t n = tl::su::utf_32to16(plx, 255, piclist, count);
-      if(n==0)
-        return false;
-      plx[n] = 0;
-      SDL_Surface* surf = TTF_RenderUNICODE_Blended(cur_font_ttf->get_font(), reinterpret_cast<const Uint16*>(plx), color(cur_color));
-      if(surf==NULL)
-        return false;
-      SDL_Texture* tex = SDL_CreateTextureFromSurface(rend, surf);
-      if(tex==NULL) {
-        SDL_FreeSurface(surf);
-        return false;
+      if(count==-1)
+        count = tl::su::slen(piclist);
+      int x=info.a->v[0], y=info.a->v[1];
+      for(int i=0; i<count; i++) {
+        int pic = piclist[i];
+        const RMultiImage2D_SDL_ttf::Glyph *g = cur_font_ttf->get_glyph(pic);
+        if(g==NULL || g->tex==NULL)
+          continue; // skip dummy glyph
+        SDL_SetTextureColorMod(g->tex, cur_color(0)*255, cur_color(1)*255, cur_color(2)*255);
+        SDL_RenderCopy(rend, g->tex, NULL, &rect(x+g->x, y+g->y, g->w, g->h));
+        x += g->spacing;
       }
-      SDL_RenderCopy(rend, tex, NULL, &rect(info.a->v[0], info.a->v[1], surf->w, surf->h));
-      SDL_DestroyTexture(tex);
-      SDL_FreeSurface(surf);
       return true;
     }
     return false;
@@ -212,15 +211,24 @@ public:
   void render_tri(const DPoint& a, const DPoint& b, const DPoint& c) {
     if(!valid())
       return;
+    SDL_Point abc[4] = { 
+      point(a), point(b), point(c), point(a)
+    };
+    SDL_RenderDrawLines(rend, abc, 4);
   }
   void render_quad(const DPoint& a, const DPoint& b, const DPoint& c, const DPoint& d) {
     if(!valid())
       return;
+    SDL_Point abcd[5] = { 
+      point(a), point(b), point(c), point(d), point(a)
+    };
+    SDL_RenderDrawLines(rend, abcd, 5);
   }
   // -- render quad/box/tri texture
   void render_box(IImage* image, const DPoint& a, const DPoint& b, const DPointf& ta, const DPointf& tb) {
     if(!valid())
       return;
+//    SDL_RenderCopy(rend, g->tex, NULL, &rect(x+g->x, y+g->y, g->w, g->h));
 //    SDL_RenderFillRect(rend, &rect(a, b));
   }
   // -- render line/rect

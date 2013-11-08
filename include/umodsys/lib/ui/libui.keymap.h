@@ -168,6 +168,36 @@ enum eKeyCode {
 };
 
 //***************************************
+enum eScanCode {
+  // each group have 64 (0x40) keys max
+  sc_Guniq  = 0x040,  // esc, space, tab, shift, ctrl, alt, menu, super, SysRq, locks, pause, enter, etc
+    sc_escape= sc_Guniq + 0x00, sc_space, sc_enter, sc_tab, sc_backspace, 
+    sc_lshift = sc_Guniq + 0x10, sc_rshift,sc_lctrl, sc_rctrl, sc_lalt, sc_ralt, sc_lsuper, sc_rsuper,
+    sc_numlock = sc_Guniq + 0x20, sc_capslock, sc_scrolllock, 
+    sc_sysrq = sc_Guniq + 0x30, sc_pause, sc_prtsc, sc_break, sc_menu,
+  sc_Gfn     = 0x080,  // F<n> (up to 31), and cursors
+    sc_f1, sc_f2, sc_f3, sc_f4, sc_f5, sc_f6, sc_f7, sc_f8, sc_f9, sc_f10,
+    sc_f11, sc_f12, sc_f13, sc_f14, sc_f15, sc_f16, sc_f17, sc_f18, sc_f19, sc_f20,
+    sc_ins = sc_Gfn + 0x20, sc_del, sc_left, sc_right, sc_up, sc_down, sc_pgup, sc_pgdn, sc_home, sc_end,
+  sc_Glang   = 0x0C0,  // any language specific keycodes
+  sc_Gnum    = 0x100,  // all numbers, and -, +, ~, \, etc.
+    sc_0 = sc_Gnum + 0x00, sc_1, sc_2, sc_3, sc_4, sc_5, sc_6, sc_7, sc_8, sc_9,
+    sc_grave = sc_Gnum + 0x10, sc_plus, sc_minus, sc_backslash,
+  sc_Gc1     = 0x140,  // character row 1, used querty naming
+    sc_q, sc_w, sc_e, sc_r, sc_t, sc_y, sc_u, sc_i, sc_o, sc_p, sc_lsqb, sc_rsqb,
+  sc_Gc2     = 0x180,  // character row 2
+    sc_a, sc_s, sc_d, sc_f, sc_g, sc_h, sc_j, sc_k, sc_l, sc_semic, sc_amp,
+  sc_Gc3     = 0x1C0,  // character row 3
+    sc_z, sc_x, sc_c, sc_v, sc_b, sc_n, sc_m, sc_col, sc_dot, sc_slash,
+  sc_Gkeypad = 0x200,  // keypad
+    sc_kp_0, sc_kp_1, sc_kp_2, sc_kp_3, sc_kp_4, sc_kp_5, sc_kp_6, sc_kp_7, sc_kp_8, sc_kp_9, sc_kp_dot, 
+    sc_kp_div, sc_kp_mul, sc_kp_plus, sc_kp_minus,
+  sc_Gmedia  = 0x240,  // any media key
+  sc_Gapp    = 0x280,  // any app key
+  sc_max     = 0x400   // 1024 keys(bits) allowed or 128 bytes
+};
+
+//***************************************
 
 enum eKeyCodeModifier {
   kmi_l_shift           = 0,

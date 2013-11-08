@@ -54,6 +54,20 @@ inline SDL_Color color(const lib2d::DColorAlpha& a)
   return rv;
 }
 
+inline SDL_Point point(int x, int y) 
+{
+  SDL_Point rv;
+  rv.x = x; rv.y = y;
+  return rv;
+}
+
+inline SDL_Point point(const lib2d::DPoint& a) 
+{
+  SDL_Point rv;
+  rv.x = a(0); rv.y = a(1);
+  return rv;
+}
+
 //***************************************
 //***************************************
 

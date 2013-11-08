@@ -51,8 +51,10 @@ struct TCharOptions {
 //***************************************
 // string processor functions
 
-template<typename CharT> size_t slen(const CharT* s);
-template<typename CharT> size_t slen(const CharT* s, size_t maxn);
+template<typename CharT> inline size_t slen(const CharT* s) 
+  { if(s==NULL) return 0; register const CharT* p=s; while(*p++) {} return p-s; }
+template<typename CharT> inline size_t slen(const CharT* s, size_t maxn) 
+  { if(s==NULL) return 0; register const CharT* p=s; register size_t sz=maxn; while(*p++ && sz--) {} return p-s; }
 
 template<typename CharT> void scpy(CharT* x, const CharT* s);
 template<typename CharT> void scpy(CharT* x, const CharT* s, size_t maxn);
