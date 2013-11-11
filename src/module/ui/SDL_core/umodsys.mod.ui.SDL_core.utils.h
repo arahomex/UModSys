@@ -3,8 +3,8 @@
 // ::
 //***************************************
 
-struct RTerminal_SDL_core;
-struct RRenderDriver2D_SDL_core;
+struct RTerminal;
+struct RRenderDriver2D;
 
 //***************************************
 //***************************************

@@ -1,14 +1,14 @@
 
 //***************************************
-// RRenderDriver2D_SDL_core::
+// RRenderDriver2D::
 //***************************************
 
-libui::ITerminal* RRenderDriver2D_SDL_core::get_terminal(void) const 
+libui::ITerminal* RRenderDriver2D::get_terminal(void) const 
 {
   return *refs;
 }
 
-lib2d::IMultiImage::P RRenderDriver2D_SDL_core::new_font(const SParameters& params, const DCString &tagname)
+lib2d::IMultiImage::P RRenderDriver2D::new_font(const SParameters& params, const DCString &tagname)
 {
   lib2d::IMultiImage::P rv;
   if(!ValidateConstruction(rv, new(local_memory()) RMultiImage2D_SDL_ttf(this, params)))
@@ -16,7 +16,7 @@ lib2d::IMultiImage::P RRenderDriver2D_SDL_core::new_font(const SParameters& para
   return rv;
 }
 
-lib2d::IImage::P RRenderDriver2D_SDL_core::new_picture(const SParameters& params, const DCString &tagname)
+lib2d::IImage::P RRenderDriver2D::new_picture(const SParameters& params, const DCString &tagname)
 {
   return NULL;
 }

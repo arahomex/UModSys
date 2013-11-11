@@ -13,6 +13,7 @@ namespace libui {
 //***************************************
 
 enum eKeyCode {
+  k_none                 = 0,
   /* the keyboard syms have been cleverly chosen to map to ascii */
   k_backspace            = 8,
   k_tab                  = 9,

@@ -5,7 +5,7 @@
 
 struct RMultiImage2D_SDL_ttf : public lib2d::IMultiImage {
   UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(ui,SDL_core)::RMultiImage2D_SDL_ttf, 2, lib2d::IMultiImage)
-  UMODSYS_REFOBJECT_REFOTHER(RRenderDriver2D_SDL_core)
+  UMODSYS_REFOBJECT_REFOTHER(RRenderDriver2D)
 public:
   struct Glyph {
     SDL_Texture* tex;

@@ -717,10 +717,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\include\umodsys\lib\ui\libui.term_con.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\..\include\umodsys\lib\ui\libui.theme.h"
 				>
 			</File>

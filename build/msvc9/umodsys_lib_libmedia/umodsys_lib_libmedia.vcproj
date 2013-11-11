@@ -713,6 +713,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\include\umodsys\lib\media\libmedia.typedefs.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\include\umodsys\lib\media\libmedia.utils.h"
 				>
 			</File>

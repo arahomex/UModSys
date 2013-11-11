@@ -47,6 +47,7 @@ enum eTerminalState {
   ts_Offline,
   ts_SoftTerminate,
   ts_Terminated,
+  ts_Keyboard,
   ts_Reset,
   ts_Unknown,
   ts_MaxStates = 16
@@ -109,7 +110,7 @@ protected:
 //***************************************
 
 struct SKeyboardInputRaw {
-  int code, status, os_code, special;
+  Bsint16 code, status, os_code, special;
 };
 
 struct SKeyboardInputText {
@@ -136,12 +137,21 @@ protected:
 //***************************************
 
 struct SMouseInput {
-  int eventid, button_count;
+  Bsint16 eventid, button_count;
   // coordinates
   lib2d::DPoint abs, rel;
-  lib2d::DPoint secondary; // eg. wheels
+  lib2d::DPoint aux; // eg. wheels
   // buttons states
-  int buttons[max_mouse_buttons];
+  Bsint16 buttons[max_mouse_buttons];
+  //
+  inline unsigned get_buttonmask(eButtonInputStatus bis=bis_Pressed) const {
+    unsigned rv = 0;
+    for(int i=0; i<button_count; i++) {
+      if(buttons[i] & bis)
+        rv |= 1<<i;
+    }
+    return rv;
+  }
 };
 
 //***************************************

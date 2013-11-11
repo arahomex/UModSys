@@ -26,8 +26,10 @@ template<typename T> struct TRefObjectWeakFunc;
 
 template<typename T, typename RefFunc=TRefObjectFunc<T> > struct TRefObject;
 
-template<typename T, typename Ref=core::IRefObject> struct TRefObjectComposite;
-template<typename T, typename Extra, typename Ref=core::IRefObject> struct TRefObjectCompositeExtra;
+template<typename T> struct TRefObjects;
+
+template<typename T, typename Ref=core::IRefObject, typename RefFunc=TRefObjectFunc<Ref> > struct TRefObjectComposite;
+template<typename T, typename Extra, typename Ref=core::IRefObject, typename RefFunc=TRefObjectFunc<Ref> > struct TRefObjectCompositeExtra;
 
 template<typename Self> struct TRefObjectLinks;
 template<typename Self, typename P> struct TRefObjectLinksParent;
@@ -171,13 +173,20 @@ struct TRefObject {
 protected:
 };
 
+template<typename T> struct TRefObjects {
+  typedef TRefObject<T, TRefObjectFunc<T> > Strong;
+  typedef TRefObject<T, TRefObjectWeakFunc<T> > Weak;
+};
+
 //***************************************
 // TComposite::
 //***************************************
 
-template<typename T, typename Ref>
+template<typename T, typename Ref, typename RefFunc>
 struct TRefObjectComposite {
-  TRefObject<Ref> combo;
+  typedef typename RefFunc::Data Data;
+  typedef typename RefFunc::Object Object;
+  TRefObject<Ref, RefFunc> combo;
   T* ip;
   //
   inline ~TRefObjectComposite(void) { clear(); }
@@ -193,7 +202,7 @@ struct TRefObjectComposite {
   inline void clear(void) { combo.clear(); ip = NULL; }
 };
 
-template<typename T, typename Extra, typename Ref>
+template<typename T, typename Extra, typename Ref, typename RefFunc>
 struct TRefObjectCompositeExtra {
   TRefObject<Ref> combo;
   T* ip;

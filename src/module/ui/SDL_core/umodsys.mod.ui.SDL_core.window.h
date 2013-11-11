@@ -3,9 +3,9 @@
 // ::
 //***************************************
 
-struct RRenderDriver2D_SDL_core : public lib2d::IRenderDriver {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(ui,SDL_core)::RRenderDriver2D_SDL_core, 2, lib2d::IRenderDriver)
-  UMODSYS_REFOBJECT_REFOTHER(RTerminal_SDL_core)
+struct RRenderDriver2D : public lib2d::IRenderDriver {
+  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(ui,SDL_core)::RRenderDriver2D, 2, lib2d::IRenderDriver)
+  UMODSYS_REFOBJECT_REFOTHER(RTerminal)
 protected:
   SDL_Window *wnd;
   SDL_Renderer* rend;
@@ -13,16 +13,16 @@ protected:
   DColorAlphaf clear_color;
   int cur_tm;
   //
-  RMultiImage2D_SDL_ttf::SelfP cur_font_ttf;
+  tl::TRefObjects<RMultiImage2D_SDL_ttf>::Weak cur_font_ttf;
 public:
-  RRenderDriver2D_SDL_core(DOwner *own, const SParameters& args)
+  RRenderDriver2D(DOwner *own, const SParameters& args)
   : refs(own), 
     wnd(NULL), rend(NULL),
     clear_color(0,0,0,0),
     cur_color(0,0,0,0), cur_tm(tm_Opaque) {
     open(args);
   }
-  ~RRenderDriver2D_SDL_core(void) {
+  ~RRenderDriver2D(void) {
     close();
   }
   bool validate_construction(void) { return wnd && rend; }
@@ -116,7 +116,7 @@ public:
   bool setup_font(IMultiImage* font, const DPointf* scale) {
     if(!valid())
       return false;
-    cur_font_ttf = NULL;
+    cur_font_ttf.clear();
     if(font==NULL)
       return true;
     if(font->t_ref_get_other_interface(cur_font_ttf))

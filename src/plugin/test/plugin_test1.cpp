@@ -29,7 +29,10 @@ struct RLines_Filter;
 
 #include "plugin_test1.obj_load.h"
 
-struct RTest1_Shell : public IShell {
+struct RTest1_Shell 
+: public IShell, 
+  public libui::IKeyboardClient, public libui::IMouseClient {
+  //
   UMODSYS_BASE_SHELL_IMPLEMENT(UMODSYS_MODULE_NAME(test,test1)::RTest1_Shell, 1, IShell)
   //
   void* memblock;
@@ -58,6 +61,11 @@ struct RTest1_Shell : public IShell {
   //
   void ui_test1(void);
   //
+  bool key_pressed(const libui::SKeyboardInputRaw& key);
+  bool key_text(const libui::SKeyboardInputText& key);
+  bool mouse_event(const libui::SMouseInput& ms);
+  //
+  bool f_quit;
   // ----------------------------------------------------------------------------------
   //
   RTest1_Shell(DOwner *own) : refs(own) {
