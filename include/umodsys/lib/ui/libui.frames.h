@@ -22,6 +22,9 @@ struct SFrameSize;
 struct SFrameDataIn;
 struct SFrameDataOut;
 
+struct SFrameSize;
+struct SFrameCreateParameters;
+
 struct IControllerCommand;
 struct IControllerData;
 struct IController;
@@ -151,6 +154,9 @@ struct SFrameDataIn {
   inline const SParameters& p(void) const { return *data.pval; }
   inline const DCString& s(void) const { return *data.sval; }
   inline const DStringShared& ss(void) const { return *data.ssval; }
+  //
+  inline int safe_i(int dv=0) const { return type==fdt_Integer ? *data.ival : dv; }
+  inline const double& safe_r(const double &dv=0) const { return type==fdt_Real ? *data.rval : dv; }
 };
 
 struct SFrameDataOut {
@@ -163,6 +169,7 @@ struct SFrameDataOut {
     int *ival;
     double *rval;
   } data;
+  mutable DCString stemp;
   //
   inline SFrameDataOut(DCString& v) : type(fdt_String) { data.sval = &v; }
   inline SFrameDataOut(DStringShared& v) : type(fdt_SString) { data.ssval = &v; }
@@ -199,23 +206,23 @@ public:
 //***************************************
 // IController, SController
 
-struct IController : public IRefObject, public IControllerCommand, public IControllerData {
+struct IController : public IControllerCommand, public IControllerData {
 public:
   virtual bool command_draw(const SController& ci, lib2d::IRenderDriver *drv, const lib2d::DBox &bounds) = 0;
-protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libui::IController, 2, IRefObject);
 };
 
 struct SController {
   int context;
   IFrame *source;
-  tl::TRefObject<IController> ctrl;
+  tl::TRefObjectComposite<IController> ctrl;
   //
   inline SController(IFrame *s) : source(s), context(0) {}
-  inline SController(IFrame *s, int ctx, IController *c) : source(s), context(ctx), ctrl(c) {}
+  inline SController(IFrame *s, int ctx, IController *c, IRefObject *cc) : source(s), context(ctx) { ctrl.set(cc, c); }
   inline ~SController(void) {}
   //
-  inline bool set(int cx2, IController *c2) { ctrl = c2; context = cx2; return true; }
+  inline bool set(int cx2, IController *c2, IRefObject *c2c) { ctrl.set(c2c, c2); context = cx2; return true; }
+  inline bool set(int cx2, const tl::TRefObjectComposite<IController>& c2) { ctrl = c2; context = cx2; return true; }
+  bool set(const SFrameCreateParameters& fcp);
   inline operator IController*(void) const { return ctrl; }
   inline operator IFrame*(void) const { return source; }
   inline operator int(void) const { return context; }
@@ -264,13 +271,13 @@ struct ICollectorTheme {
   // get propeties
   //
   // color properties
-  virtual bool get_property(int group_idx, int elem_idx, lib2d::DColorAlphaf& elem) =0; 
-  virtual bool get_property(int group_idx, int elem_idx, lib2d::DColorAlpha& elem) =0; 
+  virtual bool get_property(int group_idx, int elem_idx, lib2d::DColorAlphaf& elem) const =0; 
+  virtual bool get_property(int group_idx, int elem_idx, lib2d::DColorAlpha& elem) const =0; 
   // size property
-  virtual bool get_property(int group_idx, int elem_idx, lib2d::DPointf& elem) =0;
-  virtual bool get_property(int group_idx, int elem_idx, lib2d::DPoint& elem) =0;
+  virtual bool get_property(int group_idx, int elem_idx, lib2d::DPointf& elem) const =0;
+  virtual bool get_property(int group_idx, int elem_idx, lib2d::DPoint& elem) const =0;
   // flags property
-  virtual bool get_property(int group_idx, int elem_idx, int& elem) =0; // flags
+  virtual bool get_property(int group_idx, int elem_idx, int& elem) const =0; // flags
   //
   // set propeties
   //
@@ -326,6 +333,7 @@ struct SFrameCreateParameters {
   DCString text;
   int ctrl_context;
   IController *ctrl;
+  IRefObject::P ctrl_holder;
   SFrameSize size;
   //
   inline SFrameCreateParameters(void) 
@@ -354,15 +362,15 @@ public:
   virtual bool dialog_close_all(void) =0; // close all dialogs
   //
   // output
+  virtual bool output_attach_2d(lib2d::IRenderDriver* drv, int level=0) =0;
+  virtual bool output_attach_3d(lib3d::IRenderDriver* drv, int level=0) =0;
   virtual bool output_process(void) = 0;
-  virtual bool output_attach(ITerminal* term, BCStr name, const SParameters* params, int level) =0;
-  virtual bool output_attach_2d(lib2d::IRenderDriver* drv) =0;
-  virtual bool output_attach_3d(lib3d::IRenderDriver* drv) =0;
   virtual bool get_maxbox(lib2d::DBox& box) =0;
   virtual bool get_minsize(lib2d::DPoint &size) =0;
   //
   // input
-  virtual bool input_attach(ITerminal* term, BCStr name, const SParameters* params, int level) =0;
+  virtual bool input_attach_m(IMouseController *m, int level=0) =0;
+  virtual bool input_attach_k(IKeyboardController *m, int level=0) =0;
   virtual bool input_process(int quants=1) =0;
   virtual int broadcast(int command, const SFrameDataIn& in, int ctx=0) =0;
 protected:
@@ -417,7 +425,7 @@ public:
   virtual IControllerCommand *get_ctrlcmd(void) = 0; // get control command interface (valid only for some frames)
   virtual bool configure(BCStr group, BCStr mode, const SParameters& params) =0;
   // controller functions
-  virtual bool set_controller(int context, IController *ctrl) =0;
+  virtual bool set_controller(int context, IController *ctrl, IRefObject *ctrlcc) =0;
   virtual IController* get_controller(void) =0;
   virtual int get_controller_context(void) =0;
   virtual bool controller_update(void) =0; // update data caches
@@ -502,6 +510,63 @@ inline bool update_size(lib2d::DBox &size, const SFrameSize &fs, const lib2d::DB
       size.B[1] = base.sizey() - fs.size(1) - 1;
       break;
   }
+  return true;
+}
+
+//***************************************
+// UI::SController::
+//***************************************
+
+inline bool SController::command(int cmd, const SFrameDataIn& in)
+{
+  if(ctrl) 
+    return ctrl->command(*this, cmd, in);
+  IFrame *fp = source->get_parent();
+  if(fp==NULL)
+    return false;
+  IControllerCommand *c = fp->get_ctrlcmd();
+  if(c==NULL)
+    return false;
+  return c->command(*this, cmd, in);
+}
+
+inline bool SController::db_get(const BCStr hint, const SFrameDataOut& out)
+{
+  if(ctrl) 
+    return ctrl->db_get(*this, hint, out);
+  IFrame *fp = source->get_parent();
+  if(fp==NULL)
+    return false;
+  IControllerData *c = fp->get_ctrldata();
+  if(c==NULL)
+    return false;
+  return c->db_get(*this, hint, out);
+}
+
+inline bool SController::db_get(const BCStr hint, int sid, const SFrameDataOut& out)
+{
+  if(ctrl) 
+    return ctrl->db_get(*this, hint, sid, out);
+  IFrame *fp = source->get_parent();
+  if(fp==NULL)
+    return false;
+  IControllerData *c = fp->get_ctrldata();
+  if(c==NULL)
+    return false;
+  return c->db_get(*this, hint, sid, out);
+}
+
+inline bool SController::draw(lib2d::IRenderDriver *drv, const lib2d::DBox &bounds)
+{
+  if(ctrl) 
+    return ctrl->command_draw(*this, drv, bounds);
+  return false;
+}
+
+inline bool SController::set(const SFrameCreateParameters& fcp)
+{
+  ctrl.set(fcp.ctrl_holder, fcp.ctrl);
+  context = fcp.ctrl_context;
   return true;
 }
 

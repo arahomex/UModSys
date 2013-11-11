@@ -198,6 +198,8 @@ struct TRefObjectComposite {
   inline T* operator()(void) const { return ip; }
   inline operator T*(void) const { return ip; }
   inline bool operator~(void) const { return ip!=NULL; }
+  inline bool valid(void) const { return ip!=NULL; }
+  inline bool invalid(void) const { return ip==NULL; }
   inline void set(Ref *c, T* i) { combo=c; ip = i; }
   inline void clear(void) { combo.clear(); ip = NULL; }
 };
@@ -217,6 +219,8 @@ struct TRefObjectCompositeExtra {
   inline T* operator()(void) const { return ip; }
   inline operator T*(void) const { return ip; }
   inline bool operator~(void) const { return ip!=NULL; }
+  inline bool valid(void) const { return ip!=NULL; }
+  inline bool invalid(void) const { return ip==NULL; }
   inline void set(Ref *c, T* i) { combo=c; ip = i; }
   inline void clear(void) { combo.clear(); ip = NULL; }
 };

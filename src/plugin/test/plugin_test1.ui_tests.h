@@ -1,5 +1,18 @@
 // RTest1_Shell::
 
+libui::ICollector::P RTest1_Shell::ui_newframes(const DCString &mask, const SParameters& args)
+{
+  if(TypeId found=M.t_firstobjname<libui::ICollector>(mask)) {
+    libui::ICollector::P rv;
+    if(M.t_generate(rv, found, args)) {
+      M.con().put(0, "  found frames %s: %s => %p\n", mask(), found->name, rv());
+      return rv;
+    }
+  }
+  M.con().put(0, "  fail frames %s\n", mask());
+  return NULL;
+}
+
 libui::ITerminal::P RTest1_Shell::ui_newterm(const DCString &mask, const SParameters& args)
 {
   if(TypeId found=M.t_firstobjname<libui::ITerminal>(mask)) {
@@ -60,6 +73,53 @@ bool RTest1_Shell::mouse_event(const libui::SMouseInput& ms)
   return true;
 }
 
+bool RTest1_Shell::command(const libui::SController& ci, int command, const libui::SFrameDataIn& in)
+{
+  M.con().put(
+    0, "[COMMAND %d@%p C%d D%d]\n",
+    ci.context, ci.source, command, 
+    in.safe_i()
+  );
+  return true;
+}
+
+bool RTest1_Shell::db_get(const libui::SController& ci, const BCStr hint, const libui::SFrameDataOut& out)
+{
+  if(ci.context==6) {
+    if(out.type==libui::fdt_Integer) {
+      if(tl::su::seq(hint, "count")) {
+        out.i(50);
+        return true;
+      } else if(tl::su::seq(hint, "dy")) {
+        out.i(16);
+        return true;
+      }
+    }
+    return false;
+  }
+  return false;
+}
+
+bool RTest1_Shell::db_get(const libui::SController& ci, const BCStr hint, int sid, const libui::SFrameDataOut& out)
+{
+  if(ci.context==6) {
+    if(out.type==libui::fdt_String) {
+      if(tl::su::seq(hint, "text")) {
+        char buf[32];
+        sprintf(buf, "Item #%d", sid);
+        out.s(buf);
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+bool RTest1_Shell::command_draw(const libui::SController& ci, lib2d::IRenderDriver *drv, const lib2d::DBox &bounds)
+{
+  return false;
+}
+
 void RTest1_Shell::ui_test1(void)
 {
   lib2d::IRenderDriver::P rd2d;
@@ -67,17 +127,20 @@ void RTest1_Shell::ui_test1(void)
   lib2d::IMultiImage::P font;
   libui::IKeyboardController::P keyc;
   libui::IMouseController::P mouc;
-  {
-    TParametersA<1024> pars;
-    term = ui_newterm("*::SDL_core::*", pars);
-    if(!term.valid())
-      return;
-  }
+  libui::ICollector::P frames;
   if(0) {
     TParametersA<1024> pars;
     pars.add("filename", "Neocyr.ttf");
     font = ui_newfont("*::SDL_core::*ttf*", pars);
     if(!font.valid())
+      return;
+  }
+  {
+    TParametersA<1024> pars;
+    pars.add("driver", rd2d);
+    pars.add("font", font);
+    term = ui_newterm("*::SDL_core::*", pars);
+    if(!term.valid())
       return;
   }
   {
@@ -116,14 +179,69 @@ void RTest1_Shell::ui_test1(void)
     }
     M.con().put(0, "  created IMouseController: %s => %p\n", mouc()->root_get_interface_type()->name, mouc());
   }
+  {
+    TParametersA<1024> pars;
+    pars.add("driver", rd2d);
+    pars.add("font", font);
+    frames = ui_newframes("*::frames::*", pars);
+    if(!frames.valid())
+      return;
+  }
+  //
   f_quit = false;
   keyc->key_link(0, NULL, this);
   mouc->mouse_link(0, NULL, this, ~0);
   term->set_terminal_state(libui::ts_Keyboard, true);
+  frames->output_attach_2d(rd2d);
+  frames->input_attach_m(mouc, 10);
+  frames->input_attach_k(keyc, 10);
+  //
+  {
+    libui::SFrameCreateParameters fcp;
+    fcp.ctrl = this;
+    fcp.size = libui::SFrameSize(lib2d::DPoint(0, 150), lib2d::DPoint(400, 200), lib2d::a_Left, lib2d::a_Left);
+    libui::IFrame* ft = frames->frame_create_s("frame", fcp, NULL);
+    fcp.parent = ft;
+    fcp.size = libui::SFrameSize(lib2d::DPoint(0, 0), lib2d::DPoint(400, 30), lib2d::a_Left, lib2d::a_Left);
+    fcp.text = "Caption";
+    fcp.ctrl_context = 1;
+    frames->frame_create_s("text", fcp, NULL);
+    fcp.size = libui::SFrameSize(lib2d::DPoint(0, 50), lib2d::DPoint(100, 40), lib2d::a_Left, lib2d::a_Left);
+    fcp.text = "Button 1";
+    fcp.ctrl_context = 2;
+    frames->frame_create_s("button", fcp, NULL);
+    fcp.size = libui::SFrameSize(lib2d::DPoint(0, 100), lib2d::DPoint(100, 40), lib2d::a_Left, lib2d::a_Left);
+    fcp.text = "Button 2";
+    fcp.ctrl_context = 3;
+    frames->frame_create_s("button", fcp, NULL);
+    fcp.size = libui::SFrameSize(lib2d::DPoint(0, 150), lib2d::DPoint(100, 40), lib2d::a_Left, lib2d::a_Left);
+    fcp.text = "Button 3";
+    fcp.ctrl_context = 4;
+    frames->frame_create_s("button", fcp, NULL);
+    {
+      fcp.size = libui::SFrameSize(lib2d::DPoint(100, 50), lib2d::DPoint(100, 40), lib2d::a_Left, lib2d::a_Left);
+      fcp.text = "value";
+      fcp.ctrl_context = 5;
+      TParametersA<1024> pars;
+      pars.add("max_len", 50);
+      frames->frame_create_s("edit", fcp, &pars);
+    }
+    {
+      fcp.size = libui::SFrameSize(lib2d::DPoint(200, 50), lib2d::DPoint(100, 150), lib2d::a_Left, lib2d::a_Left);
+      fcp.text = "value";
+      fcp.ctrl_context = 6;
+      TParametersA<1024> pars;
+      pars.add("dy", 16);
+      pars.add("user_db", true);
+      frames->frame_create_s("list", fcp, &pars);
+    }
+  }
+  //
   while(!term->get_terminal_state(libui::ts_Terminated) && !term->get_terminal_state(libui::ts_SoftTerminate)) {
     if(f_quit)
       break;
     if(!term->poll_events()) {
+      frames->input_process();
       rd2d->begin();
       rd2d->setup_color(lib2d::DColorf(1, 1, 0));
       rd2d->setup_font(font);
@@ -135,12 +253,19 @@ void RTest1_Shell::ui_test1(void)
         size_t n = tl::su::utf_8to32(text, 256, txt, sizeof(txt), true);
         rd2d->render_text(lib2d::DPoint(10, 100), text, n);
       }
+      frames->output_process();
       rd2d->end();
       term->wait(0.010f);
     }
   }
+  //
+  frames->shutdown();
   term->set_terminal_state(libui::ts_Keyboard, false);
   keyc->key_unlink(0);
   mouc->mouse_unlink(0);
   term->set_terminal_state(libui::ts_Terminated);
+}
+
+void RTest1_Shell::ui_test2(void)
+{
 }

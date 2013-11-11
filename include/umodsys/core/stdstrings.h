@@ -46,6 +46,10 @@ typedef tl::TString<
   tl::su::TSCoreShared<SIMemAlloc, core::BChar>, 
   tl::su::TComparerBinaryHash<core::BChar> 
 > DStringShared;
+typedef tl::TStringBuf<
+  tl::su::TSCoreShared<SIMemAlloc, core::BChar>, 
+  tl::su::TComparerBinaryHash<core::BChar> 
+> DStringBufShared;
 
 typedef tl::TString<
   tl::su::TSCoreShared<SMemAlloc_Malloc, core::BChar>, 

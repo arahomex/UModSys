@@ -22,9 +22,9 @@ public:
   bool process(SDL_KeyboardEvent& ev) {
     SKeyboardInputRaw key = {
       map_keycode(ev.keysym.sym),
-      map_keystatus(ev.keysym.mod),
+      map_keystatus(ev.state, ev.repeat),
       map_keyoscode(ev.keysym.scancode),
-      0
+      map_keyspecial(ev.keysym.mod)
     };
     if(ev.state!=SDL_PRESSED) {
       key.code = -key.code;
@@ -73,7 +73,13 @@ public:
 #undef B
     } return k_none;
   }
-  Bsint16 map_keystatus(Uint16 mod) {
+  Bsint16 map_keystatus(Uint8 s, Uint8 rep) {
+    return s==SDL_PRESSED ? bis_Pressed : bis_Released;
+  }
+  Bsint16 map_keyoscode(SDL_Scancode scancode) {
+    return 0;
+  }
+  Bsint16 map_keyspecial(Uint16 mod) {
     Bsint16 rv = 0;
 #define B(a, b) if(mod & KMOD_##a) rv |= km_##b;
     B(LSHIFT, l_shift) B(RSHIFT, r_shift) B(LCTRL, l_ctrl) B(RCTRL, r_ctrl) 
@@ -81,9 +87,6 @@ public:
     B(NUM, numlock) B(CAPS, capslock) B(MODE, scrollock)
 #undef B
     return rv;
-  }
-  Bsint16 map_keyoscode(SDL_Scancode scancode) {
-    return 0;
   }
 public:
   bool key_unlink(int order) {
@@ -104,6 +107,11 @@ public:
   }
   bool key_reset(void) {
     return false;
+  }
+  bool key_setvisible(bool visible) {
+//    M.con().put(0, "SDL_keyboard::set_visible(%d)\n", visible);
+    if(visible) SDL_StartTextInput(); else SDL_StopTextInput();
+    return true;
   }
 };
 

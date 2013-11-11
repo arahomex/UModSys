@@ -777,6 +777,62 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="mod_frames"
+			>
+			<File
+				RelativePath="..\..\..\src\module\ui\frames\umodsys.mod.ui.frames.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\frames\umodsys.mod.ui.frames.collector.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\frames\umodsys.mod.ui.frames.common.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\frames\umodsys.mod.ui.frames.ctrl.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\frames\umodsys.mod.ui.frames.dialog.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\frames\umodsys.mod.ui.frames.dynamic.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\frames\umodsys.mod.ui.frames.edit.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\frames\umodsys.mod.ui.frames.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\frames\umodsys.mod.ui.frames.inlines.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\frames\umodsys.mod.ui.frames.list.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\frames\umodsys.mod.ui.frames.static.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\frames\umodsys.mod.ui.frames.utils.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\frames\version_module.h"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>

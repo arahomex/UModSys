@@ -1,21 +1,21 @@
-#ifndef __UMODSYS_MOD_UI_SDLCORE_H
-#define __UMODSYS_MOD_UI_SDLCORE_H 1
+#ifndef __UMODSYS_MOD_UI_FRAMES_H
+#define __UMODSYS_MOD_UI_FRAMES_H 1
 /*************************************************************/
-// file: umodsys.mod.ui.SDL_core.h
+// file: umodsys.mod.ui.frames.h
 // info: 
 /*************************************************************/
 
 #include <umodsys/stdbase.h>
 #include <umodsys/tl/composite/scatter_array.h>
+#include <umodsys/tl/composite/dynarray.h>
 //#include <umodsys/core/syshlp.h>
 
 #include <umodsys/lib/ui/libui.common.h>
+#include <umodsys/lib/ui/libui.frames.h>
+#include <umodsys/lib/ui/libui.theme.h>
 #include <umodsys/lib/2d/lib2d.driver.h>
 
-#include "SDL.h"
-#include "SDL_ttf.h"
-
-UMODSYS_MODULE_BEGIN(ui, SDL_core)
+UMODSYS_MODULE_BEGIN(ui, frames)
 
 //***************************************
 // TYPEDEFS
@@ -28,17 +28,28 @@ using namespace lib2d;
 
 struct RGenerator;
 
+struct RCollector;
+struct RDialog;
+struct RFrame_Common;
+struct RCollectorTheme;
+
+typedef tl::TDynarrayDynamic< tl::TRefObject<RFrame_Common> > Frames;
+typedef lib2d::IMultiImage::P PFont;
+
 //***************************************
 // INCLUDE COMPONENTS
 //***************************************
 
-#include "umodsys.mod.ui.SDL_core.utils.h"
-#include "umodsys.mod.ui.SDL_core.font.h"
-#include "umodsys.mod.ui.SDL_core.window.h"
-#include "umodsys.mod.ui.SDL_core.mouse.h"
-#include "umodsys.mod.ui.SDL_core.keyboard.h"
-#include "umodsys.mod.ui.SDL_core.terminal.h"
-#include "umodsys.mod.ui.SDL_core.inlines.h"
+#include "umodsys.mod.ui.frames.utils.h"
+#include "umodsys.mod.ui.frames.common.h"
+#include "umodsys.mod.ui.frames.ctrl.h"
+#include "umodsys.mod.ui.frames.dialog.h"
+#include "umodsys.mod.ui.frames.static.h"
+#include "umodsys.mod.ui.frames.dynamic.h"
+#include "umodsys.mod.ui.frames.edit.h"
+#include "umodsys.mod.ui.frames.list.h"
+#include "umodsys.mod.ui.frames.collector.h"
+#include "umodsys.mod.ui.frames.inlines.h"
 
 //***************************************
 // RGenerator
@@ -47,26 +58,26 @@ struct RGenerator;
 struct RGenerator : public IGenerator {
   //
   int get_generated_names(DPtrList& list) const {
-    return t_names<RTerminal>(list)
+    return t_names<RCollector>(list)
 //         + t_names<RMultiImage2D_SDL_ttf>(list)
     ;
     return 0;
   }
   int get_generated_types(DPtrList& list, TypeId name) const {
     int rv = 0;
-    t_types<RTerminal>(rv, list, name) 
+    t_types<RCollector>(rv, list, name) 
 //    || t_types<RMultiImage2D_SDL_ttf>(rv, list, name) 
     ;
     return rv;
   }
   bool generate(IRefObject::P& obj, TypeId name, const SParameters& args) {
-    return t_gen_param<RTerminal>(this, obj, name, args)
+    return t_gen_param<RCollector>(this, obj, name, args)
 //      || t_gen_param<RMultiImage2D_SDL_ttf>(this, obj, name, args)
     ;
     return false;
   }
   //
-  UMODSYS_BASE_GENERATOR_IMPLEMENT(UMODSYS_MODULE_NAME(ui,SDL_core)::RGenerator, 1, IGenerator)
+  UMODSYS_BASE_GENERATOR_IMPLEMENT(UMODSYS_MODULE_NAME(ui,frames)::RGenerator, 1, IGenerator)
 };
 
 //***************************************

@@ -3,6 +3,7 @@
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.library.h>
 #include <umodsys/lib/ui/libui.common.h>
+#include <umodsys/lib/ui/libui.frames.h>
 #include <umodsys/lib/2d/lib2d.driver.h>
 //#include <umodsys/lib/ui/lib3d.common.h>
 
@@ -10,10 +11,12 @@
 
 UMODSYS_MODULE_DEF(media,images_std);
 UMODSYS_MODULE_DEF(ui,SDL_core);
+UMODSYS_MODULE_DEF(ui,frames);
 static void refer(void)
 {
   UMODSYS_MODULE_USE(media,images_std);
   UMODSYS_MODULE_USE(ui,SDL_core);
+  UMODSYS_MODULE_USE(ui,frames);
 }
 
 UMODSYS_MODULE_BEGIN(test, test1)
@@ -31,7 +34,9 @@ struct RLines_Filter;
 
 struct RTest1_Shell 
 : public IShell, 
-  public libui::IKeyboardClient, public libui::IMouseClient {
+  public libui::IKeyboardClient, public libui::IMouseClient,
+  public libui::IController
+{
   //
   UMODSYS_BASE_SHELL_IMPLEMENT(UMODSYS_MODULE_NAME(test,test1)::RTest1_Shell, 1, IShell)
   //
@@ -56,14 +61,21 @@ struct RTest1_Shell
   //
   // ----------------------------------------------------------------------------------
   //
+  libui::ICollector::P ui_newframes(const DCString &mask, const SParameters& args);
   libui::ITerminal::P ui_newterm(const DCString &mask, const SParameters& args);
   lib2d::IMultiImage::P ui_newfont(const DCString &mask, const SParameters& args);
   //
   void ui_test1(void);
+  void ui_test2(void);
   //
   bool key_pressed(const libui::SKeyboardInputRaw& key);
   bool key_text(const libui::SKeyboardInputText& key);
   bool mouse_event(const libui::SMouseInput& ms);
+  //
+  bool command(const libui::SController& ci, int command, const libui::SFrameDataIn& in);
+  bool db_get(const libui::SController& ci, const BCStr hint, const libui::SFrameDataOut& out);
+  bool db_get(const libui::SController& ci, const BCStr hint, int sid, const libui::SFrameDataOut& out);
+  bool command_draw(const libui::SController& ci, lib2d::IRenderDriver *drv, const lib2d::DBox &bounds);
   //
   bool f_quit;
   // ----------------------------------------------------------------------------------

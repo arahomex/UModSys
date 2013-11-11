@@ -100,9 +100,10 @@ struct IKeyboardClient {
 struct IKeyboardController : public IRefObject {
   virtual bool key_unlink(int order) =0;
   virtual bool key_link(int order, IRefObject* combo, IKeyboardClient* target) =0;
+  virtual bool key_reset(void) = 0;
+  virtual bool key_setvisible(bool visible) = 0;
   virtual bool key_setmodifier(int modifier, int code, int statuson) =0;
   virtual bool key_setrepeat(float firsttime, float nexttime) =0;
-  virtual bool key_reset(void) = 0;
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libui::IKeyboardController, 2, IRefObject);
 };

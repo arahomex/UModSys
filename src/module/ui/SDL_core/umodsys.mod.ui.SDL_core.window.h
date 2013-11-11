@@ -12,6 +12,8 @@ protected:
   DColorAlphaf cur_color;
   DColorAlphaf clear_color;
   int cur_tm;
+  TParametersA<256> max_values;
+  TParametersA<256> frame_values;
   //
   tl::TRefObjects<RMultiImage2D_SDL_ttf>::Weak cur_font_ttf;
 public:
@@ -49,6 +51,9 @@ public:
       args.get("x", x); args.get("y", y);
       args.get("dx", dx); args.get("dy", dy);
     }
+    max_values.add("xoffset", x); max_values.add("yoffset", y);
+    max_values.add("width", dx); max_values.add("height", dy);
+    //
     wnd = SDL_CreateWindow(caption, x, y, dx, dy, flags);
     if(wnd==NULL) {
       close();
@@ -103,10 +108,10 @@ public:
   }
   // -- information
   const SParameters* get_max_values(void) const {
-    return NULL;
+    return &max_values;
   }
   const SParameters* get_frame_values(void) const {
-    return NULL;
+    return &frame_values;
   }
   bool set_parameters(BCStr mode, const SParameters& P) {
     return false;
@@ -187,12 +192,17 @@ public:
     if(cur_font_ttf.valid()) {
       if(count==-1)
         count = tl::su::slen(piclist);
+      bool is_caretsize = (info.options & to_CalcCaretSize)!=0;
       int x=info.a->v[0], y=info.a->v[1];
       for(int i=0; i<count; i++) {
         int pic = piclist[i];
         const RMultiImage2D_SDL_ttf::Glyph *g = cur_font_ttf->get_glyph(pic);
         if(g==NULL || g->tex==NULL)
           continue; // skip dummy glyph
+        if(is_caretsize && i>=info.caret_pos) {
+          info.calc_caret.set(x+g->x, y+g->y, g->w, g->h);
+          is_caretsize = false;
+        }
         SDL_SetTextureColorMod(g->tex, cur_color(0)*255, cur_color(1)*255, cur_color(2)*255);
         SDL_RenderCopy(rend, g->tex, NULL, &rect(x+g->x, y+g->y, g->w, g->h));
         x += g->spacing;

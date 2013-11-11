@@ -55,6 +55,10 @@ version mod-ui-sdl_core
   file-h     src/module/ui/SDL_core/version_module.h prefix:UMODSYS_VERSION_MOD_UI_SDLCORE
   check-date src/module/ui/SDL_core *.h *.cpp
 
+version mod-ui-frames
+  file-h     src/module/ui/frames/version_module.h prefix:UMODSYS_VERSION_MOD_UI_FRAMES
+  check-date src/module/ui/frames *.h *.cpp
+
 # --------------------------------- modules: lib2d
 
 version mod-2d-lib2d

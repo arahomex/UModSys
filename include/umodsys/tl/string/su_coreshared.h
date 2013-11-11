@@ -53,12 +53,18 @@ struct TSCoreShared : public MemAllocT {
   inline void set(Str s, size_t L) { info_new(s, L); }
   inline void set(const Self& R) { info_dup(R.info); }
   //
+  inline BufferStr get_buf(void) const { return BufferStr(text, nChars, length); }
+  inline size_t get_bufmax(void) const { return info->maxlength; }
+  inline void set_length(size_t L) { if(info!=get_null()) info->length=L; }
+  inline OStr get_buftext(void) const { return info->text; }
+  //
   inline const Self& operator=(const Self& R) { set(R); return *this; }
   inline const Self& operator=(Str R) { set(R); return *this; }
   //
   void info_release(void);
   void info_dup(Info* info);
   bool info_new(Str s, size_t L);
+  bool info_alloc(size_t L);
   //
   static Info* get_null(void);
 };
@@ -88,6 +94,17 @@ inline void TSCoreShared<MemAllocT,CharT>::info_dup(typename TSCoreShared<MemAll
   info_release();
   info = i2;
   info->ref_count++;
+}
+
+template<typename MemAllocT, typename CharT>
+inline bool TSCoreShared<MemAllocT,CharT>::info_alloc(size_t L)
+{
+  if(info==NULL && info==get_null()) {
+    return info_new(NULL, L);
+  }
+  if(L<info->maxlength)
+    return true;
+  return info_new(info->text, L);
 }
 
 template<typename MemAllocT, typename CharT>

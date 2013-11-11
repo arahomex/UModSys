@@ -1,8 +1,8 @@
-#include "umodsys.mod.ui.SDL_core.h"
+#include "umodsys.mod.ui.frames.h"
 
 #include "version_module.h"
 
-UMODSYS_MODULE_BEGIN(ui, SDL_core)
+UMODSYS_MODULE_BEGIN(ui, frames)
 UMODSYS_MODULE_BODY0()
 
 struct RModuleReg : public IModuleReg {
@@ -10,9 +10,9 @@ struct RModuleReg : public IModuleReg {
   //
   RModuleReg(void) 
   : IModuleReg(
-    "ui::SDL_core", 
-    UMODSYS_VERSION_MOD_UI_SDLCORE_MAJOR, 
-    UMODSYS_VERSION_MOD_UI_SDLCORE_MINOR, 
+    "ui::frames", 
+    UMODSYS_VERSION_MOD_UI_FRAMES_MAJOR, 
+    UMODSYS_VERSION_MOD_UI_FRAMES_MINOR, 
     ""
   ) {}
   ~RModuleReg(void) {}
