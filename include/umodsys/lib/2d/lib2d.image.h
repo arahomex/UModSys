@@ -24,24 +24,49 @@ struct SImageCellInfo {
   int layer;
   DPoint start, size;
   //
-  inline SImageCellInfo(void) {}
+  inline SImageCellInfo(void) 
+    {}
   inline SImageCellInfo(eImageFill ifv, int mi, int ax, int ay, int adx, int ady)
     : fill(ifv), layer(mi), start(ax, ay), size(adx, ady) {}
 };
 
-struct SImagePatchInfo {
+struct SImageInfo {
   eImageType type;
-  DPoint start, size;
+  DPoint size;
   //
-  inline SImagePatchInfo(void) {}
+  inline SImageInfo(void)
+    : size(0,0), type(it_Undefined) {}
+  inline SImageInfo(eImageType at, int adx, int ady)
+    : size(adx, ady), type(at) {}
+  inline SImageInfo(eImageType at, const DPoint& sz)
+    : size(sz), type(at) {}
+  //
+  inline void set(eImageType at, const DPoint& sz)
+    { type = at; size = sz; }
+  inline void set(eImageType at, int dx, int dy)
+    { type = at; size.set(dx, dy); }
+  //
+  inline DBox zerobox(void) const 
+    { return DBox(0, 0, size(0), size(1)); }
+};
+
+struct SImagePatchInfo : public SImageInfo {
+  DPoint start;
+  //
+  inline SImagePatchInfo(void) 
+    : start(0) {}
   inline SImagePatchInfo(eImageType at, int adx, int ady, int ax=0, int ay=0)
-    : start(ax, ay), type(at), size(adx, ady) {}
-  inline SImagePatchInfo(eImageType at, const DPoint& sz, const DPoint& sp)
-    : start(sp), type(at), size(sz) {}
+    : SImageInfo(at, adx, ady), start(ax, ay) {}
+  inline SImagePatchInfo(eImageType at, const DPoint& sz, const DPoint& sp=DPoint(0,0))
+    : SImageInfo(at, sz), start(sp) {}
   //
-  inline bool isframe(int adx, int ady, int ax=0, int ay=0) const { 
-    return size(0)==adx && size(1)==ady && start(0)==ax && start(1)==ay; 
-  }
+  inline void set(eImageType at, const DPoint& sz, const DPoint& sp=DPoint(0,0))
+    { SImageInfo::set(at, sz); start = sp; }
+  inline void set(eImageType at, int dx, int dy, int x=0, int y=0)
+    { SImageInfo::set(at, dx, dy); start.set(x,y); }
+  //
+  inline bool isframe(int adx, int ady, int ax=0, int ay=0) const 
+    { return size(0)==adx && size(1)==ady && start(0)==ax && start(1)==ay; }
   inline bool isinside(int adx, int ady, int ax=0, int ay=0) const { 
     return start(0)+size(0)<=ax+adx && start(1)+size(1)<=ay+ady 
         && start(0)>=ax && start(1)>=ay; 
@@ -53,6 +78,8 @@ struct SImagePatchInfo {
     return start(0)+size(0)<=R.start(0)+R.size(0) && start(1)+size(1)<=R.start(1)+R.size(1) 
         && start(0)>=R.start(0) && start(1)>=R.start(1); 
   }
+  inline DBox box(void) const 
+    { return DBox(start(0), start(1), size(0), size(1)); }
 };
 
 //***************************************
@@ -77,15 +104,24 @@ struct TCellsDef2 {
 // IImage::  -- single image
 
 struct IImage : public IRefObject {
-  virtual bool set_reallocate(eImageType type, int dx, int dy, BCStr hint=NULL) =0;
-  virtual bool set_linear(const SImagePatchInfo& info, const SCMem& linear) =0;
-  virtual bool set_indexed(const SImagePatchInfo& info, const SCMem& index, const SCMem& xtable) =0;
+  typedef SImagePatchInfo DPatchInfo;
+  typedef SImagePatchInfo DInfo;
+public:
+  virtual bool set_info(const DInfo& inf, BCStr hint=NULL) =0;
+  virtual bool set_data(const DPatchInfo& inf, const SCMem& bin, int planeno=0) =0;
   //
-  virtual DPoint get_size(void) =0;
-  virtual void* get_hwinfo(const void* hint) =0;
+  virtual const SImageInfo& get_info(void) const =0;
+  virtual bool get_data(const DPatchInfo& inf, const SMem& bin, int planeno=0) const =0;
   //
-  template<typename HWInfo>
-  inline HWInfo* tget_hwinfo(const void* hint) { return static_cast<HWInfo*>(get_hwinfo(hint)); }
+  virtual void* get_hwinfo(HUniquePointer hint) =0;
+  virtual const void* get_hwcinfo(HUniquePointer hint) const =0;
+  //
+  template<typename HWInfo> inline HWInfo* tget_hwinfo(const void* hint) 
+    { return static_cast<HWInfo*>(get_hwinfo(hint)); }
+  template<typename HWInfo> inline const HWInfo* tget_hwcinfo(const void* hint) const 
+    { return static_cast<HWInfo*>(get_hwcinfo(hint)); }
+  inline bool set_info(eImageType t, int dx, int dy, BCStr hint=NULL)
+    { return set_info(DInfo(t, dx, dy), hint); }
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib2d::IImage, 2, IRefObject);
 };
@@ -108,6 +144,12 @@ protected:
 //***************************************
 // INLINES/OUTLINES
 //***************************************
+
+inline size_t GetPixelSize(eImageType type, int plane=0) 
+{
+  return (plane<0 || plane>4) ? 0 : (type>>(plane<<2)) & it_Mask_Plane1;
+}
+
 
 //***************************************
 // END

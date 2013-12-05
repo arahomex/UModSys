@@ -124,25 +124,29 @@ enum eSubImageMode {
 };
 
 enum eImageType {
-  it_Sh_Plane1  =4*0,
-  it_Sh_Plane2  =4*1,
-  it_Sh_Plane3  =4*2,
-  it_Sh_Plane4  =4*3,
-  it_Mask_Plane1=0x0000000F,
-  it_Mask_Plane2=0x000000F0,
-  it_Mask_Plane3=0x00000F00,
-  it_Mask_Plane4=0x0000F000,
-  it_Mask_Number=0x0FF00000,
-  it_Mask_Planes=0x000F0000,
+  it_Sh_Plane1     =4*0,
+  it_Sh_Plane2     =4*1,
+  it_Sh_Plane3     =4*2,
+  it_Sh_Plane4     =4*3,
+  it_Mask_Plane1   =0x0000000F,
+  it_Mask_Plane2   =0x000000F0,
+  it_Mask_Plane3   =0x00000F00,
+  it_Mask_Plane4   =0x0000F000,
+  it_Mask_Id       =0x0FFF0000,
+  it_Mask_Class    =0xF0000000,
   //
-  it_Null       =0x00000000,
-  it_R8G8B8     =0x00110003,
-  it_R8G8B8A8   =0x00210004,
-  it_L8         =0x01110001,
-  it_L8A8       =0x01210002,
-  it_I8_R8G8B8  =0x08120031,
-  it_I8_R8G8B8A8=0x08220041,
-  it_Undefined  =0x80000000
+  it_Class_Linear  =0x00000000,
+  it_Class_Palette =0x10000000,
+  it_Class_Compress=0x20000000,
+  it_Class_Invalid =0xF0000000,
+  //
+  it_L8            =0x00000001,
+  it_L8A8          =0x00000002,
+  it_R8G8B8        =0x00000003,
+  it_R8G8B8A8      =0x00000004,
+  it_I8_R8G8B8     =0x10000031,
+  it_I8_R8G8B8A8   =0x10000041,
+  it_Undefined     =it_Class_Invalid
 };
 
 //***************************************

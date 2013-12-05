@@ -238,6 +238,7 @@ public:
   void render_box(IImage* image, const DPoint& a, const DPoint& b, const DPointf& ta, const DPointf& tb) {
     if(!valid())
       return;
+    //image->
 //    SDL_RenderCopy(rend, g->tex, NULL, &rect(x+g->x, y+g->y, g->w, g->h));
 //    SDL_RenderFillRect(rend, &rect(a, b));
   }

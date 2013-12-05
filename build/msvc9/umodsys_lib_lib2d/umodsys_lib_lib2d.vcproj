@@ -741,6 +741,38 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="mod_lib2d"
+			>
+			<File
+				RelativePath="..\..\..\src\module\2d\lib2d\umodsys.mod.2d.lib2d.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\2d\lib2d\umodsys.mod.2d.lib2d.convert.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\2d\lib2d\umodsys.mod.2d.lib2d.convertfast.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\2d\lib2d\umodsys.mod.2d.lib2d.convertslow.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\2d\lib2d\umodsys.mod.2d.lib2d.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\2d\lib2d\umodsys.mod.2d.lib2d.memoryimage.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\2d\lib2d\version_module.h"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>

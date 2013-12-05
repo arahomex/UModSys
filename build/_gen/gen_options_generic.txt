@@ -251,6 +251,11 @@ begin project-group umodsys
         include *.cpp *.h 
       end
     end
+    begin file-group mod_lib2d
+      begin mask $(path-skip) $(path-s-mod)/2d/lib2d
+        include *.cpp *.h 
+      end
+    end
   end
 
   begin project umodsys_lib_lib3d

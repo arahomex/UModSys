@@ -1,0 +1,77 @@
+#ifndef __UMODSYS_MOD_2D_LIB2D_H
+#define __UMODSYS_MOD_2D_LIB2D_H 1
+/*************************************************************/
+// file: umodsys.mod.2d.lib2d.h
+// info: default 2d classes:
+//       - memory image2d
+//       - memory font
+//       - image2d convertor
+/*************************************************************/
+
+#include <umodsys/stdbase.h>
+#include <umodsys/tl/composite/scatter_array.h>
+#include <umodsys/tl/composite/dynarray.h>
+//#include <umodsys/core/syshlp.h>
+
+#include <umodsys/lib/2d/lib2d.image.h>
+
+UMODSYS_MODULE_BEGIN(lib2d, lib2d)
+#define U_MOD UMODSYS_MODULE_NAME(lib2d,lib2d)
+
+//***************************************
+// TYPEDEFS
+//***************************************
+
+using namespace core;
+using namespace base;
+using namespace UModSys::lib2d;
+
+struct RGenerator;
+
+struct RImage_Memory;
+
+//***************************************
+// INCLUDE COMPONENTS
+//***************************************
+
+#include "umodsys.mod.2d.lib2d.convert.h"
+#include "umodsys.mod.2d.lib2d.memoryimage.h"
+#include "umodsys.mod.2d.lib2d.convertfast.h"
+#include "umodsys.mod.2d.lib2d.convertslow.h"
+
+//***************************************
+// RGenerator
+//***************************************
+
+struct RGenerator : public IGenerator {
+  //
+  int get_generated_names(DPtrList& list) const {
+    return t_names<RImage_Memory>(list)
+//         + t_names<RMultiImage2D_SDL_ttf>(list)
+    ;
+    return 0;
+  }
+  int get_generated_types(DPtrList& list, TypeId name) const {
+    int rv = 0;
+    t_types<RImage_Memory>(rv, list, name) 
+//    || t_types<RMultiImage2D_SDL_ttf>(rv, list, name) 
+    ;
+    return rv;
+  }
+  bool generate(IRefObject::P& obj, TypeId name, const SParameters& args) {
+    return t_gen_param<RImage_Memory>(this, obj, name, args)
+//      || t_gen_param<RMultiImage2D_SDL_ttf>(this, obj, name, args)
+    ;
+    return false;
+  }
+  //
+  UMODSYS_BASE_GENERATOR_IMPLEMENT(U_MOD::RGenerator, 1, IGenerator)
+};
+
+//***************************************
+// END
+//***************************************
+
+UMODSYS_MODULE_END()
+
+#endif

@@ -3,18 +3,30 @@
 // RMediaFilter::
 //***************************************
 
-void RMediaFilter::png_err(png_structp png_ptr, png_const_charp msg) {
+void RMediaFilter::png_err(png_structp png_ptr, png_const_charp msg) 
+{
    if(png_ptr) { 
      M.con().put(0, "PNG FATAL ERROR: png error - %s\n",msg);
    } 
 }
 
-void RMediaFilter::png_read(png_structp png_ptr, png_bytep data, png_size_t length) {
+void RMediaFilter::png_read(png_structp png_ptr, png_bytep data, png_size_t length) 
+{
    SCMem *vdata = static_cast<SCMem *>(png_get_io_ptr(png_ptr));
    if(vdata->size<size_t(length))
      png_error(png_ptr, "Read Error"); // not enougth size
    //
    memcpy(data, vdata->data, length);
+   vdata->move(length);
+}
+
+void RMediaFilter::png_write(png_structp png_ptr, png_const_bytep data, png_size_t length) 
+{
+   SMem *vdata = static_cast<SMem *>(png_get_io_ptr(png_ptr));
+   if(vdata->size<size_t(length))
+     png_error(png_ptr, "Write Error"); // not enougth size
+   //
+   memcpy(vdata->data, data, length);
    vdata->move(length);
 }
 
@@ -93,12 +105,17 @@ bool RMediaFilter::loader_png(IImage *img, const SInfo& info, const SParameters&
   }
   png_destroy_read_struct(&png_ptr, &info_ptr, 0);   // Clean up memory 
   //
-  if(!img->set_reallocate(ifmt, width, height))
+  if(!img->set_info(ifmt, width, height))
     return false;
-  if(!img->set_linear(SImagePatchInfo(fmt, width, height), mem.get()))
+  if(!img->set_data(SImagePatchInfo(fmt, width, height), mem.get()))
     return false;
   //
   return true;
+}
+
+bool RMediaFilter::saver_png(const IImage *im, const SInfo& info, const SParameters& fp, BCStr hint, bool falpha)
+{
+  return false;
 }
 
 //***************************************

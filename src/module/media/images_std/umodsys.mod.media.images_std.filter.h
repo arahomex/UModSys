@@ -9,9 +9,13 @@ struct RMediaFilter : public IBinObjFilter  {
 public:
   bool loader_jpeg(IImage *im, const SInfo& info, const SParameters& fp, int pk, BCStr hint, bool falpha);
   bool loader_png(IImage *im, const SInfo& info, const SParameters& fp, int pk, BCStr hint, bool falpha);
+  //
+  bool saver_jpeg(const IImage *im, const SInfo& info, const SParameters& fp, BCStr hint, bool falpha);
+  bool saver_png(const IImage *im, const SInfo& info, const SParameters& fp, BCStr hint, bool falpha);
 protected:
   static void png_err(png_structp png_ptr, png_const_charp msg);
   static void png_read(png_structp png_ptr, png_bytep data, png_size_t length);
+  static void png_write(png_structp png_ptr, png_const_bytep data, png_size_t length);
 public:
   // SFlags::ISetter
   DMediaFlags::eStates get_flag(int shift) const { return flags.get_s(shift); }
@@ -83,6 +87,33 @@ bool RMediaFilter::filter_load(const SInfo& info, IRefObject* obj)
 
 bool RMediaFilter::filter_save(SInfo& info, const IRefObject* obj)
 {
+  if(info.common_type=="lib2d::IImage") { // load image
+    const IImage *im = obj->t_root_get_other_interface<IImage>();
+    if(im==NULL)
+      return false; // bad type
+    //
+    BCStr hint = NULL;
+    bool falpha = false;
+    fp.get("image_alpha", falpha);
+    fp.get("image_hint", hint);
+    if(info.params) {
+      info.params->get("image_hint", hint);
+      info.params->get("image_alpha", falpha);
+    }
+    //
+    BCStr name=NULL;
+    BCStr suffix = info.media_name;
+    while(suffix_replace.enum_names(name)) {
+      if(strstr(info.media_name, name)) {
+        suffix_replace.get(name, suffix);
+      }
+    }
+    //
+    if(is_extension_nocase(suffix, ".jpg") || is_extension_nocase(suffix, ".jpeg"))
+      return saver_jpeg(im, info, fp, hint, falpha);
+    if(is_extension_nocase(info.media_name, ".png"))
+      return saver_png(im, info, fp, hint, falpha);
+  }
   return false;
 }
 

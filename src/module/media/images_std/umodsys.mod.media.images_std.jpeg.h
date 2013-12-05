@@ -151,12 +151,17 @@ bool RMediaFilter::loader_jpeg(IImage *img, const SInfo& info, const SParameters
         fmt = it_R8G8B8;
         ifmt = falpha ? it_R8G8B8A8 : it_R8G8B8;
         //
-        if(!img->set_reallocate(ifmt, width, height))
+        if(!img->set_info(ifmt, width, height))
           return false;
-        if(!img->set_linear(SImagePatchInfo(fmt, width, height), mem.get()))
+        if(!img->set_data(SImagePatchInfo(fmt, width, height), mem.get()))
           return false;
         //
         return true;
+}
+
+bool RMediaFilter::saver_jpeg(const IImage *im, const SInfo& info, const SParameters& fp, BCStr hint, bool falpha)
+{
+  return false;
 }
 
 //***************************************

@@ -744,6 +744,7 @@ struct TBoundBox2 {
   inline Vec size(void) const { return B-A; }
   inline _Type sizex(void) const { return B.v[0]-A.v[0]; }
   inline _Type sizey(void) const { return B.v[1]-A.v[1]; }
+  inline const Vec& origin(void) const { return A; }
   inline _Type originx(void) const { return A.v[0]; }
   inline _Type originy(void) const { return A.v[1]; }
   //

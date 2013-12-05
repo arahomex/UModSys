@@ -118,7 +118,7 @@ protected:
   template<typename Type, typename TOwn> 
   bool t_gen_param(TOwn* own, IRefObject::P& obj, TypeId name, const SParameters& args) {
     if(name==Type::_root_get_interface_type()) {
-      return ValidateConstruction(obj, new(local_memory()) Type(own, args));
+      return core::ValidateConstruction(obj, new(local_memory()) Type(own, args));
     }
     return false;
   }
