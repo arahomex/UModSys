@@ -123,11 +123,12 @@ enum eSubImageMode {
   sim_Unknown
 };
 
-enum eImageType {
+enum eImageTypeClass {
   it_Sh_Plane1     =4*0,
   it_Sh_Plane2     =4*1,
   it_Sh_Plane3     =4*2,
   it_Sh_Plane4     =4*3,
+  //
   it_Mask_Plane1   =0x0000000F,
   it_Mask_Plane2   =0x000000F0,
   it_Mask_Plane3   =0x00000F00,
@@ -138,8 +139,10 @@ enum eImageType {
   it_Class_Linear  =0x00000000,
   it_Class_Palette =0x10000000,
   it_Class_Compress=0x20000000,
-  it_Class_Invalid =0xF0000000,
-  //
+  it_Class_Invalid =0xF0000000
+};
+
+enum eImageType {
   it_L8            =0x00000001,
   it_L8A8          =0x00000002,
   it_R8G8B8        =0x00000003,

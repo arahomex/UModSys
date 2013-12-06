@@ -28,9 +28,9 @@ inline bool ConvertSame(eImageType type,
 inline bool Convert(const DBox &rout, const SImageInfo& iout, const SMem& bout, 
                     const DBox &rin, const SImageInfo& iin, const SCMem& bin)
 {
-  if(rin.A(0)<0 || rin.A(1)<0 || rin.B(0)<iin.size(0) || rin.B(1)>=iin.size(1))
+  if(rin.A(0)<0 || rin.A(1)<0 || rin.B(0)>iin.size(0) || rin.B(1)>iin.size(1))
     return false;
-  if(rout.A(0)<0 || rout.A(1)<0 || rout.B(0)<iout.size(0) || rout.B(1)>=iout.size(1))
+  if(rout.A(0)<0 || rout.A(1)<0 || rout.B(0)>iout.size(0) || rout.B(1)>iout.size(1))
     return false;
   if(iin.type==iout.type)
     return ConvertSame(iout.type, rout, iout.size, bout, rin, iin.size, bin);

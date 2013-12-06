@@ -30,7 +30,7 @@
 				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
 				PreprocessorDefinitions="WIN32;_DEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -102,6 +102,31 @@
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto base"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
 			/>
 		</Configuration>
 		<Configuration
@@ -119,7 +144,7 @@
 				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -191,6 +216,31 @@
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto base"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
 			/>
 		</Configuration>
 		<Configuration
@@ -208,7 +258,7 @@
 				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -281,6 +331,31 @@
 			<Tool
 				Name="VCALinkTool"
 			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto base"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
+			/>
 		</Configuration>
 		<Configuration
 			Name="Debug|x64"
@@ -297,7 +372,7 @@
 				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
 				PreprocessorDefinitions="WIN32;_DEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -370,6 +445,31 @@
 			<Tool
 				Name="VCALinkTool"
 			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto base"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
+			/>
 		</Configuration>
 		<Configuration
 			Name="Release|x64"
@@ -386,7 +486,7 @@
 				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -458,6 +558,31 @@
 			/>
 			<Tool
 				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto base"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
 			/>
 		</Configuration>
 		<Configuration
@@ -475,7 +600,7 @@
 				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
 				PreprocessorDefinitions="WIN32;NDEBUG"
 				StringPooling="true"
 				MinimalRebuild="false"
@@ -548,38 +673,83 @@
 			<Tool
 				Name="VCALinkTool"
 			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto base"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
+			/>
 		</Configuration>
 	</Configurations>
 	<Files>
 		<Filter
-			Name="$(spname)"
+			Name="headers"
 			>
-			<File
-				RelativePath="..\..\..\src\base\platform\win32\umodsys.so_main.win32.cpp"
+			<Filter
+				Name="base"
 				>
-			</File>
+				<File
+					RelativePath="..\..\..\include\umodsys\base\bobjects.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\umodsys\base\console.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\umodsys\base\console_ext.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\umodsys\base\module.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\umodsys\base\module_impl.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\umodsys\base\module_ref.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\umodsys\base\system.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="src"
 			>
 			<File
-				RelativePath="..\..\..\src\base\umodsys.base.debug.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\..\src\base\umodsys.base.console.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\base\umodsys.base.system.cpp"
+				RelativePath="..\..\..\src\base\umodsys.base.debug.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\..\..\src\base\umodsys.base.module.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\base\umodsys.base.moduleloader.cpp"
 				>
 			</File>
 			<File
@@ -591,11 +761,31 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\base\umodsys.base.moduleloader.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\base\umodsys.base.modulereg.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\..\..\src\base\umodsys.base.moduleregchain.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\base\umodsys.base.system.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\base\version_library.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="src-win32"
+			>
+			<File
+				RelativePath="..\..\..\src\base\platform\win32\umodsys.so_main.win32.cpp"
 				>
 			</File>
 		</Filter>

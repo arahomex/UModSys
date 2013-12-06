@@ -124,13 +124,13 @@ bool RMediaFilter::saver_png(const IImage *im, SInfo& info, const SParameters& f
       ctype = PNG_COLOR_TYPE_RGB;
       break;
     case it_R8G8B8A8:
-      bits = PNG_COLOR_TYPE_RGB_ALPHA;
+      ctype = PNG_COLOR_TYPE_RGB_ALPHA;
       break;
     case it_L8:
       ctype = PNG_COLOR_TYPE_GRAY;
       break;
     case it_L8A8:
-      bits = PNG_COLOR_TYPE_GRAY_ALPHA;
+      ctype = PNG_COLOR_TYPE_GRAY_ALPHA;
       break;
     default:
       return false;
@@ -187,7 +187,7 @@ bool RMediaFilter::saver_png(const IImage *im, SInfo& info, const SParameters& f
   }
   SImagePatchInfo pix(iinf);
   pix.size[1] = 1;
-  for(int i=0; i<iinf.width(); i++) {
+  for(int i=0; i<iinf.height(); i++) {
     pix.start[1] = i;
     if(!im->get_data(pix, bin)) {
       png_destroy_write_struct(&png_ptr, &info_ptr);
