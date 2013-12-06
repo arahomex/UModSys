@@ -324,27 +324,28 @@ public:
   }
   //
   inline bool obj_load(const DCString& media_name, IRefObject* obj,
+                       const DCString& typehint = NULL,
                        const SParameters* params = NULL, 
-                       const DMediaFlags& flags = DMediaFlags(), 
-                       const DCString& typehint = NULL) {
+                       const DMediaFlags& flags = DMediaFlags()) {
     return obj_load(media_name, obj, SObjOptions(NULL, flags, this, params, typehint));
   }                      
   inline bool obj_save(const DCString& media_name, const IRefObject* obj, 
+                       const DCString& typehint = NULL,
                        const SParameters* params = NULL, 
-                       const DMediaFlags& flags = DMediaFlags(), 
-                       const DCString& typehint = NULL) {
+                       const DMediaFlags& flags = DMediaFlags()) {
     return obj_save(media_name, obj, SObjOptions(NULL, flags, this, params, typehint));
   }
   inline bool obj_get(const DCString& media_name, IRefObject::P& obj, 
+                      const DCString& typehint = NULL,
                       const SParameters* params = NULL, 
-                      const DMediaFlags& flags = DMediaFlags(), 
-                      const DCString& typehint = NULL) {
+                      const DMediaFlags& flags = DMediaFlags()) {
     return obj_get(media_name, obj, SObjOptions(NULL, flags, this, params, typehint));
   }
   template<typename T>
   inline bool t_obj_get(const DCString& media_name, tl::TRefObject<T>& obj, 
-                        const DMediaFlags f=DMediaFlags(), const SParameters* par=NULL,
-                        const DCString& typehint=NULL) {
+                        const DCString& typehint=NULL,
+                        const SParameters* par=NULL,
+                        const DMediaFlags f=DMediaFlags()) {
     IRefObject::P ro;
     if(!obj_get(media_name, ro, SObjOptions(T::_root_get_interface_type(), f, this, par, typehint)))
       return false;

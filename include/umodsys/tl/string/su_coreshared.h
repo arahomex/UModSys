@@ -45,6 +45,7 @@ struct TSCoreShared : public MemAllocT {
   inline size_t operator~(void) const { return info->length; }
   inline Str c_str(void) const { return info ? info->text : ""; }
   inline bool is_null(void) const { return info==NULL || info==get_null(); }
+  inline bool empty(void) const { return is_null(); }
   //
   inline void clear(void) { info=get_null(); }
   inline void set(void) { clear(); }

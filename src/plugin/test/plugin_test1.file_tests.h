@@ -281,4 +281,6 @@ void RTest1_Shell::file_test6(void)
   }
   //
   lib2d::IImage::P img = new_mem_image();
+  bool rv = lib->obj_load("minecraft_textures.png", img, "lib2d::IImage");
+  M.con().put(0, "loaded %d\n", rv);
 }

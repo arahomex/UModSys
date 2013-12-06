@@ -53,7 +53,7 @@ bool RMediaFilter::filter_load(const SInfo& info, IRefObject* obj)
   if(obj==NULL)
     return false;
   //
-  if(info.common_type=="lib2d::IImage") { // load image
+  if(info.common_type.empty() || info.common_type=="lib2d::IImage") { // load image
     IImage *im = obj->t_root_get_other_interface<IImage>();
     if(im==NULL)
       return false; // bad type
@@ -87,7 +87,7 @@ bool RMediaFilter::filter_load(const SInfo& info, IRefObject* obj)
 
 bool RMediaFilter::filter_save(SInfo& info, const IRefObject* obj)
 {
-  if(info.common_type=="lib2d::IImage") { // load image
+  if(info.common_type.empty() || info.common_type=="lib2d::IImage") { // load image
     const IImage *im = obj->t_root_get_other_interface<IImage>();
     if(im==NULL)
       return false; // bad type

@@ -33,6 +33,7 @@ struct TSCoreConst {
   inline operator Str(void) const { return text; }
   inline size_t operator~(void) const { return length; }
   inline Str c_str(void) const { return text ? text : ""; }
+  inline bool empty(void) const { return length==0; }
   //
   inline void clear(void) { text=NULL; length=0; }
   inline void set(void) { clear(); }

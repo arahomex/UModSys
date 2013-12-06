@@ -41,6 +41,7 @@ struct TSCorePrealloc {
   inline operator Str(void) const { return text; }
   inline size_t operator~(void) const { return length; }
   inline Str c_str(void) const { return text; }
+  inline bool empty(void) const { return length==0; }
   //
   inline BufferStr get_buf(void) const { return BufferStr(text, nChars, length); }
   inline size_t get_bufmax(void) const { return nChars; }
