@@ -81,7 +81,7 @@ public:
   ~RFrame_Common(void);
   //
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UMODSYS_MODULE_NAME(ui,frames)::RFrame_Common, 2, IFrame);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(U_MOD::RFrame_Common, 2, IFrame);
 };
 
 //***************************************

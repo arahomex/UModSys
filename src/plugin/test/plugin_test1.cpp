@@ -5,20 +5,14 @@
 #include <umodsys/lib/ui/libui.common.h>
 #include <umodsys/lib/ui/libui.frames.h>
 #include <umodsys/lib/2d/lib2d.driver.h>
+//#include <umodsys/lib/2d/lib2d.image.h>
 //#include <umodsys/lib/ui/lib3d.common.h>
 
 #include "version_plugin_test1.h"
 
-UMODSYS_MODULE_DEF(media,images_std);
-UMODSYS_MODULE_DEF(ui,SDL_core);
-UMODSYS_MODULE_DEF(ui,frames);
-static void refer(void)
-{
-  UMODSYS_MODULE_USE(media,images_std);
-  UMODSYS_MODULE_USE(ui,SDL_core);
-  UMODSYS_MODULE_USE(ui,frames);
-}
+static void refer(void);
 
+#define U_MOD UMODSYS_MODULE_NAME(test, test1)
 UMODSYS_MODULE_BEGIN(test, test1)
 
 using namespace core;
@@ -38,14 +32,34 @@ struct RTest1_Shell
   public libui::IController
 {
   //
-  UMODSYS_BASE_SHELL_IMPLEMENT(UMODSYS_MODULE_NAME(test,test1)::RTest1_Shell, 1, IShell)
+  UMODSYS_BASE_SHELL_IMPLEMENT(U_MOD::RTest1_Shell, 1, IShell)
   //
   void* memblock;
+  //
+  // ----------------------------------------------------------------------------------
+  //
+  template<typename T>
+  inline typename T::P generate_type(const DCString &mask, const SParameters& args, BStr xinfo="") {
+    TypeId found = NULL;
+    typename T::P rv;
+    if(!M.t_generate_first(rv, args, mask, &found)) {
+      if(found!=NULL)
+        M.con().put(0, "  fail generate %s(%s)\n", found->name, xinfo);
+      else
+        M.con().put(0, "  fail find %s(%s)\n", T::_root_get_interface_type()->name, mask());
+      return NULL;
+    }
+    M.con().put(0, "  generated %s(%s) => %p\n", found->name, xinfo, rv());
+    return rv;
+  }
   // ----------------------------------------------------------------------------------
   //
   void dump_str(const char *s, size_t n);
   //
   libmedia::IBinArchive::P media_arch_stdio(const DCString &path);
+  libmedia::IBinObjFilter::P media_filter_new(const DCString &mask, const SParameters& args);
+  lib2d::IImage::P new_mem_image(void);
+  //
   libmedia::ILibraryBinTree::P media_vfs(void);
   libmedia::ILibraryObjFilter::P media_flt(void);
   libmedia::ILibraryLayered::P media_lay(void);
@@ -58,6 +72,7 @@ struct RTest1_Shell
   void file_test3(void);
   void file_test4(void);
   void file_test5(void);
+  void file_test6(void);
   //
   // ----------------------------------------------------------------------------------
   //
@@ -92,8 +107,11 @@ struct RTest1_Shell
     file_test4();
     file_test5();
 #endif
+    file_test6();
     //
+#if 0
     ui_test1();
+#endif
     //
     M.con().put(0, "} // RTest1_Shell()\n");
   }
@@ -143,7 +161,7 @@ struct RGenerator : public IGenerator {
     return false;
   }
   //
-  UMODSYS_BASE_GENERATOR_IMPLEMENT(UMODSYS_MODULE_NAME(test,test1)::RGenerator, 1, IGenerator)
+  UMODSYS_BASE_GENERATOR_IMPLEMENT(U_MOD::RGenerator, 1, IGenerator)
 };
 
 struct RModuleReg : public IModuleReg {
@@ -179,4 +197,16 @@ UMODSYS_BASE_GENERATOR_BODY(RGenerator, RModuleReg)
 
 UMODSYS_MODULE_END()
 
+
+UMODSYS_MODULE_DEF(lib2d,stdlib);
+UMODSYS_MODULE_DEF(ui,frames);
+UMODSYS_MODULE_DEF(ui,SDL_core);
+UMODSYS_MODULE_DEF(media,images_std);
+static void refer(void)
+{
+  UMODSYS_MODULE_USE(lib2d,stdlib);
+  UMODSYS_MODULE_USE(ui,frames);
+  UMODSYS_MODULE_USE(ui,SDL_core);
+  UMODSYS_MODULE_USE(media,images_std);
+}
 

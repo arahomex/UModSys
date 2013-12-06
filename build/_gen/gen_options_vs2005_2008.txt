@@ -61,7 +61,7 @@ begin project-group umodsys
   begin project umodsys_lib_lib2d
     GUID-gen 0 umodsys.lib_lib2d
     option * OutputDirectory $(path-out-lib)
-    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto lib2d mod-2d-lib2d"
+    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto lib2d mod-2d-stdlib"
   end
 
   begin project umodsys_lib_lib3d

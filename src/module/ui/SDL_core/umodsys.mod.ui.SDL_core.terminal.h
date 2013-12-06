@@ -4,7 +4,7 @@
 //***************************************
 
 struct RTerminal : public ITerminal {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(ui,SDL_core)::RTerminal, 2, ITerminal)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RTerminal, 2, ITerminal)
   UMODSYS_REFOBJECT_REFMODULE()
 public:  
   typedef tl::TRefObject<RRenderDriver2D, tl::TRefObjectWeakFunc<RRenderDriver2D> > PWDriver2D;

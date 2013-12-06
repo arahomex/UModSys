@@ -4,7 +4,7 @@
 //***************************************
 
 struct RKeyboardController : public IKeyboardController {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(ui,SDL_core)::RKeyboardController, 2, IKeyboardController)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RKeyboardController, 2, IKeyboardController)
   UMODSYS_REFOBJECT_REFOTHER(RTerminal)
 public:  
   typedef tl::TRefObjectComposite<IKeyboardClient> PKeyboardClient;

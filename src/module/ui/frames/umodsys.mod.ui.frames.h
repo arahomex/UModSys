@@ -15,6 +15,7 @@
 #include <umodsys/lib/ui/libui.theme.h>
 #include <umodsys/lib/2d/lib2d.driver.h>
 
+#define U_MOD UMODSYS_MODULE_NAME(ui, frames)
 UMODSYS_MODULE_BEGIN(ui, frames)
 
 //***************************************
@@ -77,7 +78,7 @@ struct RGenerator : public IGenerator {
     return false;
   }
   //
-  UMODSYS_BASE_GENERATOR_IMPLEMENT(UMODSYS_MODULE_NAME(ui,frames)::RGenerator, 1, IGenerator)
+  UMODSYS_BASE_GENERATOR_IMPLEMENT(U_MOD::RGenerator, 1, IGenerator)
 };
 
 //***************************************

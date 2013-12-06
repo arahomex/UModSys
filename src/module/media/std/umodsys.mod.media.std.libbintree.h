@@ -5,7 +5,7 @@
 
 struct RLibraryBinTree : public ILibraryBinTree
 {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(media,std)::RLibraryBinTree, 1, ILibraryBinTree)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RLibraryBinTree, 1, ILibraryBinTree)
   UMODSYS_REFOBJECT_REFMODULE()
   //
   typedef SId SMountIndex;

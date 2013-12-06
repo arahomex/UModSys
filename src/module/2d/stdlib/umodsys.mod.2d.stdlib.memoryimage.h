@@ -42,7 +42,7 @@ public:
         s.offsets[s.nplanes] = binsize;
         s.infos[s.nplanes].set(eImageType(inf.type & it_Mask_Plane1), inf.size);
         //
-        xs = (1<<(UMODSYS_ARCH_BYTE_BITS * ps));
+        xs = size_t(1<<(UMODSYS_ARCH_BYTE_BITS * int(ps)));
         es = GetPixelSize(inf.type, 1) * size_t(xs);
         binsize += es;
         s.nplanes++;

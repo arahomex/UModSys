@@ -5,7 +5,7 @@
 
 struct RLibraryObjCache : public ILibraryObjCache
 {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(media,std)::RLibraryObjCache, 1, ILibraryObjCache)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RLibraryObjCache, 1, ILibraryObjCache)
   UMODSYS_REFOBJECT_REFMODULE()
   //
   struct SCacheElem {

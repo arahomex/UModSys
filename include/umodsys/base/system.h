@@ -122,6 +122,15 @@ public:
       return false;
     return true;
   }
+  template<typename RData>
+  inline bool t_generate_first(tl::TRefObject<RData> &rv, const core::SParameters& args, core::BCStr mask=NULL, TypeId *inf=NULL) {
+    TypeId found;
+    if(!t_firstobjname<RData>(found, mask))
+      return false;
+    if(inf!=NULL)
+      *inf = found;
+    return t_generate(rv, found, args);
+  }
 };
 
 //***************************************

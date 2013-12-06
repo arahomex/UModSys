@@ -12,7 +12,7 @@
 
 struct RDataArchiver_OsDir : public IBinArchive 
 {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(media,stdio)::RDataArchiver_OsDir, 1, IBinArchive)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RDataArchiver_OsDir, 1, IBinArchive)
   UMODSYS_REFOBJECT_REFMODULE()
   //
   int pm;

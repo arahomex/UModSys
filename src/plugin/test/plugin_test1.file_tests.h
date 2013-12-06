@@ -1,87 +1,48 @@
 // RTest1_Shell::
 
+lib2d::IImage::P RTest1_Shell::new_mem_image(void)
+{
+  TParametersA<1024> params;
+  return generate_type<lib2d::IImage>("*::stdlib::*Image_Memory", params);
+}
+
 libmedia::IBinArchive::P RTest1_Shell::media_arch_stdio(const DCString &path)
 {
-  if(TypeId found=M.t_firstobjname<libmedia::IBinArchive>("*::stdio::*")) {
-    TParametersA<1024> params;
-    params.add("pathname", path());
-    //
-    libmedia::IBinArchive::P arch;
-    if(M.t_generate(arch, found, params)) {
-      M.con().put(0, "  found sys archive {%s}: %s => %p\n", path(), found->name, arch());
-      return arch;
-    }
-  }
-  M.con().put(0, "  fail sys archive {%s}\n", path());
-  return NULL;
+  TParametersA<1024> params;
+  params.add("pathname", path());
+  return generate_type<libmedia::IBinArchive>("*::stdio::*", params, path);
+}
+
+libmedia::IBinObjFilter::P RTest1_Shell::media_filter_new(const DCString &mask, const SParameters& args)
+{
+  TParametersA<1024> params;
+  return generate_type<libmedia::IBinObjFilter>(NULL, params);
 }
 
 libmedia::ILibraryBinTree::P RTest1_Shell::media_vfs(void)
 {
-  libmedia::ILibraryBinTree::P lib;
-  if(TypeId found=M.t_firstobjname<libmedia::ILibraryBinTree>("*::std::*")) {
-    TParametersA<1024> params;
-    if(M.t_generate(lib, found, params)) {
-      M.con().put(0, "  found lib(bin-tree): %s => %p\n", found->name, lib());
-      return lib;
-    }
-  }
-  M.con().put(0, "  fail lib(bin-tree)\n");
-  return NULL;
+  TParametersA<1024> params;
+  return generate_type<libmedia::ILibraryBinTree>("*::std::*", params);
 }
 
 libmedia::ILibraryObjFilter::P RTest1_Shell::media_flt(void)
 {
-  libmedia::ILibraryObjFilter::P lib;
-  if(TypeId found=M.t_firstobjname<libmedia::ILibraryObjFilter>("*::std::*")) {
-    TParametersA<1024> params;
-    if(M.t_generate(lib, found, params)) {
-      M.con().put(0, "  found lib(obj-filter): %s => %p\n", found->name, lib());
-      return lib;
-    }
-  }
-  M.con().put(0, "  fail lib(obj-filter)\n");
-  return NULL;
+  TParametersA<1024> params;
+  return generate_type<libmedia::ILibraryObjFilter>("*::std::*", params);
 }
 
 libmedia::ILibraryLayered::P RTest1_Shell::media_lay(void)
 {
-  libmedia::ILibraryLayered::P lib;
-  if(TypeId found=M.t_firstobjname<libmedia::ILibraryLayered>("*::std::*")) {
-    TParametersA<1024> params;
-    if(M.t_generate(lib, found, params)) {
-      M.con().put(0, "  found lib(layered): %s => %p\n", found->name, lib());
-      return lib;
-    }
-  }
-  M.con().put(0, "  fail lib(layered)\n");
-  return NULL;
+  TParametersA<1024> params;
+  return generate_type<libmedia::ILibraryLayered>("*::std::*", params);
 }
 
 libmedia::ILibrary::P RTest1_Shell::media_cache(bool isobj)
 {
-  if(isobj) {
-    libmedia::ILibraryObjCache::P lib;
-    if(TypeId found=M.t_firstobjname<libmedia::ILibraryObjCache>("*::std::*")) {
-      TParametersA<1024> params;
-      if(M.t_generate(lib, found, params)) {
-        M.con().put(0, "  found lib(obj-cache): %s => %p\n", found->name, lib());
-        return lib();
-      }
-    }
-    M.con().put(0, "  fail lib(obj-cache)\n");
-  } else {
-    libmedia::ILibraryBinCache::P lib;
-    if(TypeId found=M.t_firstobjname<libmedia::ILibraryBinCache>("*::std::*")) {
-      TParametersA<1024> params;
-      if(M.t_generate(lib, found, params)) {
-        M.con().put(0, "  found lib(bin-cache): %s => %p\n", found->name, lib());
-        return lib();
-      }
-    }
-    M.con().put(0, "  fail lib(bin-cache)\n");
-  }
-  return NULL;
+  TParametersA<1024> params;
+  if(isobj)
+    return generate_type<libmedia::ILibraryObjCache>("*::std::*", params)();
+  return generate_type<libmedia::ILibraryBinCache>("*::std::*", params)();
 }
 
 void RTest1_Shell::test_op_file(bool f, const DCString &fname, const DCString &operation)
@@ -287,4 +248,37 @@ void RTest1_Shell::file_test5(void)
       );
     }
   }
+}
+
+void RTest1_Shell::file_test6(void)
+{
+  M.con().put(0, "******** file test 6\n");
+  libmedia::ILibraryLayered::P lib = media_lay();
+  if(!lib.valid())
+    return;
+  //
+  {
+    libmedia::ILibraryBinTree::P lib_vfs = media_vfs();
+    if(!lib_vfs.valid())
+      return;
+    lib_vfs->mount_add("/", media_arch_stdio("."), libmedia::mp_Read);
+    lib_vfs->mount_add("/", 1, media_arch_stdio("./write-dir"), libmedia::mp_RWL);
+    lib->layer_push( lib_vfs );
+  }
+  //
+  {
+    libmedia::ILibraryObjFilter::P lib_flt = media_flt();
+    if(!lib_flt.valid())
+      return;
+    TParametersA<1024> params;
+    libmedia::IBinObjFilter::P flt = media_filter_new("*::images_std::*", params);
+    lib_flt->filters_add(flt, &params, 0);
+    lib->layer_push( lib_flt );
+  }
+  {
+    lib->layer_push( media_cache(false) );
+    lib->layer_push( media_cache(true) );
+  }
+  //
+  lib2d::IImage::P img = new_mem_image();
 }

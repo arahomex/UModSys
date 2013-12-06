@@ -1,8 +1,8 @@
-#include "umodsys.mod.2d.lib2d.h"
+#include "umodsys.mod.2d.stdlib.h"
 
 #include "version_module.h"
 
-UMODSYS_MODULE_BEGIN(lib2d, lib2d)
+UMODSYS_MODULE_BEGIN(lib2d, stdlib)
 UMODSYS_MODULE_BODY0()
 
 struct RModuleReg : public IModuleReg {
@@ -10,9 +10,9 @@ struct RModuleReg : public IModuleReg {
   //
   RModuleReg(void) 
   : IModuleReg(
-    "lib2d::lib2d", 
-    UMODSYS_VERSION_MOD_2D_LIB2D_MAJOR, 
-    UMODSYS_VERSION_MOD_2D_LIB2D_MINOR, 
+    "lib2d::stdlib", 
+    UMODSYS_VERSION_MOD_2D_STDLIB_MAJOR, 
+    UMODSYS_VERSION_MOD_2D_STDLIB_MINOR, 
     ""
   ) {}
   ~RModuleReg(void) {}

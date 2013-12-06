@@ -251,8 +251,8 @@ begin project-group umodsys
         include *.cpp *.h 
       end
     end
-    begin file-group mod_lib2d
-      begin mask $(path-skip) $(path-s-mod)/2d/lib2d
+    begin file-group mod_stdlib
+      begin mask $(path-skip) $(path-s-mod)/2d/stdlib
         include *.cpp *.h 
       end
     end
@@ -293,8 +293,8 @@ begin project-group umodsys
     #
     depend umodsys_lib_libmedia
     depend umodsys_lib_libui
-#    depend umodsys_lib_lib2d
-#    depend umodsys_lib_lib3d
+    depend umodsys_lib_lib2d
+    depend umodsys_lib_lib3d
   end
 
   begin project plugin_test2

@@ -43,47 +43,50 @@ struct SMemorySharedData  {
 /*************************************************************/
 
 struct SMemShared {
-  inline void clear(void) { if(data) { data->unlink(UMODSYS_SOURCEINFO); data=NULL; } }
-  inline ~SMemShared(void) { if(data) data->unlink(UMODSYS_SOURCEINFO); }
+  inline ~SMemShared(void) { clear(); }
   inline SMemShared(void) : data(NULL) {}
-  inline SMemShared(const SMemShared& M) : data(M.data) { if(data) data->link(UMODSYS_SOURCEINFO); }
-  inline SMemShared(SMemorySharedData *adata) : data(adata) { if(data) data->link(UMODSYS_SOURCEINFO); }
-  inline SMemShared(size_t ns) : data(SMemorySharedData::new_data(ns, UMODSYS_SOURCEINFO)) { if(data) data->link(UMODSYS_SOURCEINFO); }
-  inline SMemShared(IMemAlloc *h, size_t ns) : data(SMemorySharedData::new_data(h, ns, UMODSYS_SOURCEINFO)) { if(data) data->link(UMODSYS_SOURCEINFO); }
-  inline SMemShared(const SCMem& M) : data(NULL) { *this = M; }
+  inline SMemShared(const SMemShared& M) : data(NULL) { link(M.data, UMODSYS_SOURCEINFO); }
+  inline SMemShared(SMemorySharedData *adata) : data(NULL) { link(adata, UMODSYS_SOURCEINFO); }
+  inline SMemShared(size_t ns, SSourceContext* ctx) : data(NULL) { link(SMemorySharedData::new_data(ns, ctx), ctx); }
+  inline SMemShared(size_t ns) : data(NULL) { link(SMemorySharedData::new_data(ns, UMODSYS_SOURCEINFO), UMODSYS_SOURCEINFO); }
+  inline SMemShared(IMemAlloc *h, size_t ns, SSourceContext* ctx) : data(NULL) { link(SMemorySharedData::new_data(h, ns, ctx), ctx); }
+  inline SMemShared(IMemAlloc *h, size_t ns) : data(NULL) { link(SMemorySharedData::new_data(h, ns, UMODSYS_SOURCEINFO), UMODSYS_SOURCEINFO); }
+  inline SMemShared(const SCMem& M, SSourceContext* ctx) : data(NULL) { alloc(M, ctx); }
+  inline SMemShared(const SCMem& M) : data(NULL) { alloc(M, UMODSYS_SOURCEINFO); }
   //
-  inline const SMemShared& operator=(const SMemShared& M)
-    { if(M.data!=data) { if(data) data->unlink(UMODSYS_SOURCEINFO); data=M.data; if(data) data->link(UMODSYS_SOURCEINFO); } return *this; }
-  inline const SMemShared& operator=(SMemorySharedData *adata)
-    { if(data!=adata) { if(data) data->unlink(UMODSYS_SOURCEINFO); data=adata; if(data) data->link(UMODSYS_SOURCEINFO); } return *this; }
-  inline const SMemShared& operator=(const SCMem& M) {
-    if(data) {
-      data->unlink(UMODSYS_SOURCEINFO); 
-      data=NULL; 
-    }
-    if(M.size) { 
-      data = SMemorySharedData::new_data(M.size, UMODSYS_SOURCEINFO);
-      if(data) {
-        data->link(UMODSYS_SOURCEINFO); 
-        memcpy(data->data(), M.data, M.size);
-      }
-    } 
-    return *this; 
+  inline const SMemShared& operator=(const SMemShared& M) { link(M.data, UMODSYS_SOURCEINFO); return *this; }
+  inline const SMemShared& operator=(SMemorySharedData *adata) { link(adata, UMODSYS_SOURCEINFO); return *this; }
+  inline const SMemShared& operator=(const SCMem& M) { alloc(M, UMODSYS_SOURCEINFO); return *this; }
+  //
+  inline void clear(void) { link(NULL, UMODSYS_SOURCEINFO); }
+  inline bool link(SMemorySharedData *p, SSourceContext* ctx) {
+    if(p==data) 
+      return true;
+    if(data) 
+      data->unlink(ctx); 
+    data = p;
+    if(data) 
+      data->link(ctx);
+    return true;
   }
-  //
   inline bool alloc(size_t sz, SSourceContext* ctx) { 
     SMemorySharedData *p = SMemorySharedData::new_data(sz, ctx); 
     if(p==NULL)
       return false;
-    *this = p;
-    return true;
+    return link(p, ctx);
   }
   inline bool alloc(IMemAlloc *h, size_t sz, SSourceContext* ctx) { 
     SMemorySharedData *p = SMemorySharedData::new_data(h, sz, ctx); 
     if(p==NULL)
       return false;
-    *this = p;
-    return true;
+    return link(p, ctx);
+  }
+  inline bool alloc(const SCMem& M, SSourceContext* ctx) {
+    SMemorySharedData *p = SMemorySharedData::new_data(M.size, ctx);
+    if(p==NULL)
+      return false;
+    memcpy(p->data(), M.data, M.size);
+    return link(p, ctx);
   }
   //
   inline bool valid(void) const { return data!=NULL; }
@@ -114,22 +117,33 @@ struct SMemShared {
     value = reinterpret_cast<T*>( get_data(shift) );
   }
 protected:
+  friend struct SCMemShared;
   SMemorySharedData* data;
 };
 
 //***************************************
 
 struct SCMemShared {
-  inline void clear(void) { if(data) { data->unlink(UMODSYS_SOURCEINFO); data=NULL; } }
-  inline ~SCMemShared(void) { if(data) data->unlink(UMODSYS_SOURCEINFO); }
+  inline ~SCMemShared(void) { clear(); }
   inline SCMemShared(void) : data(NULL) {}
-  inline SCMemShared(const SMemShared& M) : data(M._get()) { if(data) data->link(UMODSYS_SOURCEINFO); }
-  inline SCMemShared(const SCMemShared& M) : data(M.data) { if(data) data->link(UMODSYS_SOURCEINFO); }
+  inline SCMemShared(const SMemShared& M) : data(NULL) { link(M.data, UMODSYS_SOURCEINFO); }
+  inline SCMemShared(const SCMemShared& M) : data(NULL) { link(M.data, UMODSYS_SOURCEINFO); }
   //
-  inline const SCMemShared& operator=(const SCMemShared& M)
-    { if(M.data!=data) { if(data) data->unlink(UMODSYS_SOURCEINFO); data=M.data; if(data) data->link(UMODSYS_SOURCEINFO); } return *this; }
-  inline const SCMemShared& operator=(const SMemShared& M)
-    { if(M._get()!=data) { if(data) data->unlink(UMODSYS_SOURCEINFO); data=M._get(); if(data) data->link(UMODSYS_SOURCEINFO); } return *this; }
+  inline const SCMemShared& operator=(SMemorySharedData* M) { link(M, UMODSYS_SOURCEINFO); return *this; }
+  inline const SCMemShared& operator=(const SCMemShared& M) { link(M.data, UMODSYS_SOURCEINFO); return *this; }
+  inline const SCMemShared& operator=(const SMemShared& M) { link(M.data, UMODSYS_SOURCEINFO); return *this; }
+  //
+  inline void clear(void) { link(NULL, UMODSYS_SOURCEINFO); }
+  inline bool link(SMemorySharedData *p, SSourceContext* ctx) {
+    if(p==data) 
+      return true;
+    if(data) 
+      data->unlink(ctx); 
+    data = p;
+    if(data) 
+      data->link(ctx);
+    return true;
+  }
   //
   inline bool valid(void) const { return data!=NULL; }
   inline operator SCMem(void) const { return data ? SCMem(data->data(), data->size) : SCMem(); }

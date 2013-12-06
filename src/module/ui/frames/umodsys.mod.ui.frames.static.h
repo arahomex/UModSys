@@ -5,7 +5,7 @@
 // empty group (frame)
 
 struct RFrame_Frame : public RFrame_Common {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(ui,frames)::RFrame_Frame, 2, RFrame_Common)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RFrame_Frame, 2, RFrame_Common)
   UMODSYS_REFOBJECT_REFOTHER(RCollector)
   //
   // id functions (what interface is supported)
@@ -27,7 +27,7 @@ struct RFrame_Frame : public RFrame_Common {
 // image/box
 
 struct RFrame_Image : public RFrame_Common {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(ui,frames)::RFrame_Image, 2, RFrame_Common)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RFrame_Image, 2, RFrame_Common)
   UMODSYS_REFOBJECT_REFOTHER(RCollector)
   //
   // id functions (what interface is supported)
@@ -54,7 +54,7 @@ protected:
 // text
 
 struct RFrame_Text : public RFrame_Common, public IFrameData {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(ui,frames)::RFrame_Text, 2, RFrame_Common)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RFrame_Text, 2, RFrame_Common)
   UMODSYS_REFOBJECT_REFOTHER(RCollector)
   //
   // id functions (what interface is supported)
@@ -214,7 +214,7 @@ bool RFrame_Image::draw_pre(const SDrawState& S)
   int fd = is_enabled() ? 0 : cte_Disabled;
   S->setup_coloralpha( tclr(ctg_Image, cte_Image|cte_Back|fd) );
   if(image) {
-    lib2d::DPoint sz = image->get_size(), bsz = S.base.size();
+    lib2d::DPoint sz = image->get_info().size, bsz = S.base.size();
     lib2d::DPointf tsz(bsz(0)/(float)sz(0), bsz(1)/(float)sz(1));
 /*
     float mr = tsz(0)>tsz(1) ? tsz(1) : tsz(0);

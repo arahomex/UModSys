@@ -5,7 +5,7 @@
 
 struct RLibraryBinCache : public ILibraryBinCache
 {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(media,std)::RLibraryBinCache, 1, ILibraryBinCache)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RLibraryBinCache, 1, ILibraryBinCache)
   UMODSYS_REFOBJECT_REFMODULE()
   //
   struct SCacheElem {

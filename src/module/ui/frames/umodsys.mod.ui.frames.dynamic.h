@@ -5,7 +5,7 @@
 // button
 
 struct RFrame_Button : public RFrame_Common {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(ui,frames)::RFrame_Button, 2, RFrame_Common)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RFrame_Button, 2, RFrame_Common)
   UMODSYS_REFOBJECT_REFOTHER(RCollector)
   //
   // id functions (what interface is supported)

@@ -4,7 +4,7 @@
 //***************************************
 
 struct RMouseController : public IMouseController {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(ui,SDL_core)::RMouseController, 2, IMouseController)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RMouseController, 2, IMouseController)
   UMODSYS_REFOBJECT_REFOTHER(RTerminal)
 public:  
   typedef tl::TRefObjectCompositeExtra<IMouseClient, int> PMouseClient;

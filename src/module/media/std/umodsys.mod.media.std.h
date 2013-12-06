@@ -15,6 +15,7 @@
 #include <umodsys/tl/composite/scatter_array.h>
 #include <umodsys/tl/composite/set.h>
 
+#define U_MOD UMODSYS_MODULE_NAME(media, std)
 UMODSYS_MODULE_BEGIN(media, std)
 
 //***************************************
@@ -77,7 +78,7 @@ struct RGenerator : public IGenerator {
     ;
   }
   //
-  UMODSYS_BASE_GENERATOR_IMPLEMENT(UMODSYS_MODULE_NAME(media,std)::RGenerator, 1, IGenerator)
+  UMODSYS_BASE_GENERATOR_IMPLEMENT(U_MOD::RGenerator, 1, IGenerator)
 };
 
 //***************************************

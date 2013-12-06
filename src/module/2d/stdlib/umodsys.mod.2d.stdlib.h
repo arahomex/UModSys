@@ -15,8 +15,8 @@
 
 #include <umodsys/lib/2d/lib2d.image.h>
 
-UMODSYS_MODULE_BEGIN(lib2d, lib2d)
-#define U_MOD UMODSYS_MODULE_NAME(lib2d,lib2d)
+#define U_MOD UMODSYS_MODULE_NAME(lib2d, stdlib)
+UMODSYS_MODULE_BEGIN(lib2d, stdlib)
 
 //***************************************
 // TYPEDEFS
@@ -34,10 +34,10 @@ struct RImage_Memory;
 // INCLUDE COMPONENTS
 //***************************************
 
-#include "umodsys.mod.2d.lib2d.convert.h"
-#include "umodsys.mod.2d.lib2d.memoryimage.h"
-#include "umodsys.mod.2d.lib2d.convertfast.h"
-#include "umodsys.mod.2d.lib2d.convertslow.h"
+#include "umodsys.mod.2d.stdlib.convert.h"
+#include "umodsys.mod.2d.stdlib.memoryimage.h"
+#include "umodsys.mod.2d.stdlib.convertfast.h"
+#include "umodsys.mod.2d.stdlib.convertslow.h"
 
 //***************************************
 // RGenerator

@@ -4,7 +4,7 @@
 //***************************************
 
 struct RRenderDriver2D : public lib2d::IRenderDriver {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(ui,SDL_core)::RRenderDriver2D, 2, lib2d::IRenderDriver)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RRenderDriver2D, 2, lib2d::IRenderDriver)
   UMODSYS_REFOBJECT_REFOTHER(RTerminal)
 protected:
   SDL_Window *wnd;

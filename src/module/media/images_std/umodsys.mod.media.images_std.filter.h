@@ -4,18 +4,18 @@
 //***************************************
 
 struct RMediaFilter : public IBinObjFilter  {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(media,images_std)::RMediaFilter, 1, IBinObjFilter)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RMediaFilter, 1, IBinObjFilter)
   UMODSYS_REFOBJECT_REFMODULE()
 public:
   bool loader_jpeg(IImage *im, const SInfo& info, const SParameters& fp, int pk, BCStr hint, bool falpha);
   bool loader_png(IImage *im, const SInfo& info, const SParameters& fp, int pk, BCStr hint, bool falpha);
   //
-  bool saver_jpeg(const IImage *im, const SInfo& info, const SParameters& fp, BCStr hint, bool falpha);
-  bool saver_png(const IImage *im, const SInfo& info, const SParameters& fp, BCStr hint, bool falpha);
+  bool saver_jpeg(const IImage *im, SInfo& info, const SParameters& fp, BCStr hint, bool falpha);
+  bool saver_png(const IImage *im, SInfo& info, const SParameters& fp, BCStr hint, bool falpha);
 protected:
   static void png_err(png_structp png_ptr, png_const_charp msg);
   static void png_read(png_structp png_ptr, png_bytep data, png_size_t length);
-  static void png_write(png_structp png_ptr, png_const_bytep data, png_size_t length);
+  static void png_write(png_structp png_ptr, png_bytep data, png_size_t length);
 public:
   // SFlags::ISetter
   DMediaFlags::eStates get_flag(int shift) const { return flags.get_s(shift); }

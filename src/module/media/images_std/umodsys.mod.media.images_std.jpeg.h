@@ -159,7 +159,7 @@ bool RMediaFilter::loader_jpeg(IImage *img, const SInfo& info, const SParameters
         return true;
 }
 
-bool RMediaFilter::saver_jpeg(const IImage *im, const SInfo& info, const SParameters& fp, BCStr hint, bool falpha)
+bool RMediaFilter::saver_jpeg(const IImage *im, SInfo& info, const SParameters& fp, BCStr hint, bool falpha)
 {
   return false;
 }

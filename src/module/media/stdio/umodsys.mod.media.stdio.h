@@ -10,6 +10,7 @@
 #include <umodsys/lib/media/libmedia.utils.h>
 #include <umodsys/core/syshlp.h>
 
+#define U_MOD UMODSYS_MODULE_NAME(media, stdio)
 UMODSYS_MODULE_BEGIN(media, stdio)
 
 //***************************************
@@ -59,7 +60,7 @@ struct RGenerator : public IGenerator {
     ;
   }
   //
-  UMODSYS_BASE_GENERATOR_IMPLEMENT(UMODSYS_MODULE_NAME(media,stdio)::RGenerator, 1, IGenerator)
+  UMODSYS_BASE_GENERATOR_IMPLEMENT(U_MOD::RGenerator, 1, IGenerator)
 };
 
 //***************************************

@@ -5,7 +5,7 @@
 
 struct RLibraryObjFilter : public ILibraryObjFilter
 {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(media,std)::RLibraryObjFilter, 1, ILibraryObjFilter)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RLibraryObjFilter, 1, ILibraryObjFilter)
   UMODSYS_REFOBJECT_REFMODULE()
   //
   struct SId {

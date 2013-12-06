@@ -3,7 +3,7 @@
 //------------------------------------
 
 struct RDialog : public IDialog {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(ui,frames)::RDialog, 2, IDialog)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RDialog, 2, IDialog)
   UMODSYS_REFOBJECT_REFOTHER(RCollector)
   //
   bool close(void);

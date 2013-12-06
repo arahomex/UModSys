@@ -712,6 +712,14 @@
 		<Filter
 			Name="lib_3d"
 			>
+			<File
+				RelativePath="..\..\..\src\lib\3d\umodsys.lib.3d.common.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\lib\3d\version_library.h"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

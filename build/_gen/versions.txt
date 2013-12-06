@@ -35,13 +35,18 @@ version lib2d
   check-date include/umodsys/lib/2d/ *.h
   check-date src/lib/2d/ *.h *.cpp
 
+version lib3d
+  file-h     src/lib/2d/version_library.h prefix:UMODSYS_VERSION_LIB3D
+  check-date include/umodsys/lib/3d/ *.h
+  check-date src/lib/3d/ *.h *.cpp
+
 version libui
   file-h     src/lib/ui/version_library.h prefix:UMODSYS_VERSION_LIBUI
   check-date include/umodsys/lib/ui/ *.h
   check-date src/lib/ui/ *.h *.cpp
 
 version libmedia
-  file-h     src/lib/media/version_library.h prefix:UMODSYS_VERSION_LIB2D
+  file-h     src/lib/media/version_library.h prefix:UMODSYS_VERSION_LIBMEDIA
   check-date include/umodsys/lib/media/ *.h
   check-date src/lib/media/ *.h *.cpp
 
@@ -61,9 +66,9 @@ version mod-ui-frames
 
 # --------------------------------- modules: lib2d
 
-version mod-2d-lib2d
-  file-h     src/module/2d/lib2d/version_module.h prefix:UMODSYS_VERSION_MOD_2D_LIB2D
-  check-date src/module/2d/lib2d *.h *.cpp
+version mod-2d-stdlib
+  file-h     src/module/2d/stdlib/version_module.h prefix:UMODSYS_VERSION_MOD_2D_STDLIB
+  check-date src/module/2d/stdlib *.h *.cpp
 
 # --------------------------------- modules: lib3d
 

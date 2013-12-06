@@ -15,6 +15,7 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
 
+#define U_MOD UMODSYS_MODULE_NAME(ui, SDL_core)
 UMODSYS_MODULE_BEGIN(ui, SDL_core)
 
 //***************************************
@@ -66,7 +67,7 @@ struct RGenerator : public IGenerator {
     return false;
   }
   //
-  UMODSYS_BASE_GENERATOR_IMPLEMENT(UMODSYS_MODULE_NAME(ui,SDL_core)::RGenerator, 1, IGenerator)
+  UMODSYS_BASE_GENERATOR_IMPLEMENT(U_MOD::RGenerator, 1, IGenerator)
 };
 
 //***************************************

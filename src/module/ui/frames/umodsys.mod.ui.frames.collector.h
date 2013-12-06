@@ -5,7 +5,7 @@
 //------------------------------------
 
 struct RCollector : public ICollector, public IKeyboardClient, public IMouseClient {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(ui,frames)::RCollector, 2, ICollector)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RCollector, 2, ICollector)
   UMODSYS_REFOBJECT_REFMODULE()
 public:
   IFrame* frame_create_n(int cid, const SFrameCreateParameters& fcp, const SParameters* args);

@@ -5,7 +5,7 @@
 // list
 
 struct RFrame_List : public RFrame_Common, public IFrameList, public IFrameData {
-  UMODSYS_REFOBJECT_IMPLEMENT1(UMODSYS_MODULE_NAME(ui,frames)::RFrame_List, 2, RFrame_Common)
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RFrame_List, 2, RFrame_Common)
   UMODSYS_REFOBJECT_REFOTHER(RCollector)
   //
   // id functions (what interface is supported)

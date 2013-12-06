@@ -48,6 +48,14 @@ struct SImageInfo {
   //
   inline DBox zerobox(void) const 
     { return DBox(0, 0, size(0), size(1)); }
+  inline int width(void) const 
+    { return size(0); }
+  inline int height(void) const 
+    { return size(1); }
+  inline size_t pixelsize(int plane=0) const 
+    { return GetPixelSize(type, plane); }
+  inline size_t getbinsize(int plane=0) const 
+    { return size(0)*size(1)*GetPixelSize(type, plane); }
 };
 
 struct SImagePatchInfo : public SImageInfo {
@@ -59,11 +67,17 @@ struct SImagePatchInfo : public SImageInfo {
     : SImageInfo(at, adx, ady), start(ax, ay) {}
   inline SImagePatchInfo(eImageType at, const DPoint& sz, const DPoint& sp=DPoint(0,0))
     : SImageInfo(at, sz), start(sp) {}
+  inline SImagePatchInfo(const SImageInfo& inf, const DPoint& sp=DPoint(0,0))
+    : SImageInfo(inf), start(sp) {}
   //
   inline void set(eImageType at, const DPoint& sz, const DPoint& sp=DPoint(0,0))
     { SImageInfo::set(at, sz); start = sp; }
   inline void set(eImageType at, int dx, int dy, int x=0, int y=0)
     { SImageInfo::set(at, dx, dy); start.set(x,y); }
+  inline void set(const SImageInfo& inf, const DPoint& sp)
+    { SImageInfo::operator=(inf); start = sp; }
+  inline void set(const SImageInfo& inf, int x, int y)
+    { SImageInfo::operator=(inf); start.set(x,y); }
   //
   inline bool isframe(int adx, int ady, int ax=0, int ay=0) const 
     { return size(0)==adx && size(1)==ady && start(0)==ax && start(1)==ay; }
@@ -145,7 +159,7 @@ protected:
 // INLINES/OUTLINES
 //***************************************
 
-inline size_t GetPixelSize(eImageType type, int plane=0) 
+inline size_t GetPixelSize(eImageType type, int plane) 
 {
   return (plane<0 || plane>4) ? 0 : (type>>(plane<<2)) & it_Mask_Plane1;
 }
