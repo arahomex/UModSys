@@ -709,7 +709,19 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\include\umodsys\lib\media\libmedia.filename.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\include\umodsys\lib\media\libmedia.library.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\media\libmedia.serialize.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\media\libmedia.streams.h"
 				>
 			</File>
 			<File
@@ -770,6 +782,54 @@
 			</File>
 			<File
 				RelativePath="..\..\..\src\module\media\images_std\version_module.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="mod_serialize_cmdarg"
+			>
+			<File
+				RelativePath="..\..\..\src\module\media\serialize_cmdarg\version_module.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="mod_serialize_json"
+			>
+			<File
+				RelativePath="..\..\..\src\module\media\serialize_json\umodsys.mod.media.serialize_json.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\serialize_json\umodsys.mod.media.serialize_json.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\serialize_json\umodsys.mod.media.serialize_json.reader.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\serialize_json\umodsys.mod.media.serialize_json.writer.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\serialize_json\version_module.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="mod_serialize_xml"
+			>
+			<File
+				RelativePath="..\..\..\src\module\media\serialize_xml\version_module.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="mod_serialize_yaml"
+			>
+			<File
+				RelativePath="..\..\..\src\module\media\serialize_yaml\version_module.h"
 				>
 			</File>
 		</Filter>

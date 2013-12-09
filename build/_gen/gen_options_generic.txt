@@ -203,6 +203,26 @@ begin project-group umodsys
         include *.cpp *.h 
       end
     end
+    begin file-group mod_serialize_json
+      begin mask $(path-skip) $(path-s-mod)/media/serialize_json
+        include *.cpp *.h 
+      end
+    end
+    begin file-group mod_serialize_yaml
+      begin mask $(path-skip) $(path-s-mod)/media/serialize_yaml
+        include *.cpp *.h 
+      end
+    end
+    begin file-group mod_serialize_xml
+      begin mask $(path-skip) $(path-s-mod)/media/serialize_xml
+        include *.cpp *.h 
+      end
+    end
+    begin file-group mod_serialize_cmdarg
+      begin mask $(path-skip) $(path-s-mod)/media/serialize_cmdarg
+        include *.cpp *.h 
+      end
+    end
   end
 
   begin project umodsys_lib_libui

@@ -280,6 +280,17 @@ void RTest1_Shell::file_test6(void)
     lib->layer_push( media_cache(true) );
   }
   //
+  libmedia::ISerializeWriter::P wr;
+  {
+    TParametersA<1024> params;
+    params.add("stream", lib->bin_writer("/test.json"));
+    wr = generate_type<libmedia::ISerializeWriter>("*json*", params);
+    if(wr.invalid())
+      return;
+    wr->writer_value(NULL, libmedia::SSerializeValue(1.0f));
+    wr->writer_value(NULL, libmedia::SSerializeValue(12));
+  }
+  //
   lib2d::IImage::P img = new_mem_image();
   bool rv = lib->obj_load("/minecraft_textures.png", img, "lib2d::IImage");
   M.con().put(0, "loaded %d\n", rv);

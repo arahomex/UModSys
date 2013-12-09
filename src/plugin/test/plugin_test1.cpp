@@ -2,6 +2,7 @@
 #include <umodsys/tl/composite/dynarray.h>
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.library.h>
+#include <umodsys/lib/media/libmedia.serialize.h>
 #include <umodsys/lib/ui/libui.common.h>
 #include <umodsys/lib/ui/libui.frames.h>
 #include <umodsys/lib/2d/lib2d.driver.h>
@@ -202,11 +203,13 @@ UMODSYS_MODULE_DEF(lib2d,stdlib);
 UMODSYS_MODULE_DEF(ui,frames);
 UMODSYS_MODULE_DEF(ui,SDL_core);
 UMODSYS_MODULE_DEF(media,images_std);
+UMODSYS_MODULE_DEF(media,serialize_json);
 static void refer(void)
 {
   UMODSYS_MODULE_USE(lib2d,stdlib);
   UMODSYS_MODULE_USE(ui,frames);
   UMODSYS_MODULE_USE(ui,SDL_core);
   UMODSYS_MODULE_USE(media,images_std);
+  UMODSYS_MODULE_USE(media,serialize_json);;
 }
 
