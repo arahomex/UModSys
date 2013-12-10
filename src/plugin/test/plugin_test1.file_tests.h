@@ -280,15 +280,58 @@ void RTest1_Shell::file_test6(void)
     lib->layer_push( media_cache(true) );
   }
   //
-  libmedia::ISerializeWriter::P wr;
   {
+    libmedia::ISerializeWriter::P wr;
     TParametersA<1024> params;
     params.add("stream", lib->bin_writer("/test.json"));
     wr = generate_type<libmedia::ISerializeWriter>("*json*", params);
     if(wr.invalid())
       return;
-    wr->writer_value(NULL, libmedia::SSerializeValue(1.0f));
-    wr->writer_value(NULL, libmedia::SSerializeValue(12));
+    wr->writer_begin(NULL, libmedia::SSerializeValue::t_Array);
+    wr->writer_value(NULL, 1.0f);
+    wr->writer_value(NULL, 12);
+    wr->writer_value(NULL, wr->s_true());
+    wr->writer_value(NULL, wr->s_false());
+    wr->writer_value(NULL, wr->s_null());
+    wr->writer_value(NULL, "12 \r \t \\ \"[]\" \x03");
+    {
+      wr->writer_begin(NULL, libmedia::SSerializeValue::t_Hash);
+      wr->writer_key(NULL, "a");
+      wr->writer_value(NULL, 15);
+      wr->writer_value(NULL, 33.2);
+      wr->writer_end();
+    }
+    {
+      wr->writer_begin(NULL, libmedia::SSerializeValue::t_Hash, libmedia::sero_Compact);
+      wr->writer_key(NULL, "a", libmedia::sero_Compact);
+      wr->writer_value(NULL, 15, libmedia::sero_Compact);
+      wr->writer_value(NULL, 33.2, libmedia::sero_Compact);
+      wr->writer_end();
+    }
+    wr->writer_end();
+  }
+  {
+    libmedia::ISerializeWriter::P wr;
+    {
+      TParametersA<1024> params;
+      params.add("stream", lib->bin_writer("/test2.json"));
+      wr = generate_type<libmedia::ISerializeWriter>("*json*", params);
+      if(wr.invalid())
+        return;
+    }
+    libmedia::ISerializeReader::P rd;
+    {
+      TParametersA<1024> params;
+      params.add("stream", lib->bin_reader("/test.json"));
+      rd = generate_type<libmedia::ISerializeReader>("*json*", params);
+      if(rd.invalid())
+        return;
+    }
+    if(!rd->reader_parse(wr)) {
+      M.con().put(0, "parse error: %s\n", rd->reader_lasterror());
+    } else {
+      M.con().put(0, "configuration parsed\n");
+    }
   }
   //
   lib2d::IImage::P img = new_mem_image();

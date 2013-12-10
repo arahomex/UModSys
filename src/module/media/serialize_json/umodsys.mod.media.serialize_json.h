@@ -29,6 +29,27 @@ struct RGenerator;
 // INCLUDE COMPONENTS
 //***************************************
 
+BChar s_escapes[0x100][8];
+
+inline void init_escapes(void) 
+{
+  if(s_escapes[0][0]!='\0')
+    return;
+  tl::su::scpy(s_escapes['\"'],   "\\\"");
+  tl::su::scpy(s_escapes['\\'],   "\\\\");
+  tl::su::scpy(s_escapes['/'],    "\\/");
+  tl::su::scpy(s_escapes['\b'],   "\\b");
+  tl::su::scpy(s_escapes['\f'],   "\\f");
+  tl::su::scpy(s_escapes['\n'],   "\\n");
+  tl::su::scpy(s_escapes['\r'],   "\\r");
+  tl::su::scpy(s_escapes['\t'],   "\\t");
+  for(int i=0; i<0x20; i++) {
+    if(s_escapes[i][0]=='\0') {
+      snprintf(s_escapes[i], sizeof(s_escapes[i]), "\\u%04x", i);
+    }
+  }
+}
+
 #include "umodsys.mod.media.serialize_json.reader.h"
 #include "umodsys.mod.media.serialize_json.writer.h"
 
@@ -51,6 +72,7 @@ struct RGenerator : public IGenerator {
     return rv;
   }
   bool generate(IRefObject::P& obj, TypeId name, const SParameters& args) {
+    init_escapes();
     return t_gen_param<RSerializeReader>(this, obj, name, args)
       || t_gen_param<RSerializeWriter>(this, obj, name, args)
     ;
