@@ -59,6 +59,8 @@ begin project-group umodsys
     depend umodsys_lib_libui
 #    depend umodsys_lib_lib2d
 #    depend umodsys_lib_lib3d
+    depend plugin_test1
+    depend plugin_test2
   end
 
   begin project umodsys_lib_core
@@ -193,8 +195,8 @@ begin project-group umodsys
         include *.cpp *.h 
       end
     end
-    begin file-group mod_std
-      begin mask $(path-skip) $(path-s-mod)/media/std
+    begin file-group mod_stdlib
+      begin mask $(path-skip) $(path-s-mod)/media/stdlib
         include *.cpp *.h 
       end
     end

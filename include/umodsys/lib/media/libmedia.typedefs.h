@@ -22,8 +22,10 @@ using namespace core;
 // end-points:
 struct IStreamReader;            // read binary data
 struct IStreamWriter;            // write binary data
-struct IBinArchive;              // data<>storage
 struct IBinObjFilter;            // convert object<>data
+
+struct IBinArchive;              // data<>storage
+ struct IBinArchiveFrame;
 
 struct ILibrary;
   struct ILibraryBinTree;
@@ -32,19 +34,34 @@ struct ILibrary;
   struct ILibraryObjCache;
   struct ILibraryLayered;
 
-typedef tl::TStringBuf<
-  tl::su::TSCorePrealloc<cStringBufMedium, core::BChar>, 
-  tl::su::TComparerBinaryHash<core::BChar> 
-> DFixedFileName;
+struct ISerializeHash;
+struct ISerializeArray;
+struct ISerializeReader;
+struct ISerializeWriter;
 
-typedef sint64 DFilePosition;
+//***************************************
+
+struct SMediaFlagUid;
+struct SVFileName;
+struct SVComplexFileName;
+struct SFileInfo;
+struct SFlags;
+struct SFlagsChain;
+struct SSerializeValue;
+
+//***************************************
+
+template<typename Char> struct TTextStreamReader;
+template<typename Char> struct TTextStreamWriter;
+template<typename Char, size_t BufLength> struct TTextStreamReaderBuf;
+template<typename Char, size_t BufLength> struct TTextStreamWriterBuf;
+
 
 //***************************************
 // TYPES
 //***************************************
 
 const size_t MaxFilenameSize = 0x1000;
-struct SMediaFlagUid {};
 
 enum ePermissions {
   mp_Read             = 0x0001,
@@ -60,8 +77,25 @@ enum ePermissions {
   mp_All              = mp_Read | mp_Write | mp_List | mp_Filter
 };
 
+enum eSerializeOptions {
+  sero_Compact = 0x0001,
+  sero_Strict  = 0x0002,
+  sero_Expand  = 0x0004,
+  sero_Naked   = 0x0010,
+  sero_Default = 0x0000
+};
+
+struct SMediaFlagUid {};
+
 //***************************************
 //***************************************
+
+typedef tl::TStringBuf<
+  tl::su::TSCorePrealloc<cStringBufMedium, core::BChar>, 
+  tl::su::TComparerBinaryHash<core::BChar> 
+> DFixedFileName;
+
+typedef sint64 DFilePosition;
 
 typedef tl::TFlags4State<SMediaFlagUid, uint32> DMediaFlags;
 
@@ -85,21 +119,7 @@ typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 13> mf_groupnew;    
 typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 14> mf_reserved1;   // R1
 typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 15> mf_reserved2;   // R2
 
-//***************************************
-
-struct SFileInfo;
 typedef tl::TIStackSocket<SFileInfo> DIFileInfoArray;
-
-//***************************************
-
-struct SVFileName;
-
-struct SVComplexFileName;
-
-//***************************************
-
-struct SFlags;
-struct SFlagsChain;
 
 //***************************************
 // END

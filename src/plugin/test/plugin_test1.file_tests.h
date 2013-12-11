@@ -22,27 +22,27 @@ libmedia::IBinObjFilter::P RTest1_Shell::media_filter_new(const DCString &mask, 
 libmedia::ILibraryBinTree::P RTest1_Shell::media_vfs(void)
 {
   TParametersA<1024> params;
-  return generate_type<libmedia::ILibraryBinTree>("*::std::*", params);
+  return generate_type<libmedia::ILibraryBinTree>("*::stdlib::*", params);
 }
 
 libmedia::ILibraryObjFilter::P RTest1_Shell::media_flt(void)
 {
   TParametersA<1024> params;
-  return generate_type<libmedia::ILibraryObjFilter>("*::std::*", params);
+  return generate_type<libmedia::ILibraryObjFilter>("*::stdlib::*", params);
 }
 
 libmedia::ILibraryLayered::P RTest1_Shell::media_lay(void)
 {
   TParametersA<1024> params;
-  return generate_type<libmedia::ILibraryLayered>("*::std::*", params);
+  return generate_type<libmedia::ILibraryLayered>("*::stdlib::*", params);
 }
 
 libmedia::ILibrary::P RTest1_Shell::media_cache(bool isobj)
 {
   TParametersA<1024> params;
   if(isobj)
-    return generate_type<libmedia::ILibraryObjCache>("*::std::*", params)();
-  return generate_type<libmedia::ILibraryBinCache>("*::std::*", params)();
+    return generate_type<libmedia::ILibraryObjCache>("*::stdlib::*", params)();
+  return generate_type<libmedia::ILibraryBinCache>("*::stdlib::*", params)();
 }
 
 void RTest1_Shell::test_op_file(bool f, const DCString &fname, const DCString &operation)

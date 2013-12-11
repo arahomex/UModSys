@@ -705,6 +705,10 @@
 			Name="headers_media"
 			>
 			<File
+				RelativePath="..\..\..\include\umodsys\lib\media\libmedia.archive.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\include\umodsys\lib\media\libmedia.common.h"
 				>
 			</File>
@@ -834,42 +838,6 @@
 			</File>
 		</Filter>
 		<Filter
-			Name="mod_std"
-			>
-			<File
-				RelativePath="..\..\..\src\module\media\std\umodsys.mod.media.std.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media\std\umodsys.mod.media.std.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media\std\umodsys.mod.media.std.libbincache.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media\std\umodsys.mod.media.std.libbintree.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media\std\umodsys.mod.media.std.liblayered.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media\std\umodsys.mod.media.std.libobjcache.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media\std\umodsys.mod.media.std.libobjfilter.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\media\std\version_module.h"
-				>
-			</File>
-		</Filter>
-		<Filter
 			Name="mod_stdio"
 			>
 			<File
@@ -890,6 +858,42 @@
 			</File>
 			<File
 				RelativePath="..\..\..\src\module\media\stdio\version_module.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="mod_stdlib"
+			>
+			<File
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.libbincache.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.libbintree.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.liblayered.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.libobjcache.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.libobjfilter.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\stdlib\version_module.h"
 				>
 			</File>
 		</Filter>

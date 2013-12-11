@@ -1,8 +1,8 @@
-#include "umodsys.mod.media.std.h"
+#include "umodsys.mod.media.stdlib.h"
 
 #include "version_module.h"
 
-UMODSYS_MODULE_BEGIN(media, std)
+UMODSYS_MODULE_BEGIN(media, stdlib)
 UMODSYS_MODULE_BODY0()
 
 struct RModuleReg : public IModuleReg {
@@ -11,8 +11,8 @@ struct RModuleReg : public IModuleReg {
   RModuleReg(void)
   : IModuleReg(
     "media::std", 
-    UMODSYS_VERSION_MOD_MEDIA_STD_MAJOR, 
-    UMODSYS_VERSION_MOD_MEDIA_STD_MINOR, 
+    UMODSYS_VERSION_MOD_MEDIA_STDLIB_MAJOR, 
+    UMODSYS_VERSION_MOD_MEDIA_STDLIB_MINOR, 
     ""
   ) {}
   ~RModuleReg(void) {}

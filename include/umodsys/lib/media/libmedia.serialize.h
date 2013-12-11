@@ -15,22 +15,6 @@ namespace libmedia {
 // TYPES
 //***************************************
 
-struct SSerializeValue;
-
-struct ISerializeHash;
-struct ISerializeArray;
-
-struct ISerializeReader;
-struct ISerializeWriter;
-
-enum eSerializeOptions {
-  sero_Compact = 0x0001,
-  sero_Strict  = 0x0002,
-  sero_Expand  = 0x0004,
-  sero_Naked   = 0x0010,
-  sero_Default = 0x0000
-};
-
 //***************************************
 // SSerializeValue::
 

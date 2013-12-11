@@ -8,6 +8,7 @@
 #include <umodsys/stdbase.h>
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.library.h>
+#include <umodsys/lib/media/libmedia.archive.h>
 #include <umodsys/lib/media/libmedia.utils.h>
 #include <umodsys/core/syshlp.h>
 
@@ -15,8 +16,8 @@
 #include <umodsys/tl/composite/scatter_array.h>
 #include <umodsys/tl/composite/set.h>
 
-#define U_MOD UMODSYS_MODULE_NAME(media, std)
-UMODSYS_MODULE_BEGIN(media, std)
+#define U_MOD UMODSYS_MODULE_NAME(media, stdlib)
+UMODSYS_MODULE_BEGIN(media, stdlib)
 
 //***************************************
 // TYPEDEFS
@@ -32,11 +33,11 @@ struct RGenerator;
 // INCLUDE COMPONENTS
 //***************************************
 
-#include "umodsys.mod.media.std.libbincache.h"
-#include "umodsys.mod.media.std.libbintree.h"
-#include "umodsys.mod.media.std.liblayered.h"
-#include "umodsys.mod.media.std.libobjcache.h"
-#include "umodsys.mod.media.std.libobjfilter.h"
+#include "umodsys.mod.media.stdlib.libbincache.h"
+#include "umodsys.mod.media.stdlib.libbintree.h"
+#include "umodsys.mod.media.stdlib.liblayered.h"
+#include "umodsys.mod.media.stdlib.libobjcache.h"
+#include "umodsys.mod.media.stdlib.libobjfilter.h"
 
 DMediaFlags RLibraryBinCache::auto_flags;
 DMediaFlags RLibraryBinTree::auto_flags;

@@ -6,14 +6,7 @@ using namespace UModSys::core;
 using namespace UModSys::base;
 using namespace UModSys::base::rsystem;
 
-UMODSYS_MODULE_DEF(media,stdio);
-UMODSYS_MODULE_DEF(media,std);
-
-static void refer(void)
-{
-  UMODSYS_MODULE_USE(media,stdio);
-  UMODSYS_MODULE_USE(media,std);
-}
+static void refer(void);
 
 int main(int argc, char **argv)
 {
@@ -41,5 +34,14 @@ int main(int argc, char **argv)
   syshlp::restore_console();
   lost_func(refer);
   return 0;
+}
+
+UMODSYS_MODULE_DEF(media,stdlib);
+UMODSYS_MODULE_DEF(media,stdio);
+
+static void refer(void)
+{
+  UMODSYS_MODULE_USE(media,stdlib);
+  UMODSYS_MODULE_USE(media,stdio);
 }
 

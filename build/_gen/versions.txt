@@ -78,13 +78,13 @@ version mod-3d-lib3d
 
 # --------------------------------- modules: libmedia
 
+version mod-media-stdlib
+  file-h     src/module/media/stdlib/version_module.h prefix:UMODSYS_VERSION_MOD_MEDIA_STDLIB
+  check-date src/module/media/stdlib *.h *.cpp
+
 version mod-media-libmedia
   file-h     src/module/media/libmedia/version_module.h prefix:UMODSYS_VERSION_MOD_MEDIA_LIBMEDIA
   check-date src/module/media/libmedia *.h *.cpp
-
-version mod-media-std
-  file-h     src/module/media/std/version_module.h prefix:UMODSYS_VERSION_MOD_MEDIA_STD
-  check-date src/module/media/std *.h *.cpp
 
 version mod-media-stdio
   file-h     src/module/media/stdio/version_module.h prefix:UMODSYS_VERSION_MOD_MEDIA_STDIO
