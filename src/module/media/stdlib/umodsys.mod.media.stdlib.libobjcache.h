@@ -126,6 +126,7 @@ struct RLibraryObjCache : public ILibraryObjCache
     return true;
   }
   //
+  // utility
   inline bool validate_construction(void) const { return true; }
 };
 

@@ -77,7 +77,9 @@ begin project-group umodsys
     end
     begin file-group src-tl
       file $(path-s-core)/umodsys.tl.strings.cpp
-      file $(path-s-core)/umodsys.tl.utf.cpp
+      file $(path-s-core)/umodsys.tl.utf8.cpp
+      file $(path-s-core)/umodsys.tl.utf16.cpp
+      file $(path-s-core)/umodsys.tl.utfcase.cpp
     end
     begin file-group headers
       begin file-group core

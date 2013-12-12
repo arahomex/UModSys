@@ -869,6 +869,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.binarchiveframe.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.h"
 				>
 			</File>

@@ -18,6 +18,10 @@ namespace su {
 
 int utf8_cmp_nocase(const BChar* a, const BChar *b);
 int utf8_cmp_nocase(const BChar* a, const BChar *b, size_t num);
+int utf16_cmp_nocase(const BCharW* a, const BCharW *b);
+int utf16_cmp_nocase(const BCharW* a, const BCharW *b, size_t num);
+int utf32_cmp_nocase(const BCharL* a, const BCharL *b);
+int utf32_cmp_nocase(const BCharL* a, const BCharL *b, size_t num);
 
 //***************************************
 

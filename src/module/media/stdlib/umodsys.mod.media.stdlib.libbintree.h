@@ -151,6 +151,7 @@ struct RLibraryBinTree : public ILibraryBinTree
   }
   //
   //
+  // utility
   inline bool validate_construction(void) const { return true; }
 };
 

@@ -26,7 +26,7 @@ public:
   //
   struct NameNode;
   typedef tl::TTreeNodeRB<NameNode> NameNodeBase;
-  typedef tl::TTreeHoldRB<NameNode> NameNodes;
+  typedef tl::TTreeHoldRBD<NameNode> NameNodes;
   //
   struct NameNode : public NameNodeBase {
     // node_flag1 -> rnode=0, wnode=1

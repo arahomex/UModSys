@@ -6,6 +6,9 @@
 /*************************************************************/
 
 #include <umodsys/tl/string/su_typedefs.h>
+#include <umodsys/tl/string/su_char.h>
+#include <umodsys/tl/string/su_charw.h>
+#include <umodsys/tl/string/su_charl.h>
 
 namespace UModSys {
 namespace tl {
@@ -53,6 +56,8 @@ size_t utf_16to8_len(const utf16* src, size_t srclen);
 size_t utf_8to16(utf16* dest, size_t destmax, const utf8* src, size_t srclen, bool gracial=true);
 size_t utf_8to16_len(const utf8* src, size_t srclen);
 
+utf32 utf_nocase32(utf32 v);
+
 //***************************************
 // utf32 <=> utf8[] conversion
 //***************************************
@@ -61,34 +66,8 @@ size_t utf_32to8(utf8* dest, size_t destmax, const utf32* src, size_t srclen, bo
 size_t utf_32to8_len(const utf32* src, size_t srclen);
 size_t utf_8to32(utf32* dest, size_t destmax, const utf8* src, size_t srclen, bool gracial=true);
 size_t utf_8to32_len(const utf8* src, size_t srclen);
-
-inline size_t utf_32to8(utf8* dest, size_t destmax, utf32 src)
-{
-  register utf32 ch = src;
-  register unsigned char bytesToWrite = 0;
-  const utf8 byteMask = utf8(0xBF);
-  const utf8 byteMark = utf8(0x80);
-
-  if (ch < 0x80)              bytesToWrite = 1;
-  else if (ch < 0x800)        bytesToWrite = 2;
-  else if (ch < 0x10000)      bytesToWrite = 3;
-  else if (ch < 0x200000)     bytesToWrite = 4;
-  else if (ch < 0x4000000)    bytesToWrite = 5;
-  else if (ch <= utf_kMaximumUCS4) bytesToWrite = 6;
-  else { bytesToWrite = 2; ch = utf_kReplacementCharacter; }
-
-  if(destmax<bytesToWrite)
-    return 0;
-  switch (bytesToWrite) { /* note: code falls through cases! */
-    case 6: dest[5] = (utf8(ch) | byteMark) & byteMask; ch >>= 6;
-    case 5: dest[4] = (utf8(ch) | byteMark) & byteMask; ch >>= 6;
-    case 4: dest[3] = (utf8(ch) | byteMark) & byteMask; ch >>= 6;
-    case 3: dest[2] = (utf8(ch) | byteMark) & byteMask; ch >>= 6;
-    case 2: dest[1] = (utf8(ch) | byteMark) & byteMask; ch >>= 6;
-    case 1: dest[0] =  utf8(ch) | utf_firstByteMark[bytesToWrite];
-  };
-  return bytesToWrite;
-}
+size_t utf_32to8(utf8* dest, size_t destmax, utf32 src);
+bool utf_8to32(utf32 &dest, const utf8* &src, size_t &srcsize);
 
 inline size_t utf_32to8_len(utf32 src)
 {
@@ -100,34 +79,6 @@ inline size_t utf_32to8_len(utf32 src)
   else if (ch < 0x4000000) return 5;
   else if (ch <= utf_kMaximumUCS4) return 6;
   else return 2;
-}
-
-//***************************************
-
-inline bool utf_8to32(utf32 &dest, const utf8* &src, size_t &srcsize)
-{
-  register utf32 ch = 0;
-  if(srcsize<=0)
-    return false;
-  register unsigned char extraBytesToWrite = utf_bytesFromUTF8[utf8u(*src)];
-  if(srcsize<extraBytesToWrite+1)
-    return false;
-  switch(extraBytesToWrite) { /* note: code falls through cases! */
-    case 5: ch += utf8u(*src++); ch <<= 6;
-    case 4: ch += utf8u(*src++); ch <<= 6;
-    case 3: ch += utf8u(*src++); ch <<= 6;
-    case 2: ch += utf8u(*src++); ch <<= 6;
-    case 1: ch += utf8u(*src++); ch <<= 6;
-    case 0: ch += utf8u(*src++);
-  };
-  srcsize -= extraBytesToWrite+1;
-  ch -= utf_offsetsFromUTF8[extraBytesToWrite];
-  if(ch > utf_kMaximumUCS4) {
-    dest = utf_kReplacementCharacter;
-    return true;
-  }
-  dest = ch;
-  return true;
 }
 
 //***************************************
@@ -190,6 +141,64 @@ inline bool utf_16to32(utf32 &dest, const utf16* &src, size_t &srcsize)
   }
   dest = ch;
   return true;
+}
+
+//***************************************
+// utf32 nocase
+//***************************************
+
+int utf32_cmp_nocase_bin(const utf32* a, const utf32 *b, size_t num);
+
+inline int utf32_cmp_nocase(const utf32* a, const utf32 *b)
+{
+  if(a==NULL) return b!=NULL ? 1 : 0; else if(b!=NULL) return -1;
+  size_t sa = su::slen(a), sb = su::slen(b);
+  if(sa!=sb) return (sa>sb)-(sa<sb);
+  return utf32_cmp_nocase_bin(a, b, sa);
+}
+
+inline int utf32_cmp_nocase(const utf32* a, const utf32 *b, size_t num)
+{
+  if(a==NULL) return b!=NULL ? 1 : 0; else if(b!=NULL) return -1;
+  size_t sa = su::slen(a, num), sb = su::slen(b, num);
+  if(sa!=sb) return (sa>sb)-(sa<sb);
+  return utf32_cmp_nocase_bin(a, b, sa);
+}
+
+//***************************************
+// utf16 nocase
+//***************************************
+
+int utf16_cmp_nocase_bin(const utf16* a, const utf16 *b, size_t sa, size_t sb);
+
+inline int utf16_cmp_nocase(const utf16* a, const utf16 *b)
+{
+  if(a==NULL) return b!=NULL ? 1 : 0; else if(b!=NULL) return -1;
+  return utf16_cmp_nocase_bin(a, b, su::slen(a), su::slen(b));
+}
+
+inline int utf16_cmp_nocase(const utf16* a, const utf16 *b, size_t num)
+{
+  if(a==NULL) return b!=NULL ? 1 : 0; else if(b!=NULL) return -1;
+  return utf16_cmp_nocase_bin(a, b, su::slen(a, num), su::slen(b, num));
+}
+
+//***************************************
+// utf8 nocase
+//***************************************
+
+int utf8_cmp_nocase_bin(const utf8* a, const utf8 *b, size_t sa, size_t sb);
+
+inline int utf8_cmp_nocase(const utf8* a, const utf8 *b)
+{
+  if(a==NULL) return b!=NULL ? 1 : 0; else if(b!=NULL) return -1;
+  return utf8_cmp_nocase_bin(a, b, su::slen(a), su::slen(b));
+}
+
+inline int utf8_cmp_nocase(const utf8* a, const utf8 *b, size_t num)
+{
+  if(a==NULL) return b!=NULL ? 1 : 0; else if(b!=NULL) return -1;
+  return utf8_cmp_nocase_bin(a, b, su::slen(a, num), su::slen(b, num));
 }
 
 //***************************************

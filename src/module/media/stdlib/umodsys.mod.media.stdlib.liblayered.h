@@ -290,6 +290,7 @@ struct RLibraryLayered : public ILibraryLayered
   }
   //
   //
+  // utility
   inline bool validate_construction(void) const { return true; }
 };
 

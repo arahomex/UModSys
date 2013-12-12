@@ -140,6 +140,7 @@ struct RLibraryBinCache : public ILibraryBinCache
     return true;
   }
   //
+  // utility
   inline bool validate_construction(void) const { return true; }
 };
 

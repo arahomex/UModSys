@@ -11,6 +11,15 @@ namespace UModSys {
 namespace tl {
 namespace su {
 
+template<>
+struct TCharOptions<core::BCharL> {
+  typedef core::BCharL       Char;
+  typedef core::BCharLIndex  Index;
+  typedef core::BCStrL       CStr;
+  typedef core::BOStrL       OStr;
+  //
+};
+
 } // namespace su
 } // namespace tl
 } // namespace UModSys

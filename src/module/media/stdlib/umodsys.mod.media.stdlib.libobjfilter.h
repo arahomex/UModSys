@@ -146,6 +146,7 @@ struct RLibraryObjFilter : public ILibraryObjFilter
   }
   //
   //
+  // utility
   inline bool validate_construction(void) const { return true; }
 };
 

@@ -1121,7 +1121,15 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\core\umodsys.tl.utf.cpp"
+				RelativePath="..\..\..\src\core\umodsys.tl.utf8.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\core\umodsys.tl.utf16.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\core\umodsys.tl.utfcase.cpp"
 				>
 			</File>
 		</Filter>

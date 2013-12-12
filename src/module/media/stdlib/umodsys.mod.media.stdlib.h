@@ -33,12 +33,14 @@ struct RGenerator;
 // INCLUDE COMPONENTS
 //***************************************
 
+#include "umodsys.mod.media.stdlib.binarchiveframe.h"
 #include "umodsys.mod.media.stdlib.libbincache.h"
 #include "umodsys.mod.media.stdlib.libbintree.h"
 #include "umodsys.mod.media.stdlib.liblayered.h"
 #include "umodsys.mod.media.stdlib.libobjcache.h"
 #include "umodsys.mod.media.stdlib.libobjfilter.h"
 
+DMediaFlags RBinArchiveFrame::auto_flags;
 DMediaFlags RLibraryBinCache::auto_flags;
 DMediaFlags RLibraryBinTree::auto_flags;
 DMediaFlags RLibraryObjCache::auto_flags;
@@ -58,6 +60,7 @@ struct RGenerator : public IGenerator {
          + t_names<RLibraryLayered>(list)
          + t_names<RLibraryObjFilter>(list)
          + t_names<RLibraryObjCache>(list)
+         + t_names<RBinArchiveFrame>(list)
     ;
   }
   int get_generated_types(DPtrList& list, TypeId name) const {
@@ -67,6 +70,7 @@ struct RGenerator : public IGenerator {
       || t_types<RLibraryLayered>(rv, list, name)
       || t_types<RLibraryObjFilter>(rv, list, name)
       || t_types<RLibraryObjCache>(rv, list, name)
+      || t_types<RBinArchiveFrame>(rv, list, name)
     ;
     return rv;
   }
@@ -76,6 +80,7 @@ struct RGenerator : public IGenerator {
         || t_gen_param<RLibraryLayered>(this, obj, name, args)
         || t_gen_param<RLibraryObjFilter>(this, obj, name, args)
         || t_gen_param<RLibraryObjCache>(this, obj, name, args)
+        || t_gen_param<RBinArchiveFrame>(this, obj, name, args)
     ;
   }
   //
