@@ -536,6 +536,12 @@ bool SListContext::next(void)
   return true;
 }
 
+
+bool syshlp::u_fchsize(FILE *file, long pos)
+{
+ return _chsize(_fileno(file), pos)==0;
+}
+
 //***************************************
 // ::
 //***************************************

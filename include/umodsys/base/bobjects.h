@@ -96,7 +96,7 @@ public:
     IRefObject::P& obj;
     if(!generate(obj, name, args) || !obj.valid())
       return false;
-    if(!obj->t_root_get_other_interface_ref(rv))
+    if(!obj->t_ref_get_other_interface(rv))
       return false;
     return true;
   }

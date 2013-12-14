@@ -42,7 +42,7 @@ bool RSystem::exec_tests(void)
   dbg_put(rsdl_SystemTests, "******************************* TESTS {\n");
   dbg_put(rsdl_SystemTests, "sizeof(DRMemAlloc)=%u sizeof(DRMemAlloc::DHeader)=%u\nsizeof(TMemAllocHeader<Void>)=%u sizeof(mem_headers::TMain<TMemAllocHeader<Void>>)=%u\n",
     (unsigned)sizeof(DRMemAlloc), (unsigned)sizeof(DRMemAlloc::DHeader), 
-    (unsigned)sizeof(TMemAllocHeader<Void>), (unsigned)sizeof(mem_headers::TMain<TMemAllocHeader<Void>>)
+    (unsigned)sizeof(TMemAllocHeader<Void>), (unsigned)sizeof(mem_headers::TMain< TMemAllocHeader<Void> >)
   );
   //
   exec_test_shells();

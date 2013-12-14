@@ -8,9 +8,11 @@ libmedia_lib_depends := \
   \
   $(T)/umodsys.mod.media.stdio$(OSUFFIX) \
   \
-  $(T)/umodsys.mod.media.std$(OSUFFIX) \
+  $(T)/umodsys.mod.media.stdlib$(OSUFFIX) \
   \
   $(T)/umodsys.mod.media.images_std$(OSUFFIX) \
+  \
+  $(T)/umodsys.mod.media.serialize_json$(OSUFFIX) \
 
 libmedia_lib := $(T)/umodsys.libmedia$(LIBSUFFIX)
 
@@ -45,13 +47,19 @@ ifndef NO_CXX_DEP
 	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
 endif
 
-$(T)/%$(OSUFFIX) : ../../src/module/media/std/%.cpp
+$(T)/%$(OSUFFIX) : ../../src/module/media/stdlib/%.cpp
 	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $<
 ifndef NO_CXX_DEP
 	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
 endif
 
 $(T)/%$(OSUFFIX) : ../../src/module/media/images_std/%.cpp
+	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $<
+ifndef NO_CXX_DEP
+	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
+endif
+
+$(T)/%$(OSUFFIX) : ../../src/module/media/serialize_json/%.cpp
 	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $<
 ifndef NO_CXX_DEP
 	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 

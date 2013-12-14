@@ -54,7 +54,7 @@ struct TSCoreShared : public MemAllocT {
   inline void set(Str s, size_t L) { info_new(s, L); }
   inline void set(const Self& R) { info_dup(R.info); }
   //
-  inline BufferStr get_buf(void) const { return BufferStr(text, nChars, length); }
+  inline BufferStr get_buf(void) const { return BufferStr(info->text, info->maxlength, info->length); }
   inline size_t get_bufmax(void) const { return info->maxlength; }
   inline void set_length(size_t L) { if(info!=get_null()) info->length=L; }
   inline OStr get_buftext(void) const { return info->text; }

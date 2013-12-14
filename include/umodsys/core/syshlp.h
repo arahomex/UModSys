@@ -182,6 +182,7 @@ void restore_console(void);
 FILE* u_fopen(const char *cfilename, const char *cmode);
 FILE* u_fopentemp(char* &handle, const char *msk);
 bool u_fendtemp(FILE* &f, char* &handle, bool gracial);
+bool u_fchsize(FILE *f, long pos);
 
 bool u_mkdir_recursive(const char *dira);
 bool u_erase(const char *filedir);

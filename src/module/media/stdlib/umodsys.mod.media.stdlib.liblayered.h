@@ -90,7 +90,7 @@ struct RLibraryLayered : public ILibraryLayered
         continue;
       if(lx.lib->bin_save(media_name, mem, f2)) {
         if(flags.yes<mf_cachesave>(this)) {
-          SCMemShared ms = mem;
+          SCMemShared ms(mem);
           bin_put(media_name, &ms);
         }
         return true;

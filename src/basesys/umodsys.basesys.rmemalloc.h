@@ -65,12 +65,12 @@ template<typename Header>
 struct TMain : public tl::TList2Node<Header> {
   size_t allocated;
   //
-  inline void clear(void) { allocated = 0; delme(); }
+  inline void clear(void) { allocated = 0; tl::TList2Node<Header>::delme(); }
   inline void init(size_t sz) { allocated = sz; }
   inline void init(const SSourceContext* d) {}
   //
   template<typename Pool> inline void pinit(Pool* p) {}
-  template<typename Pool> inline bool valid(const Pool* p) const { return !isnull(); }
+  template<typename Pool> inline bool valid(const Pool* p) const { return !tl::TList2Node<Header>::isnull(); }
   //
   inline size_t getsize(void) const { return allocated; }
 };
@@ -103,7 +103,7 @@ struct TMemAllocHeader
   public TMemAllocHeaderMap<E5, 5>::T,
   public mem_headers::TMain< TMemAllocHeader<E1, E2, E3, E4, E5> > 
 {
-  typedef typename TMemAllocHeader<E1, E2, E3, E4, E5> Self;
+  typedef TMemAllocHeader<E1, E2, E3, E4, E5> Self;
   typedef typename mem_headers::TMain< Self > TM;
   typedef typename TMemAllocHeaderMap<E1, 1>::T T1;
   typedef typename TMemAllocHeaderMap<E2, 2>::T T2;
@@ -118,7 +118,7 @@ struct TMemAllocHeader
   template<typename Pool> inline void pinit(Pool* p) { insert_in(&p->root); TM::pinit(p); T1::pinit(p); T2::pinit(p); T3::pinit(p); T4::pinit(p); T5::pinit(p); }
   template<typename Pool> inline bool valid(const Pool* p) const { return TM::valid(p) && T1::valid(p) && T2::valid(p) && T3::valid(p) && T4::valid(p) && T5::valid(p); }
   //
-  inline void insert_in(Self* r) { s_append(this, r); }
+  inline void insert_in(Self* r) { TM::s_append(this, r); }
 };
 
 //***************************************

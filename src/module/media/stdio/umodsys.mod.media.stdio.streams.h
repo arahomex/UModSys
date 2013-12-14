@@ -139,9 +139,9 @@ struct RStreamWriter_FILE : public IStreamWriter
     if(!file)
       return false;
     fflush(file);
-    int rv = _chsize(_fileno(file), pos);
+    bool rv = syshlp::u_fchsize(file, pos);
     fflush(file);
-    return rv!=0;
+    return rv;
   }
   DFilePosition writer_pos(void) {
     return file ? ftell(file) : 0;

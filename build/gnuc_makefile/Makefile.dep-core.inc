@@ -15,8 +15,11 @@ core_lib_depends := \
   $(T)/umodsys.core.objects$(OSUFFIX) \
   $(T)/umodsys.core.stdtypedefs$(OSUFFIX) \
   $(T)/umodsys.core.uniqueptr$(OSUFFIX) \
+  \
   $(T)/umodsys.tl.strings$(OSUFFIX) \
-  $(T)/umodsys.tl.utf$(OSUFFIX) \
+  $(T)/umodsys.tl.utf8$(OSUFFIX) \
+  $(T)/umodsys.tl.utf16$(OSUFFIX) \
+  $(T)/umodsys.tl.utfcase$(OSUFFIX) \
   \
   $(T)/umodsys.core.syshlp_chars.$(PLATFORM_ID)$(OSUFFIX) \
   $(T)/umodsys.core.syshlp_charcode.$(PLATFORM_ID)$(OSUFFIX) \

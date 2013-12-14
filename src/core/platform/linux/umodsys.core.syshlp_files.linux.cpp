@@ -196,6 +196,10 @@ bool syshlp::put_file(const char *name, const void* buffer, size_t bufsize, size
   return true;  
 }
 
+bool syshlp::u_fchsize(FILE *file, long pos)
+{
+ return ftruncate(fileno(file), pos)==0;
+}
 
 //***************************************
 // ::

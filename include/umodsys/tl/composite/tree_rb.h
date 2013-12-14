@@ -821,7 +821,7 @@ public:
   //
   inline void clear(void) { this->process_nodes(node_del); Hold::root=NULL; }
   inline void delete_all_nodes(void) { this->process_nodes(node_del); Hold::root=NULL; }
-  inline void delete_node(Node *n) { remove_node(n); node_del(n); }
+  inline void delete_node(Node *n) { Hold::remove_node(n); node_del(n); }
   //
   template<typename tCmp>
   inline void delete_filterc(const tCmp &cmp) { remove_filterc_seq(cmp, node_del); }
@@ -860,7 +860,7 @@ public:
     if(newn!=NULL)
       *newn = n;
     //
-    sub_insert_node(p, n, compare);
+    Hold::sub_insert_node(p, n, compare);
     return n; // insert node ok
   }
 };

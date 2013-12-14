@@ -149,7 +149,7 @@ template<typename Char, size_t BufLength>
 struct TTextStreamReaderBuf : public TTextStreamReader<Char>
 {
   inline TTextStreamReaderBuf(IStreamReader* s) 
-    : TTextStreamReader(s, fbuf, sizeof(fbuf)) {}
+    : TTextStreamReader<Char>(s, fbuf, sizeof(fbuf)) {}
   inline ~TTextStreamReaderBuf(void)
     {}
 protected:
@@ -217,7 +217,7 @@ template<typename Char, size_t BufLength>
 struct TTextStreamWriterBuf : public TTextStreamWriter<Char>
 {
   inline TTextStreamWriterBuf(IStreamWriter* s) 
-    : TTextStreamWriter(s, fbuf, sizeof(fbuf)) {}
+    : TTextStreamWriter<Char>(s, fbuf, sizeof(fbuf)) {}
   inline ~TTextStreamWriterBuf(void)
     {}
 protected:
