@@ -130,9 +130,9 @@ public:
   virtual void* get_hwinfo(HUniquePointer hint) =0;
   virtual const void* get_hwcinfo(HUniquePointer hint) const =0;
   //
-  template<typename HWInfo> inline HWInfo* tget_hwinfo(const void* hint) 
+  template<typename HWInfo> inline HWInfo* tget_hwinfo(HUniquePointer hint) 
     { return static_cast<HWInfo*>(get_hwinfo(hint)); }
-  template<typename HWInfo> inline const HWInfo* tget_hwcinfo(const void* hint) const 
+  template<typename HWInfo> inline const HWInfo* tget_hwcinfo(HUniquePointer hint) const 
     { return static_cast<HWInfo*>(get_hwcinfo(hint)); }
   inline bool set_info(eImageType t, int dx, int dy, BCStr hint=NULL)
     { return set_info(DInfo(t, dx, dy), hint); }

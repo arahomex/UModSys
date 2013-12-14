@@ -8,6 +8,8 @@ basesys_lib_depends := \
   $(T)/umodsys.basesys.rsystem_tests$(OSUFFIX) \
   $(T)/umodsys.basesys.rmodule$(OSUFFIX) \
   $(T)/umodsys.basesys.rmodulelib$(OSUFFIX) \
+  $(T)/umodsys.basesys.rmodulelibso$(OSUFFIX) \
+  $(T)/umodsys.basesys.rmodulelibthis$(OSUFFIX) \
   $(T)/umodsys.basesys.rmoduleloader$(OSUFFIX) \
   $(T)/umodsys.basesys.rparameters$(OSUFFIX) \
   $(T)/umodsys.basesys.rconsole_std$(OSUFFIX) \
