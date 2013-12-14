@@ -104,7 +104,7 @@ inline typename SArray::size_type TSet<SArray, SComparer>::FindIndex(const Node&
 {
   const Node* x = arr.All();
   for(size_t n=~arr; n; n--, x++) {
-    if(compare(*x, val)==0)
+    if(Comparer::compare(*x, val)==0)
       return x - arr.All();
   }
   return None();
@@ -115,7 +115,7 @@ inline const typename SArray::ItemType* TSet<SArray, SComparer>::Find(const Node
 {
   const Node* x = arr.All();
   for(size_t n=~arr; n; n--, x++) {
-    if(compare(*x, val)==0)
+    if(SComparer::compare(*x, val)==0)
       return x;
   }
   return NULL;

@@ -15,6 +15,7 @@ core_lib_depends := \
   $(T)/umodsys.core.objects$(OSUFFIX) \
   $(T)/umodsys.core.stdtypedefs$(OSUFFIX) \
   $(T)/umodsys.core.uniqueptr$(OSUFFIX) \
+  $(T)/umodsys.core.uniqueptrlist$(OSUFFIX) \
   \
   $(T)/umodsys.tl.strings$(OSUFFIX) \
   $(T)/umodsys.tl.utf8$(OSUFFIX) \

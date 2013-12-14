@@ -11,12 +11,65 @@ using namespace UModSys::core::syshlp;
 // syshlp::
 //***************************************
 
+
+void syshlp::setup_console(void)
+{
+}
+
+void syshlp::restore_console(void)
+{
+}
+
+//***************************************
+//***************************************
+
 FILE* syshlp::u_fopen(const char *cfilename, const char *cmode)
 {
   return fopen(cfilename, cmode);
 }
 
-//***************************************
+FILE* syshlp::u_fopentemp(char* &handle, const char *msk)
+{
+  size_t L = strlen(msk)+1;
+  handle = static_cast<char*>(local_memory().mem_alloc(L*2+16, UMODSYS_SOURCEINFO));
+  if(handle==NULL) {
+    return NULL;
+  }
+  strcpy(handle, msk);
+  strcpy(handle+L, msk);
+  strcpy(handle+L*2-1, ".temp");
+  FILE *f = u_fopen(handle+L, "wb");
+  if(f==NULL) {
+    local_memory().mem_free(handle, UMODSYS_SOURCEINFO);
+    handle = NULL;
+    return NULL;
+  }
+  return f;
+}
+
+bool syshlp::u_fendtemp(FILE* &f, char* &handle, bool gracial)
+{
+  bool ok = true;
+  if(f) {
+    ::fclose(f);
+    f = NULL;
+  }
+  if(handle) {
+    BCStr n1 = handle;
+    BCStr n2 = handle+strlen(handle)+1;
+    //
+    if(gracial) {
+      ok = ::remove(n1)==0 && ok;
+      ok = ::rename(n2, n1)==0 && ok;
+      ::remove(n2);
+    } else {
+      ok = ::remove(n2)==0 && ok;
+    }
+    local_memory().mem_free(handle, UMODSYS_SOURCEINFO);
+    handle = NULL;
+  }
+  return ok;
+}
 
 //***************************************
 //***************************************
