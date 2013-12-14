@@ -1,0 +1,13 @@
+generator makefile
+
+set path-root ../../..
+set path-skip +1
+
+set spname linux
+set ppath platform/linux
+
+include ../_gen/gen_options_generic.txt
+include ../_gen/gen_options_linux.txt
+
+include ../_gen/gen_options_depends_generic.txt
+include ../_gen/gen_options_linux.txt
