@@ -43,7 +43,7 @@ namespace core {
 #endif // UMODSYS_ARCH_BYTE8
 //***************************************
 
-typedef ::tm BTime;
+typedef time_t BTime;
 
 extern BTime null_time;
 

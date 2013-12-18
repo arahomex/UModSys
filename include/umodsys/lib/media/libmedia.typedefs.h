@@ -20,19 +20,20 @@ using namespace core;
 //***************************************
 
 // end-points:
+struct IUtilities;
 struct IStreamReader;            // read binary data
 struct IStreamWriter;            // write binary data
-struct IBinObjFilter;            // convert object<>data
 
-struct IBinArchive;              // data<>storage
- struct IBinArchiveFrame;
-
-struct ILibrary;
-  struct ILibraryBinTree;
-  struct ILibraryBinCache;
-  struct ILibraryObjFilter;
-  struct ILibraryObjCache;
-  struct ILibraryLayered;
+struct ILibObject;
+  struct IBinObjFilter;            // convert object<>data
+  struct IBinArchive;              // data<>storage
+    struct IBinArchiveFrame;
+  struct ILibrary;                 // general library
+    struct ILibraryBinTree;
+    struct ILibraryBinCache;
+    struct ILibraryObjFilter;
+    struct ILibraryObjCache;
+    struct ILibraryLayered;
 
 struct ISerializeHash;
 struct ISerializeArray;
@@ -48,6 +49,7 @@ struct SFileInfo;
 struct SFlags;
 struct SFlagsChain;
 struct SSerializeValue;
+struct SBuffer;
 
 //***************************************
 

@@ -736,18 +736,6 @@
 				RelativePath="..\..\..\include\umodsys\lib\media\libmedia.utils.h"
 				>
 			</File>
-			<File
-				RelativePath="..\..\..\include\umodsys\lib\media\media.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\include\umodsys\lib\media\media_archive.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\include\umodsys\lib\media\media~.h"
-				>
-			</File>
 		</Filter>
 		<Filter
 			Name="lib_media"
@@ -869,31 +857,39 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.binarchiveframe.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.libbincache.h"
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.t.binarchiveframe.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.libbintree.h"
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.t.libbincache.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.liblayered.h"
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.t.libbintree.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.libobjcache.h"
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.t.liblayered.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.libobjfilter.h"
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.t.libobjcache.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.t.libobjfilter.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.t.utils.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.types.h"
 				>
 			</File>
 			<File
@@ -918,6 +914,10 @@
 			</File>
 			<File
 				RelativePath="..\..\..\src\module\media\zlib\umodsys.mod.media.zlib.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\zlib\umodsys.mod.media.zlib.types.h"
 				>
 			</File>
 			<File

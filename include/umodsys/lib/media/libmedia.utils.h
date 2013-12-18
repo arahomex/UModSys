@@ -12,6 +12,59 @@ namespace UModSys {
 namespace libmedia {
 
 //***************************************
+// TYPES
+//***************************************
+
+//***************************************
+// SBuffer::
+
+struct SBuffer : public SMem {
+public:
+  inline ~SBuffer(void) { 
+    clear(UMODSYS_SOURCEINFO); 
+  }
+  inline SBuffer(IUtilities* U) 
+  : utils(U), hint(0) {
+  }
+  inline SBuffer(ILibObject* lo) 
+  : utils(lo ? lo->utils : NULL), hint(0) {
+  }
+  inline SBuffer(const SBuffer& R) 
+  : utils(R.utils), hint(0) {
+    SMem::operator=(R);
+  }
+  inline void operator=(const SBuffer& R) {
+    SMem::operator=(R);
+  }
+  inline void operator=(const SMem& R) {
+    SMem::operator=(R);
+  }
+  //
+  inline void clear(const SSourceContext* sctx) {
+    if(allocated.data) {
+      if(utils.valid()) {
+        utils->buffer_free(*this, sctx);
+      }
+      allocated.clear();
+      hint = 0;
+    }
+    SMem::clear();
+  }
+  inline bool alloc(size_t sz, const SSourceContext* sctx) {
+    if(!utils.valid())
+      return false;
+    return utils->buffer_alloc(*this, sz, sctx);
+  }
+  //
+  inline SMem& _allocated(void) { return allocated; }
+  inline int& _hint(void) { return hint; }
+protected:
+  SMem allocated;
+  int hint;
+  IUtilities::P utils;
+};
+
+//***************************************
 // INLINES
 //***************************************
 

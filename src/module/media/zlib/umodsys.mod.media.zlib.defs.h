@@ -49,7 +49,7 @@ UMODSYS_CPU_DEF_FIELD_START(fileDirHeader)
   UMODSYS_CPU_DEF_FIELD_uint32_le(dirSize, totalDirEntries)
   UMODSYS_CPU_DEF_FIELD_uint32_le(dirOffset, dirSize)
   UMODSYS_CPU_DEF_FIELD_uint16_le(cmntLen, dirOffset)
-UMODSYS_CPU_DEF_FIELD_END(cmntLen)
+UMODSYS_CPU_DEF_FIELD_END(fileDirHeader, cmntLen)
 
 UMODSYS_CPU_DEF_FIELD_START(fileDirEntry)
   enum { SIGNATURE   = 0x02014b50 };
@@ -71,11 +71,11 @@ UMODSYS_CPU_DEF_FIELD_START(fileDirEntry)
   UMODSYS_CPU_DEF_FIELD_uint32_le(extAttr, intAttr)
   UMODSYS_CPU_DEF_FIELD_uint32_le(hdrOffset, extAttr)
   //
-  const char *GetName(const void* r) const { return reinterpret_cast<const char *>(p_end(r)); }
-  const char *GetExtra(const void* r) const { return GetName(r) + get_fnameLen(); }
-  const char *GetComment(const void* r) const { return GetExtra(r) + get_xtraLen(); }
-  char *GetName(void* r) { return reinterpret_cast<char *>(p_end(r)); }
-UMODSYS_CPU_DEF_FIELD_END(hdrOffset)
+  const char *GetName(const BByte* r) const { return reinterpret_cast<const char *>(p_end(r)); }
+  const char *GetExtra(const BByte* r) const { return GetName(r) + fnameLen; }
+  const char *GetComment(const BByte* r) const { return GetExtra(r) + xtraLen; }
+  char *GetName(BByte* r) { return reinterpret_cast<char *>(p_end(r)); }
+UMODSYS_CPU_DEF_FIELD_END(fileDirEntry, hdrOffset)
 
 UMODSYS_CPU_DEF_FIELD_START(fileFilePrefix)
   enum { SIGNATURE = 0x04034b50 };
@@ -90,4 +90,4 @@ UMODSYS_CPU_DEF_FIELD_START(fileFilePrefix)
   UMODSYS_CPU_DEF_FIELD_uint32_le(ucSize, cSize)
   UMODSYS_CPU_DEF_FIELD_uint16_le(fnameLen, ucSize)
   UMODSYS_CPU_DEF_FIELD_uint16_le(xtraLen, fnameLen)
-UMODSYS_CPU_DEF_FIELD_END(xtraLen)
+UMODSYS_CPU_DEF_FIELD_END(fileFilePrefix, xtraLen)

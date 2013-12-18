@@ -5,6 +5,10 @@
 UMODSYS_MODULE_BEGIN(media, stdlib)
 UMODSYS_MODULE_BODY0()
 
+#include "umodsys.mod.media.stdlib.t.utils.h"
+#include "umodsys.mod.media.stdlib.t.binarchiveframe.h"
+#include "umodsys.mod.media.stdlib.t.libbintree.h"
+
 struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)
   //

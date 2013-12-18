@@ -33,14 +33,12 @@ struct RGenerator;
 // INCLUDE COMPONENTS
 //***************************************
 
-#include "umodsys.mod.media.stdlib.binarchiveframe.h"
-#include "umodsys.mod.media.stdlib.libbincache.h"
-#include "umodsys.mod.media.stdlib.libbintree.h"
-#include "umodsys.mod.media.stdlib.liblayered.h"
-#include "umodsys.mod.media.stdlib.libobjcache.h"
-#include "umodsys.mod.media.stdlib.libobjfilter.h"
+#include "umodsys.mod.media.stdlib.types.h"
+#include "umodsys.mod.media.stdlib.t.libbincache.h"
+#include "umodsys.mod.media.stdlib.t.liblayered.h"
+#include "umodsys.mod.media.stdlib.t.libobjcache.h"
+#include "umodsys.mod.media.stdlib.t.libobjfilter.h"
 
-DMediaFlags RBinArchiveFrame::auto_flags;
 DMediaFlags RLibraryBinCache::auto_flags;
 DMediaFlags RLibraryBinTree::auto_flags;
 DMediaFlags RLibraryObjCache::auto_flags;
@@ -55,12 +53,14 @@ struct RGenerator : public IGenerator {
   //
   int get_generated_names(DPtrList& list) const {
 //    M.dbg_put("{{RStreamReader_FILE::_root_get_interface_type()->name=\"%s\"}}\n", RStreamReader_FILE::_root_get_interface_type()->name);
+    
     return t_names<RLibraryBinCache>(list)
          + t_names<RLibraryBinTree>(list)
          + t_names<RLibraryLayered>(list)
          + t_names<RLibraryObjFilter>(list)
          + t_names<RLibraryObjCache>(list)
          + t_names<RBinArchiveFrame>(list)
+         + t_names<RUtilities>(list)
     ;
   }
   int get_generated_types(DPtrList& list, TypeId name) const {
@@ -71,6 +71,7 @@ struct RGenerator : public IGenerator {
       || t_types<RLibraryObjFilter>(rv, list, name)
       || t_types<RLibraryObjCache>(rv, list, name)
       || t_types<RBinArchiveFrame>(rv, list, name)
+      || t_types<RUtilities>(rv, list, name)
     ;
     return rv;
   }
@@ -81,6 +82,7 @@ struct RGenerator : public IGenerator {
         || t_gen_param<RLibraryObjFilter>(this, obj, name, args)
         || t_gen_param<RLibraryObjCache>(this, obj, name, args)
         || t_gen_param<RBinArchiveFrame>(this, obj, name, args)
+        || t_gen_param<RUtilities>(this, obj, name, args)
     ;
   }
   //

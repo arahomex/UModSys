@@ -9,14 +9,37 @@ lib2d::IImage::P RTest1_Shell::new_mem_image(void)
 libmedia::IBinArchive::P RTest1_Shell::media_arch_stdio(const DCString &path)
 {
   TParametersA<1024> params;
-  params.add("pathname", path());
+  params.add("filepath", path());
   return generate_type<libmedia::IBinArchive>("*::stdio::*", params, path);
+}
+
+libmedia::IBinArchive::P RTest1_Shell::media_arch_zip(libmedia::ILibrary* root, libmedia::IUtilities* utl, const DCString &path, bool rw)
+{
+  TParametersA<1024> params;
+  libmedia::IBinArchiveFrame::IClient::P cli = generate_type<libmedia::IBinArchiveFrame::IClient>("*_ZIP", params);
+  if(!cli.valid())
+    return NULL;
+  params.add("write", rw);
+  params.add("client", cli);
+  params.add("filename", path);
+  params.add("library", root);
+  libmedia::IBinArchiveFrame::P rv = generate_type<libmedia::IBinArchiveFrame>("*::stdlib::*", params, path)();
+  if(!rv.valid())
+    return NULL;
+  rv->utils = utl;
+  return rv();
 }
 
 libmedia::IBinObjFilter::P RTest1_Shell::media_filter_new(const DCString &mask, const SParameters& args)
 {
   TParametersA<1024> params;
   return generate_type<libmedia::IBinObjFilter>(NULL, params);
+}
+
+libmedia::IUtilities::P RTest1_Shell::media_utils(void)
+{
+  TParametersA<1024> params;
+  return generate_type<libmedia::IUtilities>("*::stdlib::*", params);
 }
 
 libmedia::ILibraryBinTree::P RTest1_Shell::media_vfs(void)
@@ -253,8 +276,9 @@ void RTest1_Shell::file_test5(void)
 void RTest1_Shell::file_test6(void)
 {
   M.con().put(0, "******** file test 6\n");
+  libmedia::IUtilities::P utils = media_utils();
   libmedia::ILibraryLayered::P lib = media_lay();
-  if(!lib.valid())
+  if(!utils.valid() || !lib.valid())
     return;
   //
   {
@@ -339,4 +363,43 @@ void RTest1_Shell::file_test6(void)
   M.con().put(0, "loaded %d\n", rv);
   rv = lib->obj_save("/minecraft_textures_new.png", img, "lib2d::IImage");
   M.con().put(0, "saved %d\n", rv);
+}
+
+void RTest1_Shell::file_test7(void)
+{
+  M.con().put(0, "******** file test 6\n");
+  libmedia::IUtilities::P utils = media_utils();
+  libmedia::ILibraryLayered::P lib = media_lay();
+  if(!utils.valid() || !lib.valid())
+    return;
+  //
+  {
+    libmedia::ILibraryBinTree::P lib_vfs = media_vfs();
+    if(!lib_vfs.valid())
+      return;
+    lib_vfs->mount_add("/", media_arch_stdio("."), libmedia::mp_Read);
+    lib_vfs->mount_add("/", 1, media_arch_stdio("./write-dir"), libmedia::mp_RWL);
+    lib->layer_push( lib_vfs );
+    //
+    lib_vfs->mount_add("/mc/", 5, media_arch_zip(lib, utils, "/mctest.zip"), libmedia::mp_RL);
+  }
+  //
+  {
+    libmedia::ILibraryObjFilter::P lib_flt = media_flt();
+    if(!lib_flt.valid())
+      return;
+    TParametersA<1024> params;
+    libmedia::IBinObjFilter::P flt = media_filter_new("*::images_std::*", params);
+    lib_flt->filters_add(flt, &params, 0);
+    lib->layer_push( lib_flt );
+  }
+  {
+    lib->layer_push( media_cache(false) );
+    lib->layer_push( media_cache(true) );
+  }
+  //
+  lib2d::IImage::P img = new_mem_image();
+  bool rv = lib->obj_load("/mc/textures/font/ascii.png", img, "lib2d::IImage");
+  M.con().put(0, "loaded %d\n", rv);
+  //
 }

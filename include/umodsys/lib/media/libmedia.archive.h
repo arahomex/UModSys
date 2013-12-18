@@ -89,7 +89,7 @@ struct IBinArchiveFrame::IClient : public IRefObject {
   virtual bool arc_init(IBinArchiveFrame* arch, const SParameters* params) =0;
   virtual bool arc_deinit(IBinArchiveFrame* arch) =0;
   //
-  virtual bool filer_pre_scan(IBinArchiveFrame* arch, int &rspace, const SParameters* params) =0;
+  virtual bool filer_pre_scan(IBinArchiveFrame* arch, size_t &rspace, const SParameters* params) =0;
   virtual bool filer_scan(IBinArchiveFrame* arch, SMem& memto, const SParameters* params) =0;
   //
   virtual bool filew_init(IBinArchiveFrame* arch, const SParameters* params) =0;
@@ -105,7 +105,7 @@ struct IBinArchiveFrame::IClient : public IRefObject {
   virtual IStreamReader::P data_reader(IBinArchiveFrame* arch, NameNode* node, const SFlags& flags) =0;
   virtual IStreamWriter::P data_writer(IBinArchiveFrame* arch, const DCString& media_name, const SFlags& flags) =0;
   //
-  virtual bool data_list(IBinArchiveFrame *arc, DIFileInfoArray& list, NameNode* node) = 0;
+  virtual bool node_info(IBinArchiveFrame *arc, SFileInfo& info, NameNode* node) = 0;
 //  virtual bool entry_permission(SMediaArchiveEntryInfo* info, NameNode* node) = 0;
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IBinArchiveFrame::IClient, 2, IRefObject);

@@ -13,6 +13,8 @@
 
 #include <umodsys/core/arch_cvt.h>
 
+#include <zlib.h>
+
 #define U_MOD UMODSYS_MODULE_NAME(media, zlib)
 UMODSYS_MODULE_BEGIN(media, zlib)
 
@@ -31,6 +33,7 @@ struct RGenerator;
 //***************************************
 
 #include "umodsys.mod.media.zlib.defs.h"
+#include "umodsys.mod.media.zlib.types.h"
 #include "umodsys.mod.media.zlib.arcframe.h"
 
 //***************************************
@@ -40,17 +43,17 @@ struct RGenerator;
 struct RGenerator : public IGenerator {
   //
   int get_generated_names(DPtrList& list) const {
-    return t_names<RBinArchiveFrameClient>(list)
+    return t_names<RBinArchiveFrameClient_ZIP>(list)
     ;
   }
   int get_generated_types(DPtrList& list, TypeId name) const {
     int rv = 0;
-    t_types<RBinArchiveFrameClient>(rv, list, name) 
+    t_types<RBinArchiveFrameClient_ZIP>(rv, list, name) 
     ;
     return rv;
   }
   bool generate(IRefObject::P& obj, TypeId name, const SParameters& args) {
-    return t_gen_param<RBinArchiveFrameClient>(this, obj, name, args)
+    return t_gen_param<RBinArchiveFrameClient_ZIP>(this, obj, name, args)
     ;
   }
   //

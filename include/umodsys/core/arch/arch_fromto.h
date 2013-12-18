@@ -56,7 +56,7 @@ inline T from_type_u(const void* p)
 template<typename T>
 inline void from_type_u(T& rv, const void* p) 
 { 
-  v = *reinterpret_cast<const T*>(p); 
+  rv = *reinterpret_cast<const T*>(p); 
 }
 template<typename T>
 inline void to_type_u(void* p, const T& v) 

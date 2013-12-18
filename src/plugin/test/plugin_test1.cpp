@@ -1,8 +1,11 @@
 #include <umodsys/stdbase.h>
 #include <umodsys/tl/composite/dynarray.h>
+
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.library.h>
+#include <umodsys/lib/media/libmedia.archive.h>
 #include <umodsys/lib/media/libmedia.serialize.h>
+
 #include <umodsys/lib/ui/libui.common.h>
 #include <umodsys/lib/ui/libui.frames.h>
 #include <umodsys/lib/2d/lib2d.driver.h>
@@ -58,9 +61,11 @@ struct RTest1_Shell
   void dump_str(const char *s, size_t n);
   //
   libmedia::IBinArchive::P media_arch_stdio(const DCString &path);
+  libmedia::IBinArchive::P media_arch_zip(libmedia::ILibrary* root, libmedia::IUtilities* utl, const DCString &path, bool rw=false);
   libmedia::IBinObjFilter::P media_filter_new(const DCString &mask, const SParameters& args);
   lib2d::IImage::P new_mem_image(void);
   //
+  libmedia::IUtilities::P media_utils(void);
   libmedia::ILibraryBinTree::P media_vfs(void);
   libmedia::ILibraryObjFilter::P media_flt(void);
   libmedia::ILibraryLayered::P media_lay(void);
@@ -74,6 +79,7 @@ struct RTest1_Shell
   void file_test4(void);
   void file_test5(void);
   void file_test6(void);
+  void file_test7(void);
   //
   // ----------------------------------------------------------------------------------
   //
@@ -107,8 +113,9 @@ struct RTest1_Shell
     file_test3();
     file_test4();
     file_test5();
-#endif
     file_test6();
+#endif
+    file_test7();
     //
 #if 0
     ui_test1();
@@ -204,6 +211,7 @@ UMODSYS_MODULE_DEF(ui,frames);
 UMODSYS_MODULE_DEF(ui,SDL_core);
 UMODSYS_MODULE_DEF(media,images_std);
 UMODSYS_MODULE_DEF(media,serialize_json);
+UMODSYS_MODULE_DEF(media,zlib);
 static void refer(void)
 {
   UMODSYS_MODULE_USE(lib2d,stdlib);
@@ -211,5 +219,6 @@ static void refer(void)
   UMODSYS_MODULE_USE(ui,SDL_core);
   UMODSYS_MODULE_USE(media,images_std);
   UMODSYS_MODULE_USE(media,serialize_json);;
+  UMODSYS_MODULE_USE(media,zlib);;
 }
 

@@ -17,11 +17,50 @@ namespace libmedia {
 //***************************************
 
 //***************************************
-// IDataArchive::
+// IUtilities::
 
-struct IBinArchive 
+struct IUtilities
+: public IRefObject 
+{
+public:
+  struct IMemWriterCompleted {
+    virtual bool completed(const SCMem &data) =0;
+  };
+public:
+  // -- buffers
+  virtual bool buffer_free(SBuffer& B, const SSourceContext* sctx) =0;
+  virtual bool buffer_alloc(SBuffer& B, size_t size, const SSourceContext* sctx) =0;
+  // -- sub streams
+  virtual IStreamReader::P sub_reader(IStreamReader* master, DFilePosition pos, DFilePosition size) =0; 
+  virtual IStreamWriter::P sub_writer(IStreamWriter* master, DFilePosition pos, DFilePosition size) =0; 
+  // -- memory streams
+  virtual IStreamReader::P mem_reader(const SCMem& mem) =0; // fixed place reader
+  virtual IStreamReader::P mem_reader(const SCMemShared& mem) =0; // fixed place reader
+         // dynamic or static writer completed or fixed writer
+  virtual IStreamWriter::P mem_writer(const SMem* mem, IMemWriterCompleted* mw, IRefObject* mwh) =0;
+protected:
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IUtilities, 1, IRefObject);
+};
+
+//***************************************
+// ILibObject::
+
+struct ILibObject
 : public IRefObject, 
   public SFlags::ISetter
+{
+public:
+public:
+  IUtilities::P utils;
+protected:
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::ILibObject, 1, IRefObject);
+};
+
+//***************************************
+// IDataArchive::
+
+struct IBinArchive
+: public ILibObject
 {
 public:
   virtual IStreamReader::P data_reader(const DCString& media_name, const SFlags& flags=SFlags()) =0;
@@ -31,15 +70,14 @@ public:
   virtual bool data_list(const DCString& mask, DIFileInfoArray& list, const SFlags& flags=SFlags()) = 0;
   virtual int get_permissions(void) = 0;
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IBinArchive, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IBinArchive, 2, ILibObject);
 };
 
 //***************************************
 // IObjectFilter::
 
 struct IBinObjFilter 
-: public IRefObject,
-  public SFlags::ISetter
+: public ILibObject
 {
 public:
 //  struct SRegistry {
@@ -54,7 +92,6 @@ public:
     const SParameters* params;
     SFlags flags;
     TypeId reqtype;
-    //
 /*
     inline SInfo(IMediaGroup *g, const UMS_CSMem& b, const SParameters* p,
                  DHString mn, DHString tn, int f=mf_Default)
@@ -77,7 +114,7 @@ public:
 //  virtual bool set_paramb(const DHString &kind, const DHString &name, const SCMem& memory) = 0;
 //  virtual bool set_params(const DHString &kind, const SParameters* filter_params) = 0;
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IBinObjFilter, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IBinObjFilter, 2, ILibObject);
 };
 
 
@@ -85,10 +122,10 @@ protected:
 // ILibrary:
 
 struct ILibrary
-: public IRefObject,
-  public SFlags::ISetter
+: public ILibObject
 {
 public:
+  //
   struct SObjOptions : public SFlags {
     DCString typehint;
     TypeId reqtype;
@@ -165,7 +202,7 @@ public:
     return true;
   }
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::ILibrary, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::ILibrary, 2, ILibObject);
 };
 
 //***************************************
@@ -185,7 +222,7 @@ inline bool is_extension_nocase(const DCString& name, const DCString& ext)
 {
   if(~name<~ext)
     return false;
-  if(tl::su::seq_nocase(name.text+~name-~ext, ext.text, ~ext))
+  if(tl::su::utf8_cmp_nocase(name.text+~name-~ext, ext.text, ~ext))
     return true;
   return false;
 }
