@@ -192,6 +192,7 @@ begin project-group umodsys
         include *.cpp *.h 
       end
     end
+    #--------------------------------
     begin file-group mod_stdio
       begin mask $(path-skip) $(path-s-mod)/media/stdio
         include *.cpp *.h 
@@ -202,11 +203,7 @@ begin project-group umodsys
         include *.cpp *.h 
       end
     end
-    begin file-group mod_images_std
-      begin mask $(path-skip) $(path-s-mod)/media/images_std
-        include *.cpp *.h 
-      end
-    end
+    #--------------------------------
     begin file-group mod_serialize_json
       begin mask $(path-skip) $(path-s-mod)/media/serialize_json
         include *.cpp *.h 
@@ -224,6 +221,18 @@ begin project-group umodsys
     end
     begin file-group mod_serialize_cmdarg
       begin mask $(path-skip) $(path-s-mod)/media/serialize_cmdarg
+        include *.cpp *.h 
+      end
+    end
+    #--------------------------------
+    begin file-group mod_images_std
+      begin mask $(path-skip) $(path-s-mod)/media/images_std
+        include *.cpp *.h 
+      end
+    end
+    #--------------------------------
+    begin file-group mod_zlib
+      begin mask $(path-skip) $(path-s-mod)/media/zlib
         include *.cpp *.h 
       end
     end

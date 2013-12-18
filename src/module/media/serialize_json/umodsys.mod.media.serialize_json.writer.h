@@ -217,7 +217,7 @@ public:
     writer(NULL), last_error(NULL), 
     root(Value::t_Undefined, 0), skip_step(2)
   {
-    args.get("stream", writer.stream);
+    args.ref_get("stream", writer.stream);
     args.get("skip_step", skip_step);
   }
   ~RSerializeWriter(void) {

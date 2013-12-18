@@ -49,7 +49,7 @@ begin project-group umodsys
   begin project umodsys_lib_libmedia
     GUID-gen 0 umodsys.lib_libmedia
     option * OutputDirectory $(path-out-lib)
-    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-std mod-media-stdio mod-media-images_std"
+    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-stdlib mod-media-stdio mod-media-images_std"
   end
 
   begin project umodsys_lib_libui

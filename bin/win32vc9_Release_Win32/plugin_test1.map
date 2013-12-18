@@ -1,6 +1,6 @@
  plugin_test1
 
- Timestamp is 52a95da0 (Thu Dec 12 09:54:24 2013)
+ Timestamp is 52b06876 (Tue Dec 17 18:06:30 2013)
 
  Preferred load address is 10000000
 
@@ -50,8 +50,8 @@
  0001:000001c0       ?mount_add@ILibraryBinTree@libmedia@UModSys@@QAE_NABU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@PAUIBinArchive@23@H@Z 100011c0 f i plugin_test1.obj
  0001:00000260       ?mount_add@ILibraryBinTree@libmedia@UModSys@@QAE_NABU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@HPAUIBinArchive@23@H@Z 10001260 f i plugin_test1.obj
  0001:00000300       ?layer_push@ILibraryLayered@libmedia@UModSys@@QAE_NPAUILibrary@23@HABU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@@Z 10001300 f i plugin_test1.obj
- 0001:00000390       ??1SPoint@ILibraryBinTree@libmedia@UModSys@@QAE@XZ 10001390 f i plugin_test1.obj
  0001:00000390       ??1SLayer@ILibraryLayered@libmedia@UModSys@@QAE@XZ 10001390 f i plugin_test1.obj
+ 0001:00000390       ??1SPoint@ILibraryBinTree@libmedia@UModSys@@QAE@XZ 10001390 f i plugin_test1.obj
  0001:000003b0       ??0SSerializeValue@libmedia@UModSys@@QAE@PBD@Z 100013b0 f i plugin_test1.obj
  0001:000003e0       ?s@SFrameDataOut@libui@UModSys@@QBEXQBD@Z 100013e0 f i plugin_test1.obj
  0001:00000420       ??_GIRoot@core@UModSys@@UAEPAXI@Z 10001420 f i plugin_test1.obj
@@ -74,31 +74,31 @@
  0001:00000790       ?process_command@RTest1_Shell@test1@test@modules@UModSys@@UAE_NHQBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@@Z 10001790 f i plugin_test1.obj
  0001:000007c0       ??_GRTest1_Shell@test1@test@modules@UModSys@@UAEPAXI@Z 100017c0 f i plugin_test1.obj
  0001:000007c0       ??_ERTest1_Shell@test1@test@modules@UModSys@@UAEPAXI@Z 100017c0 f i  CIL library: CIL module
- 0001:000007e0       ??1?$TParametersA@$0EAA@@core@UModSys@@QAE@XZ 100017e0 f i plugin_test1.obj
  0001:000007e0       ??1?$TParametersA@$0BAA@@core@UModSys@@QAE@XZ 100017e0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000007e0       ??1SParameters@core@UModSys@@QAE@XZ 100017e0 f i plugin_test1.obj
+ 0001:000007e0       ??1?$TParametersA@$0EAA@@core@UModSys@@QAE@XZ 100017e0 f i plugin_test1.obj
  0001:000007f0       ?get_generated_names@RGenerator@test1@test@modules@UModSys@@UBEHAAUSUniquePtrList@core@5@@Z 100017f0 f i plugin_test1.obj
  0001:00000810       ?get_generated_types@RGenerator@test1@test@modules@UModSys@@UBEHAAUSUniquePtrList@core@5@PBUSUniquePointerInfo@75@@Z 10001810 f i plugin_test1.obj
  0001:00000860       ?generate@RGenerator@test1@test@modules@UModSys@@UAE_NAAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@5@PBUSUniquePointerInfo@core@5@ABUSParameters@95@@Z 10001860 f i plugin_test1.obj
  0001:00000920       ?root_get_interface_info@RGenerator@test1@test@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 10001920 f i plugin_test1.obj
  0001:00000930       ?root_get_interface_type@RGenerator@test1@test@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10001930 f i plugin_test1.obj
- 0001:00000940       ?root_get_other_interface@RGenerator@test1@test@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10001940 f i plugin_test1.obj
  0001:00000940       ?root_get_other_interface@RGenerator@test1@test@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10001940 f i plugin_test1.obj
+ 0001:00000940       ?root_get_other_interface@RGenerator@test1@test@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10001940 f i plugin_test1.obj
  0001:00000980       ?root_is_interface_supported@RGenerator@test1@test@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10001980 f i plugin_test1.obj
- 0001:000009c0       ?ref_links@RSerializeReader@serialize_json@media@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:000009c0       ?ref_links@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000009c0       ?ref_links@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000009c0       ?ref_links@RGenerator@serialize_json@media@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:000009c0       ?ref_links@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
+ 0001:000009c0       ?ref_links@RDialog@frames@ui@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:000009c0       ?ref_links@RGenerator@test1@test@modules@UModSys@@UBEHXZ 100019c0 f i plugin_test1.obj
  0001:000009c0       ?ref_links@RMouseController@SDL_core@ui@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000009c0       ?ref_links@RGenerator@frames@ui@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:000009c0       ?ref_links@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:000009c0       ?ref_links@RKeyboardController@SDL_core@ui@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000009c0       ?ref_links@RGenerator@serialize_json@media@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:000009c0       ?ref_links@RGenerator@images_std@media@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
+ 0001:000009c0       ?ref_links@RSerializeReader@serialize_json@media@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:000009c0       ?ref_links@RTerminal@SDL_core@ui@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000009c0       ?ref_links@RGenerator@SDL_core@ui@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000009c0       ?ref_links@RGenerator@stdlib@lib2d@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:000009c0       ?ref_links@RGenerator@frames@ui@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:000009c0       ?ref_links@RDialog@frames@ui@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:000009c0       ?ref_links@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000009c0       ?ref_links@RGenerator@test1@test@modules@UModSys@@UBEHXZ 100019c0 f i plugin_test1.obj
- 0001:000009c0       ?ref_links@RTerminal@SDL_core@ui@modules@UModSys@@UBEHXZ 100019c0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000009d0       ?get_uid@RGenerator@test1@test@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 100019d0 f i plugin_test1.obj
  0001:000009e0       ?do_open@RModuleReg@test1@test@modules@UModSys@@UAE_NXZ 100019e0 f i plugin_test1.obj
  0001:00000a10       ?do_close@RModuleReg@test1@test@modules@UModSys@@UAE_NXZ 10001a10 f i plugin_test1.obj
@@ -107,38 +107,38 @@
  0001:00000a70       ??0?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@UModSys@@QAE@PBD@Z 10001a70 f i plugin_test1.obj
  0001:00000ac0       ??8?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@UModSys@@QBE_NPBD@Z 10001ac0 f i plugin_test1.obj
  0001:00000af0       ??0?$TParametersA@$0EAA@@core@UModSys@@QAE@XZ 10001af0 f i plugin_test1.obj
- 0001:00000b20       ??1?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
- 0001:00000b20       ??1?$TRefObject@UILibraryBinTree@libmedia@UModSys@@U?$TRefObjectFunc@UILibraryBinTree@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
- 0001:00000b20       ??1?$TRefObject@UITerminal@libui@UModSys@@U?$TRefObjectFunc@UITerminal@libui@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
- 0001:00000b20       ??1?$TRefObject@UIBinObjFilter@libmedia@UModSys@@U?$TRefObjectFunc@UIBinObjFilter@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
- 0001:00000b20       ??1?$TRefObject@URMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@U?$TRefObjectFunc@URMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00000b20       ??1?$TRefObject@URTerminal@SDL_core@ui@modules@UModSys@@U?$TRefObjectFunc@URTerminal@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00000b20       ??1?$TRefObject@UIStreamReader@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamReader@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
+ 0001:00000b20       ??1?$TRefObject@URMediaFilter@images_std@media@modules@UModSys@@U?$TRefObjectFunc@URMediaFilter@images_std@media@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
+ 0001:00000b20       ??1?$TRefObject@UIMouseController@libui@UModSys@@U?$TRefObjectFunc@UIMouseController@libui@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
  0001:00000b20       ??1?$TRefObject@UIRenderDriver@lib2d@UModSys@@U?$TRefObjectFunc@UIRenderDriver@lib2d@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
  0001:00000b20       ??1?$TRefObject@URMouseController@SDL_core@ui@modules@UModSys@@U?$TRefObjectFunc@URMouseController@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00000b20       ??1?$TRefObject@UILibraryObjCache@libmedia@UModSys@@U?$TRefObjectFunc@UILibraryObjCache@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
- 0001:00000b20       ??1?$TRefObject@URKeyboardController@SDL_core@ui@modules@UModSys@@U?$TRefObjectFunc@URKeyboardController@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00000b20       ??1?$TRefObject@UIImage@lib2d@UModSys@@U?$TRefObjectFunc@UIImage@lib2d@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
- 0001:00000b20       ??1?$TRefObject@UIKeyboardController@libui@UModSys@@U?$TRefObjectFunc@UIKeyboardController@libui@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
- 0001:00000b20       ??1?$TRefObject@URTerminal@SDL_core@ui@modules@UModSys@@U?$TRefObjectFunc@URTerminal@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00000b20       ??1?$TRefObject@UIMouseController@libui@UModSys@@U?$TRefObjectFunc@UIMouseController@libui@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
  0001:00000b20       ??1?$TRefObject@URImage_Memory@stdlib@lib2d@modules@UModSys@@U?$TRefObjectFunc@URImage_Memory@stdlib@lib2d@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:00000b20       ??1?$TRefObject@URSerializeWriter@serialize_json@media@modules@UModSys@@U?$TRefObjectFunc@URSerializeWriter@serialize_json@media@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:00000b20       ??1?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
+ 0001:00000b20       ??1?$TRefObject@UITerminal@libui@UModSys@@U?$TRefObjectFunc@UITerminal@libui@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
+ 0001:00000b20       ??1?$TRefObject@URMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@U?$TRefObjectFunc@URMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00000b20       ??1?$TRefObject@UISerializeReader@libmedia@UModSys@@U?$TRefObjectFunc@UISerializeReader@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
- 0001:00000b20       ??1?$TRefObject@URMediaFilter@images_std@media@modules@UModSys@@U?$TRefObjectFunc@URMediaFilter@images_std@media@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
- 0001:00000b20       ??1?$TRefObject@UIBinArchive@libmedia@UModSys@@U?$TRefObjectFunc@UIBinArchive@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
- 0001:00000b20       ??1?$TRefObject@UIStreamReader@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamReader@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
- 0001:00000b20       ??1?$TRefObject@UILibraryLayered@libmedia@UModSys@@U?$TRefObjectFunc@UILibraryLayered@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
- 0001:00000b20       ??1?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00000b20       ??1?$TRefObject@URFrame_Common@frames@ui@modules@UModSys@@U?$TRefObjectFunc@URFrame_Common@frames@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00000b20       ??1?$TRefObject@UILibraryBinCache@libmedia@UModSys@@U?$TRefObjectFunc@UILibraryBinCache@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
- 0001:00000b20       ??1?$TRefObject@UILibrary@libmedia@UModSys@@U?$TRefObjectFunc@UILibrary@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
  0001:00000b20       ??1?$TRefObject@UILibraryObjFilter@libmedia@UModSys@@U?$TRefObjectFunc@UILibraryObjFilter@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
- 0001:00000b20       ??1?$TRefObject@UIStreamWriter@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamWriter@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
  0001:00000b20       ??1?$TRefObject@URSerializeReader@serialize_json@media@modules@UModSys@@U?$TRefObjectFunc@URSerializeReader@serialize_json@media@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:00000b20       ??1?$TRefObject@UISerializeWriter@libmedia@UModSys@@U?$TRefObjectFunc@UISerializeWriter@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
- 0001:00000b20       ??1?$TRefObject@UIFrame@libui@UModSys@@U?$TRefObjectFunc@UIFrame@libui@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00000b20       ??1?$TRefObject@UIKeyboardController@libui@UModSys@@U?$TRefObjectFunc@UIKeyboardController@libui@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
  0001:00000b20       ??1?$TRefObject@URCollector@frames@ui@modules@UModSys@@U?$TRefObjectFunc@URCollector@frames@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00000b20       ??1?$TRefObject@UIFrame@libui@UModSys@@U?$TRefObjectFunc@UIFrame@libui@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00000b20       ??1?$TRefObject@UILibraryBinTree@libmedia@UModSys@@U?$TRefObjectFunc@UILibraryBinTree@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
+ 0001:00000b20       ??1?$TRefObject@UIStreamWriter@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamWriter@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
+ 0001:00000b20       ??1?$TRefObject@UILibraryObjCache@libmedia@UModSys@@U?$TRefObjectFunc@UILibraryObjCache@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
+ 0001:00000b20       ??1?$TRefObject@UIBinArchive@libmedia@UModSys@@U?$TRefObjectFunc@UIBinArchive@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
+ 0001:00000b20       ??1?$TRefObject@URFrame_Common@frames@ui@modules@UModSys@@U?$TRefObjectFunc@URFrame_Common@frames@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00000b20       ??1?$TRefObject@UIMultiImage@lib2d@UModSys@@U?$TRefObjectFunc@UIMultiImage@lib2d@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
  0001:00000b20       ??1?$TRefObject@URDialog@frames@ui@modules@UModSys@@U?$TRefObjectFunc@URDialog@frames@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00000b20       ??1?$TRefObject@UILibraryBinCache@libmedia@UModSys@@U?$TRefObjectFunc@UILibraryBinCache@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
+ 0001:00000b20       ??1?$TRefObject@UIImage@lib2d@UModSys@@U?$TRefObjectFunc@UIImage@lib2d@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
+ 0001:00000b20       ??1?$TRefObject@UILibraryLayered@libmedia@UModSys@@U?$TRefObjectFunc@UILibraryLayered@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
+ 0001:00000b20       ??1?$TRefObject@UIBinObjFilter@libmedia@UModSys@@U?$TRefObjectFunc@UIBinObjFilter@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
+ 0001:00000b20       ??1?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00000b20       ??1?$TRefObject@UILibrary@libmedia@UModSys@@U?$TRefObjectFunc@UILibrary@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
+ 0001:00000b20       ??1?$TRefObject@URSerializeWriter@serialize_json@media@modules@UModSys@@U?$TRefObjectFunc@URSerializeWriter@serialize_json@media@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:00000b20       ??1?$TRefObject@URKeyboardController@SDL_core@ui@modules@UModSys@@U?$TRefObjectFunc@URKeyboardController@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10001b20 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00000b20       ??1?$TRefObject@UISerializeWriter@libmedia@UModSys@@U?$TRefObjectFunc@UISerializeWriter@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10001b20 f i plugin_test1.obj
  0001:00000b40       ??4?$TRefObject@UISerializeWriter@libmedia@UModSys@@U?$TRefObjectFunc@UISerializeWriter@libmedia@UModSys@@@tl@3@@tl@UModSys@@QAEABU012@ABU012@@Z 10001b40 f i plugin_test1.obj
  0001:00000b70       ?info_new@?$TSCoreShared@USIMemAlloc@core@UModSys@@D@su@tl@UModSys@@QAE_NPBDI@Z 10001b70 f i plugin_test1.obj
  0001:00000c00       ??$generate_type@UIImage@lib2d@UModSys@@@RTest1_Shell@test1@test@modules@UModSys@@QAE?AU?$TRefObject@UIImage@lib2d@UModSys@@U?$TRefObjectFunc@UIImage@lib2d@UModSys@@@tl@3@@tl@4@ABU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@64@ABUSParameters@core@4@PBD@Z 10001c00 f i plugin_test1.obj
@@ -182,36 +182,36 @@
  0001:000024e0       ?Convert@stdlib@lib2d@modules@UModSys@@YA_NABU?$TBoundBox2@H@math3d@4@ABUSImageInfo@24@ABUSMem@core@4@01ABUSCMem@94@@Z 100034e0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00002550       ?root_get_interface_info@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 10003550 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00002560       ?root_get_interface_type@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10003560 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:00002570       ?root_get_other_interface@RImage_Memory@stdlib@lib2d@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10003570 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00002570       ?root_get_other_interface@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10003570 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
+ 0001:00002570       ?root_get_other_interface@RImage_Memory@stdlib@lib2d@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10003570 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:000025a0       ?root_is_interface_supported@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 100035a0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:000025e0       ?set_info@RImage_Memory@stdlib@lib2d@modules@UModSys@@UAE_NABUSImagePatchInfo@35@PBD@Z 100035e0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00002780       ?set_data@RImage_Memory@stdlib@lib2d@modules@UModSys@@UAE_NABUSImagePatchInfo@35@ABUSCMem@core@5@H@Z 10003780 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00002830       ?get_info@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBEABUSImageInfo@35@XZ 10003830 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00002840       ?get_data@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBE_NABUSImagePatchInfo@35@ABUSMem@core@5@H@Z 10003840 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:000028f0       ?get_hwinfo@RImage_Memory@stdlib@lib2d@modules@UModSys@@UAEPAXPBUSUniquePointerInfo@core@5@@Z 100038f0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
+ 0001:000028f0       ?get_hwcinfo@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBEPBXPBUSUniquePointerInfo@core@5@@Z 100038f0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:000028f0       ?get_controller@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBEPAUIRefObject@core@5@PBUSUniquePointerInfo@75@@Z 100038f0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000028f0       ?get_layer@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAEPAUIImage@lib2d@5@H@Z 100038f0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000028f0       ?get_hwcinfo@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBEPBXPBUSUniquePointerInfo@core@5@@Z 100038f0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
+ 0001:000028f0       ?get_hwinfo@RImage_Memory@stdlib@lib2d@modules@UModSys@@UAEPAXPBUSUniquePointerInfo@core@5@@Z 100038f0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00002900       ??0RImage_Memory@stdlib@lib2d@modules@UModSys@@QAE@PAUIModObject@base@4@ABUSParameters@core@4@@Z 10003900 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:000029b0       ??1SMemShared@core@UModSys@@QAE@XZ 100039b0 f i plugin_test1.obj
  0001:000029b0       ??1State@RImage_Memory@stdlib@lib2d@modules@UModSys@@QAE@XZ 100039b0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:000029d0       ??4State@RImage_Memory@stdlib@lib2d@modules@UModSys@@QAEAAU012345@ABU012345@@Z 100039d0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:00002a80       ??_ERImage_Memory@stdlib@lib2d@modules@UModSys@@UAEPAXI@Z 10003a80 f i  CIL library: CIL module
  0001:00002a80       ??_GRImage_Memory@stdlib@lib2d@modules@UModSys@@UAEPAXI@Z 10003a80 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:00002af0       ??1ISerializeWriter@libmedia@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:00002af0       ??1IImage@lib2d@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:00002af0       ??1IMultiImage@lib2d@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00002af0       ??1ISerializeReader@libmedia@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:00002af0       ??1IRenderDriver@lib2d@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00002af0       ??1IBinObjFilter@libmedia@UModSys@@UAE@XZ 10003af0 f i plugin_test1.obj
- 0001:00002af0       ??1IMouseController@libui@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00002af0       ??1ICollector@libui@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00002af0       ??1ITerminal@libui@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00002af0       ??1IFrame@libui@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00002af0       ??1IKeyboardController@libui@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00002af0       ??1IDialog@libui@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00002a80       ??_ERImage_Memory@stdlib@lib2d@modules@UModSys@@UAEPAXI@Z 10003a80 f i  CIL library: CIL module
  0001:00002af0       ??1IShell@base@UModSys@@UAE@XZ 10003af0 f i plugin_test1.obj
+ 0001:00002af0       ??1IKeyboardController@libui@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00002af0       ??1ISerializeWriter@libmedia@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:00002af0       ??1IDialog@libui@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00002af0       ??1IImage@lib2d@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
+ 0001:00002af0       ??1IRenderDriver@lib2d@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00002af0       ??1IFrame@libui@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00002af0       ??1IBinObjFilter@libmedia@UModSys@@UAE@XZ 10003af0 f i plugin_test1.obj
+ 0001:00002af0       ??1ICollector@libui@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00002af0       ??1ISerializeReader@libmedia@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:00002af0       ??1IMouseController@libui@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00002af0       ??1ITerminal@libui@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00002af0       ??1IMultiImage@lib2d@UModSys@@UAE@XZ 10003af0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00002b00       ?get_generated_names@RGenerator@stdlib@lib2d@modules@UModSys@@UBEHAAUSUniquePtrList@core@5@@Z 10003b00 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00002b20       ?get_generated_types@RGenerator@stdlib@lib2d@modules@UModSys@@UBEHAAUSUniquePtrList@core@5@PBUSUniquePointerInfo@75@@Z 10003b20 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00002b70       ?generate@RGenerator@stdlib@lib2d@modules@UModSys@@UAE_NAAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@5@PBUSUniquePointerInfo@core@5@ABUSParameters@95@@Z 10003b70 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
@@ -222,49 +222,49 @@
  0001:00002c00       ?root_is_interface_supported@RGenerator@stdlib@lib2d@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10003c00 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00002c40       ??3@YAXPAX0@Z              10003c40 f i plugin_test1.obj
  0001:00002c40       ?suicide@RGenerator@frames@ui@modules@UModSys@@UAEXXZ 10003c40 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00002c40       ?suicide@RGenerator@serialize_json@media@modules@UModSys@@UAEXXZ 10003c40 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:00002c40       ?suicide@RGenerator@stdlib@lib2d@modules@UModSys@@UAEXXZ 10003c40 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:00002c40       ?suicide@RGenerator@images_std@media@modules@UModSys@@UAEXXZ 10003c40 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:00002c40       ?suicide@RGenerator@SDL_core@ui@modules@UModSys@@UAEXXZ 10003c40 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00002c40       ?suicide@RGenerator@test1@test@modules@UModSys@@UAEXXZ 10003c40 f i plugin_test1.obj
+ 0001:00002c40       ?suicide@RGenerator@stdlib@lib2d@modules@UModSys@@UAEXXZ 10003c40 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
+ 0001:00002c40       ?suicide@RGenerator@serialize_json@media@modules@UModSys@@UAEXXZ 10003c40 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:00002c40       ?suicide@RGenerator@images_std@media@modules@UModSys@@UAEXXZ 10003c40 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:00002c50       ?get_uid@RGenerator@stdlib@lib2d@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10003c50 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00002c60       ?do_open@RModuleReg@stdlib@lib2d@modules@UModSys@@UAE_NXZ 10003c60 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00002c70       ?do_close@RModuleReg@stdlib@lib2d@modules@UModSys@@UAE_NXZ 10003c70 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:00002c80       ??_ERModuleReg@stdlib@lib2d@modules@UModSys@@UAEPAXI@Z 10003c80 f i  CIL library: CIL module
  0001:00002c80       ??_GRModuleReg@stdlib@lib2d@modules@UModSys@@UAEPAXI@Z 10003c80 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:00002cb0       ??_ERGenerator@serialize_json@media@modules@UModSys@@UAEPAXI@Z 10003cb0 f i  CIL library: CIL module
- 0001:00002cb0       ??_ERGenerator@stdlib@lib2d@modules@UModSys@@UAEPAXI@Z 10003cb0 f i  CIL library: CIL module
- 0001:00002cb0       ??_GRGenerator@frames@ui@modules@UModSys@@UAEPAXI@Z 10003cb0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00002cb0       ??_GRGenerator@images_std@media@modules@UModSys@@UAEPAXI@Z 10003cb0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
- 0001:00002cb0       ??_ERGenerator@images_std@media@modules@UModSys@@UAEPAXI@Z 10003cb0 f i  CIL library: CIL module
- 0001:00002cb0       ??_GRGenerator@test1@test@modules@UModSys@@UAEPAXI@Z 10003cb0 f i plugin_test1.obj
- 0001:00002cb0       ??_ERGenerator@test1@test@modules@UModSys@@UAEPAXI@Z 10003cb0 f i  CIL library: CIL module
+ 0001:00002c80       ??_ERModuleReg@stdlib@lib2d@modules@UModSys@@UAEPAXI@Z 10003c80 f i  CIL library: CIL module
  0001:00002cb0       ??_EIRefObject@core@UModSys@@UAEPAXI@Z 10003cb0 f i  CIL library: CIL module
+ 0001:00002cb0       ??_GIRefObject@core@UModSys@@UAEPAXI@Z 10003cb0 f i plugin_test1.obj
+ 0001:00002cb0       ??_GRGenerator@images_std@media@modules@UModSys@@UAEPAXI@Z 10003cb0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
+ 0001:00002cb0       ??_GRGenerator@test1@test@modules@UModSys@@UAEPAXI@Z 10003cb0 f i plugin_test1.obj
  0001:00002cb0       ??_GRGenerator@stdlib@lib2d@modules@UModSys@@UAEPAXI@Z 10003cb0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
+ 0001:00002cb0       ??_ERGenerator@stdlib@lib2d@modules@UModSys@@UAEPAXI@Z 10003cb0 f i  CIL library: CIL module
  0001:00002cb0       ??_ERGenerator@frames@ui@modules@UModSys@@UAEPAXI@Z 10003cb0 f i  CIL library: CIL module
  0001:00002cb0       ??_GRGenerator@serialize_json@media@modules@UModSys@@UAEPAXI@Z 10003cb0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:00002cb0       ??_ERGenerator@SDL_core@ui@modules@UModSys@@UAEPAXI@Z 10003cb0 f i  CIL library: CIL module
+ 0001:00002cb0       ??_GRGenerator@frames@ui@modules@UModSys@@UAEPAXI@Z 10003cb0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00002cb0       ??_ERGenerator@test1@test@modules@UModSys@@UAEPAXI@Z 10003cb0 f i  CIL library: CIL module
+ 0001:00002cb0       ??_ERGenerator@images_std@media@modules@UModSys@@UAEPAXI@Z 10003cb0 f i  CIL library: CIL module
  0001:00002cb0       ??_GRGenerator@SDL_core@ui@modules@UModSys@@UAEPAXI@Z 10003cb0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00002cb0       ??_GIRefObject@core@UModSys@@UAEPAXI@Z 10003cb0 f i plugin_test1.obj
+ 0001:00002cb0       ??_ERGenerator@SDL_core@ui@modules@UModSys@@UAEPAXI@Z 10003cb0 f i  CIL library: CIL module
+ 0001:00002cb0       ??_ERGenerator@serialize_json@media@modules@UModSys@@UAEPAXI@Z 10003cb0 f i  CIL library: CIL module
  0001:00002cd0       ??$t_gen_param@URImage_Memory@stdlib@lib2d@modules@UModSys@@URGenerator@2345@@IGenerator@base@UModSys@@IAE_NPAURGenerator@stdlib@lib2d@modules@2@AAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@2@PBUSUniquePointerInfo@core@2@ABUSParameters@core@2@@Z 10003cd0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00002d40       ?root_get_interface_info@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 10003d40 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00002d50       ?root_get_interface_type@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10003d50 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00002d60       ?root_get_other_interface@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10003d60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00002d60       ?root_get_other_interface@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10003d60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00002d60       ?root_get_other_interface@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10003d60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00002d90       ?root_is_interface_supported@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10003d90 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00002dd0       ??0RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@QAE@PAURRenderDriver2D@1234@ABUSParameters@core@4@@Z 10003dd0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00002e50       ??1RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAE@XZ 10003e50 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00002ed0       ?open@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@QAE_NABUSParameters@core@5@@Z 10003ed0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00002fa0       ?generate_glyphs@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@QAE_NXZ 10003fa0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000030a0       ?key_setmodifier@RKeyboardController@SDL_core@ui@modules@UModSys@@UAE_NHHH@Z 100040a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000030a0       ?get_cell_size@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAE_NHAAU?$TVector2@H@math3d@5@PAU675@@Z 100040a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000030a0       ?set_var_cell@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAE_NPBUSImageCellInfo@lib2d@5@HH@Z 100040a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000030a0       ?get_cell_size@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAE_NHAAU?$TVector2@H@math3d@5@PAU675@@Z 100040a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000030b0       ??_ERMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAEPAXI@Z 100040b0 f i  CIL library: CIL module
  0001:000030b0       ??_GRMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAEPAXI@Z 100040b0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000030d0       ?root_get_interface_info@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 100040d0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000030e0       ?root_get_interface_type@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 100040e0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000030f0       ?root_get_other_interface@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100040f0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000030f0       ?root_get_other_interface@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100040f0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000030f0       ?root_get_other_interface@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100040f0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00003120       ?root_is_interface_supported@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10004120 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00003160       ??0RRenderDriver2D@SDL_core@ui@modules@UModSys@@QAE@PAURTerminal@1234@ABUSParameters@core@4@@Z 10004160 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00003260       ??1RRenderDriver2D@SDL_core@ui@modules@UModSys@@UAE@XZ 10004260 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
@@ -274,11 +274,11 @@
  0001:000036b0       ?end@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UAEXXZ 100046b0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000036c0       ?get_max_values@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBEPBUSParameters@core@5@XZ 100046c0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000036d0       ?get_frame_values@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBEPBUSParameters@core@5@XZ 100046d0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000036e0       ?set_hint@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAE_NPBD0@Z 100046e0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000036e0       ?key_setrepeat@RKeyboardController@SDL_core@ui@modules@UModSys@@UAE_NMM@Z 100046e0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000036e0       ?set_parameters@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UAE_NPBDABUSParameters@core@5@@Z 100046e0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000036e0       ?mouse_setposition@RMouseController@SDL_core@ui@modules@UModSys@@UAE_NHH@Z 100046e0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000036e0       ?set_fixed_cell@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAE_NHH@Z 100046e0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000036e0       ?set_parameters@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UAE_NPBDABUSParameters@core@5@@Z 100046e0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000036e0       ?set_hint@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAE_NPBD0@Z 100046e0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000036f0       ?setup_font@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UAE_NPAUIMultiImage@lib2d@5@PBU?$TVector2@M@math3d@5@@Z 100046f0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00003750       ?setup_color@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UAEXABU?$TVector3@M@math3d@5@@Z 10004750 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00003780       ?setup_color@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UAEXABU?$TVector3@H@math3d@5@@Z 10004780 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
@@ -303,10 +303,10 @@
  0001:00003d90       ?root_get_other_interface@RMouseController@SDL_core@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10004d90 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00003dc0       ?root_is_interface_supported@RMouseController@SDL_core@ui@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10004dc0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00003e00       ?suicide@RKeyboardController@SDL_core@ui@modules@UModSys@@UAEXXZ 10004e00 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00003e00       ?suicide@RMouseController@SDL_core@ui@modules@UModSys@@UAEXXZ 10004e00 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00003e00       ?suicide@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAEXXZ 10004e00 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00003e00       ?suicide@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UAEXXZ 10004e00 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00003e00       ?suicide@RDialog@frames@ui@modules@UModSys@@UAEXXZ 10004e00 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00003e00       ?suicide@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UAEXXZ 10004e00 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00003e00       ?suicide@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAEXXZ 10004e00 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00003e00       ?suicide@RMouseController@SDL_core@ui@modules@UModSys@@UAEXXZ 10004e00 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00003e10       ??0RMouseController@SDL_core@ui@modules@UModSys@@QAE@PAURTerminal@1234@ABUSParameters@core@4@@Z 10004e10 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00003e70       ??1RMouseController@SDL_core@ui@modules@UModSys@@UAE@XZ 10004e70 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00003ed0       ?process@RMouseController@SDL_core@ui@modules@UModSys@@QAE_NAAUSDL_MouseMotionEvent@@@Z 10004ed0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
@@ -315,53 +315,53 @@
  0001:00004260       ?key_unlink@RKeyboardController@SDL_core@ui@modules@UModSys@@UAE_NH@Z 10005260 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004260       ?mouse_unlink@RMouseController@SDL_core@ui@modules@UModSys@@UAE_NH@Z 10005260 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000042a0       ?mouse_link@RMouseController@SDL_core@ui@modules@UModSys@@UAE_NHPAUIRefObject@core@5@PAUIMouseClient@libui@5@H@Z 100052a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00004300       ?mouse_reset@RMouseController@SDL_core@ui@modules@UModSys@@UAE_NXZ 10005300 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004300       ?key_reset@RKeyboardController@SDL_core@ui@modules@UModSys@@UAE_NXZ 10005300 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00004310       ??_GRMouseController@SDL_core@ui@modules@UModSys@@UAEPAXI@Z 10005310 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00004300       ?mouse_reset@RMouseController@SDL_core@ui@modules@UModSys@@UAE_NXZ 10005300 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004310       ??_ERMouseController@SDL_core@ui@modules@UModSys@@UAEPAXI@Z 10005310 f i  CIL library: CIL module
+ 0001:00004310       ??_GRMouseController@SDL_core@ui@modules@UModSys@@UAEPAXI@Z 10005310 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004330       ?root_get_interface_info@RKeyboardController@SDL_core@ui@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 10005330 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004340       ?root_get_interface_type@RKeyboardController@SDL_core@ui@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10005340 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00004350       ?root_get_interface_types@RFrame_List@frames@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00004350       ?root_get_interface_types@RFrame_Frame@frames@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00004350       ?root_get_interface_types@RMediaFilter@images_std@media@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
- 0001:00004350       ?root_get_interface_types@RCollector@frames@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00004350       ?root_get_interface_types@RTerminal@SDL_core@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00004350       ?root_get_interface_types@RSerializeReader@serialize_json@media@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:00004350       ?root_get_interface_types@RFrame_Edit@frames@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00004350       ?root_get_interface_types@RMouseController@SDL_core@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00004350       ?root_get_interface_types@RKeyboardController@SDL_core@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004350       ?root_get_interface_types@RGenerator@SDL_core@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00004350       ?root_get_interface_types@RSerializeReader@serialize_json@media@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00004350       ?root_get_interface_types@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00004350       ?root_get_interface_types@RGenerator@serialize_json@media@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:00004350       ?root_get_interface_types@RGenerator@images_std@media@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
+ 0001:00004350       ?root_get_interface_types@RGenerator@stdlib@lib2d@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
+ 0001:00004350       ?root_get_interface_types@RGenerator@test1@test@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i plugin_test1.obj
  0001:00004350       ?root_get_interface_types@RGenerator@frames@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00004350       ?root_get_interface_types@RFrame_Text@frames@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00004350       ?root_get_interface_types@RDialog@frames@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00004350       ?root_get_interface_types@RGenerator@images_std@media@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
+ 0001:00004350       ?root_get_interface_types@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00004350       ?root_get_interface_types@RFrame_Button@frames@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00004350       ?root_get_interface_types@RFrame_Text@frames@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00004350       ?root_get_interface_types@RCollector@frames@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00004350       ?root_get_interface_types@RSerializeWriter@serialize_json@media@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:00004350       ?root_get_interface_types@RMouseController@SDL_core@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00004350       ?root_get_interface_types@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
+ 0001:00004350       ?root_get_interface_types@RFrame_Edit@frames@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00004350       ?root_get_interface_types@RGenerator@serialize_json@media@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00004350       ?root_get_interface_types@RFrame_Image@frames@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00004350       ?root_get_interface_types@RTest1_Shell@test1@test@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i plugin_test1.obj
- 0001:00004350       ?root_get_interface_types@RSerializeWriter@serialize_json@media@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:00004350       ?root_get_interface_types@RGenerator@test1@test@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i plugin_test1.obj
- 0001:00004350       ?root_get_interface_types@RFrame_Button@frames@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00004350       ?root_get_interface_types@RFrame_List@frames@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00004350       ?root_get_interface_types@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:00004350       ?root_get_interface_types@RFrame_Frame@frames@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00004350       ?root_get_interface_types@RGenerator@stdlib@lib2d@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:00004350       ?root_get_interface_types@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00004350       ?root_get_interface_types@RKeyboardController@SDL_core@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00004350       ?root_get_interface_types@RTerminal@SDL_core@ui@modules@UModSys@@UBEIAAUSUniquePtrList@core@5@@Z 10005350 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004360       ?root_get_other_interface@RKeyboardController@SDL_core@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10005360 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004360       ?root_get_other_interface@RKeyboardController@SDL_core@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10005360 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004390       ?root_is_interface_supported@RKeyboardController@SDL_core@ui@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10005390 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000043d0       ?ref_weak@RSerializeReader@serialize_json@media@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:000043d0       ?ref_weak@RTerminal@SDL_core@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000043d0       ?ref_weak@RKeyboardController@SDL_core@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000043d0       ?ref_weak@RGenerator@images_std@media@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
- 0001:000043d0       ?ref_weak@RGenerator@frames@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:000043d0       ?ref_weak@RGenerator@stdlib@lib2d@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:000043d0       ?ref_weak@RGenerator@SDL_core@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000043d0       ?ref_weak@RMouseController@SDL_core@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000043d0       ?ref_weak@RDialog@frames@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000043d0       ?ref_weak@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000043d0       ?ref_weak@RGenerator@test1@test@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i plugin_test1.obj
- 0001:000043d0       ?ref_weak@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:000043d0       ?ref_weak@RGenerator@serialize_json@media@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:000043d0       ?ref_weak@RDialog@frames@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:000043d0       ?ref_weak@RMouseController@SDL_core@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000043d0       ?ref_weak@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000043d0       ?ref_weak@RTerminal@SDL_core@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000043d0       ?ref_weak@RGenerator@images_std@media@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
+ 0001:000043d0       ?ref_weak@RGenerator@serialize_json@media@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:000043d0       ?ref_weak@RGenerator@stdlib@lib2d@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
+ 0001:000043d0       ?ref_weak@RGenerator@SDL_core@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000043d0       ?ref_weak@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
+ 0001:000043d0       ?ref_weak@RGenerator@frames@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:000043d0       ?ref_weak@RKeyboardController@SDL_core@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000043d0       ?ref_weak@RSerializeReader@serialize_json@media@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 100053d0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:000043f0       ??0RKeyboardController@SDL_core@ui@modules@UModSys@@QAE@PAURTerminal@1234@ABUSParameters@core@4@@Z 100053f0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004450       ??1RKeyboardController@SDL_core@ui@modules@UModSys@@UAE@XZ 10005450 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000044b0       ?process@RKeyboardController@SDL_core@ui@modules@UModSys@@QAE_NAAUSDL_KeyboardEvent@@@Z 100054b0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
@@ -374,8 +374,8 @@
  0001:00004cb0       ??_GRKeyboardController@SDL_core@ui@modules@UModSys@@UAEPAXI@Z 10005cb0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004cd0       ?root_get_interface_info@RTerminal@SDL_core@ui@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 10005cd0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004ce0       ?root_get_interface_type@RTerminal@SDL_core@ui@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10005ce0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00004cf0       ?root_get_other_interface@RTerminal@SDL_core@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10005cf0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004cf0       ?root_get_other_interface@RTerminal@SDL_core@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10005cf0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00004cf0       ?root_get_other_interface@RTerminal@SDL_core@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10005cf0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004d20       ?root_is_interface_supported@RTerminal@SDL_core@ui@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10005d20 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004d60       ??0RTerminal@SDL_core@ui@modules@UModSys@@QAE@PAUIModObject@base@4@ABUSParameters@core@4@@Z 10005d60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00004e00       ??1RTerminal@SDL_core@ui@modules@UModSys@@UAE@XZ 10005e00 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
@@ -399,49 +399,49 @@
  0001:00005520       ?root_get_other_interface@RGenerator@SDL_core@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10006520 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005520       ?root_get_other_interface@RGenerator@SDL_core@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10006520 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005560       ?root_is_interface_supported@RGenerator@SDL_core@ui@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10006560 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000055a0       ?ref_remove@RGenerator@images_std@media@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
- 0001:000055a0       ?ref_remove@RGenerator@SDL_core@ui@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000055a0       ?ref_remove@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000055a0       ?ref_remove@RGenerator@stdlib@lib2d@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:000055a0       ?ref_remove@RGenerator@serialize_json@media@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:000055a0       ?ref_remove@RMouseController@SDL_core@ui@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000055a0       ?ref_remove@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000055a0       ?ref_remove@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:000055a0       ?ref_remove@RKeyboardController@SDL_core@ui@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000055a0       ?ref_remove@RSerializeReader@serialize_json@media@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:000055a0       ?ref_remove@RDialog@frames@ui@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:000055a0       ?ref_remove@RGenerator@frames@ui@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:000055a0       ?ref_remove@RTerminal@SDL_core@ui@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000055a0       ?ref_remove@RGenerator@test1@test@modules@UModSys@@UBEXXZ 100065a0 f i plugin_test1.obj
+ 0001:000055a0       ?ref_remove@RTerminal@SDL_core@ui@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000055a0       ?ref_remove@RSerializeReader@serialize_json@media@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:000055a0       ?ref_remove@RGenerator@images_std@media@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
+ 0001:000055a0       ?ref_remove@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
+ 0001:000055a0       ?ref_remove@RGenerator@SDL_core@ui@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000055a0       ?ref_remove@RDialog@frames@ui@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:000055a0       ?ref_remove@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000055a0       ?ref_remove@RGenerator@frames@ui@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:000055a0       ?ref_remove@RMouseController@SDL_core@ui@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000055a0       ?ref_remove@RGenerator@serialize_json@media@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:000055a0       ?ref_remove@RGenerator@stdlib@lib2d@modules@UModSys@@UBEXXZ 100065a0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:000055b0       ?get_uid@RGenerator@SDL_core@ui@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 100065b0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000055c0       ?do_open@RModuleReg@SDL_core@ui@modules@UModSys@@UAE_NXZ 100065c0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000055d0       ?do_close@RModuleReg@SDL_core@ui@modules@UModSys@@UAE_NXZ 100065d0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000055e0       ??_GRModuleReg@SDL_core@ui@modules@UModSys@@UAEPAXI@Z 100065e0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000055e0       ??_ERModuleReg@SDL_core@ui@modules@UModSys@@UAEPAXI@Z 100065e0 f i  CIL library: CIL module
  0001:00005610       ??1?$TScatterArray@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@HU?$TScalarCompare@H@core@6@U?$TNodeDeleter0@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@6@@tl@UModSys@@QAE@XZ 10006610 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00005630       ??1?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10006630 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005630       ??1?$TRefObject@URMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10006630 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00005630       ??1?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAE@XZ 10006630 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005660       ??4?$TRefObject@URMouseController@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URMouseController@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAEABU012@PAURMouseController@SDL_core@ui@modules@2@@Z 10006660 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005660       ??4?$TRefObject@URKeyboardController@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URKeyboardController@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@QAEABU012@PAURKeyboardController@SDL_core@ui@modules@2@@Z 10006660 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000056a0       ?remove_node@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@QAEXPAU?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@@Z 100066a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000056a0       ?remove_node@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@QAEXPAU?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@@Z 100066a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000056a0       ?remove_node@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@QAEXPAU?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@@Z 100066a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005790       ??1?$TPair@HU?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@@tl@UModSys@@QAE@XZ 10006790 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005790       ??1?$TPair@HU?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@@tl@UModSys@@QAE@XZ 10006790 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000057a0       ??1?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 100067a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000057a0       ??1?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 100067a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000057a0       ??1?$TRefObjectComposite@UIController@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 100067a0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:000057a0       ??1?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 100067a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005810       ??$t_ref_get_other_interface@URMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@@tl@5@@IRefObject@core@UModSys@@QAE_NAAU?$TRefObject@URMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@@tl@5@@tl@2@@Z 10006810 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URFrame_List@frames@ui@modules@UModSys@@URCollector@2345@@tl@UModSys@@QBEXPAURFrame_List@frames@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URRenderDriver2D@SDL_core@ui@modules@UModSys@@URTerminal@2345@@tl@UModSys@@QBEXPAURRenderDriver2D@SDL_core@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URFrame_Frame@frames@ui@modules@UModSys@@URCollector@2345@@tl@UModSys@@QBEXPAURFrame_Frame@frames@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URKeyboardController@SDL_core@ui@modules@UModSys@@URTerminal@2345@@tl@UModSys@@QBEXPAURKeyboardController@SDL_core@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URFrame_Edit@frames@ui@modules@UModSys@@URCollector@2345@@tl@UModSys@@QBEXPAURFrame_Edit@frames@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URFrame_Button@frames@ui@modules@UModSys@@URCollector@2345@@tl@UModSys@@QBEXPAURFrame_Button@frames@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URMouseController@SDL_core@ui@modules@UModSys@@URTerminal@2345@@tl@UModSys@@QBEXPAURMouseController@SDL_core@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@URRenderDriver2D@2345@@tl@UModSys@@QBEXPAURMultiImage2D_SDL_ttf@SDL_core@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URFrame_Text@frames@ui@modules@UModSys@@URCollector@2345@@tl@UModSys@@QBEXPAURFrame_Text@frames@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URFrame_List@frames@ui@modules@UModSys@@URCollector@2345@@tl@UModSys@@QBEXPAURFrame_List@frames@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URDialog@frames@ui@modules@UModSys@@URCollector@2345@@tl@UModSys@@QBEXPAURDialog@frames@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URRenderDriver2D@SDL_core@ui@modules@UModSys@@URTerminal@2345@@tl@UModSys@@QBEXPAURRenderDriver2D@SDL_core@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URFrame_Image@frames@ui@modules@UModSys@@URCollector@2345@@tl@UModSys@@QBEXPAURFrame_Image@frames@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URFrame_Edit@frames@ui@modules@UModSys@@URCollector@2345@@tl@UModSys@@QBEXPAURFrame_Edit@frames@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URKeyboardController@SDL_core@ui@modules@UModSys@@URTerminal@2345@@tl@UModSys@@QBEXPAURKeyboardController@SDL_core@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00005870       ?obj_delete@?$TRefObjectLinksParent@URFrame_Text@frames@ui@modules@UModSys@@URCollector@2345@@tl@UModSys@@QBEXPAURFrame_Text@frames@ui@modules@3@@Z 10006870 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000058e0       ?remove_color@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@0@Z 100068e0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000058e0       ?remove_color@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@0@Z 100068e0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005a60       ??$t_close@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@@SDL_core@ui@modules@UModSys@@YA_NAAU?$TScatterArray@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@tl@UModSys@@@23@@tl@3@@Z 10006a60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
@@ -455,17 +455,17 @@
  0001:00005e10       ??$t_gen_param@URTerminal@SDL_core@ui@modules@UModSys@@URGenerator@2345@@IGenerator@base@UModSys@@IAE_NPAURGenerator@SDL_core@ui@modules@2@AAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@2@PBUSUniquePointerInfo@core@2@ABUSParameters@core@2@@Z 10006e10 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005e80       ??$genx_node@UCmp@?$TScatterArray@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@HU?$TScalarCompare@H@core@6@U?$TNodeDeleter0@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@6@@tl@UModSys@@UGen0@234@@?$TTreeHoldRBD@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@23@@tl@UModSys@@QAEPAU?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@12@UCmp@?$TScatterArray@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@HU?$TScalarCompare@H@core@6@U?$TNodeDeleter0@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@6@@12@ABUGen0@512@PAPAU312@2_N@Z 10006e80 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005ef0       ??$genx_node@UCmp@?$TScatterArray@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@23@@tl@UModSys@@UGen0@234@@?$TTreeHoldRBD@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@23@@tl@UModSys@@QAEPAU?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@12@UCmp@?$TScatterArray@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@23@@12@ABUGen0@512@PAPAU312@2_N@Z 10006ef0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00005f60       ??$find_node_u@UCmp@?$TScatterArray@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@HU?$TScalarCompare@H@core@6@U?$TNodeDeleter0@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@6@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@UModSys@@QBEPAU?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@12@UCmp@?$TScatterArray@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@HU?$TScalarCompare@H@core@6@U?$TNodeDeleter0@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@6@@12@@Z 10006f60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005f60       ??$find_node_u@UCmp@?$TScatterArray@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@23@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@QBEPAU?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@12@UCmp@?$TScatterArray@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@23@@12@@Z 10006f60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00005f60       ??$find_node_u@UCmp@?$TScatterArray@HHU?$TScalarCompare@H@core@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@HH@tl@UModSys@@@tl@3@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@HH@tl@UModSys@@@tl@UModSys@@QBEPAU?$TScatterArrayNode@HH@12@UCmp@?$TScatterArray@HHU?$TScalarCompare@H@core@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@HH@tl@UModSys@@@tl@3@@12@@Z 10006f60 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00005f60       ??$find_node_u@UCmp@?$TScatterArray@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@23@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@QBEPAU?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@12@UCmp@?$TScatterArray@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@23@@12@@Z 10006f60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00005f60       ??$find_node_u@UCmp@?$TScatterArray@U?$TVector2@M@math3d@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@@tl@3@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@@tl@UModSys@@QBEPAU?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@12@UCmp@?$TScatterArray@U?$TVector2@M@math3d@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@@tl@3@@12@@Z 10006f60 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00005f60       ??$find_node_u@UCmp@?$TScatterArray@U?$TVector4@M@math3d@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@tl@3@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@tl@UModSys@@QBEPAU?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@12@UCmp@?$TScatterArray@U?$TVector4@M@math3d@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@tl@3@@12@@Z 10006f60 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00005f60       ??$find_node_u@UCmp@?$TScatterArray@U?$TVector2@M@math3d@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@@tl@3@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@@tl@UModSys@@QBEPAU?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@12@UCmp@?$TScatterArray@U?$TVector2@M@math3d@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@@tl@3@@12@@Z 10006f60 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00005f60       ??$find_node_u@UCmp@?$TScatterArray@HHU?$TScalarCompare@H@core@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@HH@tl@UModSys@@@tl@3@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@HH@tl@UModSys@@@tl@UModSys@@QBEPAU?$TScatterArrayNode@HH@12@UCmp@?$TScatterArray@HHU?$TScalarCompare@H@core@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@HH@tl@UModSys@@@tl@3@@12@@Z 10006f60 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00005f60       ??$find_node_u@UCmp@?$TScatterArray@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@HU?$TScalarCompare@H@core@6@U?$TNodeDeleter0@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@6@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@UModSys@@QBEPAU?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@12@UCmp@?$TScatterArray@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@HU?$TScalarCompare@H@core@6@U?$TNodeDeleter0@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@6@@12@@Z 10006f60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00005fa0       ??$genx_node@UCmp@?$TScatterArray@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@23@@tl@UModSys@@UGen0@234@@?$TTreeHoldRBD@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@23@@tl@UModSys@@QAEPAU?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@12@UCmp@?$TScatterArray@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@23@@12@ABUGen0@512@PAPAU312@2_N@Z 10006fa0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00006010       ?rotate_left@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@@Z 10007010 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00006010       ?rotate_left@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@@Z 10007010 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00006060       ?rotate_right@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@@Z 10007060 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00006010       ?rotate_left@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@@Z 10007010 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00006060       ?rotate_right@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@@Z 10007060 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00006060       ?rotate_right@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@@Z 10007060 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000060b0       ??RGen0@?$TScatterArray@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@HU?$TScalarCompare@H@core@6@U?$TNodeDeleter0@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@6@@tl@UModSys@@QBEPAU?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@23@ABUCmp@123@ABU?$TTreeHoldRBD@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@23@@23@@Z 100070b0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00006110       ??RGen0@?$TScatterArray@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@23@@tl@UModSys@@QBEPAU?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@ABUCmp@123@ABU?$TTreeHoldRBD@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@23@@23@@Z 10007110 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00006170       ??RGen0@?$TScatterArray@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@23@@tl@UModSys@@QBEPAU?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@ABUCmp@123@ABU?$TTreeHoldRBD@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@23@@23@@Z 10007170 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
@@ -473,25 +473,25 @@
  0001:00006230       ??0?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@QAE@ABH@Z 10007230 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000062a0       ??0?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@QAE@ABH@Z 100072a0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00006310       ??$process_nodes_r@U?$TNodeDeleter0@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@UModSys@@KAHPAU?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@12@ABU?$TNodeDeleter0@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@12@@Z 10007310 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00006370       ??$process_nodes_r@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@KAHPAU?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@12@ABU?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@12@@Z 10007370 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00006370       ??$process_nodes_r@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@KAHPAU?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@12@ABU?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@12@@Z 10007370 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00006370       ??$process_nodes_r@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@KAHPAU?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@12@ABU?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@12@@Z 10007370 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000063c0       ??$process_nodes_r@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@KAHPAU?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@12@ABU?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@tl@UModSys@@@12@@Z 100073c0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00006440       ??$genx_node@UCmp@?$TScatterArray@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@tl@UModSys@@@23@@tl@UModSys@@UGen0@234@@?$TTreeHoldRBD@U?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@tl@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@tl@UModSys@@@23@@tl@UModSys@@QAEPAU?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@12@UCmp@?$TScatterArray@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@tl@UModSys@@@23@@12@ABUGen0@512@PAPAU312@2_N@Z 10007440 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000064b0       ?sub_insert_node@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@QAEXPAU?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@0H@Z 100074b0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:000064b0       ?sub_insert_node@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@QAEXPAU?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@23@0H@Z 100074b0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000064b0       ?sub_insert_node@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@@tl@UModSys@@QAEXPAU?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@23@0H@Z 100074b0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:000064b0       ?sub_insert_node@?$TTreeHoldRB@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@UModSys@@QAEXPAU?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@23@0H@Z 100074b0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000064b0       ?sub_insert_node@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@QAEXPAU?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@0H@Z 100074b0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000064b0       ?sub_insert_node@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@tl@UModSys@@QAEXPAU?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@23@0H@Z 100074b0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:000064b0       ?sub_insert_node@?$TTreeHoldRB@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@UModSys@@QAEXPAU?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@23@0H@Z 100074b0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:000064b0       ?sub_insert_node@?$TTreeHoldRB@U?$TScatterArrayNode@HH@tl@UModSys@@@tl@UModSys@@QAEXPAU?$TScatterArrayNode@HH@23@0H@Z 100074b0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000064b0       ?sub_insert_node@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@QAEXPAU?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@0H@Z 100074b0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:000064b0       ?sub_insert_node@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@QAEXPAU?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@23@0H@Z 100074b0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00006520       ??RGen0@?$TScatterArray@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@tl@UModSys@@@23@@tl@UModSys@@QBEPAU?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@23@ABUCmp@123@ABU?$TTreeHoldRBD@U?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@tl@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@tl@UModSys@@@23@@23@@Z 10007520 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00006590       ?insert_color@?$TTreeHoldRB@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@23@@Z 10007590 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00006590       ?insert_color@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@23@@Z 10007590 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00006590       ?insert_color@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@@Z 10007590 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00006590       ?insert_color@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@23@@Z 10007590 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006590       ?insert_color@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@U?$TRefObject@URRenderDriver2D@SDL_core@ui@modules@UModSys@@U?$TRefObjectWeakFunc@URRenderDriver2D@SDL_core@ui@modules@UModSys@@@tl@5@@tl@UModSys@@H@23@@Z 10007590 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00006590       ?insert_color@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@U?$TRefObjectComposite@UIKeyboardClient@libui@UModSys@@UIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@@Z 10007590 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00006590       ?insert_color@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@U?$TRefObjectCompositeExtra@UIMouseClient@libui@UModSys@@HUIRefObject@core@3@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@H@23@@Z 10007590 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00006590       ?insert_color@?$TTreeHoldRB@U?$TScatterArrayNode@HH@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@HH@23@@Z 10007590 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00006590       ?insert_color@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@23@@Z 10007590 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00006590       ?insert_color@?$TTreeHoldRB@U?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@tl@UModSys@@@tl@UModSys@@IAEXPAU?$TScatterArrayNode@UGlyph@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@H@23@@Z 10007590 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00006730       ?get@SParameters@core@UModSys@@QBE_NPBDAA_N@Z 10007730 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006770       ?ss@SFrameDataOut@libui@UModSys@@QBEXABU?$TString@U?$TSCoreShared@USIMemAlloc@core@UModSys@@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@@Z 10007770 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000067c0       ?ss@SFrameDataOut@libui@UModSys@@QBEXQBD@Z 100077c0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
@@ -519,31 +519,31 @@
  0001:00006da0       ?get_framesize@RFrame_Common@frames@ui@modules@UModSys@@UAEABUSFrameSize@libui@5@XZ 10007da0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006db0       ?set_framesize@RFrame_Common@frames@ui@modules@UModSys@@UAE_NABUSFrameSize@libui@5@@Z 10007db0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006de0       ?get_insize@RFrame_Common@frames@ui@modules@UModSys@@UAE?AU?$TVector2@H@math3d@5@XZ 10007de0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00006e00       ?set_layer_count@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAE_NH@Z 10007e00 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00006e00       ?key_event@RFrame_Common@frames@ui@modules@UModSys@@MAE_NABUSKeyboardInputRaw@libui@5@@Z 10007e00 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00006e00       ?get_max_cell_size@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAE_NAAU?$TVector2@H@math3d@5@@Z 10007e00 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00006e00       ?set_insize@RFrame_Common@frames@ui@modules@UModSys@@UAE_NABU?$TVector2@H@math3d@5@@Z 10007e00 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00006e00       ?key_event@RFrame_Common@frames@ui@modules@UModSys@@MAE_NABUSKeyboardInputText@libui@5@@Z 10007e00 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006e00       ?mouse_event@RFrame_Common@frames@ui@modules@UModSys@@MAE_NPBUSMouseInput@libui@5@@Z 10007e00 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006e00       ?mouse_setvisible@RMouseController@SDL_core@ui@modules@UModSys@@UAE_N_N@Z 10007e00 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00006e00       ?set_layer_count@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAE_NH@Z 10007e00 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00006e00       ?set_insize@RFrame_Common@frames@ui@modules@UModSys@@UAE_NABU?$TVector2@H@math3d@5@@Z 10007e00 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00006e00       ?get_max_cell_size@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UAE_NAAU?$TVector2@H@math3d@5@@Z 10007e00 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00006e00       ?key_event@RFrame_Common@frames@ui@modules@UModSys@@MAE_NABUSKeyboardInputText@libui@5@@Z 10007e00 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00006e00       ?key_event@RFrame_Common@frames@ui@modules@UModSys@@MAE_NABUSKeyboardInputRaw@libui@5@@Z 10007e00 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006e10       ?get_theme@RFrame_Common@frames@ui@modules@UModSys@@UAEPAUICollectorTheme@libui@5@XZ 10007e10 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00006e20       ?draw_pre@RFrame_Common@frames@ui@modules@UModSys@@MAE_NABUSDrawState@2345@@Z 10007e20 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006e20       ?draw_post@RFrame_Common@frames@ui@modules@UModSys@@MAE_NABUSDrawState@2345@@Z 10007e20 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00006e30       ?button_draw@RFrame_Common@frames@ui@modules@UModSys@@MAE_NPAUSButton@2345@ABUSDrawState@2345@H@Z 10007e30 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00006e20       ?draw_pre@RFrame_Common@frames@ui@modules@UModSys@@MAE_NABUSDrawState@2345@@Z 10007e20 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006e30       ?button_cmd@RFrame_Common@frames@ui@modules@UModSys@@MAE_NPAUSButton@2345@HH@Z 10007e30 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00006e30       ?button_draw@RFrame_Common@frames@ui@modules@UModSys@@MAE_NPAUSButton@2345@ABUSDrawState@2345@H@Z 10007e30 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006e40       ??_GRFrame_Common@frames@ui@modules@UModSys@@UAEPAXI@Z 10007e40 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006e40       ??_ERFrame_Common@frames@ui@modules@UModSys@@UAEPAXI@Z 10007e40 f i  CIL library: CIL module
  0001:00006e60       ?root_get_interface_info@RDialog@frames@ui@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 10007e60 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006e70       ?root_get_interface_type@RDialog@frames@ui@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10007e70 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00006e80       ?root_get_other_interface@RDialog@frames@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10007e80 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006e80       ?root_get_other_interface@RDialog@frames@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10007e80 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00006e80       ?root_get_other_interface@RDialog@frames@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10007e80 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006eb0       ?root_is_interface_supported@RDialog@frames@ui@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10007eb0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00006ef0       ??_GRDialog@frames@ui@modules@UModSys@@UAEPAXI@Z 10007ef0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006ef0       ??_ERDialog@frames@ui@modules@UModSys@@UAEPAXI@Z 10007ef0 f i  CIL library: CIL module
+ 0001:00006ef0       ??_GRDialog@frames@ui@modules@UModSys@@UAEPAXI@Z 10007ef0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006f10       ?root_get_interface_info@RFrame_Frame@frames@ui@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 10007f10 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006f20       ?root_get_interface_type@RFrame_Frame@frames@ui@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10007f20 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00006f30       ?root_get_other_interface@RFrame_Frame@frames@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10007f30 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006f30       ?root_get_other_interface@RFrame_Frame@frames@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10007f30 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00006f30       ?root_get_other_interface@RFrame_Frame@frames@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10007f30 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006f70       ?root_is_interface_supported@RFrame_Frame@frames@ui@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10007f70 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006fb0       ?ref_weak@RFrame_Image@frames@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 10007fb0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00006fb0       ?ref_weak@RFrame_Button@frames@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 10007fb0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
@@ -552,12 +552,12 @@
  0001:00007010       ?get_cidn@RFrame_Frame@frames@ui@modules@UModSys@@UAEHXZ 10008010 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007020       ?root_get_interface_info@RFrame_Image@frames@ui@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 10008020 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007030       ?root_get_interface_type@RFrame_Image@frames@ui@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10008030 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007040       ?root_get_other_interface@RFrame_Image@frames@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10008040 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007040       ?root_get_other_interface@RFrame_Image@frames@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10008040 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007040       ?root_get_other_interface@RFrame_Image@frames@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10008040 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007080       ?root_is_interface_supported@RFrame_Image@frames@ui@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10008080 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:000070c0       ?ref_links@RFrame_Frame@frames@ui@modules@UModSys@@UBEHXZ 100080c0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000070c0       ?ref_links@RFrame_Button@frames@ui@modules@UModSys@@UBEHXZ 100080c0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000070c0       ?ref_links@RFrame_Image@frames@ui@modules@UModSys@@UBEHXZ 100080c0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:000070c0       ?ref_links@RFrame_Frame@frames@ui@modules@UModSys@@UBEHXZ 100080c0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000070d0       ?suicide@RFrame_Frame@frames@ui@modules@UModSys@@UAEXXZ 100080d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000070d0       ?suicide@RFrame_Button@frames@ui@modules@UModSys@@UAEXXZ 100080d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000070d0       ?suicide@RFrame_Image@frames@ui@modules@UModSys@@UAEXXZ 100080d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
@@ -565,82 +565,82 @@
  0001:00007110       ?get_cidn@RFrame_Image@frames@ui@modules@UModSys@@UAEHXZ 10008110 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007120       ?root_get_interface_info@RFrame_Text@frames@ui@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 10008120 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007130       ?root_get_interface_type@RFrame_Text@frames@ui@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10008130 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007140       ?root_get_other_interface@RFrame_Text@frames@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10008140 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007140       ?root_get_other_interface@RFrame_Text@frames@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10008140 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007140       ?root_get_other_interface@RFrame_Text@frames@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10008140 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007180       ?root_is_interface_supported@RFrame_Text@frames@ui@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10008180 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000071c0       ?ref_add@RFrame_Edit@frames@ui@modules@UModSys@@UBEXXZ 100081c0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000071c0       ?ref_add@RFrame_Text@frames@ui@modules@UModSys@@UBEXXZ 100081c0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000071d0       ?ref_remove@RFrame_Edit@frames@ui@modules@UModSys@@UBEXXZ 100081d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000071d0       ?ref_remove@RFrame_Text@frames@ui@modules@UModSys@@UBEXXZ 100081d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:000071f0       ?suicide@RFrame_Edit@frames@ui@modules@UModSys@@UAEXXZ 100081f0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000071f0       ?suicide@RFrame_Text@frames@ui@modules@UModSys@@UAEXXZ 100081f0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:000071f0       ?suicide@RFrame_Edit@frames@ui@modules@UModSys@@UAEXXZ 100081f0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007200       ?get_cids@RFrame_Button@frames@ui@modules@UModSys@@UAE?AU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@XZ 10008200 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007200       ?get_cids@RFrame_List@frames@ui@modules@UModSys@@UAE?AU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@XZ 10008200 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007200       ?get_cids@RFrame_Text@frames@ui@modules@UModSys@@UAE?AU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@XZ 10008200 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007230       ?get_cidn@RFrame_Text@frames@ui@modules@UModSys@@UAEHXZ 10008230 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007230       ?get_cidn@RFrame_Button@frames@ui@modules@UModSys@@UAEHXZ 10008230 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007230       ?get_cidn@RFrame_List@frames@ui@modules@UModSys@@UAEHXZ 10008230 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007230       ?get_cidn@RFrame_Button@frames@ui@modules@UModSys@@UAEHXZ 10008230 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007230       ?get_cidn@RFrame_Text@frames@ui@modules@UModSys@@UAEHXZ 10008230 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007240       ?get_list@RFrame_List@frames@ui@modules@UModSys@@UAEPAUIFrameList@libui@5@XZ 10008240 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007240       ?get_data@RFrame_Edit@frames@ui@modules@UModSys@@UAEPAUIFrameData@libui@5@XZ 10008240 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007240       ?get_data@RFrame_Text@frames@ui@modules@UModSys@@UAEPAUIFrameData@libui@5@XZ 10008240 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007250       ??_ERFrame_Frame@frames@ui@modules@UModSys@@UAEPAXI@Z 10008250 f i  CIL library: CIL module
+ 0001:00007240       ?get_data@RFrame_Edit@frames@ui@modules@UModSys@@UAEPAUIFrameData@libui@5@XZ 10008240 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007250       ??_GRFrame_Frame@frames@ui@modules@UModSys@@UAEPAXI@Z 10008250 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007270       ??_GRFrame_Text@frames@ui@modules@UModSys@@UAEPAXI@Z 10008270 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007250       ??_ERFrame_Frame@frames@ui@modules@UModSys@@UAEPAXI@Z 10008250 f i  CIL library: CIL module
  0001:00007270       ??_ERFrame_Text@frames@ui@modules@UModSys@@UAEPAXI@Z 10008270 f i  CIL library: CIL module
- 0001:00007290       ??_ERFrame_Image@frames@ui@modules@UModSys@@UAEPAXI@Z 10008290 f i  CIL library: CIL module
+ 0001:00007270       ??_GRFrame_Text@frames@ui@modules@UModSys@@UAEPAXI@Z 10008270 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007290       ??_GRFrame_Image@frames@ui@modules@UModSys@@UAEPAXI@Z 10008290 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007290       ??_ERFrame_Image@frames@ui@modules@UModSys@@UAEPAXI@Z 10008290 f i  CIL library: CIL module
  0001:000072b0       ?root_get_interface_info@RFrame_Button@frames@ui@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 100082b0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000072c0       ?root_get_interface_type@RFrame_Button@frames@ui@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 100082c0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000072d0       ?root_get_other_interface@RFrame_Button@frames@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100082d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000072d0       ?root_get_other_interface@RFrame_Button@frames@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100082d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007310       ?root_is_interface_supported@RFrame_Button@frames@ui@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10008310 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007350       ?ref_add@RFrame_Frame@frames@ui@modules@UModSys@@UBEXXZ 10008350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007350       ?ref_add@RFrame_Image@frames@ui@modules@UModSys@@UBEXXZ 10008350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007350       ?ref_add@RFrame_Button@frames@ui@modules@UModSys@@UBEXXZ 10008350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007360       ?ref_remove@RFrame_Image@frames@ui@modules@UModSys@@UBEXXZ 10008360 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007350       ?ref_add@RFrame_Image@frames@ui@modules@UModSys@@UBEXXZ 10008350 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007360       ?ref_remove@RFrame_Button@frames@ui@modules@UModSys@@UBEXXZ 10008360 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007360       ?ref_remove@RFrame_Image@frames@ui@modules@UModSys@@UBEXXZ 10008360 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007360       ?ref_remove@RFrame_Frame@frames@ui@modules@UModSys@@UBEXXZ 10008360 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_ctrldata@RFrame_Text@frames@ui@modules@UModSys@@UAEPAUIControllerData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_list@RFrame_Frame@frames@ui@modules@UModSys@@UAEPAUIFrameList@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_up_theme@RCollector@frames@ui@modules@UModSys@@UAEPAUICollectorTheme@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_ctrlcmd@RFrame_Frame@frames@ui@modules@UModSys@@UAEPAUIControllerCommand@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007380       ?get_list@RFrame_Edit@frames@ui@modules@UModSys@@UAEPAUIFrameList@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_ctrldata@RFrame_Frame@frames@ui@modules@UModSys@@UAEPAUIControllerData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_list@RFrame_Text@frames@ui@modules@UModSys@@UAEPAUIFrameList@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_data@RFrame_Image@frames@ui@modules@UModSys@@UAEPAUIFrameData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_ctrlcmd@RFrame_Text@frames@ui@modules@UModSys@@UAEPAUIControllerCommand@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_ctrlcmd@RFrame_Button@frames@ui@modules@UModSys@@UAEPAUIControllerCommand@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_data@RFrame_Button@frames@ui@modules@UModSys@@UAEPAUIFrameData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_ctrldata@RFrame_Button@frames@ui@modules@UModSys@@UAEPAUIControllerData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_ctrlcmd@RFrame_List@frames@ui@modules@UModSys@@UAEPAUIControllerCommand@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_list@RFrame_Image@frames@ui@modules@UModSys@@UAEPAUIFrameList@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_ctrlcmd@RFrame_Image@frames@ui@modules@UModSys@@UAEPAUIControllerCommand@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_data@RFrame_Frame@frames@ui@modules@UModSys@@UAEPAUIFrameData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_ctrldata@RFrame_Image@frames@ui@modules@UModSys@@UAEPAUIControllerData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_list@RFrame_Button@frames@ui@modules@UModSys@@UAEPAUIFrameList@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007380       ?get_ctrldata@RFrame_Edit@frames@ui@modules@UModSys@@UAEPAUIControllerData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007380       ?get_ctrlcmd@RFrame_Edit@frames@ui@modules@UModSys@@UAEPAUIControllerCommand@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_list@RFrame_Text@frames@ui@modules@UModSys@@UAEPAUIFrameList@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_ctrlcmd@RFrame_Text@frames@ui@modules@UModSys@@UAEPAUIControllerCommand@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_ctrldata@RFrame_Edit@frames@ui@modules@UModSys@@UAEPAUIControllerData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_ctrlcmd@RFrame_Frame@frames@ui@modules@UModSys@@UAEPAUIControllerCommand@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_list@RFrame_Image@frames@ui@modules@UModSys@@UAEPAUIFrameList@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_ctrldata@RFrame_Image@frames@ui@modules@UModSys@@UAEPAUIControllerData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007380       ?get_ctrldata@RFrame_List@frames@ui@modules@UModSys@@UAEPAUIControllerData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007390       ??_GRFrame_Button@frames@ui@modules@UModSys@@UAEPAXI@Z 10008390 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_list@RFrame_Button@frames@ui@modules@UModSys@@UAEPAUIFrameList@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_data@RFrame_Image@frames@ui@modules@UModSys@@UAEPAUIFrameData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_ctrldata@RFrame_Frame@frames@ui@modules@UModSys@@UAEPAUIControllerData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_ctrlcmd@RFrame_Image@frames@ui@modules@UModSys@@UAEPAUIControllerCommand@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_data@RFrame_Button@frames@ui@modules@UModSys@@UAEPAUIFrameData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_ctrlcmd@RFrame_Button@frames@ui@modules@UModSys@@UAEPAUIControllerCommand@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_ctrldata@RFrame_Text@frames@ui@modules@UModSys@@UAEPAUIControllerData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_ctrlcmd@RFrame_List@frames@ui@modules@UModSys@@UAEPAUIControllerCommand@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_up_theme@RCollector@frames@ui@modules@UModSys@@UAEPAUICollectorTheme@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_list@RFrame_Frame@frames@ui@modules@UModSys@@UAEPAUIFrameList@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_data@RFrame_Frame@frames@ui@modules@UModSys@@UAEPAUIFrameData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007380       ?get_ctrldata@RFrame_Button@frames@ui@modules@UModSys@@UAEPAUIControllerData@libui@5@XZ 10008380 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007390       ??_ERFrame_Button@frames@ui@modules@UModSys@@UAEPAXI@Z 10008390 f i  CIL library: CIL module
+ 0001:00007390       ??_GRFrame_Button@frames@ui@modules@UModSys@@UAEPAXI@Z 10008390 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000073b0       ?root_get_interface_info@RFrame_Edit@frames@ui@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 100083b0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000073c0       ?root_get_interface_type@RFrame_Edit@frames@ui@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 100083c0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:000073d0       ?root_get_other_interface@RFrame_Edit@frames@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100083d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000073d0       ?root_get_other_interface@RFrame_Edit@frames@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100083d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:000073d0       ?root_get_other_interface@RFrame_Edit@frames@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100083d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007410       ?root_is_interface_supported@RFrame_Edit@frames@ui@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10008410 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007450       ?ref_links@RFrame_Edit@frames@ui@modules@UModSys@@UBEHXZ 10008450 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007450       ?ref_links@RFrame_Text@frames@ui@modules@UModSys@@UBEHXZ 10008450 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007450       ?ref_links@RFrame_Edit@frames@ui@modules@UModSys@@UBEHXZ 10008450 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007460       ?ref_weak@RFrame_Edit@frames@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 10008460 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007460       ?ref_weak@RFrame_Text@frames@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 10008460 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007490       ?get_cids@RFrame_Edit@frames@ui@modules@UModSys@@UAE?AU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@XZ 10008490 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000074c0       ?get_cidn@RFrame_Edit@frames@ui@modules@UModSys@@UAEHXZ 100084c0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:000074d0       ??_ERFrame_Edit@frames@ui@modules@UModSys@@UAEPAXI@Z 100084d0 f i  CIL library: CIL module
  0001:000074d0       ??_GRFrame_Edit@frames@ui@modules@UModSys@@UAEPAXI@Z 100084d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:000074d0       ??_ERFrame_Edit@frames@ui@modules@UModSys@@UAEPAXI@Z 100084d0 f i  CIL library: CIL module
  0001:000074f0       ??1?$TStringBuf@U?$TSCoreShared@USIMemAlloc@core@UModSys@@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@UModSys@@QAE@XZ 100084f0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007530       ?root_get_interface_info@RFrame_List@frames@ui@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 10008530 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007540       ?root_get_interface_type@RFrame_List@frames@ui@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10008540 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007550       ?root_get_other_interface@RFrame_List@frames@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10008550 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007550       ?root_get_other_interface@RFrame_List@frames@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10008550 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007550       ?root_get_other_interface@RFrame_List@frames@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10008550 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007590       ?root_is_interface_supported@RFrame_List@frames@ui@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10008590 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000075d0       ?ref_add@RFrame_List@frames@ui@modules@UModSys@@UBEXXZ 100085d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000075e0       ?ref_remove@RFrame_List@frames@ui@modules@UModSys@@UBEXXZ 100085e0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
@@ -648,12 +648,12 @@
  0001:00007610       ?ref_weak@RFrame_List@frames@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 10008610 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007640       ?suicide@RFrame_List@frames@ui@modules@UModSys@@UAEXXZ 10008640 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007650       ?get_data@RFrame_List@frames@ui@modules@UModSys@@UAEPAUIFrameData@libui@5@XZ 10008650 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007660       ??_GRFrame_List@frames@ui@modules@UModSys@@UAEPAXI@Z 10008660 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007660       ??_ERFrame_List@frames@ui@modules@UModSys@@UAEPAXI@Z 10008660 f i  CIL library: CIL module
+ 0001:00007660       ??_GRFrame_List@frames@ui@modules@UModSys@@UAEPAXI@Z 10008660 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007680       ?root_get_interface_info@RCollector@frames@ui@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 10008680 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007690       ?root_get_interface_type@RCollector@frames@ui@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10008690 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:000076a0       ?root_get_other_interface@RCollector@frames@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100086a0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000076a0       ?root_get_other_interface@RCollector@frames@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100086a0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:000076a0       ?root_get_other_interface@RCollector@frames@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100086a0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000076d0       ?root_is_interface_supported@RCollector@frames@ui@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 100086d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007710       ?ref_add@RCollector@frames@ui@modules@UModSys@@UBEXXZ 10008710 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007720       ?ref_remove@RCollector@frames@ui@modules@UModSys@@UBEXXZ 10008720 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
@@ -661,8 +661,8 @@
  0001:00007740       ?ref_weak@RCollector@frames@ui@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 10008740 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007760       ?suicide@RCollector@frames@ui@modules@UModSys@@UAEXXZ 10008760 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007770       ?broadcast@RCollector@frames@ui@modules@UModSys@@UAEHHABUSFrameDataIn@libui@5@H@Z 10008770 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007790       ??_GRCollector@frames@ui@modules@UModSys@@UAEPAXI@Z 10008790 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007790       ??_ERCollector@frames@ui@modules@UModSys@@UAEPAXI@Z 10008790 f i  CIL library: CIL module
+ 0001:00007790       ??_GRCollector@frames@ui@modules@UModSys@@UAEPAXI@Z 10008790 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000077b0       ?get_up_theme@RFrame_Common@frames@ui@modules@UModSys@@UAEPAUICollectorTheme@libui@5@XZ 100087b0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000077d0       ?draw_button@SButton@frames@ui@modules@UModSys@@QAE_NABUSDrawState@2345@HH@Z 100087d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007840       ?draw_text@SButton@frames@ui@modules@UModSys@@QAE_NABUSDrawState@2345@ABU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@HH@Z 10008840 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
@@ -671,14 +671,14 @@
  0001:000079c0       ?generate@RGenerator@frames@ui@modules@UModSys@@UAE_NAAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@5@PBUSUniquePointerInfo@core@5@ABUSParameters@95@@Z 100089c0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000079f0       ?root_get_interface_info@RGenerator@frames@ui@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 100089f0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007a00       ?root_get_interface_type@RGenerator@frames@ui@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10008a00 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007a10       ?root_get_other_interface@RGenerator@frames@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10008a10 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007a10       ?root_get_other_interface@RGenerator@frames@ui@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10008a10 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007a10       ?root_get_other_interface@RGenerator@frames@ui@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10008a10 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007a50       ?root_is_interface_supported@RGenerator@frames@ui@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10008a50 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007a90       ?get_uid@RGenerator@frames@ui@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10008a90 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007aa0       ?do_open@RModuleReg@frames@ui@modules@UModSys@@UAE_NXZ 10008aa0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007ab0       ?do_close@RModuleReg@frames@ui@modules@UModSys@@UAE_NXZ 10008ab0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007ac0       ??_GRModuleReg@frames@ui@modules@UModSys@@UAEPAXI@Z 10008ac0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007ac0       ??_ERModuleReg@frames@ui@modules@UModSys@@UAEPAXI@Z 10008ac0 f i  CIL library: CIL module
+ 0001:00007ac0       ??_GRModuleReg@frames@ui@modules@UModSys@@UAEPAXI@Z 10008ac0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007af0       ??4?$TString@U?$TSCoreShared@USIMemAlloc@core@UModSys@@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@UModSys@@QAEABU012@ABU012@@Z 10008af0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007b30       ??1?$TScatterArray@U?$TVector2@M@math3d@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10008b30 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007b30       ??1?$TScatterArray@U?$TVector4@M@math3d@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@tl@3@@tl@UModSys@@QAE@XZ 10008b30 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
@@ -694,8 +694,8 @@
  0001:00007ee0       ??$?4U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@123@@?$TString@U?$TSCoreShared@USIMemAlloc@core@UModSys@@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@UModSys@@QAEXABU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@12@@Z 10008ee0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007f10       ??$smemmove@H@su@tl@UModSys@@YAXPAHPBHI@Z 10008f10 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007f30       ?ResizeRel@?$TDynarray@U?$TDynarrayHolderDynamic@UListItem@RFrame_List@frames@ui@modules@UModSys@@U?$TAllocator@USIMemAlloc@core@UModSys@@USCountCalcPower2@23@@tl@6@@tl@UModSys@@@tl@UModSys@@QAE_NH@Z 10008f30 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00007f90       ?ResizeRel@?$TDynarray@U?$TDynarrayHolderDynamic@U?$TRefObject@URFrame_Common@frames@ui@modules@UModSys@@U?$TRefObjectFunc@URFrame_Common@frames@ui@modules@UModSys@@@tl@5@@tl@UModSys@@U?$TAllocator@USIMemAlloc@core@UModSys@@USCountCalcPower2@23@@23@@tl@UModSys@@@tl@UModSys@@QAE_NH@Z 10008f90 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00007f90       ?ResizeRel@?$TDynarray@U?$TDynarrayHolderDynamic@U?$TRefObject@URDialog@frames@ui@modules@UModSys@@U?$TRefObjectFunc@URDialog@frames@ui@modules@UModSys@@@tl@5@@tl@UModSys@@U?$TAllocator@USIMemAlloc@core@UModSys@@USCountCalcPower2@23@@23@@tl@UModSys@@@tl@UModSys@@QAE_NH@Z 10008f90 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00007f90       ?ResizeRel@?$TDynarray@U?$TDynarrayHolderDynamic@U?$TRefObject@URFrame_Common@frames@ui@modules@UModSys@@U?$TRefObjectFunc@URFrame_Common@frames@ui@modules@UModSys@@@tl@5@@tl@UModSys@@U?$TAllocator@USIMemAlloc@core@UModSys@@USCountCalcPower2@23@@23@@tl@UModSys@@@tl@UModSys@@QAE_NH@Z 10008f90 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00008000       ??$t_gen_param@URCollector@frames@ui@modules@UModSys@@URGenerator@2345@@IGenerator@base@UModSys@@IAE_NPAURGenerator@frames@ui@modules@2@AAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@2@PBUSUniquePointerInfo@core@2@ABUSParameters@core@2@@Z 10009000 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00008080       ?ReLink@?$TDynarray@U?$TDynarrayHolderDynamic@U?$TRefObject@URFrame_Common@frames@ui@modules@UModSys@@U?$TRefObjectFunc@URFrame_Common@frames@ui@modules@UModSys@@@tl@5@@tl@UModSys@@U?$TAllocator@USIMemAlloc@core@UModSys@@USCountCalcPower2@23@@23@@tl@UModSys@@@tl@UModSys@@IAE_NI@Z 10009080 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00008080       ?ReLink@?$TDynarray@U?$TDynarrayHolderDynamic@U?$TRefObject@URDialog@frames@ui@modules@UModSys@@U?$TRefObjectFunc@URDialog@frames@ui@modules@UModSys@@@tl@5@@tl@UModSys@@U?$TAllocator@USIMemAlloc@core@UModSys@@USCountCalcPower2@23@@23@@tl@UModSys@@@tl@UModSys@@IAE_NI@Z 10009080 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
@@ -705,9 +705,9 @@
  0001:000081b0       ?adestruct@?$TTypeConstructor@U?$TRefObject@URFrame_Common@frames@ui@modules@UModSys@@U?$TRefObjectFunc@URFrame_Common@frames@ui@modules@UModSys@@@tl@5@@tl@UModSys@@@tl@UModSys@@SAXPAU?$TRefObject@URFrame_Common@frames@ui@modules@UModSys@@U?$TRefObjectFunc@URFrame_Common@frames@ui@modules@UModSys@@@tl@5@@23@I@Z 100091b0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000081b0       ?adestruct@?$TTypeConstructor@U?$TRefObject@URDialog@frames@ui@modules@UModSys@@U?$TRefObjectFunc@URDialog@frames@ui@modules@UModSys@@@tl@5@@tl@UModSys@@@tl@UModSys@@SAXPAU?$TRefObject@URDialog@frames@ui@modules@UModSys@@U?$TRefObjectFunc@URDialog@frames@ui@modules@UModSys@@@tl@5@@23@I@Z 100091b0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000081f0       ??$ValidateConstruction@UIRefObject@core@UModSys@@URCollector@frames@ui@modules@3@@core@UModSys@@YA_NAAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@1@PAURCollector@frames@ui@modules@1@@Z 100091f0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00008280       ??$process_nodes_r@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@tl@UModSys@@KAHPAU?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@12@ABU?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@12@@Z 10009280 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00008280       ??$process_nodes_r@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@@tl@UModSys@@KAHPAU?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@12@ABU?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@@12@@Z 10009280 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00008280       ??$process_nodes_r@U?$TNodeDeleter0@U?$TScatterArrayNode@HH@tl@UModSys@@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@HH@tl@UModSys@@@tl@UModSys@@KAHPAU?$TScatterArrayNode@HH@12@ABU?$TNodeDeleter0@U?$TScatterArrayNode@HH@tl@UModSys@@@12@@Z 10009280 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00008280       ??$process_nodes_r@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@tl@UModSys@@KAHPAU?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@12@ABU?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@12@@Z 10009280 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000082d0       ??$genx_node@UCmp@?$TScatterArray@U?$TVector4@M@math3d@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@tl@3@@tl@UModSys@@UGen0@234@@?$TTreeHoldRBD@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@23@@tl@UModSys@@QAEPAU?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@12@UCmp@?$TScatterArray@U?$TVector4@M@math3d@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector4@M@math3d@UModSys@@H@tl@UModSys@@@tl@3@@12@ABUGen0@512@PAPAU312@2_N@Z 100092d0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00008340       ??$genx_node@UCmp@?$TScatterArray@U?$TVector2@M@math3d@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@@tl@3@@tl@UModSys@@UGen0@234@@?$TTreeHoldRBD@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@@23@@tl@UModSys@@QAEPAU?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@12@UCmp@?$TScatterArray@U?$TVector2@M@math3d@UModSys@@HU?$TScalarCompare@H@core@3@U?$TNodeDeleter0@U?$TScatterArrayNode@U?$TVector2@M@math3d@UModSys@@H@tl@UModSys@@@tl@3@@12@ABUGen0@512@PAPAU312@2_N@Z 10009340 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:000083f0       ??$genx_node@UCmp@?$TScatterArray@HHU?$TScalarCompare@H@core@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@HH@tl@UModSys@@@tl@3@@tl@UModSys@@UGen0@234@@?$TTreeHoldRBD@U?$TScatterArrayNode@HH@tl@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@HH@tl@UModSys@@@23@@tl@UModSys@@QAEPAU?$TScatterArrayNode@HH@12@UCmp@?$TScatterArray@HHU?$TScalarCompare@H@core@UModSys@@U?$TNodeDeleter0@U?$TScatterArrayNode@HH@tl@UModSys@@@tl@3@@12@ABUGen0@512@PAPAU312@2_N@Z 100093f0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
@@ -721,15 +721,15 @@
  0001:00008660       ?set_info@IImage@lib2d@UModSys@@QAE_NW4eImageType@23@HHPBD@Z 10009660 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:00008690       ?root_get_interface_info@RMediaFilter@images_std@media@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 10009690 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:000086a0       ?root_get_interface_type@RMediaFilter@images_std@media@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 100096a0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
- 0001:000086b0       ?root_get_other_interface@RMediaFilter@images_std@media@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100096b0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:000086b0       ?root_get_other_interface@RMediaFilter@images_std@media@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100096b0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
+ 0001:000086b0       ?root_get_other_interface@RMediaFilter@images_std@media@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100096b0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:000086e0       ?root_is_interface_supported@RMediaFilter@images_std@media@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 100096e0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:00008720       ?ref_remove@RSerializeWriter@serialize_json@media@modules@UModSys@@UBEXXZ 10009720 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00008720       ?ref_remove@RMediaFilter@images_std@media@modules@UModSys@@UBEXXZ 10009720 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:00008730       ?ref_weak@RMediaFilter@images_std@media@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 10009730 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:00008730       ?ref_weak@RSerializeWriter@serialize_json@media@modules@UModSys@@UBE_NAAUWeakPointer@IRefObject@core@5@@Z 10009730 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:00008750       ?suicide@RSerializeWriter@serialize_json@media@modules@UModSys@@UAEXXZ 10009750 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00008750       ?suicide@RMediaFilter@images_std@media@modules@UModSys@@UAEXXZ 10009750 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
+ 0001:00008750       ?suicide@RSerializeWriter@serialize_json@media@modules@UModSys@@UAEXXZ 10009750 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00008760       ?get_flag@RMediaFilter@images_std@media@modules@UModSys@@UBE?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@H@Z 10009760 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:00008780       ?get_flags_auto@RMediaFilter@images_std@media@modules@UModSys@@UBE?AU?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@XZ 10009780 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:00008790       ?set_flag@RMediaFilter@images_std@media@modules@UModSys@@UAE?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@HW46785@@Z 10009790 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
@@ -745,57 +745,57 @@
  0001:000089e0       ?root_get_other_interface@RGenerator@images_std@media@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100099e0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:000089e0       ?root_get_other_interface@RGenerator@images_std@media@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 100099e0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:00008a20       ?root_is_interface_supported@RGenerator@images_std@media@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10009a20 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
- 0001:00008a60       ?ref_add@RGenerator@images_std@media@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
- 0001:00008a60       ?ref_add@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00008a60       ?ref_add@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:00008a60       ?ref_add@RGenerator@frames@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00008a60       ?ref_add@RGenerator@stdlib@lib2d@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:00008a60       ?ref_add@RGenerator@test1@test@modules@UModSys@@UBEXXZ 10009a60 f i plugin_test1.obj
- 0001:00008a60       ?ref_add@RDialog@frames@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
- 0001:00008a60       ?ref_add@RTerminal@SDL_core@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00008a60       ?ref_add@RSerializeReader@serialize_json@media@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:00008a60       ?ref_add@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00008a60       ?ref_add@RKeyboardController@SDL_core@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00008a60       ?ref_add@RMouseController@SDL_core@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
- 0001:00008a60       ?ref_add@RGenerator@SDL_core@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00008a60       ?ref_add@RImage_Memory@stdlib@lib2d@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
+ 0001:00008a60       ?ref_add@RGenerator@images_std@media@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:00008a60       ?ref_add@RGenerator@serialize_json@media@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:00008a60       ?ref_add@RMultiImage2D_SDL_ttf@SDL_core@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00008a60       ?ref_add@RDialog@frames@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00008a60       ?ref_add@RMouseController@SDL_core@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00008a60       ?ref_add@RTerminal@SDL_core@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00008a60       ?ref_add@RGenerator@frames@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
+ 0001:00008a60       ?ref_add@RRenderDriver2D@SDL_core@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00008a60       ?ref_add@RSerializeReader@serialize_json@media@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:00008a60       ?ref_add@RGenerator@test1@test@modules@UModSys@@UBEXXZ 10009a60 f i plugin_test1.obj
+ 0001:00008a60       ?ref_add@RKeyboardController@SDL_core@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00008a60       ?ref_add@RGenerator@SDL_core@ui@modules@UModSys@@UBEXXZ 10009a60 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00008a70       ?get_uid@RGenerator@images_std@media@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10009a70 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:00008a80       ?do_open@RModuleReg@images_std@media@modules@UModSys@@UAE_NXZ 10009a80 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:00008a90       ?do_close@RModuleReg@images_std@media@modules@UModSys@@UAE_NXZ 10009a90 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:00008aa0       ??_ERModuleReg@images_std@media@modules@UModSys@@UAEPAXI@Z 10009aa0 f i  CIL library: CIL module
  0001:00008aa0       ??_GRModuleReg@images_std@media@modules@UModSys@@UAEPAXI@Z 10009aa0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
- 0001:00008ad0       ?obj_delete@?$TRefObjectLinksModObject@URTest1_Shell@test1@test@modules@UModSys@@UIModObject@base@5@@tl@UModSys@@QBEXPAURTest1_Shell@test1@test@modules@3@@Z 10009ad0 f i plugin_test1.obj
- 0001:00008ad0       ?obj_delete@?$TRefObjectLinksModObject@URImage_Memory@stdlib@lib2d@modules@UModSys@@UIModObject@base@5@@tl@UModSys@@QBEXPAURImage_Memory@stdlib@lib2d@modules@3@@Z 10009ad0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
- 0001:00008ad0       ?obj_delete@?$TRefObjectLinksModObject@URCollector@frames@ui@modules@UModSys@@UIModObject@base@5@@tl@UModSys@@QBEXPAURCollector@frames@ui@modules@3@@Z 10009ad0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00008ad0       ?obj_delete@?$TRefObjectLinksModObject@URSerializeReader@serialize_json@media@modules@UModSys@@UIModObject@base@5@@tl@UModSys@@QBEXPAURSerializeReader@serialize_json@media@modules@3@@Z 10009ad0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:00008ad0       ?obj_delete@?$TRefObjectLinksModObject@URTest1_Shell@test1@test@modules@UModSys@@UIModObject@base@5@@tl@UModSys@@QBEXPAURTest1_Shell@test1@test@modules@3@@Z 10009ad0 f i plugin_test1.obj
  0001:00008ad0       ?obj_delete@?$TRefObjectLinksModObject@URSerializeWriter@serialize_json@media@modules@UModSys@@UIModObject@base@5@@tl@UModSys@@QBEXPAURSerializeWriter@serialize_json@media@modules@3@@Z 10009ad0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00008ad0       ?obj_delete@?$TRefObjectLinksModObject@URMediaFilter@images_std@media@modules@UModSys@@UIModObject@base@5@@tl@UModSys@@QBEXPAURMediaFilter@images_std@media@modules@3@@Z 10009ad0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
+ 0001:00008ad0       ?obj_delete@?$TRefObjectLinksModObject@URCollector@frames@ui@modules@UModSys@@UIModObject@base@5@@tl@UModSys@@QBEXPAURCollector@frames@ui@modules@3@@Z 10009ad0 f i umodsys_lib_libui:umodsys.mod.ui.frames.obj
  0001:00008ad0       ?obj_delete@?$TRefObjectLinksModObject@URTerminal@SDL_core@ui@modules@UModSys@@UIModObject@base@5@@tl@UModSys@@QBEXPAURTerminal@SDL_core@ui@modules@3@@Z 10009ad0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
+ 0001:00008ad0       ?obj_delete@?$TRefObjectLinksModObject@URImage_Memory@stdlib@lib2d@modules@UModSys@@UIModObject@base@5@@tl@UModSys@@QBEXPAURImage_Memory@stdlib@lib2d@modules@3@@Z 10009ad0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00008b40       ??$t_gen_param@URMediaFilter@images_std@media@modules@UModSys@@URGenerator@2345@@IGenerator@base@UModSys@@IAE_NPAURGenerator@images_std@media@modules@2@AAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@2@PBUSUniquePointerInfo@core@2@ABUSParameters@core@2@@Z 10009b40 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
+ 0001:00008bb0       ??$ValidateConstruction@UIRefObject@core@UModSys@@URImage_Memory@stdlib@lib2d@modules@3@@core@UModSys@@YA_NAAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@1@PAURImage_Memory@stdlib@lib2d@modules@1@@Z 10009bb0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00008bb0       ??$ValidateConstruction@UIRefObject@core@UModSys@@URTerminal@SDL_core@ui@modules@3@@core@UModSys@@YA_NAAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@1@PAURTerminal@SDL_core@ui@modules@1@@Z 10009bb0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00008bb0       ??$ValidateConstruction@UIRefObject@core@UModSys@@URMediaFilter@images_std@media@modules@3@@core@UModSys@@YA_NAAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@1@PAURMediaFilter@images_std@media@modules@1@@Z 10009bb0 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
- 0001:00008bb0       ??$ValidateConstruction@UIRefObject@core@UModSys@@URImage_Memory@stdlib@lib2d@modules@3@@core@UModSys@@YA_NAAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@1@PAURImage_Memory@stdlib@lib2d@modules@1@@Z 10009bb0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00008c30       ?init_escapes@serialize_json@media@modules@UModSys@@YAXXZ 10009c30 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00008d30       ?root_get_interface_info@RSerializeReader@serialize_json@media@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 10009d30 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00008d40       ?root_get_interface_type@RSerializeReader@serialize_json@media@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 10009d40 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:00008d50       ?root_get_other_interface@RSerializeReader@serialize_json@media@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10009d50 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00008d50       ?root_get_other_interface@RSerializeReader@serialize_json@media@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10009d50 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:00008d50       ?root_get_other_interface@RSerializeReader@serialize_json@media@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 10009d50 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00008d80       ?root_is_interface_supported@RSerializeReader@serialize_json@media@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 10009d80 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:00008dc0       ?suicide@RTerminal@SDL_core@ui@modules@UModSys@@UAEXXZ 10009dc0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00008dc0       ?suicide@RImage_Memory@stdlib@lib2d@modules@UModSys@@UAEXXZ 10009dc0 f i umodsys_lib_lib2d:umodsys.mod.2d.stdlib.obj
  0001:00008dc0       ?suicide@RSerializeReader@serialize_json@media@modules@UModSys@@UAEXXZ 10009dc0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:00008dc0       ?suicide@RTerminal@SDL_core@ui@modules@UModSys@@UAEXXZ 10009dc0 f i umodsys_lib_libui:umodsys.mod.ui.SDL_core.obj
  0001:00008dd0       ?reader_lasterror@RSerializeReader@serialize_json@media@modules@UModSys@@UBEPBDXZ 10009dd0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00008de0       ?reader_parse@RSerializeReader@serialize_json@media@modules@UModSys@@UAE_NPAUISerializeParser@libmedia@5@@Z 10009de0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00009670       ?uni@RSerializeReader@serialize_json@media@modules@UModSys@@IAE_NHAAH@Z 1000a670 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00009720       ?emit@RSerializeReader@serialize_json@media@modules@UModSys@@IAE_NPAUISerializeParser@libmedia@5@PAUNode@12345@_N@Z 1000a720 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00009ac0       ??0RSerializeReader@serialize_json@media@modules@UModSys@@QAE@PAUIModObject@base@4@ABUSParameters@core@4@@Z 1000aac0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00009bd0       ??1RSerializeReader@serialize_json@media@modules@UModSys@@UAE@XZ 1000abd0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:00009c50       ??_ERSerializeReader@serialize_json@media@modules@UModSys@@UAEPAXI@Z 1000ac50 f i  CIL library: CIL module
  0001:00009c50       ??_GRSerializeReader@serialize_json@media@modules@UModSys@@UAEPAXI@Z 1000ac50 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:00009c50       ??_ERSerializeReader@serialize_json@media@modules@UModSys@@UAEPAXI@Z 1000ac50 f i  CIL library: CIL module
  0001:00009c70       ?root_get_interface_info@RSerializeWriter@serialize_json@media@modules@UModSys@@UBEABUSUniquePointerInfo@core@5@XZ 1000ac70 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00009c80       ?root_get_interface_type@RSerializeWriter@serialize_json@media@modules@UModSys@@UBEPBUSUniquePointerInfo@core@5@XZ 1000ac80 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:00009c90       ?root_get_other_interface@RSerializeWriter@serialize_json@media@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 1000ac90 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00009c90       ?root_get_other_interface@RSerializeWriter@serialize_json@media@modules@UModSys@@UAEPAUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 1000ac90 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:00009c90       ?root_get_other_interface@RSerializeWriter@serialize_json@media@modules@UModSys@@UBEPBUIRoot@core@5@PBUSUniquePointerInfo@75@@Z 1000ac90 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00009cc0       ?root_is_interface_supported@RSerializeWriter@serialize_json@media@modules@UModSys@@UBE_NPBUSUniquePointerInfo@core@5@@Z 1000acc0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:00009d00       ?ref_add@RMediaFilter@images_std@media@modules@UModSys@@UBEXXZ 1000ad00 f i umodsys_lib_libmedia:umodsys.mod.media.images_std.obj
  0001:00009d00       ?ref_add@RSerializeWriter@serialize_json@media@modules@UModSys@@UBEXXZ 1000ad00 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
@@ -812,8 +812,8 @@
  0001:0000a4c0       ?writef@RSerializeWriter@serialize_json@media@modules@UModSys@@IAA_NPBDZZ 1000b4c0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:0000a520       ??0RSerializeWriter@serialize_json@media@modules@UModSys@@QAE@PAUIModObject@base@4@ABUSParameters@core@4@@Z 1000b520 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:0000a640       ??1RSerializeWriter@serialize_json@media@modules@UModSys@@UAE@XZ 1000b640 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
- 0001:0000a720       ??_ERSerializeWriter@serialize_json@media@modules@UModSys@@UAEPAXI@Z 1000b720 f i  CIL library: CIL module
  0001:0000a720       ??_GRSerializeWriter@serialize_json@media@modules@UModSys@@UAEPAXI@Z 1000b720 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
+ 0001:0000a720       ??_ERSerializeWriter@serialize_json@media@modules@UModSys@@UAEPAXI@Z 1000b720 f i  CIL library: CIL module
  0001:0000a740       ?get_generated_names@RGenerator@serialize_json@media@modules@UModSys@@UBEHAAUSUniquePtrList@core@5@@Z 1000b740 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:0000a770       ?get_generated_types@RGenerator@serialize_json@media@modules@UModSys@@UBEHAAUSUniquePtrList@core@5@PBUSUniquePointerInfo@75@@Z 1000b770 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:0000a7e0       ?generate@RGenerator@serialize_json@media@modules@UModSys@@UAE_NAAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@5@PBUSUniquePointerInfo@core@5@ABUSParameters@95@@Z 1000b7e0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
@@ -855,10 +855,10 @@
  0001:0000b1c0       ??$ValidateConstruction@UIRefObject@core@UModSys@@URSerializeWriter@serialize_json@media@modules@3@@core@UModSys@@YA_NAAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@1@PAURSerializeWriter@serialize_json@media@modules@1@@Z 1000c1c0 f i umodsys_lib_libmedia:umodsys.mod.media.serialize_json.obj
  0001:0000b250       ??_GRModuleLibraryReg_Chain@base@UModSys@@UAEPAXI@Z 1000c250 f i umodsys_lib_base:umodsys.base.moduleregchain.obj
  0001:0000b250       ??_ERModuleLibraryReg_Chain@base@UModSys@@UAEPAXI@Z 1000c250 f i  CIL library: CIL module
- 0001:0000b270       ??_GIModuleReg@base@UModSys@@UAEPAXI@Z 1000c270 f i umodsys_lib_base:umodsys.base.modulereg.obj
  0001:0000b270       ??_EIModuleReg@base@UModSys@@UAEPAXI@Z 1000c270 f i  CIL library: CIL module
- 0001:0000b290       ??_EIModuleLibraryReg@base@UModSys@@UAEPAXI@Z 1000c290 f i  CIL library: CIL module
+ 0001:0000b270       ??_GIModuleReg@base@UModSys@@UAEPAXI@Z 1000c270 f i umodsys_lib_base:umodsys.base.modulereg.obj
  0001:0000b290       ??_GIModuleLibraryReg@base@UModSys@@UAEPAXI@Z 1000c290 f i umodsys_lib_base:umodsys.base.modulereg.obj
+ 0001:0000b290       ??_EIModuleLibraryReg@base@UModSys@@UAEPAXI@Z 1000c290 f i  CIL library: CIL module
  0001:0000b2b0       ?Find@?$TSet@U?$TArray@PBUSUniquePointerInfo@core@UModSys@@@tl@UModSys@@U?$TScalarCompare@PBUSUniquePointerInfo@core@UModSys@@@core@3@@tl@UModSys@@QBEPBQBUSUniquePointerInfo@core@3@ABQBU453@@Z 1000c2b0 f i umodsys_lib_core:umodsys.core.uniqueptrlist.obj
  0001:0000b33b       __onexit                   1000c33b f   MSVCRT:atonexit.obj
  0001:0000b3e0       _atexit                    1000c3e0 f   MSVCRT:atonexit.obj
@@ -891,8 +891,8 @@
  0001:0000bbd0       @__security_check_cookie@4 1000cbd0 f   MSVCRT:secchk.obj
  0001:0000bbe0       __except_handler4_common   1000cbe0 f   MSVCRT:MSVCR90.dll
  0001:0000bbe6       ?terminate@@YAXXZ          1000cbe6 f   MSVCRT:MSVCR90.dll
- 0001:0000bbec       ??1type_info@@UAE@XZ       1000cbec f   MSVCRT:MSVCR90.dll
  0001:0000bbec       ?_type_info_dtor_internal_method@type_info@@QAEXXZ 1000cbec f   MSVCRT:MSVCR90.dll
+ 0001:0000bbec       ??1type_info@@UAE@XZ       1000cbec f   MSVCRT:MSVCR90.dll
  0001:0000bbf2       ___clean_type_info_names_internal 1000cbf2 f   MSVCRT:MSVCR90.dll
  0001:0000bbf8       ___report_gsfailure        1000cbf8 f   MSVCRT:gs_report.obj
  0001:0000bcfe       __crt_debugger_hook        1000ccfe f   MSVCRT:MSVCR90.dll
@@ -1197,8 +1197,8 @@
  0001:00016e96       __alloca_probe_8           10017e96     MSVCRT:alloca16.obj
  0001:00016eac       __setjmp3                  10017eac f   MSVCRT:MSVCR90.dll
  0001:00016eb2       ___CxxLongjmpUnwind@4      10017eb2 f   MSVCRT:MSVCR90.dll
- 0001:00016ec0       __alloca_probe             10017ec0     MSVCRT:chkstk.obj
  0001:00016ec0       __chkstk                   10017ec0 f   MSVCRT:chkstk.obj
+ 0001:00016ec0       __alloca_probe             10017ec0     MSVCRT:chkstk.obj
  0001:00016f3b       __get_sse2_info            10017f3b f   MSVCRT:cpu_disp.obj
  0001:00016f9d       ___sse2_available_init     10017f9d f   MSVCRT:cpu_disp.obj
  0002:00000000       __imp__InterlockedExchange@8 1001b000     kernel32:KERNEL32.dll

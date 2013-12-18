@@ -31,13 +31,18 @@ public:
   struct NameNode : public NameNodeBase {
     // node_flag1 -> rnode=0, wnode=1
     DCString name;
+    DCNocaseString namenc;
     DFilePosition length; // ==-1 for directory only
     void *extra;
     //
     inline void* user_data(void) { return this+1; }
+    //
+    inline void setname(void* data, int ofs, const DCString& source) 
+      { name.set_ofs(data, ofs, source); namenc.set(name(), ~name); }
+    inline void setname(void* data, int ofs, const DCNocaseString& source) 
+      { namenc.set_ofs(data, ofs, source); name.set(namenc(), ~namenc); }
   };
   //
-/*
   struct NameNodeCmpC {
     DCString name;
     //
@@ -49,15 +54,14 @@ public:
   };
   //
   struct NameNodeCmpUC {
-    DCString name;
+    DCNocaseString name;
     //
     inline NameNodeCmpUC(const DCString& s) 
-      : name(s, su::collate_nocase()) {}
+      : name(s(), ~s) {}
     //
     inline int operator()(const NameNode* node) const 
-      { return name.cmp_any(node->name); }
+      { return name.cmp(node->namenc); }
   };
-*/
 public:
   virtual bool open(IClient* client, const SParameters* params) =0;
   virtual bool close(void) =0;
@@ -96,7 +100,7 @@ struct IBinArchiveFrame::IClient : public IRefObject {
   //
   virtual bool data_load(IBinArchiveFrame* arch, SCMemShared& mem, 
                          NameNode* node, const SFlags& flags) =0;
-  virtual bool save_data(IBinArchiveFrame* arch, const SCMemShared& mem, 
+  virtual bool data_save(IBinArchiveFrame* arch, const SCMem& mem, 
                          const DCString& media_name, const SFlags& flags) =0;
   virtual IStreamReader::P data_reader(IBinArchiveFrame* arch, NameNode* node, const SFlags& flags) =0;
   virtual IStreamWriter::P data_writer(IBinArchiveFrame* arch, const DCString& media_name, const SFlags& flags) =0;

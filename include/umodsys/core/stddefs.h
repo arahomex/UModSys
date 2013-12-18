@@ -13,100 +13,13 @@
 // compiler checks
 
 #if defined(_MSC_VER)
-  #pragma warning(disable:4355)
-  #pragma warning(disable:4267) // conversion from 'a' to 'b', possible loss of data
-  #pragma warning(disable:4244) // warning C4244: 'argument' : conversion from '' to '', possible loss of data
-  #pragma warning(disable:4018) // warning C4018: 'op' : signed/unsigned mismatch
-
-  #pragma warning(disable:4996) // warning C4996: 'func' was declared deprecated
-  #pragma warning(disable:4290) // warning C4290: C++ exception specification ignored except to indicate a function is not __declspec(nothrow)
-
-  #define _CRT_SECURE_NO_DEPRECATE // exclude deprecated ones
-//  #pragma message ("Visual studio warnings disabled")
-
-  #if !defined(_WIN32)
-    #define _WIN32
-  #endif
-  #if !defined(WIN32)
-    #define WIN32
-  #endif
-
-  // includes
-  #ifdef _DEBUG
-//    #define _CRTDBG_MAP_ALLOC
-    #include <crtdbg.h>
-    //
-//    #define UMODSYS_MALLOC(s, _f, _l)      ::_malloc_dbg(s, _NORMAL_BLOCK, _f, _l)
-//    #define UMODSYS_FREE(p, _f, _l)        ::_free_dbg(p, _NORMAL_BLOCK)
-//    #define UMODSYS_REALLOC(p, s, _f, _l)  ::_realloc_dbg(p, s, _NORMAL_BLOCK, _f, _l)
-    #define UMODSYS_MALLOC(s, _f, _l)      ::_malloc_dbg(s, _CLIENT_BLOCK, _f, _l)
-    #define UMODSYS_FREE(p, _f, _l)        ::_free_dbg(p, _CLIENT_BLOCK)
-    #define UMODSYS_REALLOC(p, s, _f, _l)  ::_realloc_dbg(p, s, _CLIENT_BLOCK, _f, _l)
-
-  #endif
-
-  #include <stdio.h>
-  #include <stdlib.h>
-  #include <stdarg.h>
-  #include <io.h>
-
-  #include <string.h>
-  #include <ctype.h>
-  #include <time.h>
-  #include <limits.h>
-
-  #include <math.h>
-
-  #include <new>
-  // /includes
-
-  #ifdef free
-    #undef free
-    namespace UModSys { inline void free(void* p) { _free_dbg(p, _NORMAL_BLOCK); } }
-  #endif
-
-  #define UMODSYS_THROW(_x) throw _x
-  #define UMODSYS_NOTHROW() throw()
-
-  #define snprintf _snprintf
+  #include "platform/def_msvc.h"
 #elif defined(__GNUC__)
-
-  #ifndef _GNU_SOURCE
-    #define _GNU_SOURCE         /* See feature_test_macros(7) */
-  #endif
-
-  // includes
-  #include <stdio.h>
-  #include <stdlib.h>
-  #include <stdarg.h>
-  #include <fcntl.h>
-
-  #include <string.h>
-  #include <ctype.h>
-  #include <time.h>
-  #include <limits.h>
-  #include <wchar.h>
-
-  #include <math.h>
-
-  #include <stddef.h> // offsetof macro
-
-  #include <new>
-  // /includes
-
-  #define UMODSYS_THROW(_x) throw _x
-  #define UMODSYS_NOTHROW(_x) throw()
-
-//  #pragma GCC visibility push(hidden)
-
+  #include "platform/def_gcc.h"
 #elif defined(UMODSYS_COMPILER_DEFINES)
-
   #include "umodsys_compiler_defines.h"
-
 #else
-
   #error Unknown (unsupported) compiler
-
 #endif
 
 //***************************************
@@ -153,33 +66,7 @@
 //***************************************
 
 #if defined(_WIN32) || defined(WIN32)
-  #ifndef NANOUTL_CPU_INTELTYPES
-//    #define UMS_CPU_INTELTYPES
-  #endif
-  #ifndef NANOUTL_CPU_WCHAR
-    #define NANOUTL_CPU_WCHAR
-  #endif
-  #ifndef NANOUTL_CPU_LE
-    #define NANOUTL_CPU_LE
-  #endif
-  #ifndef NANOUTL_CPU_INT32
-    #define NANOUTL_CPU_INT32
-  #endif
-  #ifndef NANOUTL_CPU_BYTE8
-    #define NANOUTL_CPU_BYTE8
-  #endif
-  #ifndef NANOUTL_INT64_ENABLED
-    #define NANOUTL_INT64_ENABLED 1
-  #endif
-  #ifndef NANOUTL_WCHAR_SEPARATED_TYPE
-    #define NANOUTL_WCHAR_SEPARATED_TYPE 1
-  #endif
-  #ifndef NANOUTL_WCHAR_UTF16
-    #define NANOUTL_WCHAR_UTF16 1
-  #endif
-  #ifdef NANOUTL_WCHAR_UTF32
-    #undef NANOUTL_WCHAR_UTF32
-  #endif
+  #include "platform/def_win32.h"
 #endif
 
 //***************************************

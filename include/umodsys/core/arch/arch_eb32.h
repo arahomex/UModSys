@@ -140,14 +140,14 @@ struct TStreamDataElemBE<BSI32> {
 };
 
 template<> 
-struct TStreamDataElemBE<media::DHString> {
-  typedef media::DHString T;
+struct TStreamDataElemBE<DCString> {
+  typedef DCString T;
   enum { Size = 4 };
   //
   inline static bool in(SCMem& stream, T& value) { 
     T::Str line;
     stream.t_data(line);
-    size_t len = su::slen(line, stream.size);
+    size_t len = tl::su::slen(line, stream.size);
     if(len==stream.size)
       return false;
     value = line;
@@ -159,7 +159,7 @@ struct TStreamDataElemBE<media::DHString> {
   }
 };
 
-#ifdef UMS_WCHAR_SEPARATED_TYPE
+#ifdef UMODSYS_WCHAR_SEPARATED_TYPE
 template<> 
 struct TStreamDataElemBE<BCharW> {
   typedef BCharW T;
@@ -184,17 +184,6 @@ struct TStreamDataElemBE<BCharW> {
   }
 };
 #endif
-
-/*************************************************************/
-/*************************************************************/
-
-/*************************************************************
- FROM/TO
- *************************************************************/
-
-#if defined(UMS_CPU_NONALIGNED)
-#else // !defined(UMS_CPU_NONALIGNED)
-#endif // defined(UMS_CPU_NONALIGNED)
 
 /*************************************************************
  End

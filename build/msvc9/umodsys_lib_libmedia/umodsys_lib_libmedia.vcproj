@@ -106,7 +106,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-std mod-media-stdio mod-media-images_std"
+				CommandLine="$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-stdlib mod-media-stdio mod-media-images_std"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -220,7 +220,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-std mod-media-stdio mod-media-images_std"
+				CommandLine="$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-stdlib mod-media-stdio mod-media-images_std"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -334,7 +334,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-std mod-media-stdio mod-media-images_std"
+				CommandLine="$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-stdlib mod-media-stdio mod-media-images_std"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -448,7 +448,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-std mod-media-stdio mod-media-images_std"
+				CommandLine="$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-stdlib mod-media-stdio mod-media-images_std"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -562,7 +562,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-std mod-media-stdio mod-media-images_std"
+				CommandLine="$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-stdlib mod-media-stdio mod-media-images_std"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -676,7 +676,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-std mod-media-stdio mod-media-images_std"
+				CommandLine="$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-stdlib mod-media-stdio mod-media-images_std"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -898,6 +898,30 @@
 			</File>
 			<File
 				RelativePath="..\..\..\src\module\media\stdlib\version_module.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="mod_zlib"
+			>
+			<File
+				RelativePath="..\..\..\src\module\media\zlib\umodsys.mod.media.zlib.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\zlib\umodsys.mod.media.zlib.arcframe.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\zlib\umodsys.mod.media.zlib.defs.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\zlib\umodsys.mod.media.zlib.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\zlib\version_module.h"
 				>
 			</File>
 		</Filter>

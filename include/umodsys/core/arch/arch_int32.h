@@ -43,13 +43,13 @@ typedef long double BF80;
   typedef double                float64;
 #endif
 
-#if defined(NANOUTL_ARCH_NONALIGNED)
-  #define NANOUTL_ARCH_SIZE_CORRECT(size) (((size)+(sizeof(int)-1))&~(sizeof(int)-1))
-  #define NANOUTL_ALIGNED_SIZE(_x) (_x, 3)
-#else // !defined(NANOUTL_ARCH_NONALIGNED)
-  #define NANOUTL_ARCH_SIZE_CORRECT(size) (((size)+(sizeof(int)-1))&~(sizeof(int)-1))
-  #define NANOUTL_ALIGNED_SIZE(_x) (_x, 4)
-#endif // defined(NANOUTL_ARCH_NONALIGNED)
+#if defined(UMODSYSL_ARCH_NONALIGNED)
+  #define UMODSYS_ARCH_SIZE_CORRECT(size) (((size)+(sizeof(int)-1))&~(sizeof(int)-1))
+  #define UMODSYS_ALIGNED_SIZE(_x) (_x, 3)
+#else // !defined(UMODSYS_ARCH_NONALIGNED)
+  #define UMODSYS_ARCH_SIZE_CORRECT(size) (((size)+(sizeof(int)-1))&~(sizeof(int)-1))
+  #define UMODSYS_ALIGNED_SIZE(_x) (_x, 4)
+#endif // defined(UMODSYS_ARCH_NONALIGNED)
 
 typedef char                  BChar;
 typedef unsigned char         BCharIndex;

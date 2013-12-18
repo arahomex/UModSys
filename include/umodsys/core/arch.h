@@ -16,7 +16,9 @@ namespace core {
 //***************************************
 
 #if UCHAR_MAX==0xff
-  #define UMODSYS_ARCH_BYTE8
+  #ifndef UMODSYS_ARCH_BYTE8
+    #define UMODSYS_ARCH_BYTE8
+  #endif
 #endif
 
 #ifdef UMODSYS_ARCH_BYTE8

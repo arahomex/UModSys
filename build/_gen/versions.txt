@@ -90,10 +90,10 @@ version mod-media-stdio
   file-h     src/module/media/stdio/version_module.h prefix:UMODSYS_VERSION_MOD_MEDIA_STDIO
   check-date src/module/media/stdio *.h *.cpp
 
-version mod-media-images_std
-  file-h     src/module/media/images_std/version_module.h prefix:UMODSYS_VERSION_MOD_MEDIA_IMAGESSTD
-  check-date src/module/media/images_std *.h *.cpp
-  
+version mod-media-zlib
+  file-h     src/module/media/zlib/version_module.h prefix:UMODSYS_VERSION_MOD_MEDIA_ZLIB
+  check-date src/module/media/zlib *.h *.cpp
+
 version mod-media-serialize_json
   file-h     src/module/media/serialize_json/version_module.h prefix:UMODSYS_VERSION_MOD_MEDIA_SERIALIZE_JSON
   check-date src/module/media/serialize_json *.h *.cpp
@@ -110,6 +110,10 @@ version mod-media-serialize_cmdarg
   file-h     src/module/media/serialize_cmdarg/version_module.h prefix:UMODSYS_VERSION_MOD_MEDIA_SERIALIZE_CMDARG
   check-date src/module/media/serialize_cmdarg *.h *.cpp
 
+version mod-media-images_std
+  file-h     src/module/media/images_std/version_module.h prefix:UMODSYS_VERSION_MOD_MEDIA_IMAGESSTD
+  check-date src/module/media/images_std *.h *.cpp
+  
 # --------------------------------- plugins
 
 version plugin-test1

@@ -230,7 +230,7 @@ public:
   : refs(own), 
     reader(NULL), last_error(NULL)
   {
-    args.get("stream", reader.stream);
+    args.ref_get("stream", reader.stream);
     int bufsize = 1024;
     args.get("buffer_size", bufsize);
     gathered.Reserve(bufsize);

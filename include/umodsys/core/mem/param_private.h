@@ -124,9 +124,15 @@ public:
   }
   inline bool get(BCStr name, IRefObject* &value) const
     { return data.worker ? data.worker->get(&data, name, value) : false; }
-  template<typename IRef> inline bool get(BCStr name, tl::TRefObject<IRef>& value) const { 
+  template<typename IRef, typename RefFunc> 
+  inline bool ref_get(BCStr name, tl::TRefObject<IRef, RefFunc>& value) const { 
     IRefObject* v;
     return data.worker && data.worker->get(&data, name, v) && v && v->t_ref_get_other_interface(value);
+  }
+  template<typename IRef> 
+  inline bool ref_get(BCStr name, IRef*& value) const { 
+    IRefObject* v;
+    return data.worker && data.worker->get(&data, name, v) && v && v->t_root_get_other_interface(value);
   }
   //
   inline bool enum_names(BCStr &name) const

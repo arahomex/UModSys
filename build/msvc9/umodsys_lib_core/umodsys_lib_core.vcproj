@@ -715,11 +715,19 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\..\include\umodsys\core\arch\arch_defs.h"
+						>
+					</File>
+					<File
 						RelativePath="..\..\..\include\umodsys\core\arch\arch_eb32.h"
 						>
 					</File>
 					<File
 						RelativePath="..\..\..\include\umodsys\core\arch\arch_el32.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\include\umodsys\core\arch\arch_fromto.h"
 						>
 					</File>
 					<File
@@ -773,6 +781,10 @@
 				</Filter>
 				<File
 					RelativePath="..\..\..\include\umodsys\core\arch.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\umodsys\core\arch_cvt.h"
 					>
 				</File>
 				<File

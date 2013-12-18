@@ -23,6 +23,11 @@ typedef tl::TString<
   tl::su::TSCoreConst<core::BChar>, 
   tl::su::TComparerBinaryHash<core::BChar> 
 > DCString;
+typedef tl::TString<
+  tl::su::TSCoreConst<core::BChar>, 
+  tl::su::TComparerUtfNocaseHash<core::BChar> 
+> DCNocaseString;
+
 
 typedef tl::TStringBuf<
   tl::su::TSCorePrealloc<cStringBufSmall, core::BChar>, 
