@@ -398,6 +398,16 @@ void RTest1_Shell::file_test7(void)
     lib->layer_push( media_cache(true) );
   }
   //
+  {
+    typedef tl::TDynarrayDynamic<libmedia::SFileInfo> FileList;
+    FileList lst;
+    bool rv = lib->bin_info("/mc/*.bin", tl::TRStackSocket<libmedia::SFileInfo,FileList>(lst));
+    M.con().put(0, "find %d : %d elems\n", rv, ~lst);
+    for(size_t i=0; i<~lst; i++) {
+      M.con().put(0, "  [%u] : %s\n", i, lst[i].name());
+    }
+  }
+  //
   lib2d::IImage::P img = new_mem_image();
   bool rv = lib->obj_load("/mc/textures/font/ascii.png", img, "lib2d::IImage");
   M.con().put(0, "loaded %d\n", rv);

@@ -11,11 +11,19 @@ namespace UModSys {
 namespace tl {
 namespace su {
 
-template<typename CharT>
-struct TSharedStringInfo {
+template<typename CharT, typename MemAllocT>
+struct TSharedStringInfo : public MemAllocT {
   int ref_count;
   size_t maxlength, length;
   CharT text[1]; // NUL
+  //
+  inline TSharedStringInfo(int rc) 
+  : ref_count(rc), maxlength(0), length(0) { 
+    text[0] = 0; 
+  }
+  inline TSharedStringInfo(size_t ml, size_t l, const MemAllocT& ma) 
+  : ref_count(1), maxlength(ml), length(l), MemAllocT(ma) { 
+  }
 };
 
 //***************************************
@@ -25,17 +33,20 @@ template<typename MemAllocT, typename CharT>
 struct TSCoreShared : public MemAllocT {
   UMODSYS_STRING_CLASS_HEADER(CharT)
   typedef TSCoreShared<MemAllocT, CharT> Self;
-  typedef TSharedStringInfo<CharT> Info;
+  typedef TSharedStringInfo<CharT, MemAllocT> Info;
   //
   Info* info;
   //
-  inline ~TSCoreShared(void) { info_release(); }
+  inline ~TSCoreShared(void) { clear(); }
   inline TSCoreShared(void) : info(get_null()) {}
   inline explicit TSCoreShared(core::Void* p) {}
-  inline TSCoreShared(const Self& R) : info(get_null()) { set(R); }
-  inline explicit TSCoreShared(Str s) { set(s); }
-  inline TSCoreShared(Str s, size_t L) { set(s, L); }
-  inline TSCoreShared(Str s, Str s_end) { set(s, s_end-s); }
+  inline TSCoreShared(const Self& R) : MemAllocT(R), info(get_null()) { set(R); }
+  inline explicit TSCoreShared(Str s) : info(get_null()) { set(s); }
+  inline TSCoreShared(Str s, size_t L) : info(get_null()) { set(s, L); }
+  inline TSCoreShared(Str s, Str s_end) : info(get_null()) { set(s, s_end-s); }
+  //
+  inline void set_alloc(const MemAllocT& A) { MemAllocT::operator=(A); }
+  inline bool allocate(const MemAllocT& A, size_t L) { MemAllocT::operator=(A); return info_alloc(L); }
   //
   inline ConstStr get_s(void) const { return ConstStr(info->text, info->length); }
   inline Str get_text(void) const { return info->text; }
@@ -47,7 +58,7 @@ struct TSCoreShared : public MemAllocT {
   inline bool is_null(void) const { return info==NULL || info==get_null(); }
   inline bool empty(void) const { return is_null(); }
   //
-  inline void clear(void) { info=get_null(); }
+  inline void clear(void) { info_release(); }
   inline void set(void) { clear(); }
   inline void set(Str s) { set(s, s ? su::slen(s) : 0); }
   inline void set(Str s, Str s_end) { set(s, s_end-s); }
@@ -73,7 +84,7 @@ struct TSCoreShared : public MemAllocT {
 template<typename MemAllocT, typename CharT>
 inline typename TSCoreShared<MemAllocT,CharT>::Info* TSCoreShared<MemAllocT,CharT>::get_null(void)
 {
-  static Info s_null={-1, 0, 0};
+  static Info s_null(-1);
   return &s_null;
 }
 
@@ -82,7 +93,7 @@ inline void TSCoreShared<MemAllocT,CharT>::info_release(void)
 {
   if(info!=NULL && info->ref_count>=0 && --info->ref_count<=0) {
     if(info!=get_null()) {
-      MemAllocT::mem_free(info, UMODSYS_SOURCEINFO);
+      info->mem_free(info, UMODSYS_SOURCEINFO);
     }
   }
   info = get_null();
@@ -91,7 +102,8 @@ inline void TSCoreShared<MemAllocT,CharT>::info_release(void)
 template<typename MemAllocT, typename CharT>
 inline void TSCoreShared<MemAllocT,CharT>::info_dup(typename TSCoreShared<MemAllocT,CharT>::Info* i2)
 {
-  if(info==i2) return;
+  if(info==i2) 
+    return;
   info_release();
   info = i2;
   info->ref_count++;
@@ -117,9 +129,7 @@ inline bool TSCoreShared<MemAllocT,CharT>::info_new(Str s, size_t L)
     info = get_null();
     return false;
   }
-  info->ref_count = 1;
-  info->maxlength = L;
-  info->length = L;
+  new(info) Info(L+1, L, *this);
   if(s!=NULL) {
     su::smemcpy(info->text, s, L);
   }

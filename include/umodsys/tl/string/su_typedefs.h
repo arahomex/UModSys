@@ -25,7 +25,7 @@ struct TComparerBinaryHash;
 template<typename CharT> 
 struct TComparerBinary;
 
-template<typename CharT> 
+template<typename CharT, typename MemAllocT> 
 struct TSharedStringInfo;
 
 template<typename CharT=core::BChar> 

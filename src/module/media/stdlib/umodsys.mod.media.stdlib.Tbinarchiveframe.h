@@ -78,30 +78,52 @@ bool RBinArchiveFrame::data_save(const DCString& media_name, const SCMem& mem, c
   return client->data_save(this, mem, media_name, flags);
 }
 
-bool RBinArchiveFrame::data_list(const DCString& mask, DIFileInfoArray& list, const SFlags& flags)
+bool RBinArchiveFrame::data_list(const DCString& mask, size_t namestart, DIFileInfoArray& list, const SFlags& flags)
+{
+  if(!client)
+    return false;
+  //
+  bool rv = false;
+  for(NameNode *n = nodes.min_node(); n; n = nodes.next_node(n)) {
+    if(ignore_case) {
+      if(!tl::su::wildcmp(mask()+namestart, n->name()))
+        continue;
+    } else {
+      if(!tl::su::wildcmp(mask()+namestart, n->name()))
+        continue;
+    }
+    if(list.isfull())
+      break;
+    SFileInfo fi;
+    if(!fill_info(fi, n, mask, namestart))
+      return false;
+    if(!list.push(fi))
+      return false;
+    rv = true;
+  }
+  return rv;
+}
+
+bool RBinArchiveFrame::data_list(const DCString& mask, size_t namestart, SFileInfo& list, const SFlags& flags)
 {
   if(!client)
     return false;
   //
   for(NameNode *n = nodes.min_node(); n; n = nodes.next_node(n)) {
     if(ignore_case) {
-      if(!tl::su::wildcmp(mask(), n->name()))
-        return false;
+      if(!tl::su::utf_cmp_nocase(mask()+namestart, ~mask, n->namenc(), ~n->namenc)!=0)
+        continue;
     } else {
-      if(!tl::su::wildcmp(mask(), n->name()))
-        return false;
+      if(!tl::su::scmp(mask()+namestart, n->name())!=0)
+        continue;
     }
-    if(list.isfull())
-      break;
-    SFileInfo fi;
-    if(!client->node_info(this, fi, n))
+    if(!client->node_info(this, list, n))
+      continue;
+    if(!fill_info(list, n, mask, namestart))
       return false;
-    fi.name = n->name;
-    fi.size = n->length;
-    if(!list.push(fi))
-      return false;
+    return true;
   }
-  return true;
+  return false;
 }
 
 int RBinArchiveFrame::get_permissions(void) 
@@ -257,6 +279,30 @@ bool RBinArchiveFrame::kill_node(NameNode* node)
 {
   if(node->_node_flag1==1)
     M.mem().mem_free(node, UMODSYS_SOURCEINFO);
+  return true;
+}
+
+bool RBinArchiveFrame::fill_info(SFileInfo& fi, NameNode *node, const DCString& path, size_t namestart)
+{
+  if(!client->node_info(this, fi, node))
+    return false;
+  if(namestart && !node->name.empty()) {
+    DStringBufShared tmp;
+    if(!tmp.allocate(M.mem_shared(), namestart + ~node->name))
+      return false;
+    DStringBufShared::BufferStr buf = tmp.get_buf();
+    buf.reset();
+    buf.cat(path, namestart);
+    buf.cat(node->name, ~node->name);
+    tmp.update(buf);
+    fi.name = tmp;
+  } else {
+    fi.name.set_alloc(M.mem_shared());
+    fi.name = node->name;
+  }
+  if(!node->name.empty() && fi.name.is_null())
+    return false;
+  fi.size = node->length;
   return true;
 }
 

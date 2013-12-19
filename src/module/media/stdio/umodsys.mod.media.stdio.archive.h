@@ -91,7 +91,11 @@ struct RDataArchiver_OsDir : public IBinArchive
       return NULL;
     return rv;
   }
-  bool data_list(const DCString& mask, DIFileInfoArray& list, const SFlags& flags) {
+  bool data_list(const DCString& mask, size_t namestart, DIFileInfoArray& list, const SFlags& flags) {
+    OSDIR_START(0, mask, mp_List);
+    return false;
+  }
+  bool data_list(const DCString& mask, size_t namestart, SFileInfo& list, const SFlags& flags) {
     OSDIR_START(0, mask, mp_List);
     return false;
   }

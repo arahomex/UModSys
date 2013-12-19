@@ -34,16 +34,6 @@ struct RGenerator;
 //***************************************
 
 #include "umodsys.mod.media.stdlib.types.h"
-#include "umodsys.mod.media.stdlib.Tlibbincache.h"
-#include "umodsys.mod.media.stdlib.Tliblayered.h"
-#include "umodsys.mod.media.stdlib.Tlibobjcache.h"
-#include "umodsys.mod.media.stdlib.Tlibobjfilter.h"
-
-DMediaFlags RLibraryBinCache::auto_flags;
-DMediaFlags RLibraryBinTree::auto_flags;
-DMediaFlags RLibraryObjCache::auto_flags;
-DMediaFlags RLibraryObjFilter::auto_flags;
-DMediaFlags RLibraryLayered::auto_flags( mf_safe::Yes );
 
 //***************************************
 // RGenerator

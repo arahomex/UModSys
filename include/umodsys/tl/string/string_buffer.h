@@ -103,14 +103,14 @@ struct TStringBuf : public CoreT, public Comparer {
   }
   //
   inline void set_length(size_t L) { CoreT::set_length(L); update(); }
+  inline void update(BufferStr& bs) { set_length(bs.length); }
   inline void update(void) { Comparer::update(CoreT::get_text(), CoreT::get_length()); }
   inline void clear(void) { CoreT::clear(); Comparer::clear(); }
   inline void set(void) { clear(); }
-  inline void set(Str s) { CoreT::set(s); update(); }
-  inline void set(Str s, int L) { CoreT::set(s, L); update(); }
-  inline void set(Str s, Str s_end) { CoreT::set(s, s_end); update(); }
-  inline void set(const Self& R) { CoreT::set(R); Comparer::operator=(R); }
   inline void set(const Comparer& cmp) { Comparer::operator=(cmp); update(); }
+  //
+  inline bool cpy(const Self& R) { bool rv = CoreT::cpy(R); Comparer::operator=(R); return rv; }
+  inline bool safecpy(const Self& R) { bool rv = CoreT::safecpy(R); Comparer::operator=(R); return rv; }
   //
   template<typename Core2, typename Cmp2> inline void set(const TString<Core2, Cmp2>& R) 
     { set(R.get_text(), R.get_length()); }

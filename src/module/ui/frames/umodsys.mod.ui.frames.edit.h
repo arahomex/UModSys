@@ -193,7 +193,9 @@ bool RFrame_Edit::get_value(int kind, const SFrameDataOut& val)
   if(val.type==fdt_SString) {
     if(!update_last())
       return false;
+/******** !!!!
     val.ss( last_text_buf );
+*/
     return true;
   }
   return false;

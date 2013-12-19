@@ -25,10 +25,12 @@ struct TString : public CoreT, public Comparer {
   typedef typename CoreT::Char CharT;
   UMODSYS_STRING_CLASS_HEADER(CharT)
   typedef TString<CoreT, Comparer> Self;
+  typedef TStringBuf<CoreT, Comparer> SelfBuf;
   //
   inline TString(void) {}
   inline explicit TString(core::Void* p) : CoreT(p), Comparer(p) {}
   inline TString(const Self& R) : CoreT(R), Comparer(R) {}
+  inline TString(const SelfBuf& R) : CoreT(R), Comparer(R) {}
   inline TString(const Comparer& cmp, core::Void* p) : CoreT(p), Comparer(cmp) {}
   inline TString(Str s) { set(s); }
   inline TString(Str s, size_t L) { set(s, L); }
@@ -111,6 +113,7 @@ struct TString : public CoreT, public Comparer {
   inline void set(Str s, Str s_end) { CoreT::set(s, s_end); update(); }
   inline void set(const ConstStr& R) { CoreT::set(R); }
   inline void set(const Self& R) { CoreT::set(R); Comparer::operator=(R); }
+  inline void set(const SelfBuf& R) { CoreT::set(R); Comparer::operator=(R); }
   inline void set(const Comparer& cmp) { Comparer::operator=(cmp); update(); }
   //
   template<typename Core2, typename Cmp2> inline void set(const TString<Core2, Cmp2>& R) 
@@ -119,6 +122,7 @@ struct TString : public CoreT, public Comparer {
     { set(R.get_text(), R.get_length()); }
   //
   inline const Self& operator=(const Self& R) { set(R); return *this; }
+  inline const Self& operator=(const SelfBuf& R) { set(R); return *this; }
   inline const Self& operator=(Str R) { set(R); return *this; }
   inline const Self& operator=(const Comparer& cmp) { set(cmp); return *this; }
   template<typename Core2, typename Cmp2> inline void operator=(const TString<Core2, Cmp2>& R) 

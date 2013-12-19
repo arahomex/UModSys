@@ -151,6 +151,9 @@ public:
   bool ResizeRel(ptrdiff_t add) UMODSYS_NOTHROW();
   bool RemoveAt(size_t id, size_t n=1) UMODSYS_NOTHROW();
   bool InsertAt(size_t id, size_t n=1) UMODSYS_NOTHROW();
+  //
+  bool IsEmpty(void) const { return length==0; }
+  bool IsFull(void) const { return false; } // never overflow
 public:
   // stl typedefs
   inline iterator begin(void) UMODSYS_NOTHROW() { return items; }

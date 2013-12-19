@@ -8,6 +8,10 @@ UMODSYS_MODULE_BODY0()
 #include "umodsys.mod.media.stdlib.Tutilities.h"
 #include "umodsys.mod.media.stdlib.Tbinarchiveframe.h"
 #include "umodsys.mod.media.stdlib.Tlibbintree.h"
+#include "umodsys.mod.media.stdlib.Tlibbincache.h"
+#include "umodsys.mod.media.stdlib.Tliblayered.h"
+#include "umodsys.mod.media.stdlib.Tlibobjcache.h"
+#include "umodsys.mod.media.stdlib.Tlibobjfilter.h"
 
 struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)

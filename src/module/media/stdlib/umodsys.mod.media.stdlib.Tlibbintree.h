@@ -3,6 +3,8 @@
 // RLibraryBinTree::
 //***************************************
 
+DMediaFlags RLibraryBinTree::auto_flags;
+
 RLibraryBinTree::RLibraryBinTree(DOwner *own, const SParameters& args, DMediaFlags av)
 : refs(own), flags(av)/*, cache(local_memory())*/ 
 {
@@ -94,63 +96,38 @@ bool RLibraryBinTree::bin_save(const DCString& media_name, const SCMem& mem, con
 
 bool RLibraryBinTree::bin_info(const DCString& media_name, SFileInfo& info, const SFlags& flags) 
 {
+  for(DMounts::CIter x=mounts(); x; ++x) {
+    const SMountInfo& mi = x->second;
+    if(!mi.archive.valid() || !(mi.pm & mp_List))
+      continue;
+    const DCString &mnt = mi.mount_name();
+    if(~media_name<=~mnt && !tl::su::seq(mnt(), media_name(), ~mnt))
+      continue;
+    if(mi.archive->data_list(media_name, ~mnt, info, flags))
+      return true;
+  }
   return false;
 }
 
 bool RLibraryBinTree::bin_info(const DCString& media_mask, DIFileInfoArray& info, const SFlags& flags) 
 {
-  return false;
+  bool rv = false;
+  for(DMounts::CIter x=mounts(); x; ++x) {
+    const SMountInfo& mi = x->second;
+    if(!mi.archive.valid() || !(mi.pm & mp_List))
+      continue;
+    const DCString &mnt = mi.mount_name();
+    if(~media_mask>=~mnt && tl::su::seq(mnt(), media_mask(), ~mnt)) {
+      rv = mi.archive->data_list(media_mask, ~mnt, info, flags) || rv;
+    } /*else if(tl::su::wildcmp(media_mask(), mnt())) {
+      rv = mi.archive->data_list(media_mask, ~mnt, info, flags) || rv;
+    }*/
+  }
+  return rv;
 }
 
-bool RLibraryBinTree::bin_get(const DCString& media_name, SCMemShared& mem, bool isinv) 
-{
-  return false;
-}
-
-bool RLibraryBinTree::bin_put(const DCString& media_name, const SCMemShared* mem) 
-{
-  return false;
-}
-
-bool RLibraryBinTree::obj_fget(const IBinObjFilter::SInfo& info, IRefObject::P& obj) 
-{
-  return false;
-}
-
-bool RLibraryBinTree::obj_fload(const IBinObjFilter::SInfo& info, IRefObject* obj) 
-{
-  return false;
-}
-
-bool RLibraryBinTree::obj_fsave(IBinObjFilter::SInfo& info, const IRefObject* obj) 
-{
-  return false;
-}
-
-bool RLibraryBinTree::obj_cget(const DCString& media_name, IRefObject::P& obj, bool isinv) 
-{
-  return false;
-}
-
-bool RLibraryBinTree::obj_cput(const DCString& media_name, IRefObject* obj) 
-{
-  return false;
-}
-
-bool RLibraryBinTree::obj_get(const DCString& media_name, IRefObject::P& obj, const SObjOptions& opts) 
-{
-  return false;
-}
-
-bool RLibraryBinTree::obj_load(const DCString& media_name, IRefObject* obj, const SObjOptions& opts) 
-{
-  return false;
-}
-
-bool RLibraryBinTree::obj_save(const DCString& media_name, const IRefObject* obj, const SObjOptions& opts) 
-{
-  return false;
-}
+//***************************************
+//***************************************
 
 RLibraryBinTree::SPoint RLibraryBinTree::mount_get(const SId& id) const 
 {

@@ -745,6 +745,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\lib\media\umodsys.lib.media.library.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\lib\media\version_library.h"
 				>
 			</File>

@@ -93,31 +93,48 @@ struct TSCoreBuffer {
   inline void clear(void) { text=NULL; length=maxlength=0; }
   inline void reset(void) { length=0; }
   inline void set(void) { reset(); }
-  inline void set(Str s) {
-    if(maxlength==0)
-      return;
-    size_t n = su::slen(s); 
-    if(n>=maxlength) n=maxlength-1;
-    su::smemcpy(text, s, n);
-    text[n] = 0;
-    length = n;
-  }
-  inline void set(Str s, size_t n) {
-    if(maxlength==0)
-      return;
-    if(n>=maxlength) n=maxlength-1;
-    su::smemcpy(text, s, n);
-    text[n] = 0;
-    length = n;
-  }
   inline void set(Str s, Str s_end) { set(s, s_end-s); }
   //
   inline void set(const Self& R) { text=R.text; length=R.length; maxlength=R.maxlength; }
   inline void set(OStr s, size_t maxL, size_t L) { text=s; length=L; maxlength=maxL; }
   //
+  inline bool cat(Str s, size_t n) {
+    if(n==0)
+      return true;
+    if(s==NULL)
+      return false;
+    if(length+n+1>maxlength)
+      return false;
+    su::smemcpy(text+length, s, n);
+    length += n;
+    text[length] = 0;
+    return true;
+  }
+  inline bool safecpy(Str s) {
+    if(maxlength==0)
+      return false;
+    size_t n = su::slen(s); 
+    if(n>=maxlength) 
+      n=maxlength-1;
+    su::smemcpy(text, s, n);
+    text[n] = 0;
+    length = n;
+    return true;
+  }
+  inline void safecpy(Str s, size_t n) {
+    if(maxlength==0)
+      return false;
+    if(n>=maxlength) 
+      n=maxlength-1;
+    su::smemcpy(text, s, n);
+    text[n] = 0;
+    length = n;
+    return true;
+  }
+  //
   inline const Self& operator=(const Self& R) { set(R); return *this; }
-  inline const Self& operator=(Str R) { set(R); return *this; }
-  inline const Self& operator<<(const Self& R) { set(R.text, R.length); return *this; }
+  inline const Self& operator=(Str R) { safecpy(R); return *this; }
+  inline const Self& operator<<(const Self& R) { safecpy(R.text, R.length); return *this; }
 };
 
 

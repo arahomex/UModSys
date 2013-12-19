@@ -15,7 +15,7 @@ using core::array_index_none;
 /*************************************************************/
 
 template<typename SNode> struct TIStackSocket; // socket to connect to
-template<typename SNode, typename Array> struct TRStackSocket; // socket to connect to
+template<typename SNode, typename Stack> struct TRStackSocket; // socket to connect to
 
 /*************************************************************/
 
