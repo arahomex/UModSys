@@ -9,10 +9,9 @@ struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)
   //
   RModuleReg(void) 
-  : IModuleReg(
+  : UMODSYS_MODULEREG(
     "media::stdio", 
-    UMODSYS_VERSION_MOD_MEDIA_STDIO_MAJOR, 
-    UMODSYS_VERSION_MOD_MEDIA_STDIO_MINOR, 
+    UMODSYS_VERSION_MOD_MEDIA_STDIO, 
     ""
   ) {}
   ~RModuleReg(void) {}

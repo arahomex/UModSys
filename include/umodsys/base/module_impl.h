@@ -22,7 +22,7 @@ public:
   IModule *module;
 public:
   IModuleReg(const SModuleInfo &mi);
-  IModuleReg(const char* n, int vh, int vl, const char *i);
+  IModuleReg(const char* n, core::Buint16 vh, core::Buint16 vl, const char *i, core::Buint32 bno, core::BTime u);
   virtual ~IModuleReg(void);
   virtual bool mr_isopen(void) const;
   virtual bool mr_open(void);
@@ -36,6 +36,9 @@ public:
   inline bool unreg(IModObject* mo) { return module->reg(mo, false); }
   inline bool unreg(IGenerator* g) { return module->reg(g, false); }
 };
+
+#define UMODSYS_MODULEREG(_name, _prefix, _info) \
+  base::IModuleReg(_name, _prefix##_MAJOR, _prefix##_MINOR, _info, _prefix##_BUILD, _prefix##_TIME)
 
 //***************************************
 // IModuleLibraryReg

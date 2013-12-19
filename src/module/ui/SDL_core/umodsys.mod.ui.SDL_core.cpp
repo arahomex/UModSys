@@ -9,10 +9,9 @@ struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)
   //
   RModuleReg(void) 
-  : IModuleReg(
+  : UMODSYS_MODULEREG(
     "ui::SDL_core", 
-    UMODSYS_VERSION_MOD_UI_SDLCORE_MAJOR, 
-    UMODSYS_VERSION_MOD_UI_SDLCORE_MINOR, 
+    UMODSYS_VERSION_MOD_UI_SDLCORE, 
     ""
   ) {}
   ~RModuleReg(void) {}

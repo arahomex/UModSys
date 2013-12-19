@@ -34,10 +34,10 @@ struct RGenerator;
 //***************************************
 
 #include "umodsys.mod.media.stdlib.types.h"
-#include "umodsys.mod.media.stdlib.t.libbincache.h"
-#include "umodsys.mod.media.stdlib.t.liblayered.h"
-#include "umodsys.mod.media.stdlib.t.libobjcache.h"
-#include "umodsys.mod.media.stdlib.t.libobjfilter.h"
+#include "umodsys.mod.media.stdlib.Tlibbincache.h"
+#include "umodsys.mod.media.stdlib.Tliblayered.h"
+#include "umodsys.mod.media.stdlib.Tlibobjcache.h"
+#include "umodsys.mod.media.stdlib.Tlibobjfilter.h"
 
 DMediaFlags RLibraryBinCache::auto_flags;
 DMediaFlags RLibraryBinTree::auto_flags;

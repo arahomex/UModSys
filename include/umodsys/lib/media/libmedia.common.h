@@ -222,7 +222,7 @@ inline bool is_extension_nocase(const DCString& name, const DCString& ext)
 {
   if(~name<~ext)
     return false;
-  if(tl::su::utf8_cmp_nocase(name.text+~name-~ext, ext.text, ~ext))
+  if(tl::su::utf8_cmp_nocase(name.text+~name-~ext, ext.text, ~ext)==0)
     return true;
   return false;
 }

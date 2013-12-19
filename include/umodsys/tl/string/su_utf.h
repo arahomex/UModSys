@@ -147,7 +147,7 @@ inline bool utf_16to32(utf32 &dest, const utf16* &src, size_t &srcsize)
 // utf32 nocase
 //***************************************
 
-int utf32_shash_nocase_bin(const utf32* str, size_t len);
+size_t utf32_shash_nocase_bin(const utf32* str, size_t len);
 int utf32_cmp_nocase_bin(const utf32* a, const utf32 *b, size_t num);
 
 inline int utf32_cmp_nocase_bin(const utf32* a, const utf32 *b, size_t sa, size_t sb)
@@ -167,7 +167,7 @@ inline int utf32_cmp_nocase_bin(const utf32* a, const utf32 *b, size_t sa, size_
 
 inline int utf32_cmp_nocase(const utf32* a, const utf32 *b)
 {
-  if(a==NULL) return b!=NULL ? 1 : 0; else if(b!=NULL) return -1;
+  if(a==NULL) return b!=NULL ? 1 : 0; else if(b==NULL) return -1;
   size_t sa = su::slen(a), sb = su::slen(b);
   if(sa!=sb) return (sa>sb)-(sa<sb);
   return utf32_cmp_nocase_bin(a, b, sa);
@@ -175,7 +175,7 @@ inline int utf32_cmp_nocase(const utf32* a, const utf32 *b)
 
 inline int utf32_cmp_nocase(const utf32* a, const utf32 *b, size_t num)
 {
-  if(a==NULL) return b!=NULL ? 1 : 0; else if(b!=NULL) return -1;
+  if(a==NULL) return b!=NULL ? 1 : 0; else if(b==NULL) return -1;
   size_t sa = su::slen(a, num), sb = su::slen(b, num);
   if(sa!=sb) return (sa>sb)-(sa<sb);
   return utf32_cmp_nocase_bin(a, b, sa);
@@ -185,18 +185,18 @@ inline int utf32_cmp_nocase(const utf32* a, const utf32 *b, size_t num)
 // utf16 nocase
 //***************************************
 
-int utf16_shash_nocase_bin(const utf16* str, size_t len);
+size_t utf16_shash_nocase_bin(const utf16* str, size_t len);
 int utf16_cmp_nocase_bin(const utf16* a, const utf16 *b, size_t sa, size_t sb);
 
 inline int utf16_cmp_nocase(const utf16* a, const utf16 *b)
 {
-  if(a==NULL) return b!=NULL ? 1 : 0; else if(b!=NULL) return -1;
+  if(a==NULL) return b!=NULL ? 1 : 0; else if(b==NULL) return -1;
   return utf16_cmp_nocase_bin(a, b, su::slen(a), su::slen(b));
 }
 
 inline int utf16_cmp_nocase(const utf16* a, const utf16 *b, size_t num)
 {
-  if(a==NULL) return b!=NULL ? 1 : 0; else if(b!=NULL) return -1;
+  if(a==NULL) return b!=NULL ? 1 : 0; else if(b==NULL) return -1;
   return utf16_cmp_nocase_bin(a, b, su::slen(a, num), su::slen(b, num));
 }
 
@@ -204,18 +204,18 @@ inline int utf16_cmp_nocase(const utf16* a, const utf16 *b, size_t num)
 // utf8 nocase
 //***************************************
 
-int utf8_shash_nocase_bin(const utf8* str, size_t len);
+size_t utf8_shash_nocase_bin(const utf8* str, size_t len);
 int utf8_cmp_nocase_bin(const utf8* a, const utf8 *b, size_t sa, size_t sb);
 
 inline int utf8_cmp_nocase(const utf8* a, const utf8 *b)
 {
-  if(a==NULL) return b!=NULL ? 1 : 0; else if(b!=NULL) return -1;
+  if(a==NULL) return b!=NULL ? 1 : 0; else if(b==NULL) return -1;
   return utf8_cmp_nocase_bin(a, b, su::slen(a), su::slen(b));
 }
 
 inline int utf8_cmp_nocase(const utf8* a, const utf8 *b, size_t num)
 {
-  if(a==NULL) return b!=NULL ? 1 : 0; else if(b!=NULL) return -1;
+  if(a==NULL) return b!=NULL ? 1 : 0; else if(b==NULL) return -1;
   return utf8_cmp_nocase_bin(a, b, su::slen(a, num), su::slen(b, num));
 }
 
@@ -223,14 +223,14 @@ inline int utf8_cmp_nocase(const utf8* a, const utf8 *b, size_t num)
 // nocase
 //***************************************
 
-template<typename T> int utf_shash_nocase(const T* str, size_t len);
+template<typename T> size_t utf_shash_nocase(const T* str, size_t len);
 template<typename T> int utf_cmp_nocase(const T* a, size_t sa, const T *b, size_t sb);
 template<typename T> int utf_cmp_nocase(const T* a, const T *b, size_t sab);
 template<typename T> int utf_cmp_nocase(const T* a, size_t sab, const T *b);
 
-template<> inline int utf_shash_nocase<utf8>(const utf8* str, size_t len) { return utf8_shash_nocase_bin(str, len); }
-template<> inline int utf_shash_nocase<utf16>(const utf16* str, size_t len) { return utf16_shash_nocase_bin(str, len); }
-template<> inline int utf_shash_nocase<utf32>(const utf32* str, size_t len) { return utf32_shash_nocase_bin(str, len); }
+template<> inline size_t utf_shash_nocase<utf8>(const utf8* str, size_t len) { return utf8_shash_nocase_bin(str, len); }
+template<> inline size_t utf_shash_nocase<utf16>(const utf16* str, size_t len) { return utf16_shash_nocase_bin(str, len); }
+template<> inline size_t utf_shash_nocase<utf32>(const utf32* str, size_t len) { return utf32_shash_nocase_bin(str, len); }
 
 template<> inline int utf_cmp_nocase<utf8>(const utf8* a, size_t sa, const utf8* b, size_t sb) { return utf8_cmp_nocase_bin(a, b, sa, sb); }
 template<> inline int utf_cmp_nocase<utf16>(const utf16* a, size_t sa, const utf16* b, size_t sb) { return utf16_cmp_nocase_bin(a, b, sa, sb); }
@@ -242,7 +242,7 @@ template<> inline int utf_cmp_nocase<utf32>(const utf32* a, const utf32* b, size
 
 
 template<typename CharT>
-inline int utf_shash_nocase(const CharT* str) 
+inline size_t utf_shash_nocase(const CharT* str) 
 {
   if(str==NULL || *str==0)
     return 0;
@@ -250,14 +250,14 @@ inline int utf_shash_nocase(const CharT* str)
 }
 
 template<typename CharT>
-inline int utf_shash_nocase(const CharT* str, size_t len) {
+inline size_t utf_shash_nocase(const CharT* str, size_t len) {
   if(str==NULL || *str==0 || len==0)
     return 0;
   return utf_shash_nocase_bin(str, len);
 }
 
 template<typename CharT>
-inline int utf_shash_nocase(const CharT* str, size_t* len) {
+inline size_t utf_shash_nocase(const CharT* str, size_t* len) {
   *len = 0;
   if(str==NULL || *str==0)
     return 0;

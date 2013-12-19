@@ -17,15 +17,15 @@ using namespace su;
 //***************************************
 //***************************************
 
-int su::utf32_shash_nocase_bin(const utf32* str, size_t len)
+size_t su::utf32_shash_nocase_bin(const utf32* str, size_t len)
 {
-  register unsigned a=0, b=0;
+  register size_t a=0, b=0;
   while(len>0) {
     a += utf_nocase32(*str++);
-    b += a & 0xffff;
+    b += a;
     len--;
   }
-  return ((b<<8)&0xff) | a;
+  return (b<<8) ^ a;
 }
 
 int su::utf32_cmp_nocase_bin(const utf32* a, const utf32 *b, size_t num)
@@ -41,17 +41,17 @@ int su::utf32_cmp_nocase_bin(const utf32* a, const utf32 *b, size_t num)
 //***************************************
 //***************************************
 
-int su::utf16_shash_nocase_bin(const utf16* str, size_t len)
+size_t su::utf16_shash_nocase_bin(const utf16* str, size_t len)
 {
-  register unsigned a=0, b=0;
+  register size_t a=0, b=0;
   while(1) {
     utf32 xa;
     if(!utf_16to32(xa, str, len))
       break;
     a += utf_nocase32(xa);
-    b += a & 0xffff;
+    b += a;
   }
-  return ((b<<8)&0xff) | a;
+  return (b<<8) ^ a;
 }
 
 int su::utf16_cmp_nocase_bin(const utf16* a, const utf16 *b, size_t sa, size_t sb)
@@ -71,17 +71,17 @@ int su::utf16_cmp_nocase_bin(const utf16* a, const utf16 *b, size_t sa, size_t s
 //***************************************
 //***************************************
 
-int su::utf8_shash_nocase_bin(const utf8* str, size_t len)
+size_t su::utf8_shash_nocase_bin(const utf8* str, size_t len)
 {
-  register unsigned a=0, b=0;
+  register size_t a=0, b=0;
   while(1) {
     utf32 xa;
     if(!utf_8to32(xa, str, len))
       break;
     a += utf_nocase32(xa);
-    b += a & 0xffff;
+    b += a;
   }
-  return ((b<<8)&0xff) | a;
+  return (b<<8) ^ a;
 }
 
 int su::utf8_cmp_nocase_bin(const utf8* a, const utf8 *b, size_t sa, size_t sb)

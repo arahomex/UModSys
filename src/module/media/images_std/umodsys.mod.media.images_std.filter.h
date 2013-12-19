@@ -79,7 +79,7 @@ bool RMediaFilter::filter_load(const SInfo& info, IRefObject* obj)
     //
     if(is_extension_nocase(suffix, ".jpg") || is_extension_nocase(suffix, ".jpeg"))
       return loader_jpeg(im, info, fp, pk, hint, falpha);
-    if(is_extension_nocase(info.media_name, ".png"))
+    if(is_extension_nocase(suffix, ".png"))
       return loader_png(im, info, fp, pk, hint, falpha);
   }
   return false;

@@ -9,10 +9,9 @@ struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)
   //
   RModuleReg(void) 
-  : IModuleReg(
+  : UMODSYS_MODULEREG(
     "ui::frames", 
-    UMODSYS_VERSION_MOD_UI_FRAMES_MAJOR, 
-    UMODSYS_VERSION_MOD_UI_FRAMES_MINOR, 
+    UMODSYS_VERSION_MOD_UI_FRAMES, 
     ""
   ) {}
   ~RModuleReg(void) {}

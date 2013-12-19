@@ -5,14 +5,15 @@
 UMODSYS_MODULE_BEGIN(media, zlib)
 UMODSYS_MODULE_BODY0()
 
+#include "umodsys.mod.media.zlib.Tarcframe.h"
+
 struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)
   //
   RModuleReg(void) 
-  : IModuleReg(
+  : UMODSYS_MODULEREG(
     "media::zlib", 
-    UMODSYS_VERSION_MOD_MEDIA_ZLIB_MAJOR, 
-    UMODSYS_VERSION_MOD_MEDIA_ZLIB_MINOR, 
+    UMODSYS_VERSION_MOD_MEDIA_ZLIB,
     ""
   ) {}
   ~RModuleReg(void) {}

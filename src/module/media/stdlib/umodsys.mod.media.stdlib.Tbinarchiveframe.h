@@ -206,6 +206,7 @@ RBinArchiveFrame::NameNode* RBinArchiveFrame::add_node_r(const DCString& name, s
   }
   if(onode)
     return NULL; // this node duplicates previous one
+//M.dbg_put("{'%s'/%u '%s'/%u}\n", nnode->name(), (unsigned)nnode->name.hash, nnode->namenc(), (unsigned)nnode->namenc.hash);
   return nnode;
 }
 

@@ -9,10 +9,9 @@ struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)
   //
   RModuleReg(void) 
-  : IModuleReg(
+  : UMODSYS_MODULEREG(
     "media::images_std", 
-    UMODSYS_VERSION_MOD_MEDIA_SERIALIZE_JSON_MAJOR, 
-    UMODSYS_VERSION_MOD_MEDIA_SERIALIZE_JSON_MINOR, 
+    UMODSYS_VERSION_MOD_MEDIA_SERIALIZE_JSON, 
     ""
   ) {}
   ~RModuleReg(void) {}

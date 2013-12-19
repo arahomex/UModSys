@@ -23,9 +23,11 @@ struct SModuleInfo {
   core::DCString name;
   core::SVersion verno;
   core::DCString info;
+  core::Buint32 buildno;
+  core::BTime updated;
   //
   ~SModuleInfo(void);
-  SModuleInfo(const char* n, int vh, int vl, const char *i);
+  SModuleInfo(const char* n, core::Buint16 vh, core::Buint16 vl, const char *i, core::Buint32 bno, core::BTime u);
   SModuleInfo(void);
   void set(const char* n, int vh, int vl, const char *i);
   //

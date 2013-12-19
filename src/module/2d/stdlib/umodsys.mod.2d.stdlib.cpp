@@ -9,10 +9,9 @@ struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)
   //
   RModuleReg(void) 
-  : IModuleReg(
+  : UMODSYS_MODULEREG(
     "lib2d::stdlib", 
-    UMODSYS_VERSION_MOD_2D_STDLIB_MAJOR, 
-    UMODSYS_VERSION_MOD_2D_STDLIB_MINOR, 
+    UMODSYS_VERSION_MOD_2D_STDLIB, 
     ""
   ) {}
   ~RModuleReg(void) {}

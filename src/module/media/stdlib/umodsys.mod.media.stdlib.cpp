@@ -5,18 +5,17 @@
 UMODSYS_MODULE_BEGIN(media, stdlib)
 UMODSYS_MODULE_BODY0()
 
-#include "umodsys.mod.media.stdlib.t.utils.h"
-#include "umodsys.mod.media.stdlib.t.binarchiveframe.h"
-#include "umodsys.mod.media.stdlib.t.libbintree.h"
+#include "umodsys.mod.media.stdlib.Tutilities.h"
+#include "umodsys.mod.media.stdlib.Tbinarchiveframe.h"
+#include "umodsys.mod.media.stdlib.Tlibbintree.h"
 
 struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)
   //
   RModuleReg(void)
-  : IModuleReg(
+  : UMODSYS_MODULEREG(
     "media::std", 
-    UMODSYS_VERSION_MOD_MEDIA_STDLIB_MAJOR, 
-    UMODSYS_VERSION_MOD_MEDIA_STDLIB_MINOR, 
+    UMODSYS_VERSION_MOD_MEDIA_STDLIB, 
     ""
   ) {}
   ~RModuleReg(void) {}

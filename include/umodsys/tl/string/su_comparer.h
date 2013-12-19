@@ -50,7 +50,7 @@ struct TComparerBinary : public core::Void {
 // Comparer hash
 
 struct SComparerHash {
-  int hash;
+  size_t hash;
   //
   inline SComparerHash(void) : hash(0) {}
   inline SComparerHash(core::Void* p) {}
@@ -83,13 +83,13 @@ struct TComparerBinaryHash : public SComparerHash {
     return myl==rl && su::scmp(mys, r, myl)==0;
   }
   //
-  inline int cmp3(const CharT* mys, size_t myl, const CharT* r, size_t rl, int rh) const {
+  inline int cmp3(const CharT* mys, size_t myl, const CharT* r, size_t rl, size_t rh) const {
     int rv = core::scalar_compare(myl, rl);
     if(rv) return rv;
     rv = core::scalar_compare(hash, rh);
     return rv ? rv : su::scmp(mys, r, myl);
   }
-  inline bool eq3(const CharT* mys, size_t myl, const CharT* r, size_t rl, int rh) const {
+  inline bool eq3(const CharT* mys, size_t myl, const CharT* r, size_t rl, size_t rh) const {
     return myl==rl && hash==rh && su::scmp(mys, r, myl)==0;
   }
   inline int cmp3(const CharT* mys, size_t myl, const CharT* r, size_t rl, const SComparerHash& rh) const {
@@ -130,13 +130,13 @@ struct TComparerUtfNocaseHash : public SComparerHash {
     return myl==rl && su::utf_cmp_nocase(mys, r, myl)==0;
   }
   //
-  inline int cmp3(const CharT* mys, size_t myl, const CharT* r, size_t rl, int rh) const {
+  inline int cmp3(const CharT* mys, size_t myl, const CharT* r, size_t rl, size_t rh) const {
     int rv = core::scalar_compare(myl, rl);
     if(rv) return rv;
     rv = core::scalar_compare(hash, rh);
     return rv ? rv : su::utf_cmp_nocase(mys, r, myl);
   }
-  inline bool eq3(const CharT* mys, size_t myl, const CharT* r, size_t rl, int rh) const {
+  inline bool eq3(const CharT* mys, size_t myl, const CharT* r, size_t rl, size_t rh) const {
     return myl==rl && hash==rh && su::scmp(mys, r, myl)==0;
   }
   inline int cmp3(const CharT* mys, size_t myl, const CharT* r, size_t rl, const SComparerHash& rh) const {

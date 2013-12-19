@@ -110,43 +110,43 @@ void smemmove(CharT* x, const CharT* s, size_t n)
 }
 
 template<typename CharT>
-int shash(const CharT* str) 
+size_t shash(const CharT* str) 
 {
   if(str==NULL || *str==0)
     return 0;
-  register unsigned a=0, b=0;
+  register size_t a=0, b=0;
   while(*str) {
     a += static_cast<typename TCharOptions<CharT>::Index>(*str++);
-    b += a & 0xff;
+    b += a;
   }
-  return ((b<<8)&0xff) | a;
+  return (b<<8) ^ a;
 }
 
 template<typename CharT>
-int shash(const CharT* str, size_t len) {
+size_t shash(const CharT* str, size_t len) {
   if(str==NULL || *str==0)
     return 0;
-  register unsigned a=0, b=0;
+  register size_t a=0, b=0;
   while(*str && len>0) {
     a += static_cast<typename TCharOptions<CharT>::Index>(*str++);
-    b += a & 0xff;
+    b += a;
     len--;
   }
-  return ((b<<8)&0xff) | a;
+  return (b<<8) ^ a;
 }
 
 template<typename CharT>
-int shashlen(const CharT* str, size_t& len) {
+size_t shashlen(const CharT* str, size_t& len) {
   len = 0;
   if(str==NULL || *str==0)
     return 0;
-  register unsigned a=0, b=0;
+  register size_t a=0, b=0;
   while(*str) {
     a += static_cast<typename TCharOptions<CharT>::Index>(*str++);
-    b += a & 0xff;
+    b += a;
     len++;
   }
-  return ((b<<8)&0xff) | a;
+  return (b<<8) ^ a;
 }
 
 template<typename CharT>

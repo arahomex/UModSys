@@ -861,31 +861,31 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.t.binarchiveframe.h"
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.Tbinarchiveframe.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.t.libbincache.h"
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.Tlibbincache.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.t.libbintree.h"
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.Tlibbintree.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.t.liblayered.h"
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.Tliblayered.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.t.libobjcache.h"
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.Tlibobjcache.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.t.libobjfilter.h"
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.Tlibobjfilter.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.t.utils.h"
+				RelativePath="..\..\..\src\module\media\stdlib\umodsys.mod.media.stdlib.Tutilities.h"
 				>
 			</File>
 			<File
@@ -905,15 +905,15 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\media\zlib\umodsys.mod.media.zlib.arcframe.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\..\src\module\media\zlib\umodsys.mod.media.zlib.defs.h"
 				>
 			</File>
 			<File
 				RelativePath="..\..\..\src\module\media\zlib\umodsys.mod.media.zlib.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\media\zlib\umodsys.mod.media.zlib.Tarcframe.h"
 				>
 			</File>
 			<File

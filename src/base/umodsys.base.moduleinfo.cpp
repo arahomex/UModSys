@@ -12,8 +12,8 @@ SModuleInfo::~SModuleInfo(void)
 {
 }
 
-SModuleInfo::SModuleInfo(const char* n, int vh, int vl, const char *i)
-: name(n), info(i), verno(vh, vl) 
+SModuleInfo::SModuleInfo(const char* n, core::Buint16 vh, core::Buint16 vl, const char *i, core::Buint32 bno, core::BTime u)
+: name(n), info(i), verno(vh, vl), buildno(bno), updated(u)
 {
 }
 

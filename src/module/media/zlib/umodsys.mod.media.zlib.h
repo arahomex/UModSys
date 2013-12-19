@@ -34,7 +34,6 @@ struct RGenerator;
 
 #include "umodsys.mod.media.zlib.defs.h"
 #include "umodsys.mod.media.zlib.types.h"
-#include "umodsys.mod.media.zlib.arcframe.h"
 
 //***************************************
 // RGenerator

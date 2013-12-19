@@ -176,10 +176,9 @@ struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)
   //
   RModuleReg(void) 
-  : IModuleReg(
+  : UMODSYS_MODULEREG(
     "tests::test1", 
-    UMODSYS_VERSION_PLUGIN_TEST_TEST1_MAJOR, 
-    UMODSYS_VERSION_PLUGIN_TEST_TEST1_MINOR, 
+    UMODSYS_VERSION_PLUGIN_TEST_TEST1, 
     "Test 1 - module"
     ) {
     lost_func(refer);

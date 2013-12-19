@@ -42,10 +42,9 @@ struct RTest2_ModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RTest2_ModuleReg)
   //
   RTest2_ModuleReg(void) 
-  : IModuleReg(
+  : UMODSYS_MODULEREG(
       "tests::test2", 
-      UMODSYS_VERSION_PLUGIN_TEST_TEST2_MAJOR, 
-      UMODSYS_VERSION_PLUGIN_TEST_TEST2_MINOR, 
+      UMODSYS_VERSION_PLUGIN_TEST_TEST2, 
       "Test 2 - module"
     ) {
 //    M.con().put(0, "RTest2_ModuleReg()\n");

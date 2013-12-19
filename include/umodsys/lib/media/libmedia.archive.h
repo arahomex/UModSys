@@ -38,9 +38,9 @@ public:
     inline void* user_data(void) { return this+1; }
     //
     inline void setname(void* data, int ofs, const DCString& source) 
-      { name.set_ofs(data, ofs, source); namenc.set(name(), ~name); }
+      { name.set_ofs(data, ofs, source); name.update(); namenc.set(name(), ~name); }
     inline void setname(void* data, int ofs, const DCNocaseString& source) 
-      { namenc.set_ofs(data, ofs, source); name.set(namenc(), ~namenc); }
+      { namenc.set_ofs(data, ofs, source); namenc.update(); name.set(namenc(), ~namenc); }
   };
   //
   struct NameNodeCmpC {
