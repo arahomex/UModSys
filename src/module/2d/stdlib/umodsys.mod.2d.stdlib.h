@@ -35,7 +35,7 @@ struct RImage_Memory;
 //***************************************
 
 #include "umodsys.mod.2d.stdlib.convert.h"
-#include "umodsys.mod.2d.stdlib.memoryimage.h"
+#include "umodsys.mod.2d.stdlib.types.h"
 #include "umodsys.mod.2d.stdlib.convertfast.h"
 #include "umodsys.mod.2d.stdlib.convertslow.h"
 
@@ -47,20 +47,23 @@ struct RGenerator : public IGenerator {
   //
   int get_generated_names(DPtrList& list) const {
     return t_names<RImage_Memory>(list)
-//         + t_names<RMultiImage2D_SDL_ttf>(list)
+         + t_names<RImageFactory_Memory>(list)
+         + t_names<RMultiImage>(list)
     ;
     return 0;
   }
   int get_generated_types(DPtrList& list, TypeId name) const {
     int rv = 0;
     t_types<RImage_Memory>(rv, list, name) 
-//    || t_types<RMultiImage2D_SDL_ttf>(rv, list, name) 
+    || t_types<RImageFactory_Memory>(rv, list, name) 
+    || t_types<RMultiImage>(rv, list, name) 
     ;
     return rv;
   }
   bool generate(IRefObject::P& obj, TypeId name, const SParameters& args) {
     return t_gen_param<RImage_Memory>(this, obj, name, args)
-//      || t_gen_param<RMultiImage2D_SDL_ttf>(this, obj, name, args)
+      || t_gen_param<RImageFactory_Memory>(this, obj, name, args)
+      || t_gen_param<RMultiImage>(this, obj, name, args)
     ;
     return false;
   }

@@ -1,101 +1,5 @@
 // RTest1_Shell::
 
-lib2d::IImage::P RTest1_Shell::new_mem_image(void)
-{
-  TParametersA<1024> params;
-  return generate_type<lib2d::IImage>("*::stdlib::*Image_Memory", params);
-}
-
-libmedia::IBinArchive::P RTest1_Shell::media_arch_stdio(const DCString &path)
-{
-  TParametersA<1024> params;
-  params.add("filepath", path());
-  return generate_type<libmedia::IBinArchive>("*::stdio::*", params, path);
-}
-
-libmedia::IBinArchive::P RTest1_Shell::media_arch_zip(libmedia::ILibrary* root, libmedia::IUtilities* utl, const DCString &path, bool rw)
-{
-  TParametersA<1024> params;
-  libmedia::IBinArchiveFrame::IClient::P cli = generate_type<libmedia::IBinArchiveFrame::IClient>("*_ZIP", params);
-  if(!cli.valid())
-    return NULL;
-  params.add("write", rw);
-  params.add("client", cli);
-  params.add("filename", path);
-  params.add("library", root);
-  libmedia::IBinArchiveFrame::P rv = generate_type<libmedia::IBinArchiveFrame>("*::stdlib::*", params, path)();
-  if(!rv.valid())
-    return NULL;
-  rv->utils = utl;
-  return rv();
-}
-
-libmedia::IBinObjFilter::P RTest1_Shell::media_filter_new(const DCString &mask, const SParameters& args)
-{
-  TParametersA<1024> params;
-  return generate_type<libmedia::IBinObjFilter>(NULL, params);
-}
-
-libmedia::IUtilities::P RTest1_Shell::media_utils(void)
-{
-  TParametersA<1024> params;
-  return generate_type<libmedia::IUtilities>("*::stdlib::*", params);
-}
-
-libmedia::ILibraryBinTree::P RTest1_Shell::media_vfs(void)
-{
-  TParametersA<1024> params;
-  return generate_type<libmedia::ILibraryBinTree>("*::stdlib::*", params);
-}
-
-libmedia::ILibraryObjFilter::P RTest1_Shell::media_flt(void)
-{
-  TParametersA<1024> params;
-  return generate_type<libmedia::ILibraryObjFilter>("*::stdlib::*", params);
-}
-
-libmedia::ILibraryLayered::P RTest1_Shell::media_lay(void)
-{
-  TParametersA<1024> params;
-  return generate_type<libmedia::ILibraryLayered>("*::stdlib::*", params);
-}
-
-libmedia::ILibrary::P RTest1_Shell::media_cache(bool isobj)
-{
-  TParametersA<1024> params;
-  if(isobj)
-    return generate_type<libmedia::ILibraryObjCache>("*::stdlib::*", params)();
-  return generate_type<libmedia::ILibraryBinCache>("*::stdlib::*", params)();
-}
-
-void RTest1_Shell::test_op_file(bool f, const DCString &fname, const DCString &operation)
-{
-  if(f) {
-    M.con().put(0, "  %s file {%s} ok\n", operation(), fname());
-  } else {
-    M.con().put(0, "  ERROR %s file {%s}\n", operation(), fname());
-  }
-}
-
-void RTest1_Shell::test_op_file(bool f, const DCString &fname, SCMemShared& mem_block, bool isRead)
-{
-  if(isRead) {
-    if(f) {
-      M.con().put(0, "  load file {%s} ok, size:%u {", fname(), int(~mem_block));
-      dump_str(mem_block.get_tdata<char>(), ~mem_block);
-      M.con().put(0, "}\n");
-    } else {
-      M.con().put(0, "  ERROR load file {%s}\n", fname());
-    }
-  } else {
-    if(f) {
-      M.con().put(0, "  save file {%s} ok, size:%u\n", fname(), ~mem_block);
-    } else {
-      M.con().put(0, "  ERROR save file {%s}\n", fname());
-    }
-  }
-}
-
 void RTest1_Shell::file_test1(void)
 {
   M.con().put(0, "******** file test 1\n");
@@ -367,6 +271,8 @@ void RTest1_Shell::file_test6(void)
 
 void RTest1_Shell::file_test7(void)
 {
+  typedef tl::TDynarrayDynamic<libmedia::SFileInfo> FileList;
+  //
   M.con().put(0, "******** file test 6\n");
   libmedia::IUtilities::P utils = media_utils();
   libmedia::ILibraryLayered::P lib = media_lay();
@@ -398,8 +304,7 @@ void RTest1_Shell::file_test7(void)
     lib->layer_push( media_cache(true) );
   }
   //
-  {
-    typedef tl::TDynarrayDynamic<libmedia::SFileInfo> FileList;
+  if(0) {
     FileList lst;
     bool rv = lib->bin_info("/mc/*.bin", tl::TRStackSocket<libmedia::SFileInfo,FileList>(lst));
     M.con().put(0, "find %d : %d elems\n", rv, ~lst);
@@ -408,8 +313,49 @@ void RTest1_Shell::file_test7(void)
     }
   }
   //
-  lib2d::IImage::P img = new_mem_image();
-  bool rv = lib->obj_load("/mc/textures/font/ascii.png", img, "lib2d::IImage");
-  M.con().put(0, "loaded %d\n", rv);
+  lib2d::IImageFactory::P factory = new_mem_imagefactory();
+  lib2d::IMultiImage::P atlas = new_mem_multiimage(factory);
+  if(!atlas->setup_fixed_cell(16, 16)
+    || !atlas->set_layer_count(1))
+    return;
+  if(!atlas->get_layer(0)->set_info(lib2d::it_R8G8B8A8, 1024, 1024))
+    return;
+  {
+    lib2d::IImage::P src = factory->image_new();
+    FileList lst;
+    bool rv = lib->bin_info("/mc/textures/blocks/*.png", tl::TRStackSocket<libmedia::SFileInfo,FileList>(lst));
+    int loaded = 0, filled = 0;
+    int row_dy = 0;
+    int x = 0, y = 0;
+    char buf[0x10000];
+    SMem membuf(buf, sizeof(buf));
+    for(size_t i=0; i<~lst; i++) {
+      if(lib->obj_load(lst[i].name.s(), src, "lib2d::IImage")) {
+        lib2d::SImageCellInfo ici(lib2d::if_Rect, 0, x, y, src->get_info().size(0), src->get_info().size(1));
+        if(ici.start(0)+ici.size(0)>src->get_info().size(0)) {
+          x = 0;
+          y += row_dy;
+          row_dy = 0;
+        }
+        if(row_dy<ici.size(1))
+          row_dy = ici.size(1);
+        loaded++;
+        x += ici.size(0);
+        if(atlas->setup_variable_cell(&ici, 1, i)) {
+          membuf.size = src->get_info().getbinsize();
+          if(src->get_data(lib2d::SImagePatchInfo(src->get_info(), lib2d::DPoint(0,0)), membuf)) {
+            if(atlas->get_layer(0)->set_data(lib2d::SImagePatchInfo(src->get_info(), ici.start), membuf)) {
+              filled++;
+            }
+          }
+        }
+      }
+    }
+    M.con().put(0, "loaded %d/%d images\n", loaded, ~lst);
+  }
+  bool rv = lib->obj_save("/atlas.png", atlas->get_layer(0), "lib2d::IImage");
+  M.con().put(0, "saved %d\n", rv);
+//  bool rv = lib->obj_load("/mc/textures/font/ascii.png", img, "lib2d::IImage");
+//  M.con().put(0, "loaded %d\n", rv);
   //
 }

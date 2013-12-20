@@ -25,8 +25,11 @@ struct TString : public CoreT, public Comparer {
   typedef typename CoreT::Char CharT;
   UMODSYS_STRING_CLASS_HEADER(CharT)
   typedef TString<CoreT, Comparer> Self;
+  typedef TString<su::TSCoreConst<CharT>, Comparer> SelfString;
   typedef TStringBuf<CoreT, Comparer> SelfBuf;
   //
+//  template<typename Core2> inline TString(const TString<CoreT, Comparer>& R) : CoreT(R), Comparer(R) {}
+//  template<typename Core2> inline TString(const TStringBuf<CoreT, Comparer>& R) : CoreT(R), Comparer(R) {}
   inline TString(void) {}
   inline explicit TString(core::Void* p) : CoreT(p), Comparer(p) {}
   inline TString(const Self& R) : CoreT(R), Comparer(R) {}
@@ -40,6 +43,8 @@ struct TString : public CoreT, public Comparer {
   inline TString(const Comparer& cmp, Str s) : Comparer(cmp) { set(s); }
   inline TString(const Comparer& cmp, Str s, size_t L) : Comparer(cmp) { set(s, L); }
   inline TString(const Comparer& cmp, Str s, Str s_end) : Comparer(cmp) { set(s, s_end); }
+  //
+  inline SelfString s(void) const { return SelfString(*this, get_text(), get_length()); }
   //
   inline const Comparer& get_comparer(void) const { return *this; }
   inline Comparer& get_comparer(void) { return *this; }

@@ -5,6 +5,10 @@
 UMODSYS_MODULE_BEGIN(lib2d, stdlib)
 UMODSYS_MODULE_BODY0()
 
+#include "umodsys.mod.2d.stdlib.Timage.h"
+#include "umodsys.mod.2d.stdlib.Timagefactory.h"
+#include "umodsys.mod.2d.stdlib.Tmultiimage.h"
+
 struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)
   //

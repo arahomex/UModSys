@@ -765,7 +765,19 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\2d\stdlib\umodsys.mod.2d.stdlib.memoryimage.h"
+				RelativePath="..\..\..\src\module\2d\stdlib\umodsys.mod.2d.stdlib.Timage.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\2d\stdlib\umodsys.mod.2d.stdlib.Timagefactory.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\2d\stdlib\umodsys.mod.2d.stdlib.Tmultiimage.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\2d\stdlib\umodsys.mod.2d.stdlib.types.h"
 				>
 			</File>
 			<File

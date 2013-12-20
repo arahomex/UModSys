@@ -21,12 +21,12 @@ namespace lib2d {
 
 struct SImageCellInfo {
   eImageFill fill;
-  int layer;
+  Buint16 layer;
   DPoint start, size;
   //
   inline SImageCellInfo(void) 
     {}
-  inline SImageCellInfo(eImageFill ifv, int mi, int ax, int ay, int adx, int ady)
+  inline SImageCellInfo(eImageFill ifv, Buint16 mi, int ax, int ay, int adx, int ady)
     : fill(ifv), layer(mi), start(ax, ay), size(adx, ady) {}
 };
 
@@ -141,16 +141,37 @@ protected:
 };
 
 //***************************************
+// IImageFactory::  -- allocator/deallocator for images
+
+struct IImageFactory : public IRefObject {
+  typedef SImagePatchInfo DPatchInfo;
+  typedef SImagePatchInfo DInfo;
+public:
+  virtual DPoint image_get_maxsize(void) const =0;
+  virtual IImage::P image_new(void) =0;
+  virtual IImage::P image_new(const DInfo& inf, BCStr hint=NULL) =0;
+protected:
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib2d::IImageFactory, 2, IRefObject);
+};
+
+//***************************************
 // IImage::  -- Image List
 
 struct IMultiImage : public IRefObject {
-  virtual IImage* get_layer(int idx=0) =0;
-  virtual bool set_layer_count(int count) =0;
-  virtual bool set_fixed_cell(int nx, int ny) =0;
-  virtual bool set_var_cell(const SImageCellInfo* cells, int count, int base=0) =0;
-  virtual bool set_hint(BCStr hint, BCStr value) =0;
-  virtual bool get_cell_size(int idx, DPoint &size, DPoint* ofs=NULL) =0;
-  virtual bool get_max_cell_size(DPoint &size) =0;
+  virtual DPoint get_max_layer_size(void) const =0;
+  virtual DPoint get_max_cell_size(void) const =0;
+  virtual DPoint get_fixed_cell_size(void) const =0; // 0,0 for variable
+  virtual uint16 get_layer_count(void) const =0;
+  virtual IImage* get_layer(Buint16 idx=0) const =0;
+  virtual uint32 get_cell_count(void) const =0;
+  virtual bool get_cell(uint32 idx, DPoint &size, DPoint* ofs=NULL, uint16* lay=NULL) const =0;
+  virtual bool get_cell(uint32 idx, SImageCellInfo& info) const =0;
+  //
+  virtual bool set_layer_count(uint16 num) =0;
+  virtual bool set_hint(BCStr hint, BCStr value) =0; // must suport "mode":{"fixed","variable"}
+  //
+  virtual bool setup_fixed_cell(int nx, int ny) =0;
+  virtual bool setup_variable_cell(const SImageCellInfo* cells, Buint32 num, Buint32 base=0) =0;
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib2d::IMultiImage, 2, IRefObject);
 };

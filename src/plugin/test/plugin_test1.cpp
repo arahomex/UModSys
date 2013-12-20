@@ -64,6 +64,8 @@ struct RTest1_Shell
   libmedia::IBinArchive::P media_arch_zip(libmedia::ILibrary* root, libmedia::IUtilities* utl, const DCString &path, bool rw=false);
   libmedia::IBinObjFilter::P media_filter_new(const DCString &mask, const SParameters& args);
   lib2d::IImage::P new_mem_image(void);
+  lib2d::IImageFactory::P new_mem_imagefactory(void);
+  lib2d::IMultiImage::P new_mem_multiimage(lib2d::IImageFactory* imgf);
   //
   libmedia::IUtilities::P media_utils(void);
   libmedia::ILibraryBinTree::P media_vfs(void);
@@ -147,6 +149,7 @@ struct RTest1_Shell
 };
 
 #include "plugin_test1.common.h"
+#include "plugin_test1.file_utils.h"
 #include "plugin_test1.file_tests.h"
 #include "plugin_test1.ui_tests.h"
 

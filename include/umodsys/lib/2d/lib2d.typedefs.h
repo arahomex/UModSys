@@ -29,6 +29,7 @@ template<typename _Type> struct TCellsDef2;
 //***************************************
 
 struct IImage;            // general 2d bitmap image
+struct IImageFactory;     // allocator/deallocator for images
 struct IMultiImage;       // general 2d bitmap multi-image (eg. font)
 struct IConvertor;        // convert bitmaps
 struct IConvertorDriver;  // convert bitmaps base functions

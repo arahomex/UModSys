@@ -85,27 +85,20 @@ public:
   SDL_Texture* as_texture(SDL_Surface* s) const;  /* IN INLINES */
   inline const Glyph* get_glyph(int id) const { return glyphs(id); }
 public:  
-  IImage* get_layer(int idx) {
-    return NULL;
-  }
-  bool set_layer_count(int count) {
-    return false; 
-  }
-  bool set_fixed_cell(int nx, int ny) {
-    return false; 
-  }
-  bool set_var_cell(const SImageCellInfo* cells, int count, int base) {
-    return false; 
-  }
-  bool set_hint(BCStr hint, BCStr value) {
-    return false; 
-  }
-  bool get_cell_size(int idx, DPoint &size, DPoint* ofs) {
-    return false; 
-  }
-  bool get_max_cell_size(DPoint &size) { 
-    return false; 
-  }
+  DPoint get_max_layer_size(void) const { return DPoint(0,0); }
+  DPoint get_max_cell_size(void) const { return DPoint(0,0); }
+  DPoint get_fixed_cell_size(void) const { return DPoint(0,0); }
+  uint16 get_layer_count(void) const { return 0; }
+  IImage* get_layer(Buint16 idx) const { return NULL; }
+  uint32 get_cell_count(void) const { return 0; }
+  bool get_cell(uint32 idx, DPoint &size, DPoint* ofs, uint16* lay) const { return false; }
+  bool get_cell(uint32 idx, SImageCellInfo& info) const { return false; }
+  //
+  bool set_layer_count(uint16 num) { return false; }
+  bool set_hint(BCStr hint, BCStr value) { return false; }
+  //
+  bool setup_fixed_cell(int nx, int ny) { return false; }
+  bool setup_variable_cell(const SImageCellInfo* cells, Buint32 num, Buint32 base) { return false; }
 public:
 };
 

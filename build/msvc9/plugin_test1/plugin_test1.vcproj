@@ -717,6 +717,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\plugin\test\plugin_test1.file_utils.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\plugin\test\plugin_test1.obj_load.h"
 				>
 			</File>
