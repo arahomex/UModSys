@@ -5,6 +5,7 @@ libmedia_lib_includes := \
 
 libmedia_lib_depends := \
   $(T)/umodsys.lib.media.common$(OSUFFIX) \
+  $(T)/umodsys.lib.media.library$(OSUFFIX) \
   \
   $(T)/umodsys.mod.media.stdio$(OSUFFIX) \
   \

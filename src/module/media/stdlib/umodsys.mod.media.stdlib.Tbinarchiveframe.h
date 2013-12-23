@@ -53,7 +53,7 @@ IStreamReader::P RBinArchiveFrame::data_reader(const DCString& media_name, const
   if(!client.valid())
     return NULL;
   NameNode *n = find_node(media_name);
-  return n ? client->data_reader(this, n, flags) : NULL;
+  return n ? client->data_reader(this, n, flags)() : NULL;
 }
 
 IStreamWriter::P RBinArchiveFrame::data_writer(const DCString& media_name, const SFlags& flags)
@@ -104,7 +104,7 @@ bool RBinArchiveFrame::data_list(const DCString& mask, size_t namestart, DIFileI
   return rv;
 }
 
-bool RBinArchiveFrame::data_list(const DCString& mask, size_t namestart, SFileInfo& list, const SFlags& flags)
+bool RBinArchiveFrame::data_info(const DCString& mask, size_t namestart, SFileInfo& list, const SFlags& flags)
 {
   if(!client)
     return false;
@@ -157,7 +157,7 @@ bool RBinArchiveFrame::open(IClient* client, const SParameters* params)
   params->get("write", wmode);
   params->get("filename", fname);
   //
-  if(mg==NULL || fname==NULL || *fname==0) {
+  if(!mg.valid() || fname==NULL || *fname==0) {
     close(); // bad library MG
     return false;
   }
@@ -171,12 +171,12 @@ bool RBinArchiveFrame::open(IClient* client, const SParameters* params)
     bool rmode = openr(mg, fname, params);
     if(rmode) {
       filew = mg->bin_writer(fname, SFlags(mf_safe::yes(), this));
-      if(filew==NULL)
+      if(!filer.valid())
         return true; // ok, but no reader
       permission = mp_WL;
     } else {
       filew = mg->bin_writer(fname);
-      if(filew==NULL) {
+      if(!filer.valid()) {
         close();
         return false; // error, no reader or writer
       }
@@ -309,7 +309,7 @@ bool RBinArchiveFrame::fill_info(SFileInfo& fi, NameNode *node, const DCString& 
 bool RBinArchiveFrame::openr(ILibrary* lib, const DCString& fname, const SParameters* params) 
 {
   filer = lib->bin_reader(fname);
-  if(filer==NULL)
+  if(!filer.valid())
     return false;
   //
   size_t rsize = 0;
@@ -326,7 +326,7 @@ bool RBinArchiveFrame::openr(ILibrary* lib, const DCString& fname, const SParame
 
 bool RBinArchiveFrame::closew(bool abort) 
 {
-  if(client==NULL)
+  if(!client.valid())
     abort = true;
   //
   if(filew.valid()) {

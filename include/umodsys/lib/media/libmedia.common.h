@@ -67,7 +67,7 @@ public:
   virtual IStreamWriter::P data_writer(const DCString& media_name, const SFlags& flags=SFlags()) =0;
   virtual bool data_load(const DCString& media_name, SCMemShared& mem, const SFlags& flags=SFlags()) =0;
   virtual bool data_save(const DCString& media_name, const SCMem& mem, const SFlags& flags=SFlags()) =0;
-  virtual bool data_list(const DCString& mask, size_t namestart, DIFileInfoArray& list, const SFlags& flags=SFlags()) = 0;
+  virtual bool data_info(const DCString& mask, size_t namestart, DIFileInfoArray& list, const SFlags& flags=SFlags()) = 0;
   virtual bool data_list(const DCString& mask, size_t namestart, SFileInfo& list, const SFlags& flags=SFlags()) = 0;
   virtual int get_permissions(void) = 0;
 protected:
@@ -144,7 +144,7 @@ public:
   virtual bool bin_load(const DCString& media_name, SCMemShared& mem, const SFlags& flags); // load binary data
   virtual bool bin_save(const DCString& media_name, const SCMem& mem, const SFlags& flags); // save binary data
   virtual bool bin_info(const DCString& media_name, SFileInfo& info, const SFlags& flags); // determine attributes
-  virtual bool bin_info(const DCString& media_mask, DIFileInfoArray& info, const SFlags& flags); // get full list
+  virtual bool bin_list(const DCString& media_mask, DIFileInfoArray& info, const SFlags& flags); // get full list
   virtual bool bin_get(const DCString& media_name, SCMemShared& mem, bool isinv=false); // get cache element
   virtual bool bin_put(const DCString& media_name, const SCMemShared* mem); // put cache element
   // general object functions
@@ -170,8 +170,8 @@ public:
   inline bool bin_save(const DCString& media_name, const SCMemShared& mem, const DMediaFlags& flags = DMediaFlags()) {
     return bin_save(media_name, mem, SFlags(flags, this));
   }
-  inline bool bin_info(const DCString& media_name, DIFileInfoArray& info, const DMediaFlags& flags = DMediaFlags()) {
-    return bin_info(media_name, info, SFlags(flags, this));
+  inline bool bin_list(const DCString& media_name, DIFileInfoArray& info, const DMediaFlags& flags = DMediaFlags()) {
+    return bin_list(media_name, info, SFlags(flags, this));
   }
   inline bool bin_info(const DCString& media_name, SFileInfo& info, const DMediaFlags& flags = DMediaFlags()) {
     return bin_info(media_name, info, SFlags(flags, this));

@@ -79,7 +79,7 @@ public:
 public:
   template<typename T>
   inline T* t_get_controller(void) const {
-    IRefObject rv = get_controller(T::_root_get_interface_type());
+    IRefObject* rv = get_controller(T::_root_get_interface_type());
     return rv ? rv->t_root_get_other_interface<T>() : NULL;
   }
   //
@@ -87,7 +87,8 @@ public:
   inline int get_frame_int(BCStr name) { int rv=0; get_frame_values()->get(name, rv); return rv; }
   //
   inline bool render_text(const DPoint& a, BCStrL piclist, int count, const DPointf* scale=NULL) { 
-    return render_text_advanced(TextInfo(a, scale), piclist, count); 
+    TextInfo ti(a, scale); 
+    return render_text_advanced(ti, piclist, count); 
   }
   //
   inline bool render_text_size(DBox &size, const DPoint& a, BCStrL piclist, int count, const DPointf* scale=NULL) { 

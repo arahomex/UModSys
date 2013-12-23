@@ -249,7 +249,7 @@ public:
   inline bool valid(void) const { return term.valid(); }
   //
   inline size_t get_count(void) const { return term->t_get_count<CType>(); }
-  inline CType* get_handler(size_t id) const { return term->t_get_handler<CType>(name); }
+  inline CType* get_handler(size_t id) const { return term->t_get_handler<CType>(id); }
   inline CType* get_handler(BCStr name) const { return term->t_get_handler<CType>(name); }
   inline CType* get_friend_handler(IRefObject *obj) const { return term->t_get_friend_handler<CType>(obj); }
   inline bool create_handler(tl::TRefObject<CType> &rv, BCStr name, const SParameters* params) const { return term->t_create_handler(rv, name, params); }

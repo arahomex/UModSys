@@ -37,8 +37,8 @@
 //***************************************
 
 #ifndef UMODSYS_SOURCEINFO
-  #define _UMODSYS_SOURCEINFO (&::UModSys::core::SSourceContext(__FILE__, __LINE__, __FUNCTION__))
-  #define _UMODSYS_SOURCEINFON (&::UModSys::core::SSourceContext(__FILE__, __LINE__, NULL))
+  #define _UMODSYS_SOURCEINFO (::UModSys::core::SSourceContext(__FILE__, __LINE__, __FUNCTION__))
+  #define _UMODSYS_SOURCEINFON (::UModSys::core::SSourceContext(__FILE__, __LINE__, NULL))
   #define _UMODSYS_SOURCEINFOZ ((::UModSys::core::SSourceContext*)NULL)
   #if defined(_DEBUG) || defined(DEBUG)
     #define UMODSYS_SOURCEINFO _UMODSYS_SOURCEINFO

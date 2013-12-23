@@ -82,7 +82,7 @@ struct RBinArchiveFrame : public IBinArchiveFrame
   bool data_load(const DCString& media_name, SCMemShared& mem, const SFlags& flags);
   bool data_save(const DCString& media_name, const SCMem& mem, const SFlags& flags);
   bool data_list(const DCString& mask, size_t namestart, DIFileInfoArray& list, const SFlags& flags);
-  bool data_list(const DCString& mask, size_t namestart, SFileInfo& list, const SFlags& flags);
+  bool data_info(const DCString& mask, size_t namestart, SFileInfo& list, const SFlags& flags);
   int get_permissions(void);
   //
   // IBinArchiveFrame
@@ -152,7 +152,7 @@ struct RLibraryBinTree : public ILibraryBinTree
   bool bin_load(const DCString& media_name, SCMemShared& mem, const SFlags& flags);
   bool bin_save(const DCString& media_name, const SCMem& mem, const SFlags& flags);
   bool bin_info(const DCString& media_name, SFileInfo& info, const SFlags& flags);
-  bool bin_info(const DCString& media_mask, DIFileInfoArray& info, const SFlags& flags);
+  bool bin_list(const DCString& media_mask, DIFileInfoArray& info, const SFlags& flags);
   //
   // sub-archives
   SPoint mount_get(const SId& id) const;
@@ -255,7 +255,7 @@ struct RLibraryLayered : public ILibraryLayered
   bool bin_load(const DCString& media_name, SCMemShared& mem, const SFlags& flags);
   bool bin_save(const DCString& media_name, const SCMem& mem, const SFlags& flags);
   bool bin_info(const DCString& media_name, SFileInfo& info, const SFlags& flags);
-  bool bin_info(const DCString& media_mask, DIFileInfoArray& info, const SFlags& flags);
+  bool bin_list(const DCString& media_mask, DIFileInfoArray& info, const SFlags& flags);
   bool bin_get(const DCString& media_name, SCMemShared& mem, bool isinv);
   bool bin_put(const DCString& media_name, const SCMemShared* mem);
   // general object functions

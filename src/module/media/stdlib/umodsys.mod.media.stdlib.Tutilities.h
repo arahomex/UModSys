@@ -14,7 +14,7 @@ bool RUtilities::buffer_free(SBuffer& B, const SSourceContext* sctx)
   }
   B._hint() = 0;
   B._allocated().clear();
-  B.set(0, NULL);
+  B.set(NULL, 0);
   return false;
 }
 

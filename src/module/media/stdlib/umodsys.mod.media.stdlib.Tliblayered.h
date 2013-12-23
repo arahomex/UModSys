@@ -125,7 +125,7 @@ bool RLibraryLayered::bin_info(const DCString& media_name, SFileInfo& info, cons
   return false;
 }
 
-bool RLibraryLayered::bin_info(const DCString& media_mask, DIFileInfoArray& info, const SFlags& flags) 
+bool RLibraryLayered::bin_list(const DCString& media_mask, DIFileInfoArray& info, const SFlags& flags) 
 {
   SFlagsChain f2(flags, this);
   bool rv = false;

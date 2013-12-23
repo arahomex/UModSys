@@ -44,7 +44,7 @@ struct TString : public CoreT, public Comparer {
   inline TString(const Comparer& cmp, Str s, size_t L) : Comparer(cmp) { set(s, L); }
   inline TString(const Comparer& cmp, Str s, Str s_end) : Comparer(cmp) { set(s, s_end); }
   //
-  inline SelfString s(void) const { return SelfString(*this, get_text(), get_length()); }
+  inline SelfString s(void) const { return SelfString(*this, CoreT::get_text(), CoreT::get_length()); }
   //
   inline const Comparer& get_comparer(void) const { return *this; }
   inline Comparer& get_comparer(void) { return *this; }

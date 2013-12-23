@@ -306,7 +306,8 @@ void RTest1_Shell::file_test7(void)
   //
   if(0) {
     FileList lst;
-    bool rv = lib->bin_info("/mc/*.bin", tl::TRStackSocket<libmedia::SFileInfo,FileList>(lst));
+    tl::TRStackSocket<libmedia::SFileInfo,FileList> slst(lst);
+    bool rv = lib->bin_info("/mc/*.bin", slst);
     M.con().put(0, "find %d : %d elems\n", rv, ~lst);
     for(size_t i=0; i<~lst; i++) {
       M.con().put(0, "  [%u] : %s\n", i, lst[i].name());

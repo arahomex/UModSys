@@ -27,7 +27,7 @@ public:
   : utils(U), hint(0) {
   }
   inline SBuffer(ILibObject* lo) 
-  : utils(lo ? lo->utils : NULL), hint(0) {
+  : utils(lo ? lo->utils() : NULL), hint(0) {
   }
   inline SBuffer(const SBuffer& R) 
   : utils(R.utils), hint(0) {

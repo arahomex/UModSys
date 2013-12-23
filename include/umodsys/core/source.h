@@ -21,6 +21,7 @@ struct SSourceContext {
   //
   inline SSourceContext(const char *f, int l, const char *fu) : file(f), function(fu), line(l) {}
   inline explicit SSourceContext(void) : file(NULL), function(NULL), line(0) {}
+  inline operator SSourceContext* (void) { return this; }
 };
 
 //***************************************
