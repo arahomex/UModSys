@@ -42,7 +42,7 @@ bool ILibrary::bin_info(const DCString& media_name, SFileInfo& info, const SFlag
 }
 
 // get full list
-bool ILibrary::bin_info(const DCString& media_mask, DIFileInfoArray& info, const SFlags& flags)
+bool ILibrary::bin_list(const DCString& media_mask, DIFileInfoArray& info, const SFlags& flags)
 {
   return false;
 }

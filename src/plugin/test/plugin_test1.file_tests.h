@@ -307,7 +307,7 @@ void RTest1_Shell::file_test7(void)
   if(0) {
     FileList lst;
     tl::TRStackSocket<libmedia::SFileInfo,FileList> slst(lst);
-    bool rv = lib->bin_info("/mc/*.bin", slst);
+    bool rv = lib->bin_list("/mc/*.bin", slst);
     M.con().put(0, "find %d : %d elems\n", rv, ~lst);
     for(size_t i=0; i<~lst; i++) {
       M.con().put(0, "  [%u] : %s\n", i, lst[i].name());
@@ -324,7 +324,8 @@ void RTest1_Shell::file_test7(void)
   {
     lib2d::IImage::P src = factory->image_new();
     FileList lst;
-    bool rv = lib->bin_info("/mc/textures/blocks/*.png", tl::TRStackSocket<libmedia::SFileInfo,FileList>(lst));
+    tl::TRStackSocket<libmedia::SFileInfo,FileList> slst(lst);
+    bool rv = lib->bin_list("/mc/textures/blocks/*.png", slst);
     int loaded = 0, filled = 0;
     int row_dy = 0;
     int x = 0, y = 0;

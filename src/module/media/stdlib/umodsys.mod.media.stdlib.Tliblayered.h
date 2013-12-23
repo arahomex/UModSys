@@ -133,7 +133,7 @@ bool RLibraryLayered::bin_list(const DCString& media_mask, DIFileInfoArray& info
     const SLayerX& lx = *x;
     if(!(lx.pm & mp_List) || lx.lib.invalid())
       continue;
-    rv = lx.lib->bin_info(media_mask, info, f2) || rv;
+    rv = lx.lib->bin_list(media_mask, info, f2) || rv;
   }
   return rv;
 }

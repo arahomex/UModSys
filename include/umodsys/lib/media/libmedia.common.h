@@ -67,8 +67,8 @@ public:
   virtual IStreamWriter::P data_writer(const DCString& media_name, const SFlags& flags=SFlags()) =0;
   virtual bool data_load(const DCString& media_name, SCMemShared& mem, const SFlags& flags=SFlags()) =0;
   virtual bool data_save(const DCString& media_name, const SCMem& mem, const SFlags& flags=SFlags()) =0;
-  virtual bool data_info(const DCString& mask, size_t namestart, DIFileInfoArray& list, const SFlags& flags=SFlags()) = 0;
-  virtual bool data_list(const DCString& mask, size_t namestart, SFileInfo& list, const SFlags& flags=SFlags()) = 0;
+  virtual bool data_list(const DCString& mask, size_t namestart, DIFileInfoArray& list, const SFlags& flags=SFlags()) = 0;
+  virtual bool data_info(const DCString& mask, size_t namestart, SFileInfo& list, const SFlags& flags=SFlags()) = 0;
   virtual int get_permissions(void) = 0;
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::libmedia::IBinArchive, 2, ILibObject);

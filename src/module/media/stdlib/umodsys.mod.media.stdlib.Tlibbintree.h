@@ -103,7 +103,7 @@ bool RLibraryBinTree::bin_info(const DCString& media_name, SFileInfo& info, cons
     const DCString &mnt = mi.mount_name();
     if(~media_name<=~mnt && !tl::su::seq(mnt(), media_name(), ~mnt))
       continue;
-    if(mi.archive->data_list(media_name, ~mnt, info, flags))
+    if(mi.archive->data_info(media_name, ~mnt, info, flags))
       return true;
   }
   return false;
