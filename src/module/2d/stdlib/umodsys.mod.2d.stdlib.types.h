@@ -88,7 +88,7 @@ public:
   RMultiImage(DOwner *pv, const SParameters& args);
   ~RMultiImage(void);
   //
-  inline bool validate_construction(void) { return true; }
+  inline bool validate_construction(void) { return factory.valid(); }
 };
 
 //------------------------------------

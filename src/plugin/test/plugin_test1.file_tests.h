@@ -317,27 +317,55 @@ void RTest1_Shell::file_test7(void)
   lib2d::IImageFactory::P factory = new_mem_imagefactory();
   lib2d::IMultiImage::P atlas = new_mem_multiimage(factory);
   if(!atlas->setup_fixed_cell(16, 16)
-    || !atlas->set_layer_count(1))
+    || !atlas->set_layer_count(3))
     return;
-  if(!atlas->get_layer(0)->set_info(lib2d::it_R8G8B8A8, 1024, 1024))
+  if(!atlas->get_layer(0)->set_info(lib2d::it_R8G8B8A8, 512, 256))
     return;
+  if(!atlas->get_layer(1)->set_info(lib2d::it_R8G8B8A8, 128, 512))
+    return;
+  if(!atlas->get_layer(2)->set_info(lib2d::it_R8G8B8A8, 32, 1024))
+    return;
+  FileList lst;
   {
-    lib2d::IImage::P src = factory->image_new();
-    FileList lst;
     tl::TRStackSocket<libmedia::SFileInfo,FileList> slst(lst);
     bool rv = lib->bin_list("/mc/textures/blocks/*.png", slst);
+  }
+  lib2d::IImage::P src = factory->image_new(), dst;
+  char buf[0x40000];
+  static const char* names[]={
+    "/atlas1.png",
+    "/atlas2.png",
+    "/atlas3.png",
+    NULL
+  };
+  for(int key=0; key<3; key++) {
     int loaded = 0, filled = 0;
     int row_dy = 0;
     int x = 0, y = 0;
-    char buf[0x10000];
+    dst = atlas->get_layer(key);
+    const lib2d::SImageInfo& di = dst->get_info();
     SMem membuf(buf, sizeof(buf));
     for(size_t i=0; i<~lst; i++) {
       if(lib->obj_load(lst[i].name.s(), src, "lib2d::IImage")) {
+//        M.con().put(0, "...loaded at %d : '%s'\n", i, lst[i].name());
+        const lib2d::SImageInfo& si = src->get_info();
+        int key2 = si.size(1)==16 ? 0 
+                 : si.size(1)<=512 ? 1 
+                 : 2;
+        if(key2 != key)
+          continue; // skipped
+        if(key!=0) {
+          M.con().put(0, "...loaded at %d : '%s' size (%d, %d)\n", i, lst[i].name(), si.size(0), si.size(1));
+        }
         lib2d::SImageCellInfo ici(lib2d::if_Rect, 0, x, y, src->get_info().size(0), src->get_info().size(1));
-        if(ici.start(0)+ici.size(0)>src->get_info().size(0)) {
+        if(ici.start(0)+ici.size(0)>di.size(0)) {
           x = 0;
           y += row_dy;
           row_dy = 0;
+        }
+        if(y + ici.size(1) > di.size(1)) {
+          M.con().put(0, "...overflow at %d : '%s'\n", i, lst[i].name());
+          break; // overflow
         }
         if(row_dy<ici.size(1))
           row_dy = ici.size(1);
@@ -345,8 +373,12 @@ void RTest1_Shell::file_test7(void)
         x += ici.size(0);
         if(atlas->setup_variable_cell(&ici, 1, i)) {
           membuf.size = src->get_info().getbinsize();
+          if(membuf.size>sizeof(buf)) {
+            M.con().put(0, "...buf overflow at %d : '%s'\n", i, lst[i].name());
+            break; // overflow
+          }
           if(src->get_data(lib2d::SImagePatchInfo(src->get_info(), lib2d::DPoint(0,0)), membuf)) {
-            if(atlas->get_layer(0)->set_data(lib2d::SImagePatchInfo(src->get_info(), ici.start), membuf)) {
+            if(dst->set_data(lib2d::SImagePatchInfo(src->get_info(), ici.start), membuf)) {
               filled++;
             }
           }
@@ -354,9 +386,9 @@ void RTest1_Shell::file_test7(void)
       }
     }
     M.con().put(0, "loaded %d/%d images\n", loaded, ~lst);
+    bool rv = lib->obj_save(names[key], dst, "lib2d::IImage");
+    M.con().put(0, "saved %d\n", rv);
   }
-  bool rv = lib->obj_save("/atlas.png", atlas->get_layer(0), "lib2d::IImage");
-  M.con().put(0, "saved %d\n", rv);
 //  bool rv = lib->obj_load("/mc/textures/font/ascii.png", img, "lib2d::IImage");
 //  M.con().put(0, "loaded %d\n", rv);
   //

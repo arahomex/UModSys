@@ -25,21 +25,21 @@ DPoint RMultiImage::get_fixed_cell_size(void) const
 
 uint16 RMultiImage::get_layer_count(void) const
 {
-  if(factory.valid())
+  if(!factory.valid())
     return 0;
   return ~layers;
 }
 
 IImage* RMultiImage::get_layer(Buint16 idx) const
 {
-  if(factory.valid())
+  if(!factory.valid())
     return NULL;
   return idx<~layers ? layers(idx) : NULL;
 }
 
 uint32 RMultiImage::get_cell_count(void) const
 {
-  if(factory.valid())
+  if(!factory.valid())
     return 0;
   return ~cells;
 }
@@ -70,7 +70,7 @@ bool RMultiImage::get_cell(uint32 idx, SImageCellInfo& info) const
 
 bool RMultiImage::set_layer_count(uint16 num)
 {
-  if(factory.valid())
+  if(!factory.valid())
     return false;
   size_t old = ~layers;
   if(!layers.Resize(num))
@@ -78,7 +78,7 @@ bool RMultiImage::set_layer_count(uint16 num)
   for(size_t i=old; i<num; i++) {
     layers[i] = factory->image_new();
     if(layers[i]==NULL) {
-      layers.resize(old);
+      layers.Resize(old);
       return false;
     }
   }
@@ -87,7 +87,7 @@ bool RMultiImage::set_layer_count(uint16 num)
 
 bool RMultiImage::set_hint(BCStr hint, BCStr value)
 {
-  if(factory.valid())
+  if(!factory.valid())
     return false;
   return false; // !!FIX
 }
@@ -96,7 +96,7 @@ bool RMultiImage::set_hint(BCStr hint, BCStr value)
 
 bool RMultiImage::setup_fixed_cell(int nx, int ny)
 {
-  if(factory.valid())
+  if(!factory.valid())
     return false;
   is_fixed = true;
   fixed_size.set(nx, ny);
@@ -105,7 +105,7 @@ bool RMultiImage::setup_fixed_cell(int nx, int ny)
 
 bool RMultiImage::setup_variable_cell(const SImageCellInfo* xcells, Buint32 num, Buint32 base)
 {
-  if(factory.valid())
+  if(!factory.valid())
     return false;
   is_fixed = false;
   fixed_size.set(0, 0);
@@ -127,6 +127,7 @@ bool RMultiImage::setup_variable_cell(const SImageCellInfo* xcells, Buint32 num,
 RMultiImage::RMultiImage(DOwner *pv, const SParameters& args)
 : refs(pv)
 {
+  args.ref_get("factory", factory);
 }
 
 RMultiImage::~RMultiImage(void)
