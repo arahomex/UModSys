@@ -1,6 +1,6 @@
 /*
    AngelCode Scripting Library
-   Copyright (c) 2003-2012 Andreas Jonsson
+   Copyright (c) 2003-2013 Andreas Jonsson
 
    This software is provided 'as-is', without any express or implied 
    warranty. In no event will the authors be held liable for any 
@@ -102,6 +102,21 @@ struct asSExprContext
 		property_const  = false;
 		property_handle = false;
 		property_ref    = false;
+		methodName      = "";
+	}
+	bool IsClassMethod()
+	{
+		if( type.dataType.GetObjectType() == 0 ) return false;
+		if( methodName == "" ) return false;
+		if( type.dataType.GetObjectType() == &type.dataType.GetObjectType()->engine->functionBehaviours ) return false;
+		return true;
+	}
+	bool IsGlobalFunc()
+	{
+		if( type.dataType.GetObjectType() == 0 ) return false;
+		if( methodName == "" ) return false;
+		if( type.dataType.GetObjectType() != &type.dataType.GetObjectType()->engine->functionBehaviours ) return false;
+		return true;
 	}
 
 	asCByteCode bc;
@@ -115,6 +130,7 @@ struct asSExprContext
 	asCArray<asSDeferredParam> deferredParams;
 	asCScriptNode  *exprNode;
 	asSExprContext *origExpr;
+	asCString methodName;
 };
 
 struct asSOverloadCandidate
@@ -198,8 +214,9 @@ protected:
 	int  CompileOverloadedDualOperator2(asCScriptNode *node, const char *methodName, asSExprContext *l, asSExprContext *r, asSExprContext *out, bool specificReturn = false, const asCDataType &returnType = asCDataType::CreatePrimitive(ttVoid, false));
 
 	void CompileInitList(asCTypeInfo *var, asCScriptNode *node, asCByteCode *bc, int isVarGlobOrMem);
+	int  CompileInitListElement(asSListPatternNode *&patternNode, asCScriptNode *&valueNode, int bufferTypeId, short bufferVar, asUINT &bufferSize, asCByteCode &byteCode);
 
-	int  CallDefaultConstructor(asCDataType &type, int offset, bool isObjectOnHeap, asCByteCode *bc, asCScriptNode *node, int isVarGlobOrMem = 0, bool deferDest = false);
+	int  CallDefaultConstructor(asCDataType &type, int offset, bool isObjectOnHeap, asCByteCode *bc, asCScriptNode *node, int isVarGlobOrMem = 0, bool derefDest = false);
 	int  CallCopyConstructor(asCDataType &type, int offset, bool isObjectOnHeap, asCByteCode *bc, asSExprContext *arg, asCScriptNode *node, bool isGlobalVar = false, bool derefDestination = false);
 	void CallDestructor(asCDataType &type, int offset, bool isObjectOnHeap, asCByteCode *bc);
 	int  CompileArgumentList(asCScriptNode *node, asCArray<asSExprContext *> &args);
@@ -221,7 +238,7 @@ protected:
 	bool IsVariableInitialized(asCTypeInfo *type, asCScriptNode *node);
 	void Dereference(asSExprContext *ctx, bool generateCode);
 	bool CompileRefCast(asSExprContext *ctx, const asCDataType &to, bool isExplicit, asCScriptNode *node, bool generateCode = true);
-	asUINT MatchArgument(asCArray<int> &funcs, asCArray<asSOverloadCandidate> &matches, const asCTypeInfo *argType, int paramNum, bool allowObjectConstruct = true);
+	asUINT MatchArgument(asCArray<int> &funcs, asCArray<asSOverloadCandidate> &matches, const asSExprContext *argExpr, int paramNum, bool allowObjectConstruct = true);
 	void PerformFunctionCall(int funcId, asSExprContext *out, bool isConstructor = false, asCArray<asSExprContext*> *args = 0, asCObjectType *objTypeForConstruct = 0, bool useVariable = false, int varOffset = 0, int funcPtrVar = 0);
 	void MoveArgsToStack(int funcId, asCByteCode *bc, asCArray<asSExprContext *> &args, bool addOneToOffset);
 	void MakeFunctionCall(asSExprContext *ctx, int funcId, asCObjectType *objectType, asCArray<asSExprContext*> &args, asCScriptNode *node, bool useVariable = false, int stackOffset = 0, int funcPtrVar = 0);
@@ -244,6 +261,8 @@ protected:
 	void DestroyVariables(asCByteCode *bc);
 	asSNameSpace *DetermineNameSpace(const asCString &scope);
 	int  SetupParametersAndReturnVariable(asCArray<asCString> &parameterNames, asCScriptNode *func);
+
+	void DetermineSingleFunc(asSExprContext *ctx, asCScriptNode *node);
 
 	// Returns the cost of the conversion (the sum of the EConvCost performed)
 	asUINT ImplicitConversion(asSExprContext *ctx, const asCDataType &to, asCScriptNode *node, EImplicitConv convType, bool generateCode = true, bool allowObjectConstruct = true);

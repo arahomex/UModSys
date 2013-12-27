@@ -917,6 +917,8 @@ bool TestOptimize()
 	r = ExecuteString(engine, "int64 result = int64(0x8000000000000000)%5; \n assert( result == int64(0xFFFFFFFFFFFFFFFD) );");
 	if( r != asEXECUTION_FINISHED ) TEST_FAILED;
 
+	// TODO: optimize: Converting an integer variable to double shouldn't require an intermediate copy of the integer variable
+
 	// Validate the bytecode sequence for a for-loop and switch case
 	{
 		const char *script = 
@@ -944,8 +946,6 @@ bool TestOptimize()
 			TEST_FAILED;
 
 		asIScriptFunction *func = mod->GetFunctionByName("func");
-		asUINT len;
-		asDWORD *bc = func->GetByteCode(&len);
 		asBYTE expect[] = 
 			{	
 				asBC_SUSPEND,asBC_SetV4,asBC_JMP,asBC_SUSPEND,
@@ -958,18 +958,8 @@ bool TestOptimize()
 				asBC_SUSPEND,asBC_SUSPEND,asBC_IncVi,asBC_SUSPEND,asBC_CMPIi,asBC_JS,
 				asBC_SUSPEND,asBC_RET
 			};
-		for( asUINT n = 0, i = 0; n < len; )
-		{
-			asBYTE c = asBYTE(bc[n]);
-			if( c != expect[i] )
-			{
-				TEST_FAILED;
-				break;
-			}
-			n += asBCTypeSize[asBCInfo[c].type];
-			if( ++i > sizeof(expect) )
-				TEST_FAILED;
-		}
+		if( !ValidateByteCode(func, expect) )
+			TEST_FAILED;
 	}
 
 	// Validate bytecode sequence for a class constructor that sets a member
@@ -985,27 +975,15 @@ bool TestOptimize()
 
 		asIObjectType *type = mod->GetObjectTypeByName("C");
 		asEBehaviours beh;
-		asIScriptFunction *func = type->GetBehaviourByIndex(7, &beh);
+		asIScriptFunction *func = type->GetBehaviourByIndex(8, &beh);
 		if( beh != asBEHAVE_CONSTRUCT )
 			TEST_FAILED;
-		asUINT len;
-		asDWORD *bc = func->GetByteCode(&len);
 		asBYTE expect[] = 
 			{	
 				asBC_SUSPEND,asBC_SetV4,asBC_LoadThisR,asBC_WRTV4,asBC_SUSPEND,asBC_RET
 			};
-		for( asUINT n = 0, i = 0; n < len; )
-		{
-			asBYTE c = asBYTE(bc[n]);
-			if( c != expect[i] )
-			{
-				TEST_FAILED;
-				break;
-			}
-			n += asBCTypeSize[asBCInfo[c].type];
-			if( ++i > sizeof(expect) )
-				TEST_FAILED;
-		}
+		if( !ValidateByteCode(func, expect) )
+			TEST_FAILED;
 	}
 
 	// Validate bytecode sequence for a function returning a handle by reference
@@ -1023,25 +1001,13 @@ bool TestOptimize()
 			TEST_FAILED;
 
 		asIScriptFunction *func = mod->GetFunctionByName("func");
-		asUINT len;
-		asDWORD *bc = func->GetByteCode(&len);
 		asBYTE expect[] = 
 			{	
 				asBC_SUSPEND,asBC_CALL,asBC_PshRPtr,asBC_RDSPtr,asBC_RefCpyV,asBC_PopPtr,
 				asBC_SUSPEND,asBC_LOADOBJ,asBC_RET
 			};
-		for( asUINT n = 0, i = 0; n < len; )
-		{
-			asBYTE c = asBYTE(bc[n]);
-			if( c != expect[i] )
-			{
-				TEST_FAILED;
-				break;
-			}
-			n += asBCTypeSize[asBCInfo[c].type];
-			if( ++i > sizeof(expect) )
-				TEST_FAILED;
-		}
+		if( !ValidateByteCode(func, expect) )
+			TEST_FAILED;
 	}
 
 	// Validate bytecode sequence for a function returning a handle by value
@@ -1059,25 +1025,13 @@ bool TestOptimize()
 			TEST_FAILED;
 
 		asIScriptFunction *func = mod->GetFunctionByName("func");
-		asUINT len;
-		asDWORD *bc = func->GetByteCode(&len);
 		asBYTE expect[] = 
 			{	
 				asBC_SUSPEND,asBC_CALL,asBC_FREE,asBC_STOREOBJ,
 				asBC_SUSPEND,asBC_FREE,asBC_RET
 			};
-		for( asUINT n = 0, i = 0; n < len; )
-		{
-			asBYTE c = asBYTE(bc[n]);
-			if( c != expect[i] )
-			{
-				TEST_FAILED;
-				break;
-			}
-			n += asBCTypeSize[asBCInfo[c].type];
-			if( ++i > sizeof(expect) )
-				TEST_FAILED;
-		}
+		if( !ValidateByteCode(func, expect) )
+			TEST_FAILED;
 	}
 
 	// Validate bytecode sequence for a function returning a handle
@@ -1093,8 +1047,6 @@ bool TestOptimize()
 			TEST_FAILED;
 
 		asIScriptFunction *func = mod->GetFunctionByName("func");
-		asUINT len;
-		asDWORD *bc = func->GetByteCode(&len);
 		asBYTE expect[] = 
 			{	
 				asBC_SUSPEND,asBC_CALL,asBC_STOREOBJ,
@@ -1102,18 +1054,8 @@ bool TestOptimize()
 				asBC_SUSPEND,asBC_PshVPtr,asBC_RefCpyV,asBC_PopPtr,
 				asBC_SUSPEND,asBC_FREE,asBC_FREE,asBC_RET
 			};
-		for( asUINT n = 0, i = 0; n < len; )
-		{
-			asBYTE c = asBYTE(bc[n]);
-			if( c != expect[i] )
-			{
-				TEST_FAILED;
-				break;
-			}
-			n += asBCTypeSize[asBCInfo[c].type];
-			if( ++i > sizeof(expect) )
-				TEST_FAILED;
-		}
+		if( !ValidateByteCode(func, expect) )
+			TEST_FAILED;
 	}
 
 	// Validate byte sequence for multiply with constant
@@ -1129,25 +1071,13 @@ bool TestOptimize()
 			TEST_FAILED;
 
 		asIScriptFunction *func = mod->GetFunctionByName("func");
-		asUINT len;
-		asDWORD *bc = func->GetByteCode(&len);
 		asBYTE expect[] = 
 			{	
 				asBC_SUSPEND,asBC_SetV4,asBC_MULIi,
 				asBC_SUSPEND,asBC_RET
 			};
-		for( asUINT n = 0, i = 0; n < len; )
-		{
-			asBYTE c = asBYTE(bc[n]);
-			if( c != expect[i] )
-			{
-				TEST_FAILED;
-				break;
-			}
-			n += asBCTypeSize[asBCInfo[c].type];
-			if( ++i > sizeof(expect) )
-				TEST_FAILED;
-		}
+		if( !ValidateByteCode(func, expect) )
+			TEST_FAILED;
 	}
 
 	engine->Release();

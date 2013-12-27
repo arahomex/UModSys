@@ -3,7 +3,7 @@
 #
 
 TOP = ..
-include $(TOP)/config.mak
+include $(TOP)/Makefile
 VPATH = $(top_srcdir)/lib $(top_srcdir)/win32/lib
 
 ifndef TARGET
@@ -24,10 +24,15 @@ ifndef TARGET
   ifneq ($(TARGETOS),Darwin)
    XCC = $(CC)
   endif
+ else
+ ifeq ($(ARCH),arm)
+  TARGET = arm
  endif
  endif
  endif
  endif
+ endif
+ BCHECK_O = bcheck.o
 endif
 
 DIR = $(TARGET)
@@ -38,10 +43,9 @@ cross : $(DIR)/libtcc1.a
 native : TCC = $(TOP)/tcc$(EXESUF)
 cross : TCC = $(TOP)/$(TARGET)-tcc$(EXESUF)
 
-BCHECK_O = bcheck.o
-
 I386_O = libtcc1.o alloca86.o alloca86-bt.o $(BCHECK_O)
 X86_64_O = libtcc1.o alloca86_64.o
+ARM_O = libtcc1.o armeabi.o
 WIN32_O = $(I386_O) crt1.o wincrt1.o dllcrt1.o dllmain.o chkstk.o
 WIN64_O = $(X86_64_O) crt1.o wincrt1.o dllcrt1.o dllmain.o chkstk.o
 
@@ -67,7 +71,13 @@ ifeq "$(TARGET)" "x86_64"
  TGT = -DTCC_TARGET_X86_64
  XCC ?= $(TCC) -B$(TOP)
 else
+ifeq "$(TARGET)" "arm"
+ OBJ = $(addprefix $(DIR)/,$(ARM_O))
+ TGT = -DTCC_TARGET_ARM
+ XCC ?= $(TCC) -B$(TOP)
+else
  $(error libtcc1.a not supported on target '$(TARGET)')
+endif
 endif
 endif
 endif
@@ -92,7 +102,7 @@ $(DIR)/%.o : %.c
 $(DIR)/%.o : %.S
 	$(XCC) -c $< -o $@ $(XFLAGS)
 $(DIR)/%$(EXESUF) : $(TOP)/win32/tools/%.c
-	$(CC) -Os -s -w -o $@ $< $(XFLAGS) $(LDFLAGS)
+	$(CC) -o $@ $< $(XFLAGS) $(LDFLAGS)
 
 $(OBJ) $(XAR) : $(DIR)/exists
 $(DIR)/exists :
@@ -101,3 +111,6 @@ $(DIR)/exists :
 
 clean :
 	rm -rfv i386-win32 x86_64-win32 i386 x86_64
+
+Makefile: $(top_srcdir)/lib/Makefile
+	cp $< $@

@@ -92,6 +92,34 @@ bool Test()
 	asIScriptModule *mod;
 	asIScriptEngine *engine;
 
+	// Test memory leak with shared classes and virtual properties
+	// http://www.gamedev.net/topic/644919-memory-leak-in-virtual-properties/
+	{
+		asIScriptEngine *engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+ 
+		const char *script1 = "shared class Test { \n"
+			" int mProp { \n"
+			"   get { \n"
+			"     return 0; \n"
+			"   } \n"
+			" } \n"
+			"} \n";
+
+		asIScriptModule *mod = engine->GetModule(0, asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test", script1);
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		asIScriptModule *mod2 = engine->GetModule("2", asGM_ALWAYS_CREATE);
+		mod2->AddScriptSection("test2", script1);
+		r = mod2->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		engine->Release();
+	}
+
 	// http://www.gamedev.net/topic/639046-assert-in-as-compilercpp-temp-variables/
 	{
 		bout.buffer = "";
@@ -453,7 +481,7 @@ bool Test()
 		TEST_FAILED;
 		printf("Failed to compile the script\n");
 	}
-	if( bout.buffer != "script (4, 3) : Error   : A function with the same name and parameters already exist\n"
+	if( bout.buffer != "script (4, 3) : Error   : A function with the same name and parameters already exists\n"
 			           "script (8, 1) : Info    : Compiling void main()\n"
 	                   "script (11, 4) : Error   : Found multiple get accessors for property 'p'\n"
 	                   "script (11, 4) : Info    : uint Test::get_p()\n"

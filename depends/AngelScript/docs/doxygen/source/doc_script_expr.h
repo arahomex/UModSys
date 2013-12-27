@@ -61,6 +61,25 @@ Functions are called to perform an action, and possibly return a value that can 
 If a function takes more than one argument, the argument expressions are evaluated in the reverse order, i.e.
 the last argument is evaluated first.
 
+Some functions are declared with output reference parameters to return multiple values. When calling such
+functions the output parameter must be given as an expression that can be assigned with the returned value. If 
+the additional output value won't be used use the special argument 'void' to tell the compiler that.
+
+<pre>
+  // This function returns a value in the output parameter
+  void func(int &out outputValue)
+  {
+    outputValue = 42;
+  }
+  
+  // Call the function with a valid lvalue expression to receive the output value
+  int value;
+  func(value);
+  
+  // Call the function with 'void' argument to ignore the output value
+  func(void);
+</pre>
+
 
 
 
@@ -212,6 +231,9 @@ values to determine their relationship. The result is always a boolean value.
 
 
 
+
+
+
 \section identity Identity comparison operators
 
 <pre>
@@ -250,6 +272,9 @@ is used in the expression. The value is always incremented or decremented with 1
 
 
 
+
+
+
 \section opindex Indexing operator
 
 <pre>
@@ -258,6 +283,9 @@ is used in the expression. The value is always incremented or decremented with 1
 
 This operator is used to access an element contained within the object. Depending on the
 object type, the expression between the <code>[]</code> needs to be of different types.
+
+
+
 
 
 
@@ -271,6 +299,13 @@ object type, the expression between the <code>[]</code> needs to be of different
 If the value of <code>choose</code> is <code>true</code> then the expression returns <code>a</code>
 otherwise it will return <code>b</code>. Both <code>a</code> and <code>b</code> must be of the same 
 type.
+
+If they are not of the same type the compiler will attempt an implicit conversion using the following
+rules. If the <code>a</code> expression is 0 or null, then the compiler will attempt to convert it 
+to the type of <code>b</code>, otherwise it will attempt to convert <code>b</code> to the type of 
+<code>a</code>. 
+
+If the conversion doesn't work, then the compiler will give an error.
 
 
 
@@ -287,6 +322,9 @@ type.
 <code>object</code> must be an expression resulting in a data type that have members. <code>property</code> 
 is the name of a member variable that can be read/set directly. <code>method</code> is the name of a member
 method that can be called on the object.
+
+
+
 
 
 
@@ -336,7 +374,7 @@ not give the desired order of evaluation.
   void function()
   {
     int value;       // local variable overloads the global variable
-    ::&empty;value = value; // use scope resolution operator to refer to the global variable 
+    \::value = value; // use scope resolution operator to refer to the global variable 
   } 
 </pre>
 

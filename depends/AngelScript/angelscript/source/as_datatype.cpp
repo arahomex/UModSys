@@ -179,7 +179,7 @@ asCString asCDataType::Format(bool includeNamespace) const
 	else if( objectType )
 	{
 		str += objectType->name;
-		if( objectType->flags & asOBJ_TEMPLATE )
+		if( objectType->templateSubTypes.GetLength() > 0 )
 		{
 			str += "<";
 			for( asUINT subtypeIndex = 0; subtypeIndex < objectType->templateSubTypes.GetLength(); subtypeIndex++ )
@@ -456,21 +456,6 @@ bool asCDataType::IsPrimitive() const
 	return true;
 }
 
-bool asCDataType::IsSamePrimitiveBaseType(const asCDataType &dt) const
-{
-	if( !IsPrimitive() || !dt.IsPrimitive() ) return false;
-	
-	if( IsIntegerType()  && dt.IsIntegerType()  ) return true;
-	if( IsUnsignedType() && dt.IsUnsignedType() ) return true;
-	if( IsFloatType()    && dt.IsFloatType()    ) return true;
-	if( IsDoubleType()   && dt.IsDoubleType()   ) return true;
-	if( IsBooleanType()  && dt.IsBooleanType()  ) return true;
-	if( IsFloatType()    && dt.IsDoubleType()   ) return true;
-	if( IsDoubleType()   && dt.IsFloatType()    ) return true;
-
-	return false;
-}
-
 bool asCDataType::IsIntegerType() const
 {
 	if( tokenType == ttInt ||
@@ -479,7 +464,8 @@ bool asCDataType::IsIntegerType() const
 		tokenType == ttInt64 )
 		return true;
 
-	return false;
+	// Enums are also integer types
+	return IsEnumType();
 }
 
 bool asCDataType::IsUnsignedType() const
@@ -565,6 +551,10 @@ int asCDataType::GetSizeInMemoryDWords() const
 	if( s == 0 ) return 0;
 	if( s <= 4 ) return 1;
 	
+	// Pad the size to 4 bytes
+	if( s & 0x3 )
+		s += 4 - (s & 0x3);
+
 	return s/4;
 }
 

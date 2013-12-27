@@ -56,16 +56,16 @@
 #else
  #define BEGIN_AS_NAMESPACE
  #define END_AS_NAMESPACE
- #define AS_NAMESPACE_QUALIFIER
+ #define AS_NAMESPACE_QUALIFIER ::
 #endif
 
 BEGIN_AS_NAMESPACE
 
 // AngelScript version
 
-//! Version 2.26.1
-#define ANGELSCRIPT_VERSION        22601
-#define ANGELSCRIPT_VERSION_STRING "2.26.1"
+//! Version 2.27.8
+#define ANGELSCRIPT_VERSION        22800
+#define ANGELSCRIPT_VERSION_STRING "2.28.0"
 
 // Data types
 
@@ -79,6 +79,7 @@ class asIScriptFunction;
 class asIBinaryStream;
 class asIJITCompiler;
 class asIThreadManager;
+class asILockableSharedBool;
 
 // Enumerations and constants
 
@@ -87,41 +88,45 @@ class asIThreadManager;
 enum asEEngineProp
 {
 	//! Allow unsafe references. Default: false.
-	asEP_ALLOW_UNSAFE_REFERENCES       = 1,
+	asEP_ALLOW_UNSAFE_REFERENCES            = 1,
 	//! Optimize byte code. Default: true.
-	asEP_OPTIMIZE_BYTECODE             = 2,
+	asEP_OPTIMIZE_BYTECODE                  = 2,
 	//! Copy script section memory. Default: true.
-	asEP_COPY_SCRIPT_SECTIONS          = 3,
-	//! Maximum stack size for script contexts. Default: 0 (no limit).
-	asEP_MAX_STACK_SIZE                = 4,
+	asEP_COPY_SCRIPT_SECTIONS               = 3,
+	//! Maximum stack size in bytes for script contexts. Default: 0 (no limit).
+	asEP_MAX_STACK_SIZE                     = 4,
 	//! Interpret single quoted strings as character literals. Default: false.
-	asEP_USE_CHARACTER_LITERALS        = 5,
+	asEP_USE_CHARACTER_LITERALS             = 5,
 	//! Allow linebreaks in string constants. Default: false.
-	asEP_ALLOW_MULTILINE_STRINGS       = 6,
+	asEP_ALLOW_MULTILINE_STRINGS            = 6,
 	//! Allow script to declare implicit handle types. Default: false.
-	asEP_ALLOW_IMPLICIT_HANDLE_TYPES   = 7,
+	asEP_ALLOW_IMPLICIT_HANDLE_TYPES        = 7,
 	//! Remove SUSPEND instructions between each statement. Default: false.
-	asEP_BUILD_WITHOUT_LINE_CUES       = 8,
+	asEP_BUILD_WITHOUT_LINE_CUES            = 8,
 	//! Initialize global variables after a build. Default: true.
-	asEP_INIT_GLOBAL_VARS_AFTER_BUILD  = 9,
+	asEP_INIT_GLOBAL_VARS_AFTER_BUILD       = 9,
 	//! When set the enum values must be prefixed with the enum type. Default: false.
-	asEP_REQUIRE_ENUM_SCOPE            = 10,
+	asEP_REQUIRE_ENUM_SCOPE                 = 10,
 	//! Select scanning method: 0 - ASCII, 1 - UTF8. Default: 1 (UTF8).
-	asEP_SCRIPT_SCANNER                = 11,
+	asEP_SCRIPT_SCANNER                     = 11,
 	//! When set extra bytecode instructions needed for JIT compiled funcions will be included. Default: false.
-	asEP_INCLUDE_JIT_INSTRUCTIONS      = 12,
+	asEP_INCLUDE_JIT_INSTRUCTIONS           = 12,
 	//! Select string encoding for literals: 0 - UTF8/ASCII, 1 - UTF16. Default: 0 (UTF8)
-	asEP_STRING_ENCODING               = 13,
+	asEP_STRING_ENCODING                    = 13,
 	//! Enable or disable property accessors: 0 - no accessors, 1 - app registered accessors, 2 - app and script created accessors
-	asEP_PROPERTY_ACCESSOR_MODE        = 14,
+	asEP_PROPERTY_ACCESSOR_MODE             = 14,
 	//! Format default array in template form in messages and declarations. Default: false
-	asEP_EXPAND_DEF_ARRAY_TO_TMPL      = 15,
+	asEP_EXPAND_DEF_ARRAY_TO_TMPL           = 15,
 	//! Enable or disable automatic garbage collection. Default: true
-	asEP_AUTO_GARBAGE_COLLECT          = 16,
+	asEP_AUTO_GARBAGE_COLLECT               = 16,
 	//! Disallow the use of global variables in the script. Default: false
-	asEP_DISALLOW_GLOBAL_VARS          = 17,
+	asEP_DISALLOW_GLOBAL_VARS               = 17,
 	//! When true, the compiler will always provide a default constructor for script classes. Default: false
-	asEP_ALWAYS_IMPL_DEFAULT_CONSTRUCT = 18
+	asEP_ALWAYS_IMPL_DEFAULT_CONSTRUCT      = 18,
+	//! Set how warnings should be treated: 0 - dismiss, 1 - emit, 2 - treat as error
+	asEP_COMPILER_WARNINGS                  = 19,
+	//! Disallow value assignment for reference types to avoid ambiguity. Default: false
+	asEP_DISALLOW_VALUE_ASSIGN_FOR_REF_TYPE = 20
 };
 
 // Calling conventions
@@ -234,6 +239,8 @@ enum asEBehaviours
 	// Value object memory management
 	//! \brief Constructor
 	asBEHAVE_CONSTRUCT,
+	//! \brief Constructor used exclusively for initialization lists
+	asBEHAVE_LIST_CONSTRUCT,
 	//! \brief Destructor
 	asBEHAVE_DESTRUCT,
 
@@ -246,6 +253,8 @@ enum asEBehaviours
 	asBEHAVE_ADDREF,
 	//! \brief Release
 	asBEHAVE_RELEASE,
+	//! \brief Obtain weak ref flag
+	asBEHAVE_GET_WEAKREF_FLAG,
 
 	// Object operators
 	//! \brief Explicit value cast operator
@@ -407,12 +416,6 @@ enum asETokenClass
 	asTC_WHITESPACE = 5
 };
 
-#ifdef AS_DEPRECATED
-// Deprecated since 2.24.0 - 2012-05-25
-// Prepare flags
-const int asPREPARE_PREVIOUS = -1;
-#endif
-
 // Type id flags
 //! \brief Type id flags
 enum asETypeIdFlags
@@ -468,7 +471,9 @@ enum asETypeModifiers
 	//! Output reference
 	asTM_OUTREF   = 2,
 	//! In/out reference
-	asTM_INOUTREF = 3
+	asTM_INOUTREF = 3,
+	//! Read only
+	asTM_CONST    = 4
 };
 
 // GetModule flags
@@ -507,7 +512,9 @@ enum asEFuncType
 	//! \brief A function definition
 	asFUNC_FUNCDEF   = 4,
 	//! \brief An imported function
-	asFUNC_IMPORTED  = 5
+	asFUNC_IMPORTED  = 5,
+	//! \brief A function delegate
+	asFUNC_DELEGATE  = 6
 };
 
 
@@ -856,12 +863,22 @@ extern "C"
 	//! If not called, AngelScript will use the malloc and free functions from the
 	//! standard C library.
 	AS_API int asSetGlobalMemoryFunctions(asALLOCFUNC_t allocFunc, asFREEFUNC_t freeFunc);
-
 	//! \brief Remove previously registered memory management functions.
 	//! \return A negative value on error.
 	//!
 	//! Call this method to restore the default memory management functions.
 	AS_API int asResetGlobalMemoryFunctions();
+
+	// Auxiliary
+	//! \brief Create a lockable shared boolean
+	//! \return A new lockable shared boolean.
+	//!
+	//! The lockable shared boolean will be created with
+	//! an initial reference count of 1, and the boolean
+	//! value false.
+	//!
+	//! The object can be used for weak reference flags.
+	AS_API asILockableSharedBool *asCreateLockableSharedBool();
 }
 #endif // ANGELSCRIPT_DLL_MANUAL_IMPORT
 
@@ -983,7 +1000,7 @@ public:
 	//! \param[in] declaration The declaration of the global function in script syntax.
 	//! \param[in] funcPointer The function pointer.
 	//! \param[in] callConv The calling convention for the function.
-	//! \param[in] objForThiscall An object pointer for use with asCALL_THISCALL_ASGLOBAL.
+	//! \param[in] objForThiscall An object pointer for use with \ref asCALL_THISCALL_ASGLOBAL.
 	//! \return A negative value on error, or the function id if successful.
 	//! \retval asNOT_SUPPORTED The calling convention is not supported.
 	//! \retval asWRONG_CALLING_CONV The function's calling convention doesn't match \a callConv.
@@ -998,11 +1015,6 @@ public:
 	//! \brief Returns the number of registered functions.
 	//! \return The number of registered functions.
 	virtual asUINT             GetGlobalFunctionCount() const = 0;
-#ifdef AS_DEPRECATED
-	// Deprecated since 2.24.0 - 2012-05-20
-	//! \deprecated Use \ref asIScriptEngine::GetGlobalFunctionByIndex instead
-	virtual int                GetGlobalFunctionIdByIndex(asUINT index) const = 0;
-#endif
 	//! \brief Returns the registered function.
 	//! \param[in] index The index of the registered global function.
 	//! \return The function object, or null on error.
@@ -1133,6 +1145,7 @@ public:
 	//! \param[in] declaration The declaration of the method in script syntax.
 	//! \param[in] funcPointer The method or function pointer.
 	//! \param[in] callConv The calling convention for the method or function.
+	//! \param[in] objForThiscall The object pointer used for \ref asCALL_THISCALL_ASGLOBAL.
 	//! \return A negative value on error, or the function id is successful.
 	//! \retval asWRONG_CONFIG_GROUP The object type was registered in a different configuration group.
 	//! \retval asINVALID_ARG \a obj is not set, or a global behaviour is given in \a behaviour.
@@ -1146,9 +1159,13 @@ public:
 	//! Use this method to register behaviour functions that will be called by
 	//! the virtual machine to perform certain operations, such as memory management,
 	//! math operations, comparisons, etc.
+	//! 
+	//! The \a declaration must form a valid function signature, but the give function name will
+	//! not be used or stored in the application so there is no need to provide a meaningful function 
+	//! name.
 	//!
 	//! \see \ref doc_register_func, \ref doc_reg_opbeh
-	virtual int            RegisterObjectBehaviour(const char *obj, asEBehaviours behaviour, const char *declaration, const asSFuncPtr &funcPointer, asDWORD callConv) = 0;
+	virtual int            RegisterObjectBehaviour(const char *obj, asEBehaviours behaviour, const char *declaration, const asSFuncPtr &funcPointer, asDWORD callConv, void *objForThiscall = 0) = 0;
 	//! \brief Registers an interface.
 	//! \param[in] name The name of the interface.
 	//! \return A negative value on error.
@@ -1193,6 +1210,7 @@ public:
 	//! \param[in] datatype The datatype that the string factory returns
 	//! \param[in] factoryFunc The pointer to the factory function
 	//! \param[in] callConv The calling convention of the factory function
+	//! \param[in] objForThiscall The object pointer used for \ref asCALL_THISCALL_ASGLOBAL.
 	//! \return A negative value on error, or the function id if successful.
 	//! \retval asNOT_SUPPORTED The calling convention is not supported.
 	//! \retval asWRONG_CALLING_CONV The function's calling convention doesn't match \a callConv.
@@ -1216,7 +1234,7 @@ public:
 	//! \endcode
 	//!
 	//! The example assumes that the std::string type has been registered as the string type, with \ref RegisterObjectType.
-	virtual int RegisterStringFactory(const char *datatype, const asSFuncPtr &factoryFunc, asDWORD callConv) = 0;
+	virtual int RegisterStringFactory(const char *datatype, const asSFuncPtr &factoryFunc, asDWORD callConv, void *objForThiscall = 0) = 0;
 	//! \brief Returns the type id of the type that the string factory returns.
 	//! \return The type id of the type that the string type returns, or a negative value on error.
 	//! \retval asNO_FUNCTION The string factory has not been registered.
@@ -1429,6 +1447,13 @@ public:
 	//! Discards a module and frees its memory. Any pointers that the application holds 
 	//! to this module will be invalid after this call.
 	virtual int              DiscardModule(const char *module) = 0;
+	//! \brief Get the number of modules.
+	//! \return The number of modules.
+	virtual asUINT           GetModuleCount() const = 0;
+	//! \brief Get a module by index.
+	//! \param[in] index The index of the module.
+	//! \return A pointer to the module or null on error.
+	virtual asIScriptModule *GetModuleByIndex(asUINT index) const = 0;
 	//! \}
 
 	// Script functions
@@ -1441,6 +1466,12 @@ public:
 	//!
 	//! This does not increment the reference count of the returned function interface.
 	virtual asIScriptFunction *GetFunctionById(int funcId) const = 0;
+	//! \brief Returns the function description for the funcdef.
+	//! \param[in] typeId The type id for the funcdef.
+	//! \return A pointer to the function description interface, or null if not found.
+	//!
+	//! This does not increment the reference count of the returned function interface.
+    virtual asIScriptFunction *GetFuncDefFromTypeId(int typeId) const = 0;
 	//! \}
 
 	// Type identification
@@ -1496,9 +1527,24 @@ public:
 	//!
 	//! This method creates a context that will be used to execute the script functions. 
 	//! The context interface created will have its reference counter already increased.
-	virtual asIScriptContext *CreateContext() = 0;
+	virtual asIScriptContext      *CreateContext() = 0;
+#ifdef AS_DEPRECATED
+	// Deprecated since 2.27.0, 2013-07-18
+	//! \deprecated Since 2.27.0. Use \ref asIScriptEngine::CreateScriptObject(const asIObjectType *) instead
+	virtual void                  *CreateScriptObject(int typeId) = 0;
+	//! \deprecated Since 2.27.0. Use \ref asIScriptEngine::CreateScriptObjectCopy(void *, const asIObjectType *) instead
+	virtual void                  *CreateScriptObjectCopy(void *obj, int typeId) = 0;
+	//! \deprecated Since 2.27.0. Use \ref asIScriptEngine::CreateUninitializedScriptObject(const asIObjectType *) instead
+	virtual void                  *CreateUninitializedScriptObject(int typeId) = 0;
+	//! \deprecated Since 2.27.0. Use \ref asIScriptEngine::AssignScriptObject(void *, void *, const asIObjectType *) instead
+	virtual void                   AssignScriptObject(void *dstObj, void *srcObj, int typeId) = 0;
+	//! \deprecated Since 2.27.0. Use \ref asIScriptEngine::ReleaseScriptObject(void *, const asIObjectType *) instead
+	virtual void                   ReleaseScriptObject(void *obj, int typeId) = 0;
+	//! \deprecated Since 2.27.0. Use \ref asIScriptEngine::AddRefScriptObject(void *, const asIObjectType *) instead
+	virtual void                   AddRefScriptObject(void *obj, int typeId) = 0;
+#endif
 	//! \brief Creates a script object defined by its type id.
-	//! \param[in] typeId The type id of the object to create.
+	//! \param[in] type The type of the object to create.
 	//! \return A pointer to the new object if successful, or null if not.
 	//!
 	//! This method is used to create a script object based on it's type id. The method will 
@@ -1510,19 +1556,19 @@ public:
 	//!
 	//! This only works for objects, for primitive types and object handles the method 
 	//! doesn't do anything and returns a null pointer.
-	virtual void             *CreateScriptObject(int typeId) = 0;
+	virtual void                  *CreateScriptObject(const asIObjectType *type) = 0;
 	//! \brief Creates a copy of a script object.
 	//! \param[in] obj A pointer to the source object.
-	//! \param[in] typeId The type id of the object.
+	//! \param[in] type The type of the object.
 	//! \return A pointer to the new object if successful, or null if not.
 	//!
 	//! This method is used to create a copy of an existing object.
 	//!
 	//! This only works for objects, for primitive types and object handles the method 
 	//! doesn't do anything and returns a null pointer.
-	virtual void             *CreateScriptObjectCopy(void *obj, int typeId) = 0;
+	virtual void                  *CreateScriptObjectCopy(void *obj, const asIObjectType *type) = 0;
 	//! \brief Creates an uninitialized script object defined by its type id.
-	//! \param[in] typeId The type id of the object to create.
+	//! \param[in] type The type of the object to create.
 	//! \return A pointer to the new object if successful, or null if not.
 	//!
 	//! This method can only be used to create instances of script classes. 
@@ -1536,53 +1582,33 @@ public:
 	//!
 	//! This method is meant for objects that will be initialized manually 
 	//! by the application, e.g. when restoring a serialized object.
-	virtual void             *CreateUninitializedScriptObject(int typeId) = 0;
-#ifdef AS_DEPRECATED
-	// Deprecated since 2.24.0 - 2012-06-07
-	//! \deprecated Use \ref asIScriptEngine::AssignScriptObject instead
-	virtual void              CopyScriptObject(void *dstObj, void *srcObj, int typeId) = 0;
-#endif
+	virtual void                  *CreateUninitializedScriptObject(const asIObjectType *type) = 0;
+	//! \brief Create a delegate for an object and method
+	//! \param[in] func The object method
+	//! \param[in] obj The object pointer
+	//! \return The new delegate instance
+	virtual asIScriptFunction     *CreateDelegate(asIScriptFunction *func, void *obj) = 0;
 	//! \brief Copy one script object to another.
 	//! \param[in] dstObj A pointer to the destination object.
 	//! \param[in] srcObj A pointer to the source object.
-	//! \param[in] typeId The type id of the objects.
+	//! \param[in] type The type of the objects.
 	//!
 	//! This calls the assignment operator to copy the object from one to the other.
 	//!
 	//! This only works for objects.
-	virtual void              AssignScriptObject(void *dstObj, void *srcObj, int typeId) = 0;
-	//! \brief Release the script object pointer.
-	//! \param[in] obj A pointer to the object.
-	//! \param[in] typeId The type id of the object.
-	//!
-	//! This calls the release method of the object to release the reference.
-	//!
-	//! This only works for objects.
-	//!
-	//! This version is slightly slower than the \ref ReleaseScriptObject(void*, const asIObjectType *) variant.
-	virtual void              ReleaseScriptObject(void *obj, int typeId) = 0;
+	virtual void                   AssignScriptObject(void *dstObj, void *srcObj, const asIObjectType *type) = 0;
 	//! \brief Release the script object pointer.
 	//! \param[in] obj A pointer to the object.
 	//! \param[in] type The type of the object.
 	//!
 	//! This calls the release method of the object to release the reference.
-	virtual void              ReleaseScriptObject(void *obj, const asIObjectType *type) = 0;
-	//! \brief Increase the reference counter for the script object.
-	//! \param[in] obj A pointer to the object.
-	//! \param[in] typeId The type id of the object.
-	//!
-	//! This calls the add ref method of the object to increase the reference count.
-	//!
-	//! This only works for objects.
-	//!
-	//! This version is slightly slower than the \ref AddRefScriptObject(void*, const asIObjectType *) variant.
-	virtual void              AddRefScriptObject(void *obj, int typeId) = 0;
+	virtual void                   ReleaseScriptObject(void *obj, const asIObjectType *type) = 0;
 	//! \brief Increase the reference counter for the script object.
 	//! \param[in] obj A pointer to the object.
 	//! \param[in] type The type of the object.
 	//!
 	//! This calls the add ref method of the object to increase the reference count.
-	virtual void              AddRefScriptObject(void *obj, const asIObjectType *type) = 0;
+	virtual void                   AddRefScriptObject(void *obj, const asIObjectType *type) = 0;
 	//! \brief Returns true if the object referenced by a handle compatible with the specified type.
 	//! \param[in] obj A pointer to the object.
 	//! \param[in] objTypeId The type id of the object.
@@ -1593,7 +1619,14 @@ public:
 	//! compatible with an object of another type. This is useful if you have a pointer 
 	//! to a object, but only knows that it implements a certain interface and now you 
 	//! want to determine if it implements another interface.
-	virtual bool              IsHandleCompatibleWithObject(void *obj, int objTypeId, int handleTypeId) const = 0;
+	virtual bool                   IsHandleCompatibleWithObject(void *obj, int objTypeId, int handleTypeId) const = 0;
+	//! \brief Returns the weak ref flag from the object.
+	//! \param[in] obj The object
+	//! \param[in] type The object type
+	//! \return The weak ref flag, if the object supports weak references.
+	//!
+	//! The method doesn't increase the reference to the returned shared boolean.
+	virtual asILockableSharedBool *GetWeakRefFlagOfScriptObject(void *obj, const asIObjectType *type) const = 0;
 	//! \}
 
 	// String interpretation
@@ -1649,13 +1682,23 @@ public:
 	//! \brief Notify the garbage collector of a new object that needs to be managed.
 	//! \param[in] obj A pointer to the newly created object.
 	//! \param[in] type The type of the object.
+	//! \return The sequence number of the added object, or a negative value on error.
+	//! \retval asINVALID_ARG Either the object or the type is null
 	//!
 	//! This method should be called when a new garbage collected object is created. 
 	//! The GC will then store a reference to the object so that it can automatically 
 	//! detect whether the object is involved in any circular references that should be released.
 	//!
 	//! \see \ref doc_gc_object
-	virtual void NotifyGarbageCollectorOfNewObject(void *obj, asIObjectType *type) = 0;
+	virtual int  NotifyGarbageCollectorOfNewObject(void *obj, asIObjectType *type) = 0;
+	//! \brief Gets an object in the garbage collector
+	//! \param[in] idx The index of the desired object
+	//! \param[out] seqNbr The sequence number of the obtained object
+	//! \param[out] obj The object pointer
+	//! \param[out] type The type of the obtained object
+	//! \return A negative value on error
+	//! \retval asINVALID_ARG The index is not valid
+	virtual int  GetObjectInGC(asUINT idx, asUINT *seqNbr = 0, void **obj = 0, asIObjectType **type = 0) = 0;
 	//! \brief Used by the garbage collector to enumerate all references held by an object.
 	//! \param[in] reference A pointer to the referenced object.
 	//!
@@ -1778,6 +1821,13 @@ public:
 	//! \brief Gets the name of the module.
 	//! \return The name of the module.
 	virtual const char      *GetName() const = 0;
+	//! \brief Discards the module.
+	//!
+	//! This method is used to discard the module and any
+	//! compiled bytecode it has. After calling this method
+	//! the module pointer is no longer valid and shouldn't
+	//! be used by the application.
+	virtual void             Discard() = 0;
 	//! \}
 
 	// Compilation
@@ -1895,15 +1945,6 @@ public:
 	//!
 	//! This method retrieves the number of compiled script functions.
 	virtual asUINT             GetFunctionCount() const = 0;
-#ifdef AS_DEPRECATED
-	// Deprecated since 2.24.0 - 2012-05-20
-	//! \deprecated Use \ref asIScriptModule::GetFunctionByIndex instead
-	virtual int                GetFunctionIdByIndex(asUINT index) const = 0;
-	//! \deprecated Use \ref asIScriptModule::GetFunctionByName instead
-	virtual int                GetFunctionIdByName(const char *name) const = 0;
-	//! \deprecated Use \ref asIScriptModule::GetFunctionByDecl instead
-	virtual int                GetFunctionIdByDecl(const char *decl) const = 0;
-#endif
 	//! \brief Returns the function by index
 	//! \param[in] index The index of the function
 	//! \return The function or null in case of error.
@@ -1916,11 +1957,6 @@ public:
 	//! \param[in] name The function name
 	//! \return The function or null if not found or there are multiple matches.
 	virtual asIScriptFunction *GetFunctionByName(const char *name) const = 0;
-#ifdef AS_DEPRECATED
-	// Deprecated since 2.24.0 - 2012-05-20
-	//! \deprecated Use \ref asIScriptModule::RemoveFunction(asIScriptFunction*) instead
-	virtual int                RemoveFunction(int funcId) = 0;
-#endif
 	//! \brief Remove a single function from the scope of the module
 	//! \param[in] func The pointer to the function that should be removed.
 	//! \return A negative value on error.
@@ -2270,11 +2306,6 @@ public:
 	//!
 	//! \see \ref doc_call_script_func
 	virtual int             Prepare(asIScriptFunction *func) = 0;
-#ifdef AS_DEPRECATED
-	// Deprecated since 2.24.0 - 2012-05-25
-	//! \deprecated Use \ref asIScriptContext::Prepare(asIScriptFunction *) instead
-	virtual int             Prepare(int funcId) = 0;
-#endif
 	//! \brief Frees resources held by the context.
 	//! \return A negative value on error.
 	//! \retval asCONTEXT_ACTIVE The context is still active or suspended.
@@ -2519,6 +2550,9 @@ public:
 	//!
 	//! This method returns the line number where the exception ocurred. The line number 
 	//! is relative to the script section where the function was implemented.
+	//! 
+	//! Observe that the returned sectionName can be null, e.g. if the function in which
+	//! the exception occurred was a generated stub function.
 	virtual int                GetExceptionLineNumber(int *column = 0, const char **sectionName = 0) = 0;
 	//! \brief Returns the function where the exception occurred.
 	//! \return The function where the exception occurred.
@@ -2632,8 +2666,9 @@ public:
 	//! \brief Returns the declaration of a local variable at the specified callstack level.
 	//! \param[in] varIndex The index of the variable.
 	//! \param[in] stackLevel The index on the call stack.
+	//! \param[in] includeNamespace Set to true if the namespace should be included in the declaration.
 	//! \return A null terminated string with the declaration of the variable.
-	virtual const char        *GetVarDeclaration(asUINT varIndex, asUINT stackLevel = 0) = 0;
+	virtual const char        *GetVarDeclaration(asUINT varIndex, asUINT stackLevel = 0, bool includeNamespace = false) = 0;
 	//! \brief Returns the type id of a local variable at the specified callstack level.
 	//! \param[in] varIndex The index of the variable.
 	//! \param[in] stackLevel The index on the call stack.
@@ -2707,13 +2742,6 @@ public:
 	//! \brief Returns a pointer to the script engine.
 	//! \return A pointer to the engine.
 	virtual asIScriptEngine   *GetEngine() const = 0;
-#ifdef AS_DEPRECATED
-	// Deprecated since 2.24.0 - 2012-05-25
-	//! \deprecated Use \ref asIScriptGeneric::GetFunction instead
-	virtual int                GetFunctionId() const = 0;
-	//! \deprecated Use \ref asIScriptFunction::GetUserData instead
-	virtual void              *GetFunctionUserData() const = 0;
-#endif
 	//! \brief Returns the function that is being called.
 	//! \return The function that is being called.
 	virtual asIScriptFunction *GetFunction() const = 0;
@@ -2740,8 +2768,9 @@ public:
 	virtual int     GetArgCount() const = 0;
 	//! \brief Returns the type id of the argument.
 	//! \param[in] arg The argument index.
+	//! \param[out] flags A combination of \ref asETypeModifiers.
 	//! \return The type id of the argument.
-	virtual int     GetArgTypeId(asUINT arg) const = 0;
+	virtual int     GetArgTypeId(asUINT arg, asDWORD *flags = 0) const = 0;
 	//! \brief Returns the value of an 8-bit argument.
 	//! \param[in] arg The argument index.
 	//! \return The 1 byte argument value.
@@ -2791,8 +2820,9 @@ public:
 	//! \{
 
 	//! \brief Gets the type id of the return value.
+	//! \param[out] flags A combination of \ref asETypeModifiers.
 	//! \return The type id of the return value.
-	virtual int     GetReturnTypeId() const = 0;
+	virtual int     GetReturnTypeId(asDWORD *flags = 0) const = 0;
 	//! \brief Sets the 8-bit return value.
 	//! \param[in] val The return value.
 	//! \return A negative value on error.
@@ -2965,6 +2995,11 @@ public:
 	//! \brief Returns the access mask for this type.
 	//! \return The access mask for this type.
 	virtual asDWORD          GetAccessMask() const = 0;
+	//! \brief Returns the module where the type is declared.
+	//! \return The module where the type is declared.
+	//!
+	//! The returned value can be null if the module doesn't exist anymore.
+	virtual asIScriptModule *GetModule() const = 0;
 	//! \}
 
 	// Memory management
@@ -3060,13 +3095,6 @@ public:
 	//! \brief Returns the number of factory functions for the object type.
 	//! \return The number of factory functions for this object.
 	virtual asUINT             GetFactoryCount() const = 0;
-#ifdef AS_DEPRECATED
-	// Deprecated since 2.24.0 - 2012-05-25
-	//! \deprecated Use \ref asIObjectType::GetFactoryByIndex instead
-	virtual int                GetFactoryIdByIndex(asUINT index) const = 0;
-	//! \deprecated Use \ref asIObjectType::GetFactoryByDecl instead
-	virtual int                GetFactoryIdByDecl(const char *decl) const = 0;
-#endif
 	//! \brief Returns the factory function by the index
 	//! \param[in] index The index of the factory function.
 	//! \return The factory function or null if the index is invalid.
@@ -3084,15 +3112,6 @@ public:
 	//! \brief Returns the number of methods for the object type.
 	//! \return The number of methods for this object.
 	virtual asUINT             GetMethodCount() const = 0;
-#ifdef AS_DEPRECATED
-	// Deprecated since 2.24.0 - 2012-05-25
-	//! \deprecated Use \ref asIObjectType::GetMethodByIndex instead
-	virtual int                GetMethodIdByIndex(asUINT index, bool getVirtual = true) const = 0;
-	//! \deprecated Use \ref asIObjectType::GetMethodByName instead
-	virtual int                GetMethodIdByName(const char *name, bool getVirtual = true) const = 0;
-	//! \deprecated Use \ref asIObjectType::GetMethodByDecl instead
-	virtual int                GetMethodIdByDecl(const char *decl, bool getVirtual = true) const = 0;
-#endif
 	//! \brief Returns the method by index.
 	//! \param[in] index The index of the method.
 	//! \param[in] getVirtual Set to true if the virtual method or the real method should be retrieved.
@@ -3146,8 +3165,9 @@ public:
 	virtual int         GetProperty(asUINT index, const char **name, int *typeId = 0, bool *isPrivate = 0, int *offset = 0, bool *isReference = 0, asDWORD *accessMask = 0) const = 0;
 	//! \brief Returns the declaration of the property
 	//! \param[in] index The index of the property
+	//! \param[in] includeNamespace Set to true if the namespace should be included in the declaration.
 	//! \return The declaration of the property, or null on error.
-	virtual const char *GetPropertyDeclaration(asUINT index) const = 0;
+	virtual const char *GetPropertyDeclaration(asUINT index, bool includeNamespace = false) const = 0;
 	//! \}
 
 	// Behaviours
@@ -3224,6 +3244,11 @@ public:
 	//! \brief Returns the name of the module where the function was implemented
 	//! \return A null terminated string with the module name.
 	virtual const char      *GetModuleName() const = 0;
+	//! \brief Returns the module where the function is declared.
+	//! \return The module where the function is declared.
+	//!
+	//! The returned value can be null if the module doesn't exist anymore.
+	virtual asIScriptModule *GetModule() const = 0;
 	//! \brief Returns the name of the script section where the function was implemented.
 	//! \return A null terminated string with the script section name where the function was implemented.
 	//!
@@ -3287,8 +3312,9 @@ public:
 	//! \retval asINVALID_ARG The index is out of bounds.
 	virtual int              GetParamTypeId(asUINT index, asDWORD *flags = 0) const = 0;
 	//! \brief Returns the type id of the return type.
+	//! \param[out] flags A combination of \ref asETypeModifiers.
 	//! \return The type id of the return type.
-	virtual int              GetReturnTypeId() const = 0;
+	virtual int              GetReturnTypeId(asDWORD *flags = 0) const = 0;
 	//! \}
 
 	//! \name Type id for function pointers
@@ -3301,6 +3327,21 @@ public:
 	//! \brief Checks if the given type id can represent this function.
 	//! \return Returns true if the type id can represent this function.
 	virtual bool             IsCompatibleWithTypeId(int typeId) const = 0;
+	//! \}
+
+	//! \name Delegates
+	//! \{
+
+	// Delegates
+	//! \brief Returns the object for the delegate
+	//! \return A pointer to the delegated object
+	virtual void              *GetDelegateObject() const = 0;
+	//! \brief Returns the type of the delegated object
+	//! \return A pointer to the object type of the delegated object.
+	virtual asIObjectType     *GetDelegateObjectType() const = 0;
+	//! \brief Returns the function for the delegate
+	//! \return A pointer to the delegated function
+	virtual asIScriptFunction *GetDelegateFunction() const = 0;
 	//! \}
 
 	//! \name Debug information
@@ -3316,11 +3357,13 @@ public:
 	//! \param[out] typeId Receives the typeId of the variable
 	//! \return A negative value on error
 	//! \retval asINVALID_ARG The \a index is out of range
+	//! \retval asNOT_SUPPORTED The function is not a script function
 	virtual int              GetVar(asUINT index, const char **name, int *typeId = 0) const = 0;
 	//! \brief Returns the declaration of a local variable
 	//! \param[in] index The zero based index of the local variable
+	//! \param[in] includeNamespace Set to true if the namespace should be included in the declaration.
 	//! \return The declaration string, or null on error
-	virtual const char *     GetVarDecl(asUINT index) const = 0;
+	virtual const char      *GetVarDecl(asUINT index, bool includeNamespace = false) const = 0;
 	//! \brief Returns the next line number with code
 	//! \param[in] line A line number
 	//! \return The number of the next line with code, or a negative value if the line is outside the function.
@@ -3386,6 +3429,40 @@ public:
 
 public:
 	virtual ~asIBinaryStream() {}
+};
+
+//! \brief A lockable shared boolean.
+//!
+//! This interface represents a lockable shared boolean.
+class asILockableSharedBool
+{
+public:
+	// Memory management
+	//! \brief Adds a reference to the shared boolean
+	//! \return The new reference count
+	virtual int AddRef() const = 0;
+	//! \brief Releases a reference to the shared boolean
+	//! \return The new reference count
+	virtual int Release() const = 0;
+
+	// Value
+	//! \brief Get the value of the shared boolean
+	//! \return The value of the shared boolean
+	virtual bool Get() const = 0;
+	//! \brief Sets the value of the shared boolean
+	//! \param[in] val The new value
+	virtual void Set(bool val) = 0;
+	
+	// Thread management
+	//! \brief Locks the shared boolean
+	//! If the boolean is already locked, then this method 
+	//! will wait until it is unlocked before returning.
+	virtual void Lock() const = 0;
+	//! \brief Unlocks the shared boolean
+	virtual void Unlock() const = 0;
+
+protected:
+	virtual ~asILockableSharedBool() {}
 };
 
 //-----------------------------------------------------------------
@@ -4005,8 +4082,16 @@ enum asEBCInstr
 	asBC_JLowZ			= 187,
 	//! \brief Jump if low byte of value register is not 0
 	asBC_JLowNZ			= 188,
+	//! \brief Allocates memory for an initialization list buffer
+	asBC_AllocMem		= 189,
+	//! \brief Sets a repeat count in the list buffer
+	asBC_SetListSize	= 190,
+	//! \brief Pushes the address of an element in the list buffer on the stack
+	asBC_PshListElmnt	= 191,
+	//! \brief Sets the type of the next element in the list buffer
+	asBC_SetListType	= 192,
 
-	asBC_MAXBYTECODE	= 189,
+	asBC_MAXBYTECODE	= 193,
 
 	// Temporary tokens. Can't be output to the final program
 	asBC_VarDecl		= 251,
@@ -4058,12 +4143,14 @@ enum asEBCType
 	//! \brief Instruction + WORD arg + DWORD arg
 	asBCTYPE_W_DW_ARG     = 18,
 	//! \brief Instruction + WORD arg(source var) + WORD arg + DWORD arg
-	asBCTYPE_rW_W_DW_ARG  = 19
+	asBCTYPE_rW_W_DW_ARG  = 19,
+	//! \brief Instruction + WORD arg(source var) + DWORD arg + DWORD arg
+	asBCTYPE_rW_DW_DW_ARG = 20
 };
 
 // Instruction type sizes
 //! \brief Lookup table for determining the size of each \ref asEBCType "type" of bytecode instruction.
-const int asBCTypeSize[20] =
+const int asBCTypeSize[21] =
 {
 	0, // asBCTYPE_INFO
 	1, // asBCTYPE_NO_ARG
@@ -4084,7 +4171,8 @@ const int asBCTypeSize[20] =
 	4, // asBCTYPE_QW_DW_ARG
 	3, // asBCTYPE_rW_QW_ARG
 	2, // asBCTYPE_W_DW_ARG
-	3  // asBCTYPE_rW_W_DW_ARG
+	3, // asBCTYPE_rW_W_DW_ARG
+	3  // asBCTYPE_rW_DW_DW_ARG
 };
 
 // Instruction info
@@ -4322,11 +4410,11 @@ const asSBCInfo asBCInfo[256] =
 	asBCINFO(RefCpyV,	wW_PTR_ARG,		0),
 	asBCINFO(JLowZ,		DW_ARG,			0),
 	asBCINFO(JLowNZ,	DW_ARG,			0),
+	asBCINFO(AllocMem,	wW_DW_ARG,		0),
+	asBCINFO(SetListSize, rW_DW_DW_ARG,	0),
+	asBCINFO(PshListElmnt, rW_DW_ARG,	AS_PTR_SIZE),
+	asBCINFO(SetListType, rW_DW_DW_ARG,	0),
 
-	asBCINFO_DUMMY(189),
-	asBCINFO_DUMMY(190),
-	asBCINFO_DUMMY(191),
-	asBCINFO_DUMMY(192),
 	asBCINFO_DUMMY(193),
 	asBCINFO_DUMMY(194),
 	asBCINFO_DUMMY(195),
@@ -4395,15 +4483,15 @@ const asSBCInfo asBCInfo[256] =
 
 // Macros to access bytecode instruction arguments
 //! \brief Macro to access the first DWORD argument in the bytecode instruction
-#define asBC_DWORDARG(x)  (asDWORD(*(x+1)))
+#define asBC_DWORDARG(x)  (*(((asDWORD*)x)+1))
 //! \brief Macro to access the first 32bit integer argument in the bytecode instruction
-#define asBC_INTARG(x)    (int(*(x+1)))
+#define asBC_INTARG(x)    (*(int*)(((asDWORD*)x)+1))
 //! \brief Macro to access the first QWORD argument in the bytecode instruction
-#define asBC_QWORDARG(x)  (*(asQWORD*)(x+1))
+#define asBC_QWORDARG(x)  (*(asQWORD*)(((asDWORD*)x)+1))
 //! \brief Macro to access the first float argument in the bytecode instruction
-#define asBC_FLOATARG(x)  (*(float*)(x+1))
+#define asBC_FLOATARG(x)  (*(float*)(((asDWORD*)x)+1))
 //! \brief Macro to access the first pointer argument in the bytecode instruction
-#define asBC_PTRARG(x)    (*(asPWORD*)(x+1))
+#define asBC_PTRARG(x)    (*(asPWORD*)(((asDWORD*)x)+1))
 //! \brief Macro to access the first WORD argument in the bytecode instruction
 #define asBC_WORDARG0(x)  (*(((asWORD*)x)+1))
 //! \brief Macro to access the second WORD argument in the bytecode instruction

@@ -93,7 +93,6 @@ public:
 	bool IsEnumType()       const;
 	bool IsAnyType()        const {return tokenType == ttQuestion;}
 
-	bool IsSamePrimitiveBaseType(const asCDataType &dt)    const;
 	bool IsEqualExceptRef(const asCDataType &)             const;
 	bool IsEqualExceptRefAndConst(const asCDataType &)     const;
 	bool IsEqualExceptConst(const asCDataType &)           const;
@@ -117,7 +116,7 @@ public:
 
 	void SetTokenType(eTokenType tt)         {tokenType = tt;}
 	void SetObjectType(asCObjectType *obj)   {objectType = obj;}
-	void SetFuncDef(asCScriptFunction *func) { asASSERT(funcDef); funcDef = func; }
+	void SetFuncDef(asCScriptFunction *func) {asASSERT(funcDef); funcDef = func; }
 
 	asCDataType &operator =(const asCDataType &);
 

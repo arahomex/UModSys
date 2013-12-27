@@ -78,7 +78,6 @@ struct macro_level {
     const int *p;
 };
 
-ST_FUNC void next_nomacro(void);
 static void next_nomacro_spc(void);
 static void macro_subst(
     TokenString *tok_str,
@@ -118,7 +117,7 @@ static void cstr_realloc(CString *cstr, int new_size)
 }
 
 /* add a byte */
-PUB_FUNC void cstr_ccat(CString *cstr, int ch)
+ST_FUNC void cstr_ccat(CString *cstr, int ch)
 {
     int size;
     size = cstr->size + 1;
@@ -128,7 +127,7 @@ PUB_FUNC void cstr_ccat(CString *cstr, int ch)
     cstr->size = size;
 }
 
-PUB_FUNC void cstr_cat(CString *cstr, const char *str)
+ST_FUNC void cstr_cat(CString *cstr, const char *str)
 {
     int c;
     for(;;) {
@@ -141,7 +140,7 @@ PUB_FUNC void cstr_cat(CString *cstr, const char *str)
 }
 
 /* add a wide char */
-PUB_FUNC void cstr_wccat(CString *cstr, int ch)
+ST_FUNC void cstr_wccat(CString *cstr, int ch)
 {
     int size;
     size = cstr->size + sizeof(nwchar_t);
@@ -151,20 +150,20 @@ PUB_FUNC void cstr_wccat(CString *cstr, int ch)
     cstr->size = size;
 }
 
-PUB_FUNC void cstr_new(CString *cstr)
+ST_FUNC void cstr_new(CString *cstr)
 {
     memset(cstr, 0, sizeof(CString));
 }
 
 /* free string and reset it to NULL */
-PUB_FUNC void cstr_free(CString *cstr)
+ST_FUNC void cstr_free(CString *cstr)
 {
     tcc_free(cstr->data_allocated);
     cstr_new(cstr);
 }
 
 /* reset string to empty */
-PUB_FUNC void cstr_reset(CString *cstr)
+ST_FUNC void cstr_reset(CString *cstr)
 {
     cstr->size = 0;
 }
@@ -2800,13 +2799,13 @@ static inline int *macro_twosharps(const int *macro_str)
 {
     const int *ptr;
     int t;
-    CValue cval;
     TokenString macro_str1;
     CString cstr;
     int n, start_of_nosubsts;
 
     /* we search the first '##' */
     for(ptr = macro_str;;) {
+        CValue cval;
         TOK_GET(&t, &ptr, &cval);
         if (t == TOK_TWOSHARPS)
             break;
@@ -2835,10 +2834,9 @@ static inline int *macro_twosharps(const int *macro_str)
             /* given 'a##b', remove nosubsts preceding 'b' */
             while (t == TOK_NOSUBST)
                 t = *++ptr;
-            
             if (t && t != TOK_TWOSHARPS) {
+                CValue cval;
                 TOK_GET(&t, &ptr, &cval);
-
                 /* We concatenate the two tokens */
                 cstr_new(&cstr);
                 cstr_cat(&cstr, get_tok_str(tok, &tokc));
@@ -2846,7 +2844,7 @@ static inline int *macro_twosharps(const int *macro_str)
                 cstr_cat(&cstr, get_tok_str(t, &cval));
                 cstr_ccat(&cstr, '\0');
 
-                tcc_open_bf(tcc_state, "<paste>", cstr.size);
+                tcc_open_bf(tcc_state, ":paste:", cstr.size);
                 memcpy(file->buffer, cstr.data, cstr.size);
                 for (;;) {
                     next_nomacro1();
@@ -3043,7 +3041,7 @@ ST_FUNC void preprocess_init(TCCState *s1)
     s1->pack_stack_ptr = s1->pack_stack;
 }
 
-ST_FUNC void preprocess_new()
+ST_FUNC void preprocess_new(void)
 {
     int i, c;
     const char *p, *r;
@@ -3112,17 +3110,17 @@ print_line:
                   : ""
                   ;
                 iptr = iptr_new;
-                fprintf(s1->outfile, "# %d \"%s\"%s\n", file->line_num, file->filename, s);
+                fprintf(s1->ppfp, "# %d \"%s\"%s\n", file->line_num, file->filename, s);
             } else {
                 while (d)
-                    fputs("\n", s1->outfile), --d;
+                    fputs("\n", s1->ppfp), --d;
             }
             line_ref = (file_ref = file)->line_num;
             token_seen = tok != TOK_LINEFEED;
             if (!token_seen)
                 continue;
         }
-        fputs(get_tok_str(tok, &tokc), s1->outfile);
+        fputs(get_tok_str(tok, &tokc), s1->ppfp);
     }
     free_defines(define_start);
     return 0;

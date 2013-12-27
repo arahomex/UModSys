@@ -125,7 +125,11 @@
      DEF(TOK_builtin_constant_p, "__builtin_constant_p")
      DEF(TOK_builtin_frame_address, "__builtin_frame_address")
 #ifdef TCC_TARGET_X86_64
+#ifdef TCC_TARGET_PE
+     DEF(TOK_builtin_va_start, "__builtin_va_start")
+#else
      DEF(TOK_builtin_va_arg_types, "__builtin_va_arg_types")
+#endif
 #endif
      DEF(TOK_REGPARM1, "regparm")
      DEF(TOK_REGPARM2, "__regparm__")
@@ -190,8 +194,8 @@
      DEF(TOK__remu, "_remu")
 #endif
 #ifdef TCC_TARGET_I386
-     DEF(TOK___tcc_int_fpu_control, "__tcc_int_fpu_control")
-     DEF(TOK___tcc_fpu_control, "__tcc_fpu_control")
+     DEF(TOK___tcc_fpinit, "__tcc_fpinit")
+     DEF(TOK___tcc_cvt_ftol, "__tcc_cvt_ftol")
 #endif
 #ifdef TCC_ARM_EABI
      DEF(TOK___ashrdi3, "__aeabi_lasr")

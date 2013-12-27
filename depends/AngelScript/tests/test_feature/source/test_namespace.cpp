@@ -11,6 +11,108 @@ bool Test()
 	COutStream out;
 	CBufferedOutStream bout;
 
+	// The compiler should search parent namespaces for matching global functions
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+
+		asIScriptModule *mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"void func() {}; \n"
+			"namespace B { \n"
+			"void main() { \n"
+			"  func(); \n"
+			"} \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		engine->Release();
+	}
+
+	// The compiler should search parent namespaces for matching variables
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+
+		asIScriptModule *mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"int a; \n"
+			"namespace B { \n"
+			"void main() { \n"
+			"  int b = a; \n"
+			"} \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		engine->Release();
+	}
+
+	// The compiler should search parent namespaces for matching types
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+
+		asIScriptModule *mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"class A {} \n"
+			"namespace B { \n"
+			"void main() { \n"
+			"  A a; \n"
+			"} \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		engine->Release();
+	}
+
+	// Test different namespaces with declaration of classes of the same name
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+		RegisterScriptArray(engine, true);
+		
+		asIScriptModule *mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test", 
+			"namespace net \n"
+			"{ \n"
+			"   namespace room \n"
+			"   { \n"
+			"        class kernel \n"
+			"        { \n"
+			"              kernel() \n"
+			"              { \n"
+			"              } \n"
+			"        } \n"
+			"   } \n"
+			"} \n"
+			"namespace net \n"
+			"{ \n"
+			"   namespace lobby \n"
+			"   { \n"
+			"        class kernel \n"
+			"        { \n"
+			"              private int[]            _Values; \n"
+			"              kernel() \n"
+			"              { \n"
+			"                    _Values.resize(10); \n"
+			"              } \n"
+			"        } \n"
+			"   } \n"
+			"} \n"
+			"net::lobby::kernel kernel;\n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		engine->Release();
+	}
+
 	// Test multiple script sections
 	// http://www.gamedev.net/topic/638946-namespace-problems/
 	{
@@ -241,11 +343,9 @@ bool Test()
 			"} \n");
 		bout.buffer = "";
 		r = mod->Build();
-		if( r >= 0 )
+		if( r < 0 )
 			TEST_FAILED;
-		// TODO: Should have better error message. Perhaps show variables declared in other scopes
-		if( bout.buffer != "test (2, 1) : Info    : Compiling void func()\n"
-						   "test (4, 3) : Error   : 'a' is not declared\n" )
+		if( bout.buffer != "" )
 		{
 			printf("%s", bout.buffer.c_str());
 			TEST_FAILED;
@@ -599,15 +699,15 @@ bool Test()
 			"void test() { \n"
 			"  assert( foo == 42 ); \n"      // ok
 			"  assert( ::foo == 42 ); \n"    // ok
-			"  assert( nm::foo == 42 ); \n"  // should fail to compile
+			"  assert( nm::foo == 42 ); \n"  // ok. foo is declared in parent namespace
 			"  assert( nm::foo2 == 42 ); \n" // ok
 			"  assert( foo2 == 42 ); \n"     // should fail to compile
 			"} \n"
 			"namespace nm { \n"
 			"void test2() { \n"
-			"  ::assert( foo == 42 ); \n"      // should fail to compile
+			"  ::assert( foo == 42 ); \n"      // ok. foo is declared in parent namespace
 			"  ::assert( ::foo == 42 ); \n"    // ok
-			"  ::assert( nm::foo == 42 ); \n"  // should fail to compile
+			"  ::assert( nm::foo == 42 ); \n"  // ok. foo is declared in parent namespace
 			"  ::assert( nm::foo2 == 42 ); \n" // ok
 			"  ::assert( foo2 == 42 ); \n"     // ok
 			"} \n"
@@ -621,11 +721,7 @@ bool Test()
 			TEST_FAILED;
 
 		if( bout.buffer != "test (3, 1) : Info    : Compiling void test()\n"
-						   "test (6, 11) : Error   : 'nm::foo' is not declared\n"
-						   "test (8, 11) : Error   : 'foo2' is not declared\n"
-						   "test (11, 1) : Info    : Compiling void test2()\n"
-						   "test (12, 13) : Error   : 'foo' is not declared\n"
-						   "test (14, 13) : Error   : 'nm::foo' is not declared\n" )
+						   "test (8, 11) : Error   : 'foo2' is not declared\n" )
 		{
 			printf("%s", bout.buffer.c_str());
 			TEST_FAILED;
@@ -638,15 +734,15 @@ bool Test()
 			"void test() { \n"
 			"  assert( foo[0] == 42 ); \n"      // ok
 			"  assert( ::foo[0] == 42 ); \n"    // ok
-			"  assert( nm::foo[0] == 42 ); \n"  // should fail to compile
+			"  assert( nm::foo[0] == 42 ); \n"  // ok. foo is declared in parent namespace
 			"  assert( nm::foo2[0] == 42 ); \n" // ok
 			"  assert( foo2[0] == 42 ); \n"     // should fail to compile
 			"} \n"
 			"namespace nm { \n"
 			"void test2() { \n"
-			"  ::assert( foo[0] == 42 ); \n"      // should fail to compile
+			"  ::assert( foo[0] == 42 ); \n"      // ok. foo is declared in parent namespace
 			"  ::assert( ::foo[0] == 42 ); \n"    // ok
-			"  ::assert( nm::foo[0] == 42 ); \n"  // should fail to compile
+			"  ::assert( nm::foo[0] == 42 ); \n"  // ok. foo is declared in parent namespace
 			"  ::assert( nm::foo2[0] == 42 ); \n" // ok
 			"  ::assert( foo2[0] == 42 ); \n"     // ok
 			"} \n"
@@ -660,11 +756,7 @@ bool Test()
 			TEST_FAILED;
 
 		if( bout.buffer != "test (3, 1) : Info    : Compiling void test()\n"
-						   "test (6, 11) : Error   : 'nm::foo' is not declared\n"
-						   "test (8, 11) : Error   : 'foo2' is not declared\n"
-						   "test (11, 1) : Info    : Compiling void test2()\n"
-						   "test (12, 13) : Error   : 'foo' is not declared\n"
-						   "test (14, 13) : Error   : 'nm::foo' is not declared\n" )
+						   "test (8, 11) : Error   : 'foo2' is not declared\n" )
 		{
 			printf("%s", bout.buffer.c_str());
 			TEST_FAILED;

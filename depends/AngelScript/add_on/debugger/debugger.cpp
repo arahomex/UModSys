@@ -5,6 +5,8 @@
 
 using namespace std;
 
+BEGIN_AS_NAMESPACE
+
 CDebugger::CDebugger()
 {
 	m_action = CONTINUE;
@@ -472,7 +474,7 @@ void CDebugger::PrintValue(const std::string &expr, asIScriptContext *ctx)
 		// Look for global variables
 		if( !ptr )
 		{
-			asIScriptModule *mod = ctx->GetEngine()->GetModule(func->GetModuleName(), asGM_ONLY_IF_EXISTS);
+			asIScriptModule *mod = func->GetModule();
 			if( mod )
 			{
 				for( asUINT n = 0; n < mod->GetGlobalVarCount(); n++ )
@@ -547,7 +549,7 @@ void CDebugger::ListGlobalVariables(asIScriptContext *ctx)
 	asIScriptFunction *func = ctx->GetFunction();
 	if( !func ) return;
 
-	asIScriptModule *mod = ctx->GetEngine()->GetModule(func->GetModuleName(), asGM_ONLY_IF_EXISTS);
+	asIScriptModule *mod = func->GetModule();
 	if( !mod ) return;
 
 	stringstream s;
@@ -649,3 +651,5 @@ void CDebugger::Output(const string &str)
 	// By default we just output to stdout
 	cout << str;
 }
+
+END_AS_NAMESPACE

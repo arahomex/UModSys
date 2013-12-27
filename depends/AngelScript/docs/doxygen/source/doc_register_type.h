@@ -5,14 +5,17 @@
 
 The are two principal paths to take when registering a new type, either the
 type is a reference type that is located in dynamic memory, or the type is a
-value type that is located on the stack. Complex types are usually registered
-as reference types, while simple types that are meant to be used as primitives
-are registered as value types. A reference type support object handles (unless restricted by application), but
+value type that is located on the stack or locally as members of other objects. 
+A reference type support object handles (unless restricted by application) but
 cannot be passed by value to application registered functions, a value type
-doesn't support handles and can be passed by value to application registered
-functions.
+doesn't support handles and can be passed by value or reference to application 
+registered functions.
 
-\todo Write guide on how to choose how to register a type
+There is no given rule when to use one or the other, but in general you'll use 
+reference types when the type must be able to outlive the scope in which it is 
+created, and value types when the type is normally used to perform quick 
+calculations after which the object can be discarded. If the type is large or 
+complex, then it is likely it should be a reference type.
 
  - \subpage doc_reg_basicref
  - \subpage doc_register_val_type
@@ -76,6 +79,8 @@ The factory function must be registered as a global function, but can be
 implemented as a static class method, common global function, or a global
 function following the generic calling convention.
 
+See also \ref doc_reg_basicref_4.
+
 \section doc_reg_basicref_2 Addref and release behaviours
 
 \code
@@ -126,6 +131,51 @@ that can eventually store a reference to the object type. This can be done by
 \ref asIScriptModule::GetGlobalVarCount "enumerating the compiled global variables" after script has
 been built and giving an error to the user incase he includes a variable he shouldn't. 
 
+
+
+
+\section doc_reg_basicref_4 List factory function
+
+The list factory function is a special \ref doc_reg_basicref_1 "factory function" that 
+can be registered to allow a type to be created from an initialization list. The list factory
+function takes only a single pointer as argument. AngelScript will pass a pointer to the 
+initialization list buffer in that argument. The buffer will contain all the values necessary
+to create and initialize the object. 
+
+In order for the script engine to know what information must be placed in the buffer the
+application must provide the list pattern when registering the list factory. The list pattern
+is declared with a special syntax involving datatypes and the following tokens: {, }, ?, and repeat.
+
+The tokens { } are used to declare that the list pattern expects a list of values or a sublist of values. 
+The repeat token is used to signal that the next type or sub list can be repeated 0 or more times. Any
+data type can be used in the list pattern, as long as it can be passed by value. When a variable type
+is desired the token ? can be used.
+
+Here's a couple of examples for registering list factories with list patterns:
+
+\code
+// The array type can be initialized for example with: intarray a = {1,2,3};
+engine->RegisterObjectBehaviour("intarray", asBEHAVE_LIST_FACTORY, 
+  "intarray@ f(int &in) {repeat int}", ...);
+
+// The dictionary type can be initialized with: dictionary d = {{'a',1}, {'b',2}, {'c',3}};
+engine->RegisterObjectBehaviour("dictionary", asBEHAVE_LIST_FACTORY, 
+  "dictionary @f(int &in) {repeat {string, ?}}", ...);
+\endcode
+
+The list buffer passed to the factory function will be populated using the following rules:
+
+- Whenever the pattern expects a repeat, the buffer will contain a 32bit integer with the 
+  number of repeated values that will come afterwards
+- Whenever the pattern expects a ?, then the buffer will contain a 32bit integer representing 
+  the typeId of the value that comes after.
+- Whenever the pattern expects a reference type, the buffer will contain a pointer to the object
+- Whenever the pattern expects a value type, the buffer will contain the object itself
+- All values in the buffer will be aligned to a 32bit boundary, unless the size of the value placed
+  in the buffer is smaller than 32bits.
+
+\see \ref doc_addon_array and \ref doc_addon_dict for example implementations of list factories.
+  
 
 
 
@@ -214,6 +264,8 @@ the wrapper with AngelScript, which is sure to result in unexpected behaviours.
 Note that you may need to include the &lt;new&gt; header to declare the placement new operator that is used 
 to initialize a preallocated memory block.
 
+See also \ref doc_reg_val_3.
+
 
 
 
@@ -223,14 +275,14 @@ If the type will be passed to and from the application by value using native cal
 AngelScript of its real type in C++, otherwise AngelScript won't be able to determine exactly how C++ is treating the type in
 a parameter or return value. 
 
-There are a few different flags for this:
+There are a few different flags:
 
 <table border=0 cellspacing=0 cellpadding=0>
 <tr><td>\ref asOBJ_APP_CLASS                  &nbsp; </td><td>The C++ type is a class, struct, or union</td></tr>
-<tr><td>\ref asOBJ_APP_CLASS_CONSTRUCTOR      &nbsp; </td><td>The C++ type has a defined constructor</td></tr>
-<tr><td>\ref asOBJ_APP_CLASS_DESTRUCTOR       &nbsp; </td><td>The C++ type has a defined destructor</td></tr>
-<tr><td>\ref asOBJ_APP_CLASS_ASSIGNMENT       &nbsp; </td><td>The C++ type has a defined assignment operator</td></tr>
-<tr><td>\ref asOBJ_APP_CLASS_COPY_CONSTRUCTOR &nbsp; </td><td>The C++ type has a defined copy constructor</td></tr>
+<tr><td>\ref asOBJ_APP_CLASS_CONSTRUCTOR      &nbsp; </td><td>The C++ type has a default constructor</td></tr>
+<tr><td>\ref asOBJ_APP_CLASS_DESTRUCTOR       &nbsp; </td><td>The C++ type has a destructor</td></tr>
+<tr><td>\ref asOBJ_APP_CLASS_ASSIGNMENT       &nbsp; </td><td>The C++ type has a copy assignment operator</td></tr>
+<tr><td>\ref asOBJ_APP_CLASS_COPY_CONSTRUCTOR &nbsp; </td><td>The C++ type has a copy constructor</td></tr>
 <tr><td>\ref asOBJ_APP_PRIMITIVE              &nbsp; </td><td>The C++ type is a C++ primitive, but not a float or double</td></tr>
 <tr><td>\ref asOBJ_APP_FLOAT                  &nbsp; </td><td>The C++ type is a float or double</td></tr>
 </table>
@@ -240,6 +292,10 @@ application. So if you want to register a C++ class that you want to behave as a
 you should still use the flag \ref asOBJ_APP_CLASS. The same thing for the flags to identify that the class has a constructor, 
 destructor, assignment operator, or copy constructor. These flags tell AngelScript that the class has the respective function, 
 but not that the type in the script language should have these behaviours.
+
+Observe that the C++ compiler may provide these functions automatically if one of the members of the class is of a type that 
+requires it. So even if the type you want to register doesn't have a declared default constructor it may still be necessary to
+register the type with the flag asOBJ_APP_CLASS_CONSTRUCTOR. The same for the other functions.
 
 For class types there is also a shorter form of the flags for each combination of the 5 flags. They are of the form \ref asOBJ_APP_CLASS_CDAK, 
 where the existance of the last letters determine if the constructor, destructor, and/or assignment behaviour are available. For example
@@ -253,6 +309,14 @@ r = engine->RegisterObjectType("complex", sizeof(complex), asOBJ_VALUE | asOBJ_A
 Make sure you inform these flags correctly, because if you do not you may get various errors when executing the scripts. 
 Common problems are stack corruptions and invalid memory accesses. In some cases you may face more silent errors that
 may be difficult to detect, e.g. the function is not returning the expected values.
+
+If you use a compiler with support for the C++11 standard, then you can use the helper function \ref doc_addon_helpers "GetTypeTraits"
+to automatically determine the correct set of the above flags to use for a type.
+
+\code
+// With C++11 the type can be registered with GetTypeTraits
+r = engine->RegisterObjectType("complex", sizeof(complex), asOBJ_VALUE | GetTypeTraits<complex>()); assert( r >= 0 );
+\endcode
 
 On some platforms the native calling convention may require further knowledge about the class members in order to work 
 properly; most notable are the Linux 64bit and Mac OSX 64bit systems with the GNUC compiler. On these systems small classes 
@@ -275,6 +339,21 @@ preferably with the \ref doc_addon_autowrap "auto wrappers".
 
 
 
+
+\section doc_reg_val_3 List constructor
+
+The list constructor is similar to \ref doc_reg_basicref_4 "the list factory function" for reference types. 
+The constructor will receive a pointer to the initialization list buffer in the exact same way, and the
+expected list pattern should be registered in the same way. The difference is that the list constructor 
+should be registered like a method, just as done for other \ref doc_reg_val_1 "constructors".
+
+Example registration of a list constructor:
+
+\code
+engine->RegisterObjectBehaviour("vector3", asBEHAVE_LIST_CONSTRUCT, "void f(int &in) {float, float, float}", ...);
+\endcode
+
+\see \ref doc_addon_math "The complex math add-on" for an example value type with a list constructor.
 
 
 
@@ -371,7 +450,9 @@ then there is no need to register the explicit value cast operator.
 
 \page doc_reg_objmeth Registering object methods
 
-Class methods are registered with the RegisterObjectMethod call.
+Class methods are registered with the RegisterObjectMethod call. Both non-virtual and virtual methods are registered the same way.
+
+Static class methods are in reality global functions so those should be \ref doc_register_func "registered as global functions" and not as object methods.
 
 \code
 // Register a class method
@@ -398,6 +479,16 @@ void MyClass_MethodWrapper(MyClass *obj)
 
 r = engine->RegisterObjectMethod("mytype", "void MethodWrapper()", asFUNCTION(MyClass_MethodWrapper), asCALL_CDECL_OBJLAST); assert( r >= 0 );
 \endcode
+
+\see \ref doc_register_func for more details on how the macros work.
+
+
+
+
+
+
+
+
 
 \page doc_reg_objprop Registering object properties
 

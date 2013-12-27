@@ -132,6 +132,38 @@ MyTmpl_float *MyTmpl_float_factory()
 	return new MyTmpl_float();
 }
 
+class MyDualTmpl
+{
+public:
+	MyDualTmpl(asIObjectType *t) 
+	{
+		refCount = 1;
+		type = t;
+
+		type->AddRef();
+	}
+	~MyDualTmpl()
+	{
+		if( type ) 
+			type->Release();
+	}
+	void AddRef()
+	{
+		refCount++;
+	}
+	void Release()
+	{
+		if( --refCount == 0 )
+			delete this;
+	}
+	asIObjectType *type;
+	int refCount;
+};
+MyDualTmpl *MyDualTmpl_factory(asIObjectType *type)
+{
+	return new MyDualTmpl(type);
+}
+
 bool Test()
 {
 	if( strstr(asGetLibraryOptions(), "AS_MAX_PORTABILITY") )
@@ -144,6 +176,98 @@ bool Test()
 	int r;
 	COutStream out;
 	CBufferedOutStream bout;
+
+	// Test error messages when registering the template type incorrectly
+	{
+		asIScriptEngine *engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+		bout.buffer = "";
+
+		engine->RegisterObjectType("Tmpl1<class T>", 0, asOBJ_REF | asOBJ_TEMPLATE);
+		engine->RegisterObjectBehaviour("Tmpl1<T>", asBEHAVE_FACTORY, "Tmpl1<T> @f()", asFUNCTION(0), asCALL_GENERIC);
+		engine->RegisterObjectBehaviour("Tmpl1<T>", asBEHAVE_FACTORY, "Tmpl1<T> @f(int &in, Tmpl1<T> @+)", asFUNCTION(0), asCALL_GENERIC);
+
+		if( bout.buffer != " (0, 0) : Error   : First parameter to template factory must be a reference. This will be used to pass the object type of the template\n"
+						   " (0, 0) : Error   : Failed in call to function 'RegisterObjectBehaviour' with 'Tmpl1' and 'Tmpl1<T> @f()' (Code: -10)\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		engine->Release();
+	}
+
+	// The sub type must not be const, except if it is a handle to const
+	{
+		asIScriptEngine *engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+		bout.buffer = "";
+		
+		engine->RegisterObjectType("MyTmpl<class T1>", 0, asOBJ_REF | asOBJ_TEMPLATE);
+		engine->RegisterObjectBehaviour("MyTmpl<T1>", asBEHAVE_FACTORY, "MyTmpl<T1>@ f(int&in)", asFUNCTION(0), asCALL_GENERIC);
+		engine->RegisterObjectBehaviour("MyTmpl<T1>", asBEHAVE_ADDREF, "void f()", asFUNCTION(0), asCALL_GENERIC);
+		engine->RegisterObjectBehaviour("MyTmpl<T1>", asBEHAVE_RELEASE, "void f()", asFUNCTION(0), asCALL_GENERIC);
+		
+		asIScriptModule *mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"class A {} \n"
+			"void func() { \n"
+			"  MyTmpl<const A> a; \n" // not allowed
+			"  MyTmpl<const A@> b; \n" // allowed
+			"} \n");
+		r = mod->Build();
+		if( r > 0 )
+			TEST_FAILED;
+
+		if( bout.buffer != "test (2, 1) : Info    : Compiling void func()\n"
+		                   "test (3, 10) : Error   : Template subtype must not be read-only\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		engine->Release();
+	}
+
+	// Test instanciating a template with same subtype for both args
+	{
+		asIScriptEngine *engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+		RegisterStdString(engine);
+
+		engine->RegisterObjectType("MyDualTmpl<class T1, class T2>", 0, asOBJ_REF | asOBJ_TEMPLATE);
+		engine->RegisterObjectBehaviour("MyDualTmpl<T1,T2>", asBEHAVE_FACTORY, "MyDualTmpl<T1,T2>@ f(int&in)", asFUNCTION(MyDualTmpl_factory), asCALL_CDECL);
+		engine->RegisterObjectBehaviour("MyDualTmpl<T1,T2>", asBEHAVE_ADDREF, "void f()", asMETHOD(MyDualTmpl,AddRef), asCALL_THISCALL);
+		engine->RegisterObjectBehaviour("MyDualTmpl<T1,T2>", asBEHAVE_RELEASE, "void f()", asMETHOD(MyDualTmpl,Release), asCALL_THISCALL);
+		engine->RegisterObjectMethod("MyDualTmpl<T1,T2>", "T1 &func(const T2 &in)", asFUNCTION(0), asCALL_THISCALL);
+
+		engine->SetEngineProperty(asEP_INIT_GLOBAL_VARS_AFTER_BUILD, false);
+		asIScriptModule *mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"class A {} \n"
+			"void func() { \n"
+			"  MyDualTmpl<A,A> a; \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+		asUINT size, destr, detect;
+		engine->GetGCStatistics(&size, &destr, &detect);
+
+		engine->DiscardModule("test");
+
+		engine->GetGCStatistics(&size, &destr, &detect);
+
+		// It must be possible to find method by declaration on the template instances
+		asIObjectType *ot = engine->GetObjectTypeById(engine->GetTypeIdByDecl("MyDualTmpl<int, string>"));
+		if( ot == 0 )
+			TEST_FAILED;
+		asIScriptFunction *mthd = ot->GetMethodByDecl("int &func(const string &in)");
+		if( mthd == 0 )
+			TEST_FAILED;
+
+		engine->Release();
+	}
 
 	// Test passing templates are arguments
 	// http://www.gamedev.net/topic/639597-how-to-pass-arraystring-to-a-function/
@@ -342,7 +466,10 @@ bool Test()
 			TEST_FAILED;
 
 		if( bout.buffer != "test (2, 1) : Info    : Compiling void func()\n"
-					  	   "test (6, 8) : Error   : Reference is read-only\n"
+					  	   "test (4, 9) : Error   : Template subtype must not be read-only\n"
+						   "test (4, 21) : Error   : Only objects have constructors\n"
+						   "test (6, 4) : Warning : 'i' is not initialized.\n"
+						   "test (6, 4) : Error   : Type 'int' doesn't support the indexing operator\n"
 						   "test (8, 8) : Error   : Reference is read-only\n" )
 		{
 			printf("%s", bout.buffer.c_str());
@@ -446,6 +573,11 @@ bool Test()
 		TEST_FAILED;
 	}
 
+	// The declaration for the template specialization must work
+	int typeId = engine->GetTypeIdByDecl("MyTmpl<float>");
+	string decl = engine->GetTypeDeclaration(typeId);
+	if( decl != "MyTmpl<float>" )
+		TEST_FAILED;
 	
 	// TODO: Test behaviours that take and return the template sub type
 	// TODO: Test behaviours that take and return the proper template instance type

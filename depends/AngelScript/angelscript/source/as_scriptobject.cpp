@@ -156,6 +156,12 @@ static void ScriptObject_GetFlag_Generic(asIScriptGeneric *gen)
 	*(bool*)gen->GetAddressOfReturnLocation() = self->GetFlag();
 }
 
+static void ScriptObject_GetWeakRefFlag_Generic(asIScriptGeneric *gen)
+{
+	asCScriptObject *self = (asCScriptObject*)gen->GetObject();
+	*(asILockableSharedBool**)gen->GetAddressOfReturnLocation() = self->GetWeakRefFlag();
+}
+
 static void ScriptObject_EnumReferences_Generic(asIScriptGeneric *gen)
 {
 	asCScriptObject *self = (asCScriptObject*)gen->GetObject();
@@ -181,29 +187,35 @@ void RegisterScriptObject(asCScriptEngine *engine)
 	engine->scriptTypeBehaviours.flags = asOBJ_SCRIPT_OBJECT | asOBJ_REF | asOBJ_GC;
 	engine->scriptTypeBehaviours.name = "_builtin_object_";
 #ifndef AS_MAX_PORTABILITY
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_CONSTRUCT, "void f(int&in)", asFUNCTION(ScriptObject_Construct), asCALL_CDECL_OBJLAST); asASSERT( r >= 0 );
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_ADDREF, "void f()", asMETHOD(asCScriptObject,AddRef), asCALL_THISCALL); asASSERT( r >= 0 );
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_RELEASE, "void f()", asMETHOD(asCScriptObject,Release), asCALL_THISCALL); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_CONSTRUCT, "void f(int&in)", asFUNCTION(ScriptObject_Construct), asCALL_CDECL_OBJLAST, 0); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_ADDREF, "void f()", asMETHOD(asCScriptObject,AddRef), asCALL_THISCALL, 0); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_RELEASE, "void f()", asMETHOD(asCScriptObject,Release), asCALL_THISCALL, 0); asASSERT( r >= 0 );
 	r = engine->RegisterMethodToObjectType(&engine->scriptTypeBehaviours, "int &opAssign(int &in)", asFUNCTION(ScriptObject_Assignment), asCALL_CDECL_OBJLAST); asASSERT( r >= 0 );
 
+	// Weakref behaviours
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_GET_WEAKREF_FLAG, "int &f()", asMETHOD(asCScriptObject,GetWeakRefFlag), asCALL_THISCALL, 0); asASSERT( r >= 0 );
+	
 	// Register GC behaviours
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_GETREFCOUNT, "int f()", asMETHOD(asCScriptObject,GetRefCount), asCALL_THISCALL); asASSERT( r >= 0 );
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_SETGCFLAG, "void f()", asMETHOD(asCScriptObject,SetFlag), asCALL_THISCALL); asASSERT( r >= 0 );
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_GETGCFLAG, "bool f()", asMETHOD(asCScriptObject,GetFlag), asCALL_THISCALL); asASSERT( r >= 0 );
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_ENUMREFS, "void f(int&in)", asMETHOD(asCScriptObject,EnumReferences), asCALL_THISCALL); asASSERT( r >= 0 );
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_RELEASEREFS, "void f(int&in)", asMETHOD(asCScriptObject,ReleaseAllHandles), asCALL_THISCALL); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_GETREFCOUNT, "int f()", asMETHOD(asCScriptObject,GetRefCount), asCALL_THISCALL, 0); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_SETGCFLAG, "void f()", asMETHOD(asCScriptObject,SetFlag), asCALL_THISCALL, 0); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_GETGCFLAG, "bool f()", asMETHOD(asCScriptObject,GetFlag), asCALL_THISCALL, 0); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_ENUMREFS, "void f(int&in)", asMETHOD(asCScriptObject,EnumReferences), asCALL_THISCALL, 0); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_RELEASEREFS, "void f(int&in)", asMETHOD(asCScriptObject,ReleaseAllHandles), asCALL_THISCALL, 0); asASSERT( r >= 0 );
 #else
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_CONSTRUCT, "void f(int&in)", asFUNCTION(ScriptObject_Construct_Generic), asCALL_GENERIC); asASSERT( r >= 0 );
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_ADDREF, "void f()", asFUNCTION(ScriptObject_AddRef_Generic), asCALL_GENERIC); asASSERT( r >= 0 );
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_RELEASE, "void f()", asFUNCTION(ScriptObject_Release_Generic), asCALL_GENERIC); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_CONSTRUCT, "void f(int&in)", asFUNCTION(ScriptObject_Construct_Generic), asCALL_GENERIC, 0); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_ADDREF, "void f()", asFUNCTION(ScriptObject_AddRef_Generic), asCALL_GENERIC, 0); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_RELEASE, "void f()", asFUNCTION(ScriptObject_Release_Generic), asCALL_GENERIC, 0); asASSERT( r >= 0 );
 	r = engine->RegisterMethodToObjectType(&engine->scriptTypeBehaviours, "int &opAssign(int &in)", asFUNCTION(ScriptObject_Assignment_Generic), asCALL_GENERIC); asASSERT( r >= 0 );
 
+	// Weakref behaviours
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_GET_WEAKREF_FLAG, "int &f()", asFUNCTION(ScriptObject_GetWeakRefFlag_Generic), asCALL_GENERIC, 0); asASSERT( r >= 0 );
+
 	// Register GC behaviours
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_GETREFCOUNT, "int f()", asFUNCTION(ScriptObject_GetRefCount_Generic), asCALL_GENERIC); asASSERT( r >= 0 );
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_SETGCFLAG, "void f()", asFUNCTION(ScriptObject_SetFlag_Generic), asCALL_GENERIC); asASSERT( r >= 0 );
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_GETGCFLAG, "bool f()", asFUNCTION(ScriptObject_GetFlag_Generic), asCALL_GENERIC); asASSERT( r >= 0 );
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_ENUMREFS, "void f(int&in)", asFUNCTION(ScriptObject_EnumReferences_Generic), asCALL_GENERIC); asASSERT( r >= 0 );
-	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_RELEASEREFS, "void f(int&in)", asFUNCTION(ScriptObject_ReleaseAllHandles_Generic), asCALL_GENERIC); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_GETREFCOUNT, "int f()", asFUNCTION(ScriptObject_GetRefCount_Generic), asCALL_GENERIC, 0); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_SETGCFLAG, "void f()", asFUNCTION(ScriptObject_SetFlag_Generic), asCALL_GENERIC, 0); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_GETGCFLAG, "bool f()", asFUNCTION(ScriptObject_GetFlag_Generic), asCALL_GENERIC, 0); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_ENUMREFS, "void f(int&in)", asFUNCTION(ScriptObject_EnumReferences_Generic), asCALL_GENERIC, 0); asASSERT( r >= 0 );
+	r = engine->RegisterBehaviourToObjectType(&engine->scriptTypeBehaviours, asBEHAVE_RELEASEREFS, "void f(int&in)", asFUNCTION(ScriptObject_ReleaseAllHandles_Generic), asCALL_GENERIC, 0); asASSERT( r >= 0 );
 #endif
 }
 
@@ -231,6 +243,8 @@ asCScriptObject::asCScriptObject(asCObjectType *ot, bool doInitialize)
 	objType = ot;
 	objType->AddRef();
 	isDestructCalled = false;
+	weakRefFlag = 0;
+	hasRefCountReachedZero = false;
 
 	// Notify the garbage collector of this object
 	if( objType->flags & asOBJ_GC )
@@ -303,11 +317,22 @@ void asCScriptObject::Destruct()
 
 asCScriptObject::~asCScriptObject()
 {
+	if( weakRefFlag )
+	{
+		weakRefFlag->Release();
+		weakRefFlag = 0;
+	}
+
 	// The engine pointer should be available from the objectType
 	asCScriptEngine *engine = objType->engine;
 
 	// Destroy all properties
-	for( asUINT n = 0; n < objType->properties.GetLength(); n++ )
+	// In most cases the members are initialized in the order they have been declared, 
+	// so it's safer to uninitialize them from last to first. The order may be different
+	// depending on the use of inheritance and or initialization in the declaration.
+	// TODO: Should the order of initialization be stored by the compiler so that the 
+	//       reverse order can be guaranteed during the destruction?
+	for( int n = (int)objType->properties.GetLength()-1; n >= 0; n-- )
 	{
 		asCObjectProperty *prop = objType->properties[n];
 		if( prop->type.IsObject() )
@@ -323,6 +348,35 @@ asCScriptObject::~asCScriptObject()
 	}
 
 	objType->Release();
+	objType = 0;
+
+	// Something is really wrong if the refCount is not 0 by now
+	asASSERT( refCount.get() == 0 );
+}
+
+asILockableSharedBool *asCScriptObject::GetWeakRefFlag() const
+{
+	// If the object's refCount has already reached zero then the object is already
+	// about to be destroyed so it's ok to return null if the weakRefFlag doesn't already
+	// exist
+	if( weakRefFlag || hasRefCountReachedZero )
+		return weakRefFlag;
+
+	// Lock globally so no other thread can attempt
+	// to create a shared bool at the same time.
+	// TODO: runtime optimize: Instead of locking globally, it would be possible to have 
+	//                         a critical section per object type. This would reduce the 
+	//                         chances of two threads lock on the same critical section.
+	asAcquireExclusiveLock();
+
+	// Make sure another thread didn't create the 
+	// flag while we waited for the lock
+	if( !weakRefFlag )
+		weakRefFlag = asNEW(asCLockableSharedBool);
+
+	asReleaseExclusiveLock();
+
+	return weakRefFlag;
 }
 
 asIScriptEngine *asCScriptObject::GetEngine() const
@@ -332,6 +386,20 @@ asIScriptEngine *asCScriptObject::GetEngine() const
 
 int asCScriptObject::AddRef() const
 {
+	// Warn in case the application tries to increase the refCount after it has reached zero.
+	// This may happen for example if the application calls a method on the class while it is
+	// being destroyed. The application shouldn't do this because it may cause application
+	// crashes if members that have already been destroyed are accessed accidentally.
+	if( hasRefCountReachedZero )
+	{
+		if( objType && objType->engine )
+		{
+			asCString msg;
+			msg.Format(TXT_RESURRECTING_SCRIPTOBJECT_s, objType->name.AddressOf());
+			objType->engine->WriteMessage("", 0, 0, asMSGTYPE_ERROR, msg.AddressOf());
+		}
+	}
+
 	// Increase counter and clear flag set by GC
 	gcFlag = false;
 	return refCount.atomicInc();
@@ -341,6 +409,21 @@ int asCScriptObject::Release() const
 {
 	// Clear the flag set by the GC
 	gcFlag = false;
+
+	// If the weak ref flag exists it is because someone held a weak ref
+	// and that someone may add a reference to the object at any time. It
+	// is ok to check the existance of the weakRefFlag without locking here
+	// because if the refCount is 1 then no other thread is currently 
+	// creating the weakRefFlag.
+	if( refCount.get() == 1 && weakRefFlag )
+	{
+		// Set the flag to tell others that the object is no longer alive
+		// We must do this before decreasing the refCount to 0 so we don't
+		// end up with a race condition between this thread attempting to 
+		// destroy the object and the other that temporary added a strong
+		// ref from the weak ref.
+		weakRefFlag->Set(true);
+	}
 
 	// Call the script destructor behaviour if the reference counter is 1.
 	if( refCount.get() == 1 && !isDestructCalled )
@@ -353,8 +436,18 @@ int asCScriptObject::Release() const
 	int r = refCount.atomicDec();
 	if( r == 0 )
 	{
-		// This cast is OK since we are the last reference
-		const_cast<asCScriptObject*>(this)->Destruct();
+		// Flag this object as being destroyed so the application
+		// can be warned if the code attempts to resurrect the object
+		// during the destructor. This also avoids a recursive call
+		// to the destructor which would crash the application if it
+		// really does resurrect the object.
+		if( !hasRefCountReachedZero )
+		{
+			hasRefCountReachedZero = true;
+
+			// This cast is OK since we are the last reference
+			const_cast<asCScriptObject*>(this)->Destruct();
+		}
 		return 0;
 	}
 
@@ -363,6 +456,9 @@ int asCScriptObject::Release() const
 
 void asCScriptObject::CallDestructor()
 {
+	// Only allow the destructor to be called once
+	if( isDestructCalled ) return;
+
 	asIScriptContext *ctx = 0;
 	bool isNested = false;
 	bool doAbort = false;
@@ -755,6 +851,57 @@ void asCScriptObject::CopyHandle(asPWORD *src, asPWORD *dst, asCObjectType *objT
 	*dst = *src;
 	if( *dst && objType->beh.addref )
 		engine->CallObjectMethod(*(void**)dst, objType->beh.addref);
+}
+
+// TODO: weak: Should move to its own file
+asCLockableSharedBool::asCLockableSharedBool() : value(false) 
+{
+	refCount.set(1);
+}
+
+int asCLockableSharedBool::AddRef() const
+{
+	return refCount.atomicInc();
+}
+
+int asCLockableSharedBool::Release() const
+{
+	int r = refCount.atomicDec();
+	if( r == 0 )
+		asDELETE(const_cast<asCLockableSharedBool*>(this), asCLockableSharedBool);
+	return r;
+}
+
+bool asCLockableSharedBool::Get() const
+{
+	return value;
+}
+
+void asCLockableSharedBool::Set(bool v)
+{
+	// Make sure the value is not changed while another thread  
+	// is inspecting it and taking a decision on what to do.
+	Lock();
+	value = v;
+	Unlock();
+}
+
+void asCLockableSharedBool::Lock() const
+{
+	ENTERCRITICALSECTION(lock);
+}
+
+void asCLockableSharedBool::Unlock() const
+{
+	LEAVECRITICALSECTION(lock);
+}
+
+// Interface
+// Auxiliary function to allow applications to create shared 
+// booleans without having to implement the logic for them
+AS_API asILockableSharedBool *asCreateLockableSharedBool()
+{
+	return asNEW(asCLockableSharedBool);
 }
 
 END_AS_NAMESPACE

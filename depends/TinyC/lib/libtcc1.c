@@ -107,7 +107,7 @@ union float_long {
 };
 
 /* XXX: we don't support several builtin supports for now */
-#ifndef __x86_64__
+#if !defined(__x86_64__) && !defined(__arm__)
 
 /* XXX: use gcc/tcc intrinsic ? */
 #if defined(__i386__)
@@ -162,7 +162,7 @@ static UDWtype __udivmoddi4 (UDWtype n, UDWtype d, UDWtype *rp)
   n0 = nn.s.low;
   n1 = nn.s.high;
 
-#if !UDIV_NEEDS_NORMALIZATION
+#if !defined(UDIV_NEEDS_NORMALIZATION)
   if (d1 == 0)
     {
       if (d0 > n1)
@@ -478,13 +478,24 @@ long long __ashldi3(long long a, int b)
 #endif
 }
 
-#if defined(__i386__)
-/* FPU control word for rounding to nearest mode */
-unsigned short __tcc_fpu_control = 0x137f;
-/* FPU control word for round to zero mode for int conversion */
-unsigned short __tcc_int_fpu_control = 0x137f | 0x0c00;
+#ifndef _WIN32
+void __tcc_fpinit(void)
+{
+    unsigned c = 0x137F;
+    __asm__ __volatile__ ("fldcw %0" : : "m" (c));
+}
 #endif
-
+long long __tcc_cvt_ftol(long double x)
+{
+    unsigned c0, c1;
+    long long ret;
+    __asm__ __volatile__ ("fnstcw %0" : "=m" (c0));
+    c1 = c0 | 0x0C00;
+    __asm__ __volatile__ ("fldcw %0" : : "m" (c1));
+    __asm__ __volatile__ ("fistpll %0"  : "=m" (ret));
+    __asm__ __volatile__ ("fldcw %0" : : "m" (c0));
+    return ret;
+}
 #endif /* !__x86_64__ */
 
 /* XXX: fix tcc's code generator to do this instead */
@@ -607,10 +618,16 @@ unsigned long long __fixunsxfdi (long double a1)
 
 #if defined(__x86_64__) && !defined(_WIN64)
 
-/* helper functions for stdarg.h */
-
-#include <stdio.h>
+#ifndef __TINYC__
 #include <stdlib.h>
+#include <stdio.h>
+#else
+/* Avoid including stdlib.h because it is not easily available when
+   cross compiling */
+extern void *malloc(unsigned long long);
+extern void free(void*);
+extern void abort(void);
+#endif
 
 enum __va_arg_type {
     __va_gen_reg, __va_float_reg, __va_stack
@@ -639,9 +656,10 @@ void *__va_start(void *fp)
 
 void *__va_arg(struct __va_list_struct *ap,
                enum __va_arg_type arg_type,
-               int size)
+               int size, int align)
 {
     size = (size + 7) & ~7;
+    align = (align + 7) & ~7;
     switch (arg_type) {
     case __va_gen_reg:
         if (ap->gp_offset < 48) {
@@ -662,10 +680,13 @@ void *__va_arg(struct __va_list_struct *ap,
     case __va_stack:
     use_overflow_area:
         ap->overflow_arg_area += size;
+        ap->overflow_arg_area = (char*)((long long)(ap->overflow_arg_area + align - 1) & -(long long)align);
         return ap->overflow_arg_area - size;
 
     default:
+#ifndef __TINYC__
         fprintf(stderr, "unknown ABI type for __va_arg\n");
+#endif
         abort();
     }
 }
@@ -684,3 +705,36 @@ void __va_end(struct __va_list_struct *ap)
 }
 
 #endif /* __x86_64__ */
+
+/* Flushing for tccrun */
+#if defined(__x86_64__) || defined(__i386__)
+
+void __clear_cache(char *beginning, char *end)
+{
+}
+
+#elif defined(__arm__)
+
+#define _GNU_SOURCE
+#include <unistd.h>
+#include <sys/syscall.h>
+
+void __clear_cache(char *beginning, char *end)
+{
+/* __ARM_NR_cacheflush is kernel private and should not be used in user space.
+ * However, there is no ARM asm parser in tcc so we use it for now */
+#if 1
+    syscall(__ARM_NR_cacheflush);
+#else
+    __asm__ ("push {r7}\n\t"
+             "mov r7, #0xf0002\n\t"
+             "mov r2, #0\n\t"
+             "swi 0\n\t"
+             "pop {r7}\n\t"
+             "ret");
+#endif
+}
+
+#else
+#warning __clear_cache not defined for this architecture, avoid using tcc -run
+#endif

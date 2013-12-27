@@ -28,275 +28,706 @@ bool Test()
 	COutStream out;
 	asIScriptEngine *engine;
 	asIScriptModule *mod;
+	asIScriptContext *ctx;
 	CBufferedOutStream bout;
 	const char *script;
 
-	engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
-	engine->RegisterGlobalFunction("void assert(bool)", asFUNCTION(Assert), asCALL_GENERIC);
-	engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
-	mod = engine->GetModule(0, asGM_ALWAYS_CREATE);
-
-	// Test the declaration of new function signatures
-	script = "funcdef void functype();\n"
-	// It must be possible to declare variables of the funcdef type
-		     "functype @myFunc = null;\n"
-	// It must be possible to initialize the function pointer directly
-			 "functype @myFunc1 = @func;\n"
-		 	 "void func() { called = true; }\n"
-			 "bool called = false;\n"
-	// It must be possible to compare the function pointer with another
-	         "void main() { \n"
-			 "  assert( myFunc1 !is null ); \n"
-			 "  assert( myFunc1 is func ); \n"
-	// It must be possible to call a function through the function pointer
-	    	 "  myFunc1(); \n"
-			 "  assert( called ); \n"
-	// Local function pointer variables are also possible
-			 "  functype @myFunc2 = @func;\n"
-			 "} \n";
-	mod->AddScriptSection("script", script);
-	r = mod->Build();
-	if( r != 0 )
-		TEST_FAILED;
-	r = ExecuteString(engine, "main()", mod);
-	if( r != asEXECUTION_FINISHED )
-		TEST_FAILED;
-
-	// It must be possible to save the byte code with function handles
-	CBytecodeStream bytecode(__FILE__"1");
-	mod->SaveByteCode(&bytecode);
+	// opEquals with funcdef
+	// http://www.gamedev.net/topic/647797-difference-between-xopequalsy-and-xy-with-funcdefs/
 	{
-		asIScriptModule *mod2 = engine->GetModule("mod2", asGM_ALWAYS_CREATE);
-		mod2->LoadByteCode(&bytecode);
-		r = ExecuteString(engine, "main()", mod2);
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+		engine->RegisterGlobalFunction("void assert(bool)", asFUNCTION(Assert), asCALL_GENERIC);
+
+		mod = engine->GetModule("mod", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"funcdef void CALLBACK(); \n"
+			"class Test { \n"
+			"  bool opEquals(CALLBACK @f) { \n"
+			"    return f is func; \n"
+			"  } \n"
+			"  CALLBACK @func; \n"
+			"} \n"
+			"void func() {} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "Test t; \n"
+			                      "@t.func = func; \n"
+								  "assert( t == func );", mod);
 		if( r != asEXECUTION_FINISHED )
 			TEST_FAILED;
+
+		mod = engine->GetModule("mod", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"funcdef void CALLBACK(); \n"
+			"class Test { \n"
+			"  bool opEquals(CALLBACK @f) { \n"
+			"    return f is func; \n"
+			"  } \n"
+			"  CALLBACK @func; \n"
+			"} \n"
+			"namespace ns { \n"
+			"void func() {} \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "Test t; \n"
+								  "@t.func = ns::func; \n"
+								  "assert( t == ns::func );", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		engine->Release();
 	}
 
-	// Test function pointers as members of classes. It should be possible to call the function
-	// from within a class method. It should also be possible to call it from outside through the . operator.
-	script = "funcdef void FUNC();       \n"
-		     "class CMyObj               \n"
-			 "{                          \n"
-			 "  CMyObj() { @f = @func; } \n"
-			 "  FUNC@ f;                 \n"
-			 "  void test()              \n"
-			 "  {                        \n"
-			 "    this.f();              \n"
-			 "    f();                   \n"
-			 "    CMyObj o;              \n"
-			 "    o.f();                 \n"
-			 "    main();                \n"
-			 "    assert( called == 4 ); \n"
-			 "  }                        \n"
-			 "}                          \n"
-			 "void main()                \n"
-			 "{                          \n"
-			 "  CMyObj o;                \n"
-			 "  o.f();                   \n"
-			 "}                          \n"
-			 "int called = 0;            \n"
-			 "void func() { called++; }  \n";
-	mod->AddScriptSection("script", script);
-	r = mod->Build();
-	if( r < 0 )
-		TEST_FAILED;
-	asIScriptContext *ctx = engine->CreateContext();
-	r = ExecuteString(engine, "CMyObj o; o.test();", mod, ctx);
-	if( r != asEXECUTION_FINISHED )
+	// Test funcdefs and namespaces
+	// http://www.gamedev.net/topic/644586-application-function-returning-a-funcdef-handle-crashes-when-called-in-as/
 	{
-		TEST_FAILED;
-		if( r == asEXECUTION_EXCEPTION )
-			PrintException(ctx);
-	}
-	ctx->Release();
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+		engine->RegisterGlobalFunction("void assert(bool)", asFUNCTION(Assert), asCALL_GENERIC);
 
-	// It must not be possible to declare a non-handle variable of the funcdef type
-	engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
-	bout.buffer = "";
-	script = "funcdef void functype();\n"
-		     "functype myFunc;\n";
-	mod->AddScriptSection("script", script);
-	r = mod->Build();
-	if( r >= 0 )
-		TEST_FAILED;
-	if( bout.buffer != "script (2, 1) : Error   : Data type can't be 'functype'\n"
-					   "script (2, 10) : Error   : No default constructor for object of type 'functype'.\n" )
-	{
-		printf("%s", bout.buffer.c_str());
-		TEST_FAILED;
+		mod = engine->GetModule("mod", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"bool called = false; \n"
+			"funcdef void simpleFuncDef(); \n"
+			"namespace foo { \n"
+			"  void simpleFunction() { called = true; } \n"
+			"} \n"
+			"void takeSimpleFuncDef(simpleFuncDef@ f) { f(); } \n"
+			"void main() { \n"
+			"  takeSimpleFuncDef(foo::simpleFunction); \n"
+			"  assert( called ); \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+		r = ExecuteString(engine, "main()", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		mod->AddScriptSection("test",
+			"bool called = false; \n"
+			"funcdef void simpleFuncDef();\n"
+			"namespace foo {\n"
+			"  void simpleFunction() { called = true; }\n"
+			"}\n"
+			"void main() {\n"
+			"  simpleFuncDef@ bar = foo::simpleFunction;\n"
+			"  bar(); \n"
+			"  assert( called ); \n"
+			"}\n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+		r = ExecuteString(engine, "main()", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+		engine->Release();
 	}
 
-	// It must not be possible to invoke the funcdef
-	bout.buffer = "";
-	script = "funcdef void functype();\n"
-		     "void func() { functype(); } \n";
-	mod->AddScriptSection("script", script);
-	r = mod->Build();
-	if( r >= 0 )
-		TEST_FAILED;
-	if( bout.buffer != "script (2, 1) : Info    : Compiling void func()\n"
-					   "script (2, 15) : Error   : No matching signatures to 'functype()'\n" )
+	// Test registering global property of funcdef type
+	// http://www.gamedev.net/topic/644586-application-function-returning-a-funcdef-handle-crashes-when-called-in-as/
 	{
-		printf("%s", bout.buffer.c_str());
-		TEST_FAILED;
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+
+		asIScriptFunction *f = 0;
+		engine->RegisterFuncdef("void myfunc()");
+		r = engine->RegisterGlobalProperty("myfunc @f", &f);
+		if( r < 0 )
+			TEST_FAILED;
+
+		mod = engine->GetModule("mod", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"void func() {} \n");
+		mod->Build();
+
+		r = ExecuteString(engine, "@f = func; \n", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		if( f == 0 )
+			TEST_FAILED;
+		if( strcmp(f->GetName(), "func") != 0 )
+			TEST_FAILED;
+
+		f->Release();
+		f = 0;
+
+		engine->Release();
 	}
 
-	// Test that a funcdef can't have the same name as other global entities
-	bout.buffer = "";
-	script = "funcdef void test();  \n"
-	         "int test; \n";
-	mod->AddScriptSection("script", script);
-	r = mod->Build();
-	if( r >= 0 )
-		TEST_FAILED;
-	if( bout.buffer != "script (2, 5) : Error   : Name conflict. 'test' is a funcdef.\n" )
+	// Test casting with funcdefs
+	// http://www.gamedev.net/topic/644586-application-function-returning-a-funcdef-handle-crashes-when-called-in-as/
 	{
-		printf("%s", bout.buffer.c_str());
-		TEST_FAILED;
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+		engine->RegisterGlobalFunction("void assert(bool)", asFUNCTION(Assert), asCALL_GENERIC);
+
+		mod = engine->GetModule("mod", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"funcdef void myfunc1(); \n"
+			"funcdef void myfunc2(); \n"
+			"funcdef void myfunc3(); \n"
+			"bool called = false; \n"
+			"void func() { called = true; } \n"
+			"void main() \n"
+			"{ \n"
+			"  myfunc1 @f1 = func; \n"
+			"  myfunc2 @f2 = cast<myfunc2>(f1); \n" // explicit cast
+			"  myfunc3 @f3 = f2; \n"                // implicit cast
+			"  assert( f1 is f2 ); \n"
+			"  assert( f2 is f3 ); \n"
+			"  assert( f3 is func ); \n"
+			"  f3(); \n"
+			"  assert( called ); \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "main()", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		engine->Release();
 	}
 
-	// Must not be possible to take the address of class methods
-	bout.buffer = "";
-	script = "class t { \n"
-		"  void func() { @func; } \n"
-		"} \n";
-	mod->AddScriptSection("script", script);
-	r = mod->Build();
-	if( r >= 0 )
-		TEST_FAILED;
-	if( bout.buffer != "script (2, 3) : Info    : Compiling void t::func()\n"
-	                   "script (2, 18) : Error   : 'func' is not declared\n" )
+	// Don't allow application to register additional behaviours to funcdefs
+	// http://www.gamedev.net/topic/644586-application-function-returning-a-funcdef-handle-crashes-when-called-in-as/
 	{
-		printf("%s", bout.buffer.c_str());
-		TEST_FAILED;
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+		bout.buffer = "";
+
+		engine->RegisterObjectType("jjOBJ", 0, asOBJ_REF | asOBJ_NOCOUNT);
+		engine->RegisterFuncdef("void jjBEHAVIOR(jjOBJ@)");
+		engine->RegisterFuncdef("void DifferentFunctionPointer()");
+		r = engine->RegisterObjectBehaviour("jjBEHAVIOR", asBEHAVE_IMPLICIT_REF_CAST, "DifferentFunctionPointer@ a()", asFUNCTION(0), asCALL_CDECL_OBJLAST);
+		if( r >= 0 )
+			TEST_FAILED;
+
+		if( bout.buffer != " (0, 0) : Error   : Failed in call to function 'RegisterObjectBehaviour' with 'jjBEHAVIOR' and 'DifferentFunctionPointer@ a()' (Code: -12)\n" )
+			TEST_FAILED;
+
+		engine->Release();
 	}
 
-	// A more complex sample
-	bout.buffer = "";
-	script = 
-		"funcdef bool CALLBACK(int, int); \n"
-		"funcdef bool CALLBACK2(CALLBACK @); \n"
-		"void main() \n"
-		"{ \n"
-		"	CALLBACK @func = @myCompare; \n"
-		"	CALLBACK2 @func2 = @test; \n"
-		"	func2(func); \n"
-		"} \n"
-		"bool test(CALLBACK @func) \n"
-		"{ \n"
-		"	return func(1, 2); \n"
-		"} \n"
-		"bool myCompare(int a, int b) \n"
-		"{ \n"
-		"	return a > b; \n"
-		"} \n";
-	mod->AddScriptSection("script", script);
-	r = mod->Build();
-	if( r < 0 )
-		TEST_FAILED;
-	if( bout.buffer != "" )
+	// Test delegate function pointers for object methods
 	{
-		printf("%s", bout.buffer.c_str());
-		TEST_FAILED;
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+		bout.buffer = "";
+
+		RegisterScriptArray(engine, false);
+		engine->RegisterGlobalFunction("void assert(bool)", asFUNCTION(Assert), asCALL_GENERIC);
+		RegisterStdString(engine);
+
+		mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"class Test { \n"
+			"  void method() {} \n"
+			"  int func(int) { return 0; } \n"
+			"  void func() { called = true; } \n" // The compiler should pick the right overload
+			"  bool called = false; \n"
+			"} \n"
+			"funcdef void CALLBACK(); \n"
+			"void main() { \n"
+			"  Test t; \n"
+			"  CALLBACK @cb = CALLBACK(t.func); \n" // instanciate a delegate
+			"  cb(); \n" // invoke the delegate
+			"  assert( t.called ); \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		if( bout.buffer != "" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		r = ExecuteString(engine, "main()", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		// Must be possible to save/load bytecode
+		CBytecodeStream stream("test");
+		mod->SaveByteCode(&stream);
+
+		mod = engine->GetModule("test2", asGM_ALWAYS_CREATE);
+		r = mod->LoadByteCode(&stream);
+		if( r < 0 )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "main()", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		// Must be possible to create delegate from within class method, i.e. implicit this.method
+		bout.buffer = "";
+		mod->AddScriptSection("test",
+			"funcdef void CALL(); \n"
+			"class Test { \n"
+			"  bool called = false; \n"
+			"  void callMe() { called = true; } \n"
+			"  CALL @GetCallback() { return CALL(callMe); } \n"
+			"} \n"
+			"void main() { \n"
+			"  Test t; \n"
+			"  CALL @cb = t.GetCallback(); \n"
+			"  cb(); \n"
+			"  assert( t.called ); \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		if( bout.buffer != "" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		r = ExecuteString(engine, "main()", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		// A delegate to own method held as member of class must be properly resolved by gc
+		mod->AddScriptSection("test",
+			"funcdef void CALL(); \n"
+			"class Test { \n"
+			"  void call() {}; \n"
+			"  CALL @c; \n"
+			"} \n"
+			"void main() { \n"
+			"  Test t; \n"
+			"  t.c = CALL(t.call); \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		engine->GarbageCollect();
+
+		asUINT currSize, totalDestr, totalDetect;
+		engine->GetGCStatistics(&currSize, &totalDestr, &totalDetect);
+
+		r = ExecuteString(engine, "main()", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		engine->GarbageCollect();
+
+		asUINT currSize2, totalDestr2, totalDetect2;
+		engine->GetGCStatistics(&currSize2, &totalDestr2, &totalDetect2);
+
+		if( totalDetect2 == totalDetect )
+			TEST_FAILED;
+
+		// Must be possible to call delegate from application
+		mod->AddScriptSection("test",
+			"funcdef void CALL(); \n"
+			"class Test { \n"
+			"  bool called = false; \n"
+			"  void call() { called = true; } \n"
+			"} \n"
+			"Test t; \n"
+			"CALL @callback = CALL(t.call); \n");
+		r = mod->Build();
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		int idx = mod->GetGlobalVarIndexByDecl("CALL @callback");
+		if( idx < 0 )
+			TEST_FAILED;
+
+		asIScriptFunction *callback = *(asIScriptFunction**)mod->GetAddressOfGlobalVar(idx);
+		if( callback == 0 )
+			TEST_FAILED;
+		if( callback->GetFuncType() != asFUNC_DELEGATE )
+			TEST_FAILED;
+		if( callback->GetDelegateObject() == 0 )
+			TEST_FAILED;
+		if( std::string(callback->GetDelegateFunction()->GetDeclaration()) != "void Test::call()" )
+			TEST_FAILED;
+
+		ctx = engine->CreateContext();
+		ctx->Prepare(callback);
+		r = ctx->Execute();
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+		ctx->Release();
+
+		r = ExecuteString(engine, "assert( t.called );", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		// Must be possible to create the delegate from the application
+		asIScriptObject *obj = (asIScriptObject*)mod->GetAddressOfGlobalVar(mod->GetGlobalVarIndexByDecl("Test t"));
+		asIScriptFunction *func = obj->GetObjectType()->GetMethodByName("call");
+		asIScriptFunction *delegate = engine->CreateDelegate(func, obj);
+		if( delegate == 0 )
+			TEST_FAILED;
+		delegate->Release();
+
+		// Must be possible to create delegate for registered type too
+		mod->AddScriptSection("test",
+			"funcdef bool EMPTY(); \n"
+			"void main() { \n"
+			"  array<int> a; \n"
+			"  EMPTY @empty = EMPTY(a.isEmpty); \n"
+			"  assert( empty() == true ); \n"
+			"  a.insertLast(42); \n"
+			"  assert( empty() == false ); \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "main()", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		// Must not be possible to create delegate with const object and non-const method
+		bout.buffer = "";
+		mod->AddScriptSection("test",
+			"funcdef void F(); \n"
+			"class Test { \n"
+			"  void f() {} \n"
+			"} \n"
+			"void main() { \n"
+			" const Test @t; \n"
+			" F @f = F(t.f); \n" // t is read-only, so this delegate must not be allowed
+			"} \n");
+		r = mod->Build();
+		if( r >= 0 )
+			TEST_FAILED;
+
+		// TODO: Error message should be better, so it is understood that the error is because of const object
+		if( bout.buffer != "test (5, 1) : Info    : Compiling void main()\n"
+		                   "test (7, 9) : Error   : No matching signatures to 'void F()'\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		// Must not be possible to create delegates for non-reference types
+		bout.buffer = "";
+		mod->AddScriptSection("test",
+			"funcdef bool CB(); \n"
+			"string s; \n"
+			"CB @cb = CB(s.isEmpty); \n");
+		r = mod->Build();
+		if( r >= 0 )
+			TEST_FAILED;
+
+		if( bout.buffer != "test (3, 8) : Info    : Compiling CB@ cb\n"
+		                   "test (3, 10) : Error   : Can't create delegate for types that do not support handles\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		engine->Release();
 	}
-	r = ExecuteString(engine, "main()", mod);
-	if( r != asEXECUTION_FINISHED )
-		TEST_FAILED;
 
-	// It must be possible to register the function signature from the application
-	r = engine->RegisterFuncdef("void AppCallback()");
-	if( r < 0 )
-		TEST_FAILED;
-
-	r = engine->RegisterGlobalFunction("void ReceiveFuncPtr(AppCallback @)", asFUNCTION(ReceiveFuncPtr), asCALL_CDECL); assert( r >= 0 );
-
-	// It must be possible to use the registered funcdef
-	// It must be possible to receive a function pointer for a registered func def
-	bout.buffer = "";
-	script = 
-		"void main() \n"
-		"{ \n"
-		"	AppCallback @func = @test; \n"
-		"   func(); \n"
-		"   ReceiveFuncPtr(func); \n"
-		"} \n"
-		"void test() \n"
-		"{ \n"
-		"} \n";
-	mod->AddScriptSection("script", script);
-	r = mod->Build();
-	if( r < 0 )
-		TEST_FAILED;
-	if( bout.buffer != "" )
+	// Test ordinary function pointers for global functions
 	{
-		printf("%s", bout.buffer.c_str());
-		TEST_FAILED;
-	}
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->RegisterGlobalFunction("void assert(bool)", asFUNCTION(Assert), asCALL_GENERIC);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+		mod = engine->GetModule(0, asGM_ALWAYS_CREATE);
 
-	r = ExecuteString(engine, "main()", mod);
-	if( r != asEXECUTION_FINISHED )
-		TEST_FAILED;
+		// Test the declaration of new function signatures
+		script = "funcdef void functype();\n"
+		// It must be possible to declare variables of the funcdef type
+				 "functype @myFunc = null;\n"
+		// It must be possible to initialize the function pointer directly
+				 "functype @myFunc1 = @func;\n"
+		 		 "void func() { called = true; }\n"
+				 "bool called = false;\n"
+		// It must be possible to compare the function pointer with another
+				 "void main() { \n"
+				 "  assert( myFunc1 !is null ); \n"
+				 "  assert( myFunc1 is func ); \n"
+		// It must be possible to call a function through the function pointer
+	    		 "  myFunc1(); \n"
+				 "  assert( called ); \n"
+		// Local function pointer variables are also possible
+				 "  functype @myFunc2 = @func;\n"
+				 "} \n";
+		mod->AddScriptSection("script", script);
+		r = mod->Build();
+		if( r != 0 )
+			TEST_FAILED;
+		r = ExecuteString(engine, "main()", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
 
-	if( !receivedFuncPtrIsOK )
-		TEST_FAILED;
+		// It must be possible to save the byte code with function handles
+		CBytecodeStream bytecode(__FILE__"1");
+		mod->SaveByteCode(&bytecode);
+		{
+			asIScriptModule *mod2 = engine->GetModule("mod2", asGM_ALWAYS_CREATE);
+			mod2->LoadByteCode(&bytecode);
+			r = ExecuteString(engine, "main()", mod2);
+			if( r != asEXECUTION_FINISHED )
+				TEST_FAILED;
+		}
 
-	mod->SaveByteCode(&bytecode);
-	{
-		receivedFuncPtrIsOK = false;
-		asIScriptModule *mod2 = engine->GetModule("mod2", asGM_ALWAYS_CREATE);
-		mod2->LoadByteCode(&bytecode);
-		r = ExecuteString(engine, "main()", mod2);
+		// Test function pointers as members of classes. It should be possible to call the function
+		// from within a class method. It should also be possible to call it from outside through the . operator.
+		script = "funcdef void FUNC();       \n"
+				 "class CMyObj               \n"
+				 "{                          \n"
+				 "  CMyObj() { @f = @func; } \n"
+				 "  FUNC@ f;                 \n"
+				 "  void test()              \n"
+				 "  {                        \n"
+				 "    this.f();              \n"
+				 "    f();                   \n"
+				 "    CMyObj o;              \n"
+				 "    o.f();                 \n"
+				 "    main();                \n"
+				 "    assert( called == 4 ); \n"
+				 "  }                        \n"
+				 "}                          \n"
+				 "void main()                \n"
+				 "{                          \n"
+				 "  CMyObj o;                \n"
+				 "  o.f();                   \n"
+				 "}                          \n"
+				 "int called = 0;            \n"
+				 "void func() { called++; }  \n";
+		mod->AddScriptSection("script", script);
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+		asIScriptContext *ctx = engine->CreateContext();
+		r = ExecuteString(engine, "CMyObj o; o.test();", mod, ctx);
+		if( r != asEXECUTION_FINISHED )
+		{
+			TEST_FAILED;
+			if( r == asEXECUTION_EXCEPTION )
+				PrintException(ctx);
+		}
+		ctx->Release();
+
+		// It must not be possible to declare a non-handle variable of the funcdef type
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+		bout.buffer = "";
+		script = "funcdef void functype();\n"
+				 "functype myFunc;\n";
+		mod->AddScriptSection("script", script);
+		r = mod->Build();
+		if( r >= 0 )
+			TEST_FAILED;
+		if( bout.buffer != "script (2, 1) : Error   : Data type can't be 'functype'\n"
+						   "script (2, 10) : Error   : No default constructor for object of type 'functype'.\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		// It must not be possible to invoke the funcdef
+		bout.buffer = "";
+		script = "funcdef void functype();\n"
+				 "void func() { functype(); } \n";
+		mod->AddScriptSection("script", script);
+		r = mod->Build();
+		if( r >= 0 )
+			TEST_FAILED;
+		if( bout.buffer != "script (2, 1) : Info    : Compiling void func()\n"
+						   "script (2, 15) : Error   : No matching signatures to 'functype()'\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		// Test that a funcdef can't have the same name as other global entities
+		bout.buffer = "";
+		script = "funcdef void test();  \n"
+				 "int test; \n";
+		mod->AddScriptSection("script", script);
+		r = mod->Build();
+		if( r >= 0 )
+			TEST_FAILED;
+		if( bout.buffer != "script (2, 5) : Error   : Name conflict. 'test' is a funcdef.\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		// It is possible to take the address of class methods, but not to assign to funcdef variable
+		bout.buffer = "";
+		script = 
+			"funcdef void F(); \n"
+		    "class t { \n"
+			"  void func() { \n"
+			"    @func; \n" // TODO: Should warn about expression that doesn't do anything
+			"    F @f = @func; \n"
+            "    } \n"
+			"} \n";
+		mod->AddScriptSection("script", script);
+		r = mod->Build();
+		if( r >= 0 )
+			TEST_FAILED;
+		// TODO: The error message should be better
+		if( bout.buffer != "script (3, 3) : Info    : Compiling void t::func()\n"
+		                   "script (5, 12) : Error   : Can't implicitly convert from 't' to 'F@&'.\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		// A more complex sample
+		bout.buffer = "";
+		script = 
+			"funcdef bool CALLBACK(int, int); \n"
+			"funcdef bool CALLBACK2(CALLBACK @); \n"
+			"void main() \n"
+			"{ \n"
+			"	CALLBACK @func = @myCompare; \n"
+			"	CALLBACK2 @func2 = @test; \n"
+			"	func2(func); \n"
+			"} \n"
+			"bool test(CALLBACK @func) \n"
+			"{ \n"
+			"	return func(1, 2); \n"
+			"} \n"
+			"bool myCompare(int a, int b) \n"
+			"{ \n"
+			"	return a > b; \n"
+			"} \n";
+		mod->AddScriptSection("script", script);
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+		if( bout.buffer != "" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+		r = ExecuteString(engine, "main()", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		// It must be possible to register the function signature from the application
+		r = engine->RegisterFuncdef("void AppCallback()");
+		if( r < 0 )
+			TEST_FAILED;
+
+		r = engine->RegisterGlobalFunction("void ReceiveFuncPtr(AppCallback @)", asFUNCTION(ReceiveFuncPtr), asCALL_CDECL); assert( r >= 0 );
+
+		// It must be possible to use the registered funcdef
+		// It must be possible to receive a function pointer for a registered func def
+		bout.buffer = "";
+		script = 
+			"void main() \n"
+			"{ \n"
+			"	AppCallback @func = @test; \n"
+			"   func(); \n"
+			"   ReceiveFuncPtr(func); \n"
+			"} \n"
+			"void test() \n"
+			"{ \n"
+			"} \n";
+		mod->AddScriptSection("script", script);
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+		if( bout.buffer != "" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		r = ExecuteString(engine, "main()", mod);
 		if( r != asEXECUTION_FINISHED )
 			TEST_FAILED;
 
 		if( !receivedFuncPtrIsOK )
 			TEST_FAILED;
+
+		mod->SaveByteCode(&bytecode);
+		{
+			receivedFuncPtrIsOK = false;
+			asIScriptModule *mod2 = engine->GetModule("mod2", asGM_ALWAYS_CREATE);
+			mod2->LoadByteCode(&bytecode);
+			r = ExecuteString(engine, "main()", mod2);
+			if( r != asEXECUTION_FINISHED )
+				TEST_FAILED;
+
+			if( !receivedFuncPtrIsOK )
+				TEST_FAILED;
+		}
+
+		// The compiler should be able to determine the right function overload
+		// by the destination of the function pointer
+		bout.buffer = "";
+		mod->AddScriptSection("test",
+		         "funcdef void f(); \n"
+				 "f @fp = @func;  \n"
+				 "bool called = false; \n"
+				 "void func() { called = true; }    \n"
+				 "void func(int) {} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+		if( bout.buffer != "" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+		r = ExecuteString(engine, "fp(); assert( called );", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		//----------------------------------------------------------
+		// TODO: Future improvements below
+
+		// If the function referred to when taking a function pointer is removed from the module,
+		// the code must not be invalidated. After removing func() from the module, it must still 
+		// be possible to execute func2()
+		script = "funcdef void FUNC(); \n"
+				 "void func() {} \n";
+				 "void func2() { FUNC@ f = @func; f(); } \n";
+
+		// Test that the function in a function pointer isn't released while the function 
+		// is being executed, even though the function pointer itself is cleared
+		script = "DYNFUNC@ funcPtr;        \n"
+				 "funcdef void DYNFUNC(); \n"
+				 "@funcPtr = @CompileDynFunc('void func() { @funcPtr = null; }'); \n";
+
+		// Test that it is possible to declare the function signatures out of order
+		// This also tests the circular reference between the function signatures
+		script = "funcdef void f1(f2@) \n"
+				 "funcdef void f2(f1@) \n";
+
+		// It must be possible to identify a function handle type from the type id
+
+		// It must be possible enumerate the function definitions in the module, 
+		// and to enumerate the parameters the function accepts
+
+		// A funcdef defined in multiple modules must share the id and signature so that a function implemented 
+		// in one module can be called from another module by storing the handle in the funcdef variable
+
+		// An interface that takes a funcdef as parameter must still have its typeid shared if the funcdef can also be shared
+		// If the funcdef takes an interface as parameter, it must still be shared
+
+		// Must have a generic function pointer that can store any signature. The function pointer
+		// can then be dynamically cast to the correct function signature so that the function it points
+		// to can be invoked.
+
+		engine->Release();
 	}
-
-	//----------------------------------------------------------
-	// TODO: Future improvements below
-
-	// If the function referred to when taking a function pointer is removed from the module,
-	// the code must not be invalidated. After removing func() from the module, it must still 
-	// be possible to execute func2()
-	script = "funcdef void FUNC(); \n"
-	         "void func() {} \n";
-	         "void func2() { FUNC@ f = @func; f(); } \n";
-
-	// Test that the function in a function pointer isn't released while the function 
-	// is being executed, even though the function pointer itself is cleared
-	script = "DYNFUNC@ funcPtr;        \n"
-		     "funcdef void DYNFUNC(); \n"
-			 "@funcPtr = @CompileDynFunc('void func() { @funcPtr = null; }'); \n";
-
-	// The compiler should be able to determine the right function overload by the destination of the function pointer
-	script = "funcdef void f(); \n"
-		     "f @fp = @func();  \n"
-			 "void func() {}    \n"
-			 "void func(int) {} \n";
-
-	// Test that it is possible to declare the function signatures out of order
-	// This also tests the circular reference between the function signatures
-	script = "funcdef void f1(f2@) \n"
-	         "funcdef void f2(f1@) \n";
-
-	// It must be possible to identify a function handle type from the type id
-
-	// It must be possible enumerate the function definitions in the module, 
-	// and to enumerate the parameters the function accepts
-
-	// A funcdef defined in multiple modules must share the id and signature so that a function implemented 
-	// in one module can be called from another module by storing the handle in the funcdef variable
-
-	// An interface that takes a funcdef as parameter must still have its typeid shared if the funcdef can also be shared
-	// If the funcdef takes an interface as parameter, it must still be shared
-
-	// Must have a generic function pointer that can store any signature. The function pointer
-	// can then be dynamically cast to the correct function signature so that the function it points
-	// to can be invoked.
-
-	engine->Release();
 
 	// Test function pointers with virtual property accessors
 	// http://www.gamedev.net/topic/639243-funcdef-inside-shared-interface-interface-already-implement-warning/

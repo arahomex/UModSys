@@ -22,6 +22,7 @@ This page gives a brief description of the add-ons that you'll find in the /sdk/
  - \subpage doc_addon_array
  - \subpage doc_addon_any
  - \subpage doc_addon_handle
+ - \subpage doc_addon_weakref
  - \subpage doc_addon_dict
  - \subpage doc_addon_file
  - \subpage doc_addon_math
@@ -94,7 +95,7 @@ void RecompileModule(asIScriptEngine *engine, asIScriptModule *mod)
   backup.AddUserType(new CArrayType(), "array");
 
   // Backup the values of the global variables
-  modStore.Store(mod);
+  backup.Store(mod);
   
   // Application can now recompile the module
   CompileModule(modName);
@@ -389,7 +390,7 @@ public:
 
 \section doc_addon_array_2 Public script interface
 
-\see \ref doc_datatypes_arrays_addon "Arrays in the script language"
+\see \ref doc_datatypes_arrays "Arrays in the script language"
 
 \section doc_addon_array_4 C++ example
 
@@ -397,6 +398,7 @@ This function shows how a script array can be instanciated
 from the application and then passed to the script.
 
 \code
+// Registered with AngelScript as 'array<string> @CreateArrayOfString()'
 CScriptArray *CreateArrayOfStrings()
 {
   // If called from the script, there will always be an active 
@@ -573,7 +575,7 @@ public:
 };
 \endcode
 
-\section doc_addon_handle_3 Example usage
+\section doc_addon_handle_3 Example usage in script
 
 In the scripts it can be used as follows:
 
@@ -595,6 +597,105 @@ In the scripts it can be used as follows:
     }
   }
 </pre>
+
+\section doc_addon_handle_4 Example usage from C++
+
+Even though the CScriptHandle is a value type, when registering properties 
+of its type they should be registered as handles. The same goes for function 
+arguments and return types.
+
+\code
+CScriptHandle g_handle;
+
+void Function(CScriptHandle handle)
+{
+  ... use the methods of CScriptHandle to determine the true object held in it
+}
+
+void Register(asIScriptEngine *engine)
+{
+  int r;
+  r = engine->RegisterGlobalProperty("ref @g_handle", &g_handle); assert( r >= 0 );
+  r = engine->RegisterGlobalFunction("void Function(ref @)", asFUNCTION(Function), asCALL_CDECL); assert( r >= 0 );
+}
+\endcode
+
+
+
+
+
+
+
+
+\page doc_addon_weakref weakref object
+
+<b>Path:</b> /sdk/add_on/weakref/
+
+The <code>weakref</code> type is a template type for holding weak references to 
+objects, i.e. the references that will not keep the referred object alive.
+
+The type is registered with <code>RegisterScriptWeakRef(asIScriptEngine*)</code>.
+
+\see \ref doc_adv_weakref
+
+\section doc_addon_weakref_1 Public C++ interface
+
+\code
+class CScriptWeakRef 
+{
+public:
+  // Constructors
+  CScriptWeakRef(asIObjectType *type);
+  CScriptWeakRef(const CScriptWeakRef &other);
+  CScriptWeakRef(void *ref, asIObjectType *type);
+
+  // Memory management
+  void AddRef() const;
+  void Release() const;
+
+  // Copy the stored value from another weakref object
+  CScriptWeakRef &operator=(const CScriptWeakRef &other);
+
+  // Compare equalness
+  bool operator==(const CScriptWeakRef &o) const;
+  bool operator!=(const CScriptWeakRef &o) const;
+
+  // Returns the object if it is still alive
+  void *Get() const;
+
+  // Returns the type of the reference held
+  asIObjectType *GetRefType() const;
+};
+\endcode
+
+\section doc_addon_weakref_2 Example usage in script
+
+In the scripts it can be used as follows:
+
+<pre>
+  class MyClass {}
+  MyClass \@obj1 = MyClass();
+  
+  // Keep a weakref to the object
+  weakref<MyClass> r1(obj1);
+  
+  // Keep a weakref to a readonly object
+  const_weakref<MyClass> r2(obj1);
+  
+  // As long as there is a strong reference to the object, 
+  // the weakref will be able to return a handle to the object
+  MyClass \@obj2 = r1.get();
+  assert( obj2 !is null );
+  
+  // After all strong references are removed the
+  // weakref will only return null
+  \@obj1 = null;
+  \@obj2 = null;
+  
+  const MyClass \@obj3 = r2.get();
+  assert( obj3 is null );
+</pre>
+  
 
 
 
@@ -637,7 +738,7 @@ Refer to the <code>std::string</code> implementation for your compiler.
 
 \section doc_addon_std_string_2 Public script interface
 
-\see \ref doc_datatypes_strings_addon "Strings in the script language"
+\see \ref doc_datatypes_strings "Strings in the script language"
 
 
 
@@ -732,22 +833,20 @@ public:
 \section doc_addon_dict_3 Script example
 
 <pre>
-  dictionary dict;
   obj object;
   obj \@handle;
+  dictionary dict = ({'one', 1}, {'object', object}, {'handle', \@handle}};
   
-  dict.set("one", 1);
-  dict.set("object", object);
-  dict.set("handle", \@handle);
-  
-  if( dict.exists("one") )
+  if( dict.exists('one') )
   {
-    bool found = dict.get("handle", \@handle);
+    bool found = dict.get('handle', \@handle);
     if( found )
     {
-      dict.delete("object");
+      dict.delete('object');
     }
   }
+  
+  dict.set('newvalue', 42);
   
   dict.deleteAll();
 </pre>
@@ -929,13 +1028,19 @@ represents a complex number, i.e. a number with real and imaginary parts.
   // Returns the fraction
   float fraction(float val);
   
+  // Conversion between floating point and IEEE 754 representations
+  float  fpFromIEEE(uint raw); 
+  double fpFromIEEE(uint64 raw);
+  uint   fpToIEEE(float fp);
+  uint64 fpToIEEE(double fp);
+  
   // This type represents a complex number with real and imaginary parts
   class complex
   {
     // Constructors
     complex();
     complex(const complex &in);
-	complex(float r);
+    complex(float r);
     complex(float r, float i);
 
     // Equality operator
@@ -1027,6 +1132,10 @@ public:
   // Add a pre-processor define for conditional compilation
   void DefineWord(const char *word);
 
+  // Enumerate included script sections
+  unsigned int GetSectionCount() const;
+  string       GetSectionName(unsigned int idx) const;
+  
   // Get metadata declared for class types and interfaces
   const char *GetMetadataStringForType(int typeId);
 
@@ -1067,6 +1176,9 @@ Example script with include directive:
     CommonFunc();
   }
 </pre>
+
+
+
 
 
 \section doc_addon_build_condition Conditional programming
@@ -1263,6 +1375,11 @@ int CompareEquality(asIScriptEngine *engine, void *leftObj, void *rightObj, int 
 // The caller can optionally provide its own context, for example if a context should be reused.
 int ExecuteString(asIScriptEngine *engine, const char *code, asIScriptModule *mod = 0, asIScriptContext *ctx = 0);
 
+// Compile and execute simple statements with option of return value.
+// The module is optional. If given the statements can access the entitites compiled in the module.
+// The caller can optionally provide its own context, for example if a context should be reused.
+int ExecuteString(asIScriptEngine *engine, const char *code, void *ret, int retTypeId, asIScriptModule *mod = 0, asIScriptContext *ctx = 0);
+
 // Write registered application interface to file.
 // This function creates a file with the configuration for the offline compiler, asbuild, in the samples.
 // If you wish to use the offline compiler you should call this function from you application after the 
@@ -1276,6 +1393,13 @@ int WriteConfigToFile(asIScriptEngine *engine, const char *filename);
 // output. The information obtained includes the current function, the script source section, 
 // program position in the source section, and the exception description itself.
 void PrintException(asIScriptContext *ctx, bool printStack = false);
+
+// Determine the application type flags to use when registering the object type as a value type with 
+// AngelScript. The function is not capable of determining the flags that describes the content of the 
+// type though, so those flags must still be informed manually if needed. This template function will 
+// only compile correctly if the C++ compiler supports the C++11 standard. 
+template<typename T>
+asUINT GetTypeTraits();
 \endcode
 
 \section doc_addon_helpers_2 Example

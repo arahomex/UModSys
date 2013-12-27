@@ -45,12 +45,59 @@ bool Test()
 	engine->SetMessageCallback(asMETHOD(COutStream,Callback), &out, asCALL_THISCALL);
 	RegisterScriptMath(engine);
 	RegisterScriptMathComplex(engine);
+	RegisterScriptArray(engine, false);
 	engine->RegisterGlobalFunction("void assert(bool)", asFUNCTION(Assert), asCALL_GENERIC);
 
+	r = ExecuteString(engine, "float a = 1; uint b = fpToIEEE(a); assert( b == 0x3f800000 );");
+	if( r != asEXECUTION_FINISHED )
+		TEST_FAILED;
+	r = ExecuteString(engine, "uint64 a = 0x3ff0000000000000; double b = fpFromIEEE(a); assert( b == 1.0 );");
+	if( r != asEXECUTION_FINISHED )
+		TEST_FAILED;
+
+	// Test initialization list for value type in local variable
+	r = ExecuteString(engine, 
+		"complex a = {1, 2}; \n"
+		"assert( a.r == 1 ); \n"
+		"assert( a.i == 2 ); \n");
+	if( r != asEXECUTION_FINISHED )
+		TEST_FAILED;
+
+	// Test initialization list for value type in global variable
+	asIScriptModule *mod = engine->GetModule(0, asGM_ALWAYS_CREATE);
+	mod->AddScriptSection(TESTNAME, 
+		"complex g = {1,2}; \n");
+	r = mod->Build();
+	if( r < 0 )
+		TEST_FAILED;
+	Complex *g = (Complex*)mod->GetAddressOfGlobalVar(0);
+	if( g == 0 || g->r != 1 || g->i != 2 )
+		TEST_FAILED;
+
+	// Test initialization list for value type in class member
+	mod = engine->GetModule(0, asGM_ALWAYS_CREATE);
+	mod->AddScriptSection(TESTNAME,
+		"class T { complex m = {1,2}; } \n"
+		"T g; \n");
+	r = mod->Build();
+	if( r < 0 )
+		TEST_FAILED;
+	Complex *m = (Complex*)((asIScriptObject*)mod->GetAddressOfGlobalVar(0))->GetAddressOfProperty(0);
+	if( m == 0 || m->r != 1 || m->i != 2 )
+		TEST_FAILED;
+
+	// Test initialization list for value type in initialization list
+	r = ExecuteString(engine, "array<complex> a = {{1,2}, {3,4}}; \n"
+							  "assert( a[0].r == 1 ); \n"
+							  "assert( a[1].r == 3 ); \n");
+	if( r != asEXECUTION_FINISHED )
+		TEST_FAILED;
+	
+	// Test the complex math add-on
 	Complex v;
 	engine->RegisterGlobalProperty("complex v", &v);
 
-	asIScriptModule *mod = engine->GetModule(0, asGM_ALWAYS_CREATE);
+	mod = engine->GetModule(0, asGM_ALWAYS_CREATE);
 	mod->AddScriptSection(TESTNAME, script);
 	r = mod->Build();
 	if( r < 0 )
@@ -166,12 +213,12 @@ bool Test()
 		TEST_FAILED;
 	}
 	// TODO: the function signature for the constructors/factories should carry the name of the object instead of _beh_0_
-	if( bout.buffer != "ExecuteString (1, 13) : Error   : No matching signatures to 'complex(const uint, const uint, const uint, const uint)'\n"
+	if( bout.buffer != "ExecuteString (1, 13) : Error   : No matching signatures to 'complex(const int, const int, const int, const int)'\n"
 					   "ExecuteString (1, 13) : Info    : Candidates are:\n"
-					   "ExecuteString (1, 13) : Info    : void complex::_beh_0_()\n"
-				   	   "ExecuteString (1, 13) : Info    : void complex::_beh_0_(const complex&in)\n"
-					   "ExecuteString (1, 13) : Info    : void complex::_beh_0_(float)\n"
-					   "ExecuteString (1, 13) : Info    : void complex::_beh_0_(float, float)\n" )
+					   "ExecuteString (1, 13) : Info    : complex::complex()\n"
+				   	   "ExecuteString (1, 13) : Info    : complex::complex(const complex&in)\n"
+					   "ExecuteString (1, 13) : Info    : complex::complex(float)\n"
+					   "ExecuteString (1, 13) : Info    : complex::complex(float, float)\n" )
 	{
 		printf("%s", bout.buffer.c_str());
 		TEST_FAILED;

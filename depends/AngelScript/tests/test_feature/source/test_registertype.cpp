@@ -29,6 +29,112 @@ bool Test()
  	asIScriptEngine *engine;
 	const char *script;
 
+	// Test calling RegisterObjectMethod with incorrect object name
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+
+		r = engine->RegisterObjectType("obj", 0, asOBJ_REF); assert( r >= 0 );
+		r = engine->RegisterObjectMethod("obj@", "void func()", asFUNCTION(0), asCALL_GENERIC);
+		if( r >= 0 )
+			TEST_FAILED;
+
+		engine->Release();
+	}
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1700   // MSVC 2012
+#if !defined(__GNUC__) || __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 7)  // gnuc 4.7
+	// Test the automatic determination of flags for registering value types
+	if( GetTypeTraits<std::string>() != asOBJ_APP_CLASS_CDAK )
+		TEST_FAILED;
+	if( GetTypeTraits<void*>() != asOBJ_APP_PRIMITIVE )
+		TEST_FAILED;
+	if( GetTypeTraits<float>() != asOBJ_APP_FLOAT )
+		TEST_FAILED;
+	if( GetTypeTraits<double>() != asOBJ_APP_FLOAT )
+		TEST_FAILED;
+	if( GetTypeTraits<bool>() != asOBJ_APP_PRIMITIVE )
+		TEST_FAILED;
+	struct T {bool a;};
+	if( GetTypeTraits<T>() != asOBJ_APP_CLASS )
+		TEST_FAILED;
+#endif
+#endif
+
+#ifndef AS_MAX_PORTABILITY
+	// It should be possible to use asCALL_THISCALL_ASGLOBAL for global obj behaviours and string factory
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+
+		r = engine->RegisterObjectType("T", 0, asOBJ_REF);
+		r = engine->RegisterObjectBehaviour("T", asBEHAVE_FACTORY, "T @f()", asFUNCTION(0), asCALL_THISCALL_ASGLOBAL, (void*)1);
+		if( r < 0 )
+			TEST_FAILED;
+		r = engine->RegisterStringFactory("T@", asFUNCTION(0), asCALL_THISCALL_ASGLOBAL, (void*)1);
+		if( r < 0 )
+			TEST_FAILED;
+
+		engine->Release();
+	}
+#endif
+
+	// Test registering a specialized template instance 
+	// http://www.gamedev.net/topic/647678-bug-multiple-registration-of-template-type/
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream,Callback), &bout, asCALL_THISCALL);
+
+		bout.buffer = "";
+
+		RegisterScriptArray(engine, false);
+		r = engine->RegisterObjectType("array<int32>", 0, asOBJ_REF); assert( r >= 0 );
+		r = engine->RegisterObjectType("array<int>", 0, asOBJ_REF);
+		if( r >= 0 )
+			TEST_FAILED;
+
+		if( bout.buffer != " (0, 0) : Error   : Failed in call to function 'RegisterObjectType' with 'array<int>' (Code: -13)\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		engine->Release();
+
+	}
+
+	// Test registering a function with autohandles for a type that is not yet registered (must give proper error)
+	// http://www.gamedev.net/topic/647707-determining-autohandle-support/
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream,Callback), &bout, asCALL_THISCALL);
+
+		bout.buffer = "";
+		r = engine->RegisterGlobalFunction("void func(type @+)", asFUNCTION(0), asCALL_CDECL);
+		if( r >= 0 )
+			TEST_FAILED;
+
+		if( bout.buffer != "System function (1, 11) : Error   : Identifier 'type' is not a data type\n"
+						   " (0, 0) : Error   : Failed in call to function 'RegisterGlobalFunction' with 'void func(type @+)' (Code: -10)\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		engine->Release();
+	}
+
+	// Don't accept registering object properties with offsets larger than signed 16 bit
+	// TODO: Support 32bit offsets, but that requires changes in VM, compiler, and bytecode serialization
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+
+		r = engine->RegisterObjectType("Object", 1<<24, asOBJ_VALUE | asOBJ_POD);
+		r = engine->RegisterObjectProperty("Object", "int f", 1<<24);
+		if( r != asINVALID_ARG )
+			TEST_FAILED;
+
+		engine->Release();
+	}
+
 	// Problem reported by Paril101
 	// http://www.gamedev.net/topic/636336-member-function-chaining/
 	{
@@ -1072,7 +1178,7 @@ public:
 	{
 		if( m_ref )
 		{
-			m_engine->ReleaseScriptObject(m_ref, m_typeId);
+			m_engine->ReleaseScriptObject(m_ref, m_engine->GetObjectTypeById(m_typeId));
 
 			m_ref = 0;
 			m_typeId = 0;
@@ -1083,7 +1189,7 @@ public:
 	{
 		if( m_ref )
 		{
-			m_engine->AddRefScriptObject(m_ref, m_typeId);
+			m_engine->AddRefScriptObject(m_ref, m_engine->GetObjectTypeById(m_typeId));
 		}
 	}
 

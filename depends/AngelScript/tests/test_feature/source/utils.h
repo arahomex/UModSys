@@ -166,7 +166,9 @@ void Assert(asIScriptGeneric *gen);
 void InstallMemoryManager();
 void RemoveMemoryManager();
 int  GetNumAllocs();
+int  GetAllocedMem();
 
+bool ValidateByteCode(asIScriptFunction *func, asBYTE *expectBC);
 
 #if defined(_MSC_VER) && _MSC_VER <= 1200 // MSVC++ 6
 	#define I64(x) x##l

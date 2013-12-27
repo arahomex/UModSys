@@ -74,6 +74,8 @@ infinite, and NaN (Not-a-Number). For <code>float</code> NaN is represented by t
 for using arrays may differ for the application you're working with so consult the application's manual
 for more details.
 
+\see \ref doc_addon_array
+
 It is possible to declare array variables with the array identifier followed by the type of the 
 elements within angle brackets. 
 
@@ -239,6 +241,8 @@ Object handle and array type modifiers can be combined to form handles to arrays
 <b>Observe:</b> Strings are only available in the scripts if the application registers the support for them. The syntax
 for using strings may differ for the application you're working with so consult the application's manual
 for more details.
+
+\see \ref doc_addon_std_string
 
 Strings hold an array of bytes or 16bit words depending on the application settings. 
 Normally they are used to store text but can really store any kind of binary data.
@@ -444,5 +448,41 @@ Here's an example that shows the syntax for using function handles
   }
 </pre>
 
+It is also possible to take function handles to class methods, but in this case the class method
+must be bound to the object instance that will be used for the call. To do this binding is called
+creating a delegate, and is done by performing a construct call for the declared function definition
+passing the class method as the argument.
+
+<pre>
+  class A
+  {
+    bool Cmp(int a, int b)
+    {
+       count++;
+       return a > b;
+    }
+    int count = 0;
+  }
+  
+  void main()
+  {
+    A a;
+    
+    // Create the delegate for the A::Cmp class method
+    CALLBACK \@func = CALLBACK(a.Cmp);
+    
+    // Call the delegate normally as if it was a global function
+    if( func(1,2) )
+    {
+      print("The function returned true\n");
+    }
+    else
+    {
+      print("The function returned false\n");
+    }
+    
+    printf("The number of comparisons performed is "+a.count+"\n");
+  }
+</pre>
 
 */

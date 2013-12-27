@@ -20,7 +20,7 @@
 
 #ifdef TARGET_DEFS_ONLY
 
-//#define ASSEMBLY_LISTING_C67
+/* #define ASSEMBLY_LISTING_C67 */
 
 /* number of available registers */
 #define NB_REGS            24
@@ -92,18 +92,12 @@ enum {
 #define REG_LRET TREG_C67_A5	/* second word return register (for long long) */
 #define REG_FRET TREG_C67_A4	/* float return register */
 
-#define ALWAYS_ASSERT(x) \
-do {\
-   if (!(x))\
-       tcc_error("internal compiler error file at %s:%d", __FILE__, __LINE__);\
-} while (0)
-
 /* defined if function parameters must be evaluated in reverse order */
-//#define INVERT_FUNC_PARAMS
+/* #define INVERT_FUNC_PARAMS */
 
 /* defined if structures are passed as pointers. Otherwise structures
    are directly pushed on stack. */
-//#define FUNC_STRUCT_PARAM_AS_PTR
+/* #define FUNC_STRUCT_PARAM_AS_PTR */
 
 /* pointer size, in bytes */
 #define PTR_SIZE 4
@@ -182,6 +176,12 @@ int TotalBytesPushedOnStack;
 #undef BOOL
 #define BOOL int
 
+#define ALWAYS_ASSERT(x) \
+do {\
+   if (!(x))\
+       tcc_error("internal compiler error file at %s:%d", __FILE__, __LINE__);\
+} while (0)
+
 /******************************************************/
 static unsigned long func_sub_sp_offset;
 static int func_ret_sub;
@@ -253,7 +253,7 @@ void gsym(int t)
 #define C67_B3 107
 #define C67_FP 108
 #define C67_B2 109
-#define C67_CREG_ZERO -1	// Special code for no condition reg test
+#define C67_CREG_ZERO -1	/* Special code for no condition reg test */
 
 
 int ConvertRegToRegClass(int r)
@@ -1879,6 +1879,13 @@ static void gcall_or_jmp(int is_jmp)
     }
 }
 
+/* Return the number of registers needed to return the struct, or 0 if
+   returning via struct pointer. */
+ST_FUNC int gfunc_sret(CType *vt, CType *ret, int *ret_align) {
+    *ret_align = 1; // Never have to re-align return values for x86-64
+    return 0;
+}
+
 /* generate function call with address in (vtop->t, vtop->c) and free function
    context. Stack entry is popped */
 void gfunc_call(int nb_args)
@@ -2552,6 +2559,21 @@ void ggoto(void)
 {
     gcall_or_jmp(1);
     vtop--;
+}
+
+/* Save the stack pointer onto the stack and return the location of its address */
+ST_FUNC void gen_vla_sp_save(int addr) {
+    tcc_error("variable length arrays unsupported for this target");
+}
+
+/* Restore the SP from a location on the stack */
+ST_FUNC void gen_vla_sp_restore(int addr) {
+    tcc_error("variable length arrays unsupported for this target");
+}
+
+/* Subtract from the stack pointer, and push the resulting value onto the stack */
+ST_FUNC void gen_vla_alloc(CType *type, int align) {
+    tcc_error("variable length arrays unsupported for this target");
 }
 
 /* end of C67 code generator */

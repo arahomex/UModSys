@@ -160,7 +160,8 @@ bool Test()
 		t->Release();
 
 		// The engine will warn about the callback not being released before the engine
-		if( bout.buffer != " (0, 0) : Error   : GC cannot free an object of type '_builtin_function_', it is kept alive by the application\n" )
+		if( bout.buffer != " (0, 0) : Error   : Object {0}. GC cannot destroy an object of type '_builtin_function_' as it can't see all references. Current ref count is 1.\n"
+		                   " (0, 0) : Info    : The builtin type in previous message is named 'func'\n" )
 		{
 			printf("%s", bout.buffer.c_str());
 			TEST_FAILED;
@@ -344,7 +345,7 @@ bool Test()
 	r = engine->RegisterObjectBehaviour("mytype", asBEHAVE_ADDREF, "void f()", asFUNCTION(AddRef), asCALL_GENERIC);
 	r = engine->RegisterObjectBehaviour("mytype", asBEHAVE_RELEASE, "void f()", asFUNCTION(Release), asCALL_GENERIC);
 
-	any = (CScriptAny*)engine->CreateScriptObject(engine->GetTypeIdByDecl("any"));
+	any = (CScriptAny*)engine->CreateScriptObject(engine->GetObjectTypeByName("any"));
 
 	r = engine->RegisterGlobalProperty("any g_any", any);
 	engine->EndConfigGroup();
@@ -532,7 +533,7 @@ bool Test()
 	engine->BeginConfigGroup("group1");
 	r = engine->RegisterObjectType("mytype", sizeof(int), asOBJ_VALUE | asOBJ_POD);
 
-	any = (CScriptAny*)engine->CreateScriptObject(engine->GetTypeIdByDecl("any"));
+	any = (CScriptAny*)engine->CreateScriptObject(engine->GetObjectTypeByName("any"));
 
 	r = engine->RegisterGlobalProperty("any g_any", any);
 	engine->EndConfigGroup();

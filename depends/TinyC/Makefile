@@ -8,19 +8,29 @@ VPATH = $(top_srcdir)
 
 CPPFLAGS = -I$(TOP) # for config.h
 
+ifeq (-$(findstring gcc,$(CC))-,-gcc-)
+ifeq (-$(findstring $(GCC_MAJOR),01)-,--)
+CFLAGS+=-fno-strict-aliasing
+ifeq (-$(findstring $(GCC_MAJOR),23)-,--)
+CFLAGS+=-Wno-pointer-sign -Wno-sign-compare
+ifeq (-$(GCC_MAJOR)-$(findstring $(GCC_MINOR),56789)-,-4--)
+CFLAGS+=-D_FORTIFY_SOURCE=0
+else
+CFLAGS+=-Wno-unused-result
+endif
+endif
+endif
+else # not GCC
+ifeq (-$(findstring clang,$(CC))-,-clang-)
+# make clang accept gnuisms in libtcc1.c
+CFLAGS+=-fheinous-gnu-extensions
+endif
+endif
+
 CPPFLAGS_P=$(CPPFLAGS) -DCONFIG_TCC_STATIC
 CFLAGS_P=$(CFLAGS) -pg -static
 LIBS_P=
 LDFLAGS_P=$(LDFLAGS)
-
-ifeq ($(patsubst %gcc,gcc,$(CC)),gcc)
-ifneq ($(GCC_MAJOR),2)
-CFLAGS+=-fno-strict-aliasing
-ifneq ($(GCC_MAJOR),3)
-CFLAGS+=-Wno-pointer-sign -Wno-sign-compare
-endif
-endif
-endif
 
 ifdef CONFIG_WIN64
 CONFIG_WIN32=yes
@@ -33,44 +43,15 @@ LIBS+=-ldl
 endif
 endif
 
-ifeq ($(ARCH),i386)
-NATIVE_DEFINES=-DTCC_TARGET_I386
-NATIVE_DEFINES+=\
-  $(if $(wildcard /lib/i386-linux-gnu),-DCONFIG_MULTIARCHDIR=\"i386-linux-gnu\",\
-  $(if $(wildcard /lib/i386-kfreebsd-gnu),-DCONFIG_MULTIARCHDIR=\"i386-kfreebsd-gnu\",\
-  $(if $(wildcard /lib/i386-gnu),-DCONFIG_MULTIARCHDIR=\"i386-gnu\")))
-else ifeq ($(ARCH),x86-64)
-NATIVE_DEFINES=-DTCC_TARGET_X86_64
-NATIVE_DEFINES+=\
-  $(if $(wildcard /usr/lib64),-DCONFIG_LDDIR=\"lib64\",\
-  $(if $(wildcard /lib/x86_64-linux-gnu),-DCONFIG_MULTIARCHDIR=\"x86_64-linux-gnu\",\
-  $(if $(wildcard /lib/x86_64-kfreebsd-gnu),-DCONFIG_MULTIARCHDIR=\"x86_64-kfreebsd-gnu\")))
-endif
-
-ifeq ($(ARCH),arm)
-NATIVE_DEFINES=-DTCC_TARGET_ARM
-NATIVE_DEFINES+=-DWITHOUT_LIBTCC
-ifneq (,$(wildcard /lib/ld-linux-armhf.so.3 /lib/arm-linux-gnueabihf/ld-linux.so.3))
-NATIVE_DEFINES+=-DTCC_ARM_EABI -DTCC_ARM_HARDFLOAT
-NATIVE_DEFINES+=$(if $(wildcard /lib/arm-linux-gnueabihf),-DCONFIG_MULTIARCHDIR=\"arm-linux-gnueabihf\")
-else ifneq (,$(wildcard /lib/ld-linux.so.3))
-NATIVE_DEFINES+=-DTCC_ARM_EABI
-NATIVE_DEFINES+=$(if $(wildcard /lib/arm-linux-gnueabi), -DCONFIG_MULTIARCHDIR=\"arm-linux-gnueabi\")
-endif
-NATIVE_DEFINES+=$(if $(shell grep -l "^Features.* \(vfp\|iwmmxt\) " /proc/cpuinfo),-DTCC_ARM_VFP)
-endif
-
-ifdef CONFIG_WIN32
-NATIVE_DEFINES+=-DTCC_TARGET_PE
-endif
-
-ifneq ($(wildcard /lib/ld-uClibc.so.0),)
-NATIVE_DEFINES+=-DTCC_UCLIBC
-endif
-
 # make libtcc as static or dynamic library?
 ifdef DISABLE_STATIC
+ifndef CONFIG_WIN32
 LIBTCC=libtcc.so.1.0
+else
+LIBTCC=libtcc.dll
+LIBTCC_DLL=yes
+LIBTCC_EXTRA=libtcc.def libtcc.a
+endif
 LINK_LIBTCC=-Wl,-rpath,"$(libdir)"
 ifdef DISABLE_RPATH
 LINK_LIBTCC=
@@ -79,6 +60,17 @@ else
 LIBTCC=libtcc.a
 LINK_LIBTCC=
 endif
+
+CONFIG_$(ARCH) = yes
+NATIVE_DEFINES_$(CONFIG_i386) += -DTCC_TARGET_I386
+NATIVE_DEFINES_$(CONFIG_x86-64) += -DTCC_TARGET_X86_64
+NATIVE_DEFINES_$(CONFIG_WIN32) += -DTCC_TARGET_PE
+NATIVE_DEFINES_$(CONFIG_uClibc) += -DTCC_UCLIBC
+NATIVE_DEFINES_$(CONFIG_arm) += -DTCC_TARGET_ARM
+NATIVE_DEFINES_$(CONFIG_arm_eabihf) += -DTCC_ARM_EABI -DTCC_ARM_HARDFLOAT
+NATIVE_DEFINES_$(CONFIG_arm_eabi) += -DTCC_ARM_EABI
+NATIVE_DEFINES_$(CONFIG_arm_vfp) += -DTCC_ARM_VFP
+NATIVE_DEFINES += $(NATIVE_DEFINES_yes)
 
 ifeq ($(TOP),.)
 
@@ -130,6 +122,7 @@ LIBTCC1=libtcc1.a
 else ifeq ($(ARCH),arm)
 NATIVE_FILES=$(ARM_FILES)
 PROGS_CROSS=$(I386_CROSS) $(X64_CROSS) $(WIN32_CROSS) $(WIN64_CROSS) $(C67_CROSS)
+LIBTCC1=libtcc1.a
 endif
 
 ifeq ($(TARGETOS),Darwin)
@@ -140,7 +133,7 @@ ifdef CONFIG_USE_LIBGCC
 LIBTCC1=
 endif
 
-TCCLIBS = $(LIBTCC1) $(LIBTCC)
+TCCLIBS = $(LIBTCC1) $(LIBTCC) $(LIBTCC_EXTRA)
 TCCDOCS = tcc.1 tcc-doc.html tcc-doc.info
 
 ifdef CONFIG_CROSS
@@ -199,13 +192,20 @@ endif
 $(LIBTCC_OBJ) tcc.o : %.o : %.c $(LIBTCC_INC)
 	$(CC) -o $@ -c $< $(NATIVE_DEFINES) $(CPPFLAGS) $(CFLAGS)
 
+ifndef LIBTCC_DLL
 libtcc.a: $(LIBTCC_OBJ)
 	$(AR) rcs $@ $^
+endif
 
 libtcc.so.1.0: $(LIBTCC_OBJ)
 	$(CC) -shared -Wl,-soname,$@ -o $@ $^ $(LDFLAGS)
 
 libtcc.so.1.0: CFLAGS+=-fPIC
+
+ifdef LIBTCC_DLL
+libtcc.dll libtcc.def libtcc.a: $(LIBTCC_OBJ)
+	$(CC) -shared $^ -o $@ $(LDFLAGS) -Wl,--output-def,libtcc.def,--out-implib,libtcc.a
+endif
 
 # windows utilities
 tiny_impdef$(EXESUF): win32/tools/tiny_impdef.c
@@ -215,14 +215,14 @@ tiny_libmaker$(EXESUF): win32/tools/tiny_libmaker.c
 
 # TinyCC runtime libraries
 libtcc1.a : FORCE
-	@$(MAKE) -C lib native
+	$(MAKE) -C lib native
 lib/%/libtcc1.a : FORCE $(PROGS_CROSS)
-	@$(MAKE) -C lib cross TARGET=$*
+	$(MAKE) -C lib cross TARGET=$*
 
 FORCE:
 
 # install
-TCC_INCLUDES = stdarg.h stddef.h stdbool.h float.h varargs.h tcclib.h
+TCC_INCLUDES = stdarg.h stddef.h stdbool.h float.h varargs.h
 INSTALL=install
 ifdef STRIP_BINARIES
 INSTALLBIN=$(INSTALL) -s
@@ -247,7 +247,7 @@ endif
 ifneq ($(LIBTCC1),)
 	$(INSTALL) -m644 $(LIBTCC1) "$(tccdir)"
 endif
-	$(INSTALL) -m644 $(addprefix $(top_srcdir)/include/,$(TCC_INCLUDES)) "$(tccdir)/include"
+	$(INSTALL) -m644 $(addprefix $(top_srcdir)/include/,$(TCC_INCLUDES)) $(top_srcdir)/tcclib.h "$(tccdir)/include"
 	mkdir -p "$(libdir)"
 	$(INSTALL) -m755 $(LIBTCC) "$(libdir)"
 ifdef DISABLE_STATIC
@@ -266,17 +266,18 @@ ifeq ($(ARCH),x86-64)
 	$(INSTALL) -m644 lib/i386/libtcc1.a "$(tccdir)/i386"
 	cp -r "$(tccdir)/include" "$(tccdir)/i386"
 endif
-	$(INSTALL) -m644 win32/lib/*.def "$(tccdir)/win32/lib"
+	$(INSTALL) -m644 $(top_srcdir)/win32/lib/*.def "$(tccdir)/win32/lib"
 	$(INSTALL) -m644 lib/i386-win32/libtcc1.a "$(tccdir)/win32/lib/32"
 	$(INSTALL) -m644 lib/x86_64-win32/libtcc1.a "$(tccdir)/win32/lib/64"
-	cp -r win32/include/. "$(tccdir)/win32/include"
-	cp -r include/. "$(tccdir)/win32/include"
+	cp -r $(top_srcdir)/win32/include/. "$(tccdir)/win32/include"
+	cp -r $(top_srcdir)/include/. "$(tccdir)/win32/include"
 endif
 
 uninstall:
 	rm -fv $(foreach P,$(PROGS),"$(bindir)/$P")
 	rm -fv $(foreach P,$(LIBTCC1),"$(tccdir)/$P")
 	rm -fv $(foreach P,$(TCC_INCLUDES),"$(tccdir)/include/$P")
+	rm -fv "$(tccdir)/include/tcclib.h"
 	rm -fv "$(docdir)/tcc-doc.html" "$(mandir)/man1/tcc.1" "$(infodir)/tcc-doc.info"
 	rm -fv "$(libdir)/$(LIBTCC)" "$(includedir)/libtcc.h"
 	rm -fv "$(libdir)/libtcc.so*"
@@ -295,12 +296,13 @@ install: $(PROGS) $(TCCLIBS) $(TCCDOCS)
 	mkdir -p "$(tccdir)/doc"
 	mkdir -p "$(tccdir)/libtcc"
 	$(INSTALLBIN) -m755 $(PROGS) "$(tccdir)"
-	$(INSTALL) -m644 $(LIBTCC1) win32/lib/*.def "$(tccdir)/lib"
-	cp -r win32/include/. "$(tccdir)/include"
-	cp -r win32/examples/. "$(tccdir)/examples"
-	$(INSTALL) -m644 $(addprefix include/,$(TCC_INCLUDES)) "$(tccdir)/include"
-	$(INSTALL) -m644 tcc-doc.html win32/tcc-win32.txt "$(tccdir)/doc"
-	$(INSTALL) -m644 $(LIBTCC) libtcc.h "$(tccdir)/libtcc"
+	$(INSTALL) -m644 $(LIBTCC1) $(top_srcdir)/win32/lib/*.def "$(tccdir)/lib"
+	cp -r $(top_srcdir)/win32/include/. "$(tccdir)/include"
+	cp -r $(top_srcdir)/win32/examples/. "$(tccdir)/examples"
+	$(INSTALL) -m644 $(addprefix $(top_srcdir)/include/,$(TCC_INCLUDES)) $(top_srcdir)/tcclib.h "$(tccdir)/include"
+	$(INSTALL) -m644 tcc-doc.html $(top_srcdir)/win32/tcc-win32.txt "$(tccdir)/doc"
+	$(INSTALL) -m644 $(top_srcdir)/libtcc.h $(LIBTCC_EXTRA) "$(tccdir)/libtcc"
+	$(INSTALL) -m644 $(LIBTCC) $(tccdir)
 ifdef CONFIG_CROSS
 	mkdir -p "$(tccdir)/lib/32"
 	mkdir -p "$(tccdir)/lib/64"
@@ -314,11 +316,11 @@ endif
 
 # documentation and man page
 tcc-doc.html: tcc-doc.texi
-	-texi2html -monolithic -number $<
+	-makeinfo --no-split --html --number-sections -o $@ $<
 
 tcc.1: tcc-doc.texi
 	-$(top_srcdir)/texi2pod.pl $< tcc.pod
-	-pod2man --section=1 --center=" " --release=" " tcc.pod > $@
+	-pod2man --section=1 --center="Tiny C Compiler" --release=`cat $(top_srcdir)/VERSION` tcc.pod > $@
 
 tcc-doc.info: tcc-doc.texi
 	-makeinfo $<
@@ -357,6 +359,8 @@ tar:    tcc-doc.html
 	rm -rf $(TCC-VERSION)
 	git reset
 
+Makefile: $(top_srcdir)/Makefile
+	cp $< $@
 
 .PHONY: all clean tar distclean install uninstall FORCE
 

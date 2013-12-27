@@ -63,10 +63,6 @@ public:
 
 	// Execution
 	int             Prepare(asIScriptFunction *func);
-#ifdef AS_DEPRECATED
-	// Deprecated since 2.24.0 - 2012-05-25
-	int             Prepare(int functionId);
-#endif
 	int             Unprepare();
 	int             Execute();
 	int             Abort();
@@ -117,7 +113,7 @@ public:
 	int                GetLineNumber(asUINT stackLevel, int *column, const char **sectionName);
 	int                GetVarCount(asUINT stackLevel);
 	const char        *GetVarName(asUINT varIndex, asUINT stackLevel);
-	const char        *GetVarDeclaration(asUINT varIndex, asUINT stackLevel);
+	const char        *GetVarDeclaration(asUINT varIndex, asUINT stackLevel, bool includeNamespace);
 	int                GetVarTypeId(asUINT varIndex, asUINT stackLevel);
 	void              *GetAddressOfVar(asUINT varIndex, asUINT stackLevel);
 	bool               IsVarInScope(asUINT varIndex, asUINT stackLevel);

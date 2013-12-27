@@ -1,6 +1,125 @@
 #include "utils.h"
 #include "../../add_on/scripthandle/scripthandle.h"
 #include "../../add_on/scriptmath/scriptmathcomplex.h"
+#include "../../../add_on/scriptbuilder/scriptbuilder.h"
+#include <iostream>
+
+using namespace std;
+
+namespace ProjectClover
+{
+
+// The destructor Foo, which is a member of the script class will 
+// use this global variable to attempt to access the script class
+// while the internal asCScriptObject is being destroyed.
+asIScriptObject* gBar     = NULL;
+asIObjectType*   gBarType = NULL;
+asIScriptEngine* gEngine  = NULL;
+ 
+// In place of the physics callback from the original code
+void callMethodOfBar();
+ 
+// In place physics object from the original code
+struct Foo 
+{
+        Foo(){ /*cout << "Foo::Foo()\n"; */}
+        ~Foo(){ /*cout << "Foo::~Foo()\n"; */ callMethodOfBar(); }
+};
+ 
+void createBar()
+{
+        asIScriptContext *ctx = gEngine->CreateContext();
+ 
+        asIScriptModule *module = gEngine->GetModule("script");
+        gBarType = gEngine->GetObjectTypeById(module->GetTypeIdByDecl("Bar"));
+        asIScriptFunction *factory = gBarType->GetFactoryByDecl("Bar @Bar()");
+        ctx->Prepare(factory);
+        ctx->Execute();
+        gBar = *(asIScriptObject**)ctx->GetAddressOfReturnValue();
+        gBar->AddRef();
+       
+        ctx->Release();
+}
+ 
+void callMethodOfBar(){
+        asIScriptContext* ctx = gEngine->CreateContext();
+ 
+        asIScriptFunction* func= gBarType->GetMethodByDecl("void method()");
+        ctx->Prepare(func);
+        ctx->SetObject(gBar);
+        ctx->Execute();
+       
+        ctx->Release();
+}
+
+template <typename T>
+void defaultConstruct(T* memory){
+        new (memory) T();
+}
+ 
+template <typename T>
+void destruct(T* memory){
+        memory->~T();
+}
+
+void PrintNumber(int x)
+{
+//        cout << x << "\n";
+}
+
+int init();
+
+bool Test_main()
+{
+	bool fail = false;
+	int r;
+	CBufferedOutStream bout;
+
+    gEngine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+ 
+    // The script compiler will send any compiler messages to the callback
+    gEngine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+ 
+    r = gEngine->RegisterGlobalFunction("void print(int)", asFUNCTION(PrintNumber), asCALL_CDECL); assert( r >= 0 );
+    r = gEngine->RegisterObjectType("Foo", sizeof(Foo), asOBJ_VALUE | asOBJ_APP_CLASS_CD);
+    r = gEngine->RegisterObjectBehaviour("Foo", asBEHAVE_CONSTRUCT, "void f()", asFUNCTION(defaultConstruct<Foo>), asCALL_CDECL_OBJLAST);
+    r = gEngine->RegisterObjectBehaviour("Foo", asBEHAVE_DESTRUCT, "void f()", asFUNCTION(destruct<Foo>), asCALL_CDECL_OBJLAST);
+
+    // Compile the script code
+	const char* scriptStr=
+			"class Bar {"
+			"       private Foo foo;"
+			"       void method(){"
+			"               print(666);"
+			"       }"
+			"};";
+
+	asIScriptModule *mod = gEngine->GetModule("script", asGM_ALWAYS_CREATE);
+	mod->AddScriptSection("test", scriptStr);
+	r = mod->Build();
+    if( r < 0 )
+		TEST_FAILED;
+
+	// Create the script object with the Foo member
+	createBar();
+
+	// Now release the created script object so that it is destroyed, which will
+	// trigger Foo to attempt to access the object from within the destructor
+	// of asCScriptObject
+	gBar->Release();
+
+	if( bout.buffer != " (0, 0) : Error   : The script object of type 'Bar' is being resurrected illegally during destruction\n" )
+	{
+		printf("%s", bout.buffer.c_str());
+		TEST_FAILED;
+	}
+
+	gEngine->Release();
+
+	return fail;
+}
+ 
+}
 
 namespace TestScriptStruct
 {
@@ -242,6 +361,87 @@ bool Test()
 	COutStream out;
 	CBufferedOutStream bout;
 
+	// This test shows what happens if the application attempts to access the script
+	// object while the asCSriptObject destructor is cleaning up the members
+	fail = ProjectClover::Test_main();
+
+	// Test 
+	// Reported by Scott Bean
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		//engine->SetEngineProperty(asEP_ALWAYS_IMPL_DEFAULT_CONSTRUCT, true);
+
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream,Callback), &bout, asCALL_THISCALL);
+		bout.buffer = "";
+
+		RegisterStdString(engine);
+
+		const char *script = 
+		"class ssNode \n"
+		"{ \n"
+		"    ssNode( string Node ) { m_Node = Node; } \n"
+		"    string      GetNode() { return m_Node; } \n"
+		"    string      m_Node; \n"
+		"}; \n"
+		"class ssNode_Float : ssNode \n"
+		"{  \n"
+		"    ssNode_Float( string Node ) { m_Node = Node; } \n"
+		"}  \n"
+		"ssNode ssCreateNode( string Node ) \n"
+		"{ \n"
+		"    ssNode_Float FloatNode( Node ); \n"
+		"    return FloatNode; \n"
+		"} \n";
+
+		mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test", script);
+		r = mod->Build();
+		if( r >= 0 )
+			TEST_FAILED;
+
+		if( bout.buffer != "test (9, 5) : Info    : Compiling ssNode_Float::ssNode_Float(string)\n"
+						   "test (9, 33) : Error   : Base class doesn't have default constructor. Make explicit call to base constructor\n"
+						   "test (11, 1) : Info    : Compiling ssNode ssCreateNode(string)\n"
+						   "test (14, 12) : Error   : No default constructor for object of type 'ssNode'.\n"
+						   "test (14, 12) : Error   : Previous error occurred while attempting to create a temporary copy of object\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		engine->Release();
+	}
+
+	// Test class containing array with default size
+	// http://www.gamedev.net/topic/640059-crash-class-and-array-with-initial-size/
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream,Callback), &bout, asCALL_THISCALL);
+		bout.buffer = "";
+
+		RegisterScriptArray(engine, true);
+
+		mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test", "class A{ \n"
+									  "  A(){} \n"
+									  "  float[] cts(12); \n"
+									  "  float[] b; \n"
+									  "}; \n"
+									  "A a; \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		if( bout.buffer != "" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		engine->Release();
+	}
+
 	// CreateScriptObject should give proper error when attempting call for class without default constructor
 	{
 		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
@@ -256,7 +456,7 @@ bool Test()
 			TEST_FAILED;
 
 		asIObjectType *type = mod->GetObjectTypeByName("A");
-		if( engine->CreateScriptObject(type->GetTypeId()) )
+		if( engine->CreateScriptObject(type) )
 			TEST_FAILED;
 
 		if( bout.buffer != " (0, 0) : Error   : Failed in call to function 'CreateScriptObject' (Code: -6)\n" )
@@ -493,6 +693,7 @@ bool Test()
 		engine->Release();
 	}
 
+#ifndef AS_MAX_PORTABILITY
 	if( !strstr(asGetLibraryOptions(), "AS_NO_MEMBER_INIT") )
 	{
 		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
@@ -516,7 +717,7 @@ bool Test()
 		if( r < 0 )
 			TEST_FAILED;
 
-		asIScriptObject *obj = (asIScriptObject*)engine->CreateScriptObject(mod->GetTypeIdByDecl("T"));
+		asIScriptObject *obj = (asIScriptObject*)engine->CreateScriptObject(mod->GetObjectTypeByName("T"));
 		if( obj != 0 )
 			TEST_FAILED;
 
@@ -553,7 +754,7 @@ bool Test()
 		if( r < 0 )
 			TEST_FAILED;
 
-		obj = (asIScriptObject*)engine->CreateScriptObject(mod->GetTypeIdByDecl("T"));
+		obj = (asIScriptObject*)engine->CreateScriptObject(mod->GetObjectTypeByName("T"));
 		if( obj == 0 )
 			TEST_FAILED;
 		else
@@ -589,7 +790,7 @@ bool Test()
 		if( r < 0 )
 			TEST_FAILED;
 
-		obj = (asIScriptObject*)engine->CreateScriptObject(mod->GetTypeIdByDecl("T"));
+		obj = (asIScriptObject*)engine->CreateScriptObject(mod->GetObjectTypeByName("T"));
 		if( obj == 0 )
 			TEST_FAILED;
 		else
@@ -654,7 +855,7 @@ bool Test()
 		if( r < 0 )
 			TEST_FAILED;
 
-		obj = (asIScriptObject*)engine->CreateScriptObject(mod->GetTypeIdByDecl("T"));
+		obj = (asIScriptObject*)engine->CreateScriptObject(mod->GetObjectTypeByName("T"));
 		if( obj == 0 )
 			TEST_FAILED;
 		else
@@ -762,7 +963,7 @@ bool Test()
 		if( r < 0 )
 			TEST_FAILED;
 
-		obj = (asIScriptObject*)engine->CreateScriptObject(mod->GetTypeIdByDecl("T"));
+		obj = (asIScriptObject*)engine->CreateScriptObject(mod->GetObjectTypeByName("T"));
 		if( obj == 0 )
 			TEST_FAILED;
 		else
@@ -794,7 +995,7 @@ bool Test()
 			obj->Release();
 
 		// Test creating script class instance without initialization (for serialization)
-		obj = (asIScriptObject*)engine->CreateUninitializedScriptObject(mod->GetTypeIdByDecl("T"));
+		obj = (asIScriptObject*)engine->CreateUninitializedScriptObject(mod->GetObjectTypeByName("T"));
 		if( obj == 0 )
 			TEST_FAILED;
 		else
@@ -824,7 +1025,7 @@ bool Test()
 		if( r < 0 )
 			TEST_FAILED;
 
-		obj = (asIScriptObject*)engine->CreateScriptObject(mod->GetTypeIdByDecl("T"));
+		obj = (asIScriptObject*)engine->CreateScriptObject(mod->GetObjectTypeByName("T"));
 		if( obj == 0 )
 			TEST_FAILED;
 		else
@@ -870,7 +1071,7 @@ bool Test()
 		if( r < 0 )
 			TEST_FAILED;
 
-		obj = (asIScriptObject*)engine->CreateScriptObject(mod->GetTypeIdByDecl("T"));
+		obj = (asIScriptObject*)engine->CreateScriptObject(mod->GetObjectTypeByName("T"));
 		if( obj == 0 )
 			TEST_FAILED;
 		else
@@ -912,6 +1113,7 @@ bool Test()
 
 		engine->Release();
 	}
+#endif
 
 	{
 		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);

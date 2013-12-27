@@ -1,6 +1,8 @@
 #include "utils.h"
 #include <sstream>
 #include "../../../add_on/scriptdictionary/scriptdictionary.h"
+#include "../../../add_on/scriptany/scriptany.h"
+#include "../../../add_on/scriptmath/scriptmath.h"
 #include <iostream>
 
 using namespace std;
@@ -85,6 +87,15 @@ bool Test7();
 bool Test8();
 bool Test9();
 bool TestRetRef();
+
+struct A {
+    A() { text = "hello"; }
+    static void Constructor(A *self) {new(self) A();}
+    static void Destructor(A *memory) {memory->~A();}
+    std::string getText() {return this->text;}
+    std::string text;
+    A getA() {return A();}
+};
 
 // For test Philip Bennefall
 class CSound
@@ -196,12 +207,12 @@ class ChainMe
 {
 public:
 	int X;
- 
+
 	ChainMe() :
 		X(0)
 	{
 	}
- 
+
 	ChainMe &Increase(const int &v)
 	{
 		X += v;
@@ -219,20 +230,794 @@ bool Test()
 	bool fail = false;
 	int r;
 
-	fail = Test2() || fail;
-	fail = Test3() || fail;
-	fail = Test4() || fail;
-	fail = Test5() || fail;
-	fail = Test6() || fail;
-	fail = Test7() || fail;
-	fail = Test8() || fail;
-	fail = Test9() || fail;
-	fail = TestRetRef() || fail;
-
 	asIScriptEngine *engine;
 	CBufferedOutStream bout;
 	COutStream out;
 	asIScriptModule *mod;
+
+	// Test compiler error with explicit type cast
+	// http://www.gamedev.net/topic/649644-assert-when-casting-void-return-value-to-an-object-handle/
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+
+		RegisterStdString(engine);
+		
+		bout.buffer = "";
+
+		mod = engine->GetModule("mod", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("Test",
+			"void main() { \n"
+			"	ParticleEmitter@ em = cast<ParticleEmitter>(CreateComponent('ParticleEmitter')); \n"
+			"} \n"
+			"class ParticleEmitter {} \n"
+			"void CreateComponent(const string&in componentName) {} \n");
+		r = mod->Build();
+		if( r >= 0 )
+			TEST_FAILED;
+		
+		if( bout.buffer != "Test (1, 1) : Info    : Compiling void main()\n"
+						   "Test (2, 24) : Error   : No conversion from 'void' to 'ParticleEmitter@' available.\n"
+						   "Test (2, 24) : Error   : Can't implicitly convert from 'const int' to 'ParticleEmitter@&'.\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		engine->Release();
+	}
+
+	// Test warning in implicit constructor call
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+
+		engine->RegisterObjectType("vec2i", 4, asOBJ_VALUE | asOBJ_POD);
+		engine->RegisterObjectBehaviour("vec2i", asBEHAVE_CONSTRUCT, "void f(int)", asFUNCTION(0), asCALL_GENERIC);
+		engine->RegisterObjectBehaviour("vec2i", asBEHAVE_CONSTRUCT, "void f(int,int)", asFUNCTION(0), asCALL_GENERIC);
+		engine->RegisterObjectMethod("vec2i", "vec2i opSub(const vec2i &in) const", asFUNCTION(0), asCALL_GENERIC);
+		
+		bout.buffer = "";
+
+		mod = engine->GetModule("mod", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("Test",
+			"vec2i f(){ \n"
+			"    double f = 3.14; \n"
+			"    return vec2i(1,2) - f; \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+		
+		if( bout.buffer != "Test (1, 1) : Info    : Compiling vec2i f()\n"
+						   "Test (3, 25) : Warning : Float value truncated in implicit conversion to integer\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		engine->Release();
+	}
+
+	// Test chained assigned with handles
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+
+		engine->RegisterGlobalFunction("void assert(bool)", asFUNCTION(Assert), asCALL_GENERIC);
+
+		bout.buffer = "";
+
+		mod = engine->GetModule("mod", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("Test",
+			"class TestClass{} \n"
+			"TestClass @t1; \n"
+			"TestClass @t2; \n"
+			"void startGame( ){ \n"
+			"    TestClass @t = TestClass(); \n"
+			"    @t1 = @t2 = t; \n"
+			"    assert( t1 is t && t2 is t ); \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+		
+		if( bout.buffer != "" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		r = ExecuteString(engine, "startGame()", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		engine->Release();
+	}
+
+	// Test large integers
+	// http://www.gamedev.net/topic/648192-unsigned-int64-wokring-wrong/
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+
+		engine->RegisterGlobalFunction("void assert(bool)", asFUNCTION(Assert), asCALL_GENERIC);
+
+		bout.buffer = "";
+
+		// Don't complain about changing sign, and don't sign extend the value to 64bit
+		r = ExecuteString(engine, "uint64 ui64b = 4294967295; assert( (ui64b & 0xFFFFFFFF00000000) == 0 );");
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "uint64 ui64b = 4294967296; assert( ui64b == 0x100000000 );");
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		// Don't complain about changing signs or losing data
+		r = ExecuteString(engine, "uint32 ui32 = 4294967295; assert( ui32 == 0xFFFFFFFF ); ");
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "uint64 ui64 = 9223372036854775808; assert( ui64 == 0x8000000000000000 ); ");
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		if( bout.buffer != "" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		bout.buffer = "";
+
+		// Warn about losing data
+		r = ExecuteString(engine, "uint32 ui32b = 4294967296; assert( ui32b == 0 );");
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		// Warn about change of sign
+		r = ExecuteString(engine, "int64 i64 = 9223372036854775808; assert( uint64(i64) == 0x8000000000000000 ); ");
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		if( bout.buffer != "ExecuteString (1, 16) : Warning : Value is too large for data type\n"
+			               "ExecuteString (1, 13) : Warning : Implicit conversion changed sign of value\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		engine->Release();
+	}
+
+	// void is a legal expression and can be used to ignore output parameters
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+
+		mod = engine->GetModule("mod", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("Test",
+			"void main() { \n"
+			"  func(void); \n"
+			"  void; \n"
+			"} \n"
+			"void func(int &out a, int &out b = void) { a = 42; b = 24; } \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		// void can't be used with operators
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+		bout.buffer = "";
+
+		mod->AddScriptSection("Test",
+			"void main() { \n"
+			"  void + void; \n"
+			"  void == void; \n"
+			"  void = void; \n"
+			"} \n");
+		r = mod->Build();
+		if( r >= 0 )
+			TEST_FAILED;
+		if( bout.buffer != "Test (1, 1) : Info    : Compiling void main()\n"
+						   "Test (2, 8) : Error   : Void cannot be an operand in expressions\n"
+						   "Test (3, 8) : Error   : Void cannot be an operand in expressions\n"
+						   "Test (4, 3) : Error   : Expression is not an l-value\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		engine->Release();
+	}
+
+	// @null is a legal expression
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+
+		r = ExecuteString(engine, "@null");
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		engine->Release();
+	}
+
+	// Reported by neorej16
+	// Classes with both opAssign and opAddAssign wasn't compiled 
+	// properly when returning handle instead of reference
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+
+		mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"class gameScript\n"
+			"{\n"
+			"	gameScript@ opAssign(const gameScript &in other)\n"
+			"	{\n"
+			"		return this;\n"
+			"	}\n"
+			"	gameScript@ opAddAssign(const gameScript &in other)\n"
+			"	{\n"
+			"		return this;\n"
+			"	}\n"
+			"}\n"
+			"gameScript buffer;\n"
+			"gameScript cmd;\n"
+			"void playerAdded()\n"
+			"{\n"
+			"	buffer += cmd;\n"
+			"}\n");
+			
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+			
+		engine->Release();
+	}
+	
+	// Reported by Hermann Noll
+	// POD types that were not of even 4 bytes wasn't allocated enough size on stack and heap
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+		RegisterStdString(engine);
+		engine->RegisterGlobalFunction("void assert(bool)", asFUNCTION(Assert), asCALL_GENERIC);
+
+		struct Bytes10
+		{
+			bool a0;
+			bool a1;
+			bool a2;
+			bool a3;
+			bool a4;
+			bool a5;
+			bool a6;
+			bool a7;
+			bool a8;
+			bool a9;
+		}; 
+
+		engine->RegisterObjectType ("Bytes10",sizeof(Bytes10),asOBJ_VALUE|asOBJ_POD);
+		engine->RegisterObjectProperty ("Bytes10","bool a0",asOFFSET(Bytes10,a0));
+		engine->RegisterObjectProperty ("Bytes10","bool a9",asOFFSET(Bytes10,a9));
+
+		mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"void main() { \n"
+			"uint before = 0; \n"
+			"Bytes10 bytes; \n"
+			"uint after = 0; \n"
+			"bytes.a0 = true; \n"
+			"bytes.a9 = true; \n"
+			"assert( after == before ); \n"
+			"assert( after == 0 ); \n"
+			"after = before = 0xFFFFFFFF; \n"
+			"Check(bytes); \n"
+			"} \n"
+			"void Check(Bytes10 a) { \n"
+			"  assert( a.a0 == true ); \n"
+			"  assert( a.a9 == true ); \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "main()", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		engine->Release();
+	}
+
+	// Reported by Philip Bennefall
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+		engine->RegisterGlobalFunction("void assert( bool )", asFUNCTION(Assert), asCALL_GENERIC);
+		RegisterStdString(engine);
+		mod = engine->GetModule("Test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"class dummy \n"
+			"{ \n"
+			"  ~dummy() \n"
+			"  { \n"
+			"  } \n"
+			"} \n"
+			"void main() \n"
+			"{ \n"
+			"  dummy temp; \n"
+			"  alert('Return', test(temp)); \n"
+			"} \n"
+			"bool test(dummy x) \n"
+			"{ \n"
+			"  return false; \n" // The return value is put in the register, then the dummy is destroyed
+			"} \n"
+			"void alert(string txt, bool b) \n"
+			"{ \n"
+			"  assert( b == false ); \n"
+			"  assert( txt == 'Return' ); \n"
+			"} \n");
+		r = mod->Build(); // TODO: optimize: The temp string 'Return' is copied twice when calling alert
+		if( r < 0 )
+			TEST_FAILED;
+		asIScriptContext *ctx = engine->CreateContext();
+		r = ExecuteString(engine, "main()", mod, ctx);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+		ctx->Release();
+		engine->Release();
+	}
+
+	// Test passing argument to function that returns object
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
+		RegisterStdString(engine);
+		RegisterScriptMath(engine);
+		engine->RegisterGlobalFunction("void assert( bool )", asFUNCTION(Assert), asCALL_GENERIC);
+		mod = engine->GetModule("Test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"class C1 \n"
+			"{ \n"
+			"    C1 () \n"
+			"    { \n"
+			"        d_ = 0.0; \n"
+			"    } \n"
+			"    double d_; \n"
+			"} \n"
+			"C1 t1; \n"
+			"C1 & getC1 (const string &in s) \n"
+			"{ \n"
+			"    return t1; \n"
+			"} \n"
+			"void main () \n"
+			"{ \n"
+			"   for ( int i = 0; i < 3; ++i ) \n"
+			"   { \n"
+			"       string s;           \n" // case 1.
+			"       getC1(s).d_ += 10;  \n" // case 1.
+			"	    getC1(string()).d_ += 10; \n" // case 2.
+			"   } \n"
+			"	assert( abs(t1.d_ - 60.0) <= 0.0001 ); \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+		asIScriptContext *ctx = engine->CreateContext();
+		r = ExecuteString(engine, "main()", mod, ctx);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+		ctx->Release();
+		engine->Release();
+	}
+
+	// Test assignment operator
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		RegisterScriptArray(engine, false);
+		engine->RegisterGlobalFunction("void assert( bool )", asFUNCTION(Assert), asCALL_GENERIC);
+		mod = engine->GetModule("Test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"class C1\n"
+			"{\n"
+			"    C1 () {} \n"
+			"    C1 & opAssign (const C1 &in other)\n"
+			"    {\n"
+			"        value = other.value; \n"
+			"        return this; \n"
+			"    }\n"
+			"    int value = 0; \n"
+			"}\n"
+			"void main (void)\n"
+			"{\n"
+			"    array<C1> t; \n"
+			"    t.insertLast(C1()); \n"
+			"    t[0].value = 42; \n"
+			"    t.insertLast(t[0]); \n" // should make a copy
+			"    assert( t[0].value == t[1].value ); \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+		asIScriptContext *ctx = engine->CreateContext();
+		r = ExecuteString(engine, "main()", mod, ctx);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+		ctx->Release();
+		engine->Release();
+	}
+
+	// Test that the object variable scopes in the function bytecode is correctly set
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		RegisterStdString(engine);
+		engine->RegisterGlobalFunction("void assert( bool )", asFUNCTION(Assert), asCALL_GENERIC);
+		mod = engine->GetModule("Test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"void func() { \n"
+			"   bool TRUE = true, FALSE = false; \n"
+			"   if( FALSE ) \n"
+			"   { \n"
+			"	  string temp=''; \n"
+			"	  while( TRUE ) \n"
+			"	  { \n"
+			"		if( FALSE ) \n"
+			"		{ \n"
+			"			continue; \n"
+			"		} \n"
+			"  		break; \n"
+			"  	  } \n"
+			"   } \n"
+			"   int a = 0; a = a/a; \n" // provoke exception by dividing with 0
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+		asIScriptContext *ctx = engine->CreateContext();
+		r = ExecuteString(engine, "func()", mod, ctx);
+		if( r != asEXECUTION_EXCEPTION )
+			TEST_FAILED;
+		ctx->Release();
+		engine->Release();
+	}
+
+	// Test a null pointer exception reported by Robert Weitzel
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test", "int global = 1;");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+		engine->DiscardModule("test");
+
+		mod = engine->GetModule("test2", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test", "enum A { a = 2 }");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		engine->Release();
+	}
+
+	// Test asEP_DISALLOW_VALUE_ASSIGN_FOR_REF_TYPE
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+		engine->SetEngineProperty(asEP_DISALLOW_VALUE_ASSIGN_FOR_REF_TYPE, true);
+		mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
+
+		// It shall not be possible to do a value assign
+		bout.buffer = "";
+		mod->AddScriptSection("test",
+			"class T { T() {} T &opAssign(const T &in) { return this; } T &opAddAssign(const T &in) { return this; } } \n"
+			"void main() { \n"
+			"  T t; \n"
+			"  t = T(); \n" // fail
+			"  t += T(); \n" // fail
+			"  @t = T(); \n" // fail (because the variable is not a handle)
+			"} \n");
+		r = mod->Build();
+		if( r >= 0 )
+			TEST_FAILED;
+
+		if( bout.buffer != "test (2, 1) : Info    : Compiling void main()\n"
+						   "test (4, 5) : Error   : Value assignment on reference types is not allowed. Did you mean to do a handle assignment?\n"
+						   "test (5, 5) : Error   : Compound assignment on reference types is not allowed\n"
+						   "test (6, 3) : Error   : Expression is not an l-value\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		// It shall not be possible to declare function that take ref type by value
+		bout.buffer = "";
+		mod->AddScriptSection("test",
+			"class T { T() {} T &opAssign(const T &in) { return this; } } \n"
+			"void func1(T t) {} \n" // fail
+			"T func2() { return T(); } \n" // fail
+			"void func3(T &t) {} \n" // ok
+			"T g; \n"
+			"T &func4() { return g; } \n" // ok
+			"void func5(T @t) {} \n" // ok
+			"T @func6() { return null; } \n" // ok
+			);
+		r = mod->Build();
+		if( r >= 0 )
+			TEST_FAILED;
+
+		if( bout.buffer != "test (2, 1) : Error   : Reference types cannot be passed by value in function parameters\n"
+                           "test (3, 1) : Error   : Reference types cannot be returned by value from functions\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		// The array add-on should only accept handles for the sub type. This should be controlled by the template callback
+		RegisterScriptArray(engine, false);
+		bout.buffer = "";
+		mod->AddScriptSection("Test",
+			"class C {} \n"
+			"array<C> arr1; \n" // fail
+			"array<C@> arr2; \n" // ok
+			);
+		r = mod->Build();
+		if( r >= 0 )
+			TEST_FAILED;
+
+		if( bout.buffer != "Test (2, 7) : Error   : Can't instanciate template 'array' with subtype 'C'\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		// When passing a ref type to a ? parameter, the compiler should assume it was meant to send the handle
+		RegisterScriptAny(engine);
+		bout.buffer = "";
+
+		CScriptAny *any = new CScriptAny(engine);
+		engine->RegisterGlobalProperty("any a", any);
+
+		mod->AddScriptSection("Test", "class C {} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+		
+		r = ExecuteString(engine, "a.store(C())", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+		if( (any->GetTypeId() & asTYPEID_OBJHANDLE) == 0 )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "a.store(@C())", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+		if( (any->GetTypeId() & asTYPEID_OBJHANDLE) == 0 )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "C c; a.store(c)", mod);
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+		if( (any->GetTypeId() & asTYPEID_OBJHANDLE) == 0 )
+			TEST_FAILED;
+
+		if( bout.buffer != "" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		any->Release();
+		engine->Release();
+	}
+
+	// Test opAssign that returns void
+	// It was popping a word too many. Reported by Andrew Ackermann
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+		bout.buffer = "";
+
+		mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
+		mod->AddScriptSection("test",
+			"class T { \n"
+			"  void opAssign(const T &in v) {} \n"
+			"} \n"
+			"void main() { \n"
+			"  T t = T(); \n"
+			"} \n");
+		r = mod->Build();
+		if( r < 0 )
+			TEST_FAILED;
+
+		if( bout.buffer != "" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		asIScriptFunction *func = mod->GetFunctionByName("main");
+		asUINT len;
+		asDWORD *bc = func->GetByteCode(&len);
+		asBYTE expect[] = 
+			{	
+				asBC_SUSPEND,asBC_CALL,asBC_STOREOBJ,asBC_ChkNullV,asBC_VAR,asBC_CALL,asBC_STOREOBJ,asBC_PshVPtr,asBC_GETOBJREF,asBC_CALLINTF,asBC_FREE,
+				asBC_SUSPEND,asBC_FREE,asBC_RET
+			};
+		for( asUINT n = 0, i = 0; n < len; )
+		{
+			asBYTE c = asBYTE(bc[n]);
+			if( c != expect[i] )
+			{
+				TEST_FAILED;
+				break;
+			}
+			n += asBCTypeSize[asBCInfo[c].type];
+			if( ++i > sizeof(expect) )
+				TEST_FAILED;
+		}
+
+		engine->Release();
+	}
+
+#ifndef AS_MAX_PORTABILITY
+	// Test
+	// http://www.gamedev.net/topic/640966-returning-text-crashes-as-with-mingw-471-but-not-with-441/
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+		bout.buffer = "";
+
+		RegisterStdString(engine);
+		engine->RegisterGlobalFunction("void assert(bool)", asFUNCTION(Assert), asCALL_GENERIC);
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1700   // MSVC 2012
+#if !defined(__GNUC__) || __GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 7)  // gnuc 4.7
+        if( GetTypeTraits<A>() != asOBJ_APP_CLASS_CDAK )
+            TEST_FAILED;
+#endif
+#endif
+
+		int r = engine->RegisterObjectType("A", sizeof(A), asOBJ_VALUE | asOBJ_APP_CLASS_CDAK); assert( r >= 0 );
+		r = engine->RegisterObjectBehaviour("A", asBEHAVE_CONSTRUCT, "void f()", asFUNCTION(A::Constructor), asCALL_CDECL_OBJLAST); assert( r >= 0 );
+		r = engine->RegisterObjectBehaviour("A", asBEHAVE_DESTRUCT, "void f()", asFUNCTION(A::Destructor), asCALL_CDECL_OBJLAST); assert( r >= 0 );
+		r = engine->RegisterObjectMethod("A", "string getText()", asMETHOD(A,getText), asCALL_THISCALL);assert( r >= 0 );
+		r = engine->RegisterObjectMethod("A", "A getA()", asMETHOD(A,getA), asCALL_THISCALL);assert( r >= 0 );
+
+		r = ExecuteString(engine, "A a; \n"
+			                      "string text = a.getA().getText(); \n"
+								  "assert( text == 'hello' ); \n");
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		if( bout.buffer != "" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		engine->Release();
+	}
+#endif
+
+#ifndef AS_MAX_PORTABILITY
+	// Test that integer constants are signed by default
+	// http://www.gamedev.net/topic/625735-bizarre-errata-with-ternaries-and-integer-literals/
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+		bout.buffer = "";
+
+		RegisterStdString(engine);
+		engine->RegisterGlobalFunction("void print(const string &in)", asFUNCTION(Print), asCALL_CDECL);
+		engine->RegisterGlobalFunction("void assert(bool)", asFUNCTION(Assert), asCALL_GENERIC);
+
+		g_printbuf = "";
+		r = ExecuteString(engine, "float a = ((false?1:0)-(true?1:0)); print('' + a); a += 1; assert( a < 0.005 && a > -0.005 );");
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		if( bout.buffer != "" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		engine->Release();
+	}
+#endif
+
+	// Test warnings as error
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+
+		engine->SetEngineProperty(asEP_COMPILER_WARNINGS, 2);
+
+		bout.buffer = "";
+
+		r = ExecuteString(engine, "uint a; a = -12;");
+		if( r >= 0  )
+			TEST_FAILED;
+
+		if( bout.buffer != "ExecuteString (1, 13) : Warning : Implicit conversion changed sign of value\n"
+		                   " (0, 0) : Error   : Warnings are treated as errors by the application\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		engine->Release();
+	}
+
+	// Test check for division -2147483648 by -1
+	// http://www.gamedev.net/topic/639703-crash-in-divmod-implementations/
+	{
+		engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
+		engine->SetMessageCallback(asMETHOD(CBufferedOutStream, Callback), &bout, asCALL_THISCALL);
+
+		bout.buffer = "";
+
+		r = ExecuteString(engine, "int int_min = -2147483648;\n"
+								  "int neg_one = -1;\n"
+								  "int never_computed = (int_min / neg_one);\n");
+		if( r != asEXECUTION_EXCEPTION )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "int int_min = -2147483648;\n"
+								  "int neg_one = -1;\n"
+								  "int the_same_error = (int_min % neg_one);\n");
+		if( r != asEXECUTION_EXCEPTION )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "int int_min = -2147483648;\n"
+								  "int neg_one = -1;\n"
+								  "uint the_same_error = (uint(int_min) / uint(neg_one));\n");
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "int never_computed = (-2147483648 / -1);\n");
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "int never_computed = (-2147483648 % -1);\n");
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "int64 int_min = -9223372036854775808;\n"
+								  "int64 neg_one = -1;\n"
+								  "int64 never_computed = (int_min / neg_one);\n");
+		if( r != asEXECUTION_EXCEPTION )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "int64 int_min = -9223372036854775808;\n"
+								  "int64 neg_one = -1;\n"
+								  "int64 the_same_error = (int_min % neg_one);\n");
+		if( r != asEXECUTION_EXCEPTION )
+			TEST_FAILED;
+
+		r = ExecuteString(engine, "int64 never_computed = (-9223372036854775808 / -1);\n");
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		engine->SetEngineProperty(asEP_COMPILER_WARNINGS, 0);
+		r = ExecuteString(engine, "int64 never_computed = (-9223372036854775808 % -1);\n");
+		if( r != asEXECUTION_FINISHED )
+			TEST_FAILED;
+
+		if( bout.buffer != "ExecuteString (1, 17) : Warning : Implicit conversion changed sign of value\n"
+						   "ExecuteString (1, 17) : Warning : Implicit conversion changed sign of value\n"
+						   "ExecuteString (1, 25) : Warning : Implicit conversion changed sign of value\n" )
+		{
+			printf("%s", bout.buffer.c_str());
+			TEST_FAILED;
+		}
+
+		engine->Release();
+	}
 
 	// Test crash in compiler
 	// http://www.gamedev.net/topic/639248-compilation-crash-possibly-on-error-output/
@@ -243,7 +1028,7 @@ bool Test()
 		bout.buffer = "";
 
 		mod = engine->GetModule("mod1", asGM_ALWAYS_CREATE);
-		mod->AddScriptSection("test", 
+		mod->AddScriptSection("test",
 			"import void g(bool dummy, int x = -1) from 'mod2'; \n"
 			"void f(bool dummy, int x) \n"
 			"{ \n"
@@ -333,7 +1118,7 @@ bool Test()
 		bout.buffer = "";
 
 		mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
-		r = mod->AddScriptSection("test", 
+		r = mod->AddScriptSection("test",
 			"void F()\n"
 			"{\n"
 			"    int a1;\n"
@@ -382,12 +1167,13 @@ bool Test()
 			printf("%s", bout.buffer.c_str());
 			TEST_FAILED;
 		}
-		
+
 		engine->Release();
 
 		InstallMemoryManager();
 	}
 
+#ifndef AS_MAX_PORTABILITY
 	// Problem reported by Paril101
 	// http://www.gamedev.net/topic/636336-member-function-chaining/
 	{
@@ -402,7 +1188,7 @@ bool Test()
 		engine->RegisterGlobalFunction("void assert( bool )", asFUNCTION(Assert), asCALL_GENERIC);
 
 		mod = engine->GetModule("test", asGM_ALWAYS_CREATE);
-		mod->AddScriptSection("test", 
+		mod->AddScriptSection("test",
 			"void func() { \n"
 			"  func2(ChainMe().Increase(5).Increase(15).Increase(25)); \n"
 			"} \n"
@@ -410,7 +1196,7 @@ bool Test()
 			"  assert( a.x == 45 ); \n"
 			"} \n");
 
-		
+
 		bout.buffer = "";
 		r = mod->Build();
 		if( r < 0 )
@@ -427,11 +1213,12 @@ bool Test()
 
 		engine->Release();
 	}
+#endif
 
 	// Problem reported by zerochen
 	// http://www.gamedev.net/topic/634768-after-unreachable-code-wrong-error-msg/
 	{
-		const char *script = 
+		const char *script =
 			"void dum() {} \n"
 			"int dummy() \n"
 			"{ \n"
@@ -448,10 +1235,10 @@ bool Test()
 
 		bout.buffer = "";
 		r = mod->Build();
-		if( r >= 0 )
+		if( r < 0 )
 			TEST_FAILED;
 		if( bout.buffer != "test (2, 1) : Info    : Compiling int dummy()\n"
-		                   "test (5, 3) : Error   : Unreachable code\n" )
+		                   "test (5, 3) : Warning : Unreachable code\n" )
 		{
 			printf("%s", bout.buffer.c_str());
 			TEST_FAILED;
@@ -463,7 +1250,7 @@ bool Test()
 	// Problem reported by _Engine_
 	// http://www.gamedev.net/topic/632922-huge-problems-with-precompilde-byte-code/
 	{
-		const char *script = 
+		const char *script =
 			"class SBuilding \n"
 			"{ \n"
 			"	void ReleasePeople() \n"
@@ -501,7 +1288,7 @@ bool Test()
 	// Problem reported by FDsagizi
 	// http://www.gamedev.net/topic/632813-compiller-bug/
 	{
-		const char *script = 
+		const char *script =
 			"Test @cur_test; \n"
 			"class Test { \n"
 			"  void Do() { \n"
@@ -1273,9 +2060,12 @@ bool Test()
 
 	if( bout.buffer != "TestCompiler (1, 1) : Info    : Compiling void CompilerAssert()\n"
 					   "TestCompiler (3, 13) : Error   : Can't implicitly convert from 'uint' to 'bool'.\n"
-					   "TestCompiler (4, 13) : Error   : Can't implicitly convert from 'uint' to 'bool'.\n"
+					   "TestCompiler (4, 13) : Error   : Can't implicitly convert from 'int' to 'bool'.\n"
 					   "TestCompiler (5, 5) : Error   : No conversion from 'bool' to math type available.\n" )
-	   TEST_FAILED;
+	{
+		printf("%s", bout.buffer.c_str());
+		TEST_FAILED;
+	}
 
 	// test 3
 	engine->SetMessageCallback(asMETHOD(COutStream, Callback), &out, asCALL_THISCALL);
@@ -1438,7 +2228,7 @@ bool Test()
 	r = ExecuteString(engine, "uint32[] a = 0;");
 	if( r >= 0 )
 		TEST_FAILED;
-	if( bout.buffer != "ExecuteString (1, 14) : Error   : Can't implicitly convert from 'const uint' to 'uint[]&'.\n" )
+	if( bout.buffer != "ExecuteString (1, 14) : Error   : Can't implicitly convert from 'const int' to 'uint[]&'.\n" )
 	{
 		printf("%s", bout.buffer.c_str());
 		TEST_FAILED;
@@ -1647,7 +2437,7 @@ bool Test()
 		mod->AddScriptSection("test", "derp wtf = 32;");
 		r = mod->Build();
 		if( r >= 0 || bout.buffer != "test (1, 10) : Info    : Compiling derp wtf\n"
-		                             "test (1, 12) : Error   : Can't implicitly convert from 'const uint' to 'derp&'.\n"
+		                             "test (1, 12) : Error   : Can't implicitly convert from 'const int' to 'derp&'.\n"
 		                             "test (1, 12) : Error   : There is no copy operator for the type 'derp' available.\n" )
 		{
 			printf("%s", bout.buffer.c_str());
@@ -1694,7 +2484,7 @@ bool Test()
 		if( r >= 0 )
 			TEST_FAILED;
 
-		if( bout.buffer != "s (2, 1) : Error   : A function with the same name and parameters already exist\n"
+		if( bout.buffer != "s (2, 1) : Error   : A function with the same name and parameters already exists\n"
 		                   "s (3, 1) : Info    : Compiling void main()\n"
 		                   "s (3, 15) : Error   : Multiple matching signatures to 'func()'\n"
 		                   "s (3, 15) : Info    : int func()\n"
@@ -2154,7 +2944,7 @@ bool Test()
 			TEST_FAILED;
 
 		if( bout.buffer != "script (11, 1) : Info    : Compiling void main()\n"
-		                   "script (14, 19) : Error   : No matching signatures to 'tone_synth::set_waveform_type(sine)'\n"
+			               "script (14, 19) : Error   : No matching signatures to 'tone_synth::set_waveform_type(::sine)'\n"
 		                   "script (14, 19) : Info    : Candidates are:\n"
 		                   "script (14, 19) : Info    : void tone_synth::set_waveform_type(wf_type)\n" )
 		{
@@ -2902,6 +3692,16 @@ bool Test()
 
 		engine->Release();
 	}
+
+	fail = Test2() || fail;
+	fail = Test3() || fail;
+	fail = Test4() || fail;
+	fail = Test5() || fail;
+	fail = Test6() || fail;
+	fail = Test7() || fail;
+	fail = Test8() || fail;
+	fail = Test9() || fail;
+	fail = TestRetRef() || fail;
 
 	// Success
  	return fail;

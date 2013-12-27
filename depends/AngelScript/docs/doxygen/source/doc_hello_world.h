@@ -3,7 +3,9 @@
 \page doc_hello_world Your first script
 
 This tutorial will show you the basics on how to configure the engine, compile a script, and then
-execute it.
+execute it. The code in this article is not complete, it only contains the relevant parts to explain 
+the basic structure for using the script library. For complete source codes see the \ref doc_samples "samples"
+that come with the SDK.
 
 In this tutorial a couple of add-ons are used to make the code easier. You are not required to use
 these in your own application, but they will most likely let you get your project up and running 
@@ -38,7 +40,7 @@ much effort.
 asIScriptEngine *engine = asCreateScriptEngine(ANGELSCRIPT_VERSION);
 
 // Set the message callback to receive information on errors in human readable form.
-r = engine->SetMessageCallback(asFUNCTION(MessageCallback), 0, asCALL_CDECL); assert( r >= 0 );
+int r = engine->SetMessageCallback(asFUNCTION(MessageCallback), 0, asCALL_CDECL); assert( r >= 0 );
 
 // AngelScript doesn't have a built-in string type, as there is no definite standard 
 // string type for C++ applications. Every developer is free to register it's own string type.
@@ -72,7 +74,7 @@ handling \#include directives.
 // performs a pre-processing pass if necessary, and then tells
 // the engine to build a script module.
 CScriptBuilder builder;
-r = builder.StartNewModule(engine, "MyModule"); 
+int r = builder.StartNewModule(engine, "MyModule"); 
 if( r < 0 ) 
 {
   // If the code fails here it is usually because there
@@ -117,7 +119,7 @@ if( func == 0 )
 // Create our context, prepare it, and then execute
 asIScriptContext *ctx = engine->CreateContext();
 ctx->Prepare(func);
-r = ctx->Execute();
+int r = ctx->Execute();
 if( r != asEXECUTION_FINISHED )
 {
   // The execution didn't complete as expected. Determine what happened.
@@ -152,7 +154,7 @@ void print(string &msg)
 }
 \endcode
 
-\see \ref doc_compile_script_msg, \ref doc_addon_build, and \ref doc_addon_std_string
+\see \ref doc_compile_script_msg, \ref doc_addon_build, \ref doc_addon_std_string, \ref doc_samples
 
 
 */

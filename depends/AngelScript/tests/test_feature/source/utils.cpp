@@ -186,7 +186,7 @@ void RemoveMemoryManager()
 	printf("max allocated memory at any one time  : %d\n", (int)maxMemAlloc);                 // 121042
 	printf("max number of simultaneous allocations: %d\n", maxNumAllocsSameTime);        // 2134
 	printf("total amount of allocated memory      : %d\n", (int)sumAllocSize);                // 10106765
-	printf("medium size of allocations            : %d\n", (int)sumAllocSize/numAllocs);
+	printf("medium size of allocations            : %d\n", numAllocs ? (int)sumAllocSize/numAllocs : 0);
 
 #ifdef TRACK_SIZES
 	// Find the mean size of allocations
@@ -240,6 +240,11 @@ int GetNumAllocs()
 	return numAllocs;
 }
 
+int GetAllocedMem()
+{
+	return int(currentMemAlloc);
+}
+
 
 asDWORD ComputeCRC32(const asBYTE *buf, asUINT length)
 {
@@ -266,4 +271,22 @@ asDWORD ComputeCRC32(const asBYTE *buf, asUINT length)
 	}
 
 	return ~crc;
+}
+
+bool ValidateByteCode(asIScriptFunction *func, asBYTE *expect)
+{
+	asUINT len;
+	asDWORD *bc = func->GetByteCode(&len);
+	for( asUINT n = 0, i = 0; n < len; )
+	{
+		asBYTE c = asBYTE(bc[n]);
+		if( c != expect[i] )
+			return false;
+		n += asBCTypeSize[asBCInfo[c].type];
+
+		if( expect[i++] == asBC_RET && n < len )
+			return false;
+	}
+
+	return true;
 }
