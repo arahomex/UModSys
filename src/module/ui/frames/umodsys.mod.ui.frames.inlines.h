@@ -221,7 +221,7 @@ inline bool SButton::draw_text(const SDrawState& S, const DCString& text, int gr
   S->setup_font(S);
   S->render_textbox(S.base.A, S.base.B, line, len, 
                     lib2d::to_Center|lib2d::to_VCenter|lib2d::to_LF, 
-                    &frame->tptr(group, cte_Text|cte_Fore));
+                    frame->tptr(group, cte_Text|cte_Fore));
   return true;
 }
 

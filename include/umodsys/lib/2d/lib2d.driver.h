@@ -34,6 +34,8 @@ public:
       : a(&aa), b(NULL), scale(ascale), options(to_None), caret_pos(-1) {}
     inline TextInfo(const DPoint &aa, const DPoint &ab, const DPointf *ascale=NULL) 
       : a(&aa), b(&ab), scale(ascale), options(to_None), caret_pos(-1) {}
+    inline TextInfo(const DPoint &aa, const DPoint &ab, const DPointf &ascale) 
+      : a(&aa), b(&ab), scale(&ascale), options(to_None), caret_pos(-1) {}
     //
     inline void set_option(int oropt, int andnotopt=0) { options &= ~andnotopt; options |= oropt; }
   };
@@ -100,6 +102,10 @@ public:
   //
   inline bool render_textbox(const DPoint& a, const DPoint& b, BCStrL piclist, int count, int options=to_None, const DPointf* scale=NULL) {
     TextInfo info(a, b, scale); info.set_option(options|to_FixedBox); 
+    return render_text_advanced(info, piclist, count);
+  }
+  inline bool render_textbox(const DPoint& a, const DPoint& b, BCStrL piclist, int count, int options, const DPointf& scale) {
+    TextInfo info(a, b, &scale); info.set_option(options|to_FixedBox); 
     return render_text_advanced(info, piclist, count);
   }
 protected:

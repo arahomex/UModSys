@@ -113,7 +113,7 @@ bool RFrame_Text::draw_post(const SDrawState& S)
 //  S->render_text(S.base.A, text, ~text, &tptr(ctg_Text, cte_Text|cte_Fore));
   S->render_textbox(S.base.A, S.base.B, line, len, 
                     lib2d::to_Left|lib2d::to_Left|lib2d::to_LF|lib2d::to_Wrap, 
-                    &tptr(ctg_Text, cte_Text|cte_Fore));
+                    tptr(ctg_Text, cte_Text|cte_Fore));
   return true;
 }
 

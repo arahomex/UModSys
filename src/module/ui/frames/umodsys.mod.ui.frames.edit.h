@@ -113,7 +113,7 @@ bool RFrame_Edit::draw_post(const SDrawState& S)
   //
   S->setup_coloralpha( tclr(ctg_Edit, cte_Text|cte_Fore|fd) );
   S->setup_font(S);
-  lib2d::IRenderDriver::TextInfo inf(S.base.A, S.base.B, &tptr(ctg_Edit, cte_Text|cte_Fore));
+  lib2d::IRenderDriver::TextInfo inf(S.base.A, S.base.B, tptr(ctg_Edit, cte_Text|cte_Fore));
   inf.set_option(lib2d::to_CalcCaretSize|lib2d::to_VCenter);
   inf.caret_pos = caret;
   S->render_text_advanced(inf, text, text_len);

@@ -6,4 +6,7 @@ BINSUFFIX=
 SOLIBSUFFIX=.so
 CXXFLAGS += -fPIC -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64
 
+CXXFLAGS += `sdl2-config --cflags`
+STD_LIBS += `sdl2-config --libs`
+
 include Makefile.inc

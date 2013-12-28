@@ -99,7 +99,7 @@ IFrame* RCollector::frame_create_n(int cid, const SFrameCreateParameters& fcp, c
   RFrame_Common *parent = NULL;
   if(fcp.parent) {
     if(!fcp.parent->t_root_get_other_interface(parent) || parent->owner!=this)
-      return false;
+      return NULL;
   }
   switch(cid) {
     case cidmask(cid_Frame):
@@ -135,7 +135,7 @@ IFrame* RCollector::frame_create_s(const DCString& cid, const SFrameCreateParame
   RFrame_Common *parent = NULL;
   if(fcp.parent) {
     if(!fcp.parent->t_root_get_other_interface(parent) || parent->owner!=this)
-      return false;
+      return NULL;
   }
   if(cid=="frame" || cid=="group" || cid=="") {
     rv = new RFrame_Frame(this, parent);
@@ -425,7 +425,7 @@ RFrame_Common* RCollector::get_focused(void)
 RFrame_Common* RCollector::cont_first(RFrame_Common* root)
 {
   const Frames* fr = root ? &root->frames : &frames;
-  return ~*fr ? fr->Get(0) : NULL;
+  return ~*fr ? fr->Get(0)() : NULL;
 }
 
 RFrame_Common* RCollector::cont_last(RFrame_Common* root)
@@ -497,7 +497,7 @@ bool RCollector::master_key_pressed(const SKeyboardInputRaw& key)
   if(key.status==bis_Pressed) {
     switch(key.code) {
       case k_tab:
-        fr2 = find_next_focused(~dialogs ? dialogs.Last()->root : NULL, fr, (key.special & km_shift)==0 );
+        fr2 = find_next_focused(~dialogs ? dialogs.Last()->root() : NULL, fr, (key.special & km_shift)==0 );
         if(fr2==NULL)
           return false;
         if(~dialogs) dialogs.Last()->set_focused(fr2); else set_focused(fr2);
@@ -560,11 +560,11 @@ RCollector::~RCollector(void)
 
 IDialog* RCollector::dialog_open(IFrame* root)
 {
-  RDialog* odlg = ~dialogs ? dialogs.Last() : NULL;
+  RDialog* odlg = ~dialogs ? dialogs.Last()() : NULL;
   if(root==NULL || root->get_collector()!=this || !dialogs.Push())
     return NULL;
   RDialog::SelfP dlg = new RDialog(this, static_cast<RFrame_Common*>(root));
-  if(dlg==NULL) {
+  if(!dlg.valid()) {
     dialogs.Pop();
     return NULL;
   }
@@ -588,7 +588,7 @@ bool RCollector::dialog_close(void)
   RDialog::SelfP dlg = dialogs.Last();
   dialogs.Pop();
   dlg->dclose();
-  RDialog* odlg = ~dialogs ? dialogs.Last() : NULL;
+  RDialog* odlg = ~dialogs ? dialogs.Last()() : NULL;
   if(odlg) odlg->dpause(false);
   return true;
 }

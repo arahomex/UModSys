@@ -186,7 +186,7 @@ bool RFrame_List::draw_post(const SDrawState& S)
   int fd = is_enabled() ? 0 : cte_Disabled;
   S->setup_coloralpha( tclr(ctg_List, cte_Text|cte_Fore|fd) );
   S->setup_font(S);
-  const lib2d::DPointf* scale = &tptr(ctg_List, cte_Text|cte_Fore);
+  lib2d::DPointf scale = tptr(ctg_List, cte_Text|cte_Fore);
   lib2d::DPoint p = S.base.A;
   for(int j=0; j<selwindow; j++) {
     int i = seltop + j;
@@ -207,16 +207,16 @@ bool RFrame_List::draw_post(const SDrawState& S)
       S->setup_coloralpha( tclr(ctg_List, cte_Button|cte_Back|cte_Selected) );
       S->render_box(p, lib2d::DPoint(S.base.B(0)-b_mid.size.sizex(), p(1)+dy));
       S->setup_coloralpha( tclr(ctg_List, cte_Text|cte_Fore|cte_Selected) );
-      S->render_text(p, line, len, scale);
+      S->render_text(p, line, len, &scale);
       S->setup_coloralpha( tclr(ctg_List, cte_Text|cte_Fore|fd) );
     } else if(active && mselid==i) {
       S->setup_coloralpha( tclr(ctg_List, cte_Button|cte_Back|fd) );
       S->render_box(p, lib2d::DPoint(S.base.B(0)-b_mid.size.sizex(), p(1)+dy));
       S->setup_coloralpha( tclr(ctg_List, cte_Text|cte_Fore|fd) );
-      S->render_text(p, line, len, scale);
+      S->render_text(p, line, len, &scale);
       S->setup_coloralpha( tclr(ctg_List, cte_Text|cte_Fore|fd) );
     } else {
-      S->render_text(p, line, len, scale);
+      S->render_text(p, line, len, &scale);
     }
     p[1] += dy;
   }

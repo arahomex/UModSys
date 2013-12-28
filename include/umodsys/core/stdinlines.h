@@ -32,9 +32,6 @@ struct TObjectCompare {
 // Inlines
 //***************************************
 
-inline Void* void_null(void) { return NULL; }
-inline Void& void_obj(void) { return *void_null(); }
-
 template<typename Func> inline void lost_func(Func fn) { lost((void*)fn); }
 
 //***************************************
