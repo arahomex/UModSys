@@ -9,6 +9,15 @@ using namespace UModSys::base::rsystem;
 //***************************************
 // RSystem::
 //***************************************
+/*
+va_list rsystem::val(va_list va)
+{
+  return va;
+}
+*/
+//***************************************
+// RSystem::
+//***************************************
 
 //void RSystem::ref_add(void) const {}
 //void RSystem::ref_remove(void) const {}

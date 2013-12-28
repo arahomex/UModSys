@@ -20,10 +20,10 @@ bool RConsole_std::ref_weak(WeakPointer& wp) const { return false; }
 bool RConsole_std::vput(int level, const char* fmt, va_list va)
 {
   if(stdout!=NULL) {
-    vfprintf(stdout, fmt, va);
+    vfprintf(stdout, fmt, sva_list(va).va);
   }
   if(dump_file!=NULL) {
-    vfprintf(dump_file, fmt, va);
+    vfprintf(dump_file, fmt, sva_list(va).va);
   }
   return true;
 }
@@ -34,10 +34,10 @@ bool RConsole_std::put(int level, const char* fmt, ...)
   va_start(va, fmt);
   //
   if(stdout!=NULL) {
-    vfprintf(stdout, fmt, va);
+    vfprintf(stdout, fmt, sva_list(va).va);
   }
   if(dump_file!=NULL) {
-    vfprintf(dump_file, fmt, va);
+    vfprintf(dump_file, fmt, sva_list(va).va);
   }
   //
   va_end(va);

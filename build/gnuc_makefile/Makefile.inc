@@ -40,6 +40,9 @@ include Makefile.dep-core.inc
 include Makefile.dep-base.inc
 
 include Makefile.dep-libmedia.inc
+include Makefile.dep-lib2d.inc
+include Makefile.dep-lib3d.inc
+include Makefile.dep-libui.inc
 
 include Makefile.dep-basesys.inc
 

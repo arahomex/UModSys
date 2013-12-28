@@ -55,6 +55,12 @@ extern SDebug rsys_dbg;
 void dbg_put(eRSystemDebugLevels dl, const char *fmt, ...);
 void err_put(eRSystemDebugLevels dl, const char *fmt, ...);
 
+struct sva_list {
+  va_list va;
+  sva_list(va_list ava) { memcpy(va, ava, sizeof(va)); }
+};
+
+
 //***************************************
 // END
 //***************************************

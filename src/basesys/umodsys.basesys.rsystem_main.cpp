@@ -22,7 +22,7 @@ bool RSystem::init(void)
 //  rsys_dbg.enable(rsdl_System);
 //  rsys_dbg.enable(rsdl_Module);
 //  rsys_dbg.enable(rsdl_ModuleLibrary);
-//  rsys_dbg.enable(rsdl_SoLoad);
+  rsys_dbg.enable(rsdl_SoLoad);
   //
 #if defined(_DEBUG) && defined(_MSC_VER)
   _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF|_CRTDBG_DELAY_FREE_MEM_DF|_CRTDBG_ALLOC_MEM_DF);
