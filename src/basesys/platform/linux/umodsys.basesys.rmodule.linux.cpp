@@ -139,7 +139,7 @@ static size_t s_pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, core::BStr bpa
 //    dbg_put(rsdl_SoLoad, "  match so: \"%s\" like \"%s\"\n", fullname(), umask());
     if(fnmatch(umask(), fullname(), FNM_NOESCAPE)!=0)
       continue; // not matched
-//    dbg_put(rsdl_SoLoad, "  matched so: \"%s\" like \"%s\"\n", fullname(), umask());
+    dbg_put(rsdl_SoLoad, "  matched so: \"%s\" like \"%s\"\n", fullname(), umask());
     gn += RModuleLibrarySO::s_add(sys, la, fullname());
 next:;
   }

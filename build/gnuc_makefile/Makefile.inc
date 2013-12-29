@@ -16,7 +16,12 @@ all: target
 
 target: T BINDIR core_lib base_lib main so_test_s
 
-clean:
+
+clean_bin:
+	rm $(BINDIR)/*.$(PLATFORM).$(BUILD_MODE)$(BINSUFFIX)
+	rm $(BINDIR)/*.$(PLATFORM).$(BUILD_MODE)$(SOLIBSUFFIX)
+
+clean: clean_bin
 	-$(RM) $(T)/*$(OSUFFIX) 
 	-$(RM) $(T)/*$(LIBSUFFIX) 
 	-$(RM) $(T)/*$(OSUFFIX).d
@@ -48,3 +53,4 @@ include Makefile.dep-basesys.inc
 
 include Makefile.dep-so-test.inc
 
+#---------------------------- make libraries

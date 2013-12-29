@@ -34,7 +34,7 @@ IImage* RMultiImage::get_layer(Buint16 idx) const
 {
   if(!factory.valid())
     return NULL;
-  return idx<~layers ? layers(idx) : NULL;
+  return idx<~layers ? layers(idx)() : NULL;
 }
 
 uint32 RMultiImage::get_cell_count(void) const
@@ -77,7 +77,7 @@ bool RMultiImage::set_layer_count(uint16 num)
     return false;
   for(size_t i=old; i<num; i++) {
     layers[i] = factory->image_new();
-    if(layers[i]==NULL) {
+    if(layers[i].invalid()) {
       layers.Resize(old);
       return false;
     }

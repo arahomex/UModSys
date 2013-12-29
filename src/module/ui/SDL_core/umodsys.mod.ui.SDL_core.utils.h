@@ -6,32 +6,25 @@
 struct RTerminal;
 struct RRenderDriver2D;
 
+struct sdlRect : public SDL_Rect {
+  inline sdlRect(int ax, int ay, int dx, int dy) {
+    x = x; y = y;
+    w = dx; h = dy;
+  }
+  inline sdlRect(const lib2d::DPoint& a, const lib2d::DPoint& b) {
+    x = a(0); y = a(1);
+    w = b(0)-a(0); h = b(1)-a(1);
+  }
+  inline sdlRect(const lib2d::DBox& a) {
+    x = a.originx(); y = a.originy();
+    w = a.sizex(); h = a.sizey();
+  }
+  inline operator SDL_Rect* (void) { return this; }
+  inline operator const SDL_Rect* (void) const { return this; }
+};
+
 //***************************************
 //***************************************
-
-inline SDL_Rect rect(int x, int y, int dx, int dy) 
-{
-  SDL_Rect rv;
-  rv.x = x; rv.y = y;
-  rv.w = dx; rv.h = dy;
-  return rv;
-}
-
-inline SDL_Rect rect(const lib2d::DPoint& a, const lib2d::DPoint& b) 
-{
-  SDL_Rect rv;
-  rv.x = a(0); rv.y = a(1);
-  rv.w = b(0)-a(0); rv.h = b(1)-a(1);
-  return rv;
-}
-
-inline SDL_Rect rect(const lib2d::DBox& a) 
-{
-  SDL_Rect rv;
-  rv.x = a.originx(); rv.y = a.originy();
-  rv.w = a.sizex(); rv.h = a.sizey();
-  return rv;
-}
 
 inline SDL_Color color(int r, int g, int b, int a) 
 {
@@ -75,7 +68,7 @@ template<typename T>
 inline size_t t_count(const tl::TScatterArray<T>& arr) 
 {
   size_t rv = 0;
-  for(tl::TScatterArray<T>::CIter x = arr(); x; ++x) {
+  for(typename tl::TScatterArray<T>::CIter x = arr(); x; ++x) {
     if(!x->second.valid())
       continue;
     rv++;
@@ -86,7 +79,7 @@ inline size_t t_count(const tl::TScatterArray<T>& arr)
 template<typename T>
 inline IRefObject* t_get(const tl::TScatterArray<T>& arr, size_t id) 
 {
-  for(tl::TScatterArray<T>::CIter x = arr(); x; ++x, --id) {
+  for(typename tl::TScatterArray<T>::CIter x = arr(); x; ++x, --id) {
     if(!x->second.valid())
       continue;
     if(id==0)
@@ -111,7 +104,7 @@ template<typename T, typename Val>
 inline bool t_add(tl::TScatterArray<T>& arr, Val* v) 
 {
   int idx = 0;
-  tl::TScatterArray<T>::CIter last = arr.Last();
+  typename tl::TScatterArray<T>::CIter last = arr.Last();
   if(last)
     idx = last->first+1;
   T* value = arr(idx, void_null());
@@ -124,7 +117,7 @@ inline bool t_add(tl::TScatterArray<T>& arr, Val* v)
 template<typename T>
 inline bool t_close(tl::TScatterArray<T>& arr) 
 {
-  for(tl::TScatterArray<T>::CIter x = arr(); x; ++x) {
+  for(typename tl::TScatterArray<T>::CIter x = arr(); x; ++x) {
     if(!x->second.valid())
       continue;
     x->second->close();

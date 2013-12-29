@@ -5,7 +5,6 @@ lib2d_lib_includes := \
 
 lib2d_lib_depends := \
   $(T)/umodsys.lib.2d.common$(OSUFFIX) \
-  $(T)/umodsys.lib.2d.library$(OSUFFIX) \
   \
   $(T)/umodsys.mod.2d.stdlib$(OSUFFIX) \
 

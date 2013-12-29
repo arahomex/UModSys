@@ -24,7 +24,7 @@ so_test2: $(so_test2)
 $(so_test1): $(so_test1_depends) $(so_main) \
     $(libmedia_lib) $(libui_lib) $(lib3d_lib) $(lib2d_lib) \
     $(base_lib) $(core_lib)
-	$(CXX_LINK_SO) $(CXXFLAGS) $(CXX_BIN)$@ $^ $(CXX_LINK_LAST)
+	$(CXX_LINK_SO) $(CXXFLAGS) $(CXX_BIN)$@ $^ $(CXX_LINK_LAST) $(STD_LIBS)
 ifdef CXX_LINK_POSTPROCESS
 	$(CXX_LINK_POSTPROCESS) $@
 endif
@@ -32,7 +32,7 @@ endif
 $(so_test2): $(so_test2_depends) $(so_main) \
     $(libmedia_lib) $(libui_lib) $(lib3d_lib) $(lib2d_lib) \
     $(base_lib) $(core_lib)
-	$(CXX_LINK_SO) $(CXXFLAGS) $(CXX_BIN)$@ $^ $(CXX_LINK_LAST)
+	$(CXX_LINK_SO) $(CXXFLAGS) $(CXX_BIN)$@ $^ $(CXX_LINK_LAST) $(STD_LIBS)
 ifdef CXX_LINK_POSTPROCESS
 	$(CXX_LINK_POSTPROCESS) $@
 endif

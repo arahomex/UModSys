@@ -204,7 +204,7 @@ public:
           is_caretsize = false;
         }
         SDL_SetTextureColorMod(g->tex, cur_color(0)*255, cur_color(1)*255, cur_color(2)*255);
-        SDL_RenderCopy(rend, g->tex, NULL, &rect(x+g->x, y+g->y, g->w, g->h));
+        SDL_RenderCopy(rend, g->tex, NULL, sdlRect(x+g->x, y+g->y, g->w, g->h));
         x += g->spacing;
       }
       return true;
@@ -216,7 +216,7 @@ public:
   void render_box(const DPoint& a, const DPoint& b) {
     if(!valid())
       return;
-    SDL_RenderFillRect(rend, &rect(a, b));
+    SDL_RenderFillRect(rend, sdlRect(a, b));
   }
   void render_tri(const DPoint& a, const DPoint& b, const DPoint& c) {
     if(!valid())
@@ -251,7 +251,7 @@ public:
   void render_rect(const DPoint& a, const DPoint& b) {
     if(!valid())
       return;
-    SDL_RenderDrawRect(rend, &rect(a, b));
+    SDL_RenderDrawRect(rend, sdlRect(a, b));
   }
 public:
 };

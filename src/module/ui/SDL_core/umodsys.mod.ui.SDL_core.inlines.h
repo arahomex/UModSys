@@ -12,7 +12,7 @@ lib2d::IMultiImage::P RRenderDriver2D::new_font(const SParameters& params, const
 {
   lib2d::IMultiImage::P rv;
   if(!ValidateConstruction(rv, new(local_memory()) RMultiImage2D_SDL_ttf(this, params)))
-    return false;
+    return NULL;
   return rv;
 }
 
