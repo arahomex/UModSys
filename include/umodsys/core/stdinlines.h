@@ -28,6 +28,11 @@ struct TObjectCompare {
   static int compare(const T& a, const T& b);
 };
 
+struct sva_list {
+  va_list va;
+  inline sva_list(va_list ava) { va_copy(va, ava); }
+};
+
 //***************************************
 // Inlines
 //***************************************

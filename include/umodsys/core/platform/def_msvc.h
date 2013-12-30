@@ -55,6 +55,8 @@
 
 #define snprintf _snprintf
 
+#define va_copy(_a, _b) (_a) = (_b)
+
 // ---------------------- arch defines
 #ifndef UMODSYS_ARCH_BYTE8
   #define UMODSYS_ARCH_BYTE8 8

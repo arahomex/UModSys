@@ -1104,6 +1104,14 @@
 				RelativePath="..\..\..\include\umodsys\core\platform\win32\syshlp_win32.h"
 				>
 			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\core\platform\def_msvc.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\core\platform\def_win32.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="src"

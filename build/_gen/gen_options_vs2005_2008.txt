@@ -24,6 +24,9 @@ begin project-group umodsys
       begin mask $(path-skip) $(path-inc)/core/$(ppath)
         include *.h
       end
+      begin mask $(path-skip) $(path-inc)/core/platform
+        include def_msvc.h def_win32.h
+      end
     end
     option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto core"
   end
