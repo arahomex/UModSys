@@ -56,13 +56,17 @@ version mod-ui-libui
   file-h     src/module/ui/libui/version_module.h prefix:UMODSYS_VERSION_MOD_UI_LIBUI
   check-date src/module/ui/libui *.h *.cpp
 
+version mod-ui-frames
+  file-h     src/module/ui/frames/version_module.h prefix:UMODSYS_VERSION_MOD_UI_FRAMES
+  check-date src/module/ui/frames *.h *.cpp
+
 version mod-ui-sdl_core
   file-h     src/module/ui/SDL_core/version_module.h prefix:UMODSYS_VERSION_MOD_UI_SDLCORE
   check-date src/module/ui/SDL_core *.h *.cpp
 
-version mod-ui-frames
-  file-h     src/module/ui/frames/version_module.h prefix:UMODSYS_VERSION_MOD_UI_FRAMES
-  check-date src/module/ui/frames *.h *.cpp
+version mod-ui-sdl_gl
+  file-h     src/module/ui/SDL_GL/version_module.h prefix:UMODSYS_VERSION_MOD_UI_SDLGL
+  check-date src/module/ui/SDL_GL *.h *.cpp
 
 # --------------------------------- modules: lib2d
 

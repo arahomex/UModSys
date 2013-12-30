@@ -168,14 +168,14 @@ public:
     cur_tm = c.transmode;
     set_color();
   }
-  void setup_alpha(BColorElem alpha, int transmode) {
+  void setup_alpha(DColorElem alpha, int transmode) {
     if(!valid())
       return;
     cur_color.set4(alpha/255.0f);
     cur_tm = transmode;
     set_color();
   }
-  void setup_alpha(BColorElemf alpha, int transmode) {
+  void setup_alpha(DColorElemf alpha, int transmode) {
     if(!valid())
       return;
     cur_color.set4(alpha);

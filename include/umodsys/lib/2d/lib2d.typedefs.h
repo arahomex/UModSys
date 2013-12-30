@@ -39,6 +39,9 @@ struct SComponentDef;     // component definition
 struct SComponentW;       // component r/w
 struct SComponentR;       // component r/o
 
+struct SBlendColor;
+struct SBlendColorf;
+
 //***************************************
 
 typedef math3d::TVector2f   DPointf;
@@ -51,8 +54,8 @@ typedef math3d::TVector4i   DColorAlpha;
 
 typedef math3d::TBoundBox2i DBox;
 
-typedef float BColorElemf;
-typedef int BColorElem;
+typedef float               DColorElemf;
+typedef int                 DColorElem;
 
 //***************************************
 // ENUM/CONST

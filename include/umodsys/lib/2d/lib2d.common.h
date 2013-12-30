@@ -48,8 +48,8 @@ struct SBlendColor {
 // INLINES/OUTLINES
 //***************************************
 
-inline BColorElemf c2c(BColorElem c) { return BColorElemf(c/255.0); }
-inline BColorElem c2c(BColorElemf c) { return BColorElem(c*255); }
+inline DColorElemf c2c(DColorElem c) { return DColorElemf(c/255.0); }
+inline DColorElem c2c(DColorElemf c) { return DColorElem(c*255); }
 
 inline DColorf c2c(const DColor &c) { return DColorf(c2c(c.v[0]), c2c(c.v[1]), c2c(c.v[2])); }
 inline DColor c2c(const DColorf &c) { return DColor(c2c(c.v[0]), c2c(c.v[1]), c2c(c.v[2])); }

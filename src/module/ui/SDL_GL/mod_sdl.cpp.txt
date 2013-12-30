@@ -1,0 +1,117 @@
+//#define HAVE_OPENGL
+
+#include <ums/core/common.h>
+#include <ums/core/types/array.h>
+#include <ums/core/types/scatter_array.h>
+#include <ums/core/system/memcache.h>
+
+#include <ums/lib2d/convert.h>
+#include <ums/lib2d/emul_convert.h>
+
+#include <ums/lib3d/driver3.h>
+#include <ums/lib3d/objects.h>
+#include <ums/lib3d/light.h>
+#include <ums/lib3d/emul_light.h>
+#include <ums/lib3d/emul_font.h>
+
+#include <ums/libUI/input.h>
+#include <ums/libUI/emul_input.h>
+
+#define SDL_BASE_IMPLEMENT 0
+
+
+#if defined(SDLV13)
+  #include <SDL.h>
+  #include <SDL_prim.h>
+  #include <SDL_image.h>
+  #include <SDL_opengl.h>
+//  #include "SDL_fastgfx.h"
+  #define MAX_UKEYS 0x400
+  #define MAX_ALLKEYS (MAX_UKEYS+SDL_NUM_SCANCODES+MAX_UKEYS)
+  extern "C" struct SDL_VideoDevice *SDL_GetVideoDevice(void);
+#elif defined(SDLV12)
+  #include <SDL.h>
+  #include <SDL_prim.h>
+  #include <SDL_image.h>
+  #include <SDL_opengl.h>
+//  #include "SDL_fastgfx.h"
+  #define MAX_ALLKEYS SDLK_LAST
+#else
+  #error "Unknown SDL version linked"
+#endif
+
+#ifdef _MSC_VER
+#pragma warning(disable:4355)
+#pragma warning(disable:4244) // warning C4244: 'argument' : conversion from '' to '', possible loss of data
+#endif
+
+#include "version.h"
+
+namespace UMS {
+
+struct RSDLVideoSurfaceGL;
+
+struct RSDLVideoTextureGL;
+struct RSDLVideoTextureCellsGL;
+
+struct SSDLLightGL;
+struct SSDLVideoTextureGL;
+
+struct RGenerator;
+
+using namespace lib3d::emulate_font;
+//using namespace emulate_light;
+
+typedef TFontContext<RSDLVideoSurfaceGL, RSDLVideoTextureCellsGL, BCharU> DFontContext;
+
+// implementation
+#include "mod_sdlv.h"
+
+#include "mod_sdlv_glfunc.h"
+#include "mod_sdlv_glfuncbody.h"
+#include "mod_sdlv_gltex.h"
+#include "mod_sdlv_gl.h"
+#include "mod_sdlv_gl_texutil.h"
+#include "mod_sdlv_gl_texture.h"
+#include "mod_sdlv_gl_texcell.h"
+#include "mod_sdlv_gl_texcell2.h"
+#include "mod_sdlv_gl_console.h"
+#include "mod_sdlv_gl_uni.h"
+#include "mod_sdlv_gl_2d.h"
+#include "mod_sdlv_gl_3d.h"
+
+#include "mod_sdlv_gl_3ds.h"
+#include "mod_sdlv_gl_3df.h"
+#include "mod_sdlv_gl_3dl.h"
+#include "mod_sdlv_gl_3dm.h"
+
+#include "mod_sdlv_gl_2dtext.h"
+#include "mod_sdlv_gl_2df.h"
+
+#include "mod_sdlv_control.h"
+#include "mod_sdlv_video.h"
+#include "mod_sdlv_system.h"
+#include "mod_sdlv_filter.h"
+
+using namespace SDL;
+
+// context
+UMS_MODULE_INFO_VER("SDL OpenGL library");
+//
+UMS_MODULE_MODOBJECT(RGenerator, gen);
+// /context
+
+UMS_MODULE_UNLOAD 
+{
+  UMS_MODULE_MODOBJECT_END(gen);
+}
+
+UMS_MODULE_LOAD
+{
+  UMS_MODULE_MODOBJECT_GENERATOR(gen);
+  //
+  return true;
+}
+
+} // namespace UMS
+

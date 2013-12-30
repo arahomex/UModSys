@@ -705,7 +705,71 @@
 			Name="headers_3d"
 			>
 			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.common.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.control.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.driver.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.e_font.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.e_light.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.e_outline.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.geom.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.light.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.logic.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.material.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.objects.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.outlines.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.physics.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.renderer.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.scene.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.typedefs.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.visual.h"
 				>
 			</File>
 		</Filter>
