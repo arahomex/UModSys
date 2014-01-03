@@ -1,38 +1,38 @@
 #!/bin/sh
 
-PLAT=cmake-gcc.`uname`.`uname -p`
+export PLAT=cmake-gcc.`uname`.`uname -p`
 export UMS_PID=linux
-#R=`realpath $0`
-#R=`dirname $R`
-#echo $R
-#exit
+
+function MakeTarget() {
+  Target=$1
+  if [ ! -d $PLAT.$Target ] ; then
+    mkdir $PLAT.$Target || exit
+  fi
+  cd $PLAT.$Target || exit
+  export UMS_PLAT=$PLAT.$Target
+  cmake -G "Unix Makefiles" ../../build/cmake/ -DCMAKE_BUILD_TYPE=$Target || exit
+  make $maketarget || exit
+  cd ..
+}
 
 pushd ../../tmp
 
-if [ ! -d $PLAT.Release ] ; then
-  mkdir $PLAT.Release
-fi
-if [ ! -d $PLAT.Debug ] ; then
-  mkdir $PLAT.Debug
+if [ "$1" == "clean" ] ; then
+  maketarget=clean
+  shift
 fi
 
-cd $PLAT.Debug
-export UMS_PLAT=$PLAT.Debug
-cmake -G "Unix Makefiles" ../../build/cmake/ -DCMAKE_BUILD_TYPE=Debug || exit
-make || exit
-cd ..
-
-cd $PLAT.Release
-export UMS_PLAT=$PLAT.Release
-cmake -G "Unix Makefiles" ../../build/cmake/ -DCMAKE_BUILD_TYPE=Release || exit
-make || exit
-cd ..
-
-cd $PLAT.Release
-export UMS_PLAT=$PLAT.MinSizeRel
-cmake -G "Unix Makefiles" ../../build/cmake/ -DCMAKE_BUILD_TYPE=MinSizeRel || exit
-make || exit
-cd ..
-
+if [ "$1" == "" ] ; then
+  MakeTarget None
+  MakeTarget Debug
+  MakeTarget Release
+  MakeTarget MinSizeRel
+  MakeTarget RelWithDebInfo
+else
+  while [ "$1" != "" ] ; do
+    MakeTarget $1
+    shift
+  done
+fi
 
 popd

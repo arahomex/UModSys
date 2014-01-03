@@ -4,7 +4,7 @@ set(SP ${SRC}/base/${PLATSRC})
 
 include_directories (${INC})
 
-add_library(umodsys.base
+add_library(umodsys.base STATIC
  ${S}/umodsys.base.debug.cpp
  ${S}/umodsys.base.console.cpp
  ${S}/umodsys.base.system.cpp

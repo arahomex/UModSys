@@ -4,7 +4,7 @@ set(SP ${SRC}/core/${PLATSRC})
 
 include_directories (${INC})
 
-add_library(umodsys.core
+add_library(umodsys.core STATIC
  ${S}/umodsys.core.objects.cpp
  ${S}/umodsys.core.stdtypedefs.cpp
  ${S}/umodsys.core.uniqueptr.cpp

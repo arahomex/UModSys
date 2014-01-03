@@ -4,7 +4,7 @@ set(SP ${SRC}/basesys/${PLATSRC})
 
 include_directories (${INC})
 
-add_library(umodsys.basesys
+add_library(umodsys.basesys STATIC
  ${S}/umodsys.basesys.rsystem.cpp
  ${S}/umodsys.basesys.rsystem_main.cpp
  ${S}/umodsys.basesys.rsystem_tests.cpp
@@ -24,6 +24,7 @@ add_executable(umodsys
 target_link_libraries(umodsys
   umodsys.basesys
   umodsys.libmedia
+  umodsys.lib2d
   umodsys.base
   umodsys.core
   dl
