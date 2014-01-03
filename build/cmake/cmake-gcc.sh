@@ -22,8 +22,17 @@ cmake -G "Unix Makefiles" ../../build/cmake/ -DCMAKE_BUILD_TYPE=Debug || exit
 make || exit
 cd ..
 
-#cd $PLAT.Release
-#cmake -G "Unix Makefiles" ../../build/cmake/ -DCMAKE_BUILD_TYPE=Release -DCMAKE_USE_RELATIVE_PATHS=true
-#cd ..
+cd $PLAT.Release
+export UMS_PLAT=$PLAT.Release
+cmake -G "Unix Makefiles" ../../build/cmake/ -DCMAKE_BUILD_TYPE=Release || exit
+make || exit
+cd ..
+
+cd $PLAT.Release
+export UMS_PLAT=$PLAT.MinSizeRel
+cmake -G "Unix Makefiles" ../../build/cmake/ -DCMAKE_BUILD_TYPE=MinSizeRel || exit
+make || exit
+cd ..
+
 
 popd
