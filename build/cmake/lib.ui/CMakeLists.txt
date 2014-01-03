@@ -2,7 +2,7 @@
 set(S ${SRC}/lib/ui)
 set(SM ${SRC}/module/ui)
 
-include_directories (${INC} ${SDL2_INCLUDE_DIRS})
+include_directories(${INC} ${SDL2_INCLUDE_DIR} ${SDL2TTF_INCLUDE_DIR})
 
 add_library(umodsys.libui STATIC
  ${S}/umodsys.lib.ui.common.cpp

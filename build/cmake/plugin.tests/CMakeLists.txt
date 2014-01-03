@@ -14,7 +14,11 @@ target_link_libraries(umodsys.plugin.test1
   umodsys.libui
   umodsys.base
   umodsys.core
-  ${SDL2_LIBRARIES}
+  ${SDL2_LIBRARY}
+  ${SDL2TTF_LIBRARY}
+  png
+  jpeg
+  z
 )
 
 add_library(umodsys.plugin.test2 SHARED
@@ -27,7 +31,7 @@ target_link_libraries(umodsys.plugin.test2
   umodsys.libui
   umodsys.base
   umodsys.core
-  ${SDL2_LIBRARIES}
+  ${SDL2_LIBRARY}
 )
 
 
