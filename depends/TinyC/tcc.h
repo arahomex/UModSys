@@ -128,7 +128,8 @@
 #endif
 
 #if !defined(TCC_UCLIBC) && !defined(TCC_TARGET_ARM) && \
-    !defined(TCC_TARGET_C67) && !defined(TCC_TARGET_X86_64)
+    !defined(TCC_TARGET_C67) && !defined(TCC_TARGET_X86_64) && \
+    !defined(CONFIG_USE_LIBGCC)
 #define CONFIG_TCC_BCHECK /* enable bound checking code */
 #endif
 
@@ -168,13 +169,18 @@
 #ifndef CONFIG_LDDIR
 # define CONFIG_LDDIR "lib"
 #endif
-#ifndef CONFIG_MULTIARCHDIR
-#define CONFIG_MULTIARCHDIR
+
+#ifdef CONFIG_MULTIARCHDIR
+# define USE_MUADIR(s) s "/" CONFIG_MULTIARCHDIR
+# define ALSO_MUADIR(s) s "/" CONFIG_MULTIARCHDIR ":" s
+#else
+# define USE_MUADIR(s) s
+# define ALSO_MUADIR(s) s
 #endif
 
 /* path to find crt1.o, crti.o and crtn.o */
 #ifndef CONFIG_TCC_CRTPREFIX
-# define CONFIG_TCC_CRTPREFIX CONFIG_SYSROOT "/usr/" CONFIG_LDDIR "/" CONFIG_MULTIARCHDIR
+# define CONFIG_TCC_CRTPREFIX USE_MUADIR(CONFIG_SYSROOT "/usr/" CONFIG_LDDIR)
 #endif
 
 /* Below: {B} is substituted by CONFIG_TCCDIR (rsp. -B option) */
@@ -185,10 +191,8 @@
 #  define CONFIG_TCC_SYSINCLUDEPATHS "{B}/include;{B}/include/winapi"
 # else
 #  define CONFIG_TCC_SYSINCLUDEPATHS \
-        CONFIG_SYSROOT "/usr/local/include/" CONFIG_MULTIARCHDIR \
-    ":" CONFIG_SYSROOT "/usr/local/include" \
-    ":" CONFIG_SYSROOT "/usr/include/" CONFIG_MULTIARCHDIR \
-    ":" CONFIG_SYSROOT "/usr/include" \
+        ALSO_MUADIR(CONFIG_SYSROOT "/usr/local/include") \
+    ":" ALSO_MUADIR(CONFIG_SYSROOT "/usr/include") \
     ":" "{B}/include"
 # endif
 #endif
@@ -196,15 +200,12 @@
 /* library search paths */
 #ifndef CONFIG_TCC_LIBPATHS
 # ifdef TCC_TARGET_PE
-#  define CONFIG_TCC_LIBPATHS "{B}/lib;{B}"
+#  define CONFIG_TCC_LIBPATHS "{B}/lib"
 # else
 #  define CONFIG_TCC_LIBPATHS \
-        CONFIG_SYSROOT "/usr/" CONFIG_LDDIR "/" CONFIG_MULTIARCHDIR \
-    ":" CONFIG_SYSROOT "/usr/" CONFIG_LDDIR \
-    ":" CONFIG_SYSROOT "/" CONFIG_LDDIR "/" CONFIG_MULTIARCHDIR \
-    ":" CONFIG_SYSROOT "/" CONFIG_LDDIR \
-    ":" CONFIG_SYSROOT "/usr/local/" CONFIG_LDDIR "/" CONFIG_MULTIARCHDIR \
-    ":" CONFIG_SYSROOT "/usr/local/" CONFIG_LDDIR
+        ALSO_MUADIR(CONFIG_SYSROOT "/usr/" CONFIG_LDDIR) \
+    ":" ALSO_MUADIR(CONFIG_SYSROOT "/" CONFIG_LDDIR) \
+    ":" ALSO_MUADIR(CONFIG_SYSROOT "/usr/local/" CONFIG_LDDIR)
 # endif
 #endif
 
@@ -220,23 +221,26 @@
 #  endif
 # elif defined __GNU__
 #  define CONFIG_TCC_ELFINTERP "/lib/ld.so"
-# elif defined TCC_ARM_HARDFLOAT
-#  define CONFIG_TCC_ELFINTERP "/lib/ld-linux-armhf.so.3"
-# elif defined TCC_ARM_EABI
-#  define CONFIG_TCC_ELFINTERP "/lib/ld-linux.so.3"
 # elif defined(TCC_TARGET_X86_64)
 #  define CONFIG_TCC_ELFINTERP "/lib64/ld-linux-x86-64.so.2"
 # elif defined(TCC_UCLIBC)
 #  define CONFIG_TCC_ELFINTERP "/lib/ld-uClibc.so.0"
 # elif defined(TCC_TARGET_PE)
 #  define CONFIG_TCC_ELFINTERP "-"
-# else
+# elif !defined(TCC_ARM_EABI)
 #  define CONFIG_TCC_ELFINTERP "/lib/ld-linux.so.2"
 # endif
 #endif
 
+/* var elf_interp dans *-gen.c */
+#ifdef CONFIG_TCC_ELFINTERP
+# define DEFAULT_ELFINTERP(s) CONFIG_TCC_ELFINTERP
+#else
+# define DEFAULT_ELFINTERP(s) default_elfinterp(s)
+#endif
+
 /* library to use with CONFIG_USE_LIBGCC instead of libtcc1.a */
-#define TCC_LIBGCC CONFIG_SYSROOT "/" CONFIG_LDDIR "/" CONFIG_MULTIARCHDIR "/libgcc_s.so.1"
+#define TCC_LIBGCC USE_MUADIR(CONFIG_SYSROOT "/" CONFIG_LDDIR) "/libgcc_s.so.1"
 
 /* -------------------------------------------- */
 /* include the target specific definitions */
@@ -325,11 +329,35 @@ typedef struct SValue {
     struct Sym *sym;       /* symbol, if (VT_SYM | VT_CONST) */
 } SValue;
 
+struct Attribute {
+    unsigned
+        func_call     : 3, /* calling convention (0..5), see below */
+        aligned       : 5, /* alignement (0..16) */
+        packed        : 1,
+        func_export   : 1,
+        func_import   : 1,
+        func_args     : 5,
+        func_proto    : 1,
+        mode          : 4,
+        weak          : 1,
+        fill          : 10; // 10 bits left to fit well in union below
+};
+
+/* GNUC attribute definition */
+typedef struct AttributeDef {
+    struct Attribute a;
+    struct Section *section;
+    int alias_target;    /* token */
+} AttributeDef;
+
 /* symbol management */
 typedef struct Sym {
     int v;    /* symbol token */
     char *asm_label;    /* associated asm label */
-    long r;    /* associated register */
+    union {
+        long r;    /* associated register */
+        struct Attribute a;
+    };
     union {
         long c;    /* associated number */
         int *d;   /* define token stream */
@@ -379,34 +407,6 @@ typedef struct DLLReference {
     void *handle;
     char name[1];
 } DLLReference;
-
-/* GNUC attribute definition */
-typedef struct AttributeDef {
-    unsigned
-      func_call     : 3, /* calling convention (0..5), see below */
-      aligned       : 5, /* alignement (0..16) */
-      packed        : 1,
-      func_export   : 1,
-      func_import   : 1,
-      func_args     : 5,
-      func_proto    : 1,
-      mode          : 4,
-      weak          : 1,
-      fill          : 10;
-    struct Section *section;
-    int alias_target;    /* token */
-} AttributeDef;
-
-/* gr: wrappers for casting sym->r for other purposes */
-#define FUNC_CALL(r) (((AttributeDef*)&(r))->func_call)
-#define FUNC_EXPORT(r) (((AttributeDef*)&(r))->func_export)
-#define FUNC_IMPORT(r) (((AttributeDef*)&(r))->func_import)
-#define FUNC_ARGS(r) (((AttributeDef*)&(r))->func_args)
-#define FUNC_PROTO(r) (((AttributeDef*)&(r))->func_proto)
-#define FUNC_ALIGN(r) (((AttributeDef*)&(r))->aligned)
-#define FUNC_PACKED(r) (((AttributeDef*)&(r))->packed)
-#define ATTR_MODE(r)  (((AttributeDef*)&(r))->mode)
-#define INT_ATTR(ad) (*(int*)(ad))
 
 /* -------------------------------------------------- */
 
@@ -563,6 +563,9 @@ struct TCCState {
 #ifdef CONFIG_TCC_BCHECK
     /* compile with built-in memory and bounds checker */
     int do_bounds_check;
+#endif
+#ifdef TCC_TARGET_ARM
+    enum float_abi float_abi; /* float ABI of the generated code*/
 #endif
 
     addr_t text_addr; /* address of text section */
@@ -1141,7 +1144,6 @@ ST_FUNC void expect(const char *msg);
 /* ------------ tccgen.c ------------ */
 
 ST_DATA Section *text_section, *data_section, *bss_section; /* predefined sections */
-ST_DATA Section *tdata_section, *tbss_section; /* thread-local storage sections */
 ST_DATA Section *cur_text_section; /* current section where function code is generated */
 #ifdef CONFIG_TCC_ASM
 ST_DATA Section *last_text_section; /* to handle .previous asm directive */
@@ -1175,6 +1177,7 @@ ST_DATA int const_wanted; /* true if constant wanted */
 ST_DATA int nocode_wanted; /* true if no code generation wanted for an expression */
 ST_DATA int global_expr;  /* true if compound literals must be allocated globally (used during initializers parsing */
 ST_DATA CType func_vt; /* current function return type (used by return instruction) */
+ST_DATA int func_var; /* true if current function is variadic */
 ST_DATA int func_vc;
 ST_DATA int last_line_num, last_ind, func_ind; /* debug last line number and pc */
 ST_DATA char *funcname;
@@ -1266,7 +1269,7 @@ ST_FUNC void build_got_entries(TCCState *s1);
 ST_FUNC void tcc_add_runtime(TCCState *s1);
 
 ST_FUNC addr_t get_elf_sym_addr(TCCState *s, const char *name, int err);
-#ifdef TCC_IS_NATIVE
+#if defined TCC_IS_NATIVE || defined TCC_TARGET_PE
 ST_FUNC void *tcc_get_symbol_err(TCCState *s, const char *name);
 #endif
 
@@ -1287,7 +1290,7 @@ ST_FUNC void gsym_addr(int t, int a);
 ST_FUNC void gsym(int t);
 ST_FUNC void load(int r, SValue *sv);
 ST_FUNC void store(int r, SValue *v);
-ST_FUNC int gfunc_sret(CType *vt, CType *ret, int *align);
+ST_FUNC int gfunc_sret(CType *vt, int variadic, CType *ret, int *align);
 ST_FUNC void gfunc_call(int nb_args);
 ST_FUNC void gfunc_prolog(CType *func_type);
 ST_FUNC void gfunc_epilog(void);
@@ -1332,7 +1335,10 @@ ST_FUNC void gen_opl(int op);
 
 /* ------------ arm-gen.c ------------ */
 #ifdef TCC_TARGET_ARM
-ST_FUNC void arm_init_types(void);
+#ifdef TCC_ARM_EABI
+ST_FUNC char *default_elfinterp(struct TCCState *s);
+#endif
+ST_FUNC void arm_init(struct TCCState *s);
 ST_FUNC uint32_t encbranch(int pos, int addr, int fail);
 ST_FUNC void gen_cvt_itof1(int t);
 #endif

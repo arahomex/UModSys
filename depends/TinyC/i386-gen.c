@@ -376,7 +376,7 @@ static uint8_t fastcallw_regs[2] = { TREG_ECX, TREG_EDX };
 
 /* Return the number of registers needed to return the struct, or 0 if
    returning via struct pointer. */
-ST_FUNC int gfunc_sret(CType *vt, CType *ret, int *ret_align)
+ST_FUNC int gfunc_sret(CType *vt, int variadic, CType *ret, int *ret_align)
 {
 #ifdef TCC_TARGET_PE
     int size, align;
@@ -457,7 +457,7 @@ ST_FUNC void gfunc_call(int nb_args)
     }
     save_regs(0); /* save used temporary registers */
     func_sym = vtop->type.ref;
-    func_call = FUNC_CALL(func_sym->r);
+    func_call = func_sym->a.func_call;
     /* fast call case */
     if ((func_call >= FUNC_FASTCALL1 && func_call <= FUNC_FASTCALL3) ||
         func_call == FUNC_FASTCALLW) {
@@ -505,7 +505,7 @@ ST_FUNC void gfunc_prolog(CType *func_type)
     CType *type;
 
     sym = func_type->ref;
-    func_call = FUNC_CALL(sym->r);
+    func_call = sym->a.func_call;
     addr = 8;
     loc = 0;
     func_vc = 0;
@@ -527,6 +527,7 @@ ST_FUNC void gfunc_prolog(CType *func_type)
     /* if the function returns a structure, then add an
        implicit pointer parameter */
     func_vt = sym->type;
+    func_var = (sym->c == FUNC_ELLIPSIS);
 #ifdef TCC_TARGET_PE
     size = type_size(&func_vt,&align);
     if (((func_vt.t & VT_BTYPE) == VT_STRUCT) && (size > 8)) {
@@ -580,12 +581,6 @@ ST_FUNC void gfunc_prolog(CType *func_type)
         func_bound_offset = lbounds_section->data_offset;
     }
 #endif
-
-#ifndef TCC_TARGET_PE
-    if (0 == strcmp(funcname, "main"))
-        gen_static_call(TOK___tcc_fpinit);
-#endif
-
 }
 
 /* generate function epilog */
@@ -682,7 +677,7 @@ ST_FUNC int gtst(int inv, int t)
         /* fast case : can jump directly since flags are set */
         g(0x0f);
         t = psym((vtop->c.i - 16) ^ inv, t);
-    } else if (v == VT_JMP || v == VT_JMPI) {
+    } else { /* VT_JMP || VT_JMPI */
         /* && or || optimization */
         if ((v & 1) == inv) {
             /* insert vtop->c jump list in t */
@@ -694,23 +689,6 @@ ST_FUNC int gtst(int inv, int t)
         } else {
             t = gjmp(t);
             gsym(vtop->c.i);
-        }
-    } else {
-        if (is_float(vtop->type.t) || 
-            (vtop->type.t & VT_BTYPE) == VT_LLONG) {
-            vpushi(0);
-            gen_op(TOK_NE);
-        }
-        if ((vtop->r & (VT_VALMASK | VT_LVAL | VT_SYM)) == VT_CONST) {
-            /* constant jmp optimization */
-            if ((vtop->c.i != 0) != inv) 
-                t = gjmp(t);
-        } else {
-            v = gv(RC_INT);
-            o(0x85);
-            o(0xc0 + v * 9);
-            g(0x0f);
-            t = psym(0x85 ^ inv, t);
         }
     }
     vtop--;
@@ -895,7 +873,10 @@ ST_FUNC void gen_opf(int op)
             swapped = 0;
         if (swapped)
             o(0xc9d9); /* fxch %st(1) */
-        o(0xe9da); /* fucompp */
+        if (op == TOK_EQ || op == TOK_NE)
+            o(0xe9da); /* fucompp */
+        else
+            o(0xd9de); /* fcompp */
         o(0xe0df); /* fnstsw %ax */
         if (op == TOK_EQ) {
             o(0x45e480); /* and $0x45, %ah */
@@ -999,16 +980,20 @@ ST_FUNC void gen_cvt_itof(int t)
 }
 
 /* convert fp to int 't' type */
-/* XXX: handle long long case */
 ST_FUNC void gen_cvt_ftoi(int t)
 {
-    gv(RC_FLOAT);
-    save_reg(TREG_EAX);
-    save_reg(TREG_EDX);
-    gen_static_call(TOK___tcc_cvt_ftol);
-    vtop->r = TREG_EAX; /* mark reg as used */
-    if (t == VT_LLONG)
-        vtop->r2 = TREG_EDX;
+    int bt = vtop->type.t & VT_BTYPE;
+    if (bt == VT_FLOAT)
+        vpush_global_sym(&func_old_type, TOK___fixsfdi);
+    else if (bt == VT_LDOUBLE)
+        vpush_global_sym(&func_old_type, TOK___fixxfdi);
+    else
+        vpush_global_sym(&func_old_type, TOK___fixdfdi);
+    vswap();
+    gfunc_call(1);
+    vpushi(0);
+    vtop->r = REG_IRET;
+    vtop->r2 = REG_LRET;
 }
 
 /* convert from one floating point type to another */

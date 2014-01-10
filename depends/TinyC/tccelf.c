@@ -178,11 +178,11 @@ LIBTCCAPI void *tcc_get_symbol(TCCState *s, const char *name)
     return (void*)(uintptr_t)get_elf_sym_addr(s, name, 0);
 }
 
-#ifdef TCC_IS_NATIVE
+#if defined TCC_IS_NATIVE || defined TCC_TARGET_PE
 /* return elf symbol value or error */
 ST_FUNC void* tcc_get_symbol_err(TCCState *s, const char *name)
 {
-    return (void*)get_elf_sym_addr(s, name, 1);
+    return (void*)(uintptr_t)get_elf_sym_addr(s, name, 1);
 }
 #endif
 
@@ -640,7 +640,7 @@ ST_FUNC void relocate_section(TCCState *s1, Section *s)
         /* Since these relocations only concern Thumb-2 and blx instruction was
            introduced before Thumb-2, we can assume blx is available and not
            guard its use */
-        case R_ARM_THM_CALL:
+        case R_ARM_THM_PC22:
         case R_ARM_THM_JUMP24:
 	    {
                 int x, hi, lo, s, j1, j2, i1, i2, imm10, imm11;
@@ -672,7 +672,7 @@ ST_FUNC void relocate_section(TCCState *s1, Section *s)
                 plt = s1->plt;
                 to_plt = (val >= plt->sh_addr) &&
                          (val < plt->sh_addr + plt->data_offset);
-                is_call = (type == R_ARM_THM_CALL);
+                is_call = (type == R_ARM_THM_PC22);
 
                 /* Compute final offset */
                 if (to_plt && !is_call) /* Point to 1st instr of Thumb stub */
@@ -756,13 +756,13 @@ ST_FUNC void relocate_section(TCCState *s1, Section *s)
         case R_ARM_REL32:
             *(int *)ptr += val - addr;
             break;
-        case R_ARM_BASE_PREL:
+        case R_ARM_GOTPC:
             *(int *)ptr += s1->got->sh_addr - addr;
             break;
-        case R_ARM_GOTOFF32:
+        case R_ARM_GOTOFF:
             *(int *)ptr += val - s1->got->sh_addr;
             break;
-        case R_ARM_GOT_BREL:
+        case R_ARM_GOT32:
             /* we load the got offset */
             *(int *)ptr += s1->sym_attrs[sym_index].got_offset;
             break;
@@ -1182,17 +1182,17 @@ ST_FUNC void build_got_entries(TCCState *s1)
                 }
                 break;
 #elif defined(TCC_TARGET_ARM)
-            case R_ARM_GOT_BREL:
-            case R_ARM_GOTOFF32:
-            case R_ARM_BASE_PREL:
+            case R_ARM_GOT32:
+            case R_ARM_GOTOFF:
+            case R_ARM_GOTPC:
             case R_ARM_PLT32:
                 if (!s1->got)
                     build_got(s1);
-                if (type == R_ARM_GOT_BREL || type == R_ARM_PLT32) {
+                if (type == R_ARM_GOT32 || type == R_ARM_PLT32) {
                     sym_index = ELFW(R_SYM)(rel->r_info);
                     sym = &((ElfW(Sym) *)symtab_section->data)[sym_index];
                     /* look at the symbol got offset. If none, then add one */
-                    if (type == R_ARM_GOT_BREL)
+                    if (type == R_ARM_GOT32)
                         reloc_type = R_ARM_GLOB_DAT;
                     else
                         reloc_type = R_ARM_JUMP_SLOT;
@@ -1363,8 +1363,11 @@ ST_FUNC void tcc_add_runtime(TCCState *s1)
     if (!s1->nostdlib) {
         tcc_add_library(s1, "c");
 #ifdef CONFIG_USE_LIBGCC
-        tcc_add_file(s1, TCC_LIBGCC);
-#elif !defined WITHOUT_LIBTCC
+        if (!s1->static_link)
+            tcc_add_file(s1, TCC_LIBGCC);
+        else
+            tcc_add_support(s1, "libtcc1.a");
+#else
         tcc_add_support(s1, "libtcc1.a");
 #endif
         /* add crt end if not memory output */
@@ -1587,7 +1590,7 @@ static int elf_output_file(TCCState *s1, const char *filename)
 		/* allow override the dynamic loader */
 		const char *elfint = getenv("LD_SO");
 		if (elfint == NULL)
-		    elfint = CONFIG_TCC_ELFINTERP;
+		    elfint = DEFAULT_ELFINTERP(s1);
                 /* add interpreter section only if executable */
                 interp = new_section(s1, ".interp", SHT_PROGBITS, SHF_ALLOC);
                 interp->sh_addralign = 1;
@@ -2238,7 +2241,13 @@ static int elf_output_file(TCCState *s1, const char *filename)
 #ifdef TCC_TARGET_ARM
 #ifdef TCC_ARM_EABI
         ehdr.e_ident[EI_OSABI] = 0;
-        ehdr.e_flags = 4 << 24;
+        ehdr.e_flags = EF_ARM_EABI_VER4;
+        if (file_type == TCC_OUTPUT_EXE || file_type == TCC_OUTPUT_DLL)
+            ehdr.e_flags |= EF_ARM_HASENTRY;
+        if (s1->float_abi == ARM_HARD_FLOAT)
+            ehdr.e_flags |= EF_ARM_VFP_FLOAT;
+        else
+            ehdr.e_flags |= EF_ARM_SOFT_FLOAT;
 #else
         ehdr.e_ident[EI_OSABI] = ELFOSABI_ARM;
 #endif

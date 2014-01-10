@@ -1,6 +1,7 @@
 #include <umodsys/lib/3d/lib3d.driver.h>
 #include <umodsys/lib/3d/lib3d.material.h>
 
+#if 0
 #include "umodsys.mod.ui.SDL_GL.h"
 
 #include "version_module.h"
@@ -26,3 +27,5 @@ UMODSYS_BASE_MODREG_BODY(RModuleReg)
 UMODSYS_BASE_GENERATOR_BODY(RGenerator, RModuleReg)
 
 UMODSYS_MODULE_END()
+
+#endif

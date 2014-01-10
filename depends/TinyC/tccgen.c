@@ -66,6 +66,7 @@ ST_DATA int const_wanted; /* true if constant wanted */
 ST_DATA int nocode_wanted; /* true if no code generation wanted for an expression */
 ST_DATA int global_expr;  /* true if compound literals must be allocated globally (used during initializers parsing */
 ST_DATA CType func_vt; /* current function return type (used by return instruction) */
+ST_DATA int func_var; /* true if current function is variadic (used by return instruction) */
 ST_DATA int func_vc;
 ST_DATA int last_line_num, last_ind, func_ind; /* debug last line number and pc */
 ST_DATA char *funcname;
@@ -102,7 +103,8 @@ ST_INLN int is_float(int t)
 /* XXX: endianness dependent */
 ST_FUNC int ieee_finite(double d)
 {
-    int *p = (int *)&d;
+    int p[4];
+    memcpy(p, &d, sizeof(double));
     return ((unsigned)((p[1] | 0x800fffff) + 1)) >> 31;
 }
 
@@ -308,7 +310,7 @@ static void vsetc(CType *type, int r, CValue *vc)
     int v;
 
     if (vtop >= vstack + (VSTACK_SIZE - 1))
-        tcc_error("memory full");
+        tcc_error("memory full (vstack)");
     /* cannot let cpu flags if other instruction are generated. Also
        avoid leaving VT_JMP anywhere except on the top of the stack
        because it would complicate the code generator. */
@@ -444,7 +446,7 @@ ST_FUNC void vpush_global_sym(CType *type, int v)
 
 ST_FUNC void vset(CType *type, int r, int v)
 {
-    CValue cval;
+    CValue cval = {0};
 
     cval.i = v;
     vsetc(type, r, &cval);
@@ -482,7 +484,7 @@ ST_FUNC void vswap(void)
 ST_FUNC void vpushv(SValue *v)
 {
     if (vtop >= vstack + (VSTACK_SIZE - 1))
-        tcc_error("memory full");
+        tcc_error("memory full (vstack)");
     vtop++;
     *vtop = *v;
 }
@@ -1095,6 +1097,26 @@ static void gv_dup(void)
     }
 }
 
+/* Generate value test
+ *
+ * Generate a test for any value (jump, comparison and integers) */
+int gvtst(int inv, int t)
+{
+    int v = vtop->r & VT_VALMASK;
+    if (v != VT_CMP && v != VT_JMP && v != VT_JMPI) {
+        vpushi(0);
+        gen_op(TOK_NE);
+    }
+    if ((vtop->r & (VT_VALMASK | VT_LVAL | VT_SYM)) == VT_CONST) {
+        /* constant jmp optimization */
+        if ((vtop->c.i != 0) != inv)
+            t = gjmp(t);
+        vtop--;
+        return t;
+    }
+    return gtst(inv, t);
+}
+
 #ifndef TCC_TARGET_X86_64
 /* generate CPU independent (unsigned) long long operations */
 static void gen_opl(int op)
@@ -1293,13 +1315,13 @@ static void gen_opl(int op)
         b = 0;
         gen_op(op1);
         if (op1 != TOK_NE) {
-            a = gtst(1, 0);
+            a = gvtst(1, 0);
         }
         if (op != TOK_EQ) {
             /* generate non equal test */
             /* XXX: NOT PORTABLE yet */
             if (a == 0) {
-                b = gtst(0, 0);
+                b = gvtst(0, 0);
             } else {
 #if defined(TCC_TARGET_I386)
                 b = psym(0x850f, 0);
@@ -1324,7 +1346,7 @@ static void gen_opl(int op)
         else if (op1 == TOK_GE)
             op1 = TOK_UGE;
         gen_op(op1);
-        a = gtst(1, a);
+        a = gvtst(1, a);
         gsym(b);
         vseti(VT_JMPI, a);
         break;
@@ -1933,7 +1955,9 @@ static void gen_cast(CType *type)
                         s = 24;
                     else if ((dbt & VT_BTYPE) == VT_SHORT)
                         s = 16;
-
+#ifdef TCC_TARGET_X86_64
+                    if (!(dbt & (VT_PTR|VT_LLONG|VT_FUNC|VT_STRUCT)))
+#endif
                     if(dbt & VT_UNSIGNED)
                         vtop->c.ui = ((unsigned int)vtop->c.ll << s) >> s;
                     else
@@ -2151,7 +2175,7 @@ static int is_compatible_func(CType *type1, CType *type2)
     if (!is_compatible_types(&s1->type, &s2->type))
         return 0;
     /* check func_call */
-    if (FUNC_CALL(s1->r) != FUNC_CALL(s2->r))
+    if (s1->a.func_call != s2->a.func_call)
         return 0;
     /* XXX: not complete */
     if (s1->c == FUNC_OLD || s2->c == FUNC_OLD)
@@ -2327,8 +2351,8 @@ static void gen_assign_cast(CType *dt)
     st = &vtop->type; /* source type */
     dbt = dt->t & VT_BTYPE;
     sbt = st->t & VT_BTYPE;
-    if (sbt == VT_VOID)
-        tcc_error("Cannot assign void value");
+    if (sbt == VT_VOID || dbt == VT_VOID)
+        tcc_error("cannot cast from/to void");
     if (dt->t & VT_CONSTANT)
         tcc_warning("assignment of read-only location");
     switch(dbt) {
@@ -2638,15 +2662,15 @@ static void parse_attribute(AttributeDef *ad)
             } else {
                 n = MAX_ALIGN;
             }
-            ad->aligned = n;
+            ad->a.aligned = n;
             break;
         case TOK_PACKED1:
         case TOK_PACKED2:
-            ad->packed = 1;
+            ad->a.packed = 1;
             break;
         case TOK_WEAK1:
         case TOK_WEAK2:
-            ad->weak = 1;
+            ad->a.weak = 1;
             break;
         case TOK_UNUSED1:
         case TOK_UNUSED2:
@@ -2661,12 +2685,12 @@ static void parse_attribute(AttributeDef *ad)
         case TOK_CDECL1:
         case TOK_CDECL2:
         case TOK_CDECL3:
-            ad->func_call = FUNC_CDECL;
+            ad->a.func_call = FUNC_CDECL;
             break;
         case TOK_STDCALL1:
         case TOK_STDCALL2:
         case TOK_STDCALL3:
-            ad->func_call = FUNC_STDCALL;
+            ad->a.func_call = FUNC_STDCALL;
             break;
 #ifdef TCC_TARGET_I386
         case TOK_REGPARM1:
@@ -2678,26 +2702,26 @@ static void parse_attribute(AttributeDef *ad)
             else if (n < 0)
                 n = 0;
             if (n > 0)
-                ad->func_call = FUNC_FASTCALL1 + n - 1;
+                ad->a.func_call = FUNC_FASTCALL1 + n - 1;
             skip(')');
             break;
         case TOK_FASTCALL1:
         case TOK_FASTCALL2:
         case TOK_FASTCALL3:
-            ad->func_call = FUNC_FASTCALLW;
+            ad->a.func_call = FUNC_FASTCALLW;
             break;            
 #endif
         case TOK_MODE:
             skip('(');
             switch(tok) {
                 case TOK_MODE_DI:
-                    ad->mode = VT_LLONG + 1;
+                    ad->a.mode = VT_LLONG + 1;
                     break;
                 case TOK_MODE_HI:
-                    ad->mode = VT_SHORT + 1;
+                    ad->a.mode = VT_SHORT + 1;
                     break;
                 case TOK_MODE_SI:
-                    ad->mode = VT_INT + 1;
+                    ad->a.mode = VT_INT + 1;
                     break;
                 default:
                     tcc_warning("__mode__(%s) not supported\n", get_tok_str(tok, NULL));
@@ -2707,10 +2731,10 @@ static void parse_attribute(AttributeDef *ad)
             skip(')');
             break;
         case TOK_DLLEXPORT:
-            ad->func_export = 1;
+            ad->a.func_export = 1;
             break;
         case TOK_DLLIMPORT:
-            ad->func_import = 1;
+            ad->a.func_import = 1;
             break;
         default:
             if (tcc_state->warn_unsupported)
@@ -2852,10 +2876,10 @@ static void struct_decl(CType *type, int u, int tdef)
                                   get_tok_str(v, NULL));
                     }
                     size = type_size(&type1, &align);
-                    if (ad.aligned) {
-                        if (align < ad.aligned)
-                            align = ad.aligned;
-                    } else if (ad.packed) {
+                    if (ad.a.aligned) {
+                        if (align < ad.a.aligned)
+                            align = ad.a.aligned;
+                    } else if (ad.a.packed) {
                         align = 1;
                     } else if (*tcc_state->pack_stack_ptr) {
                         if (align > *tcc_state->pack_stack_ptr)
@@ -3097,8 +3121,8 @@ static int parse_btype(CType *type, AttributeDef *ad)
         case TOK_ATTRIBUTE1:
         case TOK_ATTRIBUTE2:
             parse_attribute(ad);
-            if (ad->mode) {
-                u = ad->mode -1;
+            if (ad->a.mode) {
+                u = ad->a.mode -1;
                 t = (t & ~VT_BTYPE) | u;
             }
             break;
@@ -3122,11 +3146,11 @@ static int parse_btype(CType *type, AttributeDef *ad)
             type->ref = s->type.ref;
             if (s->r) {
                 /* get attributes from typedef */
-                if (0 == ad->aligned)
-                    ad->aligned = FUNC_ALIGN(s->r);
-                if (0 == ad->func_call)
-                    ad->func_call = FUNC_CALL(s->r);
-                ad->packed |= FUNC_PACKED(s->r);
+                if (0 == ad->a.aligned)
+                    ad->a.aligned = s->a.aligned;
+                if (0 == ad->a.func_call)
+                    ad->a.func_call = s->a.func_call;
+                ad->a.packed |= s->a.packed;
             }
             next();
             typespec_found = 1;
@@ -3266,8 +3290,9 @@ static void post_type(CType *type, AttributeDef *ad)
             type->t |= VT_PTR;
         }
         /* we push a anonymous symbol which will contain the function prototype */
-        ad->func_args = arg_size;
-        s = sym_push(SYM_FIELD, type, INT_ATTR(ad), l);
+        ad->a.func_args = arg_size;
+        s = sym_push(SYM_FIELD, type, 0, l);
+        s->a = ad->a;
         s->next = first;
         type->t = VT_FUNC;
         type->ref = s;
@@ -3665,7 +3690,7 @@ ST_FUNC void unary(void)
             vtop->c.i = vtop->c.i ^ 1;
         else {
             save_regs(1);
-            vseti(VT_JMP, gtst(1, 0));
+            vseti(VT_JMP, gvtst(1, 0));
         }
         break;
     case '~':
@@ -3794,9 +3819,22 @@ ST_FUNC void unary(void)
         break;
     case '-':
         next();
-        vpushi(0);
         unary();
-        gen_op('-');
+        t = vtop->type.t & VT_BTYPE;
+        /* handle (-)0.0 */
+        if ((vtop->r & (VT_VALMASK | VT_LVAL | VT_SYM)) == VT_CONST &&
+            is_float(t)) {
+            if (t == VT_FLOAT)
+                vtop->c.f = -vtop->c.f;
+            else if (t == VT_DOUBLE)
+                vtop->c.d = -vtop->c.d;
+            else
+                vtop->c.ld = -vtop->c.ld;
+	} else {
+            vpushi(0);
+            vswap();
+            gen_op('-');
+        }
         break;
     case TOK_LAND:
         if (!gnu_ext)
@@ -3870,7 +3908,11 @@ ST_FUNC void unary(void)
         /* if forward reference, we must point to s */
         if (vtop->r & VT_SYM) {
             vtop->sym = s;
+#ifdef TCC_TARGET_X86_64
+            vtop->c.ull = 0;
+#else
             vtop->c.ul = 0;
+#endif
         }
         break;
     }
@@ -3927,7 +3969,7 @@ ST_FUNC void unary(void)
         } else if (tok == '(') {
             SValue ret;
             Sym *sa;
-            int nb_args, ret_nregs, ret_align;
+            int nb_args, ret_nregs, ret_align, variadic;
 
             /* function call  */
             if ((vtop->type.t & VT_BTYPE) != VT_FUNC) {
@@ -3951,7 +3993,9 @@ ST_FUNC void unary(void)
             ret.r2 = VT_CONST;
             /* compute first implicit argument if a structure is returned */
             if ((s->type.t & VT_BTYPE) == VT_STRUCT) {
-                ret_nregs = gfunc_sret(&s->type, &ret.type, &ret_align);
+                variadic = (s->c == FUNC_ELLIPSIS);
+                ret_nregs = gfunc_sret(&s->type, variadic, &ret.type,
+                                       &ret_align);
                 if (!ret_nregs) {
                     /* get some space for the returned structure */
                     size = type_size(&s->type, &align);
@@ -4169,7 +4213,7 @@ static void expr_land(void)
         t = 0;
         save_regs(1);
         for(;;) {
-            t = gtst(1, t);
+            t = gvtst(1, t);
             if (tok != TOK_LAND) {
                 vseti(VT_JMPI, t);
                 break;
@@ -4189,7 +4233,7 @@ static void expr_lor(void)
         t = 0;
         save_regs(1);
         for(;;) {
-            t = gtst(0, t);
+            t = gvtst(0, t);
             if (tok != TOK_LOR) {
                 vseti(VT_JMP, t);
                 break;
@@ -4251,9 +4295,9 @@ static void expr_cond(void)
             }
             if (tok == ':' && gnu_ext) {
                 gv_dup();
-                tt = gtst(1, 0);
+                tt = gvtst(1, 0);
             } else {
-                tt = gtst(1, 0);
+                tt = gvtst(1, 0);
                 gexpr();
             }
             type1 = vtop->type;
@@ -4499,7 +4543,7 @@ static void block(int *bsym, int *csym, int *case_sym, int *def_sym,
         skip('(');
         gexpr();
         skip(')');
-        a = gtst(1, 0);
+        a = gvtst(1, 0);
         block(bsym, csym, case_sym, def_sym, case_reg, 0);
         c = tok;
         if (c == TOK_ELSE) {
@@ -4516,7 +4560,7 @@ static void block(int *bsym, int *csym, int *case_sym, int *def_sym,
         skip('(');
         gexpr();
         skip(')');
-        a = gtst(1, 0);
+        a = gvtst(1, 0);
         b = 0;
         block(&a, &b, case_sym, def_sym, case_reg, 0);
         gjmp_addr(d);
@@ -4604,7 +4648,8 @@ static void block(int *bsym, int *csym, int *case_sym, int *def_sym,
             if ((func_vt.t & VT_BTYPE) == VT_STRUCT) {
                 CType type, ret_type;
                 int ret_align, ret_nregs;
-                ret_nregs = gfunc_sret(&func_vt, &ret_type, &ret_align);
+                ret_nregs = gfunc_sret(&func_vt, func_var, &ret_type,
+                                       &ret_align);
                 if (0 == ret_nregs) {
                     /* if returning structure, must copy it to implicit
                        first pointer arg location */
@@ -4694,7 +4739,7 @@ static void block(int *bsym, int *csym, int *case_sym, int *def_sym,
         b = 0;
         if (tok != ';') {
             gexpr();
-            a = gtst(1, 0);
+            a = gvtst(1, 0);
         }
         skip(';');
         if (tok != ')') {
@@ -4723,7 +4768,7 @@ static void block(int *bsym, int *csym, int *case_sym, int *def_sym,
         skip('(');
         gsym(b);
         gexpr();
-        c = gtst(0, 0);
+        c = gvtst(0, 0);
         gsym_addr(c, d);
         skip(')');
         gsym(a);
@@ -5080,6 +5125,12 @@ static void init_putv(CType *type, Section *sec, unsigned long c,
             break;
         case VT_LLONG:
             *(long long *)ptr |= (vtop->c.ll & bit_mask) << bit_pos;
+            break;
+        case VT_PTR:
+            if (vtop->r & VT_SYM) {
+                greloc(sec, vtop->sym, c, R_DATA_PTR);
+            }
+            *(addr_t *)ptr |= (vtop->c.ull & bit_mask) << bit_pos;
             break;
         default:
             if (vtop->r & VT_SYM) {
@@ -5447,10 +5498,10 @@ static void decl_initializer_alloc(CType *type, AttributeDef *ad, int r,
     if (flexible_array)
         size += flexible_array->type.ref->c * pointed_size(&flexible_array->type);
     /* take into account specified alignment if bigger */
-    if (ad->aligned) {
-        if (ad->aligned > align)
-            align = ad->aligned;
-    } else if (ad->packed) {
+    if (ad->a.aligned) {
+        if (ad->a.aligned > align)
+            align = ad->a.aligned;
+    } else if (ad->a.packed) {
         align = 1;
     }
     if ((r & VT_VALMASK) == VT_LOCAL) {
@@ -5714,6 +5765,7 @@ static void gen_function(Sym *sym)
     cur_text_section = NULL;
     funcname = ""; /* for safety */
     func_vt.t = VT_VOID; /* for safety */
+    func_var = 0; /* for safety */
     ind = 0; /* for safety */
     nocode_wanted = saved_nocode_wanted;
 }
@@ -5831,12 +5883,12 @@ static int decl0(int l, int is_for_loop_init)
                 parse_attribute(&ad);
             }
 
-            if (ad.weak)
+            if (ad.a.weak)
                 type.t |= VT_WEAK;
 #ifdef TCC_TARGET_PE
-            if (ad.func_import)
+            if (ad.a.func_import)
                 type.t |= VT_IMPORT;
-            if (ad.func_export)
+            if (ad.a.func_export)
                 type.t |= VT_EXPORT;
 #endif
             if (tok == '{') {
@@ -5857,22 +5909,22 @@ static int decl0(int l, int is_for_loop_init)
                 
                 sym = sym_find(v);
                 if (sym) {
+                    Sym *ref;
                     if ((sym->type.t & VT_BTYPE) != VT_FUNC)
                         goto func_error1;
 
-                    r = sym->type.ref->r;
-
-                    if (!FUNC_PROTO(r))
+                    ref = sym->type.ref;
+                    if (0 == ref->a.func_proto)
                         tcc_error("redefinition of '%s'", get_tok_str(v, NULL));
 
                     /* use func_call from prototype if not defined */
-                    if (FUNC_CALL(r) != FUNC_CDECL
-                     && FUNC_CALL(type.ref->r) == FUNC_CDECL)
-                        FUNC_CALL(type.ref->r) = FUNC_CALL(r);
+                    if (ref->a.func_call != FUNC_CDECL
+                     && type.ref->a.func_call == FUNC_CDECL)
+                        type.ref->a.func_call = ref->a.func_call;
 
                     /* use export from prototype */
-                    if (FUNC_EXPORT(r))
-                        FUNC_EXPORT(type.ref->r) = 1;
+                    if (ref->a.func_export)
+                        type.ref->a.func_export = 1;
 
                     /* use static from prototype */
                     if (sym->type.t & VT_STATIC)
@@ -5883,7 +5935,7 @@ static int decl0(int l, int is_for_loop_init)
                         tcc_error("incompatible types for redefinition of '%s'", 
                               get_tok_str(v, NULL));
                     }
-                    FUNC_PROTO(type.ref->r) = 0;
+                    type.ref->a.func_proto = 0;
                     /* if symbol is already defined, then put complete type */
                     sym->type = type;
                 } else {
@@ -5942,15 +5994,16 @@ static int decl0(int l, int is_for_loop_init)
                 if (btype.t & VT_TYPEDEF) {
                     /* save typedefed type  */
                     /* XXX: test storage specifiers ? */
-                    sym = sym_push(v, &type, INT_ATTR(&ad), 0);
+                    sym = sym_push(v, &type, 0, 0);
+                    sym->a = ad.a;
                     sym->type.t |= VT_TYPEDEF;
                 } else {
                     r = 0;
                     if ((type.t & VT_BTYPE) == VT_FUNC) {
                         /* external function definition */
                         /* specific case for func_call attribute */
-                        ad.func_proto = 1;
-                        type.ref->r = INT_ATTR(&ad);
+                        ad.a.func_proto = 1;
+                        type.ref->a = ad.a;
                     } else if (!(type.t & VT_ARRAY)) {
                         /* not lvalue if array */
                         r |= lvalue_type(type.t);
@@ -6001,7 +6054,7 @@ static int decl0(int l, int is_for_loop_init)
                 }
                 next();
             }
-            ad.aligned = 0;
+            ad.a.aligned = 0;
         }
     }
     return 0;
