@@ -64,6 +64,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="0"
+				TargetMachine="1"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
@@ -178,6 +180,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="1"
+				TargetMachine="1"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
@@ -292,6 +296,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="1"
+				TargetMachine="1"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
@@ -406,6 +412,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="0"
+				TargetMachine="17"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
@@ -520,6 +528,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="1"
+				TargetMachine="17"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
@@ -634,6 +644,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="1"
+				TargetMachine="17"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"

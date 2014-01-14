@@ -129,6 +129,42 @@ sub msvc_xml_path_win32 {
   return $filename;
 };
 
+sub msvc_xml_option_combiner_last
+{
+  for my $v (@_) {
+    next if not defined $v;
+    return $v;
+  }
+  return '';
+}
+
+sub msvc_xml_option_combiner_semicolon
+{
+  my @rv = ();
+  for my $v (@_) {
+    push @rv, $v if defined $v and $v ne '';
+  }
+  return join(';', @rv);
+}
+
+sub msvc_xml_option_combiner_colon
+{
+  my @rv = ();
+  for my $v (@_) {
+    push @rv, $v if defined $v and $v ne '';
+  }
+  return join(',', @rv);
+}
+
+sub msvc_xml_option_combiner_space
+{
+  my @rv = ();
+  for my $v (@_) {
+    push @rv, $v if defined $v and $v ne '';
+  }
+  return join(' ', @rv);
+}
+
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------
@@ -348,7 +384,9 @@ sub msvc_xml_project_generate
   my ($PROJECT_NAME, $PROJECT_GUID) = ($proj->{'name'}, $proj->{'GUID'});
   my @confs = split / /, msvc_xml_getopt('[]', 'Configurations', @{$proj->{'a-opts'}});
   my @platforms = split / /, msvc_xml_getopt('[]', 'Platforms', @{$proj->{'a-opts'}});
-  my $opt_vars = msvc_xml_getopt('[]', '#', @{$proj->{'a-opts'}});
+#  my $opt_vars = msvc_xml_getopt('[]', '#', @{$proj->{'a-opts'}});
+  my $opt_vars = $template->{'#options'};
+  #
   $proj->{'.platforms'} = \@platforms;
   $proj->{'.confs'} = \@confs;
   #
@@ -392,11 +430,14 @@ sub msvc_xml_project_generate
       #
       my $opt_var_all = '';
       for my $opt_var (keys $opt_vars) {
-        my $opt_var_val;
-        $opt_var_val = msvc_xml_getopt('!*', $opt_var, @{$proj->{'a-opts'}}) if not defined $opt_var_val;
-        $opt_var_val = msvc_xml_getopt($CONF_NAME, $opt_var, @{$proj->{'a-opts'}}) if not defined $opt_var_val;
-        $opt_var_val = msvc_xml_getopt('*', $opt_var, @{$proj->{'a-opts'}}) if not defined $opt_var_val;
-        $opt_var_val = $opt_vars->{$opt_var} if not defined $opt_var_val;
+        my $opt_combiner = $opt_vars->{$opt_var};
+#print "\$opt_var='$opt_var' \$opt_combiner='$opt_combiner'\n";
+        my $opt_var_val = &$opt_combiner(
+          msvc_xml_getopt('!*', $opt_var, @{$proj->{'a-opts'}}),
+          msvc_xml_getopt($CONF_NAME, $opt_var, @{$proj->{'a-opts'}}),
+          msvc_xml_getopt($PLATFORM_NAME, $opt_var, @{$proj->{'a-opts'}}),
+          msvc_xml_getopt('*', $opt_var, @{$proj->{'a-opts'}})
+        );
         $opt_var_all .= "my \$OPT_$opt_var = \'$opt_var_val\';\n";
         #
         $opt_var_all .= "\$OPT_Compiler_AdditionalIncludeDirectories .= ';'.\$INCLUDES;\n"
@@ -407,13 +448,7 @@ sub msvc_xml_project_generate
           if ($opt_var eq 'Linker_AdditionalDependencies') and ($LIBS ne '');
         $opt_var_all .= "\$OPT_Linker_AdditionalLibraryDirectories .= ';'.\$LIB_INCLUDES;\n"
           if ($opt_var eq 'Linker_AdditionalLibraryDirectories') and ($LIB_INCLUDES ne '');
-        #
-#        print "\$OPT_Linker_AdditionalDependencies .= ' '.\"$LIBS\";\n"
-#          if ($opt_var eq 'Linker_AdditionalDependencies') and ($LIBS ne '');
-#        print "\$OPT_Linker_AdditionalLibraryDirectories .= ';'.\"$LIB_INCLUDES\";\n"
-#          if ($opt_var eq 'Linker_AdditionalLibraryDirectories') and ($LIB_INCLUDES ne '');
       }
-      #
       #
       if($proj->{'mode'} eq 'console' or $proj->{'mode'} eq 'binary') {
         $opt_var_all .= '$OPT_ConfigurationType="1"; ';
@@ -427,9 +462,20 @@ sub msvc_xml_project_generate
       } elsif($proj->{'mode'} eq 'app' or $proj->{'mode'} eq 'gui') {
         $opt_var_all .= '$OPT_ConfigurationType="1"; ';
         $opt_var_all .= '$OPT_Linker_OutputFile = \'$(OutDir)/$(ProjectName).exe\';';
+        $opt_var_all .= '$OPT_Linker_SubSystem = "2";';
+      } elsif($proj->{'mode'} eq 'dummy') {
+        $opt_var_all .= '$OPT_ConfigurationType="10"; ';
       } else {
-        $opt_var_all .= '$OPT_ConfigurationType="1" ;';
+        $opt_var_all .= '$OPT_ConfigurationType="1" ; ';
         $opt_var_all .= '$OPT_Linker_OutputFile = \'$(OutDir)/$(ProjectName).exe\';';
+      }
+      #
+      if(lc $PLATFORM_NAME eq 'win32') {
+        $opt_var_all .= '$OPT_Linker_TargetMachine = \'1\';'; # x86=1
+      } elsif(lc $PLATFORM_NAME eq 'x64') {
+        $opt_var_all .= '$OPT_Linker_TargetMachine = \'17\';'; # x64=17
+      } else {
+        $opt_var_all .= ''; # unknown platform
       }
       #
       $opt_var_all .= "\n";
@@ -468,7 +514,9 @@ use strict 'vars';
   #------------------- FILES
   $line = eval("<<EOT\n".$template->{'project-files-begin'}."EOT");
   print $fout $line;
-  msvc_xml_project_generate_files($proj, $template, $fout, $proj->{'filters'}, '');
+  if($proj->{'mode'} ne 'dummy') {
+    msvc_xml_project_generate_files($proj, $template, $fout, $proj->{'filters'}, '');
+  }
   $line = eval("<<EOT\n".$template->{'project-files-end'}."EOT");
   print $fout $line;
   #
@@ -508,6 +556,8 @@ sub msvc_xml_project_cmd
     $this->{'project'}->{'mode'} = $mode;
   } elsif($cmd eq 'GUID-gen') {
     $this->{'project'}->{'GUID'} = msvc_xml_new_guid($args);
+  } elsif($cmd eq 'disable') {
+    $this->{'project'}->{'mode'} = 'dummy';
   }
 }
 
@@ -577,6 +627,7 @@ sub msvc_xml_project_begin
       'libpath' => \&msvc_xml_project_cmd,
       'libs' => \&msvc_xml_project_cmd,
       'GUID-gen' => \&msvc_xml_project_cmd,
+      'disable' => \&msvc_xml_project_cmd,
     },
   };
   $this->{'projects'}->{$name} = $rv;

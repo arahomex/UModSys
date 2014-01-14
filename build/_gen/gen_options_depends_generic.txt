@@ -3,20 +3,10 @@ begin project-group umodsys_Depends
   set path-bin $(path-root)/bin
   set path-include $(path-root)/include
 
-  set path-depends $(path-root)/depends
-
-  set path-d-SDL2 $(path-depends)/SDL2
-  set path-d-SDL2_ttf $(path-depends)/SDL2_ttf
-
-  set path-d-zlib $(path-depends)/zlib
-  set path-d-png $(path-depends)/libpng
-  set path-d-jpeg $(path-depends)/jpeglib
-  set path-d-freetype $(path-depends)/freetype
-
   option project-order umodsysc
 
   begin project all
-    mode lib
+    mode dummy
     #
     depend lib_SDL2
     #
@@ -24,20 +14,27 @@ begin project-group umodsys_Depends
     depend lib_libpng
     depend lib_jpeglib
     depend lib_freetype
+    depend lib_sqlite3
     #
-#    depend libSquirrel
-#    depend libTinyC
-#    depend libAngelScript
-#    depend libLua
+    depend lib_squirrel
+    depend lib_lua
+    depend lib_luajit
+    depend lib_angelscript
+    depend lib_tinyc
+    depend lib_lightning
     #
+    depend lib_bullet
   end
+
+  #----------------------------------------------------------------
+  # media libs
 
   begin project lib_zlib
     mode shared
     #
     includes $(path-include)
     includes $(path-include)/$(ppath)
-    includes $(path-d-zlib)
+    includes $(path-d-zlib-inc)
     #
     begin file-group include
       begin mask $(path-skip) $(path-d-zlib)
@@ -56,8 +53,8 @@ begin project-group umodsys_Depends
     #
     includes $(path-include)
     includes $(path-include)/$(ppath)
-    includes $(path-d-zlib)
-    includes $(path-d-png)
+    includes $(path-d-zlib-inc)
+    includes $(path-d-png-inc)
     depend lib_zlib
     #
     begin file-group include
@@ -77,7 +74,7 @@ begin project-group umodsys_Depends
     #
     includes $(path-include)
     includes $(path-include)/$(ppath)
-    includes $(path-d-jpeg)
+    includes $(path-d-jpeg-inc)
     #
     begin file-group include
       begin mask $(path-skip) $(path-d-jpeg)
@@ -99,7 +96,7 @@ begin project-group umodsys_Depends
     defines FT_DEBUG_LEVEL_ERROR FT_DEBUG_LEVEL_TRACE FT2_BUILD_LIBRARY
     includes $(path-include)
     includes $(path-include)/$(ppath)
-    includes $(path-d-freetype)/include
+    includes $(path-d-freetype-inc)
     depend lib_zlib
     #
     begin file-group include
@@ -240,14 +237,17 @@ begin project-group umodsys_Depends
     end
   end
 
+  #----------------------------------------------------------------
+  # UI libs
+
   begin project lib_SDL2
     mode shared
     #
     includes $(path-include)
     includes $(path-include)/$(ppath)
-    includes $(path-d-SDL2)/include
-    includes $(path-d-SDL2_ttf)/include
-    includes $(path-d-freetype)/include
+    includes $(path-d-SDL2-inc)
+    includes $(path-d-SDL2_ttf-inc)
+    includes $(path-d-freetype-inc)
     depend lib_freetype
     #
     begin file-group include
@@ -339,6 +339,274 @@ begin project-group umodsys_Depends
     begin file-group SDL_ttf
       begin mask $(path-skip) $(path-d-SDL2_ttf)
         include SDL_ttf.c SDL_ttf.h
+      end
+    end
+  end
+
+  #----------------------------------------------------------------
+  # DB libs
+
+  begin project lib_sqlite3
+    mode shared
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-sql3-inc)
+    #
+    begin file-group include
+      file $(path-d-sql3)/sqlite3.h
+      file $(path-d-sql3)/sqlite3ext.h
+    end
+    begin file-group src
+      file $(path-d-sql3)/sqlite3.c
+    end
+  end
+
+  #----------------------------------------------------------------
+  # Script libs
+
+  begin project lib_squirrel
+    mode shared
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-squirrel-inc)
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-squirrel-inc)
+        include *.h
+      end
+    end
+    begin file-group src
+      begin file-group squirrel
+        begin mask $(path-skip) $(path-d-squirrel)/squirrel
+          include *.h *.cpp
+        end
+      end
+      begin file-group sqstdlib
+        begin mask $(path-skip) $(path-d-squirrel)/sqstdlib
+          include *.h *.cpp
+        end
+      end
+    end
+  end
+
+  begin project lib_lua
+    mode shared
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-lua-inc)
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-lua-inc)
+        include *.h
+      end
+    end
+    begin file-group src
+      begin mask $(path-skip) $(path-d-lua)/src
+        include l*.c
+        exclude lua.c luac.c
+      end
+    end
+  end
+
+  begin project lib_luajit
+    mode shared
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-luajit-inc)
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-luajit-inc)
+        include *.h
+      end
+    end
+    begin file-group src
+      begin mask $(path-skip) $(path-d-luajit)/src
+        include l*.c
+        exclude lua.c luac.c
+        exclude lj_err.c
+        exclude ljamalg.c
+      end
+      file $(path-patch)/luajit/lj_err.c
+    end
+  end
+
+  begin project lib_angelscript
+    mode shared
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-angelscript-inc)
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-angelscript-inc)
+        include *.h
+      end
+    end
+    begin file-group src
+      begin mask $(path-skip) $(path-d-angelscript)/angelscript/source
+        include *.h
+        include *.cpp
+      end
+    end
+  end
+
+  begin project lib_tinyc
+    mode shared
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-tinyc-inc)
+    defines ONE_SOURCE
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-tinyc-inc)
+        include *.h
+      end
+    end
+    begin file-group src
+      begin mask $(path-skip) $(path-d-tinyc)
+        include libtcc.c
+      end
+    end
+  end
+
+  begin project lib_lightning
+    mode dummy
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-include)/$(ppath)/lightning
+    includes $(path-d-lightning-inc)
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-lightning-inc)
+        include *.h lightning/*.h
+      end
+    end
+    begin file-group src
+      begin mask $(path-skip) $(path-d-lightning)/lib
+        include jit_disasm.c jit_memory.c jit_note.c jit_print.c jit_size.c 
+#        include lightning.c
+      end
+    end
+  end
+
+  #----------------------------------------------------------------
+  # Physics libs
+
+  begin project lib_bullet
+    mode lib
+    set R $(path-d-bullet)/src
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-bullet-inc)
+    defines ONE_SOURCE
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-bullet-inc)
+        include *.h
+      end
+    end
+    begin file-group src
+      begin file-group BulletCollision
+        begin mask $(path-skip) $(R)/BulletCollision/BroadphaseCollision
+          include *.cpp *.h
+        end
+        begin mask $(path-skip) $(R)/BulletCollision/CollisionDispatch
+          include *.cpp *.h
+        end
+        begin mask $(path-skip) $(R)/BulletCollision/CollisionShapes
+          include *.cpp *.h
+        end
+        begin mask $(path-skip) $(R)/BulletCollision/Gimpact
+          include *.cpp *.h
+        end
+        begin mask $(path-skip) $(R)/BulletCollision/NarrowPhaseCollision
+          include *.cpp *.h
+        end
+      end
+      begin file-group BulletDynamics
+        begin mask $(path-skip) $(R)/BulletDynamics/Character
+          include *.cpp *.h
+        end
+        begin mask $(path-skip) $(R)/BulletDynamics/ConstraintSolver
+          include *.cpp *.h
+        end
+        begin mask $(path-skip) $(R)/BulletDynamics/Dynamics
+          include *.cpp *.h
+        end
+        begin mask $(path-skip) $(R)/BulletDynamics/Featherstone
+          include *.cpp *.h
+        end
+        begin mask $(path-skip) $(R)/BulletDynamics/MLCPSolvers
+          include *.cpp *.h
+        end
+        begin mask $(path-skip) $(R)/BulletDynamics/Vehicle
+          include *.cpp *.h
+        end
+      end
+      begin file-group BulletMultiThreaded
+        begin mask $(path-skip) $(R)/BulletMultiThreaded
+          include *.cpp *.h
+        end
+        begin mask $(path-skip) $(R)/BulletMultiThreaded/GpuSoftBodySolvers/DX11
+#          include *.cpp *.h
+        end
+        begin mask $(path-skip) $(R)/BulletMultiThreaded/GpuSoftBodySolvers/OpenCL
+#          include *.cpp *.h
+        end
+        begin mask $(path-skip) $(R)/BulletMultiThreaded/GpuSoftBodySolvers/shared
+#          include *.cpp *.h
+        end
+        begin mask $(path-skip) $(R)/BulletMultiThreaded/SpuNarrowPhaseCollisionTask
+          include *.cpp *.h
+        end
+        begin mask $(path-skip) $(R)/BulletMultiThreaded/SpuSampleTask
+          include *.cpp *.h
+        end
+      end
+      begin file-group BulletSoftBody
+        begin mask $(path-skip) $(R)/BulletSoftBody
+          include *.cpp *.h
+        end
+      end
+      begin file-group LinearMath
+        begin mask $(path-skip) $(R)/LinearMath
+          include *.cpp *.h
+        end
+      end
+      begin file-group MiniCL
+        begin mask $(path-skip) $(R)/MiniCL
+#          include *.cpp *.h
+        end
+        begin mask $(path-skip) $(R)/MiniCL/MiniCLTask
+#          include *.cpp *.h
+        end
+      end
+      begin file-group vectormath
+        begin mask $(path-skip) $(R)/vectormath
+          include *.cpp *.h
+        end
+        begin file-group neon
+          begin mask $(path-skip) $(R)/vectormath/neon
+            include *.cpp *.h
+          end
+        end
+        begin file-group scalar
+          begin mask $(path-skip) $(R)/vectormath/scalar
+            include *.cpp *.h
+          end
+        end
+        begin file-group sse
+          begin mask $(path-skip) $(R)/vectormath/sse
+            include *.cpp *.h
+          end
+        end
       end
     end
   end

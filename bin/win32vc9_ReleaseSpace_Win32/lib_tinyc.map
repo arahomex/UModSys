@@ -1,0 +1,1029 @@
+ lib_tinyc
+
+ Timestamp is 52d5523b (Tue Jan 14 18:05:31 2014)
+
+ Preferred load address is 10000000
+
+ Start         Length     Name                   Class
+ 0001:00000000 00014557H .text                   CODE
+ 0002:00000000 00000128H .idata$5                DATA
+ 0002:00000128 00000004H .CRT$XCA                DATA
+ 0002:0000012c 00000004H .CRT$XCZ                DATA
+ 0002:00000130 00000004H .CRT$XIA                DATA
+ 0002:00000134 00000004H .CRT$XIAA               DATA
+ 0002:00000138 00000004H .CRT$XIC                DATA
+ 0002:0000013c 00000004H .CRT$XIZ                DATA
+ 0002:00000140 00004270H .rdata                  DATA
+ 0002:000043b0 00000004H .rdata$sxdata           DATA
+ 0002:000043b4 00000004H .rtc$IAA                DATA
+ 0002:000043b8 00000004H .rtc$IZZ                DATA
+ 0002:000043bc 00000004H .rtc$TAA                DATA
+ 0002:000043c0 00000004H .rtc$TZZ                DATA
+ 0002:000043c8 00000084H .xdata$x                DATA
+ 0002:0000444c 00000028H .idata$2                DATA
+ 0002:00004474 00000014H .idata$3                DATA
+ 0002:00004488 00000128H .idata$4                DATA
+ 0002:000045b0 0000040cH .idata$6                DATA
+ 0002:000049c0 00000382H .edata                  DATA
+ 0003:00000000 00000030H .data                   DATA
+ 0003:00000030 0000b5dcH .bss                    DATA
+
+  Address         Publics by Value              Rva+Base       Lib:Object
+
+ 0000:00000000       __except_list              00000000     <absolute>
+ 0000:00000001       ___safe_se_handler_count   00000001     <absolute>
+ 0000:00009876       __fltused                  00009876     <absolute>
+ 0000:00009876       __ldused                   00009876     <absolute>
+ 0000:00000000       ___ImageBase               10000000     <linker-defined>
+ 0001:00003c9f       _vpush64                   10004c9f f   libtcc.obj
+ 0001:00004740       _gvtst                     10005740 f   libtcc.obj
+ 0001:0000b2cc       _tcc_get_symbol            1000c2cc f   libtcc.obj
+ 0001:0000d05c       _tcc_output_file           1000e05c f   libtcc.obj
+ 0001:00011964       _DllMain@12                10012964 f   libtcc.obj
+ 0001:0001197a       _pstrcpy                   1001297a f   libtcc.obj
+ 0001:000119ab       _pstrcat                   100129ab f   libtcc.obj
+ 0001:000119dc       _pstrncpy                  100129dc f   libtcc.obj
+ 0001:000119fd       _tcc_basename              100129fd f   libtcc.obj
+ 0001:00011a26       _tcc_fileextension         10012a26 f   libtcc.obj
+ 0001:00011a4e       _tcc_free                  10012a4e f   libtcc.obj
+ 0001:00011a54       _tcc_malloc                10012a54 f   libtcc.obj
+ 0001:00011a74       _tcc_mallocz               10012a74 f   libtcc.obj
+ 0001:00011a93       _tcc_realloc               10012a93 f   libtcc.obj
+ 0001:00011ab8       _tcc_strdup                10012ab8 f   libtcc.obj
+ 0001:00011ae5       _tcc_memstats              10012ae5 f   libtcc.obj
+ 0001:0001207b       _tcc_set_error_func        1001307b f   libtcc.obj
+ 0001:00012094       _tcc_error_noabort         10013094 f   libtcc.obj
+ 0001:000120ae       _tcc_error                 100130ae f   libtcc.obj
+ 0001:000120e9       _tcc_warning               100130e9 f   libtcc.obj
+ 0001:00012467       _tcc_compile_string        10013467 f   libtcc.obj
+ 0001:000124b4       _tcc_define_symbol         100134b4 f   libtcc.obj
+ 0001:00012549       _tcc_undefine_symbol       10013549 f   libtcc.obj
+ 0001:000125eb       _tcc_new                   100135eb f   libtcc.obj
+ 0001:00012855       _tcc_delete                10013855 f   libtcc.obj
+ 0001:0001296f       _tcc_add_include_path      1001396f f   libtcc.obj
+ 0001:0001298b       _tcc_add_sysinclude_path   1001398b f   libtcc.obj
+ 0001:00012bc1       _tcc_add_file              10013bc1 f   libtcc.obj
+ 0001:00012bdf       _tcc_add_library_path      10013bdf f   libtcc.obj
+ 0001:00012cfa       _tcc_add_library           10013cfa f   libtcc.obj
+ 0001:00012d58       _tcc_add_symbol            10013d58 f   libtcc.obj
+ 0001:00012d7d       _tcc_set_output_type       10013d7d f   libtcc.obj
+ 0001:00012e95       _tcc_set_lib_path          10013e95 f   libtcc.obj
+ 0001:00013286       _tcc_parse_args            10014286 f   libtcc.obj
+ 0001:000136e6       _tcc_set_options           100146e6 f   libtcc.obj
+ 0001:00013784       _tcc_print_stats           10014784 f   libtcc.obj
+ 0001:000137fd       _tcc_set_environment       100147fd f   libtcc.obj
+ 0001:0001389a       __CRT_INIT@12              1001489a f   MSVCRT:crtdll.obj
+ 0001:00013bd6       __DllMainCRTStartup@12     10014bd6 f   MSVCRT:crtdll.obj
+ 0001:00013bf9       ___clean_type_info_names   10014bf9 f   MSVCRT:tncleanup.obj
+ 0001:00013c05       __onexit                   10014c05 f   MSVCRT:atonexit.obj
+ 0001:00013caa       _atexit                    10014caa f   MSVCRT:atonexit.obj
+ 0001:00013cc1       __RTC_Initialize           10014cc1 f   MSVCRT:_initsect_.obj
+ 0001:00013ce7       __RTC_Terminate            10014ce7 f   MSVCRT:_initsect_.obj
+ 0001:00013d10       __ValidateImageBase        10014d10 f   MSVCRT:pesect.obj
+ 0001:00013d50       __FindPESection            10014d50 f   MSVCRT:pesect.obj
+ 0001:00013da0       __IsNonwritableInCurrentImage 10014da0 f   MSVCRT:pesect.obj
+ 0001:00013e5e       __initterm                 10014e5e f   MSVCRT:MSVCR90.dll
+ 0001:00013e64       __initterm_e               10014e64 f   MSVCRT:MSVCR90.dll
+ 0001:00013e6a       __amsg_exit                10014e6a f   MSVCRT:MSVCR90.dll
+ 0001:00013e70       ___CppXcptFilter           10014e70 f   MSVCRT:MSVCR90.dll
+ 0001:00013e78       __SEH_prolog4              10014e78 f   MSVCRT:sehprolg4.obj
+ 0001:00013ebd       __SEH_epilog4              10014ebd f   MSVCRT:sehprolg4.obj
+ 0001:00013ed1       __except_handler4          10014ed1 f   MSVCRT:chandler4gs.obj
+ 0001:00013ef6       ___security_init_cookie    10014ef6 f   MSVCRT:gs_support.obj
+ 0001:00013f8c       ___clean_type_info_names_internal 10014f8c f   MSVCRT:MSVCR90.dll
+ 0001:00013f92       __unlock                   10014f92 f   MSVCRT:MSVCR90.dll
+ 0001:00013f98       ___dllonexit               10014f98 f   MSVCRT:MSVCR90.dll
+ 0001:00013f9e       __lock                     10014f9e f   MSVCRT:MSVCR90.dll
+ 0001:00013fa4       @__security_check_cookie@4 10014fa4 f   MSVCRT:secchk.obj
+ 0001:00013fb4       __except_handler4_common   10014fb4 f   MSVCRT:MSVCR90.dll
+ 0001:00013fba       ___report_gsfailure        10014fba f   MSVCRT:gs_report.obj
+ 0001:000140c0       __crt_debugger_hook        100150c0 f   MSVCRT:MSVCR90.dll
+ 0001:000140d0       __ftol2_sse                100150d0 f   MSVCRT:ftol2.obj
+ 0001:000140d9       __ftol2_pentium4           100150d9 f   MSVCRT:ftol2.obj
+ 0001:000140ec       __ftol2_sse_excpt          100150ec f   MSVCRT:ftol2.obj
+ 0001:00014106       __ftol2                    10015106 f   MSVCRT:ftol2.obj
+ 0001:0001417c       _memcpy                    1001517c f   MSVCRT:MSVCR90.dll
+ 0001:00014182       _memset                    10015182 f   MSVCRT:MSVCR90.dll
+ 0001:00014190       __allmul                   10015190 f   MSVCRT:llmul.obj
+ 0001:000141d0       __allshl                   100151d0 f   MSVCRT:llshl.obj
+ 0001:000141f0       __aullshr                  100151f0 f   MSVCRT:ullshr.obj
+ 0001:00014210       __allrem                   10015210 f   MSVCRT:llrem.obj
+ 0001:000142d0       __aulldiv                  100152d0 f   MSVCRT:ulldiv.obj
+ 0001:00014340       __aullrem                  10015340 f   MSVCRT:ullrem.obj
+ 0001:000143c0       __alldiv                   100153c0 f   MSVCRT:lldiv.obj
+ 0001:00014470       __allshr                   10015470 f   MSVCRT:llshr.obj
+ 0001:00014492       __setjmp3                  10015492 f   MSVCRT:MSVCR90.dll
+ 0001:000144e8       __get_sse2_info            100154e8 f   MSVCRT:cpu_disp.obj
+ 0001:0001454a       ___sse2_available_init     1001554a f   MSVCRT:cpu_disp.obj
+ 0002:00000000       __imp__GetModuleFileNameA@12 10016000     kernel32:KERNEL32.dll
+ 0002:00000004       __imp__SetUnhandledExceptionFilter@4 10016004     kernel32:KERNEL32.dll
+ 0002:00000008       __imp__UnhandledExceptionFilter@4 10016008     kernel32:KERNEL32.dll
+ 0002:0000000c       __imp__GetCurrentProcess@0 1001600c     kernel32:KERNEL32.dll
+ 0002:00000010       __imp__TerminateProcess@8  10016010     kernel32:KERNEL32.dll
+ 0002:00000014       __imp__GetSystemTimeAsFileTime@4 10016014     kernel32:KERNEL32.dll
+ 0002:00000018       __imp__GetCurrentProcessId@0 10016018     kernel32:KERNEL32.dll
+ 0002:0000001c       __imp__GetCurrentThreadId@0 1001601c     kernel32:KERNEL32.dll
+ 0002:00000020       __imp__GetTickCount@0      10016020     kernel32:KERNEL32.dll
+ 0002:00000024       __imp__QueryPerformanceCounter@4 10016024     kernel32:KERNEL32.dll
+ 0002:00000028       __imp__InterlockedCompareExchange@12 10016028     kernel32:KERNEL32.dll
+ 0002:0000002c       __imp__Sleep@4             1001602c     kernel32:KERNEL32.dll
+ 0002:00000030       __imp__InterlockedExchange@8 10016030     kernel32:KERNEL32.dll
+ 0002:00000034       __imp__IsDebuggerPresent@0 10016034     kernel32:KERNEL32.dll
+ 0002:00000038       \177KERNEL32_NULL_THUNK_DATA 10016038     kernel32:KERNEL32.dll
+ 0002:0000003c       __imp__strchr              1001603c     MSVCRT:MSVCR90.dll
+ 0002:00000040       __imp___snprintf           10016040     MSVCRT:MSVCR90.dll
+ 0002:00000044       __imp___errno              10016044     MSVCRT:MSVCR90.dll
+ 0002:00000048       __imp__strtol              10016048     MSVCRT:MSVCR90.dll
+ 0002:0000004c       __imp__printf              1001604c     MSVCRT:MSVCR90.dll
+ 0002:00000050       __imp__fprintf             10016050     MSVCRT:MSVCR90.dll
+ 0002:00000054       __imp___vsnprintf          10016054     MSVCRT:MSVCR90.dll
+ 0002:00000058       __imp__fwrite              10016058     MSVCRT:MSVCR90.dll
+ 0002:0000005c       __imp__strrchr             1001605c     MSVCRT:MSVCR90.dll
+ 0002:00000060       __imp__longjmp             10016060     MSVCRT:MSVCR90.dll
+ 0002:00000064       __imp__realloc             10016064     MSVCRT:MSVCR90.dll
+ 0002:00000068       __imp__strtoul             10016068     MSVCRT:MSVCR90.dll
+ 0002:0000006c       __imp___localtime64        1001606c     MSVCRT:MSVCR90.dll
+ 0002:00000070       __imp__getenv              10016070     MSVCRT:MSVCR90.dll
+ 0002:00000074       __imp__fclose              10016074     MSVCRT:MSVCR90.dll
+ 0002:00000078       __imp____iob_func          10016078     MSVCRT:MSVCR90.dll
+ 0002:0000007c       __imp__exit                1001607c     MSVCRT:MSVCR90.dll
+ 0002:00000080       __imp___encode_pointer     10016080     MSVCRT:MSVCR90.dll
+ 0002:00000084       __imp___malloc_crt         10016084     MSVCRT:MSVCR90.dll
+ 0002:00000088       __imp___encoded_null       10016088     MSVCRT:MSVCR90.dll
+ 0002:0000008c       __imp___decode_pointer     1001608c     MSVCRT:MSVCR90.dll
+ 0002:00000090       __imp___initterm           10016090     MSVCRT:MSVCR90.dll
+ 0002:00000094       __imp___initterm_e         10016094     MSVCRT:MSVCR90.dll
+ 0002:00000098       __imp___amsg_exit          10016098     MSVCRT:MSVCR90.dll
+ 0002:0000009c       __imp___adjust_fdiv        1001609c     MSVCRT:MSVCR90.dll
+ 0002:000000a0       __imp____CppXcptFilter     100160a0     MSVCRT:MSVCR90.dll
+ 0002:000000a4       __imp____clean_type_info_names_internal 100160a4     MSVCRT:MSVCR90.dll
+ 0002:000000a8       __imp___unlock             100160a8     MSVCRT:MSVCR90.dll
+ 0002:000000ac       __imp____dllonexit         100160ac     MSVCRT:MSVCR90.dll
+ 0002:000000b0       __imp___lock               100160b0     MSVCRT:MSVCR90.dll
+ 0002:000000b4       __imp___onexit             100160b4     MSVCRT:MSVCR90.dll
+ 0002:000000b8       __imp___except_handler4_common 100160b8     MSVCRT:MSVCR90.dll
+ 0002:000000bc       __imp___crt_debugger_hook  100160bc     MSVCRT:MSVCR90.dll
+ 0002:000000c0       __imp__fputs               100160c0     MSVCRT:MSVCR90.dll
+ 0002:000000c4       __imp___strtoi64           100160c4     MSVCRT:MSVCR90.dll
+ 0002:000000c8       __imp__malloc              100160c8     MSVCRT:MSVCR90.dll
+ 0002:000000cc       __imp___strtoui64          100160cc     MSVCRT:MSVCR90.dll
+ 0002:000000d0       __imp__free                100160d0     MSVCRT:MSVCR90.dll
+ 0002:000000d4       __imp__ldexp               100160d4     MSVCRT:MSVCR90.dll
+ 0002:000000d8       __imp__strncmp             100160d8     MSVCRT:MSVCR90.dll
+ 0002:000000dc       __imp__memmove             100160dc     MSVCRT:MSVCR90.dll
+ 0002:000000e0       __imp__sscanf              100160e0     MSVCRT:MSVCR90.dll
+ 0002:000000e4       __imp__sprintf             100160e4     MSVCRT:MSVCR90.dll
+ 0002:000000e8       __imp__fputc               100160e8     MSVCRT:MSVCR90.dll
+ 0002:000000ec       __imp__strtod              100160ec     MSVCRT:MSVCR90.dll
+ 0002:000000f0       __imp___time64             100160f0     MSVCRT:MSVCR90.dll
+ 0002:000000f4       __imp___read               100160f4     MSVCRT:MSVCR90.dll
+ 0002:000000f4       __imp__read                100160f4     MSVCRT:MSVCR90.dll
+ 0002:000000f8       __imp___close              100160f8     MSVCRT:MSVCR90.dll
+ 0002:000000f8       __imp__close               100160f8     MSVCRT:MSVCR90.dll
+ 0002:000000fc       __imp__strlwr              100160fc     MSVCRT:MSVCR90.dll
+ 0002:000000fc       __imp___strlwr             100160fc     MSVCRT:MSVCR90.dll
+ 0002:00000100       __imp___open               10016100     MSVCRT:MSVCR90.dll
+ 0002:00000100       __imp__open                10016100     MSVCRT:MSVCR90.dll
+ 0002:00000104       __imp___lseek              10016104     MSVCRT:MSVCR90.dll
+ 0002:00000104       __imp__lseek               10016104     MSVCRT:MSVCR90.dll
+ 0002:00000108       __imp___fdopen             10016108     MSVCRT:MSVCR90.dll
+ 0002:00000108       __imp__fdopen              10016108     MSVCRT:MSVCR90.dll
+ 0002:0000010c       __imp__stricmp             1001610c     MSVCRT:MSVCR90.dll
+ 0002:0000010c       __imp___stricmp            1001610c     MSVCRT:MSVCR90.dll
+ 0002:00000110       __imp___unlink             10016110     MSVCRT:MSVCR90.dll
+ 0002:00000110       __imp__unlink              10016110     MSVCRT:MSVCR90.dll
+ 0002:00000114       __imp___getcwd             10016114     MSVCRT:MSVCR90.dll
+ 0002:00000114       __imp__getcwd              10016114     MSVCRT:MSVCR90.dll
+ 0002:00000118       __imp__memcpy              10016118     MSVCRT:MSVCR90.dll
+ 0002:0000011c       __imp__memset              1001611c     MSVCRT:MSVCR90.dll
+ 0002:00000120       __imp___setjmp3            10016120     MSVCRT:MSVCR90.dll
+ 0002:00000124       \177MSVCR90_NULL_THUNK_DATA 10016124     MSVCRT:MSVCR90.dll
+ 0002:00000128       ___xc_a                    10016128     MSVCRT:cinitexe.obj
+ 0002:0000012c       ___xc_z                    1001612c     MSVCRT:cinitexe.obj
+ 0002:00000130       ___xi_a                    10016130     MSVCRT:cinitexe.obj
+ 0002:0000013c       ___xi_z                    1001613c     MSVCRT:cinitexe.obj
+ 0002:00000140       __pDefaultRawDllMain       10016140     MSVCRT:crtdll.obj
+ 0002:00000140       __pRawDllMain              10016140     MSVCRT:crtdll.obj
+ 0002:0000014c       ??_C@_0M@EBEDGDHO@dumpversion?$AA@ 1001614c     libtcc.obj
+ 0002:00000158       ??_C@_01FJMABOPO@x?$AA@    10016158     libtcc.obj
+ 0002:0000015c       ??_C@_02NONPNAPN@MF?$AA@   1001615c     libtcc.obj
+ 0002:00000160       ??_C@_02OMOJLCHP@MD?$AA@   10016160     libtcc.obj
+ 0002:00000164       ??_C@_01DDCIFGEA@E?$AA@    10016164     libtcc.obj
+ 0002:00000168       ??_C@_04MKFKKHBG@pipe?$AA@ 10016168     libtcc.obj
+ 0002:00000170       ??_C@_01NOFIACDB@w?$AA@    10016170     libtcc.obj
+ 0002:00000174       ??_C@_01MHEDDDHA@v?$AA@    10016174     libtcc.obj
+ 0002:00000178       ??_C@_0BC@BLDBJCAK@print?9search?9dirs?$AA@ 10016178     libtcc.obj
+ 0002:0000018c       ??_C@_08OPKKDBFL@nostdinc?$AA@ 1001618c     libtcc.obj
+ 0002:00000198       ??_C@_07GALELMEM@isystem?$AA@ 10016198     libtcc.obj
+ 0002:000001a0       ??_C@_01INIBCBCB@f?$AA@    100161a0     libtcc.obj
+ 0002:000001a4       ??_C@_01GOHFPIOK@m?$AA@    100161a4     libtcc.obj
+ 0002:000001a8       ??_C@_01MJMHLOMK@O?$AA@    100161a8     libtcc.obj
+ 0002:000001ac       ??_C@_01ELNMCGJD@W?$AA@    100161ac     libtcc.obj
+ 0002:000001b0       ??_C@_03PAJNEOBC@Wl?0?$AA@ 100161b0     libtcc.obj
+ 0002:000001b4       ??_C@_01KDCPPGHE@r?$AA@    100161b4     libtcc.obj
+ 0002:000001b8       ??_C@_08LMMEOMHJ@rdynamic?$AA@ 100161b8     libtcc.obj
+ 0002:000001c4       ??_C@_08OCKJBMAE@norunsrc?$AA@ 100161c4     libtcc.obj
+ 0002:000001d0       ??_C@_03LGMJKEGG@run?$AA@  100161d0     libtcc.obj
+ 0002:000001d4       ??_C@_07NGDHDCD@pthread?$AA@ 100161d4     libtcc.obj
+ 0002:000001dc       ??_C@_08GIGAEHO@pedantic?$AA@ 100161dc     libtcc.obj
+ 0002:000001e8       ??_C@_01FMEDJKGI@o?$AA@    100161e8     libtcc.obj
+ 0002:000001ec       ??_C@_06LLKMMJGD@soname?$AA@ 100161ec     libtcc.obj
+ 0002:000001f4       ??_C@_06HBFNPGIC@shared?$AA@ 100161f4     libtcc.obj
+ 0002:000001fc       ??_C@_06GGHJAEBN@static?$AA@ 100161fc     libtcc.obj
+ 0002:00000204       ??_C@_01JEJKBAGA@g?$AA@    10016204     libtcc.obj
+ 0002:00000208       ??_C@_01OJONOECF@b?$AA@    10016208     libtcc.obj
+ 0002:0000020c       ??_C@_05GGJPBMNG@bench?$AA@ 1001620c     libtcc.obj
+ 0002:00000214       ??_C@_01HHGOMJKL@l?$AA@    10016214     libtcc.obj
+ 0002:00000218       ??_C@_01HMGJMAIH@B?$AA@    10016218     libtcc.obj
+ 0002:0000021c       ??_C@_01OCOKONAJ@L?$AA@    1001621c     libtcc.obj
+ 0002:00000220       ??_C@_01HJOKEEBB@U?$AA@    10016220     libtcc.obj
+ 0002:00000224       ??_C@_01CKDDGHAB@D?$AA@    10016224     libtcc.obj
+ 0002:00000228       ??_C@_01JPJNBJEM@I?$AA@    10016228     libtcc.obj
+ 0002:0000022c       ??_C@_01OGPIMHDM@?$DP?$AA@ 1001622c     libtcc.obj
+ 0002:00000230       ??_C@_05DOEHDILL@?9help?$AA@ 10016230     libtcc.obj
+ 0002:00000238       ??_C@_01BDACAMKP@h?$AA@    10016238     libtcc.obj
+ 0002:0000023c       ??_C@_0BD@OPBCAFHI@leading?9underscore?$AA@ 1001623c     libtcc.obj
+ 0002:00000250       ??_C@_06DBHEJNGA@common?$AA@ 10016250     libtcc.obj
+ 0002:00000258       ??_C@_0M@HDCBDPMF@signed?9char?$AA@ 10016258     libtcc.obj
+ 0002:00000264       ??_C@_0O@EDJGILKL@unsigned?9char?$AA@ 10016264     libtcc.obj
+ 0002:00000274       ??_C@_0BO@PMKGMDCF@implicit?9function?9declaration?$AA@ 10016274     libtcc.obj
+ 0002:00000294       ??_C@_05KKCIMGE@error?$AA@ 10016294     libtcc.obj
+ 0002:0000029c       ??_C@_0O@LOHNCHEH@write?9strings?$AA@ 1001629c     libtcc.obj
+ 0002:000002ac       ??_C@_0M@MHDBFHD@unsupported?$AA@ 100162ac     libtcc.obj
+ 0002:00002470       ??_C@_0BJ@CCMIMDDL@?8?$CFc?8?5expected?5?$CIgot?5?$CC?$CFs?$CC?$CJ?$AA@ 10018470     libtcc.obj
+ 0002:0000248c       ??_C@_0M@IEHHDPGI@?$CFs?5expected?$AA@ 1001848c     libtcc.obj
+ 0002:00002498       ??_C@_0BG@KGAACAHB@memory?5full?5?$CIsymbols?$CJ?$AA@ 10018498     libtcc.obj
+ 0002:000024b0       ??_C@_02GMHACPFF@?$CFu?$AA@ 100184b0     libtcc.obj
+ 0002:000024b4       ??_C@_04IIPNGMBP@L?4?$CFu?$AA@ 100184b4     libtcc.obj
+ 0002:000024bc       ??_C@_0BF@IJPOODIA@stray?5?8?2?8?5in?5program?$AA@ 100184bc     libtcc.obj
+ 0002:000024d4       ??_C@_0CC@NHBDEHFL@unexpected?5end?5of?5file?5in?5commen@ 100184d4     libtcc.obj
+ 0002:000024f8       ??_C@_0CB@IPINMOIG@missing?5terminating?5?$CFc?5character@ 100184f8     libtcc.obj
+ 0002:0000251c       ??_C@_0O@NOJMNBJB@?8?6?8?5after?5?8?$AN?8?$AA@ 1001851c     libtcc.obj
+ 0002:0000252c       ??_C@_06CCBIAIJP@?$CDendif?$AA@ 1001852c     libtcc.obj
+ 0002:00002534       ??_C@_0BC@EIAPDILM@unsupported?5token?$AA@ 10018534     libtcc.obj
+ 0002:00002548       ??_C@_0N@DMAOBPCG@?$CFs?5redefined?$AA@ 10018548     libtcc.obj
+ 0002:00002558       ??_C@_0CB@KPEOPDDE@label?5?8?$CFs?8?5declared?5but?5not?5used@ 10018558     libtcc.obj
+ 0002:0000257c       ??_C@_0CA@MLMANJIC@label?5?8?$CFs?8?5used?5but?5not?5defined?$AA@ 1001857c     libtcc.obj
+ 0002:0000259c       ??_C@_0BI@JHFMBFLM@invalid?5macro?5name?5?8?$CFs?8?$AA@ 1001859c     libtcc.obj
+ 0002:000025b4       ??_C@_0CA@FAAJLHDD@badly?5punctuated?5parameter?5list?$AA@ 100185b4     libtcc.obj
+ 0002:000025d4       ??_C@_0BC@NPIFDBGP@out?5of?5pack?5stack?$AA@ 100185d4     libtcc.obj
+ 0002:000025e8       ??_C@_0BE@FLFMODNG@invalid?5pack?5pragma?$AA@ 100185e8     libtcc.obj
+ 0002:000025fc       ??_C@_0CM@DGGBHECB@?8?$CDinclude?8?5expects?5?$CCFILENAME?$CC?5or@ 100185fc     libtcc.obj
+ 0002:00002628       ??_C@_0BM@BHGAIIA@?$CDinclude?5recursion?5too?5deep?$AA@ 10018628     libtcc.obj
+ 0002:00002644       ??_C@_01KMDKNFGN@?1?$AA@   10018644     libtcc.obj
+ 0002:00002648       ??_C@_0BM@EIILDHLE@include?5file?5?8?$CFs?8?5not?5found?$AA@ 10018648     libtcc.obj
+ 0002:00002664       ??_C@_01EFFIKLCJ@n?$AA@    10018664     libtcc.obj
+ 0002:00002666       ??_C@_00CNPNBAHC@?$AA@     10018666     libtcc.obj
+ 0002:00002668       ??_C@_0CA@GDPAGNIF@invalid?5argument?5for?5?8?$CDif?$CFsdef?8?$AA@ 10018668     libtcc.obj
+ 0002:00002688       ??_C@_0BE@PLKPDGNH@memory?5full?5?$CIifdef?$CJ?$AA@ 10018688     libtcc.obj
+ 0002:0000269c       ??_C@_0BL@JCBKECDH@?$CDelse?5without?5matching?5?$CDif?$AA@ 1001869c     libtcc.obj
+ 0002:000026b8       ??_C@_0BC@LGACBGNI@?$CDelse?5after?5?$CDelse?$AA@ 100186b8     libtcc.obj
+ 0002:000026cc       ??_C@_0BL@JAKCPEIG@?$CDelif?5without?5matching?5?$CDif?$AA@ 100186cc     libtcc.obj
+ 0002:000026e8       ??_C@_0BC@OJAONBFK@?$CDelif?5after?5?$CDelse?$AA@ 100186e8     libtcc.obj
+ 0002:000026fc       ??_C@_0BM@KLEGNAHK@?$CDendif?5without?5matching?5?$CDif?$AA@ 100186fc     libtcc.obj
+ 0002:00002718       ??_C@_05IPCKHCMJ@?$CDline?$AA@ 10018718     libtcc.obj
+ 0002:00002720       ??_C@_09NLHPLDHO@?$CDerror?5?$CFs?$AA@ 10018720     libtcc.obj
+ 0002:0000272c       ??_C@_0M@IEOJIMDN@?$CDwarning?5?$CFs?$AA@ 1001872c     libtcc.obj
+ 0002:00002738       ??_C@_0CN@FHJEOPOA@Ignoring?5unknown?5preprocessing?5d@ 10018738     libtcc.obj
+ 0002:00002768       ??_C@_0BP@MLFGPNNE@unknown?5escape?5sequence?3?5?8?2?$CFc?8?$AA@ 10018768     libtcc.obj
+ 0002:00002788       ??_C@_0CA@ECKMJHED@unknown?5escape?5sequence?3?5?8?2x?$CFx?8?$AA@ 10018788     libtcc.obj
+ 0002:000027a8       ??_C@_0BA@LKJCLHJL@number?5too?5long?$AA@ 100187a8     libtcc.obj
+ 0002:000027b8       ??_C@_0O@KPBDNCBI@invalid?5digit?$AA@ 100187b8     libtcc.obj
+ 0002:000027c8       ??_C@_08EGJNFMPO@exponent?$AA@ 100187c8     libtcc.obj
+ 0002:000027d4       ??_C@_0BA@ELEGMABH@exponent?5digits?$AA@ 100187d4     libtcc.obj
+ 0002:000027e4       ??_C@_0BK@DJELBPFI@integer?5constant?5overflow?$AA@ 100187e4     libtcc.obj
+ 0002:00002800       ??_C@_0BP@OIFEMMPM@three?5?8l?8s?5in?5integer?5constant?$AA@ 10018800     libtcc.obj
+ 0002:00002820       ??_C@_0BN@CMJPACAO@two?5?8u?8s?5in?5integer?5constant?$AA@ 10018820     libtcc.obj
+ 0002:00002840       ??_C@_0BA@EIAMBIPJ@invalid?5number?6?$AA@ 10018840     libtcc.obj
+ 0002:00002850       ??_C@_0P@IFDFMCIL@missing?5?$CDendif?$AA@ 10018850     libtcc.obj
+ 0002:00002860       ??_C@_03LEIGOOL@?8?4?8?$AA@ 10018860     libtcc.obj
+ 0002:00002864       ??_C@_0BJ@JIDJAMNB@empty?5character?5constant?$AA@ 10018864     libtcc.obj
+ 0002:00002880       ??_C@_0CD@CGKMGCHD@multi?9character?5character?5consta@ 10018880     libtcc.obj
+ 0002:000028a4       ??_C@_0BO@IJAAMLLJ@unrecognized?5character?5?2x?$CF02x?$AA@ 100188a4     libtcc.obj
+ 0002:000028c4       ??_C@_02DPKJAMEF@?$CFd?$AA@ 100188c4     libtcc.obj
+ 0002:000028c8       ??_C@_09KCPJCGNN@?$CFs?5?$CF2d?5?$CFd?$AA@ 100188c8     libtcc.obj
+ 0002:000028d4       ??_C@_0P@PLMNPDMB@?$CF02d?3?$CF02d?3?$CF02d?$AA@ 100188d4     libtcc.obj
+ 0002:000028e4       ??_C@_0CD@JNDBHJLA@macro?5?8?$CFs?8?5used?5with?5too?5many?5ar@ 100188e4     libtcc.obj
+ 0002:00002908       ??_C@_01IHBHIGKO@?0?$AA@   10018908     libtcc.obj
+ 0002:0000290c       ??_C@_0CC@OGKGBAEA@macro?5?8?$CFs?8?5used?5with?5too?5few?5arg@ 1001890c     libtcc.obj
+ 0002:00002930       ??_C@_07JAIKBJJB@?3paste?3?$AA@ 10018930     libtcc.obj
+ 0002:00002938       ??_C@_0EC@NPCFAGMC@pasting?5?$CC?$CF?4?$CKs?$CC?5and?5?$CC?$CFs?$CC?5does?5not@ 10018938     libtcc.obj
+ 0002:0000297c       ??_C@_02POKOGHLP@?51?$AA@  1001897c     libtcc.obj
+ 0002:00002980       ??_C@_02NFIDDEHM@?52?$AA@  10018980     libtcc.obj
+ 0002:00002984       ??_C@_02MMJIAFDN@?53?$AA@  10018984     libtcc.obj
+ 0002:00002988       ??_C@_0N@GAONFBBG@?$CD?5?$CFd?5?$CC?$CFs?$CC?$CFs?6?$AA@ 10018988     libtcc.obj
+ 0002:00002998       ??_C@_01EEMJAFIK@?6?$AA@   10018998     libtcc.obj
+ 0002:0000299c       ??_C@_06GMOMMLND@lvalue?$AA@ 1001899c     libtcc.obj
+ 0002:000029a4       ??_C@_0CM@GEHPMCOF@incompatible?5types?5for?5redefinit@ 100189a4     libtcc.obj
+ 0002:000029d0       ??_C@_0BF@HOOBOKID@memory?5full?5?$CIvstack?$CJ?$AA@ 100189d0     libtcc.obj
+ 0002:000029e8       ??_C@_0BN@FLONJIKG@division?5by?5zero?5in?5constant?$AA@ 100189e8     libtcc.obj
+ 0002:00002a08       ??_C@_0CH@BLBMBILJ@comparison?5between?5pointer?5and?5i@ 10018a08     libtcc.obj
+ 0002:00002a30       ??_C@_0BO@FNNBKLIP@invalid?5operands?5to?5binary?5?$CFs?$AA@ 10018a30     libtcc.obj
+ 0002:00002a50       ??_C@_0DC@BFMINLJ@comparison?5of?5distinct?5pointer?5t@ 10018a50     libtcc.obj
+ 0002:00002a84       ??_C@_0BJ@IMHMCDH@cannot?5use?5pointers?5here?$AA@ 10018a84     libtcc.obj
+ 0002:00002aa0       ??_C@_0BL@NCBCDBJM@unknown?5array?5element?5size?$AA@ 10018aa0     libtcc.obj
+ 0002:00002abc       ??_C@_0CG@MCFJGNKJ@invalid?5operands?5for?5binary?5oper@ 10018abc     libtcc.obj
+ 0002:00002ae4       ??_C@_0BF@GFMCFFCI@comparison?5of?5struct?$AA@ 10018ae4     libtcc.obj
+ 0002:00002afc       ??_C@_0DC@OFGKFIHF@nonportable?5conversion?5from?5poin@ 10018afc     libtcc.obj
+ 0002:00002b30       ??_C@_06LIJLOJAG@const?5?$AA@ 10018b30     libtcc.obj
+ 0002:00002b38       ??_C@_09GAIEOBLP@volatile?5?$AA@ 10018b38     libtcc.obj
+ 0002:00002b44       ??_C@_09EBBEKKIH@unsigned?5?$AA@ 10018b44     libtcc.obj
+ 0002:00002b50       ??_C@_04GKJNKENE@void?$AA@ 10018b50     libtcc.obj
+ 0002:00002b58       ??_C@_05HIFAKALE@_Bool?$AA@ 10018b58     libtcc.obj
+ 0002:00002b60       ??_C@_04ENMBGAPA@char?$AA@ 10018b60     libtcc.obj
+ 0002:00002b68       ??_C@_05BFKKPKCG@short?$AA@ 10018b68     libtcc.obj
+ 0002:00002b70       ??_C@_03JBIPMCLC@int?$AA@  10018b70     libtcc.obj
+ 0002:00002b74       ??_C@_04GOKPGOLB@long?$AA@ 10018b74     libtcc.obj
+ 0002:00002b7c       ??_C@_09IPNKJOIF@long?5long?$AA@ 10018b7c     libtcc.obj
+ 0002:00002b88       ??_C@_05KNFBNCOH@float?$AA@ 10018b88     libtcc.obj
+ 0002:00002b90       ??_C@_06BNJCAIGJ@double?$AA@ 10018b90     libtcc.obj
+ 0002:00002b98       ??_C@_0M@BLAFOIPH@long?5double?$AA@ 10018b98     libtcc.obj
+ 0002:00002ba4       ??_C@_07DIBCDNGL@struct?5?$AA@ 10018ba4     libtcc.obj
+ 0002:00002bac       ??_C@_05LJGMCFOG@enum?5?$AA@ 10018bac     libtcc.obj
+ 0002:00002bb4       ??_C@_0M@BAKNDHOI@?$DManonymous?$DO?$AA@ 10018bb4     libtcc.obj
+ 0002:00002bc0       ??_C@_01ODHLEDKK@?$CI?$AA@ 10018bc0     libtcc.obj
+ 0002:00002bc4       ??_C@_02KEGNLNML@?0?5?$AA@ 10018bc4     libtcc.obj
+ 0002:00002bc8       ??_C@_01PKGAHCOL@?$CJ?$AA@ 10018bc8     libtcc.obj
+ 0002:00002bcc       ??_C@_01NBENCBCI@?$CK?$AA@ 10018bcc     libtcc.obj
+ 0002:00002bd0       ??_C@_01CLKCMJKC@?5?$AA@   10018bd0     libtcc.obj
+ 0002:00002bd4       ??_C@_0BJ@JKPMCKN@cannot?5cast?5from?1to?5void?$AA@ 10018bd4     libtcc.obj
+ 0002:00002bf0       ??_C@_0CB@MPPHLFEF@assignment?5of?5read?9only?5location@ 10018bf0     libtcc.obj
+ 0002:00002c14       ??_C@_0DF@EONAKEBI@assignment?5makes?5pointer?5from?5in@ 10018c14     libtcc.obj
+ 0002:00002c4c       ??_C@_0CK@CKMHNIO@assignment?5from?5incompatible?5poi@ 10018c4c     libtcc.obj
+ 0002:00002c78       ??_C@_0DI@KJPKLMIE@assignment?5discards?5qualifiers?5f@ 10018c78     libtcc.obj
+ 0002:00002cb0       ??_C@_0DF@OGPGJAAL@assignment?5makes?5integer?5from?5po@ 10018cb0     libtcc.obj
+ 0002:00002ce8       ??_C@_0BJ@OIKFFDPG@cannot?5cast?5?8?$CFs?8?5to?5?8?$CFs?8?$AA@ 10018ce8     libtcc.obj
+ 0002:00002d04       ??_C@_0P@NNIMMKJL@attribute?5name?$AA@ 10018d04     libtcc.obj
+ 0002:00002d14       ??_C@_0N@KJODEOEJ@section?5name?$AA@ 10018d14     libtcc.obj
+ 0002:00002d24       ??_C@_0BA@EDGDNHPN@alias?$CI?$CCtarget?$CC?$CJ?$AA@ 10018d24     libtcc.obj
+ 0002:00002d34       ??_C@_0CK@LFNOAPEA@alignment?5must?5be?5a?5positive?5pow@ 10018d34     libtcc.obj
+ 0002:00002d60       ??_C@_0BM@OBAIKAIH@__mode__?$CI?$CFs?$CJ?5not?5supported?6?$AA@ 10018d60     libtcc.obj
+ 0002:00002d7c       ??_C@_0BH@CDMJFMMG@?8?$CFs?8?5attribute?5ignored?$AA@ 10018d7c     libtcc.obj
+ 0002:00002d94       ??_C@_0BH@CGIIDOO@struct?1union?1enum?5name?$AA@ 10018d94     libtcc.obj
+ 0002:00002dac       ??_C@_0N@MLIENLGI@invalid?5type?$AA@ 10018dac     libtcc.obj
+ 0002:00002dbc       ??_C@_0BK@GCDCFIHP@unknown?5struct?1union?1enum?$AA@ 10018dbc     libtcc.obj
+ 0002:00002dd8       ??_C@_0CC@BHKOHJMC@struct?1union?1enum?5already?5define@ 10018dd8     libtcc.obj
+ 0002:00002dfc       ??_C@_0L@IAONLGLH@identifier?$AA@ 10018dfc     libtcc.obj
+ 0002:00002e08       ??_C@_0CA@LIBLCHCK@redefinition?5of?5enumerator?5?8?$CFs?8?$AA@ 10018e08     libtcc.obj
+ 0002:00002e28       ??_C@_0DE@HLEKFEFG@flexible?5array?5member?5?8?$CFs?8?5not?5a@ 10018e28     libtcc.obj
+ 0002:00002e5c       ??_C@_0BP@LHLMCBBM@field?5?8?$CFs?8?5has?5incomplete?5type?$AA@ 10018e5c     libtcc.obj
+ 0002:00002e7c       ??_C@_0BG@MGHBCMMJ@invalid?5type?5for?5?8?$CFs?8?$AA@ 10018e7c     libtcc.obj
+ 0002:00002e94       ??_C@_0CB@IAADAGIN@negative?5width?5in?5bit?9field?5?8?$CFs?8@ 10018e94     libtcc.obj
+ 0002:00002eb8       ??_C@_0BO@PKLCKJEB@zero?5width?5for?5bit?9field?5?8?$CFs?8?$AA@ 10018eb8     libtcc.obj
+ 0002:00002ed8       ??_C@_0CA@NKLGGNEB@bitfields?5must?5have?5scalar?5type?$AA@ 10018ed8     libtcc.obj
+ 0002:00002ef8       ??_C@_0BP@FGIANNHA@width?5of?5?8?$CFs?8?5exceeds?5its?5type?$AA@ 10018ef8     libtcc.obj
+ 0002:00002f18       ??_C@_0BF@GAGNKAFM@too?5many?5basic?5types?$AA@ 10018f18     libtcc.obj
+ 0002:00002f30       ??_C@_0BN@KBJABNDE@signed?5and?5unsigned?5modifier?$AA@ 10018f30     libtcc.obj
+ 0002:00002f50       ??_C@_0BA@KALEFPLN@string?5constant?$AA@ 10018f50     libtcc.obj
+ 0002:00002f60       ??_C@_0BL@CKEKPHOF@parameter?5declared?5as?5void?$AA@ 10018f60     libtcc.obj
+ 0002:00002f7c       ??_C@_0BD@KPFCOOIM@invalid?5array?5size?$AA@ 10018f7c     libtcc.obj
+ 0002:00002f90       ??_C@_0DD@CHMFABHK@size?5of?5variable?5length?5array?5sh@ 10018f90     libtcc.obj
+ 0002:00002fc4       ??_C@_0CF@GILALBDO@declaration?5of?5an?5array?5of?5funct@ 10018fc4     libtcc.obj
+ 0002:00002fec       ??_C@_07PFMCDPMA@pointer?$AA@ 10018fec     libtcc.obj
+ 0002:00002ff4       ??_C@_0BP@MFCKLAFC@too?5many?5arguments?5to?5function?$AA@ 10018ff4     libtcc.obj
+ 0002:00003014       ??_C@_04GPMDFGEJ@type?$AA@ 10019014     libtcc.obj
+ 0002:0000301c       ??_C@_0CE@FMGKFMEE@pointer?5not?5accepted?5for?5unary?5p@ 1001901c     libtcc.obj
+ 0002:00003040       ??_C@_0CF@HGAIJOCO@sizeof?5applied?5to?5an?5incomplete?5@ 10019040     libtcc.obj
+ 0002:00003068       ??_C@_0DF@LJNHFOGD@__builtin_frame_address?5only?5tak@ 10019068     libtcc.obj
+ 0002:000030a0       ??_C@_0BB@DNOPHIME@label?5identifier?$AA@ 100190a0     libtcc.obj
+ 0002:000030b4       ??_C@_0BA@DEKMALKC@?8?$CFs?8?5undeclared?$AA@ 100190b4     libtcc.obj
+ 0002:000030c4       ??_C@_0CG@FLKCLDPD@implicit?5declaration?5of?5function@ 100190c4     libtcc.obj
+ 0002:000030ec       ??_C@_0BA@LKFOOOEP@struct?5or?5union?$AA@ 100190ec     libtcc.obj
+ 0002:000030fc       ??_C@_0BE@CDOGPJNG@field?5not?5found?3?5?$CFs?$AA@ 100190fc     libtcc.obj
+ 0002:00003110       ??_C@_0BB@DGFFPMGM@function?5pointer?$AA@ 10019110     libtcc.obj
+ 0002:00003124       ??_C@_0BO@NFEJEOPH@too?5few?5arguments?5to?5function?$AA@ 10019124     libtcc.obj
+ 0002:00003144       ??_C@_0BE@IKKOLCAO@constant?5expression?$AA@ 10019144     libtcc.obj
+ 0002:00003158       ??_C@_0BM@KACJPPDM@unsupported?5expression?5type?$AA@ 10019158     libtcc.obj
+ 0002:00003174       ??_C@_0N@FMHOEHEA@cannot?5break?$AA@ 10019174     libtcc.obj
+ 0002:00003184       ??_C@_0BA@DCEPBJAH@cannot?5continue?$AA@ 10019184     libtcc.obj
+ 0002:00003194       ??_C@_06DOPOGBGP@switch?$AA@ 10019194     libtcc.obj
+ 0002:0000319c       ??_C@_0BB@FEEHPGBM@empty?5case?5range?$AA@ 1001919c     libtcc.obj
+ 0002:000031b0       ??_C@_0BD@LFABMECF@too?5many?5?8default?8?$AA@ 100191b0     libtcc.obj
+ 0002:000031c4       ??_C@_0BF@EBOLAHE@duplicate?5label?5?8?$CFs?8?$AA@ 100191c4     libtcc.obj
+ 0002:000031dc       ??_C@_0DF@GGGKAHFO@deprecated?5use?5of?5label?5at?5end?5o@ 100191dc     libtcc.obj
+ 0002:00003214       ??_C@_0L@BNMINHFN@array?5type?$AA@ 10019214     libtcc.obj
+ 0002:00003220       ??_C@_0O@BGLHAEFA@invalid?5index?$AA@ 10019220     libtcc.obj
+ 0002:00003230       ??_C@_0BC@BCJELJKP@struct?1union?5type?$AA@ 10019230     libtcc.obj
+ 0002:00003244       ??_C@_05EIBGDMPB@field?$AA@ 10019244     libtcc.obj
+ 0002:0000324c       ??_C@_0BE@PACBBGIE@too?5many?5field?5init?$AA@ 1001924c     libtcc.obj
+ 0002:00003260       ??_C@_0DB@GKIHBNBE@range?5init?5not?5supported?5yet?5for@ 10019260     libtcc.obj
+ 0002:00003294       ??_C@_0CE@EIHKILPN@initializer?5element?5is?5not?5const@ 10019294     libtcc.obj
+ 0002:000032b8       ??_C@_0DD@OMGOMKPB@initializer?5element?5is?5not?5compu@ 100192b8     libtcc.obj
+ 0002:000032f0       ??_C@_0EN@ICOPDCOC@character?5array?5initializer?5must@ 100192f0     libtcc.obj
+ 0002:00003340       ??_C@_0CJ@PKOIHANL@initializer?9string?5for?5array?5is?5@ 10019340     libtcc.obj
+ 0002:0000336c       ??_C@_0BA@IPAKCAFH@index?5too?5large?$AA@ 1001936c     libtcc.obj
+ 0002:0000337c       ??_C@_04HJDBPPOC@cast?$AA@ 1001937c     libtcc.obj
+ 0002:00003384       ??_C@_0BC@HJDBBHJB@unknown?5type?5size?$AA@ 10019384     libtcc.obj
+ 0002:00003398       ??_C@_0CG@LPGHNENJ@unexpected?5end?5of?5file?5in?5initia@ 10019398     libtcc.obj
+ 0002:000033c0       ??_C@_06ICBBMEDF@?$CFs?3?$CFc1?$AA@ 100193c0     libtcc.obj
+ 0002:000033c8       ??_C@_0BB@NHEEJAHO@declaration?5list?$AA@ 100193c8     libtcc.obj
+ 0002:000033dc       ??_C@_0DF@EDLFJEIK@declaration?5for?5parameter?5?8?$CFs?8?5b@ 100193dc     libtcc.obj
+ 0002:00003414       ??_C@_0CB@CGFDDMP@storage?5class?5specified?5for?5?8?$CFs?8@ 10019414     libtcc.obj
+ 0002:00003438       ??_C@_0CN@LILKGCLN@function?5without?5file?5scope?5cann@ 10019438     libtcc.obj
+ 0002:00003468       ??_C@_0BL@GJDHEAND@cannot?5use?5local?5functions?$AA@ 10019468     libtcc.obj
+ 0002:00003484       ??_C@_0BE@PLEDFMBG@function?5definition?$AA@ 10019484     libtcc.obj
+ 0002:00003498       ??_C@_0BF@IFLPIDJI@redefinition?5of?5?8?$CFs?8?$AA@ 10019498     libtcc.obj
+ 0002:000034b0       ??_C@_0BH@CFIIDOJD@unexpected?5end?5of?5file?$AA@ 100194b0     libtcc.obj
+ 0002:000034c8       ??_C@_0CM@LPGEMAAL@Variable?5length?5array?5cannot?5be?5@ 100194c8     libtcc.obj
+ 0002:000034f4       ??_C@_0CI@CNLPKLKD@unsupported?5forward?5__alias__?5at@ 100194f4     libtcc.obj
+ 0002:0000351c       ??_C@_0P@JKNGMIOP@?$CFs?5not?5defined?$AA@ 1001951c     libtcc.obj
+ 0002:0000352c       ??_C@_0BD@ECDFHELM@?8?$CFs?8?5defined?5twice?$AA@ 1001952c     libtcc.obj
+ 0002:00003540       ??_C@_06KBENNADC@?4rel?$CFs?$AA@ 10019540     libtcc.obj
+ 0002:00003548       ??_C@_06CFKFNPAK@_fp_hw?$AA@ 10019548     libtcc.obj
+ 0002:00003550       ??_C@_0BG@GMNIAGBA@undefined?5symbol?5?8?$CFs?8?$AA@ 10019550     libtcc.obj
+ 0002:00003568       ??_C@_0CF@NEEJOGHD@can?5only?5produce?516?9bit?5binary?5f@ 10019568     libtcc.obj
+ 0002:00003590       ??_C@_04OJAFGGNC@?4got?$AA@ 10019590     libtcc.obj
+ 0002:00003598       ??_C@_0BG@OPCPMLGD@_GLOBAL_OFFSET_TABLE_?$AA@ 10019598     libtcc.obj
+ 0002:000035b0       ??_C@_0L@BGFNNLDP@__?$CFs_start?$AA@ 100195b0     libtcc.obj
+ 0002:000035bc       ??_C@_08NNELPKGK@__?$CFs_end?$AA@ 100195bc     libtcc.obj
+ 0002:000035c8       ??_C@_0P@BPAFIEIN@__bounds_start?$AA@ 100195c8     libtcc.obj
+ 0002:000035d8       ??_C@_05DABFODEL@?4init?$AA@ 100195d8     libtcc.obj
+ 0002:000035e0       ??_C@_0N@GDANBNG@__bound_init?$AA@ 100195e0     libtcc.obj
+ 0002:000035f0       ??_C@_05GFOLEBJA@?$CFs?1?$CFs?$AA@ 100195f0     libtcc.obj
+ 0002:000035f8       ??_C@_01PAPGNFGE@c?$AA@    100195f8     libtcc.obj
+ 0002:000035fc       ??_C@_09PLNHMJNH@libtcc1?4a?$AA@ 100195fc     libtcc.obj
+ 0002:00003608       ??_C@_06JJDKAAIO@crtn?4o?$AA@ 10019608     libtcc.obj
+ 0002:00003610       ??_C@_06POCMODBC@_etext?$AA@ 10019610     libtcc.obj
+ 0002:00003618       ??_C@_06CPABPMLH@_edata?$AA@ 10019618     libtcc.obj
+ 0002:00003620       ??_C@_04MMLOBPEA@_end?$AA@ 10019620     libtcc.obj
+ 0002:00003628       ??_C@_0P@BCDIHCDL@?4preinit_array?$AA@ 10019628     libtcc.obj
+ 0002:00003638       ??_C@_0M@KKLOPICM@?4init_array?$AA@ 10019638     libtcc.obj
+ 0002:00003644       ??_C@_0M@FIEFFOKA@?4fini_array?$AA@ 10019644     libtcc.obj
+ 0002:00003650       ??_C@_0L@BIJGMGBA@__start_?$CFs?$AA@ 10019650     libtcc.obj
+ 0002:0000365c       ??_C@_09GKPDEKCK@__stop_?$CFs?$AA@ 1001965c     libtcc.obj
+ 0002:00003668       ??_C@_05BBKBLGBF@LD_SO?$AA@ 10019668     libtcc.obj
+ 0002:00003670       ??_C@_0BD@MCEFMDKC@?1lib?1ld?9linux?4so?42?$AA@ 10019670     libtcc.obj
+ 0002:00003684       ??_C@_07CCBBLDBI@?4interp?$AA@ 10019684     libtcc.obj
+ 0002:0000368c       ??_C@_05KCNAKBFG@?4hash?$AA@ 1001968c     libtcc.obj
+ 0002:00003694       ??_C@_07DEIMHJKL@?4dynstr?$AA@ 10019694     libtcc.obj
+ 0002:0000369c       ??_C@_07PBAOOEGG@?4dynsym?$AA@ 1001969c     libtcc.obj
+ 0002:000036a4       ??_C@_08CIKCFOBL@?4dynamic?$AA@ 100196a4     libtcc.obj
+ 0002:000036b0       ??_C@_04CGINLHKN@?4plt?$AA@ 100196b0     libtcc.obj
+ 0002:000036b8       ??_C@_0BO@BBDMAEDC@undefined?5dynamic?5symbol?5?8?$CFs?8?$AA@ 100196b8     libtcc.obj
+ 0002:000036d8       ??_C@_09LDGDEJMD@?4shstrtab?$AA@ 100196d8     libtcc.obj
+ 0002:000036e4       ??_C@_06KJFGBABF@_start?$AA@ 100196e4     libtcc.obj
+ 0002:000036ec       ??_C@_0BF@DKJHJAL@could?5not?5write?5?8?$CFs?8?$AA@ 100196ec     libtcc.obj
+ 0002:00003704       ??_C@_02GMLFBBN@wb?$AA@    10019704     libtcc.obj
+ 0002:00003708       ??_C@_06EMBHLHME@?$DM?9?5?$CFs?6?$AA@ 10019708     libtcc.obj
+ 0002:00003710       ??_C@_0BE@KNKPELPD@invalid?5object?5file?$AA@ 10019710     libtcc.obj
+ 0002:00003724       ??_C@_0CE@KDIIGPAH@object?5must?5contain?5only?5one?5sym@ 10019724     libtcc.obj
+ 0002:00003748       ??_C@_08HOBMPMHD@?4stabstr?$AA@ 10019748     libtcc.obj
+ 0002:00003754       ??_C@_0O@BKHAIOJE@?4gnu?4linkonce?$AA@ 10019754     libtcc.obj
+ 0002:00003764       ??_C@_0BF@EJAHGEEB@invalid?5section?5type?$AA@ 10019764     libtcc.obj
+ 0002:0000377c       ??_C@_05DHGKDPPM@?4stab?$AA@ 1001977c     libtcc.obj
+ 0002:00003784       ??_C@_0CL@FPNLLEKH@Invalid?5relocation?5entry?5?$FL?$CF2d?$FN?5?8@ 10019784     libtcc.obj
+ 0002:000037b0       ??_C@_0BA@ILILCNAG@invalid?5archive?$AA@ 100197b0     libtcc.obj
+ 0002:000037c0       ??_C@_02CBLDBPFN@?1?1?$AA@ 100197c0     libtcc.obj
+ 0002:000037c4       ??_C@_09EIKGOKKA@__?4SYMDEF?$AA@ 100197c4     libtcc.obj
+ 0002:000037d0       ??_C@_0L@MEICDNGP@__?4SYMDEF?1?$AA@ 100197d0     libtcc.obj
+ 0002:000037dc       ??_C@_0N@OFCGLNAC@ARFILENAMES?1?$AA@ 100197dc     libtcc.obj
+ 0002:000037ec       ??_C@_0BB@IDKMKGJG@bad?5architecture?$AA@ 100197ec     libtcc.obj
+ 0002:00003800       ??_C@_0BO@JDBDJPBE@referenced?5dll?5?8?$CFs?8?5not?5found?$AA@ 10019800     libtcc.obj
+ 0002:00003820       ??_C@_0M@DGBJNJHM@?1?4?9_?$CL?$DN$?3?2?0?$HO?$AA@ 10019820     libtcc.obj
+ 0002:0000382c       ??_C@_05NAIABEH@GROUP?$AA@ 1001982c     libtcc.obj
+ 0002:00003834       ??_C@_0BG@BGMPDKNM@library?5name?5expected?$AA@ 10019834     libtcc.obj
+ 0002:0000384c       ??_C@_07HIBFKMAP@lib?$CFs?4a?$AA@ 1001984c     libtcc.obj
+ 0002:00003854       ??_C@_08GNAAAIEL@lib?$CFs?4so?$AA@ 10019854     libtcc.obj
+ 0002:00003860       ??_C@_0BC@GIIICCJP@filename?5expected?$AA@ 10019860     libtcc.obj
+ 0002:00003874       ??_C@_09IHFECPEM@AS_NEEDED?$AA@ 10019874     libtcc.obj
+ 0002:00003880       ??_C@_05POAEJIHJ@INPUT?$AA@ 10019880     libtcc.obj
+ 0002:00003888       ??_C@_0O@MLHNNKAA@OUTPUT_FORMAT?$AA@ 10019888     libtcc.obj
+ 0002:00003898       ??_C@_06JNJLBPLI@TARGET?$AA@ 10019898     libtcc.obj
+ 0002:000038a0       ??_C@_0DC@OEAOMFAM@unhandled?5size?5when?5dereferencin@ 100198a0     libtcc.obj
+ 0002:000038d4       ??_C@_05GEHFNEJL@L?4?4?$CFu?$AA@ 100198d4     libtcc.obj
+ 0002:000038dc       ??_C@_0CE@IHNKIIMI@local?5label?5?8?$CFd?8?5not?5found?5backw@ 100198dc     libtcc.obj
+ 0002:00003900       ??_C@_0BG@KDOFLDHN@invalid?5number?5syntax?$AA@ 10019900     libtcc.obj
+ 0002:00003918       ??_C@_0BN@JAIFKDDL@invalid?5operation?5with?5label?$AA@ 10019918     libtcc.obj
+ 0002:00003938       ??_C@_0BL@NBEGALNK@bad?5expression?5syntax?5?$FL?$CFs?$FN?$AA@ 10019938     libtcc.obj
+ 0002:00003954       ??_C@_0BB@OMEBCKB@division?5by?5zero?$AA@ 10019954     libtcc.obj
+ 0002:00003968       ??_C@_08KFDOCAEB@constant?$AA@ 10019968     libtcc.obj
+ 0002:00003974       ??_C@_0CF@ONNMMNIH@assembler?5label?5?8?$CFs?8?5already?5def@ 10019974     libtcc.obj
+ 0002:0000399c       ??_C@_0BA@FMEIPEPK@64?5bit?5constant?$AA@ 1001999c     libtcc.obj
+ 0002:000039ac       ??_C@_0BK@FLINNOI@repeat?5?$DM?50?$DL?5?4fill?5ignored?$AA@ 100199ac     libtcc.obj
+ 0002:000039c8       ??_C@_0BI@NLOHKEB@size?5?$DM?50?$DL?5?4fill?5ignored?$AA@ 100199c8     libtcc.obj
+ 0002:000039e0       ??_C@_0BK@JHHLNBLK@attempt?5to?5?4org?5backwards?$AA@ 100199e0     libtcc.obj
+ 0002:000039fc       ??_C@_05DMCHLPLE@?4?$CFs?$CFd?$AA@ 100199fc     libtcc.obj
+ 0002:00003a04       ??_C@_03KEMCFGNA@?4?$CFs?$AA@ 10019a04     libtcc.obj
+ 0002:00003a08       ??_C@_0BC@FIEDGBBM@ignoring?5?4file?5?$CFs?$AA@ 10019a08     libtcc.obj
+ 0002:00003a1c       ??_C@_0BD@DJNEJBDA@ignoring?5?4ident?5?$CFs?$AA@ 10019a1c     libtcc.obj
+ 0002:00003a30       ??_C@_0BE@IONJFFJL@label?5not?5found?3?5?$CFs?$AA@ 10019a30     libtcc.obj
+ 0002:00003a44       ??_C@_0BE@PJKNFFHM@ignoring?5?4size?5?$CFs?0?$CK?$AA@ 10019a44     libtcc.obj
+ 0002:00003a58       ??_C@_08HFFPPCHF@function?$AA@ 10019a58     libtcc.obj
+ 0002:00003a64       ??_C@_08CDDHPCCN@STT_FUNC?$AA@ 10019a64     libtcc.obj
+ 0002:00003a70       ??_C@_0CO@BOBOBDCF@change?5type?5of?5?8?$CFs?8?5from?50x?$CFx?5to@ 10019a70     libtcc.obj
+ 0002:00003aa0       ??_C@_0BP@KJFNHPMB@no?5previous?5section?5referenced?$AA@ 10019aa0     libtcc.obj
+ 0002:00003ac0       ??_C@_0CC@GDOPIDFG@unknown?5assembler?5directive?5?8?4?$CFs@ 10019ac0     libtcc.obj
+ 0002:00003ae4       ??_C@_03BAGHGFEH@?8?3?8?$AA@ 10019ae4     libtcc.obj
+ 0002:00003ae8       ??_C@_0M@MKKKCMOM@end?5of?5line?$AA@ 10019ae8     libtcc.obj
+ 0002:00003af4       ??_C@_05FDKCKNBC@?3asm?3?$AA@ 10019af4     libtcc.obj
+ 0002:00003afc       ??_C@_0CD@MINLMBNM@invalid?5operand?5reference?5after?5@ 10019afc     libtcc.obj
+ 0002:00003b20       ??_C@_0BG@COPNGNON@too?5many?5asm?5operands?$AA@ 10019b20     libtcc.obj
+ 0002:00003b38       ??_C@_03BBKFAPHA@?8?$DL?8?$AA@ 10019b38     libtcc.obj
+ 0002:00003b3c       ??_C@_0BG@CBMHEOOH@1?0?52?0?54?5or?58?5constant?$AA@ 10019b3c     libtcc.obj
+ 0002:00003b54       ??_C@_08DHHIDNEP@register?$AA@ 10019b54     libtcc.obj
+ 0002:00003b60       ??_C@_0BB@HOGFGBMF@unknown?5register?$AA@ 10019b60     libtcc.obj
+ 0002:00003b74       ??_C@_0BN@DGOMJBPH@incorrect?5number?5of?5operands?$AA@ 10019b74     libtcc.obj
+ 0002:00003b94       ??_C@_0BB@KMMEDOII@incorrect?5prefix?$AA@ 10019b94     libtcc.obj
+ 0002:00003ba8       ??_C@_0DE@GHPDHDLM@segment?5prefix?5must?5be?5followed?5@ 10019ba8     libtcc.obj
+ 0002:00003bdc       ??_C@_0BN@OFGIEDPD@bad?5operand?5with?5opcode?5?8?$CFs?8?$AA@ 10019bdc     libtcc.obj
+ 0002:00003bfc       ??_C@_0BE@OCJCIJMD@unknown?5opcode?5?8?$CFs?8?$AA@ 10019bfc     libtcc.obj
+ 0002:00003c10       ??_C@_0BL@DABFNPCA@cannot?5infer?5opcode?5suffix?$AA@ 10019c10     libtcc.obj
+ 0002:00003c2c       ??_C@_0BF@HBGFPACP@invalid?5displacement?$AA@ 10019c2c     libtcc.obj
+ 0002:00003c44       ??_C@_0BA@PFKLNCEM@cannot?5relocate?$AA@ 10019c44     libtcc.obj
+ 0002:00003c54       ??_C@_0BI@JNBBNJHN@unknown?5constraint?5?8?$CFc?8?$AA@ 10019c54     libtcc.obj
+ 0002:00003c6c       ??_C@_0CK@CMFIOCPH@invalid?5reference?5in?5constraint?5@ 10019c6c     libtcc.obj
+ 0002:00003c98       ??_C@_0CI@OPKINIIA@cannot?5reference?5twice?5the?5same?5@ 10019c98     libtcc.obj
+ 0002:00003cc0       ??_C@_0CN@KMIDHEKD@?8?$CFc?8?5modifier?5can?5only?5be?5applie@ 10019cc0     libtcc.obj
+ 0002:00003cf0       ??_C@_0DA@CMBGNOGE@asm?5constraint?5?$CFd?5?$CI?8?$CFs?8?$CJ?5could?5n@ 10019cf0     libtcc.obj
+ 0002:00003d20       ??_C@_0DC@BEDDLMEF@could?5not?5find?5free?5output?5regis@ 10019d20     libtcc.obj
+ 0002:00003d54       ??_C@_09IELDEEOG@?$CFd?$CI?$CF?$CFebp?$CJ?$AA@ 10019d54     libtcc.obj
+ 0002:00003d60       ??_C@_0BI@BABFIKMJ@internal?5compiler?5error?$AA@ 10019d60     libtcc.obj
+ 0002:00003d78       ??_C@_06EFJMHFGF@?$CI?$CF?$CF?$CFs?$CJ?$AA@ 10019d78     libtcc.obj
+ 0002:00003d80       ??_C@_0BJ@HMPGFNGM@cannot?5use?5byte?5register?$AA@ 10019d80     libtcc.obj
+ 0002:00003d9c       ??_C@_04JNIEFJKE@?$CF?$CF?$CFs?$AA@ 10019d9c     libtcc.obj
+ 0002:00003da4       ??_C@_06HLKELJGF@memory?$AA@ 10019da4     libtcc.obj
+ 0002:00003dac       ??_C@_02EPPGLPA@cc?$AA@    10019dac     libtcc.obj
+ 0002:00003db0       ??_C@_0BO@CIMKJMOL@invalid?5clobber?5register?5?8?$CFs?8?$AA@ 10019db0     libtcc.obj
+ 0002:00003dd0       ??_C@_05ENEOKLFM@?1bin?1?$AA@ 10019dd0     libtcc.obj
+ 0002:00003dd8       ??_C@_0BF@PMKBOAFO@memory?5full?5?$CImalloc?$CJ?$AA@ 10019dd8     libtcc.obj
+ 0002:00003df0       ??_C@_0BG@COPGGNBM@memory?5full?5?$CIrealloc?$CJ?$AA@ 10019df0     libtcc.obj
+ 0002:00003e08       ??_C@_08EFKGKJDH@__bound_?$AA@ 10019e08     libtcc.obj
+ 0002:00003e14       ??_C@_0BO@GHPJMPCK@In?5file?5included?5from?5?$CFs?3?$CFd?3?6?$AA@ 10019e14     libtcc.obj
+ 0002:00003e34       ??_C@_07FCDHCGBN@?$CFs?3?$CFd?3?5?$AA@ 10019e34     libtcc.obj
+ 0002:00003e3c       ??_C@_04PFAOODAA@?$CFs?3?5?$AA@ 10019e3c     libtcc.obj
+ 0002:00003e44       ??_C@_05JFPHAABP@tcc?3?5?$AA@ 10019e44     libtcc.obj
+ 0002:00003e4c       ??_C@_09GFHECBDK@warning?3?5?$AA@ 10019e4c     libtcc.obj
+ 0002:00003e58       ??_C@_07FJOHCPOO@error?3?5?$AA@ 10019e58     libtcc.obj
+ 0002:00003e60       ??_C@_03OFAPEBGM@?$CFs?6?$AA@ 10019e60     libtcc.obj
+ 0002:00003e64       ??_C@_01JOAMLHOP@?9?$AA@   10019e64     libtcc.obj
+ 0002:00003e68       ??_C@_05MHOFLBOO@stdin?$AA@ 10019e68     libtcc.obj
+ 0002:00003e70       ??_C@_02HBFAAMOG@nf?$AA@   10019e70     libtcc.obj
+ 0002:00003e74       ??_C@_02HBOOOICD@?9?$DO?$AA@ 10019e74     libtcc.obj
+ 0002:00003e78       ??_C@_09DLCNAJKA@?$CFs?5?$CF?$CKs?$CFs?6?$AA@ 10019e78     libtcc.obj
+ 0002:00003e84       ??_C@_0M@FIONBADE@declaration?$AA@ 10019e84     libtcc.obj
+ 0002:00003e90       ??_C@_0CL@KFADNBAK@internal?5compiler?5error?3?5vstack?5@ 10019e90     libtcc.obj
+ 0002:00003ebc       ??_C@_08OOGHEFMC@?$DMstring?$DO?$AA@ 10019ebc     libtcc.obj
+ 0002:00003ec8       ??_C@_01HIHLOKLC@1?$AA@    10019ec8     libtcc.obj
+ 0002:00003ecc       ??_C@_08MCHDHOGJ@?$DMdefine?$DO?$AA@ 10019ecc     libtcc.obj
+ 0002:00003ed8       ??_C@_08FOJKHHJA@?$CFd?4?$CFd?4?$CFd?$AA@ 10019ed8     libtcc.obj
+ 0002:00003ee4       ??_C@_06JOFEBACH@0?49?425?$AA@ 10019ee4     libtcc.obj
+ 0002:00003eec       ??_C@_09CKENBABO@__TINYC__?$AA@ 10019eec     libtcc.obj
+ 0002:00003ef8       ??_C@_08MDCIBMBL@__STDC__?$AA@ 10019ef8     libtcc.obj
+ 0002:00003f04       ??_C@_07OIELGIGJ@199901L?$AA@ 10019f04     libtcc.obj
+ 0002:00003f0c       ??_C@_0BB@HKDHDHKA@__STDC_VERSION__?$AA@ 10019f0c     libtcc.obj
+ 0002:00003f20       ??_C@_0BA@OHBMFJIO@__STDC_HOSTED__?$AA@ 10019f20     libtcc.obj
+ 0002:00003f30       ??_C@_08LKAJIEIF@__i386__?$AA@ 10019f30     libtcc.obj
+ 0002:00003f3c       ??_C@_06JPAOGEND@__i386?$AA@ 10019f3c     libtcc.obj
+ 0002:00003f44       ??_C@_04OMAFGPMM@i386?$AA@ 10019f44     libtcc.obj
+ 0002:00003f4c       ??_C@_08NENPKAGD@__unix__?$AA@ 10019f4c     libtcc.obj
+ 0002:00003f58       ??_C@_06PNOPCD@__unix?$AA@ 10019f58     libtcc.obj
+ 0002:00003f60       ??_C@_04HDPGOEDM@unix?$AA@ 10019f60     libtcc.obj
+ 0002:00003f68       ??_C@_0O@NMGGJGDE@unsigned?5long?$AA@ 10019f68     libtcc.obj
+ 0002:00003f78       ??_C@_0O@BDPFNOGL@__SIZE_TYPE__?$AA@ 10019f78     libtcc.obj
+ 0002:00003f88       ??_C@_0BB@DLJFNAGC@__PTRDIFF_TYPE__?$AA@ 10019f88     libtcc.obj
+ 0002:00003f9c       ??_C@_0P@EPPGDHBC@__WCHAR_TYPE__?$AA@ 10019f9c     libtcc.obj
+ 0002:00003fac       ??_C@_0BM@CBBDCJNI@name?5proto?5__asm__?5?$CI?$CDalias?$CJ?$AA@ 10019fac     libtcc.obj
+ 0002:00003fc8       ??_C@_0BP@IINCGCMD@__REDIRECT?$CIname?0?5proto?0?5alias?$CJ?$AA@ 10019fc8     libtcc.obj
+ 0002:00003fe8       ??_C@_0CE@DNPAACNO@name?5proto?5__asm__?5?$CI?$CDalias?$CJ?5__TH@ 10019fe8     libtcc.obj
+ 0002:0000400c       ??_C@_0CD@PJAKHMBP@__REDIRECT_NTH?$CIname?0?5proto?0?5alia@ 1001a00c     libtcc.obj
+ 0002:00004030       ??_C@_08BJMIFGEP@?1usr?1lib?$AA@ 1001a030     libtcc.obj
+ 0002:0000403c       ??_C@_05GCIAPODO@?4text?$AA@ 1001a03c     libtcc.obj
+ 0002:00004044       ??_C@_05LDKNOBJL@?4data?$AA@ 1001a044     libtcc.obj
+ 0002:0000404c       ??_C@_04IEKGFKDD@?4bss?$AA@ 1001a04c     libtcc.obj
+ 0002:00004054       ??_C@_08KDHNJCCF@?4hashtab?$AA@ 1001a054     libtcc.obj
+ 0002:00004060       ??_C@_07ECIDPJMF@?4strtab?$AA@ 1001a060     libtcc.obj
+ 0002:00004068       ??_C@_07BMKNOKEI@?4symtab?$AA@ 1001a068     libtcc.obj
+ 0002:00004070       ??_C@_0M@PLGCAAON@?4dynhashtab?$AA@ 1001a070     libtcc.obj
+ 0002:0000407c       ??_C@_0L@DFFNCAPI@?4dynstrtab?$AA@ 1001a07c     libtcc.obj
+ 0002:00004088       ??_C@_0L@GLHDDDHF@?4dynsymtab?$AA@ 1001a088     libtcc.obj
+ 0002:00004094       ??_C@_01CPLAODJH@S?$AA@    1001a094     libtcc.obj
+ 0002:00004098       ??_C@_0O@EPNPGBND@__ASSEMBLER__?$AA@ 1001a098     libtcc.obj
+ 0002:000040a8       ??_C@_0BE@EDCJDNJJ@file?5?8?$CFs?8?5not?5found?$AA@ 1001a0a8     libtcc.obj
+ 0002:000040bc       ??_C@_01LKDEMHDF@s?$AA@    1001a0bc     libtcc.obj
+ 0002:000040c0       ??_C@_0BG@GNALFLKJ@could?5not?5read?5header?$AA@ 1001a0c0     libtcc.obj
+ 0002:000040d8       ??_C@_0BG@LKJAJBFI@unrecognized?5ELF?5file?$AA@ 1001a0d8     libtcc.obj
+ 0002:000040f0       ??_C@_08MBCPCCHJ@?$CB?$DMarch?$DO?6?$AA@ 1001a0f0     libtcc.obj
+ 0002:000040fc       ??_C@_0BH@FDFCPBLO@unrecognized?5file?5type?$AA@ 1001a0fc     libtcc.obj
+ 0002:00004114       ??_C@_0M@KJNIBKMN@?$CFs?1lib?$CFs?4so?$AA@ 1001a114     libtcc.obj
+ 0002:00004120       ??_C@_0L@MBENJCPG@?$CFs?1lib?$CFs?4a?$AA@ 1001a120     libtcc.obj
+ 0002:0000412c       ??_C@_0CM@OPHGCBGD@?1usr?1local?1include?3?1usr?1include?3@ 1001a12c     libtcc.obj
+ 0002:00004158       ??_C@_0BF@FMBLHFJG@__BOUNDS_CHECKING_ON?$AA@ 1001a158     libtcc.obj
+ 0002:00004170       ??_C@_07DCKNBGPH@?4bounds?$AA@ 1001a170     libtcc.obj
+ 0002:00004178       ??_C@_08JAANEBJB@?4lbounds?$AA@ 1001a178     libtcc.obj
+ 0002:00004184       ??_C@_0BC@BBKECBGC@__CHAR_UNSIGNED__?$AA@ 1001a184     libtcc.obj
+ 0002:00004198       ??_C@_0BN@LMLDIMOC@?1usr?1lib?3?1lib?3?1usr?1local?1lib?$AA@ 1001a198     libtcc.obj
+ 0002:000041b8       ??_C@_06KFEBPHK@crt1?4o?$AA@ 1001a1b8     libtcc.obj
+ 0002:000041c0       ??_C@_06EONDIDH@crti?4o?$AA@ 1001a1c0     libtcc.obj
+ 0002:000041c8       ??_C@_03NFKEKGGK@all?$AA@  1001a1c8     libtcc.obj
+ 0002:000041cc       ??_C@_09DABCNGCH@Bsymbolic?$AA@ 1001a1cc     libtcc.obj
+ 0002:000041d8       ??_C@_08MECAOGKN@nostdlib?$AA@ 1001a1d8     libtcc.obj
+ 0002:000041e4       ??_C@_05PCKFJPAG@fini?$DN?$AA@ 1001a1e4     libtcc.obj
+ 0002:000041ec       ??_C@_0M@CGMHHPDN@image?9base?$DN?$AA@ 1001a1ec     libtcc.obj
+ 0002:000041f8       ??_C@_06ODPDFKIO@Ttext?$DN?$AA@ 1001a1f8     libtcc.obj
+ 0002:00004200       ??_C@_05DIPKPJFJ@init?$DN?$AA@ 1001a200     libtcc.obj
+ 0002:00004208       ??_C@_08GMJEDHHG@oformat?$DN?$AA@ 1001a208     libtcc.obj
+ 0002:00004214       ??_C@_06DHACDCFB@elf32?9?$AA@ 1001a214     libtcc.obj
+ 0002:0000421c       ??_C@_06FNFBAEBE@binary?$AA@ 1001a21c     libtcc.obj
+ 0002:00004224       ??_C@_06HOGFFHFC@rpath?$DN?$AA@ 1001a224     libtcc.obj
+ 0002:0000422c       ??_C@_0BD@OGEPMGFP@section?9alignment?$DN?$AA@ 1001a22c     libtcc.obj
+ 0002:00004240       ??_C@_07LOOINEJF@soname?$DN?$AA@ 1001a240     libtcc.obj
+ 0002:00004248       ??_C@_0BP@IBDGGDBP@unsupported?5linker?5option?5?8?$CFs?8?$AA@ 1001a248     libtcc.obj
+ 0002:00004268       ??_C@_0BH@JBEDAMNA@invalid?5option?5?9?9?5?8?$CFs?8?$AA@ 1001a268     libtcc.obj
+ 0002:00004280       ??_C@_0BM@LCHDBEDE@argument?5to?5?8?$CFs?8?5is?5missing?$AA@ 1001a280     libtcc.obj
+ 0002:0000429c       ??_C@_0BH@FAMMGOBK@too?5many?5include?5paths?$AA@ 1001a29c     libtcc.obj
+ 0002:000042b4       ??_C@_0L@HBCEGEOJ@_REENTRANT?$AA@ 1001a2b4     libtcc.obj
+ 0002:000042c0       ??_C@_0BI@NCFGEGIN@unsupported?5option?5?8?$CFs?8?$AA@ 1001a2c0     libtcc.obj
+ 0002:000042d8       ??_C@_09ILDPDOOM@?9lpthread?$AA@ 1001a2d8     libtcc.obj
+ 0002:000042e8       ??_C@_0EA@HKFIHEKC@?$CFd?5idents?0?5?$CFd?5lines?0?5?$CFd?5bytes?0?5?$CF@ 1001a2e8     libtcc.obj
+ 0002:00004328       ??_C@_0P@JMAEGODK@C_INCLUDE_PATH?$AA@ 1001a328     libtcc.obj
+ 0002:00004338       ??_C@_05IPFPJFGM@CPATH?$AA@ 1001a338     libtcc.obj
+ 0002:00004340       ??_C@_0N@JEGCKMFM@LIBRARY_PATH?$AA@ 1001a340     libtcc.obj
+ 0002:00004350       __real@3f50624dd2f1a9fc    1001a350      CIL library: CIL module
+ 0002:00004358       __real@412e848000000000    1001a358      CIL library: CIL module
+ 0002:00004360       __real@41f0000000000000    1001a360      CIL library: CIL module
+ 0002:00004368       __load_config_used         1001a368     MSVCRT:loadcfg.obj
+ 0002:000043b0       ___safe_se_handler_table   1001a3b0     <linker-defined>
+ 0002:000043b4       ___rtc_iaa                 1001a3b4     MSVCRT:_initsect_.obj
+ 0002:000043b8       ___rtc_izz                 1001a3b8     MSVCRT:_initsect_.obj
+ 0002:000043bc       ___rtc_taa                 1001a3bc     MSVCRT:_initsect_.obj
+ 0002:000043c0       ___rtc_tzz                 1001a3c0     MSVCRT:_initsect_.obj
+ 0002:0000444c       __IMPORT_DESCRIPTOR_KERNEL32 1001a44c     kernel32:KERNEL32.dll
+ 0002:00004460       __IMPORT_DESCRIPTOR_MSVCR90 1001a460     MSVCRT:MSVCR90.dll
+ 0002:00004474       __NULL_IMPORT_DESCRIPTOR   1001a474     kernel32:KERNEL32.dll
+ 0003:00000000       ___native_dllmain_reason   1001b000     MSVCRT:natstart.obj
+ 0003:00000004       ___native_vcclrit_reason   1001b004     MSVCRT:natstart.obj
+ 0003:00000008       ___security_cookie         1001b008     MSVCRT:gs_cookie.obj
+ 0003:0000000c       ___security_cookie_complement 1001b00c     MSVCRT:gs_cookie.obj
+ 0003:00000034       __forceCRTManifestRTM      1001b034     MSVCRT:crtmanifestrtm.obj
+ 0003:00000038       ?__type_info_root_node@@3U__type_info_node@@A 1001b038     MSVCRT:tncleanup.obj
+ 0003:0000b5f0       ___sse2_available          100265f0     <common>
+ 0003:0000b5f4       __adjust_fdiv              100265f4     <common>
+ 0003:0000b5f8       ___native_startup_state    100265f8     <common>
+ 0003:0000b5fc       ___native_startup_lock     100265fc     <common>
+ 0003:0000b600       ___onexitend               10026600     <common>
+ 0003:0000b604       ___onexitbegin             10026604     <common>
+ 0003:0000b608       ___dyn_tls_init_callback   10026608     <common>
+
+ entry point at        0001:00013bd6
+
+ Static symbols
+
+ 0001:00000000       _is_space                  10001000 f    CIL library: CIL module
+ 0001:00000020       _isid                      10001020 f    CIL library: CIL module
+ 0001:00000040       _skip                      10001040 f    CIL library: CIL module
+ 0001:0000006a       _expect                    1000106a f    CIL library: CIL module
+ 0001:00000079       _cstr_realloc              10001079 f    CIL library: CIL module
+ 0001:000000a4       _cstr_ccat                 100010a4 f    CIL library: CIL module
+ 0001:000000c7       _cstr_cat                  100010c7 f    CIL library: CIL module
+ 0001:000000e1       _cstr_wccat                100010e1 f    CIL library: CIL module
+ 0001:00000106       _cstr_free                 10001106 f    CIL library: CIL module
+ 0001:0000011b       _add_char                  1000111b f    CIL library: CIL module
+ 0001:00000196       _tok_alloc_new             10001196 f    CIL library: CIL module
+ 0001:00000234       _tok_alloc                 10001234 f    CIL library: CIL module
+ 0001:00000293       _get_tok_str               10001293 f    CIL library: CIL module
+ 0001:000004e2       _tcc_peekc_slow            100014e2 f    CIL library: CIL module
+ 0001:00000546       _next_inp                  10001546 f    CIL library: CIL module
+ 0001:00000567       _handle_stray_noerror      10001567 f    CIL library: CIL module
+ 0001:000005a8       _handle_stray              100015a8 f    CIL library: CIL module
+ 0001:000005bc       _handle_stray1             100015bc f    CIL library: CIL module
+ 0001:000005f5       _minp                      100015f5 f    CIL library: CIL module
+ 0001:00000609       _parse_line_comment        10001609 f    CIL library: CIL module
+ 0001:00000692       _parse_comment             10001692 f    CIL library: CIL module
+ 0001:0000077d       _parse_pp_string           1000177d f    CIL library: CIL module
+ 0001:000008b1       _preprocess_skip           100018b1 f    CIL library: CIL module
+ 0001:00000a4b       _tok_str_realloc           10001a4b f    CIL library: CIL module
+ 0001:00000a71       _tok_str_add               10001a71 f    CIL library: CIL module
+ 0001:00000a92       _tok_str_add2              10001a92 f    CIL library: CIL module
+ 0001:00000b6e       _tok_str_add_tok           10001b6e f    CIL library: CIL module
+ 0001:00000bae       _TOK_GET                   10001bae f    CIL library: CIL module
+ 0001:00000c3e       _macro_is_equal            10001c3e f    CIL library: CIL module
+ 0001:00000d01       _define_push               10001d01 f    CIL library: CIL module
+ 0001:00000d60       _define_undef              10001d60 f    CIL library: CIL module
+ 0001:00000d86       _define_find               10001d86 f    CIL library: CIL module
+ 0001:00000dab       _free_defines              10001dab f    CIL library: CIL module
+ 0001:00000dff       _label_find                10001dff f    CIL library: CIL module
+ 0001:00000e24       _label_push                10001e24 f    CIL library: CIL module
+ 0001:00000e68       _label_pop                 10001e68 f    CIL library: CIL module
+ 0001:00000f01       _expr_preprocess           10001f01 f    CIL library: CIL module
+ 0001:0000101b       _parse_define              1000201b f    CIL library: CIL module
+ 0001:00001198       _search_cached_include     10002198 f    CIL library: CIL module
+ 0001:000011ea       _add_cached_include        100021ea f    CIL library: CIL module
+ 0001:0000127f       _pragma_parse              1000227f f    CIL library: CIL module
+ 0001:00001350       _preprocess                10002350 f    CIL library: CIL module
+ 0001:00001b3e       _parse_escape_string       10002b3e f    CIL library: CIL module
+ 0001:00001cac       _bn_lshift                 10002cac f    CIL library: CIL module
+ 0001:00001ce0       _parse_number              10002ce0 f    CIL library: CIL module
+ 0001:000021f0       _next_nomacro1             100031f0 f    CIL library: CIL module
+ 0001:00002bd2       _next_nomacro_spc          10003bd2 f    CIL library: CIL module
+ 0001:00002c2e       _next_nomacro              10003c2e f    CIL library: CIL module
+ 0001:00002c4b       _macro_arg_subst           10003c4b f    CIL library: CIL module
+ 0001:00002e23       _macro_subst_tok           10003e23 f    CIL library: CIL module
+ 0001:0000323e       _macro_twosharps           1000423e f    CIL library: CIL module
+ 0001:0000341e       _macro_subst               1000441e f    CIL library: CIL module
+ 0001:000035a0       _next                      100045a0 f    CIL library: CIL module
+ 0001:000036d1       _unget_tok                 100046d1 f    CIL library: CIL module
+ 0001:00003791       _preprocess_init           10004791 f    CIL library: CIL module
+ 0001:000037cc       _preprocess_new            100047cc f    CIL library: CIL module
+ 0001:0000383f       _tcc_preprocess            1000483f f    CIL library: CIL module
+ 0001:00003982       _is_float                  10004982 f    CIL library: CIL module
+ 0001:000039a0       _test_lvalue               100049a0 f    CIL library: CIL module
+ 0001:000039bc       _sym_free                  100049bc f    CIL library: CIL module
+ 0001:000039d5       _sym_push2                 100049d5 f    CIL library: CIL module
+ 0001:00003a98       _sym_find                  10004a98 f    CIL library: CIL module
+ 0001:00003abd       _sym_push                  10004abd f    CIL library: CIL module
+ 0001:00003b2b       _global_identifier_push    10004b2b f    CIL library: CIL module
+ 0001:00003b6c       _sym_pop                   10004b6c f    CIL library: CIL module
+ 0001:00003bc9       _weaken_symbol             10004bc9 f    CIL library: CIL module
+ 0001:00003bf0       _vsetc                     10004bf0 f    CIL library: CIL module
+ 0001:00003c62       _vpushi                    10004c62 f    CIL library: CIL module
+ 0001:00003c7f       _vpushs                    10004c7f f    CIL library: CIL module
+ 0001:00003cca       _get_sym_ref               10004cca f    CIL library: CIL module
+ 0001:00003d0d       _vpush_ref                 10004d0d f    CIL library: CIL module
+ 0001:00003d4d       _external_global_sym       10004d4d f    CIL library: CIL module
+ 0001:00003d7c       _external_sym              10004d7c f    CIL library: CIL module
+ 0001:00003df4       _vpush_global_sym          10004df4 f    CIL library: CIL module
+ 0001:00003e26       _vset                      10004e26 f    CIL library: CIL module
+ 0001:00003e53       _vseti                     10004e53 f    CIL library: CIL module
+ 0001:00003e74       _vswap                     10004e74 f    CIL library: CIL module
+ 0001:00003ecd       _vpushv                    10004ecd f    CIL library: CIL module
+ 0001:00003efc       _vdup                      10004efc f    CIL library: CIL module
+ 0001:00003f09       _save_reg                  10004f09 f    CIL library: CIL module
+ 0001:00004048       _get_reg                   10005048 f    CIL library: CIL module
+ 0001:000040d6       _save_regs                 100050d6 f    CIL library: CIL module
+ 0001:0000410d       _gaddrof                   1000510d f    CIL library: CIL module
+ 0001:0000414d       _gbound                    1000514d f    CIL library: CIL module
+ 0001:000041ad       _gv                        100051ad f    CIL library: CIL module
+ 0001:000044ce       _gv2                       100054ce f    CIL library: CIL module
+ 0001:00004550       _lexpand                   10005550 f    CIL library: CIL module
+ 0001:00004587       _lbuild                    10005587 f    CIL library: CIL module
+ 0001:000045ae       _vrotb                     100055ae f    CIL library: CIL module
+ 0001:000045f9       _vrott                     100055f9 f    CIL library: CIL module
+ 0001:00004645       _vpop                      10005645 f    CIL library: CIL module
+ 0001:00004686       _gv_dup                    10005686 f    CIL library: CIL module
+ 0001:000047bc       _gen_opl                   100057bc f    CIL library: CIL module
+ 0001:00004c2d       _gen_opic                  10005c2d f    CIL library: CIL module
+ 0001:000050d9       _gen_opif                  100060d9 f    CIL library: CIL module
+ 0001:000051c5       _pointed_size              100061c5 f    CIL library: CIL module
+ 0001:000051df       _is_null_pointer           100061df f    CIL library: CIL module
+ 0001:0000521c       _is_integer_btype          1000621c f    CIL library: CIL module
+ 0001:00005236       _check_comparison_pointer_types 10006236 f    CIL library: CIL module
+ 0001:00005341       _gen_op                    10006341 f    CIL library: CIL module
+ 0001:000056c2       _gen_cvt_itof1             100066c2 f    CIL library: CIL module
+ 0001:0000571a       _gen_cvt_ftoi1             1000671a f    CIL library: CIL module
+ 0001:00005778       _force_charshort_cast      10006778 f    CIL library: CIL module
+ 0001:000057d5       _gen_cast                  100067d5 f    CIL library: CIL module
+ 0001:00005b4e       _type_size                 10006b4e f    CIL library: CIL module
+ 0001:00005bfb       _vla_runtime_type_size     10006bfb f    CIL library: CIL module
+ 0001:00005c2d       _vla_sp_save               10006c2d f    CIL library: CIL module
+ 0001:00005c7e       _mk_pointer                10006c7e f    CIL library: CIL module
+ 0001:00005ca5       _is_compatible_func        10006ca5 f    CIL library: CIL module
+ 0001:00005d1c       _compare_types             10006d1c f    CIL library: CIL module
+ 0001:00005d8e       _is_compatible_types       10006d8e f    CIL library: CIL module
+ 0001:00005da1       _type_to_str               10006da1 f    CIL library: CIL module
+ 0001:00005fdd       _gen_assign_cast           10006fdd f    CIL library: CIL module
+ 0001:000061c3       _vstore                    100071c3 f    CIL library: CIL module
+ 0001:000064ea       _inc                       100074ea f    CIL library: CIL module
+ 0001:0000653a       _parse_attribute           1000753a f    CIL library: CIL module
+ 0001:0000682c       _struct_decl               1000782c f    CIL library: CIL module
+ 0001:00006d48       _parse_btype               10007d48 f    CIL library: CIL module
+ 0001:00007045       _parse_asm_str             10008045 f    CIL library: CIL module
+ 0001:00007099       _post_type                 10008099 f    CIL library: CIL module
+ 0001:000073ce       _type_decl                 100083ce f    CIL library: CIL module
+ 0001:0000755c       _lvalue_type               1000855c f    CIL library: CIL module
+ 0001:00007591       _indir                     10008591 f    CIL library: CIL module
+ 0001:0000761c       _gfunc_param_typed         1000861c f    CIL library: CIL module
+ 0001:0000767d       _parse_expr_type           1000867d f    CIL library: CIL module
+ 0001:000076eb       _parse_type                100086eb f    CIL library: CIL module
+ 0001:00007724       _vpush_tokc                10008724 f    CIL library: CIL module
+ 0001:00007743       _unary                     10008743 f    CIL library: CIL module
+ 0001:00008323       _expr_prod                 10009323 f    CIL library: CIL module
+ 0001:00008354       _expr_sum                  10009354 f    CIL library: CIL module
+ 0001:00008380       _expr_shift                10009380 f    CIL library: CIL module
+ 0001:000083ac       _expr_cmp                  100093ac f    CIL library: CIL module
+ 0001:000083ea       _expr_cmpeq                100093ea f    CIL library: CIL module
+ 0001:0000841a       _expr_and                  1000941a f    CIL library: CIL module
+ 0001:0000843f       _expr_xor                  1000943f f    CIL library: CIL module
+ 0001:00008464       _expr_or                   10009464 f    CIL library: CIL module
+ 0001:00008489       _expr_land_const           10009489 f    CIL library: CIL module
+ 0001:000084b1       _expr_land                 100094b1 f    CIL library: CIL module
+ 0001:000084fe       _expr_lor                  100094fe f    CIL library: CIL module
+ 0001:0000854b       _expr_cond                 1000954b f    CIL library: CIL module
+ 0001:000088c1       _expr_eq                   100098c1 f    CIL library: CIL module
+ 0001:00008933       _gexpr                     10009933 f    CIL library: CIL module
+ 0001:00008950       _expr_const1               10009950 f    CIL library: CIL module
+ 0001:00008978       _expr_const                10009978 f    CIL library: CIL module
+ 0001:000089b5       _is_label                  100099b5 f    CIL library: CIL module
+ 0001:000089e6       _label_or_decl             100099e6 f    CIL library: CIL module
+ 0001:00008a1e       _block                     10009a1e f    CIL library: CIL module
+ 0001:000093b2       _decl_designator           1000a3b2 f    CIL library: CIL module
+ 0001:00009600       _init_putv                 1000a600 f    CIL library: CIL module
+ 0001:00009857       _init_putz                 1000a857 f    CIL library: CIL module
+ 0001:0000988a       _decl_initializer          1000a88a f    CIL library: CIL module
+ 0001:0000a257       _decl_initializer_alloc    1000b257 f    CIL library: CIL module
+ 0001:0000a6f2       _put_func_debug            1000b6f2 f    CIL library: CIL module
+ 0001:0000a76b       _func_decl_list            1000b76b f    CIL library: CIL module
+ 0001:0000a8a9       _gen_function              1000b8a9 f    CIL library: CIL module
+ 0001:0000a9fc       _gen_inline_functions      1000b9fc f    CIL library: CIL module
+ 0001:0000aad5       _decl0                     1000bad5 f    CIL library: CIL module
+ 0001:0000b047       _put_elf_str               1000c047 f    CIL library: CIL module
+ 0001:0000b078       _elf_hash                  1000c078 f    CIL library: CIL module
+ 0001:0000b0a7       _rebuild_hash              1000c0a7 f    CIL library: CIL module
+ 0001:0000b150       _put_elf_sym               1000c150 f    CIL library: CIL module
+ 0001:0000b207       _find_elf_sym              1000c207 f    CIL library: CIL module
+ 0001:0000b289       _get_elf_sym_addr          1000c289 f    CIL library: CIL module
+ 0001:0000b2de       _add_elf_sym               1000c2de f    CIL library: CIL module
+ 0001:0000b43b       _put_elf_reloc             1000c43b f    CIL library: CIL module
+ 0001:0000b4b5       _put_stabs                 1000c4b5 f    CIL library: CIL module
+ 0001:0000b500       _put_stabs_r               1000c500 f    CIL library: CIL module
+ 0001:0000b539       _sort_syms                 1000c539 f    CIL library: CIL module
+ 0001:0000b67d       _relocate_common_syms      1000c67d f    CIL library: CIL module
+ 0001:0000b6cc       _relocate_syms             1000c6cc f    CIL library: CIL module
+ 0001:0000b783       _relocate_section          1000c783 f    CIL library: CIL module
+ 0001:0000b908       _alloc_sym_attr            1000c908 f    CIL library: CIL module
+ 0001:0000b968       _put32                     1000c968 f    CIL library: CIL module
+ 0001:0000b981       _get32                     1000c981 f    CIL library: CIL module
+ 0001:0000b9a0       _build_got                 1000c9a0 f    CIL library: CIL module
+ 0001:0000ba15       _put_got_entry             1000ca15 f    CIL library: CIL module
+ 0001:0000bb96       _build_got_entries         1000cb96 f    CIL library: CIL module
+ 0001:0000bc6e       _new_symtab                1000cc6e f    CIL library: CIL module
+ 0001:0000bcfc       _put_dt                    1000ccfc f    CIL library: CIL module
+ 0001:0000bd12       _add_init_array_defines    1000cd12 f    CIL library: CIL module
+ 0001:0000bdad       _tcc_add_bcheck            1000cdad f    CIL library: CIL module
+ 0001:0000be46       _tcc_add_runtime           1000ce46 f    CIL library: CIL module
+ 0001:0000bead       _tcc_add_linker_symbols    1000cead f    CIL library: CIL module
+ 0001:0000c016       _tcc_output_binary         1000d016 f    CIL library: CIL module
+ 0001:0000c08d       _fill_got_entry            1000d08d f    CIL library: CIL module
+ 0001:0000c0f7       _elf_output_file           1000d0f7 f    CIL library: CIL module
+ 0001:0000d061       _load_data                 1000e061 f    CIL library: CIL module
+ 0001:0000d092       _tcc_load_object_file      1000e092 f    CIL library: CIL module
+ 0001:0000d634       _tcc_load_alacarte         1000e634 f    CIL library: CIL module
+ 0001:0000d752       _tcc_load_archive          1000e752 f    CIL library: CIL module
+ 0001:0000d89b       _tcc_load_dll              1000e89b f    CIL library: CIL module
+ 0001:0000db4f       _ld_next                   1000eb4f f    CIL library: CIL module
+ 0001:0000dc61       _ld_add_file               1000ec61 f    CIL library: CIL module
+ 0001:0000dc86       _ld_add_file_list          1000ec86 f    CIL library: CIL module
+ 0001:0000de8e       _tcc_load_ldscript         1000ee8e f    CIL library: CIL module
+ 0001:0000df7e       _g                         1000ef7e f    CIL library: CIL module
+ 0001:0000dfb8       _o                         1000efb8 f    CIL library: CIL module
+ 0001:0000dfcd       _gen_le16                  1000efcd f    CIL library: CIL module
+ 0001:0000dfe3       _gen_le32                  1000efe3 f    CIL library: CIL module
+ 0001:0000e010       _gsym_addr                 1000f010 f    CIL library: CIL module
+ 0001:0000e034       _gsym                      1000f034 f    CIL library: CIL module
+ 0001:0000e041       _oad                       1000f041 f    CIL library: CIL module
+ 0001:0000e080       _gen_addr32                1000f080 f    CIL library: CIL module
+ 0001:0000e0aa       _gen_modrm                 1000f0aa f    CIL library: CIL module
+ 0001:0000e100       _load                      1000f100 f    CIL library: CIL module
+ 0001:0000e2dd       _store                     1000f2dd f    CIL library: CIL module
+ 0001:0000e3a4       _gen_static_call           1000f3a4 f    CIL library: CIL module
+ 0001:0000e3d5       _gcall_or_jmp              1000f3d5 f    CIL library: CIL module
+ 0001:0000e467       _gfunc_call                1000f467 f    CIL library: CIL module
+ 0001:0000e674       _gfunc_prolog              1000f674 f    CIL library: CIL module
+ 0001:0000e81d       _gfunc_epilog              1000f81d f    CIL library: CIL module
+ 0001:0000e974       _gjmp_addr                 1000f974 f    CIL library: CIL module
+ 0001:0000e9a9       _gtst                      1000f9a9 f    CIL library: CIL module
+ 0001:0000ea31       _gen_opi                   1000fa31 f    CIL library: CIL module
+ 0001:0000ed9b       _gen_opf                   1000fd9b f    CIL library: CIL module
+ 0001:0000f02a       _gen_cvt_itof              1001002a f    CIL library: CIL module
+ 0001:0000f0c9       _gen_cvt_ftoi              100100c9 f    CIL library: CIL module
+ 0001:0000f116       _gen_bounded_ptr_add       10010116 f    CIL library: CIL module
+ 0001:0000f167       _gen_bounded_ptr_deref     10010167 f    CIL library: CIL module
+ 0001:0000f22d       _gen_vla_sp_restore        1001022d f    CIL library: CIL module
+ 0001:0000f246       _gen_vla_alloc             10010246 f    CIL library: CIL module
+ 0001:0000f29b       _asm_get_local_label_name  1001029b f    CIL library: CIL module
+ 0001:0000f2d8       _asm_expr_unary            100102d8 f    CIL library: CIL module
+ 0001:0000f493       _asm_expr_prod             10010493 f    CIL library: CIL module
+ 0001:0000f54e       _asm_expr_logic            1001054e f    CIL library: CIL module
+ 0001:0000f5bb       _asm_expr_sum              100105bb f    CIL library: CIL module
+ 0001:0000f671       _asm_expr                  10010671 f    CIL library: CIL module
+ 0001:0000f688       _asm_int_expr              10010688 f    CIL library: CIL module
+ 0001:0000f6b1       _asm_new_label1            100106b1 f    CIL library: CIL module
+ 0001:0000f705       _asm_new_label             10010705 f    CIL library: CIL module
+ 0001:0000f728       _asm_free_labels           10010728 f    CIL library: CIL module
+ 0001:0000f794       _use_section               10010794 f    CIL library: CIL module
+ 0001:0000f7b9       _asm_parse_directive       100107b9 f    CIL library: CIL module
+ 0001:0000ff55       _tcc_assemble_internal     10010f55 f    CIL library: CIL module
+ 0001:000100c1       _tcc_assemble              100110c1 f    CIL library: CIL module
+ 0001:0001012b       _tcc_assemble_inline       1001112b f    CIL library: CIL module
+ 0001:0001018f       _find_constraint           1001118f f    CIL library: CIL module
+ 0001:00010212       _subst_asm_operands        10011212 f    CIL library: CIL module
+ 0001:000102e5       _parse_asm_operands        100112e5 f    CIL library: CIL module
+ 0001:0001041d       _asm_instr                 1001141d f    CIL library: CIL module
+ 0001:000105e6       _asm_global_instr          100115e6 f    CIL library: CIL module
+ 0001:00010652       _asm_parse_reg             10011652 f    CIL library: CIL module
+ 0001:0001068b       _parse_operand             1001168b f    CIL library: CIL module
+ 0001:00010943       _gen_expr32                10011943 f    CIL library: CIL module
+ 0001:0001095d       _asm_modrm                 1001195d f    CIL library: CIL module
+ 0001:00010a3f       _asm_opcode                10011a3f f    CIL library: CIL module
+ 0001:000110fa       _constraint_priority       100120fa f    CIL library: CIL module
+ 0001:00011171       _asm_compute_constraints   10012171 f    CIL library: CIL module
+ 0001:0001154a       _subst_asm_operand         1001254a f    CIL library: CIL module
+ 0001:0001169e       _asm_gen_code              1001269e f    CIL library: CIL module
+ 0001:0001184e       _asm_clobber               1001284e f    CIL library: CIL module
+ 0001:000118c3       _normalize_slashes         100128c3 f    CIL library: CIL module
+ 0001:000118d9       _tcc_set_lib_path_w32      100128d9 f    CIL library: CIL module
+ 0001:00011ae6       _dynarray_add              10012ae6 f    CIL library: CIL module
+ 0001:00011b18       _dynarray_reset            10012b18 f    CIL library: CIL module
+ 0001:00011b43       _tcc_split_path            10012b43 f    CIL library: CIL module
+ 0001:00011bd0       _new_section               10012bd0 f    CIL library: CIL module
+ 0001:00011c74       _section_realloc           10012c74 f    CIL library: CIL module
+ 0001:00011cb1       _section_ptr_add           10012cb1 f    CIL library: CIL module
+ 0001:00011cd2       _find_section              10012cd2 f    CIL library: CIL module
+ 0001:00011d44       _put_extern_sym2           10012d44 f    CIL library: CIL module
+ 0001:00011ea8       _put_extern_sym            10012ea8 f    CIL library: CIL module
+ 0001:00011ebb       _greloc                    10012ebb f    CIL library: CIL module
+ 0001:00011eef       _strcat_vprintf            10012eef f    CIL library: CIL module
+ 0001:00011f17       _strcat_printf             10012f17 f    CIL library: CIL module
+ 0001:00011f28       _error1                    10012f28 f    CIL library: CIL module
+ 0001:00012109       _tcc_open_bf               10013109 f    CIL library: CIL module
+ 0001:00012181       _tcc_close                 10013181 f    CIL library: CIL module
+ 0001:000121b3       _tcc_open                  100131b3 f    CIL library: CIL module
+ 0001:00012251       _tcc_compile               10013251 f    CIL library: CIL module
+ 0001:00012579       _tcc_cleanup               10013579 f    CIL library: CIL module
+ 0001:000129ad       _tcc_add_file_internal     100139ad f    CIL library: CIL module
+ 0001:00012c01       _tcc_add_library_internal  10013c01 f    CIL library: CIL module
+ 0001:00012c5a       _tcc_add_dll               10013c5a f    CIL library: CIL module
+ 0001:00012cc2       _tcc_add_crt               10013cc2 f    CIL library: CIL module
+ 0001:00012eb3       _set_flag                  10013eb3 f    CIL library: CIL module
+ 0001:00012f37       _tcc_set_warning           10013f37 f    CIL library: CIL module
+ 0001:00012f7a       _strstart                  10013f7a f    CIL library: CIL module
+ 0001:00012f99       _link_option               10013f99 f    CIL library: CIL module
+ 0001:00012fd7       _skip_linker_arg           10013fd7 f    CIL library: CIL module
+ 0001:00013004       _copy_linker_arg           10014004 f    CIL library: CIL module
+ 0001:0001302f       _tcc_set_linker            1001402f f    CIL library: CIL module
+ 0001:0001324e       _parse_option_D            1001424e f    CIL library: CIL module
+ 0001:0001384b       _pre_c_init                1001484b f   MSVCRT:crtdll.obj
+ 0001:00013ac0       ___DllMainCRTStartup       10014ac0 f   MSVCRT:crtdll.obj
+ 0001:00014498       _has_osfxsr_set            10015498 f   MSVCRT:cpu_disp.obj
+
+ Exports
+
+  ordinal    name
+
+        1    _pstrcat
+               exported name: pstrcat
+        2    _pstrcpy
+               exported name: pstrcpy
+        3    _pstrncpy
+               exported name: pstrncpy
+        4    _tcc_add_file
+               exported name: tcc_add_file
+        5    _tcc_add_include_path
+               exported name: tcc_add_include_path
+        6    _tcc_add_library
+               exported name: tcc_add_library
+        7    _tcc_add_library_path
+               exported name: tcc_add_library_path
+        8    _tcc_add_symbol
+               exported name: tcc_add_symbol
+        9    _tcc_add_sysinclude_path
+               exported name: tcc_add_sysinclude_path
+       10    _tcc_basename
+               exported name: tcc_basename
+       11    _tcc_compile_string
+               exported name: tcc_compile_string
+       12    _tcc_define_symbol
+               exported name: tcc_define_symbol
+       13    _tcc_delete
+               exported name: tcc_delete
+       14    _tcc_error
+               exported name: tcc_error
+       15    _tcc_error_noabort
+               exported name: tcc_error_noabort
+       16    _tcc_fileextension
+               exported name: tcc_fileextension
+       17    _tcc_free
+               exported name: tcc_free
+       18    _tcc_get_symbol
+               exported name: tcc_get_symbol
+       19    _tcc_malloc
+               exported name: tcc_malloc
+       20    _tcc_mallocz
+               exported name: tcc_mallocz
+       21    _tcc_memstats
+               exported name: tcc_memstats
+       22    _tcc_new
+               exported name: tcc_new
+       23    _tcc_output_file
+               exported name: tcc_output_file
+       24    _tcc_parse_args
+               exported name: tcc_parse_args
+       25    _tcc_print_stats
+               exported name: tcc_print_stats
+       26    _tcc_realloc
+               exported name: tcc_realloc
+       27    _tcc_set_environment
+               exported name: tcc_set_environment
+       28    _tcc_set_error_func
+               exported name: tcc_set_error_func
+       29    _tcc_set_lib_path
+               exported name: tcc_set_lib_path
+       30    _tcc_set_options
+               exported name: tcc_set_options
+       31    _tcc_set_output_type
+               exported name: tcc_set_output_type
+       32    _tcc_strdup
+               exported name: tcc_strdup
+       33    _tcc_undefine_symbol
+               exported name: tcc_undefine_symbol
+       34    _tcc_warning
+               exported name: tcc_warning

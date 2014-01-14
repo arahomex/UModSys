@@ -1,0 +1,2087 @@
+ lib_squirrel
+
+ Timestamp is 52d55305 (Tue Jan 14 18:08:53 2014)
+
+ Preferred load address is 0000000180000000
+
+ Start         Length     Name                   Class
+ 0001:00000000 0002ab9aH .text                   CODE
+ 0001:0002aba0 00002bceH .text$x                 CODE
+ 0002:00000000 000002e0H .idata$5                DATA
+ 0002:000002e0 00000008H .CRT$XCA                DATA
+ 0002:000002e8 00000008H .CRT$XCZ                DATA
+ 0002:000002f0 00000008H .CRT$XIA                DATA
+ 0002:000002f8 00000008H .CRT$XIAA               DATA
+ 0002:00000300 00000008H .CRT$XIZ                DATA
+ 0002:00000310 000038a8H .rdata                  DATA
+ 0002:00003bb8 000009e4H .rdata$r                DATA
+ 0002:000045a0 00000008H .rtc$IAA                DATA
+ 0002:000045a8 00000008H .rtc$IZZ                DATA
+ 0002:000045b0 00000008H .rtc$TAA                DATA
+ 0002:000045b8 00000008H .rtc$TZZ                DATA
+ 0002:000045c0 00004740H .xdata                  DATA
+ 0002:00008d00 00000028H .idata$2                DATA
+ 0002:00008d28 00000014H .idata$3                DATA
+ 0002:00008d40 000002e0H .idata$4                DATA
+ 0002:00009020 00000472H .idata$6                DATA
+ 0002:000094a0 0000103bH .edata                  DATA
+ 0003:00000000 00001ac0H .data                   DATA
+ 0003:00001ac0 00000148H .bss                    DATA
+ 0004:00000000 00002a84H .pdata                  DATA
+
+  Address         Publics by Value              Rva+Base               Lib:Object
+
+ 0000:00000000       ___safe_se_handler_table   0000000000000000     <absolute>
+ 0000:00000000       ___safe_se_handler_count   0000000000000000     <absolute>
+ 0000:00000000       __ImageBase                0000000180000000     <linker-defined>
+ 0001:00000000       sqstd_printcallstack       0000000180001000 f   sqstdaux.obj
+ 0001:00000360       ?_sqstd_compiler_error@@YAXPEAUSQVM@@PEBD1_J2@Z 0000000180001360 f   sqstdaux.obj
+ 0001:00000398       sqstd_seterrorhandlers     0000000180001398 f   sqstdaux.obj
+ 0001:000003d8       ??3@YAXPEAX0@Z             00000001800013d8 f i sqstdblob.obj
+ 0001:000003dc       ?Write@SQBlob@@UEAA_JPEAX_J@Z 00000001800013dc f i sqstdblob.obj
+ 0001:00000460       ?Read@SQBlob@@UEAA_JPEAX_J@Z 0000000180001460 f i sqstdblob.obj
+ 0001:000004b8       ?Resize@SQBlob@@QEAA_N_J@Z 00000001800014b8 f i sqstdblob.obj
+ 0001:00000548       ?Seek@SQBlob@@UEAA_J_J0@Z  0000000180001548 f i sqstdblob.obj
+ 0001:00000598       ?IsValid@SQBlob@@UEAA_NXZ  0000000180001598 f i sqstdblob.obj
+ 0001:000005a4       ?EOS@SQBlob@@UEAA_NXZ      00000001800015a4 f i sqstdblob.obj
+ 0001:000005b0       ?Tell@SQBlob@@UEAA_JXZ     00000001800015b0 f i sqstdblob.obj
+ 0001:000005b8       ?Len@SQBlob@@UEAA_JXZ      00000001800015b8 f i sqstdblob.obj
+ 0001:000005c0       ??_ESQBlob@@UEAAPEAXI@Z    00000001800015c0 f i  CIL library: CIL module
+ 0001:000005c0       ??_GSQBlob@@UEAAPEAXI@Z    00000001800015c0 f i sqstdblob.obj
+ 0001:00000f18       sqstd_getblob              0000000180001f18 f   sqstdblob.obj
+ 0001:00000f50       sqstd_getblobsize          0000000180001f50 f   sqstdblob.obj
+ 0001:00000f80       sqstd_createblob           0000000180001f80 f   sqstdblob.obj
+ 0001:0000108c       sqstd_register_bloblib     000000018000208c f   sqstdblob.obj
+ 0001:000010c8       sqstd_fopen                00000001800020c8 f   sqstdio.obj
+ 0001:000010d0       sqstd_fread                00000001800020d0 f   sqstdio.obj
+ 0001:000010d8       sqstd_fwrite               00000001800020d8 f   sqstdio.obj
+ 0001:000010e0       sqstd_fseek                00000001800020e0 f   sqstdio.obj
+ 0001:0000111c       sqstd_ftell                000000018000211c f   sqstdio.obj
+ 0001:00001130       sqstd_fflush               0000000180002130 f   sqstdio.obj
+ 0001:00001144       sqstd_fclose               0000000180002144 f   sqstdio.obj
+ 0001:00001158       sqstd_feof                 0000000180002158 f   sqstdio.obj
+ 0001:0000116c       ?Read@SQFile@@UEAA_JPEAX_J@Z 000000018000216c f i sqstdio.obj
+ 0001:00001184       ?Write@SQFile@@UEAA_JPEAX_J@Z 0000000180002184 f i sqstdio.obj
+ 0001:0000119c       ?Flush@SQFile@@UEAA_JXZ    000000018000219c f i sqstdio.obj
+ 0001:000011b4       ?Tell@SQFile@@UEAA_JXZ     00000001800021b4 f i sqstdio.obj
+ 0001:000011cc       ?Len@SQFile@@UEAA_JXZ      00000001800021cc f i sqstdio.obj
+ 0001:0000122c       ?Seek@SQFile@@UEAA_J_J0@Z  000000018000222c f i sqstdio.obj
+ 0001:00001238       ?IsValid@SQFile@@UEAA_NXZ  0000000180002238 f i sqstdio.obj
+ 0001:00001244       ?EOS@SQFile@@UEAA_NXZ      0000000180002244 f i sqstdio.obj
+ 0001:00001274       ??_ESQFile@@UEAAPEAXI@Z    0000000180002274 f i  CIL library: CIL module
+ 0001:00001274       ??_GSQFile@@UEAAPEAXI@Z    0000000180002274 f i sqstdio.obj
+ 0001:000014bc       sqstd_createfile           00000001800024bc f   sqstdio.obj
+ 0001:000015cc       sqstd_getfile              00000001800025cc f   sqstdio.obj
+ 0001:000016bc       ?file_read@@YA_JPEAX0_J@Z  00000001800026bc f   sqstdio.obj
+ 0001:000016e8       ?file_write@@YA_JPEAX0_J@Z 00000001800026e8 f   sqstdio.obj
+ 0001:00001700       sqstd_loadfile             0000000180002700 f   sqstdio.obj
+ 0001:0000188c       sqstd_dofile               000000018000288c f   sqstdio.obj
+ 0001:00001914       sqstd_writeclosuretofile   0000000180002914 f   sqstdio.obj
+ 0001:00001988       ?_g_io_loadfile@@YA_JPEAUSQVM@@@Z 0000000180002988 f   sqstdio.obj
+ 0001:000019f8       ?_g_io_writeclosuretofile@@YA_JPEAUSQVM@@@Z 00000001800029f8 f   sqstdio.obj
+ 0001:00001a34       ?_g_io_dofile@@YA_JPEAUSQVM@@@Z 0000000180002a34 f   sqstdio.obj
+ 0001:00001ac0       sqstd_register_iolib       0000000180002ac0 f   sqstdio.obj
+ 0001:000021c4       sqstd_register_mathlib     00000001800031c4 f   sqstdmath.obj
+ 0001:00003284       sqstd_rex_compile          0000000180004284 f   sqstdrex.obj
+ 0001:000033b0       sqstd_rex_free             00000001800043b0 f   sqstdrex.obj
+ 0001:000033fc       sqstd_rex_match            00000001800043fc f   sqstdrex.obj
+ 0001:00003460       sqstd_rex_searchrange      0000000180004460 f   sqstdrex.obj
+ 0001:00003520       sqstd_rex_search           0000000180004520 f   sqstdrex.obj
+ 0001:00003558       sqstd_rex_getsubexpcount   0000000180004558 f   sqstdrex.obj
+ 0001:00003560       sqstd_rex_getsubexp        0000000180004560 f   sqstdrex.obj
+ 0001:0000358c       ?_stream_readblob@@YA_JPEAUSQVM@@@Z 000000018000458c f   sqstdstream.obj
+ 0001:000036a8       ?_stream_readn@@YA_JPEAUSQVM@@@Z 00000001800046a8 f   sqstdstream.obj
+ 0001:00003904       ?_stream_writeblob@@YA_JPEAUSQVM@@@Z 0000000180004904 f   sqstdstream.obj
+ 0001:000039f4       ?_stream_writen@@YA_JPEAUSQVM@@@Z 00000001800049f4 f   sqstdstream.obj
+ 0001:00003bc8       ?_stream_seek@@YA_JPEAUSQVM@@@Z 0000000180004bc8 f   sqstdstream.obj
+ 0001:00003cd4       ?_stream_tell@@YA_JPEAUSQVM@@@Z 0000000180004cd4 f   sqstdstream.obj
+ 0001:00003d6c       ?_stream_len@@YA_JPEAUSQVM@@@Z 0000000180004d6c f   sqstdstream.obj
+ 0001:00003e04       ?_stream_flush@@YA_JPEAUSQVM@@@Z 0000000180004e04 f   sqstdstream.obj
+ 0001:00003eac       ?_stream_eos@@YA_JPEAUSQVM@@@Z 0000000180004eac f   sqstdstream.obj
+ 0001:00003f54       ?_stream__cloned@@YA_JPEAUSQVM@@@Z 0000000180004f54 f   sqstdstream.obj
+ 0001:00003f60       ?init_streamclass@@YAXPEAUSQVM@@@Z 0000000180004f60 f   sqstdstream.obj
+ 0001:000040dc       ?declare_stream@@YA_JPEAUSQVM@@PEBDPEAX1PEAUtagSQRegFunction@@3@Z 00000001800050dc f   sqstdstream.obj
+ 0001:00004334       sqstd_format               0000000180005334 f   sqstdstring.obj
+ 0001:00004e00       sqstd_register_stringlib   0000000180005e00 f   sqstdstring.obj
+ 0001:000052f4       sqstd_register_systemlib   00000001800062f4 f   sqstdsystem.obj
+ 0001:000053b8       ??_ESQRefCounted@@UEAAPEAXI@Z 00000001800063b8 f i  CIL library: CIL module
+ 0001:000053b8       ??_GSQRefCounted@@UEAAPEAXI@Z 00000001800063b8 f i sqapi.obj
+ 0001:000053b8       ??_ESQWeakRef@@UEAAPEAXI@Z 00000001800063b8 f i  CIL library: CIL module
+ 0001:000053b8       ??_GSQWeakRef@@UEAAPEAXI@Z 00000001800063b8 f i sqobject.obj
+ 0001:000053dc       ??0SQObjectPtr@@QEAA@XZ    00000001800063dc f i sqapi.obj
+ 0001:000053ec       ?Create@SQTable@@SAPEAU1@PEAUSQSharedState@@_J@Z 00000001800063ec f i sqapi.obj
+ 0001:00005494       ??1SQCollectable@@UEAA@XZ  0000000180006494 f i sqapi.obj
+ 0001:00005494       ??1SQDelegable@@UEAA@XZ    0000000180006494 f i sqapi.obj
+ 0001:0000549c       ?Create@SQArray@@SAPEAU1@PEAUSQSharedState@@_J@Z 000000018000649c f i sqapi.obj
+ 0001:00005560       ?GetType@SQArray@@UEAA?AW4tagSQObjectType@@XZ 0000000180006560 f i sqapi.obj
+ 0001:00005568       ?Finalize@SQArray@@UEAAXXZ 0000000180006568 f i sqapi.obj
+ 0001:0000559c       ?Get@SQArray@@QEAA_N_JAEAUSQObjectPtr@@@Z 000000018000659c f i sqapi.obj
+ 0001:00005610       ?Remove@SQArray@@QEAA_N_J@Z 0000000180006610 f i sqapi.obj
+ 0001:000056e8       ??_ESQArray@@EEAAPEAXI@Z   00000001800066e8 f i  CIL library: CIL module
+ 0001:000056e8       ??_GSQArray@@EEAAPEAXI@Z   00000001800066e8 f i sqapi.obj
+ 0001:0000575c       ?Create@SQClosure@@SAPEAU1@PEAUSQSharedState@@PEAUSQFunctionProto@@@Z 000000018000675c f i sqapi.obj
+ 0001:00005878       ?Release@SQClosure@@UEAAXXZ 0000000180006878 f i sqapi.obj
+ 0001:0000596c       ?Clone@SQClosure@@QEAAPEAU1@XZ 000000018000696c f i sqapi.obj
+ 0001:00005a94       ?Finalize@SQClosure@@UEAAXXZ 0000000180006a94 f i sqapi.obj
+ 0001:00005b58       ?GetType@SQClosure@@UEAA?AW4tagSQObjectType@@XZ 0000000180006b58 f i sqapi.obj
+ 0001:00005b60       ??_GSQClosure@@UEAAPEAXI@Z 0000000180006b60 f i sqapi.obj
+ 0001:00005b60       ??_ESQClosure@@UEAAPEAXI@Z 0000000180006b60 f i  CIL library: CIL module
+ 0001:00005c10       ?Create@SQNativeClosure@@SAPEAU1@PEAUSQSharedState@@P6A_JPEAUSQVM@@@Z_J@Z 0000000180006c10 f i sqapi.obj
+ 0001:00005cf4       ?Clone@SQNativeClosure@@QEAAPEAU1@XZ 0000000180006cf4 f i sqapi.obj
+ 0001:00005df0       ?Release@SQNativeClosure@@UEAAXXZ 0000000180006df0 f i sqapi.obj
+ 0001:00005e68       ?Finalize@SQNativeClosure@@UEAAXXZ 0000000180006e68 f i sqapi.obj
+ 0001:00005ed0       ?GetType@SQNativeClosure@@UEAA?AW4tagSQObjectType@@XZ 0000000180006ed0 f i sqapi.obj
+ 0001:00005ed8       ??_GSQNativeClosure@@UEAAPEAXI@Z 0000000180006ed8 f i sqapi.obj
+ 0001:00005ed8       ??_ESQNativeClosure@@UEAAPEAXI@Z 0000000180006ed8 f i  CIL library: CIL module
+ 0001:00005f9c       ?Finalize@SQUserData@@UEAAXXZ 0000000180006f9c f i sqapi.obj
+ 0001:00005fa4       ?GetType@SQUserData@@UEAA?AW4tagSQObjectType@@XZ 0000000180006fa4 f i sqapi.obj
+ 0001:00005fac       ?Release@SQUserData@@UEAAXXZ 0000000180006fac f i sqapi.obj
+ 0001:00005fe8       ??_GSQUserData@@UEAAPEAXI@Z 0000000180006fe8 f i sqapi.obj
+ 0001:00005fe8       ??_ESQUserData@@UEAAPEAXI@Z 0000000180006fe8 f i  CIL library: CIL module
+ 0001:0000605c       ?Get@SQClass@@QEAA_NAEBUSQObjectPtr@@AEAU2@@Z 000000018000705c f i sqapi.obj
+ 0001:0000614c       ?Get@SQInstance@@QEAA_NAEBUSQObjectPtr@@AEAU2@@Z 000000018000714c f i sqapi.obj
+ 0001:00006244       ?Set@SQInstance@@QEAA_NAEBUSQObjectPtr@@0@Z 0000000180007244 f i sqapi.obj
+ 0001:00006330       ?sq_aux_gettypedarg@@YA_NPEAUSQVM@@_JW4tagSQObjectType@@PEAPEAUSQObjectPtr@@@Z 0000000180007330 f   sqapi.obj
+ 0001:000063e0       ?sq_aux_invalidtype@@YA_JPEAUSQVM@@W4tagSQObjectType@@@Z 00000001800073e0 f   sqapi.obj
+ 0001:00006440       sq_open                    0000000180007440 f   sqapi.obj
+ 0001:00006504       sq_newthread               0000000180007504 f   sqapi.obj
+ 0001:000065b4       sq_getvmstate              00000001800075b4 f   sqapi.obj
+ 0001:000065d8       sq_seterrorhandler         00000001800075d8 f   sqapi.obj
+ 0001:00006660       sq_setnativedebughook      0000000180007660 f   sqapi.obj
+ 0001:000066c0       sq_setdebughook            00000001800076c0 f   sqapi.obj
+ 0001:00006768       sq_close                   0000000180007768 f   sqapi.obj
+ 0001:0000679c       sq_getversion              000000018000779c f   sqapi.obj
+ 0001:000067a8       sq_compile                 00000001800077a8 f   sqapi.obj
+ 0001:000069b0       sq_enabledebuginfo         00000001800079b0 f   sqapi.obj
+ 0001:000069c4       sq_notifyallexceptions     00000001800079c4 f   sqapi.obj
+ 0001:000069d8       sq_addref                  00000001800079d8 f   sqapi.obj
+ 0001:00006a0c       sq_getrefcount             0000000180007a0c f   sqapi.obj
+ 0001:00006a44       sq_release                 0000000180007a44 f   sqapi.obj
+ 0001:00006a70       sq_objtostring             0000000180007a70 f   sqapi.obj
+ 0001:00006a84       sq_objtointeger            0000000180007a84 f   sqapi.obj
+ 0001:00006aa4       sq_objtofloat              0000000180007aa4 f   sqapi.obj
+ 0001:00006ac8       sq_objtobool               0000000180007ac8 f   sqapi.obj
+ 0001:00006ad8       sq_objtouserpointer        0000000180007ad8 f   sqapi.obj
+ 0001:00006ae8       sq_pushnull                0000000180007ae8 f   sqapi.obj
+ 0001:00006af0       sq_pushstring              0000000180007af0 f   sqapi.obj
+ 0001:00006b58       sq_pushinteger             0000000180007b58 f   sqapi.obj
+ 0001:00006b78       sq_pushbool                0000000180007b78 f   sqapi.obj
+ 0001:00006ba0       sq_pushfloat               0000000180007ba0 f   sqapi.obj
+ 0001:00006bc8       sq_pushuserpointer         0000000180007bc8 f   sqapi.obj
+ 0001:00006be8       sq_newuserdata             0000000180007be8 f   sqapi.obj
+ 0001:00006cb8       sq_newtable                0000000180007cb8 f   sqapi.obj
+ 0001:00006d10       sq_newtableex              0000000180007d10 f   sqapi.obj
+ 0001:00006d68       sq_newarray                0000000180007d68 f   sqapi.obj
+ 0001:00006dc0       sq_newclass                0000000180007dc0 f   sqapi.obj
+ 0001:00006e80       sq_instanceof              0000000180007e80 f   sqapi.obj
+ 0001:00006ef0       sq_arrayappend             0000000180007ef0 f   sqapi.obj
+ 0001:00006fa4       sq_arraypop                0000000180007fa4 f   sqapi.obj
+ 0001:000070b8       sq_arrayresize             00000001800080b8 f   sqapi.obj
+ 0001:00007194       sq_arrayreverse            0000000180008194 f   sqapi.obj
+ 0001:00007304       sq_arrayremove             0000000180008304 f   sqapi.obj
+ 0001:0000738c       sq_arrayinsert             000000018000838c f   sqapi.obj
+ 0001:00007474       sq_newclosure              0000000180008474 f   sqapi.obj
+ 0001:0000754c       sq_getclosureinfo          000000018000854c f   sqapi.obj
+ 0001:000075e0       sq_setnativeclosurename    00000001800085e0 f   sqapi.obj
+ 0001:00007684       sq_setparamscheck          0000000180008684 f   sqapi.obj
+ 0001:00007774       sq_bindenv                 0000000180008774 f   sqapi.obj
+ 0001:000078f8       sq_getclosurename          00000001800088f8 f   sqapi.obj
+ 0001:00007968       sq_clear                   0000000180008968 f   sqapi.obj
+ 0001:00007a44       sq_pushroottable           0000000180008a44 f   sqapi.obj
+ 0001:00007a50       sq_pushregistrytable       0000000180008a50 f   sqapi.obj
+ 0001:00007a60       sq_pushconsttable          0000000180008a60 f   sqapi.obj
+ 0001:00007a70       sq_setroottable            0000000180008a70 f   sqapi.obj
+ 0001:00007af4       sq_setconsttable           0000000180008af4 f   sqapi.obj
+ 0001:00007b74       sq_setforeignptr           0000000180008b74 f   sqapi.obj
+ 0001:00007b7c       sq_getforeignptr           0000000180008b7c f   sqapi.obj
+ 0001:00007b84       sq_push                    0000000180008b84 f   sqapi.obj
+ 0001:00007bb8       sq_gettype                 0000000180008bb8 f   sqapi.obj
+ 0001:00007be8       sq_typeof                  0000000180008be8 f   sqapi.obj
+ 0001:00007c9c       sq_tostring                0000000180008c9c f   sqapi.obj
+ 0001:00007d50       sq_tobool                  0000000180008d50 f   sqapi.obj
+ 0001:00007d98       sq_getinteger              0000000180008d98 f   sqapi.obj
+ 0001:00007dec       sq_getfloat                0000000180008dec f   sqapi.obj
+ 0001:00007e44       sq_getbool                 0000000180008e44 f   sqapi.obj
+ 0001:00007e84       sq_getstring               0000000180008e84 f   sqapi.obj
+ 0001:00007ec8       sq_getthread               0000000180008ec8 f   sqapi.obj
+ 0001:00007f08       sq_clone                   0000000180008f08 f   sqapi.obj
+ 0001:00007f80       sq_getsize                 0000000180008f80 f   sqapi.obj
+ 0001:00008028       sq_gethash                 0000000180009028 f   sqapi.obj
+ 0001:000080bc       sq_getuserdata             00000001800090bc f   sqapi.obj
+ 0001:00008120       sq_settypetag              0000000180009120 f   sqapi.obj
+ 0001:00008188       sq_getobjtypetag           0000000180009188 f   sqapi.obj
+ 0001:000081d4       sq_gettypetag              00000001800091d4 f   sqapi.obj
+ 0001:0000822c       sq_getuserpointer          000000018000922c f   sqapi.obj
+ 0001:0000826c       sq_setinstanceup           000000018000926c f   sqapi.obj
+ 0001:000082c0       sq_setclassudsize          00000001800092c0 f   sqapi.obj
+ 0001:0000832c       sq_getinstanceup           000000018000932c f   sqapi.obj
+ 0001:000083b4       sq_gettop                  00000001800093b4 f   sqapi.obj
+ 0001:000083c0       sq_settop                  00000001800093c0 f   sqapi.obj
+ 0001:00008408       sq_pop                     0000000180009408 f   sqapi.obj
+ 0001:00008410       sq_poptop                  0000000180009410 f   sqapi.obj
+ 0001:00008418       sq_remove                  0000000180009418 f   sqapi.obj
+ 0001:000084e4       sq_cmp                     00000001800094e4 f   sqapi.obj
+ 0001:00008518       sq_newslot                 0000000180009518 f   sqapi.obj
+ 0001:000085d0       sq_deleteslot              00000001800095d0 f   sqapi.obj
+ 0001:00008724       sq_set                     0000000180009724 f   sqapi.obj
+ 0001:000087a8       sq_rawset                  00000001800097a8 f   sqapi.obj
+ 0001:00008944       sq_newmember               0000000180009944 f   sqapi.obj
+ 0001:00008a10       sq_rawnewmember            0000000180009a10 f   sqapi.obj
+ 0001:00008adc       sq_setdelegate             0000000180009adc f   sqapi.obj
+ 0001:00008b9c       sq_rawdeleteslot           0000000180009b9c f   sqapi.obj
+ 0001:00008cc4       sq_getdelegate             0000000180009cc4 f   sqapi.obj
+ 0001:00008d64       sq_get                     0000000180009d64 f   sqapi.obj
+ 0001:00008ddc       sq_rawget                  0000000180009ddc f   sqapi.obj
+ 0001:00008f20       sq_getstackobj             0000000180009f20 f   sqapi.obj
+ 0001:00008f58       sq_getlocal                0000000180009f58 f   sqapi.obj
+ 0001:000090a8       sq_pushobject              000000018000a0a8 f   sqapi.obj
+ 0001:000090f8       sq_resetobject             000000018000a0f8 f   sqapi.obj
+ 0001:00009104       sq_throwerror              000000018000a104 f   sqapi.obj
+ 0001:00009154       sq_throwobject             000000018000a154 f   sqapi.obj
+ 0001:000091b8       sq_reseterror              000000018000a1b8 f   sqapi.obj
+ 0001:000091ec       sq_getlasterror            000000018000a1ec f   sqapi.obj
+ 0001:000091f8       sq_reservestack            000000018000a1f8 f   sqapi.obj
+ 0001:00009244       sq_resume                  000000018000a244 f   sqapi.obj
+ 0001:0000931c       sq_call                    000000018000a31c f   sqapi.obj
+ 0001:00009410       sq_suspendvm               000000018000a410 f   sqapi.obj
+ 0001:0000944c       sq_wakeupvm                000000018000a44c f   sqapi.obj
+ 0001:00009634       sq_setreleasehook          000000018000a634 f   sqapi.obj
+ 0001:000096a0       sq_setcompilererrorhandler 000000018000a6a0 f   sqapi.obj
+ 0001:000096b0       sq_writeclosure            000000018000a6b0 f   sqapi.obj
+ 0001:00009774       sq_readclosure             000000018000a774 f   sqapi.obj
+ 0001:00009844       sq_getscratchpad           000000018000a844 f   sqapi.obj
+ 0001:0000986c       sq_resurrectunreachable    000000018000a86c f   sqapi.obj
+ 0001:000099bc       sq_collectgarbage          000000018000a9bc f   sqapi.obj
+ 0001:00009a6c       sq_getcallee               000000018000aa6c f   sqapi.obj
+ 0001:00009aa8       sq_getfreevariable         000000018000aaa8 f   sqapi.obj
+ 0001:00009b64       sq_setfreevariable         000000018000ab64 f   sqapi.obj
+ 0001:00009c50       sq_setattributes           000000018000ac50 f   sqapi.obj
+ 0001:00009df8       sq_getattributes           000000018000adf8 f   sqapi.obj
+ 0001:00009f28       sq_getmemberhandle         000000018000af28 f   sqapi.obj
+ 0001:0000a02c       ?_getmemberbyhandle@@YA_JPEAUSQVM@@AEAUSQObjectPtr@@PEBUtagSQMemberHandle@@AEAPEAU2@@Z 000000018000b02c f   sqapi.obj
+ 0001:0000a0a4       sq_getbyhandle             000000018000b0a4 f   sqapi.obj
+ 0001:0000a174       sq_setbyhandle             000000018000b174 f   sqapi.obj
+ 0001:0000a22c       sq_getbase                 000000018000b22c f   sqapi.obj
+ 0001:0000a2b0       sq_getclass                000000018000b2b0 f   sqapi.obj
+ 0001:0000a328       sq_createinstance          000000018000b328 f   sqapi.obj
+ 0001:0000a3a4       sq_weakref                 000000018000b3a4 f   sqapi.obj
+ 0001:0000a46c       sq_getweakrefval           000000018000b46c f   sqapi.obj
+ 0001:0000a500       sq_getdefaultdelegate      000000018000b500 f   sqapi.obj
+ 0001:0000a5e0       sq_next                    000000018000b5e0 f   sqapi.obj
+ 0001:0000a830       ?buf_lexfeed@@YA_JPEAX@Z   000000018000b830 f   sqapi.obj
+ 0001:0000a850       sq_compilebuffer           000000018000b850 f   sqapi.obj
+ 0001:0000a888       sq_move                    000000018000b888 f   sqapi.obj
+ 0001:0000a8bc       sq_setprintfunc            000000018000b8bc f   sqapi.obj
+ 0001:0000a8dc       sq_getprintfunc            000000018000b8dc f   sqapi.obj
+ 0001:0000a8ec       sq_geterrorfunc            000000018000b8ec f   sqapi.obj
+ 0001:0000a8fc       sq_malloc                  000000018000b8fc f   sqapi.obj
+ 0001:0000a904       sq_realloc                 000000018000b904 f   sqapi.obj
+ 0001:0000a910       sq_free                    000000018000b910 f   sqapi.obj
+ 0001:0000a918       ??1?$sqvector@USQObjectPtr@@@@QEAA@XZ 000000018000b918 f i sqapi.obj
+ 0001:0000a98c       ?resize@?$sqvector@USQObjectPtr@@@@QEAAX_KAEBUSQObjectPtr@@@Z 000000018000b98c f i sqapi.obj
+ 0001:0000aa68       ?push_back@?$sqvector@USQObjectPtr@@@@QEAAAEAUSQObjectPtr@@AEBU2@@Z 000000018000ba68 f i sqapi.obj
+ 0001:0000aaf0       ?insert@?$sqvector@USQObjectPtr@@@@QEAAX_KAEBUSQObjectPtr@@@Z 000000018000baf0 f i sqapi.obj
+ 0001:0000abf4       ?copy@?$sqvector@_J@@QEAAXAEBV1@@Z 000000018000bbf4 f i sqapi.obj
+ 0001:0000ac84       ?str2num@@YA_NPEBDAEAUSQObjectPtr@@@Z 000000018000bc84 f   sqbaselib.obj
+ 0001:0000ad60       ?Flush@SQBlob@@UEAA_JXZ    000000018000bd60 f   sqstdblob.obj
+ 0001:0000b638       ?sq_base_register@@YAXPEAUSQVM@@@Z 000000018000c638 f   sqbaselib.obj
+ 0001:0000cb20       ?_sort_compare@@YA_NPEAUSQVM@@AEAUSQObjectPtr@@1_JAEA_J@Z 000000018000db20 f   sqbaselib.obj
+ 0001:0000cc00       ?_hsort_sift_down@@YA_NPEAUSQVM@@PEAUSQArray@@_J22@Z 000000018000dc00 f   sqbaselib.obj
+ 0001:0000cd34       ?_hsort@@YA_NPEAUSQVM@@AEAUSQObjectPtr@@_J22@Z 000000018000dd34 f   sqbaselib.obj
+ 0001:0000e74c       ?Lock@SQClass@@QEAAXXZ     000000018000f74c f i sqclass.obj
+ 0001:0000e770       ?Release@SQClass@@UEAAXXZ  000000018000f770 f i sqclass.obj
+ 0001:0000e7ac       ?GetType@SQClass@@UEAA?AW4tagSQObjectType@@XZ 000000018000f7ac f i sqclass.obj
+ 0001:0000e7b4       ?Release@SQInstance@@UEAAXXZ 000000018000f7b4 f i sqclass.obj
+ 0001:0000e7f4       ?GetType@SQInstance@@UEAA?AW4tagSQObjectType@@XZ 000000018000f7f4 f i sqclass.obj
+ 0001:0000e7fc       ??0SQClass@@QEAA@PEAUSQSharedState@@PEAU0@@Z 000000018000f7fc f   sqclass.obj
+ 0001:0000e9c4       ??_ESQClass@@UEAAPEAXI@Z   000000018000f9c4 f i  CIL library: CIL module
+ 0001:0000e9c4       ??_GSQClass@@UEAAPEAXI@Z   000000018000f9c4 f i sqclass.obj
+ 0001:0000ea90       ?Finalize@SQClass@@UEAAXXZ 000000018000fa90 f   sqclass.obj
+ 0001:0000ec30       ??1SQClassMember@@QEAA@XZ  000000018000fc30 f i sqclass.obj
+ 0001:0000ec94       ?NewSlot@SQClass@@QEAA_NPEAUSQSharedState@@AEBUSQObjectPtr@@1_N@Z 000000018000fc94 f   sqclass.obj
+ 0001:0000f17c       ?CreateInstance@SQClass@@QEAAPEAUSQInstance@@XZ 000000018001017c f   sqclass.obj
+ 0001:0000f230       ?Next@SQClass@@QEAA_JAEBUSQObjectPtr@@AEAU2@1@Z 0000000180010230 f   sqclass.obj
+ 0001:0000f374       ?SetAttributes@SQClass@@QEAA_NAEBUSQObjectPtr@@0@Z 0000000180010374 f   sqclass.obj
+ 0001:0000f4b8       ?GetAttributes@SQClass@@QEAA_NAEBUSQObjectPtr@@AEAU2@@Z 00000001800104b8 f   sqclass.obj
+ 0001:0000f5c0       ?Init@SQInstance@@QEAAXPEAUSQSharedState@@@Z 00000001800105c0 f   sqclass.obj
+ 0001:0000f610       ??0SQInstance@@QEAA@PEAUSQSharedState@@PEAUSQClass@@_J@Z 0000000180010610 f   sqclass.obj
+ 0001:0000f6e0       ??_ESQInstance@@UEAAPEAXI@Z 00000001800106e0 f i  CIL library: CIL module
+ 0001:0000f6e0       ??_GSQInstance@@UEAAPEAXI@Z 00000001800106e0 f i sqclass.obj
+ 0001:0000f774       ??0SQInstance@@QEAA@PEAUSQSharedState@@PEAU0@_J@Z 0000000180010774 f   sqclass.obj
+ 0001:0000f83c       ?Finalize@SQInstance@@UEAAXXZ 000000018001083c f   sqclass.obj
+ 0001:0000f8b4       ?GetMetaMethod@SQInstance@@UEAA_NPEAUSQVM@@W4SQMetaMethod@@AEAUSQObjectPtr@@@Z 00000001800108b4 f   sqclass.obj
+ 0001:0000f914       ?copy@?$sqvector@USQClassMember@@@@QEAAXAEBV1@@Z 0000000180010914 f i sqclass.obj
+ 0001:0000fa34       ??1?$sqvector@USQClassMember@@@@QEAA@XZ 0000000180010a34 f i sqclass.obj
+ 0001:0000fae4       ?resize@?$sqvector@USQClassMember@@@@QEAAX_KAEBUSQClassMember@@@Z 0000000180010ae4 f i sqclass.obj
+ 0001:0000fb8c       ?push_back@?$sqvector@USQClassMember@@@@QEAAAEAUSQClassMember@@AEBU2@@Z 0000000180010b8c f i sqclass.obj
+ 0001:0000fc2c       ?ThrowError@SQCompiler@@SAXPEAXPEBD@Z 0000000180010c2c f i sqcompiler.obj
+ 0001:0000fc38       ?Error@SQCompiler@@QEAAXPEBDZZ 0000000180010c38 f i sqcompiler.obj
+ 0001:0000fc80       ?Expect@SQCompiler@@QEAA?AUtagSQObject@@_J@Z 0000000180010c80 f i sqcompiler.obj
+ 0001:0000fe4c       ?Compile@SQCompiler@@QEAA_NAEAUSQObjectPtr@@@Z 0000000180010e4c f i sqcompiler.obj
+ 0001:000101c0       ?Statements@SQCompiler@@QEAAXXZ 00000001800111c0 f i sqcompiler.obj
+ 0001:0001023c       ?Statement@SQCompiler@@QEAAX_N@Z 000000018001123c f i sqcompiler.obj
+ 0001:00010d4c       ?EmitDerefOp@SQCompiler@@QEAAXW4SQOpcode@@@Z 0000000180011d4c f i sqcompiler.obj
+ 0001:00010dd0       ?Emit2ArgsOP@SQCompiler@@QEAAXW4SQOpcode@@_J@Z 0000000180011dd0 f i sqcompiler.obj
+ 0001:00010e4c       ?EmitCompoundArith@SQCompiler@@QEAAX_J00@Z 0000000180011e4c f i sqcompiler.obj
+ 0001:000110e0       ?CommaExpr@SQCompiler@@QEAAXXZ 00000001800120e0 f i sqcompiler.obj
+ 0001:00011124       ?Expression@SQCompiler@@QEAAXXZ 0000000180012124 f i sqcompiler.obj
+ 0001:000114b0       ?LogicalOrExp@SQCompiler@@QEAAXXZ 00000001800124b0 f i sqcompiler.obj
+ 0001:000115e4       ?LogicalAndExp@SQCompiler@@QEAAXXZ 00000001800125e4 f i sqcompiler.obj
+ 0001:0001177c       ?BitwiseOrExp@SQCompiler@@QEAAXXZ 000000018001277c f i sqcompiler.obj
+ 0001:000117d4       ?BitwiseXorExp@SQCompiler@@QEAAXXZ 00000001800127d4 f i sqcompiler.obj
+ 0001:0001180c       ?BitwiseAndExp@SQCompiler@@QEAAXXZ 000000018001280c f i sqcompiler.obj
+ 0001:0001187c       ?EqExp@SQCompiler@@QEAAXXZ 000000018001287c f i sqcompiler.obj
+ 0001:000118d0       ?CompExp@SQCompiler@@QEAAXXZ 00000001800128d0 f i sqcompiler.obj
+ 0001:00011990       ?ShiftExp@SQCompiler@@QEAAXXZ 0000000180012990 f i sqcompiler.obj
+ 0001:000119e8       ?PlusExp@SQCompiler@@QEAAXXZ 00000001800129e8 f i sqcompiler.obj
+ 0001:00011a88       ?MultExp@SQCompiler@@QEAAXXZ 0000000180012a88 f i sqcompiler.obj
+ 0001:00011b2c       ?PrefixedExpr@SQCompiler@@QEAAXXZ 0000000180012b2c f i sqcompiler.obj
+ 0001:00012168       ?Factor@SQCompiler@@QEAA_JXZ 0000000180013168 f i sqcompiler.obj
+ 0001:00013094       ?EmitLoadConstInt@SQCompiler@@QEAAX_J0@Z 0000000180014094 f i sqcompiler.obj
+ 0001:00013154       ?ParseTableOrClass@SQCompiler@@QEAAX_J0@Z 0000000180014154 f i sqcompiler.obj
+ 0001:00013570       ?LocalDeclStatement@SQCompiler@@QEAAXXZ 0000000180014570 f i sqcompiler.obj
+ 0001:00013720       ?IfStatement@SQCompiler@@QEAAXXZ 0000000180014720 f i sqcompiler.obj
+ 0001:00013a1c       ?WhileStatement@SQCompiler@@QEAAXXZ 0000000180014a1c f i sqcompiler.obj
+ 0001:00013ce0       ?DoWhileStatement@SQCompiler@@QEAAXXZ 0000000180014ce0 f i sqcompiler.obj
+ 0001:00013f9c       ?ForStatement@SQCompiler@@QEAAXXZ 0000000180014f9c f i sqcompiler.obj
+ 0001:000144e0       ?ForEachStatement@SQCompiler@@QEAAXXZ 00000001800154e0 f i sqcompiler.obj
+ 0001:000149a4       ?SwitchStatement@SQCompiler@@QEAAXXZ 00000001800159a4 f i sqcompiler.obj
+ 0001:00014dd4       ?FunctionStatement@SQCompiler@@QEAAXXZ 0000000180015dd4 f i sqcompiler.obj
+ 0001:00014fb4       ?ExpectScalar@SQCompiler@@QEAA?AUtagSQObject@@XZ 0000000180015fb4 f i sqcompiler.obj
+ 0001:000150b0       ?EnumStatement@SQCompiler@@QEAAXXZ 00000001800160b0 f i sqcompiler.obj
+ 0001:00015324       ?TryCatchStatement@SQCompiler@@QEAAXXZ 0000000180016324 f i sqcompiler.obj
+ 0001:00015658       ?FunctionExp@SQCompiler@@QEAAX_J_N@Z 0000000180016658 f i sqcompiler.obj
+ 0001:0001570c       ?ClassExp@SQCompiler@@QEAAXXZ 000000018001670c f i sqcompiler.obj
+ 0001:0001584c       ?PrefixIncDec@SQCompiler@@QEAAX_J@Z 000000018001684c f i sqcompiler.obj
+ 0001:000159f8       ?CreateFunction@SQCompiler@@QEAAXAEAUtagSQObject@@_N@Z 00000001800169f8 f i sqcompiler.obj
+ 0001:00015e30       ?push_back@?$sqvector@_J@@QEAAAEA_JAEB_J@Z 0000000180016e30 f i sqcompiler.obj
+ 0001:00015ea8       ??$BIN_EXP@P8SQCompiler@@EAAXXZ@SQCompiler@@QEAAXW4SQOpcode@@P80@EAAXXZ_J@Z 0000000180016ea8 f i sqcompiler.obj
+ 0001:00015f34       sq_getfunctioninfo         0000000180016f34 f   sqdebug.obj
+ 0001:00015fb4       sq_stackinfos              0000000180016fb4 f   sqdebug.obj
+ 0001:00016080       ?Raise_Error@SQVM@@QEAAXPEBDZZ 0000000180017080 f   sqdebug.obj
+ 0001:0001612c       ?Raise_Error@SQVM@@QEAAXAEBUSQObjectPtr@@@Z 000000018001712c f   sqdebug.obj
+ 0001:00016170       ?PrintObjVal@SQVM@@QEAAPEAUSQString@@AEBUSQObjectPtr@@@Z 0000000180017170 f   sqdebug.obj
+ 0001:00016230       ?Raise_IdxError@SQVM@@QEAAXAEBUSQObjectPtr@@@Z 0000000180017230 f   sqdebug.obj
+ 0001:00016290       ?Raise_CompareError@SQVM@@QEAAXAEBUtagSQObject@@0@Z 0000000180017290 f   sqdebug.obj
+ 0001:000163a8       ?Raise_ParamTypeError@SQVM@@QEAAX_J00@Z 00000001800173a8 f   sqdebug.obj
+ 0001:00016548       ??0SQOuterVar@@QEAA@AEBUSQObjectPtr@@0W4SQOuterType@@@Z 0000000180017548 f i sqfuncstate.obj
+ 0001:00016604       ?Create@SQFunctionProto@@SAPEAU1@PEAUSQSharedState@@_J1111111@Z 0000000180017604 f i sqfuncstate.obj
+ 0001:000168b4       ??1SQOuterVar@@QEAA@XZ     00000001800178b4 f i sqfuncstate.obj
+ 0001:00016918       ??1SQObjectPtr@@QEAA@XZ    0000000180017918 f i sqapi.obj
+ 0001:00016918       ??1SQLocalVarInfo@@QEAA@XZ 0000000180017918 f i sqfuncstate.obj
+ 0001:00016944       ??0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z 0000000180017944 f   sqfuncstate.obj
+ 0001:00016bb0       ?GetConstant@SQFuncState@@QEAA_JAEBUtagSQObject@@@Z 0000000180017bb0 f   sqfuncstate.obj
+ 0001:00016d68       ?PushTarget@SQFuncState@@QEAA_J_J@Z 0000000180017d68 f   sqfuncstate.obj
+ 0001:00016e08       ?PopTarget@SQFuncState@@QEAA_JXZ 0000000180017e08 f   sqfuncstate.obj
+ 0001:00016e78       ?SetStackSize@SQFuncState@@QEAAX_J@Z 0000000180017e78 f   sqfuncstate.obj
+ 0001:00016f98       ?IsConstant@SQFuncState@@QEAA_NAEBUtagSQObject@@AEAU2@@Z 0000000180017f98 f   sqfuncstate.obj
+ 0001:0001708c       ?PushLocalVariable@SQFuncState@@QEAA_JAEBUtagSQObject@@@Z 000000018001808c f   sqfuncstate.obj
+ 0001:0001712c       ?GetOuterVariable@SQFuncState@@QEAA_JAEBUtagSQObject@@@Z 000000018001812c f   sqfuncstate.obj
+ 0001:0001739c       ?AddParameter@SQFuncState@@QEAAXAEBUtagSQObject@@@Z 000000018001839c f   sqfuncstate.obj
+ 0001:00017408       ?AddLineInfos@SQFuncState@@QEAAX_J_N1@Z 0000000180018408 f   sqfuncstate.obj
+ 0001:000174f4       ?AddInstruction@SQFuncState@@QEAAXAEAUSQInstruction@@@Z 00000001800184f4 f   sqfuncstate.obj
+ 0001:00017914       ?CreateString@SQFuncState@@QEAA?AUtagSQObject@@PEBD_J@Z 0000000180018914 f   sqfuncstate.obj
+ 0001:000179e0       ?CreateTable@SQFuncState@@QEAA?AUtagSQObject@@XZ 00000001800189e0 f   sqfuncstate.obj
+ 0001:00017aa0       ?BuildProto@SQFuncState@@QEAAPEAUSQFunctionProto@@XZ 0000000180018aa0 f   sqfuncstate.obj
+ 0001:00017f38       ??4SQOuterVar@@QEAAAEAU0@AEBU0@@Z 0000000180018f38 f i sqfuncstate.obj
+ 0001:00017fc8       ??1SQFuncState@@QEAA@XZ    0000000180018fc8 f   sqfuncstate.obj
+ 0001:000181f4       ??1?$sqvector@USQLocalVarInfo@@@@QEAA@XZ 00000001800191f4 f i sqfuncstate.obj
+ 0001:00018268       ?push_back@?$sqvector@USQLocalVarInfo@@@@QEAAAEAUSQLocalVarInfo@@AEBU2@@Z 0000000180019268 f i sqfuncstate.obj
+ 0001:00018328       ??1?$sqvector@USQOuterVar@@@@QEAA@XZ 0000000180019328 f i sqfuncstate.obj
+ 0001:000183d8       ?push_back@?$sqvector@USQOuterVar@@@@QEAAAEAUSQOuterVar@@AEBU2@@Z 00000001800193d8 f i sqfuncstate.obj
+ 0001:000184ec       ??1?$sqvector@_J@@QEAA@XZ  00000001800194ec f i sqapi.obj
+ 0001:000184ec       ??1?$sqvector@USQLineInfo@@@@QEAA@XZ 00000001800194ec f i sqfuncstate.obj
+ 0001:000184ec       ??1?$sqvector@PEAUSQFuncState@@@@QEAA@XZ 00000001800194ec f i sqfuncstate.obj
+ 0001:000184ec       ??1?$sqvector@USQExceptionTrap@@@@QEAA@XZ 00000001800194ec f i sqvm.obj
+ 0001:000184ec       ??1?$sqvector@USQInstruction@@@@QEAA@XZ 00000001800194ec f i sqcompiler.obj
+ 0001:00018508       ?Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z 0000000180019508 f   sqlexer.obj
+ 0001:000198c0       ?Next@SQLexer@@AEAAXXZ     000000018001a8c0 f   sqlexer.obj
+ 0001:00019918       ?Tok2Str@SQLexer@@QEAAPEBD_J@Z 000000018001a918 f   sqlexer.obj
+ 0001:00019a88       ?Lex@SQLexer@@QEAA_JXZ     000000018001aa88 f   sqlexer.obj
+ 0001:0001a484       ?ReadString@SQLexer@@AEAA_J_J_N@Z 000000018001b484 f   sqlexer.obj
+ 0001:0001a778       ?ReadNumber@SQLexer@@AEAA_JXZ 000000018001b778 f   sqlexer.obj
+ 0001:0001aae4       ?push_back@?$sqvector@D@@QEAAAEADAEBD@Z 000000018001bae4 f i sqlexer.obj
+ 0001:0001ab58       ?Release@SQFunctionProto@@UEAAXXZ 000000018001bb58 f i sqobject.obj
+ 0001:0001ad30       ?Finalize@SQFunctionProto@@UEAAXXZ 000000018001bd30 f i sqobject.obj
+ 0001:0001ada0       ?GetType@SQFunctionProto@@UEAA?AW4tagSQObjectType@@XZ 000000018001bda0 f i sqobject.obj
+ 0001:0001ada8       ?IdType2Name@@YAPEBDW4tagSQObjectType@@@Z 000000018001bda8 f   sqobject.obj
+ 0001:0001aeac       ?Release@SQString@@UEAAXXZ 000000018001beac f   sqobject.obj
+ 0001:0001af14       ?Next@SQString@@QEAA_JAEBUSQObjectPtr@@AEAU2@1@Z 000000018001bf14 f   sqobject.obj
+ 0001:0001afc8       ?GetWeakRef@SQRefCounted@@QEAAPEAUSQWeakRef@@W4tagSQObjectType@@@Z 000000018001bfc8 f   sqobject.obj
+ 0001:0001b024       ??1SQRefCounted@@UEAA@XZ   000000018001c024 f   sqobject.obj
+ 0001:0001b048       ?Release@SQWeakRef@@UEAAXXZ 000000018001c048 f   sqobject.obj
+ 0001:0001b078       ?GetMetaMethod@SQDelegable@@UEAA_NPEAUSQVM@@W4SQMetaMethod@@AEAUSQObjectPtr@@@Z 000000018001c078 f   sqobject.obj
+ 0001:0001b0c0       ?SetDelegate@SQDelegable@@QEAA_NPEAUSQTable@@@Z 000000018001c0c0 f   sqobject.obj
+ 0001:0001b128       ?Yield@SQGenerator@@QEAA_NPEAUSQVM@@_J@Z 000000018001c128 f   sqobject.obj
+ 0001:0001b42c       ?Resume@SQGenerator@@QEAA_NPEAUSQVM@@AEAUSQObjectPtr@@@Z 000000018001c42c f   sqobject.obj
+ 0001:0001b6d0       ?GetLine@SQFunctionProto@@QEAA_JPEAUSQInstruction@@@Z 000000018001c6d0 f   sqobject.obj
+ 0001:0001b74c       ?SafeWrite@@YA_NPEAUSQVM@@P6A_JPEAX1_J@Z112@Z 000000018001c74c f   sqobject.obj
+ 0001:0001b78c       ?SafeRead@@YA_NPEAUSQVM@@P6A_JPEAX1_J@Z112@Z 000000018001c78c f   sqobject.obj
+ 0001:0001b7cc       ?CheckTag@@YA_NPEAUSQVM@@P6A_JPEAX1_J@Z1I@Z 000000018001c7cc f   sqobject.obj
+ 0001:0001b81c       ?WriteObject@@YA_NPEAUSQVM@@PEAXP6A_J11_J@ZAEAUSQObjectPtr@@@Z 000000018001c81c f   sqobject.obj
+ 0001:0001b92c       ?ReadObject@@YA_NPEAUSQVM@@PEAXP6A_J11_J@ZAEAUSQObjectPtr@@@Z 000000018001c92c f   sqobject.obj
+ 0001:0001bb68       ?Save@SQClosure@@QEAA_NPEAUSQVM@@PEAXP6A_J11_J@Z@Z 000000018001cb68 f   sqobject.obj
+ 0001:0001bc7c       ?Load@SQClosure@@SA_NPEAUSQVM@@PEAXP6A_J11_J@ZAEAUSQObjectPtr@@@Z 000000018001cc7c f   sqobject.obj
+ 0001:0001bdfc       ??_GSQFunctionProto@@EEAAPEAXI@Z 000000018001cdfc f i sqobject.obj
+ 0001:0001bdfc       ??_ESQFunctionProto@@EEAAPEAXI@Z 000000018001cdfc f i  CIL library: CIL module
+ 0001:0001beac       ?Save@SQFunctionProto@@QEAA_NPEAUSQVM@@PEAXP6A_J11_J@Z@Z 000000018001ceac f   sqobject.obj
+ 0001:0001c628       ?Load@SQFunctionProto@@SA_NPEAUSQVM@@PEAXP6A_J11_J@ZAEAUSQObjectPtr@@@Z 000000018001d628 f   sqobject.obj
+ 0001:0001e12c       ?Mark@SQVM@@UEAAXPEAPEAUSQCollectable@@@Z 000000018001f12c f   sqobject.obj
+ 0001:0001e240       ?Mark@SQArray@@UEAAXPEAPEAUSQCollectable@@@Z 000000018001f240 f   sqobject.obj
+ 0001:0001e2d8       ?Mark@SQTable@@UEAAXPEAPEAUSQCollectable@@@Z 000000018001f2d8 f   sqobject.obj
+ 0001:0001e390       ?Mark@SQClass@@UEAAXPEAPEAUSQCollectable@@@Z 000000018001f390 f   sqobject.obj
+ 0001:0001e4c0       ?Mark@SQInstance@@UEAAXPEAPEAUSQCollectable@@@Z 000000018001f4c0 f   sqobject.obj
+ 0001:0001e564       ?Mark@SQGenerator@@UEAAXPEAPEAUSQCollectable@@@Z 000000018001f564 f   sqobject.obj
+ 0001:0001e60c       ?Mark@SQFunctionProto@@UEAAXPEAPEAUSQCollectable@@@Z 000000018001f60c f   sqobject.obj
+ 0001:0001e6e4       ?Mark@SQClosure@@UEAAXPEAPEAUSQCollectable@@@Z 000000018001f6e4 f   sqobject.obj
+ 0001:0001e7e0       ?Mark@SQNativeClosure@@UEAAXPEAPEAUSQCollectable@@@Z 000000018001f7e0 f   sqobject.obj
+ 0001:0001e87c       ?Mark@SQOuter@@UEAAXPEAPEAUSQCollectable@@@Z 000000018001f87c f   sqobject.obj
+ 0001:0001e8ec       ?Mark@SQUserData@@UEAAXPEAPEAUSQCollectable@@@Z 000000018001f8ec f   sqobject.obj
+ 0001:0001e95c       ?push_back@?$sqvector@USQExceptionTrap@@@@QEAAAEAUSQExceptionTrap@@AEBU2@@Z 000000018001f95c f i sqobject.obj
+ 0001:0001e9e0       ??_GSQString@@UEAAPEAXI@Z  000000018001f9e0 f i sqstate.obj
+ 0001:0001e9e0       ??_ESQString@@UEAAPEAXI@Z  000000018001f9e0 f i  CIL library: CIL module
+ 0001:0001ea0c       ??0SQSharedState@@QEAA@XZ  000000018001fa0c f   sqstate.obj
+ 0001:0001eb18       ?CompileTypemask@@YA_NAEAV?$sqvector@_J@@PEBD@Z 000000018001fb18 f   sqstate.obj
+ 0001:0001ec84       ?CreateDefaultDelegate@@YAPEAUSQTable@@PEAUSQSharedState@@PEAUtagSQRegFunction@@@Z 000000018001fc84 f   sqstate.obj
+ 0001:0001edf8       ?Init@SQSharedState@@QEAAXXZ 000000018001fdf8 f   sqstate.obj
+ 0001:00020098       ??1SQSharedState@@QEAA@XZ  0000000180021098 f   sqstate.obj
+ 0001:00020788       ?MarkObject@SQSharedState@@SAXAEAUSQObjectPtr@@PEAPEAUSQCollectable@@@Z 0000000180021788 f   sqstate.obj
+ 0001:00020804       ?RunMark@SQSharedState@@QEAAXPEAUSQVM@@PEAPEAUSQCollectable@@@Z 0000000180021804 f   sqstate.obj
+ 0001:00020928       ?RemoveFromChain@SQCollectable@@SAXPEAPEAU1@PEAU1@@Z 0000000180021928 f   sqstate.obj
+ 0001:0002095c       ?GetScratchPad@SQSharedState@@QEAAPEAD_J@Z 000000018002195c f   sqstate.obj
+ 0001:000209bc       ??1RefTable@@QEAA@XZ       00000001800219bc f   sqstate.obj
+ 0001:000209c8       ?Release@RefTable@@QEAA_KAEAUtagSQObject@@@Z 00000001800219c8 f   sqstate.obj
+ 0001:00020ab8       ?Resize@RefTable@@AEAAX_K@Z 0000000180021ab8 f   sqstate.obj
+ 0001:00020bcc       ?Add@RefTable@@AEAAPEAURefNode@1@_KAEAUtagSQObject@@@Z 0000000180021bcc f   sqstate.obj
+ 0001:00020c5c       ?Get@RefTable@@AEAAPEAURefNode@1@AEAUtagSQObject@@AEA_KPEAPEAU21@_N@Z 0000000180021c5c f   sqstate.obj
+ 0001:00020e48       ?AllocNodes@RefTable@@AEAAX_K@Z 0000000180021e48 f   sqstate.obj
+ 0001:00020edc       ?Add@SQStringTable@@QEAAPEAUSQString@@PEBD_J@Z 0000000180021edc f   sqstate.obj
+ 0001:00021094       ?GetType@SQTable@@UEAA?AW4tagSQObjectType@@XZ 0000000180022094 f i sqtable.obj
+ 0001:0002109c       ??_GSQTable@@UEAAPEAXI@Z   000000018002209c f i sqtable.obj
+ 0001:0002109c       ??_ESQTable@@UEAAPEAXI@Z   000000018002209c f i  CIL library: CIL module
+ 0001:00021194       ?Remove@SQTable@@QEAAXAEBUSQObjectPtr@@@Z 0000000180022194 f   sqtable.obj
+ 0001:000212ac       ?AllocNodes@SQTable@@AEAAX_J@Z 00000001800222ac f   sqtable.obj
+ 0001:00021334       ?Rehash@SQTable@@AEAAX_N@Z 0000000180022334 f   sqtable.obj
+ 0001:0002147c       ?Clone@SQTable@@QEAAPEAU1@XZ 000000018002247c f   sqtable.obj
+ 0001:00021578       ?Get@SQTable@@QEAA_NAEBUSQObjectPtr@@AEAU2@@Z 0000000180022578 f   sqtable.obj
+ 0001:0002168c       ?NewSlot@SQTable@@QEAA_NAEBUSQObjectPtr@@0@Z 000000018002268c f   sqtable.obj
+ 0001:000219c8       ?Next@SQTable@@QEAA_J_NAEBUSQObjectPtr@@AEAU2@2@Z 00000001800229c8 f   sqtable.obj
+ 0001:00021ae4       ?Set@SQTable@@QEAA_NAEBUSQObjectPtr@@0@Z 0000000180022ae4 f   sqtable.obj
+ 0001:00021bdc       ?_ClearNodes@SQTable@@AEAAXXZ 0000000180022bdc f   sqtable.obj
+ 0001:00021c78       ?Finalize@SQTable@@UEAAXXZ 0000000180022c78 f   sqtable.obj
+ 0001:00021c98       ?GetType@SQVM@@UEAA?AW4tagSQObjectType@@XZ 0000000180022c98 f i sqvm.obj
+ 0001:00021ca0       ??1CallInfo@SQVM@@QEAA@XZ  0000000180022ca0 f i sqvm.obj
+ 0001:00021ccc       ??1AutoDec@@QEAA@XZ        0000000180022ccc f i sqvm.obj
+ 0001:00021cd4       ?Release@SQArray@@UEAAXXZ  0000000180022cd4 f i sqapi.obj
+ 0001:00021cd4       ?Release@SQOuter@@UEAAXXZ  0000000180022cd4 f i sqvm.obj
+ 0001:00021cd4       ?Release@SQTable@@UEAAXXZ  0000000180022cd4 f i sqtable.obj
+ 0001:00021cd4       ?Release@SQGenerator@@UEAAXXZ 0000000180022cd4 f i sqvm.obj
+ 0001:00021cd4       ?Release@SQVM@@UEAAXXZ     0000000180022cd4 f i sqvm.obj
+ 0001:00021cf4       ?Finalize@SQOuter@@UEAAXXZ 0000000180022cf4 f i sqvm.obj
+ 0001:00021d28       ?GetType@SQOuter@@UEAA?AW4tagSQObjectType@@XZ 0000000180022d28 f i sqvm.obj
+ 0001:00021d30       ??_ESQOuter@@UEAAPEAXI@Z   0000000180022d30 f i  CIL library: CIL module
+ 0001:00021d30       ??_GSQOuter@@UEAAPEAXI@Z   0000000180022d30 f i sqvm.obj
+ 0001:00021dbc       ?Create@SQGenerator@@SAPEAU1@PEAUSQSharedState@@PEAUSQClosure@@@Z 0000000180022dbc f i sqvm.obj
+ 0001:00021eb4       ?Finalize@SQGenerator@@UEAAXXZ 0000000180022eb4 f i sqvm.obj
+ 0001:00021f14       ?GetType@SQGenerator@@UEAA?AW4tagSQObjectType@@XZ 0000000180022f14 f i sqvm.obj
+ 0001:00021f1c       ??_GSQGenerator@@UEAAPEAXI@Z 0000000180022f1c f i sqvm.obj
+ 0001:00021f1c       ??_ESQGenerator@@UEAAPEAXI@Z 0000000180022f1c f i  CIL library: CIL module
+ 0001:00021ff0       ?Clone@SQArray@@QEAAPEAU1@XZ 0000000180022ff0 f i sqvm.obj
+ 0001:000220d8       ?BW_OP@SQVM@@QEAA_N_KAEAUSQObjectPtr@@AEBU2@2@Z 00000001800230d8 f   sqvm.obj
+ 0001:000221bc       ?ARITH_OP@SQVM@@QEAA_N_KAEAUSQObjectPtr@@AEBU2@2@Z 00000001800231bc f   sqvm.obj
+ 0001:000223b8       ??0SQVM@@QEAA@PEAUSQSharedState@@@Z 00000001800233b8 f   sqvm.obj
+ 0001:00022588       ??_GSQVM@@UEAAPEAXI@Z      0000000180023588 f i sqvm.obj
+ 0001:00022588       ??_ESQVM@@UEAAPEAXI@Z      0000000180023588 f i  CIL library: CIL module
+ 0001:000225b8       ?Finalize@SQVM@@UEAAXXZ    00000001800235b8 f   sqvm.obj
+ 0001:00022760       ??1SQVM@@UEAA@XZ           0000000180023760 f   sqvm.obj
+ 0001:00022920       ?ArithMetaMethod@SQVM@@QEAA_N_JAEBUSQObjectPtr@@1AEAU2@@Z 0000000180023920 f   sqvm.obj
+ 0001:00022aa0       ?NEG_OP@SQVM@@QEAA_NAEAUSQObjectPtr@@AEBU2@@Z 0000000180023aa0 f   sqvm.obj
+ 0001:00022c9c       ?ObjCmp@SQVM@@QEAA_NAEBUSQObjectPtr@@0AEA_J@Z 0000000180023c9c f   sqvm.obj
+ 0001:00023084       ?CMP_OP@SQVM@@QEAA_NW4CmpOP@@AEBUSQObjectPtr@@1AEAU3@@Z 0000000180024084 f   sqvm.obj
+ 0001:00023178       ?ToString@SQVM@@QEAA_NAEBUSQObjectPtr@@AEAU2@@Z 0000000180024178 f   sqvm.obj
+ 0001:00023424       ?StringCat@SQVM@@QEAA_NAEBUSQObjectPtr@@0AEAU2@@Z 0000000180024424 f   sqvm.obj
+ 0001:00023630       ?TypeOf@SQVM@@QEAA_NAEBUSQObjectPtr@@AEAU2@@Z 0000000180024630 f   sqvm.obj
+ 0001:0002375c       ?Init@SQVM@@QEAA_NPEAU1@_J@Z 000000018002475c f   sqvm.obj
+ 0001:00023950       ?StartCall@SQVM@@QEAA_NPEAUSQClosure@@_J11_N@Z 0000000180024950 f   sqvm.obj
+ 0001:00023d30       ?Return@SQVM@@QEAA_N_J0AEAUSQObjectPtr@@@Z 0000000180024d30 f   sqvm.obj
+ 0001:00023e5c       ?PLOCAL_INC@SQVM@@QEAA_N_JAEAUSQObjectPtr@@11@Z 0000000180024e5c f   sqvm.obj
+ 0001:00023f64       ?DerefInc@SQVM@@QEAA_N_JAEAUSQObjectPtr@@111_N0@Z 0000000180024f64 f   sqvm.obj
+ 0001:00024224       ?FOREACH_OP@SQVM@@QEAA_NAEAUSQObjectPtr@@000_JHAEAH@Z 0000000180025224 f   sqvm.obj
+ 0001:00024908       ?CLOSURE_OP@SQVM@@QEAA_NAEAUSQObjectPtr@@PEAUSQFunctionProto@@@Z 0000000180025908 f   sqvm.obj
+ 0001:00024ab8       ?CLASS_OP@SQVM@@QEAA_NAEAUSQObjectPtr@@_J1@Z 0000000180025ab8 f   sqvm.obj
+ 0001:00024cc8       ?IsEqual@SQVM@@SA_NAEBUSQObjectPtr@@0AEA_N@Z 0000000180025cc8 f   sqvm.obj
+ 0001:00024d1c       ?IsFalse@SQVM@@SA_NAEAUSQObjectPtr@@@Z 0000000180025d1c f   sqvm.obj
+ 0001:00024d48       ?Execute@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_KW4ExecutionType@1@@Z 0000000180025d48 f   sqvm.obj
+ 0001:00027e0c       ?CreateClassInstance@SQVM@@QEAA_NPEAUSQClass@@AEAUSQObjectPtr@@1@Z 0000000180028e0c f   sqvm.obj
+ 0001:00027ed4       ?CallErrorHandler@SQVM@@QEAAXAEAUSQObjectPtr@@@Z 0000000180028ed4 f   sqvm.obj
+ 0001:00027f78       ?CallDebugHook@SQVM@@QEAAX_J0@Z 0000000180028f78 f   sqvm.obj
+ 0001:0002811c       ?CallNative@SQVM@@QEAA_NPEAUSQNativeClosure@@_J1AEAUSQObjectPtr@@AEA_N@Z 000000018002911c f   sqvm.obj
+ 0001:000283d8       ?Get@SQVM@@QEAA_NAEBUSQObjectPtr@@0AEAU2@_N_J@Z 00000001800293d8 f   sqvm.obj
+ 0001:000285b0       ?InvokeDefaultDelegate@SQVM@@QEAA_NAEBUSQObjectPtr@@0AEAU2@@Z 00000001800295b0 f   sqvm.obj
+ 0001:000286fc       ?FallBackGet@SQVM@@QEAA_JAEBUSQObjectPtr@@0AEAU2@@Z 00000001800296fc f   sqvm.obj
+ 0001:000288f8       ?Set@SQVM@@QEAA_NAEBUSQObjectPtr@@00_J@Z 00000001800298f8 f   sqvm.obj
+ 0001:00028a6c       ?FallBackSet@SQVM@@QEAA_JAEBUSQObjectPtr@@00@Z 0000000180029a6c f   sqvm.obj
+ 0001:00028ce0       ?Clone@SQVM@@QEAA_NAEBUSQObjectPtr@@AEAU2@@Z 0000000180029ce0 f   sqvm.obj
+ 0001:00029010       ?NewSlotA@SQVM@@QEAA_NAEBUSQObjectPtr@@000_N1@Z 000000018002a010 f   sqvm.obj
+ 0001:00029140       ?NewSlot@SQVM@@QEAA_NAEBUSQObjectPtr@@00_N@Z 000000018002a140 f   sqvm.obj
+ 0001:0002956c       ?DeleteSlot@SQVM@@QEAA_NAEBUSQObjectPtr@@0AEAU2@@Z 000000018002a56c f   sqvm.obj
+ 0001:00029804       ?Call@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_K@Z 000000018002a804 f   sqvm.obj
+ 0001:00029a14       ?CallMetaMethod@SQVM@@QEAA_NAEAUSQObjectPtr@@W4SQMetaMethod@@_J0@Z 000000018002aa14 f   sqvm.obj
+ 0001:00029a80       ?FindOuter@SQVM@@QEAAXAEAUSQObjectPtr@@PEAU2@@Z 000000018002aa80 f   sqvm.obj
+ 0001:00029c10       ?EnterFrame@SQVM@@QEAA_N_J0_N@Z 000000018002ac10 f   sqvm.obj
+ 0001:00029dc0       ?LeaveFrame@SQVM@@QEAAXXZ  000000018002adc0 f   sqvm.obj
+ 0001:00029ecc       ?CloseOuters@SQVM@@QEAAXPEAUSQObjectPtr@@@Z 000000018002aecc f   sqvm.obj
+ 0001:00029f68       ?Pop@SQVM@@QEAAXXZ         000000018002af68 f   sqvm.obj
+ 0001:00029fa8       ?Pop@SQVM@@QEAAX_J@Z       000000018002afa8 f   sqvm.obj
+ 0001:0002a004       ?PushNull@SQVM@@QEAAXXZ    000000018002b004 f   sqvm.obj
+ 0001:0002a048       ?Push@SQVM@@QEAAXAEBUSQObjectPtr@@@Z 000000018002b048 f   sqvm.obj
+ 0001:0002a09c       ??1?$sqvector@UCallInfo@SQVM@@@@QEAA@XZ 000000018002b09c f i sqvm.obj
+ 0001:0002a110       ?resize@?$sqvector@UCallInfo@SQVM@@@@QEAAX_KAEBUCallInfo@SQVM@@@Z 000000018002b110 f i sqvm.obj
+ 0001:0002a232       _purecall                  000000018002b232 f   MSVCRT:MSVCR90.dll
+ 0001:0002a238       ??3@YAXPEAX@Z              000000018002b238 f   MSVCRT:MSVCR90.dll
+ 0001:0002a240       ??_Etype_info@@UEAAPEAXI@Z 000000018002b240 f i MSVCRT:ti_inst.obj
+ 0001:0002a2ac       ?__ArrayUnwind@@YAXPEAX_KHP6AX0@Z@Z 000000018002b2ac f   MSVCRT:ehvecdtr.obj
+ 0001:0002a2f8       ??_M@YAXPEAX_KHP6AX0@Z@Z   000000018002b2f8 f   MSVCRT:ehvecdtr.obj
+ 0001:0002a358       ??_L@YAXPEAX_KHP6AX0@Z2@Z  000000018002b358 f   MSVCRT:ehvecctr.obj
+ 0001:0002a420       _CRT_INIT                  000000018002b420 f   MSVCRT:crtdll.obj
+ 0001:0002a7b4       _DllMainCRTStartup         000000018002b7b4 f   MSVCRT:crtdll.obj
+ 0001:0002a7f2       ?terminate@@YAXXZ          000000018002b7f2 f   MSVCRT:MSVCR90.dll
+ 0001:0002a7f8       __C_specific_handler       000000018002b7f8 f   MSVCRT:MSVCR90.dll
+ 0001:0002a800       __clean_type_info_names    000000018002b800 f   MSVCRT:tncleanup.obj
+ 0001:0002a80c       _onexit                    000000018002b80c f   MSVCRT:atonexit.obj
+ 0001:0002a8bc       atexit                     000000018002b8bc f   MSVCRT:atonexit.obj
+ 0001:0002a8d4       _RTC_Initialize            000000018002b8d4 f   MSVCRT:_initsect_.obj
+ 0001:0002a90c       _RTC_Terminate             000000018002b90c f   MSVCRT:_initsect_.obj
+ 0001:0002a950       _ValidateImageBase         000000018002b950 f   MSVCRT:pesect.obj
+ 0001:0002a980       _FindPESection             000000018002b980 f   MSVCRT:pesect.obj
+ 0001:0002a9d0       _IsNonwritableInCurrentImage 000000018002b9d0 f   MSVCRT:pesect.obj
+ 0001:0002aa12       _initterm                  000000018002ba12 f   MSVCRT:MSVCR90.dll
+ 0001:0002aa18       _initterm_e                000000018002ba18 f   MSVCRT:MSVCR90.dll
+ 0001:0002aa1e       _amsg_exit                 000000018002ba1e f   MSVCRT:MSVCR90.dll
+ 0001:0002aa24       __CppXcptFilter            000000018002ba24 f   MSVCRT:MSVCR90.dll
+ 0001:0002aa2c       DllMain                    000000018002ba2c f   MSVCRT:dllmain.obj
+ 0001:0002aa50       __security_init_cookie     000000018002ba50 f   MSVCRT:gs_support.obj
+ 0001:0002ab04       ?_type_info_dtor_internal_method@type_info@@QEAAXXZ 000000018002bb04 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab04       ??1type_info@@UEAA@XZ      000000018002bb04 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab0a       __clean_type_info_names_internal 000000018002bb0a f   MSVCRT:MSVCR90.dll
+ 0001:0002ab10       _unlock                    000000018002bb10 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab16       __dllonexit                000000018002bb16 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab1c       _lock                      000000018002bb1c f   MSVCRT:MSVCR90.dll
+ 0001:0002ab22       memcpy                     000000018002bb22 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab28       __CxxFrameHandler3         000000018002bb28 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab2e       tanf                       000000018002bb2e f   MSVCRT:MSVCR90.dll
+ 0001:0002ab34       sqrtf                      000000018002bb34 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab3a       sinf                       000000018002bb3a f   MSVCRT:MSVCR90.dll
+ 0001:0002ab40       powf                       000000018002bb40 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab46       log10f                     000000018002bb46 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab4c       logf                       000000018002bb4c f   MSVCRT:MSVCR90.dll
+ 0001:0002ab52       floorf                     000000018002bb52 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab58       expf                       000000018002bb58 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab5e       cosf                       000000018002bb5e f   MSVCRT:MSVCR90.dll
+ 0001:0002ab64       ceilf                      000000018002bb64 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab6a       atan2f                     000000018002bb6a f   MSVCRT:MSVCR90.dll
+ 0001:0002ab70       atanf                      000000018002bb70 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab76       asinf                      000000018002bb76 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab7c       acosf                      000000018002bb7c f   MSVCRT:MSVCR90.dll
+ 0001:0002ab82       memset                     000000018002bb82 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab88       memcmp                     000000018002bb88 f   MSVCRT:MSVCR90.dll
+ 0001:0002ab8e       fmod                       000000018002bb8e f   MSVCRT:MSVCR90.dll
+ 0001:0002ab94       _setjmp                    000000018002bb94 f   MSVCRT:MSVCR90.dll
+ 0002:00000000       __imp_GetCurrentProcessId  000000018002f000     kernel32:KERNEL32.dll
+ 0002:00000008       __imp_GetCurrentThreadId   000000018002f008     kernel32:KERNEL32.dll
+ 0002:00000010       __imp_GetTickCount         000000018002f010     kernel32:KERNEL32.dll
+ 0002:00000018       __imp_QueryPerformanceCounter 000000018002f018     kernel32:KERNEL32.dll
+ 0002:00000020       __imp_DisableThreadLibraryCalls 000000018002f020     kernel32:KERNEL32.dll
+ 0002:00000028       __imp_Sleep                000000018002f028     kernel32:KERNEL32.dll
+ 0002:00000030       __imp_GetSystemTimeAsFileTime 000000018002f030     kernel32:KERNEL32.dll
+ 0002:00000038       \177KERNEL32_NULL_THUNK_DATA 000000018002f038     kernel32:KERNEL32.dll
+ 0002:00000040       __imp_ftell                000000018002f040     MSVCRT:MSVCR90.dll
+ 0002:00000048       __imp_fseek                000000018002f048     MSVCRT:MSVCR90.dll
+ 0002:00000050       __imp_fclose               000000018002f050     MSVCRT:MSVCR90.dll
+ 0002:00000058       __imp_rand                 000000018002f058     MSVCRT:MSVCR90.dll
+ 0002:00000060       __imp_srand                000000018002f060     MSVCRT:MSVCR90.dll
+ 0002:00000068       __imp_isspace              000000018002f068     MSVCRT:MSVCR90.dll
+ 0002:00000070       __imp_isalnum              000000018002f070     MSVCRT:MSVCR90.dll
+ 0002:00000078       __imp_ispunct              000000018002f078     MSVCRT:MSVCR90.dll
+ 0002:00000080       __imp_isprint              000000018002f080     MSVCRT:MSVCR90.dll
+ 0002:00000088       __imp_isalpha              000000018002f088     MSVCRT:MSVCR90.dll
+ 0002:00000090       __imp_isdigit              000000018002f090     MSVCRT:MSVCR90.dll
+ 0002:00000098       __imp_isupper              000000018002f098     MSVCRT:MSVCR90.dll
+ 0002:000000a0       __imp_iscntrl              000000018002f0a0     MSVCRT:MSVCR90.dll
+ 0002:000000a8       __imp_longjmp              000000018002f0a8     MSVCRT:MSVCR90.dll
+ 0002:000000b0       __imp_islower              000000018002f0b0     MSVCRT:MSVCR90.dll
+ 0002:000000b8       __imp_isxdigit             000000018002f0b8     MSVCRT:MSVCR90.dll
+ 0002:000000c0       __imp_sprintf              000000018002f0c0     MSVCRT:MSVCR90.dll
+ 0002:000000c8       __imp_strchr               000000018002f0c8     MSVCRT:MSVCR90.dll
+ 0002:000000d0       __imp_atoi                 000000018002f0d0     MSVCRT:MSVCR90.dll
+ 0002:000000d8       __imp_strtok               000000018002f0d8     MSVCRT:MSVCR90.dll
+ 0002:000000e0       __imp_rename               000000018002f0e0     MSVCRT:MSVCR90.dll
+ 0002:000000e8       __imp__gmtime64            000000018002f0e8     MSVCRT:MSVCR90.dll
+ 0002:000000f0       __imp_system               000000018002f0f0     MSVCRT:MSVCR90.dll
+ 0002:000000f8       __imp_remove               000000018002f0f8     MSVCRT:MSVCR90.dll
+ 0002:00000100       __imp_clock                000000018002f100     MSVCRT:MSVCR90.dll
+ 0002:00000108       __imp__localtime64         000000018002f108     MSVCRT:MSVCR90.dll
+ 0002:00000110       __imp_getenv               000000018002f110     MSVCRT:MSVCR90.dll
+ 0002:00000118       __imp__time64              000000018002f118     MSVCRT:MSVCR90.dll
+ 0002:00000120       __imp_fwrite               000000018002f120     MSVCRT:MSVCR90.dll
+ 0002:00000128       __imp_strtod               000000018002f128     MSVCRT:MSVCR90.dll
+ 0002:00000130       __imp__strtoi64            000000018002f130     MSVCRT:MSVCR90.dll
+ 0002:00000138       __imp_strstr               000000018002f138     MSVCRT:MSVCR90.dll
+ 0002:00000140       __imp_tolower              000000018002f140     MSVCRT:MSVCR90.dll
+ 0002:00000148       __imp_toupper              000000018002f148     MSVCRT:MSVCR90.dll
+ 0002:00000150       __imp_vsprintf             000000018002f150     MSVCRT:MSVCR90.dll
+ 0002:00000158       __imp_strtoul              000000018002f158     MSVCRT:MSVCR90.dll
+ 0002:00000160       __imp_free                 000000018002f160     MSVCRT:MSVCR90.dll
+ 0002:00000168       __imp_malloc               000000018002f168     MSVCRT:MSVCR90.dll
+ 0002:00000170       __imp_realloc              000000018002f170     MSVCRT:MSVCR90.dll
+ 0002:00000178       __imp_?terminate@@YAXXZ    000000018002f178     MSVCRT:MSVCR90.dll
+ 0002:00000180       __imp___C_specific_handler 000000018002f180     MSVCRT:MSVCR90.dll
+ 0002:00000188       __imp__encode_pointer      000000018002f188     MSVCRT:MSVCR90.dll
+ 0002:00000190       __imp__malloc_crt          000000018002f190     MSVCRT:MSVCR90.dll
+ 0002:00000198       __imp__initterm            000000018002f198     MSVCRT:MSVCR90.dll
+ 0002:000001a0       __imp__initterm_e          000000018002f1a0     MSVCRT:MSVCR90.dll
+ 0002:000001a8       __imp__encoded_null        000000018002f1a8     MSVCRT:MSVCR90.dll
+ 0002:000001b0       __imp__decode_pointer      000000018002f1b0     MSVCRT:MSVCR90.dll
+ 0002:000001b8       __imp__amsg_exit           000000018002f1b8     MSVCRT:MSVCR90.dll
+ 0002:000001c0       __imp___CppXcptFilter      000000018002f1c0     MSVCRT:MSVCR90.dll
+ 0002:000001c8       __imp_?_type_info_dtor_internal_method@type_info@@QEAAXXZ 000000018002f1c8     MSVCRT:MSVCR90.dll
+ 0002:000001d0       __imp___clean_type_info_names_internal 000000018002f1d0     MSVCRT:MSVCR90.dll
+ 0002:000001d8       __imp__unlock              000000018002f1d8     MSVCRT:MSVCR90.dll
+ 0002:000001e0       __imp___dllonexit          000000018002f1e0     MSVCRT:MSVCR90.dll
+ 0002:000001e8       __imp__lock                000000018002f1e8     MSVCRT:MSVCR90.dll
+ 0002:000001f0       __imp__onexit              000000018002f1f0     MSVCRT:MSVCR90.dll
+ 0002:000001f8       __imp_fread                000000018002f1f8     MSVCRT:MSVCR90.dll
+ 0002:00000200       __imp_fopen                000000018002f200     MSVCRT:MSVCR90.dll
+ 0002:00000208       __imp_fflush               000000018002f208     MSVCRT:MSVCR90.dll
+ 0002:00000210       __imp___iob_func           000000018002f210     MSVCRT:MSVCR90.dll
+ 0002:00000218       __imp_feof                 000000018002f218     MSVCRT:MSVCR90.dll
+ 0002:00000220       __imp_??3@YAXPEAX@Z        000000018002f220     MSVCRT:MSVCR90.dll
+ 0002:00000228       __imp_memmove              000000018002f228     MSVCRT:MSVCR90.dll
+ 0002:00000230       __imp__purecall            000000018002f230     MSVCRT:MSVCR90.dll
+ 0002:00000238       __imp_memcpy               000000018002f238     MSVCRT:MSVCR90.dll
+ 0002:00000240       __imp___CxxFrameHandler3   000000018002f240     MSVCRT:MSVCR90.dll
+ 0002:00000248       __imp_tanf                 000000018002f248     MSVCRT:MSVCR90.dll
+ 0002:00000250       __imp_sqrtf                000000018002f250     MSVCRT:MSVCR90.dll
+ 0002:00000258       __imp_sinf                 000000018002f258     MSVCRT:MSVCR90.dll
+ 0002:00000260       __imp_powf                 000000018002f260     MSVCRT:MSVCR90.dll
+ 0002:00000268       __imp_log10f               000000018002f268     MSVCRT:MSVCR90.dll
+ 0002:00000270       __imp_logf                 000000018002f270     MSVCRT:MSVCR90.dll
+ 0002:00000278       __imp_floorf               000000018002f278     MSVCRT:MSVCR90.dll
+ 0002:00000280       __imp_expf                 000000018002f280     MSVCRT:MSVCR90.dll
+ 0002:00000288       __imp_cosf                 000000018002f288     MSVCRT:MSVCR90.dll
+ 0002:00000290       __imp_ceilf                000000018002f290     MSVCRT:MSVCR90.dll
+ 0002:00000298       __imp_atan2f               000000018002f298     MSVCRT:MSVCR90.dll
+ 0002:000002a0       __imp_atanf                000000018002f2a0     MSVCRT:MSVCR90.dll
+ 0002:000002a8       __imp_asinf                000000018002f2a8     MSVCRT:MSVCR90.dll
+ 0002:000002b0       __imp_acosf                000000018002f2b0     MSVCRT:MSVCR90.dll
+ 0002:000002b8       __imp_memset               000000018002f2b8     MSVCRT:MSVCR90.dll
+ 0002:000002c0       __imp_memcmp               000000018002f2c0     MSVCRT:MSVCR90.dll
+ 0002:000002c8       __imp_fmod                 000000018002f2c8     MSVCRT:MSVCR90.dll
+ 0002:000002d0       __imp__setjmp              000000018002f2d0     MSVCRT:MSVCR90.dll
+ 0002:000002d8       \177MSVCR90_NULL_THUNK_DATA 000000018002f2d8     MSVCRT:MSVCR90.dll
+ 0002:000002e0       __xc_a                     000000018002f2e0     MSVCRT:cinitexe.obj
+ 0002:000002e8       __xc_z                     000000018002f2e8     MSVCRT:cinitexe.obj
+ 0002:000002f0       __xi_a                     000000018002f2f0     MSVCRT:cinitexe.obj
+ 0002:00000300       __xi_z                     000000018002f300     MSVCRT:cinitexe.obj
+ 0002:00000318       ??_7type_info@@6B@         000000018002f318     MSVCRT:ti_inst.obj
+ 0002:00000320       _pDefaultRawDllMain        000000018002f320     MSVCRT:crtdll.obj
+ 0002:00000320       _pRawDllMain               000000018002f320     MSVCRT:crtdll.obj
+ 0002:00000328       ??_C@_0M@PJGLFAHK@?6CALLSTACK?6?$AA@ 000000018002f328     sqstdaux.obj
+ 0002:00000338       ??_C@_07CIFAGBMG@unknown?$AA@ 000000018002f338     sqstdaux.obj
+ 0002:00000340       ??_C@_0BP@OJILADIN@?$CKFUNCTION?5?$FL?$CFs?$CI?$CJ?$FN?5?$CFs?5line?5?$FL?$CFd?$FN?6?$AA@ 000000018002f340     sqstdaux.obj
+ 0002:00000360       ??_C@_08OJCBCFCA@?6LOCALS?6?$AA@ 000000018002f360     sqstdaux.obj
+ 0002:00000370       ??_C@_0L@DJCPKMHA@?$FL?$CFs?$FN?5NULL?6?$AA@ 000000018002f370     sqstdaux.obj
+ 0002:00000380       ??_C@_08NGOLHCCJ@?$FL?$CFs?$FN?5?$CFd?6?$AA@ 000000018002f380     sqstdaux.obj
+ 0002:00000390       ??_C@_0M@KNEBKHHJ@?$FL?$CFs?$FN?5?$CF?414g?6?$AA@ 000000018002f390     sqstdaux.obj
+ 0002:000003a0       ??_C@_0BC@LFFDKOEI@?$FL?$CFs?$FN?5USERPOINTER?6?$AA@ 000000018002f3a0     sqstdaux.obj
+ 0002:000003b8       ??_C@_0L@FFMKINED@?$FL?$CFs?$FN?5?$CC?$CFs?$CC?6?$AA@ 000000018002f3b8     sqstdaux.obj
+ 0002:000003c8       ??_C@_0M@DFMMEBIL@?$FL?$CFs?$FN?5TABLE?6?$AA@ 000000018002f3c8     sqstdaux.obj
+ 0002:000003d8       ??_C@_0M@CNOJHJM@?$FL?$CFs?$FN?5ARRAY?6?$AA@ 000000018002f3d8     sqstdaux.obj
+ 0002:000003e8       ??_C@_0O@PLLIPJMD@?$FL?$CFs?$FN?5CLOSURE?6?$AA@ 000000018002f3e8     sqstdaux.obj
+ 0002:000003f8       ??_C@_0BE@KIHCKLEL@?$FL?$CFs?$FN?5NATIVECLOSURE?6?$AA@ 000000018002f3f8     sqstdaux.obj
+ 0002:00000410       ??_C@_0BA@OBKNALPI@?$FL?$CFs?$FN?5GENERATOR?6?$AA@ 000000018002f410     sqstdaux.obj
+ 0002:00000420       ??_C@_0P@ONKHMGLN@?$FL?$CFs?$FN?5USERDATA?6?$AA@ 000000018002f420     sqstdaux.obj
+ 0002:00000430       ??_C@_0N@OOIIGMMH@?$FL?$CFs?$FN?5THREAD?6?$AA@ 000000018002f430     sqstdaux.obj
+ 0002:00000440       ??_C@_0M@HMFKBCMO@?$FL?$CFs?$FN?5CLASS?6?$AA@ 000000018002f440     sqstdaux.obj
+ 0002:00000450       ??_C@_0P@EMOEMOPD@?$FL?$CFs?$FN?5INSTANCE?6?$AA@ 000000018002f450     sqstdaux.obj
+ 0002:00000460       ??_C@_0O@NHMJAHFB@?$FL?$CFs?$FN?5WEAKREF?6?$AA@ 000000018002f460     sqstdaux.obj
+ 0002:00000470       ??_C@_04LOAJBDKD@true?$AA@ 000000018002f470     sqstdaux.obj
+ 0002:00000478       ??_C@_05LAPONLG@false?$AA@ 000000018002f478     sqstdaux.obj
+ 0002:00000480       ??_C@_08MPICMHNM@?$FL?$CFs?$FN?5?$CFs?6?$AA@ 000000018002f480     sqstdaux.obj
+ 0002:00000490       ??_C@_0BM@MMCOKIHC@?6AN?5ERROR?5HAS?5OCCURED?5?$FL?$CFs?$FN?6?$AA@ 000000018002f490     sqstdaux.obj
+ 0002:000004b0       ??_C@_0CB@HBLDDEIG@?6AN?5ERROR?5HAS?5OCCURED?5?$FLunknown?$FN?6@ 000000018002f4b0     sqstdaux.obj
+ 0002:000004d8       ??_C@_0CJ@DDDICFBH@?$CFs?5line?5?$DN?5?$CI?$CFd?$CJ?5column?5?$DN?5?$CI?$CFd?$CJ?5?3?5e@ 000000018002f4d8     sqstdaux.obj
+ 0002:00000508       ??_C@_09IGIMPLLL@swapfloat?$AA@ 000000018002f508     sqstdblob.obj
+ 0002:00000518       ??_C@_07OFABLADA@castf2i?$AA@ 000000018002f518     sqstdblob.obj
+ 0002:00000520       ??_C@_02MJBDALCO@?4n?$AA@  000000018002f520     sqstdblob.obj
+ 0002:00000528       ??_C@_07DKPKLMKJ@casti2f?$AA@ 000000018002f528     sqstdblob.obj
+ 0002:00000530       ??_C@_02LNLKOMPL@xx?$AA@   000000018002f530     sqstdblob.obj
+ 0002:00000538       ??_C@_07FMKFJPGB@_cloned?$AA@ 000000018002f538     sqstdblob.obj
+ 0002:00000540       ??_C@_06JNGOLHNJ@_nexti?$AA@ 000000018002f540     sqstdblob.obj
+ 0002:00000548       ??_C@_07KHNHMOAP@_typeof?$AA@ 000000018002f548     sqstdblob.obj
+ 0002:00000550       ??_C@_04CACACKHL@_get?$AA@ 000000018002f550     sqstdblob.obj
+ 0002:00000558       ??_C@_03MJAHAIJD@xnn?$AA@  000000018002f558     sqstdblob.obj
+ 0002:0000055c       ??_C@_04PPFLOKLD@_set?$AA@ 000000018002f55c     sqstdblob.obj
+ 0002:00000564       ??_C@_05OEDIBGCN@swap4?$AA@ 000000018002f564     sqstdblob.obj
+ 0002:0000056c       ??_C@_01FJMABOPO@x?$AA@    000000018002f56c     sqstdblob.obj
+ 0002:00000570       ??_C@_05LCGCLBKL@swap2?$AA@ 000000018002f570     sqstdblob.obj
+ 0002:00000578       ??_C@_06PIONCPJI@resize?$AA@ 000000018002f578     sqstdblob.obj
+ 0002:00000580       ??_C@_02KBCCFJCM@xn?$AA@   000000018002f580     sqstdblob.obj
+ 0002:00000588       ??_C@_0M@HCIFEBGA@constructor?$AA@ 000000018002f588     sqstdblob.obj
+ 0002:00000598       ??_C@_0P@GHFPNOJB@bad?5allocation?$AA@ 000000018002f598     sqstdblob.obj
+ 0002:000005a8       ??_C@_0BB@GKCCAHPC@invalid?5type?5tag?$AA@ 000000018002f5a8     sqstdblob.obj
+ 0002:000005c0       ??_C@_0BE@MFDCDNAN@the?5blob?5is?5invalid?$AA@ 000000018002f5c0     sqstdblob.obj
+ 0002:000005d8       ??_C@_0O@MBKMIPAH@resize?5failed?$AA@ 000000018002f5d8     sqstdblob.obj
+ 0002:000005e8       ??_C@_0BD@ILOGJALA@index?5out?5of?5range?$AA@ 000000018002f5e8     sqstdblob.obj
+ 0002:00000600       ??_C@_0CM@GGLABFJI@internal?5error?5?$CI_nexti?$CJ?5wrong?5ar@ 000000018002f600     sqstdblob.obj
+ 0002:0000062c       ??_C@_04LPJPOBEM@blob?$AA@ 000000018002f62c     sqstdblob.obj
+ 0002:00000638       ??_C@_0CG@NBIHABHB@cannot?5create?5blob?5with?5negative@ 000000018002f638     sqstdblob.obj
+ 0002:00000660       ??_C@_0BD@GNJDGOHM@cannot?5create?5blob?$AA@ 000000018002f660     sqstdblob.obj
+ 0002:00000678       ??_C@_0BC@HDGHAOKD@cannot?5clone?5blob?$AA@ 000000018002f678     sqstdblob.obj
+ 0002:00000690       ??_C@_08PMKBLAFB@std_blob?$AA@ 000000018002f690     sqstdblob.obj
+ 0002:000006a8       ??_7SQBlob@@6B@            000000018002f6a8     sqstdblob.obj
+ 0002:000006f0       ??_C@_03IGDBBGID@?4sc?$AA@ 000000018002f6f0     sqstdio.obj
+ 0002:000006f8       ??_C@_0BD@FEFFOPPK@writeclosuretofile?$AA@ 000000018002f6f8     sqstdio.obj
+ 0002:0000070c       ??_C@_06ONNDGCDK@dofile?$AA@ 000000018002f70c     sqstdio.obj
+ 0002:00000714       ??_C@_03JPCKCHMC@?4sb?$AA@ 000000018002f714     sqstdio.obj
+ 0002:00000718       ??_C@_08BNNFLGCJ@loadfile?$AA@ 000000018002f718     sqstdio.obj
+ 0002:00000724       ??_C@_05LBOHBHFK@close?$AA@ 000000018002f724     sqstdio.obj
+ 0002:0000072c       ??_C@_04DAMGJPCA@file?$AA@ 000000018002f72c     sqstdio.obj
+ 0002:00000738       ??_C@_0BB@HMGEDEGN@cannot?5open?5file?$AA@ 000000018002f738     sqstdio.obj
+ 0002:00000750       ??_C@_0BA@EHBOHDJE@wrong?5parameter?$AA@ 000000018002f750     sqstdio.obj
+ 0002:00000760       ??_C@_08HDPIMODN@std_file?$AA@ 000000018002f760     sqstdio.obj
+ 0002:00000770       ??_C@_0L@MBHJIJPK@not?5a?5file?$AA@ 000000018002f770     sqstdio.obj
+ 0002:0000077c       ??_C@_02JDPG@rb?$AA@       000000018002f77c     sqstdio.obj
+ 0002:00000780       ??_C@_08GLNPIFBN@io?5error?$AA@ 000000018002f780     sqstdio.obj
+ 0002:00000790       ??_C@_0BF@LJNJGMGK@Unrecognozed?5ecoding?$AA@ 000000018002f790     sqstdio.obj
+ 0002:000007a8       ??_C@_0BF@DPIGNCIB@cannot?5open?5the?5file?$AA@ 000000018002f7a8     sqstdio.obj
+ 0002:000007c0       ??_C@_03BFHAFKOB@wb?$CL?$AA@ 000000018002f7c0     sqstdio.obj
+ 0002:000007c4       ??_C@_06DJDOIFHB@stdout?$AA@ 000000018002f7c4     sqstdio.obj
+ 0002:000007cc       ??_C@_05MHOFLBOO@stdin?$AA@ 000000018002f7cc     sqstdio.obj
+ 0002:000007d4       ??_C@_06FJGNEBG@stderr?$AA@ 000000018002f7d4     sqstdio.obj
+ 0002:000007e8       ??_7SQFile@@6B@            000000018002f7e8     sqstdio.obj
+ 0002:00000830       ??_C@_03BCGAIFPO@abs?$AA@  000000018002f830     sqstdmath.obj
+ 0002:00000834       ??_C@_04ODHECPBC@fabs?$AA@ 000000018002f834     sqstdmath.obj
+ 0002:0000083c       ??_C@_04HKINGDKC@rand?$AA@ 000000018002f83c     sqstdmath.obj
+ 0002:00000844       ??_C@_05IANLEKHD@srand?$AA@ 000000018002f844     sqstdmath.obj
+ 0002:0000084c       ??_C@_03KHJOGHMM@exp?$AA@  000000018002f84c     sqstdmath.obj
+ 0002:00000850       ??_C@_04GFPJNGEK@ceil?$AA@ 000000018002f850     sqstdmath.obj
+ 0002:00000858       ??_C@_05PBJFFIGL@floor?$AA@ 000000018002f858     sqstdmath.obj
+ 0002:00000860       ??_C@_03JGHBODFD@pow?$AA@  000000018002f860     sqstdmath.obj
+ 0002:00000864       ??_C@_03CHGBFION@?4nn?$AA@ 000000018002f864     sqstdmath.obj
+ 0002:00000868       ??_C@_05KNGEOGJB@atan2?$AA@ 000000018002f868     sqstdmath.obj
+ 0002:00000870       ??_C@_04MLLJIGOK@atan?$AA@ 000000018002f870     sqstdmath.obj
+ 0002:00000878       ??_C@_03IIINPABG@tan?$AA@  000000018002f878     sqstdmath.obj
+ 0002:0000087c       ??_C@_05HGHHAHAP@log10?$AA@ 000000018002f87c     sqstdmath.obj
+ 0002:00000884       ??_C@_03MGHMBJCF@log?$AA@  000000018002f884     sqstdmath.obj
+ 0002:00000888       ??_C@_04PDIFKINK@acos?$AA@ 000000018002f888     sqstdmath.obj
+ 0002:00000890       ??_C@_04FIHNOPOL@asin?$AA@ 000000018002f890     sqstdmath.obj
+ 0002:00000898       ??_C@_03LALBNOCG@cos?$AA@  000000018002f898     sqstdmath.obj
+ 0002:0000089c       ??_C@_03BLEJJJBH@sin?$AA@  000000018002f89c     sqstdmath.obj
+ 0002:000008a0       ??_C@_04EIAKFFMI@sqrt?$AA@ 000000018002f8a0     sqstdmath.obj
+ 0002:000008a8       ??_C@_0O@PFPAIGFJ@invalid?5param?$AA@ 000000018002f8a8     sqstdmath.obj
+ 0002:000008b8       ??_C@_08PAJPOONN@RAND_MAX?$AA@ 000000018002f8b8     sqstdmath.obj
+ 0002:000008c4       ??_C@_02ENLJPMBB@PI?$AA@   000000018002f8c4     sqstdmath.obj
+ 0002:000008c8       ??_C@_0P@OKPODPLL@expected?5paren?$AA@ 000000018002f8c8     sqstdrex.obj
+ 0002:000008d8       ??_C@_0BA@IEKAFFAJ@letter?5expected?$AA@ 000000018002f8d8     sqstdrex.obj
+ 0002:000008e8       ??_C@_0M@ILKCNGDD@empty?5class?$AA@ 000000018002f8e8     sqstdrex.obj
+ 0002:000008f8       ??_C@_0O@GOKDDJMP@invalid?5range?$AA@ 000000018002f8f8     sqstdrex.obj
+ 0002:00000908       ??_C@_0CH@CLHEGGEC@cannot?5use?5character?5classes?5in?5@ 000000018002f908     sqstdrex.obj
+ 0002:00000930       ??_C@_0BN@MCHNANKK@overflow?5in?5numeric?5constant?$AA@ 000000018002f930     sqstdrex.obj
+ 0002:00000950       ??_C@_0BA@JLGEFFAO@number?5expected?$AA@ 000000018002f950     sqstdrex.obj
+ 0002:00000960       ??_C@_0BA@OBPFIKHP@?0?5or?5?$HN?5expected?$AA@ 000000018002f960     sqstdrex.obj
+ 0002:00000970       ??_C@_0BF@IPEBGEBJ@unexpected?5character?$AA@ 000000018002f970     sqstdrex.obj
+ 0002:00000988       ??_C@_05GLCAEPFP@flush?$AA@ 000000018002f988     sqstdstream.obj
+ 0002:00000990       ??_C@_03JFNKIBPK@eos?$AA@  000000018002f990     sqstdstream.obj
+ 0002:00000994       ??_C@_03BKCJCHLK@len?$AA@  000000018002f994     sqstdstream.obj
+ 0002:00000998       ??_C@_04LBPCFPDD@tell?$AA@ 000000018002f998     sqstdstream.obj
+ 0002:000009a0       ??_C@_04EDECCOGL@seek?$AA@ 000000018002f9a0     sqstdstream.obj
+ 0002:000009a8       ??_C@_06MIKLAPPL@writen?$AA@ 000000018002f9a8     sqstdstream.obj
+ 0002:000009b0       ??_C@_09NPENNKNE@writeblob?$AA@ 000000018002f9b0     sqstdstream.obj
+ 0002:000009bc       ??_C@_05GODPLPBI@readn?$AA@ 000000018002f9bc     sqstdstream.obj
+ 0002:000009c8       ??_C@_08GHEOENGO@readblob?$AA@ 000000018002f9c8     sqstdstream.obj
+ 0002:000009d8       ??_C@_0BG@DHOEONCL@the?5stream?5is?5invalid?$AA@ 000000018002f9d8     sqstdstream.obj
+ 0002:000009f0       ??_C@_0BF@CKHIKMGO@no?5data?5left?5to?5read?$AA@ 000000018002f9f0     sqstdstream.obj
+ 0002:00000a08       ??_C@_0P@CENJCLHM@invalid?5format?$AA@ 000000018002fa08     sqstdstream.obj
+ 0002:00000a18       ??_C@_0BC@GMEMBNHN@invalid?5parameter?$AA@ 000000018002fa18     sqstdstream.obj
+ 0002:00000a30       ??_C@_0P@MILKJCHO@invalid?5origin?$AA@ 000000018002fa30     sqstdstream.obj
+ 0002:00000a40       ??_C@_0BN@MDJALECG@this?5object?5cannot?5be?5cloned?$AA@ 000000018002fa40     sqstdstream.obj
+ 0002:00000a60       ??_C@_0L@NKAMOLMD@std_stream?$AA@ 000000018002fa60     sqstdstream.obj
+ 0002:00000a6c       ??_C@_06DJAMKFID@stream?$AA@ 000000018002fa6c     sqstdstream.obj
+ 0002:00000a78       ??_C@_0P@DAKFMHIM@table?5expected?$AA@ 000000018002fa78     sqstdstream.obj
+ 0002:00000a88       ??_C@_03MMPDAENC@?4ss?$AA@ 000000018002fa88     sqstdstring.obj
+ 0002:00000a8c       ??_C@_05EHPMMFBK@split?$AA@ 000000018002fa8c     sqstdstring.obj
+ 0002:00000a94       ??_C@_06DBIPDJKN@rstrip?$AA@ 000000018002fa94     sqstdstring.obj
+ 0002:00000a9c       ??_C@_06GGONODO@lstrip?$AA@ 000000018002fa9c     sqstdstring.obj
+ 0002:00000aa4       ??_C@_05GGNGIGHC@strip?$AA@ 000000018002faa4     sqstdstring.obj
+ 0002:00000aac       ??_C@_06DLEPGFEF@format?$AA@ 000000018002faac     sqstdstring.obj
+ 0002:00000ab8       ??_C@_0M@MIEJEJJD@subexpcount?$AA@ 000000018002fab8     sqstdstring.obj
+ 0002:00000ac8       ??_C@_07PNBGPICD@capture?$AA@ 000000018002fac8     sqstdstring.obj
+ 0002:00000ad0       ??_C@_02FOEODFDA@xs?$AA@   000000018002fad0     sqstdstring.obj
+ 0002:00000ad4       ??_C@_05FNONLPDI@match?$AA@ 000000018002fad4     sqstdstring.obj
+ 0002:00000adc       ??_C@_03NNPJDILA@xsn?$AA@  000000018002fadc     sqstdstring.obj
+ 0002:00000ae0       ??_C@_06GFPLNGOC@search?$AA@ 000000018002fae0     sqstdstring.obj
+ 0002:00000ae8       ??_C@_02DGHPGHDC@?4s?$AA@  000000018002fae8     sqstdstring.obj
+ 0002:00000aec       ??_C@_05GGBDHNF@?9?$CL?5?$CD0?$AA@ 000000018002faec     sqstdstring.obj
+ 0002:00000af8       ??_C@_0BG@CLBDFIFJ@width?5format?5too?5long?$AA@ 000000018002faf8     sqstdstring.obj
+ 0002:00000b10       ??_C@_0BK@KGBFOKHN@precision?5format?5too?5long?$AA@ 000000018002fb10     sqstdstring.obj
+ 0002:00000b30       ??_C@_0BA@BGAJGGBO@format?5too?5long?$AA@ 000000018002fb30     sqstdstring.obj
+ 0002:00000b40       ??_C@_0DB@JACKNMEH@not?5enough?5paramters?5for?5the?5giv@ 000000018002fb40     sqstdstring.obj
+ 0002:00000b78       ??_C@_0CJ@DECHMKNG@string?5expected?5for?5the?5specifie@ 000000018002fb78     sqstdstring.obj
+ 0002:00000ba4       ??_C@_02IIDLDAAC@ll?$AA@   000000018002fba4     sqstdstring.obj
+ 0002:00000ba8       ??_C@_0CK@BCJPMCBJ@integer?5expected?5for?5the?5specifi@ 000000018002fba8     sqstdstring.obj
+ 0002:00000bd8       ??_C@_0CI@NOHJFFLA@float?5expected?5for?5the?5specified@ 000000018002fbd8     sqstdstring.obj
+ 0002:00000c00       ??_C@_0BI@KOFKLMFA@empty?5separators?5string?$AA@ 000000018002fc00     sqstdstring.obj
+ 0002:00000c18       ??_C@_05EAFKHBAM@begin?$AA@ 000000018002fc18     sqstdstring.obj
+ 0002:00000c20       ??_C@_03JBJLGPFL@end?$AA@  000000018002fc20     sqstdstring.obj
+ 0002:00000c24       ??_C@_06BDGKJDBI@regexp?$AA@ 000000018002fc24     sqstdstring.obj
+ 0002:00000c2c       ??_C@_06LMEAOBLB@rename?$AA@ 000000018002fc2c     sqstdsystem.obj
+ 0002:00000c34       ??_C@_06LEMKAMD@remove?$AA@ 000000018002fc34     sqstdsystem.obj
+ 0002:00000c3c       ??_C@_04JNIHBGGH@date?$AA@ 000000018002fc3c     sqstdsystem.obj
+ 0002:00000c44       ??_C@_04CLCEDBPF@time?$AA@ 000000018002fc44     sqstdsystem.obj
+ 0002:00000c4c       ??_C@_05DDECJJKE@clock?$AA@ 000000018002fc4c     sqstdsystem.obj
+ 0002:00000c54       ??_C@_06FHFOAHML@system?$AA@ 000000018002fc54     sqstdsystem.obj
+ 0002:00000c5c       ??_C@_06EPDNLFGH@getenv?$AA@ 000000018002fc5c     sqstdsystem.obj
+ 0002:00000c68       ??_C@_0M@CEGIKAPK@wrong?5param?$AA@ 000000018002fc68     sqstdsystem.obj
+ 0002:00000c78       ??_C@_0BA@MIFEHNIK@remove?$CI?$CJ?5failed?$AA@ 000000018002fc78     sqstdsystem.obj
+ 0002:00000c88       ??_C@_0BA@DDFJBNBD@rename?$CI?$CJ?5failed?$AA@ 000000018002fc88     sqstdsystem.obj
+ 0002:00000c98       ??_C@_0BA@FEBOBHAF@crt?5api?5failure?$AA@ 000000018002fc98     sqstdsystem.obj
+ 0002:00000ca8       ??_C@_03KHPNBODO@sec?$AA@  000000018002fca8     sqstdsystem.obj
+ 0002:00000cac       ??_C@_03KLIPLJLL@min?$AA@  000000018002fcac     sqstdsystem.obj
+ 0002:00000cb0       ??_C@_04LMOJGCPE@hour?$AA@ 000000018002fcb0     sqstdsystem.obj
+ 0002:00000cb8       ??_C@_03NNBHCDBP@day?$AA@  000000018002fcb8     sqstdsystem.obj
+ 0002:00000cbc       ??_C@_05MEBAADFH@month?$AA@ 000000018002fcbc     sqstdsystem.obj
+ 0002:00000cc4       ??_C@_04JFPLDHAO@year?$AA@ 000000018002fcc4     sqstdsystem.obj
+ 0002:00000ccc       ??_C@_04HBIDDHMB@wday?$AA@ 000000018002fccc     sqstdsystem.obj
+ 0002:00000cd4       ??_C@_04MOLDIJKA@yday?$AA@ 000000018002fcd4     sqstdsystem.obj
+ 0002:00000ce0       ??_C@_0CP@NOPFPDNN@wrong?5argument?5type?0?5expected?5?8?$CF@ 000000018002fce0     sqapi.obj
+ 0002:00000d10       ??_C@_0BD@MGPOICFP@unexpected?5type?5?$CFs?$AA@ 000000018002fd10     sqapi.obj
+ 0002:00000d28       ??_C@_0BC@HELAPCHF@invalid?5base?5type?$AA@ 000000018002fd28     sqapi.obj
+ 0002:00000d40       ??_C@_0BD@HAIMHJOI@invalid?5param?5type?$AA@ 000000018002fd40     sqapi.obj
+ 0002:00000d58       ??_C@_0BP@JJGMIBCA@not?5enough?5params?5in?5the?5stack?$AA@ 000000018002fd58     sqapi.obj
+ 0002:00000d78       ??_C@_0M@LOFLDJDO@empty?5array?$AA@ 000000018002fd78     sqapi.obj
+ 0002:00000d88       ??_C@_0O@LFIBEFCP@negative?5size?$AA@ 000000018002fd88     sqapi.obj
+ 0002:00000d98       ??_C@_0BM@CMMBCIGC@the?5object?5is?5not?5a?5closure?$AA@ 000000018002fd98     sqapi.obj
+ 0002:00000db8       ??_C@_0CC@HHAPNGKE@the?5object?5is?5not?5a?5nativeclosur@ 000000018002fdb8     sqapi.obj
+ 0002:00000de0       ??_C@_0BI@MAPNHFBM@native?5closure?5expected?$AA@ 000000018002fde0     sqapi.obj
+ 0002:00000df8       ??_C@_0BB@BOJBAELF@invalid?5typemask?$AA@ 000000018002fdf8     sqapi.obj
+ 0002:00000e10       ??_C@_0BM@NPAPALBN@the?5target?5is?5not?5a?5closure?$AA@ 000000018002fe10     sqapi.obj
+ 0002:00000e30       ??_C@_0BE@BLOFEIGN@invalid?5environment?$AA@ 000000018002fe30     sqapi.obj
+ 0002:00000e48       ??_C@_0CE@LFCLCHIO@clear?5only?5works?5on?5table?5and?5ar@ 000000018002fe48     sqapi.obj
+ 0002:00000e70       ??_C@_0M@ECNLGCLM@ivalid?5type?$AA@ 000000018002fe70     sqapi.obj
+ 0002:00000e80       ??_C@_0BM@JPBFKBGH@ivalid?5type?0?5expected?5table?$AA@ 000000018002fe80     sqapi.obj
+ 0002:00000ea0       ??_C@_0BE@PCKKICJK@invalid?5object?5type?$AA@ 000000018002fea0     sqapi.obj
+ 0002:00000eb8       ??_C@_0CD@CFCDGLFG@the?5object?5is?5not?5a?5class?5instan@ 000000018002feb8     sqapi.obj
+ 0002:00000ee0       ??_C@_0BK@JCAAJBH@the?5object?5is?5not?5a?5class?$AA@ 000000018002fee0     sqapi.obj
+ 0002:00000f00       ??_C@_0BE@DPHKEMEG@the?5class?5is?5locked?$AA@ 000000018002ff00     sqapi.obj
+ 0002:00000f18       ??_C@_0BI@HHPNOKAK@null?5is?5not?5a?5valid?5key?$AA@ 000000018002ff18     sqapi.obj
+ 0002:00000f30       ??_C@_08MHMAFDFB@null?5key?$AA@ 000000018002ff30     sqapi.obj
+ 0002:00000f40       ??_C@_0DE@DCBCOMNM@rawset?5works?5only?5on?5array?1table@ 000000018002ff40     sqapi.obj
+ 0002:00000f78       ??_C@_0CD@IHIDNEDP@new?5member?5only?5works?5with?5class@ 000000018002ff78     sqapi.obj
+ 0002:00000fa0       ??_C@_0P@HIOLJNHA@delagate?5cycle?$AA@ 000000018002ffa0     sqapi.obj
+ 0002:00000fb0       ??_C@_0L@OIMFIJMM@wrong?5type?$AA@ 000000018002ffb0     sqapi.obj
+ 0002:00000fc0       ??_C@_0CA@DJDMDLDA@invalid?5index?5type?5for?5an?5array?$AA@ 000000018002ffc0     sqapi.obj
+ 0002:00000fe0       ??_C@_0DE@IFOIOOEH@rawget?5works?5only?5on?5array?1table@ 000000018002ffe0     sqapi.obj
+ 0002:00001018       ??_C@_0BI@DAFHIMG@the?5index?5doesn?8t?5exist?$AA@ 0000000180030018     sqapi.obj
+ 0002:00001030       ??_C@_0CL@FIIDDFIE@cannot?5resize?5stack?5while?5in?5?5a?5@ 0000000180030030     sqapi.obj
+ 0002:00001060       ??_C@_0BP@KCBDCCNB@only?5generators?5can?5be?5resumed?$AA@ 0000000180030060     sqapi.obj
+ 0002:00001080       ??_C@_0DA@FMAIOBLG@cannot?5resume?5a?5vm?5that?5is?5not?5r@ 0000000180030080     sqapi.obj
+ 0002:000010b0       ??_C@_0DM@IHAKAFBB@a?5closure?5with?5free?5valiables?5bo@ 00000001800300b0     sqapi.obj
+ 0002:000010f0       ??_C@_0P@CGJKOLLK@invalid?5stream?$AA@ 00000001800300f0     sqapi.obj
+ 0002:00001100       ??_C@_0BO@JKMPEECD@no?5closure?5in?5the?5calls?5stack?$AA@ 0000000180030100     sqapi.obj
+ 0002:00001120       ??_C@_07KNMAKCGI@?$EANATIVE?$AA@ 0000000180030120     sqapi.obj
+ 0002:00001128       ??_C@_0BH@EEKBJGIK@invalid?5free?5var?5index?$AA@ 0000000180030128     sqapi.obj
+ 0002:00001140       ??_C@_0M@MHCPCCPD@wrong?5index?$AA@ 0000000180030140     sqapi.obj
+ 0002:00001150       ??_C@_0CH@GALINPCN@wrong?5type?$CIexpected?5class?5or?5ins@ 0000000180030150     sqapi.obj
+ 0002:00001178       ??_C@_0BN@MAJGGEGP@the?5object?5must?5be?5a?5weakref?$AA@ 0000000180030178     sqapi.obj
+ 0002:00001198       ??_C@_0CJ@JEBOANGD@the?5type?5doesn?8t?5have?5a?5default?5@ 0000000180030198     sqapi.obj
+ 0002:000011c8       ??_C@_0BL@ECECHHMH@cannot?5iterate?5a?5generator?$AA@ 00000001800301c8     sqapi.obj
+ 0002:000011f0       ??_7SQArray@@6B@           00000001800301f0     sqapi.obj
+ 0002:00001220       ??_7SQClosure@@6B@         0000000180030220     sqapi.obj
+ 0002:00001250       ??_7SQNativeClosure@@6B@   0000000180030250     sqapi.obj
+ 0002:00001280       ??_7SQUserData@@6B@        0000000180030280     sqapi.obj
+ 0002:000012b8       ??_7SQRefCounted@@6B@      00000001800302b8     sqapi.obj
+ 0002:000012c8       ??_C@_01KDCPPGHE@r?$AA@    00000001800302c8     sqbaselib.obj
+ 0002:000012cc       ??_C@_03GCDGINBO@ref?$AA@  00000001800302cc     sqbaselib.obj
+ 0002:000012d0       ??_C@_08KCEFNGDJ@getclass?$AA@ 00000001800302d0     sqbaselib.obj
+ 0002:000012e0       ??_C@_0N@CAECFCAD@rawnewmember?$AA@ 00000001800302e0     sqbaselib.obj
+ 0002:000012f0       ??_C@_09HCPKNCCP@newmember?$AA@ 00000001800302f0     sqbaselib.obj
+ 0002:00001300       ??_C@_07CHJLFIAB@getbase?$AA@ 0000000180030300     sqbaselib.obj
+ 0002:00001308       ??_C@_08EMNENPBA@instance?$AA@ 0000000180030308     sqbaselib.obj
+ 0002:00001314       ??_C@_01EANLCPLP@y?$AA@    0000000180030314     sqbaselib.obj
+ 0002:00001318       ??_C@_03PBFIKNDD@y?4?4?$AA@ 0000000180030318     sqbaselib.obj
+ 0002:00001320       ??_C@_0O@GFGLHHKD@setattributes?$AA@ 0000000180030320     sqbaselib.obj
+ 0002:00001330       ??_C@_02FAJJHMBO@y?4?$AA@  0000000180030330     sqbaselib.obj
+ 0002:00001338       ??_C@_0O@BKHFMENE@getattributes?$AA@ 0000000180030338     sqbaselib.obj
+ 0002:00001348       ??_C@_02KLLMHECG@vn?$AA@   0000000180030348     sqbaselib.obj
+ 0002:0000134c       ??_C@_06BHOLIAPL@wakeup?$AA@ 000000018003034c     sqbaselib.obj
+ 0002:00001354       ??_C@_01MHEDDDHA@v?$AA@    0000000180030354     sqbaselib.obj
+ 0002:00001358       ??_C@_01JEJKBAGA@g?$AA@    0000000180030358     sqbaselib.obj
+ 0002:00001360       ??_C@_09EKLELPNI@getstatus?$AA@ 0000000180030360     sqbaselib.obj
+ 0002:00001370       ??_C@_08PBPFMEJC@getinfos?$AA@ 0000000180030370     sqbaselib.obj
+ 0002:00001380       ??_C@_07NANIPOOA@c?5x?$HMy?$HMt?$AA@ 0000000180030380     sqbaselib.obj
+ 0002:00001388       ??_C@_07HPKFAOKK@bindenv?$AA@ 0000000180030388     sqbaselib.obj
+ 0002:00001390       ??_C@_06JINOKHEB@pacall?$AA@ 0000000180030390     sqbaselib.obj
+ 0002:00001398       ??_C@_02DGMJAJHC@ca?$AA@   0000000180030398     sqbaselib.obj
+ 0002:0000139c       ??_C@_05FIBIAJLH@acall?$AA@ 000000018003039c     sqbaselib.obj
+ 0002:000013a4       ??_C@_05JAJCNIIJ@pcall?$AA@ 00000001800303a4     sqbaselib.obj
+ 0002:000013ac       ??_C@_01PAPGNFGE@c?$AA@    00000001800303ac     sqbaselib.obj
+ 0002:000013b0       ??_C@_04OMFAIDPG@call?$AA@ 00000001800303b0     sqbaselib.obj
+ 0002:000013b8       ??_C@_06PHAKABCE@tochar?$AA@ 00000001800303b8     sqbaselib.obj
+ 0002:000013c0       ??_C@_03PGCDIMC@n?$HMb?$AA@ 00000001800303c0     sqbaselib.obj
+ 0002:000013c8       ??_C@_07FFCOENGO@toupper?$AA@ 00000001800303c8     sqbaselib.obj
+ 0002:000013d0       ??_C@_07OJACGNH@tolower?$AA@ 00000001800303d0     sqbaselib.obj
+ 0002:000013d8       ??_C@_06HBDCBIKI@s?5s?5n?5?$AA@ 00000001800303d8     sqbaselib.obj
+ 0002:000013e0       ??_C@_07PMIEOLJL@?5s?5n?5?5n?$AA@ 00000001800303e0     sqbaselib.obj
+ 0002:000013e8       ??_C@_07CMFFAPEL@tofloat?$AA@ 00000001800303e8     sqbaselib.obj
+ 0002:000013f0       ??_C@_09EAKFBKNJ@tointeger?$AA@ 00000001800303f0     sqbaselib.obj
+ 0002:000013fc       ??_C@_01LKDEMHDF@s?$AA@    00000001800303fc     sqbaselib.obj
+ 0002:00001400       ??_C@_02ECKMIONG@a?4?$AA@  0000000180030400     sqbaselib.obj
+ 0002:00001404       ??_C@_04CKFJHKAP@find?$AA@ 0000000180030404     sqbaselib.obj
+ 0002:0000140c       ??_C@_06EOIELIPE@filter?$AA@ 000000018003040c     sqbaselib.obj
+ 0002:00001414       ??_C@_06CDBFBENC@reduce?$AA@ 0000000180030414     sqbaselib.obj
+ 0002:0000141c       ??_C@_05KAEIDCAL@apply?$AA@ 000000018003041c     sqbaselib.obj
+ 0002:00001424       ??_C@_03HBNNNHNM@map?$AA@  0000000180030424     sqbaselib.obj
+ 0002:00001428       ??_C@_03OEBGBAIG@ann?$AA@  0000000180030428     sqbaselib.obj
+ 0002:0000142c       ??_C@_05ILHMOJGN@slice?$AA@ 000000018003042c     sqbaselib.obj
+ 0002:00001434       ??_C@_02HHLLPJO@ac?$AA@    0000000180030434     sqbaselib.obj
+ 0002:00001438       ??_C@_04PIMMHFGE@sort?$AA@ 0000000180030438     sqbaselib.obj
+ 0002:00001440       ??_C@_07KOIEOCCE@reverse?$AA@ 0000000180030440     sqbaselib.obj
+ 0002:00001448       ??_C@_02LCNFMBND@an?$AA@   0000000180030448     sqbaselib.obj
+ 0002:0000144c       ??_C@_06OAOPNKHP@insert?$AA@ 000000018003044c     sqbaselib.obj
+ 0002:00001454       ??_C@_03FGFCOCMD@top?$AA@  0000000180030454     sqbaselib.obj
+ 0002:00001458       ??_C@_03NJDAHFJE@pop?$AA@  0000000180030458     sqbaselib.obj
+ 0002:0000145c       ??_C@_04GHHNIPCF@push?$AA@ 000000018003045c     sqbaselib.obj
+ 0002:00001464       ??_C@_02DFENNNBM@aa?$AA@   0000000180030464     sqbaselib.obj
+ 0002:00001468       ??_C@_06BPBOMFNI@extend?$AA@ 0000000180030468     sqbaselib.obj
+ 0002:00001470       ??_C@_06PCICMFGG@append?$AA@ 0000000180030470     sqbaselib.obj
+ 0002:00001478       ??_C@_01MCMALHOG@a?$AA@    0000000180030478     sqbaselib.obj
+ 0002:00001480       ??_C@_0M@GIJAABNF@getdelegate?$AA@ 0000000180030480     sqbaselib.obj
+ 0002:0000148c       ??_C@_04BMPPEIBA@?4t?$HMo?$AA@ 000000018003048c     sqbaselib.obj
+ 0002:00001498       ??_C@_0M@GHIONHFG@setdelegate?$AA@ 0000000180030498     sqbaselib.obj
+ 0002:000014a4       ??_C@_05MEHLAELG@clear?$AA@ 00000001800304a4     sqbaselib.obj
+ 0002:000014ac       ??_C@_01LFCBOECM@?4?$AA@   00000001800304ac     sqbaselib.obj
+ 0002:000014b0       ??_C@_08FNIIFOJC@tostring?$AA@ 00000001800304b0     sqbaselib.obj
+ 0002:000014c0       ??_C@_07HEABOMAD@weakref?$AA@ 00000001800304c0     sqbaselib.obj
+ 0002:000014c8       ??_C@_05OGBFICMI@rawin?$AA@ 00000001800304c8     sqbaselib.obj
+ 0002:000014d0       ??_C@_09DPMMPLEO@rawdelete?$AA@ 00000001800304d0     sqbaselib.obj
+ 0002:000014dc       ??_C@_06ONPLLLOI@rawset?$AA@ 00000001800304dc     sqbaselib.obj
+ 0002:000014e4       ??_C@_06DCIAHLCA@rawget?$AA@ 00000001800304e4     sqbaselib.obj
+ 0002:000014ec       ??_C@_01PFHFFBPC@t?$AA@    00000001800304ec     sqbaselib.obj
+ 0002:000014f0       ??_C@_0BF@OHPBFBJF@resurrectunreachable?$AA@ 00000001800304f0     sqbaselib.obj
+ 0002:00001508       ??_C@_0P@CKFEAJJE@collectgarbage?$AA@ 0000000180030508     sqbaselib.obj
+ 0002:00001518       ??_C@_05JLNEMJLN@dummy?$AA@ 0000000180030518     sqbaselib.obj
+ 0002:00001520       ??_C@_06GAMBOONI@callee?$AA@ 0000000180030520     sqbaselib.obj
+ 0002:00001528       ??_C@_04GPMDFGEJ@type?$AA@ 0000000180030528     sqbaselib.obj
+ 0002:00001530       ??_C@_05HIFJDKLD@array?$AA@ 0000000180030530     sqbaselib.obj
+ 0002:00001538       ??_C@_07DNBGJJHB@suspend?$AA@ 0000000180030538     sqbaselib.obj
+ 0002:00001540       ??_C@_02HMLNHFGD@?4c?$AA@  0000000180030540     sqbaselib.obj
+ 0002:00001548       ??_C@_09FINEDNAN@newthread?$AA@ 0000000180030548     sqbaselib.obj
+ 0002:00001558       ??_C@_0O@FAPAHKGM@compilestring?$AA@ 0000000180030558     sqbaselib.obj
+ 0002:00001568       ??_C@_05KKCIMGE@error?$AA@ 0000000180030568     sqbaselib.obj
+ 0002:00001570       ??_C@_05IJDJACGD@print?$AA@ 0000000180030570     sqbaselib.obj
+ 0002:00001578       ??_C@_06GMEIIFFN@assert?$AA@ 0000000180030578     sqbaselib.obj
+ 0002:00001580       ??_C@_0O@DHNANHNN@setconsttable?$AA@ 0000000180030580     sqbaselib.obj
+ 0002:00001590       ??_C@_0O@EIMOGEKK@getconsttable?$AA@ 0000000180030590     sqbaselib.obj
+ 0002:000015a0       ??_C@_0N@JFLMENKF@setroottable?$AA@ 00000001800305a0     sqbaselib.obj
+ 0002:000015b0       ??_C@_0N@OBACIBOJ@getroottable?$AA@ 00000001800305b0     sqbaselib.obj
+ 0002:000015c0       ??_C@_0O@KHEGNCOO@getstackinfos?$AA@ 00000001800305c0     sqbaselib.obj
+ 0002:000015d0       ??_C@_0BA@JKMEPBKL@enabledebuginfo?$AA@ 00000001800305d0     sqbaselib.obj
+ 0002:000015e0       ??_C@_0N@PBKNHBLP@setdebughook?$AA@ 00000001800305e0     sqbaselib.obj
+ 0002:000015f0       ??_C@_0BA@LGKMEEDB@seterrorhandler?$AA@ 00000001800305f0     sqbaselib.obj
+ 0002:00001600       ??_C@_04HPNHAEOP@func?$AA@ 0000000180030600     sqbaselib.obj
+ 0002:00001608       ??_C@_03LOJEKLML@src?$AA@  0000000180030608     sqbaselib.obj
+ 0002:0000160c       ??_C@_04HJPCFDOP@line?$AA@ 000000018003060c     sqbaselib.obj
+ 0002:00001614       ??_C@_06MPPADOBF@locals?$AA@ 0000000180030614     sqbaselib.obj
+ 0002:00001620       ??_C@_0BB@DBHFCHNO@assertion?5failed?$AA@ 0000000180030620     sqbaselib.obj
+ 0002:00001634       ??_C@_02DKCKIIND@?$CFs?$AA@ 0000000180030634     sqbaselib.obj
+ 0002:00001638       ??_C@_0O@JOAEGHEJ@unnamedbuffer?$AA@ 0000000180030638     sqbaselib.obj
+ 0002:00001648       ??_C@_0BA@CFIAEMGL@_versionnumber_?$AA@ 0000000180030648     sqbaselib.obj
+ 0002:00001658       ??_C@_09DBJELFHJ@_version_?$AA@ 0000000180030658     sqbaselib.obj
+ 0002:00001668       ??_C@_0BG@IHOLNBDH@Squirrel?53?40?44?5stable?$AA@ 0000000180030668     sqbaselib.obj
+ 0002:00001680       ??_C@_0L@KLMKPIOC@_charsize_?$AA@ 0000000180030680     sqbaselib.obj
+ 0002:00001690       ??_C@_09BHMFFJPJ@_intsize_?$AA@ 0000000180030690     sqbaselib.obj
+ 0002:000016a0       ??_C@_0M@FAOKDMPL@_floatsize_?$AA@ 00000001800306a0     sqbaselib.obj
+ 0002:000016b0       ??_C@_0BK@FFAJOFIP@cannot?5convert?5the?5string?$AA@ 00000001800306b0     sqbaselib.obj
+ 0002:000016d0       ??_C@_0BH@KDMCOLGA@top?$CI?$CJ?5on?5a?5empty?5array?$AA@ 00000001800306d0     sqbaselib.obj
+ 0002:000016e8       ??_C@_0BB@GPPOEHNJ@idx?5out?5of?5range?$AA@ 00000001800306e8     sqbaselib.obj
+ 0002:00001700       ??_C@_0BG@GEMBPKIL@size?5must?5be?5a?5number?$AA@ 0000000180030700     sqbaselib.obj
+ 0002:00001718       ??_C@_0BE@DAIOECGH@compare?5func?5failed?$AA@ 0000000180030718     sqbaselib.obj
+ 0002:00001730       ??_C@_0DP@BPMEFFFG@numeric?5value?5expected?5as?5return@ 0000000180030730     sqbaselib.obj
+ 0002:00001770       ??_C@_0BO@PPJOJKB@inconsistent?5compare?5function?$AA@ 0000000180030770     sqbaselib.obj
+ 0002:00001790       ??_C@_0O@KAPPBHEL@wrong?5indexes?$AA@ 0000000180030790     sqbaselib.obj
+ 0002:000017a0       ??_C@_0BD@BJCGPMPI@slice?5out?5of?5range?$AA@ 00000001800307a0     sqbaselib.obj
+ 0002:000017b4       ??_C@_03KHICJKCI@?4?4?4?$AA@ 00000001800307b4     sqbaselib.obj
+ 0002:000017b8       ??_C@_06HIDILOEA@native?$AA@ 00000001800307b8     sqbaselib.obj
+ 0002:000017c0       ??_C@_04MEMAJGDJ@name?$AA@ 00000001800307c0     sqbaselib.obj
+ 0002:000017c8       ??_C@_0L@HHPOFMCB@parameters?$AA@ 00000001800307c8     sqbaselib.obj
+ 0002:000017d8       ??_C@_07LHCHJCGA@varargs?$AA@ 00000001800307d8     sqbaselib.obj
+ 0002:000017e0       ??_C@_09KPFMADAP@defparams?$AA@ 00000001800307e0     sqbaselib.obj
+ 0002:000017f0       ??_C@_0M@PJLCMPFO@paramscheck?$AA@ 00000001800307f0     sqbaselib.obj
+ 0002:00001800       ??_C@_09CNELLEGL@typecheck?$AA@ 0000000180030800     sqbaselib.obj
+ 0002:00001810       ??_C@_09PAHKPJCJ@suspended?$AA@ 0000000180030810     sqbaselib.obj
+ 0002:00001820       ??_C@_07PANPENDC@running?$AA@ 0000000180030820     sqbaselib.obj
+ 0002:00001828       ??_C@_04BBBDNBOK@dead?$AA@ 0000000180030828     sqbaselib.obj
+ 0002:00001830       ??_C@_0BM@GIKKAJMA@cannot?5wakeup?5a?5idle?5thread?$AA@ 0000000180030830     sqbaselib.obj
+ 0002:00001850       ??_C@_0BP@BOMCDDEN@cannot?5wakeup?5a?5running?5thread?$AA@ 0000000180030850     sqbaselib.obj
+ 0002:00001870       ??_C@_04EAPMNACM@idle?$AA@ 0000000180030870     sqbaselib.obj
+ 0002:00001878       ??_C@_0BC@KOIBMJEL@internal?5VM?5error?$AA@ 0000000180030878     sqbaselib.obj
+ 0002:00001890       ??_C@_0O@BFJCFAAK@unknown?5error?$AA@ 0000000180030890     sqbaselib.obj
+ 0002:000018a8       ??_7SQClass@@6B@           00000001800308a8     sqclass.obj
+ 0002:000018d8       ??_7SQInstance@@6B@        00000001800308d8     sqclass.obj
+ 0002:00001908       ??_C@_0L@DGIAAEJH@IDENTIFIER?$AA@ 0000000180030908     sqcompiler.obj
+ 0002:00001918       ??_C@_0P@PMPNMDBO@STRING_LITERAL?$AA@ 0000000180030918     sqcompiler.obj
+ 0002:00001928       ??_C@_07EHCIHKNF@INTEGER?$AA@ 0000000180030928     sqcompiler.obj
+ 0002:00001930       ??_C@_05GGMHDFKJ@FLOAT?$AA@ 0000000180030930     sqcompiler.obj
+ 0002:00001938       ??_C@_0O@NMLKFFNK@expected?5?8?$CFs?8?$AA@ 0000000180030938     sqcompiler.obj
+ 0002:00001948       ??_C@_0O@MAJMPGKK@expected?5?8?$CFc?8?$AA@ 0000000180030948     sqcompiler.obj
+ 0002:00001958       ??_C@_0CE@FHFJIFKH@end?5of?5statement?5expected?5?$CI?$DL?5or?5@ 0000000180030958     sqcompiler.obj
+ 0002:0000197c       ??_C@_04GHJNJNPO@main?$AA@ 000000018003097c     sqcompiler.obj
+ 0002:00001984       ??_C@_04IIAJELJL@this?$AA@ 0000000180030984     sqcompiler.obj
+ 0002:0000198c       ??_C@_05MCNPIFLP@vargv?$AA@ 000000018003098c     sqcompiler.obj
+ 0002:00001998       ??_C@_0CC@PFANNGPG@?8break?8?5has?5to?5be?5in?5a?5loop?5bloc@ 0000000180030998     sqcompiler.obj
+ 0002:000019c0       ??_C@_0CF@FDDJCLJO@?8continue?8?5has?5to?5be?5in?5a?5loop?5b@ 00000001800309c0     sqcompiler.obj
+ 0002:000019e8       ??_C@_0BI@KGKKAHEK@can?8t?5assign?5expression?$AA@ 00000001800309e8     sqcompiler.obj
+ 0002:00001a00       ??_C@_0BM@KGIMFMMD@can?8t?5?8create?8?5a?5local?5slot?$AA@ 0000000180030a00     sqcompiler.obj
+ 0002:00001a20       ??_C@_0EE@KACABHOP@cannot?5brake?5deref?1or?5comma?5need@ 0000000180030a20     sqcompiler.obj
+ 0002:00001a68       ??_C@_0CB@FGNGGMFM@can?8t?5?8?$CL?$CL?8?5or?5?8?9?9?8?5an?5expression@ 0000000180030a68     sqcompiler.obj
+ 0002:00001a90       ??_C@_0BJ@HMMDJCPM@invalid?5constant?5?$FL?$CFs?4?$CFs?$FN?$AA@ 0000000180030a90     sqcompiler.obj
+ 0002:00001ab0       ??_C@_0BE@IBBEEPG@expression?5expected?$AA@ 0000000180030ab0     sqcompiler.obj
+ 0002:00001ac8       ??_C@_0BP@OHNMPGBH@expression?5expected?0?5found?5?8?$CJ?8?$AA@ 0000000180030ac8     sqcompiler.obj
+ 0002:00001ae8       ??_C@_07MEOONPEG@?$EAINDEX?$EA?$AA@ 0000000180030ae8     sqcompiler.obj
+ 0002:00001af0       ??_C@_0L@IPLHBCIJ@?$EAITERATOR?$EA?$AA@ 0000000180030af0     sqcompiler.obj
+ 0002:00001b00       ??_C@_0BD@IFFHDPJD@invalid?5class?5name?$AA@ 0000000180030b00     sqcompiler.obj
+ 0002:00001b20       ??_C@_0EA@KLDKANHI@cannot?5create?5a?5class?5in?5a?5local@ 0000000180030b20     sqcompiler.obj
+ 0002:00001b60       ??_C@_0CA@OOLCBOGK@scalar?5expected?5?3?5integer?0float?$AA@ 0000000180030b60     sqcompiler.obj
+ 0002:00001b80       ??_C@_0CK@ECCMNOI@scalar?5expected?5?3?5integer?0float?5@ 0000000180030b80     sqcompiler.obj
+ 0002:00001bb0       ??_C@_0BL@PLCNJKJP@can?8t?5delete?5an?5expression?$AA@ 0000000180030bb0     sqcompiler.obj
+ 0002:00001bd0       ??_C@_0BP@FBMAOOEF@cannot?5delete?5an?5?$CIouter?$CJ?5local?$AA@ 0000000180030bd0     sqcompiler.obj
+ 0002:00001bf0       ??_C@_0EL@OMJBKLHF@function?5with?5default?5parameters@ 0000000180030bf0     sqcompiler.obj
+ 0002:00001c40       ??_C@_0N@BOJPMBHB@expected?5?8?$CJ?8?$AA@ 0000000180030c40     sqcompiler.obj
+ 0002:00001c50       ??_C@_0N@FLAMKNN@expected?5?8?$DN?8?$AA@ 0000000180030c50     sqcompiler.obj
+ 0002:00001c60       ??_C@_0BE@KGOPMBBB@expected?5?8?$CJ?8?5or?5?8?0?8?$AA@ 0000000180030c60     sqcompiler.obj
+ 0002:00001c74       ??_C@_06HMBDGAJC@NATIVE?$AA@ 0000000180030c74     sqdebug.obj
+ 0002:00001c7c       ??_C@_04BFAHMMK@?$CFlld?$AA@ 0000000180030c7c     sqdebug.obj
+ 0002:00001c84       ??_C@_05CGOEHEFE@?$CF?414g?$AA@ 0000000180030c84     sqdebug.obj
+ 0002:00001c90       ??_C@_0CB@JAAHEGAI@the?5index?5?8?$CF?450s?8?5does?5not?5exist@ 0000000180030c90     sqdebug.obj
+ 0002:00001cb8       ??_C@_0CH@OCJKNACM@comparison?5between?5?8?$CF?450s?8?5and?5?8@ 0000000180030cb8     sqdebug.obj
+ 0002:00001cdf       ??_C@_00CNPNBAHC@?$AA@     0000000180030cdf     sqdebug.obj
+ 0002:00001ce0       ??_C@_01DNKMNLPK@?$HM?$AA@ 0000000180030ce0     sqdebug.obj
+ 0002:00001ce8       ??_C@_0DH@EPADHNOI@parameter?5?$CFd?5has?5an?5invalid?5type@ 0000000180030ce8     sqdebug.obj
+ 0002:00001d20       ??_C@_0CL@OAKHKLCG@internal?5compiler?5error?3?5too?5man@ 0000000180030d20     sqfuncstate.obj
+ 0002:00001d50       ??_C@_0CJ@OEOMGDLH@internal?5compiler?5error?3?5too?5man@ 0000000180030d50     sqfuncstate.obj
+ 0002:00001d7c       ??_C@_05OODBEKIG@while?$AA@ 0000000180030d7c     sqlexer.obj
+ 0002:00001d84       ??_C@_02KNAFDCHJ@do?$AA@   0000000180030d84     sqlexer.obj
+ 0002:00001d88       ??_C@_02HEBPBKGD@if?$AA@   0000000180030d88     sqlexer.obj
+ 0002:00001d8c       ??_C@_04FHMCPBIP@else?$AA@ 0000000180030d8c     sqlexer.obj
+ 0002:00001d94       ??_C@_05ELPHFHOI@break?$AA@ 0000000180030d94     sqlexer.obj
+ 0002:00001da0       ??_C@_08DLICDMBN@continue?$AA@ 0000000180030da0     sqlexer.obj
+ 0002:00001dac       ??_C@_06LNOFJDNM@return?$AA@ 0000000180030dac     sqlexer.obj
+ 0002:00001db4       ??_C@_04MLLLIHIP@null?$AA@ 0000000180030db4     sqlexer.obj
+ 0002:00001dc0       ??_C@_08HFFPPCHF@function?$AA@ 0000000180030dc0     sqlexer.obj
+ 0002:00001dcc       ??_C@_05IDKHKMLA@local?$AA@ 0000000180030dcc     sqlexer.obj
+ 0002:00001dd4       ??_C@_03JOHEBPFF@for?$AA@  0000000180030dd4     sqlexer.obj
+ 0002:00001dd8       ??_C@_07ICLAOFOB@foreach?$AA@ 0000000180030dd8     sqlexer.obj
+ 0002:00001de0       ??_C@_02LMMGJAGL@in?$AA@   0000000180030de0     sqlexer.obj
+ 0002:00001de4       ??_C@_06NDJPCPHC@typeof?$AA@ 0000000180030de4     sqlexer.obj
+ 0002:00001dec       ??_C@_04BHIIPFEC@base?$AA@ 0000000180030dec     sqlexer.obj
+ 0002:00001df4       ??_C@_06FOBLBEIN@delete?$AA@ 0000000180030df4     sqlexer.obj
+ 0002:00001dfc       ??_C@_03JDGOGJKJ@try?$AA@  0000000180030dfc     sqlexer.obj
+ 0002:00001e00       ??_C@_05GHOHNOEI@catch?$AA@ 0000000180030e00     sqlexer.obj
+ 0002:00001e08       ??_C@_05JFAPCGDM@throw?$AA@ 0000000180030e08     sqlexer.obj
+ 0002:00001e10       ??_C@_05KFBJCHHJ@clone?$AA@ 0000000180030e10     sqlexer.obj
+ 0002:00001e18       ??_C@_05LKJGIMLP@yield?$AA@ 0000000180030e18     sqlexer.obj
+ 0002:00001e20       ??_C@_06PLELHCEK@resume?$AA@ 0000000180030e20     sqlexer.obj
+ 0002:00001e28       ??_C@_06DOPOGBGP@switch?$AA@ 0000000180030e28     sqlexer.obj
+ 0002:00001e30       ??_C@_04CKOINMPC@case?$AA@ 0000000180030e30     sqlexer.obj
+ 0002:00001e38       ??_C@_07DLHCIBDH@default?$AA@ 0000000180030e38     sqlexer.obj
+ 0002:00001e40       ??_C@_05ENKANFLO@class?$AA@ 0000000180030e40     sqlexer.obj
+ 0002:00001e48       ??_C@_07IMAFGOBG@extends?$AA@ 0000000180030e48     sqlexer.obj
+ 0002:00001e50       ??_C@_0L@CMICNBPM@instanceof?$AA@ 0000000180030e50     sqlexer.obj
+ 0002:00001e5c       ??_C@_06GGHJAEBN@static?$AA@ 0000000180030e5c     sqlexer.obj
+ 0002:00001e64       ??_C@_04DBJPMPLO@enum?$AA@ 0000000180030e64     sqlexer.obj
+ 0002:00001e6c       ??_C@_05BNCCCJPP@const?$AA@ 0000000180030e6c     sqlexer.obj
+ 0002:00001e78       ??_C@_0BC@NLAKMLN@Invalid?5character?$AA@ 0000000180030e78     sqlexer.obj
+ 0002:00001e90       ??_C@_0BI@BJDNAGME@missing?5?$CC?$CK?1?$CC?5in?5comment?$AA@ 0000000180030e90     sqlexer.obj
+ 0002:00001ea8       ??_C@_0BJ@DDFDNEOB@error?5parsing?5the?5string?$AA@ 0000000180030ea8     sqlexer.obj
+ 0002:00001ec8       ??_C@_0BD@OGFJHGKJ@invalid?5token?5?8?4?4?8?$AA@ 0000000180030ec8     sqlexer.obj
+ 0002:00001ee0       ??_C@_0BO@MHBBEPMD@unexpected?5character?$CIcontrol?$CJ?$AA@ 0000000180030ee0     sqlexer.obj
+ 0002:00001f00       ??_C@_0BC@IBAFBKML@unfinished?5string?$AA@ 0000000180030f00     sqlexer.obj
+ 0002:00001f18       ??_C@_0BG@NPMIPGAK@newline?5in?5a?5constant?$AA@ 0000000180030f18     sqlexer.obj
+ 0002:00001f30       ??_C@_0BM@NFLFFJPC@hexadecimal?5number?5expected?$AA@ 0000000180030f30     sqlexer.obj
+ 0002:00001f50       ??_C@_0BK@OEGDGLO@unrecognised?5escaper?5char?$AA@ 0000000180030f50     sqlexer.obj
+ 0002:00001f70       ??_C@_0P@IJPAJKLL@empty?5constant?$AA@ 0000000180030f70     sqlexer.obj
+ 0002:00001f80       ??_C@_0BC@EHOLFHDH@constant?5too?5long?$AA@ 0000000180030f80     sqlexer.obj
+ 0002:00001f98       ??_C@_0BF@NNCCIJEO@invalid?5octal?5number?$AA@ 0000000180030f98     sqlexer.obj
+ 0002:00001fb0       ??_C@_0CC@EMFKOCKC@too?5many?5digits?5for?5an?5Hex?5numbe@ 0000000180030fb0     sqlexer.obj
+ 0002:00001fd8       ??_C@_0BH@PJECDAJK@invalid?5numeric?5format?$AA@ 0000000180030fd8     sqlexer.obj
+ 0002:00001ff0       ??_C@_0BC@OMKMJOOO@exponent?5expected?$AA@ 0000000180030ff0     sqlexer.obj
+ 0002:00002008       ??_C@_07LKHFMGFB@integer?$AA@ 0000000180031008     sqobject.obj
+ 0002:00002010       ??_C@_05KNFBNCOH@float?$AA@ 0000000180031010     sqobject.obj
+ 0002:00002018       ??_C@_04DDKJGDCM@bool?$AA@ 0000000180031018     sqobject.obj
+ 0002:00002020       ??_C@_06ICGJLFIM@string?$AA@ 0000000180031020     sqobject.obj
+ 0002:00002028       ??_C@_05LCLENNFI@table?$AA@ 0000000180031028     sqobject.obj
+ 0002:00002030       ??_C@_09HNDCMPDF@generator?$AA@ 0000000180031030     sqobject.obj
+ 0002:00002040       ??_C@_08NOEPOPLB@userdata?$AA@ 0000000180031040     sqobject.obj
+ 0002:0000204c       ??_C@_06FJHNOCKE@thread?$AA@ 000000018003104c     sqobject.obj
+ 0002:00002054       ??_C@_05DBOFKJBI@outer?$AA@ 0000000180031054     sqobject.obj
+ 0002:00002060       ??_C@_0CL@OBOEIBFJ@internal?5vm?5error?0?5yielding?5dead@ 0000000180031060     sqobject.obj
+ 0002:00002090       ??_C@_0CN@HOJDLNNF@internal?5vm?5error?0?5yielding?5a?5de@ 0000000180031090     sqobject.obj
+ 0002:000020c0       ??_C@_0BI@IADGEOJL@resuming?5dead?5generator?$AA@ 00000001800310c0     sqobject.obj
+ 0002:000020d8       ??_C@_0BK@LHHEBGGN@resuming?5active?5generator?$AA@ 00000001800310d8     sqobject.obj
+ 0002:000020f8       ??_C@_0CC@FIHPDKGH@io?5error?5?$CIwrite?5function?5failure@ 00000001800310f8     sqobject.obj
+ 0002:00002120       ??_C@_0EP@KAHLJFEG@io?5error?0?5read?5function?5failure?0@ 0000000180031120     sqobject.obj
+ 0002:00002170       ??_C@_0CE@DLIALCOF@invalid?5or?5corrupted?5closure?5str@ 0000000180031170     sqobject.obj
+ 0002:00002198       ??_C@_0BG@PLNJACK@cannot?5serialize?5a?5?$CFs?$AA@ 0000000180031198     sqobject.obj
+ 0002:000021b8       ??_7SQFunctionProto@@6B@   00000001800311b8     sqobject.obj
+ 0002:000021e8       ??_7SQWeakRef@@6B@         00000001800311e8     sqobject.obj
+ 0002:000021f8       ??_C@_07NMGBPFLN@closure?$AA@ 00000001800311f8     sqstate.obj
+ 0002:00002200       ??_C@_0M@NJIHMALH@userpointer?$AA@ 0000000180031200     sqstate.obj
+ 0002:0000220c       ??_C@_04EOELANMB@_add?$AA@ 000000018003120c     sqstate.obj
+ 0002:00002214       ??_C@_04PPOFPMBE@_sub?$AA@ 0000000180031214     sqstate.obj
+ 0002:0000221c       ??_C@_04NBKAPBDG@_mul?$AA@ 000000018003121c     sqstate.obj
+ 0002:00002224       ??_C@_04JLJBOHD@_div?$AA@  0000000180031224     sqstate.obj
+ 0002:0000222c       ??_C@_04ENGFPDJG@_unm?$AA@ 000000018003122c     sqstate.obj
+ 0002:00002238       ??_C@_07JGODJFFJ@_modulo?$AA@ 0000000180031238     sqstate.obj
+ 0002:00002240       ??_C@_04MFDNCJJA@_cmp?$AA@ 0000000180031240     sqstate.obj
+ 0002:00002248       ??_C@_05GGGIGPGK@_call?$AA@ 0000000180031248     sqstate.obj
+ 0002:00002250       ??_C@_08HJIPGLAP@_newslot?$AA@ 0000000180031250     sqstate.obj
+ 0002:00002260       ??_C@_08IBFOIFJP@_delslot?$AA@ 0000000180031260     sqstate.obj
+ 0002:00002270       ??_C@_09BABEPPIP@_tostring?$AA@ 0000000180031270     sqstate.obj
+ 0002:00002280       ??_C@_0L@BBLBCCFH@_newmember?$AA@ 0000000180031280     sqstate.obj
+ 0002:00002290       ??_C@_0L@GFPFODGE@_inherited?$AA@ 0000000180031290     sqstate.obj
+ 0002:000022a8       ??_7SQString@@6B@          00000001800312a8     sqstate.obj
+ 0002:000022c0       ??_7SQTable@@6B@           00000001800312c0     sqtable.obj
+ 0002:000022f0       ??_C@_0CE@NAAMBMIA@internal?5vm?5error?5bitwise?5op?5fai@ 00000001800312f0     sqvm.obj
+ 0002:00002318       ??_C@_0CB@BPBMGFBD@bitwise?5op?5between?5?8?$CFs?8?5and?5?8?$CFs?8@ 0000000180031318     sqvm.obj
+ 0002:00002340       ??_C@_0BB@OMEBCKB@division?5by?5zero?$AA@ 0000000180031340     sqvm.obj
+ 0002:00002358       ??_C@_0P@CADNGMKE@modulo?5by?5zero?$AA@ 0000000180031358     sqvm.obj
+ 0002:00002368       ??_C@_0CF@EINENGLM@arith?5op?5?$CFc?5on?5between?5?8?$CFs?8?5and?5@ 0000000180031368     sqvm.obj
+ 0002:00002390       ??_C@_0BH@LIGKHIPA@attempt?5to?5negate?5a?5?$CFs?$AA@ 0000000180031390     sqvm.obj
+ 0002:000023a8       ??_C@_0BM@HFKHIAFJ@_cmp?5must?5return?5an?5integer?$AA@ 00000001800313a8     sqvm.obj
+ 0002:000023c4       ??_C@_02BEIEFPIG@?$CFg?$AA@ 00000001800313c4     sqvm.obj
+ 0002:000023c8       ??_C@_0M@GDGAHJAG@?$CI?$CFs?5?3?50x?$CFp?$CJ?$AA@ 00000001800313c8     sqvm.obj
+ 0002:000023d8       ??_C@_0BL@BLKEBHOF@wrong?5number?5of?5parameters?$AA@ 00000001800313d8     sqvm.obj
+ 0002:000023f8       ??_C@_0CH@BDHCJLLO@cannot?5suspend?5an?5already?5suspen@ 00000001800313f8     sqvm.obj
+ 0002:00002420       ??_C@_0DA@PGLPICKO@cannot?5suspend?5through?5native?5ca@ 0000000180031420     sqvm.obj
+ 0002:00002450       ??_C@_0BP@OCEJIGEO@_nexti?5returned?5an?5invalid?5idx?$AA@ 0000000180031450     sqvm.obj
+ 0002:00002470       ??_C@_0O@CIFLKIJH@_nexti?5failed?$AA@ 0000000180031470     sqvm.obj
+ 0002:00002480       ??_C@_0BC@DFONEHKA@cannot?5iterate?5?$CFs?$AA@ 0000000180031480     sqvm.obj
+ 0002:00002498       ??_C@_0BM@JEBIFLMP@trying?5to?5inherit?5from?5a?5?$CFs?$AA@ 0000000180031498     sqvm.obj
+ 0002:000024b8       ??_C@_0BG@KPEMDGMJ@Native?5stack?5overflow?$AA@ 00000001800314b8     sqvm.obj
+ 0002:000024d0       ??_C@_0BF@NNJHPKNM@attempt?5to?5call?5?8?$CFs?8?$AA@ 00000001800314d0     sqvm.obj
+ 0002:000024e8       ??_C@_0CO@FNFONHOM@cannot?5apply?5instanceof?5between?5@ 00000001800314e8     sqvm.obj
+ 0002:00002518       ??_C@_0CI@GLOMJLMO@attempt?5to?5perform?5a?5bitwise?5op?5@ 0000000180031518     sqvm.obj
+ 0002:00002540       ??_C@_0DH@HHAGGODL@trying?5to?5yield?5a?5?8?$CFs?8?0only?5gene@ 0000000180031540     sqvm.obj
+ 0002:00002578       ??_C@_0DI@LMAKJDOE@trying?5to?5resume?5a?5?8?$CFs?8?0only?5gen@ 0000000180031578     sqvm.obj
+ 0002:000025b0       ??_C@_0BE@HECNIOCB@indexing?5?$CFs?5with?5?$CFs?$AA@ 00000001800315b0     sqvm.obj
+ 0002:000025c8       ??_C@_0BD@OBBKCMOC@trying?5to?5set?5?8?$CFs?8?$AA@ 00000001800315c8     sqvm.obj
+ 0002:000025e0       ??_C@_0N@CAAANFIP@cloning?5a?5?$CFs?$AA@ 00000001800315e0     sqvm.obj
+ 0002:000025f0       ??_C@_0BH@IOJNMAKG@object?5must?5be?5a?5class?$AA@ 00000001800315f0     sqvm.obj
+ 0002:00002608       ??_C@_0BN@HHDJCCE@null?5cannot?5be?5used?5as?5index?$AA@ 0000000180031608     sqvm.obj
+ 0002:00002628       ??_C@_0DF@GGFPPCHB@class?5instances?5do?5not?5support?5t@ 0000000180031628     sqvm.obj
+ 0002:00002660       ??_C@_0DM@MBAJMKDI@trying?5to?5modify?5a?5class?5that?5ha@ 0000000180031660     sqvm.obj
+ 0002:000026a0       ??_C@_0CB@LNOFJBIF@the?5property?5?8?$CFs?8?5already?5exists@ 00000001800316a0     sqvm.obj
+ 0002:000026c8       ??_C@_0BN@JKDIJJN@cannot?5delete?5a?5slot?5from?5?$CFs?$AA@ 00000001800316c8     sqvm.obj
+ 0002:000026e8       ??_C@_0CD@GAKJAMCE@attempt?5to?5delete?5a?5slot?5from?5a?5@ 00000001800316e8     sqvm.obj
+ 0002:00002710       ??_C@_0DL@HGNEONMP@stack?5overflow?0?5cannot?5resize?5st@ 0000000180031710     sqvm.obj
+ 0002:00002758       ??_7SQVM@@6B@              0000000180031758     sqvm.obj
+ 0002:00002788       ??_7SQGenerator@@6B@       0000000180031788     sqvm.obj
+ 0002:000027b8       ??_7SQOuter@@6B@           00000001800317b8     sqvm.obj
+ 0002:000027e0       __real@00000000            00000001800317e0      CIL library: CIL module
+ 0002:000027f0       __mask@@AbsDouble@         00000001800317f0      CIL library: CIL module
+ 0002:000028a0       __real@5f000000            00000001800318a0      CIL library: CIL module
+ 0002:00002a60       __real@447a0000            0000000180031a60      CIL library: CIL module
+ 0002:00002f40       __mask@@NegFloat@          0000000180031f40      CIL library: CIL module
+ 0002:00003400       __real@41700000            0000000180032400      CIL library: CIL module
+ 0002:000039d0       __real@40490fdb            00000001800329d0      CIL library: CIL module
+ 0002:00003bb8       ??_R4type_info@@6B@        0000000180032bb8     MSVCRT:ti_inst.obj
+ 0002:00003be0       ??_R3type_info@@8          0000000180032be0     MSVCRT:ti_inst.obj
+ 0002:00003bf8       ??_R2type_info@@8          0000000180032bf8     MSVCRT:ti_inst.obj
+ 0002:00003c08       ??_R1A@?0A@EA@type_info@@8 0000000180032c08     MSVCRT:ti_inst.obj
+ 0002:00003c30       ??_R4SQBlob@@6B@           0000000180032c30     sqstdblob.obj
+ 0002:00003c58       ??_R3SQBlob@@8             0000000180032c58     sqstdblob.obj
+ 0002:00003c70       ??_R2SQBlob@@8             0000000180032c70     sqstdblob.obj
+ 0002:00003c88       ??_R1A@?0A@EA@SQBlob@@8    0000000180032c88     sqstdblob.obj
+ 0002:00003cb0       ??_R3SQStream@@8           0000000180032cb0     sqstdblob.obj
+ 0002:00003cc8       ??_R2SQStream@@8           0000000180032cc8     sqstdblob.obj
+ 0002:00003cd8       ??_R1A@?0A@EA@SQStream@@8  0000000180032cd8     sqstdblob.obj
+ 0002:00003d00       ??_R4SQFile@@6B@           0000000180032d00     sqstdio.obj
+ 0002:00003d28       ??_R3SQFile@@8             0000000180032d28     sqstdio.obj
+ 0002:00003d40       ??_R2SQFile@@8             0000000180032d40     sqstdio.obj
+ 0002:00003d58       ??_R1A@?0A@EA@SQFile@@8    0000000180032d58     sqstdio.obj
+ 0002:00003d80       ??_R4SQRefCounted@@6B@     0000000180032d80     sqapi.obj
+ 0002:00003da8       ??_R4SQUserData@@6B@       0000000180032da8     sqapi.obj
+ 0002:00003dd0       ??_R3SQUserData@@8         0000000180032dd0     sqapi.obj
+ 0002:00003de8       ??_R2SQUserData@@8         0000000180032de8     sqapi.obj
+ 0002:00003e10       ??_R1A@?0A@EA@SQDelegable@@8 0000000180032e10     sqapi.obj
+ 0002:00003e38       ??_R3SQDelegable@@8        0000000180032e38     sqapi.obj
+ 0002:00003e50       ??_R2SQDelegable@@8        0000000180032e50     sqapi.obj
+ 0002:00003e70       ??_R1A@?0A@EA@SQUserData@@8 0000000180032e70     sqapi.obj
+ 0002:00003e98       ??_R4SQNativeClosure@@6B@  0000000180032e98     sqapi.obj
+ 0002:00003ec0       ??_R3SQNativeClosure@@8    0000000180032ec0     sqapi.obj
+ 0002:00003ed8       ??_R2SQNativeClosure@@8    0000000180032ed8     sqapi.obj
+ 0002:00003ef8       ??_R1A@?0A@EA@SQNativeClosure@@8 0000000180032ef8     sqapi.obj
+ 0002:00003f20       ??_R4SQClosure@@6B@        0000000180032f20     sqapi.obj
+ 0002:00003f48       ??_R3SQClosure@@8          0000000180032f48     sqapi.obj
+ 0002:00003f60       ??_R2SQClosure@@8          0000000180032f60     sqapi.obj
+ 0002:00003f80       ??_R1A@?0A@EA@SQClosure@@8 0000000180032f80     sqapi.obj
+ 0002:00003fa8       ??_R4SQArray@@6B@          0000000180032fa8     sqapi.obj
+ 0002:00003fd0       ??_R3SQArray@@8            0000000180032fd0     sqapi.obj
+ 0002:00003fe8       ??_R2SQArray@@8            0000000180032fe8     sqapi.obj
+ 0002:00004008       ??_R1A@?0A@EA@SQCollectable@@8 0000000180033008     sqapi.obj
+ 0002:00004030       ??_R3SQCollectable@@8      0000000180033030     sqapi.obj
+ 0002:00004048       ??_R2SQCollectable@@8      0000000180033048     sqapi.obj
+ 0002:00004060       ??_R1A@?0A@EA@SQRefCounted@@8 0000000180033060     sqapi.obj
+ 0002:00004088       ??_R3SQRefCounted@@8       0000000180033088     sqapi.obj
+ 0002:000040a0       ??_R2SQRefCounted@@8       00000001800330a0     sqapi.obj
+ 0002:000040b0       ??_R1A@?0A@EA@SQArray@@8   00000001800330b0     sqapi.obj
+ 0002:000040d8       ??_R4SQInstance@@6B@       00000001800330d8     sqclass.obj
+ 0002:00004100       ??_R3SQInstance@@8         0000000180033100     sqclass.obj
+ 0002:00004118       ??_R2SQInstance@@8         0000000180033118     sqclass.obj
+ 0002:00004140       ??_R1A@?0A@EA@SQInstance@@8 0000000180033140     sqclass.obj
+ 0002:00004168       ??_R4SQClass@@6B@          0000000180033168     sqclass.obj
+ 0002:00004190       ??_R3SQClass@@8            0000000180033190     sqclass.obj
+ 0002:000041a8       ??_R2SQClass@@8            00000001800331a8     sqclass.obj
+ 0002:000041c8       ??_R1A@?0A@EA@SQClass@@8   00000001800331c8     sqclass.obj
+ 0002:000041f0       ??_R4SQWeakRef@@6B@        00000001800331f0     sqobject.obj
+ 0002:00004218       ??_R3SQWeakRef@@8          0000000180033218     sqobject.obj
+ 0002:00004230       ??_R2SQWeakRef@@8          0000000180033230     sqobject.obj
+ 0002:00004248       ??_R1A@?0A@EA@SQWeakRef@@8 0000000180033248     sqobject.obj
+ 0002:00004270       ??_R4SQFunctionProto@@6B@  0000000180033270     sqobject.obj
+ 0002:00004298       ??_R3SQFunctionProto@@8    0000000180033298     sqobject.obj
+ 0002:000042b0       ??_R2SQFunctionProto@@8    00000001800332b0     sqobject.obj
+ 0002:000042d0       ??_R1A@?0A@EA@SQFunctionProto@@8 00000001800332d0     sqobject.obj
+ 0002:000042f8       ??_R4SQString@@6B@         00000001800332f8     sqstate.obj
+ 0002:00004320       ??_R3SQString@@8           0000000180033320     sqstate.obj
+ 0002:00004338       ??_R2SQString@@8           0000000180033338     sqstate.obj
+ 0002:00004350       ??_R1A@?0A@EA@SQString@@8  0000000180033350     sqstate.obj
+ 0002:00004378       ??_R4SQTable@@6B@          0000000180033378     sqtable.obj
+ 0002:000043a0       ??_R3SQTable@@8            00000001800333a0     sqtable.obj
+ 0002:000043b8       ??_R2SQTable@@8            00000001800333b8     sqtable.obj
+ 0002:000043e0       ??_R1A@?0A@EA@SQTable@@8   00000001800333e0     sqtable.obj
+ 0002:00004408       ??_R4SQOuter@@6B@          0000000180033408     sqvm.obj
+ 0002:00004430       ??_R3SQOuter@@8            0000000180033430     sqvm.obj
+ 0002:00004448       ??_R2SQOuter@@8            0000000180033448     sqvm.obj
+ 0002:00004468       ??_R1A@?0A@EA@SQOuter@@8   0000000180033468     sqvm.obj
+ 0002:00004490       ??_R4SQGenerator@@6B@      0000000180033490     sqvm.obj
+ 0002:000044b8       ??_R3SQGenerator@@8        00000001800334b8     sqvm.obj
+ 0002:000044d0       ??_R2SQGenerator@@8        00000001800334d0     sqvm.obj
+ 0002:000044f0       ??_R1A@?0A@EA@SQGenerator@@8 00000001800334f0     sqvm.obj
+ 0002:00004518       ??_R4SQVM@@6B@             0000000180033518     sqvm.obj
+ 0002:00004540       ??_R3SQVM@@8               0000000180033540     sqvm.obj
+ 0002:00004558       ??_R2SQVM@@8               0000000180033558     sqvm.obj
+ 0002:00004578       ??_R1A@?0A@EA@SQVM@@8      0000000180033578     sqvm.obj
+ 0002:000045a0       __rtc_iaa                  00000001800335a0     MSVCRT:_initsect_.obj
+ 0002:000045a8       __rtc_izz                  00000001800335a8     MSVCRT:_initsect_.obj
+ 0002:000045b0       __rtc_taa                  00000001800335b0     MSVCRT:_initsect_.obj
+ 0002:000045b8       __rtc_tzz                  00000001800335b8     MSVCRT:_initsect_.obj
+ 0002:00008d00       __IMPORT_DESCRIPTOR_MSVCR90 0000000180037d00     MSVCRT:MSVCR90.dll
+ 0002:00008d14       __IMPORT_DESCRIPTOR_KERNEL32 0000000180037d14     kernel32:KERNEL32.dll
+ 0002:00008d28       __NULL_IMPORT_DESCRIPTOR   0000000180037d28     MSVCRT:MSVCR90.dll
+ 0003:00000000       ??_R0?AVtype_info@@@8      000000018003a000     MSVCRT:ti_inst.obj
+ 0003:00000020       __native_dllmain_reason    000000018003a020     MSVCRT:natstart.obj
+ 0003:00000024       __native_vcclrit_reason    000000018003a024     MSVCRT:natstart.obj
+ 0003:00000028       __security_cookie          000000018003a028     MSVCRT:gs_cookie.obj
+ 0003:00000030       __security_cookie_complement 000000018003a030     MSVCRT:gs_cookie.obj
+ 0003:00000038       ??_R0?AUSQBlob@@@8         000000018003a038     sqstdblob.obj
+ 0003:00000058       ??_R0?AUSQStream@@@8       000000018003a058     sqstdblob.obj
+ 0003:00000380       ?_table_default_delegate_funcz@SQSharedState@@2PAUtagSQRegFunction@@A 000000018003a380     sqbaselib.obj
+ 0003:000004e0       ?_array_default_delegate_funcz@SQSharedState@@2PAUtagSQRegFunction@@A 000000018003a4e0     sqbaselib.obj
+ 0003:00000780       ?_string_default_delegate_funcz@SQSharedState@@2PAUtagSQRegFunction@@A 000000018003a780     sqbaselib.obj
+ 0003:000008c0       ?_number_default_delegate_funcz@SQSharedState@@2PAUtagSQRegFunction@@A 000000018003a8c0     sqbaselib.obj
+ 0003:00000980       ?_closure_default_delegate_funcz@SQSharedState@@2PAUtagSQRegFunction@@A 000000018003a980     sqbaselib.obj
+ 0003:00000aa0       ?_generator_default_delegate_funcz@SQSharedState@@2PAUtagSQRegFunction@@A 000000018003aaa0     sqbaselib.obj
+ 0003:00000b20       ?_thread_default_delegate_funcz@SQSharedState@@2PAUtagSQRegFunction@@A 000000018003ab20     sqbaselib.obj
+ 0003:00000c00       ?_class_default_delegate_funcz@SQSharedState@@2PAUtagSQRegFunction@@A 000000018003ac00     sqbaselib.obj
+ 0003:00000d80       ?_instance_default_delegate_funcz@SQSharedState@@2PAUtagSQRegFunction@@A 000000018003ad80     sqbaselib.obj
+ 0003:00000e60       ?_weakref_default_delegate_funcz@SQSharedState@@2PAUtagSQRegFunction@@A 000000018003ae60     sqbaselib.obj
+ 0003:00001860       ??_R0?AUSQFile@@@8         000000018003b860     sqstdio.obj
+ 0003:00001880       ??_R0?AUSQDelegable@@@8    000000018003b880     sqapi.obj
+ 0003:000018a8       ??_R0?AUSQUserData@@@8     000000018003b8a8     sqapi.obj
+ 0003:000018d0       ??_R0?AUSQNativeClosure@@@8 000000018003b8d0     sqapi.obj
+ 0003:000018f8       ??_R0?AUSQClosure@@@8      000000018003b8f8     sqapi.obj
+ 0003:00001918       ??_R0?AUSQRefCounted@@@8   000000018003b918     sqapi.obj
+ 0003:00001940       ??_R0?AUSQCollectable@@@8  000000018003b940     sqapi.obj
+ 0003:00001968       ??_R0?AUSQArray@@@8        000000018003b968     sqapi.obj
+ 0003:00001988       ??_R0?AUSQInstance@@@8     000000018003b988     sqclass.obj
+ 0003:000019b0       ??_R0?AUSQClass@@@8        000000018003b9b0     sqclass.obj
+ 0003:000019d0       ??_R0?AUSQWeakRef@@@8      000000018003b9d0     sqobject.obj
+ 0003:000019f0       ??_R0?AUSQFunctionProto@@@8 000000018003b9f0     sqobject.obj
+ 0003:00001a18       ??_R0?AUSQString@@@8       000000018003ba18     sqstate.obj
+ 0003:00001a38       ??_R0?AUSQTable@@@8        000000018003ba38     sqtable.obj
+ 0003:00001a58       ??_R0?AUSQOuter@@@8        000000018003ba58     sqvm.obj
+ 0003:00001a78       ??_R0?AUSQGenerator@@@8    000000018003ba78     sqvm.obj
+ 0003:00001aa0       ??_R0?AUSQVM@@@8           000000018003baa0     sqvm.obj
+ 0003:00001abc       _fltused                   000000018003babc     MSVCRT:dllsupp.obj
+ 0003:00001ac4       _forceCRTManifestRTM       000000018003bac4     MSVCRT:crtmanifestrtm.obj
+ 0003:00001ac8       ?__type_info_root_node@@3U__type_info_node@@A 000000018003bac8     MSVCRT:tncleanup.obj
+ 0003:00001ae0       ?temp@?1??Error@SQCompiler@@QEAAXPEBDZZ@4PADA 000000018003bae0     sqcompiler.obj
+ 0003:00001be0       __native_startup_state     000000018003bbe0     <common>
+ 0003:00001be8       __native_startup_lock      000000018003bbe8     <common>
+ 0003:00001bf0       __onexitend                000000018003bbf0     <common>
+ 0003:00001bf8       __onexitbegin              000000018003bbf8     <common>
+ 0003:00001c00       __dyn_tls_init_callback    000000018003bc00     <common>
+
+ entry point at        0001:0002a7b4
+
+ Static symbols
+
+ 0001:000002e4       ?_sqstd_aux_printerror@@YA_JPEAUSQVM@@@Z 00000001800012e4 f    CIL library: CIL module
+ 0001:00000600       ?_blob_resize@@YA_JPEAUSQVM@@@Z 0000000180001600 f    CIL library: CIL module
+ 0001:00000698       ?_blob_swap4@@YA_JPEAUSQVM@@@Z 0000000180001698 f    CIL library: CIL module
+ 0001:0000077c       ?_blob_swap2@@YA_JPEAUSQVM@@@Z 000000018000177c f    CIL library: CIL module
+ 0001:00000840       ?_blob__set@@YA_JPEAUSQVM@@@Z 0000000180001840 f    CIL library: CIL module
+ 0001:0000092c       ?_blob__get@@YA_JPEAUSQVM@@@Z 000000018000192c f    CIL library: CIL module
+ 0001:00000a00       ?_blob__nexti@@YA_JPEAUSQVM@@@Z 0000000180001a00 f    CIL library: CIL module
+ 0001:00000b00       ?_blob__typeof@@YA_JPEAUSQVM@@@Z 0000000180001b00 f    CIL library: CIL module
+ 0001:00000b24       ?_blob_constructor@@YA_JPEAUSQVM@@@Z 0000000180001b24 f    CIL library: CIL module
+ 0001:00000c1c       ?_blob__cloned@@YA_JPEAUSQVM@@@Z 0000000180001c1c f    CIL library: CIL module
+ 0001:00000d40       ?_g_blob_casti2f@@YA_JPEAUSQVM@@@Z 0000000180001d40 f    CIL library: CIL module
+ 0001:00000d8c       ?_g_blob_castf2i@@YA_JPEAUSQVM@@@Z 0000000180001d8c f    CIL library: CIL module
+ 0001:00000dd0       ?_g_blob_swap2@@YA_JPEAUSQVM@@@Z 0000000180001dd0 f    CIL library: CIL module
+ 0001:00000e28       ?_g_blob_swap4@@YA_JPEAUSQVM@@@Z 0000000180001e28 f    CIL library: CIL module
+ 0001:00000e98       ?_g_blob_swapfloat@@YA_JPEAUSQVM@@@Z 0000000180001e98 f    CIL library: CIL module
+ 0001:000012c8       ?_file__typeof@@YA_JPEAUSQVM@@@Z 00000001800022c8 f    CIL library: CIL module
+ 0001:000012ec       ?_file_releasehook@@YA_JPEAX_J@Z 00000001800022ec f    CIL library: CIL module
+ 0001:000012ec       ?_blob_releasehook@@YA_JPEAX_J@Z 00000001800022ec f    CIL library: CIL module
+ 0001:00001318       ?_file_constructor@@YA_JPEAUSQVM@@@Z 0000000180002318 f    CIL library: CIL module
+ 0001:00001464       ?_file_close@@YA_JPEAUSQVM@@@Z 0000000180002464 f    CIL library: CIL module
+ 0001:00001624       ?_io_file_lexfeed_PLAIN@@YA_JPEAX@Z 0000000180002624 f    CIL library: CIL module
+ 0001:00001654       ?_io_file_lexfeed_UCS2_LE@@YA_JPEAX@Z 0000000180002654 f    CIL library: CIL module
+ 0001:00001684       ?_io_file_lexfeed_UCS2_BE@@YA_JPEAX@Z 0000000180002684 f    CIL library: CIL module
+ 0001:00001bd8       ?math_srand@@YA_JPEAUSQVM@@@Z 0000000180002bd8 f    CIL library: CIL module
+ 0001:00001c18       ?math_rand@@YA_JPEAUSQVM@@@Z 0000000180002c18 f    CIL library: CIL module
+ 0001:00001c54       ?math_abs@@YA_JPEAUSQVM@@@Z 0000000180002c54 f    CIL library: CIL module
+ 0001:00001ca0       ?math_sqrt@@YA_JPEAUSQVM@@@Z 0000000180002ca0 f    CIL library: CIL module
+ 0001:00001cf4       ?math_fabs@@YA_JPEAUSQVM@@@Z 0000000180002cf4 f    CIL library: CIL module
+ 0001:00001d50       ?math_sin@@YA_JPEAUSQVM@@@Z 0000000180002d50 f    CIL library: CIL module
+ 0001:00001da4       ?math_cos@@YA_JPEAUSQVM@@@Z 0000000180002da4 f    CIL library: CIL module
+ 0001:00001df8       ?math_asin@@YA_JPEAUSQVM@@@Z 0000000180002df8 f    CIL library: CIL module
+ 0001:00001e4c       ?math_acos@@YA_JPEAUSQVM@@@Z 0000000180002e4c f    CIL library: CIL module
+ 0001:00001ea0       ?math_log@@YA_JPEAUSQVM@@@Z 0000000180002ea0 f    CIL library: CIL module
+ 0001:00001ef4       ?math_log10@@YA_JPEAUSQVM@@@Z 0000000180002ef4 f    CIL library: CIL module
+ 0001:00001f48       ?math_tan@@YA_JPEAUSQVM@@@Z 0000000180002f48 f    CIL library: CIL module
+ 0001:00001f9c       ?math_atan@@YA_JPEAUSQVM@@@Z 0000000180002f9c f    CIL library: CIL module
+ 0001:00001ff0       ?math_atan2@@YA_JPEAUSQVM@@@Z 0000000180002ff0 f    CIL library: CIL module
+ 0001:0000205c       ?math_pow@@YA_JPEAUSQVM@@@Z 000000018000305c f    CIL library: CIL module
+ 0001:000020c8       ?math_floor@@YA_JPEAUSQVM@@@Z 00000001800030c8 f    CIL library: CIL module
+ 0001:0000211c       ?math_ceil@@YA_JPEAUSQVM@@@Z 000000018000311c f    CIL library: CIL module
+ 0001:00002170       ?math_exp@@YA_JPEAUSQVM@@@Z 0000000180003170 f    CIL library: CIL module
+ 0001:00002314       ?sqstd_rex_newnode@@YA_JPEAUSQRex@@H@Z 0000000180003314 f    CIL library: CIL module
+ 0001:000023a0       ?sqstd_rex_charnode@@YA_JPEAUSQRex@@_K@Z 00000001800033a0 f    CIL library: CIL module
+ 0001:00002564       ?sqstd_rex_class@@YA_JPEAUSQRex@@@Z 0000000180003564 f    CIL library: CIL module
+ 0001:000027bc       ?sqstd_rex_parsenumber@@YA_JPEAUSQRex@@@Z 00000001800037bc f    CIL library: CIL module
+ 0001:0000285c       ?sqstd_rex_element@@YA_JPEAUSQRex@@@Z 000000018000385c f    CIL library: CIL module
+ 0001:00002b44       ?sqstd_rex_list@@YA_JPEAUSQRex@@@Z 0000000180003b44 f    CIL library: CIL module
+ 0001:00002bfc       ?sqstd_rex_matchcclass@@YA_K_JD@Z 0000000180003bfc f    CIL library: CIL module
+ 0001:00002d98       ?sqstd_rex_matchnode@@YAPEBDPEAUSQRex@@PEAUtagSQRexNode@@PEBD1@Z 0000000180003d98 f    CIL library: CIL module
+ 0001:0000473c       ?_string_format@@YA_JPEAUSQVM@@@Z 000000018000573c f    CIL library: CIL module
+ 0001:00004790       ?_string_strip@@YA_JPEAUSQVM@@@Z 0000000180005790 f    CIL library: CIL module
+ 0001:00004840       ?_string_lstrip@@YA_JPEAUSQVM@@@Z 0000000180005840 f    CIL library: CIL module
+ 0001:0000489c       ?_string_rstrip@@YA_JPEAUSQVM@@@Z 000000018000589c f    CIL library: CIL module
+ 0001:00004924       ?_string_split@@YA_JPEAUSQVM@@@Z 0000000180005924 f    CIL library: CIL module
+ 0001:00004a2c       ?_rexobj_releasehook@@YA_JPEAX_J@Z 0000000180005a2c f    CIL library: CIL module
+ 0001:00004a44       ?_regexp_match@@YA_JPEAUSQVM@@@Z 0000000180005a44 f    CIL library: CIL module
+ 0001:00004ac0       ?_addrexmatch@@YAXPEAUSQVM@@PEBD11@Z 0000000180005ac0 f    CIL library: CIL module
+ 0001:00004b78       ?_regexp_search@@YA_JPEAUSQVM@@@Z 0000000180005b78 f    CIL library: CIL module
+ 0001:00004c20       ?_regexp_capture@@YA_JPEAUSQVM@@@Z 0000000180005c20 f    CIL library: CIL module
+ 0001:00004d24       ?_regexp_subexpcount@@YA_JPEAUSQVM@@@Z 0000000180005d24 f    CIL library: CIL module
+ 0001:00004d78       ?_regexp_constructor@@YA_JPEAUSQVM@@@Z 0000000180005d78 f    CIL library: CIL module
+ 0001:00004ddc       ?_regexp__typeof@@YA_JPEAUSQVM@@@Z 0000000180005ddc f    CIL library: CIL module
+ 0001:00004f68       ?_system_getenv@@YA_JPEAUSQVM@@@Z 0000000180005f68 f    CIL library: CIL module
+ 0001:00004fb4       ?_system_system@@YA_JPEAUSQVM@@@Z 0000000180005fb4 f    CIL library: CIL module
+ 0001:0000501c       ?_system_clock@@YA_JPEAUSQVM@@@Z 000000018000601c f    CIL library: CIL module
+ 0001:0000506c       ?_system_time@@YA_JPEAUSQVM@@@Z 000000018000606c f    CIL library: CIL module
+ 0001:000050b0       ?_system_remove@@YA_JPEAUSQVM@@@Z 00000001800060b0 f    CIL library: CIL module
+ 0001:000050f4       ?_system_rename@@YA_JPEAUSQVM@@@Z 00000001800060f4 f    CIL library: CIL module
+ 0001:0000514c       ?_set_integer_slot@@YAXPEAUSQVM@@PEBD_J@Z 000000018000614c f    CIL library: CIL module
+ 0001:00005198       ?_system_date@@YA_JPEAUSQVM@@@Z 0000000180006198 f    CIL library: CIL module
+ 0001:0000ad60       ?base_dummy@@YA_JPEAUSQVM@@@Z 000000018000bd60 f    CIL library: CIL module
+ 0001:0000ad64       ?base_collectgarbage@@YA_JPEAUSQVM@@@Z 000000018000bd64 f    CIL library: CIL module
+ 0001:0000ad9c       ?base_resurectureachable@@YA_JPEAUSQVM@@@Z 000000018000bd9c f    CIL library: CIL module
+ 0001:0000adb4       ?base_getroottable@@YA_JPEAUSQVM@@@Z 000000018000bdb4 f    CIL library: CIL module
+ 0001:0000add0       ?base_getconsttable@@YA_JPEAUSQVM@@@Z 000000018000bdd0 f    CIL library: CIL module
+ 0001:0000adf4       ?base_setroottable@@YA_JPEAUSQVM@@@Z 000000018000bdf4 f    CIL library: CIL module
+ 0001:0000ae8c       ?base_setconsttable@@YA_JPEAUSQVM@@@Z 000000018000be8c f    CIL library: CIL module
+ 0001:0000af2c       ?base_seterrorhandler@@YA_JPEAUSQVM@@@Z 000000018000bf2c f    CIL library: CIL module
+ 0001:0000af3c       ?base_setdebughook@@YA_JPEAUSQVM@@@Z 000000018000bf3c f    CIL library: CIL module
+ 0001:0000af4c       ?base_enabledebuginfo@@YA_JPEAUSQVM@@@Z 000000018000bf4c f    CIL library: CIL module
+ 0001:0000af80       ?__getcallstackinfos@@YA_JPEAUSQVM@@_J@Z 000000018000bf80 f    CIL library: CIL module
+ 0001:0000b130       ?base_getstackinfos@@YA_JPEAUSQVM@@@Z 000000018000c130 f    CIL library: CIL module
+ 0001:0000b158       ?base_assert@@YA_JPEAUSQVM@@@Z 000000018000c158 f    CIL library: CIL module
+ 0001:0000b190       ?get_slice_params@@YA_JPEAUSQVM@@AEA_J1AEAUSQObjectPtr@@@Z 000000018000c190 f    CIL library: CIL module
+ 0001:0000b298       ?base_print@@YA_JPEAUSQVM@@@Z 000000018000c298 f    CIL library: CIL module
+ 0001:0000b2e8       ?base_error@@YA_JPEAUSQVM@@@Z 000000018000c2e8 f    CIL library: CIL module
+ 0001:0000b338       ?base_compilestring@@YA_JPEAUSQVM@@@Z 000000018000c338 f    CIL library: CIL module
+ 0001:0000b3d4       ?base_newthread@@YA_JPEAUSQVM@@@Z 000000018000c3d4 f    CIL library: CIL module
+ 0001:0000b434       ?base_suspend@@YA_JPEAUSQVM@@@Z 000000018000c434 f    CIL library: CIL module
+ 0001:0000b43c       ?base_array@@YA_JPEAUSQVM@@@Z 000000018000c43c f    CIL library: CIL module
+ 0001:0000b568       ?base_type@@YA_JPEAUSQVM@@@Z 000000018000c568 f    CIL library: CIL module
+ 0001:0000b5f4       ?base_callee@@YA_JPEAUSQVM@@@Z 000000018000c5f4 f    CIL library: CIL module
+ 0001:0000b834       ?default_delegate_len@@YA_JPEAUSQVM@@@Z 000000018000c834 f    CIL library: CIL module
+ 0001:0000b87c       ?default_delegate_tofloat@@YA_JPEAUSQVM@@@Z 000000018000c87c f    CIL library: CIL module
+ 0001:0000ba0c       ?default_delegate_tointeger@@YA_JPEAUSQVM@@@Z 000000018000ca0c f    CIL library: CIL module
+ 0001:0000bb74       ?default_delegate_tostring@@YA_JPEAUSQVM@@@Z 000000018000cb74 f    CIL library: CIL module
+ 0001:0000bb94       ?obj_delegate_weakref@@YA_JPEAUSQVM@@@Z 000000018000cb94 f    CIL library: CIL module
+ 0001:0000bbb4       ?obj_clear@@YA_JPEAUSQVM@@@Z 000000018000cbb4 f    CIL library: CIL module
+ 0001:0000bbc0       ?number_delegate_tochar@@YA_JPEAUSQVM@@@Z 000000018000cbc0 f    CIL library: CIL module
+ 0001:0000bd8c       ?table_rawdelete@@YA_JPEAUSQVM@@@Z 000000018000cd8c f    CIL library: CIL module
+ 0001:0000bdb8       ?container_rawexists@@YA_JPEAUSQVM@@@Z 000000018000cdb8 f    CIL library: CIL module
+ 0001:0000be08       ?container_rawset@@YA_JPEAUSQVM@@@Z 000000018000ce08 f    CIL library: CIL module
+ 0001:0000be14       ?container_rawget@@YA_JPEAUSQVM@@@Z 000000018000ce14 f    CIL library: CIL module
+ 0001:0000be3c       ?table_setdelegate@@YA_JPEAUSQVM@@@Z 000000018000ce3c f    CIL library: CIL module
+ 0001:0000be84       ?table_getdelegate@@YA_JPEAUSQVM@@@Z 000000018000ce84 f    CIL library: CIL module
+ 0001:0000beac       ?array_append@@YA_JPEAUSQVM@@@Z 000000018000ceac f    CIL library: CIL module
+ 0001:0000beb8       ?array_extend@@YA_JPEAUSQVM@@@Z 000000018000ceb8 f    CIL library: CIL module
+ 0001:0000bf60       ?array_reverse@@YA_JPEAUSQVM@@@Z 000000018000cf60 f    CIL library: CIL module
+ 0001:0000bf6c       ?array_pop@@YA_JPEAUSQVM@@@Z 000000018000cf6c f    CIL library: CIL module
+ 0001:0000bf98       ?array_top@@YA_JPEAUSQVM@@@Z 000000018000cf98 f    CIL library: CIL module
+ 0001:0000bfe8       ?array_insert@@YA_JPEAUSQVM@@@Z 000000018000cfe8 f    CIL library: CIL module
+ 0001:0000c09c       ?array_remove@@YA_JPEAUSQVM@@@Z 000000018000d09c f    CIL library: CIL module
+ 0001:0000c1d0       ?array_resize@@YA_JPEAUSQVM@@@Z 000000018000d1d0 f    CIL library: CIL module
+ 0001:0000c2f0       ?__map_array@@YA_JPEAUSQArray@@0PEAUSQVM@@@Z 000000018000d2f0 f    CIL library: CIL module
+ 0001:0000c480       ?array_map@@YA_JPEAUSQVM@@@Z 000000018000d480 f    CIL library: CIL module
+ 0001:0000c534       ?array_apply@@YA_JPEAUSQVM@@@Z 000000018000d534 f    CIL library: CIL module
+ 0001:0000c564       ?array_reduce@@YA_JPEAUSQVM@@@Z 000000018000d564 f    CIL library: CIL module
+ 0001:0000c7cc       ?array_filter@@YA_JPEAUSQVM@@@Z 000000018000d7cc f    CIL library: CIL module
+ 0001:0000c9f8       ?array_find@@YA_JPEAUSQVM@@@Z 000000018000d9f8 f    CIL library: CIL module
+ 0001:0000ce08       ?array_sort@@YA_JPEAUSQVM@@@Z 000000018000de08 f    CIL library: CIL module
+ 0001:0000ce64       ?array_slice@@YA_JPEAUSQVM@@@Z 000000018000de64 f    CIL library: CIL module
+ 0001:0000d0ac       ?string_slice@@YA_JPEAUSQVM@@@Z 000000018000e0ac f    CIL library: CIL module
+ 0001:0000d218       ?string_find@@YA_JPEAUSQVM@@@Z 000000018000e218 f    CIL library: CIL module
+ 0001:0000d2f8       ?string_tolower@@YA_JPEAUSQVM@@@Z 000000018000e2f8 f    CIL library: CIL module
+ 0001:0000d3f0       ?string_toupper@@YA_JPEAUSQVM@@@Z 000000018000e3f0 f    CIL library: CIL module
+ 0001:0000d4e8       ?closure_pcall@@YA_JPEAUSQVM@@@Z 000000018000e4e8 f    CIL library: CIL module
+ 0001:0000d51c       ?closure_call@@YA_JPEAUSQVM@@@Z 000000018000e51c f    CIL library: CIL module
+ 0001:0000d554       ?_closure_acall@@YA_JPEAUSQVM@@_K@Z 000000018000e554 f    CIL library: CIL module
+ 0001:0000d5fc       ?closure_acall@@YA_JPEAUSQVM@@@Z 000000018000e5fc f    CIL library: CIL module
+ 0001:0000d608       ?closure_pacall@@YA_JPEAUSQVM@@@Z 000000018000e608 f    CIL library: CIL module
+ 0001:0000d610       ?closure_bindenv@@YA_JPEAUSQVM@@@Z 000000018000e610 f    CIL library: CIL module
+ 0001:0000d638       ?closure_getinfos@@YA_JPEAUSQVM@@@Z 000000018000e638 f    CIL library: CIL module
+ 0001:0000deac       ?generator_getstatus@@YA_JPEAUSQVM@@@Z 000000018000eeac f    CIL library: CIL module
+ 0001:0000dffc       ?thread_call@@YA_JPEAUSQVM@@@Z 000000018000effc f    CIL library: CIL module
+ 0001:0000e170       ?thread_wakeup@@YA_JPEAUSQVM@@@Z 000000018000f170 f    CIL library: CIL module
+ 0001:0000e364       ?thread_getstatus@@YA_JPEAUSQVM@@@Z 000000018000f364 f    CIL library: CIL module
+ 0001:0000e3d8       ?thread_getstackinfos@@YA_JPEAUSQVM@@@Z 000000018000f3d8 f    CIL library: CIL module
+ 0001:0000e534       ?class_getattributes@@YA_JPEAUSQVM@@@Z 000000018000f534 f    CIL library: CIL module
+ 0001:0000e55c       ?class_setattributes@@YA_JPEAUSQVM@@@Z 000000018000f55c f    CIL library: CIL module
+ 0001:0000e584       ?class_instance@@YA_JPEAUSQVM@@@Z 000000018000f584 f    CIL library: CIL module
+ 0001:0000e5ac       ?class_getbase@@YA_JPEAUSQVM@@@Z 000000018000f5ac f    CIL library: CIL module
+ 0001:0000e5d4       ?class_newmember@@YA_JPEAUSQVM@@@Z 000000018000f5d4 f    CIL library: CIL module
+ 0001:0000e668       ?class_rawnewmember@@YA_JPEAUSQVM@@@Z 000000018000f668 f    CIL library: CIL module
+ 0001:0000e6fc       ?instance_getclass@@YA_JPEAUSQVM@@@Z 000000018000f6fc f    CIL library: CIL module
+ 0001:0000e724       ?weakref_ref@@YA_JPEAUSQVM@@@Z 000000018000f724 f    CIL library: CIL module
+ 0001:0002a3c0       pre_c_init                 000000018002b3c0 f   MSVCRT:crtdll.obj
+ 0001:0002a67c       __DllMainCRTStartup        000000018002b67c f   MSVCRT:crtdll.obj
+ 0001:0002aba0       ?filt$0@?0??__ArrayUnwind@@YAXPEAX_KHP6AX0@Z@Z@4HA 000000018002bba0 f   MSVCRT:ehvecdtr.obj
+ 0001:0002abdf       ?fin$0@?0???_M@YAXPEAX_KHP6AX0@Z@Z@4HA 000000018002bbdf f   MSVCRT:ehvecdtr.obj
+ 0001:0002ac09       ?fin$0@?0???_L@YAXPEAX_KHP6AX0@Z2@Z@4HA 000000018002bc09 f   MSVCRT:ehvecctr.obj
+ 0001:0002ac36       __DllMainCRTStartup$filt$0 000000018002bc36 f   MSVCRT:crtdll.obj
+ 0001:0002ac66       __DllMainCRTStartup$fin$1  000000018002bc66 f   MSVCRT:crtdll.obj
+ 0001:0002ac7f       _onexit$fin$0              000000018002bc7f f   MSVCRT:atonexit.obj
+ 0001:0002aca0       _IsNonwritableInCurrentImage$filt$0 000000018002bca0 f   MSVCRT:pesect.obj
+ 0001:0002acc1       ?dtor$0@?0??FallBackSet@SQVM@@QEAA_JAEBUSQObjectPtr@@00@Z@4HA 000000018002bcc1 f    CIL library: CIL module
+ 0001:0002ace1       ?dtor$1@?0??FallBackSet@SQVM@@QEAA_JAEBUSQObjectPtr@@00@Z@4HA 000000018002bce1 f    CIL library: CIL module
+ 0001:0002ad01       ?dtor$2@?0??FallBackSet@SQVM@@QEAA_JAEBUSQObjectPtr@@00@Z@4HA 000000018002bd01 f    CIL library: CIL module
+ 0001:0002ad21       ?dtor$3@?0??FallBackSet@SQVM@@QEAA_JAEBUSQObjectPtr@@00@Z@4HA 000000018002bd21 f    CIL library: CIL module
+ 0001:0002ad3c       ?dtor$0@?0??FallBackGet@SQVM@@QEAA_JAEBUSQObjectPtr@@0AEAU2@@Z@4HA 000000018002bd3c f    CIL library: CIL module
+ 0001:0002ad5c       ?dtor$1@?0??FallBackGet@SQVM@@QEAA_JAEBUSQObjectPtr@@0AEAU2@@Z@4HA 000000018002bd5c f    CIL library: CIL module
+ 0001:0002ad7c       ?dtor$2@?0??FallBackGet@SQVM@@QEAA_JAEBUSQObjectPtr@@0AEAU2@@Z@4HA 000000018002bd7c f    CIL library: CIL module
+ 0001:0002ad97       ?dtor$0@?0??CallDebugHook@SQVM@@QEAAX_J0@Z@4HA 000000018002bd97 f    CIL library: CIL module
+ 0001:0002adb7       ?dtor$1@?0??CallDebugHook@SQVM@@QEAAX_J0@Z@4HA 000000018002bdb7 f    CIL library: CIL module
+ 0001:0002add7       ?dtor$2@?0??CallDebugHook@SQVM@@QEAAX_J0@Z@4HA 000000018002bdd7 f    CIL library: CIL module
+ 0001:0002adef       ?dtor$0@?0???_GSQFunctionProto@@EEAAPEAXI@Z@4HA 000000018002bdef f    CIL library: CIL module
+ 0001:0002ae0f       ?dtor$1@?0???_GSQFunctionProto@@EEAAPEAXI@Z@4HA 000000018002be0f f    CIL library: CIL module
+ 0001:0002ae2b       ?dtor$0@?0??Tok2Str@SQLexer@@QEAAPEBD_J@Z@4HA 000000018002be2b f    CIL library: CIL module
+ 0001:0002ae4b       ?dtor$1@?0??Tok2Str@SQLexer@@QEAAPEBD_J@Z@4HA 000000018002be4b f    CIL library: CIL module
+ 0001:0002ae6b       ?dtor$2@?0??Tok2Str@SQLexer@@QEAAPEBD_J@Z@4HA 000000018002be6b f    CIL library: CIL module
+ 0001:0002ae83       ?dtor$0@?0???0SQOuterVar@@QEAA@AEBUSQObjectPtr@@0W4SQOuterType@@@Z@4HA 000000018002be83 f    CIL library: CIL module
+ 0001:0002aea3       ?dtor$1@?0???0SQOuterVar@@QEAA@AEBUSQObjectPtr@@0W4SQOuterType@@@Z@4HA 000000018002bea3 f    CIL library: CIL module
+ 0001:0002aebf       ?dtor$0@?0??Finalize@SQVM@@UEAAXXZ@4HA 000000018002bebf f    CIL library: CIL module
+ 0001:0002aed7       ?dtor$0@?0???_GSQTable@@UEAAPEAXI@Z@4HA 000000018002bed7 f    CIL library: CIL module
+ 0001:0002aef7       ?dtor$1@?0???_GSQTable@@UEAAPEAXI@Z@4HA 000000018002bef7 f    CIL library: CIL module
+ 0001:0002af0f       ?dtor$0@?0???1SQOuterVar@@QEAA@XZ@4HA 000000018002bf0f f    CIL library: CIL module
+ 0001:0002af0f       ?dtor$0@?0??Release@SQFunctionProto@@UEAAXXZ@4HA 000000018002bf0f f    CIL library: CIL module
+ 0001:0002af0f       ?dtor$0@?0???1?$sqvector@USQOuterVar@@@@QEAA@XZ@4HA 000000018002bf0f f    CIL library: CIL module
+ 0001:0002af2b       ?dtor$0@?0??push_back@?$sqvector@USQOuterVar@@@@QEAAAEAUSQOuterVar@@AEBU2@@Z@4HA 000000018002bf2b f    CIL library: CIL module
+ 0001:0002af4b       ?dtor$1@?0??push_back@?$sqvector@USQOuterVar@@@@QEAAAEAUSQOuterVar@@AEBU2@@Z@4HA 000000018002bf4b f    CIL library: CIL module
+ 0001:0002af6b       ?dtor$2@?0??push_back@?$sqvector@USQOuterVar@@@@QEAAAEAUSQOuterVar@@AEBU2@@Z@4HA 000000018002bf6b f    CIL library: CIL module
+ 0001:0002af87       ?dtor$0@?0??push_back@?$sqvector@USQLocalVarInfo@@@@QEAAAEAUSQLocalVarInfo@@AEBU2@@Z@4HA 000000018002bf87 f    CIL library: CIL module
+ 0001:0002afa7       ?dtor$1@?0??push_back@?$sqvector@USQLocalVarInfo@@@@QEAAAEAUSQLocalVarInfo@@AEBU2@@Z@4HA 000000018002bfa7 f    CIL library: CIL module
+ 0001:0002afbf       ?dtor$0@?0??GetOuterVariable@SQFuncState@@QEAA_JAEBUtagSQObject@@@Z@4HA 000000018002bfbf f    CIL library: CIL module
+ 0001:0002afdf       ?dtor$1@?0??GetOuterVariable@SQFuncState@@QEAA_JAEBUtagSQObject@@@Z@4HA 000000018002bfdf f    CIL library: CIL module
+ 0001:0002afff       ?dtor$2@?0??GetOuterVariable@SQFuncState@@QEAA_JAEBUtagSQObject@@@Z@4HA 000000018002bfff f    CIL library: CIL module
+ 0001:0002b01f       ?dtor$6@?0??GetOuterVariable@SQFuncState@@QEAA_JAEBUtagSQObject@@@Z@4HA 000000018002c01f f    CIL library: CIL module
+ 0001:0002b03f       ?dtor$3@?0??GetOuterVariable@SQFuncState@@QEAA_JAEBUtagSQObject@@@Z@4HA 000000018002c03f f    CIL library: CIL module
+ 0001:0002b05f       ?dtor$4@?0??GetOuterVariable@SQFuncState@@QEAA_JAEBUtagSQObject@@@Z@4HA 000000018002c05f f    CIL library: CIL module
+ 0001:0002b07f       ?dtor$5@?0??GetOuterVariable@SQFuncState@@QEAA_JAEBUtagSQObject@@@Z@4HA 000000018002c07f f    CIL library: CIL module
+ 0001:0002b09f       ?dtor$8@?0??GetOuterVariable@SQFuncState@@QEAA_JAEBUtagSQObject@@@Z@4HA 000000018002c09f f    CIL library: CIL module
+ 0001:0002b0bb       ?dtor$1@?0??SetStackSize@SQFuncState@@QEAAX_J@Z@4HA 000000018002c0bb f    CIL library: CIL module
+ 0001:0002b0bb       ?dtor$0@?0??FindOuter@SQVM@@QEAAXAEAUSQObjectPtr@@PEAU2@@Z@4HA 000000018002c0bb f    CIL library: CIL module
+ 0001:0002b0db       ?dtor$0@?0??SetStackSize@SQFuncState@@QEAAX_J@Z@4HA 000000018002c0db f    CIL library: CIL module
+ 0001:0002b0db       ?dtor$1@?0??FindOuter@SQVM@@QEAAXAEAUSQObjectPtr@@PEAU2@@Z@4HA 000000018002c0db f    CIL library: CIL module
+ 0001:0002b0f3       ?dtor$1@?0??resize@?$sqvector@USQClassMember@@@@QEAAX_KAEBUSQClassMember@@@Z@4HA 000000018002c0f3 f    CIL library: CIL module
+ 0001:0002b10b       ?dtor$0@?0???1SQClassMember@@QEAA@XZ@4HA 000000018002c10b f    CIL library: CIL module
+ 0001:0002b10b       ?dtor$0@?0???1?$sqvector@USQClassMember@@@@QEAA@XZ@4HA 000000018002c10b f    CIL library: CIL module
+ 0001:0002b123       ?dtor$0@?0??copy@?$sqvector@USQClassMember@@@@QEAAXAEBV1@@Z@4HA 000000018002c123 f    CIL library: CIL module
+ 0001:0002b143       ?dtor$2@?0??copy@?$sqvector@USQClassMember@@@@QEAAXAEBV1@@Z@4HA 000000018002c143 f    CIL library: CIL module
+ 0001:0002b15b       ?dtor$0@?0???_GSQInstance@@UEAAPEAXI@Z@4HA 000000018002c15b f    CIL library: CIL module
+ 0001:0002b17b       ?dtor$1@?0???_GSQInstance@@UEAAPEAXI@Z@4HA 000000018002c17b f    CIL library: CIL module
+ 0001:0002b1a9       ?dtor$0@?0??Finalize@SQClass@@UEAAXXZ@4HA 000000018002c1a9 f    CIL library: CIL module
+ 0001:0002b1c9       ?dtor$2@?0??Finalize@SQClass@@UEAAXXZ@4HA 000000018002c1c9 f    CIL library: CIL module
+ 0001:0002b1e9       ?dtor$1@?0??Finalize@SQClass@@UEAAXXZ@4HA 000000018002c1e9 f    CIL library: CIL module
+ 0001:0002b209       ?dtor$4@?0??Finalize@SQClass@@UEAAXXZ@4HA 000000018002c209 f    CIL library: CIL module
+ 0001:0002b221       ?dtor$0@?0??generator_getstatus@@YA_JPEAUSQVM@@@Z@4HA 000000018002c221 f    CIL library: CIL module
+ 0001:0002b241       ?dtor$1@?0??generator_getstatus@@YA_JPEAUSQVM@@@Z@4HA 000000018002c241 f    CIL library: CIL module
+ 0001:0002b261       ?dtor$2@?0??generator_getstatus@@YA_JPEAUSQVM@@@Z@4HA 000000018002c261 f    CIL library: CIL module
+ 0001:0002b279       ?dtor$0@?0??Lex@SQLexer@@QEAA_JXZ@4HA 000000018002c279 f    CIL library: CIL module
+ 0001:0002b279       ?dtor$0@?0??string_slice@@YA_JPEAUSQVM@@@Z@4HA 000000018002c279 f    CIL library: CIL module
+ 0001:0002b279       ?dtor$0@?0??CreateString@SQFuncState@@QEAA?AUtagSQObject@@PEBD_J@Z@4HA 000000018002c279 f    CIL library: CIL module
+ 0001:0002b279       ?dtor$0@?0??array_find@@YA_JPEAUSQVM@@@Z@4HA 000000018002c279 f    CIL library: CIL module
+ 0001:0002b279       ?dtor$0@?0??Statement@SQCompiler@@QEAAX_N@Z@4HA 000000018002c279 f    CIL library: CIL module
+ 0001:0002b279       ?dtor$0@?0??__map_array@@YA_JPEAUSQArray@@0PEAUSQVM@@@Z@4HA 000000018002c279 f    CIL library: CIL module
+ 0001:0002b279       ?dtor$0@?0??IsConstant@SQFuncState@@QEAA_NAEBUtagSQObject@@AEAU2@@Z@4HA 000000018002c279 f    CIL library: CIL module
+ 0001:0002b279       ?dtor$0@?0??CreateTable@SQFuncState@@QEAA?AUtagSQObject@@XZ@4HA 000000018002c279 f    CIL library: CIL module
+ 0001:0002b299       ?dtor$1@?0??CreateTable@SQFuncState@@QEAA?AUtagSQObject@@XZ@4HA 000000018002c299 f    CIL library: CIL module
+ 0001:0002b299       ?dtor$1@?0??Lex@SQLexer@@QEAA_JXZ@4HA 000000018002c299 f    CIL library: CIL module
+ 0001:0002b299       ?dtor$1@?0??__map_array@@YA_JPEAUSQArray@@0PEAUSQVM@@@Z@4HA 000000018002c299 f    CIL library: CIL module
+ 0001:0002b299       ?dtor$1@?0??IsConstant@SQFuncState@@QEAA_NAEBUtagSQObject@@AEAU2@@Z@4HA 000000018002c299 f    CIL library: CIL module
+ 0001:0002b299       ?dtor$1@?0??CreateString@SQFuncState@@QEAA?AUtagSQObject@@PEBD_J@Z@4HA 000000018002c299 f    CIL library: CIL module
+ 0001:0002b299       ?dtor$1@?0??array_find@@YA_JPEAUSQVM@@@Z@4HA 000000018002c299 f    CIL library: CIL module
+ 0001:0002b299       ?dtor$1@?0??Statement@SQCompiler@@QEAAX_N@Z@4HA 000000018002c299 f    CIL library: CIL module
+ 0001:0002b299       ?dtor$1@?0??string_slice@@YA_JPEAUSQVM@@@Z@4HA 000000018002c299 f    CIL library: CIL module
+ 0001:0002b2b1       ?dtor$0@?0???_GSQNativeClosure@@UEAAPEAXI@Z@4HA 000000018002c2b1 f    CIL library: CIL module
+ 0001:0002b2d1       ?dtor$1@?0???_GSQNativeClosure@@UEAAPEAXI@Z@4HA 000000018002c2d1 f    CIL library: CIL module
+ 0001:0002b2f1       ?dtor$2@?0???_GSQNativeClosure@@UEAAPEAXI@Z@4HA 000000018002c2f1 f    CIL library: CIL module
+ 0001:0002b30d       ?dtor$0@?0??_blob__cloned@@YA_JPEAUSQVM@@@Z@4HA 000000018002c30d f    CIL library: CIL module
+ 0001:0002b329       ?dtor$1@?0??EnterFrame@SQVM@@QEAA_N_J0_N@Z@4HA 000000018002c329 f    CIL library: CIL module
+ 0001:0002b349       ?dtor$0@?0??EnterFrame@SQVM@@QEAA_N_J0_N@Z@4HA 000000018002c349 f    CIL library: CIL module
+ 0001:0002b361       ?dtor$0@?0???1SQVM@@UEAA@XZ@4HA 000000018002c361 f    CIL library: CIL module
+ 0001:0002b361       ?dtor$0@?0???0SQVM@@QEAA@PEAUSQSharedState@@@Z@4HA 000000018002c361 f    CIL library: CIL module
+ 0001:0002b381       ?dtor$1@?0???1SQVM@@UEAA@XZ@4HA 000000018002c381 f    CIL library: CIL module
+ 0001:0002b381       ?dtor$1@?0???0SQVM@@QEAA@PEAUSQSharedState@@@Z@4HA 000000018002c381 f    CIL library: CIL module
+ 0001:0002b3a1       ?dtor$2@?0???1SQVM@@UEAA@XZ@4HA 000000018002c3a1 f    CIL library: CIL module
+ 0001:0002b3a1       ?dtor$2@?0???0SQVM@@QEAA@PEAUSQSharedState@@@Z@4HA 000000018002c3a1 f    CIL library: CIL module
+ 0001:0002b3c1       ?dtor$3@?0???0SQVM@@QEAA@PEAUSQSharedState@@@Z@4HA 000000018002c3c1 f    CIL library: CIL module
+ 0001:0002b3c1       ?dtor$3@?0???1SQVM@@UEAA@XZ@4HA 000000018002c3c1 f    CIL library: CIL module
+ 0001:0002b3e1       ?dtor$4@?0???1SQVM@@UEAA@XZ@4HA 000000018002c3e1 f    CIL library: CIL module
+ 0001:0002b3e1       ?dtor$4@?0???0SQVM@@QEAA@PEAUSQSharedState@@@Z@4HA 000000018002c3e1 f    CIL library: CIL module
+ 0001:0002b401       ?dtor$5@?0???0SQVM@@QEAA@PEAUSQSharedState@@@Z@4HA 000000018002c401 f    CIL library: CIL module
+ 0001:0002b401       ?dtor$5@?0???1SQVM@@UEAA@XZ@4HA 000000018002c401 f    CIL library: CIL module
+ 0001:0002b421       ?dtor$6@?0???1SQVM@@UEAA@XZ@4HA 000000018002c421 f    CIL library: CIL module
+ 0001:0002b421       ?dtor$6@?0???0SQVM@@QEAA@PEAUSQSharedState@@@Z@4HA 000000018002c421 f    CIL library: CIL module
+ 0001:0002b441       ?dtor$7@?0???1SQVM@@UEAA@XZ@4HA 000000018002c441 f    CIL library: CIL module
+ 0001:0002b441       ?dtor$7@?0???0SQVM@@QEAA@PEAUSQSharedState@@@Z@4HA 000000018002c441 f    CIL library: CIL module
+ 0001:0002b461       ?dtor$8@?0???1SQVM@@UEAA@XZ@4HA 000000018002c461 f    CIL library: CIL module
+ 0001:0002b461       ?dtor$8@?0???0SQVM@@QEAA@PEAUSQSharedState@@@Z@4HA 000000018002c461 f    CIL library: CIL module
+ 0001:0002b480       ?dtor$0@?0??Rehash@SQTable@@AEAAX_N@Z@4HA 000000018002c480 f    CIL library: CIL module
+ 0001:0002b498       ?dtor$0@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c498 f    CIL library: CIL module
+ 0001:0002b4b8       ?dtor$1@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c4b8 f    CIL library: CIL module
+ 0001:0002b4d8       ?dtor$2@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c4d8 f    CIL library: CIL module
+ 0001:0002b4f8       ?dtor$3@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c4f8 f    CIL library: CIL module
+ 0001:0002b518       ?dtor$4@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c518 f    CIL library: CIL module
+ 0001:0002b538       ?dtor$5@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c538 f    CIL library: CIL module
+ 0001:0002b558       ?dtor$6@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c558 f    CIL library: CIL module
+ 0001:0002b578       ?dtor$7@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c578 f    CIL library: CIL module
+ 0001:0002b598       ?dtor$8@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c598 f    CIL library: CIL module
+ 0001:0002b5b8       ?dtor$9@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c5b8 f    CIL library: CIL module
+ 0001:0002b5d8       ?dtor$10@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c5d8 f    CIL library: CIL module
+ 0001:0002b5f8       ?dtor$11@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c5f8 f    CIL library: CIL module
+ 0001:0002b618       ?dtor$12@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c618 f    CIL library: CIL module
+ 0001:0002b638       ?dtor$13@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c638 f    CIL library: CIL module
+ 0001:0002b658       ?dtor$14@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c658 f    CIL library: CIL module
+ 0001:0002b678       ?dtor$15@?0???1SQSharedState@@QEAA@XZ@4HA 000000018002c678 f    CIL library: CIL module
+ 0001:0002b697       ?dtor$0@?0??Yield@SQGenerator@@QEAA_NPEAUSQVM@@_J@Z@4HA 000000018002c697 f    CIL library: CIL module
+ 0001:0002b6b7       ?dtor$1@?0??Yield@SQGenerator@@QEAA_NPEAUSQVM@@_J@Z@4HA 000000018002c6b7 f    CIL library: CIL module
+ 0001:0002b6e3       ?dtor$0@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c6e3 f    CIL library: CIL module
+ 0001:0002b703       ?dtor$1@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c703 f    CIL library: CIL module
+ 0001:0002b723       ?dtor$2@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c723 f    CIL library: CIL module
+ 0001:0002b743       ?dtor$3@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c743 f    CIL library: CIL module
+ 0001:0002b763       ?dtor$4@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c763 f    CIL library: CIL module
+ 0001:0002b783       ?dtor$5@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c783 f    CIL library: CIL module
+ 0001:0002b7a3       ?dtor$6@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c7a3 f    CIL library: CIL module
+ 0001:0002b7c3       ?dtor$7@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c7c3 f    CIL library: CIL module
+ 0001:0002b7e3       ?dtor$8@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c7e3 f    CIL library: CIL module
+ 0001:0002b803       ?dtor$9@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c803 f    CIL library: CIL module
+ 0001:0002b823       ?dtor$10@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c823 f    CIL library: CIL module
+ 0001:0002b843       ?dtor$11@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c843 f    CIL library: CIL module
+ 0001:0002b863       ?dtor$12@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c863 f    CIL library: CIL module
+ 0001:0002b883       ?dtor$13@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c883 f    CIL library: CIL module
+ 0001:0002b8a3       ?dtor$14@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c8a3 f    CIL library: CIL module
+ 0001:0002b8c3       ?dtor$15@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c8c3 f    CIL library: CIL module
+ 0001:0002b8e3       ?dtor$16@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c8e3 f    CIL library: CIL module
+ 0001:0002b903       ?dtor$17@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c903 f    CIL library: CIL module
+ 0001:0002b923       ?dtor$18@?0???1SQFuncState@@QEAA@XZ@4HA 000000018002c923 f    CIL library: CIL module
+ 0001:0002b942       ?dtor$0@?0??BuildProto@SQFuncState@@QEAAPEAUSQFunctionProto@@XZ@4HA 000000018002c942 f    CIL library: CIL module
+ 0001:0002b962       ?dtor$1@?0??BuildProto@SQFuncState@@QEAAPEAUSQFunctionProto@@XZ@4HA 000000018002c962 f    CIL library: CIL module
+ 0001:0002b982       ?dtor$2@?0??BuildProto@SQFuncState@@QEAAPEAUSQFunctionProto@@XZ@4HA 000000018002c982 f    CIL library: CIL module
+ 0001:0002b99a       ?dtor$0@?0??StringCat@SQVM@@QEAA_NAEBUSQObjectPtr@@0AEAU2@@Z@4HA 000000018002c99a f    CIL library: CIL module
+ 0001:0002b99a       ?dtor$0@?0??CreateDefaultDelegate@@YAPEAUSQTable@@PEAUSQSharedState@@PEAUtagSQRegFunction@@@Z@4HA 000000018002c99a f    CIL library: CIL module
+ 0001:0002b99a       ?dtor$1@?0??Raise_CompareError@SQVM@@QEAAXAEBUtagSQObject@@0@Z@4HA 000000018002c99a f    CIL library: CIL module
+ 0001:0002b9ba       ?dtor$1@?0??CreateDefaultDelegate@@YAPEAUSQTable@@PEAUSQSharedState@@PEAUtagSQRegFunction@@@Z@4HA 000000018002c9ba f    CIL library: CIL module
+ 0001:0002b9ba       ?dtor$3@?0??Raise_CompareError@SQVM@@QEAAXAEBUtagSQObject@@0@Z@4HA 000000018002c9ba f    CIL library: CIL module
+ 0001:0002b9ba       ?dtor$1@?0??StringCat@SQVM@@QEAA_NAEBUSQObjectPtr@@0AEAU2@@Z@4HA 000000018002c9ba f    CIL library: CIL module
+ 0001:0002b9d2       ?dtor$0@?0???0SQInstance@@QEAA@PEAUSQSharedState@@PEAUSQClass@@_J@Z@4HA 000000018002c9d2 f    CIL library: CIL module
+ 0001:0002b9d2       ?dtor$0@?0???0SQInstance@@QEAA@PEAUSQSharedState@@PEAU0@_J@Z@4HA 000000018002c9d2 f    CIL library: CIL module
+ 0001:0002b9ea       ?dtor$0@?0???_GSQClass@@UEAAPEAXI@Z@4HA 000000018002c9ea f    CIL library: CIL module
+ 0001:0002ba0a       ?dtor$1@?0???_GSQClass@@UEAAPEAXI@Z@4HA 000000018002ca0a f    CIL library: CIL module
+ 0001:0002ba2a       ?dtor$2@?0???_GSQClass@@UEAAPEAXI@Z@4HA 000000018002ca2a f    CIL library: CIL module
+ 0001:0002ba4a       ?dtor$3@?0???_GSQClass@@UEAAPEAXI@Z@4HA 000000018002ca4a f    CIL library: CIL module
+ 0001:0002ba7a       ?dtor$4@?0???_GSQClass@@UEAAPEAXI@Z@4HA 000000018002ca7a f    CIL library: CIL module
+ 0001:0002ba99       ?dtor$0@?0??default_delegate_tointeger@@YA_JPEAUSQVM@@@Z@4HA 000000018002ca99 f    CIL library: CIL module
+ 0001:0002ba99       ?dtor$0@?0??default_delegate_tofloat@@YA_JPEAUSQVM@@@Z@4HA 000000018002ca99 f    CIL library: CIL module
+ 0001:0002bab9       ?dtor$1@?0??default_delegate_tofloat@@YA_JPEAUSQVM@@@Z@4HA 000000018002cab9 f    CIL library: CIL module
+ 0001:0002bab9       ?dtor$1@?0??default_delegate_tointeger@@YA_JPEAUSQVM@@@Z@4HA 000000018002cab9 f    CIL library: CIL module
+ 0001:0002bad9       ?dtor$2@?0??default_delegate_tofloat@@YA_JPEAUSQVM@@@Z@4HA 000000018002cad9 f    CIL library: CIL module
+ 0001:0002bad9       ?dtor$2@?0??default_delegate_tointeger@@YA_JPEAUSQVM@@@Z@4HA 000000018002cad9 f    CIL library: CIL module
+ 0001:0002baf9       ?dtor$3@?0??default_delegate_tofloat@@YA_JPEAUSQVM@@@Z@4HA 000000018002caf9 f    CIL library: CIL module
+ 0001:0002baf9       ?dtor$3@?0??default_delegate_tointeger@@YA_JPEAUSQVM@@@Z@4HA 000000018002caf9 f    CIL library: CIL module
+ 0001:0002bb11       ?dtor$0@?0???_GSQClosure@@UEAAPEAXI@Z@4HA 000000018002cb11 f    CIL library: CIL module
+ 0001:0002bb11       ?dtor$0@?0???_GSQArray@@EEAAPEAXI@Z@4HA 000000018002cb11 f    CIL library: CIL module
+ 0001:0002bb11       ?dtor$0@?0???_GSQUserData@@UEAAPEAXI@Z@4HA 000000018002cb11 f    CIL library: CIL module
+ 0001:0002bb11       ?dtor$0@?0???_GSQOuter@@UEAAPEAXI@Z@4HA 000000018002cb11 f    CIL library: CIL module
+ 0001:0002bb29       ?dtor$0@?0??Create@SQArray@@SAPEAU1@PEAUSQSharedState@@_J@Z@4HA 000000018002cb29 f    CIL library: CIL module
+ 0001:0002bb49       ?dtor$1@?0??Create@SQArray@@SAPEAU1@PEAUSQSharedState@@_J@Z@4HA 000000018002cb49 f    CIL library: CIL module
+ 0001:0002bb69       ?dtor$2@?0??Create@SQArray@@SAPEAU1@PEAUSQSharedState@@_J@Z@4HA 000000018002cb69 f    CIL library: CIL module
+ 0001:0002bb89       ?dtor$3@?0??Create@SQArray@@SAPEAU1@PEAUSQSharedState@@_J@Z@4HA 000000018002cb89 f    CIL library: CIL module
+ 0001:0002bba1       ?dtor$0@?0??Clone@SQTable@@QEAAPEAU1@XZ@4HA 000000018002cba1 f    CIL library: CIL module
+ 0001:0002bba1       ?dtor$0@?0??DeleteSlot@SQVM@@QEAA_NAEBUSQObjectPtr@@0AEAU2@@Z@4HA 000000018002cba1 f    CIL library: CIL module
+ 0001:0002bbc1       ?dtor$1@?0??DeleteSlot@SQVM@@QEAA_NAEBUSQObjectPtr@@0AEAU2@@Z@4HA 000000018002cbc1 f    CIL library: CIL module
+ 0001:0002bbc1       ?dtor$1@?0??Clone@SQTable@@QEAAPEAU1@XZ@4HA 000000018002cbc1 f    CIL library: CIL module
+ 0001:0002bbe1       ?dtor$2@?0??DeleteSlot@SQVM@@QEAA_NAEBUSQObjectPtr@@0AEAU2@@Z@4HA 000000018002cbe1 f    CIL library: CIL module
+ 0001:0002bbe1       ?dtor$2@?0??Clone@SQTable@@QEAAPEAU1@XZ@4HA 000000018002cbe1 f    CIL library: CIL module
+ 0001:0002bbf9       ?dtor$0@?0??ObjCmp@SQVM@@QEAA_NAEBUSQObjectPtr@@0AEA_J@Z@4HA 000000018002cbf9 f    CIL library: CIL module
+ 0001:0002bbf9       ?dtor$0@?0??FOREACH_OP@SQVM@@QEAA_NAEAUSQObjectPtr@@000_JHAEAH@Z@4HA 000000018002cbf9 f    CIL library: CIL module
+ 0001:0002bc19       ?dtor$1@?0??FOREACH_OP@SQVM@@QEAA_NAEAUSQObjectPtr@@000_JHAEAH@Z@4HA 000000018002cc19 f    CIL library: CIL module
+ 0001:0002bc19       ?dtor$1@?0??ObjCmp@SQVM@@QEAA_NAEBUSQObjectPtr@@0AEA_J@Z@4HA 000000018002cc19 f    CIL library: CIL module
+ 0001:0002bc31       ?dtor$0@?0???_GSQGenerator@@UEAAPEAXI@Z@4HA 000000018002cc31 f    CIL library: CIL module
+ 0001:0002bc51       ?dtor$1@?0???_GSQGenerator@@UEAAPEAXI@Z@4HA 000000018002cc51 f    CIL library: CIL module
+ 0001:0002bc71       ?dtor$2@?0???_GSQGenerator@@UEAAPEAXI@Z@4HA 000000018002cc71 f    CIL library: CIL module
+ 0001:0002bc8d       ?dtor$0@?0??Create@SQGenerator@@SAPEAU1@PEAUSQSharedState@@PEAUSQClosure@@@Z@4HA 000000018002cc8d f    CIL library: CIL module
+ 0001:0002bcad       ?dtor$1@?0??Create@SQGenerator@@SAPEAU1@PEAUSQSharedState@@PEAUSQClosure@@@Z@4HA 000000018002ccad f    CIL library: CIL module
+ 0001:0002bccd       ?dtor$2@?0??Create@SQGenerator@@SAPEAU1@PEAUSQSharedState@@PEAUSQClosure@@@Z@4HA 000000018002cccd f    CIL library: CIL module
+ 0001:0002bced       ?dtor$3@?0??Create@SQGenerator@@SAPEAU1@PEAUSQSharedState@@PEAUSQClosure@@@Z@4HA 000000018002cced f    CIL library: CIL module
+ 0001:0002bd0d       ?dtor$4@?0??Create@SQGenerator@@SAPEAU1@PEAUSQSharedState@@PEAUSQClosure@@@Z@4HA 000000018002cd0d f    CIL library: CIL module
+ 0001:0002bd2d       ?dtor$5@?0??Create@SQGenerator@@SAPEAU1@PEAUSQSharedState@@PEAUSQClosure@@@Z@4HA 000000018002cd2d f    CIL library: CIL module
+ 0001:0002bd4c       ?dtor$0@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002cd4c f    CIL library: CIL module
+ 0001:0002bd6c       ?dtor$1@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002cd6c f    CIL library: CIL module
+ 0001:0002bd8c       ?dtor$2@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002cd8c f    CIL library: CIL module
+ 0001:0002bdac       ?dtor$3@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002cdac f    CIL library: CIL module
+ 0001:0002bdcc       ?dtor$4@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002cdcc f    CIL library: CIL module
+ 0001:0002bdec       ?dtor$5@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002cdec f    CIL library: CIL module
+ 0001:0002be0c       ?dtor$6@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002ce0c f    CIL library: CIL module
+ 0001:0002be2c       ?dtor$7@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002ce2c f    CIL library: CIL module
+ 0001:0002be4c       ?dtor$8@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002ce4c f    CIL library: CIL module
+ 0001:0002be6c       ?dtor$9@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002ce6c f    CIL library: CIL module
+ 0001:0002be8c       ?dtor$10@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002ce8c f    CIL library: CIL module
+ 0001:0002beac       ?dtor$11@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002ceac f    CIL library: CIL module
+ 0001:0002becc       ?dtor$12@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002cecc f    CIL library: CIL module
+ 0001:0002beec       ?dtor$13@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002ceec f    CIL library: CIL module
+ 0001:0002bf0c       ?dtor$14@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002cf0c f    CIL library: CIL module
+ 0001:0002bf2c       ?dtor$15@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002cf2c f    CIL library: CIL module
+ 0001:0002bf4c       ?dtor$16@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002cf4c f    CIL library: CIL module
+ 0001:0002bf6c       ?dtor$17@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002cf6c f    CIL library: CIL module
+ 0001:0002bf8c       ?dtor$18@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002cf8c f    CIL library: CIL module
+ 0001:0002bfac       ?dtor$19@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002cfac f    CIL library: CIL module
+ 0001:0002bfcc       ?dtor$20@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002cfcc f    CIL library: CIL module
+ 0001:0002bfec       ?dtor$21@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002cfec f    CIL library: CIL module
+ 0001:0002c00c       ?dtor$22@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d00c f    CIL library: CIL module
+ 0001:0002c02c       ?dtor$23@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d02c f    CIL library: CIL module
+ 0001:0002c04c       ?dtor$24@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d04c f    CIL library: CIL module
+ 0001:0002c06c       ?dtor$25@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d06c f    CIL library: CIL module
+ 0001:0002c08c       ?dtor$26@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d08c f    CIL library: CIL module
+ 0001:0002c0ac       ?dtor$27@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d0ac f    CIL library: CIL module
+ 0001:0002c0cc       ?dtor$28@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d0cc f    CIL library: CIL module
+ 0001:0002c0ec       ?dtor$29@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d0ec f    CIL library: CIL module
+ 0001:0002c10c       ?dtor$30@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d10c f    CIL library: CIL module
+ 0001:0002c12c       ?dtor$31@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d12c f    CIL library: CIL module
+ 0001:0002c14c       ?dtor$32@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d14c f    CIL library: CIL module
+ 0001:0002c16c       ?dtor$33@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d16c f    CIL library: CIL module
+ 0001:0002c18c       ?dtor$34@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d18c f    CIL library: CIL module
+ 0001:0002c1ac       ?dtor$35@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d1ac f    CIL library: CIL module
+ 0001:0002c1cc       ?dtor$36@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d1cc f    CIL library: CIL module
+ 0001:0002c1ec       ?dtor$37@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d1ec f    CIL library: CIL module
+ 0001:0002c20c       ?dtor$38@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d20c f    CIL library: CIL module
+ 0001:0002c22c       ?dtor$39@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d22c f    CIL library: CIL module
+ 0001:0002c24c       ?dtor$40@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d24c f    CIL library: CIL module
+ 0001:0002c26c       ?dtor$41@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d26c f    CIL library: CIL module
+ 0001:0002c28c       ?dtor$42@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d28c f    CIL library: CIL module
+ 0001:0002c2ac       ?dtor$43@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d2ac f    CIL library: CIL module
+ 0001:0002c2cc       ?dtor$44@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d2cc f    CIL library: CIL module
+ 0001:0002c2ec       ?dtor$45@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d2ec f    CIL library: CIL module
+ 0001:0002c30c       ?dtor$46@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d30c f    CIL library: CIL module
+ 0001:0002c32c       ?dtor$47@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d32c f    CIL library: CIL module
+ 0001:0002c34c       ?dtor$48@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d34c f    CIL library: CIL module
+ 0001:0002c36c       ?dtor$49@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d36c f    CIL library: CIL module
+ 0001:0002c38c       ?dtor$50@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d38c f    CIL library: CIL module
+ 0001:0002c3ac       ?dtor$51@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d3ac f    CIL library: CIL module
+ 0001:0002c3cc       ?dtor$52@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d3cc f    CIL library: CIL module
+ 0001:0002c3ec       ?dtor$53@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d3ec f    CIL library: CIL module
+ 0001:0002c40c       ?dtor$54@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d40c f    CIL library: CIL module
+ 0001:0002c42c       ?dtor$55@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d42c f    CIL library: CIL module
+ 0001:0002c44c       ?dtor$56@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d44c f    CIL library: CIL module
+ 0001:0002c46c       ?dtor$57@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d46c f    CIL library: CIL module
+ 0001:0002c48c       ?dtor$58@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d48c f    CIL library: CIL module
+ 0001:0002c4ac       ?dtor$59@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d4ac f    CIL library: CIL module
+ 0001:0002c4cc       ?dtor$60@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d4cc f    CIL library: CIL module
+ 0001:0002c4ec       ?dtor$61@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d4ec f    CIL library: CIL module
+ 0001:0002c50c       ?dtor$62@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d50c f    CIL library: CIL module
+ 0001:0002c52c       ?dtor$63@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d52c f    CIL library: CIL module
+ 0001:0002c54c       ?dtor$64@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d54c f    CIL library: CIL module
+ 0001:0002c56c       ?dtor$65@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d56c f    CIL library: CIL module
+ 0001:0002c58c       ?dtor$66@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d58c f    CIL library: CIL module
+ 0001:0002c5ac       ?dtor$67@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d5ac f    CIL library: CIL module
+ 0001:0002c5cc       ?dtor$68@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d5cc f    CIL library: CIL module
+ 0001:0002c5ec       ?dtor$69@?0??Init@SQLexer@@QEAAXPEAUSQSharedState@@P6A_JPEAX@Z1P6AX1PEBD@Z1@Z@4HA 000000018002d5ec f    CIL library: CIL module
+ 0001:0002c604       ?dtor$0@?0??GetConstant@SQFuncState@@QEAA_JAEBUtagSQObject@@@Z@4HA 000000018002d604 f    CIL library: CIL module
+ 0001:0002c624       ?dtor$1@?0??GetConstant@SQFuncState@@QEAA_JAEBUtagSQObject@@@Z@4HA 000000018002d624 f    CIL library: CIL module
+ 0001:0002c644       ?dtor$2@?0??GetConstant@SQFuncState@@QEAA_JAEBUtagSQObject@@@Z@4HA 000000018002d644 f    CIL library: CIL module
+ 0001:0002c65c       ?dtor$0@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d65c f    CIL library: CIL module
+ 0001:0002c67c       ?dtor$1@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d67c f    CIL library: CIL module
+ 0001:0002c69c       ?dtor$2@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d69c f    CIL library: CIL module
+ 0001:0002c6bc       ?dtor$3@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d6bc f    CIL library: CIL module
+ 0001:0002c6dc       ?dtor$4@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d6dc f    CIL library: CIL module
+ 0001:0002c6fc       ?dtor$5@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d6fc f    CIL library: CIL module
+ 0001:0002c71c       ?dtor$6@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d71c f    CIL library: CIL module
+ 0001:0002c73c       ?dtor$7@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d73c f    CIL library: CIL module
+ 0001:0002c75c       ?dtor$8@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d75c f    CIL library: CIL module
+ 0001:0002c77c       ?dtor$9@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d77c f    CIL library: CIL module
+ 0001:0002c79c       ?dtor$10@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d79c f    CIL library: CIL module
+ 0001:0002c7bc       ?dtor$11@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d7bc f    CIL library: CIL module
+ 0001:0002c7dc       ?dtor$12@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d7dc f    CIL library: CIL module
+ 0001:0002c7fc       ?dtor$13@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d7fc f    CIL library: CIL module
+ 0001:0002c81c       ?dtor$14@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d81c f    CIL library: CIL module
+ 0001:0002c83c       ?dtor$15@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d83c f    CIL library: CIL module
+ 0001:0002c85c       ?dtor$16@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d85c f    CIL library: CIL module
+ 0001:0002c87c       ?dtor$17@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d87c f    CIL library: CIL module
+ 0001:0002c89c       ?dtor$18@?0???0SQFuncState@@QEAA@PEAUSQSharedState@@PEAU0@P6AXPEAXPEBD@Z2@Z@4HA 000000018002d89c f    CIL library: CIL module
+ 0001:0002c8bb       ?dtor$0@?0??Raise_ParamTypeError@SQVM@@QEAAX_J00@Z@4HA 000000018002d8bb f    CIL library: CIL module
+ 0001:0002c8db       ?dtor$1@?0??Raise_ParamTypeError@SQVM@@QEAAX_J00@Z@4HA 000000018002d8db f    CIL library: CIL module
+ 0001:0002c8fb       ?dtor$2@?0??Raise_ParamTypeError@SQVM@@QEAAX_J00@Z@4HA 000000018002d8fb f    CIL library: CIL module
+ 0001:0002c913       ?dtor$0@?0??Expect@SQCompiler@@QEAA?AUtagSQObject@@_J@Z@4HA 000000018002d913 f    CIL library: CIL module
+ 0001:0002c933       ?dtor$1@?0??Expect@SQCompiler@@QEAA?AUtagSQObject@@_J@Z@4HA 000000018002d933 f    CIL library: CIL module
+ 0001:0002c953       ?dtor$2@?0??Expect@SQCompiler@@QEAA?AUtagSQObject@@_J@Z@4HA 000000018002d953 f    CIL library: CIL module
+ 0001:0002c96b       ?dtor$0@?0??CreateInstance@SQClass@@QEAAPEAUSQInstance@@XZ@4HA 000000018002d96b f    CIL library: CIL module
+ 0001:0002c987       ?dtor$0@?0???0SQClass@@QEAA@PEAUSQSharedState@@PEAU0@@Z@4HA 000000018002d987 f    CIL library: CIL module
+ 0001:0002c9a7       ?dtor$1@?0???0SQClass@@QEAA@PEAUSQSharedState@@PEAU0@@Z@4HA 000000018002d9a7 f    CIL library: CIL module
+ 0001:0002c9c7       ?dtor$2@?0???0SQClass@@QEAA@PEAUSQSharedState@@PEAU0@@Z@4HA 000000018002d9c7 f    CIL library: CIL module
+ 0001:0002c9e7       ?dtor$3@?0???0SQClass@@QEAA@PEAUSQSharedState@@PEAU0@@Z@4HA 000000018002d9e7 f    CIL library: CIL module
+ 0001:0002ca17       ?dtor$4@?0???0SQClass@@QEAA@PEAUSQSharedState@@PEAU0@@Z@4HA 000000018002da17 f    CIL library: CIL module
+ 0001:0002ca36       ?dtor$0@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002da36 f    CIL library: CIL module
+ 0001:0002ca56       ?dtor$1@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002da56 f    CIL library: CIL module
+ 0001:0002ca76       ?dtor$2@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002da76 f    CIL library: CIL module
+ 0001:0002ca96       ?dtor$3@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002da96 f    CIL library: CIL module
+ 0001:0002cab6       ?dtor$4@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002dab6 f    CIL library: CIL module
+ 0001:0002cad6       ?dtor$5@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002dad6 f    CIL library: CIL module
+ 0001:0002caf6       ?dtor$6@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002daf6 f    CIL library: CIL module
+ 0001:0002cb16       ?dtor$7@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002db16 f    CIL library: CIL module
+ 0001:0002cb36       ?dtor$8@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002db36 f    CIL library: CIL module
+ 0001:0002cb56       ?dtor$9@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002db56 f    CIL library: CIL module
+ 0001:0002cb76       ?dtor$10@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002db76 f    CIL library: CIL module
+ 0001:0002cb96       ?dtor$11@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002db96 f    CIL library: CIL module
+ 0001:0002cbb6       ?dtor$12@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002dbb6 f    CIL library: CIL module
+ 0001:0002cbd6       ?dtor$13@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002dbd6 f    CIL library: CIL module
+ 0001:0002cbf6       ?dtor$14@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002dbf6 f    CIL library: CIL module
+ 0001:0002cc16       ?dtor$15@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002dc16 f    CIL library: CIL module
+ 0001:0002cc36       ?dtor$16@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002dc36 f    CIL library: CIL module
+ 0001:0002cc56       ?dtor$17@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002dc56 f    CIL library: CIL module
+ 0001:0002cc76       ?dtor$18@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002dc76 f    CIL library: CIL module
+ 0001:0002cc96       ?dtor$19@?0??closure_getinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002dc96 f    CIL library: CIL module
+ 0001:0002ccae       ?dtor$0@?0??Clone@SQVM@@QEAA_NAEBUSQObjectPtr@@AEAU2@@Z@4HA 000000018002dcae f    CIL library: CIL module
+ 0001:0002ccce       ?dtor$1@?0??Clone@SQVM@@QEAA_NAEBUSQObjectPtr@@AEAU2@@Z@4HA 000000018002dcce f    CIL library: CIL module
+ 0001:0002ccee       ?dtor$3@?0??Clone@SQVM@@QEAA_NAEBUSQObjectPtr@@AEAU2@@Z@4HA 000000018002dcee f    CIL library: CIL module
+ 0001:0002cd0e       ?dtor$2@?0??Clone@SQVM@@QEAA_NAEBUSQObjectPtr@@AEAU2@@Z@4HA 000000018002dd0e f    CIL library: CIL module
+ 0001:0002cd26       ?dtor$0@?0??CLASS_OP@SQVM@@QEAA_NAEAUSQObjectPtr@@_J1@Z@4HA 000000018002dd26 f    CIL library: CIL module
+ 0001:0002cd46       ?dtor$2@?0??CLASS_OP@SQVM@@QEAA_NAEAUSQObjectPtr@@_J1@Z@4HA 000000018002dd46 f    CIL library: CIL module
+ 0001:0002cd66       ?dtor$1@?0??CLASS_OP@SQVM@@QEAA_NAEAUSQObjectPtr@@_J1@Z@4HA 000000018002dd66 f    CIL library: CIL module
+ 0001:0002cd7e       ?dtor$0@?0??DerefInc@SQVM@@QEAA_N_JAEAUSQObjectPtr@@111_N0@Z@4HA 000000018002dd7e f    CIL library: CIL module
+ 0001:0002cd9e       ?dtor$1@?0??DerefInc@SQVM@@QEAA_N_JAEAUSQObjectPtr@@111_N0@Z@4HA 000000018002dd9e f    CIL library: CIL module
+ 0001:0002cdbe       ?dtor$2@?0??DerefInc@SQVM@@QEAA_N_JAEAUSQObjectPtr@@111_N0@Z@4HA 000000018002ddbe f    CIL library: CIL module
+ 0001:0002cdd6       ?dtor$20@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002ddd6 f    CIL library: CIL module
+ 0001:0002cdf6       ?dtor$22@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002ddf6 f    CIL library: CIL module
+ 0001:0002ce16       ?dtor$24@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002de16 f    CIL library: CIL module
+ 0001:0002ce36       ?dtor$26@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002de36 f    CIL library: CIL module
+ 0001:0002ce56       ?dtor$28@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002de56 f    CIL library: CIL module
+ 0001:0002ce76       ?dtor$30@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002de76 f    CIL library: CIL module
+ 0001:0002ce96       ?dtor$32@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002de96 f    CIL library: CIL module
+ 0001:0002ceb6       ?dtor$34@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002deb6 f    CIL library: CIL module
+ 0001:0002ced6       ?dtor$36@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002ded6 f    CIL library: CIL module
+ 0001:0002cef6       ?dtor$38@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002def6 f    CIL library: CIL module
+ 0001:0002cf16       ?dtor$40@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002df16 f    CIL library: CIL module
+ 0001:0002cf36       ?dtor$42@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002df36 f    CIL library: CIL module
+ 0001:0002cf56       ?dtor$44@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002df56 f    CIL library: CIL module
+ 0001:0002cf76       ?dtor$46@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002df76 f    CIL library: CIL module
+ 0001:0002cf96       ?dtor$48@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002df96 f    CIL library: CIL module
+ 0001:0002cfb6       ?dtor$50@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002dfb6 f    CIL library: CIL module
+ 0001:0002cfd6       ?dtor$52@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002dfd6 f    CIL library: CIL module
+ 0001:0002cff6       ?dtor$54@?0??Init@SQSharedState@@QEAAXXZ@4HA 000000018002dff6 f    CIL library: CIL module
+ 0001:0002d00e       ?dtor$0@?0??Load@SQFunctionProto@@SA_NPEAUSQVM@@PEAXP6A_J11_J@ZAEAUSQObjectPtr@@@Z@4HA 000000018002e00e f    CIL library: CIL module
+ 0001:0002d02e       ?dtor$1@?0??Load@SQFunctionProto@@SA_NPEAUSQVM@@PEAXP6A_J11_J@ZAEAUSQObjectPtr@@@Z@4HA 000000018002e02e f    CIL library: CIL module
+ 0001:0002d04e       ?dtor$2@?0??Load@SQFunctionProto@@SA_NPEAUSQVM@@PEAXP6A_J11_J@ZAEAUSQObjectPtr@@@Z@4HA 000000018002e04e f    CIL library: CIL module
+ 0001:0002d06e       ?dtor$3@?0??Load@SQFunctionProto@@SA_NPEAUSQVM@@PEAXP6A_J11_J@ZAEAUSQObjectPtr@@@Z@4HA 000000018002e06e f    CIL library: CIL module
+ 0001:0002d08e       ?dtor$4@?0??Load@SQFunctionProto@@SA_NPEAUSQVM@@PEAXP6A_J11_J@ZAEAUSQObjectPtr@@@Z@4HA 000000018002e08e f    CIL library: CIL module
+ 0001:0002d0ae       ?dtor$5@?0??Load@SQFunctionProto@@SA_NPEAUSQVM@@PEAXP6A_J11_J@ZAEAUSQObjectPtr@@@Z@4HA 000000018002e0ae f    CIL library: CIL module
+ 0001:0002d0ce       ?dtor$7@?0??Load@SQFunctionProto@@SA_NPEAUSQVM@@PEAXP6A_J11_J@ZAEAUSQObjectPtr@@@Z@4HA 000000018002e0ce f    CIL library: CIL module
+ 0001:0002d0ee       ?dtor$6@?0??Load@SQFunctionProto@@SA_NPEAUSQVM@@PEAXP6A_J11_J@ZAEAUSQObjectPtr@@@Z@4HA 000000018002e0ee f    CIL library: CIL module
+ 0001:0002d109       ?dtor$1@?0??CreateFunction@SQCompiler@@QEAAXAEAUtagSQObject@@_N@Z@4HA 000000018002e109 f    CIL library: CIL module
+ 0001:0002d12b       ?dtor$0@?0??EnumStatement@SQCompiler@@QEAAXXZ@4HA 000000018002e12b f    CIL library: CIL module
+ 0001:0002d14b       ?dtor$1@?0??EnumStatement@SQCompiler@@QEAAXXZ@4HA 000000018002e14b f    CIL library: CIL module
+ 0001:0002d16b       ?dtor$2@?0??EnumStatement@SQCompiler@@QEAAXXZ@4HA 000000018002e16b f    CIL library: CIL module
+ 0001:0002d18b       ?dtor$3@?0??EnumStatement@SQCompiler@@QEAAXXZ@4HA 000000018002e18b f    CIL library: CIL module
+ 0001:0002d1ab       ?dtor$4@?0??EnumStatement@SQCompiler@@QEAAXXZ@4HA 000000018002e1ab f    CIL library: CIL module
+ 0001:0002d1c3       ?dtor$0@?0??NewSlot@SQClass@@QEAA_NPEAUSQSharedState@@AEBUSQObjectPtr@@1_N@Z@4HA 000000018002e1c3 f    CIL library: CIL module
+ 0001:0002d1e3       ?dtor$6@?0??NewSlot@SQClass@@QEAA_NPEAUSQSharedState@@AEBUSQObjectPtr@@1_N@Z@4HA 000000018002e1e3 f    CIL library: CIL module
+ 0001:0002d203       ?dtor$1@?0??NewSlot@SQClass@@QEAA_NPEAUSQSharedState@@AEBUSQObjectPtr@@1_N@Z@4HA 000000018002e203 f    CIL library: CIL module
+ 0001:0002d223       ?dtor$2@?0??NewSlot@SQClass@@QEAA_NPEAUSQSharedState@@AEBUSQObjectPtr@@1_N@Z@4HA 000000018002e223 f    CIL library: CIL module
+ 0001:0002d243       ?dtor$3@?0??NewSlot@SQClass@@QEAA_NPEAUSQSharedState@@AEBUSQObjectPtr@@1_N@Z@4HA 000000018002e243 f    CIL library: CIL module
+ 0001:0002d263       ?dtor$7@?0??NewSlot@SQClass@@QEAA_NPEAUSQSharedState@@AEBUSQObjectPtr@@1_N@Z@4HA 000000018002e263 f    CIL library: CIL module
+ 0001:0002d283       ?dtor$4@?0??NewSlot@SQClass@@QEAA_NPEAUSQSharedState@@AEBUSQObjectPtr@@1_N@Z@4HA 000000018002e283 f    CIL library: CIL module
+ 0001:0002d2a3       ?dtor$5@?0??NewSlot@SQClass@@QEAA_NPEAUSQSharedState@@AEBUSQObjectPtr@@1_N@Z@4HA 000000018002e2a3 f    CIL library: CIL module
+ 0001:0002d2c3       ?dtor$9@?0??NewSlot@SQClass@@QEAA_NPEAUSQSharedState@@AEBUSQObjectPtr@@1_N@Z@4HA 000000018002e2c3 f    CIL library: CIL module
+ 0001:0002d2db       ?dtor$0@?0??array_slice@@YA_JPEAUSQVM@@@Z@4HA 000000018002e2db f    CIL library: CIL module
+ 0001:0002d2fb       ?dtor$1@?0??array_slice@@YA_JPEAUSQVM@@@Z@4HA 000000018002e2fb f    CIL library: CIL module
+ 0001:0002d31b       ?dtor$2@?0??array_slice@@YA_JPEAUSQVM@@@Z@4HA 000000018002e31b f    CIL library: CIL module
+ 0001:0002d333       ?dtor$0@?0??NewSlot@SQVM@@QEAA_NAEBUSQObjectPtr@@00_N@Z@4HA 000000018002e333 f    CIL library: CIL module
+ 0001:0002d353       ?dtor$1@?0??NewSlot@SQVM@@QEAA_NAEBUSQObjectPtr@@00_N@Z@4HA 000000018002e353 f    CIL library: CIL module
+ 0001:0002d373       ?dtor$2@?0??NewSlot@SQVM@@QEAA_NAEBUSQObjectPtr@@00_N@Z@4HA 000000018002e373 f    CIL library: CIL module
+ 0001:0002d393       ?dtor$3@?0??NewSlot@SQVM@@QEAA_NAEBUSQObjectPtr@@00_N@Z@4HA 000000018002e393 f    CIL library: CIL module
+ 0001:0002d3b3       ?dtor$4@?0??NewSlot@SQVM@@QEAA_NAEBUSQObjectPtr@@00_N@Z@4HA 000000018002e3b3 f    CIL library: CIL module
+ 0001:0002d3cb       ?dtor$0@?0??Execute@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_KW4ExecutionType@1@@Z@4HA 000000018002e3cb f    CIL library: CIL module
+ 0001:0002d3eb       ?dtor$1@?0??Execute@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_KW4ExecutionType@1@@Z@4HA 000000018002e3eb f    CIL library: CIL module
+ 0001:0002d40b       ?dtor$2@?0??Execute@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_KW4ExecutionType@1@@Z@4HA 000000018002e40b f    CIL library: CIL module
+ 0001:0002d42b       ?dtor$3@?0??Execute@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_KW4ExecutionType@1@@Z@4HA 000000018002e42b f    CIL library: CIL module
+ 0001:0002d44b       ?dtor$4@?0??Execute@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_KW4ExecutionType@1@@Z@4HA 000000018002e44b f    CIL library: CIL module
+ 0001:0002d46b       ?dtor$13@?0??Execute@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_KW4ExecutionType@1@@Z@4HA 000000018002e46b f    CIL library: CIL module
+ 0001:0002d48b       ?dtor$5@?0??Execute@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_KW4ExecutionType@1@@Z@4HA 000000018002e48b f    CIL library: CIL module
+ 0001:0002d4ab       ?dtor$6@?0??Execute@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_KW4ExecutionType@1@@Z@4HA 000000018002e4ab f    CIL library: CIL module
+ 0001:0002d4cb       ?dtor$7@?0??Execute@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_KW4ExecutionType@1@@Z@4HA 000000018002e4cb f    CIL library: CIL module
+ 0001:0002d4eb       ?dtor$8@?0??Execute@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_KW4ExecutionType@1@@Z@4HA 000000018002e4eb f    CIL library: CIL module
+ 0001:0002d50b       ?dtor$9@?0??Execute@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_KW4ExecutionType@1@@Z@4HA 000000018002e50b f    CIL library: CIL module
+ 0001:0002d52b       ?dtor$10@?0??Execute@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_KW4ExecutionType@1@@Z@4HA 000000018002e52b f    CIL library: CIL module
+ 0001:0002d55b       ?dtor$11@?0??Execute@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_KW4ExecutionType@1@@Z@4HA 000000018002e55b f    CIL library: CIL module
+ 0001:0002d57b       ?dtor$16@?0??Execute@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_KW4ExecutionType@1@@Z@4HA 000000018002e57b f    CIL library: CIL module
+ 0001:0002d596       ?dtor$0@?0??Factor@SQCompiler@@QEAA_JXZ@4HA 000000018002e596 f    CIL library: CIL module
+ 0001:0002d5b6       ?dtor$1@?0??Factor@SQCompiler@@QEAA_JXZ@4HA 000000018002e5b6 f    CIL library: CIL module
+ 0001:0002d5ce       ?dtor$0@?0??Call@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_K@Z@4HA 000000018002e5ce f    CIL library: CIL module
+ 0001:0002d5ee       ?dtor$1@?0??Call@SQVM@@QEAA_NAEAUSQObjectPtr@@_J10_K@Z@4HA 000000018002e5ee f    CIL library: CIL module
+ 0001:0002d606       ?dtor$0@?0??ArithMetaMethod@SQVM@@QEAA_N_JAEBUSQObjectPtr@@1AEAU2@@Z@4HA 000000018002e606 f    CIL library: CIL module
+ 0001:0002d606       ?dtor$0@?0??NewSlotA@SQVM@@QEAA_NAEBUSQObjectPtr@@000_N1@Z@4HA 000000018002e606 f    CIL library: CIL module
+ 0001:0002d606       ?dtor$0@?0??Release@RefTable@@QEAA_KAEAUtagSQObject@@@Z@4HA 000000018002e606 f    CIL library: CIL module
+ 0001:0002d606       ?dtor$0@?0??NEG_OP@SQVM@@QEAA_NAEAUSQObjectPtr@@AEBU2@@Z@4HA 000000018002e606 f    CIL library: CIL module
+ 0001:0002d606       ?dtor$0@?0??thread_wakeup@@YA_JPEAUSQVM@@@Z@4HA 000000018002e606 f    CIL library: CIL module
+ 0001:0002d606       ?dtor$0@?0??ToString@SQVM@@QEAA_NAEBUSQObjectPtr@@AEAU2@@Z@4HA 000000018002e606 f    CIL library: CIL module
+ 0001:0002d606       ?dtor$0@?0??TypeOf@SQVM@@QEAA_NAEBUSQObjectPtr@@AEAU2@@Z@4HA 000000018002e606 f    CIL library: CIL module
+ 0001:0002d606       ?dtor$0@?0??CallErrorHandler@SQVM@@QEAAXAEAUSQObjectPtr@@@Z@4HA 000000018002e606 f    CIL library: CIL module
+ 0001:0002d606       ?dtor$0@?0??PLOCAL_INC@SQVM@@QEAA_N_JAEAUSQObjectPtr@@11@Z@4HA 000000018002e606 f    CIL library: CIL module
+ 0001:0002d606       ?dtor$0@?0??Next@SQClass@@QEAA_JAEBUSQObjectPtr@@AEAU2@1@Z@4HA 000000018002e606 f    CIL library: CIL module
+ 0001:0002d61e       ?dtor$0@?0??Init@SQVM@@QEAA_NPEAU1@_J@Z@4HA 000000018002e61e f    CIL library: CIL module
+ 0001:0002d63e       ?dtor$1@?0??Init@SQVM@@QEAA_NPEAU1@_J@Z@4HA 000000018002e63e f    CIL library: CIL module
+ 0001:0002d656       ?dtor$0@?0??ForStatement@SQCompiler@@QEAAXXZ@4HA 000000018002e656 f    CIL library: CIL module
+ 0001:0002d66e       ?dtor$0@?0??Compile@SQCompiler@@QEAA_NAEAUSQObjectPtr@@@Z@4HA 000000018002e66e f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??SetAttributes@SQClass@@QEAA_NAEBUSQObjectPtr@@0@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??thread_call@@YA_JPEAUSQVM@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??GetAttributes@SQClass@@QEAA_NAEBUSQObjectPtr@@AEAU2@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??thread_getstackinfos@@YA_JPEAUSQVM@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??StartCall@SQVM@@QEAA_NPEAUSQClosure@@_J11_N@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??PushLocalVariable@SQFuncState@@QEAA_JAEBUtagSQObject@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??base_array@@YA_JPEAUSQVM@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??Finalize@SQGenerator@@UEAAXXZ@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??PushTarget@SQFuncState@@QEAA_J_J@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??Raise_IdxError@SQVM@@QEAAXAEBUSQObjectPtr@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??array_resize@@YA_JPEAUSQVM@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??default_delegate_len@@YA_JPEAUSQVM@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??array_remove@@YA_JPEAUSQVM@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??EmitLoadConstInt@SQCompiler@@QEAAX_J0@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??string_toupper@@YA_JPEAUSQVM@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??array_insert@@YA_JPEAUSQVM@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??number_delegate_tochar@@YA_JPEAUSQVM@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??Clone@SQArray@@QEAAPEAU1@XZ@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??base_type@@YA_JPEAUSQVM@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??sq_aux_gettypedarg@@YA_NPEAUSQVM@@_JW4tagSQObjectType@@PEAPEAUSQObjectPtr@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??Finalize@SQArray@@UEAAXXZ@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??insert@?$sqvector@USQObjectPtr@@@@QEAAX_KAEBUSQObjectPtr@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??base_setroottable@@YA_JPEAUSQVM@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??array_map@@YA_JPEAUSQVM@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??string_tolower@@YA_JPEAUSQVM@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??Load@SQClosure@@SA_NPEAUSQVM@@PEAXP6A_J11_J@ZAEAUSQObjectPtr@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??base_setconsttable@@YA_JPEAUSQVM@@@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??Set@SQInstance@@QEAA_NAEBUSQObjectPtr@@0@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d686       ?dtor$0@?0??FunctionExp@SQCompiler@@QEAAX_J_N@Z@4HA 000000018002e686 f    CIL library: CIL module
+ 0001:0002d69e       ?dtor$0@?0??array_filter@@YA_JPEAUSQVM@@@Z@4HA 000000018002e69e f    CIL library: CIL module
+ 0001:0002d6be       ?dtor$1@?0??array_filter@@YA_JPEAUSQVM@@@Z@4HA 000000018002e6be f    CIL library: CIL module
+ 0001:0002d6de       ?dtor$2@?0??array_filter@@YA_JPEAUSQVM@@@Z@4HA 000000018002e6de f    CIL library: CIL module
+ 0001:0002d6fe       ?dtor$3@?0??array_filter@@YA_JPEAUSQVM@@@Z@4HA 000000018002e6fe f    CIL library: CIL module
+ 0001:0002d716       ?dtor$0@?0??array_reduce@@YA_JPEAUSQVM@@@Z@4HA 000000018002e716 f    CIL library: CIL module
+ 0001:0002d736       ?dtor$1@?0??array_reduce@@YA_JPEAUSQVM@@@Z@4HA 000000018002e736 f    CIL library: CIL module
+ 0001:0002d756       ?dtor$2@?0??array_reduce@@YA_JPEAUSQVM@@@Z@4HA 000000018002e756 f    CIL library: CIL module
+
+ Exports
+
+  ordinal    name
+
+        1    sq_addref
+        2    sq_arrayappend
+        3    sq_arrayinsert
+        4    sq_arraypop
+        5    sq_arrayremove
+        6    sq_arrayresize
+        7    sq_arrayreverse
+        8    sq_bindenv
+        9    sq_call
+       10    sq_clear
+       11    sq_clone
+       12    sq_close
+       13    sq_cmp
+       14    sq_collectgarbage
+       15    sq_compile
+       16    sq_compilebuffer
+       17    sq_createinstance
+       18    sq_deleteslot
+       19    sq_enabledebuginfo
+       20    sq_free
+       21    sq_get
+       22    sq_getattributes
+       23    sq_getbase
+       24    sq_getbool
+       25    sq_getbyhandle
+       26    sq_getcallee
+       27    sq_getclass
+       28    sq_getclosureinfo
+       29    sq_getclosurename
+       30    sq_getdefaultdelegate
+       31    sq_getdelegate
+       32    sq_geterrorfunc
+       33    sq_getfloat
+       34    sq_getforeignptr
+       35    sq_getfreevariable
+       36    sq_getfunctioninfo
+       37    sq_gethash
+       38    sq_getinstanceup
+       39    sq_getinteger
+       40    sq_getlasterror
+       41    sq_getlocal
+       42    sq_getmemberhandle
+       43    sq_getobjtypetag
+       44    sq_getprintfunc
+       45    sq_getrefcount
+       46    sq_getscratchpad
+       47    sq_getsize
+       48    sq_getstackobj
+       49    sq_getstring
+       50    sq_getthread
+       51    sq_gettop
+       52    sq_gettype
+       53    sq_gettypetag
+       54    sq_getuserdata
+       55    sq_getuserpointer
+       56    sq_getversion
+       57    sq_getvmstate
+       58    sq_getweakrefval
+       59    sq_instanceof
+       60    sq_malloc
+       61    sq_move
+       62    sq_newarray
+       63    sq_newclass
+       64    sq_newclosure
+       65    sq_newmember
+       66    sq_newslot
+       67    sq_newtable
+       68    sq_newtableex
+       69    sq_newthread
+       70    sq_newuserdata
+       71    sq_next
+       72    sq_notifyallexceptions
+       73    sq_objtobool
+       74    sq_objtofloat
+       75    sq_objtointeger
+       76    sq_objtostring
+       77    sq_objtouserpointer
+       78    sq_open
+       79    sq_pop
+       80    sq_poptop
+       81    sq_push
+       82    sq_pushbool
+       83    sq_pushconsttable
+       84    sq_pushfloat
+       85    sq_pushinteger
+       86    sq_pushnull
+       87    sq_pushobject
+       88    sq_pushregistrytable
+       89    sq_pushroottable
+       90    sq_pushstring
+       91    sq_pushuserpointer
+       92    sq_rawdeleteslot
+       93    sq_rawget
+       94    sq_rawnewmember
+       95    sq_rawset
+       96    sq_readclosure
+       97    sq_realloc
+       98    sq_release
+       99    sq_remove
+      100    sq_reservestack
+      101    sq_reseterror
+      102    sq_resetobject
+      103    sq_resume
+      104    sq_resurrectunreachable
+      105    sq_set
+      106    sq_setattributes
+      107    sq_setbyhandle
+      108    sq_setclassudsize
+      109    sq_setcompilererrorhandler
+      110    sq_setconsttable
+      111    sq_setdebughook
+      112    sq_setdelegate
+      113    sq_seterrorhandler
+      114    sq_setforeignptr
+      115    sq_setfreevariable
+      116    sq_setinstanceup
+      117    sq_setnativeclosurename
+      118    sq_setnativedebughook
+      119    sq_setparamscheck
+      120    sq_setprintfunc
+      121    sq_setreleasehook
+      122    sq_setroottable
+      123    sq_settop
+      124    sq_settypetag
+      125    sq_stackinfos
+      126    sq_suspendvm
+      127    sq_throwerror
+      128    sq_throwobject
+      129    sq_tobool
+      130    sq_tostring
+      131    sq_typeof
+      132    sq_wakeupvm
+      133    sq_weakref
+      134    sq_writeclosure
+      135    sqstd_createblob
+      136    sqstd_createfile
+      137    sqstd_dofile
+      138    sqstd_fclose
+      139    sqstd_feof
+      140    sqstd_fflush
+      141    sqstd_fopen
+      142    sqstd_format
+      143    sqstd_fread
+      144    sqstd_fseek
+      145    sqstd_ftell
+      146    sqstd_fwrite
+      147    sqstd_getblob
+      148    sqstd_getblobsize
+      149    sqstd_getfile
+      150    sqstd_loadfile
+      151    sqstd_printcallstack
+      152    sqstd_register_bloblib
+      153    sqstd_register_iolib
+      154    sqstd_register_mathlib
+      155    sqstd_register_stringlib
+      156    sqstd_register_systemlib
+      157    sqstd_rex_compile
+      158    sqstd_rex_free
+      159    sqstd_rex_getsubexp
+      160    sqstd_rex_getsubexpcount
+      161    sqstd_rex_match
+      162    sqstd_rex_search
+      163    sqstd_rex_searchrange
+      164    sqstd_seterrorhandlers
+      165    sqstd_writeclosuretofile

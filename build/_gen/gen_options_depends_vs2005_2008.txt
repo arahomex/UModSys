@@ -1,4 +1,7 @@
 begin project-group umodsys_Depends
+
+  set apidll __declspec(dllexport)
+
   option random-seed 0 umodsys-vs2008-depends
 
   option project * IntermediateDirectory $(path-out-tmp)
@@ -12,9 +15,13 @@ begin project-group umodsys_Depends
     GUID-gen 0 umodsys.depends.dummy.all
   end
 
+  #----------------------------------------------------------------
+  # media libs
+
   begin project lib_zlib
     GUID-gen 0 umodsys.depends.lib_zlib
     #
+    defines _CRT_SECURE_NO_WARNINGS
     defines ZLIB_DLL
     #
     option !* Compiler_WarnAsError false
@@ -24,6 +31,7 @@ begin project-group umodsys_Depends
   begin project lib_libpng
     GUID-gen 0 umodsys.depends.lib_libpng
     #
+    defines _CRT_SECURE_NO_WARNINGS
     libpath $(path-out-bin) $(path-out-tmp)
 #    libs lib_zlib
     #
@@ -34,6 +42,7 @@ begin project-group umodsys_Depends
   begin project lib_jpeglib
     GUID-gen 0 umodsys.depends.lib_jpeglib
     #
+    defines _CRT_SECURE_NO_WARNINGS
     libpath $(path-out-bin) $(path-out-tmp)
     #
     option !* Compiler_WarnAsError false
@@ -50,16 +59,21 @@ begin project-group umodsys_Depends
     option * OutputDirectory $(path-out-bin)
   end
 
+  #----------------------------------------------------------------
+  # UI libs
+
   begin project lib_SDL2
     GUID-gen 0 umodsys.depends.lib_SDL2
     #
     libpath $(path-out-bin) $(path-out-tmp)
     libs user32 gdi32 shell32 winmm Imm32 Version
+    includes $(path-patch)/SDL2/win32
+    defines _CRT_SECURE_NO_WARNINGS
+    defines HAVE_LIBC
     #
     option * OutputDirectory $(path-out-bin)
 #    option !* Compiler_WholeProgramOptimization false
     option !* Compiler_WarnAsError false
-    defines HAVE_LIBC
     #
     begin file-group src-$(spname)
       begin file-group audio
@@ -128,6 +142,111 @@ begin project-group umodsys_Depends
         end
       end
     end
+  end
+
+  #----------------------------------------------------------------
+  # DB libs
+
+  begin project lib_sqlite3
+    GUID-gen 0 umodsys.depends.lib_sqlite3
+    #
+#    defines SQLITE_API=__delclspec(dllexport)
+    defines SQLITE_ENABLE_RTREE=1 SQLITE_ENABLE_COLUMN_METADATA=1 _WIN32 
+    #
+    option !* Compiler_WarnAsError false
+    option !* Linker_ModuleDefinitionFile $(path-d-sql3)/sqlite3.def
+    option * OutputDirectory $(path-out-bin)
+  end
+
+  #----------------------------------------------------------------
+  # Script libs
+
+  begin project lib_squirrel
+    GUID-gen 0 umodsys.depends.lib_squirrel
+    #
+    defines _CRT_SECURE_NO_WARNINGS
+    defines SQUIRREL_API=$(apidll)
+    #
+    option !* Compiler_WarnAsError false
+    option * OutputDirectory $(path-out-bin)
+  end
+
+  begin project lib_lua
+    GUID-gen 0 umodsys.depends.lib_lua
+    #
+    defines _CRT_SECURE_NO_WARNINGS
+    defines LUA_BUILD_AS_DLL
+    #
+    option !* Compiler_WarnAsError false
+    option * OutputDirectory $(path-out-bin)
+  end
+
+  begin project lib_luajit
+    GUID-gen 0 umodsys.depends.lib_luajit
+    #
+    defines _CRT_SECURE_NO_WARNINGS
+    includes $(path-patch)/luajit/win32
+    defines LUA_BUILD_AS_DLL
+    #
+    option !* Compiler_WarnAsError false
+    option * Linker_AdditionalDependencies lj_vm.obj
+    option * OutputDirectory $(path-out-bin)
+    option x64 Compiler_AdditionalIncludeDirectories $(path-patch)/luajit/win32.x64
+    option Win32 Compiler_AdditionalIncludeDirectories $(path-patch)/luajit/win32.x86
+    option x64 Linker_AdditionalLibraryDirectories $(path-patch)/luajit/win32.x64
+    option Win32 Linker_AdditionalLibraryDirectories $(path-patch)/luajit/win32.x86
+    #
+    begin file-group src
+    end
+  end
+
+  begin project lib_angelscript
+    GUID-gen 0 umodsys.depends.lib_angelscript
+    #
+    defines _CRT_SECURE_NO_WARNINGS
+    defines ANGELSCRIPT_EXPORT
+    #
+    option !* Compiler_WarnAsError false
+    option * OutputDirectory $(path-out-bin)
+    #
+    set asm64 \$(IntDir)\as_callfunc_x64_msvc_asm.obj
+    option x64 PreLink_Description "Compile assembler files..."
+    option x64 PreLink_CommandLine "ml64.exe -c -nologo -Fo$(asm64) -W3 -Zi -Ta $(path-d-angelscript)/angelscript/source/as_callfunc_x64_msvc_asm.asm"
+    option x64 PreLink_Excluded false
+    option x64 Linker_AdditionalDependencies "as_callfunc_x64_msvc_asm.obj"
+    option x64 Linker_AdditionalLibraryDirectories "\$(intDir)"
+  end
+
+  begin project lib_tinyc
+    GUID-gen 0 umodsys.depends.lib_tinyc
+    #
+    defines _CRT_SECURE_NO_WARNINGS
+    defines LIBTCC_AS_DLL
+    #
+    option !* Compiler_WarnAsError false
+    option * OutputDirectory $(path-out-bin)
+  end
+
+  begin project lib_lightning
+    GUID-gen 0 umodsys.depends.lib_lightning
+    #
+    defines _CRT_SECURE_NO_WARNINGS
+    #
+    option !* Compiler_WarnAsError false
+    option * OutputDirectory $(path-out-bin)
+  end
+
+  #----------------------------------------------------------------
+  # Physics libs
+
+  begin project lib_bullet
+    GUID-gen 0 umodsys.depends.lib_bullet
+    #
+    defines _CRT_SECURE_NO_WARNINGS
+    defines USE_MINICL _WINDOWS
+    #
+    option !* Compiler_WarnAsError false
+    option * OutputDirectory $(path-out-bin)
   end
 
 end

@@ -172,6 +172,8 @@ EOT
 				MapExports="$OPT_Linker_MapExports"
 				SubSystem="$OPT_Linker_SubSystem"
 				LinkTimeCodeGeneration="$OPT_Linker_LinkTimeCodeGeneration"
+				TargetMachine="$OPT_Linker_TargetMachine"
+				ModuleDefinitionFile="$OPT_Linker_ModuleDefinitionFile"
 			/>
 EOT
     'project-config-librarian' => <<'EOT',
@@ -223,6 +225,77 @@ EOT
 $FF_PAD						$KEY="$VALUE"
 EOT
     #-------------------------------
+    '#options' => {
+      'Defines'                                   => \&msvc_xml_option_combiner_last,
+      'OutputDirectory'                           => \&msvc_xml_option_combiner_last,
+      'IntermediateDirectory'                     => \&msvc_xml_option_combiner_last,
+      'ConfigurationType'                         => \&msvc_xml_option_combiner_last,
+      'ConfigurationType'                         => \&msvc_xml_option_combiner_last,
+      'CharacterSet'                              => \&msvc_xml_option_combiner_last,
+      #-------------------------------
+      'Compiler_AdditionalIncludeDirectories'     => \&msvc_xml_option_combiner_semicolon,
+      'Compiler_PreprocessorDefinitions'          => \&msvc_xml_option_combiner_semicolon,
+      'Compiler_Optimization'                     => \&msvc_xml_option_combiner_last,
+      'Compiler_InlineFunctionExpansion'          => \&msvc_xml_option_combiner_last,
+      'Compiler_EnableIntrinsicFunctions'         => \&msvc_xml_option_combiner_last,
+      'Compiler_FavorSizeOrSpeed'                 => \&msvc_xml_option_combiner_last,
+      'Compiler_WholeProgramOptimization'         => \&msvc_xml_option_combiner_last,
+      'Compiler_StringPooling'                    => \&msvc_xml_option_combiner_last,
+      'Compiler_MinimalRebuild'                   => \&msvc_xml_option_combiner_last,
+      'Compiler_BasicRuntimeChecks'               => \&msvc_xml_option_combiner_last,
+      'Compiler_BufferSecurityCheck'              => \&msvc_xml_option_combiner_last,
+      'Compiler_RuntimeLibrary'                   => \&msvc_xml_option_combiner_last,
+      'Compiler_RuntimeTypeInfo'                  => \&msvc_xml_option_combiner_last,
+      'Compiler_UsePrecompiledHeader'             => \&msvc_xml_option_combiner_last,
+      'Compiler_PrecompiledHeaderFile'            => \&msvc_xml_option_combiner_last,
+      'Compiler_PrecompiledHeaderThrough'         => \&msvc_xml_option_combiner_last,
+      'Compiler_AssemblerListingLocation'         => \&msvc_xml_option_combiner_last,
+      'Compiler_ProgramDataBaseFileName'          => \&msvc_xml_option_combiner_last,
+      'Compiler_BrowseInformation'                => \&msvc_xml_option_combiner_last,
+      'Compiler_WarningLevel'                     => \&msvc_xml_option_combiner_last,
+      'Compiler_WarnAsError'                      => \&msvc_xml_option_combiner_last,
+      'Compiler_Detect64BitPortabilityProblems'   => \&msvc_xml_option_combiner_last,
+      'Compiler_DebugInformationFormat'           => \&msvc_xml_option_combiner_last,
+      'Compiler_CompileAs'                        => \&msvc_xml_option_combiner_last,
+      'Compiler_EnablePREfast'                    => \&msvc_xml_option_combiner_last,
+      #-------------------------------
+      'Linker_AdditionalDependencies'             => \&msvc_xml_option_combiner_space,
+      'Linker_AdditionalLibraryDirectories'       => \&msvc_xml_option_combiner_semicolon,
+      'Linker_OutputFile'                         => \&msvc_xml_option_combiner_last,
+      'Linker_LinkIncremental'                    => \&msvc_xml_option_combiner_last,
+      'Linker_GenerateDebugInformation'           => \&msvc_xml_option_combiner_last,
+      'Linker_ProgramDatabaseFile'                => \&msvc_xml_option_combiner_last,
+      'Linker_GenerateMapFile'                    => \&msvc_xml_option_combiner_last,
+      'Linker_MapFileName'                        => \&msvc_xml_option_combiner_last,
+      'Linker_MapExports'                         => \&msvc_xml_option_combiner_last,
+      'Linker_SubSystem'                          => \&msvc_xml_option_combiner_last,
+      'Linker_LinkTimeCodeGeneration'             => \&msvc_xml_option_combiner_last,
+      'Linker_TargetMachine'                      => \&msvc_xml_option_combiner_last,
+      'Linker_ModuleDefinitionFile'               => \&msvc_xml_option_combiner_last,
+      #-------------------------------
+      'Librarian_OutputFile'                      => \&msvc_xml_option_combiner_last,
+      #
+      'BscMake_OutputFile'                        => \&msvc_xml_option_combiner_last,
+      #-------------------------------
+      'PreBuild_Description'                      => \&msvc_xml_option_combiner_last,
+      'PreBuild_CommandLine'                      => \&msvc_xml_option_combiner_last,
+      'PreBuild_Excluded'                         => \&msvc_xml_option_combiner_last,
+      #
+      'PreLink_Description'                       => \&msvc_xml_option_combiner_last,
+      'PreLink_CommandLine'                       => \&msvc_xml_option_combiner_last,
+      'PreLink_Excluded'                          => \&msvc_xml_option_combiner_last,
+      #
+      'PostBuild_Description'                     => \&msvc_xml_option_combiner_last,
+      'PostBuild_CommandLine'                     => \&msvc_xml_option_combiner_last,
+      'PostBuild_Excluded'                        => \&msvc_xml_option_combiner_last,
+      #
+      'CustomBuild_Description'                   => \&msvc_xml_option_combiner_last,
+      'CustomBuild_CommandLine'                   => \&msvc_xml_option_combiner_last,
+      'CustomBuild_AdditionalDependencies'        => \&msvc_xml_option_combiner_last,
+      'CustomBuild_Outputs'                       => \&msvc_xml_option_combiner_last,
+      #-------------------------------
+    },
+    #-------------------------------
   },
   #-------------------------------
   #-------------------------------
@@ -230,75 +303,6 @@ EOT
     '[]' => {
       'Platforms'      => 'Win32 X64 IA64',
       'Configurations' => 'Debug Release ReleaseSpace ReleaseStatic',
-      #
-      '#' => {
-        'Defines'                                   => '',
-        'OutputDirectory'                           => '',
-        'IntermediateDirectory'                     => '',
-        'ConfigurationType'                         => '',
-        'ConfigurationType'                         => '',
-        'CharacterSet'                              => '',
-        #-------------------------------
-        'Compiler_Optimization'                     => '',
-        'Compiler_InlineFunctionExpansion'          => '',
-        'Compiler_EnableIntrinsicFunctions'         => '',
-        'Compiler_FavorSizeOrSpeed'                 => '',
-        'Compiler_WholeProgramOptimization'         => '',
-        'Compiler_AdditionalIncludeDirectories'     => '',
-        'Compiler_PreprocessorDefinitions'          => '',
-        'Compiler_StringPooling'                    => '',
-        'Compiler_MinimalRebuild'                   => '',
-        'Compiler_BasicRuntimeChecks'               => '',
-	'Compiler_BufferSecurityCheck'              => '',
-        'Compiler_RuntimeLibrary'                   => '',
-        'Compiler_RuntimeTypeInfo'                  => '',
-        'Compiler_UsePrecompiledHeader'             => '',
-        'Compiler_PrecompiledHeaderFile'            => '',
-        'Compiler_PrecompiledHeaderThrough'         => '',
-        'Compiler_AssemblerListingLocation'         => '',
-        'Compiler_ProgramDataBaseFileName'          => '',
-        'Compiler_BrowseInformation'                => '',
-        'Compiler_WarningLevel'                     => '',
-        'Compiler_WarnAsError'                      => '',
-        'Compiler_Detect64BitPortabilityProblems'   => '',
-        'Compiler_DebugInformationFormat'           => '',
-        'Compiler_CompileAs'                        => '',
-        'Compiler_EnablePREfast'                    => '',
-        #-------------------------------
-        'Linker_AdditionalDependencies'             => '',
-        'Linker_OutputFile'                         => '',
-        'Linker_LinkIncremental'                    => '',
-        'Linker_AdditionalLibraryDirectories'       => '',
-        'Linker_GenerateDebugInformation'           => '',
-        'Linker_ProgramDatabaseFile'                => '',
-        'Linker_GenerateMapFile'                    => '',
-        'Linker_MapFileName'                        => '',
-        'Linker_MapExports'                         => '',
-        'Linker_SubSystem'                          => '',
-        'Linker_LinkTimeCodeGeneration'             => '',
-        #-------------------------------
-        'Librarian_OutputFile'                      => '',
-        #
-        'BscMake_OutputFile'                        => '',
-        #-------------------------------
-        'PreBuild_Description'                      => '',
-        'PreBuild_CommandLine'                      => '',
-        'PreBuild_Excluded'                         => '',
-        #
-        'PreLink_Description'                       => '',
-        'PreLink_CommandLine'                       => '',
-        'PreLink_Excluded'                          => '',
-        #
-        'PostBuild_Description'                     => '',
-        'PostBuild_CommandLine'                     => '',
-        'PostBuild_Excluded'                        => '',
-        #
-        'CustomBuild_Description'                   => '',
-        'CustomBuild_CommandLine'                   => '',
-        'CustomBuild_AdditionalDependencies'        => '',
-        'CustomBuild_Outputs'                       => '',
-        #-------------------------------
-      },
     },
     #
     '*' => {
@@ -329,6 +333,7 @@ EOT
       'Linker_MapFileName'                          => '$(IntDir)/$(ProjectName).map',
       'Linker_MapExports'                           => 'true',
       'Linker_SubSystem'                            => '1',
+      'Linker_TargetMachine'                        => '',
       #
       'BscMake_OutputFile'                          => '$(IntDir)/$(ProjectName).bsc',
       #

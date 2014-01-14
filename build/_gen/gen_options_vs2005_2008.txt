@@ -14,7 +14,7 @@ begin project-group umodsys
 
   begin project umodsys_lib_core
     GUID-gen 0 umodsys.lib_core
-    option * OutputDirectory $(path-out-lib)
+    option * OutputDirectory $(path-out-bin)
     begin file-group src-$(spname)
       begin mask $(path-skip) $(path-s-core)/$(ppath)
         include *.cpp *.h
@@ -33,7 +33,7 @@ begin project-group umodsys
 
   begin project umodsys_lib_base
     GUID-gen 0 umodsys.lib_base
-    option * OutputDirectory $(path-out-lib)
+    option * OutputDirectory $(path-out-bin)
     begin file-group src-$(spname)
       file $(path-s-base)/$(ppath)/umodsys.so_main.win32.cpp
     end
@@ -42,7 +42,7 @@ begin project-group umodsys
 
   begin project umodsys_lib_basesys
     GUID-gen 0 umodsys.lib_basesys
-    option * OutputDirectory $(path-out-lib)
+    option * OutputDirectory $(path-out-bin)
     begin file-group src-$(spname)
       file $(path-s-basesys)/$(ppath)/umodsys.basesys.rmodule.win32.cpp
     end
@@ -51,25 +51,25 @@ begin project-group umodsys
 
   begin project umodsys_lib_libmedia
     GUID-gen 0 umodsys.lib_libmedia
-    option * OutputDirectory $(path-out-lib)
+    option * OutputDirectory $(path-out-bin)
     option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto libmedia mod-media-libmedia mod-media-stdlib mod-media-stdio mod-media-images_std"
   end
 
   begin project umodsys_lib_libui
     GUID-gen 0 umodsys.lib_libui
-    option * OutputDirectory $(path-out-lib)
+    option * OutputDirectory $(path-out-bin)
     option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto libui mod-ui-libui mod-ui-SDL_core"
   end
 
   begin project umodsys_lib_lib2d
     GUID-gen 0 umodsys.lib_lib2d
-    option * OutputDirectory $(path-out-lib)
+    option * OutputDirectory $(path-out-bin)
     option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto lib2d mod-2d-stdlib"
   end
 
   begin project umodsys_lib_lib3d
     GUID-gen 0 umodsys.lib_lib3d
-    option * OutputDirectory $(path-out-lib)
+    option * OutputDirectory $(path-out-bin)
     option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto lib3d mod-3d-lib3d"
   end
 

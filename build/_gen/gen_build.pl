@@ -27,4 +27,4 @@ read_configuration($config, $input_file);
 my $gen = apply_configuration($config);
 exec_generator($config, $gen);
 
-print "Generator version 0.40 done\n";
+print "Generator version 0.43 done\n";

@@ -31,7 +31,7 @@
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\zlib;..\..\..\depends\libpng"
-				PreprocessorDefinitions="WIN32;_DEBUG"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="3"
@@ -64,6 +64,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="0"
+				TargetMachine="1"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
@@ -145,7 +147,7 @@
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\zlib;..\..\..\depends\libpng"
-				PreprocessorDefinitions="WIN32;NDEBUG"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -178,6 +180,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="1"
+				TargetMachine="1"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
@@ -259,7 +263,7 @@
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\zlib;..\..\..\depends\libpng"
-				PreprocessorDefinitions="WIN32;NDEBUG"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -292,6 +296,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="1"
+				TargetMachine="1"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
@@ -373,7 +379,7 @@
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\zlib;..\..\..\depends\libpng"
-				PreprocessorDefinitions="WIN32;_DEBUG"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="3"
@@ -406,6 +412,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="0"
+				TargetMachine="17"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
@@ -487,7 +495,7 @@
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\zlib;..\..\..\depends\libpng"
-				PreprocessorDefinitions="WIN32;NDEBUG"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -520,6 +528,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="1"
+				TargetMachine="17"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
@@ -601,7 +611,7 @@
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\zlib;..\..\..\depends\libpng"
-				PreprocessorDefinitions="WIN32;NDEBUG"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -634,6 +644,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="1"
+				TargetMachine="17"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"

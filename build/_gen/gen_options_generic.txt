@@ -6,12 +6,6 @@ begin project-group umodsys
   set path-include $(path-root)/include
   set path-inc $(path-root)/include/umodsys
 
-  set path-dep-jpeg-inc $(path-dep)/jpeglib
-  set path-dep-png-inc $(path-dep)/libpng
-  set path-dep-zlib-inc $(path-dep)/zlib
-  set path-dep-SDL2-inc $(path-dep)/SDL2/include
-  set path-dep-SDL2_ttf-inc $(path-dep)/SDL2_ttf
-
   set path-src $(path-root)/src
   set path-s-base $(path-src)/base
   set path-s-basesys $(path-src)/basesys
@@ -178,9 +172,9 @@ begin project-group umodsys
     #
     includes $(path-include)
     includes $(path-include)/$(ppath)
-    includes $(path-dep-jpeg-inc)
-    includes $(path-dep-png-inc)
-    includes $(path-dep-zlib-inc)
+    includes $(path-d-jpeg-inc)
+    includes $(path-d-png-inc)
+    includes $(path-d-zlib-inc)
     #
     begin file-group headers_media
       begin mask $(path-skip) $(path-inc)/lib/media
@@ -243,8 +237,8 @@ begin project-group umodsys
     #
     includes $(path-include)
     includes $(path-include)/$(ppath)
-    includes $(path-dep-SDL2-inc)
-    includes $(path-dep-SDL2_ttf-inc)
+    includes $(path-d-SDL2-inc)
+    includes $(path-d-SDL2_ttf-inc)
     #
     begin file-group headers_ui
       begin mask $(path-skip) $(path-inc)/lib/ui

@@ -1,0 +1,1843 @@
+ lib_lua
+
+ Timestamp is 52d552db (Tue Jan 14 18:08:11 2014)
+
+ Preferred load address is 10000000
+
+ Start         Length     Name                   Class
+ 0001:00000000 0001446aH .text                   CODE
+ 0002:00000000 000001fcH .idata$5                DATA
+ 0002:000001fc 00000004H .CRT$XCA                DATA
+ 0002:00000200 00000004H .CRT$XCZ                DATA
+ 0002:00000204 00000004H .CRT$XIA                DATA
+ 0002:00000208 00000004H .CRT$XIAA               DATA
+ 0002:0000020c 00000004H .CRT$XIC                DATA
+ 0002:00000210 00000004H .CRT$XIZ                DATA
+ 0002:00000218 00002b18H .rdata                  DATA
+ 0002:00002d30 00000004H .rdata$sxdata           DATA
+ 0002:00002d34 00000004H .rtc$IAA                DATA
+ 0002:00002d38 00000004H .rtc$IZZ                DATA
+ 0002:00002d3c 00000004H .rtc$TAA                DATA
+ 0002:00002d40 00000004H .rtc$TZZ                DATA
+ 0002:00002d48 00000084H .xdata$x                DATA
+ 0002:00002dcc 00000028H .idata$2                DATA
+ 0002:00002df4 00000014H .idata$3                DATA
+ 0002:00002e08 000001fcH .idata$4                DATA
+ 0002:00003004 0000064eH .idata$6                DATA
+ 0002:00003660 00000df0H .edata                  DATA
+ 0003:00000000 00000010H .data                   DATA
+ 0003:00000010 00000350H .bss                    DATA
+
+  Address         Publics by Value              Rva+Base       Lib:Object
+
+ 0000:00000000       __except_list              00000000     <absolute>
+ 0000:00000001       ___safe_se_handler_count   00000001     <absolute>
+ 0000:00009876       __ldused                   00009876     <absolute>
+ 0000:00009876       __fltused                  00009876     <absolute>
+ 0000:00000000       ___ImageBase               10000000     <linker-defined>
+ 0001:0000005e       _lua_checkstack            1000105e f   lapi.obj
+ 0001:000000c5       _lua_xmove                 100010c5 f   lapi.obj
+ 0001:00000109       _lua_atpanic               10001109 f   lapi.obj
+ 0001:0000011f       _lua_version               1000111f f   lapi.obj
+ 0001:00000137       _lua_absindex              10001137 f   lapi.obj
+ 0001:0000015d       _lua_gettop                1000115d f   lapi.obj
+ 0001:00000170       _lua_settop                10001170 f   lapi.obj
+ 0001:000001a8       _lua_remove                100011a8 f   lapi.obj
+ 0001:000001dc       _lua_insert                100011dc f   lapi.obj
+ 0001:0000027e       _lua_replace               1000127e f   lapi.obj
+ 0001:0000029b       _lua_copy                  1000129b f   lapi.obj
+ 0001:000002b7       _lua_pushvalue             100012b7 f   lapi.obj
+ 0001:000002d8       _lua_type                  100012d8 f   lapi.obj
+ 0001:00000313       _lua_typename              10001313 f   lapi.obj
+ 0001:0000031f       _lua_iscfunction           1000131f f   lapi.obj
+ 0001:00000346       _lua_isnumber              10001346 f   lapi.obj
+ 0001:0000037a       _lua_isstring              1000137a f   lapi.obj
+ 0001:0000039a       _lua_isuserdata            1000139a f   lapi.obj
+ 0001:000003c1       _lua_rawequal              100013c1 f   lapi.obj
+ 0001:00000435       _lua_arith                 10001435 f   lapi.obj
+ 0001:000004b6       _lua_compare               100014b6 f   lapi.obj
+ 0001:00000560       _lua_tonumberx             10001560 f   lapi.obj
+ 0001:000005af       _lua_tointegerx            100015af f   lapi.obj
+ 0001:0000060a       _lua_tounsignedx           1000160a f   lapi.obj
+ 0001:00000665       _lua_toboolean             10001665 f   lapi.obj
+ 0001:00000693       _lua_tolstring             10001693 f   lapi.obj
+ 0001:00000701       _lua_rawlen                10001701 f   lapi.obj
+ 0001:00000756       _lua_tocfunction           10001756 f   lapi.obj
+ 0001:00000784       _lua_touserdata            10001784 f   lapi.obj
+ 0001:000007c9       _lua_tothread              100017c9 f   lapi.obj
+ 0001:000007e7       _lua_topointer             100017e7 f   lapi.obj
+ 0001:00000848       _lua_pushnil               10001848 f   lapi.obj
+ 0001:0000085b       _lua_pushnumber            1000185b f   lapi.obj
+ 0001:0000088b       _lua_pushinteger           1000188b f   lapi.obj
+ 0001:0000089f       _lua_pushunsigned          1000189f f   lapi.obj
+ 0001:000008d0       _lua_pushlstring           100018d0 f   lapi.obj
+ 0001:00000910       _lua_pushstring            10001910 f   lapi.obj
+ 0001:00000968       _lua_pushvfstring          10001968 f   lapi.obj
+ 0001:00000990       _lua_pushfstring           10001990 f   lapi.obj
+ 0001:000009b9       _lua_pushcclosure          100019b9 f   lapi.obj
+ 0001:00000a45       _lua_pushboolean           10001a45 f   lapi.obj
+ 0001:00000a63       _lua_pushlightuserdata     10001a63 f   lapi.obj
+ 0001:00000a7c       _lua_pushthread            10001a7c f   lapi.obj
+ 0001:00000aa1       _lua_getglobal             10001aa1 f   lapi.obj
+ 0001:00000aee       _lua_gettable              10001aee f   lapi.obj
+ 0001:00000b10       _lua_getfield              10001b10 f   lapi.obj
+ 0001:00000b59       _lua_rawget                10001b59 f   lapi.obj
+ 0001:00000b86       _lua_rawgeti               10001b86 f   lapi.obj
+ 0001:00000bb5       _lua_rawgetp               10001bb5 f   lapi.obj
+ 0001:00000bf3       _lua_createtable           10001bf3 f   lapi.obj
+ 0001:00000c40       _lua_getmetatable          10001c40 f   lapi.obj
+ 0001:00000cc3       _lua_getuservalue          10001cc3 f   lapi.obj
+ 0001:00000cf5       _lua_setglobal             10001cf5 f   lapi.obj
+ 0001:00000d49       _lua_settable              10001d49 f   lapi.obj
+ 0001:00000d72       _lua_setfield              10001d72 f   lapi.obj
+ 0001:00000dc4       _lua_rawset                10001dc4 f   lapi.obj
+ 0001:00000e4a       _lua_rawseti               10001e4a f   lapi.obj
+ 0001:00000ebd       _lua_rawsetp               10001ebd f   lapi.obj
+ 0001:00000f4e       _lua_setmetatable          10001f4e f   lapi.obj
+ 0001:00001023       _lua_setuservalue          10002023 f   lapi.obj
+ 0001:00001072       _lua_getctx                10002072 f   lapi.obj
+ 0001:00001097       _lua_callk                 10002097 f   lapi.obj
+ 0001:0000110c       _lua_pcallk                1000210c f   lapi.obj
+ 0001:000011c6       _lua_load                  100021c6 f   lapi.obj
+ 0001:00001279       _lua_dump                  10002279 f   lapi.obj
+ 0001:000012a6       _lua_status                100022a6 f   lapi.obj
+ 0001:000012af       _lua_gc                    100022af f   lapi.obj
+ 0001:000013d3       _lua_error                 100023d3 f   lapi.obj
+ 0001:000013df       _lua_next                  100023df f   lapi.obj
+ 0001:00001412       _lua_concat                10002412 f   lapi.obj
+ 0001:00001474       _lua_len                   10002474 f   lapi.obj
+ 0001:00001499       _lua_getallocf             10002499 f   lapi.obj
+ 0001:000014b3       _lua_setallocf             100024b3 f   lapi.obj
+ 0001:000014cb       _lua_newuserdata           100024cb f   lapi.obj
+ 0001:000015a6       _lua_getupvalue            100025a6 f   lapi.obj
+ 0001:000015ea       _lua_setupvalue            100025ea f   lapi.obj
+ 0001:0000167a       _lua_upvalueid             1000267a f   lapi.obj
+ 0001:000016d7       _lua_upvaluejoin           100026d7 f   lapi.obj
+ 0001:00001935       _luaL_traceback            10002935 f   lauxlib.obj
+ 0001:00001a83       _luaL_argerror             10002a83 f   lauxlib.obj
+ 0001:00001b77       _luaL_where                10002b77 f   lauxlib.obj
+ 0001:00001bd7       _luaL_error                10002bd7 f   lauxlib.obj
+ 0001:00001c07       _luaL_fileresult           10002c07 f   lauxlib.obj
+ 0001:00001c85       _luaL_execresult           10002c85 f   lauxlib.obj
+ 0001:00001ce5       _luaL_newmetatable         10002ce5 f   lauxlib.obj
+ 0001:00001d38       _luaL_setmetatable         10002d38 f   lauxlib.obj
+ 0001:00001d59       _luaL_testudata            10002d59 f   lauxlib.obj
+ 0001:00001db3       _luaL_checkudata           10002db3 f   lauxlib.obj
+ 0001:00001ddd       _luaL_checkoption          10002ddd f   lauxlib.obj
+ 0001:00001e6c       _luaL_checkstack           10002e6c f   lauxlib.obj
+ 0001:00001eaa       _luaL_checktype            10002eaa f   lauxlib.obj
+ 0001:00001ed1       _luaL_checkany             10002ed1 f   lauxlib.obj
+ 0001:00001efa       _luaL_checklstring         10002efa f   lauxlib.obj
+ 0001:00001f24       _luaL_optlstring           10002f24 f   lauxlib.obj
+ 0001:00001f76       _luaL_checknumber          10002f76 f   lauxlib.obj
+ 0001:00001fac       _luaL_optnumber            10002fac f   lauxlib.obj
+ 0001:00001fd4       _luaL_checkinteger         10002fd4 f   lauxlib.obj
+ 0001:00002001       _luaL_checkunsigned        10003001 f   lauxlib.obj
+ 0001:0000202d       _luaL_optinteger           1000302d f   lauxlib.obj
+ 0001:00002057       _luaL_optunsigned          10003057 f   lauxlib.obj
+ 0001:0000207f       _luaL_prepbuffsize         1000307f f   lauxlib.obj
+ 0001:00002100       _luaL_addlstring           10003100 f   lauxlib.obj
+ 0001:00002125       _luaL_addstring            10003125 f   lauxlib.obj
+ 0001:00002149       _luaL_pushresult           10003149 f   lauxlib.obj
+ 0001:00002174       _luaL_pushresultsize       10003174 f   lauxlib.obj
+ 0001:00002187       _luaL_addvalue             10003187 f   lauxlib.obj
+ 0001:000021de       _luaL_buffinit             100031de f   lauxlib.obj
+ 0001:000021fa       _luaL_buffinitsize         100031fa f   lauxlib.obj
+ 0001:00002218       _luaL_ref                  10003218 f   lauxlib.obj
+ 0001:00002295       _luaL_unref                10003295 f   lauxlib.obj
+ 0001:000023db       _luaL_loadfilex            100033db f   lauxlib.obj
+ 0001:00002561       _luaL_loadbufferx          10003561 f   lauxlib.obj
+ 0001:0000258e       _luaL_loadstring           1000358e f   lauxlib.obj
+ 0001:000025b6       _luaL_getmetafield         100035b6 f   lauxlib.obj
+ 0001:00002607       _luaL_callmeta             10003607 f   lauxlib.obj
+ 0001:0000264c       _luaL_len                  1000364c f   lauxlib.obj
+ 0001:00002684       _luaL_tolstring            10003684 f   lauxlib.obj
+ 0001:0000272e       _luaL_setfuncs             1000372e f   lauxlib.obj
+ 0001:000027d2       _luaL_getsubtable          100037d2 f   lauxlib.obj
+ 0001:00002836       _luaL_requiref             10003836 f   lauxlib.obj
+ 0001:000028a9       _luaL_gsub                 100038a9 f   lauxlib.obj
+ 0001:000029a8       _luaL_newstate             100039a8 f   lauxlib.obj
+ 0001:000029c8       _luaL_checkversion_        100039c8 f   lauxlib.obj
+ 0001:000034cc       _luaopen_base              100044cc f   lbaselib.obj
+ 0001:00003862       _luaopen_bit32             10004862 f   lbitlib.obj
+ 0001:0000389e       _luaK_nil                  1000489e f   lcode.obj
+ 0001:00003939       _luaK_jump                 10004939 f   lcode.obj
+ 0001:00003b16       _luaK_patchlist            10004b16 f   lcode.obj
+ 0001:00003b3a       _luaK_patchclose           10004b3a f   lcode.obj
+ 0001:00003b72       _luaK_patchtohere          10004b72 f   lcode.obj
+ 0001:00003b85       _luaK_concat               10004b85 f   lcode.obj
+ 0001:00003c53       _luaK_codeABC              10004c53 f   lcode.obj
+ 0001:00003c70       _luaK_codeABx              10004c70 f   lcode.obj
+ 0001:00003c88       _luaK_codek                10004c88 f   lcode.obj
+ 0001:00003cc6       _luaK_checkstack           10004cc6 f   lcode.obj
+ 0001:00003ce7       _luaK_reserveregs          10004ce7 f   lcode.obj
+ 0001:00003e76       _luaK_numberK              10004e76 f   lcode.obj
+ 0001:00003efa       _luaK_setreturns           10004efa f   lcode.obj
+ 0001:00003f6b       _luaK_setoneret            10004f6b f   lcode.obj
+ 0001:00003fb7       _luaK_dischargevars        10004fb7 f   lcode.obj
+ 0001:00004207       _luaK_exp2nextreg          10005207 f   lcode.obj
+ 0001:0000423a       _luaK_exp2anyreg           1000523a f   lcode.obj
+ 0001:00004277       _luaK_exp2val              10005277 f   lcode.obj
+ 0001:00004298       _luaK_exp2RK               10005298 f   lcode.obj
+ 0001:00004345       _luaK_storevar             10005345 f   lcode.obj
+ 0001:00004453       _luaK_goiftrue             10005453 f   lcode.obj
+ 0001:000044b0       _luaK_goiffalse            100054b0 f   lcode.obj
+ 0001:00004594       _luaK_indexed              10005594 f   lcode.obj
+ 0001:000046f7       _luaK_prefix               100056f7 f   lcode.obj
+ 0001:00004772       _luaK_posfix               10005772 f   lcode.obj
+ 0001:0000488f       _luaK_setlist              1000588f f   lcode.obj
+ 0001:00004bc0       _luaopen_coroutine         10005bc0 f   lcorolib.obj
+ 0001:000056b0       _luaopen_debug             100066b0 f   ldblib.obj
+ 0001:000056fa       _lua_sethook               100066fa f   ldebug.obj
+ 0001:00005737       _lua_gethook               10006737 f   ldebug.obj
+ 0001:0000573f       _lua_gethookmask           1000673f f   ldebug.obj
+ 0001:00005748       _lua_gethookcount          10006748 f   ldebug.obj
+ 0001:00005750       _lua_getstack              10006750 f   ldebug.obj
+ 0001:00005840       _lua_getlocal              10006840 f   ldebug.obj
+ 0001:000058a7       _lua_setlocal              100068a7 f   ldebug.obj
+ 0001:00005aef       _lua_getinfo               10006aef f   ldebug.obj
+ 0001:00005f62       _luaG_typeerror            10006f62 f   ldebug.obj
+ 0001:00006019       _luaG_ordererror           10007019 f   ldebug.obj
+ 0001:0000608c       _luaG_errormsg             1000708c f   ldebug.obj
+ 0001:000060e8       _luaG_runerror             100070e8 f   ldebug.obj
+ 0001:000061b7       _luaD_throw                100071b7 f   ldo.obj
+ 0001:00006227       _luaD_rawrunprotected      10007227 f   ldo.obj
+ 0001:000062f1       _luaD_reallocstack         100072f1 f   ldo.obj
+ 0001:00006368       _luaD_growstack            10007368 f   ldo.obj
+ 0001:000063d5       _luaD_shrinkstack          100073d5 f   ldo.obj
+ 0001:00006421       _luaD_hook                 10007421 f   ldo.obj
+ 0001:00006538       _luaD_precall              10007538 f   ldo.obj
+ 0001:00006761       _luaD_poscall              10007761 f   ldo.obj
+ 0001:000067ed       _luaD_call                 100077ed f   ldo.obj
+ 0001:000069d6       _lua_resume                100079d6 f   ldo.obj
+ 0001:00006ae9       _lua_yieldk                10007ae9 f   ldo.obj
+ 0001:00006b57       _luaD_pcall                10007b57 f   ldo.obj
+ 0001:00006ce2       _luaD_protectedparser      10007ce2 f   ldo.obj
+ 0001:0000706f       _luaU_dump                 1000806f f   ldump.obj
+ 0001:000070b7       _luaF_newLclosure          100080b7 f   lfunc.obj
+ 0001:000070f0       _luaF_freeupval            100080f0 f   lfunc.obj
+ 0001:0000711c       _luaF_close                1000811c f   lfunc.obj
+ 0001:000071f7       _luaF_newproto             100081f7 f   lfunc.obj
+ 0001:00007242       _luaF_freeproto            10008242 f   lfunc.obj
+ 0001:000072bd       _luaF_getlocalname         100082bd f   lfunc.obj
+ 0001:0000737b       _luaC_barrier_             1000837b f   lgc.obj
+ 0001:000073a2       _luaC_newobj               100083a2 f   lgc.obj
+ 0001:0000809e       _luaC_checkfinalizer       1000909e f   lgc.obj
+ 0001:0000819d       _luaC_changemode           1000919d f   lgc.obj
+ 0001:000084a4       _luaC_runtilstate          100094a4 f   lgc.obj
+ 0001:000085a1       _luaC_forcestep            100095a1 f   lgc.obj
+ 0001:000085e2       _luaC_step                 100095e2 f   lgc.obj
+ 0001:0000860a       _luaC_fullgc               1000960a f   lgc.obj
+ 0001:0000869f       _luaL_openlibs             1000969f f   linit.obj
+ 0001:00009351       _luaopen_io                1000a351 f   liolib.obj
+ 0001:0000944d       _luaX_token2str            1000a44d f   llex.obj
+ 0001:00009530       _luaX_syntaxerror          1000a530 f   llex.obj
+ 0001:0000953e       _luaX_newstring            1000a53e f   llex.obj
+ 0001:0000a2b8       _luaX_next                 1000b2b8 f   llex.obj
+ 0001:0000a9eb       _luaopen_math              1000b9eb f   lmathlib.obj
+ 0001:0000aa5c       _luaM_growaux_             1000ba5c f   lmem.obj
+ 0001:0000aac5       _luaM_toobig               1000bac5 f   lmem.obj
+ 0001:0000aad9       _luaM_realloc_             1000bad9 f   lmem.obj
+ 0001:0000b419       _luaopen_package           1000c419 f   loadlib.obj
+ 0001:0000b5b1       _luaO_int2fb               1000c5b1 f   lobject.obj
+ 0001:0000b5d1       _luaO_ceillog2             1000c5d1 f   lobject.obj
+ 0001:0000b5ef       _luaO_arith                1000c5ef f   lobject.obj
+ 0001:0000b7db       _luaO_str2d                1000c7db f   lobject.obj
+ 0001:0000b874       _luaO_pushvfstring         1000c874 f   lobject.obj
+ 0001:0000ba44       _luaO_pushfstring          1000ca44 f   lobject.obj
+ 0001:0000ba5a       _luaO_chunkid              1000ca5a f   lobject.obj
+ 0001:0000c18c       _luaopen_os                1000d18c f   loslib.obj
+ 0001:0000e3f4       _luaY_parser               1000f3f4 f   lparser.obj
+ 0001:0000e5bb       _luaE_extendCI             1000f5bb f   lstate.obj
+ 0001:0000e5db       _luaE_freeCI               1000f5db f   lstate.obj
+ 0001:0000e8cd       _lua_newthread             1000f8cd f   lstate.obj
+ 0001:0000e933       _lua_newstate              1000f933 f   lstate.obj
+ 0001:0000ea4f       _lua_close                 1000fa4f f   lstate.obj
+ 0001:0000ea61       _luaS_eqlngstr             1000fa61 f   lstring.obj
+ 0001:0000ea84       _luaS_eqstr                1000fa84 f   lstring.obj
+ 0001:0000eaac       _luaS_hash                 1000faac f   lstring.obj
+ 0001:0000eae0       _luaS_resize               1000fae0 f   lstring.obj
+ 0001:0000ecc0       _luaS_newlstr              1000fcc0 f   lstring.obj
+ 0001:0000ed0b       _luaS_new                  1000fd0b f   lstring.obj
+ 0001:00010433       _luaopen_string            10011433 f   lstrlib.obj
+ 0001:000106b2       _luaH_next                 100116b2 f   ltable.obj
+ 0001:00010874       _luaH_resize               10011874 f   ltable.obj
+ 0001:00010ad8       _luaH_new                  10011ad8 f   ltable.obj
+ 0001:00010b0f       _luaH_free                 10011b0f f   ltable.obj
+ 0001:00010b5b       _luaH_newkey               10011b5b f   ltable.obj
+ 0001:00010caa       _luaH_getint               10011caa f   ltable.obj
+ 0001:00010d0d       _luaH_getstr               10011d0d f   ltable.obj
+ 0001:00010d3a       _luaH_get                  10011d3a f   ltable.obj
+ 0001:00010e03       _luaH_set                  10011e03 f   ltable.obj
+ 0001:00010e2d       _luaH_setint               10011e2d f   ltable.obj
+ 0001:00010efe       _luaH_getn                 10011efe f   ltable.obj
+ 0001:00011588       _luaopen_table             10012588 f   ltablib.obj
+ 0001:000115ac       _luaT_gettm                100125ac f   ltm.obj
+ 0001:000115c8       _luaT_gettmbyobj           100125c8 f   ltm.obj
+ 0001:00011b2b       _luaU_undump               10012b2b f   lundump.obj
+ 0001:00011bf1       _luaU_header               10012bf1 f   lundump.obj
+ 0001:00011c29       _luaV_tonumber             10012c29 f   lvm.obj
+ 0001:00011c71       _luaV_tostring             10012c71 f   lvm.obj
+ 0001:00011e44       _luaV_gettable             10012e44 f   lvm.obj
+ 0001:00011f0e       _luaV_settable             10012f0e f   lvm.obj
+ 0001:000121f2       _luaV_lessthan             100131f2 f   lvm.obj
+ 0001:0001226d       _luaV_lessequal            1001326d f   lvm.obj
+ 0001:00012300       _luaV_equalobj_            10013300 f   lvm.obj
+ 0001:000123e5       _luaV_concat               100133e5 f   lvm.obj
+ 0001:000125d5       _luaV_objlen               100135d5 f   lvm.obj
+ 0001:00012690       _luaV_arith                10013690 f   lvm.obj
+ 0001:00012839       _luaV_finishOp             10013839 f   lvm.obj
+ 0001:000129a6       _luaV_execute              100139a6 f   lvm.obj
+ 0001:0001395e       _luaZ_fill                 1001495e f   lzio.obj
+ 0001:00013994       _luaZ_openspace            10014994 f   lzio.obj
+ 0001:00013a2c       __CRT_INIT@12              10014a2c f   MSVCRT:crtdll.obj
+ 0001:00013d68       __DllMainCRTStartup@12     10014d68 f   MSVCRT:crtdll.obj
+ 0001:00013d8b       ___clean_type_info_names   10014d8b f   MSVCRT:tncleanup.obj
+ 0001:00013d97       __onexit                   10014d97 f   MSVCRT:atonexit.obj
+ 0001:00013e3c       _atexit                    10014e3c f   MSVCRT:atonexit.obj
+ 0001:00013e53       __RTC_Initialize           10014e53 f   MSVCRT:_initsect_.obj
+ 0001:00013e79       __RTC_Terminate            10014e79 f   MSVCRT:_initsect_.obj
+ 0001:00013ea0       __ValidateImageBase        10014ea0 f   MSVCRT:pesect.obj
+ 0001:00013ee0       __FindPESection            10014ee0 f   MSVCRT:pesect.obj
+ 0001:00013f30       __IsNonwritableInCurrentImage 10014f30 f   MSVCRT:pesect.obj
+ 0001:00013fee       __initterm                 10014fee f   MSVCRT:MSVCR90.dll
+ 0001:00013ff4       __initterm_e               10014ff4 f   MSVCRT:MSVCR90.dll
+ 0001:00013ffa       __amsg_exit                10014ffa f   MSVCRT:MSVCR90.dll
+ 0001:00014000       ___CppXcptFilter           10015000 f   MSVCRT:MSVCR90.dll
+ 0001:00014006       _DllMain@12                10015006 f   MSVCRT:dllmain.obj
+ 0001:0001402c       __SEH_prolog4              1001502c f   MSVCRT:sehprolg4.obj
+ 0001:00014071       __SEH_epilog4              10015071 f   MSVCRT:sehprolg4.obj
+ 0001:00014085       __except_handler4          10015085 f   MSVCRT:chandler4gs.obj
+ 0001:000140aa       ___security_init_cookie    100150aa f   MSVCRT:gs_support.obj
+ 0001:00014140       ___clean_type_info_names_internal 10015140 f   MSVCRT:MSVCR90.dll
+ 0001:00014146       __unlock                   10015146 f   MSVCRT:MSVCR90.dll
+ 0001:0001414c       ___dllonexit               1001514c f   MSVCRT:MSVCR90.dll
+ 0001:00014152       __lock                     10015152 f   MSVCRT:MSVCR90.dll
+ 0001:00014158       @__security_check_cookie@4 10015158 f   MSVCRT:secchk.obj
+ 0001:00014168       __except_handler4_common   10015168 f   MSVCRT:MSVCR90.dll
+ 0001:0001416e       ___report_gsfailure        1001516e f   MSVCRT:gs_report.obj
+ 0001:00014274       __crt_debugger_hook        10015274 f   MSVCRT:MSVCR90.dll
+ 0001:00014280       _memcpy                    10015280 f   MSVCRT:MSVCR90.dll
+ 0001:00014286       _floor                     10015286 f   MSVCRT:MSVCR90.dll
+ 0001:0001428c       __CIpow                    1001528c f   MSVCRT:MSVCR90.dll
+ 0001:00014292       __setjmp3                  10015292 f   MSVCRT:MSVCR90.dll
+ 0001:00014298       __CIexp                    10015298 f   MSVCRT:MSVCR90.dll
+ 0001:0001429e       __CIlog10                  1001529e f   MSVCRT:MSVCR90.dll
+ 0001:000142a4       __CIlog                    100152a4 f   MSVCRT:MSVCR90.dll
+ 0001:000142aa       __CIsqrt                   100152aa f   MSVCRT:MSVCR90.dll
+ 0001:000142b0       __CIfmod                   100152b0 f   MSVCRT:MSVCR90.dll
+ 0001:000142b6       __CIatan2                  100152b6 f   MSVCRT:MSVCR90.dll
+ 0001:000142bc       __CIatan                   100152bc f   MSVCRT:MSVCR90.dll
+ 0001:000142c2       __CIacos                   100152c2 f   MSVCRT:MSVCR90.dll
+ 0001:000142c8       __CIasin                   100152c8 f   MSVCRT:MSVCR90.dll
+ 0001:000142ce       __CItanh                   100152ce f   MSVCRT:MSVCR90.dll
+ 0001:000142d4       __CItan                    100152d4 f   MSVCRT:MSVCR90.dll
+ 0001:000142da       __CIcosh                   100152da f   MSVCRT:MSVCR90.dll
+ 0001:000142e0       __CIcos                    100152e0 f   MSVCRT:MSVCR90.dll
+ 0001:000142e6       __CIsinh                   100152e6 f   MSVCRT:MSVCR90.dll
+ 0001:000142ec       __CIsin                    100152ec f   MSVCRT:MSVCR90.dll
+ 0001:00014300       __ftol2_sse                10015300 f   MSVCRT:ftol2.obj
+ 0001:00014309       __ftol2_pentium4           10015309 f   MSVCRT:ftol2.obj
+ 0001:0001431c       __ftol2_sse_excpt          1001531c f   MSVCRT:ftol2.obj
+ 0001:00014336       __ftol2                    10015336 f   MSVCRT:ftol2.obj
+ 0001:000143fb       __get_sse2_info            100153fb f   MSVCRT:cpu_disp.obj
+ 0001:0001445d       ___sse2_available_init     1001545d f   MSVCRT:cpu_disp.obj
+ 0002:00000000       __imp__FreeLibrary@4       10016000     kernel32:KERNEL32.dll
+ 0002:00000004       __imp__FormatMessageA@28   10016004     kernel32:KERNEL32.dll
+ 0002:00000008       __imp__GetLastError@0      10016008     kernel32:KERNEL32.dll
+ 0002:0000000c       __imp__GetProcAddress@8    1001600c     kernel32:KERNEL32.dll
+ 0002:00000010       __imp__GetModuleFileNameA@12 10016010     kernel32:KERNEL32.dll
+ 0002:00000014       __imp__LoadLibraryExA@12   10016014     kernel32:KERNEL32.dll
+ 0002:00000018       __imp__SetUnhandledExceptionFilter@4 10016018     kernel32:KERNEL32.dll
+ 0002:0000001c       __imp__UnhandledExceptionFilter@4 1001601c     kernel32:KERNEL32.dll
+ 0002:00000020       __imp__GetCurrentProcess@0 10016020     kernel32:KERNEL32.dll
+ 0002:00000024       __imp__TerminateProcess@8  10016024     kernel32:KERNEL32.dll
+ 0002:00000028       __imp__GetSystemTimeAsFileTime@4 10016028     kernel32:KERNEL32.dll
+ 0002:0000002c       __imp__GetCurrentProcessId@0 1001602c     kernel32:KERNEL32.dll
+ 0002:00000030       __imp__GetCurrentThreadId@0 10016030     kernel32:KERNEL32.dll
+ 0002:00000034       __imp__GetTickCount@0      10016034     kernel32:KERNEL32.dll
+ 0002:00000038       __imp__QueryPerformanceCounter@4 10016038     kernel32:KERNEL32.dll
+ 0002:0000003c       __imp__DisableThreadLibraryCalls@4 1001603c     kernel32:KERNEL32.dll
+ 0002:00000040       __imp__InterlockedCompareExchange@12 10016040     kernel32:KERNEL32.dll
+ 0002:00000044       __imp__Sleep@4             10016044     kernel32:KERNEL32.dll
+ 0002:00000048       __imp__InterlockedExchange@8 10016048     kernel32:KERNEL32.dll
+ 0002:0000004c       __imp__IsDebuggerPresent@0 1001604c     kernel32:KERNEL32.dll
+ 0002:00000050       \177KERNEL32_NULL_THUNK_DATA 10016050     kernel32:KERNEL32.dll
+ 0002:00000054       __imp__getc                10016054     MSVCRT:MSVCR90.dll
+ 0002:00000058       __imp__isalnum             10016058     MSVCRT:MSVCR90.dll
+ 0002:0000005c       __imp__isdigit             1001605c     MSVCRT:MSVCR90.dll
+ 0002:00000060       __imp__fwrite              10016060     MSVCRT:MSVCR90.dll
+ 0002:00000064       __imp__toupper             10016064     MSVCRT:MSVCR90.dll
+ 0002:00000068       __imp__strspn              10016068     MSVCRT:MSVCR90.dll
+ 0002:0000006c       __imp__strchr              1001606c     MSVCRT:MSVCR90.dll
+ 0002:00000070       __imp__fgets               10016070     MSVCRT:MSVCR90.dll
+ 0002:00000074       __imp__abort               10016074     MSVCRT:MSVCR90.dll
+ 0002:00000078       __imp__longjmp             10016078     MSVCRT:MSVCR90.dll
+ 0002:0000007c       __imp__fscanf              1001607c     MSVCRT:MSVCR90.dll
+ 0002:00000080       __imp__tmpfile             10016080     MSVCRT:MSVCR90.dll
+ 0002:00000084       __imp___ftelli64           10016084     MSVCRT:MSVCR90.dll
+ 0002:00000088       __imp___pclose             10016088     MSVCRT:MSVCR90.dll
+ 0002:0000008c       __imp__ungetc              1001608c     MSVCRT:MSVCR90.dll
+ 0002:00000090       __imp___fseeki64           10016090     MSVCRT:MSVCR90.dll
+ 0002:00000094       __imp___popen              10016094     MSVCRT:MSVCR90.dll
+ 0002:00000098       __imp__setvbuf             10016098     MSVCRT:MSVCR90.dll
+ 0002:0000009c       __imp__clearerr            1001609c     MSVCRT:MSVCR90.dll
+ 0002:000000a0       __imp__localeconv          100160a0     MSVCRT:MSVCR90.dll
+ 0002:000000a4       __imp__ceil                100160a4     MSVCRT:MSVCR90.dll
+ 0002:000000a8       __imp__modf                100160a8     MSVCRT:MSVCR90.dll
+ 0002:000000ac       __imp__ldexp               100160ac     MSVCRT:MSVCR90.dll
+ 0002:000000b0       __imp__rand                100160b0     MSVCRT:MSVCR90.dll
+ 0002:000000b4       __imp__srand               100160b4     MSVCRT:MSVCR90.dll
+ 0002:000000b8       __imp__frexp               100160b8     MSVCRT:MSVCR90.dll
+ 0002:000000bc       __imp___HUGE               100160bc     MSVCRT:MSVCR90.dll
+ 0002:000000c0       __imp__strrchr             100160c0     MSVCRT:MSVCR90.dll
+ 0002:000000c4       __imp__getenv              100160c4     MSVCRT:MSVCR90.dll
+ 0002:000000c8       __imp__strtod              100160c8     MSVCRT:MSVCR90.dll
+ 0002:000000cc       __imp__sprintf             100160cc     MSVCRT:MSVCR90.dll
+ 0002:000000d0       __imp__strpbrk             100160d0     MSVCRT:MSVCR90.dll
+ 0002:000000d4       __imp__rename              100160d4     MSVCRT:MSVCR90.dll
+ 0002:000000d8       __imp__fclose              100160d8     MSVCRT:MSVCR90.dll
+ 0002:000000dc       __imp___gmtime64           100160dc     MSVCRT:MSVCR90.dll
+ 0002:000000e0       __imp__tmpnam              100160e0     MSVCRT:MSVCR90.dll
+ 0002:000000e4       __imp__system              100160e4     MSVCRT:MSVCR90.dll
+ 0002:000000e8       __imp__remove              100160e8     MSVCRT:MSVCR90.dll
+ 0002:000000ec       __imp__clock               100160ec     MSVCRT:MSVCR90.dll
+ 0002:000000f0       __imp__strftime            100160f0     MSVCRT:MSVCR90.dll
+ 0002:000000f4       __imp__setlocale           100160f4     MSVCRT:MSVCR90.dll
+ 0002:000000f8       __imp___localtime64        100160f8     MSVCRT:MSVCR90.dll
+ 0002:000000fc       __imp___difftime64         100160fc     MSVCRT:MSVCR90.dll
+ 0002:00000100       __imp___time64             10016100     MSVCRT:MSVCR90.dll
+ 0002:00000104       __imp__exit                10016104     MSVCRT:MSVCR90.dll
+ 0002:00000108       __imp__isgraph             10016108     MSVCRT:MSVCR90.dll
+ 0002:0000010c       __imp__isspace             1001610c     MSVCRT:MSVCR90.dll
+ 0002:00000110       __imp__memchr              10016110     MSVCRT:MSVCR90.dll
+ 0002:00000114       __imp__ispunct             10016114     MSVCRT:MSVCR90.dll
+ 0002:00000118       __imp__tolower             10016118     MSVCRT:MSVCR90.dll
+ 0002:0000011c       __imp__isalpha             1001611c     MSVCRT:MSVCR90.dll
+ 0002:00000120       __imp__isupper             10016120     MSVCRT:MSVCR90.dll
+ 0002:00000124       __imp__iscntrl             10016124     MSVCRT:MSVCR90.dll
+ 0002:00000128       __imp__islower             10016128     MSVCRT:MSVCR90.dll
+ 0002:0000012c       __imp__isxdigit            1001612c     MSVCRT:MSVCR90.dll
+ 0002:00000130       __imp__strcoll             10016130     MSVCRT:MSVCR90.dll
+ 0002:00000134       __imp___encode_pointer     10016134     MSVCRT:MSVCR90.dll
+ 0002:00000138       __imp___malloc_crt         10016138     MSVCRT:MSVCR90.dll
+ 0002:0000013c       __imp___encoded_null       1001613c     MSVCRT:MSVCR90.dll
+ 0002:00000140       __imp___decode_pointer     10016140     MSVCRT:MSVCR90.dll
+ 0002:00000144       __imp___initterm           10016144     MSVCRT:MSVCR90.dll
+ 0002:00000148       __imp___initterm_e         10016148     MSVCRT:MSVCR90.dll
+ 0002:0000014c       __imp___amsg_exit          1001614c     MSVCRT:MSVCR90.dll
+ 0002:00000150       __imp___adjust_fdiv        10016150     MSVCRT:MSVCR90.dll
+ 0002:00000154       __imp____CppXcptFilter     10016154     MSVCRT:MSVCR90.dll
+ 0002:00000158       __imp____clean_type_info_names_internal 10016158     MSVCRT:MSVCR90.dll
+ 0002:0000015c       __imp___unlock             1001615c     MSVCRT:MSVCR90.dll
+ 0002:00000160       __imp____dllonexit         10016160     MSVCRT:MSVCR90.dll
+ 0002:00000164       __imp___lock               10016164     MSVCRT:MSVCR90.dll
+ 0002:00000168       __imp___onexit             10016168     MSVCRT:MSVCR90.dll
+ 0002:0000016c       __imp___except_handler4_common 1001616c     MSVCRT:MSVCR90.dll
+ 0002:00000170       __imp___crt_debugger_hook  10016170     MSVCRT:MSVCR90.dll
+ 0002:00000174       __imp__realloc             10016174     MSVCRT:MSVCR90.dll
+ 0002:00000178       __imp__freopen             10016178     MSVCRT:MSVCR90.dll
+ 0002:0000017c       __imp__ferror              1001617c     MSVCRT:MSVCR90.dll
+ 0002:00000180       __imp__fprintf             10016180     MSVCRT:MSVCR90.dll
+ 0002:00000184       __imp__fread               10016184     MSVCRT:MSVCR90.dll
+ 0002:00000188       __imp__fopen               10016188     MSVCRT:MSVCR90.dll
+ 0002:0000018c       __imp___errno              1001618c     MSVCRT:MSVCR90.dll
+ 0002:00000190       __imp__fflush              10016190     MSVCRT:MSVCR90.dll
+ 0002:00000194       __imp____iob_func          10016194     MSVCRT:MSVCR90.dll
+ 0002:00000198       __imp__strstr              10016198     MSVCRT:MSVCR90.dll
+ 0002:0000019c       __imp__strerror            1001619c     MSVCRT:MSVCR90.dll
+ 0002:000001a0       __imp__free                100161a0     MSVCRT:MSVCR90.dll
+ 0002:000001a4       __imp__feof                100161a4     MSVCRT:MSVCR90.dll
+ 0002:000001a8       __imp___mktime64           100161a8     MSVCRT:MSVCR90.dll
+ 0002:000001ac       __imp__memcpy              100161ac     MSVCRT:MSVCR90.dll
+ 0002:000001b0       __imp__floor               100161b0     MSVCRT:MSVCR90.dll
+ 0002:000001b4       __imp___CIpow              100161b4     MSVCRT:MSVCR90.dll
+ 0002:000001b8       __imp___setjmp3            100161b8     MSVCRT:MSVCR90.dll
+ 0002:000001bc       __imp___CIexp              100161bc     MSVCRT:MSVCR90.dll
+ 0002:000001c0       __imp___CIlog10            100161c0     MSVCRT:MSVCR90.dll
+ 0002:000001c4       __imp___CIlog              100161c4     MSVCRT:MSVCR90.dll
+ 0002:000001c8       __imp___CIsqrt             100161c8     MSVCRT:MSVCR90.dll
+ 0002:000001cc       __imp___CIfmod             100161cc     MSVCRT:MSVCR90.dll
+ 0002:000001d0       __imp___CIatan2            100161d0     MSVCRT:MSVCR90.dll
+ 0002:000001d4       __imp___CIatan             100161d4     MSVCRT:MSVCR90.dll
+ 0002:000001d8       __imp___CIacos             100161d8     MSVCRT:MSVCR90.dll
+ 0002:000001dc       __imp___CIasin             100161dc     MSVCRT:MSVCR90.dll
+ 0002:000001e0       __imp___CItanh             100161e0     MSVCRT:MSVCR90.dll
+ 0002:000001e4       __imp___CItan              100161e4     MSVCRT:MSVCR90.dll
+ 0002:000001e8       __imp___CIcosh             100161e8     MSVCRT:MSVCR90.dll
+ 0002:000001ec       __imp___CIcos              100161ec     MSVCRT:MSVCR90.dll
+ 0002:000001f0       __imp___CIsinh             100161f0     MSVCRT:MSVCR90.dll
+ 0002:000001f4       __imp___CIsin              100161f4     MSVCRT:MSVCR90.dll
+ 0002:000001f8       \177MSVCR90_NULL_THUNK_DATA 100161f8     MSVCRT:MSVCR90.dll
+ 0002:000001fc       ___xc_a                    100161fc     MSVCRT:cinitexe.obj
+ 0002:00000200       ___xc_z                    10016200     MSVCRT:cinitexe.obj
+ 0002:00000204       ___xi_a                    10016204     MSVCRT:cinitexe.obj
+ 0002:00000210       ___xi_z                    10016210     MSVCRT:cinitexe.obj
+ 0002:00000218       __pRawDllMain              10016218     MSVCRT:crtdll.obj
+ 0002:00000218       __pDefaultRawDllMain       10016218     MSVCRT:crtdll.obj
+ 0002:00000234       _luaT_typenames_           10016234     ltm.obj
+ 0002:00000438       _luaP_opnames              10016438     lopcodes.obj
+ 0002:000004dc       _luaP_opmodes              100164dc     lopcodes.obj
+ 0002:00000508       _luaO_nilobject_           10016508     lobject.obj
+ 0002:000009a0       _luai_ctype_               100169a0     lctype.obj
+ 0002:00000c60       _lua_ident                 10016c60     lapi.obj
+ 0002:00000cf0       ??_C@_0CI@EHMGDOMO@C?5API?5?9?5attempt?5to?5push?5a?5signal@ 10016cf0     lapi.obj
+ 0002:00000d18       ??_C@_01OGPIMHDM@?$DP?$AA@ 10016d18     lapi.obj
+ 0002:00000d1a       ??_C@_00CNPNBAHC@?$AA@     10016d1a     lapi.obj
+ 0002:00000d1c       ??_C@_01LFCBOECM@?4?$AA@   10016d1c     lauxlib.obj
+ 0002:00000d20       ??_C@_01INIBCBCB@f?$AA@    10016d20     lauxlib.obj
+ 0002:00000d24       ??_C@_0O@EHCGJIOP@function?5?8?$CFs?8?$AA@ 10016d24     lauxlib.obj
+ 0002:00000d34       ??_C@_0L@HEICADBI@main?5chunk?$AA@ 10016d34     lauxlib.obj
+ 0002:00000d40       ??_C@_0BB@OJHNELPG@function?5?$DM?$CFs?3?$CFd?$DO?$AA@ 10016d40     lauxlib.obj
+ 0002:00000d54       ??_C@_03OFAPEBGM@?$CFs?6?$AA@ 10016d54     lauxlib.obj
+ 0002:00000d58       ??_C@_0BB@CJHIJJAH@stack?5traceback?3?$AA@ 10016d58     lauxlib.obj
+ 0002:00000d6c       ??_C@_05JLIPKFIA@?6?7?4?4?4?$AA@ 10016d6c     lauxlib.obj
+ 0002:00000d74       ??_C@_04DOIEKPJK@Slnt?$AA@ 10016d74     lauxlib.obj
+ 0002:00000d7c       ??_C@_05GEEEIDH@?6?7?$CFs?3?$AA@ 10016d7c     lauxlib.obj
+ 0002:00000d84       ??_C@_03CDCAMCGK@?$CFd?3?$AA@ 10016d84     lauxlib.obj
+ 0002:00000d88       ??_C@_04GJPPFNOH@?5in?5?$AA@ 10016d88     lauxlib.obj
+ 0002:00000d90       ??_C@_0BF@HEPAINJG@?6?7?$CI?4?4?4tail?5calls?4?4?4?$CJ?$AA@ 10016d90     lauxlib.obj
+ 0002:00000da8       ??_C@_0BG@CHJGEHJL@bad?5argument?5?$CD?$CFd?5?$CI?$CFs?$CJ?$AA@ 10016da8     lauxlib.obj
+ 0002:00000dc0       ??_C@_01EFFIKLCJ@n?$AA@    10016dc0     lauxlib.obj
+ 0002:00000dc4       ??_C@_06GABBCIBA@method?$AA@ 10016dc4     lauxlib.obj
+ 0002:00000dcc       ??_C@_0BO@LENGMNDF@calling?5?8?$CFs?8?5on?5bad?5self?5?$CI?$CFs?$CJ?$AA@ 10016dcc     lauxlib.obj
+ 0002:00000dec       ??_C@_0BO@GOMKJOAH@bad?5argument?5?$CD?$CFd?5to?5?8?$CFs?8?5?$CI?$CFs?$CJ?$AA@ 10016dec     lauxlib.obj
+ 0002:00000e0c       ??_C@_0BE@LDJANOJE@?$CFs?5expected?0?5got?5?$CFs?$AA@ 10016e0c     lauxlib.obj
+ 0002:00000e20       ??_C@_02KHAMJCKP@Sl?$AA@   10016e20     lauxlib.obj
+ 0002:00000e24       ??_C@_07FCDHCGBN@?$CFs?3?$CFd?3?5?$AA@ 10016e24     lauxlib.obj
+ 0002:00000e2c       ??_C@_06DJHOIPC@?$CFs?3?5?$CFs?$AA@ 10016e2c     lauxlib.obj
+ 0002:00000e34       ??_C@_04MKNBDEPB@exit?$AA@ 10016e34     lauxlib.obj
+ 0002:00000e3c       ??_C@_0BE@HBADPNMP@invalid?5option?5?8?$CFs?8?$AA@ 10016e3c     lauxlib.obj
+ 0002:00000e50       ??_C@_0BE@CBBDHBEP@stack?5overflow?5?$CI?$CFs?$CJ?$AA@ 10016e50     lauxlib.obj
+ 0002:00000e64       ??_C@_0P@EODJGPIM@stack?5overflow?$AA@ 10016e64     lauxlib.obj
+ 0002:00000e74       ??_C@_0P@PDHEKNMA@value?5expected?$AA@ 10016e74     lauxlib.obj
+ 0002:00000e84       ??_C@_0BB@IIFCFAGL@buffer?5too?5large?$AA@ 10016e84     lauxlib.obj
+ 0002:00000e98       ??_C@_0BB@BJDGDOHH@cannot?5?$CFs?5?$CFs?3?5?$CFs?$AA@ 10016e98     lauxlib.obj
+ 0002:00000eac       ??_C@_03PKPBNCAL@?o?$LL?$LP?$AA@ 10016eac     lauxlib.obj
+ 0002:00000eb0       ??_C@_06CCPPALKB@?$DNstdin?$AA@ 10016eb0     lauxlib.obj
+ 0002:00000eb8       ??_C@_03HPDLNGOA@?$EA?$CFs?$AA@ 10016eb8     lauxlib.obj
+ 0002:00000ebc       ??_C@_01KDCPPGHE@r?$AA@    10016ebc     lauxlib.obj
+ 0002:00000ec0       ??_C@_04PMOCAHAA@open?$AA@ 10016ec0     lauxlib.obj
+ 0002:00000ec8       ??_C@_02JDPG@rb?$AA@       10016ec8     lauxlib.obj
+ 0002:00000ecc       ??_C@_06IEGCHAII@reopen?$AA@ 10016ecc     lauxlib.obj
+ 0002:00000ed4       ??_C@_04POLDLDMI@read?$AA@ 10016ed4     lauxlib.obj
+ 0002:00000edc       ??_C@_0BO@HJHNJKKN@object?5length?5is?5not?5a?5number?$AA@ 10016edc     lauxlib.obj
+ 0002:00000efc       ??_C@_0L@HDFPAPPH@__tostring?$AA@ 10016efc     lauxlib.obj
+ 0002:00000f08       ??_C@_04LOAJBDKD@true?$AA@ 10016f08     lauxlib.obj
+ 0002:00000f10       ??_C@_05LAPONLG@false?$AA@ 10016f10     lauxlib.obj
+ 0002:00000f18       ??_C@_03ILAMHENH@nil?$AA@  10016f18     lauxlib.obj
+ 0002:00000f1c       ??_C@_06CILKLLDB@?$CFs?3?5?$CFp?$AA@ 10016f1c     lauxlib.obj
+ 0002:00000f24       ??_C@_0BC@CDGHCIOF@too?5many?5upvalues?$AA@ 10016f24     lauxlib.obj
+ 0002:00000f38       ??_C@_07PINPBNPB@_LOADED?$AA@ 10016f38     lauxlib.obj
+ 0002:00000f40       ??_C@_0DC@EFOPIIKP@PANIC?3?5unprotected?5error?5in?5call@ 10016f40     lauxlib.obj
+ 0002:00000f74       ??_C@_0BK@DLNLJHN@multiple?5Lua?5VMs?5detected?$AA@ 10016f74     lauxlib.obj
+ 0002:00000f90       ??_C@_0DG@EDLDPMHE@version?5mismatch?3?5app?4?5needs?5?$CFf?0@ 10016f90     lauxlib.obj
+ 0002:00000fc8       ??_C@_0EE@HDFFKJFL@bad?5conversion?5number?9?$DOint?$DL?5must@ 10016fc8     lauxlib.obj
+ 0002:0000100c       ??_C@_06GDLLDIBI@xpcall?$AA@ 1001700c     lbaselib.obj
+ 0002:00001014       ??_C@_04GPMDFGEJ@type?$AA@ 10017014     lbaselib.obj
+ 0002:0000101c       ??_C@_08JOIMPOJO@tonumber?$AA@ 1001701c     lbaselib.obj
+ 0002:00001028       ??_C@_0N@MCAAIDEK@setmetatable?$AA@ 10017028     lbaselib.obj
+ 0002:00001038       ??_C@_06LGNCCACI@select?$AA@ 10017038     lbaselib.obj
+ 0002:00001040       ??_C@_06ONPLLLOI@rawset?$AA@ 10017040     lbaselib.obj
+ 0002:00001048       ??_C@_06DCIAHLCA@rawget?$AA@ 10017048     lbaselib.obj
+ 0002:00001050       ??_C@_06FFKMAGPK@rawlen?$AA@ 10017050     lbaselib.obj
+ 0002:00001058       ??_C@_08LCBKMMAG@rawequal?$AA@ 10017058     lbaselib.obj
+ 0002:00001064       ??_C@_05IJDJACGD@print?$AA@ 10017064     lbaselib.obj
+ 0002:0000106c       ??_C@_05JAJCNIIJ@pcall?$AA@ 1001706c     lbaselib.obj
+ 0002:00001074       ??_C@_05PEAECDOC@pairs?$AA@ 10017074     lbaselib.obj
+ 0002:0000107c       ??_C@_04CJGEDOF@next?$AA@  1001707c     lbaselib.obj
+ 0002:00001084       ??_C@_04EONOHKEP@load?$AA@ 10017084     lbaselib.obj
+ 0002:0000108c       ??_C@_08BNNFLGCJ@loadfile?$AA@ 1001708c     lbaselib.obj
+ 0002:00001098       ??_C@_06MGIEFEAJ@ipairs?$AA@ 10017098     lbaselib.obj
+ 0002:000010a0       ??_C@_0N@LGLOEPAG@getmetatable?$AA@ 100170a0     lbaselib.obj
+ 0002:000010b0       ??_C@_05KKCIMGE@error?$AA@ 100170b0     lbaselib.obj
+ 0002:000010b8       ??_C@_06ONNDGCDK@dofile?$AA@ 100170b8     lbaselib.obj
+ 0002:000010c0       ??_C@_0P@CKFEAJJE@collectgarbage?$AA@ 100170c0     lbaselib.obj
+ 0002:000010d0       ??_C@_06GMEIIFFN@assert?$AA@ 100170d0     lbaselib.obj
+ 0002:000010d8       ??_C@_0M@LPKHOAFP@incremental?$AA@ 100170d8     lbaselib.obj
+ 0002:000010e4       ??_C@_0N@LDJIAIKF@generational?$AA@ 100170e4     lbaselib.obj
+ 0002:000010f4       ??_C@_09JCKLCKIH@isrunning?$AA@ 100170f4     lbaselib.obj
+ 0002:00001100       ??_C@_0M@KHHDMIJG@setmajorinc?$AA@ 10017100     lbaselib.obj
+ 0002:0000110c       ??_C@_0L@KABEJKKP@setstepmul?$AA@ 1001710c     lbaselib.obj
+ 0002:00001118       ??_C@_08ONFIAENP@setpause?$AA@ 10017118     lbaselib.obj
+ 0002:00001124       ??_C@_04CNBNFAL@step?$AA@  10017124     lbaselib.obj
+ 0002:0000112c       ??_C@_05IOMEMJEC@count?$AA@ 1001712c     lbaselib.obj
+ 0002:00001134       ??_C@_07JHIJCABF@collect?$AA@ 10017134     lbaselib.obj
+ 0002:0000113c       ??_C@_07LDHOHMPD@restart?$AA@ 1001713c     lbaselib.obj
+ 0002:00001144       ??_C@_04PEGFANN@stop?$AA@  10017144     lbaselib.obj
+ 0002:0000114c       ??_C@_08FNIIFOJC@tostring?$AA@ 1001714c     lbaselib.obj
+ 0002:00001158       ??_C@_0CL@KMHHCBJA@?8tostring?8?5must?5return?5a?5string?5@ 10017158     lbaselib.obj
+ 0002:00001184       ??_C@_01GPOEFGEJ@?7?$AA@   10017184     lbaselib.obj
+ 0002:00001188       ??_C@_01EEMJAFIK@?6?$AA@   10017188     lbaselib.obj
+ 0002:0000118c       ??_C@_0BC@GGLHLOMM@base?5out?5of?5range?$AA@ 1001718c     lbaselib.obj
+ 0002:000011a0       ??_C@_06IOBDPLFO@?5?$AM?6?$AN?7?$AL?$AA@ 100171a0     lbaselib.obj
+ 0002:000011a8       ??_C@_0M@OKDMMFBL@__metatable?$AA@ 100171a8     lbaselib.obj
+ 0002:000011b4       ??_C@_0BG@HDIIKINN@nil?5or?5table?5expected?$AA@ 100171b4     lbaselib.obj
+ 0002:000011cc       ??_C@_0CE@LJKICCEL@cannot?5change?5a?5protected?5metata@ 100171cc     lbaselib.obj
+ 0002:000011f0       ??_C@_0BJ@DDKMCJJM@table?5or?5string?5expected?$AA@ 100171f0     lbaselib.obj
+ 0002:0000120c       ??_C@_07HJHPCFBM@__pairs?$AA@ 1001720c     lbaselib.obj
+ 0002:00001214       ??_C@_08JMAMPABE@__ipairs?$AA@ 10017214     lbaselib.obj
+ 0002:00001220       ??_C@_0BK@NJPFPDBN@too?5many?5nested?5functions?$AA@ 10017220     lbaselib.obj
+ 0002:0000123c       ??_C@_0CF@IPNALDCD@reader?5function?5must?5return?5a?5st@ 1001723c     lbaselib.obj
+ 0002:00001264       ??_C@_02LOIFFB@bt?$AA@     10017264     lbaselib.obj
+ 0002:00001268       ??_C@_07JEBBFCAN@?$DN?$CIload?$CJ?$AA@ 10017268     lbaselib.obj
+ 0002:00001270       ??_C@_0BC@ONMFJPBH@assertion?5failed?$CB?$AA@ 10017270     lbaselib.obj
+ 0002:00001284       ??_C@_02DKCKIIND@?$CFs?$AA@ 10017284     lbaselib.obj
+ 0002:00001288       ??_C@_0BD@ILOGJALA@index?5out?5of?5range?$AA@ 10017288     lbaselib.obj
+ 0002:0000129c       ??_C@_02NIGGJGKC@_G?$AA@   1001729c     lbaselib.obj
+ 0002:000012a0       ??_C@_07EAIAMMEL@Lua?55?42?$AA@ 100172a0     lbaselib.obj
+ 0002:000012a8       ??_C@_08PMLCGGEP@_VERSION?$AA@ 100172a8     lbaselib.obj
+ 0002:000012b4       ??_C@_06HMLHBBIJ@rshift?$AA@ 100172b4     lbitlib.obj
+ 0002:000012bc       ??_C@_07DCEHEDPB@rrotate?$AA@ 100172bc     lbitlib.obj
+ 0002:000012c4       ??_C@_07CLEHDIEJ@replace?$AA@ 100172c4     lbitlib.obj
+ 0002:000012cc       ??_C@_06ELFGPGBK@lshift?$AA@ 100172cc     lbitlib.obj
+ 0002:000012d4       ??_C@_07FLHGGAOI@lrotate?$AA@ 100172d4     lbitlib.obj
+ 0002:000012dc       ??_C@_07EMKILFJA@extract?$AA@ 100172dc     lbitlib.obj
+ 0002:000012e4       ??_C@_05BGEPNLMI@btest?$AA@ 100172e4     lbitlib.obj
+ 0002:000012ec       ??_C@_04CKCGDDNF@bxor?$AA@ 100172ec     lbitlib.obj
+ 0002:000012f4       ??_C@_03BBBGIIAC@bor?$AA@  100172f4     lbitlib.obj
+ 0002:000012f8       ??_C@_04JAOJMBA@bnot?$AA@  100172f8     lbitlib.obj
+ 0002:00001300       ??_C@_04BKGNPECA@band?$AA@ 10017300     lbitlib.obj
+ 0002:00001308       ??_C@_07JILILBLL@arshift?$AA@ 10017308     lbitlib.obj
+ 0002:00001310       ??_C@_0BJ@DJLBNAFE@field?5cannot?5be?5negative?$AA@ 10017310     lbitlib.obj
+ 0002:0000132c       ??_C@_0BH@OOEDMGHP@width?5must?5be?5positive?$AA@ 1001732c     lbitlib.obj
+ 0002:00001344       ??_C@_0CD@GMCNEKB@trying?5to?5access?5non?9existent?5bi@ 10017344     lbitlib.obj
+ 0002:00001368       ??_C@_0BL@BDOLDOFI@control?5structure?5too?5long?$AA@ 10017368     lcode.obj
+ 0002:00001384       ??_C@_07BEDGJMGI@opcodes?$AA@ 10017384     lcode.obj
+ 0002:0000138c       ??_C@_0CD@HGHHKJGL@function?5or?5expression?5too?5compl@ 1001738c     lcode.obj
+ 0002:000013b0       ??_C@_09FGMGFBD@constants?$AA@ 100173b0     lcode.obj
+ 0002:000013bc       ??_C@_0BF@ODGJFGDP@constructor?5too?5long?$AA@ 100173bc     lcode.obj
+ 0002:000013d4       ??_C@_05LKJGIMLP@yield?$AA@ 100173d4     lcorolib.obj
+ 0002:000013dc       ??_C@_04NFDDIEML@wrap?$AA@ 100173dc     lcorolib.obj
+ 0002:000013e4       ??_C@_06DJIHEMFI@status?$AA@ 100173e4     lcorolib.obj
+ 0002:000013ec       ??_C@_06PLELHCEK@resume?$AA@ 100173ec     lcorolib.obj
+ 0002:000013f4       ??_C@_06HBNONAG@create?$AA@ 100173f4     lcorolib.obj
+ 0002:000013fc       ??_C@_0BN@CLPLGDGN@too?5many?5arguments?5to?5resume?$AA@ 100173fc     lcorolib.obj
+ 0002:0000141c       ??_C@_0BN@JJDDBCCB@cannot?5resume?5dead?5coroutine?$AA@ 1001741c     lcorolib.obj
+ 0002:0000143c       ??_C@_0BL@OALEJBKN@too?5many?5results?5to?5resume?$AA@ 1001743c     lcorolib.obj
+ 0002:00001458       ??_C@_0BD@LDCLGBHF@coroutine?5expected?$AA@ 10017458     lcorolib.obj
+ 0002:0000146c       ??_C@_07PANPENDC@running?$AA@ 1001746c     lcorolib.obj
+ 0002:00001474       ??_C@_09PAHKPJCJ@suspended?$AA@ 10017474     lcorolib.obj
+ 0002:00001480       ??_C@_06IKLLLDHL@normal?$AA@ 10017480     lcorolib.obj
+ 0002:00001488       ??_C@_04BBBDNBOK@dead?$AA@ 10017488     lcorolib.obj
+ 0002:00001490       ??_C@_09GPFEECNC@traceback?$AA@ 10017490     ldblib.obj
+ 0002:0000149c       ??_C@_0L@CDIIKFBA@setupvalue?$AA@ 1001749c     ldblib.obj
+ 0002:000014a8       ??_C@_08JNGOLMEK@setlocal?$AA@ 100174a8     ldblib.obj
+ 0002:000014b4       ??_C@_07POLKHPNI@sethook?$AA@ 100174b4     ldblib.obj
+ 0002:000014bc       ??_C@_0N@HBGEIAIM@setuservalue?$AA@ 100174bc     ldblib.obj
+ 0002:000014cc       ??_C@_09LPCDDMGF@upvalueid?$AA@ 100174cc     ldblib.obj
+ 0002:000014d8       ??_C@_0M@BLDMBHBB@upvaluejoin?$AA@ 100174d8     ldblib.obj
+ 0002:000014e4       ??_C@_0L@DNKHBCFJ@getupvalue?$AA@ 100174e4     ldblib.obj
+ 0002:000014f0       ??_C@_0M@NCNCBJKP@getregistry?$AA@ 100174f0     ldblib.obj
+ 0002:000014fc       ??_C@_08GMECKPDH@getlocal?$AA@ 100174fc     ldblib.obj
+ 0002:00001508       ??_C@_07OICKPAFH@getinfo?$AA@ 10017508     ldblib.obj
+ 0002:00001510       ??_C@_07GELEAAJ@gethook?$AA@ 10017510     ldblib.obj
+ 0002:00001518       ??_C@_0N@FNKEMMA@getuservalue?$AA@ 10017518     ldblib.obj
+ 0002:00001528       ??_C@_05GFCDIDHO@debug?$AA@ 10017528     ldblib.obj
+ 0002:00001530       ??_C@_09PJFMDEKP@tail?5call?$AA@ 10017530     ldblib.obj
+ 0002:0000153c       ??_C@_04HJPCFDOP@line?$AA@ 1001753c     ldblib.obj
+ 0002:00001544       ??_C@_06LNOFJDNM@return?$AA@ 10017544     ldblib.obj
+ 0002:0000154c       ??_C@_04OMFAIDPG@call?$AA@ 1001754c     ldblib.obj
+ 0002:00001554       ??_C@_0CL@PMOPKOAM@full?5userdata?5expected?0?5got?5ligh@ 10017554     ldblib.obj
+ 0002:00001580       ??_C@_06LMJLCCA@flnStu?$AA@ 10017580     ldblib.obj
+ 0002:00001588       ??_C@_03PENLABEP@?$DO?$CFs?$AA@ 10017588     ldblib.obj
+ 0002:0000158c       ??_C@_0BL@NMONLLHA@function?5or?5level?5expected?$AA@ 1001758c     ldblib.obj
+ 0002:000015a8       ??_C@_0P@PJFAGLMH@invalid?5option?$AA@ 100175a8     ldblib.obj
+ 0002:000015b8       ??_C@_06OEKOLKIL@source?$AA@ 100175b8     ldblib.obj
+ 0002:000015c0       ??_C@_09NOFDGFFO@short_src?$AA@ 100175c0     ldblib.obj
+ 0002:000015cc       ??_C@_0M@IOFFDKM@linedefined?$AA@ 100175cc     ldblib.obj
+ 0002:000015d8       ??_C@_0BA@BGGOJOFO@lastlinedefined?$AA@ 100175d8     ldblib.obj
+ 0002:000015e8       ??_C@_04IOPLPGDE@what?$AA@ 100175e8     ldblib.obj
+ 0002:000015f0       ??_C@_0M@OLGEEKJC@currentline?$AA@ 100175f0     ldblib.obj
+ 0002:000015fc       ??_C@_04BDNNNDAF@nups?$AA@ 100175fc     ldblib.obj
+ 0002:00001604       ??_C@_07DEOJMPEE@nparams?$AA@ 10017604     ldblib.obj
+ 0002:0000160c       ??_C@_08PKLIBBKE@isvararg?$AA@ 1001760c     ldblib.obj
+ 0002:00001618       ??_C@_04MEMAJGDJ@name?$AA@ 10017618     ldblib.obj
+ 0002:00001620       ??_C@_08JEGIFMFI@namewhat?$AA@ 10017620     ldblib.obj
+ 0002:0000162c       ??_C@_0L@KHAEKHMK@istailcall?$AA@ 1001762c     ldblib.obj
+ 0002:00001638       ??_C@_0M@DINLHJFF@activelines?$AA@ 10017638     ldblib.obj
+ 0002:00001644       ??_C@_04HPNHAEOP@func?$AA@ 10017644     ldblib.obj
+ 0002:0000164c       ??_C@_0BD@EFMIJNPC@level?5out?5of?5range?$AA@ 1001764c     ldblib.obj
+ 0002:00001660       ??_C@_02HMADGDME@?$DOu?$AA@ 10017660     ldblib.obj
+ 0002:00001664       ??_C@_0BG@MMNKKMGE@invalid?5upvalue?5index?$AA@ 10017664     ldblib.obj
+ 0002:0000167c       ??_C@_0BG@EHJAKGKG@Lua?5function?5expected?$AA@ 1001767c     ldblib.obj
+ 0002:00001694       ??_C@_05IKFLIBPM@_HKEY?$AA@ 10017694     ldblib.obj
+ 0002:0000169c       ??_C@_01DICPFPGM@k?$AA@    1001769c     ldblib.obj
+ 0002:000016a0       ??_C@_06BPGFKLEK@__mode?$AA@ 100176a0     ldblib.obj
+ 0002:000016a8       ??_C@_0O@POGBCBNN@external?5hook?$AA@ 100176a8     ldblib.obj
+ 0002:000016b8       ??_C@_0M@FBGICICO@lua_debug?$DO?5?$AA@ 100176b8     ldblib.obj
+ 0002:000016c4       ??_C@_05KJNBGLAC@cont?6?$AA@ 100176c4     ldblib.obj
+ 0002:000016cc       ??_C@_0BB@BLKFCGLG@?$DN?$CIdebug?5command?$CJ?$AA@ 100176cc     ldblib.obj
+ 0002:000016e0       ??_C@_09DKIONLLI@?$CI?$CKvararg?$CJ?$AA@ 100176e0     ldebug.obj
+ 0002:000016ec       ??_C@_0N@NCKPGBEC@?$CI?$CKtemporary?$CJ?$AA@ 100176ec     ldebug.obj
+ 0002:000016fc       ??_C@_04BKJOMPG@?$DN?$FLC?$FN?$AA@ 100176fc     ldebug.obj
+ 0002:00001704       ??_C@_01GFHCPBMG@C?$AA@    10017704     ldebug.obj
+ 0002:00001708       ??_C@_02HENDHKBC@?$DN?$DP?$AA@ 10017708     ldebug.obj
+ 0002:0000170c       ??_C@_04GHJNJNPO@main?$AA@ 1001770c     ldebug.obj
+ 0002:00001714       ??_C@_03CBKFDHDL@Lua?$AA@  10017714     ldebug.obj
+ 0002:00001718       ??_C@_05IDKHKMLA@local?$AA@ 10017718     ldebug.obj
+ 0002:00001720       ??_C@_04LJLBKCOP@_ENV?$AA@ 10017720     ldebug.obj
+ 0002:00001728       ??_C@_06FJKEMHGD@global?$AA@ 10017728     ldebug.obj
+ 0002:00001730       ??_C@_05EIBGDMPB@field?$AA@ 10017730     ldebug.obj
+ 0002:00001738       ??_C@_07NAGMKCIK@upvalue?$AA@ 10017738     ldebug.obj
+ 0002:00001740       ??_C@_08KFDOCAEB@constant?$AA@ 10017740     ldebug.obj
+ 0002:0000174c       ??_C@_0N@LEHLDOCH@for?5iterator?$AA@ 1001774c     ldebug.obj
+ 0002:0000175c       ??_C@_0L@ILHKGAHF@metamethod?$AA@ 1001775c     ldebug.obj
+ 0002:00001768       ??_C@_0CD@HAGFMPIP@attempt?5to?5?$CFs?5?$CFs?5?8?$CFs?8?5?$CIa?5?$CFs?5valu@ 10017768     ldebug.obj
+ 0002:0000178c       ??_C@_0BJ@HGCMIDJD@attempt?5to?5?$CFs?5a?5?$CFs?5value?$AA@ 1001778c     ldebug.obj
+ 0002:000017a8       ??_C@_0M@LPKAOE@concatenate?$AA@ 100177a8     ldebug.obj
+ 0002:000017b4       ??_C@_0BG@IOLALLOM@perform?5arithmetic?5on?$AA@ 100177b4     ldebug.obj
+ 0002:000017cc       ??_C@_0CB@DEJMKNMB@attempt?5to?5compare?5two?5?$CFs?5values@ 100177cc     ldebug.obj
+ 0002:000017f0       ??_C@_0BO@DNBGDDFP@attempt?5to?5compare?5?$CFs?5with?5?$CFs?$AA@ 100177f0     ldebug.obj
+ 0002:00001810       ??_C@_09BHPFBFOI@?$CFs?3?$CFd?3?5?$CFs?$AA@ 10017810     ldebug.obj
+ 0002:0000181c       ??_C@_0BI@KGOCJOGJ@error?5in?5error?5handling?$AA@ 1001781c     ldo.obj
+ 0002:00001834       ??_C@_0BB@EJOGNINL@C?5stack?5overflow?$AA@ 10017834     ldo.obj
+ 0002:00001848       ??_C@_0CG@NAAHDPPN@cannot?5resume?5non?9suspended?5coro@ 10017848     ldo.obj
+ 0002:00001870       ??_C@_0CK@PNAEIJLG@attempt?5to?5yield?5across?5a?5C?9call@ 10017870     ldo.obj
+ 0002:0000189c       ??_C@_0CK@CHKMHBBM@attempt?5to?5yield?5from?5outside?5a?5@ 1001789c     ldo.obj
+ 0002:000018c8       ??_C@_0CK@CHOBLPGK@attempt?5to?5load?5a?5?$CFs?5chunk?5?$CImode@ 100178c8     ldo.obj
+ 0002:000018f4       ??_C@_06FNFBAEBE@binary?$AA@ 100178f4     ldo.obj
+ 0002:000018fc       ??_C@_04CIMGMMMG@text?$AA@ 100178fc     ldo.obj
+ 0002:00001904       ??_C@_0L@EDOLMPAK@no?5message?$AA@ 10017904     lgc.obj
+ 0002:00001910       ??_C@_0BO@HIAKJHOM@error?5in?5__gc?5metamethod?5?$CI?$CFs?$CJ?$AA@ 10017910     lgc.obj
+ 0002:00001930       ??_C@_04CFDJAKFL@math?$AA@ 10017930     linit.obj
+ 0002:00001938       ??_C@_05LACDNNEC@bit32?$AA@ 10017938     linit.obj
+ 0002:00001940       ??_C@_06ICGJLFIM@string?$AA@ 10017940     linit.obj
+ 0002:00001948       ??_C@_02EHCHIAMF@os?$AA@   10017948     linit.obj
+ 0002:0000194c       ??_C@_02KFNNKBCK@io?$AA@   1001794c     linit.obj
+ 0002:00001950       ??_C@_05LCLENNFI@table?$AA@ 10017950     linit.obj
+ 0002:00001958       ??_C@_09HNKENHFC@coroutine?$AA@ 10017958     linit.obj
+ 0002:00001964       ??_C@_07KNEGBPNO@package?$AA@ 10017964     linit.obj
+ 0002:0000196c       ??_C@_08LBNNGFKE@_PRELOAD?$AA@ 1001796c     linit.obj
+ 0002:00001978       ??_C@_04BDLIKKMN@__gc?$AA@ 10017978     liolib.obj
+ 0002:00001980       ??_C@_07HHBPNGAN@setvbuf?$AA@ 10017980     liolib.obj
+ 0002:00001988       ??_C@_04EDECCOGL@seek?$AA@ 10017988     liolib.obj
+ 0002:00001990       ??_C@_05NGFEDHGN@write?$AA@ 10017990     liolib.obj
+ 0002:00001998       ??_C@_07FKJPAINK@tmpfile?$AA@ 10017998     liolib.obj
+ 0002:000019a0       ??_C@_05IACAFMHP@popen?$AA@ 100179a0     liolib.obj
+ 0002:000019a8       ??_C@_06DKIGHACF@output?$AA@ 100179a8     liolib.obj
+ 0002:000019b0       ??_C@_05DENOCHIP@lines?$AA@ 100179b0     liolib.obj
+ 0002:000019b8       ??_C@_05DFJCHPDH@input?$AA@ 100179b8     liolib.obj
+ 0002:000019c0       ??_C@_05GLCAEPFP@flush?$AA@ 100179c0     liolib.obj
+ 0002:000019c8       ??_C@_05LBOHBHFK@close?$AA@ 100179c8     liolib.obj
+ 0002:000019d0       ??_C@_04PLMLMMEO@full?$AA@ 100179d0     liolib.obj
+ 0002:000019d8       ??_C@_02KAJCLHKP@no?$AA@   100179d8     liolib.obj
+ 0002:000019dc       ??_C@_03JBJLGPFL@end?$AA@  100179dc     liolib.obj
+ 0002:000019e0       ??_C@_03LIBLMJMB@cur?$AA@  100179e0     liolib.obj
+ 0002:000019e4       ??_C@_03KCHOJKKI@set?$AA@  100179e4     liolib.obj
+ 0002:000019e8       ??_C@_05KCHOJJD@FILE?$CK?$AA@ 100179e8     liolib.obj
+ 0002:000019f0       ??_C@_0M@IBKPHHKH@closed?5file?$AA@ 100179f0     liolib.obj
+ 0002:000019fc       ??_C@_04DAMGJPCA@file?$AA@ 100179fc     liolib.obj
+ 0002:00001a04       ??_C@_0O@PLFAPHPG@file?5?$CIclosed?$CJ?$AA@ 10017a04     liolib.obj
+ 0002:00001a14       ??_C@_09BPMAMLLD@file?5?$CI?$CFp?$CJ?$AA@ 10017a14     liolib.obj
+ 0002:00001a20       ??_C@_0BN@LPOOHAOM@attempt?5to?5use?5a?5closed?5file?$AA@ 10017a20     liolib.obj
+ 0002:00001a40       ??_C@_0L@MIKJDGID@_IO_output?$AA@ 10017a40     liolib.obj
+ 0002:00001a4c       ??_C@_0BL@JABDLMOO@cannot?5open?5file?5?8?$CFs?8?5?$CI?$CFs?$CJ?$AA@ 10017a4c     liolib.obj
+ 0002:00001a68       ??_C@_03DCNFGMMH@rwa?$AA@  10017a68     liolib.obj
+ 0002:00001a6c       ??_C@_0N@MICJCNHE@invalid?5mode?$AA@ 10017a6c     liolib.obj
+ 0002:00001a7c       ??_C@_0BL@JMNLNGCA@standard?5?$CFs?5file?5is?5closed?$AA@ 10017a7c     liolib.obj
+ 0002:00001a98       ??_C@_09HINEJHGE@_IO_input?$AA@ 10017a98     liolib.obj
+ 0002:00001aa4       ??_C@_01NOFIACDB@w?$AA@    10017aa4     liolib.obj
+ 0002:00001aa8       ??_C@_0BB@PJNOOLPA@too?5many?5options?$AA@ 10017aa8     liolib.obj
+ 0002:00001abc       ??_C@_03DLDNIBIK@?$CFlf?$AA@ 10017abc     liolib.obj
+ 0002:00001ac0       ??_C@_0BD@IOJAAODF@too?5many?5arguments?$AA@ 10017ac0     liolib.obj
+ 0002:00001ad4       ??_C@_0P@CENJCLHM@invalid?5format?$AA@ 10017ad4     liolib.obj
+ 0002:00001ae4       ??_C@_0BH@PBGIDLEF@file?5is?5already?5closed?$AA@ 10017ae4     liolib.obj
+ 0002:00001afc       ??_C@_05CGOEHEFE@?$CF?414g?$AA@ 10017afc     liolib.obj
+ 0002:00001b04       ??_C@_0BP@MGCOJADF@not?5an?5integer?5in?5proper?5range?$AA@ 10017b04     liolib.obj
+ 0002:00001b24       ??_C@_07NHABFFHN@__index?$AA@ 10017b24     liolib.obj
+ 0002:00001b2c       ??_C@_0BL@PEFGCPAG@cannot?5close?5standard?5file?$AA@ 10017b2c     liolib.obj
+ 0002:00001b48       ??_C@_05MHOFLBOO@stdin?$AA@ 10017b48     liolib.obj
+ 0002:00001b50       ??_C@_06DJDOIFHB@stdout?$AA@ 10017b50     liolib.obj
+ 0002:00001b58       ??_C@_06FJGNEBG@stderr?$AA@ 10017b58     liolib.obj
+ 0002:00001b60       ??_C@_08OOGHEFMC@?$DMstring?$DO?$AA@ 10017b60     llex.obj
+ 0002:00001b6c       ??_C@_06FNGJOCBI@?$DMname?$DO?$AA@ 10017b6c     llex.obj
+ 0002:00001b74       ??_C@_08OHBCANEJ@?$DMnumber?$DO?$AA@ 10017b74     llex.obj
+ 0002:00001b80       ??_C@_05CINCKAN@?$DMeof?$DO?$AA@ 10017b80     llex.obj
+ 0002:00001b88       ??_C@_02MOLJINC@?3?3?$AA@  10017b88     llex.obj
+ 0002:00001b8c       ??_C@_02DEDJCLAJ@?$HO?$DN?$AA@ 10017b8c     llex.obj
+ 0002:00001b90       ??_C@_02EHCHHCKH@?$DM?$DN?$AA@ 10017b90     llex.obj
+ 0002:00001b94       ??_C@_02EEKDKGMJ@?$DO?$DN?$AA@ 10017b94     llex.obj
+ 0002:00001b98       ??_C@_02EGOFBIJA@?$DN?$DN?$AA@ 10017b98     llex.obj
+ 0002:00001b9c       ??_C@_03KHICJKCI@?4?4?4?$AA@ 10017b9c     llex.obj
+ 0002:00001ba0       ??_C@_02DJGKEECL@?4?4?$AA@ 10017ba0     llex.obj
+ 0002:00001ba4       ??_C@_05OODBEKIG@while?$AA@ 10017ba4     llex.obj
+ 0002:00001bac       ??_C@_05FJMDOIMN@until?$AA@ 10017bac     llex.obj
+ 0002:00001bb4       ??_C@_04HOHPNOOD@then?$AA@ 10017bb4     llex.obj
+ 0002:00001bbc       ??_C@_06LGDBIFHB@repeat?$AA@ 10017bbc     llex.obj
+ 0002:00001bc4       ??_C@_02FODMLBIE@or?$AA@   10017bc4     llex.obj
+ 0002:00001bc8       ??_C@_03NJKJADM@not?$AA@   10017bc8     llex.obj
+ 0002:00001bcc       ??_C@_02LMMGJAGL@in?$AA@   10017bcc     llex.obj
+ 0002:00001bd0       ??_C@_02HEBPBKGD@if?$AA@   10017bd0     llex.obj
+ 0002:00001bd4       ??_C@_04MABHPDAO@goto?$AA@ 10017bd4     llex.obj
+ 0002:00001bdc       ??_C@_08HFFPPCHF@function?$AA@ 10017bdc     llex.obj
+ 0002:00001be8       ??_C@_03JOHEBPFF@for?$AA@  10017be8     llex.obj
+ 0002:00001bec       ??_C@_06CAACNEC@elseif?$AA@ 10017bec     llex.obj
+ 0002:00001bf4       ??_C@_04FHMCPBIP@else?$AA@ 10017bf4     llex.obj
+ 0002:00001bfc       ??_C@_02KNAFDCHJ@do?$AA@   10017bfc     llex.obj
+ 0002:00001c00       ??_C@_05ELPHFHOI@break?$AA@ 10017c00     llex.obj
+ 0002:00001c08       ??_C@_03BOPJPIAM@and?$AA@  10017c08     llex.obj
+ 0002:00001c0c       ??_C@_0BJ@JNKOFINI@lexical?5element?5too?5long?$AA@ 10017c0c     llex.obj
+ 0002:00001c28       ??_C@_04ENIEGDOG@?8?$CFc?8?$AA@ 10017c28     llex.obj
+ 0002:00001c30       ??_C@_08HJPIMBHL@char?$CI?$CFd?$CJ?$AA@ 10017c30     llex.obj
+ 0002:00001c3c       ??_C@_04FBKCMAJG@?8?$CFs?8?$AA@ 10017c3c     llex.obj
+ 0002:00001c44       ??_C@_0L@DKMPGOCF@?$CFs?5near?5?$CFs?$AA@ 10017c44     llex.obj
+ 0002:00001c50       ??_C@_0BJ@LAKGPFF@chunk?5has?5too?5many?5lines?$AA@ 10017c50     llex.obj
+ 0002:00001c6c       ??_C@_0BB@CFMNENCE@malformed?5number?$AA@ 10017c6c     llex.obj
+ 0002:00001c80       ??_C@_02GOGFPGCE@Ee?$AA@   10017c80     llex.obj
+ 0002:00001c84       ??_C@_02IFPHKKBL@Xx?$AA@   10017c84     llex.obj
+ 0002:00001c88       ??_C@_02EDDNHBKL@Pp?$AA@   10017c88     llex.obj
+ 0002:00001c8c       ??_C@_02BEIMNFAD@?$CL?9?$AA@ 10017c8c     llex.obj
+ 0002:00001c90       ??_C@_0BH@BBMFLJJP@unfinished?5long?5string?$AA@ 10017c90     llex.obj
+ 0002:00001ca8       ??_C@_0BI@ONEAKEIB@unfinished?5long?5comment?$AA@ 10017ca8     llex.obj
+ 0002:00001cc0       ??_C@_0BL@HIOFDBBP@hexadecimal?5digit?5expected?$AA@ 10017cc0     llex.obj
+ 0002:00001cdc       ??_C@_0BJ@FGOMBPHF@decimal?5escape?5too?5large?$AA@ 10017cdc     llex.obj
+ 0002:00001cf8       ??_C@_0BC@IBAFBKML@unfinished?5string?$AA@ 10017cf8     llex.obj
+ 0002:00001d0c       ??_C@_0BI@HGMIJEDD@invalid?5escape?5sequence?$AA@ 10017d0c     llex.obj
+ 0002:00001d24       ??_C@_0BO@DBNLNIBP@invalid?5long?5string?5delimiter?$AA@ 10017d24     llex.obj
+ 0002:00001d44       ??_C@_03IIINPABG@tan?$AA@  10017d44     lmathlib.obj
+ 0002:00001d48       ??_C@_04FJHINJAO@tanh?$AA@ 10017d48     lmathlib.obj
+ 0002:00001d50       ??_C@_04EIAKFFMI@sqrt?$AA@ 10017d50     lmathlib.obj
+ 0002:00001d58       ??_C@_03BLEJJJBH@sin?$AA@  10017d58     lmathlib.obj
+ 0002:00001d5c       ??_C@_04COOMCNPB@sinh?$AA@ 10017d5c     lmathlib.obj
+ 0002:00001d64       ??_C@_0L@PIIACENG@randomseed?$AA@ 10017d64     lmathlib.obj
+ 0002:00001d70       ??_C@_06NLFCANPD@random?$AA@ 10017d70     lmathlib.obj
+ 0002:00001d78       ??_C@_03FHAJEHEA@rad?$AA@  10017d78     lmathlib.obj
+ 0002:00001d7c       ??_C@_03JGHBODFD@pow?$AA@  10017d7c     lmathlib.obj
+ 0002:00001d80       ??_C@_04EHEDPDJG@modf?$AA@ 10017d80     lmathlib.obj
+ 0002:00001d88       ??_C@_03KLIPLJLL@min?$AA@  10017d88     lmathlib.obj
+ 0002:00001d8c       ??_C@_03LJAEFNNE@max?$AA@  10017d8c     lmathlib.obj
+ 0002:00001d90       ??_C@_03MGHMBJCF@log?$AA@  10017d90     lmathlib.obj
+ 0002:00001d94       ??_C@_05CEJMAHNP@ldexp?$AA@ 10017d94     lmathlib.obj
+ 0002:00001d9c       ??_C@_05GKKHEGJL@frexp?$AA@ 10017d9c     lmathlib.obj
+ 0002:00001da4       ??_C@_04KEPJIHGP@fmod?$AA@ 10017da4     lmathlib.obj
+ 0002:00001dac       ??_C@_05PBJFFIGL@floor?$AA@ 10017dac     lmathlib.obj
+ 0002:00001db4       ??_C@_03KHJOGHMM@exp?$AA@  10017db4     lmathlib.obj
+ 0002:00001db8       ??_C@_03OFPLEBM@deg?$AA@   10017db8     lmathlib.obj
+ 0002:00001dbc       ??_C@_03LALBNOCG@cos?$AA@  10017dbc     lmathlib.obj
+ 0002:00001dc0       ??_C@_04HPJJNFIM@cosh?$AA@ 10017dc0     lmathlib.obj
+ 0002:00001dc8       ??_C@_04GFPJNGEK@ceil?$AA@ 10017dc8     lmathlib.obj
+ 0002:00001dd0       ??_C@_04MLLJIGOK@atan?$AA@ 10017dd0     lmathlib.obj
+ 0002:00001dd8       ??_C@_05KNGEOGJB@atan2?$AA@ 10017dd8     lmathlib.obj
+ 0002:00001de0       ??_C@_04FIHNOPOL@asin?$AA@ 10017de0     lmathlib.obj
+ 0002:00001de8       ??_C@_04PDIFKINK@acos?$AA@ 10017de8     lmathlib.obj
+ 0002:00001df0       ??_C@_03BCGAIFPO@abs?$AA@  10017df0     lmathlib.obj
+ 0002:00001df4       ??_C@_0BC@JKHEKPDC@interval?5is?5empty?$AA@ 10017df4     lmathlib.obj
+ 0002:00001e08       ??_C@_0BK@KNAOOCNO@wrong?5number?5of?5arguments?$AA@ 10017e08     lmathlib.obj
+ 0002:00001e24       ??_C@_02OAHAJOFD@pi?$AA@   10017e24     lmathlib.obj
+ 0002:00001e28       ??_C@_04JJGMCGIH@huge?$AA@ 10017e28     lmathlib.obj
+ 0002:00001e30       ??_C@_0BK@JNOIBMBC@too?5many?5?$CFs?5?$CIlimit?5is?5?$CFd?$CJ?$AA@ 10017e30     lmem.obj
+ 0002:00001e4c       ??_C@_0CH@LBFPMMCP@memory?5allocation?5error?3?5block?5t@ 10017e4c     lmem.obj
+ 0002:00001e74       ??_C@_07FFLLPPLH@require?$AA@ 10017e74     loadlib.obj
+ 0002:00001e7c       ??_C@_0L@LLHGDMBK@searchpath?$AA@ 10017e7c     loadlib.obj
+ 0002:00001e88       ??_C@_07KOEABFCN@loadlib?$AA@ 10017e88     loadlib.obj
+ 0002:00001e90       ??_C@_0BN@GMPFCLAN@unable?5to?5get?5ModuleFileName?$AA@ 10017e90     loadlib.obj
+ 0002:00001eb0       ??_C@_01DCLJPIOD@?$CB?$AA@ 10017eb0     loadlib.obj
+ 0002:00001eb4       ??_C@_0BB@BLJKPILH@system?5error?5?$CFd?6?$AA@ 10017eb4     loadlib.obj
+ 0002:00001ec8       ??_C@_06KHFFDENL@_CLIBS?$AA@ 10017ec8     loadlib.obj
+ 0002:00001ed0       ??_C@_04HKFDNBLD@init?$AA@ 10017ed0     loadlib.obj
+ 0002:00001ed8       ??_C@_0P@NEBKIMDC@?6?7no?5file?5?8?$CFs?8?$AA@ 10017ed8     loadlib.obj
+ 0002:00001ee8       ??_C@_01KICIPPFI@?2?$AA@   10017ee8     loadlib.obj
+ 0002:00001eec       ??_C@_0BO@COFCKCAL@?8package?4?$CFs?8?5must?5be?5a?5string?$AA@ 10017eec     loadlib.obj
+ 0002:00001f0c       ??_C@_0CO@KHMIPLKM@error?5loading?5module?5?8?$CFs?8?5from?5f@ 10017f0c     loadlib.obj
+ 0002:00001f3c       ??_C@_04LNEJFJGI@path?$AA@ 10017f3c     loadlib.obj
+ 0002:00001f44       ??_C@_01IDAFKMJL@_?$AA@    10017f44     loadlib.obj
+ 0002:00001f48       ??_C@_0L@KHKMBFOE@luaopen_?$CFs?$AA@ 10017f48     loadlib.obj
+ 0002:00001f54       ??_C@_05EEMJHCCC@cpath?$AA@ 10017f54     loadlib.obj
+ 0002:00001f5c       ??_C@_0BO@KOILFIGK@?6?7no?5module?5?8?$CFs?8?5in?5file?5?8?$CFs?8?$AA@ 10017f5c     loadlib.obj
+ 0002:00001f7c       ??_C@_0CB@NPNABMBF@?6?7no?5field?5package?4preload?$FL?8?$CFs?8?$FN@ 10017f7c     loadlib.obj
+ 0002:00001fa0       ??_C@_09IPENMJM@searchers?$AA@ 10017fa0     loadlib.obj
+ 0002:00001fac       ??_C@_0CE@JEDHJEBL@?8package?4searchers?8?5must?5be?5a?5ta@ 10017fac     loadlib.obj
+ 0002:00001fd0       ??_C@_0BJ@HFHHABH@module?5?8?$CFs?8?5not?5found?3?$CFs?$AA@ 10017fd0     loadlib.obj
+ 0002:00001fec       ??_C@_09EFECHJCA@LUA_NOENV?$AA@ 10017fec     loadlib.obj
+ 0002:00001ff8       ??_C@_03MEOBNKEM@?$DL?$AB?$DL?$AA@ 10017ff8     loadlib.obj
+ 0002:00001ffc       ??_C@_02BEDCMDKE@?$DL?$DL?$AA@ 10017ffc     loadlib.obj
+ 0002:00002000       ??_C@_01KHDNNMEB@?$AB?$AA@ 10018000     loadlib.obj
+ 0002:00002004       ??_C@_0DK@GNMELNNE@?$CB?2lua?2?$DP?4lua?$DL?$CB?2lua?2?$DP?2init?4lua?$DL?$CB?2?$DP@ 10018004     loadlib.obj
+ 0002:00002040       ??_C@_08GLJMJBPN@LUA_PATH?$AA@ 10018040     loadlib.obj
+ 0002:0000204c       ??_C@_0N@HIGPAMAO@LUA_PATH_5_2?$AA@ 1001804c     loadlib.obj
+ 0002:0000205c       ??_C@_0BO@HLBGGLIA@?$CB?2?$DP?4dll?$DL?$CB?2loadall?4dll?$DL?4?2?$DP?4dll?$AA@ 1001805c     loadlib.obj
+ 0002:0000207c       ??_C@_09FBPOOEID@LUA_CPATH?$AA@ 1001807c     loadlib.obj
+ 0002:00002088       ??_C@_0O@DAHCKBIN@LUA_CPATH_5_2?$AA@ 10018088     loadlib.obj
+ 0002:00002098       ??_C@_0L@GKIMPOMK@?2?6?$DL?6?$DP?6?$CB?6?9?6?$AA@ 10018098     loadlib.obj
+ 0002:000020a4       ??_C@_06HEJKKHEK@config?$AA@ 100180a4     loadlib.obj
+ 0002:000020ac       ??_C@_06IILMCCFO@loaded?$AA@ 100180ac     loadlib.obj
+ 0002:000020b4       ??_C@_07GCEAJMEA@preload?$AA@ 100180b4     loadlib.obj
+ 0002:000020bc       ??_C@_02CMANKCEM@nN?$AA@   100180bc     lobject.obj
+ 0002:000020c0       ??_C@_02CIDOMIFJ@xX?$AA@   100180c0     lobject.obj
+ 0002:000020c4       ??_C@_06OJHGLDPL@?$CInull?$CJ?$AA@ 100180c4     lobject.obj
+ 0002:000020cc       ??_C@_02BBAHNLBA@?$CFp?$AA@ 100180cc     lobject.obj
+ 0002:000020d0       ??_C@_01FGNFDNOH@?$CF?$AA@ 100180d0     lobject.obj
+ 0002:000020d4       ??_C@_0CL@FANIKJON@invalid?5option?5?8?$CF?$CF?$CFc?8?5to?5?8lua_pu@ 100180d4     lobject.obj
+ 0002:00002100       ??_C@_09PHLFBDIK@?$FLstring?5?$CC?$AA@ 10018100     lobject.obj
+ 0002:0000210c       ??_C@_02DEGCJHHK@?$CC?$FN?$AA@ 1001810c     lobject.obj
+ 0002:00002110       ??_C@_08LNHEMIP@EXTRAARG?$AA@ 10018110     lopcodes.obj
+ 0002:0000211c       ??_C@_06FHOJKFCK@VARARG?$AA@ 1001811c     lopcodes.obj
+ 0002:00002124       ??_C@_07CBDMEJDJ@CLOSURE?$AA@ 10018124     lopcodes.obj
+ 0002:0000212c       ??_C@_07LGKGOMK@SETLIST?$AA@ 1001812c     lopcodes.obj
+ 0002:00002134       ??_C@_08LFLGPGKH@TFORLOOP?$AA@ 10018134     lopcodes.obj
+ 0002:00002140       ??_C@_08DDAIPFEB@TFORCALL?$AA@ 10018140     lopcodes.obj
+ 0002:0000214c       ??_C@_07BDNHFNAN@FORPREP?$AA@ 1001814c     lopcodes.obj
+ 0002:00002154       ??_C@_07BJCDCNBK@FORLOOP?$AA@ 10018154     lopcodes.obj
+ 0002:0000215c       ??_C@_06LJMOENAO@RETURN?$AA@ 1001815c     lopcodes.obj
+ 0002:00002164       ??_C@_08GDMBKKIJ@TAILCALL?$AA@ 10018164     lopcodes.obj
+ 0002:00002170       ??_C@_04CAGKGBIO@CALL?$AA@ 10018170     lopcodes.obj
+ 0002:00002178       ??_C@_07GLDFODBB@TESTSET?$AA@ 10018178     lopcodes.obj
+ 0002:00002180       ??_C@_04OIKJMBFP@TEST?$AA@ 10018180     lopcodes.obj
+ 0002:00002188       ??_C@_02PEDAOJAJ@LE?$AA@   10018188     lopcodes.obj
+ 0002:0000218c       ??_C@_02KHOJMKBJ@LT?$AA@   1001818c     lopcodes.obj
+ 0002:00002190       ??_C@_02NFEPAFND@EQ?$AA@   10018190     lopcodes.obj
+ 0002:00002194       ??_C@_03OIOLNLHN@JMP?$AA@  10018194     lopcodes.obj
+ 0002:00002198       ??_C@_06CIJDJJIA@CONCAT?$AA@ 10018198     lopcodes.obj
+ 0002:000021a0       ??_C@_03BHNCOKMG@LEN?$AA@  100181a0     lopcodes.obj
+ 0002:000021a4       ??_C@_03GBFNEA@NOT?$AA@    100181a4     lopcodes.obj
+ 0002:000021a8       ??_C@_03BNLLEOPB@UNM?$AA@  100181a8     lopcodes.obj
+ 0002:000021ac       ??_C@_03JLIKCOCP@POW?$AA@  100181ac     lopcodes.obj
+ 0002:000021b0       ??_C@_03FIBGOAPP@MOD?$AA@  100181b0     lopcodes.obj
+ 0002:000021b4       ??_C@_03FJGHKDBE@DIV?$AA@  100181b4     lopcodes.obj
+ 0002:000021b8       ??_C@_03IBHOEMFB@MUL?$AA@  100181b8     lopcodes.obj
+ 0002:000021bc       ??_C@_03KPDLEBHD@SUB?$AA@  100181bc     lopcodes.obj
+ 0002:000021c0       ??_C@_03BOJFLAKG@ADD?$AA@  100181c0     lopcodes.obj
+ 0002:000021c4       ??_C@_04DFAHIJNB@SELF?$AA@ 100181c4     lopcodes.obj
+ 0002:000021cc       ??_C@_08LPLGEMDO@NEWTABLE?$AA@ 100181cc     lopcodes.obj
+ 0002:000021d8       ??_C@_08NDNBPDIF@SETTABLE?$AA@ 100181d8     lopcodes.obj
+ 0002:000021e4       ??_C@_08EDGMHGMA@SETUPVAL?$AA@ 100181e4     lopcodes.obj
+ 0002:000021f0       ??_C@_08PHJDINGO@SETTABUP?$AA@ 100181f0     lopcodes.obj
+ 0002:000021fc       ??_C@_08CCPNOAPI@GETTABLE?$AA@ 100181fc     lopcodes.obj
+ 0002:00002208       ??_C@_08GLPJOBD@GETTABUP?$AA@ 10018208     lopcodes.obj
+ 0002:00002214       ??_C@_08LCEAGFLN@GETUPVAL?$AA@ 10018214     lopcodes.obj
+ 0002:00002220       ??_C@_07GHJHEMKM@LOADNIL?$AA@ 10018220     lopcodes.obj
+ 0002:00002228       ??_C@_08GBBGHEAC@LOADBOOL?$AA@ 10018228     lopcodes.obj
+ 0002:00002234       ??_C@_06GAHOIMNL@LOADKX?$AA@ 10018234     lopcodes.obj
+ 0002:0000223c       ??_C@_05KLLCNHFJ@LOADK?$AA@ 1001823c     lopcodes.obj
+ 0002:00002244       ??_C@_04LPPGDFDD@MOVE?$AA@ 10018244     lopcodes.obj
+ 0002:0000224c       ??_C@_07KOJJABMD@tmpname?$AA@ 1001824c     loslib.obj
+ 0002:00002254       ??_C@_09IOBOFJNA@setlocale?$AA@ 10018254     loslib.obj
+ 0002:00002260       ??_C@_06LMEAOBLB@rename?$AA@ 10018260     loslib.obj
+ 0002:00002268       ??_C@_06LEMKAMD@remove?$AA@ 10018268     loslib.obj
+ 0002:00002270       ??_C@_06EPDNLFGH@getenv?$AA@ 10018270     loslib.obj
+ 0002:00002278       ??_C@_07EMGJIMLB@execute?$AA@ 10018278     loslib.obj
+ 0002:00002280       ??_C@_08PDOPCMOG@difftime?$AA@ 10018280     loslib.obj
+ 0002:0000228c       ??_C@_04JNIHBGGH@date?$AA@ 1001828c     loslib.obj
+ 0002:00002294       ??_C@_05DDECJJKE@clock?$AA@ 10018294     loslib.obj
+ 0002:0000229c       ??_C@_04CLCEDBPF@time?$AA@ 1001829c     loslib.obj
+ 0002:000022a4       ??_C@_07MMLECJPG@numeric?$AA@ 100182a4     loslib.obj
+ 0002:000022ac       ??_C@_08BIOBDOAM@monetary?$AA@ 100182ac     loslib.obj
+ 0002:000022b8       ??_C@_05JGEDHNAD@ctype?$AA@ 100182b8     loslib.obj
+ 0002:000022c0       ??_C@_07FCFLCBKH@collate?$AA@ 100182c0     loslib.obj
+ 0002:000022c8       ??_C@_03NFKEKGGK@all?$AA@  100182c8     loslib.obj
+ 0002:000022cc       ??_C@_0BH@KBOBPDOO@aAbBcdHIjmMpSUwWxXyYz?$CF?$AA@ 100182cc     loslib.obj
+ 0002:000022e4       ??_C@_0CF@CFMGMNIN@unable?5to?5generate?5a?5unique?5file@ 100182e4     loslib.obj
+ 0002:0000230c       ??_C@_0CB@DJMEIEGF@field?5?8?$CFs?8?5missing?5in?5date?5table@ 1001830c     loslib.obj
+ 0002:00002330       ??_C@_0CE@MFIJMOHJ@invalid?5conversion?5specifier?5?8?$CF?$CF@ 10018330     loslib.obj
+ 0002:00002354       ??_C@_02HAOIJKIC@?$CFc?$AA@ 10018354     loslib.obj
+ 0002:00002358       ??_C@_02HODHFJCJ@?$CKt?$AA@ 10018358     loslib.obj
+ 0002:0000235c       ??_C@_03KHPNBODO@sec?$AA@  1001835c     loslib.obj
+ 0002:00002360       ??_C@_04LMOJGCPE@hour?$AA@ 10018360     loslib.obj
+ 0002:00002368       ??_C@_03NNBHCDBP@day?$AA@  10018368     loslib.obj
+ 0002:0000236c       ??_C@_05MEBAADFH@month?$AA@ 1001836c     loslib.obj
+ 0002:00002374       ??_C@_04JFPLDHAO@year?$AA@ 10018374     loslib.obj
+ 0002:0000237c       ??_C@_04HBIDDHMB@wday?$AA@ 1001837c     loslib.obj
+ 0002:00002384       ??_C@_04MOLDIJKA@yday?$AA@ 10018384     loslib.obj
+ 0002:0000238c       ??_C@_05HGBEJAHO@isdst?$AA@ 1001838c     loslib.obj
+ 0002:00002394       ??_C@_0M@IEHHDPGI@?$CFs?5expected?$AA@ 10018394     lparser.obj
+ 0002:000023a0       ??_C@_0O@FCKLILMC@main?5function?$AA@ 100183a0     lparser.obj
+ 0002:000023b0       ??_C@_0BE@EDMMCJEE@function?5at?5line?5?$CFd?$AA@ 100183b0     lparser.obj
+ 0002:000023c4       ??_C@_0CA@FBOMDEEF@too?5many?5?$CFs?5?$CIlimit?5is?5?$CFd?$CJ?5in?5?$CFs?$AA@ 100183c4     lparser.obj
+ 0002:000023e4       ??_C@_0CF@PKDGNAMA@?$CFs?5expected?5?$CIto?5close?5?$CFs?5at?5line@ 100183e4     lparser.obj
+ 0002:0000240c       ??_C@_0BA@EIDMAHJI@local?5variables?$AA@ 1001840c     lparser.obj
+ 0002:0000241c       ??_C@_08JKPCMKJ@upvalues?$AA@ 1001841c     lparser.obj
+ 0002:00002428       ??_C@_08CMAFAEJC@C?5levels?$AA@ 10018428     lparser.obj
+ 0002:00002434       ??_C@_0DI@LMKMCOIF@?$DMgoto?5?$CFs?$DO?5at?5line?5?$CFd?5jumps?5into?5@ 10018434     lparser.obj
+ 0002:0000246c       ??_C@_0N@OEGJPJFJ@labels?1gotos?$AA@ 1001846c     lparser.obj
+ 0002:0000247c       ??_C@_0CC@KOMACILM@?$DM?$CFs?$DO?5at?5line?5?$CFd?5not?5inside?5a?5loo@ 1001847c     lparser.obj
+ 0002:000024a0       ??_C@_0CM@OGINCFCB@no?5visible?5label?5?8?$CFs?8?5for?5?$DMgoto?$DO@ 100184a0     lparser.obj
+ 0002:000024cc       ??_C@_09CEAIPAHE@functions?$AA@ 100184cc     lparser.obj
+ 0002:000024d8       ??_C@_0BH@IAOKECIM@items?5in?5a?5constructor?$AA@ 100184d8     lparser.obj
+ 0002:000024f0       ??_C@_0BJ@MHIGIDHO@?$DMname?$DO?5or?5?8?4?4?4?8?5expected?$AA@ 100184f0     lparser.obj
+ 0002:0000250c       ??_C@_04PJDNGLKJ@self?$AA@ 1001850c     lparser.obj
+ 0002:00002514       ??_C@_0BM@HEIHHEKF@function?5arguments?5expected?$AA@ 10018514     lparser.obj
+ 0002:00002530       ??_C@_0BC@KBCKKGAJ@unexpected?5symbol?$AA@ 10018530     lparser.obj
+ 0002:00002544       ??_C@_0CL@EJFFCAJP@cannot?5use?5?8?4?4?4?8?5outside?5a?5varar@ 10018544     lparser.obj
+ 0002:00002570       ??_C@_0N@MNJHOOI@syntax?5error?$AA@ 10018570     lparser.obj
+ 0002:00002580       ??_C@_0CG@FBAEKGNA@label?5?8?$CFs?8?5already?5defined?5on?5li@ 10018580     lparser.obj
+ 0002:000025a8       ??_C@_0M@HHIHAJLG@?$CIfor?5index?$CJ?$AA@ 100185a8     lparser.obj
+ 0002:000025b4       ??_C@_0M@HGGGDCAE@?$CIfor?5limit?$CJ?$AA@ 100185b4     lparser.obj
+ 0002:000025c0       ??_C@_0L@ELGHHMFI@?$CIfor?5step?$CJ?$AA@ 100185c0     lparser.obj
+ 0002:000025cc       ??_C@_0BA@IJIMMPHF@?$CIfor?5generator?$CJ?$AA@ 100185cc     lparser.obj
+ 0002:000025dc       ??_C@_0M@CCNPGEGC@?$CIfor?5state?$CJ?$AA@ 100185dc     lparser.obj
+ 0002:000025e8       ??_C@_0O@PHJHAIC@?$CIfor?5control?$CJ?$AA@ 100185e8     lparser.obj
+ 0002:000025f8       ??_C@_0BF@PACDFECJ@?8?$DN?8?5or?5?8in?8?5expected?$AA@ 100185f8     lparser.obj
+ 0002:00002610       ??_C@_0BC@ENOOLCNF@not?5enough?5memory?$AA@ 10018610     lstate.obj
+ 0002:00002624       ??_C@_05NECKJAMC@upper?$AA@ 10018624     lstrlib.obj
+ 0002:0000262c       ??_C@_03KCMAIMAP@sub?$AA@  1001862c     lstrlib.obj
+ 0002:00002630       ??_C@_07KOIEOCCE@reverse?$AA@ 10018630     lstrlib.obj
+ 0002:00002638       ??_C@_03HOKODIMJ@rep?$AA@  10018638     lstrlib.obj
+ 0002:0000263c       ??_C@_05FNONLPDI@match?$AA@ 1001863c     lstrlib.obj
+ 0002:00002644       ??_C@_05IPJEPLHL@lower?$AA@ 10018644     lstrlib.obj
+ 0002:0000264c       ??_C@_03BKCJCHLK@len?$AA@  1001864c     lstrlib.obj
+ 0002:00002650       ??_C@_04GOLEAPFD@gsub?$AA@ 10018650     lstrlib.obj
+ 0002:00002658       ??_C@_06DPFCLDIO@gmatch?$AA@ 10018658     lstrlib.obj
+ 0002:00002660       ??_C@_06DLEPGFEF@format?$AA@ 10018660     lstrlib.obj
+ 0002:00002668       ??_C@_04CKFJHKAP@find?$AA@ 10018668     lstrlib.obj
+ 0002:00002670       ??_C@_04GGLOKIEE@dump?$AA@ 10018670     lstrlib.obj
+ 0002:00002678       ??_C@_04ENMBGAPA@char?$AA@ 10018678     lstrlib.obj
+ 0002:00002680       ??_C@_04IHGKJMLH@byte?$AA@ 10018680     lstrlib.obj
+ 0002:00002688       ??_C@_0BL@JPPPHHNK@resulting?5string?5too?5large?$AA@ 10018688     lstrlib.obj
+ 0002:000026a4       ??_C@_0BG@DFAIEAEC@string?5slice?5too?5long?$AA@ 100186a4     lstrlib.obj
+ 0002:000026bc       ??_C@_0BD@JFBPAFFP@value?5out?5of?5range?$AA@ 100186bc     lstrlib.obj
+ 0002:000026d0       ??_C@_0BO@BNLBHKJN@unable?5to?5dump?5given?5function?$AA@ 100186d0     lstrlib.obj
+ 0002:000026f0       ??_C@_0BL@JNACDPC@invalid?5capture?5index?5?$CF?$CF?$CFd?$AA@ 100186f0     lstrlib.obj
+ 0002:0000270c       ??_C@_0BI@ECNPHIBF@invalid?5pattern?5capture?$AA@ 1001870c     lstrlib.obj
+ 0002:00002724       ??_C@_0CD@PLJBIEHA@malformed?5pattern?5?$CIends?5with?5?8?$CF?$CF@ 10018724     lstrlib.obj
+ 0002:00002748       ??_C@_0CA@CFGACOGB@malformed?5pattern?5?$CImissing?5?8?$FN?8?$CJ?$AA@ 10018748     lstrlib.obj
+ 0002:00002768       ??_C@_0CP@FCNHBCLO@malformed?5pattern?5?$CImissing?5argum@ 10018768     lstrlib.obj
+ 0002:00002798       ??_C@_0BC@IMEAEJPD@too?5many?5captures?$AA@ 10018798     lstrlib.obj
+ 0002:000027ac       ??_C@_0BE@LPFFPFJG@pattern?5too?5complex?$AA@ 100187ac     lstrlib.obj
+ 0002:000027c0       ??_C@_0CD@LOJJMDBH@missing?5?8?$FL?8?5after?5?8?$CF?$CFf?8?5in?5patte@ 100187c0     lstrlib.obj
+ 0002:000027e4       ??_C@_0BG@LEHNKOGD@invalid?5capture?5index?$AA@ 100187e4     lstrlib.obj
+ 0002:000027fc       ??_C@_0BD@BFKNEALP@unfinished?5capture?$AA@ 100187fc     lstrlib.obj
+ 0002:00002810       ??_C@_0L@NLFJOONJ@?$FO$?$CK?$CL?$DP?4?$CI?$FL?$CF?9?$AA@ 10018810     lstrlib.obj
+ 0002:0000281c       ??_C@_0CK@KLCOLAN@invalid?5use?5of?5?8?$CFc?8?5in?5replaceme@ 1001881c     lstrlib.obj
+ 0002:00002848       ??_C@_0CB@LPDIHGGA@invalid?5replacement?5value?5?$CIa?5?$CFs?$CJ@ 10018848     lstrlib.obj
+ 0002:0000286c       ??_C@_0BP@PPPOBACA@string?1function?1table?5expected?$AA@ 1001886c     lstrlib.obj
+ 0002:0000288c       ??_C@_03GAHHLKFB@?2?$CFd?$AA@ 1001888c     lstrlib.obj
+ 0002:00002890       ??_C@_05OLMHDLGP@?2?$CF03d?$AA@ 10018890     lstrlib.obj
+ 0002:00002898       ??_C@_05GGBDHNF@?9?$CL?5?$CD0?$AA@ 10018898     lstrlib.obj
+ 0002:000028a0       ??_C@_0CA@COOMGCAO@invalid?5format?5?$CIrepeated?5flags?$CJ?$AA@ 100188a0     lstrlib.obj
+ 0002:000028c0       ??_C@_0CN@KALFEKPN@invalid?5format?5?$CIwidth?5or?5precisi@ 100188c0     lstrlib.obj
+ 0002:000028f0       ??_C@_08JEIPHCP@no?5value?$AA@ 100188f0     lstrlib.obj
+ 0002:000028fc       ??_C@_0BN@IOJBCPAD@not?5a?5number?5in?5proper?5range?$AA@ 100188fc     lstrlib.obj
+ 0002:0000291c       ??_C@_01HHGOMJKL@l?$AA@    1001891c     lstrlib.obj
+ 0002:00002920       ??_C@_0CK@CNLEHPKI@not?5a?5non?9negative?5number?5in?5pro@ 10018920     lstrlib.obj
+ 0002:0000294c       ??_C@_0CC@KIPBEOBI@invalid?5option?5?8?$CF?$CF?$CFc?8?5to?5?8format@ 1001894c     lstrlib.obj
+ 0002:00002970       ??_C@_0BG@FEBJBDLJ@invalid?5key?5to?5?8next?8?$AA@ 10018970     ltable.obj
+ 0002:00002988       ??_C@_0P@KKABOKCO@table?5overflow?$AA@ 10018988     ltable.obj
+ 0002:00002998       ??_C@_0BD@BDIKLFBP@table?5index?5is?5nil?$AA@ 10018998     ltable.obj
+ 0002:000029ac       ??_C@_0BD@BKBJANLJ@table?5index?5is?5NaN?$AA@ 100189ac     ltable.obj
+ 0002:000029c0       ??_C@_04PIMMHFGE@sort?$AA@ 100189c0     ltablib.obj
+ 0002:000029c8       ??_C@_06FIONAGJL@unpack?$AA@ 100189c8     ltablib.obj
+ 0002:000029d0       ??_C@_04IPANLPFO@pack?$AA@ 100189d0     ltablib.obj
+ 0002:000029d8       ??_C@_06OAOPNKHP@insert?$AA@ 100189d8     ltablib.obj
+ 0002:000029e0       ??_C@_06CMLIEHFC@concat?$AA@ 100189e0     ltablib.obj
+ 0002:000029e8       ??_C@_0BH@FFAABLEA@position?5out?5of?5bounds?$AA@ 100189e8     ltablib.obj
+ 0002:00002a00       ??_C@_0CG@LPGHMHCC@wrong?5number?5of?5arguments?5to?5?8in@ 10018a00     ltablib.obj
+ 0002:00002a28       ??_C@_0DF@OJJECDJJ@invalid?5value?5?$CI?$CFs?$CJ?5at?5index?5?$CFd?5i@ 10018a28     ltablib.obj
+ 0002:00002a60       ??_C@_0BL@EDBCOFHM@too?5many?5results?5to?5unpack?$AA@ 10018a60     ltablib.obj
+ 0002:00002a7c       ??_C@_0CD@OFHMGIPD@invalid?5order?5function?5for?5sorti@ 10018a7c     ltablib.obj
+ 0002:00002aa0       ??_C@_06JPFLIIOJ@__call?$AA@ 10018aa0     ltm.obj
+ 0002:00002aa8       ??_C@_08HGDAODEP@__concat?$AA@ 10018aa8     ltm.obj
+ 0002:00002ab4       ??_C@_04EJLHOCKK@__le?$AA@ 10018ab4     ltm.obj
+ 0002:00002abc       ??_C@_04BKGOMBLK@__lt?$AA@ 10018abc     ltm.obj
+ 0002:00002ac4       ??_C@_05MHFNBPAK@__unm?$AA@ 10018ac4     ltm.obj
+ 0002:00002acc       ??_C@_05EBGMHPNE@__pow?$AA@ 10018acc     ltm.obj
+ 0002:00002ad4       ??_C@_05ICPALBAE@__mod?$AA@ 10018ad4     ltm.obj
+ 0002:00002adc       ??_C@_05IDIBPCOP@__div?$AA@ 10018adc     ltm.obj
+ 0002:00002ae4       ??_C@_05FLJIBNKK@__mul?$AA@ 10018ae4     ltm.obj
+ 0002:00002aec       ??_C@_05HFNNBAII@__sub?$AA@ 10018aec     ltm.obj
+ 0002:00002af4       ??_C@_05MEHDOBFN@__add?$AA@ 10018af4     ltm.obj
+ 0002:00002afc       ??_C@_04GIMIAOHA@__eq?$AA@ 10018afc     ltm.obj
+ 0002:00002b04       ??_C@_05MNDELLDN@__len?$AA@ 10018b04     ltm.obj
+ 0002:00002b0c       ??_C@_0L@GADKNKH@__newindex?$AA@ 10018b0c     ltm.obj
+ 0002:00002b18       ??_C@_05CCAJFIBN@upval?$AA@ 10018b18     ltm.obj
+ 0002:00002b20       ??_C@_05BENFLAID@proto?$AA@ 10018b20     ltm.obj
+ 0002:00002b28       ??_C@_06FJHNOCKE@thread?$AA@ 10018b28     ltm.obj
+ 0002:00002b30       ??_C@_06EBGNBFIA@number?$AA@ 10018b30     ltm.obj
+ 0002:00002b38       ??_C@_07GOBOHMJA@boolean?$AA@ 10018b38     ltm.obj
+ 0002:00002b40       ??_C@_0BJ@DBDKBCFJ@?$CFs?3?5?$CFs?5precompiled?5chunk?$AA@ 10018b40     lundump.obj
+ 0002:00002b5c       ??_C@_09IDFJECNO@truncated?$AA@ 10018b5c     lundump.obj
+ 0002:00002b68       ??_C@_09DJBANNHO@corrupted?$AA@ 10018b68     lundump.obj
+ 0002:00002b74       ??_C@_05MHFHPLCH@not?5a?$AA@ 10018b74     lundump.obj
+ 0002:00002b7c       ??_C@_0BE@BNDNKLA@version?5mismatch?5in?$AA@ 10018b7c     lundump.obj
+ 0002:00002b90       ??_C@_0N@LBBAABOO@incompatible?$AA@ 10018b90     lundump.obj
+ 0002:00002ba0       ??_C@_0O@CNJIDMJE@binary?5string?$AA@ 10018ba0     lundump.obj
+ 0002:00002bb0       ??_C@_06HHFEHHII@?$BJ?$JD?$AN?6?$BK?6?$AA@ 10018bb0     lundump.obj
+ 0002:00002bb8       ??_C@_05FKHKFDID@index?$AA@ 10018bb8     lvm.obj
+ 0002:00002bc0       ??_C@_0BB@JEECHIJH@loop?5in?5gettable?$AA@ 10018bc0     lvm.obj
+ 0002:00002bd4       ??_C@_0BB@GFGOGLOK@loop?5in?5settable?$AA@ 10018bd4     lvm.obj
+ 0002:00002be8       ??_C@_0BH@ONIKNOCM@string?5length?5overflow?$AA@ 10018be8     lvm.obj
+ 0002:00002c00       ??_C@_0O@MKOIIDGO@get?5length?5of?$AA@ 10018c00     lvm.obj
+ 0002:00002c10       ??_C@_0CF@JJFDEONC@?8for?8?5initial?5value?5must?5be?5a?5nu@ 10018c10     lvm.obj
+ 0002:00002c38       ??_C@_0BN@GHPMJMPH@?8for?8?5limit?5must?5be?5a?5number?$AA@ 10018c38     lvm.obj
+ 0002:00002c58       ??_C@_0BM@EGCFKNIJ@?8for?8?5step?5must?5be?5a?5number?$AA@ 10018c58     lvm.obj
+ 0002:00002c78       __real@41dffffeffc00000    10018c78      CIL library: CIL module
+ 0002:00002c80       __real@0000000000000000    10018c80      CIL library: CIL module
+ 0002:00002c88       __real@41f0000000000000    10018c88      CIL library: CIL module
+ 0002:00002c90       __real@4030000000000000    10018c90      CIL library: CIL module
+ 0002:00002c98       __real@408f400000000000    10018c98      CIL library: CIL module
+ 0002:00002ca0       __real@c0b2340000000000    10018ca0      CIL library: CIL module
+ 0002:00002ca8       __real@407f600000000000    10018ca8      CIL library: CIL module
+ 0002:00002cb0       __real@400921fb54442d18    10018cb0      CIL library: CIL module
+ 0002:00002cb8       __real@3ff0000000000000    10018cb8      CIL library: CIL module
+ 0002:00002cc0       __real@40dfffc000000000    10018cc0      CIL library: CIL module
+ 0002:00002cc8       __real@3f91df46a2529d39    10018cc8      CIL library: CIL module
+ 0002:00002cd0       __real@4024000000000000    10018cd0      CIL library: CIL module
+ 0002:00002cd8       __real@bff0000000000000    10018cd8      CIL library: CIL module
+ 0002:00002ce0       __real@3f50000000000000    10018ce0      CIL library: CIL module
+ 0002:00002ce8       __load_config_used         10018ce8     MSVCRT:loadcfg.obj
+ 0002:00002d30       ___safe_se_handler_table   10018d30     <linker-defined>
+ 0002:00002d34       ___rtc_iaa                 10018d34     MSVCRT:_initsect_.obj
+ 0002:00002d38       ___rtc_izz                 10018d38     MSVCRT:_initsect_.obj
+ 0002:00002d3c       ___rtc_taa                 10018d3c     MSVCRT:_initsect_.obj
+ 0002:00002d40       ___rtc_tzz                 10018d40     MSVCRT:_initsect_.obj
+ 0002:00002dcc       __IMPORT_DESCRIPTOR_KERNEL32 10018dcc     kernel32:KERNEL32.dll
+ 0002:00002de0       __IMPORT_DESCRIPTOR_MSVCR90 10018de0     MSVCRT:MSVCR90.dll
+ 0002:00002df4       __NULL_IMPORT_DESCRIPTOR   10018df4     kernel32:KERNEL32.dll
+ 0003:00000000       ___native_dllmain_reason   1001b000     MSVCRT:natstart.obj
+ 0003:00000004       ___native_vcclrit_reason   1001b004     MSVCRT:natstart.obj
+ 0003:00000008       ___security_cookie         1001b008     MSVCRT:gs_cookie.obj
+ 0003:0000000c       ___security_cookie_complement 1001b00c     MSVCRT:gs_cookie.obj
+ 0003:00000014       __forceCRTManifestRTM      1001b014     MSVCRT:crtmanifestrtm.obj
+ 0003:00000018       ?__type_info_root_node@@3U__type_info_node@@A 1001b018     MSVCRT:tncleanup.obj
+ 0003:00000344       ___sse2_available          1001b344     <common>
+ 0003:00000348       __adjust_fdiv              1001b348     <common>
+ 0003:0000034c       ___native_startup_state    1001b34c     <common>
+ 0003:00000350       ___native_startup_lock     1001b350     <common>
+ 0003:00000354       ___onexitend               1001b354     <common>
+ 0003:00000358       ___onexitbegin             1001b358     <common>
+ 0003:0000035c       ___dyn_tls_init_callback   1001b35c     <common>
+
+ entry point at        0001:00013d68
+
+ Static symbols
+
+ 0001:00000000       _index2addr                10001000 f    CIL library: CIL module
+ 0001:0000004c       _growstack                 1000104c f    CIL library: CIL module
+ 0001:00000219       _moveto                    10001219 f    CIL library: CIL module
+ 0001:000010f4       _f_call                    100020f4 f    CIL library: CIL module
+ 0001:00001524       _aux_upvalue               10002524 f    CIL library: CIL module
+ 0001:00001720       _findfield                 10002720 f    CIL library: CIL module
+ 0001:000017d6       _pushglobalfuncname        100027d6 f    CIL library: CIL module
+ 0001:0000183e       _pushfuncname              1000283e f    CIL library: CIL module
+ 0001:000018c8       _countlevels               100028c8 f    CIL library: CIL module
+ 0001:00001b2b       _typeerror                 10002b2b f    CIL library: CIL module
+ 0001:00001b61       _tag_error                 10002b61 f    CIL library: CIL module
+ 0001:000022dd       _getF                      100032dd f    CIL library: CIL module
+ 0001:00002327       _errfile                   10003327 f    CIL library: CIL module
+ 0001:00002375       _skipcomment               10003375 f    CIL library: CIL module
+ 0001:00002546       _getS                      10003546 f    CIL library: CIL module
+ 0001:00002946       _l_alloc                   10003946 f    CIL library: CIL module
+ 0001:0000296c       _panic                     1000396c f    CIL library: CIL module
+ 0001:00002a63       _luaB_print                10003a63 f    CIL library: CIL module
+ 0001:00002b43       _luaB_tonumber             10003b43 f    CIL library: CIL module
+ 0001:00002ca5       _luaB_error                10003ca5 f    CIL library: CIL module
+ 0001:00002cf4       _luaB_getmetatable         10003cf4 f    CIL library: CIL module
+ 0001:00002d35       _luaB_setmetatable         10003d35 f    CIL library: CIL module
+ 0001:00002da0       _luaB_rawequal             10003da0 f    CIL library: CIL module
+ 0001:00002dce       _luaB_rawlen               10003dce f    CIL library: CIL module
+ 0001:00002e16       _luaB_rawget               10003e16 f    CIL library: CIL module
+ 0001:00002e45       _luaB_rawset               10003e45 f    CIL library: CIL module
+ 0001:00002e7c       _luaB_collectgarbage       10003e7c f    CIL library: CIL module
+ 0001:00002f32       _luaB_type                 10003f32 f    CIL library: CIL module
+ 0001:00002f5c       _pairsmeta                 10003f5c f    CIL library: CIL module
+ 0001:00002fcd       _luaB_next                 10003fcd f    CIL library: CIL module
+ 0001:0000300b       _luaB_pairs                1000400b f    CIL library: CIL module
+ 0001:00003026       _ipairsaux                 10004026 f    CIL library: CIL module
+ 0001:00003074       _luaB_ipairs               10004074 f    CIL library: CIL module
+ 0001:0000308f       _load_aux                  1000408f f    CIL library: CIL module
+ 0001:000030dc       _luaB_loadfile             100040dc f    CIL library: CIL module
+ 0001:00003127       _generic_reader            10004127 f    CIL library: CIL module
+ 0001:000031a2       _luaB_load                 100041a2 f    CIL library: CIL module
+ 0001:00003247       _dofilecont                10004247 f    CIL library: CIL module
+ 0001:0000325b       _luaB_dofile               1000425b f    CIL library: CIL module
+ 0001:000032b2       _luaB_assert               100042b2 f    CIL library: CIL module
+ 0001:000032f2       _luaB_select               100042f2 f    CIL library: CIL module
+ 0001:00003371       _finishpcall               10004371 f    CIL library: CIL module
+ 0001:000033cd       _pcallcont                 100043cd f    CIL library: CIL module
+ 0001:000033ed       _luaB_pcall                100043ed f    CIL library: CIL module
+ 0001:00003445       _luaB_xpcall               10004445 f    CIL library: CIL module
+ 0001:000034ad       _luaB_tostring             100044ad f    CIL library: CIL module
+ 0001:00003526       _andaux                    10004526 f    CIL library: CIL module
+ 0001:00003557       _b_and                     10004557 f    CIL library: CIL module
+ 0001:0000356f       _b_test                    1000456f f    CIL library: CIL module
+ 0001:0000358e       _b_or                      1000458e f    CIL library: CIL module
+ 0001:000035d4       _b_xor                     100045d4 f    CIL library: CIL module
+ 0001:0000361a       _b_not                     1000461a f    CIL library: CIL module
+ 0001:00003638       _b_shift                   10004638 f    CIL library: CIL module
+ 0001:00003662       _b_lshift                  10004662 f    CIL library: CIL module
+ 0001:00003688       _b_rshift                  10004688 f    CIL library: CIL module
+ 0001:000036b0       _b_arshift                 100046b0 f    CIL library: CIL module
+ 0001:00003705       _b_rot                     10004705 f    CIL library: CIL module
+ 0001:0000372f       _b_lrot                    1000472f f    CIL library: CIL module
+ 0001:00003748       _b_rrot                    10004748 f    CIL library: CIL module
+ 0001:00003763       _fieldargs                 10004763 f    CIL library: CIL module
+ 0001:000037c2       _b_extract                 100047c2 f    CIL library: CIL module
+ 0001:00003807       _b_replace                 10004807 f    CIL library: CIL module
+ 0001:00003886       _isnumeral                 10004886 f    CIL library: CIL module
+ 0001:00003968       _condjump                  10004968 f    CIL library: CIL module
+ 0001:0000398a       _fixjump                   1000498a f    CIL library: CIL module
+ 0001:000039d1       _getjump                   100049d1 f    CIL library: CIL module
+ 0001:000039ee       _getjumpcontrol            100049ee f    CIL library: CIL module
+ 0001:00003a02       _need_value                10004a02 f    CIL library: CIL module
+ 0001:00003a44       _patchtestreg              10004a44 f    CIL library: CIL module
+ 0001:00003aad       _removevalues              10004aad f    CIL library: CIL module
+ 0001:00003ad6       _patchlistaux              10004ad6 f    CIL library: CIL module
+ 0001:00003bb5       _luaK_code                 10004bb5 f    CIL library: CIL module
+ 0001:00003d04       _freereg                   10004d04 f    CIL library: CIL module
+ 0001:00003d1c       _freeexp                   10004d1c f    CIL library: CIL module
+ 0001:00003d2f       _addk                      10004d2f f    CIL library: CIL module
+ 0001:00004035       _discharge2reg             10005035 f    CIL library: CIL module
+ 0001:000040ec       _discharge2anyreg          100050ec f    CIL library: CIL module
+ 0001:00004110       _exp2reg                   10005110 f    CIL library: CIL module
+ 0001:000043bc       _invertjump                100053bc f    CIL library: CIL module
+ 0001:000043f3       _jumponcond                100053f3 f    CIL library: CIL module
+ 0001:000044fc       _codenot                   100054fc f    CIL library: CIL module
+ 0001:000045b9       _codearith                 100055b9 f    CIL library: CIL module
+ 0001:0000468c       _codecomp                  1000568c f    CIL library: CIL module
+ 0001:00004902       _auxresume                 10005902 f    CIL library: CIL module
+ 0001:000049c4       _luaB_coresume             100059c4 f    CIL library: CIL module
+ 0001:00004a43       _luaB_auxwrap              10005a43 f    CIL library: CIL module
+ 0001:00004aa3       _luaB_cocreate             10005aa3 f    CIL library: CIL module
+ 0001:00004ad5       _luaB_cowrap               10005ad5 f    CIL library: CIL module
+ 0001:00004af5       _luaB_yield                10005af5 f    CIL library: CIL module
+ 0001:00004b16       _luaB_costatus             10005b16 f    CIL library: CIL module
+ 0001:00004ba6       _luaB_corunning            10005ba6 f    CIL library: CIL module
+ 0001:00004be4       _db_getregistry            10005be4 f    CIL library: CIL module
+ 0001:00004bf8       _db_getmetatable           10005bf8 f    CIL library: CIL module
+ 0001:00004c27       _db_setmetatable           10005c27 f    CIL library: CIL module
+ 0001:00004c64       _db_getuservalue           10005c64 f    CIL library: CIL module
+ 0001:00004c97       _db_setuservalue           10005c97 f    CIL library: CIL module
+ 0001:00004cf6       _settabss                  10005cf6 f    CIL library: CIL module
+ 0001:00004d16       _settabsi                  10005d16 f    CIL library: CIL module
+ 0001:00004d35       _settabsb                  10005d35 f    CIL library: CIL module
+ 0001:00004d55       _getthread                 10005d55 f    CIL library: CIL module
+ 0001:00004d83       _treatstackoption          10005d83 f    CIL library: CIL module
+ 0001:00004dbd       _db_getinfo                10005dbd f    CIL library: CIL module
+ 0001:00004ff4       _db_getlocal               10005ff4 f    CIL library: CIL module
+ 0001:000050bc       _db_setlocal               100060bc f    CIL library: CIL module
+ 0001:00005149       _auxupvalue                10006149 f    CIL library: CIL module
+ 0001:00005198       _db_getupvalue             10006198 f    CIL library: CIL module
+ 0001:000051a9       _db_setupvalue             100061a9 f    CIL library: CIL module
+ 0001:000051c3       _checkupval                100061c3 f    CIL library: CIL module
+ 0001:0000521c       _db_upvalueid              1000621c f    CIL library: CIL module
+ 0001:00005242       _db_upvaluejoin            10006242 f    CIL library: CIL module
+ 0001:000052a7       _hookf                     100062a7 f    CIL library: CIL module
+ 0001:00005329       _makemask                  10006329 f    CIL library: CIL module
+ 0001:0000536a       _db_sethook                1000636a f    CIL library: CIL module
+ 0001:00005462       _db_gethook                10006462 f    CIL library: CIL module
+ 0001:00005516       _db_debug                  10006516 f    CIL library: CIL module
+ 0001:0000563d       _db_traceback              1000663d f    CIL library: CIL module
+ 0001:000056d4       _currentline               100066d4 f    CIL library: CIL module
+ 0001:0000578b       _upvalname                 1000678b f    CIL library: CIL module
+ 0001:0000579f       _findlocal                 1000679f f    CIL library: CIL module
+ 0001:000058e6       _funcinfo                  100068e6 f    CIL library: CIL module
+ 0001:0000594a       _collectvalidlines         1000694a f    CIL library: CIL module
+ 0001:000059d6       _auxgetinfo                100069d6 f    CIL library: CIL module
+ 0001:00005ba5       _kname                     10006ba5 f    CIL library: CIL module
+ 0001:00005bec       _findsetreg                10006bec f    CIL library: CIL module
+ 0001:00005c9b       _getobjname                10006c9b f    CIL library: CIL module
+ 0001:00005e11       _getfuncname               10006e11 f    CIL library: CIL module
+ 0001:00005f22       _getupvalname              10006f22 f    CIL library: CIL module
+ 0001:00006163       _seterrorobj               10007163 f    CIL library: CIL module
+ 0001:0000627c       _correctstack              1000727c f    CIL library: CIL module
+ 0001:000064b0       _tryfuncTM                 100074b0 f    CIL library: CIL module
+ 0001:0000686e       _unroll                    1000786e f    CIL library: CIL module
+ 0001:000068f5       _resume_error              100078f5 f    CIL library: CIL module
+ 0001:00006922       _resume                    10007922 f    CIL library: CIL module
+ 0001:00006bd1       _checkmode                 10007bd1 f    CIL library: CIL module
+ 0001:00006c0e       _f_parser                  10007c0e f    CIL library: CIL module
+ 0001:00006d8d       _DumpBlock                 10007d8d f    CIL library: CIL module
+ 0001:00006daa       _DumpChar                  10007daa f    CIL library: CIL module
+ 0001:00006dc2       _DumpInt                   10007dc2 f    CIL library: CIL module
+ 0001:00006dd1       _DumpVector                10007dd1 f    CIL library: CIL module
+ 0001:00006dee       _DumpString                10007dee f    CIL library: CIL module
+ 0001:00006e31       _DumpConstants             10007e31 f    CIL library: CIL module
+ 0001:00006f10       _DumpDebug                 10007f10 f    CIL library: CIL module
+ 0001:00006fce       _DumpFunction              10007fce f    CIL library: CIL module
+ 0001:000072f3       _removeentry               100082f3 f    CIL library: CIL module
+ 0001:00007325       _iscleared                 10008325 f    CIL library: CIL module
+ 0001:000073da       _reallymarkobject          100083da f    CIL library: CIL module
+ 0001:000074ca       _markmt                    100084ca f    CIL library: CIL module
+ 0001:000074f3       _markbeingfnz              100084f3 f    CIL library: CIL module
+ 0001:0000751a       _restartcollection         1000851a f    CIL library: CIL module
+ 0001:00007586       _traverseweakvalue         10008586 f    CIL library: CIL module
+ 0001:00007633       _traverseephemeron         10008633 f    CIL library: CIL module
+ 0001:00007787       _traversestrongtable       10008787 f    CIL library: CIL module
+ 0001:00007863       _traversetable             10008863 f    CIL library: CIL module
+ 0001:00007936       _traverseproto             10008936 f    CIL library: CIL module
+ 0001:00007a49       _traverseCclosure          10008a49 f    CIL library: CIL module
+ 0001:00007aa4       _traverseLclosure          10008aa4 f    CIL library: CIL module
+ 0001:00007afb       _traversestack             10008afb f    CIL library: CIL module
+ 0001:00007b8d       _propagatemark             10008b8d f    CIL library: CIL module
+ 0001:00007c0b       _propagateall              10008c0b f    CIL library: CIL module
+ 0001:00007c1d       _convergeephemerons        10008c1d f    CIL library: CIL module
+ 0001:00007c54       _clearkeys                 10008c54 f    CIL library: CIL module
+ 0001:00007ca9       _clearvalues               10008ca9 f    CIL library: CIL module
+ 0001:00007d31       _freeobj                   10008d31 f    CIL library: CIL module
+ 0001:00007ddf       _sweeplist                 10008ddf f    CIL library: CIL module
+ 0001:00007eb8       _sweeptolive               10008eb8 f    CIL library: CIL module
+ 0001:00007edb       _checkSizes                10008edb f    CIL library: CIL module
+ 0001:00007f1c       _dothecall                 10008f1c f    CIL library: CIL module
+ 0001:00007f35       _GCTM                      10008f35 f    CIL library: CIL module
+ 0001:0000805b       _separatetobefnz           1000905b f    CIL library: CIL module
+ 0001:00008127       _setpause                  10009127 f    CIL library: CIL module
+ 0001:00008164       _entersweep                10009164 f    CIL library: CIL module
+ 0001:000081e2       _callallpendingfinalizers  100091e2 f    CIL library: CIL module
+ 0001:0000820c       _atomic                    1000920c f    CIL library: CIL module
+ 0001:00008388       _singlestep                10009388 f    CIL library: CIL module
+ 0001:000084bf       _generationalcollection    100094bf f    CIL library: CIL module
+ 0001:00008521       _incstep                   10009521 f    CIL library: CIL module
+ 0001:000086e7       _io_type                   100096e7 f    CIL library: CIL module
+ 0001:0000873c       _f_tostring                1000973c f    CIL library: CIL module
+ 0001:0000877b       _tofile                    1000977b f    CIL library: CIL module
+ 0001:000087a5       _newprefile                100097a5 f    CIL library: CIL module
+ 0001:000087cc       _aux_close                 100097cc f    CIL library: CIL module
+ 0001:000087e8       _io_close                  100097e8 f    CIL library: CIL module
+ 0001:0000881f       _f_gc                      1000981f f    CIL library: CIL module
+ 0001:0000884a       _io_fclose                 1000984a f    CIL library: CIL module
+ 0001:00008879       _newfile                   10009879 f    CIL library: CIL module
+ 0001:0000888e       _opencheck                 1000988e f    CIL library: CIL module
+ 0001:000088d4       _io_open                   100098d4 f    CIL library: CIL module
+ 0001:00008974       _io_pclose                 10009974 f    CIL library: CIL module
+ 0001:0000899a       _io_popen                  1000999a f    CIL library: CIL module
+ 0001:000089f4       _io_tmpfile                100099f4 f    CIL library: CIL module
+ 0001:00008a21       _getiofile                 10009a21 f    CIL library: CIL module
+ 0001:00008a5d       _g_iofile                  10009a5d f    CIL library: CIL module
+ 0001:00008ac1       _io_input                  10009ac1 f    CIL library: CIL module
+ 0001:00008ad9       _io_output                 10009ad9 f    CIL library: CIL module
+ 0001:00008af1       _aux_lines                 10009af1 f    CIL library: CIL module
+ 0001:00008b6a       _f_lines                   10009b6a f    CIL library: CIL module
+ 0001:00008b83       _io_lines                  10009b83 f    CIL library: CIL module
+ 0001:00008c06       _read_number               10009c06 f    CIL library: CIL module
+ 0001:00008c4e       _read_line                 10009c4e f    CIL library: CIL module
+ 0001:00008d0a       _read_all                  10009d0a f    CIL library: CIL module
+ 0001:00008d88       _read_chars                10009d88 f    CIL library: CIL module
+ 0001:00008de1       _g_read                    10009de1 f    CIL library: CIL module
+ 0001:00008f61       _io_read                   10009f61 f    CIL library: CIL module
+ 0001:00008f7f       _f_read                    10009f7f f    CIL library: CIL module
+ 0001:00008f98       _io_readline               10009f98 f    CIL library: CIL module
+ 0001:00009068       _g_write                   1000a068 f    CIL library: CIL module
+ 0001:0000911d       _io_write                  1000a11d f    CIL library: CIL module
+ 0001:0000913a       _f_write                   1000a13a f    CIL library: CIL module
+ 0001:0000915e       _f_seek                    1000a15e f    CIL library: CIL module
+ 0001:0000921a       _f_setvbuf                 1000a21a f    CIL library: CIL module
+ 0001:00009271       _io_flush                  1000a271 f    CIL library: CIL module
+ 0001:0000929d       _f_flush                   1000a29d f    CIL library: CIL module
+ 0001:000092c4       _io_noclose                1000a2c4 f    CIL library: CIL module
+ 0001:0000930c       _createstdfile             1000a30c f    CIL library: CIL module
+ 0001:000093f0       _save                      1000a3f0 f    CIL library: CIL module
+ 0001:0000948e       _txtToken                  1000a48e f    CIL library: CIL module
+ 0001:000094c9       _lexerror                  1000a4c9 f    CIL library: CIL module
+ 0001:000095b3       _inclinenumber             1000a5b3 f    CIL library: CIL module
+ 0001:00009632       _check_next                1000a632 f    CIL library: CIL module
+ 0001:00009686       _buffreplace               1000a686 f    CIL library: CIL module
+ 0001:000096a6       _trydecpoint               1000a6a6 f    CIL library: CIL module
+ 0001:00009702       _read_numeral              1000a702 f    CIL library: CIL module
+ 0001:000097f7       _skip_sep                  1000a7f7 f    CIL library: CIL module
+ 0001:00009880       _read_long_string          1000a880 f    CIL library: CIL module
+ 0001:000099c5       _escerror                  1000a9c5 f    CIL library: CIL module
+ 0001:00009a0b       _readhexaesc               1000aa0b f    CIL library: CIL module
+ 0001:00009a93       _readdecesc                1000aa93 f    CIL library: CIL module
+ 0001:00009b08       _read_string               1000ab08 f    CIL library: CIL module
+ 0001:00009da6       _llex                      1000ada6 f    CIL library: CIL module
+ 0001:0000a2ef       _math_abs                  1000b2ef f    CIL library: CIL module
+ 0001:0000a316       _math_sin                  1000b316 f    CIL library: CIL module
+ 0001:0000a344       _math_sinh                 1000b344 f    CIL library: CIL module
+ 0001:0000a372       _math_cos                  1000b372 f    CIL library: CIL module
+ 0001:0000a3a0       _math_cosh                 1000b3a0 f    CIL library: CIL module
+ 0001:0000a3ce       _math_tan                  1000b3ce f    CIL library: CIL module
+ 0001:0000a3fc       _math_tanh                 1000b3fc f    CIL library: CIL module
+ 0001:0000a42a       _math_asin                 1000b42a f    CIL library: CIL module
+ 0001:0000a458       _math_acos                 1000b458 f    CIL library: CIL module
+ 0001:0000a486       _math_atan                 1000b486 f    CIL library: CIL module
+ 0001:0000a4b4       _math_atan2                1000b4b4 f    CIL library: CIL module
+ 0001:0000a4f9       _math_ceil                 1000b4f9 f    CIL library: CIL module
+ 0001:0000a527       _math_floor                1000b527 f    CIL library: CIL module
+ 0001:0000a554       _math_fmod                 1000b554 f    CIL library: CIL module
+ 0001:0000a599       _math_modf                 1000b599 f    CIL library: CIL module
+ 0001:0000a5e9       _math_sqrt                 1000b5e9 f    CIL library: CIL module
+ 0001:0000a617       _math_pow                  1000b617 f    CIL library: CIL module
+ 0001:0000a65c       _math_log                  1000b65c f    CIL library: CIL module
+ 0001:0000a6e5       _math_exp                  1000b6e5 f    CIL library: CIL module
+ 0001:0000a713       _math_deg                  1000b713 f    CIL library: CIL module
+ 0001:0000a73e       _math_rad                  1000b73e f    CIL library: CIL module
+ 0001:0000a769       _math_frexp                1000b769 f    CIL library: CIL module
+ 0001:0000a7ac       _math_ldexp                1000b7ac f    CIL library: CIL module
+ 0001:0000a7f5       _math_min                  1000b7f5 f    CIL library: CIL module
+ 0001:0000a866       _math_max                  1000b866 f    CIL library: CIL module
+ 0001:0000a8d7       _math_random               1000b8d7 f    CIL library: CIL module
+ 0001:0000a9cd       _math_randomseed           1000b9cd f    CIL library: CIL module
+ 0001:0000ab46       _setprogdir                1000bb46 f    CIL library: CIL module
+ 0001:0000abbf       _pusherror                 1000bbbf f    CIL library: CIL module
+ 0001:0000ac19       _ll_addtoclib              1000bc19 f    CIL library: CIL module
+ 0001:0000ac69       _gctm                      1000bc69 f    CIL library: CIL module
+ 0001:0000aca9       _ll_loadfunc               1000bca9 f    CIL library: CIL module
+ 0001:0000ad5b       _ll_loadlib                1000bd5b f    CIL library: CIL module
+ 0001:0000adc2       _searchpath                1000bdc2 f    CIL library: CIL module
+ 0001:0000aebf       _ll_searchpath             1000bebf f    CIL library: CIL module
+ 0001:0000af37       _findfile                  1000bf37 f    CIL library: CIL module
+ 0001:0000af83       _checkload                 1000bf83 f    CIL library: CIL module
+ 0001:0000afc8       _searcher_Lua              1000bfc8 f    CIL library: CIL module
+ 0001:0000b00e       _loadfunc                  1000c00e f    CIL library: CIL module
+ 0001:0000b08c       _searcher_C                1000c08c f    CIL library: CIL module
+ 0001:0000b0d9       _searcher_Croot            1000c0d9 f    CIL library: CIL module
+ 0001:0000b175       _searcher_preload          1000c175 f    CIL library: CIL module
+ 0001:0000b1cc       _findloader                1000c1cc f    CIL library: CIL module
+ 0001:0000b2ae       _ll_require                1000c2ae f    CIL library: CIL module
+ 0001:0000b37c       _setpath                   1000c37c f    CIL library: CIL module
+ 0001:0000b65a       _readhexa                  1000c65a f    CIL library: CIL module
+ 0001:0000b6b4       _lua_strx2number           1000c6b4 f    CIL library: CIL module
+ 0001:0000b84c       _pushstr                   1000c84c f    CIL library: CIL module
+ 0001:0000bb5d       _os_execute                1000cb5d f    CIL library: CIL module
+ 0001:0000bb95       _os_remove                 1000cb95 f    CIL library: CIL module
+ 0001:0000bbc1       _os_rename                 1000cbc1 f    CIL library: CIL module
+ 0001:0000bbfe       _os_tmpname                1000cbfe f    CIL library: CIL module
+ 0001:0000bc33       _os_getenv                 1000cc33 f    CIL library: CIL module
+ 0001:0000bc58       _os_clock                  1000cc58 f    CIL library: CIL module
+ 0001:0000bc8b       _setfield                  1000cc8b f    CIL library: CIL module
+ 0001:0000bcac       _getfield                  1000ccac f    CIL library: CIL module
+ 0001:0000bcf1       _checkoption               1000ccf1 f    CIL library: CIL module
+ 0001:0000bd78       _os_date                   1000cd78 f    CIL library: CIL module
+ 0001:0000bf7e       _os_time                   1000cf7e f    CIL library: CIL module
+ 0001:0000c098       _os_difftime               1000d098 f    CIL library: CIL module
+ 0001:0000c0ed       _os_setlocale              1000d0ed f    CIL library: CIL module
+ 0001:0000c131       _os_exit                   1000d131 f    CIL library: CIL module
+ 0001:0000c1b0       _error_expected            1000d1b0 f    CIL library: CIL module
+ 0001:0000c1d2       _checklimit                1000d1d2 f    CIL library: CIL module
+ 0001:0000c219       _checknext                 1000d219 f    CIL library: CIL module
+ 0001:0000c22c       _check_match               1000d22c f    CIL library: CIL module
+ 0001:0000c279       _str_checkname             1000d279 f    CIL library: CIL module
+ 0001:0000c297       _codestring                1000d297 f    CIL library: CIL module
+ 0001:0000c2d0       _registerlocalvar          1000d2d0 f    CIL library: CIL module
+ 0001:0000c367       _new_localvar              1000d367 f    CIL library: CIL module
+ 0001:0000c3e0       _new_localvarliteral_      1000d3e0 f    CIL library: CIL module
+ 0001:0000c3fa       _getlocvar                 1000d3fa f    CIL library: CIL module
+ 0001:0000c416       _adjustlocalvars           1000d416 f    CIL library: CIL module
+ 0001:0000c43f       _newupvalue                1000d43f f    CIL library: CIL module
+ 0001:0000c506       _singlevaraux              1000d506 f    CIL library: CIL module
+ 0001:0000c5e2       _singlevar                 1000d5e2 f    CIL library: CIL module
+ 0001:0000c635       _adjust_assign             1000d635 f    CIL library: CIL module
+ 0001:0000c691       _enterlevel                1000d691 f    CIL library: CIL module
+ 0001:0000c6bb       _closegoto                 1000d6bb f    CIL library: CIL module
+ 0001:0000c751       _findlabel                 1000d751 f    CIL library: CIL module
+ 0001:0000c7e9       _newlabelentry             1000d7e9 f    CIL library: CIL module
+ 0001:0000c850       _findgotos                 1000d850 f    CIL library: CIL module
+ 0001:0000c8a3       _movegotosout              1000d8a3 f    CIL library: CIL module
+ 0001:0000c91e       _enterblock                1000d91e f    CIL library: CIL module
+ 0001:0000c950       _leaveblock                1000d950 f    CIL library: CIL module
+ 0001:0000ca76       _addprototype              1000da76 f    CIL library: CIL module
+ 0001:0000cb01       _open_func                 1000db01 f    CIL library: CIL module
+ 0001:0000cb8d       _close_func                1000db8d f    CIL library: CIL module
+ 0001:0000cd2b       _block_follow              1000dd2b f    CIL library: CIL module
+ 0001:0000cd56       _statlist                  1000dd56 f    CIL library: CIL module
+ 0001:0000cd9b       _fieldsel                  1000dd9b f    CIL library: CIL module
+ 0001:0000cde3       _yindex                    1000dde3 f    CIL library: CIL module
+ 0001:0000ce17       _recfield                  1000de17 f    CIL library: CIL module
+ 0001:0000cedc       _listfield                 1000dedc f    CIL library: CIL module
+ 0001:0000cf17       _constructor               1000df17 f    CIL library: CIL module
+ 0001:0000d0b1       _parlist                   1000e0b1 f    CIL library: CIL module
+ 0001:0000d131       _body                      1000e131 f    CIL library: CIL module
+ 0001:0000d1f8       _explist                   1000e1f8 f    CIL library: CIL module
+ 0001:0000d241       _funcargs                  1000e241 f    CIL library: CIL module
+ 0001:0000d33a       _suffixedexp               1000e33a f    CIL library: CIL module
+ 0001:0000d4d4       _simpleexp                 1000e4d4 f    CIL library: CIL module
+ 0001:0000d5c8       _getbinopr                 1000e5c8 f    CIL library: CIL module
+ 0001:0000d64a       _subexpr                   1000e64a f    CIL library: CIL module
+ 0001:0000d78c       _expr                      1000e78c f    CIL library: CIL module
+ 0001:0000d7a6       _block                     1000e7a6 f    CIL library: CIL module
+ 0001:0000d7cb       _check_conflict            1000e7cb f    CIL library: CIL module
+ 0001:0000d841       _assignment                1000e841 f    CIL library: CIL module
+ 0001:0000d956       _cond                      1000e956 f    CIL library: CIL module
+ 0001:0000d987       _gotostat                  1000e987 f    CIL library: CIL module
+ 0001:0000d9d8       _checkrepeated             1000e9d8 f    CIL library: CIL module
+ 0001:0000da4c       _skipnoopstat              1000ea4c f    CIL library: CIL module
+ 0001:0000da65       _labelstat                 1000ea65 f    CIL library: CIL module
+ 0001:0000dae3       _whilestat                 1000eae3 f    CIL library: CIL module
+ 0001:0000db5c       _repeatstat                1000eb5c f    CIL library: CIL module
+ 0001:0000dbe4       _exp1                      1000ebe4 f    CIL library: CIL module
+ 0001:0000dc06       _forbody                   1000ec06 f    CIL library: CIL module
+ 0001:0000dcf0       _fornum                    1000ecf0 f    CIL library: CIL module
+ 0001:0000ddb7       _forlist                   1000edb7 f    CIL library: CIL module
+ 0001:0000de8b       _forstat                   1000ee8b f    CIL library: CIL module
+ 0001:0000df06       _test_then_block           1000ef06 f    CIL library: CIL module
+ 0001:0000dff3       _ifstat                    1000eff3 f    CIL library: CIL module
+ 0001:0000e060       _localfunc                 1000f060 f    CIL library: CIL module
+ 0001:0000e0ab       _localstat                 1000f0ab f    CIL library: CIL module
+ 0001:0000e111       _funcstat                  1000f111 f    CIL library: CIL module
+ 0001:0000e18b       _exprstat                  1000f18b f    CIL library: CIL module
+ 0001:0000e1f3       _retstat                   1000f1f3 f    CIL library: CIL module
+ 0001:0000e2b0       _statement                 1000f2b0 f    CIL library: CIL module
+ 0001:0000e581       _makeseed                  1000f581 f    CIL library: CIL module
+ 0001:0000e601       _stack_init                1000f601 f    CIL library: CIL module
+ 0001:0000e675       _freestack                 1000f675 f    CIL library: CIL module
+ 0001:0000e6a0       _init_registry             1000f6a0 f    CIL library: CIL module
+ 0001:0000e70d       _f_luaopen                 1000f70d f    CIL library: CIL module
+ 0001:0000e7cd       _preinit_state             1000f7cd f    CIL library: CIL module
+ 0001:0000e803       _close_state               1000f803 f    CIL library: CIL module
+ 0001:0000ebda       _createstrobj              1000fbda f    CIL library: CIL module
+ 0001:0000ec12       _internshrstr              1000fc12 f    CIL library: CIL module
+ 0001:0000ed2c       _str_len                   1000fd2c f    CIL library: CIL module
+ 0001:0000ed54       _posrelat                  1000fd54 f    CIL library: CIL module
+ 0001:0000ed68       _str_sub                   1000fd68 f    CIL library: CIL module
+ 0001:0000ede2       _str_reverse               1000fde2 f    CIL library: CIL module
+ 0001:0000ee46       _str_lower                 1000fe46 f    CIL library: CIL module
+ 0001:0000eeb6       _str_upper                 1000feb6 f    CIL library: CIL module
+ 0001:0000ef26       _str_rep                   1000ff26 f    CIL library: CIL module
+ 0001:0000f044       _str_byte                  10010044 f    CIL library: CIL module
+ 0001:0000f0ea       _str_char                  100100ea f    CIL library: CIL module
+ 0001:0000f165       _writer                    10010165 f    CIL library: CIL module
+ 0001:0000f17e       _str_dump                  1001017e f    CIL library: CIL module
+ 0001:0000f1e3       _classend                  100101e3 f    CIL library: CIL module
+ 0001:0000f22e       _match_class               1001022e f    CIL library: CIL module
+ 0001:0000f2f5       _matchbracketclass         100102f5 f    CIL library: CIL module
+ 0001:0000f372       _singlematch               10010372 f    CIL library: CIL module
+ 0001:0000f3b4       _matchbalance              100103b4 f    CIL library: CIL module
+ 0001:0000f400       _max_expand                10010400 f    CIL library: CIL module
+ 0001:0000f44c       _start_capture             1001044c f    CIL library: CIL module
+ 0001:0000f489       _end_capture               10010489 f    CIL library: CIL module
+ 0001:0000f4d6       _match_capture             100104d6 f    CIL library: CIL module
+ 0001:0000f525       _match                     10010525 f    CIL library: CIL module
+ 0001:0000f759       _lmemfind                  10010759 f    CIL library: CIL module
+ 0001:0000f7bc       _push_onecapture           100107bc f    CIL library: CIL module
+ 0001:0000f827       _push_captures             10010827 f    CIL library: CIL module
+ 0001:0000f872       _nospecials                10010872 f    CIL library: CIL module
+ 0001:0000f8b1       _str_find_aux              100108b1 f    CIL library: CIL module
+ 0001:0000fa7f       _str_find                  10010a7f f    CIL library: CIL module
+ 0001:0000fa8c       _str_match                 10010a8c f    CIL library: CIL module
+ 0001:0000fa99       _gmatch_aux                10010a99 f    CIL library: CIL module
+ 0001:0000fb7c       _gmatch                    10010b7c f    CIL library: CIL module
+ 0001:0000fbbd       _add_s                     10010bbd f    CIL library: CIL module
+ 0001:0000fc84       _add_value                 10010c84 f    CIL library: CIL module
+ 0001:0000fd4e       _str_gsub                  10010d4e f    CIL library: CIL module
+ 0001:0000ff01       _addquoted                 10010f01 f    CIL library: CIL module
+ 0001:00010010       _scanformat                10011010 f    CIL library: CIL module
+ 0001:000100c8       _addlenmod                 100110c8 f    CIL library: CIL module
+ 0001:00010116       _str_format                10011116 f    CIL library: CIL module
+ 0001:0001049d       _hashnum                   1001149d f    CIL library: CIL module
+ 0001:000104f5       _mainposition              100114f5 f    CIL library: CIL module
+ 0001:000105a8       _arrayindex                100115a8 f    CIL library: CIL module
+ 0001:000105e1       _findindex                 100115e1 f    CIL library: CIL module
+ 0001:00010755       _countint                  10011755 f    CIL library: CIL module
+ 0001:0001077a       _setarrayvector            1001177a f    CIL library: CIL module
+ 0001:000107d1       _setnodevector             100117d1 f    CIL library: CIL module
+ 0001:00010992       _rehash                    10011992 f    CIL library: CIL module
+ 0001:00010e72       _unbound_search            10011e72 f    CIL library: CIL module
+ 0001:00010f4d       _tinsert                   10011f4d f    CIL library: CIL module
+ 0001:00010fec       _tremove                   10011fec f    CIL library: CIL module
+ 0001:00011085       _addfield                  10012085 f    CIL library: CIL module
+ 0001:000110cf       _tconcat                   100120cf f    CIL library: CIL module
+ 0001:0001118f       _pack                      1001218f f    CIL library: CIL module
+ 0001:00011208       _unpack                    10012208 f    CIL library: CIL module
+ 0001:00011290       _set2                      10012290 f    CIL library: CIL module
+ 0001:000112b5       _sort_comp                 100122b5 f    CIL library: CIL module
+ 0001:00011317       _auxsort                   10012317 f    CIL library: CIL module
+ 0001:0001152c       _sort                      1001252c f    CIL library: CIL module
+ 0001:00011646       _error                     10012646 f    CIL library: CIL module
+ 0001:00011668       _LoadBlock                 10012668 f    CIL library: CIL module
+ 0001:000116cd       _LoadChar                  100126cd f    CIL library: CIL module
+ 0001:000116e6       _LoadInt                   100126e6 f    CIL library: CIL module
+ 0001:0001170e       _LoadString                1001270e f    CIL library: CIL module
+ 0001:00011753       _LoadConstants             10012753 f    CIL library: CIL module
+ 0001:00011893       _LoadUpvalues              10012893 f    CIL library: CIL module
+ 0001:0001190e       _LoadDebug                 1001290e f    CIL library: CIL module
+ 0001:00011a05       _LoadFunction              10012a05 f    CIL library: CIL module
+ 0001:00011aa7       _LoadHeader                10012aa7 f    CIL library: CIL module
+ 0001:00011cc4       _traceexec                 10012cc4 f    CIL library: CIL module
+ 0001:00011d9e       _callTM                    10012d9e f    CIL library: CIL module
+ 0001:0001204e       _call_binTM                1001304e f    CIL library: CIL module
+ 0001:000120a2       _get_equalTM               100130a2 f    CIL library: CIL module
+ 0001:0001214b       _call_orderTM              1001314b f    CIL library: CIL module
+ 0001:0001218d       _l_strcmp                  1001318d f    CIL library: CIL module
+ 0001:00012718       _pushclosure               10013718 f    CIL library: CIL module
+ 0001:000139dd       _pre_c_init                100149dd f   MSVCRT:crtdll.obj
+ 0001:00013c52       ___DllMainCRTStartup       10014c52 f   MSVCRT:crtdll.obj
+ 0001:000143ab       _has_osfxsr_set            100153ab f   MSVCRT:cpu_disp.obj
+
+ Exports
+
+  ordinal    name
+
+        1    _luaL_addlstring
+               exported name: luaL_addlstring
+        2    _luaL_addstring
+               exported name: luaL_addstring
+        3    _luaL_addvalue
+               exported name: luaL_addvalue
+        4    _luaL_argerror
+               exported name: luaL_argerror
+        5    _luaL_buffinit
+               exported name: luaL_buffinit
+        6    _luaL_buffinitsize
+               exported name: luaL_buffinitsize
+        7    _luaL_callmeta
+               exported name: luaL_callmeta
+        8    _luaL_checkany
+               exported name: luaL_checkany
+        9    _luaL_checkinteger
+               exported name: luaL_checkinteger
+       10    _luaL_checklstring
+               exported name: luaL_checklstring
+       11    _luaL_checknumber
+               exported name: luaL_checknumber
+       12    _luaL_checkoption
+               exported name: luaL_checkoption
+       13    _luaL_checkstack
+               exported name: luaL_checkstack
+       14    _luaL_checktype
+               exported name: luaL_checktype
+       15    _luaL_checkudata
+               exported name: luaL_checkudata
+       16    _luaL_checkunsigned
+               exported name: luaL_checkunsigned
+       17    _luaL_checkversion_
+               exported name: luaL_checkversion_
+       18    _luaL_error
+               exported name: luaL_error
+       19    _luaL_execresult
+               exported name: luaL_execresult
+       20    _luaL_fileresult
+               exported name: luaL_fileresult
+       21    _luaL_getmetafield
+               exported name: luaL_getmetafield
+       22    _luaL_getsubtable
+               exported name: luaL_getsubtable
+       23    _luaL_gsub
+               exported name: luaL_gsub
+       24    _luaL_len
+               exported name: luaL_len
+       25    _luaL_loadbufferx
+               exported name: luaL_loadbufferx
+       26    _luaL_loadfilex
+               exported name: luaL_loadfilex
+       27    _luaL_loadstring
+               exported name: luaL_loadstring
+       28    _luaL_newmetatable
+               exported name: luaL_newmetatable
+       29    _luaL_newstate
+               exported name: luaL_newstate
+       30    _luaL_openlibs
+               exported name: luaL_openlibs
+       31    _luaL_optinteger
+               exported name: luaL_optinteger
+       32    _luaL_optlstring
+               exported name: luaL_optlstring
+       33    _luaL_optnumber
+               exported name: luaL_optnumber
+       34    _luaL_optunsigned
+               exported name: luaL_optunsigned
+       35    _luaL_prepbuffsize
+               exported name: luaL_prepbuffsize
+       36    _luaL_pushresult
+               exported name: luaL_pushresult
+       37    _luaL_pushresultsize
+               exported name: luaL_pushresultsize
+       38    _luaL_ref
+               exported name: luaL_ref
+       39    _luaL_requiref
+               exported name: luaL_requiref
+       40    _luaL_setfuncs
+               exported name: luaL_setfuncs
+       41    _luaL_setmetatable
+               exported name: luaL_setmetatable
+       42    _luaL_testudata
+               exported name: luaL_testudata
+       43    _luaL_tolstring
+               exported name: luaL_tolstring
+       44    _luaL_traceback
+               exported name: luaL_traceback
+       45    _luaL_unref
+               exported name: luaL_unref
+       46    _luaL_where
+               exported name: luaL_where
+       47    _lua_absindex
+               exported name: lua_absindex
+       48    _lua_arith
+               exported name: lua_arith
+       49    _lua_atpanic
+               exported name: lua_atpanic
+       50    _lua_callk
+               exported name: lua_callk
+       51    _lua_checkstack
+               exported name: lua_checkstack
+       52    _lua_close
+               exported name: lua_close
+       53    _lua_compare
+               exported name: lua_compare
+       54    _lua_concat
+               exported name: lua_concat
+       55    _lua_copy
+               exported name: lua_copy
+       56    _lua_createtable
+               exported name: lua_createtable
+       57    _lua_dump
+               exported name: lua_dump
+       58    _lua_error
+               exported name: lua_error
+       59    _lua_gc
+               exported name: lua_gc
+       60    _lua_getallocf
+               exported name: lua_getallocf
+       61    _lua_getctx
+               exported name: lua_getctx
+       62    _lua_getfield
+               exported name: lua_getfield
+       63    _lua_getglobal
+               exported name: lua_getglobal
+       64    _lua_gethook
+               exported name: lua_gethook
+       65    _lua_gethookcount
+               exported name: lua_gethookcount
+       66    _lua_gethookmask
+               exported name: lua_gethookmask
+       67    _lua_getinfo
+               exported name: lua_getinfo
+       68    _lua_getlocal
+               exported name: lua_getlocal
+       69    _lua_getmetatable
+               exported name: lua_getmetatable
+       70    _lua_getstack
+               exported name: lua_getstack
+       71    _lua_gettable
+               exported name: lua_gettable
+       72    _lua_gettop
+               exported name: lua_gettop
+       73    _lua_getupvalue
+               exported name: lua_getupvalue
+       74    _lua_getuservalue
+               exported name: lua_getuservalue
+       75    _lua_insert
+               exported name: lua_insert
+       76    _lua_iscfunction
+               exported name: lua_iscfunction
+       77    _lua_isnumber
+               exported name: lua_isnumber
+       78    _lua_isstring
+               exported name: lua_isstring
+       79    _lua_isuserdata
+               exported name: lua_isuserdata
+       80    _lua_len
+               exported name: lua_len
+       81    _lua_load
+               exported name: lua_load
+       82    _lua_newstate
+               exported name: lua_newstate
+       83    _lua_newthread
+               exported name: lua_newthread
+       84    _lua_newuserdata
+               exported name: lua_newuserdata
+       85    _lua_next
+               exported name: lua_next
+       86    _lua_pcallk
+               exported name: lua_pcallk
+       87    _lua_pushboolean
+               exported name: lua_pushboolean
+       88    _lua_pushcclosure
+               exported name: lua_pushcclosure
+       89    _lua_pushfstring
+               exported name: lua_pushfstring
+       90    _lua_pushinteger
+               exported name: lua_pushinteger
+       91    _lua_pushlightuserdata
+               exported name: lua_pushlightuserdata
+       92    _lua_pushlstring
+               exported name: lua_pushlstring
+       93    _lua_pushnil
+               exported name: lua_pushnil
+       94    _lua_pushnumber
+               exported name: lua_pushnumber
+       95    _lua_pushstring
+               exported name: lua_pushstring
+       96    _lua_pushthread
+               exported name: lua_pushthread
+       97    _lua_pushunsigned
+               exported name: lua_pushunsigned
+       98    _lua_pushvalue
+               exported name: lua_pushvalue
+       99    _lua_pushvfstring
+               exported name: lua_pushvfstring
+      100    _lua_rawequal
+               exported name: lua_rawequal
+      101    _lua_rawget
+               exported name: lua_rawget
+      102    _lua_rawgeti
+               exported name: lua_rawgeti
+      103    _lua_rawgetp
+               exported name: lua_rawgetp
+      104    _lua_rawlen
+               exported name: lua_rawlen
+      105    _lua_rawset
+               exported name: lua_rawset
+      106    _lua_rawseti
+               exported name: lua_rawseti
+      107    _lua_rawsetp
+               exported name: lua_rawsetp
+      108    _lua_remove
+               exported name: lua_remove
+      109    _lua_replace
+               exported name: lua_replace
+      110    _lua_resume
+               exported name: lua_resume
+      111    _lua_setallocf
+               exported name: lua_setallocf
+      112    _lua_setfield
+               exported name: lua_setfield
+      113    _lua_setglobal
+               exported name: lua_setglobal
+      114    _lua_sethook
+               exported name: lua_sethook
+      115    _lua_setlocal
+               exported name: lua_setlocal
+      116    _lua_setmetatable
+               exported name: lua_setmetatable
+      117    _lua_settable
+               exported name: lua_settable
+      118    _lua_settop
+               exported name: lua_settop
+      119    _lua_setupvalue
+               exported name: lua_setupvalue
+      120    _lua_setuservalue
+               exported name: lua_setuservalue
+      121    _lua_status
+               exported name: lua_status
+      122    _lua_toboolean
+               exported name: lua_toboolean
+      123    _lua_tocfunction
+               exported name: lua_tocfunction
+      124    _lua_tointegerx
+               exported name: lua_tointegerx
+      125    _lua_tolstring
+               exported name: lua_tolstring
+      126    _lua_tonumberx
+               exported name: lua_tonumberx
+      127    _lua_topointer
+               exported name: lua_topointer
+      128    _lua_tothread
+               exported name: lua_tothread
+      129    _lua_tounsignedx
+               exported name: lua_tounsignedx
+      130    _lua_touserdata
+               exported name: lua_touserdata
+      131    _lua_type
+               exported name: lua_type
+      132    _lua_typename
+               exported name: lua_typename
+      133    _lua_upvalueid
+               exported name: lua_upvalueid
+      134    _lua_upvaluejoin
+               exported name: lua_upvaluejoin
+      135    _lua_version
+               exported name: lua_version
+      136    _lua_xmove
+               exported name: lua_xmove
+      137    _lua_yieldk
+               exported name: lua_yieldk
+      138    _luaopen_base
+               exported name: luaopen_base
+      139    _luaopen_bit32
+               exported name: luaopen_bit32
+      140    _luaopen_coroutine
+               exported name: luaopen_coroutine
+      141    _luaopen_debug
+               exported name: luaopen_debug
+      142    _luaopen_io
+               exported name: luaopen_io
+      143    _luaopen_math
+               exported name: luaopen_math
+      144    _luaopen_os
+               exported name: luaopen_os
+      145    _luaopen_package
+               exported name: luaopen_package
+      146    _luaopen_string
+               exported name: luaopen_string
+      147    _luaopen_table
+               exported name: luaopen_table

@@ -30,8 +30,8 @@
 				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf\include;..\..\..\depends\freetype\include"
-				PreprocessorDefinitions="WIN32;_DEBUG;HAVE_LIBC"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf;..\..\..\depends\freetype\include;..\..\..\patch\SDL2\win32"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_LIBC"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="3"
@@ -64,6 +64,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="0"
+				TargetMachine="1"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
@@ -144,8 +146,8 @@
 				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf\include;..\..\..\depends\freetype\include"
-				PreprocessorDefinitions="WIN32;NDEBUG;HAVE_LIBC"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf;..\..\..\depends\freetype\include;..\..\..\patch\SDL2\win32"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_LIBC"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -178,6 +180,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="1"
+				TargetMachine="1"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
@@ -258,8 +262,8 @@
 				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf\include;..\..\..\depends\freetype\include"
-				PreprocessorDefinitions="WIN32;NDEBUG;HAVE_LIBC"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf;..\..\..\depends\freetype\include;..\..\..\patch\SDL2\win32"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_LIBC"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -292,6 +296,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="1"
+				TargetMachine="1"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
@@ -372,8 +378,8 @@
 				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf\include;..\..\..\depends\freetype\include"
-				PreprocessorDefinitions="WIN32;_DEBUG;HAVE_LIBC"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf;..\..\..\depends\freetype\include;..\..\..\patch\SDL2\win32"
+				PreprocessorDefinitions="WIN32;_DEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_LIBC"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="3"
@@ -406,6 +412,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="0"
+				TargetMachine="17"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
@@ -486,8 +494,8 @@
 				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf\include;..\..\..\depends\freetype\include"
-				PreprocessorDefinitions="WIN32;NDEBUG;HAVE_LIBC"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf;..\..\..\depends\freetype\include;..\..\..\patch\SDL2\win32"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_LIBC"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -520,6 +528,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="1"
+				TargetMachine="17"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
@@ -600,8 +610,8 @@
 				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf\include;..\..\..\depends\freetype\include"
-				PreprocessorDefinitions="WIN32;NDEBUG;HAVE_LIBC"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32;..\..\..\depends\SDL2\include;..\..\..\depends\SDL2_ttf;..\..\..\depends\freetype\include;..\..\..\patch\SDL2\win32"
+				PreprocessorDefinitions="WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS;HAVE_LIBC"
 				StringPooling="true"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
@@ -634,6 +644,8 @@
 				MapExports="true"
 				SubSystem="1"
 				LinkTimeCodeGeneration="1"
+				TargetMachine="17"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
 				Name="VCLibrarianTool"
