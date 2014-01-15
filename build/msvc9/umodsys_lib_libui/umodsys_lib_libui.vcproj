@@ -881,6 +881,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\module\ui\SDL_core\umodsys.mod.ui.SDL_core.types.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\module\ui\SDL_core\umodsys.mod.ui.SDL_core.utils.h"
 				>
 			</File>

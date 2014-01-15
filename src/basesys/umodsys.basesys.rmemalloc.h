@@ -237,15 +237,15 @@ size_t TRMemAlloc_CC<Header, SubAllocator>::check_leaks(bool isdump, IExceptionH
   for(Header *x = root.next, *pv=&root; x!=&root; pv=x, x=x->next) {
     if(x==NULL) {
       if(isdump) {
-        dbg_put(rsdl_MemoryError, "NULL detected after %p\n", pv);
+        err_put(rsdl_MemoryError, "NULL detected after %p\n", pv);
       }
       break;
     } else {
       if(isdump) {
         if(x->dbg) {
-          dbg_put(rsdl_MemoryError, "leak detected %p size %u at %s(%d) %s\n", x, x->allocated, x->dbg->file, x->dbg->line, x->dbg->function);
+          err_put(rsdl_MemoryError, "leak detected %p size %u at %s(%d) %s\n", x, x->allocated, x->dbg->file, x->dbg->line, x->dbg->function);
         } else {
-          dbg_put(rsdl_MemoryError, "leak detected %p size %u\n", x, x->allocated);
+          err_put(rsdl_MemoryError, "leak detected %p size %u\n", x, x->allocated);
         }
         rv += x->allocated;
       }

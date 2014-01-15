@@ -34,11 +34,7 @@ struct RGenerator;
 //***************************************
 
 #include "umodsys.mod.ui.SDL_core.utils.h"
-#include "umodsys.mod.ui.SDL_core.font.h"
-#include "umodsys.mod.ui.SDL_core.window.h"
-#include "umodsys.mod.ui.SDL_core.mouse.h"
-#include "umodsys.mod.ui.SDL_core.keyboard.h"
-#include "umodsys.mod.ui.SDL_core.terminal.h"
+#include "umodsys.mod.ui.SDL_core.types.h"
 #include "umodsys.mod.ui.SDL_core.inlines.h"
 
 //***************************************
