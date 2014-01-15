@@ -1,10 +1,7 @@
 
 //***************************************
-// ::
+// sdlRect::
 //***************************************
-
-struct RTerminal;
-struct RRenderDriver2D;
 
 struct sdlRect : public SDL_Rect {
   inline sdlRect(int ax, int ay, int dx, int dy) {
@@ -22,6 +19,7 @@ struct sdlRect : public SDL_Rect {
   inline operator SDL_Rect* (void) { return this; }
   inline operator const SDL_Rect* (void) const { return this; }
 };
+
 
 //***************************************
 //***************************************

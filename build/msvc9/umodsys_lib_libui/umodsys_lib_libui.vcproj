@@ -753,95 +753,27 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.2d.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.2df.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.2dtext.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.3d.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.3df.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.3dl.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.3dm.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.3ds.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.console.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.control.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.filter.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.gl.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.gl_uni.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.glfunc.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.glfuncbody.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.gltex.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.system.h"
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.terminalx.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.texcell.h"
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.typesx.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.texcell2.h"
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.w_2d.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.texture.h"
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.w_3d.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.texutil.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.video.h"
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.w_utl.h"
 				>
 			</File>
 			<File
@@ -877,11 +809,23 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\module\ui\SDL_core\umodsys.mod.ui.SDL_core.swindow.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\module\ui\SDL_core\umodsys.mod.ui.SDL_core.terminal.h"
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\module\ui\SDL_core\umodsys.mod.ui.SDL_core.terminalx.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\module\ui\SDL_core\umodsys.mod.ui.SDL_core.types.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\SDL_core\umodsys.mod.ui.SDL_core.typesx.h"
 				>
 			</File>
 			<File

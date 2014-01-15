@@ -265,6 +265,7 @@ begin project-group umodsys
     begin file-group mod_SDL_GL
       begin mask $(path-skip) $(path-s-mod)/ui/SDL_GL
         include *.cpp *.h 
+        exclude umodsys.mod.ui.SDL_GL._*.h
       end
     end
   end

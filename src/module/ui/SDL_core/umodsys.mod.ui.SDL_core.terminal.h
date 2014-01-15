@@ -3,9 +3,8 @@
 // RTerminal::
 //***************************************
 
-RTerminal::RTerminal(DOwner *own, const SParameters& args)
-: refs(own),
-  d2d(this), keybd(this), mouse(this)
+RTerminal::RTerminal(DOwner *own)
+: refs(own), keybd(this), mouse(this)
 {
   SDL_Init(SDL_INIT_EVERYTHING);
   TTF_Init();
@@ -69,7 +68,7 @@ bool RTerminal::get_terminal_state(eTerminalState state)
 bool RTerminal::set_terminal_state(eTerminalState state, bool flag) 
 {
   if(state==ts_Terminated) {
-    d2d.close();
+    close_drvxd();
   }
   if(state==ts_Keyboard) {
     if(flag) SDL_StartTextInput(); else SDL_StopTextInput();
@@ -96,7 +95,10 @@ bool RTerminal::wait(float sec)
 size_t RTerminal::get_count(TypeId tid) const 
 {
   if(tid==lib2d::IRenderDriver::_root_get_interface_type()) {
-    return 1;
+    return get_drv2d()!=NULL;
+  }
+  if(tid==lib3d::IRenderDriver::_root_get_interface_type()) {
+    return get_drv3d()!=NULL;
   }
   if(tid==libui::IKeyboardController::_root_get_interface_type()) {
     return 1;
@@ -110,7 +112,10 @@ size_t RTerminal::get_count(TypeId tid) const
 IRefObject* RTerminal::get_handler(TypeId tid, size_t id) const 
 {
   if(tid==lib2d::IRenderDriver::_root_get_interface_type()) {
-    return id==0 ? &d2d : NULL;
+    return id==0 ? get_drv2d() : NULL;
+  }
+  if(tid==lib3d::IRenderDriver::_root_get_interface_type()) {
+    return id==0 ? get_drv3d() : NULL;
   }
   if(tid==libui::IKeyboardController::_root_get_interface_type()) {
     return id==0 ? &keybd : NULL;
@@ -124,6 +129,9 @@ IRefObject* RTerminal::get_handler(TypeId tid, size_t id) const
 IRefObject* RTerminal::get_handler(TypeId tid, BCStr name) const 
 {
   if(tid==lib2d::IRenderDriver::_root_get_interface_type()) {
+    return NULL;
+  }
+  if(tid==lib3d::IRenderDriver::_root_get_interface_type()) {
     return NULL;
   }
   if(tid==libui::IKeyboardController::_root_get_interface_type()) {
@@ -140,20 +148,33 @@ IRefObject* RTerminal::get_friend_handler(TypeId tid, IRefObject *obj) const
   if(tid==lib2d::IRenderDriver::_root_get_interface_type()) {
     return NULL;
   }
+  if(tid==lib3d::IRenderDriver::_root_get_interface_type()) {
+    return NULL;
+  }
   return NULL;
 }
 
 bool RTerminal::create_handler(TypeId tid, IRefObject::P &rv, BCStr name, const SParameters* params) 
 {
   if(tid==lib2d::IRenderDriver::_root_get_interface_type()) {
-    if(!d2d.open(*params))
+    lib2d::IRenderDriver *x = open_drv2d(params);
+    if(x==NULL)
       return false;
-    rv = &d2d;
+    rv = x;
     return true;
-  } else if(tid==libui::IKeyboardController::_root_get_interface_type()) {
+  } 
+  if(tid==lib3d::IRenderDriver::_root_get_interface_type()) {
+    lib3d::IRenderDriver *x = open_drv3d(params);
+    if(x==NULL)
+      return false;
+    rv = x;
+    return true;
+  } 
+  if(tid==libui::IKeyboardController::_root_get_interface_type()) {
     rv = &keybd;
     return true;
-  } else if(tid==libui::IMouseController::_root_get_interface_type()) {
+  } 
+  if(tid==libui::IMouseController::_root_get_interface_type()) {
     rv = &mouse;
     return true;
   }

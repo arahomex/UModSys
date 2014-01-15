@@ -221,6 +221,7 @@ UMODSYS_MODULE_END()
 UMODSYS_MODULE_DEF(lib2d,stdlib);
 UMODSYS_MODULE_DEF(ui,frames);
 UMODSYS_MODULE_DEF(ui,SDL_core);
+UMODSYS_MODULE_DEF(ui,SDL_GL);
 UMODSYS_MODULE_DEF(media,images_std);
 UMODSYS_MODULE_DEF(media,serialize_json);
 UMODSYS_MODULE_DEF(media,zlib);
@@ -229,6 +230,7 @@ static void refer(void)
   UMODSYS_MODULE_USE(lib2d,stdlib);
   UMODSYS_MODULE_USE(ui,frames);
   UMODSYS_MODULE_USE(ui,SDL_core);
+  UMODSYS_MODULE_USE(ui,SDL_GL);
   UMODSYS_MODULE_USE(media,images_std);
   UMODSYS_MODULE_USE(media,serialize_json);;
   UMODSYS_MODULE_USE(media,zlib);;

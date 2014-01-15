@@ -7,7 +7,7 @@ use Data::Dumper;
 #---------------------------------
 #---------------------------------
 
-sub set_get
+sub set_get($$)
 {
   my ($this, $var) = @_;
   my $sets = $this->{'sets'};
@@ -19,7 +19,7 @@ sub set_get
   return undef;
 }
 
-sub set_explode
+sub set_explode($$)
 {
   my ($this, $line) = @_;
 #  my $ln = $line;
@@ -51,7 +51,7 @@ sub set_explode
   return $rv;
 }
 
-sub set_value
+sub set_value($$$)
 {
   my ($this, $cmd, $args) = @_;
   my $var = get_configuration_arg(\$args);
@@ -61,14 +61,14 @@ sub set_value
   $this->{'sets'}->[0]->{$var} = $value;
 }
 
-sub set_new
+sub set_new($)
 {
   my ($parent) = @_;
   return [{}, (@{$parent->{'sets'}})];
 }
 
 
-sub get_configuration_arg
+sub get_configuration_arg($)
 {
   my ($line) = @_;
   return undef if not defined $$line; 
@@ -89,7 +89,7 @@ sub get_configuration_arg
   return $rv;
 }
 
-sub get_configuration_arg_exp
+sub get_configuration_arg_exp($$)
 {
   my ($line, $this) = @_;
   my $rv = get_configuration_arg($line);
@@ -97,7 +97,7 @@ sub get_configuration_arg_exp
   return set_explode($this, $rv);
 }
 
-sub make_filename_dir
+sub make_filename_dir($)
 {
   my ($filename) = @_;
   my ($n, $path, $x) = fileparse($filename);
@@ -118,7 +118,7 @@ sub make_filename_dir
 #---------------------------------
 #---------------------------------
 
-sub init_configuration
+sub init_configuration()
 {
   return {
     'lines' => undef,
@@ -128,7 +128,7 @@ sub init_configuration
   };
 }
 
-sub read_configuration
+sub read_configuration($$)
 {
   my ($config, $filename) = @_;
   my ($line, $fin);
@@ -145,7 +145,7 @@ sub read_configuration
   close $fin;
 }
 
-sub apply_configuration
+sub apply_configuration($$)
 {
   my ($config, $ctx) = @_;
   my ($lineno, $G) = (0, undef);
@@ -209,13 +209,14 @@ sub apply_configuration
   return $ctx;
 }
 
-sub exec_generator {
+sub exec_generator($$)
+{
   my ($config, $ctx) = @_;
   $ctx->{'generate'}($ctx, $config) if (defined $ctx) and (exists $ctx->{'generate'});
 }
 
 
-sub filename_search_files
+sub filename_search_files($$)
 {
   my ($path, $mask) = @_;
 #  my @fn = glob "'${path}/${mask}'";
@@ -226,15 +227,17 @@ sub filename_search_files
   return \@fn;
 }
 
-sub filename_mask_match
+sub filename_mask_match($$)
 {
   my ($mask, $path) = @_;
 #  print "match $mask in $path\n";
-  return 1 if $path =~ /$mask/;
-  return 0;
+  my $regex = glob_to_regex_string($mask);
+  my $match = $path =~ /$regex$/;
+#print "match $mask in $path [$regex][$match]\n";
+  return $match;
 }
 
-sub filename_skipdirs
+sub filename_skipdirs($$)
 {
   my ($path, $skip) = @_;
 #  print "path skip $skip: '$path'\n";
@@ -246,5 +249,69 @@ sub filename_skipdirs
   return $path;
 }
 
+#---------------------------------
+#---------------------------------
+#---------------------------------
+
+my $strict_leading_dot    = 1;
+my $strict_wildcard_slash = 1;
+
+sub glob_to_regex_string($)
+{
+    my $glob = shift;
+    my ($regex, $in_curlies, $escaping);
+    local $_;
+    my $first_byte = 1;
+    for ($glob =~ m/(.)/gs) {
+        if ($first_byte) {
+            if ($strict_leading_dot) {
+                $regex .= '(?=[^\.])' unless $_ eq '.';
+            }
+            $first_byte = 0;
+        }
+        if ($_ eq '/') {
+            $first_byte = 1;
+        }
+        if ($_ eq '.' || $_ eq '(' || $_ eq ')' || $_ eq '|' ||
+            $_ eq '+' || $_ eq '^' || $_ eq '$' || $_ eq '@' || $_ eq '%' ) {
+            $regex .= "\\$_";
+        }
+        elsif ($_ eq '*') {
+            $regex .= $escaping ? "\\*" :
+              $strict_wildcard_slash ? "[^/]*" : ".*";
+        }
+        elsif ($_ eq '?') {
+            $regex .= $escaping ? "\\?" :
+              $strict_wildcard_slash ? "[^/]" : ".";
+        }
+        elsif ($_ eq '{') {
+            $regex .= $escaping ? "\\{" : "(";
+            ++$in_curlies unless $escaping;
+        }
+        elsif ($_ eq '}' && $in_curlies) {
+            $regex .= $escaping ? "}" : ")";
+            --$in_curlies unless $escaping;
+        }
+        elsif ($_ eq ',' && $in_curlies) {
+            $regex .= $escaping ? "," : "|";
+        }
+        elsif ($_ eq "\\") {
+            if ($escaping) {
+                $regex .= "\\\\";
+                $escaping = 0;
+            }
+            else {
+                $escaping = 1;
+            }
+            next;
+        }
+        else {
+            $regex .= $_;
+            $escaping = 0;
+        }
+        $escaping = 0;
+    }
+    return $regex;
+}
 
 return 1;

@@ -11,6 +11,7 @@
 
 #include <umodsys/lib/ui/libui.common.h>
 #include <umodsys/lib/2d/lib2d.driver.h>
+#include <umodsys/lib/3d/lib3d.driver.h>
 
 #include "SDL.h"
 #include "SDL_ttf.h"
@@ -35,6 +36,7 @@ struct RGenerator;
 
 #include "umodsys.mod.ui.SDL_core.utils.h"
 #include "umodsys.mod.ui.SDL_core.types.h"
+#include "umodsys.mod.ui.SDL_core.typesx.h"
 #include "umodsys.mod.ui.SDL_core.inlines.h"
 
 //***************************************
@@ -44,20 +46,20 @@ struct RGenerator;
 struct RGenerator : public IGenerator {
   //
   int get_generated_names(DPtrList& list) const {
-    return t_names<RTerminal>(list)
+    return t_names<RTerminalX>(list)
 //         + t_names<RMultiImage2D_SDL_ttf>(list)
     ;
     return 0;
   }
   int get_generated_types(DPtrList& list, TypeId name) const {
     int rv = 0;
-    t_types<RTerminal>(rv, list, name) 
+    t_types<RTerminalX>(rv, list, name) 
 //    || t_types<RMultiImage2D_SDL_ttf>(rv, list, name) 
     ;
     return rv;
   }
   bool generate(IRefObject::P& obj, TypeId name, const SParameters& args) {
-    return t_gen_param<RTerminal>(this, obj, name, args)
+    return t_gen_param<RTerminalX>(this, obj, name, args)
 //      || t_gen_param<RMultiImage2D_SDL_ttf>(this, obj, name, args)
     ;
     return false;

@@ -5,11 +5,13 @@
 UMODSYS_MODULE_BEGIN(ui, SDL_core)
 UMODSYS_MODULE_BODY0()
 
+#include "umodsys.mod.ui.SDL_core.swindow.h"
 #include "umodsys.mod.ui.SDL_core.font.h"
 #include "umodsys.mod.ui.SDL_core.window.h"
 #include "umodsys.mod.ui.SDL_core.mouse.h"
 #include "umodsys.mod.ui.SDL_core.keyboard.h"
 #include "umodsys.mod.ui.SDL_core.terminal.h"
+#include "umodsys.mod.ui.SDL_core.terminalx.h"
 
 struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)

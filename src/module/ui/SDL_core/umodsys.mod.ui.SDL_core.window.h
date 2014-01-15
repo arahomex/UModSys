@@ -5,7 +5,7 @@
 
 RRenderDriver2D::RRenderDriver2D(DOwner *own)
 : refs(own), 
-  wnd(NULL), rend(NULL),
+  rend(NULL),
   clear_color(0,0,0,0),
   cur_color(0,0,0,0), cur_tm(tm_Opaque) 
 {
@@ -22,32 +22,19 @@ void RRenderDriver2D::close(void)
     SDL_DestroyRenderer(rend);
     rend = NULL;
   }
-  if(wnd!=NULL) {
-    SDL_DestroyWindow(wnd);
-    wnd = NULL;
-  }
+  wnd.close();
 }
 
 bool RRenderDriver2D::open(const SParameters& args) 
 {
   close();
-  BCStr caption = "SDL2";
-  int x = 20, y = 20, dx = 640, dy = 480;
-//    int flags = SDL_WINDOW_OPENGL;
-  int flags = 0;
-  if(&args!=NULL) {
-    args.get("caption", caption);
-    args.get("x", x); args.get("y", y);
-    args.get("dx", dx); args.get("dy", dy);
-  }
-  max_values.add("xoffset", x); max_values.add("yoffset", y);
-  max_values.add("width", dx); max_values.add("height", dy);
-  //
-  wnd = SDL_CreateWindow(caption, x, y, dx, dy, flags);
-  if(wnd==NULL) {
+  if(!wnd.open(args)) {
     close();
     return false;
   }
+  max_values.add("xoffset", wnd.x); max_values.add("yoffset", wnd.y);
+  max_values.add("width", wnd.dx); max_values.add("height", wnd.dy);
+  //
   rend = SDL_CreateRenderer(wnd, -1, SDL_RENDERER_ACCELERATED);
   if(rend==NULL) {
     close();

@@ -116,7 +116,8 @@ void RTest1_Shell::ui_test1(void)
       TParametersA<1024> pars;
       pars.add("driver", rd2d);
       pars.add("font", font);
-      term = ui_newterm("*::SDL_core::*", pars);
+//      term = ui_newterm("*::SDL_core::*", pars);
+      term = ui_newterm("*::SDL_GL::*", pars);
       if(!term.valid())
         return;
     }
