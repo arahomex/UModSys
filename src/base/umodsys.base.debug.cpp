@@ -18,7 +18,7 @@ SDebug::~SDebug(void)
 
 bool SDebug::put(core::byte src, int lev, const char* fmt, ...) const
 {
-  if(mask & (uint32(1)<<src))
+  if((mask & (uint32(1)<<src))==0)
     return false;
   if(!console.valid())
     return false;
@@ -31,7 +31,7 @@ bool SDebug::put(core::byte src, int lev, const char* fmt, ...) const
 
 bool SDebug::dput(core::byte src, const char* fmt, ...) const
 {
-  if(mask & (uint32(1)<<src))
+  if((mask & (uint32(1)<<src))==0)
     return false;
   if(!console.valid())
     return false;

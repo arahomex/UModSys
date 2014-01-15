@@ -147,6 +147,11 @@ namespace core {
   tl::TRefObjectLinksParent<Self, DOwner> refs; \
   UMODSYS_REFOBJECT_UNIIMPLEMENT() \
 
+#define UMODSYS_REFOBJECT_COMPOSITE(_type_owner) \
+  typedef _type_owner DOwner; typedef tl::TRefObject<DOwner> DOwnerP; \
+  tl::TRefObjectLinksComposite<Self, DOwner> refs; \
+  UMODSYS_REFOBJECT_UNIIMPLEMENT() \
+
 //***************************************
 // END
 //***************************************

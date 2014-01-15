@@ -21,6 +21,11 @@ const SModuleInfo& RModule::get_info(void) const
 
 //***************************************
 
+SDebug* RModule::getdebug(void) const
+{
+  return ireg!=NULL ? ireg->mr_getdebug() : NULL;
+}
+
 bool RModule::is_open(void) const
 {
   return ireg!=NULL && ireg->mr_isopen();

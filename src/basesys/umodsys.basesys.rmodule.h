@@ -66,6 +66,7 @@ public:
   IModuleLibrary* get_library(void) const;
   const SModuleInfo& get_info(void) const;
   //
+  SDebug* getdebug(void) const;
   bool is_open(void) const;
   bool open(void);   
   bool close(void);

@@ -17,7 +17,7 @@
 static void refer(void);
 
 #define U_MOD UMODSYS_MODULE_NAME(test, test1)
-UMODSYS_MODULE_BEGIN(test, test1)
+UMODSYS_MODULE_START(test, test1)
 
 using namespace core;
 using namespace base;
@@ -27,6 +27,14 @@ struct RTest1_Generator;
 struct ILines;
 struct RLines;
 struct RLines_Filter;
+
+enum {
+  d_Shell,
+  d_Gen,
+  d_SubGen,
+  d_UI,
+  d_File
+};
 
 #include "plugin_test1.obj_load.h"
 
@@ -48,12 +56,12 @@ struct RTest1_Shell
     typename T::P rv;
     if(!M.t_generate_first(rv, args, mask, &found)) {
       if(found!=NULL)
-        M.con().put(0, "  fail generate %s(%s)\n", found->name, xinfo);
+        s_dbg.put(d_Gen, cl_Error, "  fail generate %s(%s)\n", found->name, xinfo);
       else
-        M.con().put(0, "  fail find %s(%s)\n", T::_root_get_interface_type()->name, mask());
+        s_dbg.put(d_Gen, cl_Error, "  fail find %s(%s)\n", T::_root_get_interface_type()->name, mask());
       return NULL;
     }
-    M.con().put(0, "  generated %s(%s) => %p\n", found->name, xinfo, rv());
+    s_dbg.put(d_Gen, cl_Info, "  generated %s(%s) => %p\n", found->name, xinfo, rv());
     return rv;
   }
   // ----------------------------------------------------------------------------------
@@ -105,7 +113,9 @@ struct RTest1_Shell
   // ----------------------------------------------------------------------------------
   //
   RTest1_Shell(DOwner *own) : refs(own) {
-    M.con().put(0, "RTest1_Shell() {\n");
+    s_dbg.menable();
+    //
+    s_dbg.put(d_Shell, cl_Info, "RTest1_Shell() {\n");
     memblock = M().mem_alloc(1024, _UMODSYS_SOURCEINFO);
     M().mem_alloc(511, _UMODSYS_SOURCEINFO);
     //
@@ -116,18 +126,18 @@ struct RTest1_Shell
     file_test4();
     file_test5();
     file_test6();
-#endif
     file_test7();
+#endif
     //
-#if 0
+#if 1
     ui_test1();
 #endif
     //
-    M.con().put(0, "} // RTest1_Shell()\n");
+    s_dbg.put(d_Shell, cl_Info, "} // RTest1_Shell()\n");
   }
   ~RTest1_Shell(void) {
     M().mem_free(memblock, _UMODSYS_SOURCEINFO);
-    M.con().put(0, "~RTest1_Shell()\n");
+    s_dbg.put(d_Shell, cl_Info, "~RTest1_Shell()\n");
   }
   //
   bool connect(void) {
@@ -139,11 +149,11 @@ struct RTest1_Shell
     return true;
   }
   bool process_tick(const STimeMsec& delta) {
-    M.con().put(0, "RTest1_Shell::tick(%g)\n", delta.fsec());
+    s_dbg.put(d_Shell, cl_Info, "RTest1_Shell::tick(%g)\n", delta.fsec());
     return true;
   }
   bool process_command(int argc, const core::DCString argv[]) {
-    M.con().put(0, "RTest1_Shell::command(#%d)\n", argc);
+    s_dbg.put(d_Shell, cl_Info, "RTest1_Shell::command(#%d)\n", argc);
     return true;
   }
 };

@@ -32,7 +32,9 @@ template<typename T, typename Ref=core::IRefObject, typename RefFunc=TRefObjectF
 template<typename T, typename Extra, typename Ref=core::IRefObject, typename RefFunc=TRefObjectFunc<Ref> > struct TRefObjectCompositeExtra;
 
 template<typename Self> struct TRefObjectLinks;
+template<typename Self, typename P> struct TRefObjectLinksModObject;
 template<typename Self, typename P> struct TRefObjectLinksParent;
+template<typename Self, typename P> struct TRefObjectLinksComposite;
 
 //***************************************
 // TRefObjectLinks::
@@ -48,7 +50,7 @@ struct TRefObjectLinks {
   mutable Weak ref_weak_root;
   //
   inline int  ref_links(void) const { return ref_count; }
-  inline void ref_add(Self* p) const;
+  void ref_add(Self* p) const;
   void ref_remove(Self* p) const;
   bool ref_weak(Self* p, Weak& wp) const;
   void obj_delete(Self* p) const;
@@ -76,6 +78,24 @@ struct TRefObjectLinksModObject : public TRefObjectLinks<Self> {
   inline Owner* operator->(void) const { return owner; }
   //
   TRefObjectLinksModObject(Owner* pv);
+};
+
+template<typename Self, typename Owner> 
+struct TRefObjectLinksComposite {
+  typedef typename Self::WeakPointer Weak;
+  //
+  mutable Weak ref_weak_root;
+  mutable Owner* owner;
+  //
+  int  ref_links(void) const;
+  void ref_add(Self* p) const;
+  void ref_remove(Self* p) const;
+  bool ref_weak(Self* p, Weak& wp) const;
+  void obj_delete(Self* p) const;
+  inline Owner* operator*(void) const { return owner; }
+  inline Owner* operator->(void) const { return owner; }
+  //
+  TRefObjectLinksComposite(Owner* pv);
 };
 
 //***************************************
@@ -429,6 +449,45 @@ inline void TRefObjectLinksModObject<Self, Owner>::obj_delete(Self* p) const
 {
   TRefObject<Owner, TModObjectFunc<Owner> > pv(owner, core::void_null());
   owner = NULL;
+  delete p;
+}
+
+//**********************
+// TRefObjectLinksComposite::
+
+template<typename Self, typename Owner> 
+inline TRefObjectLinksComposite<Self, Owner>::TRefObjectLinksComposite(Owner* pv) 
+: owner(pv) {
+}
+
+template<typename Self, typename Owner> 
+inline int TRefObjectLinksComposite<Self, Owner>::ref_links(void) const 
+{ 
+  return owner->ref_links();
+}
+
+template<typename Self, typename Owner> 
+inline void TRefObjectLinksComposite<Self, Owner>::ref_remove(Self* p) const 
+{ 
+  owner->ref_remove();
+}
+
+template<typename Self, typename Owner> 
+inline void TRefObjectLinksComposite<Self, Owner>::ref_add(Self* p) const 
+{ 
+  owner->ref_add();
+}
+
+template<typename Self, typename Owner> 
+bool TRefObjectLinksComposite<Self, Owner>::ref_weak(Self* p, Weak& wp) const
+{
+  wp.insert(ref_weak_root, p);
+  return true;
+}
+
+template<typename Self, typename Owner> 
+inline void TRefObjectLinksComposite<Self, Owner>::obj_delete(Self* p) const
+{
   delete p;
 }
 

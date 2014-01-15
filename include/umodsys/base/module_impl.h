@@ -7,6 +7,7 @@
 
 #include <umodsys/stdcore.h>
 #include <umodsys/base/system.h>
+#include <umodsys/base/console.h>
 
 namespace UModSys {
 namespace base {
@@ -20,10 +21,12 @@ public:
   SModuleInfo minfo;
   int load_count;
   IModule *module;
+  SDebug* sdbg;
 public:
-  IModuleReg(const SModuleInfo &mi);
-  IModuleReg(const char* n, core::Buint16 vh, core::Buint16 vl, const char *i, core::Buint32 bno, core::BTime u);
+  IModuleReg(const SModuleInfo &mi, SDebug* dbg);
+  IModuleReg(const char* n, core::Buint16 vh, core::Buint16 vl, const char *i, core::Buint32 bno, core::BTime u, SDebug* dbg);
   virtual ~IModuleReg(void);
+  virtual SDebug* mr_getdebug(void) const;
   virtual bool mr_isopen(void) const;
   virtual bool mr_open(void);
   virtual bool mr_close(void);
@@ -38,7 +41,7 @@ public:
 };
 
 #define UMODSYS_MODULEREG(_name, _prefix, _info) \
-  base::IModuleReg(_name, _prefix##_MAJOR, _prefix##_MINOR, _info, _prefix##_BUILD, _prefix##_TIME)
+  base::IModuleReg(_name, _prefix##_MAJOR, _prefix##_MINOR, _info, _prefix##_BUILD, _prefix##_TIME, &s_dbg)
 
 //***************************************
 // IModuleLibraryReg

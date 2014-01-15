@@ -2,47 +2,23 @@
 
 libui::ICollector::P RTest1_Shell::ui_newframes(const DCString &mask, const SParameters& args)
 {
-  if(TypeId found=M.t_firstobjname<libui::ICollector>(mask)) {
-    libui::ICollector::P rv;
-    if(M.t_generate(rv, found, args)) {
-      M.con().put(0, "  found frames %s: %s => %p\n", mask(), found->name, rv());
-      return rv;
-    }
-  }
-  M.con().put(0, "  fail frames %s\n", mask());
-  return NULL;
+  return generate_type<libui::ICollector>(mask, args, "ICollector");
 }
 
 libui::ITerminal::P RTest1_Shell::ui_newterm(const DCString &mask, const SParameters& args)
 {
-  if(TypeId found=M.t_firstobjname<libui::ITerminal>(mask)) {
-    libui::ITerminal::P rv;
-    if(M.t_generate(rv, found, args)) {
-      M.con().put(0, "  found terminal %s: %s => %p\n", mask(), found->name, rv());
-      return rv;
-    }
-  }
-  M.con().put(0, "  fail terminal %s\n", mask());
-  return NULL;
+  return generate_type<libui::ITerminal>(mask, args, "ITerminal");
 }
 
 lib2d::IMultiImage::P RTest1_Shell::ui_newfont(const DCString &mask, const SParameters& args)
 {
-  if(TypeId found=M.t_firstobjname<lib2d::IMultiImage>(mask)) {
-    lib2d::IMultiImage::P rv;
-    if(M.t_generate(rv, found, args)) {
-      M.con().put(0, "  found font %s: %s => %p\n", mask(), found->name, rv());
-      return rv;
-    }
-  }
-  M.con().put(0, "  fail font %s\n", mask());
-  return NULL;
+  return generate_type<lib2d::IMultiImage>(mask, args, "IMultiImage");
 }
 
 bool RTest1_Shell::key_pressed(const libui::SKeyboardInputRaw& key)
 {
-  M.con().put(
-    0, "[KEY.KEY %d,%d,%d,%d]\n",
+  s_dbg.put(d_UI, cl_Info, 
+    "[KEY.KEY %d,%d,%d,%d]\n",
     key.code, key.status, key.os_code, key.special
   );
   if(key.code==libui::k_escape) {
@@ -56,8 +32,8 @@ bool RTest1_Shell::key_text(const libui::SKeyboardInputText& key)
   tl::su::utf8 text[8];
   size_t n = tl::su::utf_32to8(text, 8, &key.text, 1, true);
   text[n] = 0;
-  M.con().put(
-    0, "[KEY.TEXT %s]\n",
+  s_dbg.put(d_UI, cl_Info, 
+    "[KEY.TEXT %s]\n",
     text
   );
   return true;
@@ -65,8 +41,8 @@ bool RTest1_Shell::key_text(const libui::SKeyboardInputText& key)
 
 bool RTest1_Shell::mouse_event(const libui::SMouseInput& ms)
 {
-  M.con().put(
-    0, "[MOUSE %x B%x:%d A(%d,%d) R(%d,%d) X(%d,%d)]\n",
+  s_dbg.put(d_UI, cl_Info, 
+    "[MOUSE %x B%x:%d A(%d,%d) R(%d,%d) X(%d,%d)]\n",
     ms.eventid, ms.get_buttonmask(), ms.button_count,
     ms.abs(0), ms.abs(1), ms.rel(0), ms.rel(1), ms.aux(0), ms.aux(1)
   );
@@ -75,8 +51,8 @@ bool RTest1_Shell::mouse_event(const libui::SMouseInput& ms)
 
 bool RTest1_Shell::command(const libui::SController& ci, int command, const libui::SFrameDataIn& in)
 {
-  M.con().put(
-    0, "[COMMAND %d@%p C%d D%d]\n",
+  s_dbg.put(d_UI, cl_Info, 
+    "[COMMAND %d@%p C%d D%d]\n",
     ci.context, ci.source, command, 
     in.safe_i()
   );
@@ -147,10 +123,10 @@ void RTest1_Shell::ui_test1(void)
     TParametersA<1024> pars;
     pars.add("caption", "Test #1");
     if(!term->t_create_handler(rd2d, "", &pars)) {
-      M.con().put(0, "  not created lib2d::IRenderDriver\n");
+      s_dbg.put(d_SubGen, cl_Error, "  not created lib2d::IRenderDriver\n");
       return;
     }
-    M.con().put(0, "  created lib2d::IRenderDriver: %s => %p\n", rd2d()->root_get_interface_type()->name, rd2d());
+    s_dbg.put(d_SubGen, cl_Info, "  created lib2d::IRenderDriver: %s => %p\n", rd2d()->root_get_interface_type()->name, rd2d());
   }
   if(1) {
     TParametersA<1024> pars;
@@ -158,26 +134,26 @@ void RTest1_Shell::ui_test1(void)
     pars.add("max_glyph", 0x1000);
     font = rd2d->new_font(pars);
     if(!font.valid()) {
-      M.con().put(0, "  error create font\n");
+      s_dbg.put(d_SubGen, cl_Error, "  error create font\n");
       return;
     }
-    M.con().put(0, "  created font: %s => %p\n", font()->root_get_interface_type()->name, font());
+    s_dbg.put(d_SubGen, cl_Info, "  created font: %s => %p\n", font()->root_get_interface_type()->name, font());
   }
   if(1) {
     TParametersA<1024> pars;
     if(!term->t_create_handler(keyc, NULL, &pars)) {
-      M.con().put(0, "  error create IKeyboardController\n");
+      s_dbg.put(d_SubGen, cl_Error, "  error create IKeyboardController\n");
       return;
     }
-    M.con().put(0, "  created IKeyboardController: %s => %p\n", keyc()->root_get_interface_type()->name, keyc());
+    s_dbg.put(d_SubGen, cl_Info, "  created IKeyboardController: %s => %p\n", keyc()->root_get_interface_type()->name, keyc());
   }
   if(1) {
     TParametersA<1024> pars;
     if(!term->t_create_handler(mouc, NULL, &pars)) {
-      M.con().put(0, "  error create IMouseController\n");
+      s_dbg.put(d_SubGen, cl_Error, "  error create IMouseController\n");
       return;
     }
-    M.con().put(0, "  created IMouseController: %s => %p\n", mouc()->root_get_interface_type()->name, mouc());
+    s_dbg.put(d_SubGen, cl_Info, "  created IMouseController: %s => %p\n", mouc()->root_get_interface_type()->name, mouc());
   }
   {
     TParametersA<1024> pars;

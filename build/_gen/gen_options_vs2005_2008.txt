@@ -15,17 +15,21 @@ begin project-group umodsys
   begin project umodsys_lib_core
     GUID-gen 0 umodsys.lib_core
     option * OutputDirectory $(path-out-bin)
-    begin file-group src-$(spname)
-      begin mask $(path-skip) $(path-s-core)/$(ppath)
-        include *.cpp *.h
+    begin file-group src
+      begin file-group $(spname)
+        begin mask $(path-skip) $(path-s-core)/$(ppath)
+          include *.cpp *.h
+        end
       end
     end
-    begin file-group headers-$(spname)
-      begin mask $(path-skip) $(path-inc)/core/$(ppath)
-        include *.h
-      end
-      begin mask $(path-skip) $(path-inc)/core/platform
-        include def_msvc.h def_win32.h
+    begin file-group headers
+      begin file-group $(spname)
+        begin mask $(path-skip) $(path-inc)/core/$(ppath)
+          include *.h
+        end
+        begin mask $(path-skip) $(path-inc)/core/platform
+          include def_msvc.h def_win32.h
+        end
       end
     end
     option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto core"
@@ -34,8 +38,10 @@ begin project-group umodsys
   begin project umodsys_lib_base
     GUID-gen 0 umodsys.lib_base
     option * OutputDirectory $(path-out-bin)
-    begin file-group src-$(spname)
-      file $(path-s-base)/$(ppath)/umodsys.so_main.win32.cpp
+    begin file-group src
+      begin file-group $(spname)
+        file $(path-s-base)/$(ppath)/umodsys.so_main.win32.cpp
+      end
     end
     option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto base"
   end
@@ -43,8 +49,10 @@ begin project-group umodsys
   begin project umodsys_lib_basesys
     GUID-gen 0 umodsys.lib_basesys
     option * OutputDirectory $(path-out-bin)
-    begin file-group src-$(spname)
-      file $(path-s-basesys)/$(ppath)/umodsys.basesys.rmodule.win32.cpp
+    begin file-group src
+      begin file-group $(spname)
+        file $(path-s-basesys)/$(ppath)/umodsys.basesys.rmodule.win32.cpp
+      end
     end
     option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto basesys"
   end

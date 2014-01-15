@@ -11,6 +11,8 @@ namespace test2 {
 using namespace core;
 using namespace base;
 
+SDebug s_dbg;
+
 /*
 struct RTest2_Shell : public IShell {
   RTest2_Shell(void) {

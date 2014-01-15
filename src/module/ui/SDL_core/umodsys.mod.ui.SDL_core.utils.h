@@ -8,7 +8,7 @@ struct RRenderDriver2D;
 
 struct sdlRect : public SDL_Rect {
   inline sdlRect(int ax, int ay, int dx, int dy) {
-    x = x; y = y;
+    x = ax; y = ay;
     w = dx; h = dy;
   }
   inline sdlRect(const lib2d::DPoint& a, const lib2d::DPoint& b) {

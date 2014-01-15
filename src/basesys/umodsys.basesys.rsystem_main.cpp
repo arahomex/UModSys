@@ -16,13 +16,13 @@ using namespace UModSys::base::rsystem;
 
 bool RSystem::init(void)
 {
-  rsys_dbg.mask = 0;
+  rsys_dbg.mdisable();
   rsys_dbg.enable(rsdl_SystemTests);
   rsys_dbg.enable(rsdl_MemoryError);
 //  rsys_dbg.enable(rsdl_System);
 //  rsys_dbg.enable(rsdl_Module);
 //  rsys_dbg.enable(rsdl_ModuleLibrary);
-  rsys_dbg.enable(rsdl_SoLoad);
+//  rsys_dbg.enable(rsdl_SoLoad);
   //
 #if defined(_DEBUG) && defined(_MSC_VER)
   _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF|_CRTDBG_DELAY_FREE_MEM_DF|_CRTDBG_ALLOC_MEM_DF);

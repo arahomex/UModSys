@@ -64,16 +64,18 @@ begin project-group umodsys
     includes $(path-include)/$(ppath)
     #
     begin file-group src
-      file $(path-s-core)/umodsys.core.objects.cpp
-      file $(path-s-core)/umodsys.core.stdtypedefs.cpp
-      file $(path-s-core)/umodsys.core.uniqueptr.cpp
-      file $(path-s-core)/umodsys.core.uniqueptrlist.cpp
-    end
-    begin file-group src-tl
-      file $(path-s-core)/umodsys.tl.strings.cpp
-      file $(path-s-core)/umodsys.tl.utf8.cpp
-      file $(path-s-core)/umodsys.tl.utf16.cpp
-      file $(path-s-core)/umodsys.tl.utfcase.cpp
+      begin file-group core
+        file $(path-s-core)/umodsys.core.objects.cpp
+        file $(path-s-core)/umodsys.core.stdtypedefs.cpp
+        file $(path-s-core)/umodsys.core.uniqueptr.cpp
+        file $(path-s-core)/umodsys.core.uniqueptrlist.cpp
+      end
+      begin file-group tl
+        file $(path-s-core)/umodsys.tl.strings.cpp
+        file $(path-s-core)/umodsys.tl.utf8.cpp
+        file $(path-s-core)/umodsys.tl.utf16.cpp
+        file $(path-s-core)/umodsys.tl.utfcase.cpp
+      end
     end
     begin file-group headers
       begin file-group core

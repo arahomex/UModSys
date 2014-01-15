@@ -6,6 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/stdcore.h>
+#include <umodsys/base/console.h>
 
 namespace UModSys {
 namespace base {
@@ -50,6 +51,7 @@ public:
   virtual IModuleLibrary* get_library(void) const =0;
   virtual const SModuleInfo& get_info(void) const =0;
   //
+  virtual SDebug* getdebug(void) const =0;
   virtual bool is_open(void) const =0;
   virtual bool open(void) =0;
   virtual bool close(void) =0;

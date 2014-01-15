@@ -60,6 +60,8 @@ public:
   //
   inline void enable(core::byte src) { mask |= core::uint32(1)<<src; }
   inline void disable(core::byte src) { mask &= ~(core::uint32(1)<<src); }
+  inline void menable(core::uint32 src=~core::uint32(0)) { mask |= src; }
+  inline void mdisable(core::uint32 src=~core::uint32(0)) { mask &= ~src; }
   //
   inline bool vput(core::byte src, int lev, const char* fmt, va_list va) const {
     if((mask & (core::uint32(1)<<src))==0 || !console.valid())

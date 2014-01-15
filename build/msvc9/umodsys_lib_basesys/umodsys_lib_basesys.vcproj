@@ -716,6 +716,14 @@
 		<Filter
 			Name="src"
 			>
+			<Filter
+				Name="win32"
+				>
+				<File
+					RelativePath="..\..\..\src\basesys\platform\win32\umodsys.basesys.rmodule.win32.cpp"
+					>
+				</File>
+			</Filter>
 			<File
 				RelativePath="..\..\..\src\basesys\umodsys.basesys.rconsole_std.cpp"
 				>
@@ -790,14 +798,6 @@
 			</File>
 			<File
 				RelativePath="..\..\..\src\basesys\version_main.h"
-				>
-			</File>
-		</Filter>
-		<Filter
-			Name="src-win32"
-			>
-			<File
-				RelativePath="..\..\..\src\basesys\platform\win32\umodsys.basesys.rmodule.win32.cpp"
 				>
 			</File>
 		</Filter>
