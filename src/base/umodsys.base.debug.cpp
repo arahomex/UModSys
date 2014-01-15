@@ -16,7 +16,7 @@ SDebug::~SDebug(void)
 {
 }
 
-bool SDebug::put(core::byte src, int lev, const char* fmt, ...) const
+bool SDebug::put(core::byte src, eConsoleLevels lev, const char* fmt, ...) const
 {
   if((mask & (uint32(1)<<src))==0)
     return false;

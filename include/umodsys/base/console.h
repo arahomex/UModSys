@@ -18,11 +18,13 @@ enum eConsoleLevels {
   cl_Fatal     = 0,
   cl_Error     = 1,
   cl_Warning   = 2,
-  cl_Info      = 3,
-  cl_Aux       = 4,
-  cl_Debug     = 5,
-  cl_Debug1    = 6,
-  cl_Debug2    = 7,
+  cl_UI        = 3,
+  cl_Info      = 4,
+  cl_Aux       = 5,
+  cl_Debug     = 6,
+  cl_Debug1    = 7,
+  cl_Debug2    = 8,
+  cl_Last      = 0x7fff
 };
 
 //***************************************
@@ -35,8 +37,8 @@ struct IConsole
 public:
   ~IConsole(void);
 public:
-  virtual bool vput(int level, const char* fmt, va_list va) =0;
-  virtual bool put(int level, const char* fmt, ...) =0;
+  virtual bool vput(eConsoleLevels level, const char* fmt, va_list va) =0;
+  virtual bool put(eConsoleLevels level, const char* fmt, ...) =0;
   //
   virtual bool vget_c(int* ch, const char *fmt, va_list va) =0;
   virtual bool get_c(int* ch, const char *fmt, ...) =0;
@@ -63,7 +65,7 @@ public:
   inline void menable(core::uint32 src=~core::uint32(0)) { mask |= src; }
   inline void mdisable(core::uint32 src=~core::uint32(0)) { mask &= ~src; }
   //
-  inline bool vput(core::byte src, int lev, const char* fmt, va_list va) const {
+  inline bool vput(core::byte src, eConsoleLevels lev, const char* fmt, va_list va) const {
     if((mask & (core::uint32(1)<<src))==0 || !console.valid())
       return false;
     return console->vput(lev, fmt, va);
@@ -72,7 +74,7 @@ public:
     return vput(src, cl_Debug, fmt, va); 
   }
   //
-  bool put(core::byte src, int lev, const char* fmt, ...) const;
+  bool put(core::byte src, eConsoleLevels lev, const char* fmt, ...) const;
   bool dput(core::byte src, const char* fmt, ...) const;
 };
 

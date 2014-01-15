@@ -10,7 +10,7 @@ static void refer(void);
 
 int main(int argc, char **argv)
 {
-  syshlp::setup_console();
+  syshlp::con_setup();
   RConsole_std::s_console.reflect("umodsys.log");
   RSystem& S = RSystem::s_sys;
   //
@@ -31,7 +31,7 @@ int main(int argc, char **argv)
   S.set_console(NULL);
   RConsole_std::s_console.reflect(NULL);
   //
-  syshlp::restore_console();
+  syshlp::con_restore();
   lost_func(refer);
   return 0;
 }

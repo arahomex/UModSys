@@ -141,11 +141,11 @@ struct RTest1_Shell
   }
   //
   bool connect(void) {
-    M.con().put(0, "RTest1_Shell::connect()\n");
+    s_dbg.put(d_Shell, cl_Info, "RTest1_Shell::connect()\n");
     return true;
   }
   bool disconnect(void) {
-    M.con().put(0, "RTest1_Shell::disconnect()\n");
+    s_dbg.put(d_Shell, cl_Info, "RTest1_Shell::disconnect()\n");
     return true;
   }
   bool process_tick(const STimeMsec& delta) {
@@ -201,12 +201,12 @@ struct RModuleReg : public IModuleReg {
 //    M.con().put(0, "~RModuleReg()\n");
   }
   bool do_open(void) {
-    M.con().put(0, "RModuleReg::open()\n");
+    s_dbg.put(d_Shell, cl_Info, "RModuleReg::open()\n");
     RGenerator::s_reg(this);
     return true;
   }
   bool do_close(void) {
-    M.con().put(0, "RModuleReg::close()\n");
+    s_dbg.put(d_Shell, cl_Info, "RModuleReg::close()\n");
     RGenerator::s_unreg(this);
     return true;
   }

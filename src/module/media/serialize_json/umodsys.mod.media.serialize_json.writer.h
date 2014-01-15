@@ -21,8 +21,8 @@ public:
   //
   bool put_value(const DCString& type, const Value& val, int flags) 
   {
-M.con().put(0, "{%d}", val.type);
-if(val.type==Value::t_String) M.con().put(0, "{%u\n\"%s\"}", (unsigned)val.value.s.l, val.value.s.p);
+s_dbg.put(0, cl_Debug, "{%d}", val.type);
+if(val.type==Value::t_String) s_dbg.put(0, cl_Debug, "{%u\n\"%s\"}", (unsigned)val.value.s.l, val.value.s.p);
     if(val.type==Value::t_Array) {
       if(!put_begin(type, val.type, flags))
         return false;
@@ -223,7 +223,7 @@ public:
   ~RSerializeWriter(void) {
     writer.put_c('\n');
     writer.flush();
-M.con().put(0, "{SIZE %ld}", (long)writer.stream->writer_size());
+s_dbg.put(0, cl_Debug, "{SIZE %ld}", (long)writer.stream->writer_size());
   }
   //
   inline bool validate_construction(void) const { return writer.stream.valid(); }

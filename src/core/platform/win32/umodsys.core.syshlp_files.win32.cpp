@@ -18,21 +18,58 @@ using namespace UModSys::core::syshlp;
 
 static DWORD s_oldCP = 0;
 
-void syshlp::setup_console(void)
+void syshlp::con_setup(void)
 {
+  DWORD err;
   if(s_oldCP==0)
     s_oldCP = GetConsoleOutputCP();
   if(!SetConsoleOutputCP(CP_UTF8)) {
-    DWORD err = GetLastError();         
+    err = GetLastError();         
   }
+  SetConsoleTextAttribute(stdout, NULL);
+  SetConsoleTextAttribute(stderr, NULL);
 }
 
-void syshlp::restore_console(void)
+void syshlp::con_restore(void)
 {
+  DWORD err;
   if(s_oldCP==0)
     return;
   if(!SetConsoleOutputCP(s_oldCP)) {
-    DWORD err = GetLastError();         
+    err = GetLastError();         
+  }
+  SetConsoleTextAttribute(stdout, NULL);
+  SetConsoleTextAttribute(stderr, NULL);
+}
+
+void syshlp::con_setcolor(FILE* stream, const unsigned char *rgb)
+{
+  DWORD err;
+  if(stream==NULL)
+    return;
+  int fno = _fileno(stream);
+  if(fno<0)
+    return;
+  HANDLE h = (HANDLE)_get_osfhandle(fno);
+  if(h==NULL)
+    return;
+  DWORD attr = 0;
+  if(rgb!=NULL) {
+    if(rgb[0]>=0x80) attr |= FOREGROUND_RED;
+    if(rgb[1]>=0x80) attr |= FOREGROUND_GREEN;
+    if(rgb[2]>=0x80) attr |= FOREGROUND_BLUE;
+    if(rgb[0]>=0xc0 || rgb[1]>=0xc0 || rgb[2]>=0xc0) attr |= FOREGROUND_INTENSITY;
+    //
+    if(rgb[3]>=0x80) attr |= BACKGROUND_RED;
+    if(rgb[4]>=0x80) attr |= BACKGROUND_GREEN;
+    if(rgb[5]>=0x80) attr |= BACKGROUND_BLUE;
+    if(rgb[3]>=0xc0 || rgb[4]>=0xc0 || rgb[5]>=0xc0) attr |= BACKGROUND_INTENSITY;
+  } else {
+    attr = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE;
+  }
+  BOOL rv = SetConsoleTextAttribute(h, attr);
+  if(!rv) {
+    err = GetLastError();         
   }
 }
 

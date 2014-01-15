@@ -49,18 +49,19 @@ struct RTest2_ModuleReg : public IModuleReg {
       UMODSYS_VERSION_PLUGIN_TEST_TEST2, 
       "Test 2 - module"
     ) {
+      s_dbg.menable();
 //    M.con().put(0, "RTest2_ModuleReg()\n");
   }
   ~RTest2_ModuleReg(void) {
 //    M.con().put(0, "~RTest2_ModuleReg()\n");
   }
   bool do_open(void) {
-    M.con().put(0, "RTest2_ModuleReg::open()\n");
+    s_dbg.put(0, cl_Debug, "RTest2_ModuleReg::open()\n");
 //    shell.init(); reg(shell);
     return true;
   }
   bool do_close(void) {
-    M.con().put(0, "RTest2_ModuleReg::close()\n");
+    s_dbg.put(0, cl_Debug, "RTest2_ModuleReg::close()\n");
 //    unreg(shell); shell.deinit();
     return true;
   }

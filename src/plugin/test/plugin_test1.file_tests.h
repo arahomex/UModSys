@@ -2,69 +2,69 @@
 
 void RTest1_Shell::file_test1(void)
 {
-  M.con().put(0, "******** file test 1\n");
+  s_dbg.put(d_Shell, cl_Info, "******** file test 1\n");
   libmedia::IStreamReader::P fr;
   libmedia::IStreamWriter::P fw;
   if(TypeId found=M.t_firstobjname<libmedia::IStreamReader>("*::stdio::*")) {
     TParametersA<1024> params;
     params.add("filename", "read-test.txt");
     M.t_generate(fr, found, params);
-    M.con().put(0, "  found reader: %s => %p\n", found->name, fr());
+    s_dbg.put(d_Shell, cl_Info, "  found reader: %s => %p\n", found->name, fr());
   }
   if(TypeId found=M.t_firstobjname<libmedia::IStreamWriter>("*::stdio::*")) {
     TParametersA<1024> params;
     params.add("filename", "write-test.txt");
     params.add("safe", true);
     M.t_generate(fw, found, params);
-    M.con().put(0, "  found writer: %s => %p\n", found->name, fw());
+    s_dbg.put(d_Shell, cl_Info, "  found writer: %s => %p\n", found->name, fw());
   }
   if(fr.valid()) {
     char line[1024];
     size_t req = core::scalar_min(sizeof(line)-1, size_t(fr->reader_size()));
     line[req] = 0;
     if(fr->reader_read(line, req)) {
-      M.con().put(0, "  read: {");
+      s_dbg.put(d_Shell, cl_Info, "  read: {");
       dump_str(line, req);
-      M.con().put(0, "}\n", line);
+      s_dbg.put(d_Shell, cl_Info, "}\n", line);
     }
     if(fw.valid()) {
       fw->writer_copy(fr, 0, fr->reader_size());
       fw->writer_close();
-      M.con().put(0, "  written\n");
+      s_dbg.put(d_Shell, cl_Info, "  written\n");
     }
   }
 }
 
 void RTest1_Shell::file_test2(void)
 {
-  M.con().put(0, "******** file test 2\n");
+  s_dbg.put(d_Shell, cl_Info, "******** file test 2\n");
   libmedia::IBinArchive::P arch = media_arch_stdio(".");
   if(!arch.valid())
     return;
   libmedia::IStreamReader::P fr = arch->data_reader("read-test.txt");
-  M.con().put(0, "  gen reader: %p\n", fr());
+  s_dbg.put(d_Shell, cl_Info, "  gen reader: %p\n", fr());
   libmedia::IStreamWriter::P fw = arch->data_writer("write-test.txt", libmedia::SFlags(libmedia::mf_safe::yes()) );
-  M.con().put(0, "  gen writer: %p\n", fw());
+  s_dbg.put(d_Shell, cl_Info, "  gen writer: %p\n", fw());
   if(!fr.valid())
     return;
   char line[1024];
   size_t req = core::scalar_min(sizeof(line)-1, size_t(fr->reader_size()));
   line[req] = 0;
   if(fr->reader_read(line, req)) {
-    M.con().put(0, "  read: {");
+    s_dbg.put(d_Shell, cl_Info, "  read: {");
     dump_str(line, req);
-    M.con().put(0, "}\n");
+    s_dbg.put(d_Shell, cl_Info, "}\n");
   }
   if(!fw.valid())
     return;
   fw->writer_copy(fr, 0, fr->reader_size());
   fw->writer_close();
-  M.con().put(0, "  written\n");
+  s_dbg.put(d_Shell, cl_Info, "  written\n");
 }
 
 void RTest1_Shell::file_test3(void)
 {
-  M.con().put(0, "******** file test 3\n");
+  s_dbg.put(d_Shell, cl_Info, "******** file test 3\n");
   libmedia::IBinArchive::P arch = media_arch_stdio(".");
   if(!arch.valid())
     return;
@@ -81,7 +81,7 @@ void RTest1_Shell::file_test3(void)
 
 void RTest1_Shell::file_test4(void)
 {
-  M.con().put(0, "******** file test 4\n");
+  s_dbg.put(d_Shell, cl_Info, "******** file test 4\n");
   libmedia::ILibraryBinTree::P lib_vfs = media_vfs();
   if(!lib_vfs.valid())
     return;
@@ -108,7 +108,7 @@ void RTest1_Shell::file_test4(void)
 
 void RTest1_Shell::file_test5(void)
 {
-  M.con().put(0, "******** file test 5\n");
+  s_dbg.put(d_Shell, cl_Info, "******** file test 5\n");
   libmedia::ILibraryLayered::P lib = media_lay();
   if(!lib.valid())
     return;
@@ -164,11 +164,11 @@ void RTest1_Shell::file_test5(void)
       "/read-test.txt", "new object [ILines]"
     );
     if(lines.valid()) {
-      M.con().put(0, "  ILines: %p {\n", lines());
+      s_dbg.put(d_Shell, cl_Info, "  ILines: %p {\n", lines());
       for(size_t i=0; i<~lines->lines; i++) {
-        M.con().put(0, "    line %u: %s\n", (int)i, lines->lines(i)());
+        s_dbg.put(d_Shell, cl_Info, "    line %u: %s\n", (int)i, lines->lines(i)());
       }
-      M.con().put(0, "  } ILines: %p \n", lines());
+      s_dbg.put(d_Shell, cl_Info, "  } ILines: %p \n", lines());
       test_op_file(
         lib->obj_save("/write-test-2.txt", lines), 
         "/write-test-2.txt", "save object [ILines]"
@@ -179,7 +179,7 @@ void RTest1_Shell::file_test5(void)
 
 void RTest1_Shell::file_test6(void)
 {
-  M.con().put(0, "******** file test 6\n");
+  s_dbg.put(d_Shell, cl_Info, "******** file test 6\n");
   libmedia::IUtilities::P utils = media_utils();
   libmedia::ILibraryLayered::P lib = media_lay();
   if(!utils.valid() || !lib.valid())
@@ -256,24 +256,24 @@ void RTest1_Shell::file_test6(void)
         return;
     }
     if(!rd->reader_parse(wr)) {
-      M.con().put(0, "parse error: %s\n", rd->reader_lasterror());
+      s_dbg.put(d_Shell, cl_Error, "parse error: %s\n", rd->reader_lasterror());
     } else {
-      M.con().put(0, "configuration parsed\n");
+      s_dbg.put(d_Shell, cl_Info, "configuration parsed\n");
     }
   }
   //
   lib2d::IImage::P img = new_mem_image();
   bool rv = lib->obj_load("/minecraft_textures.png", img, "lib2d::IImage");
-  M.con().put(0, "loaded %d\n", rv);
+  s_dbg.put(d_Shell, cl_Info, "loaded %d\n", rv);
   rv = lib->obj_save("/minecraft_textures_new.png", img, "lib2d::IImage");
-  M.con().put(0, "saved %d\n", rv);
+  s_dbg.put(d_Shell, cl_Info, "saved %d\n", rv);
 }
 
 void RTest1_Shell::file_test7(void)
 {
   typedef tl::TDynarrayDynamic<libmedia::SFileInfo> FileList;
   //
-  M.con().put(0, "******** file test 6\n");
+  s_dbg.put(d_Shell, cl_Info, "******** file test 6\n");
   libmedia::IUtilities::P utils = media_utils();
   libmedia::ILibraryLayered::P lib = media_lay();
   if(!utils.valid() || !lib.valid())
@@ -308,9 +308,9 @@ void RTest1_Shell::file_test7(void)
     FileList lst;
     tl::TRStackSocket<libmedia::SFileInfo,FileList> slst(lst);
     bool rv = lib->bin_list("/mc/*.bin", slst);
-    M.con().put(0, "find %d : %d elems\n", rv, ~lst);
+    s_dbg.put(d_Shell, cl_Info, "find %d : %d elems\n", rv, ~lst);
     for(size_t i=0; i<~lst; i++) {
-      M.con().put(0, "  [%u] : %s\n", i, lst[i].name());
+      s_dbg.put(d_Shell, cl_Info, "  [%u] : %s\n", i, lst[i].name());
     }
   }
   //
@@ -347,7 +347,7 @@ void RTest1_Shell::file_test7(void)
     SMem membuf(buf, sizeof(buf));
     for(size_t i=0; i<~lst; i++) {
       if(lib->obj_load(lst[i].name.s(), src, "lib2d::IImage")) {
-//        M.con().put(0, "...loaded at %d : '%s'\n", i, lst[i].name());
+//        s_dbg.put(d_Shell, cl_Debug, "...loaded at %d : '%s'\n", i, lst[i].name());
         const lib2d::SImageInfo& si = src->get_info();
         int key2 = si.size(1)==16 ? 0 
                  : si.size(1)<=512 ? 1 
@@ -355,7 +355,7 @@ void RTest1_Shell::file_test7(void)
         if(key2 != key)
           continue; // skipped
         if(key!=0) {
-          M.con().put(0, "...loaded at %d : '%s' size (%d, %d)\n", i, lst[i].name(), si.size(0), si.size(1));
+          s_dbg.put(d_Shell, cl_Debug, "...loaded at %d : '%s' size (%d, %d)\n", i, lst[i].name(), si.size(0), si.size(1));
         }
         lib2d::SImageCellInfo ici(lib2d::if_Rect, 0, x, y, src->get_info().size(0), src->get_info().size(1));
         if(ici.start(0)+ici.size(0)>di.size(0)) {
@@ -364,7 +364,7 @@ void RTest1_Shell::file_test7(void)
           row_dy = 0;
         }
         if(y + ici.size(1) > di.size(1)) {
-          M.con().put(0, "...overflow at %d : '%s'\n", i, lst[i].name());
+          s_dbg.put(d_Shell, cl_Warning, "...overflow at %d : '%s'\n", i, lst[i].name());
           break; // overflow
         }
         if(row_dy<ici.size(1))
@@ -374,7 +374,7 @@ void RTest1_Shell::file_test7(void)
         if(atlas->setup_variable_cell(&ici, 1, i)) {
           membuf.size = src->get_info().getbinsize();
           if(membuf.size>sizeof(buf)) {
-            M.con().put(0, "...buf overflow at %d : '%s'\n", i, lst[i].name());
+            s_dbg.put(d_Shell, cl_Error, "...buf overflow at %d : '%s'\n", i, lst[i].name());
             break; // overflow
           }
           if(src->get_data(lib2d::SImagePatchInfo(src->get_info(), lib2d::DPoint(0,0)), membuf)) {
@@ -385,11 +385,11 @@ void RTest1_Shell::file_test7(void)
         }
       }
     }
-    M.con().put(0, "loaded %d/%d images\n", loaded, ~lst);
+    s_dbg.put(d_Shell, cl_Info, "loaded %d/%d images\n", loaded, ~lst);
     bool rv = lib->obj_save(names[key], dst, "lib2d::IImage");
-    M.con().put(0, "saved %d\n", rv);
+    s_dbg.put(d_Shell, cl_Info, "saved %d\n", rv);
   }
 //  bool rv = lib->obj_load("/mc/textures/font/ascii.png", img, "lib2d::IImage");
-//  M.con().put(0, "loaded %d\n", rv);
+//  s_dbg.put(d_Shell, cl_Info, "loaded %d\n", rv);
   //
 }

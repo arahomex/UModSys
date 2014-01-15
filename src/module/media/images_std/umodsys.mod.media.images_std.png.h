@@ -6,7 +6,7 @@
 void RMediaFilter::png_err(png_structp png_ptr, png_const_charp msg) 
 {
    if(png_ptr) { 
-     M.con().put(0, "PNG FATAL ERROR: png error - %s\n",msg);
+     s_dbg.put(0, cl_Error, "PNG FATAL ERROR: png error - %s\n",msg);
    } 
 }
 

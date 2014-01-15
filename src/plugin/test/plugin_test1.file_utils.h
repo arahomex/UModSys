@@ -84,9 +84,9 @@ libmedia::ILibrary::P RTest1_Shell::media_cache(bool isobj)
 void RTest1_Shell::test_op_file(bool f, const DCString &fname, const DCString &operation)
 {
   if(f) {
-    M.con().put(0, "  %s file {%s} ok\n", operation(), fname());
+    s_dbg.put(d_Shell, cl_Info, "  %s file {%s} ok\n", operation(), fname());
   } else {
-    M.con().put(0, "  ERROR %s file {%s}\n", operation(), fname());
+    s_dbg.put(d_Shell, cl_Error, "  ERROR %s file {%s}\n", operation(), fname());
   }
 }
 
@@ -94,17 +94,17 @@ void RTest1_Shell::test_op_file(bool f, const DCString &fname, SCMemShared& mem_
 {
   if(isRead) {
     if(f) {
-      M.con().put(0, "  load file {%s} ok, size:%u {", fname(), int(~mem_block));
+      s_dbg.put(d_Shell, cl_Info, "  load file {%s} ok, size:%u {", fname(), int(~mem_block));
       dump_str(mem_block.get_tdata<char>(), ~mem_block);
-      M.con().put(0, "}\n");
+      s_dbg.put(d_Shell, cl_Info, "}\n");
     } else {
-      M.con().put(0, "  ERROR load file {%s}\n", fname());
+      s_dbg.put(d_Shell, cl_Error, "  ERROR load file {%s}\n", fname());
     }
   } else {
     if(f) {
-      M.con().put(0, "  save file {%s} ok, size:%u\n", fname(), ~mem_block);
+      s_dbg.put(d_Shell, cl_Info, "  save file {%s} ok, size:%u\n", fname(), ~mem_block);
     } else {
-      M.con().put(0, "  ERROR save file {%s}\n", fname());
+      s_dbg.put(d_Shell, cl_Error, "  ERROR save file {%s}\n", fname());
     }
   }
 }

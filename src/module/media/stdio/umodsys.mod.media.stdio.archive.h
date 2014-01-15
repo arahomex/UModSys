@@ -71,7 +71,7 @@ struct RDataArchiver_OsDir : public IBinArchive
   DMediaFlags::eStates set_flag(int shift, DMediaFlags::eStates flag) { return flags.getset_s(shift, flag); }
   //
   bool data_load(const DCString& media_name, SCMemShared& mem, const SFlags& flags) {
-    M.con().put(0, "{{os load %s}}", media_name());
+    s_dbg.put(0, cl_Debug, "{{os load %s}}", media_name());
     return archive_load_data(*this, media_name, mem, flags);
   }
   bool data_save(const DCString& media_name, const SCMem& mem, const SFlags& flags) {

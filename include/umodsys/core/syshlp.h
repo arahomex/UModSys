@@ -176,8 +176,9 @@ struct IListAccepter {
   virtual bool process_file(const char* path, const char* mask, const Filename& fn, int options, bool isParent) =0;
 };
 
-void setup_console(void);
-void restore_console(void);
+void con_setup(void);
+void con_restore(void);
+void con_setcolor(FILE* stream, const unsigned char *rgb); // f[r,g,b], b[r,g,b]
 
 FILE* u_fopen(const char *cfilename, const char *cmode);
 FILE* u_fopentemp(char* &handle, const char *msk);
@@ -198,6 +199,7 @@ bool get_file(const char *name, size_t& size, void*& buffer, IMemAlloc* imem, bo
 bool get_file(const char *name, size_t& size, void* buffer, size_t bufsize, bool ftext=false);
 bool put_file(const char *name, const void* buffer, size_t bufsize, size_t& size, bool ftext=false, bool append=false);
 bool put_file(const char *name, const void* buffer, size_t bufsize, bool ftext=false, bool append=false);
+
 
 /////////////////////////////////////////////////////////////////////////////
 // OS thread
