@@ -1,6 +1,9 @@
 >umodsys.mod.ui.SDL_GL.gl_inc
 mode group
-GL_VERSION_.*
+not .*debug.*
+GL_VERSION_1_.*
+GL_VERSION_2_.*
+GL_VERSION_3_.*
+#GL_VERSION_4_.*
 GL_EXT_.*
 GL_ARB_.*
-

@@ -7,6 +7,7 @@ RTerminalX::RTerminalX(DOwner *own, const SParameters& args)
 : RTerminal(own),
   d3d(this)
 {
+  s_dbg.menable();
 }
 
 RTerminalX::~RTerminalX(void) 

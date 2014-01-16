@@ -5,7 +5,6 @@
 	Name="plugin_test1"
 	ProjectGUID="{4DF896FF-847E-A490-6CEE-0EED94CD460A}"
 	RootNamespace="plugin_test1"
-	TargetFrameworkVersion="0"
 	>
 	<Platforms>
 		<Platform
@@ -15,8 +14,6 @@
 			Name="x64"
 		/>
 	</Platforms>
-	<ToolFiles>
-	</ToolFiles>
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
@@ -26,33 +23,11 @@
 			CharacterSet="2"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
-				ExcludedFromBuild="false"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-				Description="Custom Build"
-				CommandLine=""
-				AdditionalDependencies=""
-				Outputs=""
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions=""
 				Optimization="0"
 				InlineFunctionExpansion="0"
-				EnableIntrinsicFunctions="false"
+				EnableIntrinsicFunctions="0"
 				FavorSizeOrSpeed="0"
 				WholeProgramOptimization="false"
 				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
@@ -64,8 +39,8 @@
 				BufferSecurityCheck="true"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				PrecompiledHeaderThrough="StdAfx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="1"
@@ -77,24 +52,11 @@
 				EnablePREfast="false"
 			/>
 			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-				Description="Pre Link"
-				CommandLine=""
-				ExcludedFromBuild="false"
-			/>
-			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
-				ModuleDefinitionFile=""
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="true"
@@ -103,52 +65,17 @@
 				SubSystem="1"
 				LinkTimeCodeGeneration="0"
 				TargetMachine="1"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
-				Name="VCALinkTool"
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
 			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-				OutputFile="$(IntDir)/$(ProjectName).bsc"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				Description="Post Build"
-				CommandLine=""
-				ExcludedFromBuild="false"
-			/>
-		</Configuration>
-		<Configuration
-			Name="Debug|x64"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
-			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
-			CharacterSet="2"
-			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
-				ExcludedFromBuild="false"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
-				Description="Custom Build"
-				CommandLine=""
-				AdditionalDependencies=""
-				Outputs=""
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
@@ -160,35 +87,6 @@
 				Name="VCMIDLTool"
 			/>
 			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalOptions=""
-				Optimization="0"
-				InlineFunctionExpansion="0"
-				EnableIntrinsicFunctions="false"
-				FavorSizeOrSpeed="0"
-				WholeProgramOptimization="false"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
-				PreprocessorDefinitions="WIN32;_DEBUG"
-				StringPooling="true"
-				MinimalRebuild="false"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="3"
-				BufferSecurityCheck="true"
-				RuntimeTypeInfo="true"
-				UsePrecompiledHeader="0"
-				PrecompiledHeaderThrough="StdAfx.h"
-				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
-				AssemblerListingLocation="$(IntDir)/"
-				ProgramDataBaseFileName="$(IntDir)/"
-				BrowseInformation="1"
-				WarningLevel="3"
-				WarnAsError="true"
-				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="3"
-				CompileAs="0"
-				EnablePREfast="false"
-			/>
-			<Tool
 				Name="VCManagedResourceCompilerTool"
 			/>
 			<Tool
@@ -196,31 +94,6 @@
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
-				Description="Pre Link"
-				CommandLine=""
-				ExcludedFromBuild="false"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
-				ModuleDefinitionFile=""
-				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
-				GenerateMapFile="true"
-				MapFileName="$(IntDir)/$(ProjectName).map"
-				MapExports="true"
-				SubSystem="1"
-				LinkTimeCodeGeneration="0"
-				TargetMachine="17"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -230,16 +103,32 @@
 				OutputFile="$(IntDir)/$(ProjectName).bsc"
 			/>
 			<Tool
-				Name="VCFxCopTool"
+				Name="VCALinkTool"
 			/>
 			<Tool
-				Name="VCAppVerifierTool"
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Post Build"
 				CommandLine=""
 				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
 			/>
 		</Configuration>
 		<Configuration
@@ -250,33 +139,11 @@
 			CharacterSet="2"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
-				ExcludedFromBuild="false"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-				Description="Custom Build"
-				CommandLine=""
-				AdditionalDependencies=""
-				Outputs=""
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions=""
 				Optimization="3"
 				InlineFunctionExpansion="1"
-				EnableIntrinsicFunctions="true"
+				EnableIntrinsicFunctions="1"
 				FavorSizeOrSpeed="1"
 				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
@@ -288,8 +155,8 @@
 				BufferSecurityCheck="false"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				PrecompiledHeaderThrough="StdAfx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -301,24 +168,11 @@
 				EnablePREfast="false"
 			/>
 			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-				Description="Pre Link"
-				CommandLine=""
-				ExcludedFromBuild="false"
-			/>
-			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
-				ModuleDefinitionFile=""
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="false"
@@ -327,52 +181,17 @@
 				SubSystem="1"
 				LinkTimeCodeGeneration="1"
 				TargetMachine="1"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
-				Name="VCALinkTool"
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
 			/>
-			<Tool
-				Name="VCManifestTool"
-			/>
-			<Tool
-				Name="VCXDCMakeTool"
-			/>
-			<Tool
-				Name="VCBscMakeTool"
-				OutputFile="$(IntDir)/$(ProjectName).bsc"
-			/>
-			<Tool
-				Name="VCFxCopTool"
-			/>
-			<Tool
-				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCPostBuildEventTool"
-				Description="Post Build"
-				CommandLine=""
-				ExcludedFromBuild="false"
-			/>
-		</Configuration>
-		<Configuration
-			Name="Release|x64"
-			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
-			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
-			ConfigurationType="2"
-			CharacterSet="2"
-			>
 			<Tool
 				Name="VCPreBuildEventTool"
-				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
-				ExcludedFromBuild="false"
 			/>
 			<Tool
 				Name="VCCustomBuildTool"
-				Description="Custom Build"
-				CommandLine=""
-				AdditionalDependencies=""
-				Outputs=""
 			/>
 			<Tool
 				Name="VCXMLDataGeneratorTool"
@@ -384,35 +203,6 @@
 				Name="VCMIDLTool"
 			/>
 			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalOptions=""
-				Optimization="3"
-				InlineFunctionExpansion="1"
-				EnableIntrinsicFunctions="true"
-				FavorSizeOrSpeed="1"
-				WholeProgramOptimization="true"
-				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
-				PreprocessorDefinitions="WIN32;NDEBUG"
-				StringPooling="true"
-				MinimalRebuild="false"
-				BasicRuntimeChecks="0"
-				RuntimeLibrary="2"
-				BufferSecurityCheck="false"
-				RuntimeTypeInfo="true"
-				UsePrecompiledHeader="0"
-				PrecompiledHeaderThrough="StdAfx.h"
-				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
-				AssemblerListingLocation="$(IntDir)/"
-				ProgramDataBaseFileName="$(IntDir)/"
-				BrowseInformation="0"
-				WarningLevel="1"
-				WarnAsError="true"
-				Detect64BitPortabilityProblems="false"
-				DebugInformationFormat="0"
-				CompileAs="0"
-				EnablePREfast="false"
-			/>
-			<Tool
 				Name="VCManagedResourceCompilerTool"
 			/>
 			<Tool
@@ -420,31 +210,6 @@
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
-				Description="Pre Link"
-				CommandLine=""
-				ExcludedFromBuild="false"
-			/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
-				OutputFile="$(OutDir)\$(ProjectName).dll"
-				LinkIncremental="0"
-				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
-				ModuleDefinitionFile=""
-				GenerateDebugInformation="false"
-				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
-				GenerateMapFile="false"
-				MapFileName="$(IntDir)/$(ProjectName).map"
-				MapExports="true"
-				SubSystem="1"
-				LinkTimeCodeGeneration="1"
-				TargetMachine="17"
-			/>
-			<Tool
-				Name="VCALinkTool"
-			/>
-			<Tool
-				Name="VCManifestTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -454,16 +219,32 @@
 				OutputFile="$(IntDir)/$(ProjectName).bsc"
 			/>
 			<Tool
-				Name="VCFxCopTool"
+				Name="VCALinkTool"
 			/>
 			<Tool
-				Name="VCAppVerifierTool"
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Post Build"
 				CommandLine=""
 				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
 			/>
 		</Configuration>
 		<Configuration
@@ -474,33 +255,11 @@
 			CharacterSet="2"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
-				ExcludedFromBuild="false"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-				Description="Custom Build"
-				CommandLine=""
-				AdditionalDependencies=""
-				Outputs=""
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions=""
 				Optimization="1"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="true"
+				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
@@ -512,8 +271,8 @@
 				BufferSecurityCheck="false"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				PrecompiledHeaderThrough="StdAfx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -525,24 +284,11 @@
 				EnablePREfast="false"
 			/>
 			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-				Description="Pre Link"
-				CommandLine=""
-				ExcludedFromBuild="false"
-			/>
-			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
-				ModuleDefinitionFile=""
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="false"
@@ -551,12 +297,35 @@
 				SubSystem="1"
 				LinkTimeCodeGeneration="1"
 				TargetMachine="1"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
-				Name="VCALinkTool"
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
 			/>
 			<Tool
-				Name="VCManifestTool"
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -566,16 +335,264 @@
 				OutputFile="$(IntDir)/$(ProjectName).bsc"
 			/>
 			<Tool
-				Name="VCFxCopTool"
+				Name="VCALinkTool"
 			/>
 			<Tool
-				Name="VCAppVerifierTool"
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Post Build"
 				CommandLine=""
 				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
+			/>
+		</Configuration>
+		<Configuration
+			Name="Debug|x64"
+			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
+			ConfigurationType="2"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=""
+				Optimization="0"
+				InlineFunctionExpansion="0"
+				EnableIntrinsicFunctions="0"
+				FavorSizeOrSpeed="0"
+				WholeProgramOptimization="false"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
+				PreprocessorDefinitions="WIN32;_DEBUG"
+				StringPooling="true"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
+				BufferSecurityCheck="true"
+				RuntimeTypeInfo="true"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
+				AssemblerListingLocation="$(IntDir)/"
+				ProgramDataBaseFileName="$(IntDir)/"
+				BrowseInformation="1"
+				WarningLevel="3"
+				WarnAsError="true"
+				Detect64BitPortabilityProblems="false"
+				DebugInformationFormat="3"
+				CompileAs="0"
+				EnablePREfast="false"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
+				OutputFile="$(OutDir)\$(ProjectName).dll"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				GenerateDebugInformation="true"
+				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
+				GenerateMapFile="true"
+				MapFileName="$(IntDir)/$(ProjectName).map"
+				MapExports="true"
+				SubSystem="1"
+				LinkTimeCodeGeneration="0"
+				TargetMachine="17"
+				ModuleDefinitionFile=""
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
+			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+				OutputFile="$(IntDir)/$(ProjectName).bsc"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
+			/>
+		</Configuration>
+		<Configuration
+			Name="Release|x64"
+			OutputDirectory="$(SolutionDir)..\..\bin\win32vc9_$(ConfigurationName)_$(PlatformName)"
+			IntermediateDirectory="$(SolutionDir)..\..\tmp\win32vc9_$(ConfigurationName)_$(PlatformName)\$(ProjectName)"
+			ConfigurationType="2"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=""
+				Optimization="3"
+				InlineFunctionExpansion="1"
+				EnableIntrinsicFunctions="1"
+				FavorSizeOrSpeed="1"
+				WholeProgramOptimization="true"
+				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
+				PreprocessorDefinitions="WIN32;NDEBUG"
+				StringPooling="true"
+				MinimalRebuild="false"
+				BasicRuntimeChecks="0"
+				RuntimeLibrary="2"
+				BufferSecurityCheck="false"
+				RuntimeTypeInfo="true"
+				UsePrecompiledHeader="0"
+				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
+				AssemblerListingLocation="$(IntDir)/"
+				ProgramDataBaseFileName="$(IntDir)/"
+				BrowseInformation="0"
+				WarningLevel="1"
+				WarnAsError="true"
+				Detect64BitPortabilityProblems="false"
+				DebugInformationFormat="0"
+				CompileAs="0"
+				EnablePREfast="false"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
+				OutputFile="$(OutDir)\$(ProjectName).dll"
+				LinkIncremental="0"
+				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
+				GenerateDebugInformation="false"
+				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
+				GenerateMapFile="false"
+				MapFileName="$(IntDir)/$(ProjectName).map"
+				MapExports="true"
+				SubSystem="1"
+				LinkTimeCodeGeneration="1"
+				TargetMachine="17"
+				ModuleDefinitionFile=""
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
+			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+				OutputFile="$(IntDir)/$(ProjectName).bsc"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Post Build"
+				CommandLine=""
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
 			/>
 		</Configuration>
 		<Configuration
@@ -586,33 +603,11 @@
 			CharacterSet="2"
 			>
 			<Tool
-				Name="VCPreBuildEventTool"
-				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
-				ExcludedFromBuild="false"
-			/>
-			<Tool
-				Name="VCCustomBuildTool"
-				Description="Custom Build"
-				CommandLine=""
-				AdditionalDependencies=""
-				Outputs=""
-			/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"
-			/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"
-			/>
-			<Tool
-				Name="VCMIDLTool"
-			/>
-			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions=""
 				Optimization="1"
 				InlineFunctionExpansion="2"
-				EnableIntrinsicFunctions="true"
+				EnableIntrinsicFunctions="2"
 				FavorSizeOrSpeed="2"
 				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="$(SolutionDir)../../include;..\..\..\include;..\..\..\include\platform\win32"
@@ -624,8 +619,8 @@
 				BufferSecurityCheck="false"
 				RuntimeTypeInfo="true"
 				UsePrecompiledHeader="0"
-				PrecompiledHeaderThrough="StdAfx.h"
 				PrecompiledHeaderFile="$(IntDir)/$(ProjectName).pch"
+				PrecompiledHeaderThrough="StdAfx.h"
 				AssemblerListingLocation="$(IntDir)/"
 				ProgramDataBaseFileName="$(IntDir)/"
 				BrowseInformation="0"
@@ -637,24 +632,11 @@
 				EnablePREfast="false"
 			/>
 			<Tool
-				Name="VCManagedResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCResourceCompilerTool"
-			/>
-			<Tool
-				Name="VCPreLinkEventTool"
-				Description="Pre Link"
-				CommandLine=""
-				ExcludedFromBuild="false"
-			/>
-			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="Winmm.lib ws2_32.lib lib_zlib.lib lib_libpng.lib lib_jpeglib.lib lib_SDL2.lib"
 				OutputFile="$(OutDir)\$(ProjectName).dll"
 				LinkIncremental="0"
 				AdditionalLibraryDirectories="$(IntDir)/..;$(SolutionDir)../../bin/win32vc9_$(ConfigurationName)_$(PlatformName);$(SolutionDir)../../tmp/win32vc9_$(ConfigurationName)_$(PlatformName)/$(ProjectName)"
-				ModuleDefinitionFile=""
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile="$(OutDir)/$(ProjectName).pdb"
 				GenerateMapFile="false"
@@ -663,12 +645,35 @@
 				SubSystem="1"
 				LinkTimeCodeGeneration="1"
 				TargetMachine="17"
+				ModuleDefinitionFile=""
 			/>
 			<Tool
-				Name="VCALinkTool"
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\$(ProjectName).lib"
 			/>
 			<Tool
-				Name="VCManifestTool"
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
 			/>
 			<Tool
 				Name="VCXDCMakeTool"
@@ -678,10 +683,19 @@
 				OutputFile="$(IntDir)/$(ProjectName).bsc"
 			/>
 			<Tool
-				Name="VCFxCopTool"
+				Name="VCALinkTool"
 			/>
 			<Tool
-				Name="VCAppVerifierTool"
+				Name="VCPreBuildEventTool"
+				Description="Version Increment..."
+				CommandLine="$(SolutionDir)\ver-call.bat auto plugin-test1"
+				ExcludedFromBuild="false"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+				Description="Pre Link"
+				CommandLine=""
+				ExcludedFromBuild="false"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -689,20 +703,25 @@
 				CommandLine=""
 				ExcludedFromBuild="false"
 			/>
+			<Tool
+				Name="VCCustomBuildTool"
+				Description="Custom Build"
+				CommandLine=""
+				AdditionalDependencies=""
+				Outputs=""
+			/>
 		</Configuration>
 	</Configurations>
-	<References>
-	</References>
 	<Files>
 		<Filter
 			Name="src"
 			>
 			<File
-				RelativePath="..\..\..\src\plugin\test\plugin_test1.common.h"
+				RelativePath="..\..\..\src\plugin\test\plugin_test1.cpp"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\plugin\test\plugin_test1.cpp"
+				RelativePath="..\..\..\src\plugin\test\plugin_test1.common.h"
 				>
 			</File>
 			<File
@@ -726,3 +745,4 @@
 	<Globals>
 	</Globals>
 </VisualStudioProject>
+

@@ -753,6 +753,22 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.gl_inc.def.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.gl_inc.ldr.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.glfunc.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.glfuncload.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.h"
 				>
 			</File>

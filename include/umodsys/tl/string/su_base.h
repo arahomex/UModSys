@@ -150,6 +150,17 @@ size_t shashlen(const CharT* str, size_t& len) {
 }
 
 template<typename CharT>
+const CharT* sbegin(const CharT* str, const CharT* key, const CharT** value=NULL) {
+  size_t len = slen(key);
+  if(seq(str, key, len)) {
+    if(value!=NULL)
+      return *value = str+len;
+    return str+len;
+  }
+  return NULL;
+}
+
+template<typename CharT>
 bool wildcmp(const CharT* wild, const CharT* string) 
 {
   register const CharT* cp, *mp;

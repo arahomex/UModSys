@@ -16,6 +16,8 @@ protected:
   int cur_tm;
   TParametersA<1024> max_values;
   TParametersA<1024> frame_values;
+  SDL_GLContext glctx;
+  SGLFunc gl;
 public:
   RRenderDriver3D(DOwner *own);
   ~RRenderDriver3D(void);

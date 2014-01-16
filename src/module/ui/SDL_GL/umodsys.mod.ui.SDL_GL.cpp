@@ -17,6 +17,7 @@ UMODSYS_MODULE_BODY0()
 #include "umodsys.mod.ui.SDL_GL.w_2d.h"
 #include "umodsys.mod.ui.SDL_GL.w_3d.h"
 #include "umodsys.mod.ui.SDL_GL.terminalx.h"
+#include "umodsys.mod.ui.SDL_GL.glfuncload.h"
 
 struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)

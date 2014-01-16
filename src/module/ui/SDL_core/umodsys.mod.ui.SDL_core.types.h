@@ -10,7 +10,6 @@ struct RMouseController;
 struct SWindow {
   BCStr caption;
   int x, y, dx, dy, flags; 
-//    flags = SDL_WINDOW_OPENGL;
   SDL_Window *wnd;
   //
   SWindow(void);

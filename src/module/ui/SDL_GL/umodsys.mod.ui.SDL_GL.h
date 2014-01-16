@@ -16,6 +16,9 @@
 #include "SDL.h"
 #include "SDL_ttf.h"
 
+#include "SDL_opengl.h"
+//#include "SDL_opengles.h"
+
 #define U_MOD UMODSYS_MODULE_NAME(ui, SDL_GL)
 UMODSYS_MODULE_BEGIN(ui, SDL_GL)
 
@@ -36,6 +39,8 @@ struct RGenerator;
 
 #include "../SDL_core/umodsys.mod.ui.SDL_core.utils.h"
 #include "../SDL_core/umodsys.mod.ui.SDL_core.types.h"
+
+#include "umodsys.mod.ui.SDL_GL.glfunc.h"
 
 #include "umodsys.mod.ui.SDL_GL.typesx.h"
 

@@ -4,10 +4,11 @@ our $script_path;
 our $dbglevel;
 our ($x_gl, $x_glx, $x_wgl, $x_egl);
 
-sub gen_find_group($$$)
+sub gen_find_groups($$$)
 {
   my ($profile, $sec, $name) = @_;
   my $R = $profile->{'registry'}->[0];
+  my $rv = [];
   #
   # find in features
   for my $key (keys %{$R->{'feature'}}) {
@@ -15,7 +16,7 @@ sub gen_find_group($$$)
     for my $rq (@{$val->{'require'}}) {
 #      next if exists $rq->{'comment'};
       next if not exists $rq->{$sec};
-      return 'feature,'.$key if exists $rq->{$sec}->{$name};
+      push @$rv, 'base,'.$key if exists $rq->{$sec}->{$name};
     }
   }
   #
@@ -25,11 +26,11 @@ sub gen_find_group($$$)
     for my $rq (@{$val->{'require'}}) {
 #      next if exists $rq->{'comment'};
       next if not exists $rq->{$sec};
-      return 'extension,'.$key if exists $rq->{$sec}->{$name};
+      push @$rv, 'ext,'.$key if exists $rq->{$sec}->{$name};
     }
   }
-  #
-  return 'general,general';
+  return ['gen,general'] if @$rv==0;
+  return $rv;
 }
 
 sub gen_func_arg($$$$)
@@ -77,9 +78,9 @@ sub gen_func1($;$)
   return "$pros($rv)";
 }
 
-sub gen_funcs($$$$)
+sub gen_funcs($$$$$)
 {
-  my ($profile, $mode, $requires, $fid) = @_;
+  my ($profile, $mode, $requires, $prohibits, $fid) = @_;
   my ($filename1, $filename2) = ("$fid.def.h", "$fid.ldr.h"); 
   my ($F, @lines1, @lines2, %groups);
   #
@@ -89,8 +90,9 @@ sub gen_funcs($$$$)
   #
   for my $val (@$cmds) {
     my $funcname = $val->{'proto'}->[0]->{'name'}->[0];
-    my $group = gen_find_group($profile, 'command', $funcname);
+    my $groups = gen_find_groups($profile, 'command', $funcname);
     my $ok = 0;
+    my $group;
     if($mode eq 'command') {
       for my $m (@$requires) {
         if( $funcname =~ $m ) {
@@ -98,15 +100,36 @@ sub gen_funcs($$$$)
           last;
         }
       }
-    } elsif($mode eq 'group') {
-      for my $m (@$requires) {
-        if( $group =~ $m ) {
-          $ok = 1;
+      for my $m (@$prohibits) {
+        if( $funcname =~ $m ) {
+          $ok = 0;
           last;
+        }
+      }
+      $group = $groups->[0];
+    } elsif($mode eq 'group') {
+      for my $g (@$groups) {
+        for my $m (@$requires) {
+          if( $g =~ $m ) {
+            $ok = 1;
+            $group = $g;
+            last;
+          }
+          last if $ok;
+        }
+      }
+      for my $g (@$groups) {
+        for my $m (@$prohibits) {
+          if( $g =~ $m ) {
+            $ok = 0;
+            last;
+          }
+          last if not $ok;
         }
       }
     } else {
       $ok = 1;
+      $group = $groups->[0];
     }
     #
     next if !$ok;
@@ -117,7 +140,7 @@ sub gen_funcs($$$$)
 
   }
   #
-  for my $gn (keys %groups) {
+  for my $gn (sort keys %groups) {
     my $grp = $groups{$gn};
     push @lines2, "GL_LinkGroupBegin($gn)";
     for my $line (@$grp) {
@@ -137,7 +160,7 @@ sub gen_funcs_from($)
 {
   my ($filename) = @_;
   my @lines = file_load_lines($filename);
-  my $funlist = [];
+  my ($funlist1, $funlist2) = ([], []);
   my ($sfn, $path, $suf) = fileparse($filename);
   my $id = $path . $sfn;
   my $mode = 'command';
@@ -153,22 +176,24 @@ sub gen_funcs_from($)
       next;
     } elsif($line =~ /^>(.+)$/) { # write to file
       my $newid = $1;
-      if(@$funlist and $id ne '') {
-        gen_funcs($x_gl, $mode, $funlist, $id);
-        $funlist = [];
+      if((@$funlist1 or @$funlist2) and $id ne '') {
+        gen_funcs($x_gl, $mode, $funlist1, $funlist2, $id);
+        $funlist1 = [];
+        $funlist2 = [];
       }
       $id = $newid;
     } elsif($line =~ /^MODE (\w+)$/ or $line =~ /^mode (\w+)$/) { # mode
       $mode = $1;
     } elsif($line =~ /^([\.\+\*\[\]\w\\\(\)\:\?\!\^\$]+)$/) {
-      push @$funlist, qr{$1};
+      push @$funlist1, qr{$1};
+    } elsif($line =~ /^NOT ([\.\+\*\[\]\w\\\(\)\:\?\!\^\$]+)$/ or $line =~ /^not ([\.\+\*\[\]\w\\\(\)\:\?\!\^\$]+)$/) {
+      push @$funlist2, qr{$1};
     } else {
       die "Invalid line '$line0' $lineno";
     }
   }
-  if(@$funlist and $id ne '') {
-    gen_funcs($x_gl, $mode, $funlist, $id);
-    $funlist = [];
+  if((@$funlist1 or @$funlist2) and $id ne '') {
+    gen_funcs($x_gl, $mode, $funlist1, $funlist2, $id);
   }
 }
 
