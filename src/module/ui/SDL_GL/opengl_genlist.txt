@@ -1,0 +1,6 @@
+>umodsys.mod.ui.SDL_GL.gl_inc
+mode group
+GL_VERSION_.*
+GL_EXT_.*
+GL_ARB_.*
+
