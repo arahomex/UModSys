@@ -12,12 +12,17 @@ UMODSYS_MODULE_BODY0()
 #include "../SDL_core/umodsys.mod.ui.SDL_core.keyboard.h"
 #include "../SDL_core/umodsys.mod.ui.SDL_core.mouse.h"
 #include "../SDL_core/umodsys.mod.ui.SDL_core.terminal.h"
+#include "../SDL_core/umodsys.mod.ui.SDL_core.font.h"
+
+#include "umodsys.mod.ui.SDL_GL.u_tex.h"
+#include "umodsys.mod.ui.SDL_GL.u_texmax.h"
 
 #include "umodsys.mod.ui.SDL_GL.w_utl.h"
 #include "umodsys.mod.ui.SDL_GL.w_2d.h"
 #include "umodsys.mod.ui.SDL_GL.w_3d.h"
 #include "umodsys.mod.ui.SDL_GL.terminalx.h"
 #include "umodsys.mod.ui.SDL_GL.glfuncload.h"
+#include "umodsys.mod.ui.SDL_GL.glfuncbody.h"
 
 struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)

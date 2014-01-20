@@ -33,6 +33,35 @@ sub gen_find_groups($$$)
   return $rv;
 }
 
+sub gen_find_nogroups($$$)
+{
+  my ($profile, $sec, $name) = @_;
+  my $R = $profile->{'registry'}->[0];
+  my $rv = [];
+  #
+  # find in features
+  for my $key (keys %{$R->{'feature'}}) {
+    my $val = $R->{'feature'}->{$key};
+    for my $rq (@{$val->{'remove'}}) {
+#      next if exists $rq->{'comment'};
+      next if not exists $rq->{$sec};
+      push @$rv, 'base,'.$key if exists $rq->{$sec}->{$name};
+    }
+  }
+  #
+  # find in extensions
+  for my $key (keys %{$R->{'extensions'}->[0]->{'extension'}}) {
+    my $val = $R->{'extensions'}->[0]->{'extension'}->{$key};
+    for my $rq (@{$val->{'remove'}}) {
+#      next if exists $rq->{'comment'};
+      next if not exists $rq->{$sec};
+      push @$rv, 'ext,'.$key if exists $rq->{$sec}->{$name};
+    }
+  }
+  return undef if @$rv==0;
+  return $rv;
+}
+
 sub gen_func_arg($$$$)
 {
   my ($def,$isfull,$namepre,$namesuf) = @_;
@@ -81,9 +110,17 @@ sub gen_func1($;$)
 sub gen_funcs($$$$$)
 {
   my ($profile, $mode, $requires, $prohibits, $fid) = @_;
-  my ($filename1, $filename2) = ("$fid.def.h", "$fid.ldr.h"); 
-  my ($F, @lines1, @lines2, %groups);
+  my ($F, @lines1, @lines2, %groups, $single, $marked, $removed, $filename1, $filename2);
   #
+  $single = ($mode =~ s/single[\,\|]//);
+  $removed = ($mode =~ s/core[\,\|]//);
+  $marked = ($mode =~ s/marked[\,\|]//);
+  #
+  if($single) {
+    ($filename1, $filename2) = (undef, "$fid.h");
+  } else {
+    ($filename1, $filename2) = ("$fid.def.h", "$fid.ldr.h");
+  }
   print "  Generate files $filename1, $filename2 with array(".(@$requires).")\n" if $dbglevel>2;
   #
   my $cmds = $profile->{'registry'}->[0]->{'commands'}->[0]->{'command'};
@@ -91,7 +128,7 @@ sub gen_funcs($$$$$)
   for my $val (@$cmds) {
     my $funcname = $val->{'proto'}->[0]->{'name'}->[0];
     my $groups = gen_find_groups($profile, 'command', $funcname);
-    my $ok = 0;
+    my ($ok, $ok2) = (0, 1);
     my $group;
     if($mode eq 'command') {
       for my $m (@$requires) {
@@ -131,13 +168,28 @@ sub gen_funcs($$$$$)
       $ok = 1;
       $group = $groups->[0];
     }
+    if($removed and $ok) {
+      my $no_groups = gen_find_nogroups($profile, 'command', $funcname);
+      $ok = 0 if defined $no_groups;
+    }
+    if($ok and $marked) {
+      my $no_groups = gen_find_nogroups($profile, 'command', $funcname);
+      $ok2 = 0 if defined $no_groups;
+    }
     #
     next if !$ok;
-    push @lines1, gen_func1($val, 1).';';
+    my $funcraw = gen_func1($val, 1);
     $groups{$group} = [] if not exists $groups{$group};
     my $funcdef = gen_func1($val, 0);
-    push @{$groups{$group}}, "  GL_Link($funcname, \"$funcname\", $funcdef)";
 
+    if($marked) {
+      my $key = $ok2 ? 'core' : 'compat';
+      push @lines1, "GL_$key($funcraw);";
+      push @{$groups{$group}}, "  GL_Link_$key($funcname, \"$funcname\", $funcdef, $funcraw)";
+    } else {
+      push @lines1, "$funcraw;";
+      push @{$groups{$group}}, "  GL_Link($funcname, \"$funcname\", $funcdef, $funcraw)";
+    }
   }
   #
   for my $gn (sort keys %groups) {
@@ -149,8 +201,10 @@ sub gen_funcs($$$$$)
     push @lines2, "GL_LinkGroupEnd($gn)";
   }
   #
-  print "  Save $filename1\n" if $dbglevel>2;
-  file_save_lines($filename1, \@lines1);
+  if(defined $filename1) {
+    print "  Save $filename1\n" if $dbglevel>2;
+    file_save_lines($filename1, \@lines1);
+  }
   #
   print "  Save $filename2\n" if $dbglevel>2;
   file_save_lines($filename2, \@lines2);
@@ -182,7 +236,7 @@ sub gen_funcs_from($)
         $funlist2 = [];
       }
       $id = $newid;
-    } elsif($line =~ /^MODE (\w+)$/ or $line =~ /^mode (\w+)$/) { # mode
+    } elsif($line =~ /^MODE (\w+)$/ or $line =~ /^mode ([\w\,\|]+)$/) { # mode
       $mode = $1;
     } elsif($line =~ /^([\.\+\*\[\]\w\\\(\)\:\?\!\^\$]+)$/) {
       push @$funlist1, qr{$1};

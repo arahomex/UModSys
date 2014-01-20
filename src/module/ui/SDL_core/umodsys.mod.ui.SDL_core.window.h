@@ -1,5 +1,30 @@
 
 //***************************************
+// RMultiImage2D_SDL_ttf::
+//***************************************
+
+bool RMultiImage2D_SDL_ttf::new_texture(Tex& tex, SDL_Surface* s, RRenderDriver* drv) 
+{
+  if(drv==NULL)
+    return NULL;
+  tex = SDL_CreateTextureFromSurface(drv->get_rend(), s);
+  return tex!=NULL;
+}
+
+void RMultiImage2D_SDL_ttf::kill_texture(Tex& tex)
+{
+  if(tex!=NULL) {  
+    SDL_DestroyTexture(tex);
+    tex = NULL; 
+  } 
+}
+
+void RMultiImage2D_SDL_ttf::init_texture(Tex& tex)
+{
+  tex = NULL;
+}
+
+//***************************************
 // RRenderDriver2D::
 //***************************************
 
@@ -62,6 +87,8 @@ void RRenderDriver2D::set_color(void)
   }
   SDL_SetRenderDrawBlendMode(rend, SDL_BlendMode(bm));
 }
+
+// ----------------------------------------------------------------
 
 libui::ITerminal* RRenderDriver2D::get_terminal(void) const 
 {

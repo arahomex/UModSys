@@ -34,8 +34,12 @@ struct RGenerator;
 // INCLUDE COMPONENTS
 //***************************************
 
+typedef struct RRenderDriver2D RRenderDriver;
+typedef SDL_Texture* SMultiImage2D_SDL_ttf_tex;
+
 #include "umodsys.mod.ui.SDL_core.utils.h"
 #include "umodsys.mod.ui.SDL_core.types.h"
+#include "umodsys.mod.ui.SDL_core.type_font.h"
 #include "umodsys.mod.ui.SDL_core.typesx.h"
 #include "umodsys.mod.ui.SDL_core.inlines.h"
 

@@ -15,6 +15,13 @@ IRefObject* RRenderDriver3D::get_controller(TypeId ctrl) const
 
 lib2d::IMultiImage::P RRenderDriver3D::new_font(const SParameters& params, const DCString &tagname)
 {
+  lib2d::IMultiImage::P rv;
+  BCStr fn;
+  if(params.get("filename", fn) && libmedia::is_extension_case(fn, ".ttf")) {
+    if(!ValidateConstruction(rv, new(local_memory()) RMultiImage2D_SDL_ttf(this, params)))
+      return NULL;
+    return rv;
+  }
   return NULL;
 }
 
@@ -62,6 +69,11 @@ bool RRenderDriver3D::setup_font(lib2d::IMultiImage* font, const lib2d::DPointf*
 {
   if(!valid())
     return false;
+  cur_font_ttf.clear();
+  if(font==NULL)
+    return true;
+  if(font->t_ref_get_other_interface(cur_font_ttf))
+    return true;
   return false;
 }
 
@@ -140,6 +152,36 @@ void RRenderDriver3D::setup_alpha(lib2d::DColorElemf alpha, int transmode)
 
 bool RRenderDriver3D::render_text_advanced(TextInfo &info, BCStrL piclist, int count) 
 {
+  if(!valid())
+    return false;
+  if(piclist==NULL || *piclist==0)
+    return true;
+  if(cur_font_ttf.valid()) {
+    if(count==-1)
+      count = tl::su::slen(piclist);
+    bool is_caretsize = (info.options & lib2d::to_CalcCaretSize)!=0;
+    int x=info.a->v[0], y=info.a->v[1];
+    for(int i=0; i<count; i++) {
+      int pic = piclist[i];
+      const RMultiImage2D_SDL_ttf::Glyph *g = cur_font_ttf->get_glyph(pic);
+      if(g==NULL || g->tex.valid())
+        continue; // skip dummy glyph
+      if(is_caretsize && i>=info.caret_pos) {
+        info.calc_caret.set(x+g->x, y+g->y, g->w, g->h);
+        is_caretsize = false;
+      }
+      //
+      gl.h_glColor4fv(cur_color.v);
+      gl.set_stage(0);
+      gl.set_tex2d(true);
+      gl.set_bound(g->tex.tinfo.name);
+      gl.h_Rect(x+g->x, y+g->y, g->w, g->h);
+      gl.set_tex2d(false);
+      //
+      x += g->spacing;
+    }
+    return true;
+  }
   return false;
 }
 

@@ -753,15 +753,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.gl_inc.def.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.gl_inc.ldr.h"
-				>
-			</File>
-			<File
 				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.glfunc.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.glfuncbody.h"
 				>
 			</File>
 			<File
@@ -773,11 +769,27 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.inc.gl.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.inc.gles.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.terminalx.h"
 				>
 			</File>
 			<File
 				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.typesx.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.u_tex.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.u_texmax.h"
 				>
 			</File>
 			<File
@@ -834,6 +846,10 @@
 			</File>
 			<File
 				RelativePath="..\..\..\src\module\ui\SDL_core\umodsys.mod.ui.SDL_core.terminalx.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\SDL_core\umodsys.mod.ui.SDL_core.type_font.h"
 				>
 			</File>
 			<File

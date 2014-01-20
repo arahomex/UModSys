@@ -12,12 +12,16 @@
 #include <umodsys/lib/ui/libui.common.h>
 #include <umodsys/lib/2d/lib2d.driver.h>
 #include <umodsys/lib/3d/lib3d.driver.h>
+#include <umodsys/lib/media/libmedia.common.h>
 
 #include "SDL.h"
 #include "SDL_ttf.h"
 
-#include "SDL_opengl.h"
-//#include "SDL_opengles.h"
+#ifndef SDL_USE_OPENGL_ES
+  #include "SDL_opengl.h"
+#else
+  #include "SDL_opengles.h"
+#endif
 
 #define U_MOD UMODSYS_MODULE_NAME(ui, SDL_GL)
 UMODSYS_MODULE_BEGIN(ui, SDL_GL)
@@ -37,10 +41,14 @@ struct RGenerator;
 // INCLUDE COMPONENTS
 //***************************************
 
-#include "../SDL_core/umodsys.mod.ui.SDL_core.utils.h"
-#include "../SDL_core/umodsys.mod.ui.SDL_core.types.h"
+typedef struct RRenderDriver3D RRenderDriver;
+typedef struct STextureGL SMultiImage2D_SDL_ttf_tex;
 
 #include "umodsys.mod.ui.SDL_GL.glfunc.h"
+
+#include "../SDL_core/umodsys.mod.ui.SDL_core.utils.h"
+#include "../SDL_core/umodsys.mod.ui.SDL_core.types.h"
+#include "../SDL_core/umodsys.mod.ui.SDL_core.type_font.h"
 
 #include "umodsys.mod.ui.SDL_GL.typesx.h"
 

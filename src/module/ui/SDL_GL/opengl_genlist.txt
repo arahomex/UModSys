@@ -1,9 +1,20 @@
->umodsys.mod.ui.SDL_GL.gl_inc
-mode group
-not .*debug.*
-GL_VERSION_1_.*
-GL_VERSION_2_.*
-GL_VERSION_3_.*
-#GL_VERSION_4_.*
-GL_EXT_.*
-GL_ARB_.*
+>umodsys.mod.ui.SDL_GL.inc.gl
+ mode marked,single,group
+ not .*debug.*
+ GL_VERSION_1_.*
+ GL_VERSION_2_.*
+ GL_VERSION_3_.*
+ GL_VERSION_4_0
+ #GL_VERSION_4_.*
+ GL_EXT_.*
+ GL_ARB_.*
+ not GL_EXT_ES.*
+ not GL_ARB_ES.*
+>umodsys.mod.ui.SDL_GL.inc.gles
+ mode marked,single,group
+ not .*debug.*
+ GL_VERSION_ES_.*
+ GL_ES_VERSION_.*
+ GL_EXT_ES.*
+ GL_ARB_ES.*
+

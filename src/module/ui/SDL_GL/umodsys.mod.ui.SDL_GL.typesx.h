@@ -17,7 +17,10 @@ protected:
   TParametersA<1024> max_values;
   TParametersA<1024> frame_values;
   SDL_GLContext glctx;
-  SGLFunc gl;
+  //
+  tl::TRefObjects<RMultiImage2D_SDL_ttf>::Weak cur_font_ttf;
+public:
+  SGLFuncsLegacy gl;
 public:
   RRenderDriver3D(DOwner *own);
   ~RRenderDriver3D(void);

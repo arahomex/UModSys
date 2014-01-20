@@ -1,5 +1,45 @@
 
 //***************************************
+// RMultiImage2D_SDL_ttf::
+//***************************************
+
+bool RMultiImage2D_SDL_ttf::new_texture(Tex& tex, SDL_Surface* s, RRenderDriver* drv) 
+{
+  if(drv==NULL)
+    return NULL;
+  tex.gl = &drv->gl;
+  if(!tex.gen())
+    return false;
+  if(!tex.set_reallocate(lib2d::it_I8_R8G8B8A8, s->w, s->h, NULL))
+    return false;
+  //
+  // paletted surface
+  const SDL_Color* pal = s->format->palette->colors;
+  const BByte *src = static_cast<const BByte *>(s->pixels);
+  BByte *dest = tex.mem.get_tdata<BByte>();
+  size_t num = s->w * s->h;
+  for(; num; num--, dest+=4) {
+    const SDL_Color* p = pal + *src++;
+    dest[0] = p->r;
+    dest[1] = p->g;
+    dest[2] = p->b;
+    dest[3] = p->a;
+  }
+  return tex.upload();
+}
+
+void RMultiImage2D_SDL_ttf::kill_texture(Tex& tex)
+{
+  if(tex.valid()) {  
+    tex.clear();
+  } 
+}
+
+void RMultiImage2D_SDL_ttf::init_texture(Tex& tex)
+{
+}
+
+//***************************************
 // RRenderDriver3D::
 //***************************************
 
@@ -34,6 +74,7 @@ bool RRenderDriver3D::open(const SParameters& args)
   SDL_GL_SetAttribute(SDL_GL_BLUE_SIZE, 8);
   SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 16);
   SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+  SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
   //
   wnd.flags |= ::SDL_WINDOW_OPENGL;
   if(!wnd.open(args)) {

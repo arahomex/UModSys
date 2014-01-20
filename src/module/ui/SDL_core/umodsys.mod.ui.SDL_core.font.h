@@ -45,14 +45,6 @@ bool RMultiImage2D_SDL_ttf::open(const SParameters& args)
   return true;
 }
 
-SDL_Texture* RMultiImage2D_SDL_ttf::as_texture(SDL_Surface* s) const
-{
-  if(!refs->valid())
-    return NULL;
-  return SDL_CreateTextureFromSurface(refs->get_rend(), s);
-}
-
-
 bool RMultiImage2D_SDL_ttf::generate_glyphs(void) 
 {
   int x[3], y[2];
@@ -72,10 +64,11 @@ bool RMultiImage2D_SDL_ttf::generate_glyphs(void)
     value->x = 0;
     value->y = 0;
     value->spacing = x[2];
-    value->tex = as_texture(surf);
-    SDL_FreeSurface(surf);
-    if(value->tex==NULL)
+    if(!new_texture(value->tex, surf, *refs)) {
+      SDL_FreeSurface(surf);
       return false;
+    }
+    SDL_FreeSurface(surf);
   }
   return true;
 }
