@@ -9,8 +9,9 @@
 #include <umodsys/lib/ui/libui.common.h>
 #include <umodsys/lib/ui/libui.frames.h>
 #include <umodsys/lib/2d/lib2d.driver.h>
-//#include <umodsys/lib/2d/lib2d.image.h>
-//#include <umodsys/lib/ui/lib3d.common.h>
+#include <umodsys/lib/2d/lib2d.image.h>
+#include <umodsys/lib/3d/lib3d.common.h>
+#include <umodsys/lib/3d/lib3d.driver.h>
 
 #include "version_plugin_test1.h"
 
@@ -51,7 +52,7 @@ struct RTest1_Shell
   // ----------------------------------------------------------------------------------
   //
   template<typename T>
-  inline typename T::P generate_type(const DCString &mask, const SParameters& args, BStr xinfo="") {
+  inline static typename T::P generate_type(const DCString &mask, const SParameters& args, BStr xinfo="") {
     TypeId found = NULL;
     typename T::P rv;
     if(!M.t_generate_first(rv, args, mask, &found)) {
@@ -93,9 +94,31 @@ struct RTest1_Shell
   //
   // ----------------------------------------------------------------------------------
   //
-  libui::ICollector::P ui_newframes(const DCString &mask, const SParameters& args);
-  libui::ITerminal::P ui_newterm(const DCString &mask, const SParameters& args);
-  lib2d::IMultiImage::P ui_newfont(const DCString &mask, const SParameters& args);
+  struct UI_Info {
+    lib2d::IRenderDriver::P rd2d;
+    lib3d::IRenderDriver::P rd3d;
+    libui::ITerminal::P term;
+    lib2d::IMultiImage::P font;
+    libui::IKeyboardController::P keyc;
+    libui::IMouseController::P mouc;
+    libui::ICollector::P frames;
+    bool f_quit;
+    //
+    bool font_pure(void);
+    bool font_2d(void);
+    bool init_term(const char *name);
+    bool create_2d(const char *cap);
+    bool create_3d(const char *cap);
+    bool new_frames(libui::IController *ctrl);
+    //
+    void cycle(void);
+    void cycle3d(void);
+    void shutdown(void);
+  };
+  //
+  static libui::ICollector::P ui_newframes(const DCString &mask, const SParameters& args);
+  static libui::ITerminal::P ui_newterm(const DCString &mask, const SParameters& args);
+  static lib2d::IMultiImage::P ui_newfont(const DCString &mask, const SParameters& args);
   //
   void ui_test1(void);
   void ui_test2(void);

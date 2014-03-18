@@ -1,6 +1,7 @@
 
 struct RTerminalX;
 struct RRenderDriver3D;
+struct RVertexArray;
 
 //***************************************
 // RRenderDriver3D::
@@ -13,7 +14,7 @@ protected:
   SWindow wnd;
   lib2d::DColorAlphaf cur_color;
   lib2d::DColorAlphaf clear_color;
-  int cur_tm;
+  int cur_tm, video_init_counter;
   TParametersA<1024> max_values;
   TParametersA<1024> frame_values;
   SDL_GLContext glctx;
@@ -31,6 +32,7 @@ public:
   void close(void);
   bool open(const SParameters& args);
   void set_color(void);
+  void Update(void);
 public: // lib2d::IRenderDriver
   // -- UI
   libui::ITerminal* get_terminal(void) const;
@@ -54,7 +56,7 @@ public: // lib2d::IRenderDriver
   void setup_coloralpha(const lib2d::DColorAlpha& c, int transmode);
   void setup_blendcolor(const lib2d::SBlendColor& c);
   void setup_blendcolor(const lib2d::SBlendColorf& c);
-  void setup_alpha(lib2d::DColorElem alpha, int transmode);
+  void setup_alpha(lib2d::DColorElemi alpha, int transmode);
   void setup_alpha(lib2d::DColorElemf alpha, int transmode);
   // -- render text
   //
@@ -76,6 +78,7 @@ public: // lib3d::IRenderDriver
   bool camera_frustum(const DPoint &center, const DTexPoint &fov, DScalar min, DScalar max);
   // -- allocate vector-cache
   // all data will be reset after end of frame
+/*
   DPoint* alloc_points(int count);
   void alloc_points(const DPoint* x, int count);
   DColor* alloc_colors(int count);
@@ -87,6 +90,7 @@ public: // lib3d::IRenderDriver
   DNormal* alloc_normals(int count);
   void alloc_normals(const DNormal* x, int count);
   int* alloc_index(int count, int level=0);
+*/
   //
   bool driver_is_reset(void);
   //
@@ -96,11 +100,12 @@ public: // lib3d::IRenderDriver
   void render_stop(void); // caches is not required anymore
   // -- register
   // return ptr, try to adapt data to required ptr
-//  virtual IConsoleHFCSDisplay::P new_console_HFCSD(const SIntPoint& pos, const SIntPoint& size, const SParameters* params);
+//  virtual IConsoleHFCSDisplay::P new_console_HFCSD(const DPoint2i& pos, const DPoint2i& size, const SParameters* params);
   ITexture::P register_tex(libmedia::ILibrary* mg, const DCString& texname, const SRenderMapFlags& deff);
   ITextureCells::P register_texcells(libmedia::ILibrary * mg, const DCString& texname, const SRenderMapFlags& deff);
   // this one create a new box used for supply textures
-  ITexture::P register_tex(const SIntPoint& size, const SRenderMapFlags& deff, lib2d::eImageType type);
+  ITexture::P register_tex(const DPoint2i& size, const SRenderMapFlags& deff, lib2d::eImageType type);
+  IVertexArray::P create_array(const SVertexElemInfo layers[], int count);
   // -- setup dynamic lights, light indices: <=0 =error, 0x10000+ = HW, 0x20000+ = SW, 0x30000+ = omni
   bool setup_clearlights(eLightType type, bool emulated, bool hardware);
   int  setup_addlight(eLightType type, const SLight& light, const DMatrix4& T);
@@ -108,16 +113,22 @@ public: // lib3d::IRenderDriver
   bool setup_setlight(int idx, bool enabled);
   void setup_T(const DMatrix4& T);
   bool setup_material(const SMaterial *mat); // NULL to disable materials
+  bool setup_array(const IVertexArray *va, int targets, int layers);
+  bool setup_array(const IVertexArray *va, eVertexClass target, int layer);
+  bool setup_array_none(void);
   //
   // -- render primitives by lists
   // enable lists, up to 4, first list always have rpc_Point, other never have it
+/*
   bool setup_lists(int render_primitive_components, const int* list, int listid);
   bool setup_lists2(int count, int render_primitive_components, const int* list, ...);
   bool render_primitive(eRenderPrimitiveType primitive, int count, int starts, ...);
   bool render_primitive(eRenderPrimitiveType primitive, int count, const int* starts);
+*/
+  bool render_primitive(eRenderPrimitiveType primitive, int count, int start);
   //
   bool setup_state(const SRenderState& S); // discarded on phase end or render start/stop
-  bool setup_2d(const SIntPoint* vsize, const SIntPoint* voffset, const DTexPoint* relsize, const DTexPoint *reloffset); // window coordinates
+  bool setup_2d(const DPoint2i* vsize, const DPoint2i* voffset, const DTexPoint* relsize, const DTexPoint *reloffset); // window coordinates
   // -- render pictures
   void render_picture(const SPicture& A);
   void render_picture(const SPicture& A, const SPicture& B, DColorElem trans);
@@ -126,10 +137,10 @@ public: // lib3d::IRenderDriver
   void render_text_3d(BStrL piclist, int count);
   //
   // -- conversion
-  bool map_2d_to_3d(DTexPoint &p3d, const SIntPoint &p2d);
-  bool map_2d_to_3d(DPoint &p3d, const SIntPoint &p2d);
-  bool map_3d_to_2d(SIntPoint &p2d, const DPoint &p3d);
-  bool map_3d_to_2d(SIntPoint &p2d, const DTexPoint &p3d);
+  bool map_2d_to_3d(DTexPoint &p3d, const DPoint2i &p2d);
+  bool map_2d_to_3d(DPoint &p3d, const DPoint2i &p2d);
+  bool map_3d_to_2d(DPoint2i &p2d, const DPoint &p3d);
+  bool map_3d_to_2d(DPoint2i &p2d, const DTexPoint &p3d);
 public:
 };
 
@@ -155,6 +166,66 @@ public:
   //
   inline bool validate_construction(void) { return true; }
 public:  
+};
+
+//***************************************
+// RVertexArray::
+//***************************************
+
+struct RVertexArray : public lib3d::IVertexArray {
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RVertexArray, 2, lib3d::IVertexArray)
+  UMODSYS_REFOBJECT_REFOTHER(RRenderDriver3D)
+  //
+  struct SArrayFill {
+    bool texcoords[gl_multitex_levels];
+    bool coord, color, normal, edge, index;
+    //
+    inline SArrayFill(void) { clear(); }
+    //
+    void clear(void);
+    bool check(SVertexElemInfo& x);
+    bool check_single(const SVertexElemInfo& x);
+  };
+  //
+  struct SLayInfo {
+    SVertexElemInfo vei;
+    GLint start, stride, type, num;
+  };
+  typedef tl::TDynarrayDynamic<SLayInfo, tl::DAllocatorTight> Layers;
+public:
+  static BByte vat_sizes[vaet__Count];
+public:
+  GLuint vbo, count;
+  Layers layers;
+  SArrayFill fill;
+  bool created, uploaded;
+  size_t elem_size, cache_size;
+  BByte *cache;
+  SGLFuncsLegacy *gl;
+protected:
+public:
+  RVertexArray(RRenderDriver3D *pv);
+  ~RVertexArray(void);
+  //
+  bool Free(void);
+  bool Alloc(const SVertexElemInfo lays[], int lcount, int ecount, bool single=true);
+  bool Alloc(void); // cache create
+  bool Upload(bool final=false);
+  bool Use(unsigned laymask=~0);
+  //
+  static bool StrideConvert(
+    eVertexAType t1, uint8 c1, void* p1, int s1,
+    eVertexAType t2, uint8 c2, const void* p2, int s2,
+    int num
+  );
+public:
+  bool is_valid(void) const;
+  int get_array_count(void) const;
+  int get_layer_count(void) const;
+  SVertexElemInfo get_layer_info(int layid) const;
+  //
+  bool get_layer_vdata(eVertexAType type, void* buf, int start, int ecount, int lay) const;
+  bool set_layer_vdata(eVertexAType type, const void* buf, int start, int ecount, int lay);
 };
 
 //***************************************

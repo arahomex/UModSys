@@ -72,6 +72,7 @@ struct IRenderDriver : public lib2d::IRenderDriver {
   virtual bool camera_frustum(const DPoint &center, const DTexPoint &fov, DScalar min, DScalar max) =0;
   // -- allocate vector-cache
   // all data will be reset after end of frame
+/*
   virtual DPoint* alloc_points(int count) =0;
   virtual void alloc_points(const DPoint* x, int count) =0;
   virtual DColor* alloc_colors(int count) =0;
@@ -83,6 +84,7 @@ struct IRenderDriver : public lib2d::IRenderDriver {
   virtual DNormal* alloc_normals(int count) =0;
   virtual void alloc_normals(const DNormal* x, int count) =0;
   virtual int* alloc_index(int count, int level=0) =0;
+*/
   //
   virtual bool driver_is_reset(void) =0;
   //

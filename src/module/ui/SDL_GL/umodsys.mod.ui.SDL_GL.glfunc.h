@@ -92,7 +92,7 @@ struct SGLFuncs : public SGLFuncsBase {
   //
   void dumperror(int error) const;
   inline void e(void) const {
-    int error = glGetError();
+    int error = this->glGetError();
     if(error!=GL_NO_ERROR) {
       dumperror(error);
     }
@@ -129,20 +129,20 @@ struct SGLFuncs : public SGLFuncsBase {
   //
   inline void set_blend(bool mode) const {
     if(blend_enabled!=int(mode)) {
-      if(mode) glEnable(GL_BLEND); 
-      else glDisable(GL_BLEND);
+      if(mode) this->glEnable(GL_BLEND); 
+      else this->glDisable(GL_BLEND);
       blend_enabled = mode;
     }
   }
   inline void set_blend(GLenum s, GLenum d) const {
     if(blend_source!=s || blend_destination!=d) {
-      glBlendFunc(blend_source=s, blend_destination=d);
+      this->glBlendFunc(blend_source=s, blend_destination=d);
     }
   }
   //
   inline void set_stage_t(int level) const {
     if(texstage!=level) {
-      glActiveTexture(gl_texture_bylevel[texstage = level]);
+      this->glActiveTexture(gl_texture_bylevel[texstage = level]);
     }
   }
   inline void set_stage_c(int level) const {
@@ -153,21 +153,6 @@ struct SGLFuncs : public SGLFuncsBase {
   inline void set_stage(int level) const {
     set_stage_t(level);
     set_stage_c(level);
-  }
-  inline void set_composite(GLint mode) const {
-    TexStageInfo &ti = texsinfos[texstage];
-    if(ti.composite!=mode) {
-      this->glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, ti.composite = mode);
-    }
-  }
-  inline void set_composite(GLint mode, int level) const { set_stage_t(level); set_composite(mode); }
-  inline void set_composite_all(GLint mode) const { 
-    int s = texstage;
-    for(int i=0; i<max_tex_level; i++) {
-      set_stage_t(i);
-      set_composite(mode); 
-    }
-    set_stage_t(s);
   }
   inline bool get_tex2d(int level) const {
     TexStageInfo &ti = texsinfos[level];
@@ -189,14 +174,6 @@ struct SGLFuncs : public SGLFuncsBase {
     TexStageInfo &ti = texsinfos[texstage];
     if(ti.bound!=name) {
       this->glBindTexture(GL_TEXTURE_2D, ti.bound = name);
-    }
-  }
-  inline void set_ctc(bool mode) const {
-    TexStageInfo &ti = texsinfos[texstage];
-    if(ti.client_coords!=byte(mode)) {
-      if(mode) this->glEnableClientState(GL_TEXTURE_COORD_ARRAY); 
-      else this->glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-      ti.client_coords = mode;
     }
   }
 };
@@ -221,6 +198,37 @@ struct SGLFuncsLegacy : public SGLFuncs {
   void clear_min(void);
   void clear(void);
   bool load(bool iscore=true);
+  //
+  inline void set_ctc(bool mode) const {
+    TexStageInfo &ti = texsinfos[texstage];
+    if(ti.client_coords!=byte(mode)) {
+      if(mode) this->glEnableClientState(GL_TEXTURE_COORD_ARRAY); 
+      else this->glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+      ti.client_coords = mode;
+    }
+  }
+  inline void set_composite(GLint mode) const {
+    TexStageInfo &ti = texsinfos[texstage];
+    if(ti.composite!=mode) {
+      this->glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, ti.composite = mode);
+    }
+  }
+  inline void set_composite(GLint mode, int level) const { 
+    set_stage_t(level); 
+    set_composite(mode); 
+  }
+  inline void set_composite_all(GLint mode) const { 
+    int s = texstage;
+    for(int i=0; i<max_tex_level; i++) {
+      set_stage_t(i);
+      set_composite(mode); 
+    }
+    set_stage_t(s);
+  }
+  //
+  void set_flags(const SGLFuncs::TextureInfo* ti, const SRenderMapFlags& flags) const;
+  void set_flags(const SGLFuncs::TextureInfo* ti, const SRenderMapFlags& flags, eRenderMapFlagsCombine combine) const;
+  void set_tflags(const SGLFuncs::TextureInfo* ti, const SRenderMapFlags& flags) const;
 };
 
 
@@ -275,6 +283,7 @@ struct SGLFuncs::TextureInfo {
       gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapt = t);
     }
   }
+
 };
 
 //***************************************

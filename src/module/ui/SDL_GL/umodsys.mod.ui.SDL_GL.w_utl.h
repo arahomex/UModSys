@@ -49,6 +49,8 @@ RRenderDriver3D::RRenderDriver3D(DOwner *own)
   clear_color(0,0,0,0),
   cur_color(0,0,0,0), cur_tm(lib2d::tm_Opaque) 
 {
+  video_init_counter = 1;
+  gl.vic = &video_init_counter;
 }
 
 RRenderDriver3D::~RRenderDriver3D(void) 
@@ -86,7 +88,7 @@ bool RRenderDriver3D::open(const SParameters& args)
   //
   glctx = SDL_GL_CreateContext(wnd);
   SDL_GL_MakeCurrent(wnd, glctx);
-  if(!gl.load())
+  if(!gl.load(false))
     return false;
   //
   return true;
@@ -94,6 +96,14 @@ bool RRenderDriver3D::open(const SParameters& args)
 
 void RRenderDriver3D::set_color(void) 
 {
+}
+
+void RRenderDriver3D::Update(void) 
+{
+  gl.glFinish();
+  gl.e();
+  SDL_GL_SwapWindow(wnd);
+  gl.e();
 }
 
 //***************************************

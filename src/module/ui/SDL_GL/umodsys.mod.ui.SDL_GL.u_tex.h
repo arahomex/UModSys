@@ -29,11 +29,60 @@ inline void SGLFuncs::set_flags(const SGLFuncs::TextureInfo* ti, const SRenderMa
     ti->set_wrap(*this, mapRenderMapFlagsWrap_S[flags.wrap], mapRenderMapFlagsWrap_T[flags.wrap]);
   }
   if(flags.combine<rmfc_Unknown) {
-    set_composite(mapRenderMapFlagsCombine[flags.combine]);
+    // ti->set_composite(mapRenderMapFlagsCombine[flags.combine]);
   }
 }
 
 inline void SGLFuncs::set_flags(const SGLFuncs::TextureInfo* ti, const SRenderMapFlags& flags, eRenderMapFlagsCombine combine) const
+{
+  if(!ti || ti->name==gl_no_texture)
+    return;
+  //
+  if(flags.filter<rmff_Unknown) {
+    ti->set_minmag(*this, mapRenderMapFlagsFilter_Min[flags.filter], mapRenderMapFlagsFilter_Mag[flags.filter]);
+  }
+  if(flags.wrap<rmfw_Unknown) {
+    ti->set_wrap(*this, mapRenderMapFlagsWrap_S[flags.wrap], mapRenderMapFlagsWrap_T[flags.wrap]);
+  }
+  if(combine<rmfc_Unknown) {
+    //ti->set_composite(mapRenderMapFlagsCombine[combine]); e();
+  }
+}
+
+inline void SGLFuncs::set_tflags(const SGLFuncs::TextureInfo* ti, const SRenderMapFlags& flags) const
+{
+  if(!ti || ti->name==gl_no_texture)
+    return;
+  //
+  if(flags.filter<rmff_Unknown) {
+    ti->set_minmag(*this, mapRenderMapFlagsFilter_Min[flags.filter], mapRenderMapFlagsFilter_Mag[flags.filter]);
+  }
+  if(flags.wrap<rmfw_Unknown) {
+    ti->set_wrap(*this, mapRenderMapFlagsWrap_S[flags.wrap], mapRenderMapFlagsWrap_T[flags.wrap]);
+  }
+}
+
+//***************************************
+// SGLFuncsLegacy::
+//***************************************
+
+inline void SGLFuncsLegacy::set_flags(const SGLFuncs::TextureInfo* ti, const SRenderMapFlags& flags) const
+{
+  if(!ti || ti->name==gl_no_texture)
+    return;
+  //
+  if(flags.filter<rmff_Unknown) {
+    ti->set_minmag(*this, mapRenderMapFlagsFilter_Min[flags.filter], mapRenderMapFlagsFilter_Mag[flags.filter]);
+  }
+  if(flags.wrap<rmfw_Unknown) {
+    ti->set_wrap(*this, mapRenderMapFlagsWrap_S[flags.wrap], mapRenderMapFlagsWrap_T[flags.wrap]);
+  }
+  if(flags.combine<rmfc_Unknown) {
+    set_composite(mapRenderMapFlagsCombine[flags.combine]);
+  }
+}
+
+inline void SGLFuncsLegacy::set_flags(const SGLFuncs::TextureInfo* ti, const SRenderMapFlags& flags, eRenderMapFlagsCombine combine) const
 {
   if(!ti || ti->name==gl_no_texture)
     return;
@@ -50,7 +99,7 @@ inline void SGLFuncs::set_flags(const SGLFuncs::TextureInfo* ti, const SRenderMa
   }
 }
 
-inline void SGLFuncs::set_tflags(const SGLFuncs::TextureInfo* ti, const SRenderMapFlags& flags) const
+inline void SGLFuncsLegacy::set_tflags(const SGLFuncs::TextureInfo* ti, const SRenderMapFlags& flags) const
 {
   if(!ti || ti->name==gl_no_texture)
     return;

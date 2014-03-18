@@ -5,6 +5,7 @@
 
 SGLFuncs::SGLFuncs(void)
 {
+  texstage = texstage_client = 0;
   clear_min();
 }
 

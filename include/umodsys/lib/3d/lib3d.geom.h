@@ -94,8 +94,11 @@ struct SVertexElemInfo {
   eVertexAType aitype;
   uint8 acount, inf;
   //
-  inline SVertexElemInfo(eVertexClass vc, eVertexAType ait, uint8 ac) 
-  : vclass(vc), aitype(ait), acount(ac), inf(0) {
+  inline SVertexElemInfo(eVertexClass vc, eVertexAType ait, uint8 ac=1, uint8 ii=0) 
+  : vclass(vc), aitype(ait), acount(ac), inf(ii) {
+  }
+  inline SVertexElemInfo(void) 
+  : vclass(vc_Unknown), aitype(vaet_None), acount(0), inf(0) {
   }
 };
 

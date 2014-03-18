@@ -37,12 +37,115 @@ void RRenderDriver3D::begin(void)
 {
   if(!valid())
     return;
+  //
+/*
+  double T = parent->clock();
+  fv_1.begin( T );
+  if(fv_N.time<0)
+    fv_N.begin( T );
+  //
+  if(deep_mode!=dm_End && deep_mode!=dm_None) {
+    deep_mode = dm_Error;
+    M.debug_put(dps_Error, "R3D:: begin() again\n");
+  }
+  //
+*/
+  gl.glViewport(0, 0, wnd.dx, wnd.dy);
+  //
+  gl.glClearColor(0, 0, 0.1f, 0);
+  gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_ACCUM_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+  //
+  gl.glEnable(GL_DEPTH_TEST);
+  gl.glDepthFunc(GL_LESS);
+  //
+  gl.glEnable(GL_CULL_FACE);
+  gl.glCullFace(GL_FRONT);
+  //
+  gl.set_blend(false);
+  gl.set_blend(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+  //
+  gl.glMatrixMode(GL_PROJECTION);
+  gl.glLoadIdentity();
+  gl.glOrtho(-100.0,100.0, -100.0,100.0, -1000.0,1000.0);
+//  gl.glOrtho(-100.0,100.0, -100.0,100.0, 0.0,1000.0);
+//  gl.glFrustum(-100.0,100.0, -100.0,100.0, 3.0,100.0);
+  //
+  gl.glMatrixMode(GL_MODELVIEW);
+  gl.glLoadIdentity();
+  //
+//  _set_color();
+  //
+  for(int i=0; i<gl.max_tex_level; i++) {
+    gl.set_stage(0);
+    gl.set_tex2d(false);
+    gl.set_composite(GL_REPLACE);
+  }
+  gl.set_stage(0);
+  gl.e();
+//  deep_mode = dm_Frame;
+  //
+#if 1
+  gl.glBegin(GL_TRIANGLES);
+  gl.glColor3f(0, 0, 1); gl.glVertex3d(-50, 50, 0);
+  gl.glColor3f(0, 1, 0); gl.glVertex3d(50, 50, 0);
+  gl.glColor3f(1, 0, 0); gl.glVertex3d(0, -50, 0);
+  gl.glEnd();
+#endif
+#if 0
+  static float theta = 0;
+  theta += 1;
+  gl.glMatrixMode(GL_PROJECTION);
+	gl.glPushMatrix();
+  gl.glLoadIdentity();
+	gl.glRotatef( theta, 0.0f, 0.0f, 1.0f );
+	gl.glBegin( GL_TRIANGLES );
+	gl.glColor3f( 1.0f, 0.0f, 0.0f ); gl.glVertex2f( 0.0f, 1.0f );
+	gl.glColor3f( 0.0f, 1.0f, 0.0f ); gl.glVertex2f( 0.87f, -0.5f );
+	gl.glColor3f( 0.0f, 0.0f, 1.0f ); gl.glVertex2f( -0.87f, -0.5f );
+	gl.glEnd();
+	gl.glPopMatrix();
+#endif
 }
 
 void RRenderDriver3D::end(void) 
 {
   if(!valid())
     return;
+  //
+/*
+  if(deep_mode!=dm_Frame) {
+    deep_mode = dm_Error;
+    M.debug_put(dps_Error, "R3D:: end() again\n");
+  }
+  if(mode2d) {
+    mode_2d_end();
+    mode2d = 0;
+  }
+  sfont.clear();
+  c_picture.set_texture(NULL);
+*/
+  Update();
+/*
+  deep_mode = dm_End;
+  //
+  {
+    double T = parent->clock();
+    fv_1.end(T);
+    frame_values.add("frame.polygons", fv_1.npolys);
+    frame_values.add("frame.objects", fv_1.nobjects);
+    frame_values.add("frame.time", fv_1.time);
+    fv_N.npolys += fv_1.npolys;
+    fv_N.nobjects += fv_1.nobjects;
+    fv_N.nframes++;
+    if(fv_N.len(T)>fv_N_length) {
+      fv_N.end(T);
+      frame_values.add("average.polygons", fv_N.npolys/fv_N.time);
+      frame_values.add("average.objects", fv_N.nobjects/fv_N.time);
+      frame_values.add("average.fps", fv_N.nframes/fv_N.time);
+      fv_N.begin(T);
+    }
+  }
+*/
 }
 
 // -- information
@@ -129,7 +232,7 @@ void RRenderDriver3D::setup_blendcolor(const lib2d::SBlendColorf& c)
   set_color();
 }
 
-void RRenderDriver3D::setup_alpha(lib2d::DColorElem alpha, int transmode) 
+void RRenderDriver3D::setup_alpha(lib2d::DColorElemi alpha, int transmode) 
 {
   if(!valid())
     return;

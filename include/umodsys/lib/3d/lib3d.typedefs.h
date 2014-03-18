@@ -313,7 +313,8 @@ enum eVertexAType {
   vaet_Int32,
   vaet_UInt32,
   vaet_Float32,
-  vaet_Float64
+  vaet_Float64,
+  vaet__Count
 };
 
 //***************************************
