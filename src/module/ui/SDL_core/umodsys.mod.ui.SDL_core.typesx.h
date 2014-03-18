@@ -52,7 +52,7 @@ public:
   void setup_coloralpha(const DColorAlpha& c, int transmode);
   void setup_blendcolor(const SBlendColor& c);
   void setup_blendcolor(const SBlendColorf& c);
-  void setup_alpha(DColorElem alpha, int transmode);
+  void setup_alpha(DColorElemi alpha, int transmode);
   void setup_alpha(DColorElemf alpha, int transmode);
   // -- render text
   //

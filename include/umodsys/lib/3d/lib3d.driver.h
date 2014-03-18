@@ -1,12 +1,13 @@
 #ifndef __UMODSYS_LIB3D_DRIVER_H
 #define __UMODSYS_LIB3D_DRIVER_H 1
 /*************************************************************/
-// file: umodsys/lib/lib2d/lib3d.driver.h
+// file: umodsys/lib/lib3d/lib3d.driver.h
 // info: driver 3d
 /*************************************************************/
 
 #include <umodsys/lib/3d/lib3d.renderer.h>
 #include <umodsys/lib/3d/lib3d.material.h>
+#include <umodsys/lib/3d/lib3d.geom.h>
 
 #include <umodsys/lib/2d/lib2d.driver.h>
 
@@ -95,7 +96,9 @@ struct IRenderDriver : public lib2d::IRenderDriver {
   virtual ITexture::P register_tex(libmedia::ILibrary* mg, const DCString& texname, const SRenderMapFlags& deff) =0;
   virtual ITextureCells::P register_texcells(libmedia::ILibrary * mg, const DCString& texname, const SRenderMapFlags& deff) =0;
   // this one create a new box used for supply textures
-  virtual ITexture::P register_tex(const SIntPoint& size, const SRenderMapFlags& deff, lib2d::eImageType type) =0;
+  virtual ITexture::P register_tex(const DPoint2i& size, const SRenderMapFlags& deff, lib2d::eImageType type) =0;
+  virtual IVertexArray::P create_array(const SVertexElemInfo layers[], int count) =0;
+  //
   // -- setup dynamic lights, light indices: <=0 =error, 0x10000+ = HW, 0x20000+ = SW, 0x30000+ = omni
   virtual bool setup_clearlights(eLightType type=lt_All, bool emulated=true, bool hardware=true) =0;
   virtual int  setup_addlight(eLightType type, const SLight& light, const DMatrix4& T) =0;
@@ -103,16 +106,15 @@ struct IRenderDriver : public lib2d::IRenderDriver {
   virtual bool setup_setlight(int idx, bool enabled) =0;
   virtual void setup_T(const DMatrix4& T) =0;
   virtual bool setup_material(const SMaterial *mat) =0; // NULL to disable materials
+  virtual bool setup_array(const IVertexArray *va, int targets=~0, int layers=~0) =0;
+  virtual bool setup_array(const IVertexArray *va, eVertexClass target, int layer) =0;
+  virtual bool setup_array_none(void) =0;
   //
   // -- render primitives by lists
-  // enable lists, up to 4, first list always have rpc_Point, other never have it
-  virtual bool setup_lists(int render_primitive_components, const int* list, int listid=0) =0;
-  virtual bool setup_lists2(int count, int render_primitive_components, const int* list, ...) =0;
-  virtual bool render_primitive(eRenderPrimitiveType primitive, int count, int starts=0, ...) =0;
-  virtual bool render_primitive(eRenderPrimitiveType primitive, int count, const int* starts) =0;
+  virtual bool render_primitive(eRenderPrimitiveType primitive, int count, int start=0) =0;
   //
   virtual bool setup_state(const SRenderState& S) =0; // discarded on phase end or render start/stop
-  virtual bool setup_2d(const SIntPoint* vsize, const SIntPoint* voffset=NULL,
+  virtual bool setup_2d(const DPoint2i* vsize, const DPoint2i* voffset=NULL,
                         const DTexPoint* relsize=NULL, const DTexPoint *reloffset=NULL) =0; // window coordinates
   // -- render pictures
   virtual void render_picture(const SPicture& A) =0;
@@ -122,10 +124,10 @@ struct IRenderDriver : public lib2d::IRenderDriver {
   virtual void render_text_3d(BStrL piclist, int count) =0;
   //
   // -- conversion
-  virtual bool map_2d_to_3d(DTexPoint &p3d, const SIntPoint &p2d) =0;
-  virtual bool map_2d_to_3d(DPoint &p3d, const SIntPoint &p2d) =0;
-  virtual bool map_3d_to_2d(SIntPoint &p2d, const DPoint &p3d) =0;
-  virtual bool map_3d_to_2d(SIntPoint &p2d, const DTexPoint &p3d) =0;
+  virtual bool map_2d_to_3d(DTexPoint &p3d, const DPoint2i &p2d) =0;
+  virtual bool map_2d_to_3d(DPoint &p3d, const DPoint2i &p2d) =0;
+  virtual bool map_3d_to_2d(DPoint2i &p2d, const DPoint &p3d) =0;
+  virtual bool map_3d_to_2d(DPoint2i &p2d, const DTexPoint &p3d) =0;
   //
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IRenderDriver, 2, lib2d::IRenderDriver);

@@ -215,7 +215,7 @@ void RRenderDriver2D::setup_blendcolor(const SBlendColorf& c)
   set_color();
 }
 
-void RRenderDriver2D::setup_alpha(DColorElem alpha, int transmode) 
+void RRenderDriver2D::setup_alpha(DColorElemi alpha, int transmode) 
 {
   if(!valid())
     return;

@@ -1,7 +1,7 @@
 #ifndef __UMODSYS_LIB3D_OBJECTS_H
 #define __UMODSYS_LIB3D_OBJECTS_H 1
 /*************************************************************/
-// file: umodsys/lib/lib2d/lib3d.objects.h
+// file: umodsys/lib/lib3d/lib3d.objects.h
 // info: objects 3d
 /*************************************************************/
 

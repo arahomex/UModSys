@@ -62,7 +62,7 @@ public:
   virtual void setup_coloralpha(const DColorAlpha& c, int transmode=tm_Glow) =0;
   virtual void setup_blendcolor(const SBlendColor& c) =0;
   virtual void setup_blendcolor(const SBlendColorf& c) =0;
-  virtual void setup_alpha(DColorElem alpha, int transmode=tm_Glow) =0;
+  virtual void setup_alpha(DColorElemi alpha, int transmode=tm_Glow) =0;
   virtual void setup_alpha(DColorElemf alpha, int transmode=tm_Glow) =0;
   // -- render text
   //

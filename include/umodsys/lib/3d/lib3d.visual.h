@@ -1,7 +1,7 @@
 #ifndef __UMODSYS_LIB3D_VISUAL_H
 #define __UMODSYS_LIB3D_VISUAL_H 1
 /*************************************************************/
-// file: umodsys/lib/lib2d/lib3d.visual.h
+// file: umodsys/lib/lib3d/lib3d.visual.h
 // info: visualizer
 /*************************************************************/
 

@@ -1,7 +1,7 @@
 #ifndef __UMODSYS_LIB3D_TYPEDEFS_H
 #define __UMODSYS_LIB3D_TYPEDEFS_H 1
 /*************************************************************/
-// file: umodsys/lib/lib2d/lib3d.typedefs.h
+// file: umodsys/lib/lib3d/lib3d.typedefs.h
 // info: 3d typedefs
 /*************************************************************/
 
@@ -19,15 +19,23 @@ using namespace core;
 // typedefs
 
 typedef lib2d::DColorElemf                  DColorElem;
-typedef lib2d::DColorElem                   DColorElemi;
+typedef lib2d::DColorElemi                  DColorElemi;
+typedef lib2d::DColorElemb                  DColorElemb;
 typedef lib2d::DColorAlphaf                 DColorAlpha;
-typedef lib2d::DPoint                       DPointInt, SIntPoint;
-typedef lib2d::DPointf                      DTexPoint;
+typedef lib2d::DColorAlpha                  DColorAlphai;
+typedef lib2d::DColorAlphab                 DColorAlphab;
+typedef lib2d::DPoint                       DPoint2i;
+typedef lib2d::DPointf                      DPoint2f;
 typedef lib2d::SBlendColorf                 DBlendColor;
 typedef lib2d::DColor                       DColori;
+typedef lib2d::DColorb                      DColorb;
 
-typedef double                              DScalar;
-typedef float                               DScalarNormal, DScalarM, DTexScalar;
+typedef float64                             DScalar;
+typedef float32                             DScalarNormal, DScalarM, DTexScalar;
+typedef sint32                              DInt;
+typedef uint8                               DByte;
+typedef math3d::TVector2<DTexScalar>        DTexPoint;
+typedef math3d::TVector3<DInt>              DPointInt;
 typedef math3d::TVector3<DColorElem>        DColor;
 typedef math3d::TVector3<DScalar>           DPoint, DPoint3;
 typedef math3d::TVector3<DScalarNormal>     DNormal; 
@@ -284,6 +292,28 @@ enum eRenderPrimitiveType {
   rp_Fan          = 12,
   rp_MultiLine    = 13,
   rp_Unknown      = -1
+};
+
+enum eVertexClass {
+  vc_Unknown,
+  vc_Coord,
+  vc_Normal,
+  vc_Color,
+  vc_TexCoord,
+  vc_Edge,
+  vc_Index
+};
+
+enum eVertexAType {
+  vaet_None,
+  vaet_Int8,
+  vaet_UInt8,
+  vaet_Int16,
+  vaet_UInt16,
+  vaet_Int32,
+  vaet_UInt32,
+  vaet_Float32,
+  vaet_Float64
 };
 
 //***************************************

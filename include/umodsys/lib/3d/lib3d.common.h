@@ -1,7 +1,7 @@
 #ifndef __UMODSYS_LIB3D_COMMON_H
 #define __UMODSYS_LIB3D_COMMON_H 1
 /*************************************************************/
-// file: umodsys/lib/lib2d/lib3d.common.h
+// file: umodsys/lib/lib3d/lib3d.common.h
 // info: scene
 /*************************************************************/
 

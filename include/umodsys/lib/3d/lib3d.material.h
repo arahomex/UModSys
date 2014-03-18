@@ -54,10 +54,10 @@ struct SPicture {
 //***************************************
 
 struct SRenderDriverTexBox {
-  SIntPoint offset, size;
+  DPoint2i offset, size;
   DTexPoint A, B;
   //
-  inline void set_AB(const SIntPoint &texsize) {
+  inline void set_AB(const DPoint2i &texsize) {
     float ku = 1.f/texsize.v[0], kv = 1.f/texsize.v[1];
     A.set(ku*offset.v[0], kv*offset.v[1]);
     B.set(ku*size.v[0] + A.v[0], kv*size.v[1] + A.v[1]);
@@ -101,7 +101,7 @@ protected:
 struct SMaterialTexture {
   PTexture texture;
   DTexPoint texsize;
-  SIntPoint texisize;
+  DPoint2i texisize;
   SRenderMapFlags flags;
   DColorAlpha multiply;
   //

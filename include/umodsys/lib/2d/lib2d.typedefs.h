@@ -44,18 +44,21 @@ struct SBlendColorf;
 
 //***************************************
 
-typedef math3d::TVector2f   DPointf;
-typedef math3d::TVector3f   DColorf;
-typedef math3d::TVector4f   DColorAlphaf;
+typedef float32                       DColorElemf, DCoordf;
+typedef sint32                        DColorElemi, DCoordi;
+typedef uint8                         DColorElemb;
 
-typedef math3d::TVector2i   DPoint;
-typedef math3d::TVector3i   DColor;
-typedef math3d::TVector4i   DColorAlpha;
+typedef math3d::TVector2<DCoordf>     DPointf;
+typedef math3d::TVector3<DColorElemf> DColorf;
+typedef math3d::TVector4<DColorElemf> DColorAlphaf;
 
-typedef math3d::TBoundBox2i DBox;
+typedef math3d::TVector2<DCoordi>     DPoint;
+typedef math3d::TVector3<DColorElemi> DColor;
+typedef math3d::TVector4<DColorElemi> DColorAlpha;
+typedef math3d::TBoundBox2<DCoordi>   DBox;
 
-typedef float               DColorElemf;
-typedef int                 DColorElem;
+typedef math3d::TVector3<DColorElemb> DColorb;
+typedef math3d::TVector4<DColorElemb> DColorAlphab;
 
 //***************************************
 // ENUM/CONST

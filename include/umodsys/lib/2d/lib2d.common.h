@@ -48,13 +48,16 @@ struct SBlendColor {
 // INLINES/OUTLINES
 //***************************************
 
-inline DColorElemf c2c(DColorElem c) { return DColorElemf(c/255.0); }
-inline DColorElem c2c(DColorElemf c) { return DColorElem(c*255); }
+inline DColorElemf c2c(DColorElemi c) { return DColorElemf(c/255.0); }
+inline DColorElemf c2c(DColorElemb c) { return DColorElemf(c/255.0); }
+inline DColorElemi c2c(DColorElemf c) { return DColorElemi(c*255); }
 
 inline DColorf c2c(const DColor &c) { return DColorf(c2c(c.v[0]), c2c(c.v[1]), c2c(c.v[2])); }
+inline DColorf c2c(const DColorb &c) { return DColorf(c2c(c.v[0]), c2c(c.v[1]), c2c(c.v[2])); }
 inline DColor c2c(const DColorf &c) { return DColor(c2c(c.v[0]), c2c(c.v[1]), c2c(c.v[2])); }
 
 inline DColorAlphaf c2c(const DColorAlpha &c) { return DColorAlphaf(c2c(c.v[0]), c2c(c.v[1]), c2c(c.v[2]), c2c(c.v[3])); }
+inline DColorAlphaf c2c(const DColorAlphab &c) { return DColorAlphaf(c2c(c.v[0]), c2c(c.v[1]), c2c(c.v[2]), c2c(c.v[3])); }
 inline DColorAlpha c2c(const DColorAlphaf &c) { return DColorAlpha(c2c(c.v[0]), c2c(c.v[1]), c2c(c.v[2]), c2c(c.v[3])); }
 
 inline DPointf p2p(const DPoint &p) { return DPointf(p.v[0], p.v[1]); }
