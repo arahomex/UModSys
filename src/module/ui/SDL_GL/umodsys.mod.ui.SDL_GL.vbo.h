@@ -62,7 +62,11 @@ bool RVertexArray::Alloc(const SVertexElemInfo lays[], int lcount, int ecount, b
     return false;
   //
   fill.clear();
-  layers.Resize(lcount);
+  if(!layers.Resize(lcount)) {
+    Free();
+    return false;
+  }
+  //
   int pos = 0;
   for(int i=0; i<lcount; i++) {
     SVertexElemInfo x = lays[i];
@@ -92,7 +96,7 @@ bool RVertexArray::Alloc(const SVertexElemInfo lays[], int lcount, int ecount, b
         return false;
     }
     y.num = x.acount;
-    pos += vat_sizes[x.aitype*x.acount];
+    pos += vat_sizes[x.aitype]*x.acount;
   }
   for(int i=0; i<lcount; i++) {
     layers[i].stride = pos;
@@ -116,7 +120,7 @@ bool RVertexArray::Alloc(void)
     Free();
     return false;
   }
-  memset(cache, 0, cache_size);
+  memset(p, 0, cache_size);
   cache = reinterpret_cast<BByte*>(p);
   uploaded = false;
   return true;
@@ -129,7 +133,7 @@ bool RVertexArray::Upload(bool final)
   if(vbo==gl_no_buffer || cache==NULL)
     return false;
   //
-  gl->glBindBuffer(vbo, GL_ARRAY_BUFFER);
+  gl->glBindBuffer(GL_ARRAY_BUFFER, vbo);
   if(!created) {
     gl->glBufferData(GL_ARRAY_BUFFER, cache_size, cache, final ? GL_STATIC_DRAW : GL_DYNAMIC_DRAW);
     created = true;
@@ -149,14 +153,14 @@ bool RVertexArray::Use(unsigned laymask)
 {
   if(!Upload())
     return false;
-  gl->glBindBuffer(vbo, GL_ARRAY_BUFFER);
+  gl->glBindBuffer(GL_ARRAY_BUFFER, vbo);
   for(int i=0; i<~layers; i++) {
     if((laymask & (1u<<i))==0)
       continue;
     const SLayInfo& y = layers[i];
     switch(y.vei.vclass) {
       case vc_Coord:
-        gl->glVertexPointer(y.vei.acount, y.type, y.stride, (const GLvoid *)y.start);
+        gl->glVertexPointer(y.num, y.type, y.stride, (const GLvoid *)y.start);
         gl->glEnableClientState(GL_VERTEX_ARRAY);
         break;
       case vc_Normal:
@@ -165,13 +169,13 @@ bool RVertexArray::Use(unsigned laymask)
         gl->glEnableClientState(GL_NORMAL_ARRAY);
         break;
       case vc_Color:
-        gl->glColorPointer(y.vei.acount, y.type, y.stride, (const GLvoid *)y.start);
+        gl->glColorPointer(y.num, y.type, y.stride, (const GLvoid *)y.start);
         gl->glEnableClientState(GL_COLOR_ARRAY);
         break;
       case vc_TexCoord:
         gl->set_stage(y.vei.inf);
         gl->set_tex2d(true);
-        gl->glTexCoordPointer(y.vei.acount, y.type, y.stride, (const GLvoid *)y.start);
+        gl->glTexCoordPointer(y.num, y.type, y.stride, (const GLvoid *)y.start);
         gl->glEnableClientState(GL_TEXTURE_COORD_ARRAY);
         break;
       case vc_Edge:
@@ -180,7 +184,7 @@ bool RVertexArray::Use(unsigned laymask)
         gl->glEnableClientState(GL_EDGE_FLAG_ARRAY);
         break;
       case vc_Index:
-        gl->glBindBuffer(vbo, GL_ELEMENT_ARRAY_BUFFER);
+        gl->glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, vbo);
 //        gl->glIndexPointer(y.vei.acount, y.type, y.stride, (const GLvoid *)y.start);
 //        gl->glEnableClientState(GL_INDEX_ARRAY);
         break;
@@ -273,7 +277,7 @@ bool RVertexArray::SArrayFill::check(SVertexElemInfo& x)
       case vc_Coord:
         if(x.aitype==vaet_None || x.aitype>=vaet__Count) {
           x.aitype = vaet_Float32;
-        } else if(x.aitype==vaet_Int8 || vaet_UInt8) {
+        } else if(x.aitype==vaet_Int8 || x.aitype==vaet_UInt8) {
           x.aitype = vaet_Int16;
         } else if(x.aitype==vaet_UInt16) {
           x.aitype = vaet_Int32;
@@ -306,7 +310,7 @@ bool RVertexArray::SArrayFill::check(SVertexElemInfo& x)
       case vc_TexCoord:
         if(x.aitype==vaet_None || x.aitype>=vaet__Count) {
           x.aitype = vaet_Float32;
-        } else if(x.aitype==vaet_Int8 || vaet_UInt8) {
+        } else if(x.aitype==vaet_Int8 || x.aitype==vaet_UInt8) {
           x.aitype = vaet_Int16;
         } else if(x.aitype==vaet_UInt16) {
           x.aitype = vaet_Int32;

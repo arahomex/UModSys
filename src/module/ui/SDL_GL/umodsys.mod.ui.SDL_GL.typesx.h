@@ -3,6 +3,26 @@ struct RTerminalX;
 struct RRenderDriver3D;
 struct RVertexArray;
 
+enum ePhaseMode {
+  phm_None,
+  phm_Error,
+  phm_Begin,
+  phm_End,
+  phm_3D,
+  phm_2D,
+  phm_Draw,
+  phm_Unknown,
+  //
+  phms_None      = 1<<phm_None,
+  phms_Error     = 1<<phm_Error,
+  phms_Begin     = 1<<phm_Begin,
+  phms_End       = 1<<phm_End,
+  phms_3D        = 1<<phm_3D,
+  phms_2D        = 1<<phm_2D,
+  phms_Draw      = 1<<phm_Draw,
+  phms_Unknown   = 1<<phm_Unknown
+};
+
 //***************************************
 // RRenderDriver3D::
 //***************************************
@@ -18,9 +38,17 @@ protected:
   TParametersA<1024> max_values;
   TParametersA<1024> frame_values;
   SDL_GLContext glctx;
+  ePhaseMode phm;
+  sint8 mode2d;
+  lib3d::DPoint2i screen2d_voffset, screen2d_vsize;
+  lib3d::DTexPoint screen2d_reloffset, screen2d_relsize;
   //
   tl::TRefObjects<RMultiImage2D_SDL_ttf>::Weak cur_font_ttf;
 public:
+  static BStr s_phm_names[phm_Unknown+1];
+  static int s_phm_goods[phm_Unknown];
+  static int s_phm_bads[phm_Unknown];
+  //
   SGLFuncsLegacy gl;
 public:
   RRenderDriver3D(DOwner *own);
@@ -33,6 +61,14 @@ public:
   bool open(const SParameters& args);
   void set_color(void);
   void Update(void);
+  bool Mode_2d_begin(void);
+  bool Mode_2d_end(void);
+  //
+  bool next_phm(ePhaseMode phm2);
+  bool is_phm(ePhaseMode phm2);
+  //
+  inline bool next_phmv(ePhaseMode phm2) { return valid() && next_phm(phm2); }
+  inline bool is_phmv(ePhaseMode phm2) { return valid() && is_phm(phm2); }
 public: // lib2d::IRenderDriver
   // -- UI
   libui::ITerminal* get_terminal(void) const;
@@ -105,7 +141,8 @@ public: // lib3d::IRenderDriver
   ITextureCells::P register_texcells(libmedia::ILibrary * mg, const DCString& texname, const SRenderMapFlags& deff);
   // this one create a new box used for supply textures
   ITexture::P register_tex(const DPoint2i& size, const SRenderMapFlags& deff, lib2d::eImageType type);
-  IVertexArray::P create_array(const SVertexElemInfo layers[], int count);
+  IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount);
+  IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount, const void* rawdata);
   // -- setup dynamic lights, light indices: <=0 =error, 0x10000+ = HW, 0x20000+ = SW, 0x30000+ = omni
   bool setup_clearlights(eLightType type, bool emulated, bool hardware);
   int  setup_addlight(eLightType type, const SLight& light, const DMatrix4& T);
@@ -113,8 +150,8 @@ public: // lib3d::IRenderDriver
   bool setup_setlight(int idx, bool enabled);
   void setup_T(const DMatrix4& T);
   bool setup_material(const SMaterial *mat); // NULL to disable materials
-  bool setup_array(const IVertexArray *va, int targets, int layers);
-  bool setup_array(const IVertexArray *va, eVertexClass target, int layer);
+  bool setup_array(IVertexArray *va, int targets, int layers);
+  bool setup_array(IVertexArray *va, eVertexClass target, int layer);
   bool setup_array_none(void);
   //
   // -- render primitives by lists

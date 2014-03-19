@@ -281,7 +281,9 @@ enum eRenderPrimitiveComponents {
 enum eRenderPrimitiveType {
   rp_Null         = 0,
   rp_Point        = 1,
+  rp_1 = rp_Point,
   rp_Line         = 2,
+  rp_2 = rp_Line,
   rp_Tri          = 3,
   rp_Triangle     = rp_Tri,
   rp_3 = rp_Triangle,
@@ -290,7 +292,8 @@ enum eRenderPrimitiveType {
   rp_Poly         = 10,
   rp_Strip        = 11,
   rp_Fan          = 12,
-  rp_MultiLine    = 13,
+  rp_PolyLine     = 20,
+  rp_MultiLine    = 21,
   rp_Unknown      = -1
 };
 

@@ -100,6 +100,13 @@ struct SVertexElemInfo {
   inline SVertexElemInfo(void) 
   : vclass(vc_Unknown), aitype(vaet_None), acount(0), inf(0) {
   }
+  //
+  template<typename T> inline static SVertexElemInfo based_on(eVertexClass vc, uint8 ii=0) {
+    return SVertexElemInfo(vc, TVertexAType<T>::type_of(), TVertexAType<T>::count_of(), ii);
+  }
+  template<typename T> inline static SVertexElemInfo based_on(const T& val, eVertexClass vc, uint8 ii=0) {
+    return SVertexElemInfo(vc, TVertexAType<T>::type_of(), TVertexAType<T>::count_of(), ii);
+  }
 };
 
 
@@ -123,12 +130,22 @@ public:
   template<typename T> inline bool get_layer_data(T* buf, int start, int ecount, int lay) const {
     return get_layer_vdata(TVertexAType<T>::type_of(), buf, start, ecount, lay);
   }
-  template<typename T> inline bool set_layer_data(T* buf, int start, int ecount, int lay) {
+  template<typename T> inline bool set_layer_data(const T* buf, int start, int ecount, int lay) {
     return set_layer_vdata(TVertexAType<T>::type_of(), buf, start, ecount, lay);
+  }
+  template<typename T> inline bool get_layer_elem(T& val, int start, int lay) const {
+    return get_layer_vdata(TVertexAType<T>::type_of(), &val, start, 1, lay);
+  }
+  template<typename T> inline bool set_layer_elem(const T& val, int start, int lay) {
+    return set_layer_vdata(TVertexAType<T>::type_of(), &val, start, 1, lay);
   }
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IVertexArray, 2, IRefObject);
 };
+
+//***************************************
+// INLINES
+//***************************************
 
 //***************************************
 // END

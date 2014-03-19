@@ -5,10 +5,42 @@
 
 void RRenderDriver3D::phase_start(int phaseid, int alpha_mode) // begin desired phase
 {
+  if(!next_phmv(phm_3D))
+    return;
+  if(mode2d) {
+    Mode_2d_end();
+    mode2d = 0;
+  }
+  if(alpha_mode) {
+    gl.set_stage(0);
+    gl.set_composite_all(GL_MODULATE);
+    //
+    gl.set_blend(true);
+//    set_transmode(alpha_mode);
+    //
+    gl.glEnable(GL_ALPHA_TEST);
+    gl.glAlphaFunc(GL_GREATER, 0);
+    gl.glEnable (GL_BLEND);
+    gl.glDepthMask(GL_FALSE);
+  } else {
+    gl.set_stage(0);
+    gl.set_composite_all(GL_REPLACE);
+    //
+    gl.set_blend(false);
+    //
+    gl.glDisable(GL_ALPHA_TEST);
+    gl.glDepthMask(GL_TRUE);
+  }
 }
 
-void RRenderDriver3D::phase_2d(bool nearmode=true) // begin 2d phase (after or before all other)
+void RRenderDriver3D::phase_2d(bool nearmode) // begin 2d phase (after or before all other)
 {
+  if(!next_phmv(phm_2D))
+    return;
+  if(!mode2d) {
+    Mode_2d_begin();
+  }
+  mode2d = nearmode ? -1 : 1;
 }
 
 void RRenderDriver3D::render_start(void) // caches is filled, begin render elements
@@ -96,7 +128,26 @@ bool RRenderDriver3D::setup_state(const SRenderState& S) // discarded on phase e
 
 bool RRenderDriver3D::setup_2d(const DPoint2i* vsize, const DPoint2i* voffset, const DTexPoint* relsize, const DTexPoint *reloffset) // window coordinates
 {
-  return false;
+  sint8 m2d = mode2d;
+  if(m2d) {
+    Mode_2d_end();
+  }
+  //
+  if(vsize) 
+    screen2d_vsize = *vsize;
+  if(voffset) 
+    screen2d_voffset = *voffset;
+  if(relsize) 
+    screen2d_relsize = *relsize;
+  if(reloffset) 
+    screen2d_reloffset = *reloffset;
+  //
+//  param_update_2d();
+  //
+  if(m2d) {
+    Mode_2d_begin();
+  }
+  return true;
 }
 
 

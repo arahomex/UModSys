@@ -76,12 +76,19 @@ bool RRenderDriver3D::setup_material(const SMaterial *mat) // NULL to disable ma
   return false;
 }
 
-bool RRenderDriver3D::setup_array(const IVertexArray *va, int targets, int layers)
+bool RRenderDriver3D::setup_array(IVertexArray *va, int targets, int layers)
 {
-  return false;
+  if(!is_phmv(phm_3D) || va==NULL)
+    return false;
+  RVertexArray::SelfP arr;
+  if(!va->t_ref_get_other_interface(arr))
+    return false;
+  if(!arr->Use(layers))
+    return false;
+  return true;
 }
 
-bool RRenderDriver3D::setup_array(const IVertexArray *va, eVertexClass target, int layer)
+bool RRenderDriver3D::setup_array(IVertexArray *va, eVertexClass target, int layer)
 {
   return false;
 }

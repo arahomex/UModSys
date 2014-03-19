@@ -797,7 +797,19 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.w_2d.h"
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.w_2d_draw.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.w_2d_info.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.w_2d_phase.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.w_2d_setup.h"
 				>
 			</File>
 			<File

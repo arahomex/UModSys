@@ -88,7 +88,17 @@ ITexture::P RRenderDriver3D::register_tex(const DPoint2i& size, const SRenderMap
 }
 
 
-IVertexArray::P RRenderDriver3D::create_array(const SVertexElemInfo layers[], int count)
+IVertexArray::P RRenderDriver3D::create_array(int lcount, const SVertexElemInfo layers[], int vcount)
+{
+  RVertexArray::SelfP arr = new(local_memory()) RVertexArray(this);
+  if(!arr->Alloc(layers, lcount, vcount, true))
+    return false;
+  if(!arr->is_valid())
+    return false;
+  return arr();
+}
+
+IVertexArray::P RRenderDriver3D::create_array(int lcount, const SVertexElemInfo layers[], int vcount, const void* rawdata)
 {
   return NULL;
 }
@@ -98,7 +108,12 @@ IVertexArray::P RRenderDriver3D::create_array(const SVertexElemInfo layers[], in
 
 bool RRenderDriver3D::map_2d_to_3d(DTexPoint &p3d, const DPoint2i &p2d)
 {
-  return false;
+  lib2d::DPoint pp = p2d - screen2d_voffset, pp2;
+  DTexPoint rv = screen2d_relsize;
+  rv.mult(DScalar(pp(0))/screen2d_vsize(0), DScalar(pp(1))/screen2d_vsize(1));
+  rv += screen2d_reloffset;
+  p3d = rv*2 + DTexPoint(-1);
+  return true;
 }
 
 bool RRenderDriver3D::map_2d_to_3d(DPoint &p3d, const DPoint2i &p2d)

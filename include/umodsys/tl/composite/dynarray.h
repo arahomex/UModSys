@@ -73,7 +73,7 @@ public:
   //
   inline ItemType* get(void) UMODSYS_NOTHROW() { return allocated; }
   inline size_t maxlen(void) const UMODSYS_NOTHROW() { return maxsize; }
-   bool maxlen(size_t sz) UMODSYS_NOTHROW() { return DAllocator::t_realloc_array(allocated, maxsize, sz, UMODSYS_SOURCEINFO); }
+  bool maxlen(size_t sz) UMODSYS_NOTHROW() { return DAllocator::t_realloc_array(allocated, maxsize, sz, UMODSYS_SOURCEINFO); }
   bool free(void) UMODSYS_NOTHROW() { return DAllocator::t_free_array(allocated, maxsize, UMODSYS_SOURCEINFO); }
 };
 

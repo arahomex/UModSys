@@ -99,7 +99,8 @@ struct IRenderDriver : public lib2d::IRenderDriver {
   virtual ITextureCells::P register_texcells(libmedia::ILibrary * mg, const DCString& texname, const SRenderMapFlags& deff) =0;
   // this one create a new box used for supply textures
   virtual ITexture::P register_tex(const DPoint2i& size, const SRenderMapFlags& deff, lib2d::eImageType type) =0;
-  virtual IVertexArray::P create_array(const SVertexElemInfo layers[], int count) =0;
+  virtual IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount) =0;
+  virtual IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount, const void* rawdata) =0;
   //
   // -- setup dynamic lights, light indices: <=0 =error, 0x10000+ = HW, 0x20000+ = SW, 0x30000+ = omni
   virtual bool setup_clearlights(eLightType type=lt_All, bool emulated=true, bool hardware=true) =0;
@@ -108,8 +109,8 @@ struct IRenderDriver : public lib2d::IRenderDriver {
   virtual bool setup_setlight(int idx, bool enabled) =0;
   virtual void setup_T(const DMatrix4& T) =0;
   virtual bool setup_material(const SMaterial *mat) =0; // NULL to disable materials
-  virtual bool setup_array(const IVertexArray *va, int targets=~0, int layers=~0) =0;
-  virtual bool setup_array(const IVertexArray *va, eVertexClass target, int layer) =0;
+  virtual bool setup_array(IVertexArray *va, int targets=~0, int layers=~0) =0;
+  virtual bool setup_array(IVertexArray *va, eVertexClass target, int layer) =0;
   virtual bool setup_array_none(void) =0;
   //
   // -- render primitives by lists

@@ -102,6 +102,7 @@ struct RTest1_Shell
     libui::IKeyboardController::P keyc;
     libui::IMouseController::P mouc;
     libui::ICollector::P frames;
+    lib3d::IVertexArray::P va_tri;
     bool f_quit;
     //
     bool font_pure(void);
@@ -153,7 +154,8 @@ struct RTest1_Shell
 #endif
     //
 #if 1
-    ui_test1();
+//    ui_test1();
+    ui_test2();
 #endif
     //
     s_dbg.put(d_Shell, cl_Info, "} // RTest1_Shell()\n");
@@ -182,8 +184,12 @@ struct RTest1_Shell
 };
 
 #include "plugin_test1.common.h"
+
 #include "plugin_test1.file_utils.h"
 #include "plugin_test1.file_tests.h"
+
+#include "plugin_test1.ui_funcs.h"
+#include "plugin_test1.ui_ctx.h"
 #include "plugin_test1.ui_tests.h"
 
 struct RGenerator : public IGenerator {

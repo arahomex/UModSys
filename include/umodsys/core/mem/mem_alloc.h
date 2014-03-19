@@ -29,7 +29,7 @@ struct SCountCalcPower2 {
 
 struct SCountCalcExact {
   inline static size_t calculate_count(size_t newcount, size_t oldcount) {
-    return newcount==0 ? 1 : oldcount; // power 2 of oldcount greater or equal newcount
+    return newcount==0 ? 1 : newcount; // exact newcount or at least 1
   }
 };
 
