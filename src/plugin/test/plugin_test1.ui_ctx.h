@@ -189,6 +189,21 @@ void RTest1_Shell::UI_Info::cycle3d(void)
     if(!vas_tri.valid())
       return;
   }
+  {
+    VertexPC q[6][4];
+    for(int i=0; i<6; i++) {
+      for(int j=0; j<4; j++) {
+        VertexPC& v = q[i][j];
+        const uint8 *xyz = lib3d::cube_quad_points[i][j];
+        v.set_xyz(xyz[0]*0.3f+0.3f, xyz[1]*0.3f+0.3f, xyz[2]*0.3f+0.3f);
+        v.set_rgba(i&4 ? 255 : 127, i&2 ? 255 : 127, i&1 ? 255 : 127);
+      }
+    }
+    vas_cube = rd3d->create_array(2, s_lys2, 6*4, &q, sizeof(q));
+    if(!vas_cube.valid())
+      return;
+    
+  }
   //
   f_quit = false;
   ticks = 0;
@@ -221,6 +236,8 @@ void RTest1_Shell::UI_Info::cycle3d(void)
       rd3d->render_primitive(lib3d::rp_Tri, 3);
       rd3d->setup_array(vas_tri);
       rd3d->render_primitive(lib3d::rp_Tri, 3);
+      rd3d->setup_array(vas_cube);
+      rd3d->render_primitive(lib3d::rp_Quad, 4*6);
       //
       rd3d->phase_2d();
       rd3d->setup_color(lib2d::DColorf(1, 1, 0));

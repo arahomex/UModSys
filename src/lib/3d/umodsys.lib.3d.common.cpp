@@ -28,6 +28,97 @@ using namespace UModSys::lib3d;
 // lib3d::
 //***************************************
 
+sint8 lib3d::cube_faceshift[6][4] = { // [faces]{x,y,z,_}
+  {0, 1,0},    // Top
+  {0,-1,0},    // Bottom
+  {0,0, 1},    // Front
+  {0,0,-1},    // Back
+  {-1,0,0},    // Left
+  { 1,0,0},    // Right
+};
+
+//***************************************
+
+uint8 lib3d::cube_quad_texpoints[6][4][2] = { // [faces][verts]{u,v}
+  {
+    {1,0},    // Top Right Of The Quad (Top)
+    {0,0},    // Top Left Of The Quad (Top)
+    {0,1},    // Bottom Left Of The Quad (Top)
+    {1,1},    // Bottom Right Of The Quad (Top)
+  },
+  {
+    {1,1},    // Top Right Of The Quad (Bottom)
+    {0,1},    // Top Left Of The Quad (Bottom)
+    {0,0},    // Bottom Left Of The Quad (Bottom)
+    {1,0},    // Bottom Right Of The Quad (Bottom)
+  },
+  {
+    {1,1},    // Top Right Of The Quad (Front)
+    {0,1},    // Top Left Of The Quad (Front)
+    {0,0},    // Bottom Left Of The Quad (Front)
+    {1,0},    // Bottom Right Of The Quad (Front)
+  },
+  {
+    {1,0},    // Top Right Of The Quad (Back)
+    {0,0},    // Top Left Of The Quad (Back)
+    {0,1},    // Bottom Left Of The Quad (Back)
+    {1,1},    // Bottom Right Of The Quad (Back)
+  },
+  {
+    {1,1},    // Top Right Of The Quad (Left)
+    {1,0},    // Top Left Of The Quad (Left)
+    {0,0},    // Bottom Left Of The Quad (Left)
+    {0,1},    // Bottom Right Of The Quad (Left)
+  },
+  {
+    {1,0},    // Top Right Of The Quad (Right)
+    {1,1},    // Top Left Of The Quad (Right)
+    {0,1},    // Bottom Left Of The Quad (Right)
+    {0,0},    // Bottom Right Of The Quad (Right)
+  },
+};
+
+//***************************************
+
+uint8 lib3d::cube_quad_points[6][4][4] = { // [faces][verts]{x,y,z,_}
+  {
+    {1,1,0},    // Top Right Of The Quad (Top)
+    {0,1,0},    // Top Left Of The Quad (Top)
+    {0,1,1},    // Bottom Left Of The Quad (Top)
+    {1,1,1},    // Bottom Right Of The Quad (Top)
+  },
+  {
+    {1,0,1},    // Top Right Of The Quad (Bottom)
+    {0,0,1},    // Top Left Of The Quad (Bottom)
+    {0,0,0},    // Bottom Left Of The Quad (Bottom)
+    {1,0,0},    // Bottom Right Of The Quad (Bottom)
+  },
+  {
+    {1,1,1},    // Top Right Of The Quad (Front)
+    {0,1,1},    // Top Left Of The Quad (Front)
+    {0,0,1},    // Bottom Left Of The Quad (Front)
+    {1,0,1},    // Bottom Right Of The Quad (Front)
+  },
+  {
+    {1,0,0},    // Top Right Of The Quad (Back)
+    {0,0,0},    // Top Left Of The Quad (Back)
+    {0,1,0},    // Bottom Left Of The Quad (Back)
+    {1,1,0},    // Bottom Right Of The Quad (Back)
+  },
+  {
+    {0,1,1},    // Top Right Of The Quad (Left)
+    {0,1,0},    // Top Left Of The Quad (Left)
+    {0,0,0},    // Bottom Left Of The Quad (Left)
+    {0,0,1},    // Bottom Right Of The Quad (Left)
+  },
+  {
+    {1,1,0},    // Top Right Of The Quad (Right)
+    {1,1,1},    // Top Left Of The Quad (Right)
+    {1,0,1},    // Bottom Left Of The Quad (Right)
+    {1,0,0},    // Bottom Right Of The Quad (Right)
+  },
+};
+
 //***************************************
 // ::
 //***************************************

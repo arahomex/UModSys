@@ -100,6 +100,12 @@ struct RTest1_Shell
       float32 x, y, z;
       uint8 r,g,b,a;
       //
+      void set_xyz(float32 xx, float32 yy, float32 zz) {
+        x = xx; y = yy; z = zz;
+      }
+      void set_rgba(uint8 rr, uint8 gg, uint8 bb, uint8 aa=255) {
+        r = rr; g = gg; b = bb; a = aa;
+      }
       void set(const lib3d::DPoint& p, const lib3d::DColor& c) {
         x = p(0); y = p(1); z = p(2);
         r = c(0)*255; g = c(1)*255; b = c(2)*255; a = c(3)*255;
@@ -115,7 +121,7 @@ struct RTest1_Shell
     libui::IKeyboardController::P keyc;
     libui::IMouseController::P mouc;
     libui::ICollector::P frames;
-    lib3d::IVertexArray::P va_tri, vas_tri;
+    lib3d::IVertexArray::P va_tri, vas_tri, vas_cube;
     bool f_quit;
     //
     bool font_pure(void);

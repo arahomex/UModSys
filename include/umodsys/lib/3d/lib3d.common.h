@@ -92,6 +92,14 @@ struct IObjectBrushOutline {
 };
 
 //***************************************
+// INLINES/EXTERNALS
+//***************************************
+
+extern sint8 cube_faceshift[6][4]; // [faces]{x,y,z,_}
+extern uint8 cube_quad_texpoints[6][4][2]; // [faces][verts]{u,v}
+extern uint8 cube_quad_points[6][4][4]; // [faces][verts]{x,y,z,_}
+
+//***************************************
 // END
 //***************************************
 
