@@ -98,7 +98,7 @@ struct SVertexElemInfo {
   : vclass(vc), aitype(ait), acount(ac), inf(ii) {
   }
   inline SVertexElemInfo(void) 
-  : vclass(vc_Unknown), aitype(vaet_None), acount(0), inf(0) {
+  : vclass(vc_None), aitype(vaet_None), acount(0), inf(0) {
   }
   //
   template<typename T> inline static SVertexElemInfo based_on(eVertexClass vc, uint8 ii=0) {
@@ -106,6 +106,13 @@ struct SVertexElemInfo {
   }
   template<typename T> inline static SVertexElemInfo based_on(const T& val, eVertexClass vc, uint8 ii=0) {
     return SVertexElemInfo(vc, TVertexAType<T>::type_of(), TVertexAType<T>::count_of(), ii);
+  }
+  //
+  template<typename T> inline static SVertexElemInfo based_on_a(eVertexClass vc, uint8 nelem, uint8 ii=0) {
+    return SVertexElemInfo(vc, TVertexAType<T>::type_of(), TVertexAType<T>::count_of()*nelem, ii);
+  }
+  template<typename T> inline static SVertexElemInfo based_on_a(const T* val, eVertexClass vc, uint8 nelem, uint8 ii=0) {
+    return SVertexElemInfo(vc, TVertexAType<T>::type_of(), TVertexAType<T>::count_of()*nelem, ii);
   }
 };
 

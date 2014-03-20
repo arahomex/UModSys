@@ -100,7 +100,7 @@ struct IRenderDriver : public lib2d::IRenderDriver {
   // this one create a new box used for supply textures
   virtual ITexture::P register_tex(const DPoint2i& size, const SRenderMapFlags& deff, lib2d::eImageType type) =0;
   virtual IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount) =0;
-  virtual IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount, const void* rawdata) =0;
+  virtual IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount, const void* rawdata, size_t rawsize) =0;
   //
   // -- setup dynamic lights, light indices: <=0 =error, 0x10000+ = HW, 0x20000+ = SW, 0x30000+ = omni
   virtual bool setup_clearlights(eLightType type=lt_All, bool emulated=true, bool hardware=true) =0;

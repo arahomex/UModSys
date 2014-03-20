@@ -6,6 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/lib/2d/lib2d.typedefs.h>
+#include <umodsys/tl/math/math_3df.h>
 
 namespace UModSys {
 namespace lib3d {
@@ -298,13 +299,14 @@ enum eRenderPrimitiveType {
 };
 
 enum eVertexClass {
-  vc_Unknown,
+  vc_None,
   vc_Coord,
   vc_Normal,
   vc_Color,
   vc_TexCoord,
   vc_Edge,
-  vc_Index
+  vc_Index,
+  vc__Count
 };
 
 enum eVertexAType {

@@ -26,17 +26,17 @@ lib3d::IRenderDriver* RTerminalX::get_drv3d(void) const
 
 lib2d::IRenderDriver* RTerminalX::open_drv2d(const SParameters* params)
 {
-  return d3d.open(*params) ? &d3d : NULL;
+  return d3d.Open(*params) ? &d3d : NULL;
 }
 
 lib3d::IRenderDriver* RTerminalX::open_drv3d(const SParameters* params)
 {
-  return d3d.open(*params) ? &d3d : NULL;
+  return d3d.Open(*params) ? &d3d : NULL;
 }
 
 bool RTerminalX::close_drvxd(void)
 {
-  d3d.close();
+  d3d.Close();
   return true;
 }
 

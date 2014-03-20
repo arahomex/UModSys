@@ -371,6 +371,45 @@ bool TMatrix44<_Type>::set_rotate_ortsT(const TVector3<_Type> &ort1, int nort1, 
 }
 
 template<typename _Type>
+bool TMatrix44<_Type>::set_look_at(const TVector3<_Type> &src, const TVector3<_Type> &dest, const TVector3<_Type> &updir)
+{ // calculated like glu: http://www.opengl.org/wiki/GluLookAt_code
+  TVector3<_Type> forward, side, up;
+  forward = dest - src; 
+  forward.normalize();
+  side = forward.cross(updir); 
+  side.normalize();
+  up = side.cross(forward);
+  //
+  v[0*4+0] = side.v[0];
+  v[0*4+1] = side.v[1];
+  v[0*4+2] = side.v[2];
+  v[0*4+3] = 0;
+  //
+  v[1*4+0] = up.v[0];
+  v[1*4+1] = up.v[1];
+  v[1*4+2] = up.v[2];
+  v[1*4+3] = 0;
+  //
+  v[2*4+0] = -forward.v[0];
+  v[2*4+1] = -forward.v[1];
+  v[2*4+2] = -forward.v[2];
+  v[2*4+3] = 0;
+  //
+  v[3*4+0] = 0;
+  v[3*4+1] = 0;
+  v[3*4+2] = 0;
+  v[3*4+3] = 1;
+  //
+  TMatrix44<_Type> tmp;
+  tmp.set_ER(1);
+  tmp.set_translate(-src.v[0], -src.v[1], -src.v[2]);
+  *this = tmp * *this;
+  //
+  return true;
+}
+
+
+template<typename _Type>
 TQuaternion4<_Type> TMatrix44<_Type>::get_quaternion(void) const {
   _Type w = sqrt(1 + v[0*4+0] + v[1*4+1] + v[2*4+2]) / 2, k = 1/(4*w);
   return TQuaternion4<_Type>(w,

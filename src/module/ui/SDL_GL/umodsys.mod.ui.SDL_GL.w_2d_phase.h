@@ -8,7 +8,7 @@
 
 void RRenderDriver3D::begin(void) 
 {
-  if(!next_phmv(phm_Begin))
+  if(!NextPhmV(phm_Begin))
     return;
   //
 /*
@@ -65,7 +65,7 @@ void RRenderDriver3D::begin(void)
 
 void RRenderDriver3D::end(void) 
 {
-  if(!next_phmv(phm_End))
+  if(!NextPhmV(phm_End))
     return;
   //
   if(mode2d) {

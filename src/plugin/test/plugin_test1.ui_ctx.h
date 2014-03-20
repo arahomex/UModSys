@@ -168,15 +168,31 @@ void RTest1_Shell::UI_Info::cycle3d(void)
     lib3d::SVertexElemInfo::based_on<lib3d::DPoint>(lib3d::vc_Coord),
     lib3d::SVertexElemInfo::based_on<lib3d::DColor>(lib3d::vc_Color)
   };
+  static lib3d::SVertexElemInfo s_lys2[2] = {
+    lib3d::SVertexElemInfo::based_on_a<float32>(lib3d::vc_Coord, 3),              
+    lib3d::SVertexElemInfo::based_on_a<uint8>(lib3d::vc_Color, 4)
+  };
   va_tri = rd3d->create_array(2, s_lys, 3);
   if(!va_tri.valid())
     return;
   //  
-  va_tri->set_layer_elem(lib3d::DPoint(-0.50, 0.50, 0.0), 0, 0); va_tri->set_layer_elem(lib3d::DColor(1, 0, 0), 0, 1);
-  va_tri->set_layer_elem(lib3d::DPoint(0.50, 0.50, 0.0), 1, 0); va_tri->set_layer_elem(lib3d::DColor(0, 1, 0), 1, 1);
-  va_tri->set_layer_elem(lib3d::DPoint(-0.00, -0.50, 0.0), 2, 0); va_tri->set_layer_elem(lib3d::DColor(0, 0, 1), 2, 1);
+  va_tri->set_layer_elem(lib3d::DPoint(-0.50, 0.50, 0.8),  2, 0); va_tri->set_layer_elem(lib3d::DColor(1, 0, 0), 2, 1);
+  va_tri->set_layer_elem(lib3d::DPoint(0.50, 0.50, 0.8),   1, 0); va_tri->set_layer_elem(lib3d::DColor(0, 1, 0), 1, 1);
+  va_tri->set_layer_elem(lib3d::DPoint(-0.00, -0.50, 0.8), 0, 0); va_tri->set_layer_elem(lib3d::DColor(0, 0, 1), 0, 1);
+  //
+  {
+    VertexPC tri[3];
+    tri[2].set(lib3d::DPoint(-0.80, 0.80, 0.9), lib3d::DColor(0, 1, 1)); 
+    tri[1].set(lib3d::DPoint(0.80, 0.80, 0.9), lib3d::DColor(1, 0, 1)); 
+    tri[0].set(lib3d::DPoint(-0.00, -0.80, 0.9), lib3d::DColor(1, 1, 0)); 
+    vas_tri = rd3d->create_array(2, s_lys2, 3, &tri, sizeof(tri));
+    if(!vas_tri.valid())
+      return;
+  }
   //
   f_quit = false;
+  ticks = 0;
+  frame_time = 0.010f;
   while(!term->get_terminal_state(libui::ts_Terminated) && !term->get_terminal_state(libui::ts_SoftTerminate)) {
     if(f_quit)
       break;
@@ -185,7 +201,25 @@ void RTest1_Shell::UI_Info::cycle3d(void)
       rd3d->begin();
       //
       rd3d->phase_start(0, false);
+      //
+      {
+        rd3d->camera_frustum(lib3d::DPoint(0, 0, 0), lib3d::DTexPoint(math3d::torad(90), math3d::torad(90)), 0.1, 10);
+        //rd3d->camera_ortho(lib3d::DPoint(0, 0, 0), lib3d::DPoint(5, 5, 5));
+        lib3d::DMatrix4 T, CT, RT;
+        /**/
+        CT.setE(); CT.set_translate(0, 0, -3);
+        RT.set_inversed(CT);
+        T = RT;
+        /**/
+//        T.set_look_at(lib3d::DPoint(0, 0, 0.02*ticks), lib3d::DPoint(0, 0, 10), lib3d::DPoint(0, 1, 0));
+//        T.set_look_at(lib3d::DPoint(0.75, 0.5, -0.5), lib3d::DPoint(0, 0, 10), lib3d::DPoint(1, 1, 0));
+//        T.set_look_at(lib3d::DPoint(0.75, 0.5, 0.0), lib3d::DPoint(0, 0, 10), lib3d::DPoint(1, 1, 0));
+        T.set_look_at(lib3d::DPoint(0.0, 0.0, -5+ticks), lib3d::DPoint(0, 0, 10), lib3d::DPoint(0, 1, 0));
+        rd3d->setup_T(T);
+      }
       rd3d->setup_array(va_tri);
+      rd3d->render_primitive(lib3d::rp_Tri, 3);
+      rd3d->setup_array(vas_tri);
       rd3d->render_primitive(lib3d::rp_Tri, 3);
       //
       rd3d->phase_2d();
@@ -196,7 +230,8 @@ void RTest1_Shell::UI_Info::cycle3d(void)
       //
       frames->output_process();
       rd3d->end();
-      term->wait(0.010f);
+      term->wait(frame_time);
+      ticks += frame_time;
     }
   }
 }

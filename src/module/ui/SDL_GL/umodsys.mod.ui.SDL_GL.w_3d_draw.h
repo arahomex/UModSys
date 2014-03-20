@@ -31,7 +31,7 @@ bool RRenderDriver3D::render_primitive(eRenderPrimitiveType primitive, int count
 
 bool RRenderDriver3D::render_primitive(eRenderPrimitiveType primitive, int count, int starts=0)
 {
-  if(!is_phmv(phm_3D))
+  if(!IsPhmV(phm_3D))
     return false;
   GLenum mode;
   switch(primitive) {

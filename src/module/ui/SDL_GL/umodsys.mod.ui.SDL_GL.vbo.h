@@ -15,12 +15,120 @@ BByte RVertexArray::vat_sizes[vaet__Count] = {
   sizeof(float64)   // vaet_Float64,
 };
 
+BByte RVertexArray::count_class[vc__Count][2] = {
+  {1, 255},         // vc_None
+  {2, 4},           // vc_Coord,
+  {3, 3},           // vc_Normal,
+  {3, 4},           // vc_Color,
+  {1, 4},           // vc_TexCoord,
+  {1, 1},           // vc_Edge,
+  {1, 1},           // vc_Index,
+};
+
+eVertexAType RVertexArray::type_map[vc__Count][vaet__Count] = {
+  { // vc_None
+    vaet_UInt8,       // vaet_None,
+    vaet_Int8,        // vaet_Int8,
+    vaet_UInt8,       // vaet_UInt8,
+    vaet_None,        // vaet_Int16,
+    vaet_None,        // vaet_UInt16,
+    vaet_None,        // vaet_Int32,
+    vaet_None,        // vaet_UInt32,
+    vaet_None,        // vaet_Float32,
+    vaet_None         // vaet_Float64,
+  },
+  { // vc_Coord
+    vaet_Float64,     // vaet_None,
+    vaet_Int16,       // vaet_Int8,
+    vaet_Int16,       // vaet_UInt8,
+    vaet_Int16,       // vaet_Int16,
+    vaet_Int32,       // vaet_UInt16,
+    vaet_Int32,       // vaet_Int32,
+    vaet_Float64,     // vaet_UInt32,
+    vaet_Float32,     // vaet_Float32,
+    vaet_Float64      // vaet_Float64,
+  },
+  { // vc_Normal
+    vaet_Float32,     // vaet_None,
+    vaet_Int16,       // vaet_Int8,
+    vaet_Int16,       // vaet_UInt8,
+    vaet_Int16,       // vaet_Int16,
+    vaet_Int32,       // vaet_UInt16,
+    vaet_Int32,       // vaet_Int32,
+    vaet_Float64,     // vaet_UInt32,
+    vaet_Float32,     // vaet_Float32,
+    vaet_Float64      // vaet_Float64,
+  },
+  { // vc_Color
+    vaet_Float32,     // vaet_None,
+    vaet_Int8,        // vaet_Int8,
+    vaet_UInt8,       // vaet_UInt8,
+    vaet_Int16,       // vaet_Int16,
+    vaet_UInt16,      // vaet_UInt16,
+    vaet_Int32,       // vaet_Int32,
+    vaet_UInt32,      // vaet_UInt32,
+    vaet_Float32,     // vaet_Float32,
+    vaet_Float64      // vaet_Float64,
+  },
+  { // vc_TexCoord
+    vaet_Float32,     // vaet_None,
+    vaet_Int16,       // vaet_Int8,
+    vaet_Int16,       // vaet_UInt8,
+    vaet_Int16,       // vaet_Int16,
+    vaet_Int32,       // vaet_UInt16,
+    vaet_Int32,       // vaet_Int32,
+    vaet_Float64,     // vaet_UInt32,
+    vaet_Float32,     // vaet_Float32,
+    vaet_Float64      // vaet_Float64,
+  },
+  { // vc_Edge
+    vaet_UInt8,       // vaet_None,
+    vaet_UInt8,       // vaet_Int8,
+    vaet_UInt8,       // vaet_UInt8,
+    vaet_UInt8,       // vaet_Int16,
+    vaet_UInt8,       // vaet_UInt16,
+    vaet_UInt8,       // vaet_Int32,
+    vaet_UInt8,       // vaet_UInt32,
+    vaet_UInt8,       // vaet_Float32,
+    vaet_UInt8        // vaet_Float64,
+  },
+  { // vc_Index
+    vaet_UInt32,      // vaet_None,
+    vaet_None,        // vaet_Int8,
+    vaet_UInt8,       // vaet_UInt8,
+    vaet_None,        // vaet_Int16,
+    vaet_UInt16,      // vaet_UInt16,
+    vaet_None,        // vaet_Int32,
+    vaet_UInt32,      // vaet_UInt32,
+    vaet_None,        // vaet_Float32,
+    vaet_None         // vaet_Float64,
+  },
+};
+
+
+GLenum RVertexArray::gl_type(eVertexAType type)
+{
+  switch(type) {
+    case vaet_Int8: return GL_BYTE;
+    case vaet_UInt8: return GL_UNSIGNED_BYTE;
+    case vaet_Int16: return GL_SHORT;
+    case vaet_UInt16: return GL_UNSIGNED_SHORT;
+    case vaet_Int32: return GL_INT;
+    case vaet_UInt32: return GL_UNSIGNED_INT;
+    case vaet_Float32: return GL_FLOAT;
+    case vaet_Float64: return GL_DOUBLE;
+  }
+  return GL_FALSE;
+}
+
 //***************************************
 
-RVertexArray::RVertexArray(RRenderDriver3D *pv)
+RVertexArray::RVertexArray(RRenderDriver3D *pv, bool iss, bool isd)
 : refs(pv), 
   count(0), vbo(gl_no_buffer), 
-  cache(NULL), uploaded(false), created(false)
+  cache(NULL), 
+  uploaded(false), created(false), 
+  isstatic(iss), isdynamic(isd)
 {
   gl = &pv->gl;
 }
@@ -36,7 +144,7 @@ bool RVertexArray::Free(void)
 {
   layers.Clear();
   count = 0;
-  uploaded = true;
+  uploaded = false;
   created = false;
   //
   if(cache!=NULL) {
@@ -70,7 +178,7 @@ bool RVertexArray::Alloc(const SVertexElemInfo lays[], int lcount, int ecount, b
   int pos = 0;
   for(int i=0; i<lcount; i++) {
     SVertexElemInfo x = lays[i];
-    if(!fill.check(x)) {
+    if(!fill.check(x, isstatic)) {
       Free();
       return false;
     }
@@ -82,20 +190,13 @@ bool RVertexArray::Alloc(const SVertexElemInfo lays[], int lcount, int ecount, b
     //
     y.vei = x;
     y.start = pos;
-    switch(x.aitype) {
-      case vaet_Int8: y.type = GL_BYTE; break;
-      case vaet_UInt8: y.type = GL_UNSIGNED_BYTE; break;
-      case vaet_Int16: y.type = GL_SHORT; break;
-      case vaet_UInt16: y.type = GL_UNSIGNED_SHORT; break;
-      case vaet_Int32: y.type = GL_INT; break;
-      case vaet_UInt32: y.type = GL_UNSIGNED_INT; break;
-      case vaet_Float32: y.type = GL_FLOAT; break;
-      case vaet_Float64: y.type = GL_DOUBLE; break;
-      default:
-        Free();
-        return false;
-    }
+    y.type = gl_type(x.aitype);
     y.num = x.acount;
+    if(y.type==GL_FALSE) {
+      Free();
+      return false;
+    }
+    //
     pos += vat_sizes[x.aitype]*x.acount;
   }
   for(int i=0; i<lcount; i++) {
@@ -106,15 +207,16 @@ bool RVertexArray::Alloc(const SVertexElemInfo lays[], int lcount, int ecount, b
   count = ecount;
   //
   gl->glGenBuffers(1, &vbo);
-  if(!Alloc())
-    return false;
   return true;
 }
 
 bool RVertexArray::Alloc(void)
 {
+  if(isstatic)
+    return false;
   if(cache!=NULL)
     return true;
+  //
   void *p = M.mem().mem_alloc(cache_size, UMODSYS_SOURCEINFO);
   if(p==NULL) {
     Free();
@@ -126,22 +228,36 @@ bool RVertexArray::Alloc(void)
   return true;
 }
 
-bool RVertexArray::Upload(bool final)
+bool RVertexArray::Upload(const void *raw, size_t rawsize)
+{
+  if(uploaded || !isstatic || rawsize!=cache_size)
+    return false;
+  if(vbo==gl_no_buffer)
+    return false;
+  //
+  gl->glBindBuffer(GL_ARRAY_BUFFER, vbo);
+  gl->glBufferData(GL_ARRAY_BUFFER, cache_size, raw, GL_STATIC_DRAW);
+  //
+  created = uploaded = true;
+  return true;
+}
+
+bool RVertexArray::Upload(void)
 {
   if(uploaded)
     return true;
-  if(vbo==gl_no_buffer || cache==NULL)
+  if(vbo==gl_no_buffer || cache==NULL || isstatic)
     return false;
   //
   gl->glBindBuffer(GL_ARRAY_BUFFER, vbo);
   if(!created) {
-    gl->glBufferData(GL_ARRAY_BUFFER, cache_size, cache, final ? GL_STATIC_DRAW : GL_DYNAMIC_DRAW);
+    gl->glBufferData(GL_ARRAY_BUFFER, cache_size, cache, GL_DYNAMIC_DRAW);
     created = true;
   } else {
     gl->glBufferSubData(GL_ARRAY_BUFFER, 0, cache_size, cache);
   }
   //
-  if(final) {
+  if(!isdynamic) {
     M.mem().mem_free(cache, UMODSYS_SOURCEINFO);
     cache = NULL;
   }
@@ -237,12 +353,19 @@ SVertexElemInfo RVertexArray::get_layer_info(int layid) const
 
 bool RVertexArray::get_layer_vdata(eVertexAType type, void* buf, int start, int ecount, int lay) const
 {
+  if(isstatic || type==vaet_None || type>=vaet__Count)
+    return false;
+  if(lay<0 || lay>=~layers || buf==NULL)
+    return false;
+  if(start<0 || ecount<=0 || start+ecount>count)
+    return false;
+  //
   return false;
 }
 
 bool RVertexArray::set_layer_vdata(eVertexAType type, const void* buf, int start, int ecount, int lay)
 {
-  if(type==vaet_None || type>=vaet__Count)
+  if(isstatic || type==vaet_None || type>=vaet__Count)
     return false;
   if(lay<0 || lay>=~layers || buf==NULL)
     return false;
@@ -271,75 +394,25 @@ void RVertexArray::SArrayFill::clear(void)
   }
 }
 
-bool RVertexArray::SArrayFill::check(SVertexElemInfo& x)
+bool RVertexArray::SArrayFill::check(SVertexElemInfo& x, bool iss)
 {
-    switch(x.vclass) {
-      case vc_Coord:
-        if(x.aitype==vaet_None || x.aitype>=vaet__Count) {
-          x.aitype = vaet_Float32;
-        } else if(x.aitype==vaet_Int8 || x.aitype==vaet_UInt8) {
-          x.aitype = vaet_Int16;
-        } else if(x.aitype==vaet_UInt16) {
-          x.aitype = vaet_Int32;
-        } else if(x.aitype==vaet_UInt32) {
-          x.aitype = vaet_Float64;
-        }
-        if(x.acount<2 || x.acount>4)
-          return false;
-        break;
-      case vc_Normal:
-        if(x.aitype==vaet_None || x.aitype>=vaet__Count) {
-          x.aitype = vaet_Float32;
-        } else if(vaet_UInt8) {
-          x.aitype = vaet_Int16;
-        } else if(x.aitype==vaet_UInt16) {
-          x.aitype = vaet_Int32;
-        } else if(x.aitype==vaet_UInt32) {
-          x.aitype = vaet_Float64;
-        }
-        if(x.acount!=3)
-          return false;
-        break;
-      case vc_Color:
-        if(x.aitype==vaet_None || x.aitype>=vaet__Count) {
-          x.aitype = vaet_Float32;
-        }
-        if(x.acount<3 || x.acount>4)
-          return false;
-        break;
-      case vc_TexCoord:
-        if(x.aitype==vaet_None || x.aitype>=vaet__Count) {
-          x.aitype = vaet_Float32;
-        } else if(x.aitype==vaet_Int8 || x.aitype==vaet_UInt8) {
-          x.aitype = vaet_Int16;
-        } else if(x.aitype==vaet_UInt16) {
-          x.aitype = vaet_Int32;
-        } else if(x.aitype==vaet_UInt32) {
-          x.aitype = vaet_Float64;
-        }
-        if(x.acount<1 || x.acount>4)
-          return false;
-        break;
-      case vc_Edge:
-        x.aitype = vaet_UInt8;
-        if(x.acount!=1)
-          return false;
-        break;
-      case vc_Index:
-        if(x.aitype==vaet_None || x.aitype>=vaet__Count || x.aitype==vaet_Float32 || x.aitype==vaet_Float64 || x.aitype==vaet_Int32) {
-          x.aitype = vaet_UInt32;
-        } else if(x.aitype==vaet_Int8) {
-          x.aitype = vaet_UInt8;
-        } else if(x.aitype==vaet_Int16) {
-          x.aitype = vaet_UInt16;
-        }
-        if(x.acount!=1)
-          return false;
-        break;
-      default:
-        return false;
-    }
-    return true;
+  if(x.vclass<vc_None || x.vclass>=vc__Count)
+    return false;
+  if(x.aitype<vaet_None || x.aitype>=vaet__Count) {
+    if(iss)
+      return false;
+    x.aitype = vaet_None;
+  }
+  eVertexAType nt = type_map[x.vclass][x.aitype];
+  if(nt!=x.aitype) {
+    if(iss)
+      return false;
+    x.aitype = nt;
+  }
+  const BByte* cc = count_class[x.vclass];
+  if(x.acount<cc[0] || x.acount>cc[1])
+    return false;
+  return true;
 }
 
 bool RVertexArray::SArrayFill::check_single(const SVertexElemInfo& x)

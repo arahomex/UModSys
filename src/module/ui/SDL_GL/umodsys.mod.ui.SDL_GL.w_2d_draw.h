@@ -8,7 +8,7 @@
 
 bool RRenderDriver3D::render_text_advanced(TextInfo &info, BCStrL piclist, int count) 
 {
-  if(!is_phmv(phm_2D))
+  if(!IsPhmV(phm_2D))
     return false;
   if(piclist==NULL || *piclist==0)
     return true;
@@ -46,7 +46,7 @@ bool RRenderDriver3D::render_text_advanced(TextInfo &info, BCStrL piclist, int c
 
 void RRenderDriver3D::render_box(const lib2d::DPoint& a, const lib2d::DPoint& b) 
 {
-  if(!is_phmv(phm_2D))
+  if(!IsPhmV(phm_2D))
     return;
   gl.glBegin(GL_QUADS);
   gl.glVertex2i(a.v[0], a.v[1]);
@@ -58,7 +58,7 @@ void RRenderDriver3D::render_box(const lib2d::DPoint& a, const lib2d::DPoint& b)
 
 void RRenderDriver3D::render_tri(const lib2d::DPoint& a, const lib2d::DPoint& b, const lib2d::DPoint& c) 
 {
-  if(!is_phmv(phm_2D))
+  if(!IsPhmV(phm_2D))
     return;
   gl.glBegin(GL_TRIANGLES);
   gl.glVertex2i(a.v[0], a.v[1]);
@@ -69,7 +69,7 @@ void RRenderDriver3D::render_tri(const lib2d::DPoint& a, const lib2d::DPoint& b,
 
 void RRenderDriver3D::render_quad(const lib2d::DPoint& a, const lib2d::DPoint& b, const lib2d::DPoint& c, const lib2d::DPoint& d) 
 {
-  if(!is_phmv(phm_2D))
+  if(!IsPhmV(phm_2D))
     return;
   gl.glBegin(GL_QUADS);
   gl.glVertex2i(a.v[0], a.v[1]);
@@ -83,7 +83,7 @@ void RRenderDriver3D::render_quad(const lib2d::DPoint& a, const lib2d::DPoint& b
 
 void RRenderDriver3D::render_box(lib2d::IImage* image, const lib2d::DPoint& a, const lib2d::DPoint& b, const lib2d::DPointf& ta, const lib2d::DPointf& tb) 
 {
-  if(!is_phmv(phm_2D))
+  if(!IsPhmV(phm_2D))
     return;
 }
 
@@ -91,7 +91,7 @@ void RRenderDriver3D::render_box(lib2d::IImage* image, const lib2d::DPoint& a, c
 
 void RRenderDriver3D::render_line(const lib2d::DPoint& a, const lib2d::DPoint& b) 
 {
-  if(!is_phmv(phm_2D))
+  if(!IsPhmV(phm_2D))
     return;
   gl.glBegin(GL_LINES);
   gl.glVertex2i(a.v[0], a.v[1]);
@@ -101,7 +101,7 @@ void RRenderDriver3D::render_line(const lib2d::DPoint& a, const lib2d::DPoint& b
 
 void RRenderDriver3D::render_rect(const lib2d::DPoint& a, const lib2d::DPoint& b) 
 {
-  if(!is_phmv(phm_2D))
+  if(!IsPhmV(phm_2D))
     return;
   gl.glBegin(GL_LINES);
   gl.glVertex2i(a.v[0], a.v[1]);

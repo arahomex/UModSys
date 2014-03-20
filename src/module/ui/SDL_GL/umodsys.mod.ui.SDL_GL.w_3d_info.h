@@ -90,7 +90,7 @@ ITexture::P RRenderDriver3D::register_tex(const DPoint2i& size, const SRenderMap
 
 IVertexArray::P RRenderDriver3D::create_array(int lcount, const SVertexElemInfo layers[], int vcount)
 {
-  RVertexArray::SelfP arr = new(local_memory()) RVertexArray(this);
+  RVertexArray::SelfP arr = new(local_memory()) RVertexArray(this, false);
   if(!arr->Alloc(layers, lcount, vcount, true))
     return false;
   if(!arr->is_valid())
@@ -98,9 +98,16 @@ IVertexArray::P RRenderDriver3D::create_array(int lcount, const SVertexElemInfo 
   return arr();
 }
 
-IVertexArray::P RRenderDriver3D::create_array(int lcount, const SVertexElemInfo layers[], int vcount, const void* rawdata)
+IVertexArray::P RRenderDriver3D::create_array(int lcount, const SVertexElemInfo layers[], int vcount, const void* rawdata, size_t rawsize)
 {
-  return NULL;
+  RVertexArray::SelfP arr = new(local_memory()) RVertexArray(this, true);
+  if(!arr->Alloc(layers, lcount, vcount, true))
+    return false;
+  if(!arr->Upload(rawdata, rawsize))
+    return false;
+  if(!arr->is_valid())
+    return false;
+  return arr();
 }
 
 //***************************************

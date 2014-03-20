@@ -84,6 +84,7 @@ RRenderDriver3D::RRenderDriver3D(DOwner *own)
   cur_color(0,0,0,0), 
   cur_tm(lib2d::tm_Opaque), phm(phm_None)
 {
+  debug_matrix = true;
   mode2d = 0;
   video_init_counter = 1;
   gl.vic = &video_init_counter;
@@ -91,12 +92,12 @@ RRenderDriver3D::RRenderDriver3D(DOwner *own)
 
 RRenderDriver3D::~RRenderDriver3D(void) 
 {
-  close();
+  Close();
 }
 
 //***************************************
 
-void RRenderDriver3D::close(void) 
+void RRenderDriver3D::Close(void) 
 {
   if(glctx!=NULL) {
     SDL_GL_DeleteContext(glctx);
@@ -105,9 +106,9 @@ void RRenderDriver3D::close(void)
   wnd.close();
 }
 
-bool RRenderDriver3D::open(const SParameters& args) 
+bool RRenderDriver3D::Open(const SParameters& args) 
 {
-  close();
+  Close();
   //
   SDL_GL_SetAttribute(SDL_GL_RED_SIZE, 8);
   SDL_GL_SetAttribute(SDL_GL_GREEN_SIZE, 8);
@@ -118,7 +119,7 @@ bool RRenderDriver3D::open(const SParameters& args)
   //
   wnd.flags |= ::SDL_WINDOW_OPENGL;
   if(!wnd.open(args)) {
-    close();
+    Close();
     return false;
   }
   max_values.add("xoffset", wnd.x); max_values.add("yoffset", wnd.y);
@@ -134,20 +135,7 @@ bool RRenderDriver3D::open(const SParameters& args)
   return true;
 }
 
-void RRenderDriver3D::set_color(void) 
-{
-  gl.glColor4fv(cur_color.v);
-}
-
-void RRenderDriver3D::Update(void) 
-{
-  gl.glFinish();
-  gl.e();
-  SDL_GL_SwapWindow(wnd);
-  gl.e();
-}
-
-bool RRenderDriver3D::next_phm(ePhaseMode phm2)
+bool RRenderDriver3D::NextPhm(ePhaseMode phm2)
 {
   if(s_phm_goods[phm] & (1<<phm2)) {
     phm = phm2;
@@ -161,7 +149,7 @@ bool RRenderDriver3D::next_phm(ePhaseMode phm2)
   return false;
 }
 
-bool RRenderDriver3D::is_phm(ePhaseMode phm2)
+bool RRenderDriver3D::IsPhm(ePhaseMode phm2)
 {
   if(phm==phm2)
     return true;

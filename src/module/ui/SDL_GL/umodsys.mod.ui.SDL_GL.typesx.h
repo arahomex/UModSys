@@ -42,6 +42,7 @@ protected:
   sint8 mode2d;
   lib3d::DPoint2i screen2d_voffset, screen2d_vsize;
   lib3d::DTexPoint screen2d_reloffset, screen2d_relsize;
+  bool debug_matrix;
   //
   tl::TRefObjects<RMultiImage2D_SDL_ttf>::Weak cur_font_ttf;
 public:
@@ -55,20 +56,24 @@ public:
   ~RRenderDriver3D(void);
   //
   bool validate_construction(void) { return wnd.wnd!=NULL; }
-  bool valid(void) const { return wnd.wnd!=NULL; }
   //
-  void close(void);
-  bool open(const SParameters& args);
-  void set_color(void);
-  void Update(void);
+  bool Valid(void) const { return wnd.wnd!=NULL; }
+  //
+  void Close(void);
+  bool Open(const SParameters& args);
   bool Mode_2d_begin(void);
   bool Mode_2d_end(void);
   //
-  bool next_phm(ePhaseMode phm2);
-  bool is_phm(ePhaseMode phm2);
+  void SetColor(void);
+  void Update(void);
+  void SetT(const DMatrix4& T, bool isGet);
+  bool SetFrustum(const DPoint &center, DScalar dx, DScalar dy, DScalar znear, DScalar zfar, bool isGet);
   //
-  inline bool next_phmv(ePhaseMode phm2) { return valid() && next_phm(phm2); }
-  inline bool is_phmv(ePhaseMode phm2) { return valid() && is_phm(phm2); }
+  bool NextPhm(ePhaseMode phm2);
+  bool IsPhm(ePhaseMode phm2);
+  //
+  inline bool NextPhmV(ePhaseMode phm2) { return Valid() && NextPhm(phm2); }
+  inline bool IsPhmV(ePhaseMode phm2) { return Valid() && IsPhm(phm2); }
 public: // lib2d::IRenderDriver
   // -- UI
   libui::ITerminal* get_terminal(void) const;
@@ -142,7 +147,7 @@ public: // lib3d::IRenderDriver
   // this one create a new box used for supply textures
   ITexture::P register_tex(const DPoint2i& size, const SRenderMapFlags& deff, lib2d::eImageType type);
   IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount);
-  IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount, const void* rawdata);
+  IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount, const void* rawdata, size_t rawsize);
   // -- setup dynamic lights, light indices: <=0 =error, 0x10000+ = HW, 0x20000+ = SW, 0x30000+ = omni
   bool setup_clearlights(eLightType type, bool emulated, bool hardware);
   int  setup_addlight(eLightType type, const SLight& light, const DMatrix4& T);
@@ -214,13 +219,14 @@ struct RVertexArray : public lib3d::IVertexArray {
   UMODSYS_REFOBJECT_REFOTHER(RRenderDriver3D)
   //
   struct SArrayFill {
+    //
     bool texcoords[gl_multitex_levels];
     bool coord, color, normal, edge, index;
     //
     inline SArrayFill(void) { clear(); }
     //
     void clear(void);
-    bool check(SVertexElemInfo& x);
+    bool check(SVertexElemInfo& x, bool iss);
     bool check_single(const SVertexElemInfo& x);
   };
   //
@@ -231,23 +237,28 @@ struct RVertexArray : public lib3d::IVertexArray {
   typedef tl::TDynarrayDynamic<SLayInfo, tl::DAllocatorTight> Layers;
 public:
   static BByte vat_sizes[vaet__Count];
+  static eVertexAType type_map[vc__Count][vaet__Count];
+  static BByte count_class[vc__Count][2];
+  //
+  static GLenum gl_type(eVertexAType type);
 public:
   GLuint vbo, count;
   Layers layers;
   SArrayFill fill;
-  bool created, uploaded;
+  bool created, uploaded, isdynamic, isstatic;
   size_t elem_size, cache_size;
   BByte *cache;
   SGLFuncsLegacy *gl;
 protected:
 public:
-  RVertexArray(RRenderDriver3D *pv);
+  RVertexArray(RRenderDriver3D *pv, bool iss, bool isd=false);
   ~RVertexArray(void);
   //
   bool Free(void);
   bool Alloc(const SVertexElemInfo lays[], int lcount, int ecount, bool single=true);
   bool Alloc(void); // cache create
-  bool Upload(bool final=false);
+  bool Upload(void);
+  bool Upload(const void *raw, size_t rawsize);
   bool Use(unsigned laymask=~0);
   //
   static bool StrideConvert(

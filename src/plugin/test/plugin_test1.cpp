@@ -95,6 +95,19 @@ struct RTest1_Shell
   // ----------------------------------------------------------------------------------
   //
   struct UI_Info {
+#pragma pack(push, 1)
+    struct VertexPC {
+      float32 x, y, z;
+      uint8 r,g,b,a;
+      //
+      void set(const lib3d::DPoint& p, const lib3d::DColor& c) {
+        x = p(0); y = p(1); z = p(2);
+        r = c(0)*255; g = c(1)*255; b = c(2)*255; a = c(3)*255;
+      }
+    };
+#pragma pack(pop)
+    //
+    float ticks, frame_time;
     lib2d::IRenderDriver::P rd2d;
     lib3d::IRenderDriver::P rd3d;
     libui::ITerminal::P term;
@@ -102,7 +115,7 @@ struct RTest1_Shell
     libui::IKeyboardController::P keyc;
     libui::IMouseController::P mouc;
     libui::ICollector::P frames;
-    lib3d::IVertexArray::P va_tri;
+    lib3d::IVertexArray::P va_tri, vas_tri;
     bool f_quit;
     //
     bool font_pure(void);

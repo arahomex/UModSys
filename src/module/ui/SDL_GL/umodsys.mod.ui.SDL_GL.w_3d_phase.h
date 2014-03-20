@@ -5,7 +5,7 @@
 
 void RRenderDriver3D::phase_start(int phaseid, int alpha_mode) // begin desired phase
 {
-  if(!next_phmv(phm_3D))
+  if(!NextPhmV(phm_3D))
     return;
   if(mode2d) {
     Mode_2d_end();
@@ -35,7 +35,7 @@ void RRenderDriver3D::phase_start(int phaseid, int alpha_mode) // begin desired 
 
 void RRenderDriver3D::phase_2d(bool nearmode) // begin 2d phase (after or before all other)
 {
-  if(!next_phmv(phm_2D))
+  if(!NextPhmV(phm_2D))
     return;
   if(!mode2d) {
     Mode_2d_begin();

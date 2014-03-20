@@ -44,9 +44,13 @@ template<> inline float small_value2<float>(const float *tmp) { return 1e-16f; }
 
 //***************************************
 
-inline double deg(double v) { return v*k_deg2rad; }
-inline float deg(float v) { return float(v*k_deg2rad); }
-inline float deg(int v) { return float(v*k_deg2rad); }
+inline double torad(double v) { return v*k_deg2rad; }
+inline float torad(float v) { return float(v*k_deg2rad); }
+inline float torad(int v) { return float(v*k_deg2rad); }
+
+inline double todeg(double v) { return v*k_rad2deg; }
+inline float todeg(float v) { return float(v*k_rad2deg); }
+inline float todeg(int v) { return float(v*k_rad2deg); }
 
 //***************************************
 

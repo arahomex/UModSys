@@ -542,6 +542,7 @@ struct TMatrix44 {
   void set_rotateT(const TQuaternion4<_Type>& q);
   bool set_rotate_orts(const TVector3<_Type> &ort1, int nort1, const TVector3<_Type> &ort2, int nort2, const TVector3<_Type> &ort3, int nort3); 
   bool set_rotate_ortsT(const TVector3<_Type> &ort1, int nort1, const TVector3<_Type> &ort2, int nort2, const TVector3<_Type> &ort3, int nort3);
+  bool set_look_at(const TVector3<_Type> &src, const TVector3<_Type> &dest, const TVector3<_Type> &updir);
   //
   void add_rotate(const TVector3<_Type>& R);
   void add_rotate(_Type a1, _Type a2, _Type a3);
