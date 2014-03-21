@@ -162,23 +162,25 @@ void RTest1_Shell::UI_Info::cycle(void)
   }
 }
 
-void RTest1_Shell::UI_Info::cycle3d(void)
+bool RTest1_Shell::UI_Info::new_va_1(void)
 {
-  static lib3d::SVertexElemInfo s_lys[2] = {
+  lib3d::SVertexElemInfo s_lys[2] = {
     lib3d::SVertexElemInfo::based_on<lib3d::DPoint>(lib3d::vc_Coord),
     lib3d::SVertexElemInfo::based_on<lib3d::DColor>(lib3d::vc_Color)
   };
-  static lib3d::SVertexElemInfo s_lys2[2] = {
+  lib3d::SVertexElemInfo s_lys2[2] = {
     lib3d::SVertexElemInfo::based_on_a<float32>(lib3d::vc_Coord, 3),              
     lib3d::SVertexElemInfo::based_on_a<uint8>(lib3d::vc_Color, 4)
   };
-  va_tri = rd3d->create_array(2, s_lys, 3);
-  if(!va_tri.valid())
-    return;
-  //  
-  va_tri->set_layer_elem(lib3d::DPoint(-0.50, 0.50, 0.8),  2, 0); va_tri->set_layer_elem(lib3d::DColor(1, 0, 0), 2, 1);
-  va_tri->set_layer_elem(lib3d::DPoint(0.50, 0.50, 0.8),   1, 0); va_tri->set_layer_elem(lib3d::DColor(0, 1, 0), 1, 1);
-  va_tri->set_layer_elem(lib3d::DPoint(-0.00, -0.50, 0.8), 0, 0); va_tri->set_layer_elem(lib3d::DColor(0, 0, 1), 0, 1);
+  {
+    va_tri = rd3d->create_array(2, s_lys, 3);
+    if(!va_tri.valid())
+      return false;
+    //  
+    va_tri->set_layer_elem(lib3d::DPoint(-0.50, 0.50, 0.8),  2, 0); va_tri->set_layer_elem(lib3d::DColor(1, 0, 0), 2, 1);
+    va_tri->set_layer_elem(lib3d::DPoint(0.50, 0.50, 0.8),   1, 0); va_tri->set_layer_elem(lib3d::DColor(0, 1, 0), 1, 1);
+    va_tri->set_layer_elem(lib3d::DPoint(-0.00, -0.50, 0.8), 0, 0); va_tri->set_layer_elem(lib3d::DColor(0, 0, 1), 0, 1);
+  }
   //
   {
     VertexPC tri[3];
@@ -187,8 +189,9 @@ void RTest1_Shell::UI_Info::cycle3d(void)
     tri[0].set(lib3d::DPoint(-0.00, -0.80, 0.9), lib3d::DColor(1, 1, 0)); 
     vas_tri = rd3d->create_array(2, s_lys2, 3, &tri, sizeof(tri));
     if(!vas_tri.valid())
-      return;
+      return false;
   }
+  //
   {
     VertexPC q[6][4];
     for(int i=0; i<6; i++) {
@@ -201,9 +204,76 @@ void RTest1_Shell::UI_Info::cycle3d(void)
     }
     vas_cube = rd3d->create_array(2, s_lys2, 6*4, &q, sizeof(q));
     if(!vas_cube.valid())
-      return;
-    
+      return false;
   }
+  return true;
+}
+
+bool RTest1_Shell::UI_Info::new_va_qc(void)
+{
+  unsigned long t1 = syshlp::t_msec();
+  lib3d::SVertexElemInfo s_lys2[2] = {
+    lib3d::SVertexElemInfo::based_on_a<float32>(lib3d::vc_Coord, 3),              
+    lib3d::SVertexElemInfo::based_on_a<uint8>(lib3d::vc_Color, 4)
+  };
+  lib3d::DColorb clrs[6];
+  for(int i=0; i<6; i++) {
+    clrs[i].set(i&4 ? 255 : 127, i&2 ? 255 : 127, i&1 ? 255 : 127);
+  }
+  //
+  const int dx = 400, dy = 400, dz = 256;
+  const int npoints = (dx*dy*2 + dy*dz*2 + dx*dz*2)*4; 
+  tl::TDynarrayDynamic<VertexPC> qc;
+  if(!qc.Reserve(npoints))
+    return false;
+  for(int x=0; x<dx; x++) {
+    for(int y=0; y<dy; y++) {
+      for(int z=0; z<dz; z++) {
+        for(int f=0; f<6; f++) {
+          const lib3d::DColorb& clr = clrs[f];
+          const sint8 *norm = lib3d::cube_faceshift[f];
+          int xx = norm[0] + x;
+          int yy = norm[1] + y;
+          int zz = norm[2] + z;
+          if(xx<0 || xx>=dx) { // x-face
+          } else if(yy<0 || yy>=dy) { // y-face
+          } else if(zz<0 || zz>=dz) { // z-face
+          } else {
+            continue;
+          }
+          int n = ~qc;
+          if(!qc.ResizeRel(4))
+            return false;
+          VertexPC *p = &qc[n];
+          for(int i=0; i<4; i++, p++) {
+            const uint8 *xyz = lib3d::cube_quad_points[f][i];
+            p->set_rgba(clr.v[0], clr.v[1], clr.v[2]);
+            p->set_xyz(xyz[0] + x, xyz[1] + y, xyz[2] + z);
+          }
+        }
+      }
+    }
+  }
+  if(~qc!=npoints)
+    return false; // bad algorithm
+#if 0
+  vas_cubechunk = rd3d->create_array(2, s_lys2, ~qc, qc.All(), ~qc*sizeof(VertexPC));
+  if(!vas_cubechunk.valid())
+    return false;
+#endif
+  unsigned long t2 = syshlp::t_msec();
+  double dt = (t2-t1)/1000.0;
+  s_dbg.put(d_SubGen, cl_Info, "  Cube chunk array [%d,%d,%d]/%d is generated at %.3f sec, %.3f usec per vertex, %.3f Mvertex/sec\n", dx, dy, dz, (int)~qc, dt, dt*1e6/~qc, ~qc/1e6/dt);
+  return true;
+}
+
+void RTest1_Shell::UI_Info::cycle3d(void)
+{
+  if(!new_va_1())
+    return;
+  if(!new_va_qc())
+    return;
+  //
   //
   f_quit = false;
   ticks = 0;
@@ -232,12 +302,22 @@ void RTest1_Shell::UI_Info::cycle3d(void)
         T.set_look_at(lib3d::DPoint(0.0, 0.0, -5+ticks), lib3d::DPoint(0, 0, 10), lib3d::DPoint(0, 1, 0));
         rd3d->setup_T(T);
       }
-      rd3d->setup_array(va_tri);
-      rd3d->render_primitive(lib3d::rp_Tri, 3);
-      rd3d->setup_array(vas_tri);
-      rd3d->render_primitive(lib3d::rp_Tri, 3);
-      rd3d->setup_array(vas_cube);
-      rd3d->render_primitive(lib3d::rp_Quad, 4*6);
+      if(va_tri.valid()) {
+        rd3d->setup_array(va_tri);
+        rd3d->render_primitive(lib3d::rp_Tri, 3);
+      }
+      if(vas_tri.valid()) {
+        rd3d->setup_array(vas_tri);
+        rd3d->render_primitive(lib3d::rp_Tri, 3);
+      }
+      if(vas_cube.valid()) {
+        rd3d->setup_array(vas_cube);
+        rd3d->render_primitive(lib3d::rp_Quad, 4*6);
+      }
+      if(vas_cubechunk.valid()) {
+        rd3d->setup_array(vas_cubechunk);
+        rd3d->render_primitive(lib3d::rp_Quad, vas_cubechunk->get_array_count());
+      }
       //
       rd3d->phase_2d();
       rd3d->setup_color(lib2d::DColorf(1, 1, 0));

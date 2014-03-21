@@ -1,5 +1,6 @@
 #include <umodsys/stdbase.h>
 #include <umodsys/tl/composite/dynarray.h>
+#include <umodsys/core/syshlp.h>
 
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.library.h>
@@ -121,7 +122,7 @@ struct RTest1_Shell
     libui::IKeyboardController::P keyc;
     libui::IMouseController::P mouc;
     libui::ICollector::P frames;
-    lib3d::IVertexArray::P va_tri, vas_tri, vas_cube;
+    lib3d::IVertexArray::P va_tri, vas_tri, vas_cube, vas_cubechunk;
     bool f_quit;
     //
     bool font_pure(void);
@@ -130,6 +131,9 @@ struct RTest1_Shell
     bool create_2d(const char *cap);
     bool create_3d(const char *cap);
     bool new_frames(libui::IController *ctrl);
+    //
+    bool new_va_1(void);
+    bool new_va_qc(void);
     //
     void cycle(void);
     void cycle3d(void);
