@@ -750,6 +750,22 @@
 			</Filter>
 		</Filter>
 		<Filter
+			Name="headers_utils"
+			>
+			<File
+				RelativePath="..\..\..\include\umodsys\lib\utils\libutils.time.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="lib_utils"
+			>
+			<File
+				RelativePath="..\..\..\src\lib\utils\libutils.common.cpp"
+				>
+			</File>
+		</Filter>
+		<Filter
 			Name="src"
 			>
 			<Filter

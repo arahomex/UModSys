@@ -7,6 +7,7 @@
 #include <umodsys/lib/media/libmedia.archive.h>
 #include <umodsys/lib/media/libmedia.serialize.h>
 
+#include <umodsys/lib/utils/libutils.time.h>
 #include <umodsys/lib/ui/libui.common.h>
 #include <umodsys/lib/ui/libui.frames.h>
 #include <umodsys/lib/2d/lib2d.driver.h>

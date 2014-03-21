@@ -167,6 +167,17 @@ begin project-group umodsys
         end
       end
     end
+    #
+    begin file-group headers_utils
+      begin mask $(path-skip) $(path-inc)/lib/utils
+        include *.h
+      end
+    end
+    begin file-group lib_utils
+      begin mask $(path-skip) $(path-s-lib)/utils
+        include *.cpp *.h 
+      end
+    end
   end
 
   begin project umodsys_lib_libmedia

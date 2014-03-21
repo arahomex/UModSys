@@ -211,7 +211,6 @@ bool RTest1_Shell::UI_Info::new_va_1(void)
 
 bool RTest1_Shell::UI_Info::new_va_qc(void)
 {
-  unsigned long t1 = syshlp::t_msec();
   lib3d::SVertexElemInfo s_lys2[2] = {
     lib3d::SVertexElemInfo::based_on_a<float32>(lib3d::vc_Coord, 3),              
     lib3d::SVertexElemInfo::based_on_a<uint8>(lib3d::vc_Color, 4)
@@ -221,8 +220,12 @@ bool RTest1_Shell::UI_Info::new_va_qc(void)
     clrs[i].set(i&4 ? 255 : 127, i&2 ? 255 : 127, i&1 ? 255 : 127);
   }
   //
-  const int dx = 400, dy = 400, dz = 256;
+//  const int dx = 400, dy = 400, dz = 256;
+  const int dx = 32*5, dy = 32*5, dz = 32*8;
   const int npoints = (dx*dy*2 + dy*dz*2 + dx*dz*2)*4; 
+  libutils::STimeMeasureNum tmn1(npoints), tmn2(npoints); 
+  //
+  tmn1.start();
   tl::TDynarrayDynamic<VertexPC> qc;
   if(!qc.Reserve(npoints))
     return false;
@@ -256,14 +259,19 @@ bool RTest1_Shell::UI_Info::new_va_qc(void)
   }
   if(~qc!=npoints)
     return false; // bad algorithm
-#if 0
+  tmn1>>tmn2;
   vas_cubechunk = rd3d->create_array(2, s_lys2, ~qc, qc.All(), ~qc*sizeof(VertexPC));
   if(!vas_cubechunk.valid())
     return false;
-#endif
-  unsigned long t2 = syshlp::t_msec();
-  double dt = (t2-t1)/1000.0;
-  s_dbg.put(d_SubGen, cl_Info, "  Cube chunk array [%d,%d,%d]/%d is generated at %.3f sec, %.3f usec per vertex, %.3f Mvertex/sec\n", dx, dy, dz, (int)~qc, dt, dt*1e6/~qc, ~qc/1e6/dt);
+  tmn2.stop();
+  s_dbg.put(
+    d_SubGen, cl_Info, 
+    "  Cube chunk array [%d,%d,%d]/%d is generated at: %.3f/%.3f sec, %.3f/%.3f usec per vertex, %.3f/%.3f Mvertex/sec\n", 
+    dx, dy, dz, (int)~qc, 
+    tmn1.sec(), tmn2.sec(),
+    tmn1.spn()*1e6, tmn2.spn()*1e6,
+    tmn1.nps()/1e6, tmn2.nps()/1e6
+  );
   return true;
 }
 
