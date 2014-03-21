@@ -93,16 +93,25 @@ bool RMouseController::mouse_link(int order, IRefObject* combo, IMouseClient* ta
 
 bool RMouseController::mouse_reset(void) 
 {
-  return false;
+  mouse_setvisible(true);
+  return true;
 }
 
 bool RMouseController::mouse_setvisible(bool visible) 
 {
-  return false;
+  if(visible) {
+    SDL_SetRelativeMouseMode(SDL_FALSE);
+    SDL_ShowCursor(1);
+  } else {
+    SDL_SetRelativeMouseMode(SDL_TRUE);
+    SDL_ShowCursor(0);
+  }
+  return true;
 }
 
 bool RMouseController::mouse_setposition(int x, int y) 
 {
+//  SDL_WarpMouseInWindow(wnd, x, y);
   return false;
 }
 

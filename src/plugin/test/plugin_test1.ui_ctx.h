@@ -275,12 +275,135 @@ bool RTest1_Shell::UI_Info::new_va_qc(void)
   return true;
 }
 
+void RTest1_Shell::UI_Info::fps_view_matrix(void)
+{
+  if(is_upz) {
+    static lib3d::DPoint3 up(0,0,1);
+    lib3d::DScalar cosy = cos(fps_ori.v[1]);
+    lib3d::DPoint3 lookat( sin(fps_ori.v[0]) * cosy, cos(fps_ori.v[0]) * cosy, sin(fps_ori.v[1]) );
+    view_matrix.set_look_at(fps_pos, fps_pos+lookat, up);
+  } else {
+    static lib3d::DPoint3 up(0,1,0);
+    lib3d::DScalar cosy = cos(fps_ori.v[1]);
+    lib3d::DPoint3 lookat( sin(fps_ori.v[0]) * cosy, sin(fps_ori.v[1]), cos(fps_ori.v[0]) * cosy );
+    view_matrix.set_look_at(fps_pos, fps_pos+lookat, up);
+  }
+}
+
+void RTest1_Shell::UI_Info::fps_move(lib3d::DScalar x, lib3d::DScalar y, lib3d::DScalar z)
+{
+  fview_matrix = true;
+
+  lib3d::DPoint3 offset;
+  if(is_upz) {
+    lib3d::DPoint3 forward( sin(fps_ori.v[0]), cos(fps_ori.v[0]), 0 );
+    lib3d::DPoint3 right( forward.v[1], forward.v[0], 0 );
+    //
+    offset = right*x + forward*y;
+    offset.v[2] += z;
+  } else {
+    lib3d::DPoint3 forward( sin(fps_ori.v[0]), 0, cos(fps_ori.v[0]) );
+    lib3d::DPoint3 right( -forward.v[2], 0, forward.v[0] );
+    //
+    offset = right*x + forward*y;
+    offset.v[1] += z;
+  }
+  offset.normalize();
+  offset *= move_speed;
+  //
+  fps_pos += offset;
+  //
+  s_dbg.put(d_SubGen, cl_Info, "fps_pos: { %6.2f %6.2f %6.2f }\n", fps_pos(0), fps_pos(1), fps_pos(2));
+}
+
+void RTest1_Shell::UI_Info::fps_add_rot(lib3d::DScalar x, lib3d::DScalar y)
+{
+  fview_matrix = true;
+  x *= mou_sensitivity; y *= mou_sensitivity;
+  //
+  fps_ori.v[0] = fmod(fps_ori.v[0] + x, mathc::pi * 2);
+  fps_ori.v[1] = scalar_max(scalar_min(fps_ori.v[1] + y, mathc::pi / 2 - 0.1), -mathc::pi / 2.0 + 0.1);
+  s_dbg.put(d_SubGen, cl_Info, "fps_rot: { %6.2f %6.2f %6.2f }\n", math3d::todeg(fps_ori(0)), math3d::todeg(fps_ori(1)), math3d::todeg(fps_ori(2)));
+}
+
+bool RTest1_Shell::UI_Info::key_pressed(const libui::SKeyboardInputRaw& key)
+{
+  switch(key.code) {
+    case libui::k_escape:
+      f_quit = true;
+      return true;
+    case libui::k_w:
+      fps_move(0, 1, 0);
+      return true;
+    case libui::k_s:
+      fps_move(0, -1, 0);
+      return true;
+    case libui::k_a:
+      fps_move(-1, 0, 0);
+      return true;
+    case libui::k_d:
+      fps_move(1, 0, 0);
+      return true;
+    case libui::k_q:
+      fps_move(0, 0, -1);
+      return true;
+    case libui::k_e:
+      fps_move(0, 0, 1);
+      return true;
+    case libui::k_space:
+      fmouvis = !fmouvis;
+      mouc->mouse_setvisible(fmouvis);
+      return true;
+  }
+  return false;
+}
+
+bool RTest1_Shell::UI_Info::key_text(const libui::SKeyboardInputText& key)
+{
+  return false;
+}
+
+bool RTest1_Shell::UI_Info::mouse_event(const libui::SMouseInput& ms)
+{
+  if(fmouvis)
+    return false;
+  unsigned mm = ms.get_buttonmask();
+  if(mm & 1)
+    return false;
+  if(mm & 2) {
+//    fmouvis = !fmouvis;
+//    mouc->mouse_setvisible(fmouvis);
+    return false;
+  }
+  fps_add_rot(ms.rel(0), -ms.rel(1));
+  return false;
+}
+
 void RTest1_Shell::UI_Info::cycle3d(void)
 {
+//  move_speed = 0.5*0.1;
+  move_speed = 0.1;
+  mou_sensitivity = 0.003;
+  fps_pos.set(0,0,-1);
+//  fps_ori.set(mathc::pi, 0, 0);
+  fps_ori.set(0, 0, 0);
+  //
+  fmouvis = false;
+  mouc->mouse_setvisible(fmouvis);
+  //
+  keyc->key_link(50, NULL, this);
+  mouc->mouse_link(50, NULL, this, ~0);
+  //
+  is_upz = false;
+  fps_add_rot(0,0);
+  fps_move(0,0,0);
+  //
   if(!new_va_1())
     return;
+#if 0
   if(!new_va_qc())
     return;
+#endif
   //
   //
   f_quit = false;
@@ -295,7 +418,13 @@ void RTest1_Shell::UI_Info::cycle3d(void)
       //
       rd3d->phase_start(0, false);
       //
-      {
+      if(1) {
+        rd3d->camera_frustum(lib3d::DPoint(0, 0, 0), lib3d::DTexPoint(math3d::torad(90), math3d::torad(90)), 0.1, 10);
+        if(fview_matrix) {
+          fps_view_matrix();
+        }
+        rd3d->setup_T(view_matrix);
+      } else {
         rd3d->camera_frustum(lib3d::DPoint(0, 0, 0), lib3d::DTexPoint(math3d::torad(90), math3d::torad(90)), 0.1, 10);
         //rd3d->camera_ortho(lib3d::DPoint(0, 0, 0), lib3d::DPoint(5, 5, 5));
         lib3d::DMatrix4 T, CT, RT;

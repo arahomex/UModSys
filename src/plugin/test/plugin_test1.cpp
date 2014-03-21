@@ -9,6 +9,7 @@
 
 #include <umodsys/lib/utils/libutils.time.h>
 #include <umodsys/lib/ui/libui.common.h>
+#include <umodsys/lib/ui/libui.keymap.h>
 #include <umodsys/lib/ui/libui.frames.h>
 #include <umodsys/lib/2d/lib2d.driver.h>
 #include <umodsys/lib/2d/lib2d.image.h>
@@ -96,7 +97,7 @@ struct RTest1_Shell
   //
   // ----------------------------------------------------------------------------------
   //
-  struct UI_Info {
+  struct UI_Info : libui::IKeyboardClient, libui::IMouseClient {
 #pragma pack(push, 1)
     struct VertexPC {
       float32 x, y, z;
@@ -124,7 +125,15 @@ struct RTest1_Shell
     libui::IMouseController::P mouc;
     libui::ICollector::P frames;
     lib3d::IVertexArray::P va_tri, vas_tri, vas_cube, vas_cubechunk;
-    bool f_quit;
+    bool f_quit, fmouvis, fview_matrix, is_upz;
+    //
+    lib3d::DPoint3 fps_pos, fps_ori;
+    lib3d::DScalar move_speed, mou_sensitivity;
+    lib3d::DMatrix4 view_matrix;
+    //
+    void fps_view_matrix(void);
+    void fps_move(lib3d::DScalar x, lib3d::DScalar y, lib3d::DScalar z);
+    void fps_add_rot(lib3d::DScalar x, lib3d::DScalar y);
     //
     bool font_pure(void);
     bool font_2d(void);
@@ -139,6 +148,10 @@ struct RTest1_Shell
     void cycle(void);
     void cycle3d(void);
     void shutdown(void);
+    //
+    bool key_pressed(const libui::SKeyboardInputRaw& key);
+    bool key_text(const libui::SKeyboardInputText& key);
+    bool mouse_event(const libui::SMouseInput& ms);
   };
   //
   static libui::ICollector::P ui_newframes(const DCString &mask, const SParameters& args);
