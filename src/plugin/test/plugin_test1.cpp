@@ -129,11 +129,15 @@ struct RTest1_Shell
     //
     lib3d::DPoint3 fps_pos, fps_ori;
     lib3d::DScalar move_speed, mou_sensitivity;
-    lib3d::DMatrix4 view_matrix;
+    lib3d::DMatrix4 view_matrix, camera_T;
     //
     void fps_view_matrix(void);
     void fps_move(lib3d::DScalar x, lib3d::DScalar y, lib3d::DScalar z);
     void fps_add_rot(lib3d::DScalar x, lib3d::DScalar y);
+    //
+    void fps2_view_matrix(void);
+    void fps2_move(int ort, lib3d::DScalar value);
+    void fps2_add_rot(lib3d::DScalar x, lib3d::DScalar y);
     //
     bool font_pure(void);
     bool font_2d(void);

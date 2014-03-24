@@ -293,7 +293,6 @@ void RTest1_Shell::UI_Info::fps_view_matrix(void)
 void RTest1_Shell::UI_Info::fps_move(lib3d::DScalar x, lib3d::DScalar y, lib3d::DScalar z)
 {
   fview_matrix = true;
-
   lib3d::DPoint3 offset;
   if(is_upz) {
     lib3d::DPoint3 forward( sin(fps_ori.v[0]), cos(fps_ori.v[0]), 0 );
@@ -316,6 +315,26 @@ void RTest1_Shell::UI_Info::fps_move(lib3d::DScalar x, lib3d::DScalar y, lib3d::
   s_dbg.put(d_SubGen, cl_Info, "fps_pos: { %6.2f %6.2f %6.2f }\n", fps_pos(0), fps_pos(1), fps_pos(2));
 }
 
+void RTest1_Shell::UI_Info::fps2_move(int ort, lib3d::DScalar value)
+{
+  lib3d::DPoint3 p_speed(move_speed);
+  camera_T.add_translate( camera_T.mult3_ortv(p_speed, ort, value) );
+}
+
+void RTest1_Shell::UI_Info::fps2_add_rot(lib3d::DScalar x, lib3d::DScalar y)
+{
+  if(x==0 && y==0)
+    return;
+  lib3d::DPoint3 a_speed(mou_sensitivity);
+  lib3d::DMatrix4 T, oldT = camera_T;
+  T.set_translate(0,0,0);
+  T.set_rotate_about( oldT.mult3_ort(-1, 1), a_speed.v[1]*x);
+  camera_T.mult3(oldT, T);
+  oldT = camera_T;
+  T.set_rotate_about( oldT.mult3_ort(1, 0), a_speed.v[0]*y);
+  camera_T.mult3(oldT, T);
+}
+
 void RTest1_Shell::UI_Info::fps_add_rot(lib3d::DScalar x, lib3d::DScalar y)
 {
   fview_matrix = true;
@@ -332,23 +351,23 @@ bool RTest1_Shell::UI_Info::key_pressed(const libui::SKeyboardInputRaw& key)
     case libui::k_escape:
       f_quit = true;
       return true;
-    case libui::k_w:
-      fps_move(0, 1, 0);
+    case libui::k_w: // forward
+      fps2_move(2, -1);
       return true;
-    case libui::k_s:
-      fps_move(0, -1, 0);
+    case libui::k_s: // backward
+      fps2_move(2, 1);
       return true;
-    case libui::k_a:
-      fps_move(-1, 0, 0);
+    case libui::k_a: // left
+      fps2_move(0, -1);
       return true;
-    case libui::k_d:
-      fps_move(1, 0, 0);
+    case libui::k_d: // right
+      fps2_move(0, 1);
       return true;
-    case libui::k_q:
-      fps_move(0, 0, -1);
+    case libui::k_q: // down
+      fps2_move(1, 1);
       return true;
-    case libui::k_e:
-      fps_move(0, 0, 1);
+    case libui::k_e: // up
+      fps2_move(1, -1);
       return true;
     case libui::k_space:
       fmouvis = !fmouvis;
@@ -375,7 +394,7 @@ bool RTest1_Shell::UI_Info::mouse_event(const libui::SMouseInput& ms)
 //    mouc->mouse_setvisible(fmouvis);
     return false;
   }
-  fps_add_rot(ms.rel(0), -ms.rel(1));
+  fps2_add_rot(ms.rel(0), -ms.rel(1));
   return false;
 }
 
@@ -405,6 +424,10 @@ void RTest1_Shell::UI_Info::cycle3d(void)
     return;
 #endif
   //
+  {
+    camera_T.set_translate(0, 0, -5);
+    camera_T.set_rotate_about(lib3d::DPoint(0, 1, 0), math3d::torad(180));
+  }
   //
   f_quit = false;
   ticks = 0;
@@ -418,7 +441,7 @@ void RTest1_Shell::UI_Info::cycle3d(void)
       //
       rd3d->phase_start(0, false);
       //
-      if(1) {
+      if(0) {
         rd3d->camera_frustum(lib3d::DPoint(0, 0, 0), lib3d::DTexPoint(math3d::torad(90), math3d::torad(90)), 0.1, 10);
         if(fview_matrix) {
           fps_view_matrix();
@@ -429,14 +452,22 @@ void RTest1_Shell::UI_Info::cycle3d(void)
         //rd3d->camera_ortho(lib3d::DPoint(0, 0, 0), lib3d::DPoint(5, 5, 5));
         lib3d::DMatrix4 T, CT, RT;
         /**/
-        CT.setE(); CT.set_translate(0, 0, -3);
+        T.set_inversed(camera_T);
+        /**/
+/*
+        CT.setE(); 
+        CT.set_translate(0, 0, -5+ticks);
+        CT.set_rotate_about(lib3d::DPoint(0, 1, 0), math3d::torad(180));
         RT.set_inversed(CT);
         T = RT;
+*/
+//        rd3d->setup_T(T);
         /**/
 //        T.set_look_at(lib3d::DPoint(0, 0, 0.02*ticks), lib3d::DPoint(0, 0, 10), lib3d::DPoint(0, 1, 0));
 //        T.set_look_at(lib3d::DPoint(0.75, 0.5, -0.5), lib3d::DPoint(0, 0, 10), lib3d::DPoint(1, 1, 0));
 //        T.set_look_at(lib3d::DPoint(0.75, 0.5, 0.0), lib3d::DPoint(0, 0, 10), lib3d::DPoint(1, 1, 0));
-        T.set_look_at(lib3d::DPoint(0.0, 0.0, -5+ticks), lib3d::DPoint(0, 0, 10), lib3d::DPoint(0, 1, 0));
+//        T.set_look_at(lib3d::DPoint(0.0, 0.0, -5+ticks), lib3d::DPoint(0, 0, 10), lib3d::DPoint(0, 1, 0));
+        /**/
         rd3d->setup_T(T);
       }
       if(va_tri.valid()) {

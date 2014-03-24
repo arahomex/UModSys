@@ -296,6 +296,15 @@ void TMatrix44<_Type>::set_rotate_aboutT(const TVector3<_Type>& ort, _Type angle
 }
 
 template<typename _Type>
+void TMatrix44<_Type>::add_rotate_about(const TVector3<_Type>& ort, _Type angle)
+{
+  TMatrix44<_Type> tmp;
+  tmp.set_rotate_aboutT(ort, angle);
+  tmp.set_ET(1);
+  *this = tmp * *this;
+}
+
+template<typename _Type>
 void TMatrix44<_Type>::set_rotate(const TQuaternion4<_Type>& q) {
     _Type w=q.v[0], x=q.v[1];
     _Type y=q.v[2], z=q.v[3];
