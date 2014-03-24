@@ -1,0 +1,65 @@
+Lib3D conception:
+
+
+1. Lib3D divided into parts:
+
+  - Logical:    build scene of 3D objects and manipulate it
+                objects: 
+                  IScene
+                  ISceneController
+  - Physical:   do physical simulation
+                  IPhysicalProcessor
+                  IPhysicalObject
+  - Visual:     visualize objects
+                  IVisualizer
+                  IRenderer
+                  IDriver
+
+  - Shared:     shared objects and states:
+                  IObject
+                  ISharedState
+                  ISyncState
+
+
+2. Example of complete simulation:
+
+   a) do logical simulation:
+      foreach scene in [scene-list]
+        scene -> control
+   b) do physical simulation
+      foreach processor in [physical-processor-list]
+        processor -> process
+   c) do visualization
+      foreach visualizer in [visualizer-list]
+        visualizer -> draw
+
+3. Inter-reference between objects:
+   
+  visualizer -> array scene[]
+             -> renderer
+             -> array visual_state[]
+
+  scene -> tree scene_node[]
+        -> array scene_controller[]
+        -> physical
+
+  scene_node -> logical_state
+
+  physical -> array physical_object[]
+
+  physical_object -> physical_state
+
+  renderer -> array texture[]
+           -> array material[]
+           -> array vertex_array[]
+           -> array renderer_state[]
+
+
+  visual_state -> renderer_state -?> object
+  logical_state -?> object
+  physical_state -?> object
+
+  -> means reference
+  -?> means reference either to object or to object components
+
+
