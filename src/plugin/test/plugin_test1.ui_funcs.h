@@ -15,6 +15,12 @@ lib2d::IMultiImage::P RTest1_Shell::ui_newfont(const DCString &mask, const SPara
   return generate_type<lib2d::IMultiImage>(mask, args, "IMultiImage");
 }
 
+lib3d::IRenderer::P RTest1_Shell::ui_newrenderer(const DCString &mask, const SParameters& args)
+{
+  return generate_type<lib3d::IRenderer>(mask, args, "IRenderer");
+}
+
+
 bool RTest1_Shell::key_pressed(const libui::SKeyboardInputRaw& key)
 {
   s_dbg.put(d_UI, cl_Debug, 

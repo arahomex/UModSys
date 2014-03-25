@@ -60,12 +60,14 @@ struct SRenderState;                        // state for rendering
 struct SRenderDriverTexBox;                 // part of custom texture
 struct SPicture;                            // picture info
                                            
-// scene                                   
+// logic: scene                                   
 struct IScene;                              // prepared scene
 struct ISceneController;                    // control objects inside a scene
                                            
 struct ISceneNode;                          // node inside a scene
                                            
+// general: object
+
 struct IObject;                             // general 3d object, invisible
 struct IRenderObject;                       // object representation in renderer (textures, static geom, static data)
 struct INodeObject;                         // object representation in scene node (dynamic geom, dynamic data)
@@ -76,6 +78,9 @@ struct INodeObject;                         // object representation in scene no
     struct INodeObject_Particles;           // particle system object
   struct INodeObject_Camera;                // camera object
 
+// visualize
+struct IVisualizer;                         // visualizer general
+struct IVisualizerScene;                    // visualizer for scene nodes
                                           
 // physics                                
 struct IPhysics;                          

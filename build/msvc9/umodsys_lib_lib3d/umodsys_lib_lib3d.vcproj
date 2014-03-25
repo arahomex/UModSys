@@ -797,6 +797,30 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="mod_stdlib"
+			>
+			<File
+				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.cpp"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.Trenderer.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.types.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\3d\stdlib\version_module.h"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>

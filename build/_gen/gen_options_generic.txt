@@ -327,6 +327,11 @@ begin project-group umodsys
         include *.cpp *.h 
       end
     end
+    begin file-group mod_stdlib
+      begin mask $(path-skip) $(path-s-mod)/3d/stdlib
+        include *.cpp *.h 
+      end
+    end
   end
 
   begin project plugin_test1

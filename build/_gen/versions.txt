@@ -76,9 +76,9 @@ version mod-2d-stdlib
 
 # --------------------------------- modules: lib3d
 
-version mod-3d-lib3d
-  file-h     src/module/3d/lib3d/version_module.h prefix:UMODSYS_VERSION_MOD_3D_LIB3D
-  check-date src/module/3d/lib3d *.h *.cpp
+version mod-3d-stdlib
+  file-h     src/module/3d/stdlib/version_module.h prefix:UMODSYS_VERSION_MOD_3D_STDLIB
+  check-date src/module/3d/stdlib *.h *.cpp
 
 # --------------------------------- modules: libmedia
 

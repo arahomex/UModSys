@@ -65,7 +65,8 @@ void RTest1_Shell::ui_test2(void)
     ui.mouc->mouse_link(0, NULL, this, ~0);
     ui.term->set_terminal_state(libui::ts_Keyboard, true);
     //
-    ui.cycle3d();
+//    ui.cycle3d_a();
+    ui.cycle3d_b();
     //
     ui.term->set_terminal_state(libui::ts_Keyboard, false);
     //

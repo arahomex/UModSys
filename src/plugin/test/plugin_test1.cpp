@@ -127,6 +127,7 @@ struct RTest1_Shell
     float ticks, frame_time;
     lib2d::IRenderDriver::P rd2d;
     lib3d::IRenderDriver::P rd3d;
+    lib3d::IRenderer::P rdr;
     libui::ITerminal::P term;
     lib2d::IMultiImage::P font;
     libui::IKeyboardController::P keyc;
@@ -158,7 +159,8 @@ struct RTest1_Shell
     bool new_va_qc(void);
     //
     void cycle(void);
-    void cycle3d(void);
+    void cycle3d_a(void);
+    void cycle3d_b(void);
     void shutdown(void);
     //
     bool key_pressed(const libui::SKeyboardInputRaw& key);
@@ -169,6 +171,7 @@ struct RTest1_Shell
   static libui::ICollector::P ui_newframes(const DCString &mask, const SParameters& args);
   static libui::ITerminal::P ui_newterm(const DCString &mask, const SParameters& args);
   static lib2d::IMultiImage::P ui_newfont(const DCString &mask, const SParameters& args);
+  static lib3d::IRenderer::P ui_newrenderer(const DCString &mask, const SParameters& args);
   //
   void ui_test1(void);
   void ui_test2(void);
@@ -301,6 +304,7 @@ UMODSYS_MODULE_END()
 
 
 UMODSYS_MODULE_DEF(lib2d,stdlib);
+UMODSYS_MODULE_DEF(lib3d,stdlib);
 UMODSYS_MODULE_DEF(ui,frames);
 UMODSYS_MODULE_DEF(ui,SDL_core);
 UMODSYS_MODULE_DEF(ui,SDL_GL);
@@ -310,11 +314,12 @@ UMODSYS_MODULE_DEF(media,zlib);
 static void refer(void)
 {
   UMODSYS_MODULE_USE(lib2d,stdlib);
+  UMODSYS_MODULE_USE(lib3d,stdlib);
   UMODSYS_MODULE_USE(ui,frames);
   UMODSYS_MODULE_USE(ui,SDL_core);
   UMODSYS_MODULE_USE(ui,SDL_GL);
   UMODSYS_MODULE_USE(media,images_std);
-  UMODSYS_MODULE_USE(media,serialize_json);;
-  UMODSYS_MODULE_USE(media,zlib);;
+  UMODSYS_MODULE_USE(media,serialize_json);
+  UMODSYS_MODULE_USE(media,zlib);
 }
 

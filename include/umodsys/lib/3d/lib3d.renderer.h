@@ -31,35 +31,34 @@ protected:
 
 struct IRenderer : public IRefObject {
   // -- support functions, library
-  virtual ISharedLibrary* get_library(void) =0;
+  virtual ISharedLibrary* library_get(void) const =0;
   // -- support functions, driver
-  virtual IRenderDriver* get_driver(void) =0;
-  virtual bool set_driver(IRenderDriver* driver, libmedia::ILibrary *mg) =0;
-  // -- support functions, visual/driver states and object adapting
-  virtual PNodeObject new_nodeobject(IObject* obj) =0; // automatic generate base parameters
-  virtual bool cleanup_object_states(void) =0; // delete all un-referred
-  virtual bool update_states(void) =0;
+  virtual IRenderDriver* driver_get(void) const =0;
+  virtual bool driver_set(IRenderDriver* driver, libmedia::ILibrary *mg) =0;
   // -- support functions, texture id
-  virtual ITexture* load_texture(const DCString& name, const DCString& objname, int flags=tf_Normal) =0;
-  virtual ITexture* alloc_texture(SRenderDriverTexBox* box, const DPoint2i& size, lib2d::eImageType type) =0;
-  virtual ITextureCells* load_font(const DCString& name, const DCString& objname, int flags=tf_Normal) =0;
+  virtual ITexture* texture_load(const DCString& name, const DCString& objname, int flags=tf_Normal) =0;
+  virtual ITexture* texture_alloc(SRenderDriverTexBox* box, const DPoint2i& size, lib2d::eImageType type) =0;
+  virtual ITextureCells* font_load(const DCString& name, const DCString& objname, int flags=tf_Normal) =0;
   // -- support functions, convert
-  virtual bool ray_cast(IScene* scene, const DTexPoint &screen, DPoint &start, DPoint &dir) =0; // in relative roord
-  virtual bool ray_cast(IScene* scene, const DPoint2i &screen, DPoint &start, DPoint &dir) =0; // in driver coord
-  virtual bool ray_cast_center(const DPoint2i &screen, DPoint &centered) =0; // in screen coord
+  virtual bool cast_ray(IScene* scene, const DTexPoint &screen, DPoint &start, DPoint &dir) const =0; // in relative roord
+  virtual bool cast_ray(IScene* scene, const DPoint2i &screen, DPoint &start, DPoint &dir) const =0; // in driver coord
+  virtual bool cast_ray_center(const DPoint2i &screen, DPoint &centered) const =0; // in screen coord
   // -- support functions, opid functionals and hints
-  virtual int get_opid(void) =0;
-  virtual bool set_hint(const DCString&  hint, double value) =0;
-  virtual bool set_hint(const DCString& hint, BCStr value) =0;
-  virtual double get_hint(const DCString&  hint, double defvalue) =0;
-  virtual BCStr get_hint(const DCString& hint, BCStr defvalue) =0;
+  virtual int get_opid(void) const =0;
+  virtual IPropNamedAdapter& hints(void) =0;
+  virtual const IPropNamedAdapter& hints(void) const =0;
   //
   // -- top-level functions
   virtual bool render_begin(void) =0;
-  virtual bool render_scene(IScene* scene, bool nocamera=false) =0;
+  virtual bool render_3d(IVisualizer* visi, int phase, bool isalpha=false) =0;
+  virtual bool render_2d(IVisualizer* visi) =0;
   virtual bool render_extra(const SRenderState& state, int comps) =0;
-  virtual bool render_2d(void) =0;
   virtual bool render_end(void) =0;
+  //
+  // -- support functions, visual/driver states and object adapting
+//  virtual PNodeObject new_nodeobject(IObject* obj) =0; // automatic generate base parameters
+//  virtual bool cleanup_object_states(void) =0; // delete all un-referred
+//  virtual bool update_states(void) =0;
   //
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IRenderer, 2, IRefObject);
