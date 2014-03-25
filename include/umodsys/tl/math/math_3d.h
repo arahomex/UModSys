@@ -20,6 +20,7 @@ template<typename _Type> struct TVector3;
 template<typename _Type> struct TVector2;
 
 template<typename _Type> struct TQuaternion4;
+template<typename _Type> struct TPlane3;
 
 template<typename _Type> struct TMatrix44;
 template<typename _Type> struct TMatrix33;
@@ -28,7 +29,6 @@ template<typename _Type> struct TMatrix34;
 template<typename _Type> struct TBoundBox3;
 template<typename _Type> struct TBoundBox2;
 
-template<typename _Type> struct TPlane3;
 
 //***************************************
 

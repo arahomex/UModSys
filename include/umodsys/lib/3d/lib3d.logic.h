@@ -6,6 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/lib/3d/lib3d.typedefs.h>
+#include <umodsys/lib/3d/lib3d.scene.h>
 
 namespace UModSys {
 namespace lib3d {

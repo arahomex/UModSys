@@ -5,11 +5,10 @@
 // info: 2d typedefs
 /*************************************************************/
 
-#include <umodsys/stdcore.h>
-//#include <umodsys/tl/composite/isockets.h>
-#include <umodsys/tl/math/math_3d.h>
+#include <umodsys/stdmath3d.h>
 
 namespace UModSys {
+
 namespace lib2d {
 
 using namespace core;
@@ -171,5 +170,6 @@ size_t GetPixelSize(eImageType type, int plane=0);
 
 } // namespace lib2d
 } // namespace UModSys
+
 
 #endif // __UMODSYS_LIB2D_TYPEDEFS_H

@@ -111,6 +111,8 @@ struct SMem {
   inline BByte operator[](ptrdiff_t shift) const { return get_tdata<BByte>()[shift]; }
 };
 
+/*************************************************************/
+
 struct SCMem {
   const void *data;
   size_t size;
@@ -179,6 +181,8 @@ struct SCMem {
   inline BByte operator[](ptrdiff_t shift) const { return get_tdata<BByte>()[shift]; }
 };
 
+/*************************************************************/
+
 inline bool SMem::ucopy(SCMem& rv, const SCMem& R) const 
 {
   if(size<R.size)
@@ -220,6 +224,8 @@ struct TMemBuffer : public SMem {
   inline SMem filled(void) { return SMem(buffer, get_data()-buffer); }
   inline size_t filled_size(void) const { return get_data()-buffer; }
 };
+
+/*************************************************************/
 
 template<size_t BufSize>
 struct TCMemBuffer : public SCMem {

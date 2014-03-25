@@ -748,6 +748,10 @@
 					>
 				</File>
 			</Filter>
+			<File
+				RelativePath="..\..\..\include\umodsys\stdbase.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="headers_utils"

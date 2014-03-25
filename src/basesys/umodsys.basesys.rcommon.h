@@ -48,6 +48,7 @@ enum eRSystemDebugLevels {
   rsdl_Module,
   rsdl_ModuleLibrary,
   rsdl_SoLoad,
+  rsdl_Uid,
 };
 
 extern SDebug rsys_dbg;

@@ -21,5 +21,6 @@
 #include <umodsys/core/stdstrings.h>
 #include <umodsys/core/stdtl.h>
 #include <umodsys/core/params.h>
+#include <umodsys/core/props.h>
 
 #endif // __UMODSYS_CORE_STDCORE_H

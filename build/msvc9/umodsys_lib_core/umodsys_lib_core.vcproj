@@ -782,6 +782,10 @@
 						RelativePath="..\..\..\include\umodsys\core\mem\param_shared.h"
 						>
 					</File>
+					<File
+						RelativePath="..\..\..\include\umodsys\core\mem\prop_adapter.h"
+						>
+					</File>
 				</Filter>
 				<Filter
 					Name="util"
@@ -813,6 +817,10 @@
 				</File>
 				<File
 					RelativePath="..\..\..\include\umodsys\core\params.h"
+					>
+				</File>
+				<File
+					RelativePath="..\..\..\include\umodsys\core\props.h"
 					>
 				</File>
 				<File
@@ -1124,6 +1132,14 @@
 					>
 				</File>
 			</Filter>
+			<File
+				RelativePath="..\..\..\include\umodsys\stdcore.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\include\umodsys\stdmath3d.h"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="src"

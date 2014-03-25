@@ -1,6 +1,6 @@
  umodsysc
 
- Timestamp is 532ff0fe (Mon Mar 24 11:46:54 2014)
+ Timestamp is 53304107 (Mon Mar 24 17:28:23 2014)
 
  Preferred load address is 0000000140000000
 
@@ -44,8 +44,8 @@
  0001:00000000       main                       0000000140001000 f   umodsys.c_main.obj
  0001:000004ec       ??0?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@UModSys@@QEAA@PEBD@Z 00000001400014ec f i umodsys.c_main.obj
  0001:0000056c       ??1SCMemShared@core@UModSys@@QEAA@XZ 000000014000156c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:0000056c       ??1SMemShared@core@UModSys@@QEAA@XZ 000000014000156c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:0000056c       ??1SInfo@IBinObjFilter@libmedia@UModSys@@QEAA@XZ 000000014000156c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:0000056c       ??1SMemShared@core@UModSys@@QEAA@XZ 000000014000156c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:0000059c       ??6SUniquePtrList@core@UModSys@@QEAAAEAU012@PEBUSUniquePointerInfo@12@@Z 000000014000159c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000654       ??3IRoot@core@UModSys@@SAXPEAXAEBUSIMemAlloc@12@@Z 0000000140001654 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000680       ??1?$TSCoreShared@USIMemAlloc@core@UModSys@@D@su@tl@UModSys@@QEAA@XZ 0000000140001680 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
@@ -54,14 +54,14 @@
  0001:00000688       ?archive_load_data@libmedia@UModSys@@YA_NAEAUIBinArchive@12@AEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@2@AEAUSCMemShared@core@2@AEBUSFlags@12@@Z 0000000140001688 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:0000087c       ?root_get_interface_info@RStreamReader_FILE@stdio@media@modules@UModSys@@UEBAAEBUSUniquePointerInfo@core@5@XZ 000000014000187c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000884       ?root_get_interface_type@RStreamReader_FILE@stdio@media@modules@UModSys@@UEBAPEBUSUniquePointerInfo@core@5@XZ 0000000140001884 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:0000088c       ?root_get_other_interface@RStreamReader_FILE@stdio@media@modules@UModSys@@UEBAPEBUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 000000014000188c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:0000088c       ?root_get_other_interface@RStreamReader_FILE@stdio@media@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 000000014000188c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:0000088c       ?root_get_other_interface@RStreamReader_FILE@stdio@media@modules@UModSys@@UEBAPEBUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 000000014000188c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:000008bc       ?root_is_interface_supported@RStreamReader_FILE@stdio@media@modules@UModSys@@UEBA_NPEBUSUniquePointerInfo@core@5@@Z 00000001400018bc f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:000008ec       ?ref_add@RStreamReader_FILE@stdio@media@modules@UModSys@@UEBAXXZ 00000001400018ec f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:000008ec       ?ref_add@RGenerator@stdio@media@modules@UModSys@@UEBAXXZ 00000001400018ec f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:000008ec       ?ref_add@RGenerator@stdlib@media@modules@UModSys@@UEBAXXZ 00000001400018ec f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000008ec       ?ref_add@RStreamWriter_FILE@stdio@media@modules@UModSys@@UEBAXXZ 00000001400018ec f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:000008ec       ?ref_add@RUtilities@stdlib@media@modules@UModSys@@UEBAXXZ 00000001400018ec f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000008ec       ?ref_add@RStreamReader_FILE@stdio@media@modules@UModSys@@UEBAXXZ 00000001400018ec f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:000008ec       ?ref_add@RGenerator@stdlib@media@modules@UModSys@@UEBAXXZ 00000001400018ec f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000008ec       ?ref_add@RGenerator@stdio@media@modules@UModSys@@UEBAXXZ 00000001400018ec f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:000008f0       ??0RStreamReader_FILE@stdio@media@modules@UModSys@@QEAA@PEAUIModObject@base@4@AEBUSParameters@core@4@@Z 00000001400018f0 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:000009ec       ?reader_seek@RStreamReader_FILE@stdio@media@modules@UModSys@@UEAA_N_J@Z 00000001400019ec f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000a18       ?reader_seekend@RStreamReader_FILE@stdio@media@modules@UModSys@@UEAA_N_J@Z 0000000140001a18 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
@@ -70,43 +70,43 @@
  0001:00000a90       ?reader_size@RStreamReader_FILE@stdio@media@modules@UModSys@@UEAA_JXZ 0000000140001a90 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000a98       ?reader_read@RStreamReader_FILE@stdio@media@modules@UModSys@@UEAA_NPEAX_K@Z 0000000140001a98 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000b18       ?reader_close@RStreamReader_FILE@stdio@media@modules@UModSys@@UEAAXXZ 0000000140001b18 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00000b3c       ??_GRStreamReader_FILE@stdio@media@modules@UModSys@@UEAAPEAXI@Z 0000000140001b3c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000b3c       ??_ERStreamReader_FILE@stdio@media@modules@UModSys@@UEAAPEAXI@Z 0000000140001b3c f i  CIL library: CIL module
+ 0001:00000b3c       ??_GRStreamReader_FILE@stdio@media@modules@UModSys@@UEAAPEAXI@Z 0000000140001b3c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000b90       ?root_get_interface_info@RStreamWriter_FILE@stdio@media@modules@UModSys@@UEBAAEBUSUniquePointerInfo@core@5@XZ 0000000140001b90 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000b98       ?root_get_interface_type@RStreamWriter_FILE@stdio@media@modules@UModSys@@UEBAPEBUSUniquePointerInfo@core@5@XZ 0000000140001b98 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00000ba0       ?root_get_interface_types@RBinArchiveFrame@stdlib@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00000ba0       ?root_get_interface_types@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00000ba0       ?root_get_interface_types@RGenerator@stdlib@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00000ba0       ?root_get_interface_types@RGenerator@stdio@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00000ba0       ?root_get_interface_types@RUtilities@stdlib@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00000ba0       ?root_get_interface_types@RStreamReader_FILE@stdio@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00000ba0       ?root_get_interface_types@RStreamWriter_FILE@stdio@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00000ba0       ?root_get_interface_types@RModuleLibrarySO@rsystem@base@UModSys@@UEBA_KAEAUSUniquePtrList@core@4@@Z 0000000140001ba0 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
- 0001:00000ba0       ?root_get_interface_types@RLibraryBinTree@stdlib@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00000ba0       ?root_get_interface_types@RLibraryLayered@stdlib@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00000ba0       ?root_get_interface_types@RConsole_std@rsystem@base@UModSys@@UEBA_KAEAUSUniquePtrList@core@4@@Z 0000000140001ba0 f i umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
- 0001:00000ba0       ?root_get_interface_types@RSystem@rsystem@base@UModSys@@UEBA_KAEAUSUniquePtrList@core@4@@Z 0000000140001ba0 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
- 0001:00000ba0       ?root_get_interface_types@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00000ba0       ?root_get_interface_types@RParameters@rsystem@base@UModSys@@UEBA_KAEAUSUniquePtrList@core@4@@Z 0000000140001ba0 f i umodsys_lib_basesys:umodsys.basesys.rparameters.obj
- 0001:00000ba0       ?root_get_interface_types@RLibraryObjCache@stdlib@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00000ba0       ?root_get_interface_types@RModuleLibraryThis@rsystem@base@UModSys@@UEBA_KAEAUSUniquePtrList@core@4@@Z 0000000140001ba0 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibthis.obj
  0001:00000ba0       ?root_get_interface_types@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00000ba0       ?root_get_interface_types@RGenerator@stdio@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:00000ba0       ?root_get_interface_types@RBinArchiveFrame@stdlib@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00000ba0       ?root_get_interface_types@RParameters@rsystem@base@UModSys@@UEBA_KAEAUSUniquePtrList@core@4@@Z 0000000140001ba0 f i umodsys_lib_basesys:umodsys.basesys.rparameters.obj
+ 0001:00000ba0       ?root_get_interface_types@RModuleLibraryThis@rsystem@base@UModSys@@UEBA_KAEAUSUniquePtrList@core@4@@Z 0000000140001ba0 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibthis.obj
+ 0001:00000ba0       ?root_get_interface_types@RLibraryLayered@stdlib@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00000ba0       ?root_get_interface_types@RStreamWriter_FILE@stdio@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:00000ba0       ?root_get_interface_types@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00000ba0       ?root_get_interface_types@RModuleLibrarySO@rsystem@base@UModSys@@UEBA_KAEAUSUniquePtrList@core@4@@Z 0000000140001ba0 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
+ 0001:00000ba0       ?root_get_interface_types@RStreamReader_FILE@stdio@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:00000ba0       ?root_get_interface_types@RUtilities@stdlib@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00000ba0       ?root_get_interface_types@RModule@rsystem@base@UModSys@@UEBA_KAEAUSUniquePtrList@core@4@@Z 0000000140001ba0 f i umodsys_lib_basesys:umodsys.basesys.rmodule.obj
- 0001:00000ba8       ?root_get_other_interface@RStreamWriter_FILE@stdio@media@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140001ba8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:00000ba0       ?root_get_interface_types@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:00000ba0       ?root_get_interface_types@RConsole_std@rsystem@base@UModSys@@UEBA_KAEAUSUniquePtrList@core@4@@Z 0000000140001ba0 f i umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
+ 0001:00000ba0       ?root_get_interface_types@RLibraryObjCache@stdlib@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00000ba0       ?root_get_interface_types@RLibraryBinTree@stdlib@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00000ba0       ?root_get_interface_types@RGenerator@stdlib@media@modules@UModSys@@UEBA_KAEAUSUniquePtrList@core@5@@Z 0000000140001ba0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00000ba0       ?root_get_interface_types@RSystem@rsystem@base@UModSys@@UEBA_KAEAUSUniquePtrList@core@4@@Z 0000000140001ba0 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
  0001:00000ba8       ?root_get_other_interface@RStreamWriter_FILE@stdio@media@modules@UModSys@@UEBAPEBUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140001ba8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:00000ba8       ?root_get_other_interface@RStreamWriter_FILE@stdio@media@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140001ba8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000bd8       ?root_is_interface_supported@RStreamWriter_FILE@stdio@media@modules@UModSys@@UEBA_NPEBUSUniquePointerInfo@core@5@@Z 0000000140001bd8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00000c08       ?ref_links@RGenerator@stdlib@media@modules@UModSys@@UEBAHXZ 0000000140001c08 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00000c08       ?ref_links@RStreamReader_FILE@stdio@media@modules@UModSys@@UEBAHXZ 0000000140001c08 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00000c08       ?ref_links@RUtilities@stdlib@media@modules@UModSys@@UEBAHXZ 0000000140001c08 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00000c08       ?ref_links@RStreamWriter_FILE@stdio@media@modules@UModSys@@UEBAHXZ 0000000140001c08 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:00000c08       ?ref_links@RUtilities@stdlib@media@modules@UModSys@@UEBAHXZ 0000000140001c08 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00000c08       ?ref_links@RGenerator@stdlib@media@modules@UModSys@@UEBAHXZ 0000000140001c08 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00000c08       ?ref_links@RGenerator@stdio@media@modules@UModSys@@UEBAHXZ 0000000140001c08 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00000c0c       ?ref_weak@RStreamReader_FILE@stdio@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140001c0c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000c0c       ?ref_weak@RGenerator@stdlib@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140001c0c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00000c0c       ?ref_weak@RGenerator@stdio@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140001c0c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000c0c       ?ref_weak@RStreamWriter_FILE@stdio@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140001c0c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000c0c       ?ref_weak@RUtilities@stdlib@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140001c0c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00000c0c       ?ref_weak@RGenerator@stdio@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140001c0c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00000c2c       ?suicide@RUtilities@stdlib@media@modules@UModSys@@UEAAXXZ 0000000140001c2c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00000c0c       ?ref_weak@RStreamReader_FILE@stdio@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140001c0c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000c2c       ?suicide@RStreamWriter_FILE@stdio@media@modules@UModSys@@UEAAXXZ 0000000140001c2c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:00000c2c       ?suicide@RUtilities@stdlib@media@modules@UModSys@@UEAAXXZ 0000000140001c2c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00000c2c       ?suicide@RStreamReader_FILE@stdio@media@modules@UModSys@@UEAAXXZ 0000000140001c2c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000c78       ??0RStreamWriter_FILE@stdio@media@modules@UModSys@@QEAA@PEAUIModObject@base@4@AEBUSParameters@core@4@@Z 0000000140001c78 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00000d68       ?open@RStreamWriter_FILE@stdio@media@modules@UModSys@@QEAAXPEBD_N@Z 0000000140001d68 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
@@ -125,8 +125,8 @@
  0001:00001170       ??_GRStreamWriter_FILE@stdio@media@modules@UModSys@@UEAAPEAXI@Z 0000000140002170 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:000011e8       ?root_get_interface_info@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBAAEBUSUniquePointerInfo@core@5@XZ 00000001400021e8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:000011f0       ?root_get_interface_type@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBAPEBUSUniquePointerInfo@core@5@XZ 00000001400021f0 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:000011f8       ?root_get_other_interface@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBAPEBUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 00000001400021f8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:000011f8       ?root_get_other_interface@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 00000001400021f8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:000011f8       ?root_get_other_interface@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBAPEBUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 00000001400021f8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00001230       ?root_is_interface_supported@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBA_NPEBUSUniquePointerInfo@core@5@@Z 0000000140002230 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00001268       ??0RDataArchiver_OsDir@stdio@media@modules@UModSys@@QEAA@PEAUIModObject@base@4@AEBUSParameters@core@4@U?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@4@@Z 0000000140002268 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:000014dc       ?get_flag@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@H@Z 00000001400024dc f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
@@ -136,11 +136,11 @@
  0001:00001584       ?data_save@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@AEBUSCMem@core@5@AEBUSFlags@libmedia@5@@Z 0000000140002584 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:0000161c       ?data_reader@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEAA?AU?$TRefObject@UIStreamReader@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamReader@libmedia@UModSys@@@tl@3@@tl@5@AEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@75@AEBUSFlags@libmedia@5@@Z 000000014000261c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00001830       ?data_writer@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEAA?AU?$TRefObject@UIStreamWriter@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamWriter@libmedia@UModSys@@@tl@3@@tl@5@AEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@75@AEBUSFlags@libmedia@5@@Z 0000000140002830 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00001a7c       ?data_list@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@_KAEAU?$TIStackSocket@USFileInfo@libmedia@UModSys@@@75@AEBUSFlags@libmedia@5@@Z 0000000140002a7c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00001a7c       ?data_info@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@_KAEAUSFileInfo@libmedia@5@AEBUSFlags@95@@Z 0000000140002a7c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:00001a7c       ?data_list@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@_KAEAU?$TIStackSocket@USFileInfo@libmedia@UModSys@@@75@AEBUSFlags@libmedia@5@@Z 0000000140002a7c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00001ad0       ?get_permissions@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEAAHXZ 0000000140002ad0 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00001ad4       ??_ERDataArchiver_OsDir@stdio@media@modules@UModSys@@UEAAPEAXI@Z 0000000140002ad4 f i  CIL library: CIL module
  0001:00001ad4       ??_GRDataArchiver_OsDir@stdio@media@modules@UModSys@@UEAAPEAXI@Z 0000000140002ad4 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:00001ad4       ??_ERDataArchiver_OsDir@stdio@media@modules@UModSys@@UEAAPEAXI@Z 0000000140002ad4 f i  CIL library: CIL module
  0001:00001b4c       ?get_generated_names@RGenerator@stdio@media@modules@UModSys@@UEBAHAEAUSUniquePtrList@core@5@@Z 0000000140002b4c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00001b90       ?get_generated_types@RGenerator@stdio@media@modules@UModSys@@UEBAHAEAUSUniquePtrList@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140002b90 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00001c5c       ?generate@RGenerator@stdio@media@modules@UModSys@@UEAA_NAEAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@5@PEBUSUniquePointerInfo@core@5@AEBUSParameters@95@@Z 0000000140002c5c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
@@ -156,12 +156,12 @@
  0001:00001f90       ?mod_inc@RGenerator@stdio@media@modules@UModSys@@UEBA_NXZ 0000000140002f90 f   umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00001fa4       ?mod_dec@RGenerator@stdio@media@modules@UModSys@@UEBA_NXZ 0000000140002fa4 f   umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00001fb8       ?s_holder@RGenerator@stdio@media@modules@UModSys@@SAAEAU?$TTypeStaticHolder@URGenerator@stdio@media@modules@UModSys@@@tl@5@XZ 0000000140002fb8 f   umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00001ffc       ??_ERParameters@rsystem@base@UModSys@@UEAAPEAXI@Z 0000000140002ffc f i  CIL library: CIL module
  0001:00001ffc       ??_GRParameters@rsystem@base@UModSys@@UEAAPEAXI@Z 0000000140002ffc f i umodsys_lib_basesys:umodsys.basesys.rparameters.obj
  0001:00001ffc       ??_GIRoot@core@UModSys@@UEAAPEAXI@Z 0000000140002ffc f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00001ffc       ??_EIRoot@core@UModSys@@UEAAPEAXI@Z 0000000140002ffc f i  CIL library: CIL module
  0001:00001ffc       ??_GRGenerator@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 0000000140002ffc f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00001ffc       ??_EIRoot@core@UModSys@@UEAAPEAXI@Z 0000000140002ffc f i  CIL library: CIL module
  0001:00001ffc       ??_ERGenerator@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 0000000140002ffc f i  CIL library: CIL module
+ 0001:00001ffc       ??_ERParameters@rsystem@base@UModSys@@UEAAPEAXI@Z 0000000140002ffc f i  CIL library: CIL module
  0001:00001ffc       ??_ERGenerator@stdio@media@modules@UModSys@@UEAAPEAXI@Z 0000000140002ffc f i  CIL library: CIL module
  0001:00001ffc       ??_GRGenerator@stdio@media@modules@UModSys@@UEAAPEAXI@Z 0000000140002ffc f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00002024       ?info_release@?$TSCoreShared@USIMemAlloc@core@UModSys@@D@su@tl@UModSys@@QEAAXXZ 0000000140003024 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
@@ -179,15 +179,15 @@
  0001:00002498       ?root_get_other_interface@RUtilities@stdlib@media@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140003498 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002498       ?root_get_other_interface@RUtilities@stdlib@media@modules@UModSys@@UEBAPEBUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140003498 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000024c8       ?root_is_interface_supported@RUtilities@stdlib@media@modules@UModSys@@UEBA_NPEBUSUniquePointerInfo@core@5@@Z 00000001400034c8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:000024f8       ?ref_remove@RGenerator@stdio@media@modules@UModSys@@UEBAXXZ 00000001400034f8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:000024f8       ?ref_remove@RUtilities@stdlib@media@modules@UModSys@@UEBAXXZ 00000001400034f8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000024f8       ?ref_remove@RGenerator@stdlib@media@modules@UModSys@@UEBAXXZ 00000001400034f8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000024f8       ?ref_remove@RStreamWriter_FILE@stdio@media@modules@UModSys@@UEBAXXZ 00000001400034f8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:000024f8       ?ref_remove@RStreamReader_FILE@stdio@media@modules@UModSys@@UEBAXXZ 00000001400034f8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:000024f8       ?ref_remove@RGenerator@stdlib@media@modules@UModSys@@UEBAXXZ 00000001400034f8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000024f8       ?ref_remove@RGenerator@stdio@media@modules@UModSys@@UEBAXXZ 00000001400034f8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00002510       ?root_get_interface_info@RBinArchiveFrame@stdlib@media@modules@UModSys@@UEBAAEBUSUniquePointerInfo@core@5@XZ 0000000140003510 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002518       ?root_get_interface_type@RBinArchiveFrame@stdlib@media@modules@UModSys@@UEBAPEBUSUniquePointerInfo@core@5@XZ 0000000140003518 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00002520       ?root_get_other_interface@RBinArchiveFrame@stdlib@media@modules@UModSys@@UEBAPEBUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140003520 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002520       ?root_get_other_interface@RBinArchiveFrame@stdlib@media@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140003520 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00002520       ?root_get_other_interface@RBinArchiveFrame@stdlib@media@modules@UModSys@@UEBAPEBUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140003520 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002564       ?root_is_interface_supported@RBinArchiveFrame@stdlib@media@modules@UModSys@@UEBA_NPEBUSUniquePointerInfo@core@5@@Z 0000000140003564 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000025a4       ?ref_add@RBinArchiveFrame@stdlib@media@modules@UModSys@@UEBAXXZ 00000001400035a4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000025a8       ?ref_remove@RBinArchiveFrame@stdlib@media@modules@UModSys@@UEBAXXZ 00000001400035a8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
@@ -201,55 +201,55 @@
  0001:00002904       ?root_get_other_interface@RLibraryBinTree@stdlib@media@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140003904 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002904       ?root_get_other_interface@RLibraryBinTree@stdlib@media@modules@UModSys@@UEBAPEBUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140003904 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002948       ?root_is_interface_supported@RLibraryBinTree@stdlib@media@modules@UModSys@@UEBA_NPEBUSUniquePointerInfo@core@5@@Z 0000000140003948 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00002988       ?ref_links@RLibraryObjCache@stdlib@media@modules@UModSys@@UEBAHXZ 0000000140003988 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00002988       ?ref_links@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBAHXZ 0000000140003988 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00002988       ?ref_links@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBAHXZ 0000000140003988 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00002988       ?ref_links@RParameters@rsystem@base@UModSys@@UEBAHXZ 0000000140003988 f i umodsys_lib_basesys:umodsys.basesys.rparameters.obj
  0001:00002988       ?ref_links@RLibraryLayered@stdlib@media@modules@UModSys@@UEBAHXZ 0000000140003988 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00002988       ?ref_links@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEBAHXZ 0000000140003988 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002988       ?ref_links@RLibraryBinTree@stdlib@media@modules@UModSys@@UEBAHXZ 0000000140003988 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00002988       ?ref_links@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBAHXZ 0000000140003988 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:0000298c       ?suicide@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEAAXXZ 000000014000398c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:0000298c       ?suicide@RLibraryBinCache@stdlib@media@modules@UModSys@@UEAAXXZ 000000014000398c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00002988       ?ref_links@RLibraryObjCache@stdlib@media@modules@UModSys@@UEBAHXZ 0000000140003988 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00002988       ?ref_links@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEBAHXZ 0000000140003988 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00002988       ?ref_links@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBAHXZ 0000000140003988 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:0000298c       ?suicide@RLibraryLayered@stdlib@media@modules@UModSys@@UEAAXXZ 000000014000398c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:0000298c       ?suicide@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEAAXXZ 000000014000398c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:0000298c       ?suicide@RLibraryObjCache@stdlib@media@modules@UModSys@@UEAAXXZ 000000014000398c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:0000298c       ?suicide@RLibraryBinTree@stdlib@media@modules@UModSys@@UEAAXXZ 000000014000398c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:0000298c       ?suicide@RLibraryBinCache@stdlib@media@modules@UModSys@@UEAAXXZ 000000014000398c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:0000298c       ?suicide@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEAAXXZ 000000014000398c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:0000298c       ?suicide@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEAAXXZ 000000014000398c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000029d8       ?root_get_interface_info@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBAAEBUSUniquePointerInfo@core@5@XZ 00000001400039d8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000029e0       ?root_get_interface_type@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBAPEBUSUniquePointerInfo@core@5@XZ 00000001400039e0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:000029e8       ?root_get_other_interface@RLibraryBinCache@stdlib@media@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 00000001400039e8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000029e8       ?root_get_other_interface@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBAPEBUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 00000001400039e8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000029e8       ?root_get_other_interface@RLibraryBinCache@stdlib@media@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 00000001400039e8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002a2c       ?root_is_interface_supported@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBA_NPEBUSUniquePointerInfo@core@5@@Z 0000000140003a2c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00002a6c       ?ref_weak@RLibraryBinTree@stdlib@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140003a6c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00002a6c       ?ref_weak@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140003a6c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00002a6c       ?ref_weak@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140003a6c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00002a6c       ?ref_weak@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140003a6c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002a6c       ?ref_weak@RLibraryObjCache@stdlib@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140003a6c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00002a6c       ?ref_weak@RLibraryLayered@stdlib@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140003a6c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00002a6c       ?ref_weak@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140003a6c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:00002a6c       ?ref_weak@RLibraryBinTree@stdlib@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140003a6c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00002a6c       ?ref_weak@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140003a6c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00002a6c       ?ref_weak@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140003a6c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002a6c       ?ref_weak@RParameters@rsystem@base@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@4@@Z 0000000140003a6c f i umodsys_lib_basesys:umodsys.basesys.rparameters.obj
+ 0001:00002a6c       ?ref_weak@RLibraryLayered@stdlib@media@modules@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@5@@Z 0000000140003a6c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002a8c       ?root_get_interface_info@RLibraryLayered@stdlib@media@modules@UModSys@@UEBAAEBUSUniquePointerInfo@core@5@XZ 0000000140003a8c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002a94       ?root_get_interface_type@RLibraryLayered@stdlib@media@modules@UModSys@@UEBAPEBUSUniquePointerInfo@core@5@XZ 0000000140003a94 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002a9c       ?root_get_other_interface@RLibraryLayered@stdlib@media@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140003a9c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002a9c       ?root_get_other_interface@RLibraryLayered@stdlib@media@modules@UModSys@@UEBAPEBUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140003a9c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002ae0       ?root_is_interface_supported@RLibraryLayered@stdlib@media@modules@UModSys@@UEBA_NPEBUSUniquePointerInfo@core@5@@Z 0000000140003ae0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00002b20       ?ref_add@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEBAXXZ 0000000140003b20 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00002b20       ?ref_add@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBAXXZ 0000000140003b20 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00002b20       ?ref_add@RLibraryObjCache@stdlib@media@modules@UModSys@@UEBAXXZ 0000000140003b20 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00002b20       ?ref_add@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEBAXXZ 0000000140003b20 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00002b20       ?ref_add@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBAXXZ 0000000140003b20 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002b20       ?ref_add@RLibraryBinTree@stdlib@media@modules@UModSys@@UEBAXXZ 0000000140003b20 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002b20       ?ref_add@RLibraryLayered@stdlib@media@modules@UModSys@@UEBAXXZ 0000000140003b20 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002b20       ?ref_add@RParameters@rsystem@base@UModSys@@UEBAXXZ 0000000140003b20 f i umodsys_lib_basesys:umodsys.basesys.rparameters.obj
- 0001:00002b20       ?ref_add@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBAXXZ 0000000140003b20 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:00002b20       ?ref_add@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBAXXZ 0000000140003b20 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002b24       ?root_get_interface_info@RLibraryObjCache@stdlib@media@modules@UModSys@@UEBAAEBUSUniquePointerInfo@core@5@XZ 0000000140003b24 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002b2c       ?root_get_interface_type@RLibraryObjCache@stdlib@media@modules@UModSys@@UEBAPEBUSUniquePointerInfo@core@5@XZ 0000000140003b2c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002b34       ?root_get_other_interface@RLibraryObjCache@stdlib@media@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140003b34 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002b34       ?root_get_other_interface@RLibraryObjCache@stdlib@media@modules@UModSys@@UEBAPEBUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140003b34 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002b78       ?root_is_interface_supported@RLibraryObjCache@stdlib@media@modules@UModSys@@UEBA_NPEBUSUniquePointerInfo@core@5@@Z 0000000140003b78 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00002bb8       ?ref_remove@RParameters@rsystem@base@UModSys@@UEBAXXZ 0000000140003bb8 f i umodsys_lib_basesys:umodsys.basesys.rparameters.obj
- 0001:00002bb8       ?ref_remove@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBAXXZ 0000000140003bb8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002bb8       ?ref_remove@RLibraryBinTree@stdlib@media@modules@UModSys@@UEBAXXZ 0000000140003bb8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00002bb8       ?ref_remove@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBAXXZ 0000000140003bb8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00002bb8       ?ref_remove@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEBAXXZ 0000000140003bb8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00002bb8       ?ref_remove@RLibraryObjCache@stdlib@media@modules@UModSys@@UEBAXXZ 0000000140003bb8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002bb8       ?ref_remove@RLibraryLayered@stdlib@media@modules@UModSys@@UEBAXXZ 0000000140003bb8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00002bb8       ?ref_remove@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBAXXZ 0000000140003bb8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00002bb8       ?ref_remove@RDataArchiver_OsDir@stdio@media@modules@UModSys@@UEBAXXZ 0000000140003bb8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:00002bb8       ?ref_remove@RLibraryObjCache@stdlib@media@modules@UModSys@@UEBAXXZ 0000000140003bb8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00002bb8       ?ref_remove@RParameters@rsystem@base@UModSys@@UEBAXXZ 0000000140003bb8 f i umodsys_lib_basesys:umodsys.basesys.rparameters.obj
  0001:00002bd0       ?root_get_interface_info@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEBAAEBUSUniquePointerInfo@core@5@XZ 0000000140003bd0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002bd8       ?root_get_interface_type@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEBAPEBUSUniquePointerInfo@core@5@XZ 0000000140003bd8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00002be0       ?root_get_other_interface@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEAAPEAUIRoot@core@5@PEBUSUniquePointerInfo@75@@Z 0000000140003be0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
@@ -266,8 +266,8 @@
  0001:0000314c       ?get_uid@RGenerator@stdlib@media@modules@UModSys@@UEBAPEBUSUniquePointerInfo@core@5@XZ 000000014000414c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00003154       ?buffer_free@RUtilities@stdlib@media@modules@UModSys@@UEAA_NAEAUSBuffer@libmedia@5@PEBUSSourceContext@core@5@@Z 0000000140004154 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000031a0       ?buffer_alloc@RUtilities@stdlib@media@modules@UModSys@@UEAA_NAEAUSBuffer@libmedia@5@_KPEBUSSourceContext@core@5@@Z 00000001400041a0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:000032a8       ??_ERUtilities@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 00000001400042a8 f i  CIL library: CIL module
  0001:000032a8       ??_GRUtilities@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 00000001400042a8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000032a8       ??_ERUtilities@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 00000001400042a8 f i  CIL library: CIL module
  0001:00003350       ?get_flag@RBinArchiveFrame@stdlib@media@modules@UModSys@@UEBA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@H@Z 0000000140004350 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00003360       ?get_flags_auto@RBinArchiveFrame@stdlib@media@modules@UModSys@@UEBA?AU?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@XZ 0000000140004360 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:0000336c       ?set_flag@RBinArchiveFrame@stdlib@media@modules@UModSys@@UEAA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@HW46785@@Z 000000014000436c f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
@@ -293,8 +293,8 @@
  0001:0000492c       ??_ERBinArchiveFrame@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 000000014000592c f i  CIL library: CIL module
  0001:0000492c       ??_GRBinArchiveFrame@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 000000014000592c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00004a24       ??1IBinArchiveFrame@libmedia@UModSys@@UEAA@XZ 0000000140005a24 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00004a9c       ??_ERLibraryBinTree@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 0000000140005a9c f i  CIL library: CIL module
  0001:00004a9c       ??_GRLibraryBinTree@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 0000000140005a9c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00004a9c       ??_ERLibraryBinTree@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 0000000140005a9c f i  CIL library: CIL module
  0001:00004b20       ?get_flags_auto@RLibraryBinTree@stdlib@media@modules@UModSys@@UEBA?AU?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@XZ 0000000140005b20 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00004b2c       ?bin_reader@RLibraryBinTree@stdlib@media@modules@UModSys@@UEAA?AU?$TRefObject@UIStreamReader@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamReader@libmedia@UModSys@@@tl@3@@tl@5@AEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@75@AEBUSFlags@libmedia@5@@Z 0000000140005b2c f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00004c8c       ?bin_writer@RLibraryBinTree@stdlib@media@modules@UModSys@@UEAA?AU?$TRefObject@UIStreamWriter@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamWriter@libmedia@UModSys@@@tl@3@@tl@5@AEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@75@AEBUSFlags@libmedia@5@@Z 0000000140005c8c f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
@@ -306,25 +306,25 @@
  0001:0000528c       ?mount_add@RLibraryBinTree@stdlib@media@modules@UModSys@@UEAA_NAEBUSId@ILibraryBinTree@libmedia@5@AEBUSPoint@785@@Z 000000014000628c f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000053b4       ?mount_remove@RLibraryBinTree@stdlib@media@modules@UModSys@@UEAA_NAEBUSId@ILibraryBinTree@libmedia@5@@Z 00000001400063b4 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000053e0       ?mount_clear@RLibraryBinTree@stdlib@media@modules@UModSys@@UEAA_NXZ 00000001400063e0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00005408       ??_ERLibraryBinCache@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 0000000140006408 f i  CIL library: CIL module
  0001:00005408       ??_GRLibraryBinCache@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 0000000140006408 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00005408       ??_ERLibraryBinCache@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 0000000140006408 f i  CIL library: CIL module
  0001:0000548c       ?get_flags_auto@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBA?AU?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@XZ 000000014000648c f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00005498       ?set_flag@RLibraryBinTree@stdlib@media@modules@UModSys@@UEAA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@HW46785@@Z 0000000140006498 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00005498       ?set_flag@RLibraryBinCache@stdlib@media@modules@UModSys@@UEAA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@HW46785@@Z 0000000140006498 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00005498       ?set_flag@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEAA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@HW46785@@Z 0000000140006498 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00005498       ?set_flag@RLibraryBinTree@stdlib@media@modules@UModSys@@UEAA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@HW46785@@Z 0000000140006498 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00005498       ?set_flag@RLibraryObjCache@stdlib@media@modules@UModSys@@UEAA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@HW46785@@Z 0000000140006498 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:000054c0       ?sub_writer@RUtilities@stdlib@media@modules@UModSys@@UEAA?AU?$TRefObject@UIStreamWriter@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamWriter@libmedia@UModSys@@@tl@3@@tl@5@PEAUIStreamWriter@libmedia@5@_J1@Z 00000001400064c0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000054c0       ?mem_writer@RUtilities@stdlib@media@modules@UModSys@@UEAA?AU?$TRefObject@UIStreamWriter@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamWriter@libmedia@UModSys@@@tl@3@@tl@5@PEBUSMem@core@5@PEAUIMemWriterCompleted@IUtilities@libmedia@5@PEAUIRefObject@95@@Z 00000001400064c0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000054c0       ?mem_reader@RUtilities@stdlib@media@modules@UModSys@@UEAA?AU?$TRefObject@UIStreamReader@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamReader@libmedia@UModSys@@@tl@3@@tl@5@AEBUSCMemShared@core@5@@Z 00000001400064c0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000054c0       ?bin_reader@RLibraryBinCache@stdlib@media@modules@UModSys@@UEAA?AU?$TRefObject@UIStreamReader@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamReader@libmedia@UModSys@@@tl@3@@tl@5@AEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@75@AEBUSFlags@libmedia@5@@Z 00000001400064c0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000054c0       ?bin_reader@ILibrary@libmedia@UModSys@@UEAA?AU?$TRefObject@UIStreamReader@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamReader@libmedia@UModSys@@@tl@3@@tl@3@AEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@53@AEBUSFlags@23@@Z 00000001400064c0 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
  0001:000054c0       ?sub_reader@RUtilities@stdlib@media@modules@UModSys@@UEAA?AU?$TRefObject@UIStreamReader@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamReader@libmedia@UModSys@@@tl@3@@tl@5@PEAUIStreamReader@libmedia@5@_J1@Z 00000001400064c0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000054c0       ?mem_reader@RUtilities@stdlib@media@modules@UModSys@@UEAA?AU?$TRefObject@UIStreamReader@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamReader@libmedia@UModSys@@@tl@3@@tl@5@AEBUSCMem@core@5@@Z 00000001400064c0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000054c0       ?bin_writer@ILibrary@libmedia@UModSys@@UEAA?AU?$TRefObject@UIStreamWriter@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamWriter@libmedia@UModSys@@@tl@3@@tl@3@AEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@53@AEBUSFlags@23@@Z 00000001400064c0 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
  0001:000054c0       ?bin_writer@RLibraryBinCache@stdlib@media@modules@UModSys@@UEAA?AU?$TRefObject@UIStreamWriter@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamWriter@libmedia@UModSys@@@tl@3@@tl@5@AEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@75@AEBUSFlags@libmedia@5@@Z 00000001400064c0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:000054c0       ?mem_reader@RUtilities@stdlib@media@modules@UModSys@@UEAA?AU?$TRefObject@UIStreamReader@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamReader@libmedia@UModSys@@@tl@3@@tl@5@AEBUSCMem@core@5@@Z 00000001400064c0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:000054c0       ?mem_reader@RUtilities@stdlib@media@modules@UModSys@@UEAA?AU?$TRefObject@UIStreamReader@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamReader@libmedia@UModSys@@@tl@3@@tl@5@AEBUSCMemShared@core@5@@Z 00000001400064c0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:000054c0       ?bin_reader@ILibrary@libmedia@UModSys@@UEAA?AU?$TRefObject@UIStreamReader@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamReader@libmedia@UModSys@@@tl@3@@tl@3@AEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@53@AEBUSFlags@23@@Z 00000001400064c0 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
- 0001:000054c0       ?mem_writer@RUtilities@stdlib@media@modules@UModSys@@UEAA?AU?$TRefObject@UIStreamWriter@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamWriter@libmedia@UModSys@@@tl@3@@tl@5@PEBUSMem@core@5@PEAUIMemWriterCompleted@IUtilities@libmedia@5@PEAUIRefObject@95@@Z 00000001400064c0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000054c0       ?sub_writer@RUtilities@stdlib@media@modules@UModSys@@UEAA?AU?$TRefObject@UIStreamWriter@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamWriter@libmedia@UModSys@@@tl@3@@tl@5@PEAUIStreamWriter@libmedia@5@_J1@Z 00000001400064c0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000054d0       ?bin_load@RLibraryBinCache@stdlib@media@modules@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@AEAUSCMemShared@core@5@AEBUSFlags@libmedia@5@@Z 00000001400064d0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:000055f4       ?bin_get@RLibraryBinCache@stdlib@media@modules@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@AEAUSCMemShared@core@5@_N@Z 00000001400065f4 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000055f4       ?obj_cget@RLibraryObjCache@stdlib@media@modules@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@AEAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@75@_N@Z 00000001400065f4 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000055f4       ?bin_get@RLibraryBinCache@stdlib@media@modules@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@AEAUSCMemShared@core@5@_N@Z 00000001400065f4 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00005628       ?bin_put@RLibraryBinCache@stdlib@media@modules@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@PEBUSCMemShared@core@5@@Z 0000000140006628 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00005648       ?bincache_get@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@PEAUSCMemShared@core@5@PEA_N@Z 0000000140006648 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00005700       ?bincache_add@RLibraryBinCache@stdlib@media@modules@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@@Z 0000000140006700 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
@@ -335,10 +335,10 @@
  0001:00005890       ??0RLibraryLayered@stdlib@media@modules@UModSys@@QEAA@PEAUIModObject@base@4@AEBUSParameters@core@4@U?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@4@@Z 0000000140006890 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00005950       ??_GRLibraryLayered@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 0000000140006950 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00005950       ??_ERLibraryLayered@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 0000000140006950 f i  CIL library: CIL module
- 0001:00005a1c       ??1IBinArchive@libmedia@UModSys@@UEAA@XZ 0000000140006a1c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:00005a1c       ??1ILibraryObjCache@libmedia@UModSys@@UEAA@XZ 0000000140006a1c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00005a1c       ??1ILibraryBinTree@libmedia@UModSys@@UEAA@XZ 0000000140006a1c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00005a1c       ??1ILibraryLayered@libmedia@UModSys@@UEAA@XZ 0000000140006a1c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00005a1c       ??1IBinArchive@libmedia@UModSys@@UEAA@XZ 0000000140006a1c f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:00005a1c       ??1ILibraryBinTree@libmedia@UModSys@@UEAA@XZ 0000000140006a1c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00005a1c       ??1ILibraryBinCache@libmedia@UModSys@@UEAA@XZ 0000000140006a1c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00005a1c       ??1ILibraryObjFilter@libmedia@UModSys@@UEAA@XZ 0000000140006a1c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00005a58       ?get_flag@RLibraryLayered@stdlib@media@modules@UModSys@@UEBA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@H@Z 0000000140006a58 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
@@ -365,8 +365,8 @@
  0001:00006f94       ?layer_insert@RLibraryLayered@stdlib@media@modules@UModSys@@UEAA_NAEBUSLayer@ILibraryLayered@libmedia@5@_K@Z 0000000140007f94 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000071b8       ?layer_remove@RLibraryLayered@stdlib@media@modules@UModSys@@UEAA_N_K@Z 00000001400081b8 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000072e8       ?layer_clear@RLibraryLayered@stdlib@media@modules@UModSys@@UEAA_NXZ 00000001400082e8 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:000072f4       ??_ERLibraryObjCache@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 00000001400082f4 f i  CIL library: CIL module
  0001:000072f4       ??_GRLibraryObjCache@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 00000001400082f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000072f4       ??_ERLibraryObjCache@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 00000001400082f4 f i  CIL library: CIL module
  0001:00007378       ?get_flags_auto@RLibraryObjCache@stdlib@media@modules@UModSys@@UEBA?AU?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@XZ 0000000140008378 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00007384       ?obj_cput@RLibraryObjCache@stdlib@media@modules@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@PEAUIRefObject@core@5@@Z 0000000140008384 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00007390       ?obj_get@RLibraryObjCache@stdlib@media@modules@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@5@AEAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@75@AEBUSObjOptions@ILibrary@libmedia@5@@Z 0000000140008390 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
@@ -376,10 +376,10 @@
  0001:000076bc       ?objcache_clear@RLibraryObjCache@stdlib@media@modules@UModSys@@UEAA_NXZ 00000001400086bc f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000076e4       ??_GRLibraryObjFilter@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 00000001400086e4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000076e4       ??_ERLibraryObjFilter@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 00000001400086e4 f i  CIL library: CIL module
- 0001:000077b4       ?get_flag@RLibraryObjCache@stdlib@media@modules@UModSys@@UEBA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@H@Z 00000001400087b4 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:000077b4       ?get_flag@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@H@Z 00000001400087b4 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:000077b4       ?get_flag@RLibraryBinTree@stdlib@media@modules@UModSys@@UEBA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@H@Z 00000001400087b4 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000077b4       ?get_flag@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEBA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@H@Z 00000001400087b4 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000077b4       ?get_flag@RLibraryBinTree@stdlib@media@modules@UModSys@@UEBA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@H@Z 00000001400087b4 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000077b4       ?get_flag@RLibraryBinCache@stdlib@media@modules@UModSys@@UEBA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@H@Z 00000001400087b4 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:000077b4       ?get_flag@RLibraryObjCache@stdlib@media@modules@UModSys@@UEBA?AW4eStates@?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@H@Z 00000001400087b4 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000077c0       ?get_flags_auto@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEBA?AU?$TFlags4State@USMediaFlagUid@libmedia@UModSys@@I@tl@5@XZ 00000001400087c0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000077cc       ?obj_fget@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEAA_NAEBUSInfo@IBinObjFilter@libmedia@5@AEAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@5@@Z 00000001400087cc f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000077d8       ?obj_fload@RLibraryObjFilter@stdlib@media@modules@UModSys@@UEAA_NAEBUSInfo@IBinObjFilter@libmedia@5@PEAUIRefObject@core@5@@Z 00000001400087d8 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
@@ -419,10 +419,10 @@
  0001:00008c4c       ??1SCacheElem@RLibraryBinCache@stdlib@media@modules@UModSys@@QEAA@XZ 0000000140009c4c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00008c90       ??1SCacheElem@RLibraryObjCache@stdlib@media@modules@UModSys@@QEAA@XZ 0000000140009c90 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00008cc8       ?ResizeRel@?$TDynarray@U?$TDynarrayHolderDynamic@UBuffer@RUtilities@stdlib@media@modules@UModSys@@U?$TAllocator@USIMemAlloc@core@UModSys@@USCountCalcPower2@23@@tl@6@@tl@UModSys@@@tl@UModSys@@QEAA_N_J@Z 0000000140009cc8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00008dd8       ?remove_color@?$TTreeHoldRB@U?$TScatterArrayNode@USMountInfo@RLibraryBinTree@stdlib@media@modules@UModSys@@USId@ILibraryBinTree@libmedia@6@@tl@UModSys@@@tl@UModSys@@IEAAXPEAU?$TScatterArrayNode@USMountInfo@RLibraryBinTree@stdlib@media@modules@UModSys@@USId@ILibraryBinTree@libmedia@6@@23@0@Z 0000000140009dd8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00008dd8       ?remove_color@?$TTreeHoldRB@U?$TScatterArrayNode@USCacheElem@RLibraryObjCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@tl@UModSys@@@tl@UModSys@@IEAAXPEAU?$TScatterArrayNode@USCacheElem@RLibraryObjCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@23@0@Z 0000000140009dd8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00008dd8       ?remove_color@?$TTreeHoldRB@UNameNode@IBinArchiveFrame@libmedia@UModSys@@@tl@UModSys@@IEAAXPEAUNameNode@IBinArchiveFrame@libmedia@3@0@Z 0000000140009dd8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00008dd8       ?remove_color@?$TTreeHoldRB@U?$TScatterArrayNode@USCacheElem@RLibraryObjCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@tl@UModSys@@@tl@UModSys@@IEAAXPEAU?$TScatterArrayNode@USCacheElem@RLibraryObjCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@23@0@Z 0000000140009dd8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00008dd8       ?remove_color@?$TTreeHoldRB@U?$TScatterArrayNode@USCacheElem@RLibraryBinCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@tl@UModSys@@@tl@UModSys@@IEAAXPEAU?$TScatterArrayNode@USCacheElem@RLibraryBinCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@23@0@Z 0000000140009dd8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00008dd8       ?remove_color@?$TTreeHoldRB@U?$TScatterArrayNode@USMountInfo@RLibraryBinTree@stdlib@media@modules@UModSys@@USId@ILibraryBinTree@libmedia@6@@tl@UModSys@@@tl@UModSys@@IEAAXPEAU?$TScatterArrayNode@USMountInfo@RLibraryBinTree@stdlib@media@modules@UModSys@@USId@ILibraryBinTree@libmedia@6@@23@0@Z 0000000140009dd8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00008dd8       ?remove_color@?$TTreeHoldRB@U?$TScatterArrayNode@USFilter@RLibraryObjFilter@stdlib@media@modules@UModSys@@USId@23456@@tl@UModSys@@@tl@UModSys@@IEAAXPEAU?$TScatterArrayNode@USFilter@RLibraryObjFilter@stdlib@media@modules@UModSys@@USId@23456@@23@0@Z 0000000140009dd8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00009078       ??$t_gen_param@URLibraryBinTree@stdlib@media@modules@UModSys@@URGenerator@2345@@IGenerator@base@UModSys@@IEAA_NPEAURGenerator@stdlib@media@modules@2@AEAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@2@PEBUSUniquePointerInfo@core@2@AEBUSParameters@core@2@@Z 000000014000a078 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:000091a0       ??$t_gen_param@URLibraryObjFilter@stdlib@media@modules@UModSys@@URGenerator@2345@@IGenerator@base@UModSys@@IEAA_NPEAURGenerator@stdlib@media@modules@2@AEAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@2@PEBUSUniquePointerInfo@core@2@AEBUSParameters@core@2@@Z 000000014000a1a0 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
@@ -436,10 +436,10 @@
  0001:00009998       ??$find_node_u@UCmp@?$TScatterArray@USCacheElem@RLibraryObjCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@U?$TObjectCompare@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@UModSys@@@core@6@U?$TNodeDeleter0@U?$TScatterArrayNode@USCacheElem@RLibraryObjCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@tl@UModSys@@@86@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@USCacheElem@RLibraryObjCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@tl@UModSys@@@tl@UModSys@@QEBAPEAU?$TScatterArrayNode@USCacheElem@RLibraryObjCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@12@UCmp@?$TScatterArray@USCacheElem@RLibraryObjCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@U?$TObjectCompare@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@UModSys@@@core@6@U?$TNodeDeleter0@U?$TScatterArrayNode@USCacheElem@RLibraryObjCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@tl@UModSys@@@86@@12@@Z 000000014000a998 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00009998       ??$find_node_u@UCmp@?$TScatterArray@USCacheElem@RLibraryBinCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@U?$TObjectCompare@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@UModSys@@@core@6@U?$TNodeDeleter0@U?$TScatterArrayNode@USCacheElem@RLibraryBinCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@tl@UModSys@@@86@@tl@UModSys@@@?$TTreeHoldRB@U?$TScatterArrayNode@USCacheElem@RLibraryBinCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@tl@UModSys@@@tl@UModSys@@QEBAPEAU?$TScatterArrayNode@USCacheElem@RLibraryBinCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@12@UCmp@?$TScatterArray@USCacheElem@RLibraryBinCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@U?$TObjectCompare@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@UModSys@@@core@6@U?$TNodeDeleter0@U?$TScatterArrayNode@USCacheElem@RLibraryBinCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@tl@UModSys@@@86@@12@@Z 000000014000a998 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00009a3c       ?sub_insert_node@?$TTreeHoldRB@U?$TScatterArrayNode@USMountInfo@RLibraryBinTree@stdlib@media@modules@UModSys@@USId@ILibraryBinTree@libmedia@6@@tl@UModSys@@@tl@UModSys@@QEAAXPEAU?$TScatterArrayNode@USMountInfo@RLibraryBinTree@stdlib@media@modules@UModSys@@USId@ILibraryBinTree@libmedia@6@@23@0H@Z 000000014000aa3c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00009a3c       ?sub_insert_node@?$TTreeHoldRB@U?$TScatterArrayNode@USFilter@RLibraryObjFilter@stdlib@media@modules@UModSys@@USId@23456@@tl@UModSys@@@tl@UModSys@@QEAAXPEAU?$TScatterArrayNode@USFilter@RLibraryObjFilter@stdlib@media@modules@UModSys@@USId@23456@@23@0H@Z 000000014000aa3c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:00009a3c       ?sub_insert_node@?$TTreeHoldRB@UNameNode@IBinArchiveFrame@libmedia@UModSys@@@tl@UModSys@@QEAAXPEAUNameNode@IBinArchiveFrame@libmedia@3@0H@Z 000000014000aa3c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00009a3c       ?sub_insert_node@?$TTreeHoldRB@U?$TScatterArrayNode@USCacheElem@RLibraryObjCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@tl@UModSys@@@tl@UModSys@@QEAAXPEAU?$TScatterArrayNode@USCacheElem@RLibraryObjCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@23@0H@Z 000000014000aa3c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00009a3c       ?sub_insert_node@?$TTreeHoldRB@U?$TScatterArrayNode@USCacheElem@RLibraryBinCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@tl@UModSys@@@tl@UModSys@@QEAAXPEAU?$TScatterArrayNode@USCacheElem@RLibraryBinCache@stdlib@media@modules@UModSys@@U?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@6@@23@0H@Z 000000014000aa3c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00009a3c       ?sub_insert_node@?$TTreeHoldRB@U?$TScatterArrayNode@USFilter@RLibraryObjFilter@stdlib@media@modules@UModSys@@USId@23456@@tl@UModSys@@@tl@UModSys@@QEAAXPEAU?$TScatterArrayNode@USFilter@RLibraryObjFilter@stdlib@media@modules@UModSys@@USId@23456@@23@0H@Z 000000014000aa3c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:00009a3c       ?sub_insert_node@?$TTreeHoldRB@UNameNode@IBinArchiveFrame@libmedia@UModSys@@@tl@UModSys@@QEAAXPEAUNameNode@IBinArchiveFrame@libmedia@3@0H@Z 000000014000aa3c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00009c1c       ?items_construct@?$TDynarray@U?$TDynarrayHolderDynamic@USLayerX@RLibraryLayered@stdlib@media@modules@UModSys@@U?$TAllocator@USIMemAlloc@core@UModSys@@USCountCalcPower2@23@@tl@6@@tl@UModSys@@@tl@UModSys@@IEAAX_K0@Z 000000014000ac1c f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00009cbc       ??0?$TString@U?$TSCoreShared@USIMemAlloc@core@UModSys@@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@UModSys@@QEAA@AEBU012@@Z 000000014000acbc f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:00009d50       ??0?$TScatterArrayNode@USMountInfo@RLibraryBinTree@stdlib@media@modules@UModSys@@USId@ILibraryBinTree@libmedia@6@@tl@UModSys@@QEAA@AEBUSId@ILibraryBinTree@libmedia@2@@Z 000000014000ad50 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
@@ -458,46 +458,46 @@
  0001:0000a49c       ?root_get_other_interface@RConsole_std@rsystem@base@UModSys@@UEBAPEBUIRoot@core@4@PEBUSUniquePointerInfo@64@@Z 000000014000b49c f i umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
  0001:0000a49c       ?root_get_other_interface@RConsole_std@rsystem@base@UModSys@@UEAAPEAUIRoot@core@4@PEBUSUniquePointerInfo@64@@Z 000000014000b49c f i umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
  0001:0000a4cc       ?root_is_interface_supported@RConsole_std@rsystem@base@UModSys@@UEBA_NPEBUSUniquePointerInfo@core@4@@Z 000000014000b4cc f i umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
- 0001:0000a4fc       ?ref_add@RConsole_std@rsystem@base@UModSys@@UEBAXXZ 000000014000b4fc f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
- 0001:0000a4fc       ?ref_remove@RConsole_std@rsystem@base@UModSys@@UEBAXXZ 000000014000b4fc f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
- 0001:0000a4fc       ?suicide@RGenerator@stdlib@media@modules@UModSys@@UEAAXXZ 000000014000b4fc f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:0000a4fc       ?suicide@RGenerator@stdio@media@modules@UModSys@@UEAAXXZ 000000014000b4fc f   umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:0000a4fc       ?ref_add@RConsole_std@rsystem@base@UModSys@@UEBAXXZ 000000014000b4fc f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
+ 0001:0000a4fc       ?suicide@RGenerator@stdlib@media@modules@UModSys@@UEAAXXZ 000000014000b4fc f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:0000a4fc       ?ref_remove@RConsole_std@rsystem@base@UModSys@@UEBAXXZ 000000014000b4fc f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
  0001:0000a4fc       ??3@YAXPEAX0@Z             000000014000b4fc f   umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:0000a500       ?vput@RConsole_std@rsystem@base@UModSys@@UEAA_NW4eConsoleLevels@34@PEBDPEAD@Z 000000014000b500 f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
  0001:0000a5e8       ?put@RConsole_std@rsystem@base@UModSys@@UEAA_NW4eConsoleLevels@34@PEBDZZ 000000014000b5e8 f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
  0001:0000a608       ?get_c@RConsole_std@rsystem@base@UModSys@@UEAA_NPEAHPEBDZZ 000000014000b608 f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
- 0001:0000a610       ?bin_list@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@AEAU?$TIStackSocket@USFileInfo@libmedia@UModSys@@@53@AEBUSFlags@23@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
- 0001:0000a610       ?bin_load@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@AEAUSCMemShared@core@3@AEBUSFlags@23@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
- 0001:0000a610       ?obj_load@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@PEAUIRefObject@core@3@AEBUSObjOptions@123@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
  0001:0000a610       ?obj_cput@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@PEAUIRefObject@core@3@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
+ 0001:0000a610       ?get_s@RConsole_std@rsystem@base@UModSys@@UEAA_NPEAD_KPEBDZZ 000000014000b610 f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
  0001:0000a610       ?obj_fsave@ILibrary@libmedia@UModSys@@UEAA_NAEAUSInfo@IBinObjFilter@23@PEBUIRefObject@core@3@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
- 0001:0000a610       ?bin_save@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@AEBUSCMem@core@3@AEBUSFlags@23@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
+ 0001:0000a610       ?moduledb_load@RModuleLoader@rsystem@base@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@4@@Z 000000014000b610 f   umodsys_lib_basesys:umodsys.basesys.rmoduleloader.obj
+ 0001:0000a610       ?obj_fget@ILibrary@libmedia@UModSys@@UEAA_NAEBUSInfo@IBinObjFilter@23@AEAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@3@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
+ 0001:0000a610       ?bin_load@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@AEAUSCMemShared@core@3@AEBUSFlags@23@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
+ 0001:0000a610       ?vget_c@RConsole_std@rsystem@base@UModSys@@UEAA_NPEAHPEBDPEAD@Z 000000014000b610 f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
+ 0001:0000a610       ?moduledb_lib_drop@RModuleLoader@rsystem@base@UModSys@@UEAA_NPEAUIModuleLibrary@34@@Z 000000014000b610 f   umodsys_lib_basesys:umodsys.basesys.rmoduleloader.obj
  0001:0000a610       ?obj_get@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@AEAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@53@AEBUSObjOptions@123@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
- 0001:0000a610       ?obj_cget@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@AEAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@53@_N@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
- 0001:0000a610       ?ref_weak@RConsole_std@rsystem@base@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@4@@Z 000000014000b610 f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
+ 0001:0000a610       ?bin_info@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@AEAUSFileInfo@23@AEBUSFlags@23@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
+ 0001:0000a610       ?bin_list@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@AEAU?$TIStackSocket@USFileInfo@libmedia@UModSys@@@53@AEBUSFlags@23@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
  0001:0000a610       ?obj_save@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@PEBUIRefObject@core@3@AEBUSObjOptions@123@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
  0001:0000a610       ?bin_get@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@AEAUSCMemShared@core@3@_N@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
- 0001:0000a610       ?vget_s@RConsole_std@rsystem@base@UModSys@@UEAA_NPEAD_KPEBD0@Z 000000014000b610 f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
- 0001:0000a610       ?vget_c@RConsole_std@rsystem@base@UModSys@@UEAA_NPEAHPEBDPEAD@Z 000000014000b610 f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
+ 0001:0000a610       ?bin_save@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@AEBUSCMem@core@3@AEBUSFlags@23@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
+ 0001:0000a610       ?obj_load@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@PEAUIRefObject@core@3@AEBUSObjOptions@123@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
  0001:0000a610       ?obj_fload@ILibrary@libmedia@UModSys@@UEAA_NAEBUSInfo@IBinObjFilter@23@PEAUIRefObject@core@3@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
- 0001:0000a610       ?moduledb_load@RModuleLoader@rsystem@base@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@4@@Z 000000014000b610 f   umodsys_lib_basesys:umodsys.basesys.rmoduleloader.obj
- 0001:0000a610       ?bin_info@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@AEAUSFileInfo@23@AEBUSFlags@23@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
  0001:0000a610       ?bin_put@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@PEBUSCMemShared@core@3@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
- 0001:0000a610       ?obj_fget@ILibrary@libmedia@UModSys@@UEAA_NAEBUSInfo@IBinObjFilter@23@AEAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@3@@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
- 0001:0000a610       ?moduledb_lib_drop@RModuleLoader@rsystem@base@UModSys@@UEAA_NPEAUIModuleLibrary@34@@Z 000000014000b610 f   umodsys_lib_basesys:umodsys.basesys.rmoduleloader.obj
- 0001:0000a610       ?get_s@RConsole_std@rsystem@base@UModSys@@UEAA_NPEAD_KPEBDZZ 000000014000b610 f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
+ 0001:0000a610       ?obj_cget@ILibrary@libmedia@UModSys@@UEAA_NAEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@3@AEAU?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@53@_N@Z 000000014000b610 f   umodsys_lib_libmedia:umodsys.lib.media.library.obj
+ 0001:0000a610       ?vget_s@RConsole_std@rsystem@base@UModSys@@UEAA_NPEAD_KPEBD0@Z 000000014000b610 f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
+ 0001:0000a610       ?ref_weak@RConsole_std@rsystem@base@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@4@@Z 000000014000b610 f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
  0001:0000a614       ?reflect@RConsole_std@rsystem@base@UModSys@@QEAA_NPEBD@Z 000000014000b614 f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
- 0001:0000a678       ??_ERConsole_std@rsystem@base@UModSys@@UEAAPEAXI@Z 000000014000b678 f i  CIL library: CIL module
  0001:0000a678       ??_GRConsole_std@rsystem@base@UModSys@@UEAAPEAXI@Z 000000014000b678 f i umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
+ 0001:0000a678       ??_ERConsole_std@rsystem@base@UModSys@@UEAAPEAXI@Z 000000014000b678 f i  CIL library: CIL module
  0001:0000a6cc       ?decode_error@EExceptionBase@core@UModSys@@UEBAHPEAD_K@Z 000000014000b6cc f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
  0001:0000a708       ?decode_error@EFatal@core@UModSys@@UEBAHPEAD_K@Z 000000014000b708 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
  0001:0000a744       ?decode_error@EWarning@core@UModSys@@UEBAHPEAD_K@Z 000000014000b744 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
- 0001:0000a780       ??_EEWarning@core@UModSys@@UEAAPEAXI@Z 000000014000b780 f i  CIL library: CIL module
- 0001:0000a780       ??_EEExceptionBase@core@UModSys@@UEAAPEAXI@Z 000000014000b780 f i  CIL library: CIL module
- 0001:0000a780       ??_GEWarning@core@UModSys@@UEAAPEAXI@Z 000000014000b780 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
  0001:0000a780       ??_GEExceptionBase@core@UModSys@@UEAAPEAXI@Z 000000014000b780 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
  0001:0000a780       ??_GEFatal@core@UModSys@@UEAAPEAXI@Z 000000014000b780 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
+ 0001:0000a780       ??_EEWarning@core@UModSys@@UEAAPEAXI@Z 000000014000b780 f i  CIL library: CIL module
+ 0001:0000a780       ??_EEExceptionBase@core@UModSys@@UEAAPEAXI@Z 000000014000b780 f i  CIL library: CIL module
  0001:0000a780       ??_EEFatal@core@UModSys@@UEAAPEAXI@Z 000000014000b780 f i  CIL library: CIL module
+ 0001:0000a780       ??_GEWarning@core@UModSys@@UEAAPEAXI@Z 000000014000b780 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
  0001:0000a7a8       ??1EWarning@core@UModSys@@UEAA@XZ 000000014000b7a8 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
  0001:0000a7a8       ??1EFatal@core@UModSys@@UEAA@XZ 000000014000b7a8 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
  0001:0000a7b4       ?root_get_interface_info@RSystem@rsystem@base@UModSys@@UEBAAEBUSUniquePointerInfo@core@4@XZ 000000014000b7b4 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
@@ -512,8 +512,8 @@
  0001:0000a9c4       ?err_put@rsystem@base@UModSys@@YAXW4eRSystemDebugLevels@123@PEBDZZ 000000014000b9c4 f   umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
  0001:0000aa08       ??1?$TStaticStringPool@DU?$TComparerBinaryHash@D@su@tl@UModSys@@USMemAlloc_Malloc@core@4@@tl@UModSys@@QEAA@XZ 000000014000ba08 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
  0001:0000aa10       ??1?$TQuantArrayUnique@USUniquePointerInfo@core@UModSys@@$0BAA@USMemAlloc_Malloc@23@@tl@UModSys@@QEAA@XZ 000000014000ba10 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
- 0001:0000aa88       ??1?$TTreeHoldRBD@U?$TQuantArrayNode@USSourceContext@core@UModSys@@$0BAA@@tl@UModSys@@U?$TNodeDeleter@U?$TQuantArrayNode@USSourceContext@core@UModSys@@$0BAA@@tl@UModSys@@USMemAlloc_Malloc@core@3@@23@@tl@UModSys@@QEAA@XZ 000000014000ba88 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
  0001:0000aa88       ??1?$TTreeHoldRBD@U?$TQuantArrayNode@USUniquePointerInfo@core@UModSys@@$0BAA@@tl@UModSys@@U?$TNodeDeleter@U?$TQuantArrayNode@USUniquePointerInfo@core@UModSys@@$0BAA@@tl@UModSys@@USMemAlloc_Malloc@core@3@@23@@tl@UModSys@@QEAA@XZ 000000014000ba88 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
+ 0001:0000aa88       ??1?$TTreeHoldRBD@U?$TQuantArrayNode@USSourceContext@core@UModSys@@$0BAA@@tl@UModSys@@U?$TNodeDeleter@U?$TQuantArrayNode@USSourceContext@core@UModSys@@$0BAA@@tl@UModSys@@USMemAlloc_Malloc@core@3@@23@@tl@UModSys@@QEAA@XZ 000000014000ba88 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
  0001:0000aaf0       ?mem_alloc@?$TRMemAlloc_CC@U?$TMemAllocHeader@USMagic@mem_headers@rsystem@base@UModSys@@U?$TPool@X@2345@USDebug@2345@UVoid@core@5@U895@@rsystem@base@UModSys@@USMemAlloc_Malloc@core@4@@rsystem@base@UModSys@@UEAAPEAX_KPEBUSSourceContext@core@4@@Z 000000014000baf0 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
  0001:0000ab74       ?mem_realloc@?$TRMemAlloc_CC@U?$TMemAllocHeader@USMagic@mem_headers@rsystem@base@UModSys@@U?$TPool@X@2345@USDebug@2345@UVoid@core@5@U895@@rsystem@base@UModSys@@USMemAlloc_Malloc@core@4@@rsystem@base@UModSys@@UEAAPEAXPEAX_KPEBUSSourceContext@core@4@@Z 000000014000bb74 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
  0001:0000ae68       ?mem_free@?$TRMemAlloc_CC@U?$TMemAllocHeader@USMagic@mem_headers@rsystem@base@UModSys@@U?$TPool@X@2345@USDebug@2345@UVoid@core@5@U895@@rsystem@base@UModSys@@USMemAlloc_Malloc@core@4@@rsystem@base@UModSys@@UEAAXPEAXPEBUSSourceContext@core@4@@Z 000000014000be68 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
@@ -543,8 +543,8 @@
  0001:0000bb1c       ??_EIModuleLoader@base@UModSys@@UEAAPEAXI@Z 000000014000cb1c f i  CIL library: CIL module
  0001:0000bb44       ??1RModuleLoader@rsystem@base@UModSys@@UEAA@XZ 000000014000cb44 f   umodsys_lib_basesys:umodsys.basesys.rmoduleloader.obj
  0001:0000bbdc       ??1?$TDynarrayDynamic@U?$TRefObject@URModuleLibrarySO@rsystem@base@UModSys@@U?$TRefObjectFunc@URModuleLibrarySO@rsystem@base@UModSys@@@tl@4@@tl@UModSys@@U?$TAllocator@USMemAlloc_Malloc@core@UModSys@@USCountCalcPower2@23@@23@@tl@UModSys@@QEAA@XZ 000000014000cbdc f i umodsys_lib_basesys:umodsys.basesys.rmoduleloader.obj
- 0001:0000bc24       ?Resize@?$TDynarray@U?$TDynarrayHolderDynamic@U?$TRefObject@URModuleLibrarySO@rsystem@base@UModSys@@U?$TRefObjectFunc@URModuleLibrarySO@rsystem@base@UModSys@@@tl@4@@tl@UModSys@@U?$TAllocator@USMemAlloc_Malloc@core@UModSys@@USCountCalcPower2@23@@23@@tl@UModSys@@@tl@UModSys@@QEAA_N_K@Z 000000014000cc24 f i umodsys_lib_basesys:umodsys.basesys.rmoduleloader.obj
  0001:0000bc24       ?Resize@?$TDynarray@U?$TDynarrayHolderDynamic@U?$TRefObject@URModule@rsystem@base@UModSys@@U?$TRefObjectFunc@URModule@rsystem@base@UModSys@@@tl@4@@tl@UModSys@@U?$TAllocator@USMemAlloc_Malloc@core@UModSys@@USCountCalcPower2@23@@23@@tl@UModSys@@@tl@UModSys@@QEAA_N_K@Z 000000014000cc24 f i umodsys_lib_basesys:umodsys.basesys.rmodulelib.obj
+ 0001:0000bc24       ?Resize@?$TDynarray@U?$TDynarrayHolderDynamic@U?$TRefObject@URModuleLibrarySO@rsystem@base@UModSys@@U?$TRefObjectFunc@URModuleLibrarySO@rsystem@base@UModSys@@@tl@4@@tl@UModSys@@U?$TAllocator@USMemAlloc_Malloc@core@UModSys@@USCountCalcPower2@23@@23@@tl@UModSys@@@tl@UModSys@@QEAA_N_K@Z 000000014000cc24 f i umodsys_lib_basesys:umodsys.basesys.rmoduleloader.obj
  0001:0000bd14       ?append@?$TStaticStringPool@DU?$TComparerBinaryHash@D@su@tl@UModSys@@USMemAlloc_Malloc@core@4@@tl@UModSys@@QEAAPEBU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@23@PEBD_K@Z 000000014000cd14 f i umodsys_lib_basesys:umodsys.basesys.rmoduleloader.obj
  0001:0000bf68       ?root_get_interface_info@RModuleLibraryThis@rsystem@base@UModSys@@UEBAAEBUSUniquePointerInfo@core@4@XZ 000000014000cf68 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibthis.obj
  0001:0000bf70       ?root_get_interface_type@RModuleLibraryThis@rsystem@base@UModSys@@UEBAPEBUSUniquePointerInfo@core@4@XZ 000000014000cf70 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibthis.obj
@@ -556,11 +556,11 @@
  0001:0000c008       ?ref_links@RModuleLibraryThis@rsystem@base@UModSys@@UEBAHXZ 000000014000d008 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibthis.obj
  0001:0000c010       ?ref_weak@RModuleLibraryThis@rsystem@base@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@4@@Z 000000014000d010 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibthis.obj
  0001:0000c034       ?uni_load@RModuleLibraryThis@rsystem@base@UModSys@@UEAA_NXZ 000000014000d034 f   umodsys_lib_basesys:umodsys.basesys.rmodulelibthis.obj
+ 0001:0000c044       ?uni_unload@RModuleLibraryThis@rsystem@base@UModSys@@UEAA_NXZ 000000014000d044 f   umodsys_lib_basesys:umodsys.basesys.rmodulelibthis.obj
  0001:0000c044       ?uni_open@RModuleLibraryThis@rsystem@base@UModSys@@UEAA_NXZ 000000014000d044 f   umodsys_lib_basesys:umodsys.basesys.rmodulelibthis.obj
  0001:0000c044       ?uni_close@RModuleLibraryThis@rsystem@base@UModSys@@UEAA_NXZ 000000014000d044 f   umodsys_lib_basesys:umodsys.basesys.rmodulelibthis.obj
- 0001:0000c044       ?uni_unload@RModuleLibraryThis@rsystem@base@UModSys@@UEAA_NXZ 000000014000d044 f   umodsys_lib_basesys:umodsys.basesys.rmodulelibthis.obj
- 0001:0000c048       ??_ERModuleLibraryThis@rsystem@base@UModSys@@UEAAPEAXI@Z 000000014000d048 f i  CIL library: CIL module
  0001:0000c048       ??_GRModuleLibraryThis@rsystem@base@UModSys@@UEAAPEAXI@Z 000000014000d048 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibthis.obj
+ 0001:0000c048       ??_ERModuleLibraryThis@rsystem@base@UModSys@@UEAAPEAXI@Z 000000014000d048 f i  CIL library: CIL module
  0001:0000c098       ?get_sys_libname@IModuleLibraryUni@rsystem@base@UModSys@@UEBA?AU?$TString@U?$TSCoreConst@D@su@tl@UModSys@@U?$TComparerBinaryHash@D@234@@tl@4@XZ 000000014000d098 f   umodsys_lib_basesys:umodsys.basesys.rmodulelib.obj
  0001:0000c0ac       ?get_privmem@IModuleLibraryUni@rsystem@base@UModSys@@UEBAPEAUIMemAlloc@core@4@XZ 000000014000d0ac f   umodsys_lib_basesys:umodsys.basesys.rmodulelib.obj
  0001:0000c0b4       ?get_system@IModuleLibraryUni@rsystem@base@UModSys@@UEBAPEAUISystem@34@XZ 000000014000d0b4 f   umodsys_lib_basesys:umodsys.basesys.rmodulelib.obj
@@ -579,8 +579,8 @@
  0001:0000c680       ?scan@IModuleLibraryUni@rsystem@base@UModSys@@QEAA_NXZ 000000014000d680 f   umodsys_lib_basesys:umodsys.basesys.rmodulelib.obj
  0001:0000c6fc       ?save_db@IModuleLibraryUni@rsystem@base@UModSys@@QEAA_NPEAU_iobuf@@@Z 000000014000d6fc f   umodsys_lib_basesys:umodsys.basesys.rmodulelib.obj
  0001:0000c784       ??0IModuleLibraryUni@rsystem@base@UModSys@@QEAA@PEAUISystem@23@PEAUIModuleLibraryReg@23@@Z 000000014000d784 f   umodsys_lib_basesys:umodsys.basesys.rmodulelib.obj
- 0001:0000c818       ??_GIModuleLibraryUni@rsystem@base@UModSys@@UEAAPEAXI@Z 000000014000d818 f i umodsys_lib_basesys:umodsys.basesys.rmodulelib.obj
  0001:0000c818       ??_EIModuleLibraryUni@rsystem@base@UModSys@@UEAAPEAXI@Z 000000014000d818 f i  CIL library: CIL module
+ 0001:0000c818       ??_GIModuleLibraryUni@rsystem@base@UModSys@@UEAAPEAXI@Z 000000014000d818 f i umodsys_lib_basesys:umodsys.basesys.rmodulelib.obj
  0001:0000c848       ??1IModuleLibraryUni@rsystem@base@UModSys@@UEAA@XZ 000000014000d848 f   umodsys_lib_basesys:umodsys.basesys.rmodulelib.obj
  0001:0000c8c8       ?info_release@?$TSCoreShared@USMemAlloc_Malloc@core@UModSys@@D@su@tl@UModSys@@QEAAXXZ 000000014000d8c8 f i umodsys_lib_basesys:umodsys.basesys.rmodulelib.obj
  0001:0000c984       ?check_leaks@?$TRMemAlloc_CC@U?$TMemAllocHeader@USMagic@mem_headers@rsystem@base@UModSys@@U?$TPool@X@2345@USDebug@2345@UVoid@core@5@U895@@rsystem@base@UModSys@@USMemAlloc_Malloc@core@4@@rsystem@base@UModSys@@QEAA_K_NPEAUIExceptionHandler@core@4@@Z 000000014000d984 f i umodsys_lib_basesys:umodsys.basesys.rmodulelib.obj
@@ -592,8 +592,8 @@
  0001:0000cc94       ?get_sysmem@RSystem@rsystem@base@UModSys@@UEAAPEAUIMemAlloc@core@4@XZ 000000014000dc94 f   umodsys_lib_basesys:umodsys.basesys.rsystem.obj
  0001:0000cc9c       ?get_sharemem@RSystem@rsystem@base@UModSys@@UEAAPEAUIMemAlloc@core@4@XZ 000000014000dc9c f   umodsys_lib_basesys:umodsys.basesys.rsystem.obj
  0001:0000cca4       ?get_syslib@RSystem@rsystem@base@UModSys@@UEAAPEAUIModuleLibrary@34@XZ 000000014000dca4 f   umodsys_lib_basesys:umodsys.basesys.rsystem.obj
- 0001:0000cca4       ?ref_links@RConsole_std@rsystem@base@UModSys@@UEBAHXZ 000000014000dca4 f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
  0001:0000cca4       _matherr                   000000014000dca4 f   MSVCRT:merr.obj
+ 0001:0000cca4       ?ref_links@RConsole_std@rsystem@base@UModSys@@UEBAHXZ 000000014000dca4 f   umodsys_lib_basesys:umodsys.basesys.rconsole_std.obj
  0001:0000cca4       _setargv                   000000014000dca4 f   MSVCRT:dllargv.obj
  0001:0000cca8       ?get_modloader@RSystem@rsystem@base@UModSys@@UEAAPEAUIModuleLoader@34@XZ 000000014000dca8 f   umodsys_lib_basesys:umodsys.basesys.rsystem.obj
  0001:0000ccb0       ?get_upr@RSystem@rsystem@base@UModSys@@UEAAPEAUIUniquePointerResolver@core@4@XZ 000000014000dcb0 f   umodsys_lib_basesys:umodsys.basesys.rsystem.obj
@@ -602,8 +602,8 @@
  0001:0000ccc8       ?find@?$TQuantArrayUnique@USSourceContext@core@UModSys@@$0BAA@USMemAlloc_Malloc@23@@tl@UModSys@@QEAAPEBUSSourceContext@core@3@AEBU453@@Z 000000014000dcc8 f i umodsys_lib_basesys:umodsys.basesys.rsystem.obj
  0001:0000cda4       ?add@?$TQuantArrayUnique@USUniquePointerInfo@core@UModSys@@$0BAA@USMemAlloc_Malloc@23@@tl@UModSys@@QEAAPEAUSUniquePointerInfo@core@3@AEBU453@@Z 000000014000dda4 f i umodsys_lib_basesys:umodsys.basesys.rsystem.obj
  0001:0000cda4       ?add@?$TQuantArrayUnique@USSourceContext@core@UModSys@@$0BAA@USMemAlloc_Malloc@23@@tl@UModSys@@QEAAPEAUSSourceContext@core@3@AEBU453@@Z 000000014000dda4 f i umodsys_lib_basesys:umodsys.basesys.rsystem.obj
- 0001:0000cee4       ?s_last@?$TQuantArrayUnique@USSourceContext@core@UModSys@@$0BAA@USMemAlloc_Malloc@23@@tl@UModSys@@KAHPEBU?$TQuantArrayNode@USSourceContext@core@UModSys@@$0BAA@@23@0@Z 000000014000dee4 f i umodsys_lib_basesys:umodsys.basesys.rsystem.obj
  0001:0000cee4       ?s_last@?$TQuantArrayUnique@USUniquePointerInfo@core@UModSys@@$0BAA@USMemAlloc_Malloc@23@@tl@UModSys@@KAHPEBU?$TQuantArrayNode@USUniquePointerInfo@core@UModSys@@$0BAA@@23@0@Z 000000014000dee4 f i umodsys_lib_basesys:umodsys.basesys.rsystem.obj
+ 0001:0000cee4       ?s_last@?$TQuantArrayUnique@USSourceContext@core@UModSys@@$0BAA@USMemAlloc_Malloc@23@@tl@UModSys@@KAHPEBU?$TQuantArrayNode@USSourceContext@core@UModSys@@$0BAA@@23@0@Z 000000014000dee4 f i umodsys_lib_basesys:umodsys.basesys.rsystem.obj
  0001:0000ceec       ??$insert_node_m@P6AHPEBU?$TQuantArrayNode@USUniquePointerInfo@core@UModSys@@$0BAA@@tl@UModSys@@0@Z@?$TTreeHoldRB@U?$TQuantArrayNode@USUniquePointerInfo@core@UModSys@@$0BAA@@tl@UModSys@@@tl@UModSys@@QEAAPEAU?$TQuantArrayNode@USUniquePointerInfo@core@UModSys@@$0BAA@@12@PEAU312@P6AHPEBU312@1@Z@Z 000000014000deec f i umodsys_lib_basesys:umodsys.basesys.rsystem.obj
  0001:0000ceec       ??$insert_node_m@P6AHPEBU?$TQuantArrayNode@USSourceContext@core@UModSys@@$0BAA@@tl@UModSys@@0@Z@?$TTreeHoldRB@U?$TQuantArrayNode@USSourceContext@core@UModSys@@$0BAA@@tl@UModSys@@@tl@UModSys@@QEAAPEAU?$TQuantArrayNode@USSourceContext@core@UModSys@@$0BAA@@12@PEAU312@P6AHPEBU312@1@Z@Z 000000014000deec f i umodsys_lib_basesys:umodsys.basesys.rsystem.obj
  0001:0000d0f0       ?root_get_interface_info@RParameters@rsystem@base@UModSys@@UEBAAEBUSUniquePointerInfo@core@4@XZ 000000014000e0f0 f i umodsys_lib_basesys:umodsys.basesys.rparameters.obj
@@ -661,49 +661,49 @@
  0001:0000ed9c       ?unreg_obj@RModule@rsystem@base@UModSys@@QEAA_NPEAUIModObject@34@@Z 000000014000fd9c f   umodsys_lib_basesys:umodsys.basesys.rmodule.obj
  0001:0000eea4       ?alloc_minfo@RModule@rsystem@base@UModSys@@QEAA_NAEBUSModuleInfo@34@@Z 000000014000fea4 f   umodsys_lib_basesys:umodsys.basesys.rmodule.obj
  0001:0000ef68       ?save_db@RModule@rsystem@base@UModSys@@QEAA_NPEAU_iobuf@@@Z 000000014000ff68 f   umodsys_lib_basesys:umodsys.basesys.rmodule.obj
- 0001:0000f15c       ??_ERModule@rsystem@base@UModSys@@UEAAPEAXI@Z 000000014001015c f i  CIL library: CIL module
  0001:0000f15c       ??_GRModule@rsystem@base@UModSys@@UEAAPEAXI@Z 000000014001015c f i umodsys_lib_basesys:umodsys.basesys.rmodule.obj
+ 0001:0000f15c       ??_ERModule@rsystem@base@UModSys@@UEAAPEAXI@Z 000000014001015c f i  CIL library: CIL module
  0001:0000f2b4       ??1?$TDynarrayDynamic@UModuleObjInfo@RModule@rsystem@base@UModSys@@U?$TAllocator@USMemAlloc_Malloc@core@UModSys@@USCountCalcPower2@23@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400102b4 f i umodsys_lib_basesys:umodsys.basesys.rmodule.obj
  0001:0000f304       ??1?$TDynarrayDynamic@UGeneratedObjInfo@RModule@rsystem@base@UModSys@@U?$TAllocator@USMemAlloc_Malloc@core@UModSys@@USCountCalcPower2@23@@tl@5@@tl@UModSys@@QEAA@XZ 0000000140010304 f i umodsys_lib_basesys:umodsys.basesys.rmodule.obj
  0001:0000f350       ??1?$TDynarrayDynamic@PEBUSUniquePointerInfo@core@UModSys@@U?$TAllocator@USMemAlloc_Malloc@core@UModSys@@USCountCalcPower2@23@@tl@3@@tl@UModSys@@QEAA@XZ 0000000140010350 f i umodsys_lib_basesys:umodsys.basesys.rmodule.obj
  0001:0000f39c       ?ResizeRel@?$TDynarray@U?$TDynarrayHolderDynamic@UModuleObjInfo@RModule@rsystem@base@UModSys@@U?$TAllocator@USMemAlloc_Malloc@core@UModSys@@USCountCalcPower2@23@@tl@5@@tl@UModSys@@@tl@UModSys@@QEAA_N_J@Z 000000014001039c f i umodsys_lib_basesys:umodsys.basesys.rmodule.obj
  0001:0000f480       ?ResizeRel@?$TDynarray@U?$TDynarrayHolderDynamic@UGeneratedObjInfo@RModule@rsystem@base@UModSys@@U?$TAllocator@USMemAlloc_Malloc@core@UModSys@@USCountCalcPower2@23@@tl@5@@tl@UModSys@@@tl@UModSys@@QEAA_N_J@Z 0000000140010480 f i umodsys_lib_basesys:umodsys.basesys.rmodule.obj
  0001:0000f55c       ?ResizeRel@?$TDynarray@U?$TDynarrayHolderDynamic@PEBUSUniquePointerInfo@core@UModSys@@U?$TAllocator@USMemAlloc_Malloc@core@UModSys@@USCountCalcPower2@23@@tl@3@@tl@UModSys@@@tl@UModSys@@QEAA_N_J@Z 000000014001055c f i umodsys_lib_basesys:umodsys.basesys.rmodule.obj
- 0001:0000f5f4       ??1?$TRefObject@UILibrary@libmedia@UModSys@@U?$TRefObjectFunc@UILibrary@libmedia@UModSys@@@tl@3@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:0000f5f4       ??1?$TRefObject@UIStreamReader@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamReader@libmedia@UModSys@@@tl@3@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:0000f5f4       ??1?$TRefObject@UIBinArchive@libmedia@UModSys@@U?$TRefObjectFunc@UIBinArchive@libmedia@UModSys@@@tl@3@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:0000f5f4       ??1?$TRefObject@URParameters@rsystem@base@UModSys@@U?$TRefObjectFunc@URParameters@rsystem@base@UModSys@@@tl@4@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
- 0001:0000f5f4       ??1?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:0000f5f4       ??1?$TRefObject@UIShell@base@UModSys@@U?$TRefObjectFunc@UIShell@base@UModSys@@@tl@3@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_basesys:umodsys.basesys.rsystem_tests.obj
- 0001:0000f5f4       ??1?$TRefObject@URLibraryObjFilter@stdlib@media@modules@UModSys@@U?$TRefObjectFunc@URLibraryObjFilter@stdlib@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:0000f5f4       ??1?$TRefObject@URLibraryLayered@stdlib@media@modules@UModSys@@U?$TRefObjectFunc@URLibraryLayered@stdlib@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:0000f5f4       ??1?$TRefObject@URStreamWriter_FILE@stdio@media@modules@UModSys@@U?$TRefObjectFunc@URStreamWriter_FILE@stdio@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:0000f5f4       ??1?$TRefObject@UIStreamWriter@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamWriter@libmedia@UModSys@@@tl@3@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:0000f5f4       ??1?$TRefObject@URStreamReader_FILE@stdio@media@modules@UModSys@@U?$TRefObjectFunc@URStreamReader_FILE@stdio@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:0000f5f4       ??1?$TRefObject@URBinArchiveFrame@stdlib@media@modules@UModSys@@U?$TRefObjectFunc@URBinArchiveFrame@stdlib@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:0000f5f4       ??1?$TRefObject@URUtilities@stdlib@media@modules@UModSys@@U?$TRefObjectFunc@URUtilities@stdlib@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:0000f5f4       ??1?$TRefObject@UIBinObjFilter@libmedia@UModSys@@U?$TRefObjectFunc@UIBinObjFilter@libmedia@UModSys@@@tl@3@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:0000f5f4       ??1?$TRefObject@URLibraryBinTree@stdlib@media@modules@UModSys@@U?$TRefObjectFunc@URLibraryBinTree@stdlib@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:0000f5f4       ??1?$TRefObject@URDataArchiver_OsDir@stdio@media@modules@UModSys@@U?$TRefObjectFunc@URDataArchiver_OsDir@stdio@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:0000f5f4       ??1?$TRefObject@URStreamReader_FILE@stdio@media@modules@UModSys@@U?$TRefObjectFunc@URStreamReader_FILE@stdio@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:0000f5f4       ??1?$TRefObject@UIRefObject@core@UModSys@@U?$TRefObjectFunc@UIRefObject@core@UModSys@@@tl@3@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:0000f5f4       ??1?$TRefObject@URLibraryBinCache@stdlib@media@modules@UModSys@@U?$TRefObjectFunc@URLibraryBinCache@stdlib@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:0000f5f4       ??1SFilter@RLibraryObjFilter@stdlib@media@modules@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:0000f5f4       ??1?$TRefObject@UIClient@IBinArchiveFrame@libmedia@UModSys@@U?$TRefObjectFunc@UIClient@IBinArchiveFrame@libmedia@UModSys@@@tl@4@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:0000f5f4       ??1?$TRefObject@URDataArchiver_OsDir@stdio@media@modules@UModSys@@U?$TRefObjectFunc@URDataArchiver_OsDir@stdio@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:0000f5f4       ??1?$TRefObject@UILibrary@libmedia@UModSys@@U?$TRefObjectFunc@UILibrary@libmedia@UModSys@@@tl@3@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:0000f5f4       ??1?$TRefObject@URLibraryLayered@stdlib@media@modules@UModSys@@U?$TRefObjectFunc@URLibraryLayered@stdlib@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:0000f5f4       ??1?$TRefObject@UIModuleLibraryUni@rsystem@base@UModSys@@U?$TRefObjectFunc@UIModuleLibraryUni@rsystem@base@UModSys@@@tl@4@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_basesys:umodsys.basesys.rmodule.obj
- 0001:0000f5f4       ??1?$TRefObject@URLibraryObjCache@stdlib@media@modules@UModSys@@U?$TRefObjectFunc@URLibraryObjCache@stdlib@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:0000f5f4       ??1?$TRefObject@UIBinObjFilter@libmedia@UModSys@@U?$TRefObjectFunc@UIBinObjFilter@libmedia@UModSys@@@tl@3@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:0000f5f4       ??1?$TRefObject@URParameters@rsystem@base@UModSys@@U?$TRefObjectFunc@URParameters@rsystem@base@UModSys@@@tl@4@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_basesys:umodsys.basesys.rsystem_main.obj
+ 0001:0000f5f4       ??1?$TRefObject@UIStreamWriter@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamWriter@libmedia@UModSys@@@tl@3@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:0000f5f4       ??1?$TRefObject@URBinArchiveFrame@stdlib@media@modules@UModSys@@U?$TRefObjectFunc@URBinArchiveFrame@stdlib@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:0000f5f4       ??1SFilter@RLibraryObjFilter@stdlib@media@modules@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:0000f5f4       ??1?$TRefObject@URUtilities@stdlib@media@modules@UModSys@@U?$TRefObjectFunc@URUtilities@stdlib@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:0000f5f4       ??1?$TRefObject@URLibraryObjFilter@stdlib@media@modules@UModSys@@U?$TRefObjectFunc@URLibraryObjFilter@stdlib@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:0000f5f4       ??1?$TRefObject@UIShell@base@UModSys@@U?$TRefObjectFunc@UIShell@base@UModSys@@@tl@3@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_basesys:umodsys.basesys.rsystem_tests.obj
+ 0001:0000f5f4       ??1?$TRefObject@UIBinArchive@libmedia@UModSys@@U?$TRefObjectFunc@UIBinArchive@libmedia@UModSys@@@tl@3@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:0000f5f4       ??1?$TRefObject@URModuleLibrarySO@rsystem@base@UModSys@@U?$TRefObjectFunc@URModuleLibrarySO@rsystem@base@UModSys@@@tl@4@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_basesys:umodsys.basesys.rmoduleloader.obj
+ 0001:0000f5f4       ??1?$TRefObject@UIStreamReader@libmedia@UModSys@@U?$TRefObjectFunc@UIStreamReader@libmedia@UModSys@@@tl@3@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:0000f5f4       ??1?$TRefObject@URLibraryObjCache@stdlib@media@modules@UModSys@@U?$TRefObjectFunc@URLibraryObjCache@stdlib@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:0000f5f4       ??1?$TRefObject@UIClient@IBinArchiveFrame@libmedia@UModSys@@U?$TRefObjectFunc@UIClient@IBinArchiveFrame@libmedia@UModSys@@@tl@4@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:0000f5f4       ??1?$TRefObject@URStreamWriter_FILE@stdio@media@modules@UModSys@@U?$TRefObjectFunc@URStreamWriter_FILE@stdio@media@modules@UModSys@@@tl@5@@tl@UModSys@@QEAA@XZ 00000001400105f4 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:0000f618       ?root_get_interface_info@RModuleLibrarySO@rsystem@base@UModSys@@UEBAAEBUSUniquePointerInfo@core@4@XZ 0000000140010618 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
  0001:0000f620       ?root_get_interface_type@RModuleLibrarySO@rsystem@base@UModSys@@UEBAPEBUSUniquePointerInfo@core@4@XZ 0000000140010620 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
- 0001:0000f628       ?root_get_other_interface@RModuleLibrarySO@rsystem@base@UModSys@@UEBAPEBUIRoot@core@4@PEBUSUniquePointerInfo@64@@Z 0000000140010628 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
  0001:0000f628       ?root_get_other_interface@RModuleLibrarySO@rsystem@base@UModSys@@UEAAPEAUIRoot@core@4@PEBUSUniquePointerInfo@64@@Z 0000000140010628 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
+ 0001:0000f628       ?root_get_other_interface@RModuleLibrarySO@rsystem@base@UModSys@@UEBAPEBUIRoot@core@4@PEBUSUniquePointerInfo@64@@Z 0000000140010628 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
  0001:0000f660       ?root_is_interface_supported@RModuleLibrarySO@rsystem@base@UModSys@@UEBA_NPEBUSUniquePointerInfo@core@4@@Z 0000000140010660 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
  0001:0000f698       ?ref_add@RModuleLibrarySO@rsystem@base@UModSys@@UEBAXXZ 0000000140010698 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
  0001:0000f6a0       ?ref_remove@RModuleLibrarySO@rsystem@base@UModSys@@UEBAXXZ 00000001400106a0 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
  0001:0000f6b8       ?ref_links@RModuleLibrarySO@rsystem@base@UModSys@@UEBAHXZ 00000001400106b8 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
  0001:0000f6c0       ?ref_weak@RModuleLibrarySO@rsystem@base@UModSys@@UEBA_NAEAUWeakPointer@IRefObject@core@4@@Z 00000001400106c0 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
- 0001:0000f6e4       ?suicide@RModuleLibrarySO@rsystem@base@UModSys@@UEAAXXZ 00000001400106e4 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
- 0001:0000f6e4       ?suicide@RParameters@rsystem@base@UModSys@@UEAAXXZ 00000001400106e4 f i umodsys_lib_basesys:umodsys.basesys.rparameters.obj
- 0001:0000f6e4       ?suicide@IRoot@core@UModSys@@UEAAXXZ 00000001400106e4 f i umodsys_lib_core:umodsys.core.objects.obj
  0001:0000f6e4       ?suicide@RModuleLibraryThis@rsystem@base@UModSys@@UEAAXXZ 00000001400106e4 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibthis.obj
+ 0001:0000f6e4       ?suicide@RModuleLibrarySO@rsystem@base@UModSys@@UEAAXXZ 00000001400106e4 f i umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
+ 0001:0000f6e4       ?suicide@IRoot@core@UModSys@@UEAAXXZ 00000001400106e4 f i umodsys_lib_core:umodsys.core.objects.obj
+ 0001:0000f6e4       ?suicide@RParameters@rsystem@base@UModSys@@UEAAXXZ 00000001400106e4 f i umodsys_lib_basesys:umodsys.basesys.rparameters.obj
  0001:0000f6fc       ?uni_load@RModuleLibrarySO@rsystem@base@UModSys@@UEAA_NXZ 00000001400106fc f   umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
  0001:0000f740       ?uni_unload@RModuleLibrarySO@rsystem@base@UModSys@@UEAA_NXZ 0000000140010740 f   umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
  0001:0000f74c       ?uni_open@RModuleLibrarySO@rsystem@base@UModSys@@UEAA_NXZ 000000014001074c f   umodsys_lib_basesys:umodsys.basesys.rmodulelibso.obj
@@ -720,29 +720,29 @@
  0001:0000fc98       ?mlr_close@RModuleLibraryReg_Chain@base@UModSys@@UEAA_NXZ 0000000140010c98 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
  0001:0000fce0       ?mlr_isopen@RModuleLibraryReg_Chain@base@UModSys@@UEBA_NXZ 0000000140010ce0 f   umodsys_lib_base:umodsys.base.moduleregchain.obj
  0001:0000fcf0       UModSys_Plugin_Entry2      0000000140010cf0 f   umodsys_lib_base:umodsys.so_main.win32.obj
- 0001:0000fcf8       ??_GRModuleReg@stdio@media@modules@UModSys@@UEAAPEAXI@Z 0000000140010cf8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
- 0001:0000fcf8       ??_GRModuleReg@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 0000000140010cf8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
- 0001:0000fcf8       ??_ERModuleReg@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 0000000140010cf8 f i  CIL library: CIL module
- 0001:0000fcf8       ??_ERModuleReg@stdio@media@modules@UModSys@@UEAAPEAXI@Z 0000000140010cf8 f i  CIL library: CIL module
  0001:0000fcf8       ??_GIModuleReg@base@UModSys@@UEAAPEAXI@Z 0000000140010cf8 f i umodsys_lib_base:umodsys.base.modulereg.obj
+ 0001:0000fcf8       ??_GRModuleReg@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 0000000140010cf8 f i umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
+ 0001:0000fcf8       ??_ERModuleReg@stdio@media@modules@UModSys@@UEAAPEAXI@Z 0000000140010cf8 f i  CIL library: CIL module
  0001:0000fcf8       ??_EIModuleReg@base@UModSys@@UEAAPEAXI@Z 0000000140010cf8 f i  CIL library: CIL module
+ 0001:0000fcf8       ??_GRModuleReg@stdio@media@modules@UModSys@@UEAAPEAXI@Z 0000000140010cf8 f i umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:0000fcf8       ??_ERModuleReg@stdlib@media@modules@UModSys@@UEAAPEAXI@Z 0000000140010cf8 f i  CIL library: CIL module
  0001:0000fd20       ??0IModuleReg@base@UModSys@@QEAA@PEBDGG0K_JPEAUSDebug@12@@Z 0000000140010d20 f   umodsys_lib_base:umodsys.base.modulereg.obj
- 0001:0000fda0       ?layer_count@RLibraryLayered@stdlib@media@modules@UModSys@@UEBA_KAEBUSLayer@ILibraryLayered@libmedia@5@@Z 0000000140010da0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:0000fda0       ?mr_getdebug@IModuleReg@base@UModSys@@UEBAPEAUSDebug@23@XZ 0000000140010da0 f   umodsys_lib_base:umodsys.base.modulereg.obj
+ 0001:0000fda0       ?layer_count@RLibraryLayered@stdlib@media@modules@UModSys@@UEBA_KAEBUSLayer@ILibraryLayered@libmedia@5@@Z 0000000140010da0 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:0000fda8       ?mr_isopen@IModuleReg@base@UModSys@@UEBA_NXZ 0000000140010da8 f   umodsys_lib_base:umodsys.base.modulereg.obj
  0001:0000fdb4       ?mr_open@IModuleReg@base@UModSys@@UEAA_NXZ 0000000140010db4 f   umodsys_lib_base:umodsys.base.modulereg.obj
  0001:0000fe1c       ?mr_close@IModuleReg@base@UModSys@@UEAA_NXZ 0000000140010e1c f   umodsys_lib_base:umodsys.base.modulereg.obj
- 0001:0000fe64       ??_ERModuleLibraryReg_Chain@base@UModSys@@UEAAPEAXI@Z 0000000140010e64 f i  CIL library: CIL module
- 0001:0000fe64       ??_GRModuleLibraryReg_Chain@base@UModSys@@UEAAPEAXI@Z 0000000140010e64 f i umodsys_lib_base:umodsys.base.moduleregchain.obj
  0001:0000fe64       ??_EIModuleLibraryReg@base@UModSys@@UEAAPEAXI@Z 0000000140010e64 f i  CIL library: CIL module
+ 0001:0000fe64       ??_ERModuleLibraryReg_Chain@base@UModSys@@UEAAPEAXI@Z 0000000140010e64 f i  CIL library: CIL module
  0001:0000fe64       ??_GIModuleLibraryReg@base@UModSys@@UEAAPEAXI@Z 0000000140010e64 f i umodsys_lib_base:umodsys.base.modulereg.obj
+ 0001:0000fe64       ??_GRModuleLibraryReg_Chain@base@UModSys@@UEAAPEAXI@Z 0000000140010e64 f i umodsys_lib_base:umodsys.base.moduleregchain.obj
  0001:0000fe8c       ??1IModuleLoader@base@UModSys@@UEAA@XZ 0000000140010e8c f   umodsys_lib_base:umodsys.base.moduleloader.obj
  0001:0000fe98       ??1ISystem@base@UModSys@@UEAA@XZ 0000000140010e98 f   umodsys_lib_base:umodsys.base.system.obj
- 0001:0000fe98       ??1IRefObject@core@UModSys@@UEAA@XZ 0000000140010e98 f   umodsys_lib_core:umodsys.core.objects.obj
- 0001:0000fe98       ??1IUtilities@libmedia@UModSys@@UEAA@XZ 0000000140010e98 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:0000fe98       ??1IModule@base@UModSys@@UEAA@XZ 0000000140010e98 f   umodsys_lib_base:umodsys.base.module.obj
- 0001:0000fe98       ??1IStreamReader@libmedia@UModSys@@UEAA@XZ 0000000140010e98 f   umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:0000fe98       ??1IUtilities@libmedia@UModSys@@UEAA@XZ 0000000140010e98 f   umodsys_lib_libmedia:umodsys.mod.media.stdlib.obj
  0001:0000fe98       ??1IStreamWriter@libmedia@UModSys@@UEAA@XZ 0000000140010e98 f   umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
+ 0001:0000fe98       ??1IRefObject@core@UModSys@@UEAA@XZ 0000000140010e98 f   umodsys_lib_core:umodsys.core.objects.obj
+ 0001:0000fe98       ??1IStreamReader@libmedia@UModSys@@UEAA@XZ 0000000140010e98 f   umodsys_lib_libmedia:umodsys.mod.media.stdio.obj
  0001:0000fea4       ??0SUniquePointer@core@UModSys@@QEAA@PEBD0H@Z 0000000140010ea4 f   umodsys_lib_core:umodsys.core.uniqueptr.obj
  0001:0000fef4       ??1SUniquePointer@core@UModSys@@QEAA@XZ 0000000140010ef4 f   umodsys_lib_core:umodsys.core.uniqueptr.obj
  0001:0000ff1c       ?s_resolve@SUniquePointer@core@UModSys@@SAXPEAUIUniquePointerResolver@23@@Z 0000000140010f1c f   umodsys_lib_core:umodsys.core.uniqueptr.obj

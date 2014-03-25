@@ -20,6 +20,14 @@
 
 static void refer(void);
 
+using namespace UModSys;
+
+UMODSYS_TL_TCONSTUNIQUEID_ATOM(base::eConsoleLevels, base::cl_Info)
+UMODSYS_TL_TCONSTUNIQUEID_ATOM(base::eConsoleLevels, base::cl_Debug)
+UMODSYS_TL_TCONSTUNIQUEID_ATOM(base::eConsoleLevels, base::cl_Error)
+
+
+
 #define U_MOD UMODSYS_MODULE_NAME(test, test1)
 UMODSYS_MODULE_START(test, test1)
 
@@ -176,6 +184,8 @@ struct RTest1_Shell
   //
   bool f_quit;
   // ----------------------------------------------------------------------------------
+  struct Aux;
+  void aux_tests(void);
   //
   RTest1_Shell(DOwner *own) : refs(own) {
     s_dbg.menable();
@@ -183,6 +193,8 @@ struct RTest1_Shell
     s_dbg.put(d_Shell, cl_Info, "RTest1_Shell() {\n");
     memblock = M().mem_alloc(1024, _UMODSYS_SOURCEINFO);
     M().mem_alloc(511, _UMODSYS_SOURCEINFO);
+    //
+    aux_tests();
     //
 #if 0
     file_test1();

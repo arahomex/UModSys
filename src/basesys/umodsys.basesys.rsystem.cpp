@@ -36,13 +36,13 @@ HUniquePointer RSystem::upi_add(const SUniquePointerInfo* lupi)
   if(&n==NULL)
     return NULL; // error
   //
+  dbg_put(
+    rsdl_Uid, "RSystem::upi_add(%p:{\"%s\",\"%s\",%d})...\n", 
+    lupi, lupi->group, lupi->name, lupi->verno
+  );
 /*
   SUniquePointerInfo* rv;
   SUniquePointerInfo nv(g, n, lupi->verno);
-//  dbg_put(
-//    rsdl_System, "RSystem::upi_add(%p:{\"%s\",\"%s\",%d})...\n", 
-//    lupi, lupi->group, lupi->name, lupi->verno
-//  );
   {
     int idx = 0;
     SUniPtrHolder *h, *lh = NULL;

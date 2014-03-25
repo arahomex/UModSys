@@ -17,11 +17,17 @@ namespace lib3d {
 //***************************************
 // ISceneController::
 
-struct ISceneController : public IRefObject {
+struct ISceneController 
+: public IRefObject, public IPropNamedAdapter {
   virtual bool set_parameters(const SParameters& P) =0;
+  //
   virtual bool ctrl_frame(HSceneNode node, DScalar dt) =0;
-  virtual bool ctrl_command(HSceneNode node, int command, int value=0) =0;
-  virtual bool ctrl_commandf(HSceneNode node, int command, float value) =0;
+  virtual bool ctrl_command(HSceneNode node, HUniquePointer id, const SPropValueR& value) =0;
+  //
+  inline bool ctrl_commandi(HSceneNode node, HUniquePointer id, sint32 value=0)
+    { return ctrl_command(node, id, TPropValueRV<sint32>(value)); }
+  bool ctrl_commandf(HSceneNode node, HUniquePointer id, float32 value=1)
+    { return ctrl_command(node, id, TPropValueRV<float32>(value)); }
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::ISceneController, 2, IRefObject);
 };
