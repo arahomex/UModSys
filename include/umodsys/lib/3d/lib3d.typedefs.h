@@ -7,6 +7,7 @@
 
 #include <umodsys/lib/2d/lib2d.typedefs.h>
 #include <umodsys/tl/math/math_3df.h>
+#include <umodsys/tl/composite/isockets.h>
 
 namespace UModSys {
 namespace lib3d {
@@ -68,15 +69,24 @@ struct ISceneNode;                          // node inside a scene
                                            
 // general: object
 
-struct IObject;                             // general 3d object, invisible
-struct IRenderObject;                       // object representation in renderer (textures, static geom, static data)
-struct INodeObject;                         // object representation in scene node (dynamic geom, dynamic data)
-  struct INodeObject_Light;                 // light
-  struct INodeObject_Brush;                 // any visible object
-    struct INodeObject_Mesh;                // mesh object, can be animated
-    struct INodeObject_Picture;             // picture and billboard object
-    struct INodeObject_Particles;           // particle system object
-  struct INodeObject_Camera;                // camera object
+struct IGeneralObject;                      // general 3d object data source
+
+struct IVisualObject;                       // object representation: visual object to display, only draw (dynamic geom, dynamic data)
+  struct IVisualObject_Mesh;                // mesh object, can be animated
+  struct IVisualObject_Picture;             // picture and billboard object
+  struct IVisualObject_Particles;           // particle system object
+  struct IVisualObject_Light;               // light
+  struct IVisualObject_Brush;               // any visible object
+  struct IVisualObject_Camera;              // camera object
+
+struct IRenderObject;                       // object representation: renderer statics (textures, static geom, static data)
+
+struct ILogicObject;                        // object representation in scene node 
+  struct ILogicObject_Light;                // light
+  struct ILogicObject_Brush;                // any visible object
+  struct ILogicObject_Camera;               // camera object
+
+struct IPhysicsObject;                      // object representation: physics
 
 // visualize
 struct IVisualizer;                         // visualizer general
@@ -114,8 +124,10 @@ typedef const ISceneNode*                   HSceneNode;
 typedef tl::TRefObject<const ISceneNode>    PSceneNode;
 typedef tl::TRefObject<const IPhysicsNode>  PPhysicsNode;
 
-typedef tl::TRefObject<IObject>             PObject;
-typedef tl::TRefObject<INodeObject>         PNodeObject;
+typedef tl::TRefObject<IGeneralObject>      PGeneralObject;
+typedef tl::TRefObject<ILogicObject>        PLogicObject;
+typedef tl::TRefObject<IPhysicsObject>      PPhysicsObject;
+typedef tl::TRefObject<IVisualObject>       PVisualObject;
 typedef tl::TRefObject<IRenderObject>       PRenderObject;
 
 typedef tl::TRefObject<IPhysics>            PPhysics;
@@ -365,6 +377,14 @@ inline bool plane_cross(DPoint& X, const DPlane& a, const DPlane& b, const DPlan
   X = A1.mult(D);
   return true;
 }
+
+//***************************************
+// EXTERNALS
+//***************************************
+
+extern sint8 cube_faceshift[6][4]; // [faces]{x,y,z,_}
+extern uint8 cube_quad_texpoints[6][4][2]; // [faces][verts]{u,v}
+extern uint8 cube_quad_points[6][4][4]; // [faces][verts]{x,y,z,_}
 
 //***************************************
 // END

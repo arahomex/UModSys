@@ -43,8 +43,75 @@ public:
 };
 
 //------------------------------------
-// 
+// RVisualizerScene
 //------------------------------------
+
+struct RVisualizerScene : public IVisualizerScene {
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RVisualizerScene, 2, IVisualizerScene)
+  UMODSYS_REFOBJECT_REFMODULE()
+public:
+  typedef tl::TDynarrayDynamic<Scene> Scenes;
+  typedef tl::TDynarrayDynamic<IVisualObject*> ObjectQueue;
+  typedef tl::TRStackSocket<IVisualObject*, ObjectQueue> ObjectQueueSocket;
+public: // IVisualizer
+  // links
+  IRenderer* renderer_get(void) const;
+  bool renderer_set(IRenderer* r);
+  // visualize
+  bool render_3d(int phaseid, bool isalpha, IRenderDriver* drv);
+  bool render_2d(IRenderDriver* drv);
+public: // IVisualizerScene
+  // scene
+  size_t scene_count(void) const;
+  Scene scene_get(size_t idx) const;
+  size_t scene_index(const Scene &s) const;
+  bool scene_add(const Scene &s);
+  bool scene_remove(const Scene &s);
+/*
+public: // ISceneProcessor
+  bool on_scene_node_add(IScene* sc, HSceneNode node);
+  bool on_scene_node_remove(IScene* sc, HSceneNode node);
+  bool on_scene_node_change(IScene* sc, HSceneNode node);
+*/
+
+public:
+  IRenderer::P renderer;
+  ISharedLibrary::P lib;
+  Scenes scenes;
+  ObjectQueue queue;
+public:
+  RVisualizerScene(DOwner *pv, const SParameters& args);
+  ~RVisualizerScene(void);
+  inline bool validate_construction(void) { return true; }
+  //
+  void clear_cache(void);
+};
+
+//------------------------------------
+// RVisualSceneMapper_Direct
+//------------------------------------
+
+struct RVisualSceneMapper_Direct : public IVisualSceneMapper {
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RVisualSceneMapper_Direct, 2, IVisualSceneMapper)
+  UMODSYS_REFOBJECT_REFMODULE()
+public:
+  typedef tl::TScatterArray<IVisualObject::P, HSceneNode> Cache;
+public: // IVisualSceneMapper
+  bool renderer_set(IRenderer* r);
+  bool node_update_all(IScene* scene);
+  bool queue_fill(Queue& q, int phaseid, bool isalpha);
+public: // ISceneProcessor
+  bool on_scene_node_add(IScene* sc, HSceneNode node);
+  bool on_scene_node_remove(IScene* sc, HSceneNode node);
+  bool on_scene_node_change(IScene* sc, HSceneNode node);
+public:
+  Cache cache;
+public:
+  RVisualSceneMapper_Direct(DOwner *pv, const SParameters& args);
+  ~RVisualSceneMapper_Direct(void);
+  inline bool validate_construction(void) { return true; }
+};
+
 
 //------------------------------------
 // 

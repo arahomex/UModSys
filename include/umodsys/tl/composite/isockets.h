@@ -17,6 +17,9 @@ using core::array_index_none;
 template<typename SNode> struct TIStackSocket; // socket to connect to
 template<typename SNode, typename Stack> struct TRStackSocket; // socket to connect to
 
+template<typename SNode> struct TIArraySocket; // socket to connect to
+template<typename SNode, typename Array> struct TRArraySocket; // socket to connect to
+
 /*************************************************************/
 
 template<typename SNode> 
@@ -40,6 +43,35 @@ public:
   inline bool isfull(void) const { return refs.IsFull(); }
   inline bool push(const SNode& item) { return refs.Push(item); }
   inline bool pop(SNode& item) { return refs.Pop(item); }
+};
+
+/*************************************************************/
+
+template<typename SNode> 
+struct TIArraySocket {
+public:
+  virtual size_t getcount(void) const =0;
+  virtual const SNode& getelem(size_t idx) const =0;
+  virtual SNode& getelem(size_t idx) =0;
+  //
+  inline size_t operator~(void) const { return getcount(); }
+  inline const SNode& operator[](size_t idx) const { return getelem(idx); }
+  inline SNode& operator[](size_t idx) { return getelem(idx); }
+  inline const SNode& operator()(size_t idx) const { return getelem(idx); }
+  inline SNode& operator()(size_t idx) { return getelem(idx); }
+};
+
+template<typename SNode, typename Array> 
+struct TRArraySocket : public TIArraySocket<SNode> {
+public:
+  Array& refs;
+  //
+  inline TRArraySocket(Array& r) : refs(r) {}
+  inline ~TRArraySocket(void) {}
+public:
+  inline size_t getcount(void) const { return ~refs; }
+  inline const SNode& getelem(size_t idx) const { return refs(idx); }
+  inline SNode& getelem(size_t idx) { return refs(idx); }
 };
 
 /*************************************************************/

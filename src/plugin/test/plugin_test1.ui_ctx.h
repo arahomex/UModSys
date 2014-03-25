@@ -64,8 +64,14 @@ bool RTest1_Shell::UI_Info::create_3d(const char *cap)
 {
   {
     TParametersA<1024> pars;
-    rdr = ui_newrenderer("*::stdlib::*", pars);
+    rdr = generate_type<lib3d::IRenderer>("*::stdlib::*", pars, "IRenderer");
     if(!rdr.valid())
+      return false;
+  }
+  {
+    TParametersA<1024> pars;
+    visis = generate_type<lib3d::IVisualizerScene>("*::stdlib::RVisualizerScene_Direct", pars, "VisualizerScene");
+    if(!visis.valid())
       return false;
   }
   {

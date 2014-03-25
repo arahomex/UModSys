@@ -38,39 +38,49 @@ struct SObjectParticleStatic : public SObjectParticle {
 //***************************************
 
 //***************************************
-// INodeObject_Brush::
+// IVisualObject_Brush::
 
-struct INodeObject_Brush : public INodeObject {
+struct IVisualObject_Brush : public IVisualObject {
   enum { ObjectKind = snk_Brush };
   //
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::INodeObject_Brush, 2, INodeObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IVisualObject_Brush, 2, IVisualObject);
+};
+
+//---------------------------------------
+// ILogicObject_Brush::
+
+struct ILogicObject_Brush : public ILogicObject {
+  enum { ObjectKind = snk_Brush };
+  //
+protected:
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::ILogicObject_Brush, 2, ILogicObject);
 };
 
 //***************************************
-// INodeObject_Mesh::
+// IVisualObject_Mesh::
 
-struct INodeObject_Mesh : public INodeObject_Brush {
+struct IVisualObject_Mesh : public IVisualObject_Brush {
   enum { ObjectKind = snk_Mesh };
   //
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::INodeObject_Mesh, 2, INodeObject_Brush);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IVisualObject_Mesh, 2, IVisualObject_Brush);
 };
 
 //***************************************
-// INodeObject_Picture::
+// IVisualObject_Picture::
 
-struct INodeObject_Picture : public INodeObject_Brush {
+struct IVisualObject_Picture : public IVisualObject_Brush {
   enum { ObjectKind = snk_Picture };
   //
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::INodeObject_Picture, 2, INodeObject_Brush);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IVisualObject_Picture, 2, IVisualObject_Brush);
 };
 
 //***************************************
-// INodeObject_Particles::
+// IVisualObject_Particles::
 
-struct INodeObject_Particles : public INodeObject_Brush {
+struct IVisualObject_Particles : public IVisualObject_Brush {
   enum { ObjectKind = snk_Particles };
   //
   virtual bool particle_setup(int size, int count, int npics=1) =0;
@@ -90,13 +100,13 @@ struct INodeObject_Particles : public INodeObject_Brush {
   virtual const SPicture* pic_get(int pid) =0;
   //
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::INodeObject_Particles, 2, INodeObject_Brush);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IVisualObject_Particles, 2, IVisualObject_Brush);
 };
 
 //***************************************
-// INodeObject_Camera::
+// IVisualObject_Camera::
 
-struct INodeObject_Camera : public INodeObject {
+struct IVisualObject_Camera : public IVisualObject {
   enum { ObjectKind = snk_Camera };
   //
   virtual DTexPoint camera_get_fov(void) =0;
@@ -107,20 +117,20 @@ struct INodeObject_Camera : public INodeObject {
   virtual bool camera_cast_ray(const DTexPoint &screen, DPoint &start, DPoint &dir) =0;
   virtual bool camera_setup(IRenderDriver *driver) =0;
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::INodeObject_Camera, 2, INodeObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IVisualObject_Camera, 2, IVisualObject);
 };
 
 //***************************************
-// INodeObject_Light::
+// IVisualObject_Light::
 
-struct INodeObject_Light : public INodeObject {
+struct IVisualObject_Light : public IVisualObject {
   enum { ObjectKind = snk_Light };
   //
   virtual bool light_supported(eLightType type) =0;
   virtual bool light_setinfo(eLightType type, const SLight& info) =0;
   virtual bool light_getinfo(eLightType type, SLight& info) =0;
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::INodeObject_Light, 2, INodeObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IVisualObject_Light, 2, IVisualObject);
 };
 
 //***************************************

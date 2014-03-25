@@ -741,6 +741,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.e_visual.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.geom.h"
 				>
 			</File>
@@ -793,6 +797,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\lib\3d\umodsys.lib.3d.objstates.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\lib\3d\version_library.h"
 				>
 			</File>
@@ -810,6 +818,14 @@
 			</File>
 			<File
 				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.Trenderer.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.Tvisualizerscene.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.Tvisualscenemapper_direct.h"
 				>
 			</File>
 			<File

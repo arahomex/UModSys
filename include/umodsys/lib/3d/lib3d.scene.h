@@ -5,7 +5,8 @@
 // info: scene
 /*************************************************************/
 
-#include <umodsys/lib/2d/lib2d.typedefs.h>
+#include <umodsys/lib/2d/lib2d.common.h>
+#include <umodsys/lib/3d/lib3d.typedefs.h>
 
 namespace UModSys {
 namespace lib3d {
@@ -33,12 +34,23 @@ protected:
 };
 
 //***************************************
+// ISceneProcessor::
+
+struct ISceneProcessor {
+public:
+  virtual bool on_scene_node_add(IScene* sc, HSceneNode node) =0;
+  virtual bool on_scene_node_remove(IScene* sc, HSceneNode node) =0;
+  virtual bool on_scene_node_change(IScene* sc, HSceneNode node) =0;
+};
+
+//***************************************
 // IScene::
 
 struct IScene : public IRefObject {
 public:
-  typedef bool (*clone_func)(IScene *scene, void* context, HSceneNode dest, HSceneNode src);
+//  typedef bool (*clone_func)(IScene *scene, void* context, HSceneNode dest, HSceneNode src);
 public:
+/*
   virtual HSceneNode add_node_null(HSceneNode parent, const DCString& name, int ord) =0;
   virtual HSceneNode add_node_sky(HSceneNode parent, const DCString& name, int ord) =0; // root sky node
 //  virtual HSceneNode add_node_multi(HSceneNode parent, const DCString& name, int ord, IObjectComplex *c) =0; // complex
@@ -53,24 +65,28 @@ public:
   virtual bool set_camera_node(HSceneNode node) =0;
   virtual HSceneNode get_sky_node(void) =0;
   virtual bool set_sky_node(HSceneNode node) =0;
+*/
+  virtual ISharedLibrary* library_get(void) =0;
   //
+  virtual bool processor_add(ISceneProcessor* proc) = 0;
+  virtual bool processor_remove(ISceneProcessor* proc) = 0;
+  //
+  virtual HSceneNode nodes_root(void) const =0;
+  virtual bool nodes_gather(void) =0; // clear dead nodes
+  //
+  virtual bool calc_transform(HSceneNode node=NULL) = 0;
+  virtual bool mark_phases(HSceneNode node) =0;
+  virtual bool mark_color(HSceneNode node, const DColorAlpha* c, const lib2d::eTransparrentMode *transmode) =0;
+/*
   virtual bool renderer_add(IRenderer* R, HSceneNode parent=NULL) = 0; // generate visual states
   virtual bool renderer_remove(IRenderer* R, HSceneNode parent=NULL) = 0; // lost visual states
-  virtual ISharedLibrary* get_library(void) =0;
   virtual bool ctrl_frame(HSceneNode node, DScalar deltaT) =0;
-  //
-  // only for renderer usage, not recommended to use it directly
-  virtual bool gather(void) =0; // clear dead nodes
-  virtual bool update_states(int opid) =0;
-  virtual bool calc_transform(HSceneNode node=NULL) = 0;
   virtual bool render(IRenderer* R, HSceneNode parent=NULL) = 0;
+  virtual bool update_states(int opid) =0;
   virtual bool render_camera(IRenderer* R, IRenderDriver *driver, HSceneNode parent=NULL) = 0;
   virtual bool render_extra(const SRenderState& state, int comps) =0;
   virtual bool render_cast(IRenderer* R, const DTexPoint &screen, DPoint &start, DPoint &dir) =0;
-protected:
-  friend struct ISceneNode;
-  virtual bool mark_phases(HSceneNode node) =0;
-  virtual bool mark_color(HSceneNode node, const DColorAlpha* c, const lib2d::eTransparrentMode *transmode) =0;
+*/
   //
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IScene, 2, IRefObject);
@@ -131,7 +147,7 @@ public:
   virtual bool add_controller(const ISceneController::P& ctrl) const =0;
   virtual bool remove_controller(ISceneController* ctrl) const =0;
   virtual bool gather_controllers(void) const =0;
-  virtual INodeObject* get_visual(IRenderer* r) const =0;
+//  virtual INodeObject* get_visual(IRenderer* r) const =0;
 public:
   inline bool is_trans(void) const { 
     return color->v[3]!=1; 

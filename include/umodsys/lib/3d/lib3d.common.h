@@ -15,16 +15,31 @@ namespace lib3d {
 //***************************************
 
 //***************************************
-// IObject::
+// IGeneralObject::
 
-struct IObject : public IRefObject {
+struct IGeneralObject : public IRefObject {
 public:
   // state generation functions
   virtual bool valid(void) const =0;
-  virtual PRenderObject render_new(IRenderer* r) =0; // generate static data
-  virtual IObject* get_root(void) =0; // return root render object for states
+  virtual PRenderObject render_new(IRenderer* r) =0; // generate visual static data
+  virtual PLogicObject logic_new(IRenderer* r) =0; // generate logical (scene) data
+  virtual PPhysicsObject physics_new(IRenderer* r) =0; // generate physics data
+  virtual IGeneralObject* get_root(void) =0; // return root render object for states
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IObject, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IGeneralObject, 2, IRefObject);
+};
+
+//***************************************
+// ILogicObject::
+
+struct ILogicObject : public IRefObject {
+  virtual bool valid(void) const =0;
+  virtual PGeneralObject object_get(void) const =0; // get object
+  //
+  ILogicObject(void);
+  ~ILogicObject(void);
+protected:
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::ILogicObject, 2, IRefObject);
 };
 
 //***************************************
@@ -35,8 +50,8 @@ struct IRenderObject : public IRefObject {
   int seqno, vlinks;
   //
   virtual bool valid(void) const =0;
-  virtual PObject object_get(void) const =0; // get object
-  virtual PNodeObject node_new(void) =0; // generate dynamic data
+  virtual PGeneralObject object_get(void) const =0; // get object
+  virtual PVisualObject visual_new(void) =0; // generate dynamic data
   //
   inline bool is_unused(void) const { return vlinks==0; }
   inline void use(void) { vlinks++; }
@@ -49,22 +64,24 @@ protected:
 };
 
 //***************************************
-// IObjectVisualState::
+// IVisualObject::
 
-struct INodeObject : public IRefObject {
+struct IVisualObject : public IRefObject {
   int seqno;
+  PLogicObject logics;
   //
   virtual bool valid(void) const =0;
-  virtual PObject object_get(void) const =0; // get object
+  virtual PGeneralObject object_get(void) const =0; // get object
   virtual PRenderObject render_get(void) const =0; // get object
-  virtual bool update(void) =0; // re-initalize links
+  virtual bool visual_update(void) =0; // re-initalize links
+  virtual bool logic_sync(void) =0; // update data
   // depending of type functionality
   virtual bool render_state(SRenderState& state) =0;
   //
-  INodeObject(void);
-  ~INodeObject(void);
+  IVisualObject(void);
+  ~IVisualObject(void);
 protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::INodeObject, 2, IRefObject);
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IVisualObject, 2, IRefObject);
 };
 
 //***************************************
@@ -90,14 +107,6 @@ struct IObjectBrushOutline {
     return true;
   }
 };
-
-//***************************************
-// INLINES/EXTERNALS
-//***************************************
-
-extern sint8 cube_faceshift[6][4]; // [faces]{x,y,z,_}
-extern uint8 cube_quad_texpoints[6][4][2]; // [faces][verts]{u,v}
-extern uint8 cube_quad_points[6][4][4]; // [faces][verts]{x,y,z,_}
 
 //***************************************
 // END

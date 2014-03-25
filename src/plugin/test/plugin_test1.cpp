@@ -15,6 +15,7 @@
 #include <umodsys/lib/2d/lib2d.image.h>
 #include <umodsys/lib/3d/lib3d.common.h>
 #include <umodsys/lib/3d/lib3d.driver.h>
+#include <umodsys/lib/3d/lib3d.visual.h>
 
 #include "version_plugin_test1.h"
 
@@ -126,13 +127,15 @@ struct RTest1_Shell
     //
     float ticks, frame_time;
     lib2d::IRenderDriver::P rd2d;
-    lib3d::IRenderDriver::P rd3d;
-    lib3d::IRenderer::P rdr;
-    libui::ITerminal::P term;
     lib2d::IMultiImage::P font;
+    libui::ITerminal::P term;
     libui::IKeyboardController::P keyc;
     libui::IMouseController::P mouc;
     libui::ICollector::P frames;
+    //
+    lib3d::IRenderDriver::P rd3d;
+    lib3d::IRenderer::P rdr;
+    lib3d::IVisualizerScene::P visis;
     lib3d::IVertexArray::P va_tri, vas_tri, vas_cube, vas_cubechunk;
     bool f_quit, fmouvis, fview_matrix, is_upz;
     //
@@ -171,7 +174,6 @@ struct RTest1_Shell
   static libui::ICollector::P ui_newframes(const DCString &mask, const SParameters& args);
   static libui::ITerminal::P ui_newterm(const DCString &mask, const SParameters& args);
   static lib2d::IMultiImage::P ui_newfont(const DCString &mask, const SParameters& args);
-  static lib3d::IRenderer::P ui_newrenderer(const DCString &mask, const SParameters& args);
   //
   void ui_test1(void);
   void ui_test2(void);

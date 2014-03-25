@@ -14,6 +14,7 @@
 #include <umodsys/tl/composite/dynarray.h>
 //#include <umodsys/core/syshlp.h>
 
+#include <umodsys/lib/3d/lib3d.common.h>
 #include <umodsys/lib/3d/lib3d.renderer.h>
 #include <umodsys/lib/3d/lib3d.driver.h>
 #include <umodsys/lib/3d/lib3d.visual.h>
@@ -47,20 +48,23 @@ struct RGenerator : public IGenerator {
   //
   int get_generated_names(DPtrList& list) const {
     return t_names<RRenderer>(list)
-//         + t_names<?>(list)
+         + t_names<RVisualizerScene>(list)
+         + t_names<RVisualSceneMapper_Direct>(list)
     ;
     return 0;
   }
   int get_generated_types(DPtrList& list, TypeId name) const {
     int rv = 0;
     t_types<RRenderer>(rv, list, name) 
-//    || t_types<?>(rv, list, name) 
+      || t_types<RVisualizerScene>(rv, list, name) 
+      || t_types<RVisualSceneMapper_Direct>(rv, list, name) 
     ;
     return rv;
   }
   bool generate(IRefObject::P& obj, TypeId name, const SParameters& args) {
     return t_gen_param<RRenderer>(this, obj, name, args)
-//      || t_gen_param<?>(this, obj, name, args)
+      || t_gen_param<RVisualizerScene>(this, obj, name, args)
+      || t_gen_param<RVisualSceneMapper_Direct>(this, obj, name, args)
     ;
     return false;
   }
