@@ -8,6 +8,7 @@ UMODSYS_MODULE_BODY0()
 #include "umodsys.mod.3d.stdlib.Trenderer.h"
 #include "umodsys.mod.3d.stdlib.Tvisualizerscene.h"
 #include "umodsys.mod.3d.stdlib.Tvisualscenemapper_direct.h"
+#include "umodsys.mod.3d.stdlib.Tobj_camera.h"
 
 struct RModuleReg : public IModuleReg {
   UMODSYS_BASE_MODREG_DEF(RModuleReg)

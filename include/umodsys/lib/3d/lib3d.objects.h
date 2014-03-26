@@ -109,12 +109,12 @@ protected:
 struct IVisualObject_Camera : public IVisualObject {
   enum { ObjectKind = snk_Camera };
   //
-  virtual DTexPoint camera_get_fov(void) =0;
-  virtual bool camera_get_T(DMatrix4 &T) =0;
-  virtual bool camera_get_xyz(DPoint* ox, DPoint* oy, DPoint* oz) =0;
-  virtual int camera_get_planes(DPlane* planes) =0;
+  virtual DTexPoint camera_get_fov(void) const =0;
+  virtual bool camera_get_T(DMatrix4 &T) const =0;
+  virtual bool camera_get_xyz(DPoint* ox, DPoint* oy, DPoint* oz) const =0;
+  virtual int camera_get_planes(DPlane* planes) const =0;
   // cast ray from [-1,1],[-1,1] to world coordinates
-  virtual bool camera_cast_ray(const DTexPoint &screen, DPoint &start, DPoint &dir) =0;
+  virtual bool camera_cast_ray(const DTexPoint &screen, DPoint &start, DPoint &dir) const =0;
   virtual bool camera_setup(IRenderDriver *driver) =0;
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IVisualObject_Camera, 2, IVisualObject);

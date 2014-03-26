@@ -21,9 +21,10 @@ struct IGeneralObject : public IRefObject {
 public:
   // state generation functions
   virtual bool valid(void) const =0;
+  virtual PVisualObject visual_new(IRenderer* r, IRenderObject* ro) =0; // generate visual dynamic data
   virtual PRenderObject render_new(IRenderer* r) =0; // generate visual static data
-  virtual PLogicObject logic_new(IRenderer* r) =0; // generate logical (scene) data
-  virtual PPhysicsObject physics_new(IRenderer* r) =0; // generate physics data
+  virtual PLogicObject logic_new(void) =0; // generate logical (scene) data
+//  virtual PPhysicsObject physics_new(void) =0; // generate physics data
   virtual IGeneralObject* get_root(void) =0; // return root render object for states
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IGeneralObject, 2, IRefObject);
@@ -35,9 +36,6 @@ protected:
 struct ILogicObject : public IRefObject {
   virtual bool valid(void) const =0;
   virtual PGeneralObject object_get(void) const =0; // get object
-  //
-  ILogicObject(void);
-  ~ILogicObject(void);
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::ILogicObject, 2, IRefObject);
 };
@@ -56,9 +54,6 @@ struct IRenderObject : public IRefObject {
   inline bool is_unused(void) const { return vlinks==0; }
   inline void use(void) { vlinks++; }
   inline void unuse(void) { vlinks--; }
-  //
-  IRenderObject(void);
-  ~IRenderObject(void);
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IRenderObject, 2, IRefObject);
 };
@@ -77,9 +72,6 @@ struct IVisualObject : public IRefObject {
   virtual bool logic_sync(void) =0; // update data
   // depending of type functionality
   virtual bool render_state(SRenderState& state) =0;
-  //
-  IVisualObject(void);
-  ~IVisualObject(void);
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IVisualObject, 2, IRefObject);
 };

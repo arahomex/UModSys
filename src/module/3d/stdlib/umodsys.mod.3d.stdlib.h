@@ -20,6 +20,7 @@
 #include <umodsys/lib/3d/lib3d.visual.h>
 #include <umodsys/lib/3d/lib3d.logic.h>
 #include <umodsys/lib/3d/lib3d.scene.h>
+#include <umodsys/lib/3d/lib3d.objects.h>
 
 #define U_MOD UMODSYS_MODULE_NAME(lib3d, stdlib)
 UMODSYS_MODULE_BEGIN(lib3d, stdlib)
@@ -39,6 +40,8 @@ struct RGenerator;
 //***************************************
 
 #include "umodsys.mod.3d.stdlib.types.h"
+#include "umodsys.mod.3d.stdlib.types_obj.h"
+#include "umodsys.mod.3d.stdlib.types_cam.h"
 
 //***************************************
 // RGenerator
@@ -50,6 +53,8 @@ struct RGenerator : public IGenerator {
     return t_names<RRenderer>(list)
          + t_names<RVisualizerScene>(list)
          + t_names<RVisualSceneMapper_Direct>(list)
+    //
+         + t_names<RGeneralObject_Camera>(list)
     ;
     return 0;
   }
@@ -58,6 +63,8 @@ struct RGenerator : public IGenerator {
     t_types<RRenderer>(rv, list, name) 
       || t_types<RVisualizerScene>(rv, list, name) 
       || t_types<RVisualSceneMapper_Direct>(rv, list, name) 
+      //
+      || t_types<RGeneralObject_Camera>(rv, list, name) 
     ;
     return rv;
   }
@@ -65,6 +72,8 @@ struct RGenerator : public IGenerator {
     return t_gen_param<RRenderer>(this, obj, name, args)
       || t_gen_param<RVisualizerScene>(this, obj, name, args)
       || t_gen_param<RVisualSceneMapper_Direct>(this, obj, name, args)
+      //
+      || t_gen_param<RGeneralObject_Camera>(this, obj, name, args)
     ;
     return false;
   }

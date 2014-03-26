@@ -741,6 +741,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\plugin\test\plugin_test1.ui_ctx3.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\plugin\test\plugin_test1.ui_ctx3u.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\plugin\test\plugin_test1.ui_funcs.h"
 				>
 			</File>

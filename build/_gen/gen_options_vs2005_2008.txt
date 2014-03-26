@@ -78,7 +78,7 @@ begin project-group umodsys
   begin project umodsys_lib_lib3d
     GUID-gen 0 umodsys.lib_lib3d
     option * OutputDirectory $(path-out-bin)
-    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto lib3d mod-3d-lib3d"
+    option * PreBuild_CommandLine "\$(SolutionDir)\ver-call.bat auto lib3d mod-3d-stdlib"
   end
 
   begin project plugin_test1

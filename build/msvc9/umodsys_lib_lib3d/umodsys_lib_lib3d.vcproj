@@ -108,7 +108,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-lib3d"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-stdlib"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -224,7 +224,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-lib3d"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-stdlib"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -340,7 +340,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-lib3d"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-stdlib"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -456,7 +456,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-lib3d"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-stdlib"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -572,7 +572,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-lib3d"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-stdlib"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -688,7 +688,7 @@
 			<Tool
 				Name="VCPreBuildEventTool"
 				Description="Version Increment..."
-				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-lib3d"
+				CommandLine="$(SolutionDir)\ver-call.bat auto lib3d mod-3d-stdlib"
 				ExcludedFromBuild="false"
 			/>
 			<Tool
@@ -817,6 +817,14 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.Tobj_camera.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.Tobj_primitive.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.Trenderer.h"
 				>
 			</File>
@@ -830,6 +838,14 @@
 			</File>
 			<File
 				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.types.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.types_cam.h"
+				>
+			</File>
+			<File
+				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.types_obj.h"
 				>
 			</File>
 			<File

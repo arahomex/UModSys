@@ -16,6 +16,7 @@
 #include <umodsys/lib/3d/lib3d.common.h>
 #include <umodsys/lib/3d/lib3d.driver.h>
 #include <umodsys/lib/3d/lib3d.visual.h>
+#include <umodsys/lib/3d/lib3d.objects.h>
 
 #include "version_plugin_test1.h"
 
@@ -137,6 +138,7 @@ struct RTest1_Shell
     lib3d::IRenderer::P rdr;
     lib3d::IVisualizerScene::P visis;
     lib3d::IVertexArray::P va_tri, vas_tri, vas_cube, vas_cubechunk;
+    lib3d::IVisualObject_Camera::P cam;
     bool f_quit, fmouvis, fview_matrix, is_upz;
     //
     lib3d::DPoint3 fps_pos, fps_ori;
@@ -248,6 +250,8 @@ struct RTest1_Shell
 
 #include "plugin_test1.ui_funcs.h"
 #include "plugin_test1.ui_ctx.h"
+#include "plugin_test1.ui_ctx3.h"
+#include "plugin_test1.ui_ctx3u.h"
 #include "plugin_test1.ui_tests.h"
 
 struct RGenerator : public IGenerator {
