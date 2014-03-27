@@ -27,6 +27,7 @@ namespace lib3d {
 
 struct IRenderDriver : public lib2d::IRenderDriver {
   // -- camera setup
+  virtual bool camera_reset(void) =0; // reset all coordinates check to [-1..1]
   virtual bool camera_ortho(const DPoint &center, const DPoint &size) =0;
   virtual bool camera_frustum(const DPoint &center, const DPoint &size) =0;
   virtual bool camera_frustum(const DPoint &center, const DTexPoint &fov, DScalar min, DScalar max) =0;

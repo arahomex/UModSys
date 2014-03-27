@@ -127,7 +127,53 @@ bool RRenderer::render_extra(const SRenderState& state, int comps)
 {
   if(!driver.valid())
     return false;
-  return false;
+  //
+  if(comps & rsc_TCameraLocal)
+    comps |= rsc_TWorldLocal;
+  if(comps & rsc_TLocalCamera)
+    comps |= rsc_TWorldCamera;
+  //
+  comps &= ~state.extras;
+  if(comps==0)
+    return true;
+  //
+  SRenderState& S = const_cast<SRenderState&>(state);
+  //
+  if(comps & rsc_TWorldCamera) {
+    if(!S.must_extras(rsc_TCamera))
+      return false; // some T's undefined
+    if(!S.T_world_camera.set_inversed(*state.T_camera))
+      return false;
+    S.extras_set(rsc_TWorldCamera);
+  }
+  if(comps & rsc_TWorldLocal) {
+    if(!S.must_extras(rsc_TLocal))
+      return false; // some T's undefined
+    if(!S.T_world_local.set_inversed(*state.T_local))
+      return false;
+    S.extras_set(rsc_TWorldLocal);
+  }
+  if(comps & rsc_TLocalCamera) {
+    if(!S.must_extras(rsc_TLocal))
+      return false; // some T's undefined
+    S.T_local_camera.mult(state.T_world_camera, *state.T_local);
+    S.extras_set(rsc_TLocalCamera);
+  }
+  if(comps & rsc_TCameraLocal) {
+    if(!S.must_extras(rsc_TCamera))
+      return false; // some T's undefined
+    S.T_local_camera.mult(state.T_world_local, *state.T_camera);
+    S.extras_set(rsc_TCameraLocal);
+  }
+  return true;
+}
+
+bool RRenderer::render_reset(const SRenderState& state)
+{
+  if(!driver.valid())
+    return false;
+  driver->camera_reset();
+  return true;
 }
 
 bool RRenderer::render_end(void)

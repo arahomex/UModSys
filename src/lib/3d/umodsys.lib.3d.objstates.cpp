@@ -4,27 +4,6 @@
 
 using namespace UModSys::lib3d;
 
-//***************************************
-// SRenderState::
-//***************************************
-
-SRenderState::SRenderState(IRenderer* rr, IScene* sc, IRenderDriver *drv, HSceneNode n)
-: driver(drv), node(n), renderer(rr), scene(sc),
-  state(NULL), 
-  // shape(NULL), render(NULL),
-  camera(NULL), camstate(NULL),
-  //
-  T_camera_world(NULL), T_local_world(NULL),
-  extras(0), phase(0), outlines(0), nlights(0),
-  ncameraplanes(0), cameraplanes_world(NULL), cameraplanes_local(NULL)
-{
-  if(n) {
-    color = n->color;
-//    shape = n->shape;
-//    state = n->get_visual(rr);
-  }
-}
-
 #if 0
 //***************************************
 // SMaterial::

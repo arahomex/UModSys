@@ -114,6 +114,7 @@ public: // lib2d::IRenderDriver
   void render_rect(const lib2d::DPoint& a, const lib2d::DPoint& b);
 public: // lib3d::IRenderDriver
   // -- camera setup
+  bool camera_reset(void); // reset all coordinates check to [-1..1]
   bool camera_ortho(const DPoint &center, const DPoint &size);
   bool camera_frustum(const DPoint &center, const DPoint &size);
   bool camera_frustum(const DPoint &center, const DTexPoint &fov, DScalar min, DScalar max);

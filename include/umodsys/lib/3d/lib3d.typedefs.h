@@ -267,12 +267,12 @@ enum eObjectBrushOutline {
 //***************************************
 
 enum eRenderStateComponents {
-  rsc_TCameraWorld    = 0x00000001,
-  rsc_TLocalWorld     = 0x00000002,
-  rsc_TWorldCamera    = 0x00000004,
-  rsc_TLocalCamera    = 0x00000010,
-  rsc_TCameraLocal    = 0x00000020,
-  rsc_TWorldLocal     = 0x00000040,
+  rsc_TCamera         = 0x00000001,
+  rsc_TLocal          = 0x00000002,
+  rsc_TWorldCamera    = 0x00000010,
+  rsc_TWorldLocal     = 0x00000020,
+  rsc_TLocalCamera    = 0x00000040,
+  rsc_TCameraLocal    = 0x00000080,
   rsc_OrtX            = 0x00001000,
   rsc_OrtY            = 0x00002000,
   rsc_OrtZ            = 0x00004000,
@@ -281,6 +281,14 @@ enum eRenderStateComponents {
   rsc_CameraPlanesW   = 0x00020000,
   rsc_CameraPlanesL   = 0x00040000,
   rsc_Camera          = 0x01000000,
+  //
+  rsc_AllLocal        = rsc_TLocal | rsc_TWorldLocal | rsc_TCameraLocal | rsc_TLocalCamera 
+                      | rsc_CameraPlanesL,
+  rsc_AllCamera       = rsc_TCamera | rsc_TWorldCamera | rsc_TCameraLocal | rsc_TLocalCamera 
+                      | rsc_CameraPlanesL | rsc_CameraPlanesW | rsc_CameraPlanes
+                      | rsc_OrtX | rsc_OrtY | rsc_OrtZ | rsc_Origin0
+                      | rsc_Camera,
+  //
   rsc_None            = 0x00000000
 };
 

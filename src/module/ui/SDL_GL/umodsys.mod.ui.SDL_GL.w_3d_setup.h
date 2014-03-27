@@ -69,6 +69,11 @@ bool RRenderDriver3D::SetFrustum(const DPoint &center, DScalar dx, DScalar dy, D
 
 // -- camera setup
 
+bool RRenderDriver3D::camera_reset(void) // reset all coordinates check to [-1..1]
+{
+  return camera_ortho(DPoint(0.0), DPoint(1.0));
+}
+
 bool RRenderDriver3D::camera_ortho(const DPoint &center, const DPoint &size)
 {
   gl.glMatrixMode(GL_PROJECTION);

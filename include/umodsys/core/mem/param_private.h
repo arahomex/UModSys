@@ -34,11 +34,13 @@ struct IParameters : public core::IRefObject {
   virtual void p_copy(SParametersData *p, const SParametersData& r) =0;
   //
   virtual bool add(SParametersData *p, BCStr name, BCStr value) =0;
+  virtual bool add(SParametersData *p, BCStr name, const DCString& value) =0;
   virtual bool add(SParametersData *p, BCStr name, int value) =0;
   virtual bool add(SParametersData *p, BCStr name, const double &value) =0;
   virtual bool add(SParametersData *p, BCStr name, IRefObject *value) =0;
   //
   virtual bool get(const SParametersData *p, BCStr name, BCStr &value) =0;
+  virtual bool get(const SParametersData *p, BCStr name, DCString& value) =0;
   virtual bool get(const SParametersData *p, BCStr name, int &value) =0;
   virtual bool get(const SParametersData *p, BCStr name, double &value) =0;
   virtual bool get(const SParametersData *p, BCStr name, IRefObject* &value) =0;
@@ -91,6 +93,8 @@ public:
   //
   inline bool add(BCStr name, BCStr value) 
     { return data.worker ? data.worker->add(&data, name, value) : false; }
+  template<typename Core, typename Cmp> inline bool add(BCStr name, const tl::TString<Core, Cmp>& value) 
+    { return data.worker ? data.worker->add(&data, name, value.s()) : false; }
   inline bool add(BCStr name, int value) 
     { return data.worker ? data.worker->add(&data, name, value) : false; }
   inline bool add(BCStr name, bool value) 
@@ -101,10 +105,12 @@ public:
     { return data.worker ? data.worker->add(&data, name, double(value)) : false; }
   inline bool add(BCStr name, IRefObject *value) 
     { return data.worker ? data.worker->add(&data, name, value) : false; }
-  template<typename IRef> inline bool add(BCStr name, const tl::TRefObject<IRef>& value) 
+  template<typename IRef, typename Func> inline bool add(BCStr name, const tl::TRefObject<IRef, Func>& value) 
     { return data.worker ? data.worker->add(&data, name, value()) : false; }
   //
   inline bool get(BCStr name, BCStr &value) const
+    { return data.worker ? data.worker->get(&data, name, value) : false; }
+  inline bool get(BCStr name, DCString &value) const
     { return data.worker ? data.worker->get(&data, name, value) : false; }
   inline bool get(BCStr name, int &value) const
     { return data.worker ? data.worker->get(&data, name, value) : false; }

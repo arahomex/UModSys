@@ -777,6 +777,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.renderstate.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\include\umodsys\lib\3d\lib3d.scene.h"
 				>
 			</File>
@@ -841,11 +845,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.types_cam.h"
+				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.types_obj_camera.h"
 				>
 			</File>
 			<File
-				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.types_obj.h"
+				RelativePath="..\..\..\src\module\3d\stdlib\umodsys.mod.3d.stdlib.types_obj_primitive.h"
 				>
 			</File>
 			<File

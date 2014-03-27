@@ -8,15 +8,19 @@
 #include <umodsys/lib/media/libmedia.serialize.h>
 
 #include <umodsys/lib/utils/libutils.time.h>
+
 #include <umodsys/lib/ui/libui.common.h>
 #include <umodsys/lib/ui/libui.keymap.h>
 #include <umodsys/lib/ui/libui.frames.h>
+
 #include <umodsys/lib/2d/lib2d.driver.h>
 #include <umodsys/lib/2d/lib2d.image.h>
+
 #include <umodsys/lib/3d/lib3d.common.h>
 #include <umodsys/lib/3d/lib3d.driver.h>
 #include <umodsys/lib/3d/lib3d.visual.h>
 #include <umodsys/lib/3d/lib3d.objects.h>
+#include <umodsys/lib/3d/lib3d.renderstate.h>
 
 #include "version_plugin_test1.h"
 
@@ -139,6 +143,7 @@ struct RTest1_Shell
     lib3d::IVisualizerScene::P visis;
     lib3d::IVertexArray::P va_tri, vas_tri, vas_cube, vas_cubechunk;
     lib3d::IVisualObject_Camera::P cam;
+    lib3d::IVisualObject::P vocube;
     bool f_quit, fmouvis, fview_matrix, is_upz;
     //
     lib3d::DPoint3 fps_pos, fps_ori;

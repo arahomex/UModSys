@@ -38,6 +38,16 @@ struct SObjectParticleStatic : public SObjectParticle {
 //***************************************
 
 //***************************************
+// IRenderObject_Brush::
+
+struct IRenderObject_Brush : public IRenderObject {
+  enum { ObjectKind = snk_Brush };
+  //
+protected:
+  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IRenderObject_Brush, 2, IRenderObject);
+};
+
+//***************************************
 // IVisualObject_Brush::
 
 struct IVisualObject_Brush : public IVisualObject {

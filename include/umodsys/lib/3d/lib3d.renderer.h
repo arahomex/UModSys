@@ -53,6 +53,7 @@ struct IRenderer : public IRefObject {
   virtual bool render_3d(IVisualizer* visi, int phase, bool isalpha=false) =0;
   virtual bool render_2d(IVisualizer* visi) =0;
   virtual bool render_extra(const SRenderState& state, int comps) =0;
+  virtual bool render_reset(const SRenderState& state) =0;
   virtual bool render_end(void) =0;
   //
   // -- support functions, visual/driver states and object adapting

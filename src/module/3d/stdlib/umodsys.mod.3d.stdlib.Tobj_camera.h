@@ -1,39 +1,45 @@
 //------------------------------------
-// RGeneralObject_Camera::
+// object_camera
+//------------------------------------
+
+namespace object_camera {
+
+//------------------------------------
+// RGeneral::
 //------------------------------------
 
 //------------------------------------
 //------------------------------------
 // IGeneralObject
 
-bool RGeneralObject_Camera::valid(void) const
+bool RGeneral::valid(void) const
 {
   return true;
 }
 
-PVisualObject RGeneralObject_Camera::visual_new(IRenderer* r, IRenderObject* ro) // generate visual dynamic data
+PVisualObject RGeneral::visual_new(IRenderer* r, IRenderObject* ro) // generate visual dynamic data
 {
-  return new VisualState(this, r);
+  return new RVisual(this, r);
 }
 
-PRenderObject RGeneralObject_Camera::render_new(IRenderer* r) // generate visual static data
+PRenderObject RGeneral::render_new(IRenderer* r) // generate visual static data
 {
   return NULL;
 }
 
-PLogicObject RGeneralObject_Camera::logic_new(void) // generate logical (scene) data
+PLogicObject RGeneral::logic_new(void) // generate logical (scene) data
 {
   return NULL;
 }
 
 /*
-PPhysicsObject RGeneralObject_Camera::physics_new(void) // generate physics data
+PPhysicsObject RGeneral::physics_new(void) // generate physics data
 {
   return NULL;
 }
 */
 
-IGeneralObject* RGeneralObject_Camera::get_root(void) // return root render object for states
+IGeneralObject* RGeneral::get_root(void) // return root render object for states
 {
   return this;
 }
@@ -41,7 +47,7 @@ IGeneralObject* RGeneralObject_Camera::get_root(void) // return root render obje
 //------------------------------------
 //------------------------------------
 
-RGeneralObject_Camera::RGeneralObject_Camera(DOwner *pv, const SParameters& args)
+RGeneral::RGeneral(DOwner *pv, const SParameters& args)
 : refs(pv) 
 {
   def_fov.set(mathc::torad(90), mathc::torad(90)); // full fov 90 deg
@@ -64,64 +70,65 @@ RGeneralObject_Camera::RGeneralObject_Camera(DOwner *pv, const SParameters& args
     fade = fv;
 }
 
-RGeneralObject_Camera::~RGeneralObject_Camera(void)
+RGeneral::~RGeneral(void)
 {
 }
 
 //------------------------------------
-// RGeneralObject_Camera::VisualState::
+// RVisual::
 //------------------------------------
 
 //------------------------------------
 //------------------------------------
 // IVisualObject
 
-bool RGeneralObject_Camera::VisualState::valid(void) const
+bool RVisual::valid(void) const
 {
   return true;
 }
 
-PGeneralObject RGeneralObject_Camera::VisualState::object_get(void) const // get object
+PGeneralObject RVisual::object_get(void) const // get object
 {
   return *refs;
 }
 
-PRenderObject RGeneralObject_Camera::VisualState::render_get(void) const // get object
+PRenderObject RVisual::render_get(void) const // get object
 {
   return NULL;
 }
 
-bool RGeneralObject_Camera::VisualState::visual_update(void) // re-initalize links
+bool RVisual::visual_update(void) // re-initalize links
 {
   return true;
 }
 
-bool RGeneralObject_Camera::VisualState::logic_sync(void) // update data
+bool RVisual::logic_sync(void) // update data
 {
   return false;
 }
 
-bool RGeneralObject_Camera::VisualState::render_state(SRenderState& state)
+bool RVisual::render_state(const SRenderState& state)
 {
-//  return camera_render_state(state);
-  return false;
+  const_cast<SRenderState&>(state).link_camera(this);
+  camera_setup(state.driver);
+  return true;
 }
 
 //------------------------------------
 //------------------------------------
 // IVisualObject_Camera
 
-DTexPoint RGeneralObject_Camera::VisualState::camera_get_fov(void) const
+DTexPoint RVisual::camera_get_fov(void) const
 {
   return fov;
 }
 
-bool RGeneralObject_Camera::VisualState::camera_get_T(DMatrix4 &T) const
+bool RVisual::camera_get_T(DMatrix4 &T) const
 {
   return false;
 }
 
-bool RGeneralObject_Camera::VisualState::camera_get_xyz(DPoint* ox, DPoint* oy, DPoint* oz) const
+bool RVisual::camera_get_xyz(DPoint* ox, DPoint* oy, DPoint* oz) const
 {
   if(ox) *ox = right;
   if(oy) *oy = up;
@@ -129,7 +136,7 @@ bool RGeneralObject_Camera::VisualState::camera_get_xyz(DPoint* ox, DPoint* oy, 
   return true;
 }
 
-int RGeneralObject_Camera::VisualState::camera_get_planes(DPlane* planes) const
+int RVisual::camera_get_planes(DPlane* planes) const
 {
   if(planes==NULL)
     return 6; // box
@@ -149,7 +156,7 @@ int RGeneralObject_Camera::VisualState::camera_get_planes(DPlane* planes) const
 }
 
 // cast ray from [-1,1],[-1,1] to world coordinates
-bool RGeneralObject_Camera::VisualState::camera_cast_ray(const DTexPoint &screen, DPoint &start, DPoint &dir) const
+bool RVisual::camera_cast_ray(const DTexPoint &screen, DPoint &start, DPoint &dir) const
 {
   DScalar x = tan(fov.v[0]/2)*this->screen/2, y = tan(fov.v[1]/2)*this->screen/2;
 //  start.set(0, screen.v[1] * y, screen.v[0] * x);
@@ -158,7 +165,7 @@ bool RGeneralObject_Camera::VisualState::camera_cast_ray(const DTexPoint &screen
   return true;
 }
 
-bool RGeneralObject_Camera::VisualState::camera_setup(IRenderDriver *driver) 
+bool RVisual::camera_setup(IRenderDriver *driver) 
 {
   return driver->camera_frustum(DPoint(0,0,0), fov, screen, fade);
 }
@@ -166,7 +173,7 @@ bool RGeneralObject_Camera::VisualState::camera_setup(IRenderDriver *driver)
 //------------------------------------
 //------------------------------------
 
-RGeneralObject_Camera::VisualState::VisualState(DOwner *pv, IRenderer *rr)
+RVisual::RVisual(DOwner *pv, IRenderer *rr)
 : refs(pv) 
 {
   fov = pv->def_fov;
@@ -177,9 +184,15 @@ RGeneralObject_Camera::VisualState::VisualState(DOwner *pv, IRenderer *rr)
   fade = pv->fade;
 }
 
-RGeneralObject_Camera::VisualState::~VisualState(void)
+RVisual::~RVisual(void)
 {
 }
+
+//------------------------------------
+// /object_camera
+//------------------------------------
+
+} // namespace object_camera
 
 //------------------------------------
 // 

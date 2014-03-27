@@ -1,13 +1,16 @@
 //------------------------------------
-// RGeneralObject_Camera
+// object_camera
 //------------------------------------
 
-struct RGeneralObject_Camera : public IGeneralObject {
-  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RGeneralObject_Camera, 2, IGeneralObject)
+namespace object_camera {
+
+//------------------------------------
+// RGeneral
+//------------------------------------
+
+struct RGeneral : public IGeneralObject {
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::object_camera::RGeneral, 2, IGeneralObject)
   UMODSYS_REFOBJECT_REFMODULE()
-public:
-  struct VisualState;
-  struct LogicState;
 public:
 public: // IGeneralObject
   // state generation functions
@@ -21,25 +24,25 @@ public:
   DTexPoint def_fov;
   DScalar screen, fade;
 public:
-  RGeneralObject_Camera(DOwner *pv, const SParameters& args);
-  ~RGeneralObject_Camera(void);
+  RGeneral(DOwner *pv, const SParameters& args);
+  ~RGeneral(void);
   inline bool validate_construction(void) { return true; }
 };
 
 //------------------------------------
-// RGeneralObject_Camera::VisualState
+// RVisual
 //------------------------------------
 
-struct RGeneralObject_Camera::VisualState : public IVisualObject_Camera {
-  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RGeneralObject_Camera::VisualState, 2, IVisualObject_Camera)
-  UMODSYS_REFOBJECT_REFOTHER(RGeneralObject_Camera)
+struct RVisual : public IVisualObject_Camera {
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::object_camera::RVisual, 2, IVisualObject_Camera)
+  UMODSYS_REFOBJECT_REFOTHER(RGeneral)
 public: // IVisualObject
   bool valid(void) const;
   PGeneralObject object_get(void) const; // get object
   PRenderObject render_get(void) const; // get object
   bool visual_update(void); // re-initalize links
   bool logic_sync(void); // update data
-  bool render_state(SRenderState& state);
+  bool render_state(const SRenderState& state);
 public: // IVisualObject_Camera
   DTexPoint camera_get_fov(void) const;
   bool camera_get_T(DMatrix4 &T) const;
@@ -53,9 +56,15 @@ public:
   DPoint target, right, up;
   DScalar screen, fade;
 public:
-  VisualState(DOwner *pv, IRenderer *rr);
-  ~VisualState(void);
+  RVisual(DOwner *pv, IRenderer *rr);
+  ~RVisual(void);
 };
+
+//------------------------------------
+// /object_camera
+//------------------------------------
+
+} // namespace object_camera
 
 //------------------------------------
 // 

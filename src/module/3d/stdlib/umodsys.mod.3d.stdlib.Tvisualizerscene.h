@@ -35,9 +35,9 @@ bool RVisualizerScene::render_3d(int phaseid, bool isalpha, IRenderDriver* drv)
       ret = false;
   }
   //
-  SRenderState S(renderer, NULL, drv, NULL);
+  SRenderState S(renderer, drv);
   for(size_t i=0; i<~queue; i++) {
-    if(!queue(i)->render_state(S))
+    if( S.render(queue(i)) )
       ret = false;
   }
   queue.Clear();

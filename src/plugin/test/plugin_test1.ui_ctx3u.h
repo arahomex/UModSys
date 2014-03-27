@@ -157,6 +157,9 @@ void RTest1_Shell::UI_Info::fps2_move(int ort, lib3d::DScalar value)
 {
   lib3d::DPoint3 p_speed(move_speed);
   camera_T.add_translate( camera_T.mult3_ortv(p_speed, ort, value) );
+  if(cam.valid()) {
+    cam->T = camera_T;
+  }
 }
 
 void RTest1_Shell::UI_Info::fps2_add_rot(lib3d::DScalar x, lib3d::DScalar y)
@@ -171,6 +174,9 @@ void RTest1_Shell::UI_Info::fps2_add_rot(lib3d::DScalar x, lib3d::DScalar y)
   oldT = camera_T;
   T.set_rotate_about( oldT.mult3_ort(1, 0), a_speed.v[0]*y);
   camera_T.mult3(oldT, T);
+  if(cam.valid()) {
+    cam->T = camera_T;
+  }
 }
 
 void RTest1_Shell::UI_Info::fps_add_rot(lib3d::DScalar x, lib3d::DScalar y)

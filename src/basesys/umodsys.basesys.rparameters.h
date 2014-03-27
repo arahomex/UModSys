@@ -31,11 +31,13 @@ struct RParameters : public IParameters {
   void p_copy(SParametersData *p, const SParametersData& r);
   //
   bool add(SParametersData *p, BCStr name, BCStr value);
+  bool add(SParametersData *p, BCStr name, const DCString& value);
   bool add(SParametersData *p, BCStr name, int value);
   bool add(SParametersData *p, BCStr name, const double &value);
   bool add(SParametersData *p, BCStr name, IRefObject *value);
   //
   bool get(const SParametersData *p, BCStr name, BCStr &value);
+  bool get(const SParametersData *p, BCStr name, DCString& value);
   bool get(const SParametersData *p, BCStr name, int &value);
   bool get(const SParametersData *p, BCStr name, double &value);
   bool get(const SParametersData *p, BCStr name, IRefObject* &value);
@@ -92,7 +94,7 @@ protected:
   int estimate_size(Elem& tmp, int namehash, BCStr name, int type, int typesizeext=0); // typesizeext is valid only for string values
   void free_elems(void *data, int max);
   void alloc_elems(void *data, int max);
-  bool add_last(SParametersData *p, BCStr name, const void *value, int type);
+  bool add_last(SParametersData *p, BCStr name, const void *value, size_t valsize, int type);
 public:
   RParameters(ISystem* s);
   ~RParameters(void);

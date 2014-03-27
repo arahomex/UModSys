@@ -10,6 +10,18 @@ bool RTest1_Shell::UI_Info::create_3d(const char *cap)
   }
   {
     TParametersA<1024> pars;
+    pars.add("caption", cap);
+    if(!term->t_create_handler(rd3d, "", &pars)) {
+      s_dbg.put(d_SubGen, cl_Error, "  not created lib2d::IRenderDriver\n");
+      return false;
+    }
+    s_dbg.put(d_SubGen, cl_Info, "  created lib2d::IRenderDriver: %s => %p\n", rd3d()->root_get_interface_type()->name, rd3d());
+    rd2d = rd3d();
+    rdr->driver_set(rd3d, NULL);
+  }
+  //
+  {
+    TParametersA<1024> pars;
     visis = generate_type<lib3d::IVisualizerScene>("*::stdlib::RVisualizerScene", pars, "IVisualizerScene");
     if(!visis.valid())
       return false;
@@ -20,7 +32,7 @@ bool RTest1_Shell::UI_Info::create_3d(const char *cap)
     pars.add("fov", mathc::torad(90));
     pars.add("near", 0.1);
     pars.add("far", 10.0);
-    lib3d::IGeneralObject::P gcam = generate_type<lib3d::IGeneralObject>("*::stdlib::RGeneralObject_Camera", pars, "IGeneralObject");
+    lib3d::IGeneralObject::P gcam = generate_type<lib3d::IGeneralObject>("*::stdlib::object_camera::RGeneral", pars, "IGeneralObject");
     if(!gcam.valid())
       return false;
     if(!gcam->visual_new(rdr, NULL)->t_ref_get_other_interface(cam))
@@ -28,14 +40,20 @@ bool RTest1_Shell::UI_Info::create_3d(const char *cap)
   }
   {
     TParametersA<1024> pars;
-    pars.add("caption", cap);
-    if(!term->t_create_handler(rd3d, "", &pars)) {
-      s_dbg.put(d_SubGen, cl_Error, "  not created lib2d::IRenderDriver\n");
+    pars.add("kind", "cube");
+    lib3d::IGeneralObject::P gcube = generate_type<lib3d::IGeneralObject>("*::stdlib::object_primitive::RGeneral", pars, "IGeneralObject");
+    if(!gcube.valid())
       return false;
-    }
-    s_dbg.put(d_SubGen, cl_Info, "  created lib2d::IRenderDriver: %s => %p\n", rd3d()->root_get_interface_type()->name, rd3d());
-    rd2d = rd3d();
-    rdr->driver_set(rd3d, NULL);
+    lib3d::IRenderObject::P rcube = gcube->render_new(rdr);
+    if(!rcube.valid())
+      return false;
+    rcube->render_update();
+    vocube = rcube->visual_new();
+    if(!vocube.valid())
+      return false;
+    vocube->visual_update();
+    vocube->T.set_ER(1);
+    vocube->T.set_translate(0.5, 0.5, 1.2);
   }
   return true;
 }
@@ -156,8 +174,6 @@ void RTest1_Shell::UI_Info::cycle3d_b(void)
   mouc->mouse_link(50, NULL, this, ~0);
   //
   is_upz = false;
-  fps_add_rot(0,0);
-  fps_move(0,0,0);
   //
   if(!new_va_1())
     return;
@@ -169,6 +185,9 @@ void RTest1_Shell::UI_Info::cycle3d_b(void)
   {
     camera_T.set_translate(0, 0, -5);
     camera_T.set_rotate_about(lib3d::DPoint(0, 1, 0), math3d::torad(180));
+    if(cam.valid()) {
+      cam->T = camera_T;
+    }
   }
   //
   f_quit = false;
@@ -182,10 +201,16 @@ void RTest1_Shell::UI_Info::cycle3d_b(void)
       rdr->render_begin();
       //
       rd3d->phase_start(0, false);
-      //
       {
+        lib3d::SRenderState S(rdr, rd3d);
+        S << NULL << cam() << vocube;
+      }
+      //
+      if(0) {
         cam->camera_setup(rd3d);
 //        rd3d->camera_frustum(lib3d::DPoint(0, 0, 0), lib3d::DTexPoint(math3d::torad(90), math3d::torad(90)), 0.1, 10);
+      }
+      {
         lib3d::DMatrix4 T;
         T.set_inversed(camera_T);
         rd3d->setup_T(T);

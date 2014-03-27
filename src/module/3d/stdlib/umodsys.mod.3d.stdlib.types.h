@@ -32,6 +32,7 @@ public: // IRenderer
   bool render_3d(IVisualizer* visi, int phase, bool isalpha);
   bool render_2d(IVisualizer* visi);
   bool render_extra(const SRenderState& state, int comps);
+  bool render_reset(const SRenderState& state);
   bool render_end(void);
 public:
   IRenderDriver::P driver;

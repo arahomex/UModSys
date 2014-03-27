@@ -48,6 +48,7 @@ struct IRenderObject : public IRefObject {
   int seqno, vlinks;
   //
   virtual bool valid(void) const =0;
+  virtual bool render_update(void) =0; // re-initalize links
   virtual PGeneralObject object_get(void) const =0; // get object
   virtual PVisualObject visual_new(void) =0; // generate dynamic data
   //
@@ -64,6 +65,7 @@ protected:
 struct IVisualObject : public IRefObject {
   int seqno;
   PLogicObject logics;
+  DMatrix4 T;
   //
   virtual bool valid(void) const =0;
   virtual PGeneralObject object_get(void) const =0; // get object
@@ -71,7 +73,7 @@ struct IVisualObject : public IRefObject {
   virtual bool visual_update(void) =0; // re-initalize links
   virtual bool logic_sync(void) =0; // update data
   // depending of type functionality
-  virtual bool render_state(SRenderState& state) =0;
+  virtual bool render_state(const SRenderState& state) =0;
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IVisualObject, 2, IRefObject);
 };

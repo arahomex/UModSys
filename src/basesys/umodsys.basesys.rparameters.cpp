@@ -93,7 +93,7 @@ void RParameters::alloc_elems(void *data, int max)
   }
 }
 
-bool RParameters::add_last(SParametersData *p, BCStr name, const void *value, int type) 
+bool RParameters::add_last(SParametersData *p, BCStr name, const void *value, size_t szvalue, int type) 
 {
   if(name==NULL || *name==0)
     return false; // nothing added with this args
@@ -126,7 +126,7 @@ bool RParameters::add_last(SParametersData *p, BCStr name, const void *value, in
   int slen = 0;
   if(type==et_String) {
     if(value==NULL) value = "";
-    else slen=strlen(reinterpret_cast<BCStr>(value));
+    else slen=szvalue;
   }
   Elem hdr;
   int S = estimate_size(hdr, hash, name, type, slen);
@@ -305,27 +305,44 @@ bool RParameters::next(const SParametersData *p, DCString& name)
 
 bool RParameters::add(SParametersData *p, BCStr name, BCStr value) 
 {
-  return add_last(p, name, value, et_String);
+  return add_last(p, name, value, value ? tl::su::slen(value) : 0, et_String);
+}
+
+bool RParameters::add(SParametersData *p, BCStr name, const DCString& value)
+{
+  return RParameters::add_last(p, name, value, ~value, et_String);
 }
 
 bool RParameters::add(SParametersData *p, BCStr name, int value) 
 {
-  return add_last(p, name, &value, et_Int);
+  return add_last(p, name, &value, sizeof(int), et_Int);
 }
 
 bool RParameters::add(SParametersData *p, BCStr name, const double &value) 
 {
-  return add_last(p, name, &value, et_Double);
+  return add_last(p, name, &value, sizeof(double), et_Double);
 }
 
 bool RParameters::add(SParametersData *p, BCStr name, IRefObject *value) 
 {
-  return add_last(p, name, &value, et_RefObject);
+  return add_last(p, name, &value, sizeof(IRefObject*), et_RefObject);
 }
 
 //***************************************
 
 bool RParameters::get(const SParametersData *p, BCStr name, BCStr &value) 
+{
+  if(name==NULL || *name==0 || p==NULL || p->mem_used==0)
+    return false; // nothing found
+  //
+  int hash = tl::su::shash(name);
+  const Elem* found = find_elem(p->mem.data, p->mem_used, et_String, hash, name);
+  if(!found) return false;
+  value = found->sval().value;
+  return true;
+}
+
+bool RParameters::get(const SParametersData *p, BCStr name, DCString& value)
 {
   if(name==NULL || *name==0 || p==NULL || p->mem_used==0)
     return false; // nothing found
