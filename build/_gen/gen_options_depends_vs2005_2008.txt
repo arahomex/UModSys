@@ -59,6 +59,19 @@ begin project-group umodsys_Depends
     option * OutputDirectory $(path-out-bin)
   end
 
+  begin project lib_libgd
+    GUID-gen 0 umodsys.depends.lib_libgd
+    #
+    defines _CRT_SECURE_NO_WARNINGS
+    defines MSWIN32 
+    defines BGDWIN32
+    libpath $(path-out-bin) $(path-out-tmp)
+    #
+    option !* Compiler_WarnAsError false
+    option * OutputDirectory $(path-out-bin)
+#    libs lib_libpng lib_jpeglib
+  end
+
   #----------------------------------------------------------------
   # UI libs
 

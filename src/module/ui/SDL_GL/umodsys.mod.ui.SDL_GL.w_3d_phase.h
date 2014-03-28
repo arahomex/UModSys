@@ -57,11 +57,9 @@ void RRenderDriver3D::render_start(void) // caches is filled, begin render eleme
   gl.glDepthFunc(GL_LESS);
   //
   gl.glEnable(GL_CULL_FACE);
-//  gl.glCullFace(GL_BACK);
-//  gl.glFrontFace(GL_CW);
-  gl.glCullFace(GL_FRONT);
+  gl.glCullFace(GL_BACK);
   gl.glFrontFace(GL_CCW);
-//  gl.glEnable(GL_AUTO_NORMAL);
+  gl.glEnable(GL_AUTO_NORMAL);
   //
   gl.glDisableClientState(GL_VERTEX_ARRAY);
   gl.glDisableClientState(GL_COLOR_ARRAY);

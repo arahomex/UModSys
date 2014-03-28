@@ -28,7 +28,7 @@ using namespace UModSys::lib3d;
 // lib3d::
 //***************************************
 
-sint8 lib3d::cube_faceshift[6][4] = { // [faces]{x,y,z,_}
+sint8 lib3d::cube_face_normals[6][4] = { // [faces]{x,y,z,_}
   {0, 1,0},    // Top
   {0,-1,0},    // Bottom
   {0,0, 1},    // Front

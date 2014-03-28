@@ -177,7 +177,7 @@ void RTest1_Shell::UI_Info::cycle3d_b(void)
   //
   if(!new_va_1())
     return;
-#if 0
+#if 1
   if(!new_va_qc())
     return;
 #endif

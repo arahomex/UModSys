@@ -15,16 +15,16 @@ bool RTest1_Shell::UI_Info::new_va_1(void)
     if(!va_tri.valid())
       return false;
     //  
-    va_tri->set_layer_elem(lib3d::DPoint(-0.50, 0.50, 0.8),  2, 0); va_tri->set_layer_elem(lib3d::DColor(1, 0, 0), 2, 1);
+    va_tri->set_layer_elem(lib3d::DPoint(-0.50, 0.50, 0.8),  0, 0); va_tri->set_layer_elem(lib3d::DColor(1, 0, 0), 0, 1);
     va_tri->set_layer_elem(lib3d::DPoint(0.50, 0.50, 0.8),   1, 0); va_tri->set_layer_elem(lib3d::DColor(0, 1, 0), 1, 1);
-    va_tri->set_layer_elem(lib3d::DPoint(-0.00, -0.50, 0.8), 0, 0); va_tri->set_layer_elem(lib3d::DColor(0, 0, 1), 0, 1);
+    va_tri->set_layer_elem(lib3d::DPoint(-0.00, -0.50, 0.8), 2, 0); va_tri->set_layer_elem(lib3d::DColor(0, 0, 1), 2, 1);
   }
   //
   {
     VertexPC tri[3];
-    tri[2].set(lib3d::DPoint(-0.80, 0.80, 0.9), lib3d::DColor(0, 1, 1)); 
+    tri[0].set(lib3d::DPoint(-0.80, 0.80, 0.9), lib3d::DColor(0, 1, 1)); 
     tri[1].set(lib3d::DPoint(0.80, 0.80, 0.9), lib3d::DColor(1, 0, 1)); 
-    tri[0].set(lib3d::DPoint(-0.00, -0.80, 0.9), lib3d::DColor(1, 1, 0)); 
+    tri[2].set(lib3d::DPoint(-0.00, -0.80, 0.9), lib3d::DColor(1, 1, 0)); 
     vas_tri = rd3d->create_array(2, s_lys2, 3, &tri, sizeof(tri));
     if(!vas_tri.valid())
       return false;
@@ -71,8 +71,8 @@ bool RTest1_Shell::UI_Info::new_va_qc(void)
     for(int y=0; y<dy; y++) {
       for(int z=0; z<dz; z++) {
         for(int f=0; f<6; f++) {
-          const lib3d::DColorb& clr = clrs[f];
-          const sint8 *norm = lib3d::cube_faceshift[f];
+          const lib3d::DColorb& clr = clrs[(f+x+y+z)%8];
+          const sint8 *norm = lib3d::cube_face_normals[f];
           int xx = norm[0] + x;
           int yy = norm[1] + y;
           int zz = norm[2] + z;

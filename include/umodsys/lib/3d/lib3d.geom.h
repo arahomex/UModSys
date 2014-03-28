@@ -155,6 +155,15 @@ protected:
 //***************************************
 
 //***************************************
+// EXTERNALS
+//***************************************
+
+extern sint8 cube_face_normals[6][4]; // [faces]{x,y,z,_}
+// coordinate system is RIGHT xyz
+extern uint8 cube_quad_texpoints[6][4][2]; // [faces][verts]{u,v}
+extern uint8 cube_quad_points[6][4][4]; // XYZ [faces][verts]{x,y,z,_}
+
+//***************************************
 // END
 //***************************************
 

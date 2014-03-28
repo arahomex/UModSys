@@ -13,7 +13,10 @@ begin project-group umodsys_Depends
     depend lib_zlib
     depend lib_libpng
     depend lib_jpeglib
+    #
+    depend lib_libgd
     depend lib_freetype
+    #
     depend lib_sqlite3
     #
     depend lib_squirrel
@@ -233,6 +236,36 @@ begin project-group umodsys_Depends
         begin mask $(path-skip) $(path-d-freetype)/src/type42
           include type42.c *.h
         end
+      end
+    end
+  end
+
+  begin project lib_libgd
+    mode shared
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-include)/$(ppath)/libgd
+    includes $(path-d-libgd-inc)
+    #
+    includes $(path-d-jpeg-inc)
+    includes $(path-d-png-inc)
+    includes $(path-d-zlib-inc)
+    depend lib_zlib 
+    depend lib_libpng 
+    depend lib_jpeglib
+    #
+    defines HAVE_LIBPNG
+    defines HAVE_LIBJPEG
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-libgd-inc)
+        include gd.h gd_*.h wbmp.h gdfont*.h gdhelpers.h 
+      end
+    end
+    begin file-group src
+      begin mask $(path-skip) $(path-d-libgd)/src
+        include gd.c gd_*.c wbmp.c gdfont*.c gdhelpers.c gdtables.c
       end
     end
   end

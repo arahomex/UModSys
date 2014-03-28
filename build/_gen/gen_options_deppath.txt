@@ -46,3 +46,6 @@ set path-d-lightning-inc $(path-dep)/lightning/include
 
 set path-d-bullet $(path-dep)/Bullet
 set path-d-bullet-inc $(path-dep)/Bullet/src
+
+set path-d-libgd $(path-dep)/libgd
+set path-d-libgd-inc $(path-dep)/libgd/src
