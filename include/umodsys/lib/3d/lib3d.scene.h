@@ -60,18 +60,17 @@ public:
   virtual HSceneNode add_node_camera(HSceneNode parent, const DCString& name, int ord, IObject* obj) =0;
   virtual HSceneNode add_node_light(HSceneNode parent, const DCString& name, int ord, IObject* obj) =0;
   //
-  virtual HSceneNode get_root_node(void) =0;
-  virtual HSceneNode get_camera_node(void) =0;
-  virtual bool set_camera_node(HSceneNode node) =0;
-  virtual HSceneNode get_sky_node(void) =0;
-  virtual bool set_sky_node(HSceneNode node) =0;
 */
   virtual ISharedLibrary* library_get(void) =0;
+  virtual HSceneNode root_get(void) const =0;
+  virtual HSceneNode camera_get(void) const =0;
+  virtual bool camera_set(HSceneNode node) =0;
+  virtual HSceneNode sky_get(void) const =0;
+  virtual bool sky_set(HSceneNode node) =0;
   //
   virtual bool processor_add(ISceneProcessor* proc) = 0;
   virtual bool processor_remove(ISceneProcessor* proc) = 0;
   //
-  virtual HSceneNode nodes_root(void) const =0;
   virtual bool nodes_gather(void) =0; // clear dead nodes
   //
   virtual bool calc_transform(HSceneNode node=NULL) = 0;
@@ -107,8 +106,18 @@ struct ISceneNodeProcessor {
 
 struct ISceneNode {
 public:
+  enum eNodeChanged {
+    nc_TL       = 0x0001,
+    nc_TG       = 0x0002,
+    nc_Color    = 0x0004,
+    nc_Phase    = 0x0008,
+    nc_PhaseU   = 0x0010,
+    nc_ColorU   = 0x0020,
+    nc_Flags    = 0x0040
+  };
+public:
   // node only entries
-  DMatrix4 T, G;
+  DMatrix4 TL, TG;
   eSceneNodeKind kind;
   DBlendColor color;
   int phase;
@@ -123,69 +132,83 @@ public:
   // -- tree related info
   HSceneNode parent;
   PWScene scene;
-  DCString name; // sort first by name, then by order
-  int order;
   bool T_changed, phase_changed, color_changed, r_changed;
   //
+  // node order detemined as:
+  // 1. by order
+  // 2. any non-NULL tag in any order, tag is unique for order
+  // 3. any count of NULL tag in any order
+  int order;
+  DCString name;
+  //
   // -- extra (change-able) values
-  mutable bool enabled, visible, subid, special;
-  //
-public:
-  // node processing
-  virtual int node_for_each(ISceneNodeProcessor& proc, bool recursive=true) const =0;
-  virtual HSceneNode find_node(int ord, const DCString& name) const =0;
-  virtual bool first_node(HSceneNode &N) const =0;
-  virtual bool next_node(HSceneNode &N) const =0;
-  virtual int get_subnodes(HSceneNode* list, int maxnum) const =0;
-  //
-  virtual int get_default_phases_mesh(void) const =0;
-  virtual void alter_phase(int pm) const =0;
-  virtual bool alter_color(const DColorAlpha* c, const lib2d::eTransparrentMode *transmode=NULL) const =0;
-  virtual void die(bool flag=true) const =0;
-  virtual bool is_dead(void) const =0;
-  virtual void suicide(void) const =0;
-  virtual bool add_controller(const ISceneController::P& ctrl) const =0;
-  virtual bool remove_controller(ISceneController* ctrl) const =0;
-  virtual bool gather_controllers(void) const =0;
-//  virtual INodeObject* get_visual(IRenderer* r) const =0;
-public:
-  inline bool is_trans(void) const { 
-    return color->v[3]!=1; 
-  }
-  //
-  inline void alter_phase_add(int pm) const { 
-    alter_phase(phase | pm); 
-  }
-  inline void alter_phase_remove(int pm) const { 
-    alter_phase(phase & ~pm); 
-  }
-  //
-  inline bool alter_color(const DColorAlpha& c, lib2d::eTransparrentMode tm) const { 
-    return alter_color(&c, &tm); 
-  }
-  inline bool alter_color(const DColorAlpha& c) const { 
-    return alter_color(&c, NULL); 
-  }
-  inline bool alter_color(const DBlendColor &c) const { 
-    return alter_color(&c.color, &c.transmode); 
-  }
-  inline DMatrix4& alter_T(void) const {
-    const_cast<ISceneNode*>(this)->T_changed = true;
-    return const_cast<DMatrix4&>(T);
-  }
-  //
-  inline void ref_add(void) const { 
-    refs++; 
-  }
-  inline void ref_remove(void) const { 
-    if(--refs==0) suicide(); 
-  }
-  inline int  ref_get(void) const { 
-    return refs; 
-  }
+  bool enabled, visible, subid, special;
   //
 protected:
-  mutable int refs;
+  virtual void node_suicide(void) const =0; // remove in memory
+public:
+  virtual HSceneNode node_next(void) const =0; // get next node
+  //
+  virtual HSceneNode child_find(int order, const DCString& tag) const =0; // find non-NULL tag or any NULL tag
+  virtual size_t child_find(int order, HSceneNode lst[], size_t nlst) const =0; // find all NULL tag nodes
+  virtual HSceneNode child_first(void) const =0; // get first child
+  virtual size_t child_get(int idx, HSceneNode *lst, size_t nlst) const =0; // get all nodes starting with idx
+  virtual size_t child_count(void) const =0; // get all nodes count
+  virtual HSceneNode child_new(ILogicObject *lo, int order, const DCString& tag, eSceneNodeKind k) const =0;
+  //
+  virtual void node_die(void) const =0; // mark node as dead
+  virtual bool node_is_dead(void) const =0; // check if node is dead
+  virtual void node_mark(int nc) const =0; // mark changes in node
+  virtual bool node_color(const DColorAlpha* c, const lib2d::eTransparrentMode *transmode=NULL) const =0;
+  virtual void node_phase(int pm) const =0;
+  //
+  virtual bool ctrl_add(const ISceneController::P& ctrl) const =0;
+  virtual bool ctrl_remove(ISceneController* ctrl) const =0;
+  virtual bool ctrl_run(void) const =0;
+public:
+  //
+  inline HSceneNode child_new_camera(ILogicObject *lo, int order=0, const DCString& tag=NULL) const
+    { return child_new(lo, order, tag, snk_Camera); }
+  inline HSceneNode child_new_light(ILogicObject *lo, int order=0, const DCString& tag=NULL) const
+    { return child_new(lo, order, tag, snk_Light); }
+  inline HSceneNode child_new_brush(ILogicObject *lo, int order=0, const DCString& tag=NULL) const
+    { return child_new(lo, order, tag, snk_Brush); }
+  inline HSceneNode child_new_null(int order=0, const DCString& tag=NULL) const
+    { return child_new(NULL, order, tag, snk_Null); }
+  //
+  inline void visible_set(bool f=true) const 
+    { node_mark(nc_Flags); _a()->visible = f; }
+  inline void enabled_set(bool f=true) const 
+    { node_mark(nc_Flags); _a()->enabled = f; }
+  //
+  inline DMatrix4& alter_TL(void) const 
+    { node_mark(nc_TL); return _a()->TL; }
+  inline bool color_set(const DColorAlpha& c, lib2d::eTransparrentMode tm) const 
+    { return node_color(&c, &tm); }
+  inline bool color_set(const DColorAlpha& c) const 
+    { return node_color(&c, NULL); }
+  inline bool color_set(const DBlendColor &c) const 
+    { return node_color(&c.color, &c.transmode); }
+  inline void phase_add(int pm) const 
+    { node_phase(phase | pm); }
+  inline void phase_remove(int pm) const 
+    { node_phase(phase & ~pm); }
+  //
+  inline bool is_trans(void) const { return color->v[3]!=1; }
+public:
+  // node processing
+//  virtual int node_for_each(ISceneNodeProcessor& proc, bool recursive=true) const =0;
+//  virtual int get_default_phases_mesh(void) const =0;
+//  virtual INodeObject* get_visual(IRenderer* r) const =0;
+public:
+  //
+  inline void ref_add(void) const { node_refs++;  }
+  inline void ref_remove(void) const { if(--node_refs==0) node_suicide(); }
+  inline int  ref_get(void) const { return node_refs; }
+  //
+protected:
+  mutable int node_refs;
+  inline ISceneNode* _a(void) const { return const_cast<ISceneNode*>(this); }
   //
   ISceneNode(void);
   ~ISceneNode(void);
