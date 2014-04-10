@@ -24,21 +24,32 @@ namespace core {
 //#define UMODSYS_ROOT_LUP(_type) \
 //  SUniquePointer _type::s_interface_type("typeinfo", #_type)
 
-#define UMODSYS_ROOT_INTIMPLEMENT(_type, _verno, _interface) \
+#define UMODSYS_ROOT_INTIMPLEMENT_XNAME(_type, _verno, _interface) \
   protected: \
     const IRoot* _root_get_other_interface(TypeId type) const { return type==_root_get_interface_type() ? this : _interface::_root_get_other_interface(type); } \
     IRoot* _root_get_other_interface(TypeId type) { return type==_root_get_interface_type() ? this : _interface::_root_get_other_interface(type); } \
   public: \
-    inline static const char* _root_get_interface_infoname(void) { return #_type; } \
     inline static DVersionNo _root_get_interface_infover(void) { return _verno; } \
-    inline static const TypeInfo& _root_get_interface_info(void) { return tl::TObjectUniqueID<_type>::get_info(); } \
-    inline static TypeId _root_get_interface_type(void) { return tl::TObjectUniqueID<_type>::get_id(); } \
+    inline static const TypeInfo& _root_get_interface_info(void) { return tl::TObjectUniqueID< _type >::get_info(); } \
+    inline static TypeId _root_get_interface_type(void) { return tl::TObjectUniqueID< _type >::get_id(); } \
     inline static size_t _root_get_interface_types(DPtrList& list) { list<<_root_get_interface_type(); return _interface::_root_get_interface_types(list)+1; } \
     inline static bool _root_is_interface_supported(TypeId type) { return type==_root_get_interface_type() || _interface::_root_is_interface_supported(type); } \
     inline const IRoot* _get_interface_p(void) const { return this; } \
     inline IRoot* _get_interface_p(void) { return this; } \
     inline static TypeId _get_interface_basetype(void) { return _root_get_interface_type(); } \
     typedef _type DInterface; \
+  protected: \
+
+#define UMODSYS_ROOT_INTIMPLEMENT_NONAME(_type, _verno, _interface) \
+  UMODSYS_ROOT_INTIMPLEMENT_XNAME(_type, _verno, _interface) \
+  public: \
+    static const char* _root_get_interface_infoname(void); \
+  protected: \
+
+#define UMODSYS_ROOT_INTIMPLEMENT(_type, _verno, _interface) \
+  UMODSYS_ROOT_INTIMPLEMENT_XNAME(_type, _verno, _interface) \
+  public: \
+    inline static const char* _root_get_interface_infoname(void) { return #_type; } \
   protected: \
 
 #define UMODSYS_ROOT_IMPLEMENT1(_type, _verno, _interface) \

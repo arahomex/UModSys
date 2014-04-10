@@ -15,9 +15,9 @@ public: // IRenderer
   IRenderDriver* driver_get(void) const;
   bool driver_set(IRenderDriver* driver, libmedia::ILibrary *mg);
   // -- support functions, texture id
-  ITexture* texture_load(const DCString& name, const DCString& objname, int flags=tf_Normal);
-  ITexture* texture_alloc(SRenderDriverTexBox* box, const DPoint2i& size, lib2d::eImageType type);
-  ITextureCells* font_load(const DCString& name, const DCString& objname, int flags=tf_Normal);
+  IResTexture* texture_load(const DCString& name, const DCString& objname, int flags=tf_Normal);
+  IResTexture* texture_alloc(SRenderDriverTexBox* box, const DPoint2i& size, lib2d::eImageType type);
+  IResTextureCells* font_load(const DCString& name, const DCString& objname, int flags=tf_Normal);
   // -- support functions, convert
   bool cast_ray(IScene* scene, const DTexPoint &screen, DPoint &start, DPoint &dir) const; // in relative roord
   bool cast_ray(IScene* scene, const DPoint2i &screen, DPoint &start, DPoint &dir) const; // in driver coord

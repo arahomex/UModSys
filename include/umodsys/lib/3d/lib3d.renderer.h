@@ -36,9 +36,9 @@ struct IRenderer : public IRefObject {
   virtual IRenderDriver* driver_get(void) const =0;
   virtual bool driver_set(IRenderDriver* driver, libmedia::ILibrary *mg) =0;
   // -- support functions, texture id
-  virtual ITexture* texture_load(const DCString& name, const DCString& objname, int flags=tf_Normal) =0;
-  virtual ITexture* texture_alloc(SRenderDriverTexBox* box, const DPoint2i& size, lib2d::eImageType type) =0;
-  virtual ITextureCells* font_load(const DCString& name, const DCString& objname, int flags=tf_Normal) =0;
+  virtual IResTexture* texture_load(const DCString& name, const DCString& objname, int flags=tf_Normal) =0;
+  virtual IResTexture* texture_alloc(SRenderDriverTexBox* box, const DPoint2i& size, lib2d::eImageType type) =0;
+  virtual IResTextureCells* font_load(const DCString& name, const DCString& objname, int flags=tf_Normal) =0;
   // -- support functions, convert
   virtual bool cast_ray(IScene* scene, const DTexPoint &screen, DPoint &start, DPoint &dir) const =0; // in relative roord
   virtual bool cast_ray(IScene* scene, const DPoint2i &screen, DPoint &start, DPoint &dir) const =0; // in driver coord

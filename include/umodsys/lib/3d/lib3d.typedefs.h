@@ -8,6 +8,7 @@
 #include <umodsys/lib/2d/lib2d.typedefs.h>
 #include <umodsys/tl/math/math_3df.h>
 #include <umodsys/tl/composite/isockets.h>
+#include <umodsys/core/objects_res.h>
 
 namespace UModSys {
 namespace lib3d {
@@ -60,7 +61,7 @@ struct ITextureCells;                       // a couple of render textures (may 
 struct SRenderState;                        // state for rendering
 struct SRenderDriverTexBox;                 // part of custom texture
 struct SPicture;                            // picture info
-                                           
+
 // logic: scene                                   
 struct IScene;                              // prepared scene
 struct ISceneController;                    // control objects inside a scene
@@ -144,6 +145,10 @@ typedef tl::TRefObject<IRenderConsole>      PRenderConsole;
 
 typedef tl::TRefObject<ITexture>            PTexture;
 typedef tl::TRefObject<ITextureCells>       PTextureCells;
+
+// resources
+typedef TIResource<ITexture>                IResTexture;
+typedef TIResource<ITextureCells>           IResTextureCells;
 
 //***************************************
 // ENUMS

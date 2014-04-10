@@ -45,17 +45,17 @@ bool RRenderer::driver_set(IRenderDriver* drv, libmedia::ILibrary *mg)
 //------------------------------------
 // -- support functions, texture id
 
-ITexture* RRenderer::texture_load(const DCString& name, const DCString& objname, int flags)
+IResTexture* RRenderer::texture_load(const DCString& name, const DCString& objname, int flags)
 {
   return NULL;
 }
 
-ITexture* RRenderer::texture_alloc(SRenderDriverTexBox* box, const DPoint2i& size, lib2d::eImageType type)
+IResTexture* RRenderer::texture_alloc(SRenderDriverTexBox* box, const DPoint2i& size, lib2d::eImageType type)
 {
   return NULL;
 }
 
-ITextureCells* RRenderer::font_load(const DCString& name, const DCString& objname, int flags)
+IResTextureCells* RRenderer::font_load(const DCString& name, const DCString& objname, int flags)
 {
   return NULL;
 }

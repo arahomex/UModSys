@@ -1,4 +1,5 @@
 #include <umodsys/core/objects.h>
+#include <umodsys/core/objects_res.h>
 #include <umodsys/core/mem/mem_alloc.h>
 
 using namespace UModSys;
