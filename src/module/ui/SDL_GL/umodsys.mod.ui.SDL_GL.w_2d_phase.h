@@ -113,6 +113,7 @@ bool RRenderDriver3D::Mode_2d_begin(void)
   gl.set_blend(true);
   gl.set_blend(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   //
+  gl.tex_levels = 1;
   gl.set_stage(0);
   gl.set_tex2d(true);
   gl.set_composite_all(GL_MODULATE);
@@ -142,6 +143,8 @@ bool RRenderDriver3D::Mode_2d_end(void)
   gl.glMatrixMode(GL_PROJECTION);
   gl.glPopMatrix();
   gl.glPopAttrib();
+  gl.set_stage_num(0);
+  gl.tex_levels = 0;
   return true;
 }
 

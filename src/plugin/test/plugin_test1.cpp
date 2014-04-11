@@ -128,7 +128,32 @@ struct RTest1_Shell
         r = c(0)*255; g = c(1)*255; b = c(2)*255; a = c(3)*255;
       }
     };
+    //
+    struct VertexPCT {
+      float32 x, y, z;
+      uint8 r,g,b,a;
+      float32 u, v;
+      //
+      void set_xyz(float32 xx, float32 yy, float32 zz) {
+        x = xx; y = yy; z = zz;
+      }
+      void set_uv(float32 uu, float32 vv) {
+        u=uu; v = vv;
+      }
+      void set_rgba(uint8 rr, uint8 gg, uint8 bb, uint8 aa=255) {
+        r = rr; g = gg; b = bb; a = aa;
+      }
+      void set(const lib3d::DPoint& p, const lib3d::DColor& c) {
+        x = p(0); y = p(1); z = p(2);
+        r = c(0)*255; g = c(1)*255; b = c(2)*255; a = c(3)*255;
+      }
+    };
 #pragma pack(pop)
+    //
+    UI_Info(RTest1_Shell& s) : shell(s) {}
+    //
+    RTest1_Shell& shell;
+    libmedia::ILibrary::P media;
     //
     float ticks, frame_time;
     lib2d::IRenderDriver::P rd2d;
@@ -149,6 +174,7 @@ struct RTest1_Shell
     lib3d::DPoint3 fps_pos, fps_ori;
     lib3d::DScalar move_speed, mou_sensitivity;
     lib3d::DMatrix4 view_matrix, camera_T;
+    lib3d::TMaterialST<1> mat_cube;
     //
     void fps_view_matrix(void);
     void fps_move(lib3d::DScalar x, lib3d::DScalar y, lib3d::DScalar z);

@@ -69,20 +69,22 @@ bool RRenderDriver3D::driver_is_reset(void)
 // -- register
 // return ptr, try to adapt data to required ptr
 //  virtual IConsoleHFCSDisplay::P new_console_HFCSD(const DPoint2i& pos, const DPoint2i& size, const SParameters* params)
-
-ITexture::P RRenderDriver3D::register_tex(libmedia::ILibrary* mg, const DCString& texname, const SRenderMapFlags& deff)
-{
-  return NULL;
-}
-
-ITextureCells::P RRenderDriver3D::register_texcells(libmedia::ILibrary * mg, const DCString& texname, const SRenderMapFlags& deff)
-{
-  return NULL;
-}
-
+//ITexture::P RRenderDriver3D::register_tex(libmedia::ILibrary* mg, const DCString& texname, const SRenderMapFlags& deff)
+//ITextureCells::P RRenderDriver3D::register_texcells(libmedia::ILibrary * mg, const DCString& texname, const SRenderMapFlags& deff)
+//ITexture::P RRenderDriver3D::register_tex(const DPoint2i& size, const SRenderMapFlags& deff, lib2d::eImageType type)
 // this one create a new box used for supply textures
 
-ITexture::P RRenderDriver3D::register_tex(const DPoint2i& size, const SRenderMapFlags& deff, lib2d::eImageType type)
+// -- create new
+
+ITexture::P RRenderDriver3D::create_tex(void)
+{
+  ITexture::P rv;
+  if(!ValidateConstruction(rv, new(local_memory()) RTextureGL(this)))
+    return NULL;
+  return rv;
+}
+
+ITextureCells::P RRenderDriver3D::create_texcells(void)
 {
   return NULL;
 }

@@ -72,6 +72,8 @@ public:
   bool NextPhm(ePhaseMode phm2);
   bool IsPhm(ePhaseMode phm2);
   //
+  void DisableTextures(void) { gl.set_stage_num(0); }
+  //
   inline bool NextPhmV(ePhaseMode phm2) { return Valid() && NextPhm(phm2); }
   inline bool IsPhmV(ePhaseMode phm2) { return Valid() && IsPhm(phm2); }
 public: // lib2d::IRenderDriver
@@ -140,15 +142,18 @@ public: // lib3d::IRenderDriver
   void phase_2d(bool nearmode); // begin 2d phase (after or before all other)
   void render_start(void); // caches is filled, begin render elements
   void render_stop(void); // caches is not required anymore
+  // -- create new
+  ITexture::P create_tex(void);
+  ITextureCells::P create_texcells(void);
+  IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount);
+  IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount, const void* rawdata, size_t rawsize);
   // -- register
   // return ptr, try to adapt data to required ptr
 //  virtual IConsoleHFCSDisplay::P new_console_HFCSD(const DPoint2i& pos, const DPoint2i& size, const SParameters* params);
-  ITexture::P register_tex(libmedia::ILibrary* mg, const DCString& texname, const SRenderMapFlags& deff);
-  ITextureCells::P register_texcells(libmedia::ILibrary * mg, const DCString& texname, const SRenderMapFlags& deff);
+//*  ITexture::P register_tex(libmedia::ILibrary* mg, const DCString& texname, const SRenderMapFlags& deff);
+//*  ITextureCells::P register_texcells(libmedia::ILibrary * mg, const DCString& texname, const SRenderMapFlags& deff);
   // this one create a new box used for supply textures
-  ITexture::P register_tex(const DPoint2i& size, const SRenderMapFlags& deff, lib2d::eImageType type);
-  IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount);
-  IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount, const void* rawdata, size_t rawsize);
+//*  ITexture::P register_tex(const DPoint2i& size, const SRenderMapFlags& deff, lib2d::eImageType type);
   // -- setup dynamic lights, light indices: <=0 =error, 0x10000+ = HW, 0x20000+ = SW, 0x30000+ = omni
   bool setup_clearlights(eLightType type, bool emulated, bool hardware);
   int  setup_addlight(eLightType type, const SLight& light, const DMatrix4& T);
@@ -275,6 +280,39 @@ public:
   //
   bool get_layer_vdata(eVertexAType type, void* buf, int start, int ecount, int lay) const;
   bool set_layer_vdata(eVertexAType type, const void* buf, int start, int ecount, int lay);
+};
+
+//***************************************
+// RTextureGL::
+//***************************************
+
+struct RTextureGL : public lib3d::ITexture {
+  UMODSYS_REFOBJECT_IMPLEMENT1(U_MOD::RTextureGL, 2, lib3d::ITexture)
+  UMODSYS_REFOBJECT_REFOTHER(RRenderDriver3D)
+  //
+public: // IImage
+  bool set_info(const DInfo& inf, BCStr hint);
+  bool set_data(const DPatchInfo& inf, const SCMem& bin, int planeno);
+  //
+  const lib2d::SImageInfo& get_info(void) const;
+  bool get_data(const DPatchInfo& inf, const SMem& bin, int planeno) const;
+  //
+  void* get_hwinfo(HUniquePointer hint);
+  const void* get_hwcinfo(HUniquePointer hint) const;
+public: // ITexture
+  IRenderDriver* get_driver(void);
+  bool set_flags(const SRenderMapFlags& flags);
+  DTexPoint get_fsize(void);
+public:
+  RTextureGL(DOwner *own);
+  ~RTextureGL(void);
+  //
+  inline bool validate_construction(void) { return tex.valid(); }
+  //
+  bool bind_tex(void);
+public:
+  lib2d::SImageInfo imginfo;
+  STextureGL tex;
 };
 
 //***************************************

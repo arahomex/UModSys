@@ -31,6 +31,7 @@ void RRenderDriver3D::phase_start(int phaseid, int alpha_mode) // begin desired 
     gl.glDisable(GL_ALPHA_TEST);
     gl.glDepthMask(GL_TRUE);
   }
+  gl.set_stage_num(0);
 }
 
 void RRenderDriver3D::phase_2d(bool nearmode) // begin 2d phase (after or before all other)
@@ -64,12 +65,7 @@ void RRenderDriver3D::render_start(void) // caches is filled, begin render eleme
   gl.glDisableClientState(GL_VERTEX_ARRAY);
   gl.glDisableClientState(GL_COLOR_ARRAY);
   gl.glDisableClientState(GL_NORMAL_ARRAY);
-  for(int i=0; i<gl.tex_levels; i++) {
-    gl.set_stage(i);
-    gl.set_ctc(false);
-    gl.set_tex2d(false);
-  }
-  gl.set_stage(0);
+  gl.set_stage_num(0);
   //
   gl.glMatrixMode(GL_MODELVIEW);
   gl.glPushMatrix();
@@ -100,13 +96,7 @@ void RRenderDriver3D::render_stop(void) // caches is not required anymore
   gl.glDisableClientState(GL_NORMAL_ARRAY);
   gl.set_composite_all(GL_REPLACE);
   //
-  for(int i=0; i<gl.tex_levels; i++) {
-    gl.set_stage(i);
-    gl.set_ctc(false);
-    gl.set_tex2d(false);
-//    c_texpoints[i].clear();
-  }
-  gl.set_stage(0);
+  gl.set_stage_num(0);
   //
   gl.glMatrixMode(GL_MODELVIEW);
   gl.glPopMatrix();

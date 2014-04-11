@@ -151,6 +151,8 @@ struct SGLFuncs : public SGLFuncsBase {
     }
   }
   inline void set_stage(int level) const {
+    if(level>=tex_levels)
+      tex_levels = level+1;
     set_stage_t(level);
     set_stage_c(level);
   }
@@ -229,6 +231,24 @@ struct SGLFuncsLegacy : public SGLFuncs {
   void set_flags(const SGLFuncs::TextureInfo* ti, const SRenderMapFlags& flags) const;
   void set_flags(const SGLFuncs::TextureInfo* ti, const SRenderMapFlags& flags, eRenderMapFlagsCombine combine) const;
   void set_tflags(const SGLFuncs::TextureInfo* ti, const SRenderMapFlags& flags) const;
+  //
+  inline void set_stage_num(int level) const {
+    if(level<tex_levels) {
+      for(int i=level; i<tex_levels; i++) {
+        set_stage(i);
+        set_ctc(false);
+        set_tex2d(false);
+      }
+    } else {
+      for(int i=tex_levels; i<=level; i++) {
+        set_stage(i);
+        set_ctc(false);
+        set_tex2d(false);
+      }
+    }
+    tex_levels = level;
+    set_stage(level);
+  }
 };
 
 

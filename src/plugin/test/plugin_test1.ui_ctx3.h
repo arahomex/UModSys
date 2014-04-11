@@ -3,6 +3,37 @@
 bool RTest1_Shell::UI_Info::create_3d(const char *cap)
 {
   {
+    libmedia::IUtilities::P utils = shell.media_utils();
+    libmedia::ILibraryLayered::P lib = shell.media_lay();
+    if(!utils.valid() || !lib.valid())
+      return false;
+    {
+      libmedia::ILibraryBinTree::P lib_vfs = shell.media_vfs();
+      if(!lib_vfs.valid())
+        return false;
+      lib_vfs->mount_add("/", shell.media_arch_stdio("."), libmedia::mp_Read);
+      lib_vfs->mount_add("/", 1, shell.media_arch_stdio("./write-dir"), libmedia::mp_RWL);
+      lib->layer_push( lib_vfs );
+      //
+      lib_vfs->mount_add("/mc/", 5, shell.media_arch_zip(lib, utils, "/mctest.zip"), libmedia::mp_RL);
+    }
+    //
+    {
+      libmedia::ILibraryObjFilter::P lib_flt = shell.media_flt();
+      if(!lib_flt.valid())
+        return false;
+      TParametersA<1024> params;
+      libmedia::IBinObjFilter::P flt = shell.media_filter_new("*::images_std::*", params);
+      lib_flt->filters_add(flt, &params, 0);
+      lib->layer_push( lib_flt );
+    }
+    {
+      lib->layer_push( shell.media_cache(false) );
+      lib->layer_push( shell.media_cache(true) );
+    }
+    media = lib();
+  }
+  {
     TParametersA<1024> pars;
     rdr = generate_type<lib3d::IRenderer>("*::stdlib::*", pars, "IRenderer");
     if(!rdr.valid())
@@ -54,6 +85,22 @@ bool RTest1_Shell::UI_Info::create_3d(const char *cap)
     vocube->visual_update();
     vocube->T.set_ER(1);
     vocube->T.set_translate(0.5, 0.5, 1.2);
+  }
+  {
+    lib3d::PTexture tex = rd3d->create_tex();
+    if(!tex.valid()) {
+      s_dbg.put(d_SubGen, cl_Info, "  Can't create texture\n");
+      return false;
+    }
+    s_dbg.put(d_SubGen, cl_Info, "  created texture: %s => %p\n", tex->root_get_interface_type()->name, tex());
+    mat_cube.textures[0].texture = tex;
+    //
+//    lib2d::IImageFactory::P factory = new_mem_imagefactory();
+//    lib2d::IImage::P src = factory->image_new();
+    if(!media->obj_load("/atlas1.png", tex, "lib2d::IImage")) {
+      s_dbg.put(d_SubGen, cl_Info, "  Can't load texture from file\n");
+      return false;
+    }
   }
   return true;
 }
@@ -177,7 +224,7 @@ void RTest1_Shell::UI_Info::cycle3d_b(void)
   //
   if(!new_va_1())
     return;
-#if 1
+#if 0
   if(!new_va_qc())
     return;
 #endif
@@ -224,8 +271,10 @@ void RTest1_Shell::UI_Info::cycle3d_b(void)
         rd3d->render_primitive(lib3d::rp_Tri, 3);
       }
       if(vas_cube.valid()) {
+        rd3d->setup_material(&mat_cube);
         rd3d->setup_array(vas_cube);
         rd3d->render_primitive(lib3d::rp_Quad, 4*6);
+        rd3d->setup_material(NULL);
       }
       if(vas_cubechunk.valid()) {
         rd3d->setup_array(vas_cubechunk);

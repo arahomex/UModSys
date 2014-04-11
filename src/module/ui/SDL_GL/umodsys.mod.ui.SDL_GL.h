@@ -11,6 +11,7 @@
 
 #include <umodsys/lib/ui/libui.common.h>
 #include <umodsys/lib/2d/lib2d.driver.h>
+#include <umodsys/lib/2d/lib2d.utils.h>
 #include <umodsys/lib/3d/lib3d.driver.h>
 #include <umodsys/lib/media/libmedia.common.h>
 

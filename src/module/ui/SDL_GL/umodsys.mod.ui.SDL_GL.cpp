@@ -16,6 +16,8 @@ UMODSYS_MODULE_BODY0()
 
 #include "umodsys.mod.ui.SDL_GL.u_tex.h"
 #include "umodsys.mod.ui.SDL_GL.u_texmax.h"
+#include "umodsys.mod.ui.SDL_GL.u_rtex.h"
+
 
 #include "umodsys.mod.ui.SDL_GL.w_utl.h"
 

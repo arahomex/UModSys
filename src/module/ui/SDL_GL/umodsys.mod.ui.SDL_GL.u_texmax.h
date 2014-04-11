@@ -199,7 +199,6 @@ bool STextureGL::set_reallocate(lib2d::eImageType aetype, int dx, int dy, BCStr 
   return alloc();
 }
 
-#if 0
 bool STextureGL::set_linear(const lib2d::SImagePatchInfo& info, const SCMem& linear)
 {
   using namespace lib2d;
@@ -258,6 +257,7 @@ bool STextureGL::set_indexed(const lib2d::SImagePatchInfo& info, const SCMem& in
   }
   return false;
 }
+#if 0
 #endif
 
 //***************************************

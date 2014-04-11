@@ -50,7 +50,7 @@ inline bool bin_move(const SMem& dest, const SImagePatchInfo& idest, const SCMem
 
 //***************************************
 
-bool bin_move_cvt(const SMem& dest, const SImagePatchInfo& idest, const SCMem& src, const SImagePatchInfo& isrc, pixel_convert_f cvt, void *ctx)
+inline bool bin_move_cvt(const SMem& dest, const SImagePatchInfo& idest, const SCMem& src, const SImagePatchInfo& isrc, pixel_convert_f cvt, void *ctx)
 {
   int qsize1 = (isrc.type & it_Mask_Plane1)>>it_Sh_Plane1;
   int qsize2 = (idest.type & it_Mask_Plane1)>>it_Sh_Plane1;
@@ -77,7 +77,7 @@ bool bin_move_cvt(const SMem& dest, const SImagePatchInfo& idest, const SCMem& s
 
 //***************************************
 
-bool bin_move_cvt2(const SMem& dest, const SImagePatchInfo& idest, const SCMem& src, const SCMem& src2, const SImagePatchInfo& isrc, pixel_convert_f cvt, void *ctx, pixel_convert_f chk=NULL)
+inline bool bin_move_cvt2(const SMem& dest, const SImagePatchInfo& idest, const SCMem& src, const SCMem& src2, const SImagePatchInfo& isrc, pixel_convert_f cvt, void *ctx, pixel_convert_f chk=NULL)
 {
   int qsize1 = (isrc.type & it_Mask_Plane1)>>it_Sh_Plane1;
   int qsize2 = (idest.type & it_Mask_Plane1)>>it_Sh_Plane1;
@@ -106,7 +106,7 @@ bool bin_move_cvt2(const SMem& dest, const SImagePatchInfo& idest, const SCMem& 
 
 //***************************************
 
-bool bin_build_mipmap(SCMem* maps, const SMem& mem, const SImagePatchInfo& inf, int mlevels)
+inline bool bin_build_mipmap(SCMem* maps, const SMem& mem, const SImagePatchInfo& inf, int mlevels)
 {
   int qsize = (inf.type & it_Mask_Plane1)>>it_Sh_Plane1;
   int linesize = inf.size(0) * qsize, nlines = inf.size(1), boxsize = nlines * linesize;
@@ -147,7 +147,7 @@ bool bin_build_mipmap(SCMem* maps, const SMem& mem, const SImagePatchInfo& inf, 
 //***************************************
 // specialized converters
 
-bool bin_cvt_L8_L8A8(void* dest, const void* src, size_t count, void *ctx, const void *src2)
+inline bool bin_cvt_L8_L8A8(void* dest, const void* src, size_t count, void *ctx, const void *src2)
 {
   register const BByte *sp = static_cast<const BByte *>(src);
   register BByte *dp = static_cast<BByte *>(dest);
@@ -162,7 +162,7 @@ bool bin_cvt_L8_L8A8(void* dest, const void* src, size_t count, void *ctx, const
 
 //***************************************
 
-bool bin_cvt_X24_X24A8(void* dest, const void* src, size_t count, void *ctx, const void *src2) 
+inline bool bin_cvt_X24_X24A8(void* dest, const void* src, size_t count, void *ctx, const void *src2) 
 // ctx=&alpha
 {
   register const BByte *sp = static_cast<const BByte *>(src);
@@ -180,7 +180,7 @@ bool bin_cvt_X24_X24A8(void* dest, const void* src, size_t count, void *ctx, con
 
 //***************************************
 
-bool bin_cvt_X24A8_X24(void* dest, const void* src, size_t count, void *ctx, const void *src2)
+inline bool bin_cvt_X24A8_X24(void* dest, const void* src, size_t count, void *ctx, const void *src2)
 {
   register const BByte *sp = static_cast<const BByte *>(src);
   register BByte *dp = static_cast<BByte *>(dest);
@@ -196,7 +196,7 @@ bool bin_cvt_X24A8_X24(void* dest, const void* src, size_t count, void *ctx, con
 
 //***************************************
 
-bool bin_cvt_I8pX24_X24(void* dest, const void* src, size_t count, void *ctx, const void *src2) 
+inline bool bin_cvt_I8pX24_X24(void* dest, const void* src, size_t count, void *ctx, const void *src2) 
 // src2=palette
 {
   register const BByte *xp = static_cast<const BByte *>(src2);
@@ -215,7 +215,7 @@ bool bin_cvt_I8pX24_X24(void* dest, const void* src, size_t count, void *ctx, co
 
 //***************************************
 
-bool bin_cvt_I8pX24_X24A8(void* dest, const void* src, size_t count, void *ctx, const void *src2) 
+inline bool bin_cvt_I8pX24_X24A8(void* dest, const void* src, size_t count, void *ctx, const void *src2) 
 // src2=palette, ctx=&alpha
 {
   register const BByte *xp = static_cast<const BByte *>(src2);
@@ -236,7 +236,7 @@ bool bin_cvt_I8pX24_X24A8(void* dest, const void* src, size_t count, void *ctx, 
 
 //***************************************
 
-bool bin_cvt_I8pX24A8_X24A8(void* dest, const void* src, size_t count, void *ctx, const void *src2)
+inline bool bin_cvt_I8pX24A8_X24A8(void* dest, const void* src, size_t count, void *ctx, const void *src2)
 // src2=palette
 {
   register const BByte *xp = static_cast<const BByte *>(src2);
@@ -256,7 +256,7 @@ bool bin_cvt_I8pX24A8_X24A8(void* dest, const void* src, size_t count, void *ctx
 
 //***************************************
 
-bool bin_cvt_I8pX24A8_X24(void* dest, const void* src, size_t count, void *ctx, const void *src2) 
+inline bool bin_cvt_I8pX24A8_X24(void* dest, const void* src, size_t count, void *ctx, const void *src2) 
 // src2=palette
 {
   register const BByte *xp = static_cast<const BByte *>(src2);

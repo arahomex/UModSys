@@ -10,6 +10,11 @@ bool RTest1_Shell::UI_Info::new_va_1(void)
     lib3d::SVertexElemInfo::based_on_a<float32>(lib3d::vc_Coord, 3),              
     lib3d::SVertexElemInfo::based_on_a<uint8>(lib3d::vc_Color, 4)
   };
+  lib3d::SVertexElemInfo s_lys3[3] = {
+    lib3d::SVertexElemInfo::based_on_a<float32>(lib3d::vc_Coord, 3),              
+    lib3d::SVertexElemInfo::based_on_a<uint8>(lib3d::vc_Color, 4),
+    lib3d::SVertexElemInfo::based_on_a<float32>(lib3d::vc_TexCoord, 2)
+  };
   {
     va_tri = rd3d->create_array(2, s_lys, 3);
     if(!va_tri.valid())
@@ -30,7 +35,7 @@ bool RTest1_Shell::UI_Info::new_va_1(void)
       return false;
   }
   //
-  {
+  if(0) {
     VertexPC q[6][4];
     for(int i=0; i<6; i++) {
       for(int j=0; j<4; j++) {
@@ -41,6 +46,23 @@ bool RTest1_Shell::UI_Info::new_va_1(void)
       }
     }
     vas_cube = rd3d->create_array(2, s_lys2, 6*4, &q, sizeof(q));
+    if(!vas_cube.valid())
+      return false;
+  }
+  //
+  if(1) {
+    VertexPCT q[6][4];
+    for(int i=0; i<6; i++) {
+      for(int j=0; j<4; j++) {
+        VertexPCT& v = q[i][j];
+        const uint8 *xyz = lib3d::cube_quad_points[i][j];
+        const uint8 *uv = lib3d::cube_quad_texpoints[i][j];
+        v.set_xyz(xyz[0]*0.3f+0.3f, xyz[1]*0.3f+0.3f, xyz[2]*0.3f+0.3f);
+        v.set_rgba(i&4 ? 255 : 127, i&2 ? 255 : 127, i&1 ? 255 : 127);
+        v.set_uv((uv[0]+i)/32.0f, (1-uv[1])/16.0f);
+      }
+    }
+    vas_cube = rd3d->create_array(3, s_lys3, 6*4, &q, sizeof(q));
     if(!vas_cube.valid())
       return false;
   }

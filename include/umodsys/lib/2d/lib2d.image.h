@@ -185,6 +185,14 @@ inline size_t GetPixelSize(eImageType type, int plane)
   return (plane<0 || plane>4) ? 0 : (type>>(plane<<2)) & it_Mask_Plane1;
 }
 
+inline uint8 GetPlaneCount(eImageType type)
+{
+  int c = type & it_Mask_Class;
+  return c==it_Class_Linear ? 1 
+       : c==it_Class_Palette ? 2 
+       : c==it_Class_Compress ? 0
+       : 0;
+}
 
 //***************************************
 // END

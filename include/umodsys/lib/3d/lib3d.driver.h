@@ -60,8 +60,10 @@ struct IRenderDriver : public lib2d::IRenderDriver {
 //  virtual ITextureCells::P register_texcells(libmedia::ILibrary * mg, const DCString& texname, const SRenderMapFlags& deff) =0;
   // this one create a new box used for supply textures
 //  virtual ITexture::P register_tex(const DPoint2i& size, const SRenderMapFlags& deff, lib2d::eImageType type) =0;
-  virtual ITexture::P new_tex(void) =0;
-  virtual ITextureCells::P new_texcells(void) =0;
+  //
+  // -- create new
+  virtual ITexture::P create_tex(void) =0;
+  virtual ITextureCells::P create_texcells(void) =0;
   virtual IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount) =0;
   virtual IVertexArray::P create_array(int lcount, const SVertexElemInfo layers[], int vcount, const void* rawdata, size_t rawsize) =0;
   //

@@ -146,7 +146,25 @@ void RRenderDriver3D::setup_T(const DMatrix4& T)
 
 bool RRenderDriver3D::setup_material(const SMaterial *mat) // NULL to disable materials
 {
-  return false;
+  if(mat==NULL) {
+    gl.set_stage_num(0);
+  } else {
+    gl.set_stage_num(0);
+    for(int i=0; i<mat->num_textures; i++) {
+      const SMaterialTexture& mt = mat->textures[i];
+      if(!mt.texture.valid())
+        continue;
+      RTextureGL* tgl = mt.texture->tget_hwinfo<RTextureGL>(RTextureGL::_root_get_interface_type());
+      if(tgl==NULL)
+        return false; // bad texture
+      //
+      gl.set_stage(i);
+      gl.set_ctc(true);
+      gl.set_tex2d(true);
+      tgl->bind_tex();
+    }
+  }
+  return true;
 }
 
 bool RRenderDriver3D::setup_array(IVertexArray *va, int targets, int layers)

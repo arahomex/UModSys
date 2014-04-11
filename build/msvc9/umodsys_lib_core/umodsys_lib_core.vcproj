@@ -816,6 +816,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\..\..\include\umodsys\core\objects_res.h"
+					>
+				</File>
+				<File
 					RelativePath="..\..\..\include\umodsys\core\params.h"
 					>
 				</File>
@@ -1100,6 +1104,10 @@
 					</File>
 					<File
 						RelativePath="..\..\..\include\umodsys\tl\util\ref_pointer.h"
+						>
+					</File>
+					<File
+						RelativePath="..\..\..\include\umodsys\tl\util\resource.h"
 						>
 					</File>
 					<File

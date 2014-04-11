@@ -2,7 +2,7 @@
 
 void RTest1_Shell::ui_test1(void)
 {
-  UI_Info ui;
+  UI_Info ui(*this);
   {
     if(0) {
       if(!ui.font_pure())
@@ -47,7 +47,7 @@ void RTest1_Shell::ui_test1(void)
 
 void RTest1_Shell::ui_test2(void)
 {
-  UI_Info ui;
+  UI_Info ui(*this);
   {
     if(!ui.init_term("*::SDL_GL::*"))
       return;

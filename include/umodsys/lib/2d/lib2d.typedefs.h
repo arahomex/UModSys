@@ -162,6 +162,7 @@ enum eImageType {
 // INLINES/OUTLINES
 //***************************************
 
+uint8 GetPlaneCount(eImageType type);
 size_t GetPixelSize(eImageType type, int plane=0);
 
 //***************************************

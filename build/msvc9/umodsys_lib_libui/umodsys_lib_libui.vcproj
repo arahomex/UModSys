@@ -785,6 +785,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.u_rtex.h"
+				>
+			</File>
+			<File
 				RelativePath="..\..\..\src\module\ui\SDL_GL\umodsys.mod.ui.SDL_GL.u_tex.h"
 				>
 			</File>
