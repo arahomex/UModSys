@@ -12,11 +12,15 @@ using namespace UModSys::core::syshlp;
 //***************************************
 
 
-void syshlp::setup_console(void)
+void syshlp::con_setup(void)
 {
 }
 
-void syshlp::restore_console(void)
+void syshlp::con_restore(void)
+{
+}
+
+void syshlp::con_setcolor(FILE* stream, const unsigned char *rgb)
 {
 }
 
