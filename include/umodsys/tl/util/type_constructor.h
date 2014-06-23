@@ -134,10 +134,10 @@ struct TTypeConstructorBinaryFast {
 
 
 #define UMODSYS_SCALAR_CONSTRUCTOR(_type) \
-  namespace UModSys { namespace tl { template<> struct TTypeConstructor<_type> : public UModSys::tl::TTypeConstructorBinaryFast<_type> {}; } }
+  namespace tl { template<> struct TTypeConstructor<_type> : public UModSys::tl::TTypeConstructorBinaryFast<_type> {}; }
 
 #define UMODSYS_SCALAR_CONSTRUCTOR_T1(_t1, _type) \
-  namespace UModSys { namespace tl { template< typename _t1 > struct TTypeConstructor< _type > : public UModSys::tl::TTypeConstructorBinaryFast< _type > {}; } }
+  namespace tl { template< typename _t1 > struct TTypeConstructor< _type > : public UModSys::tl::TTypeConstructorBinaryFast< _type > {}; }
 
 /*************************************************************/
 
@@ -149,7 +149,6 @@ template<typename BaseType> struct TTypeConstructor<const BaseType*> : public TT
 /*************************************************************/
 
 } // namespace tl
-} // namespace UModSys
 
 UMODSYS_SCALAR_CONSTRUCTOR(signed char);
 UMODSYS_SCALAR_CONSTRUCTOR(unsigned char);
@@ -163,5 +162,7 @@ UMODSYS_SCALAR_CONSTRUCTOR(unsigned long);
 UMODSYS_SCALAR_CONSTRUCTOR(float);
 UMODSYS_SCALAR_CONSTRUCTOR(double);
 UMODSYS_SCALAR_CONSTRUCTOR(bool);
+
+} // namespace UModSys
 
 #endif // __UMODSYS_TL_UTIL_TYPECONSTRUCTOR_H

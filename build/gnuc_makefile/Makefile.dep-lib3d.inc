@@ -5,6 +5,8 @@ lib3d_lib_includes := \
 
 lib3d_lib_depends := \
   $(T)/umodsys.lib.3d.common$(OSUFFIX) \
+  \
+  $(T)/umodsys.mod.3d.stdlib$(OSUFFIX) \
 
 lib3d_lib := $(T)/umodsys.lib3d$(LIBSUFFIX)
 
@@ -23,6 +25,12 @@ $(lib3d_lib): $(lib3d_lib_depends)
 
 $(T)/%$(OSUFFIX) : ../../src/lib/3d/%.cpp
 	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $< 
+ifndef NO_CXX_DEP
+	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
+endif
+
+$(T)/%$(OSUFFIX) : ../../src/module/3d/stdlib/%.cpp
+	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $<
 ifndef NO_CXX_DEP
 	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
 endif

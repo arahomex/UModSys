@@ -130,13 +130,20 @@ inline core::HUniquePointer const_unique_id(void)
 /*************************************************************/
 
 #define UMODSYS_TL_TDATAUNIQUEID(_type, _name, _ver) \
-  template<> inline const char* ::UModSys::tl::TDataUniqueID<_type>::data_name(void) { return _name; } \
-  template<> inline int ::UModSys::tl::TDataUniqueID<_type>::data_version(void) { return _ver; }
+  namespace tl { \
+    template<> inline const char* TDataUniqueID<_type>::data_name(void) { return _name; } \
+    template<> inline int TDataUniqueID<_type>::data_version(void) { return _ver; } \
+  }
+
 #define UMODSYS_TL_TDATAUNIQUEID_ATOM(_type) UMODSYS_TL_TDATAUNIQUEID(_type, #_type, 0)
 
+
 #define UMODSYS_TL_TCONSTUNIQUEID(_type, _val, _name, _ver) \
-  template<> inline const char* ::UModSys::tl::TConstUniqueID<_type, _val>::const_name(void) { return _name; } \
-  template<> inline int ::UModSys::tl::TConstUniqueID<_type, _val>::const_version(void) { return _ver; }
+  namespace tl { \
+    template<> inline const char* TConstUniqueID<_type, _val>::const_name(void) { return _name; } \
+    template<> inline int TConstUniqueID<_type, _val>::const_version(void) { return _ver; } \
+  }
+
 #define UMODSYS_TL_TCONSTUNIQUEID_ATOM(_type, _val) UMODSYS_TL_TCONSTUNIQUEID(_type, _val, #_val, 0)
 
 /*************************************************************/

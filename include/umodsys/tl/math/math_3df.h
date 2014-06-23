@@ -61,15 +61,16 @@ void TQuaternion4<_Type>::get_rotate(_Type* vv) const {
 }
 
 template<typename _Type>
-inline TQuaternion4<_Type> TQuaternion4<_Type>::operator*(const TQuaternion4<_Type>& R) const {
-  Type A=(q1.v[0]+q1.v[1])*(q2.v[0]+q2.v[1])
-  Type B=(q1.v[3]-q1.v[2])*(q2.v[2]-q2.v[3])
-  Type C=(q1.v[1]-q1.v[0])*(q2.v[2]+q2.v[3])
-  Type D=(q1.v[2]+q1.v[3])*(q2.v[1]-q2.v[0])
-  Type E=(q1.v[1]+q1.v[3])*(q2.v[1]+q2.v[2])
-  Type F=(q1.v[1]-q1.v[3])*(q2.v[1]-q2.v[2])
-  Type G=(q1.v[0]+q1.v[2])*(q2.v[0]-q2.v[3])
-  Type H=(q1.v[0]-q1.v[2])*(q2.v[0]+q2.v[3])
+inline TQuaternion4<_Type> TQuaternion4<_Type>::operator*(const TQuaternion4<_Type>& q2) const {
+  const TQuaternion4<_Type> &q1 = *this;
+  Type A=(q1.v[0]+q1.v[1])*(q2.v[0]+q2.v[1]);
+  Type B=(q1.v[3]-q1.v[2])*(q2.v[2]-q2.v[3]);
+  Type C=(q1.v[1]-q1.v[0])*(q2.v[2]+q2.v[3]);
+  Type D=(q1.v[2]+q1.v[3])*(q2.v[1]-q2.v[0]);
+  Type E=(q1.v[1]+q1.v[3])*(q2.v[1]+q2.v[2]);
+  Type F=(q1.v[1]-q1.v[3])*(q2.v[1]-q2.v[2]);
+  Type G=(q1.v[0]+q1.v[2])*(q2.v[0]-q2.v[3]);
+  Type H=(q1.v[0]-q1.v[2])*(q2.v[0]+q2.v[3]);
   return Self(
     B + (-E - F + G + H) * 0.5, 
     A - ( E + F + G + H) * 0.5, 

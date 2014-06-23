@@ -13,6 +13,7 @@
 namespace UModSys {
 
 #define UMODSYS_MULTI_TYPE(_templ) \
+  /* Inlines for UModSys Level */ \
   UMODSYS_SCALAR_CONSTRUCTOR_T1(T, math3d::_templ<T>) \
   UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::uint8> ) \
   UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::sint8> ) \

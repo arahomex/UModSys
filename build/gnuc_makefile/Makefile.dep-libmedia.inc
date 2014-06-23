@@ -8,13 +8,9 @@ libmedia_lib_depends := \
   $(T)/umodsys.lib.media.library$(OSUFFIX) \
   \
   $(T)/umodsys.mod.media.stdio$(OSUFFIX) \
-  \
   $(T)/umodsys.mod.media.stdlib$(OSUFFIX) \
-  \
   $(T)/umodsys.mod.media.zlib$(OSUFFIX) \
-  \
   $(T)/umodsys.mod.media.images_std$(OSUFFIX) \
-  \
   $(T)/umodsys.mod.media.serialize_json$(OSUFFIX) \
 
 libmedia_lib := $(T)/umodsys.libmedia$(LIBSUFFIX)

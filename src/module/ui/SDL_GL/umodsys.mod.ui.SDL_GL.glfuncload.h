@@ -37,7 +37,7 @@ bool SGLFuncs::load(void)
   loadsec  = loadfunc = 0;
 #define GL_LinkGroupBegin(type,name)   if(check_##type(#name)) { do { cur = &is_##name; *cur = false;
 #define GL_LinkGroupEnd(type,name)     *cur = true; loadsec++; } while(0); }
-#define GL_Link_core(var,name,type,tdef)    var = static_cast<type>(::SDL_GL_GetProcAddress(name)); \
+#define GL_Link_core(var,name,type,tdef)    var = reinterpret_cast<type>(::SDL_GL_GetProcAddress(name)); \
   if(var==NULL) { s_dbg.put(0, cl_Error, "Error link '%s'.\n", name); break; } else loadfunc++;
 #define GL_Link_compat(var,name,type,tdef)
   #include "umodsys.mod.ui.SDL_GL.inc.gl.h"
@@ -112,7 +112,7 @@ bool SGLFuncsLegacy::load(bool iscore)
   bool *cur; 
 #define GL_LinkGroupBegin(type,name)   if(is_##name) { do { cur = &is_##name; *cur = false; loadsec--;
 #define GL_LinkGroupEnd(type,name)     *cur = true; loadsec++; } while(0); }
-#define GL_Link_compat(var,name,type,tdef)    var = static_cast<type>(::SDL_GL_GetProcAddress(name)); \
+#define GL_Link_compat(var,name,type,tdef)    var = reinterpret_cast<type>(::SDL_GL_GetProcAddress(name)); \
   if(var==NULL) { s_dbg.put(0, cl_Error, "Error link '%s'.\n", name); break; } else loadfunc++;
 #define GL_Link_core(var,name,type,tdef)
   #include "umodsys.mod.ui.SDL_GL.inc.gl.h"

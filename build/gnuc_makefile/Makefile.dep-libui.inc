@@ -7,8 +7,8 @@ libui_lib_depends := \
   $(T)/umodsys.lib.ui.common$(OSUFFIX) \
   \
   $(T)/umodsys.mod.ui.frames$(OSUFFIX) \
-  \
   $(T)/umodsys.mod.ui.SDL_core$(OSUFFIX) \
+  $(T)/umodsys.mod.ui.SDL_GL$(OSUFFIX) \
 
 
 libui_lib := $(T)/umodsys.libui$(LIBSUFFIX)
@@ -39,6 +39,12 @@ ifndef NO_CXX_DEP
 endif
 
 $(T)/%$(OSUFFIX) : ../../src/module/ui/SDL_core/%.cpp
+	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $<
+ifndef NO_CXX_DEP
+	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 
+endif
+
+$(T)/%$(OSUFFIX) : ../../src/module/ui/SDL_GL/%.cpp
 	$(CXX_C) $(CXXFLAGS) $(CXX_O)$@ $<
 ifndef NO_CXX_DEP
 	$(CXX_DEP) $(CXXFLAGS) $(CXX_DEP_O)$@.d $(CXX_DEP_T)$@ $< 

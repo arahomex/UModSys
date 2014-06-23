@@ -23,12 +23,13 @@ basesys_lib := $(T)/umodsys.basesys$(LIBSUFFIX)
 main_depends := \
   $(T)/umodsys.c_main$(OSUFFIX) \
 
-main := $(BINDIR)/umodsysc.$(PLATFORM).$(BUILD_MODE)$(BINSUFFIX)
+main_bin := umodsysc.$(PLATFORM).$(BUILD_MODE)$(BINSUFFIX)
+main := $(BINDIR)/$(main_bin)
 
 #---------------------------- make rules targets
 
-basesys_lib: $(base_lib) 
-main: $(main)
+basesys_lib: req $(base_lib) 
+main: req $(main)
 
 #---------------------------- make rules static
 

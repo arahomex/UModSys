@@ -238,7 +238,8 @@ struct RVertexArray : public lib3d::IVertexArray {
   //
   struct SLayInfo {
     SVertexElemInfo vei;
-    GLint start, stride, type, num;
+    size_t start;
+    GLint stride, type, num;
   };
   typedef tl::TDynarrayDynamic<SLayInfo, tl::DAllocatorTight> Layers;
 public:

@@ -16,13 +16,16 @@ so_test2 := $(BINDIR)/plugin_test2.$(PLATFORM).$(BUILD_MODE)$(SOLIBSUFFIX)
 
 so_test_s: so_test1 so_test2
 
-so_test1: $(so_test1)
-so_test2: $(so_test2)
+so_test1: req $(so_test1)
+so_test2: req $(so_test2)
+
+tests: so_test1 so_test2 main
+	cd ../../data && ../bin/$(PLATFORM).$(BUILD_MODE)/$(main_bin)
 
 #---------------------------- make rules static
 
 $(so_test1): $(so_test1_depends) $(so_main) \
-    $(libmedia_lib) $(libui_lib) $(lib3d_lib) $(lib2d_lib) \
+    $(libui_lib) $(lib3d_lib) $(lib2d_lib) $(libmedia_lib) \
     $(base_lib) $(core_lib)
 	$(CXX_LINK_SO) $(CXXFLAGS) $(CXX_BIN)$@ $^ $(CXX_LINK_LAST) $(STD_LIBS)
 ifdef CXX_LINK_POSTPROCESS

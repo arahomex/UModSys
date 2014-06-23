@@ -28,9 +28,11 @@ static void refer(void);
 
 using namespace UModSys;
 
-UMODSYS_TL_TCONSTUNIQUEID_ATOM(base::eConsoleLevels, base::cl_Info)
-UMODSYS_TL_TCONSTUNIQUEID_ATOM(base::eConsoleLevels, base::cl_Debug)
-UMODSYS_TL_TCONSTUNIQUEID_ATOM(base::eConsoleLevels, base::cl_Error)
+namespace UModSys {
+  UMODSYS_TL_TCONSTUNIQUEID_ATOM(base::eConsoleLevels, base::cl_Info)
+  UMODSYS_TL_TCONSTUNIQUEID_ATOM(base::eConsoleLevels, base::cl_Debug)
+  UMODSYS_TL_TCONSTUNIQUEID_ATOM(base::eConsoleLevels, base::cl_Error)
+}
 
 
 

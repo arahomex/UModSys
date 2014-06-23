@@ -94,9 +94,9 @@ IVertexArray::P RRenderDriver3D::create_array(int lcount, const SVertexElemInfo 
 {
   RVertexArray::SelfP arr = new(local_memory()) RVertexArray(this, false);
   if(!arr->Alloc(layers, lcount, vcount, true))
-    return false;
+    return NULL;
   if(!arr->is_valid())
-    return false;
+    return NULL;
   return arr();
 }
 
@@ -104,11 +104,11 @@ IVertexArray::P RRenderDriver3D::create_array(int lcount, const SVertexElemInfo 
 {
   RVertexArray::SelfP arr = new(local_memory()) RVertexArray(this, true);
   if(!arr->Alloc(layers, lcount, vcount, true))
-    return false;
+    return NULL;
   if(!arr->Upload(rawdata, rawsize))
-    return false;
+    return NULL;
   if(!arr->is_valid())
-    return false;
+    return NULL;
   return arr();
 }
 

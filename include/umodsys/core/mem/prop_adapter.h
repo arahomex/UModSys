@@ -63,7 +63,7 @@ struct SPropValueW : tl::SDataUniqueID {
   //
   template<typename T>
   SPropValueW(T& tv) 
-  : SDataUniqueID(TDataUniqueID<T>::get_id()), 
+  : SDataUniqueID(tl::TDataUniqueID<T>::get_id()), 
     value(&tv, sizeof(tv)) 
   {
   }
@@ -124,9 +124,9 @@ struct IPropNamedAdapter {
 //***************************************
 
 } // namespace core
-namespace tl {
+
 //***************************************
-// INLINES
+// INLINES (UModSys) 
 //***************************************
 
 UMODSYS_TL_TDATAUNIQUEID_ATOM(core::uint8);
@@ -142,7 +142,6 @@ UMODSYS_TL_TDATAUNIQUEID_ATOM(core::float64);
 // END
 //***************************************
 
-} // namespace tl
 } // namespace UModSys
 
 #endif

@@ -6,7 +6,7 @@
 STextureGL::STextureGL(const SGLFuncs* agl) 
   : gl(agl), tinfo(this), 
     inflags(rmff_Nearest, rmfc_Normal, rmfw_NoWrap),
-    saved_vic(NULL)
+    saved_vic(0)
 {
   width = height = palsize = 0;
   updated = false;

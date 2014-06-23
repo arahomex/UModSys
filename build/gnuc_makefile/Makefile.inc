@@ -14,12 +14,14 @@ T:=$(TT)/$(PLATFORM).$(BUILD_MODE)
 
 all: target
 
-target: T BINDIR core_lib base_lib main so_test_s
+target: req BINDIR core_lib base_lib main so_test_s
+
+req: $(T) $(BINDIR)
 
 
 clean_bin:
-	rm $(BINDIR)/*.$(PLATFORM).$(BUILD_MODE)$(BINSUFFIX)
-	rm $(BINDIR)/*.$(PLATFORM).$(BUILD_MODE)$(SOLIBSUFFIX)
+	-rm $(BINDIR)/*.$(PLATFORM).$(BUILD_MODE)$(BINSUFFIX)
+	-rm $(BINDIR)/*.$(PLATFORM).$(BUILD_MODE)$(SOLIBSUFFIX)
 
 clean: clean_bin
 	-$(RM) $(T)/*$(OSUFFIX) 
