@@ -4,37 +4,37 @@
     -- uni-atom identify                                        [done]   [done]
     -- load/unload modules                                      [done]   [done]
     -- load/unload module info                                  [    ]   [done]
-    -- get/create objects                                       [    ]   [done]
+    -- get/create objects                                       [done]   [done]
   - Memory
-    -- allocate/deallocate memory                               [    ]   [done]
+    -- allocate/deallocate memory                               [done]   [done]
   - Strings
-    -- use utf8, utf16, utf32 strings                           [    ]   [done]
+    -- use utf8, utf16, utf32 strings                           [done]   [done]
     -- convert to and from mbs byte strings                     [    ]   [done]
-    -- compare strings                                          [    ]   [done]
+    -- compare strings                                          [part]   [done]
 2. Core modules (mostly included into main binary)
   - Params
-    -- use static params                                        [    ]   [done]
+    -- use static params                                        [done]   [done]
     -- use dynamic params                                       [    ]   [done]
   - Media
-    -- virtual filesystem support                               [    ]   [done]
-    -- load/save binary files                                   [    ]   [done]
-    -- load/save memory objects                                 [    ]   [done]
-    -- generate memory object from file                         [    ]   [done]
+    -- virtual filesystem support                               [done]   [done]
+    -- load/save binary files                                   [done]   [done]
+    -- load/save memory objects                                 [done]   [done]
+    -- generate memory object from file                         [done]   [done]
   - Micro TCL
     -- execute meta programs                                    [    ]   [pre ]
   - Debug/Console
-    -- output debug console                                     [    ]   [done]
+    -- output debug console                                     [done]   [done]
     -- control console                                          [    ]   [done]
 3. Main modules (sometimes included into main binary)
   * Common VFS
-    - Zip VFS read/write                                        [    ]   [done]
-    - FILE VFS read/write                                       [    ]   [done]
+    - Zip VFS read/write                                        [done]   [done]
+    - FILE VFS read/write                                       [done]   [done]
   * NET
     - Socket uni-interface                                      [    ]   [done]
     - NET channels                                              [    ]   [done]
   * lib2d, lib3d
-    - lib2d      (output/input)                                 [    ]   [done]
-    - libui      (GUI)                                          [    ]   [done]
+    - lib2d      (output/input)                                 [done]   [done]
+    - libui      (GUI)                                          [done]   [done]
     - lib3d      (output/input)                                 [    ]   [done]
     - libphys    (physics)                                      [    ]   [done]
   * libsound, libmusic, libvideo
@@ -51,7 +51,7 @@
     - Remote VFS read/write                                     [    ]   [    ]
   * lib2d, lib3d
     - file loader common pictures (pcx, tga, bmp)               [    ]   [done]
-    - file loader common-lib pictures (gif, png, jpeg)          [    ]   [done]
+    - file loader common-lib pictures (gif, png, jpeg)          [done]   [done]
     - file loader ID Quake2 models (bsp (q2), spr(q2), wal, md2)[    ]   [done]
     - file loader ID Quake3 models (bsp (q3), md3)              [    ]   [pre ]
     - file loader 3ds files                                     [    ]   [done]
