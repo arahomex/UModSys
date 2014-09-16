@@ -2,6 +2,11 @@
 #include <umodsys/tl/composite/dynarray.h>
 #include <umodsys/core/syshlp.h>
 
+
+#define TEST_SDL_GL 0
+#define TEST_SDL_CORE 1
+#define TEST_FRAMES 1
+
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.library.h>
 #include <umodsys/lib/media/libmedia.archive.h>
@@ -246,9 +251,10 @@ struct RTest1_Shell
     file_test7();
 #endif
     //
-#if 1
-//    ui_test1();
+#if TEST_SDL_GL
     ui_test2();
+#elif TEST_SDL_CORE
+    ui_test1();
 #endif
     //
     s_dbg.put(d_Shell, cl_Info, "} // RTest1_Shell()\n");
@@ -355,8 +361,12 @@ static void refer(void)
   UMODSYS_MODULE_USE(lib2d,stdlib);
   UMODSYS_MODULE_USE(lib3d,stdlib);
   UMODSYS_MODULE_USE(ui,frames);
+#if TEST_SDL_CORE
   UMODSYS_MODULE_USE(ui,SDL_core);
+#endif
+#if TEST_SDL_GL
   UMODSYS_MODULE_USE(ui,SDL_GL);
+#endif
   UMODSYS_MODULE_USE(media,images_std);
   UMODSYS_MODULE_USE(media,serialize_json);
   UMODSYS_MODULE_USE(media,zlib);

@@ -8,17 +8,17 @@ void RTest1_Shell::ui_test1(void)
       if(!ui.font_pure())
         return;
     }
-    if(0) {
+    if(TEST_SDL_CORE) {
       if(!ui.init_term("*::SDL_core::*"))
         return;
-    } else if(1) {
+    } else if(TEST_SDL_GL) {
       if(!ui.init_term("*::SDL_GL::*"))
         return;
     }
-    if(0) {
+    if(TEST_SDL_CORE) {
       if(!ui.create_2d("Test #1"))
         return;
-    } else if(1) {
+    } else if(TEST_SDL_GL) {
       if(!ui.create_3d("Test #1"))
         return;
     }
@@ -27,7 +27,7 @@ void RTest1_Shell::ui_test1(void)
         return;
     }
     //
-    if(1) {
+    if(TEST_FRAMES) {
       if(!ui.new_frames(this))
         return;
     }
