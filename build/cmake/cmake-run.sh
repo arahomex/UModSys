@@ -5,17 +5,16 @@ export UMS_PID=linux
 
 
 function MakeTarget() {
+  
   Target=$1
-  if [ ! -d $PLAT.$Target ] ; then
+  if [ ! -d ../bin/$PLAT.$Target ] ; then
     echo "Not found dir: $PLAT.$Target"
     exit
   fi
-  cd $PLAT.$Target || exit
-  ./umodsys
-  cd ..
+  ../bin/$PLAT.$Target/umodsys
 }
 
-pushd ../../bin
+pushd ../../data
 
 if [ "$1" == "clean" ] ; then
   maketarget=clean
