@@ -1,0 +1,55 @@
+Scripting language embedded to umodsys:
+
+
+1. This is line-oriented language
+2. The language is sh-like
+
+
+Syntax regexps:
+ 1. Line empty/comment (ignored) if:
+  \s*#.*
+  \s*
+ 2. Line continued on next line if:
+  .*\\
+ 3. Line processed on following parts:
+   - Arg space-delimited, proceed substitudion after division : a bd e-f-.2
+   - Arg starts with \" ends by next \", escaped by \\\" : "abc\n\"v"
+     - arg processed with variable substitution
+   - Arg starts with \' ends by next \', escaped by '' : 'abc\n\''v'
+     - arg processed as it
+   - Variable substitution rules:
+     - variable: $varname : alphanumeric
+     - command: $(command) : command processed without any escaping
+     - adv-variable: ${variable} : variable can contan any char
+
+
+Example of config script:
+  set sys /usr/share/umodsys
+  set loc "[env HOME]/.local/umodsys"
+  #
+  list-add bin $sys/bin
+  list-add plugins $sys/bin $loc/bin
+  list-add modules $sys/modules $loc/modules
+  list-add templates $sys/templates $loc/templates
+  list-add configs-ro $sys/configs
+  list-add configs $loc/configs
+  list-add state $loc/states
+  #
+  print [list-join plugin "\n"]
+  #
+  foreach plugin plugins {
+    dir-list plgs plugin *
+    foreach plg plgs {
+      plugin-load plg
+      if $error {
+        print $error
+        exit
+      }
+    }
+  }
+  #
+  shell app MineApplication
+  #
+  app start default
+  #
+  shell app -
