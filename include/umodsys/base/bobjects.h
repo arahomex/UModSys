@@ -5,17 +5,11 @@
 // info: base objects
 /*************************************************************/
 
-#include <umodsys/core/objects.h>
+#include <umodsys/base/basetypes.h>
 #include <umodsys/base/module.h>
-#include <umodsys/tl/util/static_holder.h>
 
 namespace UModSys {
 namespace base {
-
-using core::SParameters;
-using core::DCString;
-using core::BCStr;
-using core::IRefObject;
 
 //***************************************
 // DEFINES
@@ -124,19 +118,6 @@ protected:
   }
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IGenerator, 2, IModObject);
-};
-
-//***************************************
-// IShell::  - main module functionality
-//***************************************
-
-struct IShell : public IRefObject {
-  virtual bool connect(void) =0;
-  virtual bool disconnect(void) =0;
-  virtual bool process_tick(const core::STimeMsec& delta) =0;
-  virtual bool process_command(int argc, const core::DCString argv[]) =0;
-protected:
-  UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IShell, 2, IRefObject);
 };
 
 //***************************************

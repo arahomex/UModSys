@@ -5,13 +5,14 @@
 // info: base system object
 /*************************************************************/
 
-#include <umodsys/stdcore.h>
+#include <umodsys/base/basetypes.h>
 
 #include <umodsys/base/console.h>
-#include <umodsys/base/module.h>
+//#include <umodsys/base/module.h>
 
 namespace UModSys {
 namespace base {
+
 
 //***************************************
 // ISystem
@@ -25,13 +26,14 @@ public:
   virtual core::IUniquePointerResolver* get_upr(void) =0;
   virtual core::ISourceContextAdapter* get_sca(void) =0;
   //
-  virtual IModuleLoader* get_modloader(void) =0;
-  virtual IModuleLibrary* get_syslib(void) = 0;
-  //
   virtual core::IMemAlloc* get_sysmem(void) =0;
   virtual core::IMemAlloc* get_sharemem(void) =0;
-  virtual IConsole* get_console(void) =0;
   virtual core::IParameters* get_params(void) =0;
+  //
+  virtual IModuleLoader* get_modloader(void) =0;
+  virtual IModuleLibrary* get_syslib(void) =0;
+  virtual IExecutor* get_executor(void) =0;
+  virtual IConsole* get_console(void) =0;
 public:
   UMODSYS_ROOT_IMPLEMENT1(UModSys::base::ISystem, 3, IRoot);
 };

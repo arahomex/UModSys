@@ -5,16 +5,11 @@
 // info: base module object
 /*************************************************************/
 
-#include <umodsys/stdcore.h>
-#include <umodsys/base/console.h>
+#include <umodsys/base/basetypes.h>
+//#include <umodsys/base/console.h>
 
 namespace UModSys {
 namespace base {
-
-struct ISystem;
-
-struct IModObject;
-struct IGenerator;
 
 //***************************************
 // SModuleInfo

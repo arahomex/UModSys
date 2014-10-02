@@ -5,27 +5,10 @@
 // info: base console object
 /*************************************************************/
 
-#include <umodsys/stdcore.h>
+#include <umodsys/base/basetypes.h>
 
 namespace UModSys {
 namespace base {
-
-//***************************************
-// eConsoleLevels
-//***************************************
-
-enum eConsoleLevels {
-  cl_Fatal     = 0,
-  cl_Error     = 1,
-  cl_Warning   = 2,
-  cl_UI        = 3,
-  cl_Info      = 4,
-  cl_Aux       = 5,
-  cl_Debug     = 6,
-  cl_Debug1    = 7,
-  cl_Debug2    = 8,
-  cl_Last      = 0x7fff
-};
 
 //***************************************
 // IConsole

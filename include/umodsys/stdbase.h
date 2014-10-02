@@ -7,11 +7,13 @@
 
 #include <umodsys/stdcore.h>
 
+#include <umodsys/base/basetypes.h>
 #include <umodsys/base/bobjects.h>
 #include <umodsys/base/console.h>
 #include <umodsys/base/module.h>
 #include <umodsys/base/module_impl.h>
 #include <umodsys/base/system.h>
 #include <umodsys/base/module_ref.h>
+#include <umodsys/base/shell.h>
 
 #endif // __UMODSYS_BASE_STDBASE_H

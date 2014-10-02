@@ -1,7 +1,9 @@
+#include <umodsys/base/module.h>
 #include <umodsys/base/system.h>
 #include <umodsys/base/console.h>
 #include <umodsys/base/module_impl.h>
 #include <umodsys/base/bobjects.h>
+#include <umodsys/base/shell.h>
 
 #include "version_plugin_test2.h"
 

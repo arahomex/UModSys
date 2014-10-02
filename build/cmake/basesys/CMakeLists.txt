@@ -8,6 +8,7 @@ add_library(umodsys.basesys STATIC
  ${S}/umodsys.basesys.rsystem.cpp
  ${S}/umodsys.basesys.rsystem_main.cpp
  ${S}/umodsys.basesys.rsystem_tests.cpp
+ ${S}/umodsys.basesys.rsystem_exec.cpp
  ${S}/umodsys.basesys.rmodule.cpp
  ${S}/umodsys.basesys.rmodulelib.cpp
  ${S}/umodsys.basesys.rmodulelibso.cpp

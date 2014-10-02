@@ -75,6 +75,7 @@ public:
   IMemAlloc* get_sharemem(void);
   IConsole* get_console(void);
   IParameters* get_params(void);
+  IExecutor* get_executor(void);
 public:
 //  core::DCString get_sys_libname(void) const;
 //  core::IMemAlloc* get_privmem(void) const;

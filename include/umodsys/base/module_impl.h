@@ -6,8 +6,11 @@
 /*************************************************************/
 
 #include <umodsys/stdcore.h>
+#include <umodsys/base/basetypes.h>
+#include <umodsys/base/module.h>
 #include <umodsys/base/system.h>
-#include <umodsys/base/console.h>
+//#include <umodsys/base/system.h>
+//#include <umodsys/base/console.h>
 
 namespace UModSys {
 namespace base {

@@ -10,6 +10,7 @@ function MakeTarget() {
   fi
   cd $PLAT.$Target || exit
   export UMS_PLAT=$PLAT.$Target
+  echo '****************************************************************' $Target
   cmake -G "Unix Makefiles" ../../build/cmake/ -DCMAKE_BUILD_TYPE=$Target || exit
   make $maketarget || exit
   cd ..
