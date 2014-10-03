@@ -28,13 +28,16 @@ protected:
 // IExecutor::  - TCL-like shell executor
 //***************************************
 
-struct IExecutor : public IRefObject {
+struct IExecutorPure {
   virtual bool get_var(const core::DCString& name, core::DCString& value) const =0;
   virtual bool get_shell(const core::DCString& name, IShell::P& shell) const =0;
   //
   virtual bool execute(const core::DCString& text) =0;
   virtual bool set_var(const core::DCString& name, const core::DCString& value, bool can_new=true) =0;
   virtual bool set_shell(const core::DCString& name, IShell* shell) =0;
+};
+
+struct IExecutor : public IRefObject, public IExecutorPure {
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IExecutor, 2, IRefObject);
 };

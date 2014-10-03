@@ -7,6 +7,7 @@
 
 #include <umodsys/stdbase.h>
 #include <umodsys/core/syshlp.h>
+#include <umodsys/core/stdstrings.h>
 
 #include <umodsys/tl/composite/dynarray.h>
 #include <umodsys/tl/composite/scatter_array.h>

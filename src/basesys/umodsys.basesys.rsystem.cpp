@@ -157,6 +157,11 @@ ISourceContextAdapter* RSystem::get_sca(void)
   return this;
 }
 
+IExecutorPure* RSystem::get_executor(void)
+{
+  return this;
+}
+
 //***************************************
 
 #if 0

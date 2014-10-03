@@ -39,6 +39,7 @@ struct SModuleInfo;
 
 // shell.h
 struct IShell;
+struct IExecutorPure;
 struct IExecutor;
 
 // bobjects.h

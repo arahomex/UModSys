@@ -32,7 +32,7 @@ public:
   //
   virtual IModuleLoader* get_modloader(void) =0;
   virtual IModuleLibrary* get_syslib(void) =0;
-  virtual IExecutor* get_executor(void) =0;
+  virtual IExecutorPure* get_executor(void) =0;
   virtual IConsole* get_console(void) =0;
 public:
   UMODSYS_ROOT_IMPLEMENT1(UModSys::base::ISystem, 3, IRoot);

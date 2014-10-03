@@ -8,6 +8,7 @@
 #include "umodsys.basesys.rcommon.h"
 #include "umodsys.basesys.rmodule.h"
 #include "umodsys.basesys.rparameters.h"
+#include "umodsys.basesys.rexec.h"
 
 namespace UModSys {
 namespace base {
@@ -20,7 +21,8 @@ namespace rsystem {
 struct RSystem : 
   public ISystem,
   public IUniquePointerResolver,
-  public ISourceContextAdapter
+  public ISourceContextAdapter,
+  public IExecutorPure
 {
 public:
   enum { 
@@ -67,6 +69,13 @@ public:
 public:
   const core::SSourceContext* persist_ctx(const core::SSourceContext* sc);
 public:
+  bool get_var(const core::DCString& name, core::DCString& value) const;
+  bool get_shell(const core::DCString& name, IShell::P& shell) const;
+  //
+  bool execute(const core::DCString& text);
+  bool set_var(const core::DCString& name, const core::DCString& value, bool can_new);
+  bool set_shell(const core::DCString& name, IShell* shell);
+public:
   ISourceContextAdapter* get_sca(void);
   IUniquePointerResolver* get_upr(void);
   IModuleLoader* get_modloader(void);
@@ -75,7 +84,7 @@ public:
   IMemAlloc* get_sharemem(void);
   IConsole* get_console(void);
   IParameters* get_params(void);
-  IExecutor* get_executor(void);
+  IExecutorPure* get_executor(void);
 public:
 //  core::DCString get_sys_libname(void) const;
 //  core::IMemAlloc* get_privmem(void) const;

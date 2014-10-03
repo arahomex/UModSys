@@ -14,9 +14,29 @@ using namespace UModSys::base::rsystem;
 // RSystem::
 //***************************************
 
-IExecutor* RSystem::get_executor(void)
+bool RSystem::get_var(const core::DCString& name, core::DCString& value) const
 {
-  return NULL;
+  return false;
+}
+
+bool RSystem::get_shell(const core::DCString& name, IShell::P& shell) const
+{
+  return false;
+}
+
+bool RSystem::execute(const core::DCString& text)
+{
+  return false;
+}
+
+bool RSystem::set_var(const core::DCString& name, const core::DCString& value, bool can_new)
+{
+  return false;
+}
+
+bool RSystem::set_shell(const core::DCString& name, IShell* shell)
+{
+  return false;
 }
 
 //***************************************
