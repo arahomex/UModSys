@@ -22,7 +22,7 @@ using core::array_index_none;
 
 //template<typename SNode, typename Allocator=DAllocatorFast > struct TArrayCache;
 
-template<typename SNode, size_t max_len> struct TDynarrayHolderFixed;
+template<typename SNode, size_t max_len> struct TDynarrayHolderStatic;
 template<typename SNode, typename FunAlloc=DAllocatorFast> struct TDynarrayHolderDynamic;
 
 template<typename SHolder> struct TDynarray; // template array basis
@@ -35,7 +35,7 @@ template<typename SNode, typename FunAlloc=DAllocatorFast> struct TDynarrayDynam
 template<typename SNode, size_t max_len>
 struct TDynarrayHolderStatic {
 public:
-  typedef core::Void MemAlloc;
+  typedef core::Void MemAlloc, Allocator;
   typedef SNode ItemType;
   typedef ItemType* Iter;
   typedef const ItemType* CIter;
@@ -211,7 +211,7 @@ protected:
 
 /*************************************************************/
 /*
-template<typename SNode, typename Allocator> 
+template<typename SNode, typename Allocator>
 struct TArrayCache {
   typedef SNode _Type, Type;
   //
@@ -220,18 +220,18 @@ struct TArrayCache {
   size_t count;
   bool dirty;
   //
-  inline TArrayCache() 
+  inline TArrayCache()
     : cvalues(NULL), count(0), dirty(true) {
   }
   inline ~TArrayCache(void) {
   }
   //
-  inline void alloc(const _Type* t, size_t n) { 
+  inline void alloc(const _Type* t, size_t n) {
     dirty = true; // must be re-processed by any way
     cvalues = t;
     count = n;
   }
-  inline _Type* alloc(size_t n) { 
+  inline _Type* alloc(size_t n) {
     dirty = true; // must be re-processed by any way
     cvalues = NULL;
     count = 0;
@@ -267,12 +267,12 @@ public:
 };
 
 template<typename SNode, size_t max_len>
-struct TDynarrayFixed : public TDynarray< TDynarrayHolderFixed<SNode, max_len> > {
+struct TDynarrayStatic : public TDynarray< TDynarrayHolderStatic<SNode, max_len> > {
 public:
-  typedef TDynarray< TDynarrayHolderFixed<SNode, max_len> > Array;
+  typedef TDynarray< TDynarrayHolderStatic<SNode, max_len> > Array;
   //
-  inline TDynarrayFixed(void) UMODSYS_NOTHROW() {}
-  inline ~TDynarrayFixed(void) UMODSYS_NOTHROW() {}
+  inline TDynarrayStatic(void) UMODSYS_NOTHROW() {}
+  inline ~TDynarrayStatic(void) UMODSYS_NOTHROW() {}
 };
 
 /*************************************************************/

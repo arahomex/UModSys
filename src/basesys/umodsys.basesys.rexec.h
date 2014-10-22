@@ -2,7 +2,7 @@
 #define __UMODSYS_BASE_REXEC_H 1
 /*************************************************************/
 // file: src/base/system/umodsys.base.rexec.h
-// info: 
+// info:
 /*************************************************************/
 
 #include <umodsys/tl/parsers/parser_tcl.h>
@@ -27,8 +27,8 @@ struct SExecTCL {
   typedef core::DStringBufSmall StringName, StringValue;
   typedef core::DStringBuffer StringStream;
   //
-  typedef tl::TDynarrayFixed<BChar,0x10000> StringStack;
-  typedef tl::TDynarrayFixed<String, 64> Strings;
+  typedef tl::TDynarrayStatic<BChar,0x10000> StringStack;
+  typedef tl::TDynarrayStatic<String, 64> Strings;
   typedef tl::TScatterArray<StringName, StringValue> StringMap;
   //
   typedef tl::TParser_TCL<SExecTCL> Parser;
@@ -45,7 +45,7 @@ struct SExecTCL {
     SharedState &ss;
     int top;
     //
-    State(SharedState& s) 
+    State(SharedState& s)
     : ss(s) {
       top = ss.stack.count;
     }
@@ -70,22 +70,22 @@ struct SExecTCL {
       case 'v': add(0x0b); return false;
       default: add(*psym); return false;
       //
-      case 'o': 
+      case 'o':
         return false;
-      case 'x': 
+      case 'x':
         return false;
-      case 'u': 
+      case 'u':
         return false;
-      case 'U': 
+      case 'U':
         return false;
-      case '\n': 
+      case '\n':
         return false;
     }
   }
   //
-  void add_var(StringP b, StringP e) { add(var_get(string(b,e))); }
-  void add_cmt(StringP b, StringP e) {}
-  void next_arg(void) { args.push_back(detach()); }
+//  void add_var(StringP b, StringP e) { add(var_get(string(b,e))); }
+//  void add_cmt(StringP b, StringP e) {}
+//  void next_arg(void) { args.push_back(detach()); }
   //
   bool exec_command(Parser& ps) {
     Self c2(ss);
