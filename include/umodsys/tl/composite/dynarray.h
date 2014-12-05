@@ -133,6 +133,7 @@ public:
   inline size_t operator~(void) const UMODSYS_NOTHROW() { return length; }
   //
   inline size_t MaxLen(void) const UMODSYS_NOTHROW() { return holder.maxlen(); }
+  inline size_t FreeLen(void) const UMODSYS_NOTHROW() { return holder.maxlen() - length; }
   //
   inline bool Push(void) UMODSYS_NOTHROW() { return ResizeRel(1); }
   inline bool PushN(size_t n=1) UMODSYS_NOTHROW() { return ResizeRel(n); }

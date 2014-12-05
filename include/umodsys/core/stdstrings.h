@@ -27,12 +27,19 @@ typedef tl::TString<
   tl::su::TSCoreConst<core::BChar>, 
   tl::su::TComparerUtfNocaseHash<core::BChar> 
 > DCNocaseString;
+
+/*
 typedef tl::TString<
   tl::su::TSCoreBuffer<core::BChar>, 
   tl::su::TComparerUtfNocaseHash<core::BChar> 
 > DStringBuffer;
 typedef DStringBuffer::BufferStr DStringBufferStr;
+*/
 
+typedef tl::TStringBuf<
+  tl::su::TSCoreBuffer<core::BChar>, 
+  tl::su::TComparerUtfNocaseHash<core::BChar> 
+> DStringBuffer;
 
 typedef tl::TStringBuf<
   tl::su::TSCorePrealloc<cStringBufSmall, core::BChar>, 

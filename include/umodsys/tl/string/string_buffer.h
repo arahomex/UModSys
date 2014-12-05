@@ -112,6 +112,10 @@ struct TStringBuf : public CoreT, public Comparer {
   inline bool cpy(const Self& R) { bool rv = CoreT::cpy(R); Comparer::operator=(R); return rv; }
   inline bool safecpy(const Self& R) { bool rv = CoreT::safecpy(R); Comparer::operator=(R); return rv; }
   //
+  inline bool append(Str s, size_t L) { bool rv = CoreT::append(s, L); update(); return rv; }
+  template<typename Core2, typename Cmp2> inline bool append(const TString<Core2, Cmp2>& s) const 
+    { bool rv = CoreT::append(s, ~s); update(); return rv; }
+  //
   template<typename Core2, typename Cmp2> inline void set(const TString<Core2, Cmp2>& R) 
     { set(R.get_text(), R.get_length()); }
   template<typename Core2, typename Cmp2> inline void set(const TStringBuf<Core2, Cmp2>& R) 

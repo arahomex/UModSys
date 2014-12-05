@@ -96,7 +96,9 @@ struct TSCoreBuffer {
   inline void set(Str s, Str s_end) { set(s, s_end-s); }
   //
   inline void set(const Self& R) { text=R.text; length=R.length; maxlength=R.maxlength; }
-  inline void set(OStr s, size_t maxL, size_t L) { text=s; length=L; maxlength=maxL; }
+  inline void setup(OStr s, size_t maxL, size_t L) { text=s; length=L; maxlength=maxL; }
+  //
+  inline bool append(Str s, size_t L) { return cat(s, L); }
   //
   inline bool cat(Str s, size_t n) {
     if(n==0)

@@ -39,25 +39,34 @@ struct SExecTCL {
     StringStack stack;
     //
     char* top(void) { return stack.end(); }
-    int left(void) const { return stack.free_size(); }
+    size_t left(void) const { return stack.MaxLen(); }
   };
   struct State {
     SharedState &ss;
-    int top;
+    size_t top;
     //
     State(SharedState& s)
     : ss(s) {
-      top = ss.stack.count;
+      top = ~ss.stack;
     }
     ~State(void) {
       reset();
     }
     void reset(void) {
-      ss.stack.count = top;
+      ss.stack.resize(top);
     }
   };
   //
-  SExecTCL(SharedState &ass) : X(ass) {}
+  SharedState &ss;
+  Strings args;
+  StringStream stream;
+  String result;
+  size_t stack_top;
+  //
+  SExecTCL(SharedState& ass)
+  : ss(ass), stream(ass.top(), ass.left()) {
+    stack_top = ss.stack.Len();
+  }
   //
   bool add_esc(StringP psym, int &idx) {
     switch(*psym) {
@@ -93,7 +102,7 @@ struct SExecTCL {
     ps2.Parse(c2);
     ps.p = ps2.p; // sync
     c2.finish();
-    if(ps2.token==Parser2::tError)
+    if(ps2.token==Parser::tError)
       return false;
     add_result(c2);
   //printf("ret{%s}\n", cs(c2.result));
@@ -115,7 +124,7 @@ struct SExecTCL {
   bool do_cmd(const String &cmd, Strings& args);
   //
   int eval_expr(const String& expr) {
-    if(expr.size()==0)
+    if(~expr==0)
       return 0;
     int rv;
     if(!string_to_int(expr, rv))
@@ -124,7 +133,7 @@ struct SExecTCL {
   }
   String eval(const String& code) {
     Self c2(ss);
-    Parser ps2(code.begin(), code.end());
+    Parser ps2(code, code + ~code);
     ps2.Parse(c2);
     c2.finish();
     return new_string(c2.result);
@@ -139,24 +148,29 @@ struct SExecTCL {
   //
   static bool string_to_int(const String& src, int& dest) {
     StringName buf(src);
-    return sscanf(buf.value, "%d", &dest)==1;
+    return sscanf(buf, "%d", &dest)==1;
   }
   // static void print_str(const String& src) { printf("%.*s", src.count, src.value); }
   //
   String new_string(const String& src) {
-    StringP end = ss.stack.end();
-    ss.stack.push_back(src.begin(), src.end());
+    size_t p = ss.stack.Len();
+    if(!ss.stack.ResizeRel(~src+1))
+        return NULL;
+    tl::su::smemcpy(ss.stack.All()+p, src(), ~src);
+    ss.stack[p+~src] = 0;
 //printf("{new=%d+%d}", end-ss.stack.begin(), ss.stack.end()-end);
-    return String(end, ss.stack.end()-end);
+    return String(ss.stack.All()+p, ~src);
   }
   String detach(void) {
-    String rv = String(stream.begin(), stream.end()-stream.begin());
-    stream.value = ss.stack.end();
-    stream.clear();
+    String rv = stream.get_s();
+    stream.set(ss.stack.All(), ss.stack.FreeLen(), 0);
+    stream.length = 0;
+    stream.maxlength = ss.stack.MaxLen() - ss.stack.Len();
     return rv;
   }
   void ssync(void) {
-    ss.stack.count = stream.end()-ss.stack.begin();
+    // ss.stack.count = stream.end()-ss.stack.begin();
+    ss.stack.Resize(~stream);
 //printf("{top=%d}", ss.stack.count);
   }
   //
@@ -164,26 +178,26 @@ struct SExecTCL {
     result = new_string(src);
   }
   void add(char sym) {
-    stream.push_back(sym);
+    stream.append(&sym, 1);
     ssync();
   }
   void add(StringP b, StringP e) {
-    stream.push_back(b, e);
+    stream.append(b, e-b);
     ssync();
   }
   void add(const String& ss) {
-    stream.push_back(ss.begin(), ss.end());
+    stream.append(ss, ~ss);
     ssync();
   }
-  void next_arg(void) { args.push_back(detach()); }
-  size_t stream_size(void) { return stream.size(); }
+  void next_arg(void) { args.Push(detach()); }
+  size_t stream_size(void) { return ~stream; }
   //
   String var_get(const String& name) {
-    return ss.vars[name];
+    return ss.vars[StringName(name)];
   }
   String var_set(const String& name, const String& value) {
 //printf("{'"); print_str(name); printf("'='"); print_str(value); printf("'}");
-    StringResult& v = ss.vars[name];
+    StringValue& v = ss.vars[StringName(name)];
     v = value;
     return v;
   }
@@ -199,23 +213,18 @@ struct SExecTCL {
 */
   }
   void execute_end(void) {
-    args.clear();
-    ss.stack.count = stack_top;
-    stream.value = ss.stack.end();
-    stream.clear();
+    args.Clear();
+    ss.stack.Resize(stack_top);
+    stream.text = ss.stack.end();
+    stream.length = 0;
 //printf("{exec-end top=%d}", ss.stack.count);
   }
   void finish(void) {
-    ss.stack.count = stack_top;
+    ss.stack.Resize(stack_top);
 //printf("{finish top=%d}", ss.stack.count);
   }
-  void add_result(TCL_Stack_Ext &r) {
-    add(r.result.begin(), r.result.end());
-  }
-  //
-  TCL_Stack_Ext(SharedState& ass)
-  : ss(ass), stream(ass.top(), ass.left()) {
-    stack_top = ss.stack.count;
+  void add_result(Self &r) {
+    add(r. r.result, r.result + ~r.result);
   }
 };
 
