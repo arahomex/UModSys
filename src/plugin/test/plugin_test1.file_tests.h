@@ -346,7 +346,7 @@ void RTest1_Shell::file_test7(void)
     const lib2d::SImageInfo& di = dst->get_info();
     SMem membuf(buf, sizeof(buf));
     for(size_t i=0; i<~lst; i++) {
-      if(lib->obj_load(lst[i].name.s(), src, "lib2d::IImage")) {
+      if(lib->obj_load(lst[i].name.str(), src, "lib2d::IImage")) {
 //        s_dbg.put(d_Shell, cl_Debug, "...loaded at %d : '%s'\n", i, lst[i].name());
         const lib2d::SImageInfo& si = src->get_info();
         int key2 = si.size(1)==16 ? 0 

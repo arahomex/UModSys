@@ -4,6 +4,7 @@ include Makefile.defines.inc
 
 BINDIRA:=../../bin
 BINDIR:=$(BINDIRA)/$(PLATFORM).$(BUILD_MODE)
+BINDIRL:=$(BINDIRA)/last
 
 TT:=../../tmp
 T:=$(TT)/$(PLATFORM).$(BUILD_MODE)
@@ -22,6 +23,7 @@ req: $(T) $(BINDIR)
 clean_bin:
 	-rm $(BINDIR)/*.$(PLATFORM).$(BUILD_MODE)$(BINSUFFIX)
 	-rm $(BINDIR)/*.$(PLATFORM).$(BUILD_MODE)$(SOLIBSUFFIX)
+	-rm $(BINDIRL)/*
 
 clean: clean_bin
 	-$(RM) $(T)/*$(OSUFFIX) 
@@ -29,13 +31,15 @@ clean: clean_bin
 	-$(RM) $(T)/*$(OSUFFIX).d
 
 T: $(T) 
-BINDIR: $(BINDIR) 
+BINDIR: $(BINDIR) $(BINDIRL)
 
 $(T): $(TT)
 	mkdir -p $@
 $(TT):
 	mkdir -p $@
 $(BINDIR): $(BINDIRA)
+	mkdir -p $@
+$(BINDIRL): $(BINDIRA)
 	mkdir -p $@
 $(BINDIRA):
 	mkdir -p $@

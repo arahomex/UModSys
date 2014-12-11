@@ -24,9 +24,10 @@ template<typename CoreT, typename Comparer>
 struct TString : public CoreT, public Comparer {
   typedef typename CoreT::Char CharT;
   UMODSYS_STRING_CLASS_HEADER(CharT)
-  typedef TString<CoreT, Comparer> Self;
-  typedef TString<su::TSCoreConst<CharT>, Comparer> SelfString;
-  typedef TStringBuf<CoreT, Comparer> SelfBuf;
+  typedef typename CoreT::CoreBuffer CoreBuffer;
+  typedef TString<CoreT, Comparer> Self, SelfConst;
+  typedef TStringBuf<CoreBuffer, Comparer> SelfBuf;
+  typedef TString<ConstStr, Comparer> ConstString;
   //
 //  template<typename Core2> inline TString(const TString<CoreT, Comparer>& R) : CoreT(R), Comparer(R) {}
 //  template<typename Core2> inline TString(const TStringBuf<CoreT, Comparer>& R) : CoreT(R), Comparer(R) {}
@@ -44,7 +45,12 @@ struct TString : public CoreT, public Comparer {
   inline TString(const Comparer& cmp, Str s, size_t L) : Comparer(cmp) { set(s, L); }
   inline TString(const Comparer& cmp, Str s, Str s_end) : Comparer(cmp) { set(s, s_end); }
   //
-  inline SelfString s(void) const { return SelfString(*this, CoreT::get_text(), CoreT::get_length()); }
+  inline ConstString str(void) const { return ConstString(*this, CoreT::get_text(), CoreT::get_length()); }
+  inline SelfConst string(void) const { return SelfConst(*this, CoreT::get_text(), CoreT::get_length()); }
+  inline Str begin(void) const { return CoreT::get_text(); }
+  inline Str end(void) const { return CoreT::get_text() + CoreT::get_length(); }
+  inline Str cbegin(void) const { return CoreT::get_text(); }
+  inline Str cend(void) const { return CoreT::get_text() + CoreT::get_length(); }
   //
   inline const Comparer& get_comparer(void) const { return *this; }
   inline Comparer& get_comparer(void) { return *this; }

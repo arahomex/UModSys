@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configurationDescriptor version="95">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
-    <df root="../../include" name="1">
+    <df root="../../include" name="0">
       <df name="platform">
         <df name="linux">
         </df>
@@ -226,9 +226,9 @@
         <in>stdmath3d.h</in>
       </df>
     </df>
-    <df root="." name="0">
+    <df root="." name="1">
     </df>
-    <df root="../../patch" name="3">
+    <df root="../../patch" name="2">
       <df name="jpeglib">
       </df>
       <df name="lightning">
@@ -295,8 +295,13 @@
         <gdb_interceptlist>
           <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
         </gdb_interceptlist>
+        <gdb_signals>
+        </gdb_signals>
         <gdb_options>
           <DebugOptions>
+            <option name="debug_command" value="../bin/last/umodsysc"/>
+            <option name="debug_dir"
+                    value="/home/andrew_rewoonenco/SVN/arahomex.of.by/mini/UModSys/data"/>
           </DebugOptions>
         </gdb_options>
         <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
@@ -307,10 +312,12 @@
       <runprofile version="9">
         <runcommandpicklist>
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+          <runcommandpicklistitem>sh run-debug.sh</runcommandpicklistitem>
+          <runcommandpicklistitem>../bin/last/umodsysc</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>"${OUTPUT_PATH}"</runcommand>
-        <rundir>.</rundir>
-        <buildfirst>false</buildfirst>
+        <runcommand>../bin/last/umodsysc</runcommand>
+        <rundir>/home/andrew_rewoonenco/SVN/arahomex.of.by/mini/UModSys/data</rundir>
+        <buildfirst>true</buildfirst>
         <terminal-type>0</terminal-type>
         <remove-instrumentation>0</remove-instrumentation>
         <environment>

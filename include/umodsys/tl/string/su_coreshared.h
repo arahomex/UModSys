@@ -34,6 +34,9 @@ struct TSCoreShared : public MemAllocT {
   UMODSYS_STRING_CLASS_HEADER(CharT)
   typedef TSCoreShared<MemAllocT, CharT> Self;
   typedef TSharedStringInfo<CharT, MemAllocT> Info;
+  typedef TSCoreShared<MemAllocT, CharT> CoreBuffer;
+  typedef TSCoreShared<MemAllocT, CharT> CoreConst;
+  typedef MemAllocT Buf;
   //
   Info* info;
   //
@@ -60,10 +63,11 @@ struct TSCoreShared : public MemAllocT {
   //
   inline void clear(void) { info_release(); }
   inline void set(void) { clear(); }
-  inline void set(Str s) { set(s, s ? su::slen(s) : 0); }
-  inline void set(Str s, Str s_end) { set(s, s_end-s); }
-  inline void set(Str s, size_t L) { info_new(s, L); }
   inline void set(const Self& R) { info_dup(R.info); }
+  //
+  inline bool set(Str s) { return set(s, s ? su::slen(s) : 0); }
+  inline bool set(Str s, Str s_end) { return set(s, s_end-s); }
+  inline bool set(Str s, size_t L) { return info_new(s, L); }
   //
   inline BufferStr get_buf(void) const { return BufferStr(info->text, info->maxlength, info->length); }
   inline size_t get_bufmax(void) const { return info->maxlength; }

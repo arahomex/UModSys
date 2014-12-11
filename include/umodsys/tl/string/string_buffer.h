@@ -24,7 +24,11 @@ template<typename CoreT, typename Comparer>
 struct TStringBuf : public CoreT, public Comparer {
   typedef typename CoreT::Char CharT;
   UMODSYS_STRING_CLASS_HEADER(CharT)
-  typedef TStringBuf<CoreT, Comparer> Self;
+  typedef typename CoreT::CoreConst CoreConst;
+  typedef typename CoreT::Buf Buf;
+  typedef TStringBuf<CoreT, Comparer> Self, SelfBuf;
+  typedef TString<CoreConst, Comparer> SelfConst;
+  typedef TString<ConstStr, Comparer> ConstString;
   //
   inline TStringBuf(void) {}
   inline explicit TStringBuf(core::Void* p) : CoreT(p), Comparer(p) {}
@@ -33,7 +37,13 @@ struct TStringBuf : public CoreT, public Comparer {
   inline TStringBuf(Str s) { set(s); }
   inline TStringBuf(Str s, size_t L) { set(s, L); }
   inline TStringBuf(Str s, Str s_end) { set(s, s_end); }
+  inline TStringBuf(const Buf& b, Str s) { CoreT::setup(b); CoreT::set(s); }
+  inline TStringBuf(const Buf& b, Str s, size_t L) { CoreT::setup(b); set(s, L); }
+  inline TStringBuf(const Buf& b, Str s, Str s_end) { CoreT::setup(b); set(s, s_end); }
   inline explicit TStringBuf(const Comparer& cmp) : Comparer(cmp) { set(); }
+  inline TStringBuf(const Buf& b, const Comparer& cmp, Str s) : Comparer(cmp) { CoreT::setup(b); set(s); }
+  inline TStringBuf(const Buf& b, const Comparer& cmp, Str s, size_t L) : Comparer(cmp) { CoreT::setup(b); set(s, L); }
+  inline TStringBuf(const Buf& b, const Comparer& cmp, Str s, Str s_end) : Comparer(cmp) { CoreT::setup(b); set(s, s_end); }
   inline TStringBuf(const Comparer& cmp, Str s) : Comparer(cmp) { set(s); }
   inline TStringBuf(const Comparer& cmp, Str s, size_t L) : Comparer(cmp) { set(s, L); }
   inline TStringBuf(const Comparer& cmp, Str s, Str s_end) : Comparer(cmp) { set(s, s_end); }
@@ -102,6 +112,15 @@ struct TStringBuf : public CoreT, public Comparer {
     return Comparer::eq2(CoreT::get_text(), CoreT::get_length(), s.get_text(), s.get_length()); 
   }
   //
+  inline ConstString str(void) const { return ConstString(*this, CoreT::get_text(), CoreT::get_length()); }
+  inline SelfConst string(void) const { return SelfConst(*this, CoreT::get_text(), CoreT::get_length()); }
+  inline Str begin(void) const { return CoreT::get_text(); }
+  inline Str end(void) const { return CoreT::get_text() + CoreT::get_length(); }
+  inline Str cbegin(void) const { return CoreT::get_text(); }
+  inline Str cend(void) const { return CoreT::get_text() + CoreT::get_length(); }
+  inline OStr begin(void) { return CoreT::get_text(); }
+  inline OStr end(void) { return CoreT::get_text() + CoreT::get_length(); }
+  //
   inline void set_length(size_t L) { CoreT::set_length(L); update(); }
   inline void update(BufferStr& bs) { set_length(bs.length); }
   inline void update(void) { Comparer::update(CoreT::get_text(), CoreT::get_length()); }
@@ -113,13 +132,16 @@ struct TStringBuf : public CoreT, public Comparer {
   inline bool safecpy(const Self& R) { bool rv = CoreT::safecpy(R); Comparer::operator=(R); return rv; }
   //
   inline bool append(Str s, size_t L) { bool rv = CoreT::append(s, L); update(); return rv; }
-  template<typename Core2, typename Cmp2> inline bool append(const TString<Core2, Cmp2>& s) const 
+  template<typename Core2, typename Cmp2> inline bool append(const TString<Core2, Cmp2>& s) 
     { bool rv = CoreT::append(s, ~s); update(); return rv; }
   //
-  template<typename Core2, typename Cmp2> inline void set(const TString<Core2, Cmp2>& R) 
-    { set(R.get_text(), R.get_length()); }
-  template<typename Core2, typename Cmp2> inline void set(const TStringBuf<Core2, Cmp2>& R) 
-    { set(R.get_text(), R.get_length()); }
+  inline bool set(Str s, size_t L) { bool rv = CoreT::set(s, L); update(); return rv; }
+  template<typename Core2, typename Cmp2> inline bool set(const TString<Core2, Cmp2>& R) 
+    { return set(R.get_text(), R.get_length()); }
+  template<typename Core2, typename Cmp2> inline bool set(const TStringBuf<Core2, Cmp2>& R) 
+    { return set(R.get_text(), R.get_length()); }
+//  template<> inline bool set(const TStringBuf<CoreT, Comparer>& R) 
+//    { return set(R.get_text(), R.get_length()); }
   //
   inline const Self& operator=(const Self& R) { set(R); return *this; }
   inline const Self& operator=(Str R) { set(R); return *this; }

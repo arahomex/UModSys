@@ -94,7 +94,7 @@ public:
   inline bool add(BCStr name, BCStr value) 
     { return data.worker ? data.worker->add(&data, name, value) : false; }
   template<typename Core, typename Cmp> inline bool add(BCStr name, const tl::TString<Core, Cmp>& value) 
-    { return data.worker ? data.worker->add(&data, name, value.s()) : false; }
+    { return data.worker ? data.worker->add(&data, name, value.str()) : false; }
   inline bool add(BCStr name, int value) 
     { return data.worker ? data.worker->add(&data, name, value) : false; }
   inline bool add(BCStr name, bool value) 

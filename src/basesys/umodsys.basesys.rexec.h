@@ -92,9 +92,8 @@ struct SExecTCL {
     }
   }
   //
-//  void add_var(StringP b, StringP e) { add(var_get(string(b,e))); }
-//  void add_cmt(StringP b, StringP e) {}
-//  void next_arg(void) { args.push_back(detach()); }
+  void add_var(StringP b, StringP e) { add(var_get(string(b,e))); }
+  void add_cmt(StringP b, StringP e) {}
   //
   bool exec_command(Parser& ps) {
     Self c2(ss);
@@ -163,7 +162,7 @@ struct SExecTCL {
   }
   String detach(void) {
     String rv = stream.get_s();
-    stream.set(ss.stack.All(), ss.stack.FreeLen(), 0);
+    stream.setup(ss.stack.All(), ss.stack.FreeLen(), 0);
     stream.length = 0;
     stream.maxlength = ss.stack.MaxLen() - ss.stack.Len();
     return rv;
@@ -193,13 +192,13 @@ struct SExecTCL {
   size_t stream_size(void) { return ~stream; }
   //
   String var_get(const String& name) {
-    return ss.vars[StringName(name)];
+    return ss.vars[StringName(name)].str();
   }
   String var_set(const String& name, const String& value) {
 //printf("{'"); print_str(name); printf("'='"); print_str(value); printf("'}");
     StringValue& v = ss.vars[StringName(name)];
-    v = value;
-    return v;
+    v = StringValue(value);
+    return v.str();
   }
   void execute_begin(void) {
 /*
@@ -224,7 +223,7 @@ struct SExecTCL {
 //printf("{finish top=%d}", ss.stack.count);
   }
   void add_result(Self &r) {
-    add(r. r.result, r.result + ~r.result);
+    add(r.result.begin(), r.result.end());
   }
 };
 

@@ -5,6 +5,7 @@ basesys_lib_includes :=
 basesys_lib_depends := \
   $(T)/umodsys.basesys.rsystem$(OSUFFIX) \
   $(T)/umodsys.basesys.rsystem_main$(OSUFFIX) \
+  $(T)/umodsys.basesys.rsystem_exec$(OSUFFIX) \
   $(T)/umodsys.basesys.rsystem_tests$(OSUFFIX) \
   $(T)/umodsys.basesys.rmodule$(OSUFFIX) \
   $(T)/umodsys.basesys.rmodulelib$(OSUFFIX) \
@@ -25,6 +26,7 @@ main_depends := \
 
 main_bin := umodsysc.$(PLATFORM).$(BUILD_MODE)$(BINSUFFIX)
 main := $(BINDIR)/$(main_bin)
+main_last := $(BINDIRL)/umodsysc
 
 #---------------------------- make rules targets
 
@@ -41,6 +43,8 @@ $(main): $(main_depends) $(basesys_lib) $(libmedia_lib) $(libui_lib) $(lib3d_lib
 ifdef CXX_LINK_POSTPROCESS
 	$(CXX_LINK_POSTPROCESS) $@
 endif
+	( test -f $(main_last) && rm $(main_last) ) || true
+	ln -s $(main) $(main_last)
 
 #---------------------------- make rules generic
 

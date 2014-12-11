@@ -256,10 +256,10 @@ public:
   inline void erase(const key_type& k) { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(); hold.delete_node(n); }
   inline void erase(iterator first, iterator last) { for(iterator x=first; x!=last;) { x++; hold.delete_node(first.node); first=x; } }
   //
-  inline Value& operator[](const key_type& index) { Node *n = hold.genx_node(Cmp(index), Gen0()); if(n==NULL) throw_memoryerror(); return n->value; }
-  inline const Value& operator[](const key_type& index) const { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(); return n->value; }
-  inline Value& at(const key_type& index) { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(); return n->value; }
-  inline const Value& at(const key_type& index) const { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(); return n->value; }
+  inline Value& operator[](const key_type& index) { Node *n = hold.genx_node(Cmp(index), Gen0()); if(n==NULL) throw_memoryerror(); return n->second; }
+  inline const Value& operator[](const key_type& index) const { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(); return n->second; }
+  inline Value& at(const key_type& index) { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(); return n->second; }
+  inline const Value& at(const key_type& index) const { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(); return n->second; }
 protected:
   Holder hold;
 };

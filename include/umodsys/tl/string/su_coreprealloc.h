@@ -15,6 +15,7 @@ template<size_t nChars, typename CharT>
 struct TSCorePrealloc {
   UMODSYS_STRING_CLASS_HEADER(CharT)
   enum { N_Chars = nChars };
+  typedef TSCorePrealloc<nChars, CharT> Self, CoreBuffer, CoreConst;
   struct Buffer {
     Char buffer[nChars];
     //
@@ -22,7 +23,7 @@ struct TSCorePrealloc {
     inline operator const Char*(void) const { return buffer; }
     inline void clear(void) { buffer[0] = 0; }
   };
-  typedef TSCorePrealloc<nChars, CharT> Self;
+  typedef Buffer Buf, BufData;
   //
   mutable Buffer text;
   mutable size_t length;
@@ -51,24 +52,25 @@ struct TSCorePrealloc {
   inline void clear(void) { text.clear(); length=0; }
   inline void reset(void) { text.clear(); length=0; }
   inline void set(void) { clear(); }
-  inline void set(Str s) {
-    size_t n = su::slen(s); 
-    if(n>=nChars) n=nChars-1;
+  //
+  inline bool set(Str s) { return set(s, su::slen(s)); }
+  inline bool set(Str s, size_t n) {
+    bool rv = n<nChars;
+    if(!rv)
+      n=nChars-1;
     su::smemcpy(text.buffer, s, n);
     text[n] = 0;
     length = n;
+    return rv;
   }
-  inline void set(Str s, size_t n) {
-    if(n>=nChars) n=nChars-1;   
-    su::smemcpy(text.buffer, s, n);
-    text[n] = 0;
-    length = n;
-  }
-  inline void set(const Self& R) {
-    size_t n = R.length; 
-    if(n>nChars) n = nChars;
+  inline bool set(const Self& R) {
+    size_t n = R.length;
+    bool rv = n<nChars;
+    if(!rv)
+      n=nChars-1;
     su::smemcpy(text.buffer, R.text.buffer, n);
     length = R.length;
+    return rv;
   }
   //
   inline const Self& operator=(const Self& R) { set(R); return *this; }
