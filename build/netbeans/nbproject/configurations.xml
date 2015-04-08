@@ -2,263 +2,15 @@
 <configurationDescriptor version="95">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <df root="../../include" name="0">
-      <df name="platform">
-        <df name="win32">
-          <in>ft2build.h</in>
-          <in>jconfig.h</in>
-          <in>jmorecfg.h</in>
-          <in>pnglibconf.h</in>
-        </df>
-      </df>
-      <df name="umodsys">
-        <df name="base">
-          <in>basetypes.h</in>
-          <in>bobjects.h</in>
-          <in>console.h</in>
-          <in>console_ext.h</in>
-          <in>module.h</in>
-          <in>module_impl.h</in>
-          <in>module_ref.h</in>
-          <in>shell.h</in>
-          <in>system.h</in>
-        </df>
-        <df name="core">
-          <df name="arch">
-            <in>arch_code32.h</in>
-            <in>arch_defs.h</in>
-            <in>arch_eb32.h</in>
-            <in>arch_el32.h</in>
-            <in>arch_fromto.h</in>
-            <in>arch_int16.h</in>
-            <in>arch_int32.h</in>
-            <in>arch_int64.h</in>
-          </df>
-          <df name="mem">
-            <in>coremem~.h</in>
-            <in>mem_alloc.h</in>
-            <in>mem_fixed.h</in>
-            <in>mem_shared.h</in>
-            <in>param_private.h</in>
-            <in>param_shared.h</in>
-            <in>prop_adapter.h</in>
-          </df>
-          <df name="platform">
-            <df name="linux">
-              <in>syshlp_linux.h</in>
-            </df>
-            <df name="win32">
-              <in>syshlp_win32.h</in>
-            </df>
-            <in>def_gcc.h</in>
-            <in>def_msvc.h</in>
-            <in>def_win32.h</in>
-          </df>
-          <df name="util">
-            <in>nanotcl.h</in>
-          </df>
-          <in>arch.h</in>
-          <in>arch_cvt.h</in>
-          <in>common_exceptions.h</in>
-          <in>objects.h</in>
-          <in>objects_def.h</in>
-          <in>objects_res.h</in>
-          <in>params.h</in>
-          <in>props.h</in>
-          <in>source.h</in>
-          <in>stddefs.h</in>
-          <in>stdinlines.h</in>
-          <in>stdstrings.h</in>
-          <in>stdtl.h</in>
-          <in>stdtypedefs.h</in>
-          <in>syshlp.h</in>
-          <in>uniqueptr.h</in>
-        </df>
-        <df name="lib">
-          <df name="2d">
-            <in>lib2d.common.h</in>
-            <in>lib2d.convertor.h</in>
-            <in>lib2d.driver.h</in>
-            <in>lib2d.image.h</in>
-            <in>lib2d.typedefs.h</in>
-            <in>lib2d.utils.h</in>
-          </df>
-          <df name="3d">
-            <df name="old">
-              <in>control.h</in>
-              <in>driver3.h</in>
-              <in>emul_font.h</in>
-              <in>emul_light.h</in>
-              <in>emul_outlines.h</in>
-              <in>lib3d.h</in>
-              <in>light.h</in>
-              <in>material.h</in>
-              <in>objects.h</in>
-              <in>objects_def.h</in>
-              <in>outlines.h</in>
-              <in>physics.h</in>
-              <in>plogic.h</in>
-              <in>scene.h</in>
-              <in>types.h</in>
-              <in>visi.h</in>
-            </df>
-            <in>lib3d.common.h</in>
-            <in>lib3d.control.h</in>
-            <in>lib3d.driver.h</in>
-            <in>lib3d.e_font.h</in>
-            <in>lib3d.e_light.h</in>
-            <in>lib3d.e_outline.h</in>
-            <in>lib3d.e_visual.h</in>
-            <in>lib3d.geom.h</in>
-            <in>lib3d.light.h</in>
-            <in>lib3d.logic.h</in>
-            <in>lib3d.material.h</in>
-            <in>lib3d.objects.h</in>
-            <in>lib3d.outlines.h</in>
-            <in>lib3d.physics.h</in>
-            <in>lib3d.renderer.h</in>
-            <in>lib3d.renderstate.h</in>
-            <in>lib3d.scene.h</in>
-            <in>lib3d.typedefs.h</in>
-            <in>lib3d.visual.h</in>
-          </df>
-          <df name="media">
-            <in>libmedia.archive.h</in>
-            <in>libmedia.common.h</in>
-            <in>libmedia.filename.h</in>
-            <in>libmedia.library.h</in>
-            <in>libmedia.serialize.h</in>
-            <in>libmedia.streams.h</in>
-            <in>libmedia.typedefs.h</in>
-            <in>libmedia.utils.h</in>
-          </df>
-          <df name="ui">
-            <in>libui.common.h</in>
-            <in>libui.frames.h</in>
-            <in>libui.keymap.h</in>
-            <in>libui.theme.h</in>
-          </df>
-          <df name="utils">
-            <in>libutils.time.h</in>
-          </df>
-        </df>
-        <df name="tl">
-          <df name="alloc">
-            <in>allocator.h</in>
-            <in>allocator_fqa.h</in>
-          </df>
-          <df name="composite">
-            <in>array.h</in>
-            <in>dynarray.h</in>
-            <in>isockets.h</in>
-            <in>list2.h</in>
-            <in>pair.h</in>
-            <in>quant_array.h</in>
-            <in>scatter_array.h</in>
-            <in>set.h</in>
-            <in>tree_rb.h</in>
-            <in>tuple.h</in>
-          </df>
-          <df name="math">
-            <in>math_3d.h</in>
-            <in>math_3df.h</in>
-            <in>math_3du.h</in>
-            <in>math_c.h</in>
-          </df>
-          <df name="metastl">
-            <in>array.h</in>
-            <in>bitset.h</in>
-            <in>deque.h</in>
-            <in>forward_list.h</in>
-            <in>list.h</in>
-            <in>map.h</in>
-            <in>priority_queue.h</in>
-            <in>queue.h</in>
-            <in>reverse_iterator.h</in>
-            <in>set.h</in>
-            <in>stack.h</in>
-            <in>throws.h</in>
-            <in>unordered_map.h</in>
-            <in>unordered_set.h</in>
-            <in>utils.h</in>
-            <in>valarray.h</in>
-            <in>vector.h</in>
-          </df>
-          <df name="parsers">
-            <in>parser_tcl.h</in>
-          </df>
-          <df name="string">
-            <in>string_array.h</in>
-            <in>string_buffer.h</in>
-            <in>string_const.h</in>
-            <in>string_list.h</in>
-            <in>string_pool.h</in>
-            <in>strings.h</in>
-            <in>su_base.h</in>
-            <in>su_char.h</in>
-            <in>su_charl.h</in>
-            <in>su_charw.h</in>
-            <in>su_comparer.h</in>
-            <in>su_corealloc.h</in>
-            <in>su_coreprealloc.h</in>
-            <in>su_coreptr.h</in>
-            <in>su_coreshared.h</in>
-            <in>su_typedefs.h</in>
-            <in>su_utf.h</in>
-          </df>
-          <df name="util">
-            <in>flags4state.h</in>
-            <in>node_deleter.h</in>
-            <in>object_id.h</in>
-            <in>ref_pointer.h</in>
-            <in>static_holder.h</in>
-            <in>type_constructor.h</in>
-            <in>wrap_index.h</in>
-          </df>
-        </df>
-        <in>stdbase.h</in>
-        <in>stdcore.h</in>
-        <in>stdmath3d.h</in>
-      </df>
     </df>
     <df root="." name="1">
     </df>
     <df root="../../patch" name="2">
       <df name="lightning">
-        <df name="sys">
-          <in>mman.h</in>
-        </df>
         <in>jit_x86.c</in>
-        <in>stdint.h</in>
-        <in>unistd.h</in>
       </df>
       <df name="luajit">
-        <df name="win32.x64">
-          <in>lj_bcdef.h</in>
-          <in>lj_err_fix.h</in>
-          <in>lj_ffdef.h</in>
-          <in>lj_folddef.h</in>
-          <in>lj_libdef.h</in>
-          <in>lj_recdef.h</in>
-        </df>
-        <df name="win32.x86">
-          <in>lj_bcdef.h</in>
-          <in>lj_ffdef.h</in>
-          <in>lj_folddef.h</in>
-          <in>lj_libdef.h</in>
-          <in>lj_recdef.h</in>
-        </df>
         <in>lj_err.c</in>
-      </df>
-      <df name="SDL2">
-        <df name="win32">
-          <in>audiodefs.h</in>
-          <in>comdecl.h</in>
-          <in>dinput.h</in>
-          <in>dsound.h</in>
-          <in>dxsdkver.h</in>
-          <in>xaudio2.h</in>
-          <in>xma2defs.h</in>
-        </df>
       </df>
     </df>
     <logicalFolder name="src"
@@ -562,6 +314,14 @@
         </logicalFolder>
       </logicalFolder>
       <logicalFolder name="plugin" displayName="plugin" projectFiles="true">
+        <logicalFolder name="libs" displayName="libs" projectFiles="true">
+          <itemPath>../../src/plugin/libs/plugin_libStd.cpp</itemPath>
+          <itemPath>../../src/plugin/libs/plugin_libUI.cpp</itemPath>
+        </logicalFolder>
+        <logicalFolder name="main" displayName="main" projectFiles="true">
+          <itemPath>../../src/plugin/main/umodsys.c_main.cpp</itemPath>
+          <itemPath>../../src/plugin/main/umodsys.c_maint.cpp</itemPath>
+        </logicalFolder>
         <logicalFolder name="test" displayName="test" projectFiles="true">
           <itemPath>../../src/plugin/test/plugin_test1.common.h</itemPath>
           <itemPath>../../src/plugin/test/plugin_test1.cpp</itemPath>
@@ -602,19 +362,21 @@
         <dependencyChecking>false</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
+      <flagsDictionary>
+        <element flagsID="0" commonFlags="-fPIC -O3"/>
+      </flagsDictionary>
       <codeAssistance>
       </codeAssistance>
       <makefileType>
         <makeTool>
           <buildCommandWorkingDir>.</buildCommandWorkingDir>
           <buildCommand>bash make-linux.sh</buildCommand>
-          <cleanCommand>bash make-linux.sh</cleanCommand>
+          <cleanCommand>bash make-linux.sh clean</cleanCommand>
           <executablePath></executablePath>
           <ccTool>
             <incDir>
               <pElem>/usr/include/SDL2</pElem>
               <pElem>../../include</pElem>
-              <pElem>../gnuc_makefile</pElem>
             </incDir>
             <preprocessorList>
               <Elem>_FILE_OFFSET_BITS=64</Elem>
@@ -623,1927 +385,479 @@
           </ccTool>
         </makeTool>
       </makefileType>
-      <item path="../../include/platform/win32/ft2build.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="../../patch/lightning/jit_x86.c" ex="false" tool="0" flavor2="2">
       </item>
-      <item path="../../include/platform/win32/jconfig.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/platform/win32/jmorecfg.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/platform/win32/pnglibconf.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/base/basetypes.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/base/bobjects.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/base/console.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/base/console_ext.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/base/module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/base/module_impl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/base/module_ref.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/base/shell.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/umodsys/base/system.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/arch.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/arch/arch_code32.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/arch/arch_defs.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/arch/arch_eb32.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/arch/arch_el32.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/arch/arch_fromto.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/arch/arch_int16.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/arch/arch_int32.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/arch/arch_int64.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/arch_cvt.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/common_exceptions.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/mem/coremem~.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/mem/mem_alloc.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/mem/mem_fixed.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/mem/mem_shared.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/mem/param_private.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/mem/param_shared.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/mem/prop_adapter.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/objects.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/objects_def.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/objects_res.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/params.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/platform/def_gcc.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/platform/def_msvc.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/platform/def_win32.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/platform/linux/syshlp_linux.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/platform/win32/syshlp_win32.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/props.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/source.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/stddefs.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/stdinlines.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/stdstrings.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/stdtl.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/stdtypedefs.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/syshlp.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/uniqueptr.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/core/util/nanotcl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/2d/lib2d.common.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/2d/lib2d.convertor.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/2d/lib2d.driver.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/2d/lib2d.image.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/2d/lib2d.typedefs.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/2d/lib2d.utils.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.common.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.control.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.driver.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.e_font.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.e_light.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.e_outline.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.e_visual.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.geom.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.light.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.logic.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.material.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.objects.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.outlines.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.physics.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.renderer.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.renderstate.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.scene.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.typedefs.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/lib3d.visual.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/control.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/driver3.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/emul_font.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/emul_light.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/emul_outlines.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/lib3d.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/light.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/material.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/objects.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/objects_def.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/outlines.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/physics.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/plogic.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/scene.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/types.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/3d/old/visi.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/media/libmedia.archive.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/media/libmedia.common.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/media/libmedia.filename.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/media/libmedia.library.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/media/libmedia.serialize.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/media/libmedia.streams.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/media/libmedia.typedefs.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/media/libmedia.utils.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/ui/libui.common.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/ui/libui.frames.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/ui/libui.keymap.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/ui/libui.theme.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/lib/utils/libutils.time.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/stdbase.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/umodsys/stdcore.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/umodsys/stdmath3d.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/alloc/allocator.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/alloc/allocator_fqa.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/composite/array.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/composite/dynarray.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/composite/isockets.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/composite/list2.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/composite/pair.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/composite/quant_array.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/composite/scatter_array.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/composite/set.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/composite/tree_rb.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/composite/tuple.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/math/math_3d.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/math/math_3df.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/math/math_3du.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/math/math_c.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/array.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/bitset.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/deque.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/forward_list.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/list.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/map.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/priority_queue.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/queue.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/reverse_iterator.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/set.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/stack.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/throws.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/unordered_map.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/unordered_set.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/utils.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/valarray.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/metastl/vector.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/parsers/parser_tcl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/string_array.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/string_buffer.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/string_const.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/string_list.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/string_pool.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/strings.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/su_base.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/su_char.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/su_charl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/su_charw.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/su_comparer.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/su_corealloc.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/su_coreprealloc.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/su_coreptr.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/su_coreshared.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/su_typedefs.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/string/su_utf.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/util/flags4state.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/util/node_deleter.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/util/object_id.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/util/ref_pointer.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/util/static_holder.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/util/type_constructor.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../include/umodsys/tl/util/wrap_index.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../patch/SDL2/win32/audiodefs.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../patch/SDL2/win32/comdecl.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../patch/SDL2/win32/dinput.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../patch/SDL2/win32/dsound.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../patch/SDL2/win32/dxsdkver.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../patch/SDL2/win32/xaudio2.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../patch/SDL2/win32/xma2defs.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../patch/lightning/jit_x86.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../../patch/lightning/stdint.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../patch/lightning/sys/mman.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../patch/lightning/unistd.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../patch/luajit/lj_err.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../../patch/luajit/win32.x64/lj_bcdef.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../patch/luajit/win32.x64/lj_err_fix.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../patch/luajit/win32.x64/lj_ffdef.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../patch/luajit/win32.x64/lj_folddef.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../patch/luajit/win32.x64/lj_libdef.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../patch/luajit/win32.x64/lj_recdef.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../patch/luajit/win32.x86/lj_bcdef.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../patch/luajit/win32.x86/lj_ffdef.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../patch/luajit/win32.x86/lj_folddef.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../patch/luajit/win32.x86/lj_libdef.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../patch/luajit/win32.x86/lj_recdef.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="../../patch/luajit/lj_err.c" ex="false" tool="0" flavor2="2">
       </item>
       <item path="../../src/base/platform/linux/umodsys.so_main.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/base/platform/win32/umodsys.so_main.win32.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/base/umodsys.base.console.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/base/umodsys.base.debug.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/base/umodsys.base.module.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/base/umodsys.base.modulecontext.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/base/umodsys.base.moduleinfo.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/base/umodsys.base.moduleloader.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/base/umodsys.base.modulereg.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/base/umodsys.base.moduleregchain.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/base/umodsys.base.system.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/base/version_library.h" ex="false" tool="3" flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/basesys/platform/linux/umodsys.basesys.rmodule.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/basesys/platform/win32/umodsys.basesys.rmodule.win32.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/basesys/umodsys.basesys.rconsole_std.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rmodule.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rmodulelib.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rmodulelibso.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rmodulelibthis.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rmoduleloader.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rparameters.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rsystem.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rsystem_exec.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rsystem_main.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rsystem_tests.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.c_main.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/basesys/version_library.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/basesys/version_main.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../src/basesys/~tmp/tinytcl.exec_stack.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/basesys/~tmp/tinytcl.exec_uni.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/platform/linux/umodsys.core.syshlp_charcode.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/platform/linux/umodsys.core.syshlp_chars.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/platform/linux/umodsys.core.syshlp_files.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/platform/linux/umodsys.core.syshlp_proc.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/platform/linux/umodsys.core.syshlp_thread.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/platform/linux/umodsys.core.syshlp_vars.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/platform/win32/umodsys.core.syshlp_charcode.win32.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/platform/win32/umodsys.core.syshlp_chars.win32.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/platform/win32/umodsys.core.syshlp_files.win32.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/platform/win32/umodsys.core.syshlp_proc.win32.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/platform/win32/umodsys.core.syshlp_thread.win32.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/platform/win32/umodsys.core.syshlp_vars.win32.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/umodsys.core.objects.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/umodsys.core.stdtypedefs.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/umodsys.core.uniqueptr.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/umodsys.core.uniqueptrlist.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/umodsys.tl.strings.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/core/umodsys.tl.utf16.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
       </item>
-      <item path="../../src/core/umodsys.tl.utf8.cpp" ex="false" tool="1" flavor2="0">
+      <item path="../../src/core/umodsys.tl.utf8.cpp" ex="false" tool="1" flavor2="4">
       </item>
       <item path="../../src/core/umodsys.tl.utfcase.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/core/utf8_case_casefast.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/core/utf8_case_qfast.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../../src/core/version_library.h" ex="false" tool="3" flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/lib/2d/umodsys.lib.2d.common.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/lib/2d/version_library.h" ex="false" tool="3" flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/lib/3d/umodsys.lib.3d.common.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/lib/3d/umodsys.lib.3d.objstates.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/lib/3d/version_library.h" ex="false" tool="3" flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/lib/media/umodsys.lib.media.common.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/lib/media/umodsys.lib.media.library.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/lib/media/version_library.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/lib/ui/umodsys.lib.ui.common.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/lib/ui/version_library.h" ex="false" tool="3" flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/lib/utils/libutils.common.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/2d/stdlib/umodsys.mod.2d.stdlib.Timage.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/2d/stdlib/umodsys.mod.2d.stdlib.Timagefactory.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/2d/stdlib/umodsys.mod.2d.stdlib.Tmultiimage.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/2d/stdlib/umodsys.mod.2d.stdlib.convert.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/2d/stdlib/umodsys.mod.2d.stdlib.convertfast.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/2d/stdlib/umodsys.mod.2d.stdlib.convertslow.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+            flavor2="4">
       </item>
       <item path="../../src/module/2d/stdlib/umodsys.mod.2d.stdlib.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/2d/stdlib/umodsys.mod.2d.stdlib.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/2d/stdlib/umodsys.mod.2d.stdlib.types.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/2d/stdlib/version_module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/3d/stdlib/umodsys.mod.3d.stdlib.Tobj_camera.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/3d/stdlib/umodsys.mod.3d.stdlib.Tobj_primitive.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/3d/stdlib/umodsys.mod.3d.stdlib.Trenderer.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/3d/stdlib/umodsys.mod.3d.stdlib.Tvisualizerscene.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/3d/stdlib/umodsys.mod.3d.stdlib.Tvisualscenemapper_direct.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/module/3d/stdlib/umodsys.mod.3d.stdlib.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/3d/stdlib/umodsys.mod.3d.stdlib.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/3d/stdlib/umodsys.mod.3d.stdlib.types.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/3d/stdlib/umodsys.mod.3d.stdlib.types_obj_camera.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/3d/stdlib/umodsys.mod.3d.stdlib.types_obj_primitive.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/3d/stdlib/version_module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/module/media/images_std/umodsys.mod.media.images_std.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/images_std/umodsys.mod.media.images_std.filter.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/images_std/umodsys.mod.media.images_std.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/images_std/umodsys.mod.media.images_std.jpeg.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/images_std/umodsys.mod.media.images_std.png.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/images_std/version_module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/libmedia/version_module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/serialize_cmdarg/version_module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/module/media/serialize_json/umodsys.mod.media.serialize_json.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/serialize_json/umodsys.mod.media.serialize_json.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/serialize_json/umodsys.mod.media.serialize_json.reader.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/serialize_json/umodsys.mod.media.serialize_json.writer.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/serialize_json/version_module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/serialize_xml/version_module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/serialize_yaml/version_module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/stdio/umodsys.mod.media.stdio.archive.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/module/media/stdio/umodsys.mod.media.stdio.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/stdio/umodsys.mod.media.stdio.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/stdio/umodsys.mod.media.stdio.streams.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/stdio/version_module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/stdlib/umodsys.mod.media.stdlib.Tbinarchiveframe.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/stdlib/umodsys.mod.media.stdlib.Tlibbincache.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/stdlib/umodsys.mod.media.stdlib.Tlibbintree.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/stdlib/umodsys.mod.media.stdlib.Tliblayered.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/stdlib/umodsys.mod.media.stdlib.Tlibobjcache.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/stdlib/umodsys.mod.media.stdlib.Tlibobjfilter.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/stdlib/umodsys.mod.media.stdlib.Tutilities.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/module/media/stdlib/umodsys.mod.media.stdlib.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/stdlib/umodsys.mod.media.stdlib.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/stdlib/umodsys.mod.media.stdlib.types.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/stdlib/version_module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/zlib/umodsys.mod.media.zlib.Tarcframe.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/module/media/zlib/umodsys.mod.media.zlib.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/zlib/umodsys.mod.media.zlib.defs.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/zlib/umodsys.mod.media.zlib.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/zlib/umodsys.mod.media.zlib.types.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/media/zlib/version_module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/mod_sdl.cpp.txt"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/opengl_genlist.txt"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._2d.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._2df.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._2dtext.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._3d.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._3df.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._3dl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._3dm.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._3ds.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._console.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._control.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._filter.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._gl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._gl_uni.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._glfunc.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._glfuncbody.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._gltex.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._system.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._texcell.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._texcell2.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._texture.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._texutil.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL._video.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.glfunc.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.glfuncbody.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.glfuncload.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.inc.gl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.inc.gles.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.terminalx.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.typesx.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.u_rtex.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.u_tex.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.u_texmax.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.vbo.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.w_2d_draw.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.w_2d_info.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.w_2d_phase.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.w_2d_setup.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.w_3d_draw.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.w_3d_info.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.w_3d_phase.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.w_3d_setup.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.w_utl.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_GL/version_module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/module/ui/SDL_core/umodsys.mod.ui.SDL_core.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_core/umodsys.mod.ui.SDL_core.font.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_core/umodsys.mod.ui.SDL_core.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_core/umodsys.mod.ui.SDL_core.inlines.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_core/umodsys.mod.ui.SDL_core.keyboard.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_core/umodsys.mod.ui.SDL_core.mouse.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_core/umodsys.mod.ui.SDL_core.swindow.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_core/umodsys.mod.ui.SDL_core.terminal.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_core/umodsys.mod.ui.SDL_core.terminalx.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_core/umodsys.mod.ui.SDL_core.type_font.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_core/umodsys.mod.ui.SDL_core.types.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_core/umodsys.mod.ui.SDL_core.typesx.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_core/umodsys.mod.ui.SDL_core.utils.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_core/umodsys.mod.ui.SDL_core.window.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/SDL_core/version_module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/frames/umodsys.mod.ui.frames.collector.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/frames/umodsys.mod.ui.frames.common.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/module/ui/frames/umodsys.mod.ui.frames.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
-      <item path="../../src/module/ui/frames/umodsys.mod.ui.frames.ctrl.h"
+      <item path="../../src/plugin/libs/plugin_libStd.cpp"
             ex="false"
-            tool="3"
-            flavor2="0">
+            tool="1"
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
-      <item path="../../src/module/ui/frames/umodsys.mod.ui.frames.dialog.h"
+      <item path="../../src/plugin/libs/plugin_libUI.cpp"
             ex="false"
-            tool="3"
-            flavor2="0">
+            tool="1"
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
-      <item path="../../src/module/ui/frames/umodsys.mod.ui.frames.dynamic.h"
+      <item path="../../src/plugin/main/umodsys.c_main.cpp"
             ex="false"
-            tool="3"
+            tool="1"
             flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
       </item>
-      <item path="../../src/module/ui/frames/umodsys.mod.ui.frames.edit.h"
+      <item path="../../src/plugin/main/umodsys.c_maint.cpp"
             ex="false"
-            tool="3"
+            tool="1"
             flavor2="0">
-      </item>
-      <item path="../../src/module/ui/frames/umodsys.mod.ui.frames.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/frames/umodsys.mod.ui.frames.inlines.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/frames/umodsys.mod.ui.frames.list.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/frames/umodsys.mod.ui.frames.static.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/frames/umodsys.mod.ui.frames.utils.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/frames/version_module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/module/ui/libui/version_module.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/plugin/test/plugin_test1.common.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/plugin/test/plugin_test1.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
-      </item>
-      <item path="../../src/plugin/test/plugin_test1.file_tests.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/plugin/test/plugin_test1.file_utils.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/plugin/test/plugin_test1.obj_load.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/plugin/test/plugin_test1.ui_ctx.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/plugin/test/plugin_test1.ui_ctx3.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/plugin/test/plugin_test1.ui_ctx3u.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/plugin/test/plugin_test1.ui_funcs.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/plugin/test/plugin_test1.ui_tests.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
       <item path="../../src/plugin/test/plugin_test2.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
+        <ccTool flags="0">
+        </ccTool>
       </item>
-      <item path="../../src/plugin/test/version_plugin_test1.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
+      <item path="../../src/tests/test_core.cpp" ex="false" tool="1" flavor2="4">
       </item>
-      <item path="../../src/plugin/test/version_plugin_test2.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../../src/tests/test_core.cpp" ex="false" tool="1" flavor2="0">
-      </item>
+      <folder path="src/base">
+        <ccTool>
+          <incDir>
+            <pElem>../gnuc_makefile</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="src/basesys">
+        <ccTool>
+          <incDir>
+            <pElem>../gnuc_makefile</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="src/core">
+        <ccTool>
+          <incDir>
+            <pElem>../gnuc_makefile</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="src/lib">
+        <ccTool>
+          <incDir>
+            <pElem>../gnuc_makefile</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="src/module">
+        <ccTool>
+          <incDir>
+            <pElem>../gnuc_makefile</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="src/plugin/libs">
+        <ccTool>
+          <incDir>
+            <pElem>../gnuc_makefile</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="src/plugin/main">
+        <ccTool>
+          <incDir>
+            <pElem>../../src/basesys</pElem>
+            <pElem>../gnuc_makefile</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="src/plugin/test">
+        <ccTool>
+          <incDir>
+            <pElem>../gnuc_makefile</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
+      <folder path="src/tests">
+        <ccTool>
+          <incDir>
+            <pElem>../gnuc_makefile</pElem>
+          </incDir>
+        </ccTool>
+      </folder>
     </conf>
   </confs>
 </configurationDescriptor>

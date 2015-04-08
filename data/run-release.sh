@@ -1,6 +1,8 @@
 #!/bin/sh
 
 PLATFORM=`uname`.`uname -p`
+MODE='t'
+MODE=''
 
-../bin/$PLATFORM.Release/umodsysc.$PLATFORM.Release
+../bin/$PLATFORM.Release/umodsysc$MODE.$PLATFORM.Release
 

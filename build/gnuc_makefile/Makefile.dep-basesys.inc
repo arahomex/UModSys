@@ -19,32 +19,14 @@ basesys_lib_depends := \
 
 basesys_lib := $(T)/umodsys.basesys$(LIBSUFFIX)
 
-#---------------------------- binary
-
-main_depends := \
-  $(T)/umodsys.c_main$(OSUFFIX) \
-
-main_bin := umodsysc.$(PLATFORM).$(BUILD_MODE)$(BINSUFFIX)
-main := $(BINDIR)/$(main_bin)
-main_last := $(BINDIRL)/umodsysc
-
 #---------------------------- make rules targets
 
 basesys_lib: req $(base_lib) 
-main: req $(main)
 
 #---------------------------- make rules static
 
 $(basesys_lib): $(basesys_lib_depends)
 	$(AR_ADD)$@ $^
-
-$(main): $(main_depends) $(basesys_lib) $(libmedia_lib) $(libui_lib) $(lib3d_lib) $(lib2d_lib) $(base_lib) $(core_lib)
-	$(CXX_LINK) $(CXXFLAGS) $(CXX_BIN)$@ $^ $(CXX_LINK_LAST) $(STD_LIBS)
-ifdef CXX_LINK_POSTPROCESS
-	$(CXX_LINK_POSTPROCESS) $@
-endif
-	( test -f $(main_last) && rm $(main_last) ) || true
-	ln -s $(main) $(main_last)
 
 #---------------------------- make rules generic
 
@@ -72,5 +54,4 @@ endif
 # pull in dependency info for *existing* $(OSUFFIX) files
 ifndef NO_CXX_DEP
 -include $(basesys_lib_depends:$(OSUFFIX)=$(OSUFFIX).d)
--include $(main_depends:$(OSUFFIX)=$(OSUFFIX).d)
 endif

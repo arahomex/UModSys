@@ -57,6 +57,6 @@ include Makefile.dep-libui.inc
 
 include Makefile.dep-basesys.inc
 
-include Makefile.dep-so-test.inc
+include Makefile.dep-plugins.inc
 
 #---------------------------- make libraries
