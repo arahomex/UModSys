@@ -8,6 +8,7 @@ using namespace UModSys::base;
 // IConsole::
 //***************************************
 
+
 IConsole::~IConsole(void)
 {
 }

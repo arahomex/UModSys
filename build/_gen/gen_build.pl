@@ -1,6 +1,7 @@
 #!/bin/env perl
 
 use strict;
+use warnings;
 use File::Basename;
 
 our $script_path;
@@ -9,6 +10,11 @@ my($filename, $suffix);
 ($filename, $script_path, $suffix) = fileparse(__FILE__);
 
 require "$script_path/gen_config.pm";
+
+require "$script_path/gen_makefile.pm";
+#require "$script_path/gen_cmake.pm";
+#require "$script_path/gen_eclipse.pm";
+
 require "$script_path/gen_msvc9.pm";
 require "$script_path/gen_msvc8.pm";
 
@@ -27,4 +33,4 @@ read_configuration($config, $input_file);
 my $gen = apply_configuration($config);
 exec_generator($config, $gen);
 
-print "Generator version 0.43 done\n";
+print "Generator version 0.44 done\n";
