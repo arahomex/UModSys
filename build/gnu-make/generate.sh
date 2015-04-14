@@ -5,6 +5,8 @@ bp=`dirname $bp`
 
 cd $bp
 echo '************************ Generate build files...'
+export PLATFORM="`uname`_`uname -p`"
+export PLATFORMS="`uname`_`uname -p`"
 perl ../_gen/gen_build.pl generator.txt
 exit
 echo '************************ Generate version files...'

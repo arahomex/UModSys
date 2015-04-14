@@ -40,9 +40,10 @@ begin project-group umodsys
     #
     includes $(path-include)
     includes $(path-include)/$(ppath)
+    includes $(path-s-basesys)
     #
     begin file-group src
-      file $(path-s-basesys)/umodsys.c_main.cpp
+      file $(path-s-plugin)/main/umodsys.c_main.cpp
     end
     #
     depend umodsys_lib_core

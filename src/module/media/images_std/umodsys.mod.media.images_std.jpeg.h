@@ -29,7 +29,7 @@ static void init_source (j_decompress_ptr cinfo)
 static boolean fill_input_buffer (j_decompress_ptr cinfo) 
 {
   // DO NOTHING
-  return 1;
+  return boolean(1);
 }
 
 static void skip_input_data (j_decompress_ptr cinfo, long count) 

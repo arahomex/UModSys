@@ -1,10 +1,20 @@
 use strict;
 use warnings;
 
+use File::Basename;
+
 our $generators;
 our $script_path;
+our ($fout, $pg, $proj, $xmap);
+our ($FILE_PATH, $FNAME, $FPATH, $FEXT);
+our ($TARGET_TNAME, $TARGET_CNAME);
+our ($PROJECT_NAME, $PROJECT_CONTENTS, $PROJECT_TNAME, $PROJECT_CNAME);
+our ($PROJECT_ID, $PROJECT_CXXFLAGS, $PROJECT_CFLAGS, $PROJECT_LDFLAGS);
+our ($MODE, $CFLAGS, $LDFLAGS, $CXXFLAGS, @PROJECT_INCLUDES, @PROJECT_DEFINES);
+our ($PROJECTGROUP_NAME, $PROJECTGROUP_TNAME, $PROJECTGROUP_CNAME);
+our ($FILEGROUP_NAME);
 
-sub makefile_setopt
+sub makefile_setopt($$$$)
 {
    my ($opts, $conf, $name, $value) = @_;
    my $c;
@@ -32,21 +42,62 @@ sub makefile_getopt
   return undef;
 }
 
+#--------------------------------------------------------------------
+#--------------------------------------------------------------------
+#--------------------------------------------------------------------
+
+sub makefile_genfile_cpp($$$$)
+{
+  my ($state, $file_info, $template, $filegroup) = @_;
+#  print_stack();
+#  print "[$template]\n";
+  eprint $fout, eval("<<EOT\n".$template->{'file-cpp'}."EOT"), $template->{'file-cpp'};
+}
+
+sub makefile_genfile_c($$$$)
+{
+  my ($state, $file_info, $template, $filegroup) = @_;
+  eprint $fout, eval("<<EOT\n".$template->{'file-c'}."EOT");
+}
+
+my $u_suffix = qr/\.[^.]*/;
+
+sub makefile_genfile($$$$)
+{
+  my ($state, $file_info, $template, $filegroup) = @_;
+  local $pg = $state->{'pg'};
+  local $proj = $state->{'project'};
+  local $xmap = $state->{'xmap'};
+  local $FILE_PATH = $file_info->{'filename'};
+  #
+  eprint $fout, eval("<<EOT\n".$template->{'project-ff-file-begin'}."EOT");
+  #
+  local ($FNAME, $FPATH, $FEXT) = fileparse($FILE_PATH, $u_suffix);
+  my $G = $template->{'file_generators'};
+#  print "[$FNAME $FPATH $FEXT]\n";
+  if(exists $G->{$FEXT}) {
+#    print "[$template]\n";
+    $G->{$FEXT}->($state, $file_info, $template, $filegroup);
+  }
+  #
+  eprint $fout, eval("<<EOT\n".$template->{'project-ff-file-end'}."EOT");
+}
+
 
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------
 
-sub makefile_mask_end
+sub makefile_mask_end($)
 {
   my ($this) = @_;
-  my $pfiles = $this->{'parent'}->{'filter'}->{'files'};
+  my $pfiles = $this->{'parent'}->{'group'}->{'files'};
   for my $file (@{$this->{'files'}}) {
-#    push @$pfiles, makefile_filter_fileinfo($file, $this->{'xopts'});
+    push @$pfiles, makefile_filegroup_fileinfo($file, $this->{'xopts'});
   }
 }
 
-sub makefile_mask_cmd
+sub makefile_mask_cmd($$$)
 {
   my ($this, $cmd, $args) = @_;
   if($cmd eq 'include') {
@@ -72,7 +123,7 @@ sub makefile_mask_cmd
   }
 }
 
-sub makefile_mask_xoption
+sub makefile_mask_xoption($$$)
 {
   my ($this, $cmd, $args) = @_;
   my $name = get_configuration_arg(\$args);
@@ -80,7 +131,7 @@ sub makefile_mask_xoption
   $this->{'xopts'}->{$name} = $value;
 }
 
-sub makefile_mask_begin
+sub makefile_mask_begin($$$)
 {
   my ($this, $keyname, $args) = @_;
   my $skip = int(get_configuration_arg_exp(\$args, $this));
@@ -103,39 +154,39 @@ sub makefile_mask_begin
     },
   };
   return $ret;
-};
+}
 
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------
 
-sub makefile_filegroup_fileinfo
+sub makefile_filegroup_fileinfo($;$)
 {
   my ($filename, $xopts) = @_;
   $xopts = undef if (defined $xopts) and (%$xopts==0);
   return {
-#    'filename' => makefile_path_win32($filename),
+    'filename' => $filename,
     'xopts' => $xopts
   };
 }
 
-sub makefile_filegroup_option
+sub makefile_filegroup_option($$$)
 {
   my ($this, $cmd, $args) = @_;
   my $conf = get_configuration_arg(\$args);
   my $name = get_configuration_arg(\$args);
   my $value = get_configuration_arg_exp(\$args, $this);
-#  makefile_setopt($this->{'filter'}->{'opts'}, $conf, $name, $value);
+#  makefile_setopt($this->{'group'}->{'opts'}, $conf, $name, $value);
 }
 
-sub makefile_filegroup_file
+sub makefile_filegroup_file($$$)
 {
   my ($this, $cmd, $args) = @_;
   my $name = get_configuration_arg_exp(\$args, $this);
-  push @{$this->{'filter'}->{'files'}}, makefile_filegroup_fileinfo($name);
+  push @{$this->{'group'}->{'files'}}, makefile_filegroup_fileinfo($name);
 }
 
-sub makefile_filegroup_begin
+sub makefile_filegroup_begin($$$)
 {
   my ($this, $keyname, $args) = @_;
   my $name = get_configuration_arg_exp(\$args, $this);
@@ -150,7 +201,7 @@ sub makefile_filegroup_begin
     'sets' => set_new($this),
     'parent' => $this,
     'name' => $name,
-    'filegroups' => {},
+    'groups' => {},
     'files' => [],
     'opts' => $opts,
   };
@@ -160,8 +211,8 @@ sub makefile_filegroup_begin
     'name' => $name,
     'subs' => {},
     #
-    'filegroup' => $rv,
-    'filegroups' => $rv->{'filegroups'},
+    'group' => $rv,
+    'groups' => $rv->{'groups'},
     'sets' => $rv->{'sets'},
     'option' => \&makefile_filegroup_option,
     #
@@ -174,7 +225,7 @@ sub makefile_filegroup_begin
       'file' => \&makefile_filegroup_file,
     },
   };
-  $this->{'filegroups'}->{$name} = $rv;
+  $this->{'groups'}->{$name} = $rv;
   $this->{'subs'}->{$name} = $ret;
   return $ret;
 };
@@ -183,7 +234,7 @@ sub makefile_filegroup_begin
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------
 
-sub makefile_project_cmd
+sub makefile_project_cmd($$$)
 {
   my ($this, $cmd, $args) = @_;
   if($cmd eq 'depend') {
@@ -191,7 +242,7 @@ sub makefile_project_cmd
     push @{$this->{'project'}->{'depends'}}, $name;
   } elsif($cmd eq 'includes') {
     while(my $name = get_configuration_arg_exp(\$args, $this)) {
-      #push @{$this->{'project'}->{'includes'}}, makefile_path_win32($name);
+      push @{$this->{'project'}->{'includes'}}, $name;
     }
   } elsif($cmd eq 'defines') {
     while(my $name = get_configuration_arg_exp(\$args, $this)) {
@@ -213,16 +264,16 @@ sub makefile_project_cmd
   }
 }
 
-sub makefile_project_option
+sub makefile_project_option($$$)
 {
   my ($this, $cmd, $args) = @_;
   my $conf = get_configuration_arg(\$args);
   my $name = get_configuration_arg(\$args);
   my $value = get_configuration_arg_exp(\$args, $this);
-#  makefile_setopt($this->{'project'}->{'opts'}, $conf, $name, $value);
+  makefile_setopt($this->{'project'}->{'opts'}, $conf, $name, $value);
 }
 
-sub makefile_project_begin
+sub makefile_project_begin($$$)
 {
   my ($this, $keyname, $args) = @_;
   my $name = get_configuration_arg(\$args);
@@ -238,7 +289,7 @@ sub makefile_project_begin
     'name' => $name,
     'mode' => '',
     'filename' => "Makefile-project-$name",
-    'filters' => {},
+    'groups' => {},
     'platforms' => {},
     'configurations' => {},
     'depends' => [],
@@ -258,7 +309,7 @@ sub makefile_project_begin
     'subs' => {},
     #
     'project' => $rv,
-    'filegroups' => $rv->{'groups'},
+    'groups' => $rv->{'groups'},
     'sets' => $rv->{'sets'},
     #
     'end' => sub {
@@ -285,10 +336,23 @@ sub makefile_project_begin
   return $ret;
 }
 
-sub makefile_project_generate_files
+sub makefile_project_generate_files($$$$);
+
+sub makefile_project_generate_files($$$$)
 {
-  my ($proj, $template, $fout, $filters, $FF_PAD) = @_;
-  my $line;
+  my ($state, $fgs, $template, $ff_pad) = @_;
+#  my $line;
+  my ($pg, $proj, $xmap) = ($state->{'pg'}, $state->{'project'}, $state->{'xmap'});
+  local $FILEGROUP_NAME = '';
+  for $FILEGROUP_NAME (sort keys %$fgs) {
+    my $filegroup = $fgs->{$FILEGROUP_NAME};
+    eprint $fout, eval("<<EOT\n".$template->{'project-ff-begin'}."EOT");
+    makefile_project_generate_files($state, $filegroup->{'groups'}, $template, $ff_pad+1);
+    for my $file_info (@{$filegroup->{'files'}}) {
+      makefile_genfile($state, $file_info, $template, $filegroup);
+    }
+    eprint $fout, eval("<<EOT\n".$template->{'project-ff-end'}."EOT");
+  }
   #
 q^
   for my $FILTER_NAME (sort keys %$filters) {
@@ -352,11 +416,11 @@ q^
 
 }
 
-sub makefile_project_generate
+sub makefile_project_generate($$$)
 {
-  my ($fout, $pg, $proj, $template) = @_;
-  my ($filename, $filters) = ($proj->{'filename'}, );
-  my ($line);
+  my ($state, $proj, $template) = @_;
+  my ($pg, $xmap, $filename) = ($state->{'pg'}, $state->{'xmap'}, $proj->{'filename'});
+  my ($filters);
   #
   my ($PROJECTGROUP_NAME, $PROJECT_NAME) = ($pg->{'name'}, $proj->{'name'});
   my @confs = split / /, makefile_getopt('[]', 'Configurations', @{$proj->{'a-opts'}});
@@ -368,8 +432,7 @@ sub makefile_project_generate
   #
   #------------------- BEGIN
   #
-  $line = eval("<<EOT\n".$template->{'project-begin'}."EOT");
-  print $fout $line;
+  eprint $fout, eval("<<EOT\n".$template->{'project-begin'}."EOT");
   #
   #
   #------------------- CONFIGURATIONS
@@ -391,46 +454,78 @@ sub makefile_project_generate
         $CLEAN_DEPENDS .= eval('" '.$template->{'project-cp-name'}.'"');
       }
       #
+      local $PROJECT_CONTENTS = '';
       $N = $PROJECT_NAME;
-      my $MODE = $proj->{'mode'};
-      my $TARGET_TNAME .= eval('"'.$template->{'project-tt-name'}.'"');
-      my $TARGET_CNAME .= eval('"'.$template->{'project-cc-name'}.'"');
-      my $PROJECT_TNAME .= eval('"'.$template->{'project-tp-name'}.'"');
-      my $PROJECT_CNAME .= eval('"'.$template->{'project-cp-name'}.'"');
-      my $PROJECTGROUP_TNAME .= eval('"'.$template->{'project-tg-name'}.'"');
-      my $PROJECTGROUP_CNAME .= eval('"'.$template->{'project-cg-name'}.'"');
+      local $MODE = $proj->{'mode'};
+      local $TARGET_TNAME = eval('"'.$template->{'project-tt-name'}.'"');
+      local $TARGET_CNAME = eval('"'.$template->{'project-cc-name'}.'"');
+      local $PROJECT_TNAME = eval('"'.$template->{'project-tp-name'}.'"');
+      local $PROJECT_CNAME = eval('"'.$template->{'project-cp-name'}.'"');
+      local $PROJECTGROUP_TNAME = eval('"'.$template->{'project-tg-name'}.'"');
+      local $PROJECTGROUP_CNAME = eval('"'.$template->{'project-cg-name'}.'"');
       #
-      $line = eval("<<EOT\n".$template->{'project-config-begin'}."\nEOT");
-      print $@ if $@;
-      print $fout $line;
+      local $CFLAGS = set_get($proj, 'CFLAGS');
+      local $CXXFLAGS = set_get($proj, 'CXXFLAGS');
+      local $LDFLAGS = set_get($proj, 'LDFLAGS');
       #
+      local $PROJECT_ID = eval('"'.$template->{'project-id-name'}.'"');
+      local $PROJECT_CFLAGS=eval('"'.$template->{'project-cflags'}.'"');
+      local $PROJECT_CXXFLAGS=eval('"'.$template->{'project-cxxflags'}.'"');
+      local $PROJECT_LDFLAGS=eval('"'.$template->{'project-ldflags'}.'"');
+      #
+      local @PROJECT_INCLUDES = ();
+      if(@{$proj->{'includes'}}) {
+        @PROJECT_INCLUDES = @{$proj->{'includes'}};
+      }
+      for my $INCLUDE1 (@PROJECT_INCLUDES) {
+        my $ai = eval('"'.$template->{'project-include1'}.'"');
+        $PROJECT_CFLAGS .= $ai;
+        $PROJECT_CXXFLAGS .= $ai;
+      }
+      #
+      local @PROJECT_DEFINES = ();
+      if(@{$proj->{'defines'}}) {
+        @PROJECT_DEFINES = @{$proj->{'defines'}};
+      }
+      for my $DEFINE1 (@PROJECT_DEFINES) {
+        my $ai = eval('"'.$template->{'project-define1'}.'"');
+        $PROJECT_CFLAGS .= $ai;
+        $PROJECT_CXXFLAGS .= $ai;
+      }
+      #
+      eprint $fout, eval("<<EOT\n".$template->{'project-config-begin'}."\nEOT");
+      #
+      {
+        my $shar = $template->{'project-config-shared'};
+        for my $svt (@$shar) {
+          my $xx = eval("<<EOT\n".$svt."\nEOT");
+          $xmap->{$xx}++;
+        }
+      }
+      #
+#      print "$PROJECT_NAME $MODE $PLATFORM_NAME $CONF_NAME\n";
       my $dummy = 0;
       if($MODE eq 'console' or $MODE eq 'binary') {
-        $line = eval("<<EOT\n".$template->{'project-config-M:console'}."\nEOT");
+        eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:console'}."\nEOT");
       } elsif($MODE eq 'lib') {
-        $line = eval("<<EOT\n".$template->{'project-config-M:lib'}."\nEOT");
+        eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:lib'}."\nEOT");
       } elsif($MODE eq 'solib' or $MODE eq 'shared') {
-        $line = eval("<<EOT\n".$template->{'project-config-M:solib'}."\nEOT");
+        eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:solib'}."\nEOT");
       } elsif($MODE eq 'app' or $MODE eq 'gui') {
-        $line = eval("<<EOT\n".$template->{'project-config-M:console'}."\nEOT");
+        eprint $fout, eval("<<EOT\n".$template->{'project-config-M:console'}."\nEOT");
       } elsif($MODE eq 'dummy') {
         $dummy = 1;
-        $line = eval("<<EOT\n".$template->{'project-config-M:dummy'}."\nEOT");
+        eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:dummy'}."\nEOT");
       } else {
-        $line = eval("<<EOT\n".$template->{'project-config-M:console'}."\nEOT");
+        eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:console'}."\nEOT");
       }
-      print $@ if $@;
-      print $fout $line;
       #
       if(not $dummy) {
-        $line = eval("<<EOT\n".$template->{'project-config-M-general'}."\nEOT");
-        print $@ if $@;
-        print $fout $line;
+        eprint $fout,  eval("<<EOT\n".$template->{'project-config-M-general'}."\nEOT");
+        makefile_project_generate_files($state, $proj->{'groups'}, $template, 0);
       }
       #
-      $line = eval("<<EOT\n".$template->{'project-config-end'}."\nEOT");
-      print $@ if $@;
-      print $fout $line;
+      eprint $fout, eval("<<EOT\n".$template->{'project-config-end'}."\nEOT");
     }
   }
 q^
@@ -571,8 +666,7 @@ use strict 'vars';
   #
 ^ if 0;
   #
-  $line = eval("<<EOT\n".$template->{'project-end'}."EOT");
-  print $fout $line;
+  eprint $fout,  eval("<<EOT\n".$template->{'project-end'}."EOT");
   #
   #------------------- END
   print "Written project data $PROJECT_NAME\n";
@@ -583,7 +677,7 @@ use strict 'vars';
 #--------------------------------------------------------------------
 
 
-sub makefile_projectgroup_option
+sub makefile_projectgroup_option($$$)
 {
   my ($this, $cmd, $args) = @_;
   my $name = get_configuration_arg(\$args);
@@ -605,7 +699,7 @@ sub makefile_projectgroup_option
   }
 }
 
-sub makefile_projectgroup_begin
+sub makefile_projectgroup_begin($$$)
 {
   my ($this, $keyname, $args) = @_;
   my $name = get_configuration_arg(\$args);
@@ -623,6 +717,11 @@ sub makefile_projectgroup_begin
     'project-order' => [],
     'project-opts' => $project_opts,
     'a-project-opts' => [$project_opts, $this->{'a-project-opts'}],
+    #
+    'uni' => {
+      'platforms' => [],
+      'configs' => [],
+    },
   };
   my $ret = {
     'type' => 'project-group',
@@ -649,7 +748,7 @@ sub makefile_projectgroup_begin
   return $ret;
 }
 
-sub makefile_gen_include
+sub makefile_gen_include($$$)
 {
   my ($this, $cmd, $args) = @_;
   my $name = get_configuration_arg(\$args);
@@ -659,40 +758,20 @@ sub makefile_gen_include
   apply_configuration($config, $this);
 }
 
-sub makefile_gen_generate
+sub makefile_projectgroup_generate($$$)
 {
-  my ($this, $config) = @_;
-  my $filename = "Makefile";
-#       print "{".$this->{'type'}.",".$this->{'G'}->{'type'}.",".$this->{'G'}->{'templates'}->{'type'}."}\n";
-  my $pgs = $this->{'subs'};
-  my ($fout, $line);
-  my ($template) = ($this->{'templates'});
-  open $fout,'>',$filename or die "File '$filename' create error.";
-  $line = eval("<<EOT\n".$template->{'makefile-begin'}."EOT");
-  print $fout $line;
-  for my $sn (keys %$pgs) {
-    my $pg = $pgs->{$sn};
-    makefile_projectgroup_generate($fout, $pg->{'projectgroup'}, $template);
-  }
-  $line = eval("<<EOT\n".$template->{'makefile-end'}."EOT");
-  print $fout $line;
-  close $fout;
-}
-
-sub makefile_projectgroup_generate
-{
-  my ($fout, $pg, $template) = @_;
-  my ($filename, $projects) = ($pg->{'filename'}, $pg->{'projects'});
-  my ($line);
-  make_filename_dir($filename);
+  my ($state, $pg, $template) = @_;
+  my ($filename, $projects, $fout) = ($pg->{'filename'}, $pg->{'projects'}, $state->{'fout'});
   #
   my ($PROJECTGROUP_NAME) = ($pg->{'name'});
   #
-  $line = eval("<<EOT\n".$template->{'projectgroup-begin'}."EOT");
-  print $fout $line;
+  eprint $fout,  eval("<<EOT\n".$template->{'projectgroup-begin'}."EOT");
   #
   foreach my $proj_name (sort keys %$projects) {
-    makefile_project_generate($fout, $pg, $projects->{$proj_name}, $template);
+    my $proj = $projects->{$proj_name};
+    $state->{'proj'} = $proj;
+    makefile_project_generate($state, $proj, $template);
+    $state->{'proj'} = undef;
   }
 #  my $uproj = {};
 #  foreach my $proj_name (@{$sol->{'project-order'}}) {
@@ -703,10 +782,54 @@ sub makefile_projectgroup_generate
 #  }
 #  print $fout "\n";
   #
-  $line = eval("<<EOT\n".$template->{'projectgroup-end'}."EOT");
-  print $fout $line;
+  eprint $fout, eval("<<EOT\n".$template->{'projectgroup-end'}."EOT");
   #
   print "Written project group file '$filename'\n";
+}
+
+#--------------------------------------------------------------------
+#--------------------------------------------------------------------
+#--------------------------------------------------------------------
+
+sub makefile_gen_generate($$)
+{
+  my ($this, $config) = @_;
+  my $filename = "Makefile";
+  make_filename_dir($filename);
+#       print "{".$this->{'type'}.",".$this->{'G'}->{'type'}.",".$this->{'G'}->{'templates'}->{'type'}."}\n";
+  my $pgs = $this->{'subs'};
+  my ($ffout);
+  my ($template) = ($this->{'templates'});
+  open $ffout,'>',$filename or die "File '$filename' create error.";
+  local $fout = $ffout;
+  #
+  eprint $fout, eval("<<EOT\n".$template->{'makefile-begin'}."EOT");
+  my $state = {
+    'fout' => $fout,
+    'xmap' => {},
+  };
+  for my $sn (keys %$pgs) {
+    my $pg = $pgs->{$sn};
+    $state->{'pg'} = $pg;
+    makefile_projectgroup_generate($state, $pg->{'projectgroup'}, $template);
+    $state->{'pg'} = undef;
+  }
+  #
+  eprint $fout,  eval("<<EOT\n".$template->{'makefile-xmap'}."EOT");
+  my $xmap = $state->{'xmap'};
+  for my $xk (keys %$xmap) {
+    print $fout "# ".$xmap->{$xk}."\n";
+    print $fout "$xk\n";
+  }
+  #
+  eprint $fout, eval("<<EOT\n".$template->{'makefile-end'}."EOT");
+  close $fout;
+}
+
+sub makefile_open($)
+{
+  my ($this) = @_;
+  return $this;
 }
 
 #--------------------------------------------------------------------

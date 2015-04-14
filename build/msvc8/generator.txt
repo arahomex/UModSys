@@ -10,6 +10,8 @@ set path-out-tmp \$(SolutionDir)../../tmp/win32vc8_\$(ConfigurationName)_\$(Plat
 set spname win32
 set ppath platform/win32
 
+include ../_gen/gen_options_deppath.txt
+
 include ../_gen/gen_options_generic.txt
 include ../_gen/gen_options_vs2005_2008.txt
 

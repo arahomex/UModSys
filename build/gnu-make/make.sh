@@ -2,5 +2,6 @@
 
 P=`uname`_`uname -p`
 
-make -f Makefile target-$P-Debug
+make -f Makefile target-$P-Debug "$@"
+
 

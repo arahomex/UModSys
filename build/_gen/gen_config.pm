@@ -4,9 +4,24 @@ use warnings;
 our $generators;
 use Data::Dumper;
 
+our $VERSION;
+
 #---------------------------------
 #---------------------------------
 #---------------------------------
+
+sub set_getcmd($$)
+{
+  my ($cmd, $args) = @_;
+  if($cmd eq 'shell') {
+    return `$args`;
+  } elsif($cmd eq 'env') {
+    return $ENV{$args};
+  } elsif($cmd eq '?') {
+    return $VERSION if($args eq 'version');
+  }
+  return undef;
+}
 
 sub set_get($$)
 {
@@ -16,7 +31,23 @@ sub set_get($$)
   for my $ss (@$sets) {
     return $ss->{$var} if exists $ss->{$var};
   }
+  if($var =~ /^(\w+)\s+(.*)$/) {
+    my ($cmd, $args) = ($1, $2);
+    my $ret = set_getcmd($cmd, $args);
+    return $ret if defined $ret;
+  }
   print "  got none for '$var' at #".@$sets."\n";
+  {
+    my ($lev, $levid) = ([],[]);
+    my $i=0;
+    for my $ss (@$sets) {
+      push @$lev, $ss;
+      push @$levid, $i++;
+    }
+    my $d = Data::Dumper->new($lev, $levid);
+    print $d->Dump();
+    die "No variable set";
+  }
   return undef;
 }
 
@@ -78,7 +109,7 @@ sub get_configuration_arg($)
     return $1;
   }
   #
-  if($$line =~ s/^[\"](.*?)[\"]// or $$line =~ s/^[\'](.*?)[\']// or s/^[\`](.*?)[\`]//) {
+  if($$line =~ s/^[\"](.*?)[\"]// or $$line =~ s/^[\'](.*?)[\']// or $$line =~ s/^[\`](.*?)[\`]//) {
     $$line = '';
     return $1;
   }
@@ -314,5 +345,35 @@ sub glob_to_regex_string($)
     }
     return $regex;
 }
+
+#---------------------------------
+#---------------------------------
+#---------------------------------
+
+sub eprint($$;$)
+{
+  my ($fout, $line, $err) = @_;
+  if($@) {
+    $err = '' if not defined $err;
+    print "($err):".$@;
+  }
+  print $fout $line;
+}
+
+our $max_stack_depth=10;
+
+sub print_stack()
+{
+  print "--- Begin stack trace ---\n";
+  my $i = 0;
+  while ( (my @call_details = (caller($i++))) && ($i<$max_stack_depth) ) {
+      print "$i:$call_details[1] line $call_details[2] in function $call_details[3]\n";
+  }
+  print "--- End stack trace ---\n";
+}
+
+#---------------------------------
+#---------------------------------
+#---------------------------------
 
 return 1;
