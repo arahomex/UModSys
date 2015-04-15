@@ -69,10 +69,10 @@ EOT
     #
     'project-depend1L:dummy' => '',
     'project-depend1L:console' => '',
-#    'project-depend1L:lib' => ' -l${DEPEND1}.${PLATFORM_NAME}.${CONF_NAME}.a',
-#    'project-depend1L:solib' => ' -l${DEPEND1}.${PLATFORM_NAME}.${CONF_NAME}.so',
-    'project-depend1L:lib' => ' \$(tmp__${PROJECT_ID})/${DEPEND1}.${PLATFORM_NAME}.${CONF_NAME}.a',
-    'project-depend1L:solib' => ' \$(bin__${PROJECT_ID})/${DEPEND1}.${PLATFORM_NAME}.${CONF_NAME}.so',
+    'project-depend1L:lib' => ' -l:${DEPEND1}.${PLATFORM_NAME}.${CONF_NAME}.a',
+    'project-depend1L:solib' => ' -l:${DEPEND1}.${PLATFORM_NAME}.${CONF_NAME}.so',
+#    'project-depend1L:lib' => ' \$(tmp__${PROJECT_ID})/${DEPEND1}.${PLATFORM_NAME}.${CONF_NAME}.a',
+#    'project-depend1L:solib' => ' \$(bin__${PROJECT_ID})/${DEPEND1}.${PLATFORM_NAME}.${CONF_NAME}.so',
 #    'project-depend1L:solib' => ' ${DEPEND1}.${PLATFORM_NAME}.${CONF_NAME}.so',
     'project-depend1L:unknown' => '',
     #----------------------------------------------------------------------------------------------------------------------------
@@ -135,7 +135,8 @@ tmpx__${PROJECT_ID}=${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}
 CXXFLAGS__${PROJECT_ID}=${PROJECT_CXXFLAGS}
 CFLAGS__${PROJECT_ID}=${PROJECT_CFLAGS}
 #LDFLAGS__${PROJECT_ID}=-Wl,-rpath-link,${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME} -L${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME} ${PROJECT_LDFLAGS} 
-LDFLAGS__${PROJECT_ID}=${PROJECT_LDFLAGS} 
+LDFLAGS__${PROJECT_ID}=-L${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME} -L${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME} ${PROJECT_LDFLAGS}
+#LDFLAGS__${PROJECT_ID}=${PROJECT_LDFLAGS} 
 EOT
     'project-config-shared' => [
       <<'EOT',
