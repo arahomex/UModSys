@@ -25,10 +25,17 @@ EOT
 -include \$(tmpx__${PROJECT_ID})/$FNAME.o.d
 \$(target__${PROJECT_ID}): \$(tmpx__${PROJECT_ID})/$FNAME.o
 EOT
+    'file-S' => <<'EOT',
+\$(tmpx__${PROJECT_ID})/$FNAME.o: $FILE_PATH
+	\$(AS) \$(ASFLAGS__${PROJECT_ID}) -c -o\$@ \$<
+\$(target__${PROJECT_ID}): \$(tmpx__${PROJECT_ID})/$FNAME.o
+EOT
     #
     'file_generators' => {
       '.cpp' => \&makefile_genfile_cpp,
       '.c' => \&makefile_genfile_c,
+      '.S' => \&makefile_genfile_S,
+      '.s' => \&makefile_genfile_S,
     },
     #----------------------------------------------------------------------------------------------------------------------------
     #----------------------------------------------------------------------------------------------------------------------------
@@ -38,12 +45,36 @@ EOT
     'project-cg-name' => 'cg-${PROJECTGROUP_NAME}-${P}-${C}',
     'project-tt-name' => 'target-${P}-${C}',
     'project-cc-name' => 'clean-${P}-${C}',
+    'project-ttx-name' => 'target-${C}',
+    'project-ccx-name' => 'clean-${C}',
     'project-id-name' => '${PROJECTGROUP_NAME}__${PROJECT_NAME}__${PLATFORM_NAME}__${CONF_NAME}',
+    #
     'project-cflags' => '${CFLAGS} \$(CFLAGS)',
     'project-cxxflags' => '${CXXFLAGS} \$(CXXFLAGS)',
     'project-ldflags' => '${LDFLAGS} \$(LDFLAGS)',
+    #
     'project-include1' => ' -I${INCLUDE1}',
     'project-define1' => ' -D${DEFINE1}',
+    'project-lib1' => ' -l${LIB1}',
+    'project-libpath1' => ' -L${LIBPATH1}',
+    #
+    'project-depend1t' => 'tp-${DEPEND1G}-${DEPEND1}-${PLATFORM_NAME}-${CONF_NAME}',
+    'project-depend1c' => 'cp-${DEPEND1G}-${DEPEND1}-${PLATFORM_NAME}-${CONF_NAME}',
+    #
+    'project-depend1C:dummy' => '',
+    'project-depend1C:console' => '',
+    'project-depend1C:lib' => '',
+    'project-depend1C:solib' => '',
+    'project-depend1C:unknown' => '',
+    #
+    'project-depend1L:dummy' => '',
+    'project-depend1L:console' => '',
+#    'project-depend1L:lib' => ' -l${DEPEND1}.${PLATFORM_NAME}.${CONF_NAME}.a',
+#    'project-depend1L:solib' => ' -l${DEPEND1}.${PLATFORM_NAME}.${CONF_NAME}.so',
+    'project-depend1L:lib' => ' \$(tmp__${PROJECT_ID})/${DEPEND1}.${PLATFORM_NAME}.${CONF_NAME}.a',
+    'project-depend1L:solib' => ' \$(bin__${PROJECT_ID})/${DEPEND1}.${PLATFORM_NAME}.${CONF_NAME}.so',
+#    'project-depend1L:solib' => ' ${DEPEND1}.${PLATFORM_NAME}.${CONF_NAME}.so',
+    'project-depend1L:unknown' => '',
     #----------------------------------------------------------------------------------------------------------------------------
     #----------------------------------------------------------------------------------------------------------------------------
     'makefile-begin' => <<'EOT',
@@ -95,13 +126,16 @@ $PROJECTGROUP_TNAME: $PROJECT_TNAME
 $PROJECTGROUP_CNAME: $PROJECT_CNAME
 $PROJECT_TNAME: $TARGET_DEPENDS
 $PROJECT_CNAME: $CLEAN_DEPENDS
+$TARGET_CONF_TNAME: $PROJECT_TNAME
+$TARGET_CONF_CNAME: $PROJECT_CNAME
 
 tmp__${PROJECT_ID}=${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}
 bin__${PROJECT_ID}=${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}
 tmpx__${PROJECT_ID}=${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}
 CXXFLAGS__${PROJECT_ID}=${PROJECT_CXXFLAGS}
 CFLAGS__${PROJECT_ID}=${PROJECT_CFLAGS}
-LDFLAGS__${PROJECT_ID}=${PROJECT_LDFLAGS}
+#LDFLAGS__${PROJECT_ID}=-Wl,-rpath-link,${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME} -L${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME} ${PROJECT_LDFLAGS} 
+LDFLAGS__${PROJECT_ID}=${PROJECT_LDFLAGS} 
 EOT
     'project-config-shared' => [
       <<'EOT',
@@ -113,7 +147,7 @@ ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}:
 	mkdir -p \$@
 EOT
       <<'EOT',
-${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}: ${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}
+${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}: | ${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}
 	mkdir -p \$@
 EOT
     ],
@@ -123,17 +157,18 @@ ${PROJECT_CONTENTS}
 EOT
     'project-config-M-general' => <<'EOT',
 EOT
+    'project-config-M:unknown' => <<'EOT',
+# dummy project
+target__${PROJECT_ID}=
+EOT
     'project-config-M:dummy' => <<'EOT',
 # dummy project
 target__${PROJECT_ID}=
 EOT
     'project-config-M:console' => <<'EOT',
 # console binary at ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}
-target__${PROJECT_ID}=${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}
-$PROJECT_TNAME: \\
-  \$(tmpx__${PROJECT_ID}) \\
-  \$(bin__${PROJECT_ID}) \\
-  \$(target__${PROJECT_ID})
+target__${PROJECT_ID} = ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}
+$PROJECT_TNAME: \$(tmpx__${PROJECT_ID}) \$(bin__${PROJECT_ID}) \$(target__${PROJECT_ID})
 $PROJECT_CNAME:
 	-rm \$(target__${PROJECT_ID})
 	-rm \$(tmpx__${PROJECT_ID})/*
@@ -143,9 +178,7 @@ EOT
     'project-config-M:lib' => <<'EOT',
 # library at ${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.a
 target__${PROJECT_ID}=${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.a
-$PROJECT_TNAME: \\
-  \$(tmpx__${PROJECT_ID}) \\
-  \$(target__${PROJECT_ID})
+$PROJECT_TNAME: \$(tmpx__${PROJECT_ID}) \$(target__${PROJECT_ID})
 $PROJECT_CNAME:
 	-rm \$(target__${PROJECT_ID})
 	-rm \$(tmpx__${PROJECT_ID})/*
@@ -155,10 +188,7 @@ EOT
     'project-config-M:solib' => <<'EOT',
 # so library at ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so
 target__${PROJECT_ID}=${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so
-$PROJECT_TNAME: \\
-  \$(tmpx__${PROJECT_ID}) \\
-  \$(bin__${PROJECT_ID}) \\
-  \$(target__${PROJECT_ID})
+$PROJECT_TNAME: \$(tmpx__${PROJECT_ID}) \$(bin__${PROJECT_ID}) \$(target__${PROJECT_ID})
 $PROJECT_CNAME:
 	-rm \$(target__${PROJECT_ID})
 	-rm \$(tmpx__${PROJECT_ID})/*

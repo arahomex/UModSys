@@ -1,4 +1,4 @@
-begin project-group umodsys_Depends
+begin project-group umodsys
   option project [] Platforms "$(platforms)"
   option project [] Configurations "Debug Release ReleaseSpace"
   option project-order all
@@ -6,4 +6,52 @@ begin project-group umodsys_Depends
   begin project all
     mode dummy
   end
+
+  begin project umodsys_lib_core
+    begin file-group src
+      begin file-group $(spname)
+        begin mask $(path-skip) $(path-s-core)/$(ppath)
+          include *.cpp *.h
+        end
+      end
+    end
+    begin file-group headers
+      begin file-group $(spname)
+        begin mask $(path-skip) $(path-inc)/core/$(ppath)
+          include *.h
+        end
+        begin mask $(path-skip) $(path-inc)/core/platform
+          include def_msvc.h def_win32.h
+        end
+      end
+    end
+  end
+
+  begin project umodsys_lib_base
+    begin file-group src
+      begin file-group $(spname)
+        file $(path-s-base)/$(ppath)/umodsys.so_main.linux.cpp
+      end
+    end
+  end
+
+  begin project umodsys_lib_basesys
+    begin file-group src
+      begin file-group $(spname)
+        file $(path-s-basesys)/$(ppath)/umodsys.basesys.rmodule.linux.cpp
+      end
+    end
+  end
+
+  begin project plugin_test1
+    libpath $(path-out-bin) $(path-out-tmp)
+    #
+    depend umodsys_Depends::lib_zlib
+    depend umodsys_Depends::lib_libpng
+    depend umodsys_Depends::lib_jpeglib
+    depend umodsys_Depends::lib_SDL2
+    #
+#    libs zlib libpng jpeglib SDL2
+  end
+
 end

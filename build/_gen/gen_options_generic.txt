@@ -1,12 +1,7 @@
 begin project-group umodsys
-  set path-tmp $(path-root)/tmp
-  set path-bin $(path-root)/bin
-  set path-dep $(path-root)/depends
-
-  set path-include $(path-root)/include
   set path-inc $(path-root)/include/umodsys
-
   set path-src $(path-root)/src
+  
   set path-s-base $(path-src)/base
   set path-s-basesys $(path-src)/basesys
   set path-s-core $(path-src)/core
@@ -46,14 +41,15 @@ begin project-group umodsys
       file $(path-s-plugin)/main/umodsys.c_main.cpp
     end
     #
-    depend umodsys_lib_core
-    depend umodsys_lib_base
-    depend umodsys_lib_basesys
-    #
-    depend umodsys_lib_libmedia
     depend umodsys_lib_libui
+    depend umodsys_lib_libmedia
 #    depend umodsys_lib_lib2d
 #    depend umodsys_lib_lib3d
+    #
+    depend umodsys_lib_basesys
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+    #
     depend plugin_test1
     depend plugin_test2
   end

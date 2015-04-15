@@ -2,15 +2,16 @@ use strict;
 use warnings;
 
 use File::Basename;
+use Data::Dumper;
 
 our $generators;
 our $script_path;
 our ($fout, $pg, $proj, $xmap);
 our ($FILE_PATH, $FNAME, $FPATH, $FEXT);
-our ($TARGET_TNAME, $TARGET_CNAME);
+our ($TARGET_TNAME, $TARGET_CNAME, $TARGET_CONF_TNAME, $TARGET_CONF_CNAME);
 our ($PROJECT_NAME, $PROJECT_CONTENTS, $PROJECT_TNAME, $PROJECT_CNAME);
 our ($PROJECT_ID, $PROJECT_CXXFLAGS, $PROJECT_CFLAGS, $PROJECT_LDFLAGS);
-our ($MODE, $CFLAGS, $LDFLAGS, $CXXFLAGS, @PROJECT_INCLUDES, @PROJECT_DEFINES);
+our ($MODE, $CFLAGS, $LDFLAGS, $CXXFLAGS, @PROJECT_INCLUDES, @PROJECT_DEFINES, @PROJECT_DEPENDS, @PROJECT_LIBS, @PROJECT_LIBPATH);
 our ($PROJECTGROUP_NAME, $PROJECTGROUP_TNAME, $PROJECTGROUP_CNAME);
 our ($FILEGROUP_NAME);
 
@@ -58,6 +59,12 @@ sub makefile_genfile_c($$$$)
 {
   my ($state, $file_info, $template, $filegroup) = @_;
   eprint $fout, eval("<<EOT\n".$template->{'file-c'}."EOT");
+}
+
+sub makefile_genfile_S($$$$)
+{
+  my ($state, $file_info, $template, $filegroup) = @_;
+  eprint $fout, eval("<<EOT\n".$template->{'file-S'}."EOT");
 }
 
 my $u_suffix = qr/\.[^.]*/;
@@ -254,7 +261,7 @@ sub makefile_project_cmd($$$)
     }
   } elsif($cmd eq 'libs') {
     while(my $name = get_configuration_arg_exp(\$args, $this)) {
-      push @{$this->{'project'}->{'libs'}}, $name.'.lib';
+      push @{$this->{'project'}->{'libs'}}, $name;
     }
   } elsif($cmd eq 'mode') {
     my $mode = get_configuration_arg_exp(\$args, $this);
@@ -354,66 +361,36 @@ sub makefile_project_generate_files($$$$)
     eprint $fout, eval("<<EOT\n".$template->{'project-ff-end'}."EOT");
   }
   #
-q^
-  for my $FILTER_NAME (sort keys %$filters) {
-    my $filter = $filters->{$FILTER_NAME};
-    #
-    $line = eval("<<EOT\n".$template->{'project-ff-begin'}."EOT");
-    print $fout $line;
-    #
-    makefile_project_generate_files($proj, $template, $fout, $filter->{'filters'}, $FF_PAD."\t");
-    #
-    for my $file_info (@{$filter->{'files'}}) {
-      my $FILE_PATH = $file_info->{'filename'};
-      my $xopts = $file_info->{'xopts'};
-      $line = eval("<<EOT\n".$template->{'project-ff-file-begin'}."EOT");
-      print $fout $line;
-      if(defined $xopts) {
-        my $platforms = $proj->{'.platforms'};
-        my $confs = $proj->{'.confs'};
-        for my $PLATFORM_NAME (@$platforms) {
-          for my $CONF_NAME (@$confs) {
-            $line = eval("<<EOT\n".$template->{'project-ff-file-xopt-begin'}."EOT");
-            print $fout $line;
-            #
-            my $tools = {};
-            for my $xok (keys %$xopts) {
-              my ($tool, $key) = split '\_', $xok;
-              if(exists $tools->{$tool}) {
-                $tools->{$tool}->{$key} = $xopts->{$xok};
-              } else {
-                $tools->{$tool} = { $key => $xopts->{$xok} };
-              }
-            }
-            #
-            for my $TOOL_ID (keys %$tools) {
-              $line = eval("<<EOT\n".$template->{'project-ff-file-xopt-tbegin-'.$TOOL_ID}."EOT");
-              print $fout $line;
-              my $tool = $tools->{$TOOL_ID};
-              for my $KEY (keys %$tool) {
-                my $VALUE = $tool->{$KEY};
-                $line = eval("<<EOT\n".$template->{'project-ff-file-xopt-tvalue'}."EOT");
-                print $fout $line;
-              }
-              $line = eval("<<EOT\n".$template->{'project-ff-file-xopt-tend'}."EOT");
-              print $fout $line;
-            }
-            #
-            $line = eval("<<EOT\n".$template->{'project-ff-file-xopt-end'}."EOT");
-            print $fout $line;
-          }
-        }
-      
-      }
-      $line = eval("<<EOT\n".$template->{'project-ff-file-end'}."EOT");
-      print $fout $line;
-    }
-    #
-    $line = eval("<<EOT\n".$template->{'project-ff-end'}."EOT");
-    print $fout $line;
-  }
-^ if 0;
+}
 
+sub makefile_project_modemap($)
+{
+  my ($mode) = @_;
+  die "Undefined mode" if not defined $mode;
+  return 'console' if ($mode eq 'binary') or ($mode eq 'app') or ($mode eq 'gui');
+  return 'solib' if ($mode eq 'shared');
+  return 'lib' if ($mode eq 'library');
+  return $mode if ($mode eq 'console') or ($mode eq 'dummy') or ($mode eq 'lib') or ($mode eq 'solib');
+  return 'unknown';
+}
+
+sub makefile_project_getdep($$)
+{
+  my ($state, $id) = @_;
+  my ($pg, $pgn);
+  if($id =~ /^(.+)\:\:(.+)$/) {
+    ($pgn, $id) = ($1, $2);
+    my $a = $state->{'pgs'};
+    die "No projectgroup '$pgn'" if not exists $a->{$pgn};
+    $pg = $a->{$pgn};
+  } else {
+    $pg = $state->{'pg'};
+    $pgn = $pg->{'name'};
+  }
+  die "No project '$id' in projectgroup '$pgn'\n"
+    ."but ".join(', ', keys %{$pg->{'projects'}})."\n"
+    if not exists $pg->{'projects'}->{$id};
+  return ($pg->{'projects'}->{$id}, $pgn, $id);
 }
 
 sub makefile_project_generate($$$)
@@ -438,8 +415,33 @@ sub makefile_project_generate($$$)
   #------------------- CONFIGURATIONS
   #
 #  my ($PATH_TMP, $PATH_BIN) = (get_configuration_arg('', $this)
-  my ($PATH_TMP, $PATH_BIN) = (set_explode($proj, '$(path-tmp)'), set_explode($proj, '$(path-bin)'));
+  my ($PATH_TMP, $PATH_BIN) = (set_explode($proj, '$(path-out-tmp)'), set_explode($proj, '$(path-out-bin)'));
   #
+  #------------------- project-level
+  local @PROJECT_INCLUDES = ();
+  if(@{$proj->{'includes'}}) {
+    @PROJECT_INCLUDES = @{$proj->{'includes'}};
+  }
+  local @PROJECT_DEFINES = ();
+  if(@{$proj->{'defines'}}) {
+    @PROJECT_DEFINES = @{$proj->{'defines'}};
+  }
+  local @PROJECT_LIBS = ();
+  if(@{$proj->{'libs'}}) {
+    @PROJECT_LIBS = @{$proj->{'libs'}};
+  }
+  local @PROJECT_LIBPATH = ();
+  if(@{$proj->{'libpath'}}) {
+    @PROJECT_LIBPATH = @{$proj->{'libpath'}};
+  }
+  local @PROJECT_DEPENDS = ();
+  if(@{$proj->{'depends'}}) {
+    @PROJECT_DEPENDS = @{$proj->{'depends'}};
+  }
+  #
+  local $MODE = makefile_project_modemap $proj->{'mode'};
+  my @targets;
+  #------------------- conf-level
   my ($N, $C, $P);
   for my $PLATFORM_NAME (@platforms) {
     for my $CONF_NAME (@confs) {
@@ -447,22 +449,19 @@ sub makefile_project_generate($$$)
 #      my $opt_var_all = '';
 #      for my $opt_var (keys $opt_vars) {
 #        my $opt_combiner = $opt_vars->{$opt_var};
-      my ($TARGET_DEPENDS, $CLEAN_DEPENDS) = ('','');
-      ($C,$P) = ($CONF_NAME, $PLATFORM_NAME);
-      for $N (@{$proj->{'depends'}}) {
-        $TARGET_DEPENDS .= eval('" '.$template->{'project-tp-name'}.'"');
-        $CLEAN_DEPENDS .= eval('" '.$template->{'project-cp-name'}.'"');
-      }
       #
       local $PROJECT_CONTENTS = '';
-      $N = $PROJECT_NAME;
-      local $MODE = $proj->{'mode'};
+      ($N, $C,$P) = ($PROJECT_NAME, $CONF_NAME, $PLATFORM_NAME);
       local $TARGET_TNAME = eval('"'.$template->{'project-tt-name'}.'"');
       local $TARGET_CNAME = eval('"'.$template->{'project-cc-name'}.'"');
+      local $TARGET_CONF_TNAME = eval('"'.$template->{'project-ttx-name'}.'"');
+      local $TARGET_CONF_CNAME = eval('"'.$template->{'project-ccx-name'}.'"');
       local $PROJECT_TNAME = eval('"'.$template->{'project-tp-name'}.'"');
       local $PROJECT_CNAME = eval('"'.$template->{'project-cp-name'}.'"');
       local $PROJECTGROUP_TNAME = eval('"'.$template->{'project-tg-name'}.'"');
       local $PROJECTGROUP_CNAME = eval('"'.$template->{'project-cg-name'}.'"');
+#      push @targets, ($PROJECT_TNAME, $PROJECT_CNAME);
+      push @targets, ($PROJECT_TNAME) if $CONF_NAME eq $confs[0];
       #
       local $CFLAGS = set_get($proj, 'CFLAGS');
       local $CXXFLAGS = set_get($proj, 'CXXFLAGS');
@@ -473,24 +472,45 @@ sub makefile_project_generate($$$)
       local $PROJECT_CXXFLAGS=eval('"'.$template->{'project-cxxflags'}.'"');
       local $PROJECT_LDFLAGS=eval('"'.$template->{'project-ldflags'}.'"');
       #
-      local @PROJECT_INCLUDES = ();
-      if(@{$proj->{'includes'}}) {
-        @PROJECT_INCLUDES = @{$proj->{'includes'}};
-      }
       for my $INCLUDE1 (@PROJECT_INCLUDES) {
         my $ai = eval('"'.$template->{'project-include1'}.'"');
         $PROJECT_CFLAGS .= $ai;
         $PROJECT_CXXFLAGS .= $ai;
       }
-      #
-      local @PROJECT_DEFINES = ();
-      if(@{$proj->{'defines'}}) {
-        @PROJECT_DEFINES = @{$proj->{'defines'}};
-      }
       for my $DEFINE1 (@PROJECT_DEFINES) {
         my $ai = eval('"'.$template->{'project-define1'}.'"');
         $PROJECT_CFLAGS .= $ai;
         $PROJECT_CXXFLAGS .= $ai;
+      }
+      #
+      my ($TARGET_DEPENDS, $CLEAN_DEPENDS) = ('','');
+#      ($C,$P) = ($CONF_NAME, $PLATFORM_NAME);
+#      for $N (@PROJECT_DEPENDS) {
+#        $TARGET_DEPENDS .= eval('" '.$template->{'project-tp-name'}.'"');
+#        $CLEAN_DEPENDS .= eval('" '.$template->{'project-cp-name'}.'"');
+#      }
+      for my $DEPEND1ID (@PROJECT_DEPENDS) {
+        my ($pdp, $DEPEND1G, $DEPEND1) = makefile_project_getdep $state, $DEPEND1ID;
+        print STDERR "{$DEPEND1G $DEPEND1 ".Data::Dumper->Dump([$pdp], [qw(pdp)])."}" if not defined $pdp->{'mode'};
+        my $MODE2 = makefile_project_modemap $pdp->{'mode'};
+        #
+        my $ai = eval('"'.$template->{'project-depend1C:'.$MODE2}.'"');
+        $PROJECT_CFLAGS .= $ai;
+        $PROJECT_CXXFLAGS .= $ai;
+        #
+        my $al = eval('"'.$template->{'project-depend1L:'.$MODE2}.'"');
+        $PROJECT_LDFLAGS .= $al;
+        #
+        $TARGET_DEPENDS .= eval('" '.$template->{'project-depend1t'}.'"');
+        $CLEAN_DEPENDS .= eval('" '.$template->{'project-depend1c'}.'"');
+      }
+      for my $LIBPATH1 (@PROJECT_LIBPATH) {
+        my $al = eval('"'.$template->{'project-libpath1'}.'"');
+        $PROJECT_LDFLAGS .= $al;
+      }
+      for my $LIB1 (@PROJECT_LIBS) {
+        my $al = eval('"'.$template->{'project-lib1'}.'"');
+        $PROJECT_LDFLAGS .= $al;
       }
       #
       eprint $fout, eval("<<EOT\n".$template->{'project-config-begin'}."\nEOT");
@@ -505,20 +525,9 @@ sub makefile_project_generate($$$)
       #
 #      print "$PROJECT_NAME $MODE $PLATFORM_NAME $CONF_NAME\n";
       my $dummy = 0;
-      if($MODE eq 'console' or $MODE eq 'binary') {
-        eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:console'}."\nEOT");
-      } elsif($MODE eq 'lib') {
-        eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:lib'}."\nEOT");
-      } elsif($MODE eq 'solib' or $MODE eq 'shared') {
-        eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:solib'}."\nEOT");
-      } elsif($MODE eq 'app' or $MODE eq 'gui') {
-        eprint $fout, eval("<<EOT\n".$template->{'project-config-M:console'}."\nEOT");
-      } elsif($MODE eq 'dummy') {
-        $dummy = 1;
-        eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:dummy'}."\nEOT");
-      } else {
-        eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:console'}."\nEOT");
-      }
+      $dummy = 1 if $MODE eq 'dummy';
+      $MODE = 'console' if $MODE eq 'console' or $MODE eq 'app' or $MODE eq 'gui';
+      eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:'.$MODE}."\nEOT");
       #
       if(not $dummy) {
         eprint $fout,  eval("<<EOT\n".$template->{'project-config-M-general'}."\nEOT");
@@ -528,148 +537,11 @@ sub makefile_project_generate($$$)
       eprint $fout, eval("<<EOT\n".$template->{'project-config-end'}."\nEOT");
     }
   }
-q^
-  #
-#  my $opt_vars = makefile_getopt('[]', '#', @{$proj->{'a-opts'}});
-  #
-  my ($TARGET_DEPS, $
-  $line = eval("<<EOT\n".$template->{'project-begin'}."EOT");
-  print $fout $line;
-  #
-  #------------------- PLATFORMS
-  $line = eval("<<EOT\n".$template->{'project-platforms-begin'}."EOT");
-  print $fout $line;
-  for my $PLATFORM_NAME (@platforms) {
-    $line = eval("<<EOT\n".$template->{'project-platforms-entry'}."EOT");
-    print $fout $line;
-  }
-  $line = eval("<<EOT\n".$template->{'project-platforms-end'}."EOT");
-  print $fout $line;
-  #
-  #
-  #------------------- INCLUDES, DEFINES
-  my $INCLUDES = '';
-  if({$proj->{'includes'}}) {
-    $INCLUDES = join ';', @{$proj->{'includes'}};
-  }
-  my $DEFINES = '';
-  if({$proj->{'defines'}}) {
-    $DEFINES = join ';', @{$proj->{'defines'}};
-  }
-  my $LIB_INCLUDES = '';
-  if({$proj->{'libpath'}}) {
-    $LIB_INCLUDES = join ';', @{$proj->{'libpath'}};
-  }
-  my $LIBS = '';
-  if({$proj->{'libs'}}) {
-    $LIBS = join ' ', @{$proj->{'libs'}};
-  }
-  #
-  #------------------- CONFIGURATIONS
-  $line = eval("<<EOT\n".$template->{'project-configs-begin'}."EOT");
-  print $fout $line;
-  for my $PLATFORM_NAME (@platforms) {
-    for my $CONF_NAME (@confs) {
-      #
-      my $opt_var_all = '';
-      for my $opt_var (keys $opt_vars) {
-        my $opt_combiner = $opt_vars->{$opt_var};
-#print "\$opt_var='$opt_var' \$opt_combiner='$opt_combiner'\n";
-        my $opt_var_val = &$opt_combiner(
-          makefile_getopt('!*', $opt_var, @{$proj->{'a-opts'}}),
-          makefile_getopt($CONF_NAME, $opt_var, @{$proj->{'a-opts'}}),
-          makefile_getopt($PLATFORM_NAME, $opt_var, @{$proj->{'a-opts'}}),
-          makefile_getopt('*', $opt_var, @{$proj->{'a-opts'}})
-        );
-        $opt_var_all .= "my \$OPT_$opt_var = \'$opt_var_val\';\n";
-        #
-        $opt_var_all .= "\$OPT_Compiler_AdditionalIncludeDirectories .= ';'.\$INCLUDES;\n"
-          if ($opt_var eq 'Compiler_AdditionalIncludeDirectories') and ($INCLUDES ne '');
-        $opt_var_all .= "\$OPT_Compiler_PreprocessorDefinitions .= ';'.\$DEFINES;\n"
-          if ($opt_var eq 'Compiler_PreprocessorDefinitions') and ($DEFINES ne '');
-        $opt_var_all .= "\$OPT_Linker_AdditionalDependencies .= ' '.\$LIBS;\n"
-          if ($opt_var eq 'Linker_AdditionalDependencies') and ($LIBS ne '');
-        $opt_var_all .= "\$OPT_Linker_AdditionalLibraryDirectories .= ';'.\$LIB_INCLUDES;\n"
-          if ($opt_var eq 'Linker_AdditionalLibraryDirectories') and ($LIB_INCLUDES ne '');
-      }
-      #
-      if($proj->{'mode'} eq 'console' or $proj->{'mode'} eq 'binary') {
-        $opt_var_all .= '$OPT_ConfigurationType="1"; ';
-        $opt_var_all .= '$OPT_Linker_OutputFile = \'$(OutDir)/$(ProjectName).exe\';';
-      } elsif($proj->{'mode'} eq 'lib') {
-        $opt_var_all .= '$OPT_ConfigurationType="4"; ';
-        $opt_var_all .= '$OPT_Librarian_OutputFile = \'$(OutDir)/$(ProjectName).lib\';';
-      } elsif($proj->{'mode'} eq 'solib' or $proj->{'mode'} eq 'shared') {
-        $opt_var_all .= '$OPT_ConfigurationType="2"; ';
-        $opt_var_all .= '$OPT_Linker_OutputFile = \'$(OutDir)/$(ProjectName).dll\';';
-      } elsif($proj->{'mode'} eq 'app' or $proj->{'mode'} eq 'gui') {
-        $opt_var_all .= '$OPT_ConfigurationType="1"; ';
-        $opt_var_all .= '$OPT_Linker_OutputFile = \'$(OutDir)/$(ProjectName).exe\';';
-        $opt_var_all .= '$OPT_Linker_SubSystem = "2";';
-      } elsif($proj->{'mode'} eq 'dummy') {
-        $opt_var_all .= '$OPT_ConfigurationType="10"; ';
-      } else {
-        $opt_var_all .= '$OPT_ConfigurationType="1" ; ';
-        $opt_var_all .= '$OPT_Linker_OutputFile = \'$(OutDir)/$(ProjectName).exe\';';
-      }
-      #
-      if(lc $PLATFORM_NAME eq 'win32') {
-        $opt_var_all .= '$OPT_Linker_TargetMachine = \'1\';'; # x86=1
-      } elsif(lc $PLATFORM_NAME eq 'x64') {
-        $opt_var_all .= '$OPT_Linker_TargetMachine = \'17\';'; # x64=17
-      } else {
-        $opt_var_all .= ''; # unknown platform
-      }
-      #
-      $opt_var_all .= "\n";
-      $opt_var_all .= '$OPT_OutputDirectory = makefile_path_win32($OPT_OutputDirectory);';
-      $opt_var_all .= '$OPT_IntermediateDirectory = makefile_path_win32($OPT_IntermediateDirectory);';
-      $opt_var_all .= '$OPT_Linker_OutputFile = makefile_path_win32($OPT_Linker_OutputFile);';
-      $opt_var_all .= '$OPT_Librarian_OutputFile = makefile_path_win32($OPT_Librarian_OutputFile);';
-      $opt_var_all .= "\n";
-      #
-      my $list = [
-        $template->{'project-config-begin'},
-        $template->{'project-config-compiler'},
-        $template->{'project-config-linker'},
-        $template->{'project-config-librarian'},
-        $template->{'project-config-aux'},
-        $template->{'project-config-end'},
-      ];
-      $opt_var_all .= <<'EOT_END';
-
-        for my $eval_line (@$list) {
-          print $fout eval("<<EOT\n${eval_line}EOT");
-          print $@ if $@; 
-        }
-EOT_END
-
-#      print $opt_var_all;
-no strict 'vars';
-      eval $opt_var_all;
-      print $@ if $@; 
-use strict 'vars';
-    }
-  }
-  $line = eval("<<EOT\n".$template->{'project-configs-end'}."EOT");
-  print $fout $line;
-  #
-  #------------------- FILES
-  $line = eval("<<EOT\n".$template->{'project-files-begin'}."EOT");
-  print $fout $line;
-  if($proj->{'mode'} ne 'dummy') {
-    makefile_project_generate_files($proj, $template, $fout, $proj->{'filters'}, '');
-  }
-  $line = eval("<<EOT\n".$template->{'project-files-end'}."EOT");
-  print $fout $line;
-  #
-  #
-^ if 0;
   #
   eprint $fout,  eval("<<EOT\n".$template->{'project-end'}."EOT");
   #
   #------------------- END
-  print "Written project data $PROJECT_NAME\n";
+  print "Written project data $PROJECT_NAME: ".join(', ',@targets)."\n";
 }
 
 #--------------------------------------------------------------------
@@ -704,10 +576,11 @@ sub makefile_projectgroup_begin($$$)
   my ($this, $keyname, $args) = @_;
   my $name = get_configuration_arg(\$args);
   if(exists $this->{'subs'}->{$name}) {
-#    print "Re-use $name of type ".$this->{'subs'}->{$name}->{'type'}."\n";
+#    print "Re-use $name\n";
     return $this->{'subs'}->{$name};
   }
   #
+#  print "New $name\n";
   my $project_opts = {};
   my $rv = {
     'sets' => set_new($this),
@@ -805,6 +678,7 @@ sub makefile_gen_generate($$)
   #
   eprint $fout, eval("<<EOT\n".$template->{'makefile-begin'}."EOT");
   my $state = {
+    'pgs' => $pgs,
     'fout' => $fout,
     'xmap' => {},
   };

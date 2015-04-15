@@ -1,8 +1,4 @@
 begin project-group umodsys_Depends
-  set path-tmp $(path-root)/tmp
-  set path-bin $(path-root)/bin
-  set path-include $(path-root)/include
-
   option project-order umodsysc
 
   begin project all
@@ -108,7 +104,7 @@ begin project-group umodsys_Depends
         include freetype/*.h
         include freetype/config/*.h
         include freetype/internal/*.h
-        include freetype/services/*.h
+#        include freetype/services/*.h
       end
     end
     begin file-group xsrc

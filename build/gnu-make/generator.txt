@@ -2,7 +2,7 @@ generator makefile
 
 set CFLAGS -fPIC
 set CXXFLAGS -fPIC
-set LDFLAGS -fPIC
+set LDFLAGS -fPIC -ldl -lpthread -Wl,-z,defs
 
 #set CXXFLAGS -fPIC -print-file-name=include
 #set CFLAGS -fPIC -print-file-name=include
@@ -16,6 +16,9 @@ set platforms "$(env PLATFORMS)"
 set path-root ../..
 set path-skip 0
 
+set path-out-tmp $(path-root)/tmp
+set path-out-bin $(path-root)/bin
+
 set spname linux
 set ppath platform/linux
 
@@ -26,3 +29,4 @@ include ../_gen/gen_options_linux.txt
 
 include ../_gen/gen_options_depends_generic.txt
 include ../_gen/gen_options_depends_linux.txt
+

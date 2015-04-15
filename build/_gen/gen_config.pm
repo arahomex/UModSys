@@ -3,6 +3,7 @@ use warnings;
 
 our $generators;
 use Data::Dumper;
+use File::Basename;
 
 our $VERSION;
 
@@ -47,6 +48,21 @@ sub set_get($$)
     my $d = Data::Dumper->new($lev, $levid);
     print $d->Dump();
     die "No variable set";
+  }
+  return undef;
+}
+
+sub set_getsafe($$)
+{
+  my ($this, $var) = @_;
+  my $sets = $this->{'sets'};
+  for my $ss (@$sets) {
+    return $ss->{$var} if exists $ss->{$var};
+  }
+  if($var =~ /^(\w+)\s+(.*)$/) {
+    my ($cmd, $args) = ($1, $2);
+    my $ret = set_getcmd($cmd, $args);
+    return $ret if defined $ret;
   }
   return undef;
 }
@@ -252,7 +268,10 @@ sub filename_search_files($$)
 {
   my ($path, $mask) = @_;
 #  my @fn = glob "'${path}/${mask}'";
-  my @fn = glob "${path}/${mask}";
+  my $umask = "${path}/${mask}";
+  my (undef, $dir) = fileparse $umask;
+  die "Bad directory '$dir' for '$umask'" if not -d $dir;
+  my @fn = glob $umask;
 #  print "search at: '$path/$mask': @fn\n";
 #  return undef if (not defined @fn) or (@fn==0);
   return undef if @fn==0;

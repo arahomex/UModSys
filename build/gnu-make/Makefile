@@ -11,125 +11,101 @@ all: target
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib:
+#-------------------------------- project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=dummy:
 target-Linux_x86_64-Debug: tp-umodsys-all-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys-all-Linux_x86_64-Debug
 tg-umodsys-Linux_x86_64-Debug: tp-umodsys-all-Linux_x86_64-Debug
 cg-umodsys-Linux_x86_64-Debug: cp-umodsys-all-Linux_x86_64-Debug
 tp-umodsys-all-Linux_x86_64-Debug:  tp-umodsys-umodsys_lib_core-Linux_x86_64-Debug tp-umodsys-umodsys_lib_base-Linux_x86_64-Debug tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Debug tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug tp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Debug tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Debug tp-umodsys-umodsysc-Linux_x86_64-Debug tp-umodsys-plugin_test1-Linux_x86_64-Debug tp-umodsys-plugin_test2-Linux_x86_64-Debug
 cp-umodsys-all-Linux_x86_64-Debug:  cp-umodsys-umodsys_lib_core-Linux_x86_64-Debug cp-umodsys-umodsys_lib_base-Linux_x86_64-Debug cp-umodsys-umodsys_lib_basesys-Linux_x86_64-Debug cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug cp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Debug cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Debug cp-umodsys-umodsysc-Linux_x86_64-Debug cp-umodsys-plugin_test1-Linux_x86_64-Debug cp-umodsys-plugin_test2-Linux_x86_64-Debug
+target-Debug: tp-umodsys-all-Linux_x86_64-Debug
+clean-Debug: cp-umodsys-all-Linux_x86_64-Debug
 
 tmp__umodsys__all__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys__all__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__all__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/all
 CXXFLAGS__umodsys__all__Linux_x86_64__Debug=-fPIC $(CXXFLAGS)
 CFLAGS__umodsys__all__Linux_x86_64__Debug=-fPIC $(CFLAGS)
-LDFLAGS__umodsys__all__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__all__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__all__Linux_x86_64__Debug)/umodsys_lib_core.Linux_x86_64.Debug.a $(tmp__umodsys__all__Linux_x86_64__Debug)/umodsys_lib_base.Linux_x86_64.Debug.a $(tmp__umodsys__all__Linux_x86_64__Debug)/umodsys_lib_basesys.Linux_x86_64.Debug.a $(tmp__umodsys__all__Linux_x86_64__Debug)/umodsys_lib_libmedia.Linux_x86_64.Debug.a $(tmp__umodsys__all__Linux_x86_64__Debug)/umodsys_lib_libui.Linux_x86_64.Debug.a $(tmp__umodsys__all__Linux_x86_64__Debug)/umodsys_lib_lib2d.Linux_x86_64.Debug.a $(tmp__umodsys__all__Linux_x86_64__Debug)/umodsys_lib_lib3d.Linux_x86_64.Debug.a $(bin__umodsys__all__Linux_x86_64__Debug)/plugin_test1.Linux_x86_64.Debug.so $(bin__umodsys__all__Linux_x86_64__Debug)/plugin_test2.Linux_x86_64.Debug.so 
+LDFLAGS__umodsys__all__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__all__Linux_x86_64__Debug)/umodsys_lib_core.Linux_x86_64.Debug.a $(tmp__umodsys__all__Linux_x86_64__Debug)/umodsys_lib_base.Linux_x86_64.Debug.a $(tmp__umodsys__all__Linux_x86_64__Debug)/umodsys_lib_basesys.Linux_x86_64.Debug.a $(tmp__umodsys__all__Linux_x86_64__Debug)/umodsys_lib_libmedia.Linux_x86_64.Debug.a $(tmp__umodsys__all__Linux_x86_64__Debug)/umodsys_lib_libui.Linux_x86_64.Debug.a $(tmp__umodsys__all__Linux_x86_64__Debug)/umodsys_lib_lib2d.Linux_x86_64.Debug.a $(tmp__umodsys__all__Linux_x86_64__Debug)/umodsys_lib_lib3d.Linux_x86_64.Debug.a $(bin__umodsys__all__Linux_x86_64__Debug)/plugin_test1.Linux_x86_64.Debug.so $(bin__umodsys__all__Linux_x86_64__Debug)/plugin_test2.Linux_x86_64.Debug.so 
 
-# library at ../../tmp/Linux_x86_64.Debug/all.Linux_x86_64.Debug.a
-target__umodsys__all__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/all.Linux_x86_64.Debug.a
-tp-umodsys-all-Linux_x86_64-Debug: \
-  $(tmpx__umodsys__all__Linux_x86_64__Debug) \
-  $(target__umodsys__all__Linux_x86_64__Debug)
-cp-umodsys-all-Linux_x86_64-Debug:
-	-rm $(target__umodsys__all__Linux_x86_64__Debug)
-	-rm $(tmpx__umodsys__all__Linux_x86_64__Debug)/*
-$(target__umodsys__all__Linux_x86_64__Debug):
-	$(AR) r $@ $?
+# dummy project
+target__umodsys__all__Linux_x86_64__Debug=
 
 
+#-------------------------------- /project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=dummy
 
-#-------------------------------- /project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib
-
-#-------------------------------- project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=Release MODE=lib:
+#-------------------------------- project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=Release MODE=dummy:
 target-Linux_x86_64-Release: tp-umodsys-all-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys-all-Linux_x86_64-Release
 tg-umodsys-Linux_x86_64-Release: tp-umodsys-all-Linux_x86_64-Release
 cg-umodsys-Linux_x86_64-Release: cp-umodsys-all-Linux_x86_64-Release
 tp-umodsys-all-Linux_x86_64-Release:  tp-umodsys-umodsys_lib_core-Linux_x86_64-Release tp-umodsys-umodsys_lib_base-Linux_x86_64-Release tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Release tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release tp-umodsys-umodsys_lib_libui-Linux_x86_64-Release tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Release tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Release tp-umodsys-umodsysc-Linux_x86_64-Release tp-umodsys-plugin_test1-Linux_x86_64-Release tp-umodsys-plugin_test2-Linux_x86_64-Release
 cp-umodsys-all-Linux_x86_64-Release:  cp-umodsys-umodsys_lib_core-Linux_x86_64-Release cp-umodsys-umodsys_lib_base-Linux_x86_64-Release cp-umodsys-umodsys_lib_basesys-Linux_x86_64-Release cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release cp-umodsys-umodsys_lib_libui-Linux_x86_64-Release cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Release cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Release cp-umodsys-umodsysc-Linux_x86_64-Release cp-umodsys-plugin_test1-Linux_x86_64-Release cp-umodsys-plugin_test2-Linux_x86_64-Release
+target-Release: tp-umodsys-all-Linux_x86_64-Release
+clean-Release: cp-umodsys-all-Linux_x86_64-Release
 
 tmp__umodsys__all__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys__all__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys__all__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/all
 CXXFLAGS__umodsys__all__Linux_x86_64__Release=-fPIC $(CXXFLAGS)
 CFLAGS__umodsys__all__Linux_x86_64__Release=-fPIC $(CFLAGS)
-LDFLAGS__umodsys__all__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__all__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__all__Linux_x86_64__Release)/umodsys_lib_core.Linux_x86_64.Release.a $(tmp__umodsys__all__Linux_x86_64__Release)/umodsys_lib_base.Linux_x86_64.Release.a $(tmp__umodsys__all__Linux_x86_64__Release)/umodsys_lib_basesys.Linux_x86_64.Release.a $(tmp__umodsys__all__Linux_x86_64__Release)/umodsys_lib_libmedia.Linux_x86_64.Release.a $(tmp__umodsys__all__Linux_x86_64__Release)/umodsys_lib_libui.Linux_x86_64.Release.a $(tmp__umodsys__all__Linux_x86_64__Release)/umodsys_lib_lib2d.Linux_x86_64.Release.a $(tmp__umodsys__all__Linux_x86_64__Release)/umodsys_lib_lib3d.Linux_x86_64.Release.a $(bin__umodsys__all__Linux_x86_64__Release)/plugin_test1.Linux_x86_64.Release.so $(bin__umodsys__all__Linux_x86_64__Release)/plugin_test2.Linux_x86_64.Release.so 
+LDFLAGS__umodsys__all__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__all__Linux_x86_64__Release)/umodsys_lib_core.Linux_x86_64.Release.a $(tmp__umodsys__all__Linux_x86_64__Release)/umodsys_lib_base.Linux_x86_64.Release.a $(tmp__umodsys__all__Linux_x86_64__Release)/umodsys_lib_basesys.Linux_x86_64.Release.a $(tmp__umodsys__all__Linux_x86_64__Release)/umodsys_lib_libmedia.Linux_x86_64.Release.a $(tmp__umodsys__all__Linux_x86_64__Release)/umodsys_lib_libui.Linux_x86_64.Release.a $(tmp__umodsys__all__Linux_x86_64__Release)/umodsys_lib_lib2d.Linux_x86_64.Release.a $(tmp__umodsys__all__Linux_x86_64__Release)/umodsys_lib_lib3d.Linux_x86_64.Release.a $(bin__umodsys__all__Linux_x86_64__Release)/plugin_test1.Linux_x86_64.Release.so $(bin__umodsys__all__Linux_x86_64__Release)/plugin_test2.Linux_x86_64.Release.so 
 
-# library at ../../tmp/Linux_x86_64.Release/all.Linux_x86_64.Release.a
-target__umodsys__all__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/all.Linux_x86_64.Release.a
-tp-umodsys-all-Linux_x86_64-Release: \
-  $(tmpx__umodsys__all__Linux_x86_64__Release) \
-  $(target__umodsys__all__Linux_x86_64__Release)
-cp-umodsys-all-Linux_x86_64-Release:
-	-rm $(target__umodsys__all__Linux_x86_64__Release)
-	-rm $(tmpx__umodsys__all__Linux_x86_64__Release)/*
-$(target__umodsys__all__Linux_x86_64__Release):
-	$(AR) r $@ $?
+# dummy project
+target__umodsys__all__Linux_x86_64__Release=
 
 
+#-------------------------------- /project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=Release MODE=dummy
 
-#-------------------------------- /project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=Release MODE=lib
-
-#-------------------------------- project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=lib:
+#-------------------------------- project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=dummy:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys-all-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys-all-Linux_x86_64-ReleaseSpace
 tg-umodsys-Linux_x86_64-ReleaseSpace: tp-umodsys-all-Linux_x86_64-ReleaseSpace
 cg-umodsys-Linux_x86_64-ReleaseSpace: cp-umodsys-all-Linux_x86_64-ReleaseSpace
 tp-umodsys-all-Linux_x86_64-ReleaseSpace:  tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseSpace tp-umodsys-umodsysc-Linux_x86_64-ReleaseSpace tp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace tp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace
 cp-umodsys-all-Linux_x86_64-ReleaseSpace:  cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseSpace cp-umodsys-umodsysc-Linux_x86_64-ReleaseSpace cp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace cp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace
+target-ReleaseSpace: tp-umodsys-all-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys-all-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys__all__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys__all__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys__all__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/all
 CXXFLAGS__umodsys__all__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS)
 CFLAGS__umodsys__all__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS)
-LDFLAGS__umodsys__all__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__all__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__all__Linux_x86_64__ReleaseSpace)/umodsys_lib_core.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__all__Linux_x86_64__ReleaseSpace)/umodsys_lib_base.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__all__Linux_x86_64__ReleaseSpace)/umodsys_lib_basesys.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__all__Linux_x86_64__ReleaseSpace)/umodsys_lib_libmedia.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__all__Linux_x86_64__ReleaseSpace)/umodsys_lib_libui.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__all__Linux_x86_64__ReleaseSpace)/umodsys_lib_lib2d.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__all__Linux_x86_64__ReleaseSpace)/umodsys_lib_lib3d.Linux_x86_64.ReleaseSpace.a $(bin__umodsys__all__Linux_x86_64__ReleaseSpace)/plugin_test1.Linux_x86_64.ReleaseSpace.so $(bin__umodsys__all__Linux_x86_64__ReleaseSpace)/plugin_test2.Linux_x86_64.ReleaseSpace.so 
+LDFLAGS__umodsys__all__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__all__Linux_x86_64__ReleaseSpace)/umodsys_lib_core.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__all__Linux_x86_64__ReleaseSpace)/umodsys_lib_base.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__all__Linux_x86_64__ReleaseSpace)/umodsys_lib_basesys.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__all__Linux_x86_64__ReleaseSpace)/umodsys_lib_libmedia.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__all__Linux_x86_64__ReleaseSpace)/umodsys_lib_libui.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__all__Linux_x86_64__ReleaseSpace)/umodsys_lib_lib2d.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__all__Linux_x86_64__ReleaseSpace)/umodsys_lib_lib3d.Linux_x86_64.ReleaseSpace.a $(bin__umodsys__all__Linux_x86_64__ReleaseSpace)/plugin_test1.Linux_x86_64.ReleaseSpace.so $(bin__umodsys__all__Linux_x86_64__ReleaseSpace)/plugin_test2.Linux_x86_64.ReleaseSpace.so 
 
-# library at ../../tmp/Linux_x86_64.ReleaseSpace/all.Linux_x86_64.ReleaseSpace.a
-target__umodsys__all__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/all.Linux_x86_64.ReleaseSpace.a
-tp-umodsys-all-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys__all__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys__all__Linux_x86_64__ReleaseSpace)
-cp-umodsys-all-Linux_x86_64-ReleaseSpace:
-	-rm $(target__umodsys__all__Linux_x86_64__ReleaseSpace)
-	-rm $(tmpx__umodsys__all__Linux_x86_64__ReleaseSpace)/*
-$(target__umodsys__all__Linux_x86_64__ReleaseSpace):
-	$(AR) r $@ $?
+# dummy project
+target__umodsys__all__Linux_x86_64__ReleaseSpace=
 
 
+#-------------------------------- /project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=dummy
 
-#-------------------------------- /project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=lib
-
-#-------------------------------- project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=lib:
+#-------------------------------- project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=dummy:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys-all-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys-all-Linux_x86_64-ReleaseStatic
 tg-umodsys-Linux_x86_64-ReleaseStatic: tp-umodsys-all-Linux_x86_64-ReleaseStatic
 cg-umodsys-Linux_x86_64-ReleaseStatic: cp-umodsys-all-Linux_x86_64-ReleaseStatic
 tp-umodsys-all-Linux_x86_64-ReleaseStatic:  tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseStatic tp-umodsys-umodsysc-Linux_x86_64-ReleaseStatic tp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic tp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic
 cp-umodsys-all-Linux_x86_64-ReleaseStatic:  cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseStatic cp-umodsys-umodsysc-Linux_x86_64-ReleaseStatic cp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic cp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic
+target-ReleaseStatic: tp-umodsys-all-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys-all-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys__all__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys__all__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys__all__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/all
 CXXFLAGS__umodsys__all__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS)
 CFLAGS__umodsys__all__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS)
-LDFLAGS__umodsys__all__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__all__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__all__Linux_x86_64__ReleaseStatic)/umodsys_lib_core.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__all__Linux_x86_64__ReleaseStatic)/umodsys_lib_base.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__all__Linux_x86_64__ReleaseStatic)/umodsys_lib_basesys.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__all__Linux_x86_64__ReleaseStatic)/umodsys_lib_libmedia.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__all__Linux_x86_64__ReleaseStatic)/umodsys_lib_libui.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__all__Linux_x86_64__ReleaseStatic)/umodsys_lib_lib2d.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__all__Linux_x86_64__ReleaseStatic)/umodsys_lib_lib3d.Linux_x86_64.ReleaseStatic.a $(bin__umodsys__all__Linux_x86_64__ReleaseStatic)/plugin_test1.Linux_x86_64.ReleaseStatic.so $(bin__umodsys__all__Linux_x86_64__ReleaseStatic)/plugin_test2.Linux_x86_64.ReleaseStatic.so 
+LDFLAGS__umodsys__all__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__all__Linux_x86_64__ReleaseStatic)/umodsys_lib_core.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__all__Linux_x86_64__ReleaseStatic)/umodsys_lib_base.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__all__Linux_x86_64__ReleaseStatic)/umodsys_lib_basesys.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__all__Linux_x86_64__ReleaseStatic)/umodsys_lib_libmedia.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__all__Linux_x86_64__ReleaseStatic)/umodsys_lib_libui.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__all__Linux_x86_64__ReleaseStatic)/umodsys_lib_lib2d.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__all__Linux_x86_64__ReleaseStatic)/umodsys_lib_lib3d.Linux_x86_64.ReleaseStatic.a $(bin__umodsys__all__Linux_x86_64__ReleaseStatic)/plugin_test1.Linux_x86_64.ReleaseStatic.so $(bin__umodsys__all__Linux_x86_64__ReleaseStatic)/plugin_test2.Linux_x86_64.ReleaseStatic.so 
 
-# library at ../../tmp/Linux_x86_64.ReleaseStatic/all.Linux_x86_64.ReleaseStatic.a
-target__umodsys__all__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/all.Linux_x86_64.ReleaseStatic.a
-tp-umodsys-all-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys__all__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys__all__Linux_x86_64__ReleaseStatic)
-cp-umodsys-all-Linux_x86_64-ReleaseStatic:
-	-rm $(target__umodsys__all__Linux_x86_64__ReleaseStatic)
-	-rm $(tmpx__umodsys__all__Linux_x86_64__ReleaseStatic)/*
-$(target__umodsys__all__Linux_x86_64__ReleaseStatic):
-	$(AR) r $@ $?
+# dummy project
+target__umodsys__all__Linux_x86_64__ReleaseStatic=
 
 
-
-#-------------------------------- /project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=lib
+#-------------------------------- /project 'umodsys'.'all' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=dummy
 
 #-------------------------------- epilog 'umodsys'.'all'
 #---------------------------------------------------------------- END project 'umodsys'.'all' 
@@ -139,27 +115,27 @@ $(target__umodsys__all__Linux_x86_64__ReleaseStatic):
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared:
+#-------------------------------- project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib:
 target-Linux_x86_64-Debug: tp-umodsys-plugin_test1-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys-plugin_test1-Linux_x86_64-Debug
 tg-umodsys-Linux_x86_64-Debug: tp-umodsys-plugin_test1-Linux_x86_64-Debug
 cg-umodsys-Linux_x86_64-Debug: cp-umodsys-plugin_test1-Linux_x86_64-Debug
-tp-umodsys-plugin_test1-Linux_x86_64-Debug:  tp-umodsys-umodsys_lib_core-Linux_x86_64-Debug tp-umodsys-umodsys_lib_base-Linux_x86_64-Debug tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug tp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Debug tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Debug
-cp-umodsys-plugin_test1-Linux_x86_64-Debug:  cp-umodsys-umodsys_lib_core-Linux_x86_64-Debug cp-umodsys-umodsys_lib_base-Linux_x86_64-Debug cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug cp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Debug cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Debug
+tp-umodsys-plugin_test1-Linux_x86_64-Debug:  tp-umodsys-umodsys_lib_core-Linux_x86_64-Debug tp-umodsys-umodsys_lib_base-Linux_x86_64-Debug tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug tp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Debug tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Debug tp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug tp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Debug
+cp-umodsys-plugin_test1-Linux_x86_64-Debug:  cp-umodsys-umodsys_lib_core-Linux_x86_64-Debug cp-umodsys-umodsys_lib_base-Linux_x86_64-Debug cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug cp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Debug cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Debug cp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug cp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug cp-umodsys_Depends-lib_SDL2-Linux_x86_64-Debug
+target-Debug: tp-umodsys-plugin_test1-Linux_x86_64-Debug
+clean-Debug: cp-umodsys-plugin_test1-Linux_x86_64-Debug
 
 tmp__umodsys__plugin_test1__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys__plugin_test1__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_test1__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/plugin_test1
 CXXFLAGS__umodsys__plugin_test1__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_test1__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_test1__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__plugin_test1__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test1__Linux_x86_64__Debug)/umodsys_lib_core.Linux_x86_64.Debug.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Debug)/umodsys_lib_base.Linux_x86_64.Debug.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Debug)/umodsys_lib_libmedia.Linux_x86_64.Debug.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Debug)/umodsys_lib_libui.Linux_x86_64.Debug.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Debug)/umodsys_lib_lib2d.Linux_x86_64.Debug.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Debug)/umodsys_lib_lib3d.Linux_x86_64.Debug.a $(bin__umodsys__plugin_test1__Linux_x86_64__Debug)/lib_zlib.Linux_x86_64.Debug.so $(bin__umodsys__plugin_test1__Linux_x86_64__Debug)/lib_libpng.Linux_x86_64.Debug.so $(bin__umodsys__plugin_test1__Linux_x86_64__Debug)/lib_jpeglib.Linux_x86_64.Debug.so $(bin__umodsys__plugin_test1__Linux_x86_64__Debug)/lib_SDL2.Linux_x86_64.Debug.so -L../../bin -L../../tmp 
+LDFLAGS__umodsys__plugin_test1__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test1__Linux_x86_64__Debug)/umodsys_lib_core.Linux_x86_64.Debug.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Debug)/umodsys_lib_base.Linux_x86_64.Debug.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Debug)/umodsys_lib_libmedia.Linux_x86_64.Debug.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Debug)/umodsys_lib_libui.Linux_x86_64.Debug.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Debug)/umodsys_lib_lib2d.Linux_x86_64.Debug.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Debug)/umodsys_lib_lib3d.Linux_x86_64.Debug.a $(bin__umodsys__plugin_test1__Linux_x86_64__Debug)/lib_zlib.Linux_x86_64.Debug.so $(bin__umodsys__plugin_test1__Linux_x86_64__Debug)/lib_libpng.Linux_x86_64.Debug.so $(bin__umodsys__plugin_test1__Linux_x86_64__Debug)/lib_jpeglib.Linux_x86_64.Debug.so $(bin__umodsys__plugin_test1__Linux_x86_64__Debug)/lib_SDL2.Linux_x86_64.Debug.so -L../../bin -L../../tmp 
 
 # so library at ../../bin/Linux_x86_64.Debug/plugin_test1.Linux_x86_64.Debug.so
 target__umodsys__plugin_test1__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug/plugin_test1.Linux_x86_64.Debug.so
-tp-umodsys-plugin_test1-Linux_x86_64-Debug: \
-  $(tmpx__umodsys__plugin_test1__Linux_x86_64__Debug) \
-  $(bin__umodsys__plugin_test1__Linux_x86_64__Debug) \
-  $(target__umodsys__plugin_test1__Linux_x86_64__Debug)
+tp-umodsys-plugin_test1-Linux_x86_64-Debug: $(tmpx__umodsys__plugin_test1__Linux_x86_64__Debug) $(bin__umodsys__plugin_test1__Linux_x86_64__Debug) $(target__umodsys__plugin_test1__Linux_x86_64__Debug)
 cp-umodsys-plugin_test1-Linux_x86_64-Debug:
 	-rm $(target__umodsys__plugin_test1__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys__plugin_test1__Linux_x86_64__Debug)/*
@@ -185,29 +161,29 @@ $(target__umodsys__plugin_test1__Linux_x86_64__Debug): $(tmpx__umodsys__plugin_t
 # file src : ../../src/plugin/test/plugin_test1.ui_tests.h
 # end file group src .
 
-#-------------------------------- /project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared
+#-------------------------------- /project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib
 
-#-------------------------------- project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared:
+#-------------------------------- project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
 target-Linux_x86_64-Release: tp-umodsys-plugin_test1-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys-plugin_test1-Linux_x86_64-Release
 tg-umodsys-Linux_x86_64-Release: tp-umodsys-plugin_test1-Linux_x86_64-Release
 cg-umodsys-Linux_x86_64-Release: cp-umodsys-plugin_test1-Linux_x86_64-Release
-tp-umodsys-plugin_test1-Linux_x86_64-Release:  tp-umodsys-umodsys_lib_core-Linux_x86_64-Release tp-umodsys-umodsys_lib_base-Linux_x86_64-Release tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release tp-umodsys-umodsys_lib_libui-Linux_x86_64-Release tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Release tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Release
-cp-umodsys-plugin_test1-Linux_x86_64-Release:  cp-umodsys-umodsys_lib_core-Linux_x86_64-Release cp-umodsys-umodsys_lib_base-Linux_x86_64-Release cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release cp-umodsys-umodsys_lib_libui-Linux_x86_64-Release cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Release cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Release
+tp-umodsys-plugin_test1-Linux_x86_64-Release:  tp-umodsys-umodsys_lib_core-Linux_x86_64-Release tp-umodsys-umodsys_lib_base-Linux_x86_64-Release tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release tp-umodsys-umodsys_lib_libui-Linux_x86_64-Release tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Release tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Release tp-umodsys_Depends-lib_zlib-Linux_x86_64-Release tp-umodsys_Depends-lib_libpng-Linux_x86_64-Release tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Release
+cp-umodsys-plugin_test1-Linux_x86_64-Release:  cp-umodsys-umodsys_lib_core-Linux_x86_64-Release cp-umodsys-umodsys_lib_base-Linux_x86_64-Release cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release cp-umodsys-umodsys_lib_libui-Linux_x86_64-Release cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Release cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Release cp-umodsys_Depends-lib_zlib-Linux_x86_64-Release cp-umodsys_Depends-lib_libpng-Linux_x86_64-Release cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release cp-umodsys_Depends-lib_SDL2-Linux_x86_64-Release
+target-Release: tp-umodsys-plugin_test1-Linux_x86_64-Release
+clean-Release: cp-umodsys-plugin_test1-Linux_x86_64-Release
 
 tmp__umodsys__plugin_test1__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys__plugin_test1__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys__plugin_test1__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/plugin_test1
 CXXFLAGS__umodsys__plugin_test1__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_test1__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_test1__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__plugin_test1__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test1__Linux_x86_64__Release)/umodsys_lib_core.Linux_x86_64.Release.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Release)/umodsys_lib_base.Linux_x86_64.Release.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Release)/umodsys_lib_libmedia.Linux_x86_64.Release.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Release)/umodsys_lib_libui.Linux_x86_64.Release.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Release)/umodsys_lib_lib2d.Linux_x86_64.Release.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Release)/umodsys_lib_lib3d.Linux_x86_64.Release.a $(bin__umodsys__plugin_test1__Linux_x86_64__Release)/lib_zlib.Linux_x86_64.Release.so $(bin__umodsys__plugin_test1__Linux_x86_64__Release)/lib_libpng.Linux_x86_64.Release.so $(bin__umodsys__plugin_test1__Linux_x86_64__Release)/lib_jpeglib.Linux_x86_64.Release.so $(bin__umodsys__plugin_test1__Linux_x86_64__Release)/lib_SDL2.Linux_x86_64.Release.so -L../../bin -L../../tmp 
+LDFLAGS__umodsys__plugin_test1__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test1__Linux_x86_64__Release)/umodsys_lib_core.Linux_x86_64.Release.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Release)/umodsys_lib_base.Linux_x86_64.Release.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Release)/umodsys_lib_libmedia.Linux_x86_64.Release.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Release)/umodsys_lib_libui.Linux_x86_64.Release.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Release)/umodsys_lib_lib2d.Linux_x86_64.Release.a $(tmp__umodsys__plugin_test1__Linux_x86_64__Release)/umodsys_lib_lib3d.Linux_x86_64.Release.a $(bin__umodsys__plugin_test1__Linux_x86_64__Release)/lib_zlib.Linux_x86_64.Release.so $(bin__umodsys__plugin_test1__Linux_x86_64__Release)/lib_libpng.Linux_x86_64.Release.so $(bin__umodsys__plugin_test1__Linux_x86_64__Release)/lib_jpeglib.Linux_x86_64.Release.so $(bin__umodsys__plugin_test1__Linux_x86_64__Release)/lib_SDL2.Linux_x86_64.Release.so -L../../bin -L../../tmp 
 
 # so library at ../../bin/Linux_x86_64.Release/plugin_test1.Linux_x86_64.Release.so
 target__umodsys__plugin_test1__Linux_x86_64__Release=../../bin/Linux_x86_64.Release/plugin_test1.Linux_x86_64.Release.so
-tp-umodsys-plugin_test1-Linux_x86_64-Release: \
-  $(tmpx__umodsys__plugin_test1__Linux_x86_64__Release) \
-  $(bin__umodsys__plugin_test1__Linux_x86_64__Release) \
-  $(target__umodsys__plugin_test1__Linux_x86_64__Release)
+tp-umodsys-plugin_test1-Linux_x86_64-Release: $(tmpx__umodsys__plugin_test1__Linux_x86_64__Release) $(bin__umodsys__plugin_test1__Linux_x86_64__Release) $(target__umodsys__plugin_test1__Linux_x86_64__Release)
 cp-umodsys-plugin_test1-Linux_x86_64-Release:
 	-rm $(target__umodsys__plugin_test1__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys__plugin_test1__Linux_x86_64__Release)/*
@@ -233,29 +209,29 @@ $(target__umodsys__plugin_test1__Linux_x86_64__Release): $(tmpx__umodsys__plugin
 # file src : ../../src/plugin/test/plugin_test1.ui_tests.h
 # end file group src .
 
-#-------------------------------- /project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared
+#-------------------------------- /project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
 
-#-------------------------------- project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared:
+#-------------------------------- project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace
 tg-umodsys-Linux_x86_64-ReleaseSpace: tp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace
 cg-umodsys-Linux_x86_64-ReleaseSpace: cp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace
-tp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace:  tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseSpace
-cp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace:  cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseSpace
+tp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace:  tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseSpace
+cp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace:  cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseSpace
+target-ReleaseSpace: tp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/plugin_test1
 CXXFLAGS__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/umodsys_lib_core.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/umodsys_lib_base.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/umodsys_lib_libmedia.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/umodsys_lib_libui.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/umodsys_lib_lib2d.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/umodsys_lib_lib3d.Linux_x86_64.ReleaseSpace.a $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/lib_zlib.Linux_x86_64.ReleaseSpace.so $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/lib_libpng.Linux_x86_64.ReleaseSpace.so $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/lib_jpeglib.Linux_x86_64.ReleaseSpace.so $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/lib_SDL2.Linux_x86_64.ReleaseSpace.so -L../../bin -L../../tmp 
+LDFLAGS__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/umodsys_lib_core.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/umodsys_lib_base.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/umodsys_lib_libmedia.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/umodsys_lib_libui.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/umodsys_lib_lib2d.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/umodsys_lib_lib3d.Linux_x86_64.ReleaseSpace.a $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/lib_zlib.Linux_x86_64.ReleaseSpace.so $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/lib_libpng.Linux_x86_64.ReleaseSpace.so $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/lib_jpeglib.Linux_x86_64.ReleaseSpace.so $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/lib_SDL2.Linux_x86_64.ReleaseSpace.so -L../../bin -L../../tmp 
 
 # so library at ../../bin/Linux_x86_64.ReleaseSpace/plugin_test1.Linux_x86_64.ReleaseSpace.so
 target__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace/plugin_test1.Linux_x86_64.ReleaseSpace.so
-tp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace) \
-  $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)
+tp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace) $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace) $(target__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)
 cp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace)/*
@@ -281,29 +257,29 @@ $(target__umodsys__plugin_test1__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys__p
 # file src : ../../src/plugin/test/plugin_test1.ui_tests.h
 # end file group src .
 
-#-------------------------------- /project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared
+#-------------------------------- /project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib
 
-#-------------------------------- project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared:
+#-------------------------------- project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic
 tg-umodsys-Linux_x86_64-ReleaseStatic: tp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic
 cg-umodsys-Linux_x86_64-ReleaseStatic: cp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic
-tp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic:  tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseStatic
-cp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic:  cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseStatic
+tp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic:  tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseStatic
+cp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic:  cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseStatic
+target-ReleaseStatic: tp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/plugin_test1
 CXXFLAGS__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/umodsys_lib_core.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/umodsys_lib_base.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/umodsys_lib_libmedia.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/umodsys_lib_libui.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/umodsys_lib_lib2d.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/umodsys_lib_lib3d.Linux_x86_64.ReleaseStatic.a $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/lib_zlib.Linux_x86_64.ReleaseStatic.so $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/lib_libpng.Linux_x86_64.ReleaseStatic.so $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/lib_jpeglib.Linux_x86_64.ReleaseStatic.so $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/lib_SDL2.Linux_x86_64.ReleaseStatic.so -L../../bin -L../../tmp 
+LDFLAGS__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/umodsys_lib_core.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/umodsys_lib_base.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/umodsys_lib_libmedia.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/umodsys_lib_libui.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/umodsys_lib_lib2d.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/umodsys_lib_lib3d.Linux_x86_64.ReleaseStatic.a $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/lib_zlib.Linux_x86_64.ReleaseStatic.so $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/lib_libpng.Linux_x86_64.ReleaseStatic.so $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/lib_jpeglib.Linux_x86_64.ReleaseStatic.so $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/lib_SDL2.Linux_x86_64.ReleaseStatic.so -L../../bin -L../../tmp 
 
 # so library at ../../bin/Linux_x86_64.ReleaseStatic/plugin_test1.Linux_x86_64.ReleaseStatic.so
 target__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic/plugin_test1.Linux_x86_64.ReleaseStatic.so
-tp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic) \
-  $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)
+tp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic) $(bin__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic) $(target__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)
 cp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic)/*
@@ -329,7 +305,7 @@ $(target__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys__
 # file src : ../../src/plugin/test/plugin_test1.ui_tests.h
 # end file group src .
 
-#-------------------------------- /project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared
+#-------------------------------- /project 'umodsys'.'plugin_test1' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib
 
 #-------------------------------- epilog 'umodsys'.'plugin_test1'
 #---------------------------------------------------------------- END project 'umodsys'.'plugin_test1' 
@@ -339,27 +315,27 @@ $(target__umodsys__plugin_test1__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys__
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared:
+#-------------------------------- project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib:
 target-Linux_x86_64-Debug: tp-umodsys-plugin_test2-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys-plugin_test2-Linux_x86_64-Debug
 tg-umodsys-Linux_x86_64-Debug: tp-umodsys-plugin_test2-Linux_x86_64-Debug
 cg-umodsys-Linux_x86_64-Debug: cp-umodsys-plugin_test2-Linux_x86_64-Debug
 tp-umodsys-plugin_test2-Linux_x86_64-Debug:  tp-umodsys-umodsys_lib_core-Linux_x86_64-Debug tp-umodsys-umodsys_lib_base-Linux_x86_64-Debug
 cp-umodsys-plugin_test2-Linux_x86_64-Debug:  cp-umodsys-umodsys_lib_core-Linux_x86_64-Debug cp-umodsys-umodsys_lib_base-Linux_x86_64-Debug
+target-Debug: tp-umodsys-plugin_test2-Linux_x86_64-Debug
+clean-Debug: cp-umodsys-plugin_test2-Linux_x86_64-Debug
 
 tmp__umodsys__plugin_test2__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys__plugin_test2__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_test2__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/plugin_test2
 CXXFLAGS__umodsys__plugin_test2__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_test2__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_test2__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__plugin_test2__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test2__Linux_x86_64__Debug)/umodsys_lib_core.Linux_x86_64.Debug.a $(tmp__umodsys__plugin_test2__Linux_x86_64__Debug)/umodsys_lib_base.Linux_x86_64.Debug.a 
+LDFLAGS__umodsys__plugin_test2__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test2__Linux_x86_64__Debug)/umodsys_lib_core.Linux_x86_64.Debug.a $(tmp__umodsys__plugin_test2__Linux_x86_64__Debug)/umodsys_lib_base.Linux_x86_64.Debug.a 
 
 # so library at ../../bin/Linux_x86_64.Debug/plugin_test2.Linux_x86_64.Debug.so
 target__umodsys__plugin_test2__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug/plugin_test2.Linux_x86_64.Debug.so
-tp-umodsys-plugin_test2-Linux_x86_64-Debug: \
-  $(tmpx__umodsys__plugin_test2__Linux_x86_64__Debug) \
-  $(bin__umodsys__plugin_test2__Linux_x86_64__Debug) \
-  $(target__umodsys__plugin_test2__Linux_x86_64__Debug)
+tp-umodsys-plugin_test2-Linux_x86_64-Debug: $(tmpx__umodsys__plugin_test2__Linux_x86_64__Debug) $(bin__umodsys__plugin_test2__Linux_x86_64__Debug) $(target__umodsys__plugin_test2__Linux_x86_64__Debug)
 cp-umodsys-plugin_test2-Linux_x86_64-Debug:
 	-rm $(target__umodsys__plugin_test2__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys__plugin_test2__Linux_x86_64__Debug)/*
@@ -376,29 +352,29 @@ $(tmpx__umodsys__plugin_test2__Linux_x86_64__Debug)/plugin_test2.o: ../../src/pl
 $(target__umodsys__plugin_test2__Linux_x86_64__Debug): $(tmpx__umodsys__plugin_test2__Linux_x86_64__Debug)/plugin_test2.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared
+#-------------------------------- /project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib
 
-#-------------------------------- project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared:
+#-------------------------------- project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
 target-Linux_x86_64-Release: tp-umodsys-plugin_test2-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys-plugin_test2-Linux_x86_64-Release
 tg-umodsys-Linux_x86_64-Release: tp-umodsys-plugin_test2-Linux_x86_64-Release
 cg-umodsys-Linux_x86_64-Release: cp-umodsys-plugin_test2-Linux_x86_64-Release
 tp-umodsys-plugin_test2-Linux_x86_64-Release:  tp-umodsys-umodsys_lib_core-Linux_x86_64-Release tp-umodsys-umodsys_lib_base-Linux_x86_64-Release
 cp-umodsys-plugin_test2-Linux_x86_64-Release:  cp-umodsys-umodsys_lib_core-Linux_x86_64-Release cp-umodsys-umodsys_lib_base-Linux_x86_64-Release
+target-Release: tp-umodsys-plugin_test2-Linux_x86_64-Release
+clean-Release: cp-umodsys-plugin_test2-Linux_x86_64-Release
 
 tmp__umodsys__plugin_test2__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys__plugin_test2__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys__plugin_test2__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/plugin_test2
 CXXFLAGS__umodsys__plugin_test2__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_test2__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_test2__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__plugin_test2__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test2__Linux_x86_64__Release)/umodsys_lib_core.Linux_x86_64.Release.a $(tmp__umodsys__plugin_test2__Linux_x86_64__Release)/umodsys_lib_base.Linux_x86_64.Release.a 
+LDFLAGS__umodsys__plugin_test2__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test2__Linux_x86_64__Release)/umodsys_lib_core.Linux_x86_64.Release.a $(tmp__umodsys__plugin_test2__Linux_x86_64__Release)/umodsys_lib_base.Linux_x86_64.Release.a 
 
 # so library at ../../bin/Linux_x86_64.Release/plugin_test2.Linux_x86_64.Release.so
 target__umodsys__plugin_test2__Linux_x86_64__Release=../../bin/Linux_x86_64.Release/plugin_test2.Linux_x86_64.Release.so
-tp-umodsys-plugin_test2-Linux_x86_64-Release: \
-  $(tmpx__umodsys__plugin_test2__Linux_x86_64__Release) \
-  $(bin__umodsys__plugin_test2__Linux_x86_64__Release) \
-  $(target__umodsys__plugin_test2__Linux_x86_64__Release)
+tp-umodsys-plugin_test2-Linux_x86_64-Release: $(tmpx__umodsys__plugin_test2__Linux_x86_64__Release) $(bin__umodsys__plugin_test2__Linux_x86_64__Release) $(target__umodsys__plugin_test2__Linux_x86_64__Release)
 cp-umodsys-plugin_test2-Linux_x86_64-Release:
 	-rm $(target__umodsys__plugin_test2__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys__plugin_test2__Linux_x86_64__Release)/*
@@ -415,29 +391,29 @@ $(tmpx__umodsys__plugin_test2__Linux_x86_64__Release)/plugin_test2.o: ../../src/
 $(target__umodsys__plugin_test2__Linux_x86_64__Release): $(tmpx__umodsys__plugin_test2__Linux_x86_64__Release)/plugin_test2.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared
+#-------------------------------- /project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
 
-#-------------------------------- project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared:
+#-------------------------------- project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace
 tg-umodsys-Linux_x86_64-ReleaseSpace: tp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace
 cg-umodsys-Linux_x86_64-ReleaseSpace: cp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace
 tp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace:  tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace
 cp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace:  cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace
+target-ReleaseSpace: tp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/plugin_test2
 CXXFLAGS__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace)/umodsys_lib_core.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace)/umodsys_lib_base.Linux_x86_64.ReleaseSpace.a 
+LDFLAGS__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace)/umodsys_lib_core.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace)/umodsys_lib_base.Linux_x86_64.ReleaseSpace.a 
 
 # so library at ../../bin/Linux_x86_64.ReleaseSpace/plugin_test2.Linux_x86_64.ReleaseSpace.so
 target__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace/plugin_test2.Linux_x86_64.ReleaseSpace.so
-tp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace) \
-  $(bin__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace)
+tp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace) $(bin__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace) $(target__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace)
 cp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace)/*
@@ -454,29 +430,29 @@ $(tmpx__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace)/plugin_test2.o: ../..
 $(target__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys__plugin_test2__Linux_x86_64__ReleaseSpace)/plugin_test2.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared
+#-------------------------------- /project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib
 
-#-------------------------------- project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared:
+#-------------------------------- project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic
 tg-umodsys-Linux_x86_64-ReleaseStatic: tp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic
 cg-umodsys-Linux_x86_64-ReleaseStatic: cp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic
 tp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic:  tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic
 cp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic:  cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic
+target-ReleaseStatic: tp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/plugin_test2
 CXXFLAGS__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic)/umodsys_lib_core.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic)/umodsys_lib_base.Linux_x86_64.ReleaseStatic.a 
+LDFLAGS__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic)/umodsys_lib_core.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic)/umodsys_lib_base.Linux_x86_64.ReleaseStatic.a 
 
 # so library at ../../bin/Linux_x86_64.ReleaseStatic/plugin_test2.Linux_x86_64.ReleaseStatic.so
 target__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic/plugin_test2.Linux_x86_64.ReleaseStatic.so
-tp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic) \
-  $(bin__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic)
+tp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic) $(bin__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic) $(target__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic)
 cp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic)/*
@@ -493,7 +469,7 @@ $(tmpx__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic)/plugin_test2.o: ../.
 $(target__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys__plugin_test2__Linux_x86_64__ReleaseStatic)/plugin_test2.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared
+#-------------------------------- /project 'umodsys'.'plugin_test2' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib
 
 #-------------------------------- epilog 'umodsys'.'plugin_test2'
 #---------------------------------------------------------------- END project 'umodsys'.'plugin_test2' 
@@ -510,19 +486,20 @@ tg-umodsys-Linux_x86_64-Debug: tp-umodsys-umodsys_lib_base-Linux_x86_64-Debug
 cg-umodsys-Linux_x86_64-Debug: cp-umodsys-umodsys_lib_base-Linux_x86_64-Debug
 tp-umodsys-umodsys_lib_base-Linux_x86_64-Debug: 
 cp-umodsys-umodsys_lib_base-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys-umodsys_lib_base-Linux_x86_64-Debug
+clean-Debug: cp-umodsys-umodsys_lib_base-Linux_x86_64-Debug
 
 tmp__umodsys__umodsys_lib_base__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys__umodsys_lib_base__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/umodsys_lib_base
 CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Debug/umodsys_lib_base.Linux_x86_64.Debug.a
 target__umodsys__umodsys_lib_base__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/umodsys_lib_base.Linux_x86_64.Debug.a
-tp-umodsys-umodsys_lib_base-Linux_x86_64-Debug: \
-  $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Debug) \
-  $(target__umodsys__umodsys_lib_base__Linux_x86_64__Debug)
+tp-umodsys-umodsys_lib_base-Linux_x86_64-Debug: $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Debug) $(target__umodsys__umodsys_lib_base__Linux_x86_64__Debug)
 cp-umodsys-umodsys_lib_base-Linux_x86_64-Debug:
 	-rm $(target__umodsys__umodsys_lib_base__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Debug)/*
@@ -556,6 +533,14 @@ $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Debug)/libutils.common.o: ../..
 $(target__umodsys__umodsys_lib_base__Linux_x86_64__Debug): $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Debug)/libutils.common.o
 # end file group lib_utils .
 # file group src :
+# file group linux :
+# file linux : ../../src/base/platform/linux/umodsys.so_main.linux.cpp
+$(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Debug)/umodsys.so_main.linux.o: ../../src/base/platform/linux/umodsys.so_main.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Debug) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Debug)/umodsys.so_main.linux.o.d
+$(target__umodsys__umodsys_lib_base__Linux_x86_64__Debug): $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Debug)/umodsys.so_main.linux.o
+# end file group linux .
 # file src : ../../src/base/umodsys.base.console.cpp
 $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Debug)/umodsys.base.console.o: ../../src/base/umodsys.base.console.cpp
 	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Debug) -c -o$@ $<
@@ -622,19 +607,20 @@ tg-umodsys-Linux_x86_64-Release: tp-umodsys-umodsys_lib_base-Linux_x86_64-Releas
 cg-umodsys-Linux_x86_64-Release: cp-umodsys-umodsys_lib_base-Linux_x86_64-Release
 tp-umodsys-umodsys_lib_base-Linux_x86_64-Release: 
 cp-umodsys-umodsys_lib_base-Linux_x86_64-Release: 
+target-Release: tp-umodsys-umodsys_lib_base-Linux_x86_64-Release
+clean-Release: cp-umodsys-umodsys_lib_base-Linux_x86_64-Release
 
 tmp__umodsys__umodsys_lib_base__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys__umodsys_lib_base__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/umodsys_lib_base
 CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Release/umodsys_lib_base.Linux_x86_64.Release.a
 target__umodsys__umodsys_lib_base__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/umodsys_lib_base.Linux_x86_64.Release.a
-tp-umodsys-umodsys_lib_base-Linux_x86_64-Release: \
-  $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Release) \
-  $(target__umodsys__umodsys_lib_base__Linux_x86_64__Release)
+tp-umodsys-umodsys_lib_base-Linux_x86_64-Release: $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Release) $(target__umodsys__umodsys_lib_base__Linux_x86_64__Release)
 cp-umodsys-umodsys_lib_base-Linux_x86_64-Release:
 	-rm $(target__umodsys__umodsys_lib_base__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Release)/*
@@ -668,6 +654,14 @@ $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Release)/libutils.common.o: ../
 $(target__umodsys__umodsys_lib_base__Linux_x86_64__Release): $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Release)/libutils.common.o
 # end file group lib_utils .
 # file group src :
+# file group linux :
+# file linux : ../../src/base/platform/linux/umodsys.so_main.linux.cpp
+$(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Release)/umodsys.so_main.linux.o: ../../src/base/platform/linux/umodsys.so_main.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Release) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Release)/umodsys.so_main.linux.o.d
+$(target__umodsys__umodsys_lib_base__Linux_x86_64__Release): $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Release)/umodsys.so_main.linux.o
+# end file group linux .
 # file src : ../../src/base/umodsys.base.console.cpp
 $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__Release)/umodsys.base.console.o: ../../src/base/umodsys.base.console.cpp
 	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__Release) -c -o$@ $<
@@ -734,19 +728,20 @@ tg-umodsys-Linux_x86_64-ReleaseSpace: tp-umodsys-umodsys_lib_base-Linux_x86_64-R
 cg-umodsys-Linux_x86_64-ReleaseSpace: cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace
 tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace: 
 cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_base
 CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_base.Linux_x86_64.ReleaseSpace.a
 target__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_base.Linux_x86_64.ReleaseSpace.a
-tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace)
+tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace) $(target__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace)
 cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace)/*
@@ -780,6 +775,14 @@ $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace)/libutils.common.o
 $(target__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace)/libutils.common.o
 # end file group lib_utils .
 # file group src :
+# file group linux :
+# file linux : ../../src/base/platform/linux/umodsys.so_main.linux.cpp
+$(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace)/umodsys.so_main.linux.o: ../../src/base/platform/linux/umodsys.so_main.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace)/umodsys.so_main.linux.o.d
+$(target__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace)/umodsys.so_main.linux.o
+# end file group linux .
 # file src : ../../src/base/umodsys.base.console.cpp
 $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace)/umodsys.base.console.o: ../../src/base/umodsys.base.console.cpp
 	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseSpace) -c -o$@ $<
@@ -846,19 +849,20 @@ tg-umodsys-Linux_x86_64-ReleaseStatic: tp-umodsys-umodsys_lib_base-Linux_x86_64-
 cg-umodsys-Linux_x86_64-ReleaseStatic: cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic
 tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic: 
 cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_base
 CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_base.Linux_x86_64.ReleaseStatic.a
 target__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_base.Linux_x86_64.ReleaseStatic.a
-tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic)
+tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic) $(target__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic)
 cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic)/*
@@ -892,6 +896,14 @@ $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic)/libutils.common.
 $(target__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic)/libutils.common.o
 # end file group lib_utils .
 # file group src :
+# file group linux :
+# file linux : ../../src/base/platform/linux/umodsys.so_main.linux.cpp
+$(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic)/umodsys.so_main.linux.o: ../../src/base/platform/linux/umodsys.so_main.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic)/umodsys.so_main.linux.o.d
+$(target__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic)/umodsys.so_main.linux.o
+# end file group linux .
 # file src : ../../src/base/umodsys.base.console.cpp
 $(tmpx__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic)/umodsys.base.console.o: ../../src/base/umodsys.base.console.cpp
 	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base__Linux_x86_64__ReleaseStatic) -c -o$@ $<
@@ -966,19 +978,20 @@ tg-umodsys-Linux_x86_64-Debug: tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Debug
 cg-umodsys-Linux_x86_64-Debug: cp-umodsys-umodsys_lib_basesys-Linux_x86_64-Debug
 tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Debug: 
 cp-umodsys-umodsys_lib_basesys-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Debug
+clean-Debug: cp-umodsys-umodsys_lib_basesys-Linux_x86_64-Debug
 
 tmp__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/umodsys_lib_basesys
 CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Debug/umodsys_lib_basesys.Linux_x86_64.Debug.a
 target__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/umodsys_lib_basesys.Linux_x86_64.Debug.a
-tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Debug: \
-  $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug) \
-  $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug)
+tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Debug: $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug) $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug)
 cp-umodsys-umodsys_lib_basesys-Linux_x86_64-Debug:
 	-rm $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug)/*
@@ -987,6 +1000,14 @@ $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug):
 
 
 # file group src :
+# file group linux :
+# file linux : ../../src/basesys/platform/linux/umodsys.basesys.rmodule.linux.cpp
+$(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug)/umodsys.basesys.rmodule.linux.o: ../../src/basesys/platform/linux/umodsys.basesys.rmodule.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug)/umodsys.basesys.rmodule.linux.o.d
+$(target__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug): $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug)/umodsys.basesys.rmodule.linux.o
+# end file group linux .
 # file src : ../../src/basesys/umodsys.basesys.rconsole_std.cpp
 $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug)/umodsys.basesys.rconsole_std.o: ../../src/basesys/umodsys.basesys.rconsole_std.cpp
 	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Debug) -c -o$@ $<
@@ -1073,19 +1094,20 @@ tg-umodsys-Linux_x86_64-Release: tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Rel
 cg-umodsys-Linux_x86_64-Release: cp-umodsys-umodsys_lib_basesys-Linux_x86_64-Release
 tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Release: 
 cp-umodsys-umodsys_lib_basesys-Linux_x86_64-Release: 
+target-Release: tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Release
+clean-Release: cp-umodsys-umodsys_lib_basesys-Linux_x86_64-Release
 
 tmp__umodsys__umodsys_lib_basesys__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys__umodsys_lib_basesys__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/umodsys_lib_basesys
 CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Release/umodsys_lib_basesys.Linux_x86_64.Release.a
 target__umodsys__umodsys_lib_basesys__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/umodsys_lib_basesys.Linux_x86_64.Release.a
-tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Release: \
-  $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Release) \
-  $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__Release)
+tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Release: $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Release) $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__Release)
 cp-umodsys-umodsys_lib_basesys-Linux_x86_64-Release:
 	-rm $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Release)/*
@@ -1094,6 +1116,14 @@ $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__Release):
 
 
 # file group src :
+# file group linux :
+# file linux : ../../src/basesys/platform/linux/umodsys.basesys.rmodule.linux.cpp
+$(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Release)/umodsys.basesys.rmodule.linux.o: ../../src/basesys/platform/linux/umodsys.basesys.rmodule.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Release) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Release)/umodsys.basesys.rmodule.linux.o.d
+$(target__umodsys__umodsys_lib_basesys__Linux_x86_64__Release): $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Release)/umodsys.basesys.rmodule.linux.o
+# end file group linux .
 # file src : ../../src/basesys/umodsys.basesys.rconsole_std.cpp
 $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__Release)/umodsys.basesys.rconsole_std.o: ../../src/basesys/umodsys.basesys.rconsole_std.cpp
 	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__Release) -c -o$@ $<
@@ -1180,19 +1210,20 @@ tg-umodsys-Linux_x86_64-ReleaseSpace: tp-umodsys-umodsys_lib_basesys-Linux_x86_6
 cg-umodsys-Linux_x86_64-ReleaseSpace: cp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseSpace
 tp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseSpace: 
 cp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_basesys
 CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_basesys.Linux_x86_64.ReleaseSpace.a
 target__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_basesys.Linux_x86_64.ReleaseSpace.a
-tp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace)
+tp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace) $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace)
 cp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace)/*
@@ -1201,6 +1232,14 @@ $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace):
 
 
 # file group src :
+# file group linux :
+# file linux : ../../src/basesys/platform/linux/umodsys.basesys.rmodule.linux.cpp
+$(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace)/umodsys.basesys.rmodule.linux.o: ../../src/basesys/platform/linux/umodsys.basesys.rmodule.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace)/umodsys.basesys.rmodule.linux.o.d
+$(target__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace)/umodsys.basesys.rmodule.linux.o
+# end file group linux .
 # file src : ../../src/basesys/umodsys.basesys.rconsole_std.cpp
 $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace)/umodsys.basesys.rconsole_std.o: ../../src/basesys/umodsys.basesys.rconsole_std.cpp
 	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseSpace) -c -o$@ $<
@@ -1287,19 +1326,20 @@ tg-umodsys-Linux_x86_64-ReleaseStatic: tp-umodsys-umodsys_lib_basesys-Linux_x86_
 cg-umodsys-Linux_x86_64-ReleaseStatic: cp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseStatic
 tp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseStatic: 
 cp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_basesys
 CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_basesys.Linux_x86_64.ReleaseStatic.a
 target__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_basesys.Linux_x86_64.ReleaseStatic.a
-tp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic)
+tp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic) $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic)
 cp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic)/*
@@ -1308,6 +1348,14 @@ $(target__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic):
 
 
 # file group src :
+# file group linux :
+# file linux : ../../src/basesys/platform/linux/umodsys.basesys.rmodule.linux.cpp
+$(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic)/umodsys.basesys.rmodule.linux.o: ../../src/basesys/platform/linux/umodsys.basesys.rmodule.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic)/umodsys.basesys.rmodule.linux.o.d
+$(target__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic)/umodsys.basesys.rmodule.linux.o
+# end file group linux .
 # file src : ../../src/basesys/umodsys.basesys.rconsole_std.cpp
 $(tmpx__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic)/umodsys.basesys.rconsole_std.o: ../../src/basesys/umodsys.basesys.rconsole_std.cpp
 	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys__Linux_x86_64__ReleaseStatic) -c -o$@ $<
@@ -1402,19 +1450,20 @@ tg-umodsys-Linux_x86_64-Debug: tp-umodsys-umodsys_lib_core-Linux_x86_64-Debug
 cg-umodsys-Linux_x86_64-Debug: cp-umodsys-umodsys_lib_core-Linux_x86_64-Debug
 tp-umodsys-umodsys_lib_core-Linux_x86_64-Debug: 
 cp-umodsys-umodsys_lib_core-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys-umodsys_lib_core-Linux_x86_64-Debug
+clean-Debug: cp-umodsys-umodsys_lib_core-Linux_x86_64-Debug
 
 tmp__umodsys__umodsys_lib_core__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys__umodsys_lib_core__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/umodsys_lib_core
 CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Debug/umodsys_lib_core.Linux_x86_64.Debug.a
 target__umodsys__umodsys_lib_core__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/umodsys_lib_core.Linux_x86_64.Debug.a
-tp-umodsys-umodsys_lib_core-Linux_x86_64-Debug: \
-  $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug) \
-  $(target__umodsys__umodsys_lib_core__Linux_x86_64__Debug)
+tp-umodsys-umodsys_lib_core-Linux_x86_64-Debug: $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug) $(target__umodsys__umodsys_lib_core__Linux_x86_64__Debug)
 cp-umodsys-umodsys_lib_core-Linux_x86_64-Debug:
 	-rm $(target__umodsys__umodsys_lib_core__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/*
@@ -1463,6 +1512,11 @@ $(target__umodsys__umodsys_lib_core__Linux_x86_64__Debug):
 # file core : ../../include/umodsys/core/syshlp.h
 # file core : ../../include/umodsys/core/uniqueptr.h
 # end file group core .
+# file group linux :
+# file linux : ../../include/umodsys/core/platform/linux/syshlp_linux.h
+# file linux : ../../include/umodsys/core/platform/def_msvc.h
+# file linux : ../../include/umodsys/core/platform/def_win32.h
+# end file group linux .
 # file group tl :
 # file group alloc :
 # file alloc : ../../include/umodsys/tl/alloc/allocator.h
@@ -1564,6 +1618,44 @@ $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.uniqueptrli
 -include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.uniqueptrlist.o.d
 $(target__umodsys__umodsys_lib_core__Linux_x86_64__Debug): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.uniqueptrlist.o
 # end file group core .
+# file group linux :
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_charcode.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_charcode.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_charcode.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_charcode.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__Debug): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_charcode.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_chars.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_chars.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_chars.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_chars.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__Debug): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_chars.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_files.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_files.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_files.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_files.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__Debug): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_files.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_proc.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_proc.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_proc.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_proc.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__Debug): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_proc.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_thread.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_thread.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_thread.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_thread.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__Debug): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_thread.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_vars.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_vars.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_vars.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_vars.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__Debug): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.core.syshlp_vars.linux.o
+# end file group linux .
 # file group tl :
 # file tl : ../../src/core/umodsys.tl.strings.cpp
 $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Debug)/umodsys.tl.strings.o: ../../src/core/umodsys.tl.strings.cpp
@@ -1601,19 +1693,20 @@ tg-umodsys-Linux_x86_64-Release: tp-umodsys-umodsys_lib_core-Linux_x86_64-Releas
 cg-umodsys-Linux_x86_64-Release: cp-umodsys-umodsys_lib_core-Linux_x86_64-Release
 tp-umodsys-umodsys_lib_core-Linux_x86_64-Release: 
 cp-umodsys-umodsys_lib_core-Linux_x86_64-Release: 
+target-Release: tp-umodsys-umodsys_lib_core-Linux_x86_64-Release
+clean-Release: cp-umodsys-umodsys_lib_core-Linux_x86_64-Release
 
 tmp__umodsys__umodsys_lib_core__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys__umodsys_lib_core__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/umodsys_lib_core
 CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Release/umodsys_lib_core.Linux_x86_64.Release.a
 target__umodsys__umodsys_lib_core__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/umodsys_lib_core.Linux_x86_64.Release.a
-tp-umodsys-umodsys_lib_core-Linux_x86_64-Release: \
-  $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release) \
-  $(target__umodsys__umodsys_lib_core__Linux_x86_64__Release)
+tp-umodsys-umodsys_lib_core-Linux_x86_64-Release: $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release) $(target__umodsys__umodsys_lib_core__Linux_x86_64__Release)
 cp-umodsys-umodsys_lib_core-Linux_x86_64-Release:
 	-rm $(target__umodsys__umodsys_lib_core__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/*
@@ -1662,6 +1755,11 @@ $(target__umodsys__umodsys_lib_core__Linux_x86_64__Release):
 # file core : ../../include/umodsys/core/syshlp.h
 # file core : ../../include/umodsys/core/uniqueptr.h
 # end file group core .
+# file group linux :
+# file linux : ../../include/umodsys/core/platform/linux/syshlp_linux.h
+# file linux : ../../include/umodsys/core/platform/def_msvc.h
+# file linux : ../../include/umodsys/core/platform/def_win32.h
+# end file group linux .
 # file group tl :
 # file group alloc :
 # file alloc : ../../include/umodsys/tl/alloc/allocator.h
@@ -1763,6 +1861,44 @@ $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.uniqueptr
 -include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.uniqueptrlist.o.d
 $(target__umodsys__umodsys_lib_core__Linux_x86_64__Release): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.uniqueptrlist.o
 # end file group core .
+# file group linux :
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_charcode.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_charcode.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_charcode.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_charcode.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__Release): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_charcode.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_chars.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_chars.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_chars.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_chars.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__Release): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_chars.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_files.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_files.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_files.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_files.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__Release): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_files.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_proc.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_proc.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_proc.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_proc.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__Release): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_proc.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_thread.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_thread.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_thread.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_thread.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__Release): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_thread.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_vars.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_vars.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_vars.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_vars.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__Release): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.core.syshlp_vars.linux.o
+# end file group linux .
 # file group tl :
 # file tl : ../../src/core/umodsys.tl.strings.cpp
 $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__Release)/umodsys.tl.strings.o: ../../src/core/umodsys.tl.strings.cpp
@@ -1800,19 +1936,20 @@ tg-umodsys-Linux_x86_64-ReleaseSpace: tp-umodsys-umodsys_lib_core-Linux_x86_64-R
 cg-umodsys-Linux_x86_64-ReleaseSpace: cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace
 tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace: 
 cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_core
 CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_core.Linux_x86_64.ReleaseSpace.a
 target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_core.Linux_x86_64.ReleaseSpace.a
-tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)
+tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace) $(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)
 cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/*
@@ -1861,6 +1998,11 @@ $(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace):
 # file core : ../../include/umodsys/core/syshlp.h
 # file core : ../../include/umodsys/core/uniqueptr.h
 # end file group core .
+# file group linux :
+# file linux : ../../include/umodsys/core/platform/linux/syshlp_linux.h
+# file linux : ../../include/umodsys/core/platform/def_msvc.h
+# file linux : ../../include/umodsys/core/platform/def_win32.h
+# end file group linux .
 # file group tl :
 # file group alloc :
 # file alloc : ../../include/umodsys/tl/alloc/allocator.h
@@ -1962,6 +2104,44 @@ $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.uniq
 -include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.uniqueptrlist.o.d
 $(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.uniqueptrlist.o
 # end file group core .
+# file group linux :
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_charcode.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_charcode.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_charcode.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_charcode.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_charcode.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_chars.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_chars.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_chars.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_chars.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_chars.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_files.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_files.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_files.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_files.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_files.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_proc.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_proc.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_proc.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_proc.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_proc.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_thread.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_thread.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_thread.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_thread.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_thread.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_vars.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_vars.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_vars.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_vars.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.core.syshlp_vars.linux.o
+# end file group linux .
 # file group tl :
 # file tl : ../../src/core/umodsys.tl.strings.cpp
 $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseSpace)/umodsys.tl.strings.o: ../../src/core/umodsys.tl.strings.cpp
@@ -1999,19 +2179,20 @@ tg-umodsys-Linux_x86_64-ReleaseStatic: tp-umodsys-umodsys_lib_core-Linux_x86_64-
 cg-umodsys-Linux_x86_64-ReleaseStatic: cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic
 tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic: 
 cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_core
 CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_core.Linux_x86_64.ReleaseStatic.a
 target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_core.Linux_x86_64.ReleaseStatic.a
-tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)
+tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic) $(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)
 cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/*
@@ -2060,6 +2241,11 @@ $(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic):
 # file core : ../../include/umodsys/core/syshlp.h
 # file core : ../../include/umodsys/core/uniqueptr.h
 # end file group core .
+# file group linux :
+# file linux : ../../include/umodsys/core/platform/linux/syshlp_linux.h
+# file linux : ../../include/umodsys/core/platform/def_msvc.h
+# file linux : ../../include/umodsys/core/platform/def_win32.h
+# end file group linux .
 # file group tl :
 # file group alloc :
 # file alloc : ../../include/umodsys/tl/alloc/allocator.h
@@ -2161,6 +2347,44 @@ $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.uni
 -include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.uniqueptrlist.o.d
 $(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.uniqueptrlist.o
 # end file group core .
+# file group linux :
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_charcode.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_charcode.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_charcode.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_charcode.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_charcode.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_chars.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_chars.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_chars.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_chars.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_chars.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_files.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_files.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_files.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_files.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_files.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_proc.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_proc.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_proc.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_proc.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_proc.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_thread.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_thread.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_thread.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_thread.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_thread.linux.o
+# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_vars.linux.cpp
+$(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_vars.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_vars.linux.cpp
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_vars.linux.o.d
+$(target__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.core.syshlp_vars.linux.o
+# end file group linux .
 # file group tl :
 # file tl : ../../src/core/umodsys.tl.strings.cpp
 $(tmpx__umodsys__umodsys_lib_core__Linux_x86_64__ReleaseStatic)/umodsys.tl.strings.o: ../../src/core/umodsys.tl.strings.cpp
@@ -2206,19 +2430,20 @@ tg-umodsys-Linux_x86_64-Debug: tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Debug
 cg-umodsys-Linux_x86_64-Debug: cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Debug
 tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Debug: 
 cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Debug
+clean-Debug: cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Debug
 
 tmp__umodsys__umodsys_lib_lib2d__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys__umodsys_lib_lib2d__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/umodsys_lib_lib2d
 CXXFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Debug/umodsys_lib_lib2d.Linux_x86_64.Debug.a
 target__umodsys__umodsys_lib_lib2d__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/umodsys_lib_lib2d.Linux_x86_64.Debug.a
-tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Debug: \
-  $(tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__Debug) \
-  $(target__umodsys__umodsys_lib_lib2d__Linux_x86_64__Debug)
+tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Debug: $(tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__Debug) $(target__umodsys__umodsys_lib_lib2d__Linux_x86_64__Debug)
 cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Debug:
 	-rm $(target__umodsys__umodsys_lib_lib2d__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__Debug)/*
@@ -2270,19 +2495,20 @@ tg-umodsys-Linux_x86_64-Release: tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Relea
 cg-umodsys-Linux_x86_64-Release: cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Release
 tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Release: 
 cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Release: 
+target-Release: tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Release
+clean-Release: cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Release
 
 tmp__umodsys__umodsys_lib_lib2d__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys__umodsys_lib_lib2d__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/umodsys_lib_lib2d
 CXXFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Release/umodsys_lib_lib2d.Linux_x86_64.Release.a
 target__umodsys__umodsys_lib_lib2d__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/umodsys_lib_lib2d.Linux_x86_64.Release.a
-tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Release: \
-  $(tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__Release) \
-  $(target__umodsys__umodsys_lib_lib2d__Linux_x86_64__Release)
+tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Release: $(tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__Release) $(target__umodsys__umodsys_lib_lib2d__Linux_x86_64__Release)
 cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-Release:
 	-rm $(target__umodsys__umodsys_lib_lib2d__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__Release)/*
@@ -2334,19 +2560,20 @@ tg-umodsys-Linux_x86_64-ReleaseSpace: tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-
 cg-umodsys-Linux_x86_64-ReleaseSpace: cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseSpace
 tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseSpace: 
 cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_lib2d
 CXXFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_lib2d.Linux_x86_64.ReleaseSpace.a
 target__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_lib2d.Linux_x86_64.ReleaseSpace.a
-tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseSpace)
+tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseSpace) $(target__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseSpace)
 cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseSpace)/*
@@ -2398,19 +2625,20 @@ tg-umodsys-Linux_x86_64-ReleaseStatic: tp-umodsys-umodsys_lib_lib2d-Linux_x86_64
 cg-umodsys-Linux_x86_64-ReleaseStatic: cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseStatic
 tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseStatic: 
 cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_lib2d
 CXXFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_lib2d.Linux_x86_64.ReleaseStatic.a
 target__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_lib2d.Linux_x86_64.ReleaseStatic.a
-tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseStatic)
+tp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseStatic) $(target__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseStatic)
 cp-umodsys-umodsys_lib_lib2d-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys__umodsys_lib_lib2d__Linux_x86_64__ReleaseStatic)/*
@@ -2470,19 +2698,20 @@ tg-umodsys-Linux_x86_64-Debug: tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Debug
 cg-umodsys-Linux_x86_64-Debug: cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Debug
 tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Debug: 
 cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Debug
+clean-Debug: cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Debug
 
 tmp__umodsys__umodsys_lib_lib3d__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys__umodsys_lib_lib3d__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/umodsys_lib_lib3d
 CXXFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Debug/umodsys_lib_lib3d.Linux_x86_64.Debug.a
 target__umodsys__umodsys_lib_lib3d__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/umodsys_lib_lib3d.Linux_x86_64.Debug.a
-tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Debug: \
-  $(tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__Debug) \
-  $(target__umodsys__umodsys_lib_lib3d__Linux_x86_64__Debug)
+tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Debug: $(tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__Debug) $(target__umodsys__umodsys_lib_lib3d__Linux_x86_64__Debug)
 cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Debug:
 	-rm $(target__umodsys__umodsys_lib_lib3d__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__Debug)/*
@@ -2554,19 +2783,20 @@ tg-umodsys-Linux_x86_64-Release: tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Relea
 cg-umodsys-Linux_x86_64-Release: cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Release
 tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Release: 
 cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Release: 
+target-Release: tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Release
+clean-Release: cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Release
 
 tmp__umodsys__umodsys_lib_lib3d__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys__umodsys_lib_lib3d__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/umodsys_lib_lib3d
 CXXFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Release/umodsys_lib_lib3d.Linux_x86_64.Release.a
 target__umodsys__umodsys_lib_lib3d__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/umodsys_lib_lib3d.Linux_x86_64.Release.a
-tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Release: \
-  $(tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__Release) \
-  $(target__umodsys__umodsys_lib_lib3d__Linux_x86_64__Release)
+tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Release: $(tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__Release) $(target__umodsys__umodsys_lib_lib3d__Linux_x86_64__Release)
 cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-Release:
 	-rm $(target__umodsys__umodsys_lib_lib3d__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__Release)/*
@@ -2638,19 +2868,20 @@ tg-umodsys-Linux_x86_64-ReleaseSpace: tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-
 cg-umodsys-Linux_x86_64-ReleaseSpace: cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseSpace
 tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseSpace: 
 cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_lib3d
 CXXFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_lib3d.Linux_x86_64.ReleaseSpace.a
 target__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_lib3d.Linux_x86_64.ReleaseSpace.a
-tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseSpace)
+tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseSpace) $(target__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseSpace)
 cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseSpace)/*
@@ -2722,19 +2953,20 @@ tg-umodsys-Linux_x86_64-ReleaseStatic: tp-umodsys-umodsys_lib_lib3d-Linux_x86_64
 cg-umodsys-Linux_x86_64-ReleaseStatic: cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseStatic
 tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseStatic: 
 cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_lib3d
 CXXFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_lib3d.Linux_x86_64.ReleaseStatic.a
 target__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_lib3d.Linux_x86_64.ReleaseStatic.a
-tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseStatic)
+tp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseStatic) $(target__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseStatic)
 cp-umodsys-umodsys_lib_lib3d-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys__umodsys_lib_lib3d__Linux_x86_64__ReleaseStatic)/*
@@ -2814,19 +3046,20 @@ tg-umodsys-Linux_x86_64-Debug: tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debu
 cg-umodsys-Linux_x86_64-Debug: cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug
 tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug: 
 cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug
+clean-Debug: cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug
 
 tmp__umodsys__umodsys_lib_libmedia__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys__umodsys_lib_libmedia__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/umodsys_lib_libmedia
 CXXFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib
 CFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib
-LDFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Debug/umodsys_lib_libmedia.Linux_x86_64.Debug.a
 target__umodsys__umodsys_lib_libmedia__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/umodsys_lib_libmedia.Linux_x86_64.Debug.a
-tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug: \
-  $(tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__Debug) \
-  $(target__umodsys__umodsys_lib_libmedia__Linux_x86_64__Debug)
+tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug: $(tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__Debug) $(target__umodsys__umodsys_lib_libmedia__Linux_x86_64__Debug)
 cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug:
 	-rm $(target__umodsys__umodsys_lib_libmedia__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__Debug)/*
@@ -2946,19 +3179,20 @@ tg-umodsys-Linux_x86_64-Release: tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Re
 cg-umodsys-Linux_x86_64-Release: cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release
 tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release: 
 cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release: 
+target-Release: tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release
+clean-Release: cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release
 
 tmp__umodsys__umodsys_lib_libmedia__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys__umodsys_lib_libmedia__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/umodsys_lib_libmedia
 CXXFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib
 CFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib
-LDFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Release/umodsys_lib_libmedia.Linux_x86_64.Release.a
 target__umodsys__umodsys_lib_libmedia__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/umodsys_lib_libmedia.Linux_x86_64.Release.a
-tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release: \
-  $(tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__Release) \
-  $(target__umodsys__umodsys_lib_libmedia__Linux_x86_64__Release)
+tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release: $(tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__Release) $(target__umodsys__umodsys_lib_libmedia__Linux_x86_64__Release)
 cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release:
 	-rm $(target__umodsys__umodsys_lib_libmedia__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__Release)/*
@@ -3078,19 +3312,20 @@ tg-umodsys-Linux_x86_64-ReleaseSpace: tp-umodsys-umodsys_lib_libmedia-Linux_x86_
 cg-umodsys-Linux_x86_64-ReleaseSpace: cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace
 tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace: 
 cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_libmedia
 CXXFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib
 CFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib
-LDFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_libmedia.Linux_x86_64.ReleaseSpace.a
 target__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_libmedia.Linux_x86_64.ReleaseSpace.a
-tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseSpace)
+tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseSpace) $(target__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseSpace)
 cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseSpace)/*
@@ -3210,19 +3445,20 @@ tg-umodsys-Linux_x86_64-ReleaseStatic: tp-umodsys-umodsys_lib_libmedia-Linux_x86
 cg-umodsys-Linux_x86_64-ReleaseStatic: cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic
 tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic: 
 cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_libmedia
 CXXFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib
 CFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib
-LDFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_libmedia.Linux_x86_64.ReleaseStatic.a
 target__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_libmedia.Linux_x86_64.ReleaseStatic.a
-tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseStatic)
+tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseStatic) $(target__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseStatic)
 cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys__umodsys_lib_libmedia__Linux_x86_64__ReleaseStatic)/*
@@ -3350,19 +3586,20 @@ tg-umodsys-Linux_x86_64-Debug: tp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug
 cg-umodsys-Linux_x86_64-Debug: cp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug
 tp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug: 
 cp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug
+clean-Debug: cp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug
 
 tmp__umodsys__umodsys_lib_libui__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys__umodsys_lib_libui__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/umodsys_lib_libui
 CXXFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf
 CFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf
-LDFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Debug/umodsys_lib_libui.Linux_x86_64.Debug.a
 target__umodsys__umodsys_lib_libui__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/umodsys_lib_libui.Linux_x86_64.Debug.a
-tp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug: \
-  $(tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__Debug) \
-  $(target__umodsys__umodsys_lib_libui__Linux_x86_64__Debug)
+tp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug: $(tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__Debug) $(target__umodsys__umodsys_lib_libui__Linux_x86_64__Debug)
 cp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug:
 	-rm $(target__umodsys__umodsys_lib_libui__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__Debug)/*
@@ -3467,19 +3704,20 @@ tg-umodsys-Linux_x86_64-Release: tp-umodsys-umodsys_lib_libui-Linux_x86_64-Relea
 cg-umodsys-Linux_x86_64-Release: cp-umodsys-umodsys_lib_libui-Linux_x86_64-Release
 tp-umodsys-umodsys_lib_libui-Linux_x86_64-Release: 
 cp-umodsys-umodsys_lib_libui-Linux_x86_64-Release: 
+target-Release: tp-umodsys-umodsys_lib_libui-Linux_x86_64-Release
+clean-Release: cp-umodsys-umodsys_lib_libui-Linux_x86_64-Release
 
 tmp__umodsys__umodsys_lib_libui__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys__umodsys_lib_libui__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/umodsys_lib_libui
 CXXFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf
 CFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf
-LDFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Release/umodsys_lib_libui.Linux_x86_64.Release.a
 target__umodsys__umodsys_lib_libui__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/umodsys_lib_libui.Linux_x86_64.Release.a
-tp-umodsys-umodsys_lib_libui-Linux_x86_64-Release: \
-  $(tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__Release) \
-  $(target__umodsys__umodsys_lib_libui__Linux_x86_64__Release)
+tp-umodsys-umodsys_lib_libui-Linux_x86_64-Release: $(tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__Release) $(target__umodsys__umodsys_lib_libui__Linux_x86_64__Release)
 cp-umodsys-umodsys_lib_libui-Linux_x86_64-Release:
 	-rm $(target__umodsys__umodsys_lib_libui__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__Release)/*
@@ -3584,19 +3822,20 @@ tg-umodsys-Linux_x86_64-ReleaseSpace: tp-umodsys-umodsys_lib_libui-Linux_x86_64-
 cg-umodsys-Linux_x86_64-ReleaseSpace: cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace
 tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace: 
 cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_libui
 CXXFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf
 CFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf
-LDFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_libui.Linux_x86_64.ReleaseSpace.a
 target__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_libui.Linux_x86_64.ReleaseSpace.a
-tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseSpace)
+tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseSpace) $(target__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseSpace)
 cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseSpace)/*
@@ -3701,19 +3940,20 @@ tg-umodsys-Linux_x86_64-ReleaseStatic: tp-umodsys-umodsys_lib_libui-Linux_x86_64
 cg-umodsys-Linux_x86_64-ReleaseStatic: cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic
 tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic: 
 cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_libui
 CXXFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf
 CFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf
-LDFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_libui.Linux_x86_64.ReleaseStatic.a
 target__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_libui.Linux_x86_64.ReleaseStatic.a
-tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic)
+tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic) $(target__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic)
 cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic)/*
@@ -3819,27 +4059,27 @@ $(target__umodsys__umodsys_lib_libui__Linux_x86_64__ReleaseStatic): $(tmpx__umod
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=binary:
+#-------------------------------- project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=console:
 target-Linux_x86_64-Debug: tp-umodsys-umodsysc-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys-umodsysc-Linux_x86_64-Debug
 tg-umodsys-Linux_x86_64-Debug: tp-umodsys-umodsysc-Linux_x86_64-Debug
 cg-umodsys-Linux_x86_64-Debug: cp-umodsys-umodsysc-Linux_x86_64-Debug
-tp-umodsys-umodsysc-Linux_x86_64-Debug:  tp-umodsys-umodsys_lib_core-Linux_x86_64-Debug tp-umodsys-umodsys_lib_base-Linux_x86_64-Debug tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Debug tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug tp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug tp-umodsys-plugin_test1-Linux_x86_64-Debug tp-umodsys-plugin_test2-Linux_x86_64-Debug
-cp-umodsys-umodsysc-Linux_x86_64-Debug:  cp-umodsys-umodsys_lib_core-Linux_x86_64-Debug cp-umodsys-umodsys_lib_base-Linux_x86_64-Debug cp-umodsys-umodsys_lib_basesys-Linux_x86_64-Debug cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug cp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug cp-umodsys-plugin_test1-Linux_x86_64-Debug cp-umodsys-plugin_test2-Linux_x86_64-Debug
+tp-umodsys-umodsysc-Linux_x86_64-Debug:  tp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Debug tp-umodsys-umodsys_lib_base-Linux_x86_64-Debug tp-umodsys-umodsys_lib_core-Linux_x86_64-Debug tp-umodsys-plugin_test1-Linux_x86_64-Debug tp-umodsys-plugin_test2-Linux_x86_64-Debug
+cp-umodsys-umodsysc-Linux_x86_64-Debug:  cp-umodsys-umodsys_lib_libui-Linux_x86_64-Debug cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Debug cp-umodsys-umodsys_lib_basesys-Linux_x86_64-Debug cp-umodsys-umodsys_lib_base-Linux_x86_64-Debug cp-umodsys-umodsys_lib_core-Linux_x86_64-Debug cp-umodsys-plugin_test1-Linux_x86_64-Debug cp-umodsys-plugin_test2-Linux_x86_64-Debug
+target-Debug: tp-umodsys-umodsysc-Linux_x86_64-Debug
+clean-Debug: cp-umodsys-umodsysc-Linux_x86_64-Debug
 
 tmp__umodsys__umodsysc__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys__umodsysc__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__umodsysc__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/umodsysc
 CXXFLAGS__umodsys__umodsysc__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../src/basesys
 CFLAGS__umodsys__umodsysc__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../src/basesys
-LDFLAGS__umodsys__umodsysc__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsysc__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__umodsysc__Linux_x86_64__Debug)/umodsys_lib_libui.Linux_x86_64.Debug.a $(tmp__umodsys__umodsysc__Linux_x86_64__Debug)/umodsys_lib_libmedia.Linux_x86_64.Debug.a $(tmp__umodsys__umodsysc__Linux_x86_64__Debug)/umodsys_lib_basesys.Linux_x86_64.Debug.a $(tmp__umodsys__umodsysc__Linux_x86_64__Debug)/umodsys_lib_base.Linux_x86_64.Debug.a $(tmp__umodsys__umodsysc__Linux_x86_64__Debug)/umodsys_lib_core.Linux_x86_64.Debug.a $(bin__umodsys__umodsysc__Linux_x86_64__Debug)/plugin_test1.Linux_x86_64.Debug.so $(bin__umodsys__umodsysc__Linux_x86_64__Debug)/plugin_test2.Linux_x86_64.Debug.so 
+LDFLAGS__umodsys__umodsysc__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__umodsysc__Linux_x86_64__Debug)/umodsys_lib_libui.Linux_x86_64.Debug.a $(tmp__umodsys__umodsysc__Linux_x86_64__Debug)/umodsys_lib_libmedia.Linux_x86_64.Debug.a $(tmp__umodsys__umodsysc__Linux_x86_64__Debug)/umodsys_lib_basesys.Linux_x86_64.Debug.a $(tmp__umodsys__umodsysc__Linux_x86_64__Debug)/umodsys_lib_base.Linux_x86_64.Debug.a $(tmp__umodsys__umodsysc__Linux_x86_64__Debug)/umodsys_lib_core.Linux_x86_64.Debug.a $(bin__umodsys__umodsysc__Linux_x86_64__Debug)/plugin_test1.Linux_x86_64.Debug.so $(bin__umodsys__umodsysc__Linux_x86_64__Debug)/plugin_test2.Linux_x86_64.Debug.so 
 
 # console binary at ../../bin/Linux_x86_64.Debug/umodsysc.Linux_x86_64.Debug
-target__umodsys__umodsysc__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug/umodsysc.Linux_x86_64.Debug
-tp-umodsys-umodsysc-Linux_x86_64-Debug: \
-  $(tmpx__umodsys__umodsysc__Linux_x86_64__Debug) \
-  $(bin__umodsys__umodsysc__Linux_x86_64__Debug) \
-  $(target__umodsys__umodsysc__Linux_x86_64__Debug)
+target__umodsys__umodsysc__Linux_x86_64__Debug = ../../bin/Linux_x86_64.Debug/umodsysc.Linux_x86_64.Debug
+tp-umodsys-umodsysc-Linux_x86_64-Debug: $(tmpx__umodsys__umodsysc__Linux_x86_64__Debug) $(bin__umodsys__umodsysc__Linux_x86_64__Debug) $(target__umodsys__umodsysc__Linux_x86_64__Debug)
 cp-umodsys-umodsysc-Linux_x86_64-Debug:
 	-rm $(target__umodsys__umodsysc__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys__umodsysc__Linux_x86_64__Debug)/*
@@ -3856,29 +4096,29 @@ $(tmpx__umodsys__umodsysc__Linux_x86_64__Debug)/umodsys.c_main.o: ../../src/plug
 $(target__umodsys__umodsysc__Linux_x86_64__Debug): $(tmpx__umodsys__umodsysc__Linux_x86_64__Debug)/umodsys.c_main.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=binary
+#-------------------------------- /project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=console
 
-#-------------------------------- project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=Release MODE=binary:
+#-------------------------------- project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=Release MODE=console:
 target-Linux_x86_64-Release: tp-umodsys-umodsysc-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys-umodsysc-Linux_x86_64-Release
 tg-umodsys-Linux_x86_64-Release: tp-umodsys-umodsysc-Linux_x86_64-Release
 cg-umodsys-Linux_x86_64-Release: cp-umodsys-umodsysc-Linux_x86_64-Release
-tp-umodsys-umodsysc-Linux_x86_64-Release:  tp-umodsys-umodsys_lib_core-Linux_x86_64-Release tp-umodsys-umodsys_lib_base-Linux_x86_64-Release tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Release tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release tp-umodsys-umodsys_lib_libui-Linux_x86_64-Release tp-umodsys-plugin_test1-Linux_x86_64-Release tp-umodsys-plugin_test2-Linux_x86_64-Release
-cp-umodsys-umodsysc-Linux_x86_64-Release:  cp-umodsys-umodsys_lib_core-Linux_x86_64-Release cp-umodsys-umodsys_lib_base-Linux_x86_64-Release cp-umodsys-umodsys_lib_basesys-Linux_x86_64-Release cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release cp-umodsys-umodsys_lib_libui-Linux_x86_64-Release cp-umodsys-plugin_test1-Linux_x86_64-Release cp-umodsys-plugin_test2-Linux_x86_64-Release
+tp-umodsys-umodsysc-Linux_x86_64-Release:  tp-umodsys-umodsys_lib_libui-Linux_x86_64-Release tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release tp-umodsys-umodsys_lib_basesys-Linux_x86_64-Release tp-umodsys-umodsys_lib_base-Linux_x86_64-Release tp-umodsys-umodsys_lib_core-Linux_x86_64-Release tp-umodsys-plugin_test1-Linux_x86_64-Release tp-umodsys-plugin_test2-Linux_x86_64-Release
+cp-umodsys-umodsysc-Linux_x86_64-Release:  cp-umodsys-umodsys_lib_libui-Linux_x86_64-Release cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-Release cp-umodsys-umodsys_lib_basesys-Linux_x86_64-Release cp-umodsys-umodsys_lib_base-Linux_x86_64-Release cp-umodsys-umodsys_lib_core-Linux_x86_64-Release cp-umodsys-plugin_test1-Linux_x86_64-Release cp-umodsys-plugin_test2-Linux_x86_64-Release
+target-Release: tp-umodsys-umodsysc-Linux_x86_64-Release
+clean-Release: cp-umodsys-umodsysc-Linux_x86_64-Release
 
 tmp__umodsys__umodsysc__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys__umodsysc__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys__umodsysc__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/umodsysc
 CXXFLAGS__umodsys__umodsysc__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../src/basesys
 CFLAGS__umodsys__umodsysc__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../src/basesys
-LDFLAGS__umodsys__umodsysc__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsysc__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__umodsysc__Linux_x86_64__Release)/umodsys_lib_libui.Linux_x86_64.Release.a $(tmp__umodsys__umodsysc__Linux_x86_64__Release)/umodsys_lib_libmedia.Linux_x86_64.Release.a $(tmp__umodsys__umodsysc__Linux_x86_64__Release)/umodsys_lib_basesys.Linux_x86_64.Release.a $(tmp__umodsys__umodsysc__Linux_x86_64__Release)/umodsys_lib_base.Linux_x86_64.Release.a $(tmp__umodsys__umodsysc__Linux_x86_64__Release)/umodsys_lib_core.Linux_x86_64.Release.a $(bin__umodsys__umodsysc__Linux_x86_64__Release)/plugin_test1.Linux_x86_64.Release.so $(bin__umodsys__umodsysc__Linux_x86_64__Release)/plugin_test2.Linux_x86_64.Release.so 
+LDFLAGS__umodsys__umodsysc__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__umodsysc__Linux_x86_64__Release)/umodsys_lib_libui.Linux_x86_64.Release.a $(tmp__umodsys__umodsysc__Linux_x86_64__Release)/umodsys_lib_libmedia.Linux_x86_64.Release.a $(tmp__umodsys__umodsysc__Linux_x86_64__Release)/umodsys_lib_basesys.Linux_x86_64.Release.a $(tmp__umodsys__umodsysc__Linux_x86_64__Release)/umodsys_lib_base.Linux_x86_64.Release.a $(tmp__umodsys__umodsysc__Linux_x86_64__Release)/umodsys_lib_core.Linux_x86_64.Release.a $(bin__umodsys__umodsysc__Linux_x86_64__Release)/plugin_test1.Linux_x86_64.Release.so $(bin__umodsys__umodsysc__Linux_x86_64__Release)/plugin_test2.Linux_x86_64.Release.so 
 
 # console binary at ../../bin/Linux_x86_64.Release/umodsysc.Linux_x86_64.Release
-target__umodsys__umodsysc__Linux_x86_64__Release=../../bin/Linux_x86_64.Release/umodsysc.Linux_x86_64.Release
-tp-umodsys-umodsysc-Linux_x86_64-Release: \
-  $(tmpx__umodsys__umodsysc__Linux_x86_64__Release) \
-  $(bin__umodsys__umodsysc__Linux_x86_64__Release) \
-  $(target__umodsys__umodsysc__Linux_x86_64__Release)
+target__umodsys__umodsysc__Linux_x86_64__Release = ../../bin/Linux_x86_64.Release/umodsysc.Linux_x86_64.Release
+tp-umodsys-umodsysc-Linux_x86_64-Release: $(tmpx__umodsys__umodsysc__Linux_x86_64__Release) $(bin__umodsys__umodsysc__Linux_x86_64__Release) $(target__umodsys__umodsysc__Linux_x86_64__Release)
 cp-umodsys-umodsysc-Linux_x86_64-Release:
 	-rm $(target__umodsys__umodsysc__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys__umodsysc__Linux_x86_64__Release)/*
@@ -3895,29 +4135,29 @@ $(tmpx__umodsys__umodsysc__Linux_x86_64__Release)/umodsys.c_main.o: ../../src/pl
 $(target__umodsys__umodsysc__Linux_x86_64__Release): $(tmpx__umodsys__umodsysc__Linux_x86_64__Release)/umodsys.c_main.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=Release MODE=binary
+#-------------------------------- /project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=Release MODE=console
 
-#-------------------------------- project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=binary:
+#-------------------------------- project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=console:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys-umodsysc-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys-umodsysc-Linux_x86_64-ReleaseSpace
 tg-umodsys-Linux_x86_64-ReleaseSpace: tp-umodsys-umodsysc-Linux_x86_64-ReleaseSpace
 cg-umodsys-Linux_x86_64-ReleaseSpace: cp-umodsys-umodsysc-Linux_x86_64-ReleaseSpace
-tp-umodsys-umodsysc-Linux_x86_64-ReleaseSpace:  tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace tp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace tp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace
-cp-umodsys-umodsysc-Linux_x86_64-ReleaseSpace:  cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace cp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace cp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace
+tp-umodsys-umodsysc-Linux_x86_64-ReleaseSpace:  tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace tp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace tp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace
+cp-umodsys-umodsysc-Linux_x86_64-ReleaseSpace:  cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseSpace cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseSpace cp-umodsys-plugin_test1-Linux_x86_64-ReleaseSpace cp-umodsys-plugin_test2-Linux_x86_64-ReleaseSpace
+target-ReleaseSpace: tp-umodsys-umodsysc-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys-umodsysc-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys__umodsysc__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys__umodsysc__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys__umodsysc__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/umodsysc
 CXXFLAGS__umodsys__umodsysc__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../src/basesys
 CFLAGS__umodsys__umodsysc__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../src/basesys
-LDFLAGS__umodsys__umodsysc__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsysc__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/umodsys_lib_libui.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/umodsys_lib_libmedia.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/umodsys_lib_basesys.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/umodsys_lib_base.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/umodsys_lib_core.Linux_x86_64.ReleaseSpace.a $(bin__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/plugin_test1.Linux_x86_64.ReleaseSpace.so $(bin__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/plugin_test2.Linux_x86_64.ReleaseSpace.so 
+LDFLAGS__umodsys__umodsysc__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/umodsys_lib_libui.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/umodsys_lib_libmedia.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/umodsys_lib_basesys.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/umodsys_lib_base.Linux_x86_64.ReleaseSpace.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/umodsys_lib_core.Linux_x86_64.ReleaseSpace.a $(bin__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/plugin_test1.Linux_x86_64.ReleaseSpace.so $(bin__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/plugin_test2.Linux_x86_64.ReleaseSpace.so 
 
 # console binary at ../../bin/Linux_x86_64.ReleaseSpace/umodsysc.Linux_x86_64.ReleaseSpace
-target__umodsys__umodsysc__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace/umodsysc.Linux_x86_64.ReleaseSpace
-tp-umodsys-umodsysc-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys__umodsysc__Linux_x86_64__ReleaseSpace) \
-  $(bin__umodsys__umodsysc__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)
+target__umodsys__umodsysc__Linux_x86_64__ReleaseSpace = ../../bin/Linux_x86_64.ReleaseSpace/umodsysc.Linux_x86_64.ReleaseSpace
+tp-umodsys-umodsysc-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys__umodsysc__Linux_x86_64__ReleaseSpace) $(bin__umodsys__umodsysc__Linux_x86_64__ReleaseSpace) $(target__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)
 cp-umodsys-umodsysc-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/*
@@ -3934,29 +4174,29 @@ $(tmpx__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/umodsys.c_main.o: ../../s
 $(target__umodsys__umodsysc__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys__umodsysc__Linux_x86_64__ReleaseSpace)/umodsys.c_main.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=binary
+#-------------------------------- /project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=console
 
-#-------------------------------- project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=binary:
+#-------------------------------- project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=console:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys-umodsysc-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys-umodsysc-Linux_x86_64-ReleaseStatic
 tg-umodsys-Linux_x86_64-ReleaseStatic: tp-umodsys-umodsysc-Linux_x86_64-ReleaseStatic
 cg-umodsys-Linux_x86_64-ReleaseStatic: cp-umodsys-umodsysc-Linux_x86_64-ReleaseStatic
-tp-umodsys-umodsysc-Linux_x86_64-ReleaseStatic:  tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic tp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic tp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic
-cp-umodsys-umodsysc-Linux_x86_64-ReleaseStatic:  cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic cp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic cp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic
+tp-umodsys-umodsysc-Linux_x86_64-ReleaseStatic:  tp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic tp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic tp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic tp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic
+cp-umodsys-umodsysc-Linux_x86_64-ReleaseStatic:  cp-umodsys-umodsys_lib_libui-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_libmedia-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_basesys-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_base-Linux_x86_64-ReleaseStatic cp-umodsys-umodsys_lib_core-Linux_x86_64-ReleaseStatic cp-umodsys-plugin_test1-Linux_x86_64-ReleaseStatic cp-umodsys-plugin_test2-Linux_x86_64-ReleaseStatic
+target-ReleaseStatic: tp-umodsys-umodsysc-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys-umodsysc-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys__umodsysc__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys__umodsysc__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys__umodsysc__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/umodsysc
 CXXFLAGS__umodsys__umodsysc__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../src/basesys
 CFLAGS__umodsys__umodsysc__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../src/basesys
-LDFLAGS__umodsys__umodsysc__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys__umodsysc__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/umodsys_lib_libui.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/umodsys_lib_libmedia.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/umodsys_lib_basesys.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/umodsys_lib_base.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/umodsys_lib_core.Linux_x86_64.ReleaseStatic.a $(bin__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/plugin_test1.Linux_x86_64.ReleaseStatic.so $(bin__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/plugin_test2.Linux_x86_64.ReleaseStatic.so 
+LDFLAGS__umodsys__umodsysc__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/umodsys_lib_libui.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/umodsys_lib_libmedia.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/umodsys_lib_basesys.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/umodsys_lib_base.Linux_x86_64.ReleaseStatic.a $(tmp__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/umodsys_lib_core.Linux_x86_64.ReleaseStatic.a $(bin__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/plugin_test1.Linux_x86_64.ReleaseStatic.so $(bin__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/plugin_test2.Linux_x86_64.ReleaseStatic.so 
 
 # console binary at ../../bin/Linux_x86_64.ReleaseStatic/umodsysc.Linux_x86_64.ReleaseStatic
-target__umodsys__umodsysc__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic/umodsysc.Linux_x86_64.ReleaseStatic
-tp-umodsys-umodsysc-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys__umodsysc__Linux_x86_64__ReleaseStatic) \
-  $(bin__umodsys__umodsysc__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)
+target__umodsys__umodsysc__Linux_x86_64__ReleaseStatic = ../../bin/Linux_x86_64.ReleaseStatic/umodsysc.Linux_x86_64.ReleaseStatic
+tp-umodsys-umodsysc-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys__umodsysc__Linux_x86_64__ReleaseStatic) $(bin__umodsys__umodsysc__Linux_x86_64__ReleaseStatic) $(target__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)
 cp-umodsys-umodsysc-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/*
@@ -3973,7 +4213,7 @@ $(tmpx__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/umodsys.c_main.o: ../../
 $(target__umodsys__umodsysc__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys__umodsysc__Linux_x86_64__ReleaseStatic)/umodsys.c_main.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=binary
+#-------------------------------- /project 'umodsys'.'umodsysc' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=console
 
 #-------------------------------- epilog 'umodsys'.'umodsysc'
 #---------------------------------------------------------------- END project 'umodsys'.'umodsysc' 
@@ -3995,13 +4235,16 @@ tg-umodsys_Depends-Linux_x86_64-Debug: tp-umodsys_Depends-all-Linux_x86_64-Debug
 cg-umodsys_Depends-Linux_x86_64-Debug: cp-umodsys_Depends-all-Linux_x86_64-Debug
 tp-umodsys_Depends-all-Linux_x86_64-Debug:  tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Debug tp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug tp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug tp-umodsys_Depends-lib_libgd-Linux_x86_64-Debug tp-umodsys_Depends-lib_freetype-Linux_x86_64-Debug tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Debug tp-umodsys_Depends-lib_squirrel-Linux_x86_64-Debug tp-umodsys_Depends-lib_lua-Linux_x86_64-Debug tp-umodsys_Depends-lib_luajit-Linux_x86_64-Debug tp-umodsys_Depends-lib_angelscript-Linux_x86_64-Debug tp-umodsys_Depends-lib_tinyc-Linux_x86_64-Debug tp-umodsys_Depends-lib_lightning-Linux_x86_64-Debug tp-umodsys_Depends-lib_bullet-Linux_x86_64-Debug
 cp-umodsys_Depends-all-Linux_x86_64-Debug:  cp-umodsys_Depends-lib_SDL2-Linux_x86_64-Debug cp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug cp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug cp-umodsys_Depends-lib_libgd-Linux_x86_64-Debug cp-umodsys_Depends-lib_freetype-Linux_x86_64-Debug cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Debug cp-umodsys_Depends-lib_squirrel-Linux_x86_64-Debug cp-umodsys_Depends-lib_lua-Linux_x86_64-Debug cp-umodsys_Depends-lib_luajit-Linux_x86_64-Debug cp-umodsys_Depends-lib_angelscript-Linux_x86_64-Debug cp-umodsys_Depends-lib_tinyc-Linux_x86_64-Debug cp-umodsys_Depends-lib_lightning-Linux_x86_64-Debug cp-umodsys_Depends-lib_bullet-Linux_x86_64-Debug
+target-Debug: tp-umodsys_Depends-all-Linux_x86_64-Debug
+clean-Debug: cp-umodsys_Depends-all-Linux_x86_64-Debug
 
 tmp__umodsys_Depends__all__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys_Depends__all__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys_Depends__all__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/all
 CXXFLAGS__umodsys_Depends__all__Linux_x86_64__Debug=-fPIC $(CXXFLAGS)
 CFLAGS__umodsys_Depends__all__Linux_x86_64__Debug=-fPIC $(CFLAGS)
-LDFLAGS__umodsys_Depends__all__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__all__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_SDL2.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_zlib.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_libpng.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_jpeglib.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_libgd.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_freetype.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_sqlite3.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_squirrel.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_lua.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_luajit.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_angelscript.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_tinyc.Linux_x86_64.Debug.so $(tmp__umodsys_Depends__all__Linux_x86_64__Debug)/lib_bullet.Linux_x86_64.Debug.a 
+LDFLAGS__umodsys_Depends__all__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_SDL2.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_zlib.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_libpng.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_jpeglib.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_libgd.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_freetype.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_sqlite3.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_squirrel.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_lua.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_luajit.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_angelscript.Linux_x86_64.Debug.so $(bin__umodsys_Depends__all__Linux_x86_64__Debug)/lib_tinyc.Linux_x86_64.Debug.so $(tmp__umodsys_Depends__all__Linux_x86_64__Debug)/lib_bullet.Linux_x86_64.Debug.a 
 
 # dummy project
 target__umodsys_Depends__all__Linux_x86_64__Debug=
@@ -4016,13 +4259,16 @@ tg-umodsys_Depends-Linux_x86_64-Release: tp-umodsys_Depends-all-Linux_x86_64-Rel
 cg-umodsys_Depends-Linux_x86_64-Release: cp-umodsys_Depends-all-Linux_x86_64-Release
 tp-umodsys_Depends-all-Linux_x86_64-Release:  tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Release tp-umodsys_Depends-lib_zlib-Linux_x86_64-Release tp-umodsys_Depends-lib_libpng-Linux_x86_64-Release tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release tp-umodsys_Depends-lib_libgd-Linux_x86_64-Release tp-umodsys_Depends-lib_freetype-Linux_x86_64-Release tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Release tp-umodsys_Depends-lib_squirrel-Linux_x86_64-Release tp-umodsys_Depends-lib_lua-Linux_x86_64-Release tp-umodsys_Depends-lib_luajit-Linux_x86_64-Release tp-umodsys_Depends-lib_angelscript-Linux_x86_64-Release tp-umodsys_Depends-lib_tinyc-Linux_x86_64-Release tp-umodsys_Depends-lib_lightning-Linux_x86_64-Release tp-umodsys_Depends-lib_bullet-Linux_x86_64-Release
 cp-umodsys_Depends-all-Linux_x86_64-Release:  cp-umodsys_Depends-lib_SDL2-Linux_x86_64-Release cp-umodsys_Depends-lib_zlib-Linux_x86_64-Release cp-umodsys_Depends-lib_libpng-Linux_x86_64-Release cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release cp-umodsys_Depends-lib_libgd-Linux_x86_64-Release cp-umodsys_Depends-lib_freetype-Linux_x86_64-Release cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Release cp-umodsys_Depends-lib_squirrel-Linux_x86_64-Release cp-umodsys_Depends-lib_lua-Linux_x86_64-Release cp-umodsys_Depends-lib_luajit-Linux_x86_64-Release cp-umodsys_Depends-lib_angelscript-Linux_x86_64-Release cp-umodsys_Depends-lib_tinyc-Linux_x86_64-Release cp-umodsys_Depends-lib_lightning-Linux_x86_64-Release cp-umodsys_Depends-lib_bullet-Linux_x86_64-Release
+target-Release: tp-umodsys_Depends-all-Linux_x86_64-Release
+clean-Release: cp-umodsys_Depends-all-Linux_x86_64-Release
 
 tmp__umodsys_Depends__all__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys_Depends__all__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys_Depends__all__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/all
 CXXFLAGS__umodsys_Depends__all__Linux_x86_64__Release=-fPIC $(CXXFLAGS)
 CFLAGS__umodsys_Depends__all__Linux_x86_64__Release=-fPIC $(CFLAGS)
-LDFLAGS__umodsys_Depends__all__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__all__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_SDL2.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_zlib.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_libpng.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_jpeglib.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_libgd.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_freetype.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_sqlite3.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_squirrel.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_lua.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_luajit.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_angelscript.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_tinyc.Linux_x86_64.Release.so $(tmp__umodsys_Depends__all__Linux_x86_64__Release)/lib_bullet.Linux_x86_64.Release.a 
+LDFLAGS__umodsys_Depends__all__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_SDL2.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_zlib.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_libpng.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_jpeglib.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_libgd.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_freetype.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_sqlite3.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_squirrel.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_lua.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_luajit.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_angelscript.Linux_x86_64.Release.so $(bin__umodsys_Depends__all__Linux_x86_64__Release)/lib_tinyc.Linux_x86_64.Release.so $(tmp__umodsys_Depends__all__Linux_x86_64__Release)/lib_bullet.Linux_x86_64.Release.a 
 
 # dummy project
 target__umodsys_Depends__all__Linux_x86_64__Release=
@@ -4037,13 +4283,16 @@ tg-umodsys_Depends-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-all-Linux_x86_6
 cg-umodsys_Depends-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-all-Linux_x86_64-ReleaseSpace
 tp-umodsys_Depends-all-Linux_x86_64-ReleaseSpace:  tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_lightning-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseSpace
 cp-umodsys_Depends-all-Linux_x86_64-ReleaseSpace:  cp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_lightning-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseSpace
+target-ReleaseSpace: tp-umodsys_Depends-all-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys_Depends-all-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys_Depends__all__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys_Depends__all__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/all
 CXXFLAGS__umodsys_Depends__all__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS)
 CFLAGS__umodsys_Depends__all__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS)
-LDFLAGS__umodsys_Depends__all__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__all__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_SDL2.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_zlib.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_libpng.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_jpeglib.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_libgd.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_freetype.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_sqlite3.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_squirrel.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_lua.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_luajit.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_angelscript.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_tinyc.Linux_x86_64.ReleaseSpace.so $(tmp__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_bullet.Linux_x86_64.ReleaseSpace.a 
+LDFLAGS__umodsys_Depends__all__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_SDL2.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_zlib.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_libpng.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_jpeglib.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_libgd.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_freetype.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_sqlite3.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_squirrel.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_lua.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_luajit.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_angelscript.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_tinyc.Linux_x86_64.ReleaseSpace.so $(tmp__umodsys_Depends__all__Linux_x86_64__ReleaseSpace)/lib_bullet.Linux_x86_64.ReleaseSpace.a 
 
 # dummy project
 target__umodsys_Depends__all__Linux_x86_64__ReleaseSpace=
@@ -4058,13 +4307,16 @@ tg-umodsys_Depends-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-all-Linux_x86_
 cg-umodsys_Depends-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-all-Linux_x86_64-ReleaseStatic
 tp-umodsys_Depends-all-Linux_x86_64-ReleaseStatic:  tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_lightning-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseStatic
 cp-umodsys_Depends-all-Linux_x86_64-ReleaseStatic:  cp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_lightning-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseStatic
+target-ReleaseStatic: tp-umodsys_Depends-all-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys_Depends-all-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys_Depends__all__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys_Depends__all__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/all
 CXXFLAGS__umodsys_Depends__all__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS)
 CFLAGS__umodsys_Depends__all__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS)
-LDFLAGS__umodsys_Depends__all__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__all__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_SDL2.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_zlib.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_libpng.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_jpeglib.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_libgd.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_freetype.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_sqlite3.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_squirrel.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_lua.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_luajit.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_angelscript.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_tinyc.Linux_x86_64.ReleaseStatic.so $(tmp__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_bullet.Linux_x86_64.ReleaseStatic.a 
+LDFLAGS__umodsys_Depends__all__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_SDL2.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_zlib.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_libpng.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_jpeglib.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_libgd.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_freetype.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_sqlite3.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_squirrel.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_lua.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_luajit.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_angelscript.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_tinyc.Linux_x86_64.ReleaseStatic.so $(tmp__umodsys_Depends__all__Linux_x86_64__ReleaseStatic)/lib_bullet.Linux_x86_64.ReleaseStatic.a 
 
 # dummy project
 target__umodsys_Depends__all__Linux_x86_64__ReleaseStatic=
@@ -4080,27 +4332,27 @@ target__umodsys_Depends__all__Linux_x86_64__ReleaseStatic=
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib:
 target-Linux_x86_64-Debug: tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys_Depends-lib_SDL2-Linux_x86_64-Debug
 tg-umodsys_Depends-Linux_x86_64-Debug: tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Debug
 cg-umodsys_Depends-Linux_x86_64-Debug: cp-umodsys_Depends-lib_SDL2-Linux_x86_64-Debug
 tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Debug:  tp-umodsys_Depends-lib_freetype-Linux_x86_64-Debug
 cp-umodsys_Depends-lib_SDL2-Linux_x86_64-Debug:  cp-umodsys_Depends-lib_freetype-Linux_x86_64-Debug
+target-Debug: tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Debug
+clean-Debug: cp-umodsys_Depends-lib_SDL2-Linux_x86_64-Debug
 
 tmp__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/lib_SDL2
-CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include
-CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include
-LDFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include -I../../patch/SDL2/linux -DHAVE_LIBC
+CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include -I../../patch/SDL2/linux -DHAVE_LIBC
+#LDFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/lib_freetype.Linux_x86_64.Debug.so 
+LDFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/lib_freetype.Linux_x86_64.Debug.so 
 
 # so library at ../../bin/Linux_x86_64.Debug/lib_SDL2.Linux_x86_64.Debug.so
 target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug/lib_SDL2.Linux_x86_64.Debug.so
-tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Debug: \
-  $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) \
-  $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) \
-  $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)
+tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Debug: $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)
 cp-umodsys_Depends-lib_SDL2-Linux_x86_64-Debug:
 	-rm $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/*
@@ -4127,7 +4379,6 @@ $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depen
 # file include : ../../depends/SDL2/include/SDL_bits.h
 # file include : ../../depends/SDL2/include/SDL_blendmode.h
 # file include : ../../depends/SDL2/include/SDL_clipboard.h
-# file include : ../../depends/SDL2/include/SDL_config.h
 # file include : ../../depends/SDL2/include/SDL_config_android.h
 # file include : ../../depends/SDL2/include/SDL_config_iphoneos.h
 # file include : ../../depends/SDL2/include/SDL_config_macosx.h
@@ -4705,30 +4956,489 @@ $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depen
 # file src : ../../depends/SDL2/src/SDL_assert_c.h
 # file src : ../../depends/SDL2/src/SDL_error_c.h
 # end file group src .
+# file group src-linux :
+# file group audio :
+# file audio : ../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_alsa_audio.o: ../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_alsa_audio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_alsa_audio.o
+# file audio : ../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.h
+# file audio : ../../depends/SDL2/src/audio/disk/SDL_diskaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_diskaudio.o: ../../depends/SDL2/src/audio/disk/SDL_diskaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_diskaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_diskaudio.o
+# file audio : ../../depends/SDL2/src/audio/disk/SDL_diskaudio.h
+# file audio : ../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_dummyaudio.o: ../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_dummyaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_dummyaudio.o
+# file audio : ../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.h
+# file audio : ../../depends/SDL2/src/audio/paudio/SDL_paudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_paudio.o: ../../depends/SDL2/src/audio/paudio/SDL_paudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_paudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_paudio.o
+# file audio : ../../depends/SDL2/src/audio/paudio/SDL_paudio.h
+# file audio : ../../depends/SDL2/src/audio/dsp/SDL_dspaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_dspaudio.o: ../../depends/SDL2/src/audio/dsp/SDL_dspaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_dspaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_dspaudio.o
+# file audio : ../../depends/SDL2/src/audio/dsp/SDL_dspaudio.h
+# file audio : ../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_pulseaudio.o: ../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_pulseaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_pulseaudio.o
+# file audio : ../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.h
+# end file group audio .
+# file group core :
+# file core : ../../depends/SDL2/src/core/linux/SDL_udev.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_udev.o: ../../depends/SDL2/src/core/linux/SDL_udev.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_udev.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_udev.o
+# file core : ../../depends/SDL2/src/core/linux/SDL_udev.h
+# end file group core .
+# file group filesystem :
+# file filesystem : ../../depends/SDL2/src/filesystem/unix/SDL_sysfilesystem.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_sysfilesystem.o: ../../depends/SDL2/src/filesystem/unix/SDL_sysfilesystem.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_sysfilesystem.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_sysfilesystem.o
+# end file group filesystem .
+# file group haptic :
+# file haptic : ../../depends/SDL2/src/haptic/linux/SDL_syshaptic.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_syshaptic.o: ../../depends/SDL2/src/haptic/linux/SDL_syshaptic.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_syshaptic.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_syshaptic.o
+# end file group haptic .
+# file group joystick :
+# file joystick : ../../depends/SDL2/src/joystick/linux/SDL_sysjoystick.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_sysjoystick.o: ../../depends/SDL2/src/joystick/linux/SDL_sysjoystick.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_sysjoystick.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_sysjoystick.o
+# file joystick : ../../depends/SDL2/src/joystick/linux/SDL_sysjoystick_c.h
+# end file group joystick .
+# file group loadso :
+# file loadso : ../../depends/SDL2/src/loadso/dlopen/SDL_sysloadso.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_sysloadso.o: ../../depends/SDL2/src/loadso/dlopen/SDL_sysloadso.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_sysloadso.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_sysloadso.o
+# end file group loadso .
+# file group power :
+# file power : ../../depends/SDL2/src/power/linux/SDL_syspower.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_syspower.o: ../../depends/SDL2/src/power/linux/SDL_syspower.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_syspower.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_syspower.o
+# end file group power .
+# file group render :
+# file render : ../../depends/SDL2/src/render/opengl/SDL_render_gl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_render_gl.o: ../../depends/SDL2/src/render/opengl/SDL_render_gl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_render_gl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_render_gl.o
+# file render : ../../depends/SDL2/src/render/opengl/SDL_shaders_gl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_shaders_gl.o: ../../depends/SDL2/src/render/opengl/SDL_shaders_gl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_shaders_gl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_shaders_gl.o
+# file render : ../../depends/SDL2/src/render/opengl/SDL_glfuncs.h
+# file render : ../../depends/SDL2/src/render/opengl/SDL_shaders_gl.h
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_render_gles2.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_render_gles2.o: ../../depends/SDL2/src/render/opengles2/SDL_render_gles2.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_render_gles2.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_render_gles2.o
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_shaders_gles2.o: ../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_shaders_gles2.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_shaders_gles2.o
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_gles2funcs.h
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.h
+# file render : ../../depends/SDL2/src/render/software/SDL_blendfillrect.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_blendfillrect.o: ../../depends/SDL2/src/render/software/SDL_blendfillrect.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_blendfillrect.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_blendfillrect.o
+# file render : ../../depends/SDL2/src/render/software/SDL_blendline.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_blendline.o: ../../depends/SDL2/src/render/software/SDL_blendline.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_blendline.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_blendline.o
+# file render : ../../depends/SDL2/src/render/software/SDL_blendpoint.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_blendpoint.o: ../../depends/SDL2/src/render/software/SDL_blendpoint.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_blendpoint.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_blendpoint.o
+# file render : ../../depends/SDL2/src/render/software/SDL_drawline.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_drawline.o: ../../depends/SDL2/src/render/software/SDL_drawline.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_drawline.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_drawline.o
+# file render : ../../depends/SDL2/src/render/software/SDL_drawpoint.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_drawpoint.o: ../../depends/SDL2/src/render/software/SDL_drawpoint.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_drawpoint.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_drawpoint.o
+# file render : ../../depends/SDL2/src/render/software/SDL_render_sw.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_render_sw.o: ../../depends/SDL2/src/render/software/SDL_render_sw.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_render_sw.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_render_sw.o
+# file render : ../../depends/SDL2/src/render/software/SDL_rotate.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_rotate.o: ../../depends/SDL2/src/render/software/SDL_rotate.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_rotate.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_rotate.o
+# file render : ../../depends/SDL2/src/render/software/SDL_blendfillrect.h
+# file render : ../../depends/SDL2/src/render/software/SDL_blendline.h
+# file render : ../../depends/SDL2/src/render/software/SDL_blendpoint.h
+# file render : ../../depends/SDL2/src/render/software/SDL_draw.h
+# file render : ../../depends/SDL2/src/render/software/SDL_drawline.h
+# file render : ../../depends/SDL2/src/render/software/SDL_drawpoint.h
+# file render : ../../depends/SDL2/src/render/software/SDL_render_sw_c.h
+# file render : ../../depends/SDL2/src/render/software/SDL_rotate.h
+# end file group render .
+# file group thread :
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_syscond.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_syscond.o: ../../depends/SDL2/src/thread/generic/SDL_syscond.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_syscond.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_syscond.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_sysmutex.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_sysmutex.o: ../../depends/SDL2/src/thread/generic/SDL_sysmutex.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_sysmutex.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_sysmutex.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_syssem.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_syssem.o: ../../depends/SDL2/src/thread/generic/SDL_syssem.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_syssem.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_syssem.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_systhread.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_systhread.o: ../../depends/SDL2/src/thread/generic/SDL_systhread.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_systhread.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_systhread.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_systls.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_systls.o: ../../depends/SDL2/src/thread/generic/SDL_systls.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_systls.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_systls.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_sysmutex_c.h
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_systhread_c.h
+# end file group thread .
+# file group timer :
+# file timer : ../../depends/SDL2/src/timer/unix/SDL_systimer.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_systimer.o: ../../depends/SDL2/src/timer/unix/SDL_systimer.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_systimer.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_systimer.o
+# end file group timer .
+# file group video :
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullevents.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_nullevents.o: ../../depends/SDL2/src/video/dummy/SDL_nullevents.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_nullevents.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_nullevents.o
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullframebuffer.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_nullframebuffer.o: ../../depends/SDL2/src/video/dummy/SDL_nullframebuffer.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_nullframebuffer.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_nullframebuffer.o
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullvideo.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_nullvideo.o: ../../depends/SDL2/src/video/dummy/SDL_nullvideo.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_nullvideo.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_nullvideo.o
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullevents_c.h
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullframebuffer_c.h
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullvideo.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_dyn.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_dyn.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_dyn.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_events.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_events.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_events.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_modes.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_modes.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_modes.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_mouse.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_mouse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_mouse.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_opengl.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_opengl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_opengl.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_render.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_render.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_render.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_shape.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_shape.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_shape.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_video.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_video.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_video.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_window.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_window.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_window.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_WM.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_WM.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_DirectFB_WM.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpievents.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_rpievents.o: ../../depends/SDL2/src/video/raspberry/SDL_rpievents.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_rpievents.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_rpievents.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpimouse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_rpimouse.o: ../../depends/SDL2/src/video/raspberry/SDL_rpimouse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_rpimouse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_rpimouse.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_rpiopengles.o: ../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_rpiopengles.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_rpiopengles.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpivideo.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_rpivideo.o: ../../depends/SDL2/src/video/raspberry/SDL_rpivideo.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_rpivideo.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_rpivideo.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpievents_c.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpimouse.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpivideo.h
+# file video : ../../depends/SDL2/src/video/x11/edid-parse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/edid-parse.o: ../../depends/SDL2/src/video/x11/edid-parse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/edid-parse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/edid-parse.o
+# file video : ../../depends/SDL2/src/video/x11/imKStoUCS.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/imKStoUCS.o: ../../depends/SDL2/src/video/x11/imKStoUCS.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/imKStoUCS.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/imKStoUCS.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11clipboard.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11clipboard.o: ../../depends/SDL2/src/video/x11/SDL_x11clipboard.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11clipboard.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11clipboard.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11dyn.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11dyn.o: ../../depends/SDL2/src/video/x11/SDL_x11dyn.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11dyn.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11dyn.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11events.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11events.o: ../../depends/SDL2/src/video/x11/SDL_x11events.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11events.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11events.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11framebuffer.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11framebuffer.o: ../../depends/SDL2/src/video/x11/SDL_x11framebuffer.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11framebuffer.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11framebuffer.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11keyboard.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11keyboard.o: ../../depends/SDL2/src/video/x11/SDL_x11keyboard.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11keyboard.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11keyboard.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11messagebox.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11messagebox.o: ../../depends/SDL2/src/video/x11/SDL_x11messagebox.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11messagebox.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11messagebox.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11modes.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11modes.o: ../../depends/SDL2/src/video/x11/SDL_x11modes.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11modes.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11modes.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11mouse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11mouse.o: ../../depends/SDL2/src/video/x11/SDL_x11mouse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11mouse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11mouse.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11opengl.o: ../../depends/SDL2/src/video/x11/SDL_x11opengl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11opengl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11opengl.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengles.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11opengles.o: ../../depends/SDL2/src/video/x11/SDL_x11opengles.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11opengles.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11opengles.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11shape.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11shape.o: ../../depends/SDL2/src/video/x11/SDL_x11shape.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11shape.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11shape.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11touch.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11touch.o: ../../depends/SDL2/src/video/x11/SDL_x11touch.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11touch.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11touch.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11video.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11video.o: ../../depends/SDL2/src/video/x11/SDL_x11video.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11video.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11video.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11window.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11window.o: ../../depends/SDL2/src/video/x11/SDL_x11window.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11window.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11window.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11xinput2.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11xinput2.o: ../../depends/SDL2/src/video/x11/SDL_x11xinput2.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11xinput2.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Debug)/SDL_x11xinput2.o
+# file video : ../../depends/SDL2/src/video/x11/edid.h
+# file video : ../../depends/SDL2/src/video/x11/imKStoUCS.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11clipboard.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11dyn.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11events.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11framebuffer.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11keyboard.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11messagebox.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11modes.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11mouse.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengl.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengles.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11shape.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11sym.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11touch.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11video.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11window.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11xinput2.h
+# end file group video .
+# end file group src-linux .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
 target-Linux_x86_64-Release: tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys_Depends-lib_SDL2-Linux_x86_64-Release
 tg-umodsys_Depends-Linux_x86_64-Release: tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Release
 cg-umodsys_Depends-Linux_x86_64-Release: cp-umodsys_Depends-lib_SDL2-Linux_x86_64-Release
 tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Release:  tp-umodsys_Depends-lib_freetype-Linux_x86_64-Release
 cp-umodsys_Depends-lib_SDL2-Linux_x86_64-Release:  cp-umodsys_Depends-lib_freetype-Linux_x86_64-Release
+target-Release: tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Release
+clean-Release: cp-umodsys_Depends-lib_SDL2-Linux_x86_64-Release
 
 tmp__umodsys_Depends__lib_SDL2__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys_Depends__lib_SDL2__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/lib_SDL2
-CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include
-CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include
-LDFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include -I../../patch/SDL2/linux -DHAVE_LIBC
+CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include -I../../patch/SDL2/linux -DHAVE_LIBC
+#LDFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/lib_freetype.Linux_x86_64.Release.so 
+LDFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/lib_freetype.Linux_x86_64.Release.so 
 
 # so library at ../../bin/Linux_x86_64.Release/lib_SDL2.Linux_x86_64.Release.so
 target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release=../../bin/Linux_x86_64.Release/lib_SDL2.Linux_x86_64.Release.so
-tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Release: \
-  $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) \
-  $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) \
-  $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)
+tp-umodsys_Depends-lib_SDL2-Linux_x86_64-Release: $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)
 cp-umodsys_Depends-lib_SDL2-Linux_x86_64-Release:
 	-rm $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/*
@@ -4755,7 +5465,6 @@ $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Dep
 # file include : ../../depends/SDL2/include/SDL_bits.h
 # file include : ../../depends/SDL2/include/SDL_blendmode.h
 # file include : ../../depends/SDL2/include/SDL_clipboard.h
-# file include : ../../depends/SDL2/include/SDL_config.h
 # file include : ../../depends/SDL2/include/SDL_config_android.h
 # file include : ../../depends/SDL2/include/SDL_config_iphoneos.h
 # file include : ../../depends/SDL2/include/SDL_config_macosx.h
@@ -5333,30 +6042,489 @@ $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Dep
 # file src : ../../depends/SDL2/src/SDL_assert_c.h
 # file src : ../../depends/SDL2/src/SDL_error_c.h
 # end file group src .
+# file group src-linux :
+# file group audio :
+# file audio : ../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_alsa_audio.o: ../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_alsa_audio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_alsa_audio.o
+# file audio : ../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.h
+# file audio : ../../depends/SDL2/src/audio/disk/SDL_diskaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_diskaudio.o: ../../depends/SDL2/src/audio/disk/SDL_diskaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_diskaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_diskaudio.o
+# file audio : ../../depends/SDL2/src/audio/disk/SDL_diskaudio.h
+# file audio : ../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_dummyaudio.o: ../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_dummyaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_dummyaudio.o
+# file audio : ../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.h
+# file audio : ../../depends/SDL2/src/audio/paudio/SDL_paudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_paudio.o: ../../depends/SDL2/src/audio/paudio/SDL_paudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_paudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_paudio.o
+# file audio : ../../depends/SDL2/src/audio/paudio/SDL_paudio.h
+# file audio : ../../depends/SDL2/src/audio/dsp/SDL_dspaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_dspaudio.o: ../../depends/SDL2/src/audio/dsp/SDL_dspaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_dspaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_dspaudio.o
+# file audio : ../../depends/SDL2/src/audio/dsp/SDL_dspaudio.h
+# file audio : ../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_pulseaudio.o: ../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_pulseaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_pulseaudio.o
+# file audio : ../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.h
+# end file group audio .
+# file group core :
+# file core : ../../depends/SDL2/src/core/linux/SDL_udev.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_udev.o: ../../depends/SDL2/src/core/linux/SDL_udev.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_udev.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_udev.o
+# file core : ../../depends/SDL2/src/core/linux/SDL_udev.h
+# end file group core .
+# file group filesystem :
+# file filesystem : ../../depends/SDL2/src/filesystem/unix/SDL_sysfilesystem.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_sysfilesystem.o: ../../depends/SDL2/src/filesystem/unix/SDL_sysfilesystem.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_sysfilesystem.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_sysfilesystem.o
+# end file group filesystem .
+# file group haptic :
+# file haptic : ../../depends/SDL2/src/haptic/linux/SDL_syshaptic.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_syshaptic.o: ../../depends/SDL2/src/haptic/linux/SDL_syshaptic.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_syshaptic.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_syshaptic.o
+# end file group haptic .
+# file group joystick :
+# file joystick : ../../depends/SDL2/src/joystick/linux/SDL_sysjoystick.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_sysjoystick.o: ../../depends/SDL2/src/joystick/linux/SDL_sysjoystick.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_sysjoystick.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_sysjoystick.o
+# file joystick : ../../depends/SDL2/src/joystick/linux/SDL_sysjoystick_c.h
+# end file group joystick .
+# file group loadso :
+# file loadso : ../../depends/SDL2/src/loadso/dlopen/SDL_sysloadso.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_sysloadso.o: ../../depends/SDL2/src/loadso/dlopen/SDL_sysloadso.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_sysloadso.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_sysloadso.o
+# end file group loadso .
+# file group power :
+# file power : ../../depends/SDL2/src/power/linux/SDL_syspower.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_syspower.o: ../../depends/SDL2/src/power/linux/SDL_syspower.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_syspower.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_syspower.o
+# end file group power .
+# file group render :
+# file render : ../../depends/SDL2/src/render/opengl/SDL_render_gl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_render_gl.o: ../../depends/SDL2/src/render/opengl/SDL_render_gl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_render_gl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_render_gl.o
+# file render : ../../depends/SDL2/src/render/opengl/SDL_shaders_gl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_shaders_gl.o: ../../depends/SDL2/src/render/opengl/SDL_shaders_gl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_shaders_gl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_shaders_gl.o
+# file render : ../../depends/SDL2/src/render/opengl/SDL_glfuncs.h
+# file render : ../../depends/SDL2/src/render/opengl/SDL_shaders_gl.h
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_render_gles2.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_render_gles2.o: ../../depends/SDL2/src/render/opengles2/SDL_render_gles2.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_render_gles2.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_render_gles2.o
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_shaders_gles2.o: ../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_shaders_gles2.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_shaders_gles2.o
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_gles2funcs.h
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.h
+# file render : ../../depends/SDL2/src/render/software/SDL_blendfillrect.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_blendfillrect.o: ../../depends/SDL2/src/render/software/SDL_blendfillrect.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_blendfillrect.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_blendfillrect.o
+# file render : ../../depends/SDL2/src/render/software/SDL_blendline.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_blendline.o: ../../depends/SDL2/src/render/software/SDL_blendline.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_blendline.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_blendline.o
+# file render : ../../depends/SDL2/src/render/software/SDL_blendpoint.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_blendpoint.o: ../../depends/SDL2/src/render/software/SDL_blendpoint.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_blendpoint.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_blendpoint.o
+# file render : ../../depends/SDL2/src/render/software/SDL_drawline.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_drawline.o: ../../depends/SDL2/src/render/software/SDL_drawline.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_drawline.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_drawline.o
+# file render : ../../depends/SDL2/src/render/software/SDL_drawpoint.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_drawpoint.o: ../../depends/SDL2/src/render/software/SDL_drawpoint.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_drawpoint.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_drawpoint.o
+# file render : ../../depends/SDL2/src/render/software/SDL_render_sw.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_render_sw.o: ../../depends/SDL2/src/render/software/SDL_render_sw.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_render_sw.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_render_sw.o
+# file render : ../../depends/SDL2/src/render/software/SDL_rotate.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_rotate.o: ../../depends/SDL2/src/render/software/SDL_rotate.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_rotate.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_rotate.o
+# file render : ../../depends/SDL2/src/render/software/SDL_blendfillrect.h
+# file render : ../../depends/SDL2/src/render/software/SDL_blendline.h
+# file render : ../../depends/SDL2/src/render/software/SDL_blendpoint.h
+# file render : ../../depends/SDL2/src/render/software/SDL_draw.h
+# file render : ../../depends/SDL2/src/render/software/SDL_drawline.h
+# file render : ../../depends/SDL2/src/render/software/SDL_drawpoint.h
+# file render : ../../depends/SDL2/src/render/software/SDL_render_sw_c.h
+# file render : ../../depends/SDL2/src/render/software/SDL_rotate.h
+# end file group render .
+# file group thread :
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_syscond.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_syscond.o: ../../depends/SDL2/src/thread/generic/SDL_syscond.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_syscond.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_syscond.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_sysmutex.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_sysmutex.o: ../../depends/SDL2/src/thread/generic/SDL_sysmutex.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_sysmutex.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_sysmutex.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_syssem.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_syssem.o: ../../depends/SDL2/src/thread/generic/SDL_syssem.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_syssem.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_syssem.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_systhread.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_systhread.o: ../../depends/SDL2/src/thread/generic/SDL_systhread.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_systhread.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_systhread.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_systls.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_systls.o: ../../depends/SDL2/src/thread/generic/SDL_systls.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_systls.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_systls.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_sysmutex_c.h
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_systhread_c.h
+# end file group thread .
+# file group timer :
+# file timer : ../../depends/SDL2/src/timer/unix/SDL_systimer.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_systimer.o: ../../depends/SDL2/src/timer/unix/SDL_systimer.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_systimer.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_systimer.o
+# end file group timer .
+# file group video :
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullevents.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_nullevents.o: ../../depends/SDL2/src/video/dummy/SDL_nullevents.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_nullevents.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_nullevents.o
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullframebuffer.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_nullframebuffer.o: ../../depends/SDL2/src/video/dummy/SDL_nullframebuffer.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_nullframebuffer.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_nullframebuffer.o
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullvideo.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_nullvideo.o: ../../depends/SDL2/src/video/dummy/SDL_nullvideo.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_nullvideo.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_nullvideo.o
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullevents_c.h
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullframebuffer_c.h
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullvideo.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_dyn.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_dyn.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_dyn.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_events.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_events.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_events.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_modes.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_modes.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_modes.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_mouse.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_mouse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_mouse.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_opengl.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_opengl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_opengl.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_render.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_render.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_render.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_shape.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_shape.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_shape.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_video.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_video.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_video.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_window.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_window.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_window.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_WM.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_WM.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_DirectFB_WM.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpievents.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_rpievents.o: ../../depends/SDL2/src/video/raspberry/SDL_rpievents.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_rpievents.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_rpievents.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpimouse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_rpimouse.o: ../../depends/SDL2/src/video/raspberry/SDL_rpimouse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_rpimouse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_rpimouse.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_rpiopengles.o: ../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_rpiopengles.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_rpiopengles.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpivideo.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_rpivideo.o: ../../depends/SDL2/src/video/raspberry/SDL_rpivideo.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_rpivideo.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_rpivideo.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpievents_c.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpimouse.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpivideo.h
+# file video : ../../depends/SDL2/src/video/x11/edid-parse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/edid-parse.o: ../../depends/SDL2/src/video/x11/edid-parse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/edid-parse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/edid-parse.o
+# file video : ../../depends/SDL2/src/video/x11/imKStoUCS.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/imKStoUCS.o: ../../depends/SDL2/src/video/x11/imKStoUCS.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/imKStoUCS.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/imKStoUCS.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11clipboard.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11clipboard.o: ../../depends/SDL2/src/video/x11/SDL_x11clipboard.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11clipboard.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11clipboard.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11dyn.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11dyn.o: ../../depends/SDL2/src/video/x11/SDL_x11dyn.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11dyn.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11dyn.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11events.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11events.o: ../../depends/SDL2/src/video/x11/SDL_x11events.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11events.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11events.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11framebuffer.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11framebuffer.o: ../../depends/SDL2/src/video/x11/SDL_x11framebuffer.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11framebuffer.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11framebuffer.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11keyboard.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11keyboard.o: ../../depends/SDL2/src/video/x11/SDL_x11keyboard.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11keyboard.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11keyboard.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11messagebox.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11messagebox.o: ../../depends/SDL2/src/video/x11/SDL_x11messagebox.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11messagebox.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11messagebox.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11modes.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11modes.o: ../../depends/SDL2/src/video/x11/SDL_x11modes.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11modes.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11modes.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11mouse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11mouse.o: ../../depends/SDL2/src/video/x11/SDL_x11mouse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11mouse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11mouse.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11opengl.o: ../../depends/SDL2/src/video/x11/SDL_x11opengl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11opengl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11opengl.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengles.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11opengles.o: ../../depends/SDL2/src/video/x11/SDL_x11opengles.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11opengles.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11opengles.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11shape.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11shape.o: ../../depends/SDL2/src/video/x11/SDL_x11shape.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11shape.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11shape.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11touch.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11touch.o: ../../depends/SDL2/src/video/x11/SDL_x11touch.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11touch.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11touch.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11video.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11video.o: ../../depends/SDL2/src/video/x11/SDL_x11video.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11video.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11video.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11window.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11window.o: ../../depends/SDL2/src/video/x11/SDL_x11window.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11window.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11window.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11xinput2.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11xinput2.o: ../../depends/SDL2/src/video/x11/SDL_x11xinput2.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11xinput2.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__Release)/SDL_x11xinput2.o
+# file video : ../../depends/SDL2/src/video/x11/edid.h
+# file video : ../../depends/SDL2/src/video/x11/imKStoUCS.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11clipboard.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11dyn.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11events.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11framebuffer.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11keyboard.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11messagebox.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11modes.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11mouse.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengl.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengles.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11shape.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11sym.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11touch.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11video.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11window.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11xinput2.h
+# end file group video .
+# end file group src-linux .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseSpace
 tg-umodsys_Depends-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseSpace
 cg-umodsys_Depends-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseSpace
 tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseSpace:  tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseSpace
 cp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseSpace:  cp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseSpace
+target-ReleaseSpace: tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/lib_SDL2
-CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include
-CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include
-LDFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include -I../../patch/SDL2/linux -DHAVE_LIBC
+CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include -I../../patch/SDL2/linux -DHAVE_LIBC
+#LDFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/lib_freetype.Linux_x86_64.ReleaseSpace.so 
+LDFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/lib_freetype.Linux_x86_64.ReleaseSpace.so 
 
 # so library at ../../bin/Linux_x86_64.ReleaseSpace/lib_SDL2.Linux_x86_64.ReleaseSpace.so
 target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace/lib_SDL2.Linux_x86_64.ReleaseSpace.so
-tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) \
-  $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)
+tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)
 cp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/*
@@ -5383,7 +6551,6 @@ $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsy
 # file include : ../../depends/SDL2/include/SDL_bits.h
 # file include : ../../depends/SDL2/include/SDL_blendmode.h
 # file include : ../../depends/SDL2/include/SDL_clipboard.h
-# file include : ../../depends/SDL2/include/SDL_config.h
 # file include : ../../depends/SDL2/include/SDL_config_android.h
 # file include : ../../depends/SDL2/include/SDL_config_iphoneos.h
 # file include : ../../depends/SDL2/include/SDL_config_macosx.h
@@ -5961,30 +7128,489 @@ $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsy
 # file src : ../../depends/SDL2/src/SDL_assert_c.h
 # file src : ../../depends/SDL2/src/SDL_error_c.h
 # end file group src .
+# file group src-linux :
+# file group audio :
+# file audio : ../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_alsa_audio.o: ../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_alsa_audio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_alsa_audio.o
+# file audio : ../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.h
+# file audio : ../../depends/SDL2/src/audio/disk/SDL_diskaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_diskaudio.o: ../../depends/SDL2/src/audio/disk/SDL_diskaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_diskaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_diskaudio.o
+# file audio : ../../depends/SDL2/src/audio/disk/SDL_diskaudio.h
+# file audio : ../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_dummyaudio.o: ../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_dummyaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_dummyaudio.o
+# file audio : ../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.h
+# file audio : ../../depends/SDL2/src/audio/paudio/SDL_paudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_paudio.o: ../../depends/SDL2/src/audio/paudio/SDL_paudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_paudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_paudio.o
+# file audio : ../../depends/SDL2/src/audio/paudio/SDL_paudio.h
+# file audio : ../../depends/SDL2/src/audio/dsp/SDL_dspaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_dspaudio.o: ../../depends/SDL2/src/audio/dsp/SDL_dspaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_dspaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_dspaudio.o
+# file audio : ../../depends/SDL2/src/audio/dsp/SDL_dspaudio.h
+# file audio : ../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_pulseaudio.o: ../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_pulseaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_pulseaudio.o
+# file audio : ../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.h
+# end file group audio .
+# file group core :
+# file core : ../../depends/SDL2/src/core/linux/SDL_udev.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_udev.o: ../../depends/SDL2/src/core/linux/SDL_udev.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_udev.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_udev.o
+# file core : ../../depends/SDL2/src/core/linux/SDL_udev.h
+# end file group core .
+# file group filesystem :
+# file filesystem : ../../depends/SDL2/src/filesystem/unix/SDL_sysfilesystem.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_sysfilesystem.o: ../../depends/SDL2/src/filesystem/unix/SDL_sysfilesystem.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_sysfilesystem.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_sysfilesystem.o
+# end file group filesystem .
+# file group haptic :
+# file haptic : ../../depends/SDL2/src/haptic/linux/SDL_syshaptic.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_syshaptic.o: ../../depends/SDL2/src/haptic/linux/SDL_syshaptic.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_syshaptic.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_syshaptic.o
+# end file group haptic .
+# file group joystick :
+# file joystick : ../../depends/SDL2/src/joystick/linux/SDL_sysjoystick.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_sysjoystick.o: ../../depends/SDL2/src/joystick/linux/SDL_sysjoystick.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_sysjoystick.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_sysjoystick.o
+# file joystick : ../../depends/SDL2/src/joystick/linux/SDL_sysjoystick_c.h
+# end file group joystick .
+# file group loadso :
+# file loadso : ../../depends/SDL2/src/loadso/dlopen/SDL_sysloadso.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_sysloadso.o: ../../depends/SDL2/src/loadso/dlopen/SDL_sysloadso.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_sysloadso.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_sysloadso.o
+# end file group loadso .
+# file group power :
+# file power : ../../depends/SDL2/src/power/linux/SDL_syspower.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_syspower.o: ../../depends/SDL2/src/power/linux/SDL_syspower.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_syspower.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_syspower.o
+# end file group power .
+# file group render :
+# file render : ../../depends/SDL2/src/render/opengl/SDL_render_gl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_render_gl.o: ../../depends/SDL2/src/render/opengl/SDL_render_gl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_render_gl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_render_gl.o
+# file render : ../../depends/SDL2/src/render/opengl/SDL_shaders_gl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_shaders_gl.o: ../../depends/SDL2/src/render/opengl/SDL_shaders_gl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_shaders_gl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_shaders_gl.o
+# file render : ../../depends/SDL2/src/render/opengl/SDL_glfuncs.h
+# file render : ../../depends/SDL2/src/render/opengl/SDL_shaders_gl.h
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_render_gles2.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_render_gles2.o: ../../depends/SDL2/src/render/opengles2/SDL_render_gles2.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_render_gles2.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_render_gles2.o
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_shaders_gles2.o: ../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_shaders_gles2.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_shaders_gles2.o
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_gles2funcs.h
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.h
+# file render : ../../depends/SDL2/src/render/software/SDL_blendfillrect.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_blendfillrect.o: ../../depends/SDL2/src/render/software/SDL_blendfillrect.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_blendfillrect.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_blendfillrect.o
+# file render : ../../depends/SDL2/src/render/software/SDL_blendline.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_blendline.o: ../../depends/SDL2/src/render/software/SDL_blendline.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_blendline.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_blendline.o
+# file render : ../../depends/SDL2/src/render/software/SDL_blendpoint.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_blendpoint.o: ../../depends/SDL2/src/render/software/SDL_blendpoint.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_blendpoint.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_blendpoint.o
+# file render : ../../depends/SDL2/src/render/software/SDL_drawline.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_drawline.o: ../../depends/SDL2/src/render/software/SDL_drawline.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_drawline.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_drawline.o
+# file render : ../../depends/SDL2/src/render/software/SDL_drawpoint.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_drawpoint.o: ../../depends/SDL2/src/render/software/SDL_drawpoint.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_drawpoint.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_drawpoint.o
+# file render : ../../depends/SDL2/src/render/software/SDL_render_sw.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_render_sw.o: ../../depends/SDL2/src/render/software/SDL_render_sw.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_render_sw.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_render_sw.o
+# file render : ../../depends/SDL2/src/render/software/SDL_rotate.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_rotate.o: ../../depends/SDL2/src/render/software/SDL_rotate.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_rotate.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_rotate.o
+# file render : ../../depends/SDL2/src/render/software/SDL_blendfillrect.h
+# file render : ../../depends/SDL2/src/render/software/SDL_blendline.h
+# file render : ../../depends/SDL2/src/render/software/SDL_blendpoint.h
+# file render : ../../depends/SDL2/src/render/software/SDL_draw.h
+# file render : ../../depends/SDL2/src/render/software/SDL_drawline.h
+# file render : ../../depends/SDL2/src/render/software/SDL_drawpoint.h
+# file render : ../../depends/SDL2/src/render/software/SDL_render_sw_c.h
+# file render : ../../depends/SDL2/src/render/software/SDL_rotate.h
+# end file group render .
+# file group thread :
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_syscond.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_syscond.o: ../../depends/SDL2/src/thread/generic/SDL_syscond.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_syscond.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_syscond.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_sysmutex.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_sysmutex.o: ../../depends/SDL2/src/thread/generic/SDL_sysmutex.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_sysmutex.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_sysmutex.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_syssem.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_syssem.o: ../../depends/SDL2/src/thread/generic/SDL_syssem.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_syssem.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_syssem.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_systhread.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_systhread.o: ../../depends/SDL2/src/thread/generic/SDL_systhread.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_systhread.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_systhread.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_systls.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_systls.o: ../../depends/SDL2/src/thread/generic/SDL_systls.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_systls.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_systls.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_sysmutex_c.h
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_systhread_c.h
+# end file group thread .
+# file group timer :
+# file timer : ../../depends/SDL2/src/timer/unix/SDL_systimer.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_systimer.o: ../../depends/SDL2/src/timer/unix/SDL_systimer.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_systimer.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_systimer.o
+# end file group timer .
+# file group video :
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullevents.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_nullevents.o: ../../depends/SDL2/src/video/dummy/SDL_nullevents.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_nullevents.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_nullevents.o
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullframebuffer.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_nullframebuffer.o: ../../depends/SDL2/src/video/dummy/SDL_nullframebuffer.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_nullframebuffer.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_nullframebuffer.o
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullvideo.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_nullvideo.o: ../../depends/SDL2/src/video/dummy/SDL_nullvideo.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_nullvideo.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_nullvideo.o
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullevents_c.h
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullframebuffer_c.h
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullvideo.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_dyn.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_dyn.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_dyn.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_events.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_events.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_events.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_modes.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_modes.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_modes.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_mouse.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_mouse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_mouse.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_opengl.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_opengl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_opengl.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_render.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_render.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_render.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_shape.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_shape.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_shape.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_video.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_video.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_video.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_window.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_window.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_window.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_WM.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_WM.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_DirectFB_WM.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpievents.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_rpievents.o: ../../depends/SDL2/src/video/raspberry/SDL_rpievents.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_rpievents.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_rpievents.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpimouse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_rpimouse.o: ../../depends/SDL2/src/video/raspberry/SDL_rpimouse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_rpimouse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_rpimouse.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_rpiopengles.o: ../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_rpiopengles.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_rpiopengles.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpivideo.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_rpivideo.o: ../../depends/SDL2/src/video/raspberry/SDL_rpivideo.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_rpivideo.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_rpivideo.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpievents_c.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpimouse.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpivideo.h
+# file video : ../../depends/SDL2/src/video/x11/edid-parse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/edid-parse.o: ../../depends/SDL2/src/video/x11/edid-parse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/edid-parse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/edid-parse.o
+# file video : ../../depends/SDL2/src/video/x11/imKStoUCS.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/imKStoUCS.o: ../../depends/SDL2/src/video/x11/imKStoUCS.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/imKStoUCS.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/imKStoUCS.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11clipboard.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11clipboard.o: ../../depends/SDL2/src/video/x11/SDL_x11clipboard.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11clipboard.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11clipboard.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11dyn.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11dyn.o: ../../depends/SDL2/src/video/x11/SDL_x11dyn.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11dyn.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11dyn.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11events.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11events.o: ../../depends/SDL2/src/video/x11/SDL_x11events.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11events.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11events.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11framebuffer.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11framebuffer.o: ../../depends/SDL2/src/video/x11/SDL_x11framebuffer.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11framebuffer.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11framebuffer.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11keyboard.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11keyboard.o: ../../depends/SDL2/src/video/x11/SDL_x11keyboard.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11keyboard.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11keyboard.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11messagebox.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11messagebox.o: ../../depends/SDL2/src/video/x11/SDL_x11messagebox.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11messagebox.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11messagebox.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11modes.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11modes.o: ../../depends/SDL2/src/video/x11/SDL_x11modes.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11modes.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11modes.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11mouse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11mouse.o: ../../depends/SDL2/src/video/x11/SDL_x11mouse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11mouse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11mouse.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11opengl.o: ../../depends/SDL2/src/video/x11/SDL_x11opengl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11opengl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11opengl.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengles.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11opengles.o: ../../depends/SDL2/src/video/x11/SDL_x11opengles.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11opengles.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11opengles.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11shape.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11shape.o: ../../depends/SDL2/src/video/x11/SDL_x11shape.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11shape.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11shape.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11touch.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11touch.o: ../../depends/SDL2/src/video/x11/SDL_x11touch.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11touch.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11touch.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11video.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11video.o: ../../depends/SDL2/src/video/x11/SDL_x11video.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11video.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11video.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11window.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11window.o: ../../depends/SDL2/src/video/x11/SDL_x11window.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11window.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11window.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11xinput2.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11xinput2.o: ../../depends/SDL2/src/video/x11/SDL_x11xinput2.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11xinput2.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseSpace)/SDL_x11xinput2.o
+# file video : ../../depends/SDL2/src/video/x11/edid.h
+# file video : ../../depends/SDL2/src/video/x11/imKStoUCS.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11clipboard.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11dyn.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11events.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11framebuffer.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11keyboard.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11messagebox.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11modes.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11mouse.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengl.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengles.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11shape.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11sym.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11touch.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11video.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11window.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11xinput2.h
+# end file group video .
+# end file group src-linux .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseStatic
 tg-umodsys_Depends-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseStatic
 cg-umodsys_Depends-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseStatic
 tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseStatic:  tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseStatic
 cp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseStatic:  cp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseStatic
+target-ReleaseStatic: tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/lib_SDL2
-CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include
-CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include
-LDFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include -I../../patch/SDL2/linux -DHAVE_LIBC
+CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include -I../../patch/SDL2/linux -DHAVE_LIBC
+#LDFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/lib_freetype.Linux_x86_64.ReleaseStatic.so 
+LDFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/lib_freetype.Linux_x86_64.ReleaseStatic.so 
 
 # so library at ../../bin/Linux_x86_64.ReleaseStatic/lib_SDL2.Linux_x86_64.ReleaseStatic.so
 target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic/lib_SDL2.Linux_x86_64.ReleaseStatic.so
-tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) \
-  $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)
+tp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) $(bin__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)
 cp-umodsys_Depends-lib_SDL2-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/*
@@ -6011,7 +7637,6 @@ $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umods
 # file include : ../../depends/SDL2/include/SDL_bits.h
 # file include : ../../depends/SDL2/include/SDL_blendmode.h
 # file include : ../../depends/SDL2/include/SDL_clipboard.h
-# file include : ../../depends/SDL2/include/SDL_config.h
 # file include : ../../depends/SDL2/include/SDL_config_android.h
 # file include : ../../depends/SDL2/include/SDL_config_iphoneos.h
 # file include : ../../depends/SDL2/include/SDL_config_macosx.h
@@ -6589,8 +8214,467 @@ $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umods
 # file src : ../../depends/SDL2/src/SDL_assert_c.h
 # file src : ../../depends/SDL2/src/SDL_error_c.h
 # end file group src .
+# file group src-linux :
+# file group audio :
+# file audio : ../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_alsa_audio.o: ../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_alsa_audio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_alsa_audio.o
+# file audio : ../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.h
+# file audio : ../../depends/SDL2/src/audio/disk/SDL_diskaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_diskaudio.o: ../../depends/SDL2/src/audio/disk/SDL_diskaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_diskaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_diskaudio.o
+# file audio : ../../depends/SDL2/src/audio/disk/SDL_diskaudio.h
+# file audio : ../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_dummyaudio.o: ../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_dummyaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_dummyaudio.o
+# file audio : ../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.h
+# file audio : ../../depends/SDL2/src/audio/paudio/SDL_paudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_paudio.o: ../../depends/SDL2/src/audio/paudio/SDL_paudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_paudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_paudio.o
+# file audio : ../../depends/SDL2/src/audio/paudio/SDL_paudio.h
+# file audio : ../../depends/SDL2/src/audio/dsp/SDL_dspaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_dspaudio.o: ../../depends/SDL2/src/audio/dsp/SDL_dspaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_dspaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_dspaudio.o
+# file audio : ../../depends/SDL2/src/audio/dsp/SDL_dspaudio.h
+# file audio : ../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_pulseaudio.o: ../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_pulseaudio.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_pulseaudio.o
+# file audio : ../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.h
+# end file group audio .
+# file group core :
+# file core : ../../depends/SDL2/src/core/linux/SDL_udev.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_udev.o: ../../depends/SDL2/src/core/linux/SDL_udev.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_udev.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_udev.o
+# file core : ../../depends/SDL2/src/core/linux/SDL_udev.h
+# end file group core .
+# file group filesystem :
+# file filesystem : ../../depends/SDL2/src/filesystem/unix/SDL_sysfilesystem.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_sysfilesystem.o: ../../depends/SDL2/src/filesystem/unix/SDL_sysfilesystem.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_sysfilesystem.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_sysfilesystem.o
+# end file group filesystem .
+# file group haptic :
+# file haptic : ../../depends/SDL2/src/haptic/linux/SDL_syshaptic.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_syshaptic.o: ../../depends/SDL2/src/haptic/linux/SDL_syshaptic.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_syshaptic.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_syshaptic.o
+# end file group haptic .
+# file group joystick :
+# file joystick : ../../depends/SDL2/src/joystick/linux/SDL_sysjoystick.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_sysjoystick.o: ../../depends/SDL2/src/joystick/linux/SDL_sysjoystick.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_sysjoystick.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_sysjoystick.o
+# file joystick : ../../depends/SDL2/src/joystick/linux/SDL_sysjoystick_c.h
+# end file group joystick .
+# file group loadso :
+# file loadso : ../../depends/SDL2/src/loadso/dlopen/SDL_sysloadso.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_sysloadso.o: ../../depends/SDL2/src/loadso/dlopen/SDL_sysloadso.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_sysloadso.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_sysloadso.o
+# end file group loadso .
+# file group power :
+# file power : ../../depends/SDL2/src/power/linux/SDL_syspower.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_syspower.o: ../../depends/SDL2/src/power/linux/SDL_syspower.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_syspower.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_syspower.o
+# end file group power .
+# file group render :
+# file render : ../../depends/SDL2/src/render/opengl/SDL_render_gl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_render_gl.o: ../../depends/SDL2/src/render/opengl/SDL_render_gl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_render_gl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_render_gl.o
+# file render : ../../depends/SDL2/src/render/opengl/SDL_shaders_gl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_shaders_gl.o: ../../depends/SDL2/src/render/opengl/SDL_shaders_gl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_shaders_gl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_shaders_gl.o
+# file render : ../../depends/SDL2/src/render/opengl/SDL_glfuncs.h
+# file render : ../../depends/SDL2/src/render/opengl/SDL_shaders_gl.h
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_render_gles2.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_render_gles2.o: ../../depends/SDL2/src/render/opengles2/SDL_render_gles2.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_render_gles2.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_render_gles2.o
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_shaders_gles2.o: ../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_shaders_gles2.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_shaders_gles2.o
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_gles2funcs.h
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.h
+# file render : ../../depends/SDL2/src/render/software/SDL_blendfillrect.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_blendfillrect.o: ../../depends/SDL2/src/render/software/SDL_blendfillrect.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_blendfillrect.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_blendfillrect.o
+# file render : ../../depends/SDL2/src/render/software/SDL_blendline.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_blendline.o: ../../depends/SDL2/src/render/software/SDL_blendline.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_blendline.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_blendline.o
+# file render : ../../depends/SDL2/src/render/software/SDL_blendpoint.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_blendpoint.o: ../../depends/SDL2/src/render/software/SDL_blendpoint.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_blendpoint.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_blendpoint.o
+# file render : ../../depends/SDL2/src/render/software/SDL_drawline.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_drawline.o: ../../depends/SDL2/src/render/software/SDL_drawline.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_drawline.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_drawline.o
+# file render : ../../depends/SDL2/src/render/software/SDL_drawpoint.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_drawpoint.o: ../../depends/SDL2/src/render/software/SDL_drawpoint.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_drawpoint.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_drawpoint.o
+# file render : ../../depends/SDL2/src/render/software/SDL_render_sw.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_render_sw.o: ../../depends/SDL2/src/render/software/SDL_render_sw.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_render_sw.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_render_sw.o
+# file render : ../../depends/SDL2/src/render/software/SDL_rotate.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_rotate.o: ../../depends/SDL2/src/render/software/SDL_rotate.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_rotate.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_rotate.o
+# file render : ../../depends/SDL2/src/render/software/SDL_blendfillrect.h
+# file render : ../../depends/SDL2/src/render/software/SDL_blendline.h
+# file render : ../../depends/SDL2/src/render/software/SDL_blendpoint.h
+# file render : ../../depends/SDL2/src/render/software/SDL_draw.h
+# file render : ../../depends/SDL2/src/render/software/SDL_drawline.h
+# file render : ../../depends/SDL2/src/render/software/SDL_drawpoint.h
+# file render : ../../depends/SDL2/src/render/software/SDL_render_sw_c.h
+# file render : ../../depends/SDL2/src/render/software/SDL_rotate.h
+# end file group render .
+# file group thread :
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_syscond.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_syscond.o: ../../depends/SDL2/src/thread/generic/SDL_syscond.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_syscond.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_syscond.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_sysmutex.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_sysmutex.o: ../../depends/SDL2/src/thread/generic/SDL_sysmutex.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_sysmutex.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_sysmutex.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_syssem.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_syssem.o: ../../depends/SDL2/src/thread/generic/SDL_syssem.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_syssem.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_syssem.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_systhread.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_systhread.o: ../../depends/SDL2/src/thread/generic/SDL_systhread.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_systhread.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_systhread.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_systls.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_systls.o: ../../depends/SDL2/src/thread/generic/SDL_systls.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_systls.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_systls.o
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_sysmutex_c.h
+# file thread : ../../depends/SDL2/src/thread/generic/SDL_systhread_c.h
+# end file group thread .
+# file group timer :
+# file timer : ../../depends/SDL2/src/timer/unix/SDL_systimer.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_systimer.o: ../../depends/SDL2/src/timer/unix/SDL_systimer.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_systimer.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_systimer.o
+# end file group timer .
+# file group video :
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullevents.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_nullevents.o: ../../depends/SDL2/src/video/dummy/SDL_nullevents.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_nullevents.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_nullevents.o
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullframebuffer.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_nullframebuffer.o: ../../depends/SDL2/src/video/dummy/SDL_nullframebuffer.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_nullframebuffer.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_nullframebuffer.o
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullvideo.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_nullvideo.o: ../../depends/SDL2/src/video/dummy/SDL_nullvideo.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_nullvideo.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_nullvideo.o
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullevents_c.h
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullframebuffer_c.h
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullvideo.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_dyn.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_dyn.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_dyn.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_events.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_events.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_events.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_modes.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_modes.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_modes.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_mouse.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_mouse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_mouse.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_opengl.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_opengl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_opengl.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_render.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_render.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_render.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_shape.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_shape.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_shape.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_video.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_video.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_video.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_window.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_window.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_window.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_WM.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_WM.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_DirectFB_WM.o
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpievents.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_rpievents.o: ../../depends/SDL2/src/video/raspberry/SDL_rpievents.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_rpievents.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_rpievents.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpimouse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_rpimouse.o: ../../depends/SDL2/src/video/raspberry/SDL_rpimouse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_rpimouse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_rpimouse.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_rpiopengles.o: ../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_rpiopengles.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_rpiopengles.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpivideo.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_rpivideo.o: ../../depends/SDL2/src/video/raspberry/SDL_rpivideo.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_rpivideo.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_rpivideo.o
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpievents_c.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpimouse.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpivideo.h
+# file video : ../../depends/SDL2/src/video/x11/edid-parse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/edid-parse.o: ../../depends/SDL2/src/video/x11/edid-parse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/edid-parse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/edid-parse.o
+# file video : ../../depends/SDL2/src/video/x11/imKStoUCS.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/imKStoUCS.o: ../../depends/SDL2/src/video/x11/imKStoUCS.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/imKStoUCS.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/imKStoUCS.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11clipboard.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11clipboard.o: ../../depends/SDL2/src/video/x11/SDL_x11clipboard.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11clipboard.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11clipboard.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11dyn.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11dyn.o: ../../depends/SDL2/src/video/x11/SDL_x11dyn.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11dyn.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11dyn.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11events.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11events.o: ../../depends/SDL2/src/video/x11/SDL_x11events.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11events.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11events.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11framebuffer.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11framebuffer.o: ../../depends/SDL2/src/video/x11/SDL_x11framebuffer.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11framebuffer.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11framebuffer.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11keyboard.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11keyboard.o: ../../depends/SDL2/src/video/x11/SDL_x11keyboard.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11keyboard.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11keyboard.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11messagebox.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11messagebox.o: ../../depends/SDL2/src/video/x11/SDL_x11messagebox.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11messagebox.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11messagebox.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11modes.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11modes.o: ../../depends/SDL2/src/video/x11/SDL_x11modes.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11modes.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11modes.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11mouse.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11mouse.o: ../../depends/SDL2/src/video/x11/SDL_x11mouse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11mouse.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11mouse.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengl.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11opengl.o: ../../depends/SDL2/src/video/x11/SDL_x11opengl.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11opengl.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11opengl.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengles.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11opengles.o: ../../depends/SDL2/src/video/x11/SDL_x11opengles.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11opengles.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11opengles.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11shape.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11shape.o: ../../depends/SDL2/src/video/x11/SDL_x11shape.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11shape.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11shape.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11touch.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11touch.o: ../../depends/SDL2/src/video/x11/SDL_x11touch.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11touch.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11touch.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11video.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11video.o: ../../depends/SDL2/src/video/x11/SDL_x11video.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11video.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11video.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11window.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11window.o: ../../depends/SDL2/src/video/x11/SDL_x11window.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11window.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11window.o
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11xinput2.c
+$(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11xinput2.o: ../../depends/SDL2/src/video/x11/SDL_x11xinput2.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11xinput2.o.d
+$(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic)/SDL_x11xinput2.o
+# file video : ../../depends/SDL2/src/video/x11/edid.h
+# file video : ../../depends/SDL2/src/video/x11/imKStoUCS.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11clipboard.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11dyn.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11events.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11framebuffer.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11keyboard.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11messagebox.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11modes.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11mouse.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengl.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengles.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11shape.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11sym.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11touch.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11video.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11window.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11xinput2.h
+# end file group video .
+# end file group src-linux .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_SDL2' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib
 
 #-------------------------------- epilog 'umodsys_Depends'.'lib_SDL2'
 #---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_SDL2' 
@@ -6600,27 +8684,27 @@ $(target__umodsys_Depends__lib_SDL2__Linux_x86_64__ReleaseStatic): $(tmpx__umods
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib:
 target-Linux_x86_64-Debug: tp-umodsys_Depends-lib_angelscript-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys_Depends-lib_angelscript-Linux_x86_64-Debug
 tg-umodsys_Depends-Linux_x86_64-Debug: tp-umodsys_Depends-lib_angelscript-Linux_x86_64-Debug
 cg-umodsys_Depends-Linux_x86_64-Debug: cp-umodsys_Depends-lib_angelscript-Linux_x86_64-Debug
 tp-umodsys_Depends-lib_angelscript-Linux_x86_64-Debug: 
 cp-umodsys_Depends-lib_angelscript-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys_Depends-lib_angelscript-Linux_x86_64-Debug
+clean-Debug: cp-umodsys_Depends-lib_angelscript-Linux_x86_64-Debug
 
 tmp__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/lib_angelscript
 CXXFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/AngelScript/angelscript/include
 CFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/AngelScript/angelscript/include
-LDFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Debug/lib_angelscript.Linux_x86_64.Debug.so
 target__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug/lib_angelscript.Linux_x86_64.Debug.so
-tp-umodsys_Depends-lib_angelscript-Linux_x86_64-Debug: \
-  $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug) \
-  $(bin__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug) \
-  $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug)
+tp-umodsys_Depends-lib_angelscript-Linux_x86_64-Debug: $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug) $(bin__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug) $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug)
 cp-umodsys_Depends-lib_angelscript-Linux_x86_64-Debug:
 	-rm $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug)/*
@@ -6898,29 +8982,29 @@ $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug)/as_variablescope.
 $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__Debug)/as_variablescope.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
 target-Linux_x86_64-Release: tp-umodsys_Depends-lib_angelscript-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys_Depends-lib_angelscript-Linux_x86_64-Release
 tg-umodsys_Depends-Linux_x86_64-Release: tp-umodsys_Depends-lib_angelscript-Linux_x86_64-Release
 cg-umodsys_Depends-Linux_x86_64-Release: cp-umodsys_Depends-lib_angelscript-Linux_x86_64-Release
 tp-umodsys_Depends-lib_angelscript-Linux_x86_64-Release: 
 cp-umodsys_Depends-lib_angelscript-Linux_x86_64-Release: 
+target-Release: tp-umodsys_Depends-lib_angelscript-Linux_x86_64-Release
+clean-Release: cp-umodsys_Depends-lib_angelscript-Linux_x86_64-Release
 
 tmp__umodsys_Depends__lib_angelscript__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys_Depends__lib_angelscript__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/lib_angelscript
 CXXFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/AngelScript/angelscript/include
 CFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/AngelScript/angelscript/include
-LDFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Release/lib_angelscript.Linux_x86_64.Release.so
 target__umodsys_Depends__lib_angelscript__Linux_x86_64__Release=../../bin/Linux_x86_64.Release/lib_angelscript.Linux_x86_64.Release.so
-tp-umodsys_Depends-lib_angelscript-Linux_x86_64-Release: \
-  $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__Release) \
-  $(bin__umodsys_Depends__lib_angelscript__Linux_x86_64__Release) \
-  $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__Release)
+tp-umodsys_Depends-lib_angelscript-Linux_x86_64-Release: $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__Release) $(bin__umodsys_Depends__lib_angelscript__Linux_x86_64__Release) $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__Release)
 cp-umodsys_Depends-lib_angelscript-Linux_x86_64-Release:
 	-rm $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__Release)/*
@@ -7198,29 +9282,29 @@ $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__Release)/as_variablescop
 $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__Release)/as_variablescope.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseSpace
 tg-umodsys_Depends-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseSpace
 cg-umodsys_Depends-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseSpace
 tp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseSpace: 
 cp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/lib_angelscript
 CXXFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/AngelScript/angelscript/include
 CFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/AngelScript/angelscript/include
-LDFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseSpace/lib_angelscript.Linux_x86_64.ReleaseSpace.so
 target__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace/lib_angelscript.Linux_x86_64.ReleaseSpace.so
-tp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace) \
-  $(bin__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace)
+tp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace) $(bin__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace) $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace)
 cp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace)/*
@@ -7498,29 +9582,29 @@ $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace)/as_variabl
 $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseSpace)/as_variablescope.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseStatic
 tg-umodsys_Depends-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseStatic
 cg-umodsys_Depends-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseStatic
 tp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseStatic: 
 cp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/lib_angelscript
 CXXFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/AngelScript/angelscript/include
 CFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/AngelScript/angelscript/include
-LDFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseStatic/lib_angelscript.Linux_x86_64.ReleaseStatic.so
 target__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic/lib_angelscript.Linux_x86_64.ReleaseStatic.so
-tp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic) \
-  $(bin__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic)
+tp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic) $(bin__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic) $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic)
 cp-umodsys_Depends-lib_angelscript-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic)/*
@@ -7798,7 +9882,7 @@ $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic)/as_variab
 $(target__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_angelscript__Linux_x86_64__ReleaseStatic)/as_variablescope.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_angelscript' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib
 
 #-------------------------------- epilog 'umodsys_Depends'.'lib_angelscript'
 #---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_angelscript' 
@@ -7815,19 +9899,20 @@ tg-umodsys_Depends-Linux_x86_64-Debug: tp-umodsys_Depends-lib_bullet-Linux_x86_6
 cg-umodsys_Depends-Linux_x86_64-Debug: cp-umodsys_Depends-lib_bullet-Linux_x86_64-Debug
 tp-umodsys_Depends-lib_bullet-Linux_x86_64-Debug: 
 cp-umodsys_Depends-lib_bullet-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys_Depends-lib_bullet-Linux_x86_64-Debug
+clean-Debug: cp-umodsys_Depends-lib_bullet-Linux_x86_64-Debug
 
 tmp__umodsys_Depends__lib_bullet__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys_Depends__lib_bullet__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/lib_bullet
 CXXFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Bullet/src -DONE_SOURCE
 CFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Bullet/src -DONE_SOURCE
-LDFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Debug/lib_bullet.Linux_x86_64.Debug.a
 target__umodsys_Depends__lib_bullet__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/lib_bullet.Linux_x86_64.Debug.a
-tp-umodsys_Depends-lib_bullet-Linux_x86_64-Debug: \
-  $(tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__Debug) \
-  $(target__umodsys_Depends__lib_bullet__Linux_x86_64__Debug)
+tp-umodsys_Depends-lib_bullet-Linux_x86_64-Debug: $(tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__Debug) $(target__umodsys_Depends__lib_bullet__Linux_x86_64__Debug)
 cp-umodsys_Depends-lib_bullet-Linux_x86_64-Debug:
 	-rm $(target__umodsys_Depends__lib_bullet__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__Debug)/*
@@ -9093,19 +11178,20 @@ tg-umodsys_Depends-Linux_x86_64-Release: tp-umodsys_Depends-lib_bullet-Linux_x86
 cg-umodsys_Depends-Linux_x86_64-Release: cp-umodsys_Depends-lib_bullet-Linux_x86_64-Release
 tp-umodsys_Depends-lib_bullet-Linux_x86_64-Release: 
 cp-umodsys_Depends-lib_bullet-Linux_x86_64-Release: 
+target-Release: tp-umodsys_Depends-lib_bullet-Linux_x86_64-Release
+clean-Release: cp-umodsys_Depends-lib_bullet-Linux_x86_64-Release
 
 tmp__umodsys_Depends__lib_bullet__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys_Depends__lib_bullet__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/lib_bullet
 CXXFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Bullet/src -DONE_SOURCE
 CFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Bullet/src -DONE_SOURCE
-LDFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.Release/lib_bullet.Linux_x86_64.Release.a
 target__umodsys_Depends__lib_bullet__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/lib_bullet.Linux_x86_64.Release.a
-tp-umodsys_Depends-lib_bullet-Linux_x86_64-Release: \
-  $(tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__Release) \
-  $(target__umodsys_Depends__lib_bullet__Linux_x86_64__Release)
+tp-umodsys_Depends-lib_bullet-Linux_x86_64-Release: $(tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__Release) $(target__umodsys_Depends__lib_bullet__Linux_x86_64__Release)
 cp-umodsys_Depends-lib_bullet-Linux_x86_64-Release:
 	-rm $(target__umodsys_Depends__lib_bullet__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__Release)/*
@@ -10371,19 +12457,20 @@ tg-umodsys_Depends-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_bullet-Linu
 cg-umodsys_Depends-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseSpace
 tp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseSpace: 
 cp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/lib_bullet
 CXXFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Bullet/src -DONE_SOURCE
 CFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Bullet/src -DONE_SOURCE
-LDFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseSpace/lib_bullet.Linux_x86_64.ReleaseSpace.a
 target__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/lib_bullet.Linux_x86_64.ReleaseSpace.a
-tp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseSpace)
+tp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseSpace) $(target__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseSpace)
 cp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseSpace)/*
@@ -11649,19 +13736,20 @@ tg-umodsys_Depends-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_bullet-Lin
 cg-umodsys_Depends-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseStatic
 tp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseStatic: 
 cp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/lib_bullet
 CXXFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Bullet/src -DONE_SOURCE
 CFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Bullet/src -DONE_SOURCE
-LDFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # library at ../../tmp/Linux_x86_64.ReleaseStatic/lib_bullet.Linux_x86_64.ReleaseStatic.a
 target__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/lib_bullet.Linux_x86_64.ReleaseStatic.a
-tp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic)
+tp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic) $(target__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic)
 cp-umodsys_Depends-lib_bullet-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic)/*
@@ -12928,27 +15016,27 @@ $(target__umodsys_Depends__lib_bullet__Linux_x86_64__ReleaseStatic): $(tmpx__umo
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib:
 target-Linux_x86_64-Debug: tp-umodsys_Depends-lib_freetype-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys_Depends-lib_freetype-Linux_x86_64-Debug
 tg-umodsys_Depends-Linux_x86_64-Debug: tp-umodsys_Depends-lib_freetype-Linux_x86_64-Debug
 cg-umodsys_Depends-Linux_x86_64-Debug: cp-umodsys_Depends-lib_freetype-Linux_x86_64-Debug
 tp-umodsys_Depends-lib_freetype-Linux_x86_64-Debug:  tp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug
 cp-umodsys_Depends-lib_freetype-Linux_x86_64-Debug:  cp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug
+target-Debug: tp-umodsys_Depends-lib_freetype-Linux_x86_64-Debug
+clean-Debug: cp-umodsys_Depends-lib_freetype-Linux_x86_64-Debug
 
 tmp__umodsys_Depends__lib_freetype__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys_Depends__lib_freetype__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/lib_freetype
 CXXFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/freetype/include -DFT_DEBUG_LEVEL_ERROR -DFT_DEBUG_LEVEL_TRACE -DFT2_BUILD_LIBRARY
 CFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/freetype/include -DFT_DEBUG_LEVEL_ERROR -DFT_DEBUG_LEVEL_TRACE -DFT2_BUILD_LIBRARY
-LDFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__Debug)/lib_zlib.Linux_x86_64.Debug.so 
+LDFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__Debug)/lib_zlib.Linux_x86_64.Debug.so 
 
 # so library at ../../bin/Linux_x86_64.Debug/lib_freetype.Linux_x86_64.Debug.so
 target__umodsys_Depends__lib_freetype__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug/lib_freetype.Linux_x86_64.Debug.so
-tp-umodsys_Depends-lib_freetype-Linux_x86_64-Debug: \
-  $(tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__Debug) \
-  $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__Debug) \
-  $(target__umodsys_Depends__lib_freetype__Linux_x86_64__Debug)
+tp-umodsys_Depends-lib_freetype-Linux_x86_64-Debug: $(tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__Debug) $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__Debug) $(target__umodsys_Depends__lib_freetype__Linux_x86_64__Debug)
 cp-umodsys_Depends-lib_freetype-Linux_x86_64-Debug:
 	-rm $(target__umodsys_Depends__lib_freetype__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__Debug)/*
@@ -13399,29 +15487,29 @@ $(target__umodsys_Depends__lib_freetype__Linux_x86_64__Debug): $(tmpx__umodsys_D
 # end file group winfonts .
 # end file group xsrc .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
 target-Linux_x86_64-Release: tp-umodsys_Depends-lib_freetype-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys_Depends-lib_freetype-Linux_x86_64-Release
 tg-umodsys_Depends-Linux_x86_64-Release: tp-umodsys_Depends-lib_freetype-Linux_x86_64-Release
 cg-umodsys_Depends-Linux_x86_64-Release: cp-umodsys_Depends-lib_freetype-Linux_x86_64-Release
 tp-umodsys_Depends-lib_freetype-Linux_x86_64-Release:  tp-umodsys_Depends-lib_zlib-Linux_x86_64-Release
 cp-umodsys_Depends-lib_freetype-Linux_x86_64-Release:  cp-umodsys_Depends-lib_zlib-Linux_x86_64-Release
+target-Release: tp-umodsys_Depends-lib_freetype-Linux_x86_64-Release
+clean-Release: cp-umodsys_Depends-lib_freetype-Linux_x86_64-Release
 
 tmp__umodsys_Depends__lib_freetype__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys_Depends__lib_freetype__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/lib_freetype
 CXXFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/freetype/include -DFT_DEBUG_LEVEL_ERROR -DFT_DEBUG_LEVEL_TRACE -DFT2_BUILD_LIBRARY
 CFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/freetype/include -DFT_DEBUG_LEVEL_ERROR -DFT_DEBUG_LEVEL_TRACE -DFT2_BUILD_LIBRARY
-LDFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__Release)/lib_zlib.Linux_x86_64.Release.so 
+LDFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__Release)/lib_zlib.Linux_x86_64.Release.so 
 
 # so library at ../../bin/Linux_x86_64.Release/lib_freetype.Linux_x86_64.Release.so
 target__umodsys_Depends__lib_freetype__Linux_x86_64__Release=../../bin/Linux_x86_64.Release/lib_freetype.Linux_x86_64.Release.so
-tp-umodsys_Depends-lib_freetype-Linux_x86_64-Release: \
-  $(tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__Release) \
-  $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__Release) \
-  $(target__umodsys_Depends__lib_freetype__Linux_x86_64__Release)
+tp-umodsys_Depends-lib_freetype-Linux_x86_64-Release: $(tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__Release) $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__Release) $(target__umodsys_Depends__lib_freetype__Linux_x86_64__Release)
 cp-umodsys_Depends-lib_freetype-Linux_x86_64-Release:
 	-rm $(target__umodsys_Depends__lib_freetype__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__Release)/*
@@ -13872,29 +15960,29 @@ $(target__umodsys_Depends__lib_freetype__Linux_x86_64__Release): $(tmpx__umodsys
 # end file group winfonts .
 # end file group xsrc .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseSpace
 tg-umodsys_Depends-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseSpace
 cg-umodsys_Depends-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseSpace
 tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseSpace:  tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace
 cp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseSpace:  cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace
+target-ReleaseSpace: tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/lib_freetype
 CXXFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/freetype/include -DFT_DEBUG_LEVEL_ERROR -DFT_DEBUG_LEVEL_TRACE -DFT2_BUILD_LIBRARY
 CFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/freetype/include -DFT_DEBUG_LEVEL_ERROR -DFT_DEBUG_LEVEL_TRACE -DFT2_BUILD_LIBRARY
-LDFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace)/lib_zlib.Linux_x86_64.ReleaseSpace.so 
+LDFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace)/lib_zlib.Linux_x86_64.ReleaseSpace.so 
 
 # so library at ../../bin/Linux_x86_64.ReleaseSpace/lib_freetype.Linux_x86_64.ReleaseSpace.so
 target__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace/lib_freetype.Linux_x86_64.ReleaseSpace.so
-tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace) \
-  $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace)
+tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace) $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace) $(target__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace)
 cp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace)/*
@@ -14345,29 +16433,29 @@ $(target__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseSpace): $(tmpx__um
 # end file group winfonts .
 # end file group xsrc .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseStatic
 tg-umodsys_Depends-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseStatic
 cg-umodsys_Depends-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseStatic
 tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseStatic:  tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic
 cp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseStatic:  cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic
+target-ReleaseStatic: tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/lib_freetype
 CXXFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/freetype/include -DFT_DEBUG_LEVEL_ERROR -DFT_DEBUG_LEVEL_TRACE -DFT2_BUILD_LIBRARY
 CFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/freetype/include -DFT_DEBUG_LEVEL_ERROR -DFT_DEBUG_LEVEL_TRACE -DFT2_BUILD_LIBRARY
-LDFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic)/lib_zlib.Linux_x86_64.ReleaseStatic.so 
+LDFLAGS__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic)/lib_zlib.Linux_x86_64.ReleaseStatic.so 
 
 # so library at ../../bin/Linux_x86_64.ReleaseStatic/lib_freetype.Linux_x86_64.ReleaseStatic.so
 target__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic/lib_freetype.Linux_x86_64.ReleaseStatic.so
-tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic) \
-  $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic)
+tp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic) $(bin__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic) $(target__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic)
 cp-umodsys_Depends-lib_freetype-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic)/*
@@ -14818,7 +16906,7 @@ $(target__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic): $(tmpx__u
 # end file group winfonts .
 # end file group xsrc .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_freetype' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib
 
 #-------------------------------- epilog 'umodsys_Depends'.'lib_freetype'
 #---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_freetype' 
@@ -14828,27 +16916,27 @@ $(target__umodsys_Depends__lib_freetype__Linux_x86_64__ReleaseStatic): $(tmpx__u
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib:
 target-Linux_x86_64-Debug: tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug
 tg-umodsys_Depends-Linux_x86_64-Debug: tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug
 cg-umodsys_Depends-Linux_x86_64-Debug: cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug
 tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug: 
 cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug
+clean-Debug: cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug
 
 tmp__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/lib_jpeglib
 CXXFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib
 CFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib
-LDFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Debug/lib_jpeglib.Linux_x86_64.Debug.so
 target__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug/lib_jpeglib.Linux_x86_64.Debug.so
-tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug: \
-  $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug) \
-  $(bin__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug) \
-  $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug)
+tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug: $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug) $(bin__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug) $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug)
 cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug:
 	-rm $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug)/*
@@ -15147,29 +17235,29 @@ $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug)/jutils.o: ../../depen
 $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__Debug)/jutils.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
 target-Linux_x86_64-Release: tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release
 tg-umodsys_Depends-Linux_x86_64-Release: tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release
 cg-umodsys_Depends-Linux_x86_64-Release: cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release
 tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release: 
 cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release: 
+target-Release: tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release
+clean-Release: cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release
 
 tmp__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/lib_jpeglib
 CXXFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib
 CFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib
-LDFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Release/lib_jpeglib.Linux_x86_64.Release.so
 target__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release=../../bin/Linux_x86_64.Release/lib_jpeglib.Linux_x86_64.Release.so
-tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release: \
-  $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release) \
-  $(bin__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release) \
-  $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release)
+tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release: $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release) $(bin__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release) $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release)
 cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release:
 	-rm $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release)/*
@@ -15468,29 +17556,29 @@ $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release)/jutils.o: ../../dep
 $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__Release)/jutils.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace
 tg-umodsys_Depends-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace
 cg-umodsys_Depends-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace
 tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace: 
 cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/lib_jpeglib
 CXXFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib
 CFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib
-LDFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseSpace/lib_jpeglib.Linux_x86_64.ReleaseSpace.so
 target__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace/lib_jpeglib.Linux_x86_64.ReleaseSpace.so
-tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace) \
-  $(bin__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace)
+tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace) $(bin__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace) $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace)
 cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace)/*
@@ -15789,29 +17877,29 @@ $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace)/jutils.o: ../.
 $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseSpace)/jutils.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic
 tg-umodsys_Depends-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic
 cg-umodsys_Depends-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic
 tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic: 
 cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/lib_jpeglib
 CXXFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib
 CFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/jpeglib
-LDFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseStatic/lib_jpeglib.Linux_x86_64.ReleaseStatic.so
 target__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic/lib_jpeglib.Linux_x86_64.ReleaseStatic.so
-tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic) \
-  $(bin__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic)
+tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic) $(bin__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic) $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic)
 cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic)/*
@@ -16110,7 +18198,7 @@ $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic)/jutils.o: ../
 $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic)/jutils.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_jpeglib' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib
 
 #-------------------------------- epilog 'umodsys_Depends'.'lib_jpeglib'
 #---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_jpeglib' 
@@ -16120,27 +18208,27 @@ $(target__umodsys_Depends__lib_jpeglib__Linux_x86_64__ReleaseStatic): $(tmpx__um
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib:
 target-Linux_x86_64-Debug: tp-umodsys_Depends-lib_libgd-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys_Depends-lib_libgd-Linux_x86_64-Debug
 tg-umodsys_Depends-Linux_x86_64-Debug: tp-umodsys_Depends-lib_libgd-Linux_x86_64-Debug
 cg-umodsys_Depends-Linux_x86_64-Debug: cp-umodsys_Depends-lib_libgd-Linux_x86_64-Debug
 tp-umodsys_Depends-lib_libgd-Linux_x86_64-Debug:  tp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug tp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug
 cp-umodsys_Depends-lib_libgd-Linux_x86_64-Debug:  cp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug cp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Debug
+target-Debug: tp-umodsys_Depends-lib_libgd-Linux_x86_64-Debug
+clean-Debug: cp-umodsys_Depends-lib_libgd-Linux_x86_64-Debug
 
 tmp__umodsys_Depends__lib_libgd__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys_Depends__lib_libgd__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/lib_libgd
-CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DMSWIN32 -DBGDWIN32 -DHAVE_CONFIG_H
-CFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DMSWIN32 -DBGDWIN32 -DHAVE_CONFIG_H
-LDFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DHAVE_CONFIG_H
+CFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DHAVE_CONFIG_H
+#LDFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)/lib_zlib.Linux_x86_64.Debug.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)/lib_libpng.Linux_x86_64.Debug.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)/lib_jpeglib.Linux_x86_64.Debug.so -ltiff -lwebp -lvpx 
+LDFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)/lib_zlib.Linux_x86_64.Debug.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)/lib_libpng.Linux_x86_64.Debug.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)/lib_jpeglib.Linux_x86_64.Debug.so -ltiff -lwebp -lvpx 
 
 # so library at ../../bin/Linux_x86_64.Debug/lib_libgd.Linux_x86_64.Debug.so
 target__umodsys_Depends__lib_libgd__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug/lib_libgd.Linux_x86_64.Debug.so
-tp-umodsys_Depends-lib_libgd-Linux_x86_64-Debug: \
-  $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Debug) \
-  $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Debug) \
-  $(target__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)
+tp-umodsys_Depends-lib_libgd-Linux_x86_64-Debug: $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Debug) $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Debug) $(target__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)
 cp-umodsys_Depends-lib_libgd-Linux_x86_64-Debug:
 	-rm $(target__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)/*
@@ -16401,31 +18489,38 @@ $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)/gdtables.o: ../../depen
 	$(CC) $(CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
 -include $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)/gdtables.o.d
 $(target__umodsys_Depends__lib_libgd__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)/gdtables.o
+# file src : ../../depends/libgd/src/webpimg.c
+$(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)/webpimg.o: ../../depends/libgd/src/webpimg.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)/webpimg.o.d
+$(target__umodsys_Depends__lib_libgd__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Debug)/webpimg.o
+# file src : ../../depends/libgd/src/webpimg.h
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
 target-Linux_x86_64-Release: tp-umodsys_Depends-lib_libgd-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys_Depends-lib_libgd-Linux_x86_64-Release
 tg-umodsys_Depends-Linux_x86_64-Release: tp-umodsys_Depends-lib_libgd-Linux_x86_64-Release
 cg-umodsys_Depends-Linux_x86_64-Release: cp-umodsys_Depends-lib_libgd-Linux_x86_64-Release
 tp-umodsys_Depends-lib_libgd-Linux_x86_64-Release:  tp-umodsys_Depends-lib_zlib-Linux_x86_64-Release tp-umodsys_Depends-lib_libpng-Linux_x86_64-Release tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release
 cp-umodsys_Depends-lib_libgd-Linux_x86_64-Release:  cp-umodsys_Depends-lib_zlib-Linux_x86_64-Release cp-umodsys_Depends-lib_libpng-Linux_x86_64-Release cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-Release
+target-Release: tp-umodsys_Depends-lib_libgd-Linux_x86_64-Release
+clean-Release: cp-umodsys_Depends-lib_libgd-Linux_x86_64-Release
 
 tmp__umodsys_Depends__lib_libgd__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys_Depends__lib_libgd__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/lib_libgd
-CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DMSWIN32 -DBGDWIN32 -DHAVE_CONFIG_H
-CFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DMSWIN32 -DBGDWIN32 -DHAVE_CONFIG_H
-LDFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DHAVE_CONFIG_H
+CFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DHAVE_CONFIG_H
+#LDFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Release)/lib_zlib.Linux_x86_64.Release.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Release)/lib_libpng.Linux_x86_64.Release.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Release)/lib_jpeglib.Linux_x86_64.Release.so -ltiff -lwebp -lvpx 
+LDFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Release)/lib_zlib.Linux_x86_64.Release.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Release)/lib_libpng.Linux_x86_64.Release.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Release)/lib_jpeglib.Linux_x86_64.Release.so -ltiff -lwebp -lvpx 
 
 # so library at ../../bin/Linux_x86_64.Release/lib_libgd.Linux_x86_64.Release.so
 target__umodsys_Depends__lib_libgd__Linux_x86_64__Release=../../bin/Linux_x86_64.Release/lib_libgd.Linux_x86_64.Release.so
-tp-umodsys_Depends-lib_libgd-Linux_x86_64-Release: \
-  $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Release) \
-  $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Release) \
-  $(target__umodsys_Depends__lib_libgd__Linux_x86_64__Release)
+tp-umodsys_Depends-lib_libgd-Linux_x86_64-Release: $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Release) $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__Release) $(target__umodsys_Depends__lib_libgd__Linux_x86_64__Release)
 cp-umodsys_Depends-lib_libgd-Linux_x86_64-Release:
 	-rm $(target__umodsys_Depends__lib_libgd__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Release)/*
@@ -16686,31 +18781,38 @@ $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Release)/gdtables.o: ../../dep
 	$(CC) $(CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
 -include $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Release)/gdtables.o.d
 $(target__umodsys_Depends__lib_libgd__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Release)/gdtables.o
+# file src : ../../depends/libgd/src/webpimg.c
+$(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Release)/webpimg.o: ../../depends/libgd/src/webpimg.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Release)/webpimg.o.d
+$(target__umodsys_Depends__lib_libgd__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__Release)/webpimg.o
+# file src : ../../depends/libgd/src/webpimg.h
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseSpace
 tg-umodsys_Depends-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseSpace
 cg-umodsys_Depends-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseSpace
 tp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseSpace:  tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace
 cp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseSpace:  cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseSpace
+target-ReleaseSpace: tp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/lib_libgd
-CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DMSWIN32 -DBGDWIN32 -DHAVE_CONFIG_H
-CFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DMSWIN32 -DBGDWIN32 -DHAVE_CONFIG_H
-LDFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DHAVE_CONFIG_H
+CFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DHAVE_CONFIG_H
+#LDFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)/lib_zlib.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)/lib_libpng.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)/lib_jpeglib.Linux_x86_64.ReleaseSpace.so -ltiff -lwebp -lvpx 
+LDFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)/lib_zlib.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)/lib_libpng.Linux_x86_64.ReleaseSpace.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)/lib_jpeglib.Linux_x86_64.ReleaseSpace.so -ltiff -lwebp -lvpx 
 
 # so library at ../../bin/Linux_x86_64.ReleaseSpace/lib_libgd.Linux_x86_64.ReleaseSpace.so
 target__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace/lib_libgd.Linux_x86_64.ReleaseSpace.so
-tp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace) \
-  $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)
+tp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace) $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace) $(target__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)
 cp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)/*
@@ -16971,31 +19073,38 @@ $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)/gdtables.o: ../.
 	$(CC) $(CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
 -include $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)/gdtables.o.d
 $(target__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)/gdtables.o
+# file src : ../../depends/libgd/src/webpimg.c
+$(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)/webpimg.o: ../../depends/libgd/src/webpimg.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)/webpimg.o.d
+$(target__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseSpace)/webpimg.o
+# file src : ../../depends/libgd/src/webpimg.h
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseStatic
 tg-umodsys_Depends-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseStatic
 cg-umodsys_Depends-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseStatic
 tp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseStatic:  tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic tp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic
 cp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseStatic:  cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic cp-umodsys_Depends-lib_jpeglib-Linux_x86_64-ReleaseStatic
+target-ReleaseStatic: tp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/lib_libgd
-CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DMSWIN32 -DBGDWIN32 -DHAVE_CONFIG_H
-CFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DMSWIN32 -DBGDWIN32 -DHAVE_CONFIG_H
-LDFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DHAVE_CONFIG_H
+CFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/libgd -I../../depends/libgd/src -I../../depends/jpeglib -I../../depends/libpng -I../../depends/zlib -DHAVE_LIBPNG -DHAVE_LIBJPEG -DHAVE_CONFIG_H
+#LDFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)/lib_zlib.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)/lib_libpng.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)/lib_jpeglib.Linux_x86_64.ReleaseStatic.so -ltiff -lwebp -lvpx 
+LDFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)/lib_zlib.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)/lib_libpng.Linux_x86_64.ReleaseStatic.so $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)/lib_jpeglib.Linux_x86_64.ReleaseStatic.so -ltiff -lwebp -lvpx 
 
 # so library at ../../bin/Linux_x86_64.ReleaseStatic/lib_libgd.Linux_x86_64.ReleaseStatic.so
 target__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic/lib_libgd.Linux_x86_64.ReleaseStatic.so
-tp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic) \
-  $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)
+tp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic) $(bin__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic) $(target__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)
 cp-umodsys_Depends-lib_libgd-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)/*
@@ -17256,9 +19365,16 @@ $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)/gdtables.o: ../
 	$(CC) $(CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
 -include $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)/gdtables.o.d
 $(target__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)/gdtables.o
+# file src : ../../depends/libgd/src/webpimg.c
+$(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)/webpimg.o: ../../depends/libgd/src/webpimg.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)/webpimg.o.d
+$(target__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic)/webpimg.o
+# file src : ../../depends/libgd/src/webpimg.h
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_libgd' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib
 
 #-------------------------------- epilog 'umodsys_Depends'.'lib_libgd'
 #---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_libgd' 
@@ -17268,27 +19384,27 @@ $(target__umodsys_Depends__lib_libgd__Linux_x86_64__ReleaseStatic): $(tmpx__umod
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib:
 target-Linux_x86_64-Debug: tp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug
 tg-umodsys_Depends-Linux_x86_64-Debug: tp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug
 cg-umodsys_Depends-Linux_x86_64-Debug: cp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug
 tp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug:  tp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug
 cp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug:  cp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug
+target-Debug: tp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug
+clean-Debug: cp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug
 
 tmp__umodsys_Depends__lib_libpng__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys_Depends__lib_libpng__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/lib_libpng
 CXXFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib -I../../depends/libpng
 CFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib -I../../depends/libpng
-LDFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__Debug)/lib_zlib.Linux_x86_64.Debug.so 
+LDFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__Debug)/lib_zlib.Linux_x86_64.Debug.so 
 
 # so library at ../../bin/Linux_x86_64.Debug/lib_libpng.Linux_x86_64.Debug.so
 target__umodsys_Depends__lib_libpng__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug/lib_libpng.Linux_x86_64.Debug.so
-tp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug: \
-  $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__Debug) \
-  $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__Debug) \
-  $(target__umodsys_Depends__lib_libpng__Linux_x86_64__Debug)
+tp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug: $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__Debug) $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__Debug) $(target__umodsys_Depends__lib_libpng__Linux_x86_64__Debug)
 cp-umodsys_Depends-lib_libpng-Linux_x86_64-Debug:
 	-rm $(target__umodsys_Depends__lib_libpng__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__Debug)/*
@@ -17409,29 +19525,29 @@ $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__Debug)/pngwutil.o: ../../depe
 $(target__umodsys_Depends__lib_libpng__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__Debug)/pngwutil.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
 target-Linux_x86_64-Release: tp-umodsys_Depends-lib_libpng-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys_Depends-lib_libpng-Linux_x86_64-Release
 tg-umodsys_Depends-Linux_x86_64-Release: tp-umodsys_Depends-lib_libpng-Linux_x86_64-Release
 cg-umodsys_Depends-Linux_x86_64-Release: cp-umodsys_Depends-lib_libpng-Linux_x86_64-Release
 tp-umodsys_Depends-lib_libpng-Linux_x86_64-Release:  tp-umodsys_Depends-lib_zlib-Linux_x86_64-Release
 cp-umodsys_Depends-lib_libpng-Linux_x86_64-Release:  cp-umodsys_Depends-lib_zlib-Linux_x86_64-Release
+target-Release: tp-umodsys_Depends-lib_libpng-Linux_x86_64-Release
+clean-Release: cp-umodsys_Depends-lib_libpng-Linux_x86_64-Release
 
 tmp__umodsys_Depends__lib_libpng__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys_Depends__lib_libpng__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/lib_libpng
 CXXFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib -I../../depends/libpng
 CFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib -I../../depends/libpng
-LDFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__Release)/lib_zlib.Linux_x86_64.Release.so 
+LDFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__Release)/lib_zlib.Linux_x86_64.Release.so 
 
 # so library at ../../bin/Linux_x86_64.Release/lib_libpng.Linux_x86_64.Release.so
 target__umodsys_Depends__lib_libpng__Linux_x86_64__Release=../../bin/Linux_x86_64.Release/lib_libpng.Linux_x86_64.Release.so
-tp-umodsys_Depends-lib_libpng-Linux_x86_64-Release: \
-  $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__Release) \
-  $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__Release) \
-  $(target__umodsys_Depends__lib_libpng__Linux_x86_64__Release)
+tp-umodsys_Depends-lib_libpng-Linux_x86_64-Release: $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__Release) $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__Release) $(target__umodsys_Depends__lib_libpng__Linux_x86_64__Release)
 cp-umodsys_Depends-lib_libpng-Linux_x86_64-Release:
 	-rm $(target__umodsys_Depends__lib_libpng__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__Release)/*
@@ -17552,29 +19668,29 @@ $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__Release)/pngwutil.o: ../../de
 $(target__umodsys_Depends__lib_libpng__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__Release)/pngwutil.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace
 tg-umodsys_Depends-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace
 cg-umodsys_Depends-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace
 tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace:  tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace
 cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace:  cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace
+target-ReleaseSpace: tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/lib_libpng
 CXXFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib -I../../depends/libpng
 CFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib -I../../depends/libpng
-LDFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace)/lib_zlib.Linux_x86_64.ReleaseSpace.so 
+LDFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace)/lib_zlib.Linux_x86_64.ReleaseSpace.so 
 
 # so library at ../../bin/Linux_x86_64.ReleaseSpace/lib_libpng.Linux_x86_64.ReleaseSpace.so
 target__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace/lib_libpng.Linux_x86_64.ReleaseSpace.so
-tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace) \
-  $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace)
+tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace) $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace) $(target__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace)
 cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace)/*
@@ -17695,29 +19811,29 @@ $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace)/pngwutil.o: ../
 $(target__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseSpace)/pngwutil.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic
 tg-umodsys_Depends-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic
 cg-umodsys_Depends-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic
 tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic:  tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic
 cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic:  cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic
+target-ReleaseStatic: tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/lib_libpng
 CXXFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib -I../../depends/libpng
 CFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib -I../../depends/libpng
-LDFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic)/lib_zlib.Linux_x86_64.ReleaseStatic.so 
+LDFLAGS__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic)/lib_zlib.Linux_x86_64.ReleaseStatic.so 
 
 # so library at ../../bin/Linux_x86_64.ReleaseStatic/lib_libpng.Linux_x86_64.ReleaseStatic.so
 target__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic/lib_libpng.Linux_x86_64.ReleaseStatic.so
-tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic) \
-  $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic)
+tp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic) $(bin__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic) $(target__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic)
 cp-umodsys_Depends-lib_libpng-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic)/*
@@ -17838,7 +19954,7 @@ $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic)/pngwutil.o: ..
 $(target__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_libpng__Linux_x86_64__ReleaseStatic)/pngwutil.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_libpng' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib
 
 #-------------------------------- epilog 'umodsys_Depends'.'lib_libpng'
 #---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_libpng' 
@@ -17855,13 +19971,16 @@ tg-umodsys_Depends-Linux_x86_64-Debug: tp-umodsys_Depends-lib_lightning-Linux_x8
 cg-umodsys_Depends-Linux_x86_64-Debug: cp-umodsys_Depends-lib_lightning-Linux_x86_64-Debug
 tp-umodsys_Depends-lib_lightning-Linux_x86_64-Debug: 
 cp-umodsys_Depends-lib_lightning-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys_Depends-lib_lightning-Linux_x86_64-Debug
+clean-Debug: cp-umodsys_Depends-lib_lightning-Linux_x86_64-Debug
 
 tmp__umodsys_Depends__lib_lightning__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys_Depends__lib_lightning__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys_Depends__lib_lightning__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/lib_lightning
 CXXFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/lightning -I../../depends/lightning/include
 CFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/lightning -I../../depends/lightning/include
-LDFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # dummy project
 target__umodsys_Depends__lib_lightning__Linux_x86_64__Debug=
@@ -17876,13 +19995,16 @@ tg-umodsys_Depends-Linux_x86_64-Release: tp-umodsys_Depends-lib_lightning-Linux_
 cg-umodsys_Depends-Linux_x86_64-Release: cp-umodsys_Depends-lib_lightning-Linux_x86_64-Release
 tp-umodsys_Depends-lib_lightning-Linux_x86_64-Release: 
 cp-umodsys_Depends-lib_lightning-Linux_x86_64-Release: 
+target-Release: tp-umodsys_Depends-lib_lightning-Linux_x86_64-Release
+clean-Release: cp-umodsys_Depends-lib_lightning-Linux_x86_64-Release
 
 tmp__umodsys_Depends__lib_lightning__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys_Depends__lib_lightning__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys_Depends__lib_lightning__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/lib_lightning
 CXXFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/lightning -I../../depends/lightning/include
 CFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/lightning -I../../depends/lightning/include
-LDFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # dummy project
 target__umodsys_Depends__lib_lightning__Linux_x86_64__Release=
@@ -17897,13 +20019,16 @@ tg-umodsys_Depends-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_lightning-L
 cg-umodsys_Depends-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_lightning-Linux_x86_64-ReleaseSpace
 tp-umodsys_Depends-lib_lightning-Linux_x86_64-ReleaseSpace: 
 cp-umodsys_Depends-lib_lightning-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys_Depends-lib_lightning-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys_Depends-lib_lightning-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/lib_lightning
 CXXFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/lightning -I../../depends/lightning/include
 CFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/lightning -I../../depends/lightning/include
-LDFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # dummy project
 target__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseSpace=
@@ -17918,13 +20043,16 @@ tg-umodsys_Depends-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_lightning-
 cg-umodsys_Depends-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_lightning-Linux_x86_64-ReleaseStatic
 tp-umodsys_Depends-lib_lightning-Linux_x86_64-ReleaseStatic: 
 cp-umodsys_Depends-lib_lightning-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys_Depends-lib_lightning-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys_Depends-lib_lightning-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/lib_lightning
 CXXFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/lightning -I../../depends/lightning/include
 CFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../include/platform/linux/lightning -I../../depends/lightning/include
-LDFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # dummy project
 target__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseStatic=
@@ -17940,27 +20068,27 @@ target__umodsys_Depends__lib_lightning__Linux_x86_64__ReleaseStatic=
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib:
 target-Linux_x86_64-Debug: tp-umodsys_Depends-lib_lua-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys_Depends-lib_lua-Linux_x86_64-Debug
 tg-umodsys_Depends-Linux_x86_64-Debug: tp-umodsys_Depends-lib_lua-Linux_x86_64-Debug
 cg-umodsys_Depends-Linux_x86_64-Debug: cp-umodsys_Depends-lib_lua-Linux_x86_64-Debug
 tp-umodsys_Depends-lib_lua-Linux_x86_64-Debug: 
 cp-umodsys_Depends-lib_lua-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys_Depends-lib_lua-Linux_x86_64-Debug
+clean-Debug: cp-umodsys_Depends-lib_lua-Linux_x86_64-Debug
 
 tmp__umodsys_Depends__lib_lua__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys_Depends__lib_lua__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys_Depends__lib_lua__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/lib_lua
 CXXFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Lua/src
 CFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Lua/src
-LDFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Debug/lib_lua.Linux_x86_64.Debug.so
 target__umodsys_Depends__lib_lua__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug/lib_lua.Linux_x86_64.Debug.so
-tp-umodsys_Depends-lib_lua-Linux_x86_64-Debug: \
-  $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__Debug) \
-  $(bin__umodsys_Depends__lib_lua__Linux_x86_64__Debug) \
-  $(target__umodsys_Depends__lib_lua__Linux_x86_64__Debug)
+tp-umodsys_Depends-lib_lua-Linux_x86_64-Debug: $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__Debug) $(bin__umodsys_Depends__lib_lua__Linux_x86_64__Debug) $(target__umodsys_Depends__lib_lua__Linux_x86_64__Debug)
 cp-umodsys_Depends-lib_lua-Linux_x86_64-Debug:
 	-rm $(target__umodsys_Depends__lib_lua__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__Debug)/*
@@ -18189,29 +20317,29 @@ $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__Debug)/lzio.o: ../../depends/Lua
 $(target__umodsys_Depends__lib_lua__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__Debug)/lzio.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
 target-Linux_x86_64-Release: tp-umodsys_Depends-lib_lua-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys_Depends-lib_lua-Linux_x86_64-Release
 tg-umodsys_Depends-Linux_x86_64-Release: tp-umodsys_Depends-lib_lua-Linux_x86_64-Release
 cg-umodsys_Depends-Linux_x86_64-Release: cp-umodsys_Depends-lib_lua-Linux_x86_64-Release
 tp-umodsys_Depends-lib_lua-Linux_x86_64-Release: 
 cp-umodsys_Depends-lib_lua-Linux_x86_64-Release: 
+target-Release: tp-umodsys_Depends-lib_lua-Linux_x86_64-Release
+clean-Release: cp-umodsys_Depends-lib_lua-Linux_x86_64-Release
 
 tmp__umodsys_Depends__lib_lua__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys_Depends__lib_lua__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys_Depends__lib_lua__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/lib_lua
 CXXFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Lua/src
 CFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Lua/src
-LDFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Release/lib_lua.Linux_x86_64.Release.so
 target__umodsys_Depends__lib_lua__Linux_x86_64__Release=../../bin/Linux_x86_64.Release/lib_lua.Linux_x86_64.Release.so
-tp-umodsys_Depends-lib_lua-Linux_x86_64-Release: \
-  $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__Release) \
-  $(bin__umodsys_Depends__lib_lua__Linux_x86_64__Release) \
-  $(target__umodsys_Depends__lib_lua__Linux_x86_64__Release)
+tp-umodsys_Depends-lib_lua-Linux_x86_64-Release: $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__Release) $(bin__umodsys_Depends__lib_lua__Linux_x86_64__Release) $(target__umodsys_Depends__lib_lua__Linux_x86_64__Release)
 cp-umodsys_Depends-lib_lua-Linux_x86_64-Release:
 	-rm $(target__umodsys_Depends__lib_lua__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__Release)/*
@@ -18440,29 +20568,29 @@ $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__Release)/lzio.o: ../../depends/L
 $(target__umodsys_Depends__lib_lua__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__Release)/lzio.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseSpace
 tg-umodsys_Depends-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseSpace
 cg-umodsys_Depends-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseSpace
 tp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseSpace: 
 cp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/lib_lua
 CXXFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Lua/src
 CFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Lua/src
-LDFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseSpace/lib_lua.Linux_x86_64.ReleaseSpace.so
 target__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace/lib_lua.Linux_x86_64.ReleaseSpace.so
-tp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace) \
-  $(bin__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace)
+tp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace) $(bin__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace) $(target__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace)
 cp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace)/*
@@ -18691,29 +20819,29 @@ $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace)/lzio.o: ../../depe
 $(target__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseSpace)/lzio.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseStatic
 tg-umodsys_Depends-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseStatic
 cg-umodsys_Depends-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseStatic
 tp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseStatic: 
 cp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/lib_lua
 CXXFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Lua/src
 CFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Lua/src
-LDFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseStatic/lib_lua.Linux_x86_64.ReleaseStatic.so
 target__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic/lib_lua.Linux_x86_64.ReleaseStatic.so
-tp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic) \
-  $(bin__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic)
+tp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic) $(bin__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic) $(target__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic)
 cp-umodsys_Depends-lib_lua-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic)/*
@@ -18942,7 +21070,7 @@ $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic)/lzio.o: ../../dep
 $(target__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic)/lzio.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_lua' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib
 
 #-------------------------------- epilog 'umodsys_Depends'.'lib_lua'
 #---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_lua' 
@@ -18952,27 +21080,27 @@ $(target__umodsys_Depends__lib_lua__Linux_x86_64__ReleaseStatic): $(tmpx__umodsy
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib:
 target-Linux_x86_64-Debug: tp-umodsys_Depends-lib_luajit-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys_Depends-lib_luajit-Linux_x86_64-Debug
 tg-umodsys_Depends-Linux_x86_64-Debug: tp-umodsys_Depends-lib_luajit-Linux_x86_64-Debug
 cg-umodsys_Depends-Linux_x86_64-Debug: cp-umodsys_Depends-lib_luajit-Linux_x86_64-Debug
 tp-umodsys_Depends-lib_luajit-Linux_x86_64-Debug: 
 cp-umodsys_Depends-lib_luajit-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys_Depends-lib_luajit-Linux_x86_64-Debug
+clean-Debug: cp-umodsys_Depends-lib_luajit-Linux_x86_64-Debug
 
 tmp__umodsys_Depends__lib_luajit__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys_Depends__lib_luajit__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/lib_luajit
-CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJit/src -I../../patch/luajit/$(env -IPLATFORM)
-CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJit/src -I../../patch/luajit/$(env -IPLATFORM)
-LDFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJIT/src -I../../patch/luajit/Linux_x86_64
+CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJIT/src -I../../patch/luajit/Linux_x86_64
+#LDFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Debug/lib_luajit.Linux_x86_64.Debug.so
 target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug/lib_luajit.Linux_x86_64.Debug.so
-tp-umodsys_Depends-lib_luajit-Linux_x86_64-Debug: \
-  $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) \
-  $(bin__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) \
-  $(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)
+tp-umodsys_Depends-lib_luajit-Linux_x86_64-Debug: $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) $(bin__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) $(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)
 cp-umodsys_Depends-lib_luajit-Linux_x86_64-Debug:
 	-rm $(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/*
@@ -18981,39 +21109,474 @@ $(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug):
 
 
 # file group include :
+# file include : ../../depends/LuaJIT/src/lauxlib.h
+# file include : ../../depends/LuaJIT/src/lj_alloc.h
+# file include : ../../depends/LuaJIT/src/lj_arch.h
+# file include : ../../depends/LuaJIT/src/lj_asm.h
+# file include : ../../depends/LuaJIT/src/lj_asm_arm.h
+# file include : ../../depends/LuaJIT/src/lj_asm_mips.h
+# file include : ../../depends/LuaJIT/src/lj_asm_ppc.h
+# file include : ../../depends/LuaJIT/src/lj_asm_x86.h
+# file include : ../../depends/LuaJIT/src/lj_bc.h
+# file include : ../../depends/LuaJIT/src/lj_bcdump.h
+# file include : ../../depends/LuaJIT/src/lj_carith.h
+# file include : ../../depends/LuaJIT/src/lj_ccall.h
+# file include : ../../depends/LuaJIT/src/lj_ccallback.h
+# file include : ../../depends/LuaJIT/src/lj_cconv.h
+# file include : ../../depends/LuaJIT/src/lj_cdata.h
+# file include : ../../depends/LuaJIT/src/lj_char.h
+# file include : ../../depends/LuaJIT/src/lj_clib.h
+# file include : ../../depends/LuaJIT/src/lj_cparse.h
+# file include : ../../depends/LuaJIT/src/lj_crecord.h
+# file include : ../../depends/LuaJIT/src/lj_ctype.h
+# file include : ../../depends/LuaJIT/src/lj_debug.h
+# file include : ../../depends/LuaJIT/src/lj_def.h
+# file include : ../../depends/LuaJIT/src/lj_dispatch.h
+# file include : ../../depends/LuaJIT/src/lj_emit_arm.h
+# file include : ../../depends/LuaJIT/src/lj_emit_mips.h
+# file include : ../../depends/LuaJIT/src/lj_emit_ppc.h
+# file include : ../../depends/LuaJIT/src/lj_emit_x86.h
+# file include : ../../depends/LuaJIT/src/lj_err.h
+# file include : ../../depends/LuaJIT/src/lj_errmsg.h
+# file include : ../../depends/LuaJIT/src/lj_ff.h
+# file include : ../../depends/LuaJIT/src/lj_ffrecord.h
+# file include : ../../depends/LuaJIT/src/lj_frame.h
+# file include : ../../depends/LuaJIT/src/lj_func.h
+# file include : ../../depends/LuaJIT/src/lj_gc.h
+# file include : ../../depends/LuaJIT/src/lj_gdbjit.h
+# file include : ../../depends/LuaJIT/src/lj_ir.h
+# file include : ../../depends/LuaJIT/src/lj_ircall.h
+# file include : ../../depends/LuaJIT/src/lj_iropt.h
+# file include : ../../depends/LuaJIT/src/lj_jit.h
+# file include : ../../depends/LuaJIT/src/lj_lex.h
+# file include : ../../depends/LuaJIT/src/lj_lib.h
+# file include : ../../depends/LuaJIT/src/lj_mcode.h
+# file include : ../../depends/LuaJIT/src/lj_meta.h
+# file include : ../../depends/LuaJIT/src/lj_obj.h
+# file include : ../../depends/LuaJIT/src/lj_parse.h
+# file include : ../../depends/LuaJIT/src/lj_record.h
+# file include : ../../depends/LuaJIT/src/lj_snap.h
+# file include : ../../depends/LuaJIT/src/lj_state.h
+# file include : ../../depends/LuaJIT/src/lj_str.h
+# file include : ../../depends/LuaJIT/src/lj_strscan.h
+# file include : ../../depends/LuaJIT/src/lj_tab.h
+# file include : ../../depends/LuaJIT/src/lj_target.h
+# file include : ../../depends/LuaJIT/src/lj_target_arm.h
+# file include : ../../depends/LuaJIT/src/lj_target_mips.h
+# file include : ../../depends/LuaJIT/src/lj_target_ppc.h
+# file include : ../../depends/LuaJIT/src/lj_target_x86.h
+# file include : ../../depends/LuaJIT/src/lj_trace.h
+# file include : ../../depends/LuaJIT/src/lj_traceerr.h
+# file include : ../../depends/LuaJIT/src/lj_udata.h
+# file include : ../../depends/LuaJIT/src/lj_vm.h
+# file include : ../../depends/LuaJIT/src/lj_vmevent.h
+# file include : ../../depends/LuaJIT/src/lua.h
+# file include : ../../depends/LuaJIT/src/luaconf.h
+# file include : ../../depends/LuaJIT/src/luajit.h
+# file include : ../../depends/LuaJIT/src/lualib.h
 # end file group include .
 # file group src :
+# file src : ../../depends/LuaJIT/src/lib_aux.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_aux.o: ../../depends/LuaJIT/src/lib_aux.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_aux.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_aux.o
+# file src : ../../depends/LuaJIT/src/lib_base.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_base.o: ../../depends/LuaJIT/src/lib_base.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_base.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_base.o
+# file src : ../../depends/LuaJIT/src/lib_bit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_bit.o: ../../depends/LuaJIT/src/lib_bit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_bit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_bit.o
+# file src : ../../depends/LuaJIT/src/lib_debug.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_debug.o: ../../depends/LuaJIT/src/lib_debug.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_debug.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_debug.o
+# file src : ../../depends/LuaJIT/src/lib_ffi.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_ffi.o: ../../depends/LuaJIT/src/lib_ffi.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_ffi.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_ffi.o
+# file src : ../../depends/LuaJIT/src/lib_init.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_init.o: ../../depends/LuaJIT/src/lib_init.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_init.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_init.o
+# file src : ../../depends/LuaJIT/src/lib_io.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_io.o: ../../depends/LuaJIT/src/lib_io.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_io.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_io.o
+# file src : ../../depends/LuaJIT/src/lib_jit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_jit.o: ../../depends/LuaJIT/src/lib_jit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_jit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_jit.o
+# file src : ../../depends/LuaJIT/src/lib_math.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_math.o: ../../depends/LuaJIT/src/lib_math.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_math.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_math.o
+# file src : ../../depends/LuaJIT/src/lib_os.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_os.o: ../../depends/LuaJIT/src/lib_os.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_os.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_os.o
+# file src : ../../depends/LuaJIT/src/lib_package.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_package.o: ../../depends/LuaJIT/src/lib_package.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_package.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_package.o
+# file src : ../../depends/LuaJIT/src/lib_string.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_string.o: ../../depends/LuaJIT/src/lib_string.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_string.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_string.o
+# file src : ../../depends/LuaJIT/src/lib_table.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_table.o: ../../depends/LuaJIT/src/lib_table.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_table.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lib_table.o
+# file src : ../../depends/LuaJIT/src/lj_alloc.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_alloc.o: ../../depends/LuaJIT/src/lj_alloc.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_alloc.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_alloc.o
+# file src : ../../depends/LuaJIT/src/lj_api.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_api.o: ../../depends/LuaJIT/src/lj_api.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_api.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_api.o
+# file src : ../../depends/LuaJIT/src/lj_asm.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_asm.o: ../../depends/LuaJIT/src/lj_asm.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_asm.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_asm.o
+# file src : ../../depends/LuaJIT/src/lj_bc.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_bc.o: ../../depends/LuaJIT/src/lj_bc.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_bc.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_bc.o
+# file src : ../../depends/LuaJIT/src/lj_bcread.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_bcread.o: ../../depends/LuaJIT/src/lj_bcread.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_bcread.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_bcread.o
+# file src : ../../depends/LuaJIT/src/lj_bcwrite.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_bcwrite.o: ../../depends/LuaJIT/src/lj_bcwrite.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_bcwrite.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_bcwrite.o
+# file src : ../../depends/LuaJIT/src/lj_carith.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_carith.o: ../../depends/LuaJIT/src/lj_carith.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_carith.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_carith.o
+# file src : ../../depends/LuaJIT/src/lj_ccall.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_ccall.o: ../../depends/LuaJIT/src/lj_ccall.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_ccall.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_ccall.o
+# file src : ../../depends/LuaJIT/src/lj_ccallback.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_ccallback.o: ../../depends/LuaJIT/src/lj_ccallback.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_ccallback.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_ccallback.o
+# file src : ../../depends/LuaJIT/src/lj_cconv.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_cconv.o: ../../depends/LuaJIT/src/lj_cconv.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_cconv.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_cconv.o
+# file src : ../../depends/LuaJIT/src/lj_cdata.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_cdata.o: ../../depends/LuaJIT/src/lj_cdata.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_cdata.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_cdata.o
+# file src : ../../depends/LuaJIT/src/lj_char.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_char.o: ../../depends/LuaJIT/src/lj_char.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_char.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_char.o
+# file src : ../../depends/LuaJIT/src/lj_clib.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_clib.o: ../../depends/LuaJIT/src/lj_clib.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_clib.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_clib.o
+# file src : ../../depends/LuaJIT/src/lj_cparse.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_cparse.o: ../../depends/LuaJIT/src/lj_cparse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_cparse.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_cparse.o
+# file src : ../../depends/LuaJIT/src/lj_crecord.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_crecord.o: ../../depends/LuaJIT/src/lj_crecord.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_crecord.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_crecord.o
+# file src : ../../depends/LuaJIT/src/lj_ctype.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_ctype.o: ../../depends/LuaJIT/src/lj_ctype.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_ctype.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_ctype.o
+# file src : ../../depends/LuaJIT/src/lj_debug.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_debug.o: ../../depends/LuaJIT/src/lj_debug.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_debug.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_debug.o
+# file src : ../../depends/LuaJIT/src/lj_dispatch.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_dispatch.o: ../../depends/LuaJIT/src/lj_dispatch.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_dispatch.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_dispatch.o
+# file src : ../../depends/LuaJIT/src/lj_ffrecord.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_ffrecord.o: ../../depends/LuaJIT/src/lj_ffrecord.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_ffrecord.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_ffrecord.o
+# file src : ../../depends/LuaJIT/src/lj_func.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_func.o: ../../depends/LuaJIT/src/lj_func.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_func.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_func.o
+# file src : ../../depends/LuaJIT/src/lj_gc.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_gc.o: ../../depends/LuaJIT/src/lj_gc.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_gc.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_gc.o
+# file src : ../../depends/LuaJIT/src/lj_gdbjit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_gdbjit.o: ../../depends/LuaJIT/src/lj_gdbjit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_gdbjit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_gdbjit.o
+# file src : ../../depends/LuaJIT/src/lj_ir.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_ir.o: ../../depends/LuaJIT/src/lj_ir.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_ir.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_ir.o
+# file src : ../../depends/LuaJIT/src/lj_lex.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_lex.o: ../../depends/LuaJIT/src/lj_lex.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_lex.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_lex.o
+# file src : ../../depends/LuaJIT/src/lj_lib.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_lib.o: ../../depends/LuaJIT/src/lj_lib.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_lib.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_lib.o
+# file src : ../../depends/LuaJIT/src/lj_load.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_load.o: ../../depends/LuaJIT/src/lj_load.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_load.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_load.o
+# file src : ../../depends/LuaJIT/src/lj_mcode.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_mcode.o: ../../depends/LuaJIT/src/lj_mcode.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_mcode.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_mcode.o
+# file src : ../../depends/LuaJIT/src/lj_meta.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_meta.o: ../../depends/LuaJIT/src/lj_meta.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_meta.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_meta.o
+# file src : ../../depends/LuaJIT/src/lj_obj.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_obj.o: ../../depends/LuaJIT/src/lj_obj.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_obj.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_obj.o
+# file src : ../../depends/LuaJIT/src/lj_opt_dce.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_dce.o: ../../depends/LuaJIT/src/lj_opt_dce.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_dce.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_dce.o
+# file src : ../../depends/LuaJIT/src/lj_opt_fold.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_fold.o: ../../depends/LuaJIT/src/lj_opt_fold.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_fold.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_fold.o
+# file src : ../../depends/LuaJIT/src/lj_opt_loop.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_loop.o: ../../depends/LuaJIT/src/lj_opt_loop.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_loop.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_loop.o
+# file src : ../../depends/LuaJIT/src/lj_opt_mem.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_mem.o: ../../depends/LuaJIT/src/lj_opt_mem.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_mem.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_mem.o
+# file src : ../../depends/LuaJIT/src/lj_opt_narrow.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_narrow.o: ../../depends/LuaJIT/src/lj_opt_narrow.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_narrow.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_narrow.o
+# file src : ../../depends/LuaJIT/src/lj_opt_sink.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_sink.o: ../../depends/LuaJIT/src/lj_opt_sink.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_sink.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_sink.o
+# file src : ../../depends/LuaJIT/src/lj_opt_split.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_split.o: ../../depends/LuaJIT/src/lj_opt_split.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_split.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_opt_split.o
+# file src : ../../depends/LuaJIT/src/lj_parse.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_parse.o: ../../depends/LuaJIT/src/lj_parse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_parse.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_parse.o
+# file src : ../../depends/LuaJIT/src/lj_record.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_record.o: ../../depends/LuaJIT/src/lj_record.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_record.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_record.o
+# file src : ../../depends/LuaJIT/src/lj_snap.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_snap.o: ../../depends/LuaJIT/src/lj_snap.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_snap.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_snap.o
+# file src : ../../depends/LuaJIT/src/lj_state.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_state.o: ../../depends/LuaJIT/src/lj_state.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_state.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_state.o
+# file src : ../../depends/LuaJIT/src/lj_str.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_str.o: ../../depends/LuaJIT/src/lj_str.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_str.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_str.o
+# file src : ../../depends/LuaJIT/src/lj_strscan.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_strscan.o: ../../depends/LuaJIT/src/lj_strscan.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_strscan.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_strscan.o
+# file src : ../../depends/LuaJIT/src/lj_tab.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_tab.o: ../../depends/LuaJIT/src/lj_tab.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_tab.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_tab.o
+# file src : ../../depends/LuaJIT/src/lj_trace.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_trace.o: ../../depends/LuaJIT/src/lj_trace.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_trace.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_trace.o
+# file src : ../../depends/LuaJIT/src/lj_udata.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_udata.o: ../../depends/LuaJIT/src/lj_udata.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_udata.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_udata.o
+# file src : ../../depends/LuaJIT/src/lj_vmevent.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_vmevent.o: ../../depends/LuaJIT/src/lj_vmevent.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_vmevent.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_vmevent.o
+# file src : ../../depends/LuaJIT/src/lj_vmmath.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_vmmath.o: ../../depends/LuaJIT/src/lj_vmmath.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_vmmath.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_vmmath.o
+# file src : ../../depends/LuaJIT/src/luajit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/luajit.o: ../../depends/LuaJIT/src/luajit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/luajit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/luajit.o
 # file src : ../../patch/luajit/lj_err.c
 $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_err.o: ../../patch/luajit/lj_err.c
 	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
 	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@.d -MM -MT$@ $<
 -include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_err.o.d
 $(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_err.o
+# file src : ../../patch/luajit/Linux_x86_64/lj_vm.s
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_vm.o: ../../patch/luajit/Linux_x86_64/lj_vm.s
+	$(AS) $(ASFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Debug) -c -o$@ $<
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Debug)/lj_vm.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
 target-Linux_x86_64-Release: tp-umodsys_Depends-lib_luajit-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys_Depends-lib_luajit-Linux_x86_64-Release
 tg-umodsys_Depends-Linux_x86_64-Release: tp-umodsys_Depends-lib_luajit-Linux_x86_64-Release
 cg-umodsys_Depends-Linux_x86_64-Release: cp-umodsys_Depends-lib_luajit-Linux_x86_64-Release
 tp-umodsys_Depends-lib_luajit-Linux_x86_64-Release: 
 cp-umodsys_Depends-lib_luajit-Linux_x86_64-Release: 
+target-Release: tp-umodsys_Depends-lib_luajit-Linux_x86_64-Release
+clean-Release: cp-umodsys_Depends-lib_luajit-Linux_x86_64-Release
 
 tmp__umodsys_Depends__lib_luajit__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys_Depends__lib_luajit__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/lib_luajit
-CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJit/src -I../../patch/luajit/$(env -IPLATFORM)
-CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJit/src -I../../patch/luajit/$(env -IPLATFORM)
-LDFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJIT/src -I../../patch/luajit/Linux_x86_64
+CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJIT/src -I../../patch/luajit/Linux_x86_64
+#LDFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Release/lib_luajit.Linux_x86_64.Release.so
 target__umodsys_Depends__lib_luajit__Linux_x86_64__Release=../../bin/Linux_x86_64.Release/lib_luajit.Linux_x86_64.Release.so
-tp-umodsys_Depends-lib_luajit-Linux_x86_64-Release: \
-  $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release) \
-  $(bin__umodsys_Depends__lib_luajit__Linux_x86_64__Release) \
-  $(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release)
+tp-umodsys_Depends-lib_luajit-Linux_x86_64-Release: $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release) $(bin__umodsys_Depends__lib_luajit__Linux_x86_64__Release) $(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release)
 cp-umodsys_Depends-lib_luajit-Linux_x86_64-Release:
 	-rm $(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/*
@@ -19022,39 +21585,474 @@ $(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release):
 
 
 # file group include :
+# file include : ../../depends/LuaJIT/src/lauxlib.h
+# file include : ../../depends/LuaJIT/src/lj_alloc.h
+# file include : ../../depends/LuaJIT/src/lj_arch.h
+# file include : ../../depends/LuaJIT/src/lj_asm.h
+# file include : ../../depends/LuaJIT/src/lj_asm_arm.h
+# file include : ../../depends/LuaJIT/src/lj_asm_mips.h
+# file include : ../../depends/LuaJIT/src/lj_asm_ppc.h
+# file include : ../../depends/LuaJIT/src/lj_asm_x86.h
+# file include : ../../depends/LuaJIT/src/lj_bc.h
+# file include : ../../depends/LuaJIT/src/lj_bcdump.h
+# file include : ../../depends/LuaJIT/src/lj_carith.h
+# file include : ../../depends/LuaJIT/src/lj_ccall.h
+# file include : ../../depends/LuaJIT/src/lj_ccallback.h
+# file include : ../../depends/LuaJIT/src/lj_cconv.h
+# file include : ../../depends/LuaJIT/src/lj_cdata.h
+# file include : ../../depends/LuaJIT/src/lj_char.h
+# file include : ../../depends/LuaJIT/src/lj_clib.h
+# file include : ../../depends/LuaJIT/src/lj_cparse.h
+# file include : ../../depends/LuaJIT/src/lj_crecord.h
+# file include : ../../depends/LuaJIT/src/lj_ctype.h
+# file include : ../../depends/LuaJIT/src/lj_debug.h
+# file include : ../../depends/LuaJIT/src/lj_def.h
+# file include : ../../depends/LuaJIT/src/lj_dispatch.h
+# file include : ../../depends/LuaJIT/src/lj_emit_arm.h
+# file include : ../../depends/LuaJIT/src/lj_emit_mips.h
+# file include : ../../depends/LuaJIT/src/lj_emit_ppc.h
+# file include : ../../depends/LuaJIT/src/lj_emit_x86.h
+# file include : ../../depends/LuaJIT/src/lj_err.h
+# file include : ../../depends/LuaJIT/src/lj_errmsg.h
+# file include : ../../depends/LuaJIT/src/lj_ff.h
+# file include : ../../depends/LuaJIT/src/lj_ffrecord.h
+# file include : ../../depends/LuaJIT/src/lj_frame.h
+# file include : ../../depends/LuaJIT/src/lj_func.h
+# file include : ../../depends/LuaJIT/src/lj_gc.h
+# file include : ../../depends/LuaJIT/src/lj_gdbjit.h
+# file include : ../../depends/LuaJIT/src/lj_ir.h
+# file include : ../../depends/LuaJIT/src/lj_ircall.h
+# file include : ../../depends/LuaJIT/src/lj_iropt.h
+# file include : ../../depends/LuaJIT/src/lj_jit.h
+# file include : ../../depends/LuaJIT/src/lj_lex.h
+# file include : ../../depends/LuaJIT/src/lj_lib.h
+# file include : ../../depends/LuaJIT/src/lj_mcode.h
+# file include : ../../depends/LuaJIT/src/lj_meta.h
+# file include : ../../depends/LuaJIT/src/lj_obj.h
+# file include : ../../depends/LuaJIT/src/lj_parse.h
+# file include : ../../depends/LuaJIT/src/lj_record.h
+# file include : ../../depends/LuaJIT/src/lj_snap.h
+# file include : ../../depends/LuaJIT/src/lj_state.h
+# file include : ../../depends/LuaJIT/src/lj_str.h
+# file include : ../../depends/LuaJIT/src/lj_strscan.h
+# file include : ../../depends/LuaJIT/src/lj_tab.h
+# file include : ../../depends/LuaJIT/src/lj_target.h
+# file include : ../../depends/LuaJIT/src/lj_target_arm.h
+# file include : ../../depends/LuaJIT/src/lj_target_mips.h
+# file include : ../../depends/LuaJIT/src/lj_target_ppc.h
+# file include : ../../depends/LuaJIT/src/lj_target_x86.h
+# file include : ../../depends/LuaJIT/src/lj_trace.h
+# file include : ../../depends/LuaJIT/src/lj_traceerr.h
+# file include : ../../depends/LuaJIT/src/lj_udata.h
+# file include : ../../depends/LuaJIT/src/lj_vm.h
+# file include : ../../depends/LuaJIT/src/lj_vmevent.h
+# file include : ../../depends/LuaJIT/src/lua.h
+# file include : ../../depends/LuaJIT/src/luaconf.h
+# file include : ../../depends/LuaJIT/src/luajit.h
+# file include : ../../depends/LuaJIT/src/lualib.h
 # end file group include .
 # file group src :
+# file src : ../../depends/LuaJIT/src/lib_aux.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_aux.o: ../../depends/LuaJIT/src/lib_aux.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_aux.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_aux.o
+# file src : ../../depends/LuaJIT/src/lib_base.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_base.o: ../../depends/LuaJIT/src/lib_base.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_base.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_base.o
+# file src : ../../depends/LuaJIT/src/lib_bit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_bit.o: ../../depends/LuaJIT/src/lib_bit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_bit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_bit.o
+# file src : ../../depends/LuaJIT/src/lib_debug.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_debug.o: ../../depends/LuaJIT/src/lib_debug.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_debug.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_debug.o
+# file src : ../../depends/LuaJIT/src/lib_ffi.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_ffi.o: ../../depends/LuaJIT/src/lib_ffi.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_ffi.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_ffi.o
+# file src : ../../depends/LuaJIT/src/lib_init.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_init.o: ../../depends/LuaJIT/src/lib_init.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_init.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_init.o
+# file src : ../../depends/LuaJIT/src/lib_io.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_io.o: ../../depends/LuaJIT/src/lib_io.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_io.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_io.o
+# file src : ../../depends/LuaJIT/src/lib_jit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_jit.o: ../../depends/LuaJIT/src/lib_jit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_jit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_jit.o
+# file src : ../../depends/LuaJIT/src/lib_math.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_math.o: ../../depends/LuaJIT/src/lib_math.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_math.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_math.o
+# file src : ../../depends/LuaJIT/src/lib_os.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_os.o: ../../depends/LuaJIT/src/lib_os.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_os.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_os.o
+# file src : ../../depends/LuaJIT/src/lib_package.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_package.o: ../../depends/LuaJIT/src/lib_package.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_package.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_package.o
+# file src : ../../depends/LuaJIT/src/lib_string.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_string.o: ../../depends/LuaJIT/src/lib_string.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_string.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_string.o
+# file src : ../../depends/LuaJIT/src/lib_table.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_table.o: ../../depends/LuaJIT/src/lib_table.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_table.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lib_table.o
+# file src : ../../depends/LuaJIT/src/lj_alloc.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_alloc.o: ../../depends/LuaJIT/src/lj_alloc.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_alloc.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_alloc.o
+# file src : ../../depends/LuaJIT/src/lj_api.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_api.o: ../../depends/LuaJIT/src/lj_api.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_api.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_api.o
+# file src : ../../depends/LuaJIT/src/lj_asm.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_asm.o: ../../depends/LuaJIT/src/lj_asm.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_asm.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_asm.o
+# file src : ../../depends/LuaJIT/src/lj_bc.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_bc.o: ../../depends/LuaJIT/src/lj_bc.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_bc.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_bc.o
+# file src : ../../depends/LuaJIT/src/lj_bcread.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_bcread.o: ../../depends/LuaJIT/src/lj_bcread.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_bcread.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_bcread.o
+# file src : ../../depends/LuaJIT/src/lj_bcwrite.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_bcwrite.o: ../../depends/LuaJIT/src/lj_bcwrite.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_bcwrite.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_bcwrite.o
+# file src : ../../depends/LuaJIT/src/lj_carith.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_carith.o: ../../depends/LuaJIT/src/lj_carith.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_carith.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_carith.o
+# file src : ../../depends/LuaJIT/src/lj_ccall.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_ccall.o: ../../depends/LuaJIT/src/lj_ccall.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_ccall.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_ccall.o
+# file src : ../../depends/LuaJIT/src/lj_ccallback.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_ccallback.o: ../../depends/LuaJIT/src/lj_ccallback.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_ccallback.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_ccallback.o
+# file src : ../../depends/LuaJIT/src/lj_cconv.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_cconv.o: ../../depends/LuaJIT/src/lj_cconv.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_cconv.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_cconv.o
+# file src : ../../depends/LuaJIT/src/lj_cdata.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_cdata.o: ../../depends/LuaJIT/src/lj_cdata.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_cdata.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_cdata.o
+# file src : ../../depends/LuaJIT/src/lj_char.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_char.o: ../../depends/LuaJIT/src/lj_char.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_char.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_char.o
+# file src : ../../depends/LuaJIT/src/lj_clib.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_clib.o: ../../depends/LuaJIT/src/lj_clib.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_clib.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_clib.o
+# file src : ../../depends/LuaJIT/src/lj_cparse.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_cparse.o: ../../depends/LuaJIT/src/lj_cparse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_cparse.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_cparse.o
+# file src : ../../depends/LuaJIT/src/lj_crecord.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_crecord.o: ../../depends/LuaJIT/src/lj_crecord.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_crecord.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_crecord.o
+# file src : ../../depends/LuaJIT/src/lj_ctype.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_ctype.o: ../../depends/LuaJIT/src/lj_ctype.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_ctype.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_ctype.o
+# file src : ../../depends/LuaJIT/src/lj_debug.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_debug.o: ../../depends/LuaJIT/src/lj_debug.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_debug.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_debug.o
+# file src : ../../depends/LuaJIT/src/lj_dispatch.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_dispatch.o: ../../depends/LuaJIT/src/lj_dispatch.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_dispatch.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_dispatch.o
+# file src : ../../depends/LuaJIT/src/lj_ffrecord.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_ffrecord.o: ../../depends/LuaJIT/src/lj_ffrecord.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_ffrecord.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_ffrecord.o
+# file src : ../../depends/LuaJIT/src/lj_func.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_func.o: ../../depends/LuaJIT/src/lj_func.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_func.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_func.o
+# file src : ../../depends/LuaJIT/src/lj_gc.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_gc.o: ../../depends/LuaJIT/src/lj_gc.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_gc.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_gc.o
+# file src : ../../depends/LuaJIT/src/lj_gdbjit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_gdbjit.o: ../../depends/LuaJIT/src/lj_gdbjit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_gdbjit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_gdbjit.o
+# file src : ../../depends/LuaJIT/src/lj_ir.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_ir.o: ../../depends/LuaJIT/src/lj_ir.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_ir.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_ir.o
+# file src : ../../depends/LuaJIT/src/lj_lex.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_lex.o: ../../depends/LuaJIT/src/lj_lex.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_lex.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_lex.o
+# file src : ../../depends/LuaJIT/src/lj_lib.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_lib.o: ../../depends/LuaJIT/src/lj_lib.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_lib.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_lib.o
+# file src : ../../depends/LuaJIT/src/lj_load.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_load.o: ../../depends/LuaJIT/src/lj_load.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_load.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_load.o
+# file src : ../../depends/LuaJIT/src/lj_mcode.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_mcode.o: ../../depends/LuaJIT/src/lj_mcode.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_mcode.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_mcode.o
+# file src : ../../depends/LuaJIT/src/lj_meta.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_meta.o: ../../depends/LuaJIT/src/lj_meta.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_meta.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_meta.o
+# file src : ../../depends/LuaJIT/src/lj_obj.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_obj.o: ../../depends/LuaJIT/src/lj_obj.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_obj.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_obj.o
+# file src : ../../depends/LuaJIT/src/lj_opt_dce.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_dce.o: ../../depends/LuaJIT/src/lj_opt_dce.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_dce.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_dce.o
+# file src : ../../depends/LuaJIT/src/lj_opt_fold.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_fold.o: ../../depends/LuaJIT/src/lj_opt_fold.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_fold.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_fold.o
+# file src : ../../depends/LuaJIT/src/lj_opt_loop.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_loop.o: ../../depends/LuaJIT/src/lj_opt_loop.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_loop.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_loop.o
+# file src : ../../depends/LuaJIT/src/lj_opt_mem.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_mem.o: ../../depends/LuaJIT/src/lj_opt_mem.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_mem.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_mem.o
+# file src : ../../depends/LuaJIT/src/lj_opt_narrow.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_narrow.o: ../../depends/LuaJIT/src/lj_opt_narrow.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_narrow.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_narrow.o
+# file src : ../../depends/LuaJIT/src/lj_opt_sink.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_sink.o: ../../depends/LuaJIT/src/lj_opt_sink.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_sink.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_sink.o
+# file src : ../../depends/LuaJIT/src/lj_opt_split.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_split.o: ../../depends/LuaJIT/src/lj_opt_split.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_split.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_opt_split.o
+# file src : ../../depends/LuaJIT/src/lj_parse.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_parse.o: ../../depends/LuaJIT/src/lj_parse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_parse.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_parse.o
+# file src : ../../depends/LuaJIT/src/lj_record.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_record.o: ../../depends/LuaJIT/src/lj_record.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_record.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_record.o
+# file src : ../../depends/LuaJIT/src/lj_snap.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_snap.o: ../../depends/LuaJIT/src/lj_snap.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_snap.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_snap.o
+# file src : ../../depends/LuaJIT/src/lj_state.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_state.o: ../../depends/LuaJIT/src/lj_state.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_state.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_state.o
+# file src : ../../depends/LuaJIT/src/lj_str.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_str.o: ../../depends/LuaJIT/src/lj_str.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_str.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_str.o
+# file src : ../../depends/LuaJIT/src/lj_strscan.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_strscan.o: ../../depends/LuaJIT/src/lj_strscan.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_strscan.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_strscan.o
+# file src : ../../depends/LuaJIT/src/lj_tab.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_tab.o: ../../depends/LuaJIT/src/lj_tab.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_tab.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_tab.o
+# file src : ../../depends/LuaJIT/src/lj_trace.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_trace.o: ../../depends/LuaJIT/src/lj_trace.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_trace.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_trace.o
+# file src : ../../depends/LuaJIT/src/lj_udata.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_udata.o: ../../depends/LuaJIT/src/lj_udata.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_udata.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_udata.o
+# file src : ../../depends/LuaJIT/src/lj_vmevent.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_vmevent.o: ../../depends/LuaJIT/src/lj_vmevent.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_vmevent.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_vmevent.o
+# file src : ../../depends/LuaJIT/src/lj_vmmath.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_vmmath.o: ../../depends/LuaJIT/src/lj_vmmath.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_vmmath.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_vmmath.o
+# file src : ../../depends/LuaJIT/src/luajit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/luajit.o: ../../depends/LuaJIT/src/luajit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/luajit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/luajit.o
 # file src : ../../patch/luajit/lj_err.c
 $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_err.o: ../../patch/luajit/lj_err.c
 	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
 	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@.d -MM -MT$@ $<
 -include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_err.o.d
 $(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_err.o
+# file src : ../../patch/luajit/Linux_x86_64/lj_vm.s
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_vm.o: ../../patch/luajit/Linux_x86_64/lj_vm.s
+	$(AS) $(ASFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__Release) -c -o$@ $<
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__Release)/lj_vm.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseSpace
 tg-umodsys_Depends-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseSpace
 cg-umodsys_Depends-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseSpace
 tp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseSpace: 
 cp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/lib_luajit
-CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJit/src -I../../patch/luajit/$(env -IPLATFORM)
-CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJit/src -I../../patch/luajit/$(env -IPLATFORM)
-LDFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJIT/src -I../../patch/luajit/Linux_x86_64
+CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJIT/src -I../../patch/luajit/Linux_x86_64
+#LDFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseSpace/lib_luajit.Linux_x86_64.ReleaseSpace.so
 target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace/lib_luajit.Linux_x86_64.ReleaseSpace.so
-tp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) \
-  $(bin__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)
+tp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) $(bin__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) $(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)
 cp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/*
@@ -19063,39 +22061,474 @@ $(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace):
 
 
 # file group include :
+# file include : ../../depends/LuaJIT/src/lauxlib.h
+# file include : ../../depends/LuaJIT/src/lj_alloc.h
+# file include : ../../depends/LuaJIT/src/lj_arch.h
+# file include : ../../depends/LuaJIT/src/lj_asm.h
+# file include : ../../depends/LuaJIT/src/lj_asm_arm.h
+# file include : ../../depends/LuaJIT/src/lj_asm_mips.h
+# file include : ../../depends/LuaJIT/src/lj_asm_ppc.h
+# file include : ../../depends/LuaJIT/src/lj_asm_x86.h
+# file include : ../../depends/LuaJIT/src/lj_bc.h
+# file include : ../../depends/LuaJIT/src/lj_bcdump.h
+# file include : ../../depends/LuaJIT/src/lj_carith.h
+# file include : ../../depends/LuaJIT/src/lj_ccall.h
+# file include : ../../depends/LuaJIT/src/lj_ccallback.h
+# file include : ../../depends/LuaJIT/src/lj_cconv.h
+# file include : ../../depends/LuaJIT/src/lj_cdata.h
+# file include : ../../depends/LuaJIT/src/lj_char.h
+# file include : ../../depends/LuaJIT/src/lj_clib.h
+# file include : ../../depends/LuaJIT/src/lj_cparse.h
+# file include : ../../depends/LuaJIT/src/lj_crecord.h
+# file include : ../../depends/LuaJIT/src/lj_ctype.h
+# file include : ../../depends/LuaJIT/src/lj_debug.h
+# file include : ../../depends/LuaJIT/src/lj_def.h
+# file include : ../../depends/LuaJIT/src/lj_dispatch.h
+# file include : ../../depends/LuaJIT/src/lj_emit_arm.h
+# file include : ../../depends/LuaJIT/src/lj_emit_mips.h
+# file include : ../../depends/LuaJIT/src/lj_emit_ppc.h
+# file include : ../../depends/LuaJIT/src/lj_emit_x86.h
+# file include : ../../depends/LuaJIT/src/lj_err.h
+# file include : ../../depends/LuaJIT/src/lj_errmsg.h
+# file include : ../../depends/LuaJIT/src/lj_ff.h
+# file include : ../../depends/LuaJIT/src/lj_ffrecord.h
+# file include : ../../depends/LuaJIT/src/lj_frame.h
+# file include : ../../depends/LuaJIT/src/lj_func.h
+# file include : ../../depends/LuaJIT/src/lj_gc.h
+# file include : ../../depends/LuaJIT/src/lj_gdbjit.h
+# file include : ../../depends/LuaJIT/src/lj_ir.h
+# file include : ../../depends/LuaJIT/src/lj_ircall.h
+# file include : ../../depends/LuaJIT/src/lj_iropt.h
+# file include : ../../depends/LuaJIT/src/lj_jit.h
+# file include : ../../depends/LuaJIT/src/lj_lex.h
+# file include : ../../depends/LuaJIT/src/lj_lib.h
+# file include : ../../depends/LuaJIT/src/lj_mcode.h
+# file include : ../../depends/LuaJIT/src/lj_meta.h
+# file include : ../../depends/LuaJIT/src/lj_obj.h
+# file include : ../../depends/LuaJIT/src/lj_parse.h
+# file include : ../../depends/LuaJIT/src/lj_record.h
+# file include : ../../depends/LuaJIT/src/lj_snap.h
+# file include : ../../depends/LuaJIT/src/lj_state.h
+# file include : ../../depends/LuaJIT/src/lj_str.h
+# file include : ../../depends/LuaJIT/src/lj_strscan.h
+# file include : ../../depends/LuaJIT/src/lj_tab.h
+# file include : ../../depends/LuaJIT/src/lj_target.h
+# file include : ../../depends/LuaJIT/src/lj_target_arm.h
+# file include : ../../depends/LuaJIT/src/lj_target_mips.h
+# file include : ../../depends/LuaJIT/src/lj_target_ppc.h
+# file include : ../../depends/LuaJIT/src/lj_target_x86.h
+# file include : ../../depends/LuaJIT/src/lj_trace.h
+# file include : ../../depends/LuaJIT/src/lj_traceerr.h
+# file include : ../../depends/LuaJIT/src/lj_udata.h
+# file include : ../../depends/LuaJIT/src/lj_vm.h
+# file include : ../../depends/LuaJIT/src/lj_vmevent.h
+# file include : ../../depends/LuaJIT/src/lua.h
+# file include : ../../depends/LuaJIT/src/luaconf.h
+# file include : ../../depends/LuaJIT/src/luajit.h
+# file include : ../../depends/LuaJIT/src/lualib.h
 # end file group include .
 # file group src :
+# file src : ../../depends/LuaJIT/src/lib_aux.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_aux.o: ../../depends/LuaJIT/src/lib_aux.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_aux.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_aux.o
+# file src : ../../depends/LuaJIT/src/lib_base.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_base.o: ../../depends/LuaJIT/src/lib_base.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_base.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_base.o
+# file src : ../../depends/LuaJIT/src/lib_bit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_bit.o: ../../depends/LuaJIT/src/lib_bit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_bit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_bit.o
+# file src : ../../depends/LuaJIT/src/lib_debug.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_debug.o: ../../depends/LuaJIT/src/lib_debug.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_debug.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_debug.o
+# file src : ../../depends/LuaJIT/src/lib_ffi.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_ffi.o: ../../depends/LuaJIT/src/lib_ffi.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_ffi.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_ffi.o
+# file src : ../../depends/LuaJIT/src/lib_init.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_init.o: ../../depends/LuaJIT/src/lib_init.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_init.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_init.o
+# file src : ../../depends/LuaJIT/src/lib_io.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_io.o: ../../depends/LuaJIT/src/lib_io.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_io.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_io.o
+# file src : ../../depends/LuaJIT/src/lib_jit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_jit.o: ../../depends/LuaJIT/src/lib_jit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_jit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_jit.o
+# file src : ../../depends/LuaJIT/src/lib_math.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_math.o: ../../depends/LuaJIT/src/lib_math.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_math.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_math.o
+# file src : ../../depends/LuaJIT/src/lib_os.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_os.o: ../../depends/LuaJIT/src/lib_os.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_os.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_os.o
+# file src : ../../depends/LuaJIT/src/lib_package.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_package.o: ../../depends/LuaJIT/src/lib_package.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_package.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_package.o
+# file src : ../../depends/LuaJIT/src/lib_string.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_string.o: ../../depends/LuaJIT/src/lib_string.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_string.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_string.o
+# file src : ../../depends/LuaJIT/src/lib_table.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_table.o: ../../depends/LuaJIT/src/lib_table.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_table.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lib_table.o
+# file src : ../../depends/LuaJIT/src/lj_alloc.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_alloc.o: ../../depends/LuaJIT/src/lj_alloc.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_alloc.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_alloc.o
+# file src : ../../depends/LuaJIT/src/lj_api.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_api.o: ../../depends/LuaJIT/src/lj_api.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_api.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_api.o
+# file src : ../../depends/LuaJIT/src/lj_asm.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_asm.o: ../../depends/LuaJIT/src/lj_asm.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_asm.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_asm.o
+# file src : ../../depends/LuaJIT/src/lj_bc.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_bc.o: ../../depends/LuaJIT/src/lj_bc.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_bc.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_bc.o
+# file src : ../../depends/LuaJIT/src/lj_bcread.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_bcread.o: ../../depends/LuaJIT/src/lj_bcread.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_bcread.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_bcread.o
+# file src : ../../depends/LuaJIT/src/lj_bcwrite.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_bcwrite.o: ../../depends/LuaJIT/src/lj_bcwrite.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_bcwrite.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_bcwrite.o
+# file src : ../../depends/LuaJIT/src/lj_carith.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_carith.o: ../../depends/LuaJIT/src/lj_carith.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_carith.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_carith.o
+# file src : ../../depends/LuaJIT/src/lj_ccall.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_ccall.o: ../../depends/LuaJIT/src/lj_ccall.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_ccall.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_ccall.o
+# file src : ../../depends/LuaJIT/src/lj_ccallback.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_ccallback.o: ../../depends/LuaJIT/src/lj_ccallback.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_ccallback.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_ccallback.o
+# file src : ../../depends/LuaJIT/src/lj_cconv.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_cconv.o: ../../depends/LuaJIT/src/lj_cconv.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_cconv.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_cconv.o
+# file src : ../../depends/LuaJIT/src/lj_cdata.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_cdata.o: ../../depends/LuaJIT/src/lj_cdata.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_cdata.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_cdata.o
+# file src : ../../depends/LuaJIT/src/lj_char.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_char.o: ../../depends/LuaJIT/src/lj_char.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_char.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_char.o
+# file src : ../../depends/LuaJIT/src/lj_clib.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_clib.o: ../../depends/LuaJIT/src/lj_clib.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_clib.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_clib.o
+# file src : ../../depends/LuaJIT/src/lj_cparse.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_cparse.o: ../../depends/LuaJIT/src/lj_cparse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_cparse.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_cparse.o
+# file src : ../../depends/LuaJIT/src/lj_crecord.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_crecord.o: ../../depends/LuaJIT/src/lj_crecord.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_crecord.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_crecord.o
+# file src : ../../depends/LuaJIT/src/lj_ctype.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_ctype.o: ../../depends/LuaJIT/src/lj_ctype.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_ctype.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_ctype.o
+# file src : ../../depends/LuaJIT/src/lj_debug.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_debug.o: ../../depends/LuaJIT/src/lj_debug.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_debug.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_debug.o
+# file src : ../../depends/LuaJIT/src/lj_dispatch.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_dispatch.o: ../../depends/LuaJIT/src/lj_dispatch.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_dispatch.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_dispatch.o
+# file src : ../../depends/LuaJIT/src/lj_ffrecord.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_ffrecord.o: ../../depends/LuaJIT/src/lj_ffrecord.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_ffrecord.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_ffrecord.o
+# file src : ../../depends/LuaJIT/src/lj_func.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_func.o: ../../depends/LuaJIT/src/lj_func.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_func.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_func.o
+# file src : ../../depends/LuaJIT/src/lj_gc.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_gc.o: ../../depends/LuaJIT/src/lj_gc.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_gc.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_gc.o
+# file src : ../../depends/LuaJIT/src/lj_gdbjit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_gdbjit.o: ../../depends/LuaJIT/src/lj_gdbjit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_gdbjit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_gdbjit.o
+# file src : ../../depends/LuaJIT/src/lj_ir.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_ir.o: ../../depends/LuaJIT/src/lj_ir.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_ir.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_ir.o
+# file src : ../../depends/LuaJIT/src/lj_lex.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_lex.o: ../../depends/LuaJIT/src/lj_lex.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_lex.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_lex.o
+# file src : ../../depends/LuaJIT/src/lj_lib.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_lib.o: ../../depends/LuaJIT/src/lj_lib.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_lib.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_lib.o
+# file src : ../../depends/LuaJIT/src/lj_load.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_load.o: ../../depends/LuaJIT/src/lj_load.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_load.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_load.o
+# file src : ../../depends/LuaJIT/src/lj_mcode.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_mcode.o: ../../depends/LuaJIT/src/lj_mcode.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_mcode.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_mcode.o
+# file src : ../../depends/LuaJIT/src/lj_meta.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_meta.o: ../../depends/LuaJIT/src/lj_meta.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_meta.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_meta.o
+# file src : ../../depends/LuaJIT/src/lj_obj.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_obj.o: ../../depends/LuaJIT/src/lj_obj.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_obj.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_obj.o
+# file src : ../../depends/LuaJIT/src/lj_opt_dce.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_dce.o: ../../depends/LuaJIT/src/lj_opt_dce.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_dce.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_dce.o
+# file src : ../../depends/LuaJIT/src/lj_opt_fold.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_fold.o: ../../depends/LuaJIT/src/lj_opt_fold.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_fold.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_fold.o
+# file src : ../../depends/LuaJIT/src/lj_opt_loop.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_loop.o: ../../depends/LuaJIT/src/lj_opt_loop.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_loop.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_loop.o
+# file src : ../../depends/LuaJIT/src/lj_opt_mem.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_mem.o: ../../depends/LuaJIT/src/lj_opt_mem.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_mem.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_mem.o
+# file src : ../../depends/LuaJIT/src/lj_opt_narrow.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_narrow.o: ../../depends/LuaJIT/src/lj_opt_narrow.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_narrow.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_narrow.o
+# file src : ../../depends/LuaJIT/src/lj_opt_sink.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_sink.o: ../../depends/LuaJIT/src/lj_opt_sink.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_sink.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_sink.o
+# file src : ../../depends/LuaJIT/src/lj_opt_split.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_split.o: ../../depends/LuaJIT/src/lj_opt_split.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_split.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_opt_split.o
+# file src : ../../depends/LuaJIT/src/lj_parse.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_parse.o: ../../depends/LuaJIT/src/lj_parse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_parse.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_parse.o
+# file src : ../../depends/LuaJIT/src/lj_record.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_record.o: ../../depends/LuaJIT/src/lj_record.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_record.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_record.o
+# file src : ../../depends/LuaJIT/src/lj_snap.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_snap.o: ../../depends/LuaJIT/src/lj_snap.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_snap.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_snap.o
+# file src : ../../depends/LuaJIT/src/lj_state.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_state.o: ../../depends/LuaJIT/src/lj_state.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_state.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_state.o
+# file src : ../../depends/LuaJIT/src/lj_str.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_str.o: ../../depends/LuaJIT/src/lj_str.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_str.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_str.o
+# file src : ../../depends/LuaJIT/src/lj_strscan.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_strscan.o: ../../depends/LuaJIT/src/lj_strscan.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_strscan.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_strscan.o
+# file src : ../../depends/LuaJIT/src/lj_tab.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_tab.o: ../../depends/LuaJIT/src/lj_tab.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_tab.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_tab.o
+# file src : ../../depends/LuaJIT/src/lj_trace.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_trace.o: ../../depends/LuaJIT/src/lj_trace.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_trace.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_trace.o
+# file src : ../../depends/LuaJIT/src/lj_udata.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_udata.o: ../../depends/LuaJIT/src/lj_udata.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_udata.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_udata.o
+# file src : ../../depends/LuaJIT/src/lj_vmevent.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_vmevent.o: ../../depends/LuaJIT/src/lj_vmevent.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_vmevent.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_vmevent.o
+# file src : ../../depends/LuaJIT/src/lj_vmmath.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_vmmath.o: ../../depends/LuaJIT/src/lj_vmmath.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_vmmath.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_vmmath.o
+# file src : ../../depends/LuaJIT/src/luajit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/luajit.o: ../../depends/LuaJIT/src/luajit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/luajit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/luajit.o
 # file src : ../../patch/luajit/lj_err.c
 $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_err.o: ../../patch/luajit/lj_err.c
 	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
 	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@.d -MM -MT$@ $<
 -include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_err.o.d
 $(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_err.o
+# file src : ../../patch/luajit/Linux_x86_64/lj_vm.s
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_vm.o: ../../patch/luajit/Linux_x86_64/lj_vm.s
+	$(AS) $(ASFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace) -c -o$@ $<
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseSpace)/lj_vm.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseStatic
 tg-umodsys_Depends-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseStatic
 cg-umodsys_Depends-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseStatic
 tp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseStatic: 
 cp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/lib_luajit
-CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJit/src -I../../patch/luajit/$(env -IPLATFORM)
-CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJit/src -I../../patch/luajit/$(env -IPLATFORM)
-LDFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJIT/src -I../../patch/luajit/Linux_x86_64
+CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/LuaJIT/src -I../../patch/luajit/Linux_x86_64
+#LDFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseStatic/lib_luajit.Linux_x86_64.ReleaseStatic.so
 target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic/lib_luajit.Linux_x86_64.ReleaseStatic.so
-tp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) \
-  $(bin__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)
+tp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) $(bin__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) $(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)
 cp-umodsys_Depends-lib_luajit-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/*
@@ -19104,17 +22537,452 @@ $(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic):
 
 
 # file group include :
+# file include : ../../depends/LuaJIT/src/lauxlib.h
+# file include : ../../depends/LuaJIT/src/lj_alloc.h
+# file include : ../../depends/LuaJIT/src/lj_arch.h
+# file include : ../../depends/LuaJIT/src/lj_asm.h
+# file include : ../../depends/LuaJIT/src/lj_asm_arm.h
+# file include : ../../depends/LuaJIT/src/lj_asm_mips.h
+# file include : ../../depends/LuaJIT/src/lj_asm_ppc.h
+# file include : ../../depends/LuaJIT/src/lj_asm_x86.h
+# file include : ../../depends/LuaJIT/src/lj_bc.h
+# file include : ../../depends/LuaJIT/src/lj_bcdump.h
+# file include : ../../depends/LuaJIT/src/lj_carith.h
+# file include : ../../depends/LuaJIT/src/lj_ccall.h
+# file include : ../../depends/LuaJIT/src/lj_ccallback.h
+# file include : ../../depends/LuaJIT/src/lj_cconv.h
+# file include : ../../depends/LuaJIT/src/lj_cdata.h
+# file include : ../../depends/LuaJIT/src/lj_char.h
+# file include : ../../depends/LuaJIT/src/lj_clib.h
+# file include : ../../depends/LuaJIT/src/lj_cparse.h
+# file include : ../../depends/LuaJIT/src/lj_crecord.h
+# file include : ../../depends/LuaJIT/src/lj_ctype.h
+# file include : ../../depends/LuaJIT/src/lj_debug.h
+# file include : ../../depends/LuaJIT/src/lj_def.h
+# file include : ../../depends/LuaJIT/src/lj_dispatch.h
+# file include : ../../depends/LuaJIT/src/lj_emit_arm.h
+# file include : ../../depends/LuaJIT/src/lj_emit_mips.h
+# file include : ../../depends/LuaJIT/src/lj_emit_ppc.h
+# file include : ../../depends/LuaJIT/src/lj_emit_x86.h
+# file include : ../../depends/LuaJIT/src/lj_err.h
+# file include : ../../depends/LuaJIT/src/lj_errmsg.h
+# file include : ../../depends/LuaJIT/src/lj_ff.h
+# file include : ../../depends/LuaJIT/src/lj_ffrecord.h
+# file include : ../../depends/LuaJIT/src/lj_frame.h
+# file include : ../../depends/LuaJIT/src/lj_func.h
+# file include : ../../depends/LuaJIT/src/lj_gc.h
+# file include : ../../depends/LuaJIT/src/lj_gdbjit.h
+# file include : ../../depends/LuaJIT/src/lj_ir.h
+# file include : ../../depends/LuaJIT/src/lj_ircall.h
+# file include : ../../depends/LuaJIT/src/lj_iropt.h
+# file include : ../../depends/LuaJIT/src/lj_jit.h
+# file include : ../../depends/LuaJIT/src/lj_lex.h
+# file include : ../../depends/LuaJIT/src/lj_lib.h
+# file include : ../../depends/LuaJIT/src/lj_mcode.h
+# file include : ../../depends/LuaJIT/src/lj_meta.h
+# file include : ../../depends/LuaJIT/src/lj_obj.h
+# file include : ../../depends/LuaJIT/src/lj_parse.h
+# file include : ../../depends/LuaJIT/src/lj_record.h
+# file include : ../../depends/LuaJIT/src/lj_snap.h
+# file include : ../../depends/LuaJIT/src/lj_state.h
+# file include : ../../depends/LuaJIT/src/lj_str.h
+# file include : ../../depends/LuaJIT/src/lj_strscan.h
+# file include : ../../depends/LuaJIT/src/lj_tab.h
+# file include : ../../depends/LuaJIT/src/lj_target.h
+# file include : ../../depends/LuaJIT/src/lj_target_arm.h
+# file include : ../../depends/LuaJIT/src/lj_target_mips.h
+# file include : ../../depends/LuaJIT/src/lj_target_ppc.h
+# file include : ../../depends/LuaJIT/src/lj_target_x86.h
+# file include : ../../depends/LuaJIT/src/lj_trace.h
+# file include : ../../depends/LuaJIT/src/lj_traceerr.h
+# file include : ../../depends/LuaJIT/src/lj_udata.h
+# file include : ../../depends/LuaJIT/src/lj_vm.h
+# file include : ../../depends/LuaJIT/src/lj_vmevent.h
+# file include : ../../depends/LuaJIT/src/lua.h
+# file include : ../../depends/LuaJIT/src/luaconf.h
+# file include : ../../depends/LuaJIT/src/luajit.h
+# file include : ../../depends/LuaJIT/src/lualib.h
 # end file group include .
 # file group src :
+# file src : ../../depends/LuaJIT/src/lib_aux.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_aux.o: ../../depends/LuaJIT/src/lib_aux.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_aux.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_aux.o
+# file src : ../../depends/LuaJIT/src/lib_base.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_base.o: ../../depends/LuaJIT/src/lib_base.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_base.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_base.o
+# file src : ../../depends/LuaJIT/src/lib_bit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_bit.o: ../../depends/LuaJIT/src/lib_bit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_bit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_bit.o
+# file src : ../../depends/LuaJIT/src/lib_debug.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_debug.o: ../../depends/LuaJIT/src/lib_debug.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_debug.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_debug.o
+# file src : ../../depends/LuaJIT/src/lib_ffi.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_ffi.o: ../../depends/LuaJIT/src/lib_ffi.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_ffi.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_ffi.o
+# file src : ../../depends/LuaJIT/src/lib_init.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_init.o: ../../depends/LuaJIT/src/lib_init.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_init.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_init.o
+# file src : ../../depends/LuaJIT/src/lib_io.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_io.o: ../../depends/LuaJIT/src/lib_io.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_io.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_io.o
+# file src : ../../depends/LuaJIT/src/lib_jit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_jit.o: ../../depends/LuaJIT/src/lib_jit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_jit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_jit.o
+# file src : ../../depends/LuaJIT/src/lib_math.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_math.o: ../../depends/LuaJIT/src/lib_math.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_math.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_math.o
+# file src : ../../depends/LuaJIT/src/lib_os.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_os.o: ../../depends/LuaJIT/src/lib_os.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_os.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_os.o
+# file src : ../../depends/LuaJIT/src/lib_package.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_package.o: ../../depends/LuaJIT/src/lib_package.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_package.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_package.o
+# file src : ../../depends/LuaJIT/src/lib_string.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_string.o: ../../depends/LuaJIT/src/lib_string.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_string.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_string.o
+# file src : ../../depends/LuaJIT/src/lib_table.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_table.o: ../../depends/LuaJIT/src/lib_table.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_table.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lib_table.o
+# file src : ../../depends/LuaJIT/src/lj_alloc.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_alloc.o: ../../depends/LuaJIT/src/lj_alloc.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_alloc.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_alloc.o
+# file src : ../../depends/LuaJIT/src/lj_api.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_api.o: ../../depends/LuaJIT/src/lj_api.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_api.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_api.o
+# file src : ../../depends/LuaJIT/src/lj_asm.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_asm.o: ../../depends/LuaJIT/src/lj_asm.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_asm.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_asm.o
+# file src : ../../depends/LuaJIT/src/lj_bc.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_bc.o: ../../depends/LuaJIT/src/lj_bc.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_bc.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_bc.o
+# file src : ../../depends/LuaJIT/src/lj_bcread.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_bcread.o: ../../depends/LuaJIT/src/lj_bcread.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_bcread.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_bcread.o
+# file src : ../../depends/LuaJIT/src/lj_bcwrite.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_bcwrite.o: ../../depends/LuaJIT/src/lj_bcwrite.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_bcwrite.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_bcwrite.o
+# file src : ../../depends/LuaJIT/src/lj_carith.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_carith.o: ../../depends/LuaJIT/src/lj_carith.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_carith.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_carith.o
+# file src : ../../depends/LuaJIT/src/lj_ccall.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_ccall.o: ../../depends/LuaJIT/src/lj_ccall.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_ccall.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_ccall.o
+# file src : ../../depends/LuaJIT/src/lj_ccallback.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_ccallback.o: ../../depends/LuaJIT/src/lj_ccallback.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_ccallback.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_ccallback.o
+# file src : ../../depends/LuaJIT/src/lj_cconv.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_cconv.o: ../../depends/LuaJIT/src/lj_cconv.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_cconv.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_cconv.o
+# file src : ../../depends/LuaJIT/src/lj_cdata.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_cdata.o: ../../depends/LuaJIT/src/lj_cdata.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_cdata.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_cdata.o
+# file src : ../../depends/LuaJIT/src/lj_char.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_char.o: ../../depends/LuaJIT/src/lj_char.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_char.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_char.o
+# file src : ../../depends/LuaJIT/src/lj_clib.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_clib.o: ../../depends/LuaJIT/src/lj_clib.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_clib.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_clib.o
+# file src : ../../depends/LuaJIT/src/lj_cparse.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_cparse.o: ../../depends/LuaJIT/src/lj_cparse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_cparse.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_cparse.o
+# file src : ../../depends/LuaJIT/src/lj_crecord.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_crecord.o: ../../depends/LuaJIT/src/lj_crecord.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_crecord.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_crecord.o
+# file src : ../../depends/LuaJIT/src/lj_ctype.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_ctype.o: ../../depends/LuaJIT/src/lj_ctype.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_ctype.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_ctype.o
+# file src : ../../depends/LuaJIT/src/lj_debug.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_debug.o: ../../depends/LuaJIT/src/lj_debug.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_debug.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_debug.o
+# file src : ../../depends/LuaJIT/src/lj_dispatch.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_dispatch.o: ../../depends/LuaJIT/src/lj_dispatch.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_dispatch.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_dispatch.o
+# file src : ../../depends/LuaJIT/src/lj_ffrecord.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_ffrecord.o: ../../depends/LuaJIT/src/lj_ffrecord.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_ffrecord.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_ffrecord.o
+# file src : ../../depends/LuaJIT/src/lj_func.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_func.o: ../../depends/LuaJIT/src/lj_func.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_func.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_func.o
+# file src : ../../depends/LuaJIT/src/lj_gc.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_gc.o: ../../depends/LuaJIT/src/lj_gc.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_gc.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_gc.o
+# file src : ../../depends/LuaJIT/src/lj_gdbjit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_gdbjit.o: ../../depends/LuaJIT/src/lj_gdbjit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_gdbjit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_gdbjit.o
+# file src : ../../depends/LuaJIT/src/lj_ir.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_ir.o: ../../depends/LuaJIT/src/lj_ir.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_ir.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_ir.o
+# file src : ../../depends/LuaJIT/src/lj_lex.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_lex.o: ../../depends/LuaJIT/src/lj_lex.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_lex.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_lex.o
+# file src : ../../depends/LuaJIT/src/lj_lib.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_lib.o: ../../depends/LuaJIT/src/lj_lib.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_lib.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_lib.o
+# file src : ../../depends/LuaJIT/src/lj_load.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_load.o: ../../depends/LuaJIT/src/lj_load.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_load.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_load.o
+# file src : ../../depends/LuaJIT/src/lj_mcode.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_mcode.o: ../../depends/LuaJIT/src/lj_mcode.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_mcode.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_mcode.o
+# file src : ../../depends/LuaJIT/src/lj_meta.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_meta.o: ../../depends/LuaJIT/src/lj_meta.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_meta.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_meta.o
+# file src : ../../depends/LuaJIT/src/lj_obj.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_obj.o: ../../depends/LuaJIT/src/lj_obj.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_obj.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_obj.o
+# file src : ../../depends/LuaJIT/src/lj_opt_dce.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_dce.o: ../../depends/LuaJIT/src/lj_opt_dce.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_dce.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_dce.o
+# file src : ../../depends/LuaJIT/src/lj_opt_fold.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_fold.o: ../../depends/LuaJIT/src/lj_opt_fold.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_fold.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_fold.o
+# file src : ../../depends/LuaJIT/src/lj_opt_loop.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_loop.o: ../../depends/LuaJIT/src/lj_opt_loop.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_loop.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_loop.o
+# file src : ../../depends/LuaJIT/src/lj_opt_mem.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_mem.o: ../../depends/LuaJIT/src/lj_opt_mem.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_mem.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_mem.o
+# file src : ../../depends/LuaJIT/src/lj_opt_narrow.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_narrow.o: ../../depends/LuaJIT/src/lj_opt_narrow.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_narrow.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_narrow.o
+# file src : ../../depends/LuaJIT/src/lj_opt_sink.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_sink.o: ../../depends/LuaJIT/src/lj_opt_sink.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_sink.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_sink.o
+# file src : ../../depends/LuaJIT/src/lj_opt_split.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_split.o: ../../depends/LuaJIT/src/lj_opt_split.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_split.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_opt_split.o
+# file src : ../../depends/LuaJIT/src/lj_parse.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_parse.o: ../../depends/LuaJIT/src/lj_parse.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_parse.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_parse.o
+# file src : ../../depends/LuaJIT/src/lj_record.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_record.o: ../../depends/LuaJIT/src/lj_record.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_record.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_record.o
+# file src : ../../depends/LuaJIT/src/lj_snap.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_snap.o: ../../depends/LuaJIT/src/lj_snap.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_snap.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_snap.o
+# file src : ../../depends/LuaJIT/src/lj_state.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_state.o: ../../depends/LuaJIT/src/lj_state.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_state.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_state.o
+# file src : ../../depends/LuaJIT/src/lj_str.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_str.o: ../../depends/LuaJIT/src/lj_str.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_str.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_str.o
+# file src : ../../depends/LuaJIT/src/lj_strscan.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_strscan.o: ../../depends/LuaJIT/src/lj_strscan.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_strscan.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_strscan.o
+# file src : ../../depends/LuaJIT/src/lj_tab.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_tab.o: ../../depends/LuaJIT/src/lj_tab.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_tab.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_tab.o
+# file src : ../../depends/LuaJIT/src/lj_trace.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_trace.o: ../../depends/LuaJIT/src/lj_trace.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_trace.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_trace.o
+# file src : ../../depends/LuaJIT/src/lj_udata.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_udata.o: ../../depends/LuaJIT/src/lj_udata.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_udata.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_udata.o
+# file src : ../../depends/LuaJIT/src/lj_vmevent.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_vmevent.o: ../../depends/LuaJIT/src/lj_vmevent.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_vmevent.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_vmevent.o
+# file src : ../../depends/LuaJIT/src/lj_vmmath.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_vmmath.o: ../../depends/LuaJIT/src/lj_vmmath.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_vmmath.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_vmmath.o
+# file src : ../../depends/LuaJIT/src/luajit.c
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/luajit.o: ../../depends/LuaJIT/src/luajit.c
+	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/luajit.o.d
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/luajit.o
 # file src : ../../patch/luajit/lj_err.c
 $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_err.o: ../../patch/luajit/lj_err.c
 	$(CC) $(CFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
 	$(CC) $(CXXFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@.d -MM -MT$@ $<
 -include $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_err.o.d
 $(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_err.o
+# file src : ../../patch/luajit/Linux_x86_64/lj_vm.s
+$(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_vm.o: ../../patch/luajit/Linux_x86_64/lj_vm.s
+	$(AS) $(ASFLAGS__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic) -c -o$@ $<
+$(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic)/lj_vm.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_luajit' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib
 
 #-------------------------------- epilog 'umodsys_Depends'.'lib_luajit'
 #---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_luajit' 
@@ -19124,27 +22992,27 @@ $(target__umodsys_Depends__lib_luajit__Linux_x86_64__ReleaseStatic): $(tmpx__umo
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib:
 target-Linux_x86_64-Debug: tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Debug
 tg-umodsys_Depends-Linux_x86_64-Debug: tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Debug
 cg-umodsys_Depends-Linux_x86_64-Debug: cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Debug
 tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Debug: 
 cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Debug
+clean-Debug: cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Debug
 
 tmp__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/lib_sqlite3
 CXXFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/sqlite3
 CFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/sqlite3
-LDFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Debug/lib_sqlite3.Linux_x86_64.Debug.so
 target__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug/lib_sqlite3.Linux_x86_64.Debug.so
-tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Debug: \
-  $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug) \
-  $(bin__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug) \
-  $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug)
+tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Debug: $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug) $(bin__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug) $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug)
 cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Debug:
 	-rm $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug)/*
@@ -19165,29 +23033,29 @@ $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug)/sqlite3.o: ../../depe
 $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__Debug)/sqlite3.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
 target-Linux_x86_64-Release: tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Release
 tg-umodsys_Depends-Linux_x86_64-Release: tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Release
 cg-umodsys_Depends-Linux_x86_64-Release: cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Release
 tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Release: 
 cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Release: 
+target-Release: tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Release
+clean-Release: cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Release
 
 tmp__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/lib_sqlite3
 CXXFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/sqlite3
 CFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/sqlite3
-LDFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Release/lib_sqlite3.Linux_x86_64.Release.so
 target__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release=../../bin/Linux_x86_64.Release/lib_sqlite3.Linux_x86_64.Release.so
-tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Release: \
-  $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release) \
-  $(bin__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release) \
-  $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release)
+tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Release: $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release) $(bin__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release) $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release)
 cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-Release:
 	-rm $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release)/*
@@ -19208,29 +23076,29 @@ $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release)/sqlite3.o: ../../de
 $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__Release)/sqlite3.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseSpace
 tg-umodsys_Depends-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseSpace
 cg-umodsys_Depends-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseSpace
 tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseSpace: 
 cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/lib_sqlite3
 CXXFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/sqlite3
 CFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/sqlite3
-LDFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseSpace/lib_sqlite3.Linux_x86_64.ReleaseSpace.so
 target__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace/lib_sqlite3.Linux_x86_64.ReleaseSpace.so
-tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace) \
-  $(bin__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace)
+tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace) $(bin__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace) $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace)
 cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace)/*
@@ -19251,29 +23119,29 @@ $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace)/sqlite3.o: ../
 $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseSpace)/sqlite3.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseStatic
 tg-umodsys_Depends-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseStatic
 cg-umodsys_Depends-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseStatic
 tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseStatic: 
 cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/lib_sqlite3
 CXXFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/sqlite3
 CFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/sqlite3
-LDFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseStatic/lib_sqlite3.Linux_x86_64.ReleaseStatic.so
 target__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic/lib_sqlite3.Linux_x86_64.ReleaseStatic.so
-tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic) \
-  $(bin__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic)
+tp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic) $(bin__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic) $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic)
 cp-umodsys_Depends-lib_sqlite3-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic)/*
@@ -19294,7 +23162,7 @@ $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic)/sqlite3.o: ..
 $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic)/sqlite3.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_sqlite3' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib
 
 #-------------------------------- epilog 'umodsys_Depends'.'lib_sqlite3'
 #---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_sqlite3' 
@@ -19304,27 +23172,27 @@ $(target__umodsys_Depends__lib_sqlite3__Linux_x86_64__ReleaseStatic): $(tmpx__um
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib:
 target-Linux_x86_64-Debug: tp-umodsys_Depends-lib_squirrel-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys_Depends-lib_squirrel-Linux_x86_64-Debug
 tg-umodsys_Depends-Linux_x86_64-Debug: tp-umodsys_Depends-lib_squirrel-Linux_x86_64-Debug
 cg-umodsys_Depends-Linux_x86_64-Debug: cp-umodsys_Depends-lib_squirrel-Linux_x86_64-Debug
 tp-umodsys_Depends-lib_squirrel-Linux_x86_64-Debug: 
 cp-umodsys_Depends-lib_squirrel-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys_Depends-lib_squirrel-Linux_x86_64-Debug
+clean-Debug: cp-umodsys_Depends-lib_squirrel-Linux_x86_64-Debug
 
 tmp__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/lib_squirrel
 CXXFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Squirrel/include
 CFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Squirrel/include
-LDFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Debug/lib_squirrel.Linux_x86_64.Debug.so
 target__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug/lib_squirrel.Linux_x86_64.Debug.so
-tp-umodsys_Depends-lib_squirrel-Linux_x86_64-Debug: \
-  $(tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug) \
-  $(bin__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug) \
-  $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug)
+tp-umodsys_Depends-lib_squirrel-Linux_x86_64-Debug: $(tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug) $(bin__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug) $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug)
 cp-umodsys_Depends-lib_squirrel-Linux_x86_64-Debug:
 	-rm $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug)/*
@@ -19486,29 +23354,29 @@ $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__Debug): $(tmpx__umodsys_D
 # end file group squirrel .
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
 target-Linux_x86_64-Release: tp-umodsys_Depends-lib_squirrel-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys_Depends-lib_squirrel-Linux_x86_64-Release
 tg-umodsys_Depends-Linux_x86_64-Release: tp-umodsys_Depends-lib_squirrel-Linux_x86_64-Release
 cg-umodsys_Depends-Linux_x86_64-Release: cp-umodsys_Depends-lib_squirrel-Linux_x86_64-Release
 tp-umodsys_Depends-lib_squirrel-Linux_x86_64-Release: 
 cp-umodsys_Depends-lib_squirrel-Linux_x86_64-Release: 
+target-Release: tp-umodsys_Depends-lib_squirrel-Linux_x86_64-Release
+clean-Release: cp-umodsys_Depends-lib_squirrel-Linux_x86_64-Release
 
 tmp__umodsys_Depends__lib_squirrel__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys_Depends__lib_squirrel__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/lib_squirrel
 CXXFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Squirrel/include
 CFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Squirrel/include
-LDFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Release/lib_squirrel.Linux_x86_64.Release.so
 target__umodsys_Depends__lib_squirrel__Linux_x86_64__Release=../../bin/Linux_x86_64.Release/lib_squirrel.Linux_x86_64.Release.so
-tp-umodsys_Depends-lib_squirrel-Linux_x86_64-Release: \
-  $(tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__Release) \
-  $(bin__umodsys_Depends__lib_squirrel__Linux_x86_64__Release) \
-  $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__Release)
+tp-umodsys_Depends-lib_squirrel-Linux_x86_64-Release: $(tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__Release) $(bin__umodsys_Depends__lib_squirrel__Linux_x86_64__Release) $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__Release)
 cp-umodsys_Depends-lib_squirrel-Linux_x86_64-Release:
 	-rm $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__Release)/*
@@ -19670,29 +23538,29 @@ $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__Release): $(tmpx__umodsys
 # end file group squirrel .
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseSpace
 tg-umodsys_Depends-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseSpace
 cg-umodsys_Depends-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseSpace
 tp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseSpace: 
 cp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/lib_squirrel
 CXXFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Squirrel/include
 CFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Squirrel/include
-LDFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseSpace/lib_squirrel.Linux_x86_64.ReleaseSpace.so
 target__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace/lib_squirrel.Linux_x86_64.ReleaseSpace.so
-tp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace) \
-  $(bin__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace)
+tp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace) $(bin__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace) $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace)
 cp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace)/*
@@ -19854,29 +23722,29 @@ $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseSpace): $(tmpx__um
 # end file group squirrel .
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseStatic
 tg-umodsys_Depends-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseStatic
 cg-umodsys_Depends-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseStatic
 tp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseStatic: 
 cp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/lib_squirrel
 CXXFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Squirrel/include
 CFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/Squirrel/include
-LDFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseStatic/lib_squirrel.Linux_x86_64.ReleaseStatic.so
 target__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic/lib_squirrel.Linux_x86_64.ReleaseStatic.so
-tp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic) \
-  $(bin__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic)
+tp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic) $(bin__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic) $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic)
 cp-umodsys_Depends-lib_squirrel-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic)/*
@@ -20038,7 +23906,7 @@ $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic): $(tmpx__u
 # end file group squirrel .
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_squirrel' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib
 
 #-------------------------------- epilog 'umodsys_Depends'.'lib_squirrel'
 #---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_squirrel' 
@@ -20048,27 +23916,27 @@ $(target__umodsys_Depends__lib_squirrel__Linux_x86_64__ReleaseStatic): $(tmpx__u
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib:
 target-Linux_x86_64-Debug: tp-umodsys_Depends-lib_tinyc-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys_Depends-lib_tinyc-Linux_x86_64-Debug
 tg-umodsys_Depends-Linux_x86_64-Debug: tp-umodsys_Depends-lib_tinyc-Linux_x86_64-Debug
 cg-umodsys_Depends-Linux_x86_64-Debug: cp-umodsys_Depends-lib_tinyc-Linux_x86_64-Debug
 tp-umodsys_Depends-lib_tinyc-Linux_x86_64-Debug: 
 cp-umodsys_Depends-lib_tinyc-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys_Depends-lib_tinyc-Linux_x86_64-Debug
+clean-Debug: cp-umodsys_Depends-lib_tinyc-Linux_x86_64-Debug
 
 tmp__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/lib_tinyc
 CXXFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/TinyC -DONE_SOURCE
 CFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/TinyC -DONE_SOURCE
-LDFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Debug/lib_tinyc.Linux_x86_64.Debug.so
 target__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug/lib_tinyc.Linux_x86_64.Debug.so
-tp-umodsys_Depends-lib_tinyc-Linux_x86_64-Debug: \
-  $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug) \
-  $(bin__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug) \
-  $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug)
+tp-umodsys_Depends-lib_tinyc-Linux_x86_64-Debug: $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug) $(bin__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug) $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug)
 cp-umodsys_Depends-lib_tinyc-Linux_x86_64-Debug:
 	-rm $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug)/*
@@ -20099,29 +23967,29 @@ $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug)/libtcc.o: ../../depends
 $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__Debug)/libtcc.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
 target-Linux_x86_64-Release: tp-umodsys_Depends-lib_tinyc-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys_Depends-lib_tinyc-Linux_x86_64-Release
 tg-umodsys_Depends-Linux_x86_64-Release: tp-umodsys_Depends-lib_tinyc-Linux_x86_64-Release
 cg-umodsys_Depends-Linux_x86_64-Release: cp-umodsys_Depends-lib_tinyc-Linux_x86_64-Release
 tp-umodsys_Depends-lib_tinyc-Linux_x86_64-Release: 
 cp-umodsys_Depends-lib_tinyc-Linux_x86_64-Release: 
+target-Release: tp-umodsys_Depends-lib_tinyc-Linux_x86_64-Release
+clean-Release: cp-umodsys_Depends-lib_tinyc-Linux_x86_64-Release
 
 tmp__umodsys_Depends__lib_tinyc__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys_Depends__lib_tinyc__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/lib_tinyc
 CXXFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/TinyC -DONE_SOURCE
 CFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/TinyC -DONE_SOURCE
-LDFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Release/lib_tinyc.Linux_x86_64.Release.so
 target__umodsys_Depends__lib_tinyc__Linux_x86_64__Release=../../bin/Linux_x86_64.Release/lib_tinyc.Linux_x86_64.Release.so
-tp-umodsys_Depends-lib_tinyc-Linux_x86_64-Release: \
-  $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__Release) \
-  $(bin__umodsys_Depends__lib_tinyc__Linux_x86_64__Release) \
-  $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__Release)
+tp-umodsys_Depends-lib_tinyc-Linux_x86_64-Release: $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__Release) $(bin__umodsys_Depends__lib_tinyc__Linux_x86_64__Release) $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__Release)
 cp-umodsys_Depends-lib_tinyc-Linux_x86_64-Release:
 	-rm $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__Release)/*
@@ -20152,29 +24020,29 @@ $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__Release)/libtcc.o: ../../depen
 $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__Release)/libtcc.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseSpace
 tg-umodsys_Depends-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseSpace
 cg-umodsys_Depends-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseSpace
 tp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseSpace: 
 cp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/lib_tinyc
 CXXFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/TinyC -DONE_SOURCE
 CFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/TinyC -DONE_SOURCE
-LDFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseSpace/lib_tinyc.Linux_x86_64.ReleaseSpace.so
 target__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace/lib_tinyc.Linux_x86_64.ReleaseSpace.so
-tp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace) \
-  $(bin__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace)
+tp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace) $(bin__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace) $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace)
 cp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace)/*
@@ -20205,29 +24073,29 @@ $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace)/libtcc.o: ../../
 $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseSpace)/libtcc.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseStatic
 tg-umodsys_Depends-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseStatic
 cg-umodsys_Depends-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseStatic
 tp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseStatic: 
 cp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/lib_tinyc
 CXXFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/TinyC -DONE_SOURCE
 CFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/TinyC -DONE_SOURCE
-LDFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseStatic/lib_tinyc.Linux_x86_64.ReleaseStatic.so
 target__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic/lib_tinyc.Linux_x86_64.ReleaseStatic.so
-tp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic) \
-  $(bin__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic)
+tp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic) $(bin__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic) $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic)
 cp-umodsys_Depends-lib_tinyc-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic)/*
@@ -20258,7 +24126,7 @@ $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic)/libtcc.o: ../..
 $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic)/libtcc.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_tinyc' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib
 
 #-------------------------------- epilog 'umodsys_Depends'.'lib_tinyc'
 #---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_tinyc' 
@@ -20268,27 +24136,27 @@ $(target__umodsys_Depends__lib_tinyc__Linux_x86_64__ReleaseStatic): $(tmpx__umod
 #--------------------------------
 
 
-#-------------------------------- project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib:
 target-Linux_x86_64-Debug: tp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug
 clean-Linux_x86_64-Debug: cp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug
 tg-umodsys_Depends-Linux_x86_64-Debug: tp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug
 cg-umodsys_Depends-Linux_x86_64-Debug: cp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug
 tp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug: 
 cp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug: 
+target-Debug: tp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug
+clean-Debug: cp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug
 
 tmp__umodsys_Depends__lib_zlib__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug
 bin__umodsys_Depends__lib_zlib__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug
 tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__Debug=../../tmp/Linux_x86_64.Debug/lib_zlib
 CXXFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__Debug=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib
 CFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__Debug=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib
-LDFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__Debug=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__Debug=-Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__Debug=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Debug/lib_zlib.Linux_x86_64.Debug.so
 target__umodsys_Depends__lib_zlib__Linux_x86_64__Debug=../../bin/Linux_x86_64.Debug/lib_zlib.Linux_x86_64.Debug.so
-tp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug: \
-  $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__Debug) \
-  $(bin__umodsys_Depends__lib_zlib__Linux_x86_64__Debug) \
-  $(target__umodsys_Depends__lib_zlib__Linux_x86_64__Debug)
+tp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug: $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__Debug) $(bin__umodsys_Depends__lib_zlib__Linux_x86_64__Debug) $(target__umodsys_Depends__lib_zlib__Linux_x86_64__Debug)
 cp-umodsys_Depends-lib_zlib-Linux_x86_64-Debug:
 	-rm $(target__umodsys_Depends__lib_zlib__Linux_x86_64__Debug)
 	-rm $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__Debug)/*
@@ -20402,29 +24270,29 @@ $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__Debug)/zutil.o: ../../depends/z
 $(target__umodsys_Depends__lib_zlib__Linux_x86_64__Debug): $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__Debug)/zutil.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
 target-Linux_x86_64-Release: tp-umodsys_Depends-lib_zlib-Linux_x86_64-Release
 clean-Linux_x86_64-Release: cp-umodsys_Depends-lib_zlib-Linux_x86_64-Release
 tg-umodsys_Depends-Linux_x86_64-Release: tp-umodsys_Depends-lib_zlib-Linux_x86_64-Release
 cg-umodsys_Depends-Linux_x86_64-Release: cp-umodsys_Depends-lib_zlib-Linux_x86_64-Release
 tp-umodsys_Depends-lib_zlib-Linux_x86_64-Release: 
 cp-umodsys_Depends-lib_zlib-Linux_x86_64-Release: 
+target-Release: tp-umodsys_Depends-lib_zlib-Linux_x86_64-Release
+clean-Release: cp-umodsys_Depends-lib_zlib-Linux_x86_64-Release
 
 tmp__umodsys_Depends__lib_zlib__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release
 bin__umodsys_Depends__lib_zlib__Linux_x86_64__Release=../../bin/Linux_x86_64.Release
 tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__Release=../../tmp/Linux_x86_64.Release/lib_zlib
 CXXFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__Release=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib
 CFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__Release=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib
-LDFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__Release=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__Release=-Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__Release=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.Release/lib_zlib.Linux_x86_64.Release.so
 target__umodsys_Depends__lib_zlib__Linux_x86_64__Release=../../bin/Linux_x86_64.Release/lib_zlib.Linux_x86_64.Release.so
-tp-umodsys_Depends-lib_zlib-Linux_x86_64-Release: \
-  $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__Release) \
-  $(bin__umodsys_Depends__lib_zlib__Linux_x86_64__Release) \
-  $(target__umodsys_Depends__lib_zlib__Linux_x86_64__Release)
+tp-umodsys_Depends-lib_zlib-Linux_x86_64-Release: $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__Release) $(bin__umodsys_Depends__lib_zlib__Linux_x86_64__Release) $(target__umodsys_Depends__lib_zlib__Linux_x86_64__Release)
 cp-umodsys_Depends-lib_zlib-Linux_x86_64-Release:
 	-rm $(target__umodsys_Depends__lib_zlib__Linux_x86_64__Release)
 	-rm $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__Release)/*
@@ -20538,29 +24406,29 @@ $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__Release)/zutil.o: ../../depends
 $(target__umodsys_Depends__lib_zlib__Linux_x86_64__Release): $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__Release)/zutil.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib:
 target-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace
 clean-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace
 tg-umodsys_Depends-Linux_x86_64-ReleaseSpace: tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace
 cg-umodsys_Depends-Linux_x86_64-ReleaseSpace: cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace
 tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace: 
 cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace: 
+target-ReleaseSpace: tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace
+clean-ReleaseSpace: cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace
 
 tmp__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace
 bin__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace
 tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace=../../tmp/Linux_x86_64.ReleaseSpace/lib_zlib
 CXXFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib
 CFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib
-LDFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseSpace -L../../tmp/Linux_x86_64.ReleaseSpace -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseSpace/lib_zlib.Linux_x86_64.ReleaseSpace.so
 target__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace=../../bin/Linux_x86_64.ReleaseSpace/lib_zlib.Linux_x86_64.ReleaseSpace.so
-tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace: \
-  $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace) \
-  $(bin__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace) \
-  $(target__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace)
+tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace: $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace) $(bin__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace) $(target__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace)
 cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseSpace:
 	-rm $(target__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace)
 	-rm $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace)/*
@@ -20674,29 +24542,29 @@ $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace)/zutil.o: ../../de
 $(target__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace): $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseSpace)/zutil.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=ReleaseSpace MODE=solib
 
-#-------------------------------- project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared:
+#-------------------------------- project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib:
 target-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic
 clean-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic
 tg-umodsys_Depends-Linux_x86_64-ReleaseStatic: tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic
 cg-umodsys_Depends-Linux_x86_64-ReleaseStatic: cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic
 tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic: 
 cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic: 
+target-ReleaseStatic: tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic
+clean-ReleaseStatic: cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic
 
 tmp__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic
 bin__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic
 tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic=../../tmp/Linux_x86_64.ReleaseStatic/lib_zlib
 CXXFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic=-fPIC $(CXXFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib
 CFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic=-fPIC $(CFLAGS) -I../../include -I../../include/platform/linux -I../../depends/zlib
-LDFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic=-fPIC $(LDFLAGS)
+#LDFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic=-Wl,-rpath-link,../../bin/Linux_x86_64.ReleaseStatic -L../../tmp/Linux_x86_64.ReleaseStatic -fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
+LDFLAGS__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic=-fPIC -ldl -lpthread -Wl,-z,defs $(LDFLAGS) 
 
 # so library at ../../bin/Linux_x86_64.ReleaseStatic/lib_zlib.Linux_x86_64.ReleaseStatic.so
 target__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic=../../bin/Linux_x86_64.ReleaseStatic/lib_zlib.Linux_x86_64.ReleaseStatic.so
-tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic: \
-  $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic) \
-  $(bin__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic) \
-  $(target__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic)
+tp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic: $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic) $(bin__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic) $(target__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic)
 cp-umodsys_Depends-lib_zlib-Linux_x86_64-ReleaseStatic:
 	-rm $(target__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic)
 	-rm $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic)/*
@@ -20810,7 +24678,7 @@ $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic)/zutil.o: ../../d
 $(target__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic): $(tmpx__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic)/zutil.o
 # end file group src .
 
-#-------------------------------- /project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=shared
+#-------------------------------- /project 'umodsys_Depends'.'lib_zlib' PLATFORM=Linux_x86_64 CONFIG=ReleaseStatic MODE=solib
 
 #-------------------------------- epilog 'umodsys_Depends'.'lib_zlib'
 #---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_zlib' 
@@ -20820,117 +24688,27 @@ $(target__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic): $(tmpx__umods
 #**************************************************************** END projectgroup 'umodsys_Depends'
 ################################################################# XMAP makefile
 # 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_lib2d: ../../tmp/Linux_x86_64.Debug
+../../tmp/Linux_x86_64.Debug/lib_tinyc: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.ReleaseStatic/lib_angelscript: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 26
-../../bin/Linux_x86_64.Debug:
+../../tmp/Linux_x86_64.Debug/umodsys_lib_libui: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.ReleaseSpace/lib_luajit: ../../tmp/Linux_x86_64.ReleaseSpace
+../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_core: | ../../tmp/Linux_x86_64.ReleaseSpace
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Release/lib_angelscript: ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Debug/lib_bullet: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Debug/lib_lightning: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/lib_lightning: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_luajit: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 26
-../../bin/Linux_x86_64.Release:
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_libui: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/lib_libgd: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_jpeglib: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_libgd: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 26
-../../tmp/Linux_x86_64.ReleaseStatic:
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_luajit: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/lib_angelscript: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsysc: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/lib_lightning: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_libmedia: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/umodsysc: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/lib_sqlite3: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/lib_libpng: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_libgd: ../../tmp/Linux_x86_64.Debug
+../../tmp/Linux_x86_64.Release/lib_SDL2: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
@@ -20940,352 +24718,12 @@ $(target__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic): $(tmpx__umods
 
 
 # 1
-../../tmp/Linux_x86_64.Release/lib_squirrel: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 2
-../../tmp/Linux_x86_64.ReleaseSpace/all: ../../tmp/Linux_x86_64.ReleaseSpace
+../../tmp/Linux_x86_64.Release/lib_lua: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Release/lib_sqlite3: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/lib_jpeglib: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/lib_lua: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_SDL2: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_tinyc: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/lib_freetype: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/lib_tinyc: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/plugin_test2: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_base: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_lib3d: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_SDL2: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_bullet: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/lib_lua: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 26
-../../bin/Linux_x86_64.ReleaseStatic:
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_basesys: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/lib_bullet: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_lib3d: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/lib_SDL2: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_core: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_test2: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/lib_freetype: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 26
-../../tmp/Linux_x86_64.ReleaseSpace:
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/lib_tinyc: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_lib2d: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_jpeglib: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_lib3d: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/lib_libpng: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_basesys: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_lib3d: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_libui: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_lib2d: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_lib2d: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_libmedia: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/lib_zlib: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_libui: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_libmedia: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_test2: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_test1: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_libpng: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/lib_luajit: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_libpng: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_lightning: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_base: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_base: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsysc: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/lib_bullet: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_freetype: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/lib_sqlite3: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_zlib: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_libui: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_core: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_tinyc: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/lib_squirrel: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 2
-../../tmp/Linux_x86_64.ReleaseStatic/all: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/lib_SDL2: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_core: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 2
-../../tmp/Linux_x86_64.Release/all: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/plugin_test1: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseStatic/lib_jpeglib: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_libmedia: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 2
-../../tmp/Linux_x86_64.Debug/all: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_sqlite3: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/plugin_test1: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_zlib: ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_bullet: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_lua: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_angelscript: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_freetype: ../../tmp/Linux_x86_64.Debug
+../../tmp/Linux_x86_64.ReleaseSpace/lib_SDL2: | ../../tmp/Linux_x86_64.ReleaseSpace
 	mkdir -p $@
 
 
@@ -21295,37 +24733,12 @@ $(target__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic): $(tmpx__umods
 
 
 # 1
-../../tmp/Linux_x86_64.ReleaseStatic/plugin_test2: ../../tmp/Linux_x86_64.ReleaseStatic
+../../tmp/Linux_x86_64.Debug/lib_libpng: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_basesys: ../../tmp/Linux_x86_64.ReleaseStatic
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_squirrel: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_basesys: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_core: ../../tmp/Linux_x86_64.ReleaseSpace
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_test1: ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.ReleaseSpace/lib_zlib: ../../tmp/Linux_x86_64.ReleaseSpace
+../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_lib3d: | ../../tmp/Linux_x86_64.ReleaseSpace
 	mkdir -p $@
 
 
@@ -21335,27 +24748,482 @@ $(target__umodsys_Depends__lib_zlib__Linux_x86_64__ReleaseStatic): $(tmpx__umods
 
 
 # 1
-../../tmp/Linux_x86_64.ReleaseSpace/lib_libgd: ../../tmp/Linux_x86_64.ReleaseSpace
+../../tmp/Linux_x86_64.ReleaseSpace/lib_luajit: | ../../tmp/Linux_x86_64.ReleaseSpace
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.ReleaseStatic/lib_squirrel: ../../tmp/Linux_x86_64.ReleaseStatic
+../../tmp/Linux_x86_64.Debug/lib_squirrel: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_base: ../../tmp/Linux_x86_64.Debug
+../../tmp/Linux_x86_64.ReleaseStatic/lib_lightning: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 26
+../../tmp/Linux_x86_64.ReleaseSpace:
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.ReleaseSpace/umodsysc: ../../tmp/Linux_x86_64.ReleaseSpace
+../../tmp/Linux_x86_64.ReleaseSpace/lib_zlib: | ../../tmp/Linux_x86_64.ReleaseSpace
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Release/lib_lua: ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_lib2d: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_sqlite3: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_squirrel: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/lib_squirrel: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/lib_zlib: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsysc: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/lib_squirrel: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/lib_lua: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_lib2d: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_freetype: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 26
+../../bin/Linux_x86_64.Debug:
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/lib_angelscript: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/plugin_test1: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_jpeglib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/lib_bullet: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/lib_libgd: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_libgd: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/lib_freetype: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/plugin_test2: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_basesys: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/lib_libpng: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_sqlite3: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_luajit: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/lib_sqlite3: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_libui: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_base: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_bullet: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_libui: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_lua: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_libui: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/plugin_test1: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 26
+../../bin/Linux_x86_64.ReleaseStatic:
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/lib_tinyc: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/lib_SDL2: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_base: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_libmedia: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_lib3d: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsysc: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/plugin_test2: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_basesys: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 2
+../../tmp/Linux_x86_64.Release/all: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_libmedia: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/lib_luajit: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/umodsysc: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 2
+../../tmp/Linux_x86_64.ReleaseStatic/all: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_core: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_lib3d: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_test1: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 26
+../../bin/Linux_x86_64.Release:
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_tinyc: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/lib_libpng: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_base: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_luajit: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_libmedia: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 2
+../../tmp/Linux_x86_64.Debug/all: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/lib_bullet: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/lib_angelscript: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_libmedia: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_zlib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_core: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_test2: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_libgd: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_freetype: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/lib_lightning: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/lib_tinyc: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/umodsys_lib_basesys: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_basesys: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_angelscript: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_test2: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_zlib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 26
+../../tmp/Linux_x86_64.ReleaseStatic:
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_test1: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/lib_sqlite3: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/umodsys_lib_base: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_SDL2: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_jpeglib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_lightning: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_lib3d: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_lightning: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_angelscript: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_core: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/lib_lua: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_lib2d: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_libpng: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/lib_libgd: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/lib_jpeglib: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseStatic/umodsysc: | ../../tmp/Linux_x86_64.ReleaseStatic
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_lib2d: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 2
+../../tmp/Linux_x86_64.ReleaseSpace/all: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/lib_jpeglib: | ../../tmp/Linux_x86_64.ReleaseSpace
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.ReleaseSpace/lib_freetype: | ../../tmp/Linux_x86_64.ReleaseSpace
 	mkdir -p $@
 
 
