@@ -370,7 +370,7 @@ sub makefile_project_modemap($)
   return 'console' if ($mode eq 'binary') or ($mode eq 'app') or ($mode eq 'gui');
   return 'solib' if ($mode eq 'shared');
   return 'lib' if ($mode eq 'library');
-  return $mode if ($mode eq 'console') or ($mode eq 'dummy') or ($mode eq 'lib') or ($mode eq 'solib');
+  return $mode if ($mode eq 'console') or ($mode eq 'dummy') or ($mode eq 'lib') or ($mode eq 'solib') or ($mode eq 'plugin');
   return 'unknown';
 }
 
