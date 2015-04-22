@@ -332,7 +332,7 @@ begin project-group umodsys
   end
 
   begin project plugin_test1
-    mode plugin
+    mode solib
     #
     includes $(path-include)
     includes $(path-include)/$(ppath)
@@ -353,7 +353,7 @@ begin project-group umodsys
   end
 
   begin project plugin_test2
-    mode plugin
+    mode solib
     #
     includes $(path-include)
     includes $(path-include)/$(ppath)

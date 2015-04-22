@@ -1,12 +1,44 @@
 #!/bin/sh
 
-PLATFORM=`uname`.`uname -p`
-MODE='t'
-#MODE=''
+Binary=''
 
-pushd ../build/gnuc_makefile
-./make-linux.sh DEBUG=1 || exit
-popd
+function make_gm() {
+  PLATFORM=`uname`.`uname -p`
+  MODE='t'
+  MODE=''
+  
+  pushd ../build/gnuc_makefile
+  ./make-linux.sh DEBUG=1 || exit
+  popd
+  
+  Bin=../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug
+}
 
-#gdb ../bin/$PLATFORM.Debug/umodsysc.$PLATFORM.Debug
-valgrind -v --leak-check=full --show-leak-kinds=all --read-var-info=yes --track-origins=yes ../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug 2>&1 | tee valgrind.log
+function make_genm() {
+  PLATFORM=`uname`_`uname -p`
+
+  pushd ../build/gnu-make
+  ./make.sh Debug -j5 || exit
+  popd
+
+  Bin=../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug
+}
+
+function vg() {
+  valgrind -v \
+    --leak-check=full \
+    --show-leak-kinds=all \
+    --read-var-info=yes \
+    --track-origins=yes \
+    $Binary \
+  2>&1 \
+  | tee valgrind.log
+}
+
+function dbg() {
+  echo "gdb $Binary"
+  gdb $Binary
+}
+
+make_genm
+dbg

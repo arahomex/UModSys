@@ -2,6 +2,8 @@ begin project-group umodsys_Depends
   option project [] Platforms "$(platforms)"
   option project [] Configurations "Debug Release ReleaseSpace"
   option project-order all
+#  option * CFLAGS 
+#  option * CXXFLAGS -fvisibility=hidden 
 
   begin project lib_libgd
 #    defines MSWIN32 

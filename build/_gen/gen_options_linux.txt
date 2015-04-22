@@ -3,6 +3,10 @@ begin project-group umodsys
   option project [] Configurations "Debug Release ReleaseSpace"
   option project-order all
 
+  option * CFLAGS -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 
+  option * CXXFLAGS -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 
+  option * LDFLAGS -fvisibility=hidden -Werror
+
   begin project all
     mode dummy
   end
@@ -43,7 +47,11 @@ begin project-group umodsys
     end
   end
 
+  begin project umodsysc
+  end
+  
   begin project plugin_test1
+    mode plugin
     libpath $(path-out-bin) $(path-out-tmp)
     #
     depend umodsys_Depends::lib_zlib
@@ -52,6 +60,10 @@ begin project-group umodsys
     depend umodsys_Depends::lib_SDL2
     #
 #    libs zlib libpng jpeglib SDL2
+  end
+
+  begin project plugin_test2
+    mode plugin
   end
 
 end

@@ -1,9 +1,5 @@
 generator makefile
 
-set CFLAGS -fPIC -O0 -g
-set CXXFLAGS -fPIC -O0 -g
-set LDFLAGS -fPIC -ldl -lpthread -Wl,-z,defs -O0 -g
-
 #set CXXFLAGS -fPIC -print-file-name=include
 #set CFLAGS -fPIC -print-file-name=include
 

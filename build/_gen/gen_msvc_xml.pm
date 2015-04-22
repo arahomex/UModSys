@@ -129,41 +129,6 @@ sub msvc_xml_path_win32 {
   return $filename;
 };
 
-sub msvc_xml_option_combiner_last
-{
-  for my $v (@_) {
-    next if not defined $v;
-    return $v;
-  }
-  return '';
-}
-
-sub msvc_xml_option_combiner_semicolon
-{
-  my @rv = ();
-  for my $v (@_) {
-    push @rv, $v if defined $v and $v ne '';
-  }
-  return join(';', @rv);
-}
-
-sub msvc_xml_option_combiner_colon
-{
-  my @rv = ();
-  for my $v (@_) {
-    push @rv, $v if defined $v and $v ne '';
-  }
-  return join(',', @rv);
-}
-
-sub msvc_xml_option_combiner_space
-{
-  my @rv = ();
-  for my $v (@_) {
-    push @rv, $v if defined $v and $v ne '';
-  }
-  return join(' ', @rv);
-}
 
 #--------------------------------------------------------------------
 #--------------------------------------------------------------------

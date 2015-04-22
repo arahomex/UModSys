@@ -39,27 +39,21 @@ EOT
     },
     #----------------------------------------------------------------------------------------------------------------------------
     #----------------------------------------------------------------------------------------------------------------------------
-    'project-tp-name' => 'tp-${PROJECTGROUP_NAME}-${N}-${P}-${C}',
-    'project-cp-name' => 'cp-${PROJECTGROUP_NAME}-${N}-${P}-${C}',
-    'project-tg-name' => 'tg-${PROJECTGROUP_NAME}-${P}-${C}',
-    'project-cg-name' => 'cg-${PROJECTGROUP_NAME}-${P}-${C}',
-    'project-tt-name' => 'target-${P}-${C}',
-    'project-cc-name' => 'clean-${P}-${C}',
-    'project-ttx-name' => 'target-${C}',
-    'project-ccx-name' => 'clean-${C}',
-    'project-id-name' => '${PROJECTGROUP_NAME}__${PROJECT_NAME}__${PLATFORM_NAME}__${CONF_NAME}',
-    #
-    'project-cflags' => '${CFLAGS} \$(CFLAGS)',
-    'project-cxxflags' => '${CXXFLAGS} \$(CXXFLAGS)',
-    'project-ldflags' => '${LDFLAGS} \$(LDFLAGS)',
+    'project-tp-name' => 'tp-${PROJECTGROUP_NAME}-${N}',
+    'project-cp-name' => 'cp-${PROJECTGROUP_NAME}-${N}',
+    'project-tg-name' => 'tg-${PROJECTGROUP_NAME}',
+    'project-cg-name' => 'cg-${PROJECTGROUP_NAME}',
+    'project-tt-name' => 'target',
+    'project-cc-name' => 'clean',
+    'project-id-name' => '${PROJECTGROUP_NAME}__${PROJECT_NAME}',
     #
     'project-include1' => ' -I${INCLUDE1}',
     'project-define1' => ' -D${DEFINE1}',
     'project-lib1' => ' -l${LIB1}',
     'project-libpath1' => ' -L${LIBPATH1}',
     #
-    'project-depend1t' => 'tp-${DEPEND1G}-${DEPEND1}-${PLATFORM_NAME}-${CONF_NAME}',
-    'project-depend1c' => 'cp-${DEPEND1G}-${DEPEND1}-${PLATFORM_NAME}-${CONF_NAME}',
+    'project-depend1t' => 'tp-${DEPEND1G}-${DEPEND1}',
+    'project-depend1c' => 'cp-${DEPEND1G}-${DEPEND1}',
     #
     'project-depend1C:dummy' => '',
     'project-depend1C:console' => '',
@@ -125,17 +119,13 @@ $PROJECTGROUP_TNAME: $PROJECT_TNAME
 $PROJECTGROUP_CNAME: $PROJECT_CNAME
 $PROJECT_TNAME: $TARGET_DEPENDS
 $PROJECT_CNAME: $CLEAN_DEPENDS
-$TARGET_CONF_TNAME: $PROJECT_TNAME
-$TARGET_CONF_CNAME: $PROJECT_CNAME
 
 tmp__${PROJECT_ID}=${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}
 bin__${PROJECT_ID}=${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}
 tmpx__${PROJECT_ID}=${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}
-CXXFLAGS__${PROJECT_ID}=${PROJECT_CXXFLAGS}
-CFLAGS__${PROJECT_ID}=${PROJECT_CFLAGS}
-LDFLAGS__${PROJECT_ID}=-Wl,-rpath-link,${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME} -L${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME} -L${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME} ${PROJECT_LDFLAGS} 
-#LDFLAGS__${PROJECT_ID}=-L${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME} -L${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME} ${PROJECT_LDFLAGS}
-#LDFLAGS__${PROJECT_ID}=${PROJECT_LDFLAGS} 
+CXXFLAGS__${PROJECT_ID}=${OPT_CXXFLAGS}
+CFLAGS__${PROJECT_ID}=${OPT_CFLAGS}
+LDFLAGS__${PROJECT_ID}=${OPT_LDFLAGS}
 EOT
     'project-config-shared' => [
       <<'EOT',
@@ -167,43 +157,44 @@ target__${PROJECT_ID}=
 EOT
     'project-config-M:console' => <<'EOT',
 # console binary at ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}
-target__${PROJECT_ID} = ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}
+target__${PROJECT_ID} = ${OPT_console_OUT}
 $PROJECT_TNAME: \$(tmpx__${PROJECT_ID}) \$(bin__${PROJECT_ID}) \$(target__${PROJECT_ID})
 $PROJECT_CNAME:
 	-rm \$(target__${PROJECT_ID})
 	-rm \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}):
-	\$(CXX) -Wl,-rpath,.  \$(CXXFLAGS__${PROJECT_ID}) -o\$@ \$+ \$(LDFLAGS__${PROJECT_ID})
+	\$(CXX) ${OPT_console_OPTIONS} -o\$@ \$+ \$(LDFLAGS__${PROJECT_ID})
 EOT
     'project-config-M:solib' => <<'EOT',
 # so library at ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so
-target__${PROJECT_ID}=${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so
+target__${PROJECT_ID}=${OPT_solib_OUT}
 $PROJECT_TNAME: \$(tmpx__${PROJECT_ID}) \$(bin__${PROJECT_ID}) \$(target__${PROJECT_ID})
 $PROJECT_CNAME:
 	-rm \$(target__${PROJECT_ID})
 	-rm \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}):
-	\$(CXX) -shared -Wl,-rpath,. \$(CXXFLAGS__${PROJECT_ID}) -o\$@ -Wl,-soname,${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so \$+ \$(LDFLAGS__${PROJECT_ID})
+	\$(CXX) ${OPT_solib_OPTIONS} -o\$@ \$+ \$(LDFLAGS__${PROJECT_ID})
 EOT
     'project-config-M:plugin' => <<'EOT',
 # so library at ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so
-target__${PROJECT_ID}=${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so
+target__${PROJECT_ID}=${OPT_plugin_OUT}
 $PROJECT_TNAME: \$(tmpx__${PROJECT_ID}) \$(bin__${PROJECT_ID}) \$(target__${PROJECT_ID})
 $PROJECT_CNAME:
 	-rm \$(target__${PROJECT_ID})
 	-rm \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}):
-	\$(CXX) -shared -Wl,-rpath,. \$(CXXFLAGS__${PROJECT_ID}) -o\$@ -Wl,-soname,${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so \$+ \$(LDFLAGS__${PROJECT_ID})
+        
+	\$(CXX) ${OPT_plugin_OPTIONS} -o\$@ \$+ \$(LDFLAGS__${PROJECT_ID})
 EOT
     'project-config-M:lib' => <<'EOT',
 # library at ${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.a
-target__${PROJECT_ID}=${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.a
+target__${PROJECT_ID}=${OPT_lib_OUT}
 $PROJECT_TNAME: \$(tmpx__${PROJECT_ID}) \$(target__${PROJECT_ID})
 $PROJECT_CNAME:
 	-rm \$(target__${PROJECT_ID})
 	-rm \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}):
-	\$(AR) r \$@ \$?
+	\$(AR) ${OPT_lib_OPTIONS} \$@ \$?
 EOT
     #----------------------------------------------------------------------------------------------------------------------------
     #----------------------------------------------------------------------------------------------------------------------------
@@ -218,6 +209,23 @@ EOT
 EOT
     'project-ff-file-end' => <<'EOT',
 EOT
+    #----------------------------------------------------------------------------------------------------------------------------
+    #----------------------------------------------------------------------------------------------------------------------------
+    '#options' => {
+      'CFLAGS'             => \&option_combiner_space,
+      'CXXFLAGS'           => \&option_combiner_space,
+      'LDFLAGS'            => \&option_combiner_space,
+      #
+      'lib_OUT'            => \&option_combiner_last,
+      'solib_OUT'          => \&option_combiner_last,
+      'plugin_OUT'         => \&option_combiner_last,
+      'console_OUT'        => \&option_combiner_last,
+      #
+      'lib_OPTIONS'        => \&option_combiner_last,
+      'solib_OPTIONS'      => \&option_combiner_last,
+      'plugin_OPTIONS'     => \&option_combiner_last,
+      'console_OPTIONS'    => \&option_combiner_last,
+    },
   },
   #-------------------------------
   #-------------------------------
@@ -226,137 +234,41 @@ EOT
   'a-project-opts' => {
     '[]' => {
       'Platforms'      => $ENV{'PLATFORMS'}, #'Linux_x86_64 Linux_i686',
-      'Configurations' => 'Debug Release ReleaseSpace ReleaseStatic',
+      'Configurations' => 'Debug Release ReleaseSpace',
     },
     #
     '*' => {
-      'OutputDirectory'                             => '$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)',
-      'IntermediateDirectory'                       => '$(SolutionDir)../../tmp/win32vc8_$(ConfigurationName)_$(PlatformName)/$(ProjectName)',
-      'CharacterSet'                                => '2',
-      #                                            
-      'Compiler_AdditionalOptions'                  => '/MP',
-      'Compiler_AdditionalIncludeDirectories'       => '$(SolutionDir)../../include',
-      'Compiler_StringPooling'                      => 'true',
-      'Compiler_MinimalRebuild'                     => 'false',
-      'Compiler_RuntimeTypeInfo'                    => 'true',
-      'Compiler_UsePrecompiledHeader'               => '0',
-      'Compiler_PrecompiledHeaderFile'              => '$(IntDir)/$(ProjectName).pch',
-      'Compiler_PrecompiledHeaderThrough'           => 'StdAfx.h',
-      'Compiler_AssemblerListingLocation'           => '$(IntDir)/',
-      'Compiler_ProgramDataBaseFileName'            => '$(IntDir)/',
-      'Compiler_Detect64BitPortabilityProblems'     => 'true',
-      'Compiler_CompileAs'                          => '0',
-      'Compiler_EnablePREfast'                      => 'false',
+      'lib_OUT'        => '${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.a',
+      'solib_OUT'      => '${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so',
+      'plugin_OUT'     => '${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so',
+      'console_OUT'    => '${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}',
       #
-      'Librarian_OutputFile'                        => '$(OutDir)/$(ProjectName).lib',
+      'lib_OPTIONS'    => 'r',
+      'plugin_OPTIONS' => '-shared -Wl,-rpath,. -Wl,-soname,${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so',
+      'solib_OPTIONS'  => '-shared -Wl,-rpath,. -Wl,-soname,${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so',
+      'console_OPTIONS'=> '-Wl,-rpath,.',
       #
-      'Linker_AdditionalDependencies'               => 'Winmm.lib ws2_32.lib',
-      'Linker_OutputFile'                           => '$(OutDir)/$(ProjectName).exe',
-      'Linker_AdditionalLibraryDirectories'         => '$(IntDir)/..',
-      'Linker_ProgramDatabaseFile'                  => '$(OutDir)/$(ProjectName).pdb',
-      'Linker_MapFileName'                          => '$(IntDir)/$(ProjectName).map',
-      'Linker_MapExports'                           => 'true',
-      'Linker_SubSystem'                            => '1',
-      'Linker_TargetMachine'                        => '',
-      #
-      'BscMake_OutputFile'                          => '$(IntDir)/$(ProjectName).bsc',
-      #
-      'PreBuild_Description'                        => 'Pre Build',
-      'PreBuild_CommandLine'                        => '',
-      'PreBuild_Excluded'                           => 'false',
-      #
-      'PreLink_Description'                         => 'Pre Link',
-      'PreLink_CommandLine'                         => '',
-      'PreLink_Excluded'                            => 'false',
-      #
-      'PostBuild_Description'                       => 'Post Build',
-      'PostBuild_CommandLine'                       => '',
-      'PostBuild_Excluded'                          => 'false',
-      #
-      'CustomBuild_Description'                     => 'Custom Build',
-      'CustomBuild_CommandLine'                     => '',
-      'CustomBuild_AdditionalDependencies'          => '',
-      'CustomBuild_Outputs'                         => '',
+      'CXXFLAGS'       => '-fPIC',
+      'CFLAGS'         => '-fPIC',
+      'LDFLAGS'        => '-fPIC '
+                         .'-Wl,-z,defs -Wl,-rpath-link,${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}'
+                         .' -L${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME} -L${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}'
+                         .' -ldl -lpthread',
     },
     'Debug' => {
-      'Compiler_Optimization'                       => '0',
-      'Compiler_InlineFunctionExpansion'            => '0',
-      'Compiler_EnableIntrinsicFunctions'           => 'false',
-      'Compiler_FavorSizeOrSpeed'                   => '0',
-      'Compiler_WholeProgramOptimization'           => 'false',
-      'Compiler_PreprocessorDefinitions'            => 'WIN32;_DEBUG',
-      'Compiler_BasicRuntimeChecks'                 => '3',
-      'Compiler_BufferSecurityCheck'                => 'true',
-      'Compiler_RuntimeLibrary'                     => '3',
-      'Compiler_BrowseInformation'                  => '1',
-      'Compiler_WarningLevel'                       => '3',
-      'Compiler_WarnAsError'                        => 'true',
-      'Compiler_DebugInformationFormat'             => '3',
-      #
-      'Linker_LinkIncremental'                      => '1',
-      'Linker_GenerateDebugInformation'             => 'true',
-      'Linker_GenerateMapFile'                      => 'true',
-      'Linker_LinkTimeCodeGeneration'               => '0',
+      'CXXFLAGS'       => '-O0 -g',
+      'CFLAGS'         => '-O0 -g',
+      'LDFLAGS'        => '-O0 -g',
     },
     'Release' => {
-      'Compiler_Optimization'                       => '3',
-      'Compiler_InlineFunctionExpansion'            => '2',
-      'Compiler_EnableIntrinsicFunctions'           => 'true',
-      'Compiler_FavorSizeOrSpeed'                   => '1',
-      'Compiler_WholeProgramOptimization'           => 'true',
-      'Compiler_PreprocessorDefinitions'            => 'WIN32;NDEBUG',
-      'Compiler_BasicRuntimeChecks'                 => '0',
-      'Compiler_BufferSecurityCheck'                => 'false',
-      'Compiler_RuntimeLibrary'                     => '2',
-      'Compiler_BrowseInformation'                  => '0',
-      'Compiler_WarningLevel'                       => '1',
-      'Compiler_WarnAsError'                        => 'true',
-      'Compiler_DebugInformationFormat'             => '0',
-      #
-      'Linker_LinkIncremental'                      => '0',
-      'Linker_GenerateDebugInformation'             => 'false',
-      'Linker_GenerateMapFile'                      => 'false',
-      'Linker_LinkTimeCodeGeneration'               => '1',
+      'CXXFLAGS'       => '-O3',
+      'CFLAGS'         => '-O3',
+      'LDFLAGS'        => '-O3',
     },
-    'ReleaseSpace' => {
-      'Compiler_Optimization'                       => '1',
-      'Compiler_InlineFunctionExpansion'            => '0',
-      'Compiler_EnableIntrinsicFunctions'           => 'false',
-      'Compiler_FavorSizeOrSpeed'                   => '2',
-      'Compiler_WholeProgramOptimization'           => 'true',
-      'Compiler_PreprocessorDefinitions'            => 'WIN32;NDEBUG',
-      'Compiler_BasicRuntimeChecks'                 => '0',
-      'Compiler_BufferSecurityCheck'                => 'false',
-      'Compiler_RuntimeLibrary'                     => '2',
-      'Compiler_BrowseInformation'                  => '0',
-      'Compiler_WarningLevel'                       => '1',
-      'Compiler_WarnAsError'                        => 'true',
-      'Compiler_DebugInformationFormat'             => '0',
-      #
-      'Linker_LinkIncremental'                      => '0',
-      'Linker_GenerateDebugInformation'             => 'false',
-      'Linker_GenerateMapFile'                      => 'false',
-      'Linker_LinkTimeCodeGeneration'               => '1',
-    },
-    'ReleaseStatic' => {
-      'Compiler_Optimization'                       => '3',
-      'Compiler_InlineFunctionExpansion'            => '2',
-      'Compiler_EnableIntrinsicFunctions'           => 'true',
-      'Compiler_FavorSizeOrSpeed'                   => '1',
-      'Compiler_WholeProgramOptimization'           => 'true',
-      'Compiler_PreprocessorDefinitions'            => 'WIN32;NDEBUG',
-      'Compiler_BasicRuntimeChecks'                 => '0',
-      'Compiler_BufferSecurityCheck'                => 'false',
-      'Compiler_RuntimeLibrary'                     => '0',
-      'Compiler_BrowseInformation'                  => '0',
-      'Compiler_WarningLevel'                       => '1',
-      'Compiler_WarnAsError'                        => 'true',
-      'Compiler_DebugInformationFormat'             => '0',
-      #
-      'Linker_LinkIncremental'                      => '0',
-      'Linker_GenerateDebugInformation'             => 'false',
-      'Linker_GenerateMapFile'                      => 'false',
-      'Linker_LinkTimeCodeGeneration'               => '1',
+    'ReleaseSpace'     => {
+      'CXXFLAGS'       => '-Os',
+      'CFLAGS'         => '-Os',
+      'LDFLAGS'        => '-Os',
     },
   },
   #-------------------------------
@@ -378,6 +290,11 @@ EOT
   'generate' => \&makefile_gen_generate,
   #-------------------------------
   'subs' => {},
+  'pc-targets' => {
+    'platforms' => {},
+    'configs' => {},
+    'targets' => {},
+  },
 };
 
 

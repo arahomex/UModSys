@@ -10,8 +10,11 @@ our ($fout, $pg, $proj, $xmap);
 our ($FILE_PATH, $FNAME, $FPATH, $FEXT);
 our ($TARGET_TNAME, $TARGET_CNAME, $TARGET_CONF_TNAME, $TARGET_CONF_CNAME);
 our ($PROJECT_NAME, $PROJECT_CONTENTS, $PROJECT_TNAME, $PROJECT_CNAME);
-our ($PROJECT_ID, $PROJECT_CXXFLAGS, $PROJECT_CFLAGS, $PROJECT_LDFLAGS);
-our ($MODE, $CFLAGS, $LDFLAGS, $CXXFLAGS, @PROJECT_INCLUDES, @PROJECT_DEFINES, @PROJECT_DEPENDS, @PROJECT_LIBS, @PROJECT_LIBPATH);
+our ($PROJECT_ID);
+our ($MODE, @PROJECT_INCLUDES, @PROJECT_DEFINES, @PROJECT_DEPENDS, @PROJECT_LIBS, @PROJECT_LIBPATH);
+our ($OPT_CFLAGS, $OPT_LDFLAGS, $OPT_CXXFLAGS);
+our ($OPT_lib_OUT, $OPT_solib_OUT, $OPT_plugin_OUT, $OPT_console_OUT);
+our ($OPT_lib_OPTIONS, $OPT_solib_OPTIONS, $OPT_plugin_OPTIONS, $OPT_console_OPTIONS);
 our ($PROJECTGROUP_NAME, $PROJECTGROUP_TNAME, $PROJECTGROUP_CNAME);
 our ($FILEGROUP_NAME);
 
@@ -280,6 +283,25 @@ sub makefile_project_option($$$)
   makefile_setopt($this->{'project'}->{'opts'}, $conf, $name, $value);
 }
 
+sub makefile_project_end($)
+{
+  my ($this) = @_;
+  my $proj = $this->{'project'};
+  my @confs = split / /, makefile_getopt('[]', 'Configurations', @{$proj->{'a-opts'}});
+  $proj->{'confs'} = \@confs;
+  my @platforms = split / /, makefile_getopt('[]', 'Platforms', @{$proj->{'a-opts'}});
+  $proj->{'platforms'} = \@platforms;
+  #
+#  print $proj->{'name'}.": '@confs' '@platforms'\n";
+  #
+  for my $x (@confs) {
+    $proj->{'pc-targets'}->{'configs'}->{$x}++;
+  }
+  for my $x (@platforms) {
+    $proj->{'pc-targets'}->{'platforms'}->{$x}++;
+  }
+}
+
 sub makefile_project_begin($$$)
 {
   my ($this, $keyname, $args) = @_;
@@ -308,6 +330,8 @@ sub makefile_project_begin($$$)
     #
     'opts' => $opts,
     'a-opts' => [$opts, (@{$this->{'projectgroup'}->{'a-project-opts'}})], 
+    #
+    'pc-targets' => $this->{'pc-targets'},
   };
   my $ret = {
     'type' => 'project',
@@ -319,10 +343,7 @@ sub makefile_project_begin($$$)
     'groups' => $rv->{'groups'},
     'sets' => $rv->{'sets'},
     #
-    'end' => sub {
-#       my ($this) = @_;
-#       makefile_project_generate($this->{'project'}, $this->{'G'}->{'templates'});
-    },
+    'end' => \&makefile_project_end,
     'set' => \&set_value,
     'option' => \&makefile_project_option,
     'begins' => {
@@ -337,6 +358,7 @@ sub makefile_project_begin($$$)
       'libs' => \&makefile_project_cmd,
       'disable' => \&makefile_project_cmd,
     },
+    'pc-targets' => $this->{'pc-targets'},
   };
   $this->{'projects'}->{$name} = $rv;
   $this->{'subs'}->{$name} = $ret;
@@ -400,8 +422,8 @@ sub makefile_project_generate($$$)
   my ($filters);
   #
   my ($PROJECTGROUP_NAME, $PROJECT_NAME) = ($pg->{'name'}, $proj->{'name'});
-  my @confs = split / /, makefile_getopt('[]', 'Configurations', @{$proj->{'a-opts'}});
-  my @platforms = split / /, makefile_getopt('[]', 'Platforms', @{$proj->{'a-opts'}});
+  my @confs = $proj->{'confs'};
+  my @platforms = $proj->{'platforms'};
   #
   my $opt_vars = $template->{'#options'};
   $proj->{'.platforms'} = \@platforms;
@@ -440,108 +462,116 @@ sub makefile_project_generate($$$)
   }
   #
   local $MODE = makefile_project_modemap $proj->{'mode'};
-  my @targets;
   #------------------- conf-level
   my ($N, $C, $P);
-  for my $PLATFORM_NAME (@platforms) {
-    for my $CONF_NAME (@confs) {
-      #
-#      my $opt_var_all = '';
-#      for my $opt_var (keys $opt_vars) {
-#        my $opt_combiner = $opt_vars->{$opt_var};
-      #
-      local $PROJECT_CONTENTS = '';
-      ($N, $C,$P) = ($PROJECT_NAME, $CONF_NAME, $PLATFORM_NAME);
-      local $TARGET_TNAME = eval('"'.$template->{'project-tt-name'}.'"');
-      local $TARGET_CNAME = eval('"'.$template->{'project-cc-name'}.'"');
-      local $TARGET_CONF_TNAME = eval('"'.$template->{'project-ttx-name'}.'"');
-      local $TARGET_CONF_CNAME = eval('"'.$template->{'project-ccx-name'}.'"');
-      local $PROJECT_TNAME = eval('"'.$template->{'project-tp-name'}.'"');
-      local $PROJECT_CNAME = eval('"'.$template->{'project-cp-name'}.'"');
-      local $PROJECTGROUP_TNAME = eval('"'.$template->{'project-tg-name'}.'"');
-      local $PROJECTGROUP_CNAME = eval('"'.$template->{'project-cg-name'}.'"');
-#      push @targets, ($PROJECT_TNAME, $PROJECT_CNAME);
-      push @targets, ($PROJECT_TNAME) if $CONF_NAME eq $confs[0];
-      #
-      local $CFLAGS = set_get($proj, 'CFLAGS');
-      local $CXXFLAGS = set_get($proj, 'CXXFLAGS');
-      local $LDFLAGS = set_get($proj, 'LDFLAGS');
-      #
-      local $PROJECT_ID = eval('"'.$template->{'project-id-name'}.'"');
-      local $PROJECT_CFLAGS=eval('"'.$template->{'project-cflags'}.'"');
-      local $PROJECT_CXXFLAGS=eval('"'.$template->{'project-cxxflags'}.'"');
-      local $PROJECT_LDFLAGS=eval('"'.$template->{'project-ldflags'}.'"');
-      #
-      for my $INCLUDE1 (@PROJECT_INCLUDES) {
-        my $ai = eval('"'.$template->{'project-include1'}.'"');
-        $PROJECT_CFLAGS .= $ai;
-        $PROJECT_CXXFLAGS .= $ai;
-      }
-      for my $DEFINE1 (@PROJECT_DEFINES) {
-        my $ai = eval('"'.$template->{'project-define1'}.'"');
-        $PROJECT_CFLAGS .= $ai;
-        $PROJECT_CXXFLAGS .= $ai;
-      }
-      #
-      my ($TARGET_DEPENDS, $CLEAN_DEPENDS) = ('','');
+  my ($PLATFORM_NAME, $CONF_NAME) = ($state->{'platform'}, $state->{'conf'});
+  #
+  local $PROJECT_CONTENTS = '';
+  ($N, $C,$P) = ($PROJECT_NAME, $CONF_NAME, $PLATFORM_NAME);
+  local $TARGET_TNAME = eval('"'.$template->{'project-tt-name'}.'"');
+  local $TARGET_CNAME = eval('"'.$template->{'project-cc-name'}.'"');
+  local $PROJECT_TNAME = eval('"'.$template->{'project-tp-name'}.'"');
+  local $PROJECT_CNAME = eval('"'.$template->{'project-cp-name'}.'"');
+  local $PROJECTGROUP_TNAME = eval('"'.$template->{'project-tg-name'}.'"');
+  local $PROJECTGROUP_CNAME = eval('"'.$template->{'project-cg-name'}.'"');
+  #
+  my $opt_var_all = '';
+  for my $opt_var (keys $opt_vars) {
+    my $opt_combiner = $opt_vars->{$opt_var};
+    my $opt_var_val = &$opt_combiner(
+      makefile_getopt('!*', $opt_var, @{$proj->{'a-opts'}}),
+      makefile_getopt('!*', $opt_var, @{$pg->{'a-opts'}}),
+      makefile_getopt($CONF_NAME, $opt_var, @{$proj->{'a-opts'}}),
+      makefile_getopt($PLATFORM_NAME, $opt_var, @{$proj->{'a-opts'}}),
+      makefile_getopt('*', $opt_var, @{$proj->{'a-opts'}}),
+      set_getsafe($proj, $opt_var),
+      makefile_getopt($CONF_NAME, $opt_var, @{$pg->{'a-opts'}}),
+      makefile_getopt($PLATFORM_NAME, $opt_var, @{$pg->{'a-opts'}}),
+      makefile_getopt('*', $opt_var, @{$pg->{'a-opts'}}),
+      set_getsafe($proj, $opt_var),
+    );
+    $opt_var_all .= "\$OPT_$opt_var = \"$opt_var_val\";\n";
+  }
+  #
+#  print "$opt_var_all";
+#  die;
+#no strict 'vars';
+  eval $opt_var_all;
+  if($@) {
+    die $@;
+  }
+#use strict 'vars';
+  #
+  local $PROJECT_ID = eval('"'.$template->{'project-id-name'}.'"');
+  #
+  for my $INCLUDE1 (@PROJECT_INCLUDES) {
+    my $ai = eval('"'.$template->{'project-include1'}.'"');
+    $OPT_CFLAGS .= $ai;
+    $OPT_CXXFLAGS .= $ai;
+  }
+  for my $DEFINE1 (@PROJECT_DEFINES) {
+    my $ai = eval('"'.$template->{'project-define1'}.'"');
+    $OPT_CFLAGS .= $ai;
+    $OPT_CXXFLAGS .= $ai;
+  }
+  #
+  my ($TARGET_DEPENDS, $CLEAN_DEPENDS) = ('','');
 #      ($C,$P) = ($CONF_NAME, $PLATFORM_NAME);
 #      for $N (@PROJECT_DEPENDS) {
 #        $TARGET_DEPENDS .= eval('" '.$template->{'project-tp-name'}.'"');
 #        $CLEAN_DEPENDS .= eval('" '.$template->{'project-cp-name'}.'"');
 #      }
-      for my $DEPEND1ID (@PROJECT_DEPENDS) {
-        my ($pdp, $DEPEND1G, $DEPEND1) = makefile_project_getdep $state, $DEPEND1ID;
-        print STDERR "{$DEPEND1G $DEPEND1 ".Data::Dumper->Dump([$pdp], [qw(pdp)])."}" if not defined $pdp->{'mode'};
-        my $MODE2 = makefile_project_modemap $pdp->{'mode'};
-        #
-        my $ai = eval('"'.$template->{'project-depend1C:'.$MODE2}.'"');
-        $PROJECT_CFLAGS .= $ai;
-        $PROJECT_CXXFLAGS .= $ai;
-        #
-        my $al = eval('"'.$template->{'project-depend1L:'.$MODE2}.'"');
-        $PROJECT_LDFLAGS .= $al;
-        #
-        $TARGET_DEPENDS .= eval('" '.$template->{'project-depend1t'}.'"');
-        $CLEAN_DEPENDS .= eval('" '.$template->{'project-depend1c'}.'"');
-      }
-      for my $LIBPATH1 (@PROJECT_LIBPATH) {
-        my $al = eval('"'.$template->{'project-libpath1'}.'"');
-        $PROJECT_LDFLAGS .= $al;
-      }
-      for my $LIB1 (@PROJECT_LIBS) {
-        my $al = eval('"'.$template->{'project-lib1'}.'"');
-        $PROJECT_LDFLAGS .= $al;
-      }
-      #
-      eprint $fout, eval("<<EOT\n".$template->{'project-config-begin'}."\nEOT");
-      #
-      {
-        my $shar = $template->{'project-config-shared'};
-        for my $svt (@$shar) {
-          my $xx = eval("<<EOT\n".$svt."\nEOT");
-          $xmap->{$xx}++;
-        }
-      }
-      #
-#      print "$PROJECT_NAME $MODE $PLATFORM_NAME $CONF_NAME\n";
-      my $dummy = 0;
-      $dummy = 1 if $MODE eq 'dummy';
-      $MODE = 'console' if $MODE eq 'console' or $MODE eq 'app' or $MODE eq 'gui';
-      eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:'.$MODE}."\nEOT");
-      #
-      if(not $dummy) {
-        eprint $fout,  eval("<<EOT\n".$template->{'project-config-M-general'}."\nEOT");
-        makefile_project_generate_files($state, $proj->{'groups'}, $template, 0);
-      }
-      #
-      eprint $fout, eval("<<EOT\n".$template->{'project-config-end'}."\nEOT");
+  for my $DEPEND1ID (@PROJECT_DEPENDS) {
+    my ($pdp, $DEPEND1G, $DEPEND1) = makefile_project_getdep $state, $DEPEND1ID;
+    print STDERR "{$DEPEND1G $DEPEND1 ".Data::Dumper->Dump([$pdp], [qw(pdp)])."}" if not defined $pdp->{'mode'};
+    my $MODE2 = makefile_project_modemap $pdp->{'mode'};
+    #
+    my $ai = eval('"'.$template->{'project-depend1C:'.$MODE2}.'"');
+    $OPT_CFLAGS .= $ai;
+    $OPT_CXXFLAGS .= $ai;
+    #
+    my $al = eval('"'.$template->{'project-depend1L:'.$MODE2}.'"');
+    $OPT_LDFLAGS .= $al;
+    #
+    $TARGET_DEPENDS .= eval('" '.$template->{'project-depend1t'}.'"');
+    $CLEAN_DEPENDS .= eval('" '.$template->{'project-depend1c'}.'"');
+  }
+  for my $LIBPATH1 (@PROJECT_LIBPATH) {
+    my $al = eval('"'.$template->{'project-libpath1'}.'"');
+    $OPT_LDFLAGS .= $al;
+  }
+  for my $LIB1 (@PROJECT_LIBS) {
+    my $al = eval('"'.$template->{'project-lib1'}.'"');
+    $OPT_LDFLAGS .= $al;
+  }
+  #
+  eprint $fout, eval("<<EOT\n".$template->{'project-config-begin'}."\nEOT");
+  #
+  {
+    my $shar = $template->{'project-config-shared'};
+    for my $svt (@$shar) {
+      my $xx = eval("<<EOT\n".$svt."\nEOT");
+      $xmap->{$xx}++;
     }
   }
+  #
+#      print "$PROJECT_NAME $MODE $PLATFORM_NAME $CONF_NAME\n";
+  my $dummy = 0;
+  $dummy = 1 if $MODE eq 'dummy';
+  $MODE = 'console' if $MODE eq 'console' or $MODE eq 'app' or $MODE eq 'gui';
+  eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:'.$MODE}."\nEOT");
+  #
+  if(not $dummy) {
+    eprint $fout,  eval("<<EOT\n".$template->{'project-config-M-general'}."\nEOT");
+    makefile_project_generate_files($state, $proj->{'groups'}, $template, 0);
+  }
+  #
+  eprint $fout, eval("<<EOT\n".$template->{'project-config-end'}."\nEOT");
   #
   eprint $fout,  eval("<<EOT\n".$template->{'project-end'}."EOT");
   #
   #------------------- END
-  print "Written project data $PROJECT_NAME: ".join(', ',@targets)."\n";
+  push @{$state->{'projects'}}, "$PROJECTGROUP_NAME::$PROJECT_NAME";
 }
 
 #--------------------------------------------------------------------
@@ -591,10 +621,7 @@ sub makefile_projectgroup_begin($$$)
     'project-opts' => $project_opts,
     'a-project-opts' => [$project_opts, $this->{'a-project-opts'}],
     #
-    'uni' => {
-      'platforms' => [],
-      'configs' => [],
-    },
+    'pc-targets' => $this->{'pc-targets'}
   };
   my $ret = {
     'type' => 'project-group',
@@ -616,6 +643,7 @@ sub makefile_projectgroup_begin($$$)
     },
     'commands' => {
     },
+    'pc-targets' => $this->{'pc-targets'},
   };
   $this->{'subs'}->{$name} = $ret;
   return $ret;
@@ -634,11 +662,12 @@ sub makefile_gen_include($$$)
 sub makefile_projectgroup_generate($$$)
 {
   my ($state, $pg, $template) = @_;
-  my ($filename, $projects, $fout) = ($pg->{'filename'}, $pg->{'projects'}, $state->{'fout'});
+  my ($projects) = ($pg->{'projects'});
   #
-  my ($PROJECTGROUP_NAME) = ($pg->{'name'});
+  local $PROJECTGROUP_NAME = $pg->{'name'};
+#  print "fout=$fout\n";
   #
-  eprint $fout,  eval("<<EOT\n".$template->{'projectgroup-begin'}."EOT");
+  eprint $fout, eval("<<EOT\n".$template->{'projectgroup-begin'}."EOT");
   #
   foreach my $proj_name (sort keys %$projects) {
     my $proj = $projects->{$proj_name};
@@ -657,7 +686,7 @@ sub makefile_projectgroup_generate($$$)
   #
   eprint $fout, eval("<<EOT\n".$template->{'projectgroup-end'}."EOT");
   #
-  print "Written project group file '$filename'\n";
+  print "Written project group '$PROJECTGROUP_NAME'\n";
 }
 
 #--------------------------------------------------------------------
@@ -667,37 +696,62 @@ sub makefile_projectgroup_generate($$$)
 sub makefile_gen_generate($$)
 {
   my ($this, $config) = @_;
-  my $filename = "Makefile";
-  make_filename_dir($filename);
 #       print "{".$this->{'type'}.",".$this->{'G'}->{'type'}.",".$this->{'G'}->{'templates'}->{'type'}."}\n";
   my $pgs = $this->{'subs'};
-  my ($ffout);
   my ($template) = ($this->{'templates'});
-  open $ffout,'>',$filename or die "File '$filename' create error.";
-  local $fout = $ffout;
   #
-  eprint $fout, eval("<<EOT\n".$template->{'makefile-begin'}."EOT");
+  my $files = {};
   my $state = {
     'pgs' => $pgs,
     'fout' => $fout,
-    'xmap' => {},
+    'files' => $files,
+    'projects' => [],
   };
-  for my $sn (keys %$pgs) {
-    my $pg = $pgs->{$sn};
-    $state->{'pg'} = $pg;
-    makefile_projectgroup_generate($state, $pg->{'projectgroup'}, $template);
-    $state->{'pg'} = undef;
-  }
   #
-  eprint $fout,  eval("<<EOT\n".$template->{'makefile-xmap'}."EOT");
-  my $xmap = $state->{'xmap'};
-  for my $xk (keys %$xmap) {
-    print $fout "# ".$xmap->{$xk}."\n";
-    print $fout "$xk\n";
+  for my $PLATFORM_NAME (keys %{$this->{'pc-targets'}->{'platforms'}}) {
+    for my $CONF_NAME (keys %{$this->{'pc-targets'}->{'configs'}}) {
+      my ($id, $filename, $F) = ("$PLATFORM_NAME.$CONF_NAME", "Makefile.$PLATFORM_NAME.$CONF_NAME");
+      make_filename_dir($filename);
+      open $F,'>',$filename or die "File '$filename' create error.";
+      eprint $F, eval("<<EOT\n".$template->{'makefile-begin'}."EOT");
+      #
+      my $file = {
+        'xmap' => {},
+        'F' => $F,
+        'filename' => $filename,
+        'conf' => $CONF_NAME,
+        'platform' => $PLATFORM_NAME,
+      };
+      $files->{$id} = $file;
+      #
+      $state->{'file'} = $file;
+      $state->{'xmap'} = $file->{'xmap'};
+      $state->{'platform'} = $file->{'platform'};
+      $state->{'conf'} = $file->{'conf'};
+      #
+      local $fout = $F;
+      #
+#      print "fout=$fout\n";
+      #
+      for my $sn (keys %$pgs) {
+        my $pg = $pgs->{$sn};
+        $state->{'pg'} = $pg;
+        makefile_projectgroup_generate($state, $pg->{'projectgroup'}, $template);
+        $state->{'pg'} = undef;
+      }
+      #
+      eprint $F,  eval("<<EOT\n".$template->{'makefile-xmap'}."EOT");
+      my $xmap = $state->{'xmap'};
+      for my $xk (keys %$xmap) {
+        print $fout "# ".$xmap->{$xk}."\n";
+        print $fout "$xk\n";
+      }
+      #
+      eprint $F, eval("<<EOT\n".$template->{'makefile-begin'}."EOT");
+      close $F;
+      print "Written make file '$filename' : ".join(', ', @{$state->{'projects'}})."\n";
+    }
   }
-  #
-  eprint $fout, eval("<<EOT\n".$template->{'makefile-end'}."EOT");
-  close $fout;
 }
 
 sub makefile_open($)
