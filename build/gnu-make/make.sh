@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash +x
 
 ./generate.sh || exit $?
 
@@ -11,6 +11,7 @@ else
   C=Debug
 fi
 
+echo "make -f Makefile.$P.$C" "$@"
 make -f Makefile.$P.$C "$@"
 
 

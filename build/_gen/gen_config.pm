@@ -67,6 +67,13 @@ sub set_getsafe($$)
   return undef;
 }
 
+sub set_getsafea($$)
+{
+  my $rv = set_getsafe(@_[0], @_[1]);
+  return () if not defined $rv;
+  return ($rv);
+}
+
 sub set_explode($$)
 {
   my ($this, $line) = @_;
@@ -433,6 +440,7 @@ sub option_combiner_comma
 
 sub option_combiner_space
 {
+#print "option_combiner_space:: '".Data::Dumper->Dump([\@_],['@_'])."'\n";
   my @rv = ();
   for my $v (@_) {
     push @rv, $v if defined $v and $v ne '';

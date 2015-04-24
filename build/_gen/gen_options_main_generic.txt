@@ -26,6 +26,8 @@ begin project-group umodsys
     #
     depend umodsysc
     #
+    depend plugin_libStd
+    depend plugin_libUI
     depend plugin_test1
     depend plugin_test2
   end
@@ -43,15 +45,31 @@ begin project-group umodsys
     #
     depend umodsys_lib_libui
     depend umodsys_lib_libmedia
-#    depend umodsys_lib_lib2d
-#    depend umodsys_lib_lib3d
     #
     depend umodsys_lib_basesys
     depend umodsys_lib_base
     depend umodsys_lib_core
     #
+    depend plugin_libStd
+    depend plugin_libUI
     depend plugin_test1
     depend plugin_test2
+  end
+
+  begin project umodsysct
+    mode binary
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-s-basesys)
+    #
+    begin file-group src
+      file $(path-s-plugin)/main/umodsys.c_maint.cpp
+    end
+    #
+    depend umodsys_lib_basesys
+    depend umodsys_lib_base
+    depend umodsys_lib_core
   end
 
   begin project umodsys_lib_core
@@ -343,13 +361,12 @@ begin project-group umodsys
         include plugin_test1.*.h
       end
     end
-    depend umodsys_lib_core
-    depend umodsys_lib_base
-    #
-    depend umodsys_lib_libmedia
     depend umodsys_lib_libui
     depend umodsys_lib_lib2d
     depend umodsys_lib_lib3d
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
   end
 
   begin project plugin_test2
@@ -366,6 +383,45 @@ begin project-group umodsys
     end
     depend umodsys_lib_core
     depend umodsys_lib_base
+  end
+
+  begin project plugin_libStd
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/libs
+        include plugin_libStd.cpp
+      end
+    end
+    #
+    depend umodsys_lib_libmedia
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_libUI
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/libs
+        include plugin_libUI.cpp
+      end
+    end
+    #
+    depend umodsys_lib_libmedia
+    depend umodsys_lib_libui
+    depend umodsys_lib_lib2d
+    depend umodsys_lib_lib3d
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
   end
 
 end

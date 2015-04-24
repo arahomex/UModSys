@@ -9,10 +9,11 @@ our $script_path;
 our ($fout, $pg, $proj, $xmap);
 our ($FILE_PATH, $FNAME, $FPATH, $FEXT);
 our ($TARGET_TNAME, $TARGET_CNAME, $TARGET_CONF_TNAME, $TARGET_CONF_CNAME);
-our ($PROJECT_NAME, $PROJECT_CONTENTS, $PROJECT_TNAME, $PROJECT_CNAME);
+our ($PROJECT_NAME, $PROJECT_CONTENTS, $PROJECT_TNAME, $PROJECT_CNAME, $PROJECT_TPNAME, $PROJECT_CPNAME);
 our ($PROJECT_ID);
 our ($MODE, @PROJECT_INCLUDES, @PROJECT_DEFINES, @PROJECT_DEPENDS, @PROJECT_LIBS, @PROJECT_LIBPATH);
 our ($OPT_CFLAGS, $OPT_LDFLAGS, $OPT_CXXFLAGS);
+our ($OPT_lib_NAME, $OPT_solib_NAME, $OPT_plugin_NAME, $OPT_console_NAME);
 our ($OPT_lib_OUT, $OPT_solib_OUT, $OPT_plugin_OUT, $OPT_console_OUT);
 our ($OPT_lib_OPTIONS, $OPT_solib_OPTIONS, $OPT_plugin_OPTIONS, $OPT_console_OPTIONS);
 our ($PROJECTGROUP_NAME, $PROJECTGROUP_TNAME, $PROJECTGROUP_CNAME);
@@ -44,6 +45,22 @@ sub makefile_getopt
     return $ref->{$conf}->{$optname};
   }
   return undef;
+}
+
+sub makefile_getopta
+{
+  my ($conf, $optname, @refs) = @_;
+#  print "find opt '$conf'.'$optname' at #".@refs."\n";
+  my $lev = 0;
+  my @rv;
+  for my $ref (@refs) {
+    $lev++;
+    next if not exists $ref->{$conf};
+    next if not exists $ref->{$conf}->{$optname};
+#    print "  found opt '$conf'.'$optname' => '".$ref->{$conf}->{$optname}." at #$lev'\n";
+    push @rv, $ref->{$conf}->{$optname};
+  }
+  return @rv;
 }
 
 #--------------------------------------------------------------------
@@ -470,26 +487,27 @@ sub makefile_project_generate($$$)
   ($N, $C,$P) = ($PROJECT_NAME, $CONF_NAME, $PLATFORM_NAME);
   local $TARGET_TNAME = eval('"'.$template->{'project-tt-name'}.'"');
   local $TARGET_CNAME = eval('"'.$template->{'project-cc-name'}.'"');
-  local $PROJECT_TNAME = eval('"'.$template->{'project-tp-name'}.'"');
-  local $PROJECT_CNAME = eval('"'.$template->{'project-cp-name'}.'"');
   local $PROJECTGROUP_TNAME = eval('"'.$template->{'project-tg-name'}.'"');
   local $PROJECTGROUP_CNAME = eval('"'.$template->{'project-cg-name'}.'"');
+  local $PROJECT_TNAME = eval('"'.$template->{'project-tp-name'}.'"');
+  local $PROJECT_CNAME = eval('"'.$template->{'project-cp-name'}.'"');
+  local $PROJECT_TPNAME = eval('"'.$template->{'project-tpp-name'}.'"');
+  local $PROJECT_CPNAME = eval('"'.$template->{'project-cpp-name'}.'"');
   #
   my $opt_var_all = '';
-  for my $opt_var (keys $opt_vars) {
+  my ($popts, $pgopts) = ($proj->{'a-opts'}, $pg->{'a-project-opts'});
+#  print ref($popts).", ".ref($pgopts)."\n";
+  for my $opt_var (sort keys $opt_vars) {
     my $opt_combiner = $opt_vars->{$opt_var};
-    my $opt_var_val = &$opt_combiner(
-      makefile_getopt('!*', $opt_var, @{$proj->{'a-opts'}}),
-      makefile_getopt('!*', $opt_var, @{$pg->{'a-opts'}}),
-      makefile_getopt($CONF_NAME, $opt_var, @{$proj->{'a-opts'}}),
-      makefile_getopt($PLATFORM_NAME, $opt_var, @{$proj->{'a-opts'}}),
-      makefile_getopt('*', $opt_var, @{$proj->{'a-opts'}}),
-      set_getsafe($proj, $opt_var),
-      makefile_getopt($CONF_NAME, $opt_var, @{$pg->{'a-opts'}}),
-      makefile_getopt($PLATFORM_NAME, $opt_var, @{$pg->{'a-opts'}}),
-      makefile_getopt('*', $opt_var, @{$pg->{'a-opts'}}),
-      set_getsafe($proj, $opt_var),
-    );
+    my $opt_var_val = &$opt_combiner((
+      makefile_getopta('!*', $opt_var, @$popts),
+      #
+      makefile_getopta($CONF_NAME, $opt_var, @$popts),
+      makefile_getopta($PLATFORM_NAME, $opt_var, @$popts),
+      makefile_getopta('*', $opt_var, @$popts),
+      set_getsafea($proj, $opt_var),
+      set_getsafea($pg, $opt_var),
+    ));
     $opt_var_all .= "\$OPT_$opt_var = \"$opt_var_val\";\n";
   }
   #
@@ -516,11 +534,6 @@ sub makefile_project_generate($$$)
   }
   #
   my ($TARGET_DEPENDS, $CLEAN_DEPENDS) = ('','');
-#      ($C,$P) = ($CONF_NAME, $PLATFORM_NAME);
-#      for $N (@PROJECT_DEPENDS) {
-#        $TARGET_DEPENDS .= eval('" '.$template->{'project-tp-name'}.'"');
-#        $CLEAN_DEPENDS .= eval('" '.$template->{'project-cp-name'}.'"');
-#      }
   for my $DEPEND1ID (@PROJECT_DEPENDS) {
     my ($pdp, $DEPEND1G, $DEPEND1) = makefile_project_getdep $state, $DEPEND1ID;
     print STDERR "{$DEPEND1G $DEPEND1 ".Data::Dumper->Dump([$pdp], [qw(pdp)])."}" if not defined $pdp->{'mode'};
@@ -545,27 +558,30 @@ sub makefile_project_generate($$$)
     $OPT_LDFLAGS .= $al;
   }
   #
-  eprint $fout, eval("<<EOT\n".$template->{'project-config-begin'}."\nEOT");
-  #
-  {
-    my $shar = $template->{'project-config-shared'};
-    for my $svt (@$shar) {
-      my $xx = eval("<<EOT\n".$svt."\nEOT");
-      $xmap->{$xx}++;
-    }
-  }
-  #
-#      print "$PROJECT_NAME $MODE $PLATFORM_NAME $CONF_NAME\n";
   my $dummy = 0;
   $dummy = 1 if $MODE eq 'dummy';
-  $MODE = 'console' if $MODE eq 'console' or $MODE eq 'app' or $MODE eq 'gui';
-  eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:'.$MODE}."\nEOT");
+  eprint $fout, eval("<<EOT\n".$template->{'project-config-begin'}."\nEOT");
   #
   if(not $dummy) {
-    eprint $fout,  eval("<<EOT\n".$template->{'project-config-M-general'}."\nEOT");
-    makefile_project_generate_files($state, $proj->{'groups'}, $template, 0);
+    eprint $fout, eval("<<EOT\n".$template->{'project-config-flags'}."\nEOT");
+    {
+      my $shar = $template->{'project-config-shared'};
+      for my $svt (@$shar) {
+        my $xx = eval("<<EOT\n".$svt."\nEOT");
+        $xmap->{$xx}++;
+      }
+    }
+    #
+    #      print "$PROJECT_NAME $MODE $PLATFORM_NAME $CONF_NAME\n";
+    $MODE = 'console' if $MODE eq 'console' or $MODE eq 'app' or $MODE eq 'gui';
+    eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:'.$MODE}."\nEOT");
+    #
+    if(not $dummy) {
+      eprint $fout,  eval("<<EOT\n".$template->{'project-config-M-general'}."\nEOT");
+      makefile_project_generate_files($state, $proj->{'groups'}, $template, 0);
+    }
+    #
   }
-  #
   eprint $fout, eval("<<EOT\n".$template->{'project-config-end'}."\nEOT");
   #
   eprint $fout,  eval("<<EOT\n".$template->{'project-end'}."EOT");
@@ -584,20 +600,17 @@ sub makefile_projectgroup_option($$$)
   my ($this, $cmd, $args) = @_;
   my $name = get_configuration_arg(\$args);
 #  print "option $name $args\n";
-  if($name eq 'random-seed') {
-#    my $seed = makefile_calc_seed($args);
-#    srand $seed;
-#    print "Random seed is set to $seed for '$args'\n";
-    return;
-  } elsif($name eq 'project-order') {
+  if($name eq 'project-order') {
     my @po = split / /, $args;
 #    $this->{'solution'}->{'project-order'} = \@po;
   } elsif($name eq 'project') {
     my $conf = get_configuration_arg(\$args);
     my $name = get_configuration_arg(\$args);
     my $value = get_configuration_arg_exp(\$args, $this);
-#    makefile_setopt($this->{'solution'}->{'project-opts'}, $conf, $name, $value);
+    makefile_setopt($this->{'projectgroup'}->{'project-opts'}, $conf, $name, $value);
 #    print "setopt '$conf'.'$name' => '$value'\n";
+  } else {
+    die "Unknown project-group option: $name";
   }
 }
 

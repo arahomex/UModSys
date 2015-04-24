@@ -41,6 +41,8 @@ EOT
     #----------------------------------------------------------------------------------------------------------------------------
     'project-tp-name' => 'tp-${PROJECTGROUP_NAME}-${N}',
     'project-cp-name' => 'cp-${PROJECTGROUP_NAME}-${N}',
+    'project-tpp-name' => 'tpp-${PROJECTGROUP_NAME}-${N}',
+    'project-cpp-name' => 'cpp-${PROJECTGROUP_NAME}-${N}',
     'project-tg-name' => 'tg-${PROJECTGROUP_NAME}',
     'project-cg-name' => 'cg-${PROJECTGROUP_NAME}',
     'project-tt-name' => 'target',
@@ -101,13 +103,10 @@ EOT
 #---------------------------------------------------------------- BEGIN project '$PROJECTGROUP_NAME'.'$PROJECT_NAME' 
 #-------------------------------- prolog '$PROJECTGROUP_NAME'.'$PROJECT_NAME'
 #--------------------------------
-
-
 EOT
     'project-end' => <<'EOT',
 #-------------------------------- epilog '$PROJECTGROUP_NAME'.'$PROJECT_NAME'
 #---------------------------------------------------------------- END project '$PROJECTGROUP_NAME'.'$PROJECT_NAME' 
-
 EOT
     #----------------------------------------------------------------------------------------------------------------------------
     #----------------------------------------------------------------------------------------------------------------------------
@@ -117,9 +116,11 @@ $TARGET_TNAME: $PROJECT_TNAME
 $TARGET_CNAME: $PROJECT_CNAME
 $PROJECTGROUP_TNAME: $PROJECT_TNAME
 $PROJECTGROUP_CNAME: $PROJECT_CNAME
-$PROJECT_TNAME: $TARGET_DEPENDS
-$PROJECT_CNAME: $CLEAN_DEPENDS
-
+$PROJECT_TNAME: $TARGET_DEPENDS $PROJECT_TPNAME 
+$PROJECT_CNAME: $CLEAN_DEPENDS $PROJECT_CPNAME
+.PHONY: $PROJECT_TNAME $PROJECT_TPNAME $PROJECT_CNAME $PROJECT_CPNAME
+EOT
+    'project-config-flags' => <<'EOT',
 tmp__${PROJECT_ID}=${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}
 bin__${PROJECT_ID}=${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}
 tmpx__${PROJECT_ID}=${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}
@@ -128,6 +129,9 @@ CFLAGS__${PROJECT_ID}=${OPT_CFLAGS}
 LDFLAGS__${PROJECT_ID}=${OPT_LDFLAGS}
 EOT
     'project-config-shared' => [
+      <<'EOT',
+.PHONY: $PROJECTGROUP_TNAME $PROJECTGROUP_CNAME
+EOT
       <<'EOT',
 ${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}:
 	mkdir -p \$@
@@ -154,12 +158,14 @@ EOT
     'project-config-M:dummy' => <<'EOT',
 # dummy project
 target__${PROJECT_ID}=
+$PROJECT_TPNAME:
+$PROJECT_CPNAME:
 EOT
     'project-config-M:console' => <<'EOT',
 # console binary at ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}
 target__${PROJECT_ID} = ${OPT_console_OUT}
-$PROJECT_TNAME: \$(tmpx__${PROJECT_ID}) \$(bin__${PROJECT_ID}) \$(target__${PROJECT_ID})
-$PROJECT_CNAME:
+$PROJECT_TPNAME: \$(tmpx__${PROJECT_ID}) \$(bin__${PROJECT_ID}) \$(target__${PROJECT_ID})
+$PROJECT_CPNAME:
 	-rm \$(target__${PROJECT_ID})
 	-rm \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}):
@@ -168,8 +174,8 @@ EOT
     'project-config-M:solib' => <<'EOT',
 # so library at ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so
 target__${PROJECT_ID}=${OPT_solib_OUT}
-$PROJECT_TNAME: \$(tmpx__${PROJECT_ID}) \$(bin__${PROJECT_ID}) \$(target__${PROJECT_ID})
-$PROJECT_CNAME:
+$PROJECT_TPNAME: \$(tmpx__${PROJECT_ID}) \$(bin__${PROJECT_ID}) \$(target__${PROJECT_ID})
+$PROJECT_CPNAME:
 	-rm \$(target__${PROJECT_ID})
 	-rm \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}):
@@ -178,19 +184,18 @@ EOT
     'project-config-M:plugin' => <<'EOT',
 # so library at ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so
 target__${PROJECT_ID}=${OPT_plugin_OUT}
-$PROJECT_TNAME: \$(tmpx__${PROJECT_ID}) \$(bin__${PROJECT_ID}) \$(target__${PROJECT_ID})
-$PROJECT_CNAME:
+$PROJECT_TPNAME: \$(tmpx__${PROJECT_ID}) \$(bin__${PROJECT_ID}) \$(target__${PROJECT_ID})
+$PROJECT_CPNAME:
 	-rm \$(target__${PROJECT_ID})
 	-rm \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}):
-        
 	\$(CXX) ${OPT_plugin_OPTIONS} -o\$@ \$+ \$(LDFLAGS__${PROJECT_ID})
 EOT
     'project-config-M:lib' => <<'EOT',
 # library at ${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.a
 target__${PROJECT_ID}=${OPT_lib_OUT}
-$PROJECT_TNAME: \$(tmpx__${PROJECT_ID}) \$(target__${PROJECT_ID})
-$PROJECT_CNAME:
+$PROJECT_TPNAME: \$(tmpx__${PROJECT_ID}) \$(target__${PROJECT_ID})
+$PROJECT_CPNAME:
 	-rm \$(target__${PROJECT_ID})
 	-rm \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}):
@@ -216,6 +221,11 @@ EOT
       'CXXFLAGS'           => \&option_combiner_space,
       'LDFLAGS'            => \&option_combiner_space,
       #
+      'lib_NAME'           => \&option_combiner_last,
+      'solib_NAME'         => \&option_combiner_last,
+      'plugin_NAME'        => \&option_combiner_last,
+      'console_NAME'       => \&option_combiner_last,
+      #
       'lib_OUT'            => \&option_combiner_last,
       'solib_OUT'          => \&option_combiner_last,
       'plugin_OUT'         => \&option_combiner_last,
@@ -238,14 +248,19 @@ EOT
     },
     #
     '*' => {
-      'lib_OUT'        => '${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.a',
-      'solib_OUT'      => '${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so',
-      'plugin_OUT'     => '${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so',
-      'console_OUT'    => '${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}',
+      'lib_NAME'       => '${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.a',
+      'solib_NAME'     => '${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so',
+      'plugin_NAME'    => '${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so',
+      'console_NAME'   => '${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}',
+      #
+      'lib_OUT'        => '${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${OPT_lib_NAME}',
+      'solib_OUT'      => '${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${OPT_solib_NAME}',
+      'plugin_OUT'     => '${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${OPT_plugin_NAME}',
+      'console_OUT'    => '${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${OPT_console_NAME}',
       #
       'lib_OPTIONS'    => 'r',
-      'plugin_OPTIONS' => '-shared -Wl,-rpath,. -Wl,-soname,${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so',
-      'solib_OPTIONS'  => '-shared -Wl,-rpath,. -Wl,-soname,${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so',
+      'plugin_OPTIONS' => '-shared -Wl,-rpath,. -Wl,-soname,${OPT_plugin_NAME}',
+      'solib_OPTIONS'  => '-shared -Wl,-rpath,. -Wl,-soname,${OPT_solib_NAME}',
       'console_OPTIONS'=> '-Wl,-rpath,.',
       #
       'CXXFLAGS'       => '-fPIC',

@@ -67,7 +67,7 @@ IModuleLibraryReg* RModuleLibrarySO::pfd_load(PFD_Data* pfd, const core::DCStrin
   if(pfd->module!=NULL)
     return NULL;
 //  SetDllDirectory();
-  pfd->module = dlopen(filename, RTLD_LOCAL|RTLD_NOW);
+  pfd->module = dlopen(filename, RTLD_LOCAL|RTLD_DEEPBIND|RTLD_NOW);
 //  dbg_put(rsdl_SoLoad, "          dlopen(\"%s\", ...) => %p\n", filename(), pfd->module);
   if(pfd->module==NULL) {
     dbg_put(rsdl_SoLoad, "          dlopen(\"%s\", ...) error: %s\n", filename(), dlerror());

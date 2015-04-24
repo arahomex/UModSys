@@ -2,8 +2,9 @@ begin project-group umodsys_Depends
   option project [] Platforms "$(platforms)"
   option project [] Configurations "Debug Release ReleaseSpace"
   option project-order all
-#  option * CFLAGS 
-#  option * CXXFLAGS -fvisibility=hidden 
+  
+#  option project * CFLAGS 
+#  option project * CXXFLAGS -fvisibility=hidden 
 
   begin project lib_libgd
 #    defines MSWIN32 
@@ -84,8 +85,9 @@ begin project-group umodsys_Depends
       end
       begin file-group thread
         begin mask $(path-skip) $(path-d-SDL2)/src/thread
-          include generic/*.c generic/*.h
+#          include generic/*.c generic/*.h
 #          include generic/SDL_syscond.c
+          include pthread/*.c pthread/*.h
         end
       end
       begin file-group timer

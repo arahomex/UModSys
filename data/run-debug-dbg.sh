@@ -11,17 +11,17 @@ function make_gm() {
   ./make-linux.sh DEBUG=1 || exit
   popd
   
-  Bin=../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug
+  Binary=../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug
 }
 
 function make_genm() {
   PLATFORM=`uname`_`uname -p`
 
   pushd ../build/gnu-make
-  ./make.sh Debug -j5 || exit
+  ./make.sh Debug || exit
   popd
 
-  Bin=../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug
+  Binary=../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug
 }
 
 function vg() {
@@ -41,4 +41,7 @@ function dbg() {
 }
 
 make_genm
+
+export LD_LIBRARY_PATH="LD_LIBRARY_PATH:`readlink -e $(dirname $Binary)`"
+
 dbg
