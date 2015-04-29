@@ -75,6 +75,8 @@ IModuleReg* SModuleRegChain::s_get(size_t id)
 
 size_t RModuleLibraryReg_Chain::mlr_count(void) const
 {
+  if(SModuleRegChain::root.next==NULL)
+    SModuleRegChain::s_makeroot(&SModuleRegChain::root);
   size_t rv = 0;
   while(SModuleRegChain::s_get(rv)!=0) {
     rv++;

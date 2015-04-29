@@ -448,9 +448,6 @@ sub makefile_project_generate($$$)
   #
   #------------------- BEGIN
   #
-  eprint $fout, eval("<<EOT\n".$template->{'project-begin'}."EOT");
-  #
-  #
   #------------------- CONFIGURATIONS
   #
 #  my ($PATH_TMP, $PATH_BIN) = (get_configuration_arg('', $this)
@@ -560,6 +557,13 @@ sub makefile_project_generate($$$)
   #
   my $dummy = 0;
   $dummy = 1 if $MODE eq 'dummy';
+  if($state->{'pass'}==0) {
+    eprint $fout,  eval("<<EOT\n".$template->{'project-config-T:'.$MODE}."EOT");
+    return;
+  }
+  #
+  eprint $fout, eval("<<EOT\n".$template->{'project-begin'}."EOT");
+  #
   eprint $fout, eval("<<EOT\n".$template->{'project-config-begin'}."\nEOT");
   #
   if(not $dummy) {
@@ -573,14 +577,15 @@ sub makefile_project_generate($$$)
     }
     #
     #      print "$PROJECT_NAME $MODE $PLATFORM_NAME $CONF_NAME\n";
-    $MODE = 'console' if $MODE eq 'console' or $MODE eq 'app' or $MODE eq 'gui';
-    eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:'.$MODE}."\nEOT");
-    #
     if(not $dummy) {
       eprint $fout,  eval("<<EOT\n".$template->{'project-config-M-general'}."\nEOT");
       makefile_project_generate_files($state, $proj->{'groups'}, $template, 0);
     }
     #
+    eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:'.$MODE}."\nEOT");
+    #
+  } else {
+    eprint $fout,  eval("<<EOT\n".$template->{'project-config-M:'.$MODE}."\nEOT");
   }
   eprint $fout, eval("<<EOT\n".$template->{'project-config-end'}."\nEOT");
   #
@@ -680,6 +685,15 @@ sub makefile_projectgroup_generate($$$)
   local $PROJECTGROUP_NAME = $pg->{'name'};
 #  print "fout=$fout\n";
   #
+  if($state->{'pass'}==0) {
+    foreach my $proj_name (sort keys %$projects) {
+      my $proj = $projects->{$proj_name};
+      $state->{'proj'} = $proj;
+      makefile_project_generate($state, $proj, $template);
+      $state->{'proj'} = undef;
+    }
+    return;
+  }
   eprint $fout, eval("<<EOT\n".$template->{'projectgroup-begin'}."EOT");
   #
   foreach my $proj_name (sort keys %$projects) {
@@ -726,7 +740,10 @@ sub makefile_gen_generate($$)
       my ($id, $filename, $F) = ("$PLATFORM_NAME.$CONF_NAME", "Makefile.$PLATFORM_NAME.$CONF_NAME");
       make_filename_dir($filename);
       open $F,'>',$filename or die "File '$filename' create error.";
-      eprint $F, eval("<<EOT\n".$template->{'makefile-begin'}."EOT");
+      my $tvalue = $template->{'makefile-begin'};
+      die if not defined $tvalue;
+      eprint $F, eval("<<EOT\n$tvalue\nEOT");
+#      eprint $F, eval("<<EOT\n".$template->{'makefile-end'}."\nEOT");
       #
       my $file = {
         'xmap' => {},
@@ -746,11 +763,14 @@ sub makefile_gen_generate($$)
       #
 #      print "fout=$fout\n";
       #
-      for my $sn (keys %$pgs) {
-        my $pg = $pgs->{$sn};
-        $state->{'pg'} = $pg;
-        makefile_projectgroup_generate($state, $pg->{'projectgroup'}, $template);
-        $state->{'pg'} = undef;
+      for (my $pass=0; $pass<2; $pass++) {
+        for my $sn (keys %$pgs) {
+          my $pg = $pgs->{$sn};
+          $state->{'pass'} = $pass;
+          $state->{'pg'} = $pg;
+          makefile_projectgroup_generate($state, $pg->{'projectgroup'}, $template);
+          $state->{'pg'} = undef;
+        }
       }
       #
       eprint $F,  eval("<<EOT\n".$template->{'makefile-xmap'}."EOT");
@@ -760,7 +780,7 @@ sub makefile_gen_generate($$)
         print $fout "$xk\n";
       }
       #
-      eprint $F, eval("<<EOT\n".$template->{'makefile-begin'}."EOT");
+      eprint $F, eval("<<EOT\n".$template->{'makefile-end'}."EOT");
       close $F;
       print "Written make file '$filename' : ".join(', ', @{$state->{'projects'}})."\n";
     }

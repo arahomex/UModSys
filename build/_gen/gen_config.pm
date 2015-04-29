@@ -69,7 +69,7 @@ sub set_getsafe($$)
 
 sub set_getsafea($$)
 {
-  my $rv = set_getsafe(@_[0], @_[1]);
+  my $rv = set_getsafe($_[0], $_[1]);
   return () if not defined $rv;
   return ($rv);
 }

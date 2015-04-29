@@ -75,10 +75,15 @@ begin project-group umodsys
   begin project plugin_libUI
     mode plugin
     #
-    depend umodsys_Depends::lib_SDL2
     depend umodsys_Depends::lib_zlib
     depend umodsys_Depends::lib_libpng
     depend umodsys_Depends::lib_jpeglib
+  end
+
+  begin project plugin_libUI_SDL
+    mode plugin
+    #
+    depend umodsys_Depends::lib_SDL2
   end
 
   begin project umodsysc

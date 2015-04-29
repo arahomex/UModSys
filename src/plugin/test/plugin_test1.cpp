@@ -363,10 +363,10 @@ static void refer(void)
 //  UMODSYS_MODULE_USE(lib3d,stdlib);
 //  UMODSYS_MODULE_USE(ui,frames);
 #if TEST_SDL_CORE
-  UMODSYS_MODULE_USE(ui,SDL_core);
+//  UMODSYS_MODULE_USE(ui,SDL_core);
 #endif
 #if TEST_SDL_GL
-  UMODSYS_MODULE_USE(ui,SDL_GL);
+//  UMODSYS_MODULE_USE(ui,SDL_GL);
 #endif
 //  UMODSYS_MODULE_USE(media,images_std);
 //  UMODSYS_MODULE_USE(media,serialize_json);

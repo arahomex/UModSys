@@ -25,6 +25,7 @@ begin project-group umodsys
     depend umodsys_lib_lib3d
     #
     depend umodsysc
+    depend umodsysct
     #
     depend plugin_libStd
     depend plugin_libUI
@@ -412,6 +413,27 @@ begin project-group umodsys
     begin file-group src
       begin mask $(path-skip) $(path-s-plugin)/libs
         include plugin_libUI.cpp
+      end
+    end
+    #
+    depend umodsys_lib_libmedia
+    depend umodsys_lib_libui
+    depend umodsys_lib_lib2d
+    depend umodsys_lib_lib3d
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_libUI_SDL
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/libs
+        include plugin_libUI_SDL.cpp
       end
     end
     #

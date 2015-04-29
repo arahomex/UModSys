@@ -12,23 +12,23 @@ $generators->{'makefile'} = {
     #----------------------------------------------------------------------------------------------------------------------------
     #----------------------------------------------------------------------------------------------------------------------------
     'file-cpp' => <<'EOT',
-\$(tmpx__${PROJECT_ID})/$FNAME.o: $FILE_PATH
-	\$(CXX) \$(CXXFLAGS__${PROJECT_ID}) -c -o\$@ \$<
-	\$(CXX) \$(CXXFLAGS__${PROJECT_ID}) -c -o\$@.d -MM -MT\$@ \$<
+objs__${PROJECT_ID} += \$(tmpx__${PROJECT_ID})/$FNAME.o
+\$(tmpx__${PROJECT_ID})/$FNAME.o: $FILE_PATH | \$(tmpx__${PROJECT_ID})
+	\@\$(CXX) \$(CXXFLAGS__${PROJECT_ID}) -c -o\$@ \$<
+	\@\$(CXX) \$(CXXFLAGS__${PROJECT_ID}) -c -o\$@.d -MM -MT\$@ \$<
 -include \$(tmpx__${PROJECT_ID})/$FNAME.o.d
-\$(target__${PROJECT_ID}): \$(tmpx__${PROJECT_ID})/$FNAME.o
 EOT
     'file-c' => <<'EOT',
-\$(tmpx__${PROJECT_ID})/$FNAME.o: $FILE_PATH
-	\$(CC) \$(CFLAGS__${PROJECT_ID}) -c -o\$@ \$<
-	\$(CC) \$(CXXFLAGS__${PROJECT_ID}) -c -o\$@.d -MM -MT\$@ \$<
+objs__${PROJECT_ID} += \$(tmpx__${PROJECT_ID})/$FNAME.o
+\$(tmpx__${PROJECT_ID})/$FNAME.o: $FILE_PATH | \$(tmpx__${PROJECT_ID})
+	\@\$(CC) \$(CFLAGS__${PROJECT_ID}) -c -o\$@ \$<
+	\@\$(CC) \$(CXXFLAGS__${PROJECT_ID}) -c -o\$@.d -MM -MT\$@ \$<
 -include \$(tmpx__${PROJECT_ID})/$FNAME.o.d
-\$(target__${PROJECT_ID}): \$(tmpx__${PROJECT_ID})/$FNAME.o
 EOT
     'file-S' => <<'EOT',
-\$(tmpx__${PROJECT_ID})/$FNAME.o: $FILE_PATH
-	\$(AS) \$(ASFLAGS__${PROJECT_ID}) -c -o\$@ \$<
-\$(target__${PROJECT_ID}): \$(tmpx__${PROJECT_ID})/$FNAME.o
+objs__${PROJECT_ID} += \$(tmpx__${PROJECT_ID})/$FNAME.o
+\$(tmpx__${PROJECT_ID})/$FNAME.o: $FILE_PATH | \$(tmpx__${PROJECT_ID})
+	\@\$(AS) \$(ASFLAGS__${PROJECT_ID}) -c -o\$@ \$<
 EOT
     #
     'file_generators' => {
@@ -54,7 +54,7 @@ EOT
     'project-lib1' => ' -l${LIB1}',
     'project-libpath1' => ' -L${LIBPATH1}',
     #
-    'project-depend1t' => 'tp-${DEPEND1G}-${DEPEND1}',
+    'project-depend1t' => '\$(target__${DEPEND1G}__${DEPEND1})',
     'project-depend1c' => 'cp-${DEPEND1G}-${DEPEND1}',
     #
     'project-depend1C:dummy' => '',
@@ -70,15 +70,24 @@ EOT
     'project-depend1L:solib' => ' -l:${DEPEND1}.${PLATFORM_NAME}.${CONF_NAME}.so',
     'project-depend1L:plugin' => '',
     'project-depend1L:unknown' => '',
+    #
+    #
     #----------------------------------------------------------------------------------------------------------------------------
     #----------------------------------------------------------------------------------------------------------------------------
+    'project-config-T:dummy' => <<'EOT',
+    'project-config-T:console' => '${OPT_console_OUT}',
+    'project-config-T:lib' => '${OPT_lib_OUT}',
+    'project-config-T:solib' => '${OPT_solib_OUT}',
+    'project-config-T:plugin' => '${OPT_plugin_OUT}',
+    'project-config-T:unknown' => '',
+    #----------------------------------------------------------------------------------------------------------------------------
+    #----------------------------------------------------------------------------------------------------------------------------
+    'makefile-dummy' => <<'EOT',
+EOT
     'makefile-begin' => <<'EOT',
 ################################################################# BEGIN makefile
-
 .PHONY: all target clean
-
 all: target
-
 EOT
     'makefile-xmap' => <<'EOT',
 ################################################################# XMAP makefile
@@ -116,9 +125,9 @@ $TARGET_TNAME: $PROJECT_TNAME
 $TARGET_CNAME: $PROJECT_CNAME
 $PROJECTGROUP_TNAME: $PROJECT_TNAME
 $PROJECTGROUP_CNAME: $PROJECT_CNAME
-$PROJECT_TNAME: $TARGET_DEPENDS $PROJECT_TPNAME 
+$PROJECT_TNAME: $TARGET_DEPENDS $PROJECT_TPNAME
 $PROJECT_CNAME: $CLEAN_DEPENDS $PROJECT_CPNAME
-.PHONY: $PROJECT_TNAME $PROJECT_TPNAME $PROJECT_CNAME $PROJECT_CPNAME
+#.PHONY: $PROJECT_TNAME $PROJECT_TPNAME $PROJECT_CNAME $PROJECT_CPNAME
 EOT
     'project-config-flags' => <<'EOT',
 tmp__${PROJECT_ID}=${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}
@@ -151,55 +160,75 @@ ${PROJECT_CONTENTS}
 EOT
     'project-config-M-general' => <<'EOT',
 EOT
+    #----------------------------------------------------------------------------------------------------------------------------
+    #----------------------------------------------------------------------------------------------------------------------------
     'project-config-M:unknown' => <<'EOT',
-# dummy project
-target__${PROJECT_ID}=
+# unknown project
 EOT
     'project-config-M:dummy' => <<'EOT',
 # dummy project
-target__${PROJECT_ID}=
 $PROJECT_TPNAME:
 $PROJECT_CPNAME:
 EOT
     'project-config-M:console' => <<'EOT',
 # console binary at ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}
-target__${PROJECT_ID} = ${OPT_console_OUT}
-$PROJECT_TPNAME: \$(tmpx__${PROJECT_ID}) \$(bin__${PROJECT_ID}) \$(target__${PROJECT_ID})
+$PROJECT_TPNAME: \$(target__${PROJECT_ID})
 $PROJECT_CPNAME:
-	-rm \$(target__${PROJECT_ID})
-	-rm \$(tmpx__${PROJECT_ID})/*
-\$(target__${PROJECT_ID}):
-	\$(CXX) ${OPT_console_OPTIONS} -o\$@ \$+ \$(LDFLAGS__${PROJECT_ID})
+	\@-rm \$(target__${PROJECT_ID})
+	\@-rm \$(tmpx__${PROJECT_ID})/*
+\$(target__${PROJECT_ID}): $TARGET_DEPENDS \$(objs__${PROJECT_ID}) | \$(bin__${PROJECT_ID}) 
+	\@echo '*** Making $MODE $PROJECTGROUP_NAME::$PROJECT_NAME'
+	\@\$(CXX) ${OPT_console_OPTIONS} -o\$@ \$(objs__${PROJECT_ID}) \$(LDFLAGS__${PROJECT_ID})
 EOT
     'project-config-M:solib' => <<'EOT',
 # so library at ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so
-target__${PROJECT_ID}=${OPT_solib_OUT}
-$PROJECT_TPNAME: \$(tmpx__${PROJECT_ID}) \$(bin__${PROJECT_ID}) \$(target__${PROJECT_ID})
+$PROJECT_TPNAME: \$(target__${PROJECT_ID})
 $PROJECT_CPNAME:
-	-rm \$(target__${PROJECT_ID})
-	-rm \$(tmpx__${PROJECT_ID})/*
-\$(target__${PROJECT_ID}):
-	\$(CXX) ${OPT_solib_OPTIONS} -o\$@ \$+ \$(LDFLAGS__${PROJECT_ID})
+	\@-rm \$(target__${PROJECT_ID})
+	\@-rm \$(tmpx__${PROJECT_ID})/*
+\$(target__${PROJECT_ID}): $TARGET_DEPENDS \$(objs__${PROJECT_ID}) | \$(bin__${PROJECT_ID}) 
+	\@echo '*** Making $MODE $PROJECTGROUP_NAME::$PROJECT_NAME'
+	\@\$(CXX) ${OPT_solib_OPTIONS} -o\$@ \$(objs__${PROJECT_ID}) \$(LDFLAGS__${PROJECT_ID})
 EOT
     'project-config-M:plugin' => <<'EOT',
 # so library at ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so
-target__${PROJECT_ID}=${OPT_plugin_OUT}
-$PROJECT_TPNAME: \$(tmpx__${PROJECT_ID}) \$(bin__${PROJECT_ID}) \$(target__${PROJECT_ID})
+$PROJECT_TPNAME: \$(target__${PROJECT_ID})
 $PROJECT_CPNAME:
-	-rm \$(target__${PROJECT_ID})
-	-rm \$(tmpx__${PROJECT_ID})/*
-\$(target__${PROJECT_ID}):
-	\$(CXX) ${OPT_plugin_OPTIONS} -o\$@ \$+ \$(LDFLAGS__${PROJECT_ID})
+	\@-rm \$(target__${PROJECT_ID})
+	\@-rm \$(tmpx__${PROJECT_ID})/*
+\$(target__${PROJECT_ID}): $TARGET_DEPENDS \$(objs__${PROJECT_ID}) | \$(bin__${PROJECT_ID}) 
+	\@echo '*** Making $MODE $PROJECTGROUP_NAME::$PROJECT_NAME'
+	\@\$(CXX) ${OPT_plugin_OPTIONS} -o\$@ \$(objs__${PROJECT_ID}) \$(LDFLAGS__${PROJECT_ID})
 EOT
     'project-config-M:lib' => <<'EOT',
 # library at ${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.a
-target__${PROJECT_ID}=${OPT_lib_OUT}
-$PROJECT_TPNAME: \$(tmpx__${PROJECT_ID}) \$(target__${PROJECT_ID})
+$PROJECT_TPNAME: \$(target__${PROJECT_ID})
 $PROJECT_CPNAME:
-	-rm \$(target__${PROJECT_ID})
-	-rm \$(tmpx__${PROJECT_ID})/*
-\$(target__${PROJECT_ID}):
-	\$(AR) ${OPT_lib_OPTIONS} \$@ \$?
+	\@-rm \$(target__${PROJECT_ID})
+	\@-rm \$(tmpx__${PROJECT_ID})/*
+\$(target__${PROJECT_ID}): $TARGET_DEPENDS \$(objs__${PROJECT_ID}) | \$(tmpx__${PROJECT_ID})
+	\@echo '*** Making $MODE $PROJECTGROUP_NAME::$PROJECT_NAME'
+	\@\$(AR) ${OPT_lib_OPTIONS} \$@ \$(objs__${PROJECT_ID})
+EOT
+    #----------------------------------------------------------------------------------------------------------------------------
+    #----------------------------------------------------------------------------------------------------------------------------
+    'project-config-T:dummy' => <<'EOT',
+target__${PROJECT_ID}=
+EOT
+    'project-config-T:console' => <<'EOT',
+target__${PROJECT_ID} = ${OPT_console_OUT}
+EOT
+    'project-config-T:lib' => <<'EOT',
+target__${PROJECT_ID}=${OPT_lib_OUT}
+EOT
+    'project-config-T:solib' => <<'EOT',
+target__${PROJECT_ID}=${OPT_solib_OUT}
+EOT
+    'project-config-T:plugin' => <<'EOT',
+target__${PROJECT_ID}=${OPT_plugin_OUT}
+EOT
+    'project-config-T:unknown' => <<'EOT',
+target__${PROJECT_ID}=
 EOT
     #----------------------------------------------------------------------------------------------------------------------------
     #----------------------------------------------------------------------------------------------------------------------------
@@ -281,9 +310,9 @@ EOT
       'LDFLAGS'        => '-O3',
     },
     'ReleaseSpace'     => {
-      'CXXFLAGS'       => '-Os',
-      'CFLAGS'         => '-Os',
-      'LDFLAGS'        => '-Os',
+      'CXXFLAGS'       => '-Os -s',
+      'CFLAGS'         => '-Os -s',
+      'LDFLAGS'        => '-Os -s',
     },
   },
   #-------------------------------

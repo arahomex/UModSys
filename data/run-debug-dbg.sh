@@ -6,16 +6,18 @@ function make_gm() {
   PLATFORM=`uname`.`uname -p`
   MODE='t'
   MODE=''
-  
+
   pushd ../build/gnuc_makefile
   ./make-linux.sh DEBUG=1 || exit
   popd
-  
+
   Binary=../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug
 }
 
 function make_genm() {
   PLATFORM=`uname`_`uname -p`
+  MODE='t'
+#  MODE=''
 
   pushd ../build/gnu-make
   ./make.sh Debug || exit
