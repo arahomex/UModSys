@@ -1,0 +1,223 @@
+lib network concept:
+
+1. Transport objects:
+ - NetNode       -- transfer data to logic level
+ - NetGate       -- transfer data to another gate
+ - NetTransport  -- connects two gates
+2. Logic objects:
+ - NetNode       -- transfer data to transport level
+ - NetService    -- perform service using node
+ - NetChannel    -- unique connection between services
+
+
+Example of TCP interaction:
+ N = create node                             N = create node
+ G = create gate tcp                         G = create gate tcp
+ N -> link { G }                             N -> link { G }
+ G -> transport { listen localhost 7000 }    G -> transport { localhost 7000 }
+              -- at this point node can seen one other --
+ service = create service echo               service = create service ping
+ --                                          metaservice = N -> scan services { 'echo' }
+ --                                          service -> link { metaservice }
+              -- at this point services connect one other --
+ --                                          service -> ping { 1 sec 10 times }
+
+
+network interaction:
+ S = socket listen localhost 7000               S = socket connect localhost 7000
+ S -> send gate1-UUID                           S -> send gate2-UUID
+ S -> recv gate2-UUID                           S -> recv gate1-UUID
+                                                S -> send find-service echo
+
+
+
+
+
+The system channels:
+channels 0x00..0x0f is system channels:
+  0x00 - binary sys channel
+  0x01 - text sys channel
+
+Packet format (raw):
+  uint32  size
+  uint32  crc32 (all below)
+  multiple messages:
+    uint8  info
+    data
+    
+info:
+  [7 6 5 4 3 2 1 0]
+   * * * *
+   -------------------- key len (0..15 bytes)
+           * *
+           ------------ message len (1 2 3 4 bytes)
+               * *
+               -------- channel no (1 2 3 4 bytes)
+
+example message:
+  info=0x00
+  uint8 channel=0x40
+  uint8 len=0x10
+  10 uint8 data ...
+
+Text sys channel:
+  <id> <command> <args...>
+
+Binary sys channel:
+  uint8 <cmd>
+  uint32 <cmd-id>
+  ...
+
+
+Sys channel messages:
+1. Transport:
+  1.1. ACK:
+    text format:
+      <id> ACK <warnkey>
+    binary format:
+      uint32 <id>
+      uint8 0x01
+      uint32 <warnid>
+  1.2. Not ACK:
+    text format:
+      <id> NAK <errkey>
+    binary format:
+      uint32 <id>
+      uint8 0x02
+      uint32 <errid>
+2. Node:
+  2.1. Connect:
+    text format:
+      <id> CONNECT <node-uid> <flags> <sec-key>
+    binary format:
+      uint32 <id>
+      uint8 0x10
+      uint8 <node-uid-len>
+      1..64 uint8 <node-uid>
+      uint32 <flags>
+      uint8 <sec-len>
+      0..255 uint8 <sec>
+  2.2. Disconnect:
+    text format:
+      <id> DISCONNECT
+    binary format:
+      uint32 <id>
+      uint8 0x11
+  2.3. Get service distance:
+    text format:
+      <id> GETDISTANCE <node-uid>
+    binary format:
+      uint32 <id>
+      uint8 0x12
+      uint32 <hop>
+  2.4. Got service distance:
+    text format:
+      <id> DISTANCE <id-req> <hop> ...
+    binary format:
+      uint32 <id>
+      uint8 0x13
+      uint32 <id-req>
+      uint32 <hop>
+3. Services:
+  3.1. Find services:
+    text format:
+      <id> SCAN <service-mask> <hops>
+    binary format:
+      uint32 <id>
+      uint8 0x20
+      uint8 <service-mask-len>
+      1..64 uint8 <service-mask>
+      uint32 <hops>
+  3.2. Found services:
+    text format:
+      <id> FOUND <id-req> <node-uid> <service-uid>
+    binary format:
+      uint32 <id>
+      uint8 0x21
+      uint32 <id-req>
+      uint8 <node-uid-len>
+      1..64 uint8 <node-uid>
+      uint8 <service-uid-len>
+      1..64 uint8 <service-uid>
+  3.3. Get service info:
+    text format:
+      <id> GETINFO <node-uid> <service-uid>
+    binary format:
+      uint32 <id>
+      uint8 0x22
+      uint8 <node-uid-len>
+      1..64 uint8 <node-uid>
+      uint8 <service-uid-len>
+      1..64 uint8 <service-uid>
+  3.4. Got service info:
+    text format:
+      <id> INFO <id-req> <channel-tag> ...
+    binary format:
+      uint32 <id>
+      uint8 0x23
+      uint32 <id-req>
+      uint8 <tag-len>
+      1..64 uint8 <tag>
+  3.5. Open channel:
+    text format:
+      <id> OPEN <node-uid> <service-uid> <channel-uid> <flags> <sec-key>
+    binary format:
+      uint32 <id>
+      uint8 0x2a
+      uint8 <node-uid-len>
+      1..64 uint8 <node-uid>
+      uint8 <service-uid-len>
+      1..64 uint8 <service-uid>
+      uint8 <tag-len>
+      1..64 uint8 <tag>
+      uint32 <flags>
+      uint8 <sec-len>
+      0..255 uint8 <sec>
+  3.6. Opened channel:
+    text format:
+      <id> CHANNEL <id-req> <channel-no> <channel-key> <sec-key>
+    binary format:
+      uint32 <id>
+      uint8 0x2b
+      uint32 <id-req>
+      uint32 <channel-id>
+      uint8 <key-len>
+      0..15 uint8 <key>
+      uint8 <sec-len>
+      0..255 uint8 <sec>
+  3.7. Close channel:
+    text format:
+      <id> CLOSE <channel-no>
+    binary format:
+      uint32 <id>
+      uint8 0x2c
+      uint32 <channel-id>
+    
+
+example data exchange:
+ 100 CONNECT G1                 
+                              200 CONNECT G2
+ 201 ACK                        
+                              101 ACK
+                              201 SCAN echo
+ 201 ACK
+ 101 FOUND 201 G1 echo~1            
+                              101 ACK
+                              202 GETDISTANCE G1
+ 202 ACK
+ 102 DISTANCE 202 0
+                              102 ACK
+                              203 GETINFO G1 echo~1
+ 203 ACK
+ 103 INFO 203 echo
+                              103 ACK
+                              203 OPEN G1 echo~1 echo 0
+ 203 ACK
+ 104 CHANNEL 203 51
+                              104 ACK
+ --- transfer by channel 51
+                              504 CLOSE 51
+ 504 ACK
+                              505 DISCONNECT
+ 505 ACK
+ 
