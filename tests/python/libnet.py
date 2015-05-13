@@ -36,12 +36,73 @@ class Gate(object):
   pass
 
 class Gate_TCP(Gate):
+  class Client(asyncore.dispatcher):
+    gate = None
+    #
+    def __init__(self, host, port, gate):
+        asyncore.dispatcher.__init__(self)
+        self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.connect( (host, port) )
+        self.gate = gate
+        self.buffer = "TEST"
+        print 'new Client'
+    #
+    def handle_connect(self):
+        print 'Connected'
+        pass
+    #
+    def handle_error(self):
+        print 'Error'
+        self.close()
+        self.gate.state = 0 # reconnect
+    #
+    def handle_close(self):
+        self.close()
+        self.gate.state = 0 # reconnect
+    #
+    def handle_read(self):
+        print self.recv(8192)
+        self.close()
+        self.gate.state = 0 # reconnect
+    #
+    def writable(self):
+        return (len(self.buffer) > 0)
+    #
+    def handle_write(self):
+        sent = self.send(self.buffer)
+        self.buffer = self.buffer[sent:]
+    #
+  #
+  class ServerClient(asyncore.dispatcher_with_send):
+    gate = None
+    #
+    def handle_read(self):
+        data = self.recv(8192)
+        if data:
+            self.send(data)
+    def handle_close(self):
+        self.close()
+    #
+  #
   class Server(asyncore.dispatcher):
-    def __init__(self, host, port):
+    gate = None
+    #
+    def __init__(self, host, port, gate):
+      asyncore.dispatcher.__init__(self)
       self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
       self.set_reuse_addr()
-      self.bind((host, port))
+      self.bind( (host, port) )
       self.listen(5)
+      self.gate = gate
+    #
+    def handle_accept(self):
+      pair = self.accept()
+      if pair is not None:
+        sock, addr = pair
+        print 'Incoming connection from %s' % repr(addr)
+        handler = self.gate.ServerClient(sock)
+        handler.gate = self.gate
+    #
   #
   #  
   mode = None
@@ -73,39 +134,18 @@ class Gate_TCP(Gate):
   #
   def sm_connect(self, tick):
     if self.state==0:
-      #self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-      #self.socket.setblocking(0)
-      try:
-        #self.socket.connect((self.addr, self.port)) # Expect socket.error: (115, 'Operation now in progress')
-        pass
-      except socket.error, msg:
-        (errorno, errmsg) = msg
-        #print >>sys.stderr, self.mode, msg, (errorno, errmsg), (errno.EALREADY)
-        if errorno==errno.EALREADY:
-          pass
-        elif errorno==errno.EINPROGRESS or errorno==errno.EWOULDBLOCK:
-          pass
-        elif errorno == errno.EISCONN:
-          pass
-        else:
-          raise
+      self.socket = self.Client(self.addr, self.port, self)
       self.state=1
     elif self.state==1:
-      #r, w, x = select.select([self.socket], [self.socket], [self.socket], 0)
-      #print >>sys.stderr, "%s: r=%s w=%s x=%s" % (self.mode, r, w, x)
       pass
     pass
   #
   def sm_listen(self, tick):
     if self.state==0:
-      self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-      self.socket.setblocking(0)
-      self.socket.bind((self.addr, self.port))
-      self.socket.listen(1)
+      self.socket = self.Server(self.addr, self.port, self)
       self.state=1
     elif self.state==1:
-      r, w, x = select.select([self.socket], [self.socket], [self.socket], 0)
-      print >>sys.stderr, "%s: r=%s w=%s x=%s" % (self.mode, r, w, x)
+      pass
     pass
 
 
@@ -121,6 +161,7 @@ node1.gate_add( Gate_TCP('connect', 'localhost', 7000) )
 node2.gate_add( Gate_TCP('listen', 'localhost', 7000) )
 
 while True:
+  asyncore.loop(0, 1, None, 10)
   node1.tick(tick)
   node2.tick(tick)
   time.sleep(tick)
