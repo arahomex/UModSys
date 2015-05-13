@@ -146,8 +146,8 @@ sub gate_tcp_tick_connect($$)
     my $s = IO::Socket::INET->new(
       Blocking  => 0,
       Listen    => 0,
-      LocalAddr => $this->{'ip'}, 
-      LocalPort => $this->{'port'},
+      PeerAddr  => $this->{'ip'}, 
+      PeerPort  => $this->{'port'},
       Proto     => 'tcp'
     ) or return;
     my $ss = IO::Select->new();
@@ -157,14 +157,14 @@ sub gate_tcp_tick_connect($$)
     $this->{'state'} = 1;
     print $stderr "Connect socket created $s\n";
   } elsif($this->{'state'}==1) {
-    my ($r) = IO::Select->select($this->{'sel'}, undef, undef, 0);
-    for my $sock ( @$r ) {
-      next if not $sock->connected;
+    my $sock = $this->{'sock'};
+    if($sock->connected) {
+      $this->{'state'} = 2;
       print $stderr "Connect socket connected\n";
       print $sock "RAW32\n";
       $this->{'state'} = 2;
-      last;
     }
+    print $stderr "[connected=".$sock->connected."]";
   } elsif($this->{'state'}==2) {
     my ($r) = IO::Select->select($this->{'sel'}, undef, undef, 0);
     if( @$r!=0 ) {
