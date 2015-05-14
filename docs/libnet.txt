@@ -54,6 +54,20 @@ info:
                * *
                -------- channel no (1 2 3 4 bytes)
 
+info2:
+  [7 6 5 4 3 2 1 0]
+   *
+   -------------------- channel sysflag
+     *
+     ------------------ channel no (2 4 bytes)
+       * *
+       ---------------- key len (0, 2, 4, 8 bytes)
+           * *
+           ------------ message part num (0, 1, 2, 4 bytes)
+               * *
+               -------- message len (1 2 3 4 bytes)
+
+
 example message:
   info=0x00
   uint8 channel=0x40

@@ -6,6 +6,7 @@ import socket
 import select
 import errno
 import asyncore
+import weakref
 
 READ_ONLY = select.POLLIN | select.POLLPRI | select.POLLHUP | select.POLLERR
 READ_WRITE = READ_ONLY | select.POLLOUT
@@ -36,6 +37,17 @@ class Node(object):
     for gate in self.gates:
       gate.tick(tick)
   #
+  def make_frame(self, chid, chkey, , payload)
+  #
+  def on_gate_connected(self, gate, addr):
+    dbg(3, "on_gate_connected %s %s" % (gate.uid, addr) )
+    frame = self.make_frame(
+    pass
+  #
+  def on_gate_disconnected(self, gate, addr):
+    dbg(3, "on_gate_disconnected %s %s" % (gate.uid, addr) )
+    pass
+  #
   def on_message(self, addr, channel, payload):
     pass
 
@@ -43,53 +55,68 @@ class Node(object):
 
 class Gate(object):
   #
+  uid = None
   node = None
   #
   pass
 
 class Gate_TCP(Gate):
-  class Client(asyncore.dispatcher_with_send):
+  class Client(asyncore.dispatcher):
     gate = None
     uid = None
-    buffer = None
-    child = False
+    is_child = False
+    is_connected = False
+    tmode = None
     #
-    def __init__(self, isChild, args):
-      if isChild:
-        sock, addr, gate = args
-        asyncore.dispatcher_with_send.__init__(self, sock)
-        self.isChild = True
-        self.gate = gate
+    writebuf = None
+    readbuf = None
+    #
+    def __init__(self, is_child, sock, gate, addr):
+      asyncore.dispatcher.__init__(self, sock)
+      self.is_child = is_child
+      self.gate = gate
+      self.writebuf = ''
+      self.readbuf = ''
+      self.need_connect = not is_child
+      if is_child:
         self.uid = "tcp:<%s" % repr(addr)
-        self.buffer = ""
-        dbg(5, 'new Client child %s' % repr(addr))
-        gate.on_connect(self, False)
+        self.tmode = None
+        self.is_connected = True
       else:
-        host, port, gate = args
-        asyncore.dispatcher_with_send.__init__(self)
-        self.isChild = False
+        self.uid = "tcp:>%s" % repr(addr)
+        self.tmode = 'RAW32'
         self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
-        addr = (host, port)
         self.connect( addr )
-        self.gate = gate
-        self.uid = "tcp:%s:%d" % (host, port)
-        self.buffer = ""
-        dbg(5, 'new Client %s ' % repr(addr))
+      dbg(5, 'new Client %s' % self.uid)
     #
     @classmethod
     def new(cls, host, port, gate):
-      return cls(False, (host, port, gate))
+      return cls(False, None, gate, (host, port))
     #
     @classmethod
     def subnew(cls, sock, addr, gate):
-      return cls(True, (sock, addr, gate))
+      return cls(True, sock, gate, addr)
     #
     def queue(self, data):
-      self.buffer += data
+      self.writebuf += data
+    #
+    def set_tmode(self, tmode):
+      if (tmode=='RAW32') and (self.tmode is None):
+        self.tmode = tmode
+        dbg(5, "%s::transmit_mode %s" % (self.uid, repr(tmode)))
+        if self.is_child:
+          self.gate.on_connect(self)
+      else:
+        raise Exception('Bad transmit mode %s' % tmode)
     #
     def handle_connect(self):
-      dbg(5, 'Connected')
-      self.gate.on_connect(self, True)
+      if self.is_connected:
+        return
+      self.is_connected = True
+      if not self.is_child:
+        self.need_tms = False
+        self.queue( self.tmode + "\n" )
+      self.gate.on_connect(self)
     #
     def handle_error(self):
       nil, t, v, tbinfo = asyncore.compact_traceback()
@@ -103,25 +130,55 @@ class Gate_TCP(Gate):
       ))
       #
       self.close()
-      self.gate.state = 0 # reconnect
+      if self.is_connected:
+        self.gate.on_disconnect(self, True)
+      if not self.is_child:
+        self.gate.on_reconnect(self)
     #
     def handle_close(self):
       self.close()
-      self.gate.state = 0 # reconnect
-      handler.gate.on_disconnect(self)
+      if self.is_connected:
+        self.gate.on_disconnect(self)
+      if not self.is_child:
+        self.gate.on_reconnect(self)
+    #
+    def handle_expt(self):
+      pass
     #
     def handle_read(self):
+      if not self.is_connected:
+        self.handle_connect()
+      #
       data = self.recv(0x10000)
-      self.gate.on_data(self, data)
+      if data is not None:
+        self.readbuf += data
+        if self.tmode is None:
+          pos = self.readbuf.find("\n")
+          if pos!=-1:
+            mode = self.readbuf[0:pos]
+            #dbg(6, "%s::tmode %d '%s' %d '%s'" % (self.uid, len(self.readbuf), self.readbuf, pos, self.readbuf[pos+1:]))
+            self.readbuf = self.readbuf[pos+1:]
+            self.set_tmode(mode)
+            if self.readbuf=='':
+              return
+          else:
+            return
+        self.gate.on_data(self)
     #
     def writable(self):
-#      dbg(5, "Need sent %d bytes" % len(self.buffer))
-      return (len(self.buffer) > 0)
+      if not self.is_connected:
+        self.handle_connect()
+      #
+      l = len(self.writebuf)
+      if l>0:
+        dbg(5, "%s::Need sent %d bytes" % (self.uid, l))
+      return (l > 0)
     #
     def handle_write(self):
-      sent = self.send(self.buffer)
-      dbg(5, "Sent %d bytes" % sent)
-      self.buffer = self.buffer[sent:]
+      sent = self.send(self.writebuf)
+      dbg(5, "Sent %s bytes" % repr(sent))
+      if sent is not None:
+        self.writebuf = self.writebuf[sent:]
     #
   #
   class Server(asyncore.dispatcher):
@@ -152,7 +209,8 @@ class Gate_TCP(Gate):
   state = None
   sm = None
   #
-  def __init__(self, mode, addr, port):
+  def __init__(self, uid, mode, addr, port):
+    self.uid = uid
     self.mode = mode
     self.addr = addr
     self.port = port
@@ -187,18 +245,25 @@ class Gate_TCP(Gate):
     pass
   #
   #
-  def on_connect(self, cli, isCli):
+  def on_reconnect(self, cli):
+    self.socket = None
+    self.state = 0 # reconnect
+    pass
+  #
+  def on_connect(self, cli):
     self.clients.append(cli)
-    dbg(4, "on_connect %s %s" % (repr(cli), repr(isCli)) )
-    if isCli:
-      cli.queue( "RAW32\n" )
+    dbg(4, "on_connect %s" % cli.uid )
+    self.node.on_gate_connected(self, cli.uid)
   #
-  def on_disconnect(self, cli):
+  def on_disconnect(self, cli, isError=False):
+    dbg(4, "on_disconnect %s %s" % (cli.uid, repr(isError)) )
     self.clients.remove(cli)
+    self.node.on_gate_disconnected(self, cli.uid)
   #
-  def on_data(self, cli, data):
+  def on_data(self, cli):
     #self.node.on_message(cli.uid, -1, data)
-    dbg(5, "data['%s' '%s']" % (cli.uid, data))
+    dbg(5, "data['%s' '%s']" % (cli.uid, cli.readbuf))
+    cli.readbuf = ''
 
 
 
@@ -209,11 +274,12 @@ tick = 0.1 # 10 ms
 node1 = Node('Node_1')
 node2 = Node('Node_2')
 
-node1.gate_add( Gate_TCP('connect', 'localhost', 7000) )
-node2.gate_add( Gate_TCP('listen', 'localhost', 7000) )
+node1.gate_add( Gate_TCP('client', 'connect', 'localhost', 7000) )
+node2.gate_add( Gate_TCP('server', 'listen', 'localhost', 7000) )
 
 while True:
-  asyncore.loop(0, 1, None, 10)
+#  asyncore.loop(0, 1, None, 10)
+  asyncore.loop(0, 1, None, 1)
   node1.tick(tick)
   node2.tick(tick)
   time.sleep(tick)
