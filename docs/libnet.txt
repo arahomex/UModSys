@@ -55,18 +55,36 @@ info:
                -------- channel no (1 2 3 4 bytes)
 
 info2:
-  [7 6 5 4 3 2 1 0]
-   *
-   -------------------- channel sysflag
-     *
-     ------------------ channel no (2 4 bytes)
-       * *
-       ---------------- key len (0, 2, 4, 8 bytes)
-           * *
-           ------------ message part num (0, 1, 2, 4 bytes)
-               * *
-               -------- message len (1 2 3 4 bytes)
+  [15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0]
+    *
+    -------------------- channel sysflag
+       *  *
+       ----------------- channel no (0 1 2 4 bytes)
+             *  *  *
+             ---------------- key len (0..7 bytes)
+                      *  *
+                            *  *
+                            ------------- message part num (0, 1, 2, 4 bytes)
+                                  *  *
+                                  ------------ message num (0, 1, 2, 4 bytes)
+                                        *  *
+                                        -------- message key len (0 1 2 4 bytes)
+                                        *  *
+                                         -------- message len (0 1 2 4 bytes)
 
+sys:1 {0 1}
+chkey:1 {0 1}
+chid:2 {0 1 2 4}
+key:2 {0 1 2 4}
+len:2 {0 1 2 4}
+
+* chkeylen:8
+* chkey
+* channel
+* keylen
+* valuelen
+* key[]
+* value[]
 
 example message:
   info=0x00
