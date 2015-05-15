@@ -3,24 +3,35 @@
 import time
 import sys
 
-from libnet.transport import Gate_TCP, transport_tick
 from libnet.logic import Node
+from libnet.t_tcp import Gate_TCP, transport_tcp_tick
+from libnet.s_echo import *
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------
 
-tick = 0.5 # 10 ms
+tick = 0.2 # 10 ms
 node1 = Node('Node_1')
 node2 = Node('Node_2')
 
-node1.gate_add( Gate_TCP('client', 'connect', 'localhost', 7000) )
-node2.gate_add( Gate_TCP('server', 'listen', 'localhost', 7000) )
+Gate_TCP(node1, 'client', 'connect', 'localhost', 7000)
+Gate_TCP(node2, 'server', 'listen', 'localhost', 7000)
 
-while True:
-  transport_tick(tick)
-  node1.tick(tick)
-  node2.tick(tick)
-  time.sleep(tick)
-  sys.stderr.write('.')
+Service_Echo(node2)
+
+def Loop(num):
+  for i in range(1, num):
+    transport_tcp_tick(tick)
+    node1.tick(tick)
+    node2.tick(tick)
+    time.sleep(tick)
+    sys.stderr.write('.')
+
+def gotsrv(sk, level, nid, sid):
+  print "scan:%s level:%s node:%s service:%s" % (sk, level, nid, sid)
+
+Loop(10)
+node1.service_scan(1, ('echo',), gotsrv, 2)
+Loop(20)
 
 

@@ -3,6 +3,8 @@ import sys
 import weakref
 import struct
 import zlib
+import random
+import string
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------
@@ -89,6 +91,21 @@ def parse_frame(binary):
   except:
     raise
   return (binary, (sysflag!=0, chid, chkey, key, value))
+
+def next_word(line):
+  if line is None:
+    return '', None
+  if line=='':
+    return '', None
+  pos = line.find(" ")
+  if pos==-1:
+    return line, None
+  return (line[:pos], line[pos+1:])
+
+random_char_set = string.ascii_uppercase + string.ascii_lowercase + string.digits
+
+def random_key(length):
+  return ''.join(random.sample(random_char_set*length, length))
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------

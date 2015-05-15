@@ -209,8 +209,9 @@ class Gate_TCP(Gate):
   state = None
   sm = None
   #
-  def __init__(self, uid, mode, addr, port):
-    self.uid = uid
+  def __init__(self, node, uid, mode, addr, port):
+    Gate.__init__(self, uid, node)
+    #
     self.mode = mode
     self.addr = addr
     self.port = port
@@ -258,26 +259,26 @@ class Gate_TCP(Gate):
   def on_connect(self, cli):
     dbg(4, "on_connect %s" % cli.uid )
     self.clients[cli.uid] = cli
-    self.node.on_gate_connected(self, cli.uid, cli)
+    self.node().on_gate_connected(self, cli.uid, cli)
   #
   def on_disconnect(self, cli, isError=False):
     dbg(4, "on_disconnect %s %s" % (cli.uid, repr(isError)) )
     del self.clients[cli.uid]
-    self.node.on_gate_disconnected(self, cli.uid, cli)
+    self.node().on_gate_disconnected(self, cli.uid, cli)
   #
   def on_frame(self, cli, frame):
     dbg(6, "on_frame %s %s" % (cli.uid, repr(frame)) )
-    self.node.on_gate_frame(self, cli.uid, frame)
+    self.node().on_gate_frame(self, cli.uid, frame)
   #
 
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------
 
-def transport_tick(tick):
+def transport_tcp_tick(tick):
 #  asyncore.loop(0, 1, None, 10)
   asyncore.loop(0, 1, None, 1)
-  dbg(1, '#')
+  #dbg(1, '#')
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------
