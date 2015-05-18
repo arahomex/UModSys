@@ -9,11 +9,14 @@ import string
 #-------------------------------------------------------------
 #-------------------------------------------------------------
 
-DebugLevel = 8
+DebugLevels = 0xffffffff
 
 def dbg(L, S):
-  if L<DebugLevel:
+  if (1<<L) & DebugLevels:
     print >>sys.stderr, S
+
+def dbg_raw(S):
+  print >>sys.stderr, S
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------
@@ -92,6 +95,7 @@ def parse_frame(binary):
     raise
   return (binary, (sysflag!=0, chid, chkey, key, value))
 
+
 def next_word(line):
   if line is None:
     return '', None
@@ -102,10 +106,83 @@ def next_word(line):
     return line, None
   return (line[:pos], line[pos+1:])
 
+def next_words(args, nargs, naux=0, cvt=None):
+  ret = []
+  for i in range(0, nargs):
+    val, args = next_word(args)
+    if val=='':
+      dbg(0, "Can't get arg %d" % (i))
+      return (None, None)
+    if (cvt is not None) and (cvt[i] is not None):
+      try:
+        val = cvt[i](val)
+      except:
+        dbg(0, "Can't convert %s by %s" % (repr(val), repr(cvt[i])))
+        return (None, None)
+    ret.append(val)
+  for i in range(0, naux):
+    val, args = next_word(args)
+    if val=='':
+      break
+    ret.append(val)
+  return (ret, args)
+
+
 random_char_set = string.ascii_uppercase + string.ascii_lowercase + string.digits
 
 def random_key(length):
   return ''.join(random.sample(random_char_set*length, length))
+
+
+raise_for_num_map = {}
+def raise_for_num(key, num):
+  if key not in raise_for_num_map:
+    raise_for_num_map[key] = num
+  else:
+    v = raise_for_num_map[key] - 1
+    if v<=0:
+      raise Exception("raise_for_num(%s, %d)" % (repr(key), num))
+    raise_for_num_map[key] = v
+  
+
+#-------------------------------------------------------------
+
+class BaseObject(object):
+  #
+  uid = None
+  #
+  DL_DEBUG = None
+  DL_INFO = None
+  DL_WARN = None
+  DL_ERROR = None
+  #
+  @classmethod
+  def d_clev(cls, e=None, w=None, i=None, d=None):
+    cls.DL_DEBUG = d
+    cls.DL_INFO = i
+    cls.DL_WARN = w
+    cls.DL_ERROR = e
+  #
+  def d_info(self, fmt, *args):
+    if self.DL_INFO is not None:
+      if DebugLevels & (1<<self.DL_INFO):
+        dbg_raw(("%s::" % self.uid) + (fmt % args))
+  #
+  def d_warning(self, fmt, *args):
+    if self.DL_WARNING is not None:
+      if DebugLevels & (1<<self.DL_WARNING):
+        dbg_raw(("%s::" % self.uid) + (fmt % args))
+  #
+  def d_error(self, fmt, *args):
+    if self.DL_ERROR is not None:
+      if DebugLevels & (1<<self.DL_ERROR):
+        dbg_raw(("%s::" % self.uid) + (fmt % args))
+  #
+  def d_debug(self, fmt, *args):
+    if self.DL_DEBUG is not None:
+      if DebugLevels & (1<<self.DL_DEBUG):
+        dbg_raw(("%s::" % self.uid) + (fmt % args))
+  #
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------

@@ -14,7 +14,7 @@ from logic import *
 #-------------------------------------------------------------
 
 class Gate_TCP(Gate):
-  class Client(asyncore.dispatcher):
+  class Client(asyncore.dispatcher, BaseObject):
     gate = None
     uid = None
     is_child = False
@@ -46,7 +46,7 @@ class Gate_TCP(Gate):
         self.tmode = 'RAW32'
         self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
         self.connect( addr )
-      dbg(5, 'new Client %s' % self.uid)
+      self.d_debug('new Client %s', self.uid)
     #
     @classmethod
     def new(cls, host, port, gate):
@@ -74,12 +74,12 @@ class Gate_TCP(Gate):
         block, frame = parse_frame(block)
         if frame is None:
           break
-        dbg(5, "%s::on_block %d %s" % (self.uid, len(block), repr(block)))
+        self.d_debug("on_block %d %s", len(block), repr(block))
         self.gate.on_frame(self, frame)
       pass
     #
     def on_data(self):
-#      dbg(5, "data[%s] %d %s" % (self.uid, rlen, repr(self.readbuf)))
+      #self.d_debug("data[%s] %d %s", self.uid, rlen, repr(self.readbuf))
       while True:
         rlen = len(self.readbuf)
         if self.rblock is None:
@@ -97,13 +97,13 @@ class Gate_TCP(Gate):
         if (zlib.crc32(block) & 0xffffffff) == c:
           self.on_block(block)
         else:
-          dbg(5, "%s::block crc failed, skip it" % (self.uid))
+          self.d_debug("block crc failed, skip it")
           pass
     #
     def set_tmode(self, tmode):
       if (tmode=='RAW32') and (self.tmode is None):
         self.tmode = tmode
-        dbg(5, "%s::transmit_mode %s" % (self.uid, repr(tmode)))
+        self.d_debug("transmit_mode %s", repr(tmode))
         if self.is_child:
           self.gate.on_connect(self)
       else:
@@ -125,9 +125,9 @@ class Gate_TCP(Gate):
         self_repr = repr(self)
       except:
         self_repr = '<__repr__(self) failed for object at %0x>' % id(self)
-      dbg(5, 'Error: uncaptured python exception, closing channel %s (%s:%s %s)' % (
+      self.d_error('Error: uncaptured python exception, closing channel %s (%s:%s %s)',
         self_repr, t, v, tbinfo
-      ))
+      )
       #
       self.close()
       if self.is_connected:
@@ -156,7 +156,7 @@ class Gate_TCP(Gate):
           pos = self.readbuf.find("\n")
           if pos!=-1:
             mode = self.readbuf[0:pos]
-            #dbg(6, "%s::tmode %d '%s' %d '%s'" % (self.uid, len(self.readbuf), self.readbuf, pos, self.readbuf[pos+1:]))
+            self.d_debug("tmode %d '%s' %d '%s'", len(self.readbuf), self.readbuf, pos, self.readbuf[pos+1:])
             self.readbuf = self.readbuf[pos+1:]
             self.set_tmode(mode)
             if self.readbuf=='':
@@ -171,12 +171,12 @@ class Gate_TCP(Gate):
       #
       l = len(self.writebuf)
       if l>0:
-        dbg(5, "%s::Need sent %d bytes" % (self.uid, l))
+        self.d_debug("Need sent %d bytes", l)
       return (l > 0)
     #
     def handle_write(self):
       sent = self.send(self.writebuf)
-      dbg(5, "%s::Sent %s bytes" % (self.uid, repr(sent)))
+      self.d_debug("Sent %s bytes", repr(sent))
       if sent is not None:
         self.writebuf = self.writebuf[sent:]
     #
@@ -257,17 +257,18 @@ class Gate_TCP(Gate):
     pass
   #
   def on_connect(self, cli):
-    dbg(4, "on_connect %s" % cli.uid )
+    self.d_info("on_connect %s" % cli.uid )
     self.clients[cli.uid] = cli
     self.node().on_gate_connected(self, cli.uid, cli)
   #
   def on_disconnect(self, cli, isError=False):
-    dbg(4, "on_disconnect %s %s" % (cli.uid, repr(isError)) )
-    del self.clients[cli.uid]
-    self.node().on_gate_disconnected(self, cli.uid, cli)
+    self.d_info("on_disconnect %s %s" % (cli.uid, repr(isError)) )
+    if cli.uid in self.clients:
+      del self.clients[cli.uid]
+      self.node().on_gate_disconnected(self, cli.uid, cli)
   #
   def on_frame(self, cli, frame):
-    dbg(6, "on_frame %s %s" % (cli.uid, repr(frame)) )
+    self.d_debug("on_frame %s %s" % (cli.uid, repr(frame)) )
     self.node().on_gate_frame(self, cli.uid, frame)
   #
 
