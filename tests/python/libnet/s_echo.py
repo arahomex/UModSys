@@ -4,8 +4,8 @@ import weakref
 import struct
 import zlib
 
-from com import *
-from logic import *
+from common import *
+from l_common import *
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------

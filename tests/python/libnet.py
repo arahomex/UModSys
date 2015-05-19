@@ -3,8 +3,9 @@
 import time
 import sys
 
-from libnet.com import dbg, dbg_raw
-from libnet.logic import Node
+from libnet.common import dbg, dbg_raw
+#from libnet.l_common import 
+from libnet.logic import Node, Bus, Channel
 from libnet.t_tcp import Gate_TCP, transport_tcp_tick
 from libnet.s_echo import *
 
