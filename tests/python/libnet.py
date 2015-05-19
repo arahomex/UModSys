@@ -4,16 +4,17 @@ import time
 import sys
 
 from libnet.common import dbg, dbg_raw
-#from libnet.l_common import 
-from libnet.logic import Node, Bus, Channel
+from libnet.logic import *
 from libnet.t_tcp import Gate_TCP, transport_tcp_tick
 from libnet.s_echo import *
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------
 
+Debug = False
+Debug = True
 
-if False:
+if Debug:
   Gate_TCP.Client.d_clev(0, 1, 2, 3)
   Gate_TCP.d_clev(0, 1, 2, 3)
   #

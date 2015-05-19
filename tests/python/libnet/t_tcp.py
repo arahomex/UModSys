@@ -156,7 +156,7 @@ class Gate_TCP(Gate):
           pos = self.readbuf.find("\n")
           if pos!=-1:
             mode = self.readbuf[0:pos]
-            self.d_debug("tmode %d '%s' %d '%s'", len(self.readbuf), self.readbuf, pos, self.readbuf[pos+1:])
+            self.d_debug("tmode %d %s %d %s'", len(self.readbuf), repr(self.readbuf), pos, repr(self.readbuf[pos+1:]))
             self.readbuf = self.readbuf[pos+1:]
             self.set_tmode(mode)
             if self.readbuf=='':
