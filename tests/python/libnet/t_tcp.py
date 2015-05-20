@@ -62,7 +62,7 @@ class Gate_TCP(Gate):
     def add_frame(self, frame):
       self.frames.append(frame)
     #
-    def tick(self, time):
+    def on_tick(self, time):
       if len(self.frames):
         block = ''.join(self.frames)
         self.frames = []
@@ -156,7 +156,7 @@ class Gate_TCP(Gate):
           pos = self.readbuf.find("\n")
           if pos!=-1:
             mode = self.readbuf[0:pos]
-            self.d_debug("tmode %d %s %d %s'", len(self.readbuf), repr(self.readbuf), pos, repr(self.readbuf[pos+1:]))
+            ## self.d_debug("tmode %d %s %d %s'", len(self.readbuf), repr(self.readbuf), pos, repr(self.readbuf[pos+1:]))
             self.readbuf = self.readbuf[pos+1:]
             self.set_tmode(mode)
             if self.readbuf=='':
@@ -225,9 +225,9 @@ class Gate_TCP(Gate):
     else:
       raise Exception('Bad Gate_TCP mode '+mode)
   #
-  def tick(self, tick):
+  def on_tick(self, tick):
     for cid, cli in self.clients.iteritems():
-      cli.tick(tick)
+      cli.on_tick(tick)
     return self.sm(tick)
   #
   def frame_emit(self, addr, cli, frame):

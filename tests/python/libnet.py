@@ -12,14 +12,14 @@ from libnet.s_echo import *
 #-------------------------------------------------------------
 
 Debug = False
-Debug = True
+#Debug = True
 
 if Debug:
   Gate_TCP.Client.d_clev(0, 1, 2, 3)
   Gate_TCP.d_clev(0, 1, 2, 3)
   #
-  Bus.d_clev(0, 1, 2, 3)
   Node.d_clev(0, 1, 2, 3)
+  Bus.d_clev(0, 1, 2, 3)
   Channel.d_clev(0, 1, 2, 3)
   #
   Service_Ping.d_clev(0, 1, 2, 3)
@@ -28,8 +28,8 @@ else:
   Gate_TCP.Client.d_clev(0, 1, 2)
   Gate_TCP.d_clev(0, 1, 2)
   #
-  Bus.d_clev(0, 1, 2)
   Node.d_clev(0, 1, 2)
+  Bus.d_clev(0, 1, 2)
   Channel.d_clev(0, 1, 2)
   #
   Service_Ping.d_clev(0, 1, 2)
@@ -50,8 +50,8 @@ Service_Echo(node2)
 def Loop(num):
   for i in range(1, num):
     transport_tcp_tick(tick)
-    node1.tick(tick)
-    node2.tick(tick)
+    node1.on_tick(tick)
+    node2.on_tick(tick)
     time.sleep(tick)
     sys.stderr.write('.')
 

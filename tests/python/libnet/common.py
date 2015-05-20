@@ -163,7 +163,7 @@ class BaseObject(object):
   def d_clev(cls, e=None, w=None, i=None, d=None):
     cls.DL_DEBUG = d
     cls.DL_INFO = i
-    cls.DL_WARN = w
+    cls.DL_WARNING = w
     cls.DL_ERROR = e
   #
   @classmethod
@@ -174,25 +174,25 @@ class BaseObject(object):
   def d_cinfo(cls, fmt, *args):
     if cls.DL_INFO is not None:
       if DebugLevels & (1<<cls.DL_INFO):
-        dbg_raw(cls.d_cgetid() + (fmt % args))
+        dbg_raw(cls.d_cgetid() + "INFO " +  (fmt % args))
   #
   @classmethod
   def d_cwarning(cls, fmt, *args):
     if cls.DL_WARNING is not None:
       if DebugLevels & (1<<cls.DL_WARNING):
-        dbg_raw(cls.d_cgetid() + (fmt % args))
+        dbg_raw(cls.d_cgetid() +"WARNING " +  (fmt % args))
   #
   @classmethod
   def d_cerror(cls, fmt, *args):
     if cls.DL_ERROR is not None:
       if DebugLevels & (1<<cls.DL_ERROR):
-        dbg_raw(cls.d_cgetid() + (fmt % args))
+        dbg_raw(cls.d_cgetid() + "ERROR " + (fmt % args))
   #
   @classmethod
   def d_cdebug(cls, fmt, *args):
     if cls.DL_DEBUG is not None:
       if DebugLevels & (1<<cls.DL_DEBUG):
-        dbg_raw(cls.d_cgetid() + (fmt % args))
+        dbg_raw(cls.d_cgetid() + "DEBUG " + (fmt % args))
   #
   #
   def d_getid(self):
@@ -201,22 +201,22 @@ class BaseObject(object):
   def d_info(self, fmt, *args):
     if self.DL_INFO is not None:
       if DebugLevels & (1<<self.DL_INFO):
-        dbg_raw(self.d_getid() + (fmt % args))
+        dbg_raw(self.d_getid() + "INFO " + (fmt % args))
   #
   def d_warning(self, fmt, *args):
     if self.DL_WARNING is not None:
       if DebugLevels & (1<<self.DL_WARNING):
-        dbg_raw(self.d_getid() + (fmt % args))
+        dbg_raw(self.d_getid() + "WARNING " + (fmt % args))
   #
   def d_error(self, fmt, *args):
     if self.DL_ERROR is not None:
       if DebugLevels & (1<<self.DL_ERROR):
-        dbg_raw(self.d_getid() + (fmt % args))
+        dbg_raw(self.d_getid() + "ERROR " + (fmt % args))
   #
   def d_debug(self, fmt, *args):
     if self.DL_DEBUG is not None:
       if DebugLevels & (1<<self.DL_DEBUG):
-        dbg_raw(self.d_getid() + (fmt % args))
+        dbg_raw(self.d_getid() + "DEBUG " + (fmt % args))
   #
   #
   #

@@ -22,9 +22,9 @@ class Service_Echo(Service):
     return False
   #
   def on_receive(self, ch, key, value):
-    ch.send_pair(key, value)
+    ch.send(value, key)
   #
-  def on_channel(self, sid, func, options):
+  def on_channel(self, sid, func, modeid, options):
     if func=='echo':
       return True
     return False
@@ -49,7 +49,7 @@ class Service_Ping(Service):
     self.no = self.no+1
     key = str(self.no)
     self.d_info("ping %s %s", key, repr(self.data))
-    ch.send_pair(key, self.data)
+    ch.send(self.data, key)
   #
   def on_receive(self, ch, key, value):
     self.d_info("pong %s %s", key, repr(value))

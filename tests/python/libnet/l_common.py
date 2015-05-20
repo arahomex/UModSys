@@ -17,8 +17,8 @@ class NodeObject(BaseObject):
     self.uid = uid
     #
   #
-  def on_node_none(self):
-    self.node_setup(self, None)
+  def on_node_none(self, arg):
+    self.node_setup(None)
   #
   def node_setup(self, node):
     if node is None:
@@ -27,7 +27,7 @@ class NodeObject(BaseObject):
       self.node = weakref.ref(node, self.on_node_none)
       self.d_debug("node_setup node=%s", repr(self.node))
   #
-  def tick(self, tick):
+  def on_tick(self, tick):
     pass
   #
   pass
@@ -67,7 +67,7 @@ class Service(NodeObject):
   def on_disconnect(self, ch, errcode):
     pass
   #
-  def on_channel(self, sid, func, options):
+  def on_channel(self, sid, func, mode, options):
     return False # passive one
   #
   pass
