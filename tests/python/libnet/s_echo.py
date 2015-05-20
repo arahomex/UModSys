@@ -22,6 +22,7 @@ class Service_Echo(Service):
     return False
   #
   def on_receive(self, ch, key, value):
+    #g = p
     ch.send(value, key)
   #
   def on_channel(self, sid, func, modeid, options):

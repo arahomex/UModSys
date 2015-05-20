@@ -2,6 +2,7 @@
 
 import time
 import sys
+import random
 
 from libnet.common import dbg, dbg_raw
 from libnet.logic import *
@@ -35,10 +36,20 @@ else:
   Service_Ping.d_clev(0, 1, 2)
   Service_Echo.d_clev(0, 1, 2)
 
+
+def loss_sim(ctx, node, gate, addr, frame):
+  rnd = random.randint(0, ctx[1])
+  if rnd < ctx[2]:
+    return True
+  return False
+
+Node.loss_simulator = [loss_sim, 10, 5]
+Bus.systimenext = 0.2
+
 #-------------------------------------------------------------
 #-------------------------------------------------------------
 
-tick = 0.1 # 10 ms
+tick = 0.05 # 10 ms
 node1 = Node('Node_1')
 node2 = Node('Node_2')
 
@@ -63,9 +74,9 @@ def gotsrv(sk, level, nid, sid):
   ping.target(nid, sid)
 
 
-Loop(10)
-node1.service_scan(1, ('echo',), gotsrv, 2)
 Loop(20)
+node1.service_scan(1, ('echo',), gotsrv, 2)
+Loop(50)
 node1.service_scan(1, ('echo',), gotsrv, 2)
 
 
