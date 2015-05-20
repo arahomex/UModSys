@@ -28,13 +28,17 @@ class Bus(NodeObject):
       self.command, self.args = next_word(value)
     #
     def ack(self, ec=None):
-      self.bus.syscmd_emit_ack(True, ec)
+      bus = self.bus
+      frame = bus.syscmd_emit_ack(self.key, ec)
+      bus.sysaq[self.key] = [bus.systimeleave, frame]
     #
     def nak(self, ec):
+      bus = self.bus
       if ec is None:
-        self.bus.syscmd_emit_nak(False, 'BAD_COMMAND')
+        frame = bus.syscmd_emit_nak(self.key, 'BAD_COMMAND')
       else:
-        self.bus.syscmd_emit_nak(False, ec)
+        frame = bus.syscmd_emit_nak(self.key, ec)
+      bus.sysaq[self.key] = [bus.systimeleave, frame]
     #
   #
   sid = None
@@ -46,9 +50,11 @@ class Bus(NodeObject):
   other_uid = None
   #
   sysq = None
+  sysaq = None
   frameq = None
   #
   systimenext = 0.5
+  systimeleave = 5
   systimes = 2
   #
   def __init__(self, gate, addr, aux):
@@ -62,6 +68,7 @@ class Bus(NodeObject):
     self.sid = 0
     #
     self.sysq = {}
+    self.sysaq = {}
     self.frameq = []
   #
   def next_sid(self, callback=None):
@@ -90,6 +97,8 @@ class Bus(NodeObject):
         pass
       else:
         cmd[1](cmd[0], cmd[2], success, extra)
+    else:
+      self.d_warning("syscmd %d already done", sid)
   #
   def frame_emit(self, frame):
     self.gate.frame_emit(self.addr, self.aux, frame)
@@ -107,10 +116,12 @@ class Bus(NodeObject):
   def syscmd_emit_ack(self, sid, ext=None):
     frame = self.syscmd_make('ACK', ext, None, sid)
     self.frame_emit(frame)
+    return frame
   #
   def syscmd_emit_nak(self, sid, ext=None):
     frame = self.syscmd_make('NAK', ext, None, sid)
     self.frame_emit(frame)
+    return frame
   #
   def on_sysframe(self, frame):
     self.frameq.append(frame)
@@ -121,6 +132,14 @@ class Bus(NodeObject):
     while len(self.frameq):
       f = self.frameq.pop(0)
       self.exec_sysframe(f[0], f[2], f[3], f[4])
+    #
+    # process dups
+    if tick>0:
+      for k in self.sysaq.keys():
+        val = self.sysaq[k]
+        val[0] = val[0] - tick
+        if val[0]<0:
+          del self.sysaq[k]
     #
     # process retries
     if tick>0:
@@ -136,7 +155,7 @@ class Bus(NodeObject):
             self.syscmd_done(k, None, None)
           else:
             self.frame_emit(vv[2])
-            self.d_warning("retry syscmd %d %s", k, repr(vv[6]))
+            self.d_debug("retry syscmd %d %s", k, repr(vv[6]))
     #
     pass
     #
@@ -145,18 +164,22 @@ class Bus(NodeObject):
     try:
       sc = self.SysCommand(self, chkey, key, value)
     except:
-      self.d_error("Bad syscmd %s", repr((sysflag, chkey, key, value)))
+      self.d_warning("Bad syscmd %s", repr((sysflag, chkey, key, value)))
       return
     #
     if sysflag:
       if sc.command=='ACK':
-        self.syscmd_done(sc.args, True)
+        self.syscmd_done(sc.key, sc.args, True)
       elif sc.command=='NAK':
         self.d_warning("got NAK %s", sc.args)
-        self.syscmd_done(sc.args, False)
+        self.syscmd_done(sc.key, sc.args, False)
       else:
         self.d_warning("Damaged syscmd %s", repr((sysflag, chkey, key, value)))
       return
+    elif sc.key in self.sysaq:
+      self.d_debug("dup syscmd %s", repr((sysflag, chkey, key, value)))
+      self.frame_emit(self.sysaq[sc.key][1])
+      return # dup packet, skipped
     else:
       self.d_debug("syscmd{%s %s %s %s}", repr(sc.key), repr(sc.chkey), repr(sc.command), repr(sc.args))
       if self.on_syscmd(sc) is None:

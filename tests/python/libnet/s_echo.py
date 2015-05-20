@@ -53,7 +53,7 @@ class Service_Ping(Service):
     ch.send(self.data, key)
   #
   def on_receive(self, ch, key, value):
-    self.d_info("pong %s %s", key, repr(value))
+    self.d_warning("pong %s %s", key, repr(value))
   #
   def on_connect(self, ch):
     self.d_info("channel open %d->%d", ch.uid, ch.other_uid)

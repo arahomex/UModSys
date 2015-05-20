@@ -84,6 +84,14 @@ class Node(BaseObject):
     #
     return ret
   #
+  # -------- buses
+  #
+  def bus_to(self, uid):
+    for b in self.buses.values():
+      if (b.other_uid is not None) and (uid==b.other_uid):
+        return b
+    return None
+  #
   # -------- channels
   #
   def channel_open(self, serv, nid, sid, func, options=None):
@@ -224,7 +232,7 @@ class Node(BaseObject):
   def on_gate_frame(self, gate, addr, frame):
     if self.loss_simulator is not None:
       if self.loss_simulator[0](self.loss_simulator, self, gate, addr, frame):
-        self.d_warning("on_gate_frame LOSS %s %s", repr(addr), repr(frame))
+        self.d_debug("on_gate_frame LOSS %s %s", repr(addr), repr(frame))
         return # drop a packet
     #
     bus = self.buses[(gate, addr)]
