@@ -17,6 +17,9 @@ class Channel(NodeObject):
   F_HUGE = 0x10
   F_PROTECT = 0x20
   #
+  F_HAVE_SEQ = 0x0f
+  F_STREAM = 0x03
+  #
   service = None
   addr = None # (nid, sid, func)
   mode = 0
@@ -25,7 +28,18 @@ class Channel(NodeObject):
   #
   bus = None
   #
+  sysvals = 0
+  sysints = (int, int, int, int)
+  #
   readq = None
+  inseq = None
+  outseq = None
+  inseqn = None
+  outseqn = None
+  #
+  timenext = 0.5
+  timeleave = 5
+  times = 2
   #
   @classmethod
   def mode_decode(cls, mode):
@@ -80,14 +94,40 @@ class Channel(NodeObject):
   #
   def connect(self):
     self.node().channel_initate(self.addr, self.uid, self.other_uid, Channel.mode_encode(self.mode), self.aux, True)
+    #
+    if self.mode & self.F_HAVE_SEQ:
+      self.inseqn = 0
+      self.outseqn = 0
+      self.sysvals = 1
+    #
+    if self.mode & self.F_RETRY:
+      self.inseq = {}
+      self.outseq = {}
+      self.sysvals = 1
+    #
+    if self.mode & self.F_HUGE:
+      self.sysvals = self.sysvals + 2
   #
   def disconnect(self):
     if self.other_uid is not None:
       self.node().channel_initate(self.addr, self.uid, self.other_uid, self.options, False)
   #
   def send(self, value, key=''):
+    if self.mode & self.F_HUGE:
+      #key = ("%d %d" % self.outseqn) + key
+      pass
+    #
+    hsq = self.mode & self.F_HAVE_SEQ
+    if hsq:
+      self.outseqn += 1
+      key = ("%d " % self.outseqn) + key
+      #
+      if hsq & self.F_RETRY:
+        self.outseq[self.outseqn] = [key, value, self.timenext, self.times]
+    #
     frame = make_frame(False, self.other_uid, '', key, value)
     self.bus.frame_emit(frame)
+  #
   #
   #
   def on_tick(self, tick):
@@ -99,9 +139,54 @@ class Channel(NodeObject):
       key, value = self.readq.pop(0)
       self.service.on_receive(self, key, value)
     #
+    if tick:
+      acks = []
+      for k in self.inseq.keys():
+        v = self.inseq[k]
+        if v[1]:
+          acks.append(k)
+        v[0] = v[0] - tick
+        if v[0]<0:
+          del self.inseq[k]
+      for k in self.outseq.keys():
+        pass
+      if len(acks):
+        frame = make_frame(True, self.other_uid, '', '', "\n".join(acks))
+        self.bus.frame_emit(frame)
+    #
   #
   def on_frame(self, sysflag, chkey, key, value):
+    hsq = self.mode & self.F_HAVE_SEQ
+    #
+    if sysflag:
+      if hsq:
+        acks = value.split("\n")
+        for v in acks:
+          if v in self.outseq:
+            del self.outseq[v]
+    #
+    if self.sysvals:
+      argv, key = next_words(key, self.sysvals, 0, self.sysints)
+      #
+      if argv is None:
+        return False
+      #
+      if hsq:
+        pid = argv.pop(0)
+        #
+        if hsq == self.F_RETRY:
+          # send ack, store id
+          if pid in self.inseq:
+            self.inseq[pid] = [self.timeleave, True]
+            return False # do not receive
+        #
+        if hsq == self.F_SEQ:
+          if pid<=self.inseqn:
+            return False # do not receive
+          self.inseqn = pid
+    #
     self.readq.append((key, value))
+    return True
   #
 
 #-------------------------------------------------------------

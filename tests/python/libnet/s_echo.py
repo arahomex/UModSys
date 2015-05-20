@@ -62,8 +62,8 @@ class Service_Ping(Service):
     self.d_info("channel close %d %s", ch.uid, repr(ec))
   #
   #
-  def target(self, nid, sid):
-    ch = self.node().channel_open(self, nid, sid, 'echo', '')
+  def target(self, nid, sid, mode=''):
+    ch = self.node().channel_open(self, nid, sid, 'echo', mode)
     pass
   #
   pass

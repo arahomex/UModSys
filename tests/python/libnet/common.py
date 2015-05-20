@@ -96,20 +96,20 @@ def parse_frame(binary):
   return (binary, (sysflag!=0, chid, chkey, key, value))
 
 
-def next_word(line):
+def next_word(line, key=' '):
   if line is None:
     return '', None
   if line=='':
     return '', None
-  pos = line.find(" ")
+  pos = line.find(key)
   if pos==-1:
     return line, None
   return (line[:pos], line[pos+1:])
 
-def next_words(args, nargs, naux=0, cvt=None):
+def next_words(args, nargs, naux=0, cvt=None, key=' '):
   ret = []
   for i in range(0, nargs):
-    val, args = next_word(args)
+    val, args = next_word(args, key)
     if val=='':
       dbg(0, "Can't get arg %d" % (i))
       return (None, None)
@@ -121,7 +121,7 @@ def next_words(args, nargs, naux=0, cvt=None):
         return (None, None)
     ret.append(val)
   for i in range(0, naux):
-    val, args = next_word(args)
+    val, args = next_word(args, key)
     if val=='':
       break
     ret.append(val)

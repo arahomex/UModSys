@@ -84,12 +84,13 @@ def gotsrv(sk, level, nid, sid):
   print "[%g] *** scan:%s level:%s node:%s service:%s" % (mtime, sk, level, nid, sid)
 #  print "***"
   ping = Service_Ping(node1)
-  ping.target(nid, sid)
+#  ping.target(nid, sid, ('SEQ','RETRY'))
+  ping.target(nid, sid, ('RETRY'))
 
 
 Loop(400, isConnected)
 node1.service_scan(1, ('echo',), gotsrv, 2)
-Loop(200)
+Loop(50)
 node1.service_scan(1, ('echo',), gotsrv, 2)
 
 
