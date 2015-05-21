@@ -7,11 +7,12 @@ import zlib
 from common import *
 from l_common import *
 from l_channel import *
+from l_retry import *
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------
 
-class Bus(NodeObject):
+class Bus(NodeObject, RetryQueue):
   #
   class SysCommand(object):
     bus = None
@@ -41,7 +42,6 @@ class Bus(NodeObject):
       bus.sysaq[self.key] = [bus.systimeleave, frame]
     #
   #
-  sid = None
   queue = None
   #
   gate = None
@@ -49,16 +49,11 @@ class Bus(NodeObject):
   aux = None
   other_uid = None
   #
-  sysq = None
-  sysaq = None
   frameq = None
-  #
-  systimenext = 0.5
-  systimeleave = 5
-  systimes = 2
   #
   def __init__(self, gate, addr, aux):
     NodeObject.__init__(self, None)
+    RetryQueue.__init__(self)
     #
     self.gate = gate
     self.addr = addr
@@ -67,56 +62,38 @@ class Bus(NodeObject):
     self.uid = "%s::%s" % (gate.uid, addr)
     self.sid = 0
     #
-    self.sysq = {}
-    self.sysaq = {}
     self.frameq = []
   #
-  def next_sid(self, callback=None):
-    self.sid = sid = self.sid+1
-    return sid
-  #
-  def syscmd_make(self, command, args=None, callback=None, sid=None, transpr=None):
+  def syscmd_emit_(self, command, args=None, callback=None, sid=None):
     # <sid> :: <command> <args>
     isys = sid is not None
-    if not isys:
-      sid = self.next_sid()
     if args is not None:
       if is_array(args):
         args = ' '.join(args)
       command = "%s %s" % (command, args)
-    frame = make_frame(isys, 0, '', "%d" % sid, command)
-    if callback is not None:
-      self.sysq[sid] = [sid, callback, frame, self.systimenext, self.systimes, transpr, command]
-    return frame
-  #
-  def syscmd_done(self, sid, success, extra=''):
-    if sid in self.sysq:
-      cmd = self.sysq[sid]
-      del self.sysq[sid]
-      if type(cmd[1]) is bool:
-        pass
-      else:
-        cmd[1](cmd[0], cmd[2], success, extra)
+    #
+    if isys:
+      item = RetryQueueInItem((command, callback), sid)
+      self.rq_in_add(item, True)
     else:
-      self.d_warning("syscmd %d already done", sid)
-  #
-  def frame_emit(self, frame):
-    self.gate.frame_emit(self.addr, self.aux, frame)
-  #
-  def syscmd_emit(self, command, args=None, callback=None, transpr=None):
-    frame = self.syscmd_make(command, args, callback, None, transpr)
-    if transpr:
-      pass
-    else:
-      if self.other_uid is None:
-        return # can't emit this frame
-    self.frame_emit(frame)
-    return frame
+      item = RetryQueueOutItem((command, callback))
+      self.rq_out_add(item, True)
+    #
+    return item.aux
   #
   def syscmd_emit_ack(self, sid, ext=None):
-    frame = self.syscmd_make('ACK', ext, None, sid)
-    self.frame_emit(frame)
-    return frame
+    return self.syscmd_emit_('ACK', ext, None, sid)
+  #
+  def syscmd_emit_nak(self, sid, ext=None):
+    return self.syscmd_emit_('NAK', ext, None, sid)
+  #
+  def syscmd_emit(self, command, args=None, callback=None, transpr=None):
+    if not transpr:
+      if self.other_uid is None:
+        return # can't emit this frame
+    #
+    return self.syscmd_emit_(command, args, callback, None)
+  #
   #
   def syscmd_emit_nak(self, sid, ext=None):
     frame = self.syscmd_make('NAK', ext, None, sid)
@@ -133,32 +110,9 @@ class Bus(NodeObject):
       f = self.frameq.pop(0)
       self.exec_sysframe(f[0], f[2], f[3], f[4])
     #
-    # process dups
-    if tick>0:
-      for k in self.sysaq.keys():
-        val = self.sysaq[k]
-        val[0] = val[0] - tick
-        if val[0]<0:
-          del self.sysaq[k]
-    #
-    # process retries
-    if tick>0:
-      for k in self.sysq.keys():
-        vv = self.sysq[k]
-        #self.d_info("try retry syscmd %d (%g %d) by %g", k, vv[3], vv[4], tick)
-        vv[3] = vv[3] - tick
-        if vv[3]<0:
-          vv[4] = vv[4] - 1
-          vv[3] = self.systimenext
-          if vv[4]<0:
-            self.d_warning("timeout syscmd %d %s", k, repr(vv[6]))
-            self.syscmd_done(k, None, None)
-          else:
-            self.frame_emit(vv[2])
-            self.d_debug("retry syscmd %d %s", k, repr(vv[6]))
+    self.on_rq_tick(self)
     #
     pass
-    #
   #
   def exec_sysframe(self, sysflag, chkey, key, value):
     try:
@@ -169,10 +123,10 @@ class Bus(NodeObject):
     #
     if sysflag:
       if sc.command=='ACK':
-        self.syscmd_done(sc.key, sc.args, True)
+        self.on_rq_out_done(sc.key, (True, sc.args))
       elif sc.command=='NAK':
         self.d_warning("got NAK %s", sc.args)
-        self.syscmd_done(sc.key, sc.args, False)
+        self.on_rq_out_done(sc.key, (False, sc.args))
       else:
         self.d_warning("Damaged syscmd %s", repr((sysflag, chkey, key, value)))
       return
@@ -185,6 +139,40 @@ class Bus(NodeObject):
       if self.on_syscmd(sc) is None:
         syscmd.nak(None)
     pass
+  #
+  #
+  def on_rq_out_done(self, item, uid, data):
+    if item is None:
+      cb = item.data[1]
+      if cb is None:
+        pass
+      elif type(cb) is bool:
+        pass
+      else:
+        cb(item, data[0], data[1]) # item, succeeded, errorcode
+    else:
+      self.d_warning("syscmd %d already done", uid)
+  #
+  def on_rq_out_add(self, item):
+    item.aux = make_frame(False, 0, '', "%d" % item.uid, item.data[0])
+  #
+  def on_rq_in_add(self, item):
+    item.aux = make_frame(True, 0, '', "%d" % item.uid, item.data[0])
+  #
+  def on_rq_out_send(self, item):
+    self.gate.frame_emit(self.addr, self.aux, item.aux)
+  #
+  #
+  def on_rq_in_send(self, item):
+    self.gate.frame_emit(self.addr, self.aux, item.aux)
+  #
+  def on_rq_in_lost(self, item):
+    return # do nothing
+  #
+  def on_rq_out_lost(self, item):
+    self.d_warning("Undelivered command %s %s", item.uid, item.data[1])
+    self.on_rq_out_done(sc.key, (None, None))
+  #
   #
   def on_syscmd(self, sc):
     if sc.command=='G_OPEN':
