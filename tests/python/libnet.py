@@ -12,29 +12,35 @@ from libnet.s_echo import *
 #-------------------------------------------------------------
 #-------------------------------------------------------------
 
-Debug = False
-#Debug = True
+#Debug = False
+Debug = True
+debugfile = open("debug.log", "w")
+
+DebugFiles[8] = debugfile
+DebugFiles[9] = debugfile
+DebugFiles[10] = debugfile
+DebugFiles[11] = debugfile
 
 if Debug:
-  Gate_TCP.Client.d_clev(0, 1, 2, 3)
-  Gate_TCP.d_clev(0, 1, 2, 3)
+  Gate_TCP.Client.d_clev(8, 9, 10, 11)
+  Gate_TCP.d_clev(8, 9, 10, 11)
   #
-  Node.d_clev(0, 1, 2, 3)
-  Bus.d_clev(0, 1, 2, 3)
-  Channel.d_clev(0, 1, 2, 3)
+  Node.d_clev(8, 9, 10, 11)
+  Bus.d_clev(8, 9, 10, 11)
+  Channel.d_clev(8, 9, 10, 11)
   #
-  Service_Ping.d_clev(0, 1, 2, 3)
-  Service_Echo.d_clev(0, 1, 2, 3)
+  Service_Ping.d_clev(8, 9, 10, 11)
+  Service_Echo.d_clev(8, 9, 10, 11)
 else:
-  Gate_TCP.Client.d_clev(0, 1, 2)
-  Gate_TCP.d_clev(0, 1, 2)
+  Gate_TCP.Client.d_clev(8, 9, 10)
+  Gate_TCP.d_clev(8, 9, 10)
   #
-  Node.d_clev(0, 1, 2)
-  Bus.d_clev(0, 1, 2)
-  Channel.d_clev(0, 1, 2)
+  Node.d_clev(8, 9, 10)
+  Bus.d_clev(8, 9, 10)
+  Channel.d_clev(8, 9, 10)
   #
-  Service_Ping.d_clev(0, 1)
-  Service_Echo.d_clev(0, 1, 2)
+  Service_Ping.d_clev(8, 9)
+  Service_Echo.d_clev(8, 9, 10)
 
 
 def loss_sim(ctx, node, gate, addr, frame):
@@ -93,5 +99,6 @@ node1.service_scan(1, ('echo',), gotsrv, 2)
 Loop(50)
 node1.service_scan(1, ('echo',), gotsrv, 2)
 
+print >>debugfile, ""
+print ""
 
-dbg_raw("")

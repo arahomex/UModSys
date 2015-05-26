@@ -39,8 +39,8 @@ class RetryQueueOutItem(object):
 
 class RetryQueue:
   #
-  in_q = None
-  out_q = None
+  in_q = None # in queue (normal)
+  out_q = None # out queue (normal)
   #
   in_n = None
   out_n = None
@@ -66,13 +66,13 @@ class RetryQueue:
     else:
       self.on_rq_out_done(None, uid, data)
   #
-  def rq_out_add(self, item, isSend=True):
+  def rq_out_add(self, item, isSend):
     self.out_n = self.out_n + 1
     item.uid = self.out_n
     item.time = self.out_time
     item.times = self.out_times
     #
-    rv = self.on_eq_out_add(item)
+    rv = self.on_rq_out_add(item)
     if rv:
       return rv
     #
@@ -84,12 +84,21 @@ class RetryQueue:
     self.out_q[item.uid] = item
     return
   #
-  def rq_in_add(self, item, isSend=True):
-    self.out_n = self.out_n + 1
-    item.uid = self.out_n
+  def rq_in_add(self, item, in_num, isSend):
+    if in_num is None:
+      self.in_n = self.in_n + 1
+      in_num = self.in_n
+    item.uid = 	in_num
     item.time = self.in_time
     #
-    rv = self.on_eq_in_add(item)
+    if in_num in self.in_q:
+      dup = self.in_q[in_num]
+      rv = self.on_rq_in_dup(item, dup)
+      if rv:
+        return rv
+      return dup
+    #
+    rv = self.on_rq_in_add(item)
     if rv:
       return rv
     #
@@ -140,6 +149,9 @@ class RetryQueue:
     return
   #
   def on_rq_in_lost(self, item):
+    return
+  #
+  def on_rq_in_dup(self, item, dup):
     return
   #
   def on_rq_in_send(self, item):

@@ -10,13 +10,14 @@ import string
 #-------------------------------------------------------------
 
 DebugLevels = 0xffffffff
+DebugFiles = [sys.stderr] * 32
 
 def dbg(L, S):
   if (1<<L) & DebugLevels:
-    print >>sys.stderr, S
+    print >>DebugFiles[L], S
 
-def dbg_raw(S):
-  print >>sys.stderr, S
+def dbg_raw(L, S):
+  print >>DebugFiles[L], S
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------
@@ -168,55 +169,55 @@ class BaseObject(object):
   #
   @classmethod
   def d_cgetid(cls):
-    return "%s::" % cls.__name__
+    return "%.3f::%s::" % (time.time(), cls.__name__)
   #
   @classmethod
   def d_cinfo(cls, fmt, *args):
     if cls.DL_INFO is not None:
       if DebugLevels & (1<<cls.DL_INFO):
-        dbg_raw(cls.d_cgetid() + "INFO " +  (fmt % args))
+        dbg_raw(cls.DL_INFO, cls.d_cgetid() + "INFO " +  (fmt % args))
   #
   @classmethod
   def d_cwarning(cls, fmt, *args):
     if cls.DL_WARNING is not None:
       if DebugLevels & (1<<cls.DL_WARNING):
-        dbg_raw(cls.d_cgetid() +"WARNING " +  (fmt % args))
+        dbg_raw(cls.DL_WARNING, cls.d_cgetid() +"WARNING " +  (fmt % args))
   #
   @classmethod
   def d_cerror(cls, fmt, *args):
     if cls.DL_ERROR is not None:
       if DebugLevels & (1<<cls.DL_ERROR):
-        dbg_raw(cls.d_cgetid() + "ERROR " + (fmt % args))
+        dbg_raw(cls.DL_ERROR, cls.d_cgetid() + "ERROR " + (fmt % args))
   #
   @classmethod
   def d_cdebug(cls, fmt, *args):
     if cls.DL_DEBUG is not None:
       if DebugLevels & (1<<cls.DL_DEBUG):
-        dbg_raw(cls.d_cgetid() + "DEBUG " + (fmt % args))
+        dbg_raw(cls.DL_DEBUG, cls.d_cgetid() + "DEBUG " + (fmt % args))
   #
   #
   def d_getid(self):
-    return "%s(%s)::" % (self.__class__.__name__, self.uid)
+    return "%.3f::%s(%s)::" % (time.time(), self.__class__.__name__, self.uid)
   #
   def d_info(self, fmt, *args):
     if self.DL_INFO is not None:
       if DebugLevels & (1<<self.DL_INFO):
-        dbg_raw(self.d_getid() + "INFO " + (fmt % args))
+        dbg_raw(self.DL_INFO, self.d_getid() + "INFO " + (fmt % args))
   #
   def d_warning(self, fmt, *args):
     if self.DL_WARNING is not None:
       if DebugLevels & (1<<self.DL_WARNING):
-        dbg_raw(self.d_getid() + "WARNING " + (fmt % args))
+        dbg_raw(self.DL_WARNING, self.d_getid() + "WARNING " + (fmt % args))
   #
   def d_error(self, fmt, *args):
     if self.DL_ERROR is not None:
       if DebugLevels & (1<<self.DL_ERROR):
-        dbg_raw(self.d_getid() + "ERROR " + (fmt % args))
+        dbg_raw(self.DL_ERROR, self.d_getid() + "ERROR " + (fmt % args))
   #
   def d_debug(self, fmt, *args):
     if self.DL_DEBUG is not None:
       if DebugLevels & (1<<self.DL_DEBUG):
-        dbg_raw(self.d_getid() + "DEBUG " + (fmt % args))
+        dbg_raw(self.DL_DEBUG, self.d_getid() + "DEBUG " + (fmt % args))
   #
   #
   #

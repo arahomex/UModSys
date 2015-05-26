@@ -126,7 +126,7 @@ class Channel(NodeObject):
         self.outseq[self.outseqn] = [key, value, self.timenext, self.times]
     #
     frame = make_frame(False, self.other_uid, '', key, value)
-    self.bus.frame_emit(frame)
+    self.bus.frame_send(frame)
   #
   #
   #

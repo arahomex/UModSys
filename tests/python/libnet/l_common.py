@@ -41,6 +41,9 @@ class Gate(NodeObject):
     if node is not None:
       node.gate_add(self)
   #
+  def frame_emit(self, addr, cli, frame):
+    pass
+  #
   pass
 
 #-------------------------------------------------------------

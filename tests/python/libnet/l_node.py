@@ -217,7 +217,7 @@ class Node(BaseObject):
     bus.node_setup(self)
     #
     self.d_debug("on_gate_connected %s", bus.uid)
-    bus.syscmd_emit('G_OPEN', self.uid, True)
+    bus.syscmd_emit('G_OPEN', self.uid, None, True)
     pass
   #
   def on_gate_disconnected(self, gate, addr, aux=None):

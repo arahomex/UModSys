@@ -20,6 +20,7 @@ class Bus(NodeObject, RetryQueue):
     chkey = None
     command = None
     args = None
+    ackframe = None
     #
     #
     def __init__(self, bus, chkey, key, value):
@@ -30,16 +31,22 @@ class Bus(NodeObject, RetryQueue):
     #
     def ack(self, ec=None):
       bus = self.bus
-      frame = bus.syscmd_emit_ack(self.key, ec)
-      bus.sysaq[self.key] = [bus.systimeleave, frame]
+      self.ackframe = bus.syscmd_emit_ack(self.key, ec)
     #
     def nak(self, ec):
       bus = self.bus
       if ec is None:
-        frame = bus.syscmd_emit_nak(self.key, 'BAD_COMMAND')
+        self.ackframe = bus.syscmd_emit_nak(self.key, 'INVALID_COMMAND')
       else:
-        frame = bus.syscmd_emit_nak(self.key, ec)
-      bus.sysaq[self.key] = [bus.systimeleave, frame]
+        self.ackframe = bus.syscmd_emit_nak(self.key, ec)
+    #
+    def nack(self):
+      if self.ackframe is None:
+        self.nak(None)
+    #
+    def renack(self):
+      bus = self.bus
+      bus.frame_emit(self.ackframe)
     #
   #
   queue = None
@@ -65,6 +72,7 @@ class Bus(NodeObject, RetryQueue):
     self.frameq = []
   #
   def syscmd_emit_(self, command, args=None, callback=None, sid=None):
+    #self.d_debug("emit syscmd %s", repr(command, args, callback, sid))
     # <sid> :: <command> <args>
     isys = sid is not None
     if args is not None:
@@ -73,12 +81,12 @@ class Bus(NodeObject, RetryQueue):
       command = "%s %s" % (command, args)
     #
     if isys:
-      item = RetryQueueInItem((command, callback), sid)
-      self.rq_in_add(item, True)
-    else:
-      item = RetryQueueOutItem((command, callback))
-      self.rq_out_add(item, True)
+      frame = make_frame(True, 0, '', "%d" % sid, command)
+      self.frame_send(frame)
+      return frame
     #
+    item = RetryQueueOutItem((command, callback))
+    self.rq_out_add(item, True)
     return item.aux
   #
   def syscmd_emit_ack(self, sid, ext=None):
@@ -87,6 +95,9 @@ class Bus(NodeObject, RetryQueue):
   def syscmd_emit_nak(self, sid, ext=None):
     return self.syscmd_emit_('NAK', ext, None, sid)
   #
+  def frame_send(self, frame):
+    return self.gate.frame_emit(self.addr, self.aux, frame)
+  #
   def syscmd_emit(self, command, args=None, callback=None, transpr=None):
     if not transpr:
       if self.other_uid is None:
@@ -94,11 +105,6 @@ class Bus(NodeObject, RetryQueue):
     #
     return self.syscmd_emit_(command, args, callback, None)
   #
-  #
-  def syscmd_emit_nak(self, sid, ext=None):
-    frame = self.syscmd_make('NAK', ext, None, sid)
-    self.frame_emit(frame)
-    return frame
   #
   def on_sysframe(self, frame):
     self.frameq.append(frame)
@@ -110,7 +116,7 @@ class Bus(NodeObject, RetryQueue):
       f = self.frameq.pop(0)
       self.exec_sysframe(f[0], f[2], f[3], f[4])
     #
-    self.on_rq_tick(self)
+    self.on_rq_tick(tick)
     #
     pass
   #
@@ -123,21 +129,15 @@ class Bus(NodeObject, RetryQueue):
     #
     if sysflag:
       if sc.command=='ACK':
-        self.on_rq_out_done(sc.key, (True, sc.args))
+        self.rq_out_done(sc.key, (True, sc.args))
       elif sc.command=='NAK':
         self.d_warning("got NAK %s", sc.args)
-        self.on_rq_out_done(sc.key, (False, sc.args))
+        self.rq_out_done(sc.key, (False, sc.args))
       else:
         self.d_warning("Damaged syscmd %s", repr((sysflag, chkey, key, value)))
       return
-    elif sc.key in self.sysaq:
-      self.d_debug("dup syscmd %s", repr((sysflag, chkey, key, value)))
-      self.frame_emit(self.sysaq[sc.key][1])
-      return # dup packet, skipped
     else:
-      self.d_debug("syscmd{%s %s %s %s}", repr(sc.key), repr(sc.chkey), repr(sc.command), repr(sc.args))
-      if self.on_syscmd(sc) is None:
-        syscmd.nak(None)
+      self.rq_in_add(RetryQueueInItem(sc), sc.key, False)
     pass
   #
   #
@@ -156,22 +156,28 @@ class Bus(NodeObject, RetryQueue):
   def on_rq_out_add(self, item):
     item.aux = make_frame(False, 0, '', "%d" % item.uid, item.data[0])
   #
-  def on_rq_in_add(self, item):
-    item.aux = make_frame(True, 0, '', "%d" % item.uid, item.data[0])
-  #
   def on_rq_out_send(self, item):
-    self.gate.frame_emit(self.addr, self.aux, item.aux)
-  #
-  #
-  def on_rq_in_send(self, item):
-    self.gate.frame_emit(self.addr, self.aux, item.aux)
-  #
-  def on_rq_in_lost(self, item):
-    return # do nothing
+    self.frame_send(item.aux)
   #
   def on_rq_out_lost(self, item):
     self.d_warning("Undelivered command %s %s", item.uid, item.data[1])
-    self.on_rq_out_done(sc.key, (None, None))
+    self.rq_out_done(sc.key, (None, None))
+  #
+  #
+  def on_rq_in_add(self, item):
+    cmd = item.data
+    rv = self.on_syscmd(cmd)
+    cmd.nack()
+    pass
+  #
+  def on_rq_in_dup(self, item, dup):
+    cmd = item.data.renack()
+  #
+  def on_rq_in_send(self, item):
+    return # do nothing
+  #
+  def on_rq_in_lost(self, item):
+    return # do nothing
   #
   #
   def on_syscmd(self, sc):
