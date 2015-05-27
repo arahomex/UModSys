@@ -45,8 +45,10 @@ class Bus(NodeObject, RetryQueue):
         self.nak(None)
     #
     def renack(self):
+      if self.ackframe is None:
+        raise Exception('No ack ready id=%d' % self.key)
       bus = self.bus
-      bus.frame_emit(self.ackframe)
+      bus.frame_send(self.ackframe)
     #
   #
   queue = None

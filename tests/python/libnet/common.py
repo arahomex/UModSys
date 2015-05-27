@@ -22,6 +22,21 @@ def dbg_raw(L, S):
 #-------------------------------------------------------------
 #-------------------------------------------------------------
 
+class DbgMultiTarget(object):
+  targets = None
+  #
+  def __init__(self, *targets):
+    self.targets = targets
+  #
+  def write(self, data):
+    for t in self.targets:
+      t.write(data)
+  #
+  pass
+
+#-------------------------------------------------------------
+#-------------------------------------------------------------
+
 def is_array(var):
     return isinstance(var, (list, tuple))
 

@@ -4,7 +4,7 @@ import time
 import sys
 import random
 
-from libnet.common import dbg, dbg_raw
+from libnet.common import dbg, dbg_raw, DbgMultiTarget
 from libnet.logic import *
 from libnet.t_tcp import Gate_TCP, transport_tcp_tick
 from libnet.s_echo import *
@@ -12,35 +12,21 @@ from libnet.s_echo import *
 #-------------------------------------------------------------
 #-------------------------------------------------------------
 
-#Debug = False
-Debug = True
 debugfile = open("debug.log", "w")
+debugfile2 = DbgMultiTarget(debugfile, sys.stderr)
 
-DebugFiles[8] = debugfile
-DebugFiles[9] = debugfile
-DebugFiles[10] = debugfile
-DebugFiles[11] = debugfile
+for i in range(0,7): DebugFiles[i] = debugfile2
+for i in range(8,31): DebugFiles[i] = debugfile
 
-if Debug:
-  Gate_TCP.Client.d_clev(8, 9, 10, 11)
-  Gate_TCP.d_clev(8, 9, 10, 11)
-  #
-  Node.d_clev(8, 9, 10, 11)
-  Bus.d_clev(8, 9, 10, 11)
-  Channel.d_clev(8, 9, 10, 11)
-  #
-  Service_Ping.d_clev(8, 9, 10, 11)
-  Service_Echo.d_clev(8, 9, 10, 11)
-else:
-  Gate_TCP.Client.d_clev(8, 9, 10)
-  Gate_TCP.d_clev(8, 9, 10)
-  #
-  Node.d_clev(8, 9, 10)
-  Bus.d_clev(8, 9, 10)
-  Channel.d_clev(8, 9, 10)
-  #
-  Service_Ping.d_clev(8, 9)
-  Service_Echo.d_clev(8, 9, 10)
+Gate_TCP.Client.d_clev(4, 5, 10, 11)
+Gate_TCP.d_clev(4, 5, 10, 11)
+#
+Node.d_clev(4, 5, 10, 11)
+Bus.d_clev(4, 5, 10, 11)
+Channel.d_clev(4, 5, 10, 11)
+#
+Service_Ping.d_clev(4, 5, 6, 15)
+Service_Echo.d_clev(4, 5, 6, 15)
 
 
 def loss_sim(ctx, node, gate, addr, frame):
@@ -86,9 +72,7 @@ def isConnected():
   return node1.bus_to(node2.uid) and node2.bus_to(node1.uid)
 
 def gotsrv(sk, level, nid, sid):
-#  print "***"
-  print "[%g] *** scan:%s level:%s node:%s service:%s" % (mtime, sk, level, nid, sid)
-#  print "***"
+  dbg_raw(0, "[%g] *** scan:%s level:%s node:%s service:%s" % (mtime, sk, level, nid, sid))
   ping = Service_Ping(node1)
 #  ping.target(nid, sid, ('SEQ','RETRY'))
   ping.target(nid, sid, ('RETRY'))
@@ -99,6 +83,6 @@ node1.service_scan(1, ('echo',), gotsrv, 2)
 Loop(50)
 node1.service_scan(1, ('echo',), gotsrv, 2)
 
-print >>debugfile, ""
-print ""
+dbg_raw(8, "")
+sys.stderr.write("\n")
 
