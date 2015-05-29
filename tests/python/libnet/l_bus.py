@@ -44,12 +44,6 @@ class Bus(NodeObject, RetryQueue):
       if self.ackframe is None:
         self.nak(None)
     #
-    def renack(self):
-      if self.ackframe is None:
-        raise Exception('No ack ready id=%d' % self.key)
-      bus = self.bus
-      bus.frame_send(self.ackframe)
-    #
   #
   queue = None
   #
@@ -83,12 +77,12 @@ class Bus(NodeObject, RetryQueue):
       command = "%s %s" % (command, args)
     #
     if isys:
-      frame = make_frame(True, 0, '', "%d" % sid, command)
-      self.frame_send(frame)
-      return frame
+      item = RetryQueueInItem(command)
+      self.rq_in_add(item, sid, True)
+    else:
+      item = RetryQueueOutItem((command, callback))
+      self.rq_out_add(item, True)
     #
-    item = RetryQueueOutItem((command, callback))
-    self.rq_out_add(item, True)
     return item.aux
   #
   def syscmd_emit_ack(self, sid, ext=None):
@@ -98,6 +92,8 @@ class Bus(NodeObject, RetryQueue):
     return self.syscmd_emit_('NAK', ext, None, sid)
   #
   def frame_send(self, frame):
+    if frame is None:
+      raise Exception('None frame disallowed')
     return self.gate.frame_emit(self.addr, self.aux, frame)
   #
   def syscmd_emit(self, command, args=None, callback=None, transpr=None):
@@ -133,18 +129,19 @@ class Bus(NodeObject, RetryQueue):
       if sc.command=='ACK':
         self.rq_out_done(sc.key, (True, sc.args))
       elif sc.command=='NAK':
-        self.d_warning("got NAK %s", sc.args)
+        self.d_warning("got NAK %d %s", sc.key, sc.args)
         self.rq_out_done(sc.key, (False, sc.args))
       else:
-        self.d_warning("Damaged syscmd %s", repr((sysflag, chkey, key, value)))
+        self.d_warning("Invalid syscmd %s", repr((sysflag, chkey, key, value)))
       return
     else:
-      self.rq_in_add(RetryQueueInItem(sc), sc.key, False)
+      self.on_syscmd(sc)
+      sc.nack()
     pass
   #
   #
   def on_rq_out_done(self, item, uid, data):
-    if item is None:
+    if item is not None:
       cb = item.data[1]
       if cb is None:
         pass
@@ -162,18 +159,15 @@ class Bus(NodeObject, RetryQueue):
     self.frame_send(item.aux)
   #
   def on_rq_out_lost(self, item):
-    self.d_warning("Undelivered command %s %s", item.uid, item.data[1])
+    self.d_warning("Undelivered command %s %s", item.uid, item.data[0])
     self.rq_out_done(sc.key, (None, None))
   #
   #
   def on_rq_in_add(self, item):
-    cmd = item.data
-    rv = self.on_syscmd(cmd)
-    cmd.nack()
-    pass
+    item.aux = make_frame(True, 0, '', "%d" % item.uid, item.data)
   #
   def on_rq_in_dup(self, item, dup):
-    cmd = item.data.renack()
+    self.frame_send(dup.aux)
   #
   def on_rq_in_send(self, item):
     return # do nothing
