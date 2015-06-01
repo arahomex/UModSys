@@ -140,42 +140,6 @@ class Bus(NodeObject, RetryQueue):
     pass
   #
   #
-  def on_rq_out_done(self, item, uid, data):
-    if item is not None:
-      cb = item.data[1]
-      if cb is None:
-        pass
-      elif type(cb) is bool:
-        pass
-      else:
-        cb(item, data[0], data[1]) # item, succeeded, errorcode
-    else:
-      self.d_warning("syscmd %d already done", uid)
-  #
-  def on_rq_out_add(self, item):
-    item.aux = make_frame(False, 0, '', "%d" % item.uid, item.data[0])
-  #
-  def on_rq_out_send(self, item):
-    self.frame_send(item.aux)
-  #
-  def on_rq_out_lost(self, item):
-    self.d_warning("Undelivered command %s %s", item.uid, item.data[0])
-    self.rq_out_done(sc.key, (None, None))
-  #
-  #
-  def on_rq_in_add(self, item):
-    item.aux = make_frame(True, 0, '', "%d" % item.uid, item.data)
-  #
-  def on_rq_in_dup(self, item, dup):
-    self.frame_send(dup.aux)
-  #
-  def on_rq_in_send(self, item):
-    return # do nothing
-  #
-  def on_rq_in_lost(self, item):
-    return # do nothing
-  #
-  #
   def on_syscmd(self, sc):
     if sc.command=='G_OPEN':
       return self.on_syscmd_gate_open(sc)
@@ -253,6 +217,42 @@ class Bus(NodeObject, RetryQueue):
     if argv is None:
       return
     return self.node().channel_on_close(syscmd, argv)
+  #
+  #
+  def on_rq_out_done(self, item, uid, data):
+    if item is not None:
+      cb = item.data[1]
+      if cb is None:
+        pass
+      elif type(cb) is bool:
+        pass
+      else:
+        cb(item, data[0], data[1]) # item, succeeded, errorcode
+    else:
+      self.d_warning("syscmd %d already done", uid)
+  #
+  def on_rq_out_add(self, item):
+    item.aux = make_frame(False, 0, '', "%d" % item.uid, item.data[0])
+  #
+  def on_rq_out_send(self, item):
+    self.frame_send(item.aux)
+  #
+  def on_rq_out_lost(self, item):
+    self.d_warning("Undelivered command %s %s", item.uid, item.data[0])
+    self.rq_out_done(sc.key, (None, None))
+  #
+  #
+  def on_rq_in_add(self, item):
+    item.aux = make_frame(True, 0, '', "%d" % item.uid, item.data)
+  #
+  def on_rq_in_dup(self, item, dup):
+    self.frame_send(dup.aux)
+  #
+  def on_rq_in_send(self, item):
+    self.frame_send(item.aux)
+  #
+  def on_rq_in_lost(self, item):
+    return # do nothing
   #
 
 

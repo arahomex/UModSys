@@ -23,7 +23,8 @@ Gate_TCP.d_clev(4, 5, 10, 11)
 #
 Node.d_clev(4, 5, 10, 11)
 Bus.d_clev(4, 5, 10, 11)
-Channel.d_clev(4, 5, 10, 11)
+#
+MetaChannel.Simple.d_clev(4, 5, 10, 11)
 #
 Service_Ping.d_clev(4, 5, 6, 15)
 Service_Echo.d_clev(4, 5, 6, 15)
@@ -71,11 +72,13 @@ def Loop(num, fn=None):
 def isConnected():
   return node1.bus_to(node2.uid) and node2.bus_to(node1.uid)
 
+ping = Service_Ping(node1)
+
 def gotsrv(sk, level, nid, sid):
   dbg_raw(0, "[%g] *** scan:%s level:%s node:%s service:%s" % (mtime, sk, level, nid, sid))
-  ping = Service_Ping(node1)
 #  ping.target(nid, sid, ('SEQ','RETRY'))
-  ping.target(nid, sid, ('RETRY'))
+#  ping.target(nid, sid, ('RETRY'))
+  ping.target(nid, sid, ())
 
 
 Loop(400, isConnected)
@@ -85,4 +88,4 @@ node1.service_scan(1, ('echo',), gotsrv, 2)
 
 dbg_raw(8, "")
 sys.stderr.write("\n")
-
+print "Statistics: " + ping.statistics() + "\n"

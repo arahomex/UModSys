@@ -99,11 +99,11 @@ class Node(BaseObject):
     if options is None:
       mode = 0
     elif type(options) in (list, tuple):
-      mode, aux = Channel.mode_decode(options)
+      mode, aux = MetaChannel.mode_decode(options)
     elif type(options) is int:
       mode = options
     elif type(options) is str:
-      mode,aux = Channel.mode_decode(options.split(','))
+      mode,aux = MetaChannel.mode_decode(options.split(','))
     if mode is None:
       raise Exception('Bad channel options '+repr(options))
     return self.channel_open_u(serv, nid, sid, func, mode, aux, None)
@@ -115,7 +115,7 @@ class Node(BaseObject):
   #
   def channel_open_u(self, serv, nid, sid, func, mode, aux, chid2):
     self.nchannels = self.nchannels+1
-    ch = Channel(serv, self.nchannels, (nid, sid, func), mode, aux, chid2)
+    ch = MetaChannel.channel(serv, self.nchannels, (nid, sid, func), mode, aux, chid2)
     self.channels[ch.uid] = ch
     ch.node_setup(self)
     ch.connect()
@@ -141,7 +141,7 @@ class Node(BaseObject):
           break
   #
   def channel_on_open(self, syscmd, argv):
-    mode,_ = Channel.mode_decode(argv[4].split(','))
+    mode,_ = MetaChannel.mode_decode(argv[4].split(','))
     if mode is None:
       self.d_warning("Bad channel mode %s", repr(argv[4]))
       syscmd.nak('BAD_CHANNEL_MODE')

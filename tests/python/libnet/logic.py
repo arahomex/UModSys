@@ -18,7 +18,7 @@ NodeObject = l_common.NodeObject
 Service = l_common.Service
 Gate = l_common.Gate
 
-Channel = l_channel.Channel
+MetaChannel = l_channel.MetaChannel
 
 Bus = l_bus.Bus
 

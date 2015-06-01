@@ -61,7 +61,7 @@ class Service(NodeObject):
   def on_send(self, ch):
     pass
   #
-  def on_receive(self, ch, key, value):
+  def on_receive(self, ch, value, key):
     pass
   #
   def on_connect(self, ch):

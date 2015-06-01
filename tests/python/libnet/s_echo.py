@@ -21,7 +21,7 @@ class Service_Echo(Service):
       return True
     return False
   #
-  def on_receive(self, ch, key, value):
+  def on_receive(self, ch, value, key):
     #g = p
     ch.send(value, key)
   #
@@ -39,21 +39,26 @@ class Service_Ping(Service):
 #  ch = None
   data = None
   no = None
+  nping = None
+  npong = None
   #
   def __init__(self, node, data='ping'):
     Service.__init__(self, "ping:%s" % random_key(4), node)
     self.data = data
     self.no = 0
-    #
+    self.nping = 0
+    self.npong = 0
   #
   def on_send(self, ch):
     self.no = self.no+1
     key = str(self.no)
     self.d_info("ping %s %s", key, repr(self.data))
     ch.send(self.data, key)
+    self.nping = self.nping + 1
   #
-  def on_receive(self, ch, key, value):
+  def on_receive(self, ch, value, key):
     self.d_info("pong %s %s", key, repr(value))
+    self.npong = self.npong + 1
   #
   def on_connect(self, ch):
     self.d_info("channel open %d->%d", ch.uid, ch.other_uid)
@@ -65,6 +70,9 @@ class Service_Ping(Service):
   def target(self, nid, sid, mode=''):
     ch = self.node().channel_open(self, nid, sid, 'echo', mode)
     pass
+  #
+  def statistics(self):
+    return "ping %d pong %d" % (self.nping, self.npong)
   #
   pass
 
