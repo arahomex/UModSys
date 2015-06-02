@@ -4,10 +4,12 @@ import time
 import sys
 import random
 
-from libnet.common import dbg, dbg_raw, DbgMultiTarget
-from libnet.logic import *
-from libnet.t_tcp import Gate_TCP, transport_tcp_tick
-from libnet.s_echo import *
+from umodsys.net.common import dbg, dbg_raw, DbgMultiTarget
+from umodsys.net.logic import *
+from umodsys.net.t_tcp import Gate_TCP, transport_tcp_tick
+from umodsys.net.s_echo import *
+
+from umodsys.media.logic import *
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------
@@ -47,6 +49,9 @@ Bus.systimes = 10
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------
+
+vfs = Library()
+vfs.point_add(0, 'data', Archive_Sys('../../data', False))
 
 tick = 0.01 # 10 ms
 mtime = 0.0
