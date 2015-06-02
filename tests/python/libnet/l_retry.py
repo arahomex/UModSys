@@ -126,7 +126,7 @@ class RetryQueue:
         rv = self.on_rq_in_lost(item)
         if rv:
           return rv
-        del in_q[k]
+        del self.in_q[k]
       #
     #
     for k in self.out_q.keys():

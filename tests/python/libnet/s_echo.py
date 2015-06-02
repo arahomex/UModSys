@@ -52,7 +52,7 @@ class Service_Ping(Service):
   def on_send(self, ch):
     self.no = self.no+1
     key = str(self.no)
-    self.d_info("ping %s %s", key, repr(self.data))
+    self.d_debug("ping %s %s", key, repr(self.data))
     ch.send(self.data, key)
     self.nping = self.nping + 1
   #

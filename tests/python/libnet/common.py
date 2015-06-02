@@ -143,6 +143,12 @@ def next_words(args, nargs, naux=0, cvt=None, key=' '):
     ret.append(val)
   return (ret, args)
 
+def as_integer(value):
+  try:
+    return int(value)
+  except:
+    return None
+
 
 random_char_set = string.ascii_uppercase + string.ascii_lowercase + string.digits
 

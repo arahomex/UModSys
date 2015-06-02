@@ -24,7 +24,10 @@ Gate_TCP.d_clev(4, 5, 10, 11)
 Node.d_clev(4, 5, 10, 11)
 Bus.d_clev(4, 5, 10, 11)
 #
+MetaChannel.d_clev(4, 5, 10, 11)
 MetaChannel.Simple.d_clev(4, 5, 10, 11)
+MetaChannel.Ordered.d_clev(4, 5, 10, 11)
+MetaChannel.Retry.d_clev(4, 5, 10, 11)
 #
 Service_Ping.d_clev(4, 5, 6, 15)
 Service_Echo.d_clev(4, 5, 6, 15)
@@ -76,14 +79,14 @@ ping = Service_Ping(node1)
 
 def gotsrv(sk, level, nid, sid):
   dbg_raw(0, "[%g] *** scan:%s level:%s node:%s service:%s" % (mtime, sk, level, nid, sid))
-#  ping.target(nid, sid, ('SEQ','RETRY'))
-#  ping.target(nid, sid, ('RETRY'))
-  ping.target(nid, sid, ())
+#  ping.target(nid, sid, ())
+#  ping.target(nid, sid, ('ORDERED'))
+  ping.target(nid, sid, ('RETRY'))
 
 
 Loop(400, isConnected)
 node1.service_scan(1, ('echo',), gotsrv, 2)
-Loop(50)
+Loop(400)
 node1.service_scan(1, ('echo',), gotsrv, 2)
 
 dbg_raw(8, "")
