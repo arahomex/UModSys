@@ -28,6 +28,7 @@ MetaChannel.d_clev(4, 5, 10, 11)
 MetaChannel.Simple.d_clev(4, 5, 10, 11)
 MetaChannel.Ordered.d_clev(4, 5, 10, 11)
 MetaChannel.Retry.d_clev(4, 5, 10, 11)
+MetaChannel.Stream.d_clev(4, 5, 10, 11)
 #
 Service_Ping.d_clev(4, 5, 6, 15)
 Service_Echo.d_clev(4, 5, 6, 15)
@@ -81,7 +82,8 @@ def gotsrv(sk, level, nid, sid):
   dbg_raw(0, "[%g] *** scan:%s level:%s node:%s service:%s" % (mtime, sk, level, nid, sid))
 #  ping.target(nid, sid, ())
 #  ping.target(nid, sid, ('ORDERED'))
-  ping.target(nid, sid, ('RETRY'))
+#  ping.target(nid, sid, ('RETRY'))
+  ping.target(nid, sid, ('STREAM'))
 
 
 Loop(400, isConnected)

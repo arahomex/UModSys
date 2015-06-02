@@ -239,10 +239,51 @@ class Channel_Retry(Channel_Simple, RetryQueue):
 
 #-------------------------------------------------------------
 
+class Channel_Stream(Channel_Retry):
+  #
+  in_num = None
+  #
+  def __init__(self, serv, chid, addr, mode, aux, chid2):
+    Channel_Retry.__init__(self, serv, chid, addr, mode, aux, chid2)
+    self.in_num = 1
+    self.readq = {}
+  #
+  def send(self, value, key=''):
+    item = RetryQueueOutItem((key, value))
+    self.rq_out_add(item, True)
+  #
+  def on_tick(self, tick):
+    if self.other_uid is not None:
+      self.d_debug("Tick request send")
+      self.service.on_send(self)
+    #
+    while self.in_num in self.readq:
+      key, value = self.readq[self.in_num]
+      del self.readq[self.in_num]
+      self.in_num = self.in_num + 1
+      self.service.on_receive(self, value, key)
+    #
+    self.on_rq_tick(tick)
+  #
+  #
+  def on_rq_out_lost(self, item):
+    self.rq_out_done(uid, None)
+    self.d_error("Undelivered packet %d", item.uid)
+    self.disconnect()
+  #
+  def on_rq_in_add(self, item):
+    data, key, value = item.data
+    item.data = None
+    self.readq[item.uid] = (key, value)
+    item.aux = make_frame(True, self.other_uid, '', "%d " % item.uid, data)
+  #
+
+#-------------------------------------------------------------
+
 MetaChannel.Simple = Channel_Simple
 MetaChannel.Ordered = Channel_Ordered
 MetaChannel.Retry = Channel_Retry
-#MetaChannel.Stream = Channel_Stream
+MetaChannel.Stream = Channel_Stream
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------
