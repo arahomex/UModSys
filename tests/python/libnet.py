@@ -52,8 +52,9 @@ def loss_sim(ctx, node, gate, addr, frame):
     return True
   return False
 
-Node.loss_simulator = [loss_sim, 100, 70]
-Node.loss_simulator = [loss_sim, 100, 10]
+#Node.loss_simulator = [loss_sim, 100, 70]
+#Node.loss_simulator = [loss_sim, 100, 10]
+
 Bus.systimenext = 0.1
 Bus.systimes = 10
 
@@ -62,7 +63,8 @@ Bus.systimes = 10
 
 vfs = Library()
 vfs.point_add(5, 'data', Archive_Sys('../../data'))
-vfs.point_add(4, 'data/zip', Archive_Zip(vfs.load('data/mctest.zip')))
+#vfs.point_add(4, 'data/zip', Archive_Zip(vfs.load('data/mctest.zip')))
+vfs.point_add(4, 'data/zip', Archive_Sys('../../data/_temp/out'))
 vfs.point_add(2, 'data/cache', Archive_Sys('../../data/cache', False))
 vfs.point_add(1, 'cache', Archive_Hashed(vfs, 'data/cache', 2))
 
@@ -119,7 +121,8 @@ def gotvfs(sk, level, nid, sid):
 Loop(400, isConnected)
 node1.service_scan(1, ('echo',), gotping, 2)
 node1.service_scan(1, ('vfs',), gotvfs, 2)
-Loop(1000)
+#Loop(1000)
+Loop(50000)
 
 dbg_raw(8, "")
 sys.stderr.write("\n")

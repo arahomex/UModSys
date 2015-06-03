@@ -239,7 +239,7 @@ class Bus(NodeObject, RetryQueue):
   #
   def on_rq_out_lost(self, item):
     self.d_warning("Undelivered command %s %s", item.uid, item.data[0])
-    self.rq_out_done(sc.key, (None, None))
+    self.rq_out_done(item.uid, (None, None))
   #
   #
   def on_rq_in_add(self, item):
