@@ -74,7 +74,8 @@ class Gate_TCP(Gate):
         block, frame = parse_frame(block)
         if frame is None:
           break
-        self.d_debug("on_block %d %s", len(block), repr(block))
+#        self.d_debug("on_block %d %s", len(block), repr(block))
+        self.d_debug("on_block %d", len(block))
         self.gate.on_frame(self, frame)
       pass
     #
@@ -97,7 +98,7 @@ class Gate_TCP(Gate):
         if (zlib.crc32(block) & 0xffffffff) == c:
           self.on_block(block)
         else:
-          self.d_debug("block crc failed, skip it")
+          self.d_warning("block crc failed, skip it")
           pass
     #
     def set_tmode(self, tmode):
@@ -262,13 +263,13 @@ class Gate_TCP(Gate):
     self.node().on_gate_connected(self, cli.uid, cli)
   #
   def on_disconnect(self, cli, isError=False):
-    self.d_info("on_disconnect %s %s" % (cli.uid, repr(isError)) )
+    self.d_info("on_disconnect %s %s", cli.uid, repr(isError))
     if cli.uid in self.clients:
       del self.clients[cli.uid]
       self.node().on_gate_disconnected(self, cli.uid, cli)
   #
   def on_frame(self, cli, frame):
-    self.d_debug("on_frame %s %s" % (cli.uid, repr(frame)) )
+    self.d_debug("on_frame %s %s", cli.uid, repr(frame))
     self.node().on_gate_frame(self, cli.uid, frame)
   #
 

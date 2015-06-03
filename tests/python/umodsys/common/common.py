@@ -2,9 +2,18 @@ import time
 import sys
 import weakref
 import struct
-import zlib
 import random
 import string
+import os
+
+try:
+  import blist
+  SortedDict = blist.sorteddict
+  print "Imported blist.sorteddict"
+except:
+  import sorteddict
+  SortedDict = sorteddict.SortedDict
+  print "Imported sorteddict.SortedDict"
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------
@@ -36,6 +45,18 @@ class DbgMultiTarget(object):
 
 #-------------------------------------------------------------
 #-------------------------------------------------------------
+
+def mkdir_p(dirname):
+  try:
+    if not os.path.exists(dirname):
+      os.makedirs(dirname)
+    return True
+  except:
+    return False
+
+def mkdir_file(filename):
+  return mkdir_p(os.path.dirname(filename))
+
 
 def is_array(var):
     return isinstance(var, (list, tuple))

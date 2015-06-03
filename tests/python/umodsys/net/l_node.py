@@ -181,13 +181,13 @@ class Node(BaseObject):
     return True
   #
   def channel_on_close(self, syscmd, argv):
-    if argv[0] not in channels:
+    if argv[0] not in self.channels:
       syscmd.nak('BAD_CHANNEL')
       return True
     syscmd.ack()
     #
     ch = self.channels[argv[0]]
-    ch.service.on_disconnect(ch)
+    ch.service.on_disconnect(ch, None)
   #
   # -------- ON handlers
   #

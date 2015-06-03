@@ -212,8 +212,8 @@ class Bus(NodeObject, RetryQueue):
       return
     return self.node().channel_on_opened(syscmd, argv)
   #
-  def on_syscmd_channel_close(self, bus, sid, chkey, command, args):
-    argv, args = next_words(args, 2, 100, (int,))
+  def on_syscmd_channel_close(self, syscmd):
+    argv, args = next_words(syscmd.args, 2, 100, (int,int))
     if argv is None:
       return
     return self.node().channel_on_close(syscmd, argv)

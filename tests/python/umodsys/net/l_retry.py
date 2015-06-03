@@ -136,10 +136,10 @@ class RetryQueue:
         item.time = self.out_time
         item.times = item.times - 1
         if item.times<0:
+          del self.out_q[k]
           rv = self.on_rq_out_lost(item)
           if rv:
             return rv
-          del out_q[k]
           continue
         rv = self.on_rq_out_send(item)
         if rv:

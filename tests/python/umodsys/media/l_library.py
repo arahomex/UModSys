@@ -1,8 +1,6 @@
 import time
 import sys
 import weakref
-import struct
-import zlib
 
 from ..common.common import *
 
@@ -16,23 +14,35 @@ class Library(BaseObject):
   def __init__(self):
     BaseObject.__init__(self)
     #
-    self.nodes = {}
+    self.nodes = SortedDict()
   #
   def point_filename(self, point, filename):
-    if filename.startswith(point[1]):
-      return filename[len(filename):]
+    path = point[1]
+    if filename.startswith(path):
+      return filename[len(path):]
     return None
   #
-  def point_add(self, lev, path, arc):
+  def point_norm(self, path):
+    if not path.startswith('/'):
+      path = '/' + path
+    return path
+  #
+  def point_normdir(self, path):
+    if not path.startswith('/'):
+      path = '/' + path
     if not path.endswith('/'):
       path += '/'
-    if not path.startswith('/'):
-      path += '/'
+    return path
+  #
+  def point_add(self, lev, path, arc):
+    path = self.point_normdir(path)
     self.nodes[(lev, path)] = arc
   #
   def load(self, filename):
-    for point,node in nodes.items():
+    filename = self.point_norm(filename)
+    for point,node in self.nodes.items():
       pix = self.point_filename(point, filename)
+      self.d_debug('Load "%s" pix %s %s', filename, repr((point,node)), repr(pix))
       if not pix:
         continue
       rv = node.load(pix)
@@ -41,14 +51,44 @@ class Library(BaseObject):
     return None
   #
   def save(self, filename, data):
-    for point,node in nodes.items():
+    filename = self.point_norm(filename)
+    for point,node in self.nodes.items():
       pix = self.point_filename(point, filename)
+      self.d_debug('Save "%s" pix %s %s', filename, repr((point,node)), repr(pix))
       if not pix:
         continue
       rv = node.save(pix, data)
       if rv:
         return rv
     return False
+  #
+  def list(self, filename):
+    filename = self.point_norm(filename)
+    self.d_debug('List files %s', filename)
+    ret = []
+    for point,node in self.nodes.items():
+      pix = self.point_filename(point, filename)
+      self.d_debug('List pix %s %s', repr((point,node)), repr(pix))
+      if not pix:
+        continue
+      rv = node.list(pix)
+      if rv:
+        for fn in rv:
+          ret.append(point[1]+fn)
+    return ret
+  #
+  def hash_md5(self, filename):
+    filename = self.point_norm(filename)
+    for point,node in self.nodes.items():
+      pix = self.point_filename(point, filename)
+      self.d_debug('Hash-md5 "%s" pix %s %s', filename, repr((point,node)), repr(pix))
+      if not pix:
+        continue
+      rv = node.hash_md5(pix)
+      if rv:
+        return rv
+    return None
+  #
   #
   pass
 

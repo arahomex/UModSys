@@ -35,7 +35,7 @@ def length_unpack(binary, idx, lid):
     val, = struct.unpack('!H', binary[idx:idx+2])
     return (idx+2, val)
   elif lid==3:
-    val, = struct.unpack('!I', binary[idx,idx+4])
+    val, = struct.unpack('!I', binary[idx:idx+4])
     return (idx+4, val)
   else:
     raise Exception('Value need to be [0..3]')

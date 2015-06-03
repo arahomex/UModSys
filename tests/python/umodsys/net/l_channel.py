@@ -108,7 +108,7 @@ class Channel_Simple(NodeObject, MetaChannel):
   #
   def disconnect(self):
     if self.other_uid is not None:
-      self.node().channel_initate(self.addr, self.uid, self.other_uid, self.options, False)
+      self.node().channel_initate(self.addr, self.uid, self.other_uid, MetaChannel.mode_encode(self.mode), self.aux, False)
   #
   def send(self, value, key=''):
     frame = make_frame(False, self.other_uid, '', key, value)
@@ -267,7 +267,7 @@ class Channel_Stream(Channel_Retry):
   #
   #
   def on_rq_out_lost(self, item):
-    self.rq_out_done(uid, None)
+    self.rq_out_done(item.uid, None)
     self.d_error("Undelivered packet %d", item.uid)
     self.disconnect()
   #
