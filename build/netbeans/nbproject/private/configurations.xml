@@ -4,8 +4,17 @@
     <df root="../../include" name="0">
       <df name="platform">
         <df name="linux">
+          <df name="libgd">
+            <in>config.h</in>
+          </df>
+          <in>SDL_config.h</in>
+          <in>ft2build.h</in>
+          <in>jconfig.h</in>
+          <in>jmorecfg.h</in>
+          <in>pnglibconf.h</in>
         </df>
         <df name="win32">
+          <in>SDL_config.h</in>
           <in>ft2build.h</in>
           <in>jconfig.h</in>
           <in>jmorecfg.h</in>
@@ -240,6 +249,15 @@
         <in>unistd.h</in>
       </df>
       <df name="luajit">
+        <df name="Linux_x86_64">
+          <in>lj_bcdef.h</in>
+          <in>lj_ffdef.h</in>
+          <in>lj_folddef.h</in>
+          <in>lj_libdef.h</in>
+          <in>lj_obj.h</in>
+          <in>lj_recdef.h</in>
+          <in>lj_vm.s</in>
+        </df>
         <df name="win32.x64">
           <in>lj_bcdef.h</in>
           <in>lj_err_fix.h</in>

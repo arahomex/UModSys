@@ -448,8 +448,6 @@
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/basesys/platform/win32/umodsys.basesys.rmodule.win32.cpp"
             ex="false"
@@ -460,78 +458,56 @@
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rmodule.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rmodulelib.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rmodulelibso.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rmodulelibthis.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rmoduleloader.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rparameters.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rsystem.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rsystem_exec.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rsystem_main.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.basesys.rsystem_tests.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/basesys/umodsys.c_main.cpp"
             ex="false"
@@ -639,15 +615,11 @@
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/lib/3d/umodsys.lib.3d.common.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/lib/3d/umodsys.lib.3d.objstates.cpp"
             ex="false"
@@ -658,22 +630,16 @@
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/lib/media/umodsys.lib.media.library.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/lib/ui/umodsys.lib.ui.common.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/lib/utils/libutils.common.cpp"
             ex="false"
@@ -684,113 +650,81 @@
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/module/3d/stdlib/umodsys.mod.3d.stdlib.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/module/media/images_std/umodsys.mod.media.images_std.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/module/media/serialize_json/umodsys.mod.media.serialize_json.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/module/media/stdio/umodsys.mod.media.stdio.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/module/media/stdlib/umodsys.mod.media.stdlib.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/module/media/zlib/umodsys.mod.media.zlib.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/module/ui/SDL_GL/umodsys.mod.ui.SDL_GL.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/module/ui/SDL_core/umodsys.mod.ui.SDL_core.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/module/ui/frames/umodsys.mod.ui.frames.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/libs/plugin_libStd.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/libs/plugin_libUI.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/main/umodsys.c_main.cpp"
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/main/umodsys.c_maint.cpp"
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/test/plugin_test1.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/test/plugin_test2.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/tests/test_core.cpp" ex="false" tool="1" flavor2="4">
       </item>
