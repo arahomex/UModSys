@@ -19,6 +19,8 @@ class Archive_Hashed(Archive):
   pwd = None
   files = None
   hashes = None
+  update_num = None
+  update_num_max = 10
   #
   def __init__(self, lib, pwd, numtop=4):
     Archive.__init__(self)
@@ -28,6 +30,7 @@ class Archive_Hashed(Archive):
     self.pwd = lib.point_normdir(pwd)
     #
     self._info_load()
+    self.update_num = self.update_num_max
   #
   def _info_load(self):
     lst = self.lib().load(self.pwd+'files')
@@ -61,6 +64,10 @@ class Archive_Hashed(Archive):
       lines.append("\t".join(line))
     return self.lib().save(self.pwd+'files', "\n".join(lines))
   #
+  def sync(self):
+    self._info_save()
+    self.update_num = self.update_num_max
+  #
   def _hash_fn(self, h):
     dr = ''
     if self.numtop>0:
@@ -81,7 +88,9 @@ class Archive_Hashed(Archive):
       self.hashes[md5] = True
     #
     self.files[filename] = SortedDict( filename= filename, md5= md5 )
-    self._info_save()
+    self.update_num = self.update_num - 1
+    if self.update_num<=0:
+      self.sync()
     #
     return True
   #

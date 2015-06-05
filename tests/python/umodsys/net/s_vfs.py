@@ -67,7 +67,7 @@ class Service_VFS_Client(Service):
   in_sync = None
   in_data = None
   in_list = None
-  in_seq_max = 1000
+  in_seq_max = 10
   #
   def __init__(self, node, cache, pwd):
     Service.__init__(self, "ping:%s" % random_key(4), node)

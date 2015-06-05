@@ -32,6 +32,7 @@ class Archive_Zip(Archive):
     for fn in self.zipfile.namelist():
       if fnmatch.fnmatch(fn, filename):
         rv.append(fn)
+    self.d_debug("List '%s' %d files", filename, len(rv))
     return rv
   #
   pass

@@ -16,6 +16,7 @@ from l_common import *
 class Gate_TCP(Gate):
   class Client(asyncore.dispatcher, BaseObject):
     gate = None
+    xinfo = None
     uid = None
     is_child = False
     is_connected = False
@@ -28,10 +29,11 @@ class Gate_TCP(Gate):
     writebuf = None
     readbuf = None
     #
-    def __init__(self, is_child, sock, gate, addr):
+    def __init__(self, is_child, sock, gate, addr, xinfo):
       asyncore.dispatcher.__init__(self, sock)
       self.is_child = is_child
       self.gate = gate
+      self.xinfo = xinfo
       self.writebuf = ''
       self.readbuf = ''
       self.need_connect = not is_child
@@ -45,16 +47,27 @@ class Gate_TCP(Gate):
         self.uid = "tcp:>%s" % repr(addr)
         self.tmode = 'RAW32'
         self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
+        #
+        if self.xinfo is not None:
+          xaddr = '0.0.0.0' ; xport = 0 ; isxaddr = False
+          if 'address' in self.xinfo:
+            xaddr = self.xinfo['address'] ; isxaddr = True
+          if 'port' in self.xinfo:
+            xport = self.xinfo['port'] ; isxaddr = True
+          if isxaddr:
+            self.d_info("Client bound to address %s", repr((xaddr, xport)))
+            self.bind( (xaddr, xport) )
+        #
         self.connect( addr )
       self.d_debug('new Client %s', self.uid)
     #
     @classmethod
-    def new(cls, host, port, gate):
-      return cls(False, None, gate, (host, port))
+    def new(cls, host, port, gate, xinfo):
+      return cls(False, None, gate, (host, port), xinfo)
     #
     @classmethod
     def subnew(cls, sock, addr, gate):
-      return cls(True, sock, gate, addr)
+      return cls(True, sock, gate, addr, None)
     #
     def queue(self, data):
       self.writebuf += data
@@ -210,12 +223,13 @@ class Gate_TCP(Gate):
   state = None
   sm = None
   #
-  def __init__(self, node, uid, mode, addr, port):
+  def __init__(self, node, uid, mode, addr, port, xinfo=None):
     Gate.__init__(self, uid, node)
     #
     self.mode = mode
     self.addr = addr
     self.port = port
+    self.xinfo = xinfo
     self.socket = None
     self.clients = {}
     self.state = 0
@@ -237,7 +251,7 @@ class Gate_TCP(Gate):
   #
   def sm_connect(self, tick):
     if self.state==0:
-      self.socket = self.Client.new(self.addr, self.port, self)
+      self.socket = self.Client.new(self.addr, self.port, self, self.xinfo)
       self.state=1
     elif self.state==1:
       pass

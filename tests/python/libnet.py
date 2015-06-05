@@ -7,6 +7,7 @@ import random
 from umodsys.net.common import dbg, dbg_raw, DbgMultiTarget
 from umodsys.net.logic import *
 from umodsys.net.t_tcp import Gate_TCP, transport_tcp_tick
+from umodsys.net.t_lo import Gate_Loopback
 
 from umodsys.net.s_echo import *
 from umodsys.net.s_vfs import *
@@ -24,6 +25,7 @@ for i in range(8,31): DebugFiles[i] = debugfile
 
 Gate_TCP.Client.d_clev(4, 5, 10, 11)
 Gate_TCP.d_clev(4, 5, 10, 11)
+Gate_Loopback.d_clev(4, 5, 10, 11)
 #
 Node.d_clev(4, 5, 10, 11)
 Bus.d_clev(4, 5, 10, 11)
@@ -58,6 +60,10 @@ def loss_sim(ctx, node, gate, addr, frame):
 Bus.systimenext = 0.1
 Bus.systimes = 10
 
+Service_VFS_Client.in_seq_max = 100
+
+Archive_Hashed.update_num_max = 200
+
 #-------------------------------------------------------------
 #-------------------------------------------------------------
 
@@ -65,6 +71,7 @@ vfs = Library()
 vfs.point_add(5, 'data', Archive_Sys('../../data'))
 #vfs.point_add(4, 'data/zip', Archive_Zip(vfs.load('data/mctest.zip')))
 vfs.point_add(4, 'data/zip', Archive_Sys('../../data/_temp/out'))
+#vfs.point_add(4, 'data/zip', Archive_Zip(vfs.load('data/_temp/huge.zip')))
 vfs.point_add(2, 'data/cache', Archive_Sys('../../data/cache', False))
 vfs.point_add(1, 'cache', Archive_Hashed(vfs, 'data/cache', 2))
 
@@ -77,8 +84,13 @@ mtime = 0.0
 node1 = Node('Node_1')
 node2 = Node('Node_2')
 
-Gate_TCP(node1, 'client', 'connect', 'localhost', 7000)
-Gate_TCP(node2, 'server', 'listen', 'localhost', 7000)
+#Gate_TCP(node1, 'client', 'connect', 'localhost', 7000)
+#Gate_TCP(node2, 'server', 'listen', 'localhost', 7000)
+#Gate_TCP(node1, 'client', 'connect', '127.0.0.1', 4990, {'address':'127.0.0.1', 'port':4900})
+#Gate_TCP(node2, 'server', 'listen', '127.0.0.1', 4990)
+
+Gate_Loopback(node1, 'client', 'server')
+Gate_Loopback(node2, 'server', None)
 
 Service_Echo(node2)
 #Service_VFS_Server(node2, vfs, 'data')

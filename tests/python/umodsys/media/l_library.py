@@ -48,6 +48,7 @@ class Library(BaseObject):
       rv = node.load(pix)
       if rv is not None:
         return rv
+    self.d_warning('Load "%s" failed', filename)
     return None
   #
   def save(self, filename, data):
