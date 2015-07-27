@@ -1,0 +1,449 @@
+begin project-group umodsys
+  set path-inc $(path-root)/include/umodsys
+  set path-src $(path-root)/src
+  
+  set path-s-base $(path-src)/base
+  set path-s-basesys $(path-src)/basesys
+  set path-s-core $(path-src)/core
+
+  set path-s-lib $(path-src)/lib
+  set path-s-mod $(path-src)/module
+  set path-s-plugin $(path-src)/plugin
+
+  option project-order umodsysc
+
+  begin project all
+    mode lib
+    #
+    depend umodsys_lib_core
+    depend umodsys_lib_base
+    depend umodsys_lib_basesys
+    #
+    depend umodsys_lib_libmedia
+    depend umodsys_lib_libui
+    depend umodsys_lib_lib2d
+    depend umodsys_lib_lib3d
+    #
+    depend umodsysc
+    depend umodsysct
+    #
+    depend plugin_libStd
+    depend plugin_libUI
+    depend plugin_test1
+    depend plugin_test2
+  end
+
+  begin project umodsysc
+    mode binary
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-s-basesys)
+    #
+    begin file-group src
+      file $(path-s-plugin)/main/umodsys.c_main.cpp
+    end
+    #
+    depend umodsys_lib_libui
+    depend umodsys_lib_libmedia
+    #
+    depend umodsys_lib_basesys
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+    #
+    depend plugin_libStd
+    depend plugin_libUI
+    depend plugin_test1
+    depend plugin_test2
+  end
+
+  begin project umodsysct
+    mode binary
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-s-basesys)
+    #
+    begin file-group src
+      file $(path-s-plugin)/main/umodsys.c_maint.cpp
+    end
+    #
+    depend umodsys_lib_basesys
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project umodsys_lib_core
+    mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin file-group core
+        file $(path-s-core)/umodsys.core.objects.cpp
+        file $(path-s-core)/umodsys.core.stdtypedefs.cpp
+        file $(path-s-core)/umodsys.core.uniqueptr.cpp
+        file $(path-s-core)/umodsys.core.uniqueptrlist.cpp
+      end
+      begin file-group tl
+        file $(path-s-core)/umodsys.tl.strings.cpp
+        file $(path-s-core)/umodsys.tl.utf8.cpp
+        file $(path-s-core)/umodsys.tl.utf16.cpp
+        file $(path-s-core)/umodsys.tl.utfcase.cpp
+      end
+    end
+    begin file-group headers
+      begin mask $(path-skip) $(path-inc)
+        include stdcore.h
+        include stdmath3d.h
+      end
+      begin file-group core
+        begin mask $(path-skip) $(path-inc)/core
+          include *.h
+        end
+        begin file-group arch
+          begin mask $(path-skip) $(path-inc)/core/arch
+            include *.h
+          end
+        end
+        begin file-group mem
+          begin mask $(path-skip) $(path-inc)/core/mem
+            include *.h
+          end
+        end
+        begin file-group util
+          begin mask $(path-skip) $(path-inc)/core/util
+            include *.h
+          end
+        end
+      end
+      #
+      begin file-group tl
+        begin file-group composite
+          begin mask $(path-skip) $(path-inc)/tl/composite
+            include *.h
+          end
+        end
+        begin file-group alloc
+          begin mask $(path-skip) $(path-inc)/tl/alloc
+            include *.h
+          end
+        end
+        begin file-group math
+          begin mask $(path-skip) $(path-inc)/tl/math
+            include *.h
+          end
+        end
+        begin file-group metastl
+          begin mask $(path-skip) $(path-inc)/tl/metastl
+            include *.h
+          end
+        end
+        begin file-group string
+          begin mask $(path-skip) $(path-inc)/tl/string
+            include *.h
+          end
+        end
+        begin file-group util
+          begin mask $(path-skip) $(path-inc)/tl/util
+            include *.h
+          end
+        end
+      end
+    end
+  end
+
+  begin project umodsys_lib_basesys
+    mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-basesys)
+        include *.cpp
+        include *.h
+      end
+    end
+  end
+
+  begin project umodsys_lib_base
+    mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-base)
+        include *.cpp
+        include *.h
+      end
+    end
+    begin file-group headers
+      begin mask $(path-skip) $(path-inc)
+        include stdbase.h
+      end
+      begin file-group base
+        begin mask $(path-skip) $(path-inc)/base
+          include *.h
+        end
+      end
+    end
+    #
+    begin file-group headers_utils
+      begin mask $(path-skip) $(path-inc)/lib/utils
+        include *.h
+      end
+    end
+    begin file-group lib_utils
+      begin mask $(path-skip) $(path-s-lib)/utils
+        include *.cpp *.h 
+      end
+    end
+  end
+
+  begin project umodsys_lib_libmedia
+    mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-jpeg-inc)
+    includes $(path-d-png-inc)
+    includes $(path-d-zlib-inc)
+    #
+    begin file-group headers_media
+      begin mask $(path-skip) $(path-inc)/lib/media
+        include *.h
+      end
+    end
+    begin file-group lib_media
+      begin mask $(path-skip) $(path-s-lib)/media
+        include *.cpp *.h 
+      end
+    end
+    #--------------------------------
+    begin file-group mod_stdio
+      begin mask $(path-skip) $(path-s-mod)/media/stdio
+        include *.cpp *.h 
+      end
+    end
+    begin file-group mod_stdlib
+      begin mask $(path-skip) $(path-s-mod)/media/stdlib
+        include *.cpp *.h 
+      end
+    end
+    #--------------------------------
+    begin file-group mod_serialize_json
+      begin mask $(path-skip) $(path-s-mod)/media/serialize_json
+        include *.cpp *.h 
+      end
+    end
+    begin file-group mod_serialize_yaml
+      begin mask $(path-skip) $(path-s-mod)/media/serialize_yaml
+        include *.cpp *.h 
+      end
+    end
+    begin file-group mod_serialize_xml
+      begin mask $(path-skip) $(path-s-mod)/media/serialize_xml
+        include *.cpp *.h 
+      end
+    end
+    begin file-group mod_serialize_cmdarg
+      begin mask $(path-skip) $(path-s-mod)/media/serialize_cmdarg
+        include *.cpp *.h 
+      end
+    end
+    #--------------------------------
+    begin file-group mod_images_std
+      begin mask $(path-skip) $(path-s-mod)/media/images_std
+        include *.cpp *.h 
+      end
+    end
+    #--------------------------------
+    begin file-group mod_zlib
+      begin mask $(path-skip) $(path-s-mod)/media/zlib
+        include *.cpp *.h 
+      end
+    end
+  end
+
+  begin project umodsys_lib_libui
+    mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-SDL2-inc)
+    includes $(path-d-SDL2_ttf-inc)
+    #
+    begin file-group headers_ui
+      begin mask $(path-skip) $(path-inc)/lib/ui
+        include *.h
+      end
+    end
+    begin file-group lib_ui
+      begin mask $(path-skip) $(path-s-lib)/ui
+        include *.cpp *.h 
+      end
+    end
+    begin file-group mod_SDL_core
+      begin mask $(path-skip) $(path-s-mod)/ui/SDL_core
+        include *.cpp *.h 
+      end
+    end
+    begin file-group mod_frames
+      begin mask $(path-skip) $(path-s-mod)/ui/frames
+        include *.cpp *.h 
+      end
+    end
+    begin file-group mod_SDL_GL
+      begin mask $(path-skip) $(path-s-mod)/ui/SDL_GL
+        include *.cpp *.h 
+        exclude umodsys.mod.ui.SDL_GL._*.h
+      end
+    end
+  end
+
+  begin project umodsys_lib_lib2d
+    mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group headers_2d
+      begin mask $(path-skip) $(path-inc)/lib/2d
+        include *.h
+      end
+    end
+    begin file-group lib_2d
+      begin mask $(path-skip) $(path-s-lib)/2d
+        include *.cpp *.h 
+      end
+    end
+    begin file-group mod_stdlib
+      begin mask $(path-skip) $(path-s-mod)/2d/stdlib
+        include *.cpp *.h 
+      end
+    end
+  end
+
+  begin project umodsys_lib_lib3d
+    mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group headers_3d
+      begin mask $(path-skip) $(path-inc)/lib/3d
+        include *.h
+      end
+    end
+    begin file-group lib_3d
+      begin mask $(path-skip) $(path-s-lib)/3d
+        include *.cpp *.h 
+      end
+    end
+    begin file-group mod_stdlib
+      begin mask $(path-skip) $(path-s-mod)/3d/stdlib
+        include *.cpp *.h 
+      end
+    end
+  end
+
+  begin project plugin_test1
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/test
+        include plugin_test1.cpp
+        include plugin_test1.*.h
+      end
+    end
+    depend umodsys_lib_libui
+    depend umodsys_lib_lib2d
+    depend umodsys_lib_lib3d
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_test2
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/test
+        include plugin_test2.cpp
+        include plugin_test2.*.h
+      end
+    end
+    depend umodsys_lib_core
+    depend umodsys_lib_base
+  end
+
+  begin project plugin_libStd
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/libs
+        include plugin_libStd.cpp
+      end
+    end
+    #
+    depend umodsys_lib_libmedia
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_libUI
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/libs
+        include plugin_libUI.cpp
+      end
+    end
+    #
+    depend umodsys_lib_libmedia
+    depend umodsys_lib_libui
+    depend umodsys_lib_lib2d
+    depend umodsys_lib_lib3d
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_libUI_SDL
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/libs
+        include plugin_libUI_SDL.cpp
+      end
+    end
+    #
+    depend umodsys_lib_libmedia
+    depend umodsys_lib_libui
+    depend umodsys_lib_lib2d
+    depend umodsys_lib_lib3d
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+end

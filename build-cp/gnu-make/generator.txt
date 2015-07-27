@@ -1,0 +1,28 @@
+generator makefile
+
+#set CXXFLAGS -fPIC -print-file-name=include
+#set CFLAGS -fPIC -print-file-name=include
+
+#set CXXFLAGS -fPIC -H
+#set CFLAGS -fPIC -H
+
+
+set platforms $(env PLATFORMS)
+#set platforms "$(shell uname)_$(shell uname -p)"
+set path-root ../..
+set path-skip 0
+
+set path-out-tmp $(path-root)/tmp
+set path-out-bin $(path-root)/bin
+
+set spname linux
+set ppath platform/linux
+
+include ../_gen/gen_options_deppath.txt
+
+include ../_gen/gen_options_main_generic.txt
+include ../_gen/gen_options_main_linux.txt
+
+include ../_gen/gen_options_depends_generic.txt
+include ../_gen/gen_options_depends_linux.txt
+

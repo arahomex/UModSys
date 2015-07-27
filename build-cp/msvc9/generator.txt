@@ -1,0 +1,19 @@
+generator msvc9
+
+set path-root ../../..
+set path-skip +1
+
+set path-out-bin \$(SolutionDir)../../bin/win32vc9_\$(ConfigurationName)_\$(PlatformName)
+set path-out-lib \$(SolutionDir)../../tmp/win32vc9_\$(ConfigurationName)_\$(PlatformName)
+set path-out-tmp \$(SolutionDir)../../tmp/win32vc9_\$(ConfigurationName)_\$(PlatformName)/\$(ProjectName)
+
+set spname win32
+set ppath platform/win32
+
+include ../_gen/gen_options_deppath.txt
+
+include ../_gen/gen_options_generic.txt
+include ../_gen/gen_options_vs2005_2008.txt
+
+include ../_gen/gen_options_depends_generic.txt
+include ../_gen/gen_options_depends_vs2005_2008.txt

@@ -1,0 +1,5685 @@
+$data = {
+  "registry" => [
+    {
+      "extensions" => [
+        {
+          "extension" => {
+            "EGL_EXT_create_context_robustness" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_NO_RESET_NOTIFICATION_EXT" => {},
+                    "EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY_EXT" => {},
+                    "EGL_CONTEXT_OPENGL_ROBUST_ACCESS_EXT" => {},
+                    "EGL_LOSE_CONTEXT_ON_RESET_EXT" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_ANGLE_d3d_share_handle_client_buffer" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_D3D_TEXTURE_2D_SHARE_HANDLE_ANGLE" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_NV_post_sub_buffer" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_POST_SUB_BUFFER_SUPPORTED_NV" => {}
+                  },
+                  "command" => {
+                    "eglPostSubBufferNV" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_NV_native_query" => {
+              "require" => [
+                {
+                  "command" => {
+                    "eglQueryNativeDisplayNV" => {},
+                    "eglQueryNativePixmapNV" => {},
+                    "eglQueryNativeWindowNV" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_MESA_drm_image" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_DRM_BUFFER_USE_SHARE_MESA" => {},
+                    "EGL_DRM_BUFFER_USE_MESA" => {},
+                    "EGL_DRM_BUFFER_STRIDE_MESA" => {},
+                    "EGL_DRM_BUFFER_FORMAT_ARGB32_MESA" => {},
+                    "EGL_DRM_BUFFER_MESA" => {},
+                    "EGL_DRM_BUFFER_FORMAT_MESA" => {},
+                    "EGL_DRM_BUFFER_USE_SCANOUT_MESA" => {}
+                  },
+                  "command" => {
+                    "eglExportDRMImageMESA" => {},
+                    "eglCreateDRMImageMESA" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_get_all_proc_addresses" => {
+              "supported" => "egl"
+            },
+            "EGL_ANGLE_surface_d3d_texture_2d_share_handle" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_D3D_TEXTURE_2D_SHARE_HANDLE_ANGLE" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_NV_depth_nonlinear" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_DEPTH_ENCODING_NV" => {},
+                    "EGL_DEPTH_ENCODING_NONE_NV" => {},
+                    "EGL_DEPTH_ENCODING_NONLINEAR_NV" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_gl_colorspace" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_GL_COLORSPACE_LINEAR_KHR" => {},
+                    "EGL_GL_COLORSPACE_KHR" => {},
+                    "EGL_GL_COLORSPACE_SRGB_KHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_stream_fifo" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_STREAM_TIME_PRODUCER_KHR" => {},
+                    "EGL_STREAM_TIME_NOW_KHR" => {},
+                    "EGL_STREAM_FIFO_LENGTH_KHR" => {},
+                    "EGL_STREAM_TIME_CONSUMER_KHR" => {}
+                  },
+                  "command" => {
+                    "eglQueryStreamTimeKHR" => {}
+                  }
+                }
+              ],
+              "protect" => "EGL_KHR_stream",
+              "supported" => "egl"
+            },
+            "EGL_ANDROID_blob_cache" => {
+              "require" => [
+                {
+                  "command" => {
+                    "eglSetBlobCacheFuncsANDROID" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_lock_surface" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_LOCK_USAGE_HINT_KHR" => {},
+                    "EGL_FORMAT_RGBA_8888_EXACT_KHR" => {},
+                    "EGL_BITMAP_PIXEL_LUMINANCE_OFFSET_KHR" => {},
+                    "EGL_MAP_PRESERVE_PIXELS_KHR" => {},
+                    "EGL_BITMAP_ORIGIN_KHR" => {},
+                    "EGL_MATCH_FORMAT_KHR" => {},
+                    "EGL_BITMAP_PIXEL_ALPHA_OFFSET_KHR" => {},
+                    "EGL_OPTIMAL_FORMAT_BIT_KHR" => {},
+                    "EGL_FORMAT_RGB_565_EXACT_KHR" => {},
+                    "EGL_FORMAT_RGBA_8888_KHR" => {},
+                    "EGL_READ_SURFACE_BIT_KHR" => {},
+                    "EGL_WRITE_SURFACE_BIT_KHR" => {},
+                    "EGL_UPPER_LEFT_KHR" => {},
+                    "EGL_BITMAP_PITCH_KHR" => {},
+                    "EGL_LOCK_SURFACE_BIT_KHR" => {},
+                    "EGL_BITMAP_POINTER_KHR" => {},
+                    "EGL_BITMAP_PIXEL_RED_OFFSET_KHR" => {},
+                    "EGL_LOWER_LEFT_KHR" => {},
+                    "EGL_BITMAP_PIXEL_GREEN_OFFSET_KHR" => {},
+                    "EGL_BITMAP_PIXEL_BLUE_OFFSET_KHR" => {},
+                    "EGL_FORMAT_RGB_565_KHR" => {}
+                  },
+                  "command" => {
+                    "eglUnlockSurfaceKHR" => {},
+                    "eglLockSurfaceKHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_EXT_platform_x11" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_PLATFORM_X11_EXT" => {},
+                    "EGL_PLATFORM_X11_SCREEN_EXT" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_stream" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_STREAM_STATE_KHR" => {},
+                    "EGL_STREAM_STATE_CONNECTING_KHR" => {},
+                    "EGL_CONSUMER_LATENCY_USEC_KHR" => {},
+                    "EGL_BAD_STREAM_KHR" => {},
+                    "EGL_STREAM_STATE_CREATED_KHR" => {},
+                    "EGL_PRODUCER_FRAME_KHR" => {},
+                    "EGL_STREAM_STATE_EMPTY_KHR" => {},
+                    "EGL_NO_STREAM_KHR" => {},
+                    "EGL_STREAM_STATE_OLD_FRAME_AVAILABLE_KHR" => {},
+                    "EGL_STREAM_STATE_NEW_FRAME_AVAILABLE_KHR" => {},
+                    "EGL_STREAM_STATE_DISCONNECTED_KHR" => {},
+                    "EGL_CONSUMER_FRAME_KHR" => {},
+                    "EGL_BAD_STATE_KHR" => {}
+                  },
+                  "command" => {
+                    "eglDestroyStreamKHR" => {},
+                    "eglCreateStreamKHR" => {},
+                    "eglQueryStreamu64KHR" => {},
+                    "eglStreamAttribKHR" => {},
+                    "eglQueryStreamKHR" => {}
+                  }
+                }
+              ],
+              "protect" => "KHRONOS_SUPPORT_INT64",
+              "supported" => "egl"
+            },
+            "EGL_KHR_config_attribs" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_VG_ALPHA_FORMAT_PRE_BIT_KHR" => {},
+                    "EGL_VG_COLORSPACE_LINEAR_BIT_KHR" => {},
+                    "EGL_CONFORMANT_KHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_ANDROID_native_fence_sync" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_SYNC_NATIVE_FENCE_SIGNALED_ANDROID" => {},
+                    "EGL_SYNC_NATIVE_FENCE_FD_ANDROID" => {},
+                    "EGL_SYNC_NATIVE_FENCE_ANDROID" => {},
+                    "EGL_NO_NATIVE_FENCE_FD_ANDROID" => {}
+                  },
+                  "command" => {
+                    "eglDupNativeFenceFDANDROID" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_ANDROID_framebuffer_target" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_FRAMEBUFFER_TARGET_ANDROID" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_EXT_client_extensions" => {
+              "supported" => "egl"
+            },
+            "EGL_MESA_platform_gbm" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_PLATFORM_GBM_MESA" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_image" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_NATIVE_PIXMAP_KHR" => {},
+                    "EGL_NO_IMAGE_KHR" => {}
+                  },
+                  "command" => {
+                    "eglDestroyImageKHR" => {},
+                    "eglCreateImageKHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_NV_3dvision_surface" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_AUTO_STEREO_NV" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_vg_parent_image" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_VG_PARENT_IMAGE_KHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_cl_event" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_CL_EVENT_HANDLE_KHR" => {},
+                    "EGL_SYNC_CL_EVENT_COMPLETE_KHR" => {},
+                    "EGL_SYNC_CL_EVENT_KHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_surfaceless_context" => {
+              "supported" => "egl"
+            },
+            "EGL_EXT_swap_buffers_with_damage" => {
+              "require" => [
+                {
+                  "command" => {
+                    "eglSwapBuffersWithDamageEXT" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_image_base" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_NO_IMAGE_KHR" => {},
+                    "EGL_IMAGE_PRESERVED_KHR" => {}
+                  },
+                  "command" => {
+                    "eglDestroyImageKHR" => {},
+                    "eglCreateImageKHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_gl_texture_2D_image" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_GL_TEXTURE_LEVEL_KHR" => {},
+                    "EGL_GL_TEXTURE_2D_KHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_ANDROID_image_native_buffer" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_NATIVE_BUFFER_ANDROID" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_stream_consumer_gltexture" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_CONSUMER_ACQUIRE_TIMEOUT_USEC_KHR" => {}
+                  },
+                  "command" => {
+                    "eglStreamConsumerReleaseKHR" => {},
+                    "eglStreamConsumerAcquireKHR" => {},
+                    "eglStreamConsumerGLTextureExternalKHR" => {}
+                  }
+                }
+              ],
+              "protect" => "EGL_KHR_stream",
+              "supported" => "egl"
+            },
+            "EGL_IMG_context_priority" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_CONTEXT_PRIORITY_HIGH_IMG" => {},
+                    "EGL_CONTEXT_PRIORITY_LEVEL_IMG" => {},
+                    "EGL_CONTEXT_PRIORITY_LOW_IMG" => {},
+                    "EGL_CONTEXT_PRIORITY_MEDIUM_IMG" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_wait_sync" => {
+              "require" => [
+                {
+                  "command" => {
+                    "eglWaitSyncKHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_NV_stream_sync" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_SYNC_NEW_FRAME_NV" => {},
+                    "EGL_SYNC_TYPE_KHR" => {}
+                  },
+                  "command" => {
+                    "eglCreateStreamSyncNV" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_ANGLE_query_surface_pointer" => {
+              "require" => [
+                {
+                  "command" => {
+                    "eglQuerySurfacePointerANGLE" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_stream_producer_aldatalocator" => {
+              "protect" => "EGL_KHR_stream",
+              "supported" => "egl"
+            },
+            "EGL_ARM_pixmap_multisample_discard" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_DISCARD_SAMPLES_ARM" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_NV_system_time" => {
+              "require" => [
+                {
+                  "command" => {
+                    "eglGetSystemTimeFrequencyNV" => {},
+                    "eglGetSystemTimeNV" => {}
+                  }
+                }
+              ],
+              "protect" => "KHRONOS_SUPPORT_INT64",
+              "supported" => "egl"
+            },
+            "EGL_NV_post_convert_rounding" => {
+              "supported" => "egl"
+            },
+            "EGL_HI_clientpixmap" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_CLIENT_PIXMAP_POINTER_HI" => {}
+                  },
+                  "command" => {
+                    "eglCreatePixmapSurfaceHI" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_gl_texture_3D_image" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_GL_TEXTURE_3D_KHR" => {},
+                    "EGL_GL_TEXTURE_ZOFFSET_KHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_EXT_platform_base" => {
+              "require" => [
+                {
+                  "command" => {
+                    "eglCreatePlatformPixmapSurfaceEXT" => {},
+                    "eglGetPlatformDisplayEXT" => {},
+                    "eglCreatePlatformWindowSurfaceEXT" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_cl_event2" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_CL_EVENT_HANDLE_KHR" => {},
+                    "EGL_SYNC_CL_EVENT_COMPLETE_KHR" => {},
+                    "EGL_SYNC_CL_EVENT_KHR" => {}
+                  },
+                  "command" => {
+                    "eglCreateSync64KHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_NV_sync" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_SYNC_CONDITION_NV" => {},
+                    "EGL_TIMEOUT_EXPIRED_NV" => {},
+                    "EGL_SYNC_FLUSH_COMMANDS_BIT_NV" => {},
+                    "EGL_CONDITION_SATISFIED_NV" => {},
+                    "EGL_SIGNALED_NV" => {},
+                    "EGL_UNSIGNALED_NV" => {},
+                    "EGL_SYNC_PRIOR_COMMANDS_COMPLETE_NV" => {},
+                    "EGL_FOREVER_NV" => {},
+                    "EGL_ALREADY_SIGNALED_NV" => {},
+                    "EGL_SYNC_STATUS_NV" => {},
+                    "EGL_NO_SYNC_NV" => {},
+                    "EGL_SYNC_FENCE_NV" => {},
+                    "EGL_SYNC_TYPE_NV" => {}
+                  },
+                  "command" => {
+                    "eglClientWaitSyncNV" => {},
+                    "eglFenceNV" => {},
+                    "eglDestroySyncNV" => {},
+                    "eglCreateFenceSyncNV" => {},
+                    "eglGetSyncAttribNV" => {},
+                    "eglSignalSyncNV" => {}
+                  }
+                }
+              ],
+              "protect" => "KHRONOS_SUPPORT_INT64",
+              "supported" => "egl"
+            },
+            "EGL_KHR_fence_sync" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_SYNC_FENCE_KHR" => {},
+                    "EGL_SYNC_CONDITION_KHR" => {},
+                    "EGL_SYNC_PRIOR_COMMANDS_COMPLETE_KHR" => {}
+                  }
+                }
+              ],
+              "protect" => "KHRONOS_SUPPORT_INT64",
+              "supported" => "egl"
+            },
+            "EGL_HI_colorformats" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_COLOR_ARGB_HI" => {},
+                    "EGL_COLOR_RGB_HI" => {},
+                    "EGL_COLOR_RGBA_HI" => {},
+                    "EGL_COLOR_FORMAT_HI" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_client_get_all_proc_addresses" => {
+              "comment" => "Alias of EGL_KHR_get_all_proc_addresses",
+              "supported" => "egl"
+            },
+            "EGL_EXT_platform_wayland" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_PLATFORM_WAYLAND_EXT" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_EXT_buffer_age" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_BUFFER_AGE_EXT" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_gl_texture_cubemap_image" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_GL_TEXTURE_CUBE_MAP_POSITIVE_Z_KHR" => {},
+                    "EGL_GL_TEXTURE_CUBE_MAP_POSITIVE_Y_KHR" => {},
+                    "EGL_GL_TEXTURE_CUBE_MAP_POSITIVE_X_KHR" => {},
+                    "EGL_GL_TEXTURE_CUBE_MAP_NEGATIVE_X_KHR" => {},
+                    "EGL_GL_TEXTURE_CUBE_MAP_NEGATIVE_Z_KHR" => {},
+                    "EGL_GL_TEXTURE_CUBE_MAP_NEGATIVE_Y_KHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_stream_producer_eglsurface" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_STREAM_BIT_KHR" => {}
+                  },
+                  "command" => {
+                    "eglCreateStreamProducerSurfaceKHR" => {}
+                  }
+                }
+              ],
+              "protect" => "EGL_KHR_stream",
+              "supported" => "egl"
+            },
+            "EGL_KHR_stream_cross_process_fd" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_NO_FILE_DESCRIPTOR_KHR" => {}
+                  },
+                  "command" => {
+                    "eglGetStreamFileDescriptorKHR" => {},
+                    "eglCreateStreamFromFileDescriptorKHR" => {}
+                  }
+                }
+              ],
+              "protect" => "EGL_KHR_stream",
+              "supported" => "egl"
+            },
+            "EGL_EXT_image_dma_buf_import" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_ITU_REC2020_EXT" => {},
+                    "EGL_LINUX_DRM_FOURCC_EXT" => {},
+                    "EGL_LINUX_DMA_BUF_EXT" => {},
+                    "EGL_YUV_FULL_RANGE_EXT" => {},
+                    "EGL_YUV_CHROMA_VERTICAL_SITING_HINT_EXT" => {},
+                    "EGL_DMA_BUF_PLANE2_FD_EXT" => {},
+                    "EGL_YUV_COLOR_SPACE_HINT_EXT" => {},
+                    "EGL_DMA_BUF_PLANE1_PITCH_EXT" => {},
+                    "EGL_YUV_NARROW_RANGE_EXT" => {},
+                    "EGL_ITU_REC601_EXT" => {},
+                    "EGL_ITU_REC709_EXT" => {},
+                    "EGL_DMA_BUF_PLANE0_PITCH_EXT" => {},
+                    "EGL_YUV_CHROMA_SITING_0_EXT" => {},
+                    "EGL_DMA_BUF_PLANE1_FD_EXT" => {},
+                    "EGL_YUV_CHROMA_SITING_0_5_EXT" => {},
+                    "EGL_DMA_BUF_PLANE0_FD_EXT" => {},
+                    "EGL_SAMPLE_RANGE_HINT_EXT" => {},
+                    "EGL_YUV_CHROMA_HORIZONTAL_SITING_HINT_EXT" => {},
+                    "EGL_DMA_BUF_PLANE1_OFFSET_EXT" => {},
+                    "EGL_DMA_BUF_PLANE2_PITCH_EXT" => {},
+                    "EGL_DMA_BUF_PLANE2_OFFSET_EXT" => {},
+                    "EGL_DMA_BUF_PLANE0_OFFSET_EXT" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_gl_renderbuffer_image" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_GL_RENDERBUFFER_KHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_lock_surface3" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_BITMAP_PIXEL_SIZE_KHR" => {},
+                    "EGL_LOCK_USAGE_HINT_KHR" => {},
+                    "EGL_FORMAT_RGBA_8888_EXACT_KHR" => {},
+                    "EGL_BITMAP_PIXEL_LUMINANCE_OFFSET_KHR" => {},
+                    "EGL_MAP_PRESERVE_PIXELS_KHR" => {},
+                    "EGL_BITMAP_ORIGIN_KHR" => {},
+                    "EGL_MATCH_FORMAT_KHR" => {},
+                    "EGL_BITMAP_PIXEL_ALPHA_OFFSET_KHR" => {},
+                    "EGL_OPTIMAL_FORMAT_BIT_KHR" => {},
+                    "EGL_FORMAT_RGB_565_EXACT_KHR" => {},
+                    "EGL_FORMAT_RGBA_8888_KHR" => {},
+                    "EGL_READ_SURFACE_BIT_KHR" => {},
+                    "EGL_WRITE_SURFACE_BIT_KHR" => {},
+                    "EGL_UPPER_LEFT_KHR" => {},
+                    "EGL_BITMAP_PITCH_KHR" => {},
+                    "EGL_LOCK_SURFACE_BIT_KHR" => {},
+                    "EGL_BITMAP_POINTER_KHR" => {},
+                    "EGL_BITMAP_PIXEL_RED_OFFSET_KHR" => {},
+                    "EGL_LOWER_LEFT_KHR" => {},
+                    "EGL_BITMAP_PIXEL_GREEN_OFFSET_KHR" => {},
+                    "EGL_BITMAP_PIXEL_BLUE_OFFSET_KHR" => {},
+                    "EGL_FORMAT_RGB_565_KHR" => {}
+                  },
+                  "command" => {
+                    "eglUnlockSurfaceKHR" => {},
+                    "eglLockSurfaceKHR" => {},
+                    "eglQuerySurface64KHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_image_pixmap" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_NATIVE_PIXMAP_KHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_NV_coverage_sample_resolve" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_COVERAGE_SAMPLE_RESOLVE_DEFAULT_NV" => {},
+                    "EGL_COVERAGE_SAMPLE_RESOLVE_NONE_NV" => {},
+                    "EGL_COVERAGE_SAMPLE_RESOLVE_NV" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_EXT_multiview_window" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_MULTIVIEW_VIEW_COUNT_EXT" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_NV_coverage_sample" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_COVERAGE_SAMPLES_NV" => {},
+                    "EGL_COVERAGE_BUFFERS_NV" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_reusable_sync" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_SYNC_REUSABLE_KHR" => {},
+                    "EGL_CONDITION_SATISFIED_KHR" => {},
+                    "EGL_FOREVER_KHR" => {},
+                    "EGL_SYNC_STATUS_KHR" => {},
+                    "EGL_SYNC_TYPE_KHR" => {},
+                    "EGL_SIGNALED_KHR" => {},
+                    "EGL_TIMEOUT_EXPIRED_KHR" => {},
+                    "EGL_NO_SYNC_KHR" => {},
+                    "EGL_UNSIGNALED_KHR" => {},
+                    "EGL_SYNC_FLUSH_COMMANDS_BIT_KHR" => {}
+                  },
+                  "command" => {
+                    "eglCreateSyncKHR" => {},
+                    "eglClientWaitSyncKHR" => {},
+                    "eglDestroySyncKHR" => {},
+                    "eglGetSyncAttribKHR" => {},
+                    "eglSignalSyncKHR" => {}
+                  }
+                }
+              ],
+              "protect" => "KHRONOS_SUPPORT_INT64",
+              "supported" => "egl"
+            },
+            "EGL_ANDROID_recordable" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_RECORDABLE_ANDROID" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_lock_surface2" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_BITMAP_PIXEL_SIZE_KHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            },
+            "EGL_KHR_create_context" => {
+              "require" => [
+                {
+                  "enum" => {
+                    "EGL_CONTEXT_OPENGL_DEBUG_BIT_KHR" => {},
+                    "EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY_KHR" => {},
+                    "EGL_CONTEXT_OPENGL_ROBUST_ACCESS_BIT_KHR" => {},
+                    "EGL_CONTEXT_OPENGL_FORWARD_COMPATIBLE_BIT_KHR" => {},
+                    "EGL_CONTEXT_OPENGL_COMPATIBILITY_PROFILE_BIT_KHR" => {},
+                    "EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT_KHR" => {},
+                    "EGL_CONTEXT_MINOR_VERSION_KHR" => {},
+                    "EGL_CONTEXT_MAJOR_VERSION_KHR" => {},
+                    "EGL_CONTEXT_OPENGL_PROFILE_MASK_KHR" => {},
+                    "EGL_LOSE_CONTEXT_ON_RESET_KHR" => {},
+                    "EGL_NO_RESET_NOTIFICATION_KHR" => {},
+                    "EGL_OPENGL_ES3_BIT_KHR" => {},
+                    "EGL_CONTEXT_FLAGS_KHR" => {}
+                  }
+                }
+              ],
+              "supported" => "egl"
+            }
+          }
+        }
+      ],
+      "feature" => {
+        "EGL_VERSION_1_3" => {
+          "require" => [
+            {
+              "enum" => {
+                "EGL_CONFORMANT" => {},
+                "EGL_VG_COLORSPACE_LINEAR" => {},
+                "EGL_CONTEXT_CLIENT_VERSION" => {},
+                "EGL_VG_ALPHA_FORMAT_NONPRE" => {},
+                "EGL_VG_COLORSPACE_LINEAR_BIT" => {},
+                "EGL_VG_COLORSPACE_sRGB" => {},
+                "EGL_OPENGL_ES2_BIT" => {},
+                "EGL_MATCH_NATIVE_PIXMAP" => {},
+                "EGL_VG_ALPHA_FORMAT_PRE_BIT" => {},
+                "EGL_VG_ALPHA_FORMAT_PRE" => {},
+                "EGL_VG_COLORSPACE" => {},
+                "EGL_VG_ALPHA_FORMAT" => {}
+              }
+            }
+          ],
+          "number" => "1.3",
+          "api" => "egl"
+        },
+        "EGL_VERSION_1_4" => {
+          "require" => [
+            {
+              "enum" => {
+                "EGL_OPENGL_API" => {},
+                "EGL_OPENGL_BIT" => {},
+                "EGL_SWAP_BEHAVIOR_PRESERVED_BIT" => {},
+                "EGL_MULTISAMPLE_RESOLVE_BOX" => {},
+                "EGL_MULTISAMPLE_RESOLVE_DEFAULT" => {},
+                "EGL_MULTISAMPLE_RESOLVE" => {},
+                "EGL_DEFAULT_DISPLAY" => {},
+                "EGL_MULTISAMPLE_RESOLVE_BOX_BIT" => {}
+              },
+              "command" => {
+                "eglGetCurrentContext" => {}
+              }
+            }
+          ],
+          "number" => "1.4",
+          "api" => "egl"
+        },
+        "EGL_VERSION_1_0" => {
+          "require" => [
+            {
+              "enum" => {
+                "EGL_HEIGHT" => {},
+                "EGL_SLOW_CONFIG" => {},
+                "EGL_BLUE_SIZE" => {},
+                "EGL_NONE" => {},
+                "EGL_TRANSPARENT_RED_VALUE" => {},
+                "EGL_CONFIG_ID" => {},
+                "EGL_ALPHA_SIZE" => {},
+                "EGL_SAMPLE_BUFFERS" => {},
+                "EGL_NATIVE_VISUAL_TYPE" => {},
+                "EGL_WINDOW_BIT" => {},
+                "EGL_NATIVE_VISUAL_ID" => {},
+                "EGL_TRANSPARENT_RGB" => {},
+                "EGL_MAX_PBUFFER_WIDTH" => {},
+                "EGL_TRANSPARENT_GREEN_VALUE" => {},
+                "EGL_TRANSPARENT_BLUE_VALUE" => {},
+                "EGL_DONT_CARE" => {},
+                "EGL_CORE_NATIVE_ENGINE" => {},
+                "EGL_CONFIG_CAVEAT" => {},
+                "EGL_NO_DISPLAY" => {},
+                "EGL_MAX_PBUFFER_PIXELS" => {},
+                "EGL_BAD_NATIVE_WINDOW" => {},
+                "EGL_WIDTH" => {},
+                "EGL_SUCCESS" => {},
+                "EGL_EXTENSIONS" => {},
+                "EGL_VERSION" => {},
+                "EGL_VENDOR" => {},
+                "EGL_LARGEST_PBUFFER" => {},
+                "EGL_BAD_DISPLAY" => {},
+                "EGL_RED_SIZE" => {},
+                "EGL_TRANSPARENT_TYPE" => {},
+                "EGL_PBUFFER_BIT" => {},
+                "EGL_BAD_CONTEXT" => {},
+                "EGL_BAD_SURFACE" => {},
+                "EGL_STENCIL_SIZE" => {},
+                "EGL_LEVEL" => {},
+                "EGL_SAMPLES" => {},
+                "EGL_BAD_MATCH" => {},
+                "EGL_MAX_PBUFFER_HEIGHT" => {},
+                "EGL_BAD_CURRENT_SURFACE" => {},
+                "EGL_DRAW" => {},
+                "EGL_GREEN_SIZE" => {},
+                "EGL_NOT_INITIALIZED" => {},
+                "EGL_DEPTH_SIZE" => {},
+                "EGL_BAD_ACCESS" => {},
+                "EGL_READ" => {},
+                "EGL_BAD_ATTRIBUTE" => {},
+                "EGL_PIXMAP_BIT" => {},
+                "EGL_BAD_NATIVE_PIXMAP" => {},
+                "EGL_BAD_ALLOC" => {},
+                "EGL_BUFFER_SIZE" => {},
+                "EGL_SURFACE_TYPE" => {},
+                "EGL_BAD_CONFIG" => {},
+                "EGL_NO_CONTEXT" => {},
+                "EGL_NON_CONFORMANT_CONFIG" => {},
+                "EGL_FALSE" => {},
+                "EGL_NATIVE_RENDERABLE" => {},
+                "EGL_TRUE" => {},
+                "EGL_NO_SURFACE" => {},
+                "EGL_BAD_PARAMETER" => {}
+              },
+              "command" => {
+                "eglGetDisplay" => {},
+                "eglWaitGL" => {},
+                "eglDestroySurface" => {},
+                "eglCreatePixmapSurface" => {},
+                "eglQueryContext" => {},
+                "eglCreateWindowSurface" => {},
+                "eglGetProcAddress" => {},
+                "eglTerminate" => {},
+                "eglQuerySurface" => {},
+                "eglGetCurrentDisplay" => {},
+                "eglQueryString" => {},
+                "eglMakeCurrent" => {},
+                "eglCopyBuffers" => {},
+                "eglSwapBuffers" => {},
+                "eglChooseConfig" => {},
+                "eglCreateContext" => {},
+                "eglGetError" => {},
+                "eglInitialize" => {},
+                "eglDestroyContext" => {},
+                "eglGetCurrentSurface" => {},
+                "eglGetConfigAttrib" => {},
+                "eglCreatePbufferSurface" => {},
+                "eglWaitNative" => {},
+                "eglGetConfigs" => {}
+              }
+            }
+          ],
+          "number" => "1.0",
+          "api" => "egl"
+        },
+        "EGL_VERSION_1_2" => {
+          "require" => [
+            {
+              "enum" => {
+                "EGL_RENDER_BUFFER" => {},
+                "EGL_COLORSPACE_LINEAR" => {},
+                "EGL_BUFFER_PRESERVED" => {},
+                "EGL_RENDERABLE_TYPE" => {},
+                "EGL_OPENVG_API" => {},
+                "EGL_BUFFER_DESTROYED" => {},
+                "EGL_COLOR_BUFFER_TYPE" => {},
+                "EGL_VERTICAL_RESOLUTION" => {},
+                "EGL_COLORSPACE_sRGB" => {},
+                "EGL_RGB_BUFFER" => {},
+                "EGL_HORIZONTAL_RESOLUTION" => {},
+                "EGL_OPENGL_ES_API" => {},
+                "EGL_OPENVG_BIT" => {},
+                "EGL_COLORSPACE" => {},
+                "EGL_ALPHA_MASK_SIZE" => {},
+                "EGL_LUMINANCE_SIZE" => {},
+                "EGL_OPENGL_ES_BIT" => {},
+                "EGL_UNKNOWN" => {},
+                "EGL_CONTEXT_CLIENT_TYPE" => {},
+                "EGL_ALPHA_FORMAT_PRE" => {},
+                "EGL_ALPHA_FORMAT" => {},
+                "EGL_ALPHA_FORMAT_NONPRE" => {},
+                "EGL_PIXEL_ASPECT_RATIO" => {},
+                "EGL_SWAP_BEHAVIOR" => {},
+                "EGL_SINGLE_BUFFER" => {},
+                "EGL_CLIENT_APIS" => {},
+                "EGL_OPENVG_IMAGE" => {},
+                "EGL_DISPLAY_SCALING" => {},
+                "EGL_LUMINANCE_BUFFER" => {}
+              },
+              "command" => {
+                "eglQueryAPI" => {},
+                "eglCreatePbufferFromClientBuffer" => {},
+                "eglReleaseThread" => {},
+                "eglBindAPI" => {},
+                "eglWaitClient" => {}
+              }
+            }
+          ],
+          "number" => "1.2",
+          "api" => "egl"
+        },
+        "EGL_VERSION_1_1" => {
+          "require" => [
+            {
+              "enum" => {
+                "EGL_MIPMAP_TEXTURE" => {},
+                "EGL_TEXTURE_RGBA" => {},
+                "EGL_BIND_TO_TEXTURE_RGBA" => {},
+                "EGL_TEXTURE_TARGET" => {},
+                "EGL_TEXTURE_2D" => {},
+                "EGL_MIN_SWAP_INTERVAL" => {},
+                "EGL_BIND_TO_TEXTURE_RGB" => {},
+                "EGL_CONTEXT_LOST" => {},
+                "EGL_TEXTURE_FORMAT" => {},
+                "EGL_BACK_BUFFER" => {},
+                "EGL_MAX_SWAP_INTERVAL" => {},
+                "EGL_MIPMAP_LEVEL" => {},
+                "EGL_TEXTURE_RGB" => {},
+                "EGL_NO_TEXTURE" => {}
+              },
+              "command" => {
+                "eglReleaseTexImage" => {},
+                "eglSurfaceAttrib" => {},
+                "eglSwapInterval" => {},
+                "eglBindTexImage" => {}
+              }
+            }
+          ],
+          "number" => "1.1",
+          "api" => "egl"
+        }
+      },
+      "types" => [
+        {
+          "type" => [
+            {
+              "content" => "#include <KHR/khrplatform.h>",
+              "name" => "khrplatform"
+            },
+            {
+              "content" => "#include <EGL/eglplatform.h>",
+              "name" => "eglplatform",
+              "requires" => "khrplatform"
+            },
+            {
+              "name" => "khronos_utime_nanoseconds_t",
+              "requires" => "khrplatform"
+            },
+            {
+              "name" => "khronos_uint64_t",
+              "requires" => "khrplatform"
+            },
+            {
+              "name" => "khronos_ssize_t",
+              "requires" => "khrplatform"
+            },
+            {
+              "name" => "EGLNativeDisplayType",
+              "requires" => "eglplatform"
+            },
+            {
+              "name" => "EGLNativePixmapType",
+              "requires" => "eglplatform"
+            },
+            {
+              "name" => "EGLNativeWindowType",
+              "requires" => "eglplatform"
+            },
+            {
+              "name" => "EGLint",
+              "requires" => "eglplatform"
+            },
+            {
+              "name" => "NativeDisplayType",
+              "requires" => "eglplatform"
+            },
+            {
+              "name" => "NativePixmapType",
+              "requires" => "eglplatform"
+            },
+            {
+              "name" => "NativeWindowType",
+              "requires" => "eglplatform"
+            },
+            {
+              "name" => "Bool"
+            },
+            {
+              "name" => [
+                "EGLBoolean"
+              ],
+              "content" => [
+                "typedef unsigned int ",
+                ";"
+              ]
+            },
+            {
+              "name" => [
+                "EGLenum"
+              ],
+              "content" => [
+                "typedef unsigned int ",
+                ";"
+              ]
+            },
+            {
+              "name" => [
+                "EGLAttribKHR"
+              ],
+              "content" => [
+                "typedef intptr_t ",
+                ";"
+              ],
+              "requires" => "khrplatform"
+            },
+            {
+              "name" => [
+                "EGLConfig"
+              ],
+              "content" => [
+                "typedef void *",
+                ";"
+              ]
+            },
+            {
+              "name" => [
+                "EGLContext"
+              ],
+              "content" => [
+                "typedef void *",
+                ";"
+              ]
+            },
+            {
+              "name" => [
+                "EGLDisplay"
+              ],
+              "content" => [
+                "typedef void *",
+                ";"
+              ]
+            },
+            {
+              "name" => [
+                "EGLSurface"
+              ],
+              "content" => [
+                "typedef void *",
+                ";"
+              ]
+            },
+            {
+              "name" => [
+                "EGLClientBuffer"
+              ],
+              "content" => [
+                "typedef void *",
+                ";"
+              ]
+            },
+            {
+              "name" => [
+                "__eglMustCastToProperFunctionPointerType"
+              ],
+              "content" => [
+                "typedef void (*",
+                ")(void);"
+              ]
+            },
+            {
+              "name" => [
+                "EGLImageKHR"
+              ],
+              "content" => [
+                "typedef void *",
+                ";"
+              ]
+            },
+            {
+              "name" => [
+                "EGLSyncKHR"
+              ],
+              "content" => [
+                "typedef void *",
+                ";"
+              ]
+            },
+            {
+              "name" => [
+                "EGLTimeKHR"
+              ],
+              "content" => [
+                "typedef khronos_utime_nanoseconds_t ",
+                ";"
+              ],
+              "requires" => "khrplatform"
+            },
+            {
+              "name" => [
+                "EGLSyncNV"
+              ],
+              "content" => [
+                "typedef void *",
+                ";"
+              ]
+            },
+            {
+              "name" => [
+                "EGLTimeNV"
+              ],
+              "content" => [
+                "typedef khronos_utime_nanoseconds_t ",
+                ";"
+              ],
+              "requires" => "khrplatform"
+            },
+            {
+              "name" => [
+                "EGLuint64NV"
+              ],
+              "content" => [
+                "typedef khronos_utime_nanoseconds_t ",
+                ";"
+              ],
+              "requires" => "khrplatform"
+            },
+            {
+              "name" => [
+                "EGLStreamKHR"
+              ],
+              "content" => [
+                "typedef void *",
+                ";"
+              ]
+            },
+            {
+              "name" => [
+                "EGLuint64KHR"
+              ],
+              "content" => [
+                "typedef khronos_uint64_t ",
+                ";"
+              ],
+              "requires" => "khrplatform"
+            },
+            {
+              "name" => [
+                "EGLNativeFileDescriptorKHR"
+              ],
+              "content" => [
+                "typedef int ",
+                ";"
+              ]
+            },
+            {
+              "name" => [
+                "EGLsizeiANDROID"
+              ],
+              "content" => [
+                "typedef khronos_ssize_t ",
+                ";"
+              ],
+              "requires" => "khrplatform"
+            },
+            {
+              "name" => [
+                "EGLSetBlobFuncANDROID"
+              ],
+              "content" => [
+                "typedef void (*",
+                ") (const void *key, EGLsizeiANDROID keySize, const void *value, EGLsizeiANDROID valueSize);"
+              ],
+              "requires" => "EGLsizeiANDROID"
+            },
+            {
+              "name" => [
+                "EGLGetBlobFuncANDROID"
+              ],
+              "content" => [
+                "typedef EGLsizeiANDROID (*",
+                ") (const void *key, EGLsizeiANDROID keySize, void *value, EGLsizeiANDROID valueSize);"
+              ],
+              "requires" => "EGLsizeiANDROID"
+            },
+            {
+              "name" => [
+                "EGLClientPixmapHI"
+              ],
+              "content" => [
+                "struct ",
+                " {\r\n    void  *pData;\r\n    EGLint iWidth;\r\n    EGLint iHeight;\r\n    EGLint iStride;\r\n};"
+              ]
+            }
+          ]
+        }
+      ],
+      "commands" => [
+        {
+          "namespace" => "EGL",
+          "command" => [
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglBindAPI"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLenum"
+                  ],
+                  "name" => [
+                    "api"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglBindTexImage"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "surface"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "buffer"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglChooseConfig"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLConfig"
+                  ],
+                  "name" => [
+                    "configs"
+                  ],
+                  "content" => " *"
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "config_size"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "num_config"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "eglClientWaitSyncKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSyncKHR"
+                  ],
+                  "name" => [
+                    "sync"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "flags"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLTimeKHR"
+                  ],
+                  "name" => [
+                    "timeout"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "eglClientWaitSyncNV"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLSyncNV"
+                  ],
+                  "name" => [
+                    "sync"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "flags"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLTimeNV"
+                  ],
+                  "name" => [
+                    "timeout"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglCopyBuffers"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "surface"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLNativePixmapType"
+                  ],
+                  "name" => [
+                    "target"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLContext"
+                  ],
+                  "name" => [
+                    "eglCreateContext"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLConfig"
+                  ],
+                  "name" => [
+                    "config"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLContext"
+                  ],
+                  "name" => [
+                    "share_context"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLImageKHR"
+                  ],
+                  "name" => [
+                    "eglCreateDRMImageMESA"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLSyncNV"
+                  ],
+                  "name" => [
+                    "eglCreateFenceSyncNV"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLenum"
+                  ],
+                  "name" => [
+                    "condition"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLImageKHR"
+                  ],
+                  "name" => [
+                    "eglCreateImageKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLContext"
+                  ],
+                  "name" => [
+                    "ctx"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLenum"
+                  ],
+                  "name" => [
+                    "target"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLClientBuffer"
+                  ],
+                  "name" => [
+                    "buffer"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "eglCreatePbufferFromClientBuffer"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLenum"
+                  ],
+                  "name" => [
+                    "buftype"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLClientBuffer"
+                  ],
+                  "name" => [
+                    "buffer"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLConfig"
+                  ],
+                  "name" => [
+                    "config"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "eglCreatePbufferSurface"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLConfig"
+                  ],
+                  "name" => [
+                    "config"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "eglCreatePixmapSurface"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLConfig"
+                  ],
+                  "name" => [
+                    "config"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLNativePixmapType"
+                  ],
+                  "name" => [
+                    "pixmap"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "eglCreatePixmapSurfaceHI"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLConfig"
+                  ],
+                  "name" => [
+                    "config"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLClientPixmapHI"
+                  ],
+                  "name" => [
+                    "pixmap"
+                  ],
+                  "content" => [
+                    "struct ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "eglCreatePlatformPixmapSurfaceEXT"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLConfig"
+                  ],
+                  "name" => [
+                    "config"
+                  ]
+                },
+                {
+                  "name" => [
+                    "native_pixmap"
+                  ],
+                  "content" => "void *"
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "eglCreatePlatformWindowSurfaceEXT"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLConfig"
+                  ],
+                  "name" => [
+                    "config"
+                  ]
+                },
+                {
+                  "name" => [
+                    "native_window"
+                  ],
+                  "content" => "void *"
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLStreamKHR"
+                  ],
+                  "name" => [
+                    "eglCreateStreamFromFileDescriptorKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLNativeFileDescriptorKHR"
+                  ],
+                  "name" => [
+                    "file_descriptor"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLStreamKHR"
+                  ],
+                  "name" => [
+                    "eglCreateStreamKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "eglCreateStreamProducerSurfaceKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLConfig"
+                  ],
+                  "name" => [
+                    "config"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLStreamKHR"
+                  ],
+                  "name" => [
+                    "stream"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLSyncKHR"
+                  ],
+                  "name" => [
+                    "eglCreateStreamSyncNV"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLStreamKHR"
+                  ],
+                  "name" => [
+                    "stream"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLenum"
+                  ],
+                  "name" => [
+                    "type"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLSyncKHR"
+                  ],
+                  "name" => [
+                    "eglCreateSyncKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLenum"
+                  ],
+                  "name" => [
+                    "type"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLSyncKHR"
+                  ],
+                  "name" => [
+                    "eglCreateSync64KHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLenum"
+                  ],
+                  "name" => [
+                    "type"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLAttribKHR"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "eglCreateWindowSurface"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLConfig"
+                  ],
+                  "name" => [
+                    "config"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLNativeWindowType"
+                  ],
+                  "name" => [
+                    "win"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglDestroyContext"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLContext"
+                  ],
+                  "name" => [
+                    "ctx"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglDestroyImageKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLImageKHR"
+                  ],
+                  "name" => [
+                    "image"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglDestroyStreamKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLStreamKHR"
+                  ],
+                  "name" => [
+                    "stream"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglDestroySurface"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "surface"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglDestroySyncKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSyncKHR"
+                  ],
+                  "name" => [
+                    "sync"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglDestroySyncNV"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLSyncNV"
+                  ],
+                  "name" => [
+                    "sync"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "eglDupNativeFenceFDANDROID"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSyncKHR"
+                  ],
+                  "name" => [
+                    "sync"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglExportDRMImageMESA"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLImageKHR"
+                  ],
+                  "name" => [
+                    "image"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "name"
+                  ],
+                  "content" => " *"
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "handle"
+                  ],
+                  "content" => " *"
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "stride"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglFenceNV"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLSyncNV"
+                  ],
+                  "name" => [
+                    "sync"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglGetConfigAttrib"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLConfig"
+                  ],
+                  "name" => [
+                    "config"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attribute"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "value"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglGetConfigs"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLConfig"
+                  ],
+                  "name" => [
+                    "configs"
+                  ],
+                  "content" => " *"
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "config_size"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "num_config"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLContext"
+                  ],
+                  "name" => [
+                    "eglGetCurrentContext"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "eglGetCurrentDisplay"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "eglGetCurrentSurface"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "readdraw"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "eglGetDisplay"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLNativeDisplayType"
+                  ],
+                  "name" => [
+                    "display_id"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "eglGetError"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "eglGetPlatformDisplayEXT"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLenum"
+                  ],
+                  "name" => [
+                    "platform"
+                  ]
+                },
+                {
+                  "name" => [
+                    "native_display"
+                  ],
+                  "content" => "void *"
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "__eglMustCastToProperFunctionPointerType"
+                  ],
+                  "name" => [
+                    "eglGetProcAddress"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "name" => [
+                    "procname"
+                  ],
+                  "content" => "const char *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLNativeFileDescriptorKHR"
+                  ],
+                  "name" => [
+                    "eglGetStreamFileDescriptorKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLStreamKHR"
+                  ],
+                  "name" => [
+                    "stream"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglGetSyncAttribKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSyncKHR"
+                  ],
+                  "name" => [
+                    "sync"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attribute"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "value"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglGetSyncAttribNV"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLSyncNV"
+                  ],
+                  "name" => [
+                    "sync"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attribute"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "value"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLuint64NV"
+                  ],
+                  "name" => [
+                    "eglGetSystemTimeFrequencyNV"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLuint64NV"
+                  ],
+                  "name" => [
+                    "eglGetSystemTimeNV"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglInitialize"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "major"
+                  ],
+                  "content" => " *"
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "minor"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglLockSurfaceKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "surface"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attrib_list"
+                  ],
+                  "content" => [
+                    "const ",
+                    " *"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglMakeCurrent"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "draw"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "read"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLContext"
+                  ],
+                  "name" => [
+                    "ctx"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglPostSubBufferNV"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "surface"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "x"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "y"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "width"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "height"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLenum"
+                  ],
+                  "name" => [
+                    "eglQueryAPI"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglQueryContext"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLContext"
+                  ],
+                  "name" => [
+                    "ctx"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attribute"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "value"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglQueryNativeDisplayNV"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLNativeDisplayType"
+                  ],
+                  "name" => [
+                    "display_id"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglQueryNativePixmapNV"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "surf"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLNativePixmapType"
+                  ],
+                  "name" => [
+                    "pixmap"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglQueryNativeWindowNV"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "surf"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLNativeWindowType"
+                  ],
+                  "name" => [
+                    "window"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglQueryStreamKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLStreamKHR"
+                  ],
+                  "name" => [
+                    "stream"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLenum"
+                  ],
+                  "name" => [
+                    "attribute"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "value"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglQueryStreamTimeKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLStreamKHR"
+                  ],
+                  "name" => [
+                    "stream"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLenum"
+                  ],
+                  "name" => [
+                    "attribute"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLTimeKHR"
+                  ],
+                  "name" => [
+                    "value"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglQueryStreamu64KHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLStreamKHR"
+                  ],
+                  "name" => [
+                    "stream"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLenum"
+                  ],
+                  "name" => [
+                    "attribute"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLuint64KHR"
+                  ],
+                  "name" => [
+                    "value"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "name" => [
+                    "eglQueryString"
+                  ],
+                  "content" => "const char *"
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "name"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglQuerySurface"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "surface"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attribute"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "value"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglQuerySurface64KHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "surface"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attribute"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLAttribKHR"
+                  ],
+                  "name" => [
+                    "value"
+                  ],
+                  "content" => " *"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglQuerySurfacePointerANGLE"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "surface"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attribute"
+                  ]
+                },
+                {
+                  "name" => [
+                    "value"
+                  ],
+                  "content" => "void **"
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglReleaseTexImage"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "surface"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "buffer"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglReleaseThread"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "name" => [
+                    "eglSetBlobCacheFuncsANDROID"
+                  ],
+                  "content" => "void "
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSetBlobFuncANDROID"
+                  ],
+                  "name" => [
+                    "set"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLGetBlobFuncANDROID"
+                  ],
+                  "name" => [
+                    "get"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglSignalSyncKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSyncKHR"
+                  ],
+                  "name" => [
+                    "sync"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLenum"
+                  ],
+                  "name" => [
+                    "mode"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglSignalSyncNV"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLSyncNV"
+                  ],
+                  "name" => [
+                    "sync"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLenum"
+                  ],
+                  "name" => [
+                    "mode"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglStreamAttribKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLStreamKHR"
+                  ],
+                  "name" => [
+                    "stream"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLenum"
+                  ],
+                  "name" => [
+                    "attribute"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "value"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglStreamConsumerAcquireKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLStreamKHR"
+                  ],
+                  "name" => [
+                    "stream"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglStreamConsumerGLTextureExternalKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLStreamKHR"
+                  ],
+                  "name" => [
+                    "stream"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglStreamConsumerReleaseKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLStreamKHR"
+                  ],
+                  "name" => [
+                    "stream"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglSurfaceAttrib"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "surface"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "attribute"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "value"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglSwapBuffers"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "surface"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglSwapBuffersWithDamageEXT"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "surface"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "rects"
+                  ],
+                  "content" => " *"
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "n_rects"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglSwapInterval"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "interval"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglTerminate"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglUnlockSurfaceKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSurface"
+                  ],
+                  "name" => [
+                    "surface"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglWaitClient"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglWaitGL"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLBoolean"
+                  ],
+                  "name" => [
+                    "eglWaitNative"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "engine"
+                  ]
+                }
+              ]
+            },
+            {
+              "proto" => [
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "eglWaitSyncKHR"
+                  ]
+                }
+              ],
+              "param" => [
+                {
+                  "ptype" => [
+                    "EGLDisplay"
+                  ],
+                  "name" => [
+                    "dpy"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLSyncKHR"
+                  ],
+                  "name" => [
+                    "sync"
+                  ]
+                },
+                {
+                  "ptype" => [
+                    "EGLint"
+                  ],
+                  "name" => [
+                    "flags"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "enums" => [
+        {
+          "comment" => "EGL_SURFACE_TYPE bits",
+          "namespace" => "EGLSurfaceTypeMask",
+          "enum" => {
+            "EGL_STREAM_BIT_KHR" => {
+              "value" => "0x0800"
+            },
+            "EGL_VG_ALPHA_FORMAT_PRE_BIT_KHR" => {
+              "value" => "0x0040"
+            },
+            "EGL_PBUFFER_PALETTE_IMAGE_BIT_TAO" => {
+              "comment" => "Unreleased TAO extension",
+              "value" => "0x0010"
+            },
+            "EGL_SWAP_BEHAVIOR_PRESERVED_BIT" => {
+              "value" => "0x0400"
+            },
+            "EGL_LOCK_SURFACE_BIT_KHR" => {
+              "value" => "0x0080"
+            },
+            "EGL_VG_COLORSPACE_LINEAR_BIT" => {
+              "value" => "0x0020"
+            },
+            "EGL_PBUFFER_BIT" => {
+              "value" => "0x0001"
+            },
+            "EGL_PIXMAP_BIT" => {
+              "value" => "0x0002"
+            },
+            "EGL_PBUFFER_IMAGE_BIT_TAO" => {
+              "comment" => "Unreleased TAO extension",
+              "value" => "0x0008"
+            },
+            "EGL_VG_ALPHA_FORMAT_PRE_BIT" => {
+              "value" => "0x0040"
+            },
+            "EGL_VG_COLORSPACE_LINEAR_BIT_KHR" => {
+              "value" => "0x0020"
+            },
+            "EGL_WINDOW_BIT" => {
+              "value" => "0x0004"
+            },
+            "EGL_OPTIMAL_FORMAT_BIT_KHR" => {
+              "value" => "0x0100"
+            },
+            "EGL_MULTISAMPLE_RESOLVE_BOX_BIT" => {
+              "value" => "0x0200"
+            }
+          },
+          "type" => "bitmask"
+        },
+        {
+          "comment" => "EGL_RENDERABLE_TYPE bits",
+          "namespace" => "EGLRenderableTypeMask",
+          "enum" => {
+            "EGL_INTEROP_BIT_KHR" => {
+              "comment" => "EGL_KHR_interop",
+              "value" => "0x0010"
+            },
+            "EGL_OPENGL_BIT" => {
+              "value" => "0x0008"
+            },
+            "EGL_OPENVG_BIT" => {
+              "value" => "0x0002"
+            },
+            "EGL_OPENMAX_IL_BIT_KHR" => {
+              "comment" => "EGL_KHR_interop",
+              "value" => "0x0020"
+            },
+            "EGL_OPENGL_ES_BIT" => {
+              "value" => "0x0001"
+            },
+            "EGL_OPENGL_ES3_BIT_KHR" => {
+              "value" => "0x00000040"
+            },
+            "EGL_OPENGL_ES2_BIT" => {
+              "value" => "0x0004"
+            }
+          },
+          "type" => "bitmask"
+        },
+        {
+          "comment" => "EGL_LOCK_USAGE_HINT_KHR bits",
+          "namespace" => "EGLLockUsageHintKHRMask",
+          "enum" => {
+            "EGL_WRITE_SURFACE_BIT_KHR" => {
+              "value" => "0x0002"
+            },
+            "EGL_READ_SURFACE_BIT_KHR" => {
+              "value" => "0x0001"
+            }
+          },
+          "type" => "bitmask"
+        },
+        {
+          "comment" => "Fence/reusable sync wait bits",
+          "namespace" => "EGLSyncFlagsKHR",
+          "enum" => {
+            "EGL_SYNC_FLUSH_COMMANDS_BIT_NV" => {
+              "value" => "0x0001"
+            },
+            "EGL_SYNC_FLUSH_COMMANDS_BIT_KHR" => {
+              "value" => "0x0001"
+            }
+          },
+          "type" => "bitmask"
+        },
+        {
+          "comment" => "EGL_DRM_BUFFER_USE_MESA bits",
+          "namespace" => "EGLDRMBufferUseMESAMask",
+          "enum" => {
+            "EGL_DRM_BUFFER_USE_SHARE_MESA" => {
+              "value" => "0x00000002"
+            },
+            "EGL_DRM_BUFFER_USE_SCANOUT_MESA" => {
+              "value" => "0x00000001"
+            }
+          },
+          "type" => "bitmask"
+        },
+        {
+          "comment" => "EGL_CONTEXT_FLAGS_KHR bits",
+          "namespace" => "EGLContextFlagMask",
+          "enum" => {
+            "EGL_CONTEXT_OPENGL_DEBUG_BIT_KHR" => {
+              "value" => "0x00000001"
+            },
+            "EGL_CONTEXT_OPENGL_ROBUST_ACCESS_BIT_KHR" => {
+              "value" => "0x00000004"
+            },
+            "EGL_CONTEXT_OPENGL_FORWARD_COMPATIBLE_BIT_KHR" => {
+              "value" => "0x00000002"
+            }
+          },
+          "type" => "bitmask"
+        },
+        {
+          "comment" => "Shared with GL",
+          "namespace" => "EGLContextProfileMask",
+          "enum" => {
+            "EGL_CONTEXT_OPENGL_COMPATIBILITY_PROFILE_BIT_KHR" => {
+              "value" => "0x00000002"
+            },
+            "EGL_CONTEXT_OPENGL_CORE_PROFILE_BIT_KHR" => {
+              "value" => "0x00000001"
+            }
+          },
+          "type" => "bitmask"
+        },
+        {
+          "namespace" => "EGL",
+          "vendor" => "ARB",
+          "end" => "0x2FFF",
+          "start" => "0x0000"
+        },
+        {
+          "group" => "Boolean",
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_FALSE" => {
+              "value" => 0
+            },
+            "EGL_TRUE" => {
+              "value" => 1
+            }
+          },
+          "vendor" => "ARB"
+        },
+        {
+          "group" => "SpecialNumbers",
+          "comment" => "Tokens whose numeric value is intrinsically meaningful",
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_FOREVER_KHR" => {
+              "value" => "0xFFFFFFFFFFFFFFFF",
+              "type" => "ull"
+            },
+            "EGL_NO_IMAGE_KHR" => {
+              "value" => "((EGLImageKHR)0)"
+            },
+            "EGL_NO_SYNC_KHR" => {
+              "value" => "((EGLSyncKHR)0)"
+            },
+            "EGL_NO_SYNC_NV" => {
+              "value" => "((EGLSyncNV)0)"
+            },
+            "EGL_DEPTH_ENCODING_NONE_NV" => {
+              "value" => 0
+            },
+            "EGL_DONT_CARE" => {
+              "value" => "((EGLint)-1)"
+            },
+            "EGL_UNKNOWN" => {
+              "value" => "((EGLint)-1)"
+            },
+            "EGL_NO_DISPLAY" => {
+              "value" => "((EGLDisplay)0)"
+            },
+            "EGL_NO_STREAM_KHR" => {
+              "value" => "((EGLStreamKHR)0)"
+            },
+            "EGL_DEFAULT_DISPLAY" => {
+              "value" => "((EGLNativeDisplayType)0)"
+            },
+            "EGL_NO_CONTEXT" => {
+              "value" => "((EGLContext)0)"
+            },
+            "EGL_FOREVER_NV" => {
+              "value" => "0xFFFFFFFFFFFFFFFF",
+              "type" => "ull"
+            },
+            "EGL_NO_NATIVE_FENCE_FD_ANDROID" => {
+              "value" => -1
+            },
+            "EGL_NO_FILE_DESCRIPTOR_KHR" => {
+              "value" => "((EGLNativeFileDescriptorKHR)(-1))"
+            },
+            "EGL_NO_SURFACE" => {
+              "value" => "((EGLSurface)0)"
+            },
+            "EGL_DISPLAY_SCALING" => {
+              "value" => 10000
+            }
+          },
+          "vendor" => "ARB"
+        },
+        {
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_HEIGHT" => {
+              "value" => "0x3056"
+            },
+            "EGL_SLOW_CONFIG" => {
+              "value" => "0x3050"
+            },
+            "EGL_NONE" => {
+              "comment" => "Attribute list terminator",
+              "value" => "0x3038"
+            },
+            "EGL_TRANSPARENT_RED_VALUE" => {
+              "value" => "0x3037"
+            },
+            "EGL_CONFIG_ID" => {
+              "value" => "0x3028"
+            },
+            "EGL_ALPHA_SIZE" => {
+              "value" => "0x3021"
+            },
+            "EGL_COLOR_BUFFER_TYPE" => {
+              "value" => "0x303F"
+            },
+            "EGL_NATIVE_VISUAL_TYPE" => {
+              "value" => "0x302F"
+            },
+            "EGL_TRANSPARENT_RGB" => {
+              "value" => "0x3052"
+            },
+            "EGL_MAX_PBUFFER_WIDTH" => {
+              "value" => "0x302C"
+            },
+            "EGL_TRANSPARENT_BLUE_VALUE" => {
+              "value" => "0x3035"
+            },
+            "EGL_MAX_PBUFFER_PIXELS" => {
+              "value" => "0x302B"
+            },
+            "EGL_BAD_NATIVE_WINDOW" => {
+              "value" => "0x300B"
+            },
+            "EGL_WIDTH" => {
+              "value" => "0x3057"
+            },
+            "EGL_EXTENSIONS" => {
+              "value" => "0x3055"
+            },
+            "EGL_BIND_TO_TEXTURE_RGB" => {
+              "value" => "0x3039"
+            },
+            "EGL_SUCCESS" => {
+              "value" => "0x3000"
+            },
+            "EGL_VERSION" => {
+              "value" => "0x3054"
+            },
+            "EGL_NO_TEXTURE" => {
+              "value" => "0x305C"
+            },
+            "EGL_LARGEST_PBUFFER" => {
+              "value" => "0x3058"
+            },
+            "EGL_TRANSPARENT_TYPE" => {
+              "value" => "0x3034"
+            },
+            "EGL_MATCH_NATIVE_PIXMAP" => {
+              "value" => "0x3041"
+            },
+            "EGL_STENCIL_SIZE" => {
+              "value" => "0x3026"
+            },
+            "EGL_LEVEL" => {
+              "value" => "0x3029"
+            },
+            "EGL_BAD_MATCH" => {
+              "value" => "0x3009"
+            },
+            "EGL_SAMPLES" => {
+              "value" => "0x3031"
+            },
+            "EGL_CONFORMANT" => {
+              "value" => "0x3042"
+            },
+            "EGL_BAD_CURRENT_SURFACE" => {
+              "value" => "0x3007"
+            },
+            "EGL_GREEN_SIZE" => {
+              "value" => "0x3023"
+            },
+            "EGL_READ" => {
+              "value" => "0x305A"
+            },
+            "EGL_TEXTURE_RGBA" => {
+              "value" => "0x305E"
+            },
+            "EGL_BAD_NATIVE_PIXMAP" => {
+              "value" => "0x300A"
+            },
+            "EGL_BUFFER_SIZE" => {
+              "value" => "0x3020"
+            },
+            "EGL_BAD_CONFIG" => {
+              "value" => "0x3005"
+            },
+            "EGL_NON_CONFORMANT_CONFIG" => {
+              "value" => "0x3051"
+            },
+            "EGL_BAD_PARAMETER" => {
+              "value" => "0x300C"
+            },
+            "EGL_BLUE_SIZE" => {
+              "value" => "0x3022"
+            },
+            "EGL_BIND_TO_TEXTURE_RGBA" => {
+              "value" => "0x303A"
+            },
+            "EGL_RENDERABLE_TYPE" => {
+              "value" => "0x3040"
+            },
+            "EGL_SAMPLE_BUFFERS" => {
+              "value" => "0x3032"
+            },
+            "EGL_NATIVE_VISUAL_ID" => {
+              "value" => "0x302E"
+            },
+            "EGL_MATCH_FORMAT_KHR" => {
+              "value" => "0x3043"
+            },
+            "EGL_TRANSPARENT_GREEN_VALUE" => {
+              "value" => "0x3036"
+            },
+            "EGL_LUMINANCE_SIZE" => {
+              "value" => "0x303D"
+            },
+            "EGL_ALPHA_MASK_SIZE" => {
+              "value" => "0x303E"
+            },
+            "EGL_CONFORMANT_KHR" => {
+              "value" => "0x3042"
+            },
+            "EGL_CORE_NATIVE_ENGINE" => {
+              "value" => "0x305B"
+            },
+            "EGL_CONFIG_CAVEAT" => {
+              "value" => "0x3027"
+            },
+            "EGL_TEXTURE_2D" => {
+              "value" => "0x305F"
+            },
+            "EGL_CONTEXT_LOST" => {
+              "value" => "0x300E"
+            },
+            "EGL_VENDOR" => {
+              "value" => "0x3053"
+            },
+            "EGL_BAD_DISPLAY" => {
+              "value" => "0x3008"
+            },
+            "EGL_RED_SIZE" => {
+              "value" => "0x3024"
+            },
+            "EGL_BAD_SURFACE" => {
+              "value" => "0x300D"
+            },
+            "EGL_BAD_CONTEXT" => {
+              "value" => "0x3006"
+            },
+            "EGL_MAX_PBUFFER_HEIGHT" => {
+              "value" => "0x302A"
+            },
+            "EGL_DRAW" => {
+              "value" => "0x3059"
+            },
+            "EGL_DEPTH_SIZE" => {
+              "value" => "0x3025"
+            },
+            "EGL_NOT_INITIALIZED" => {
+              "value" => "0x3001"
+            },
+            "EGL_BAD_ACCESS" => {
+              "value" => "0x3002"
+            },
+            "EGL_BAD_ATTRIBUTE" => {
+              "value" => "0x3004"
+            },
+            "EGL_BAD_ALLOC" => {
+              "value" => "0x3003"
+            },
+            "EGL_MIN_SWAP_INTERVAL" => {
+              "value" => "0x303B"
+            },
+            "EGL_SURFACE_TYPE" => {
+              "value" => "0x3033"
+            },
+            "EGL_MAX_SWAP_INTERVAL" => {
+              "value" => "0x303C"
+            },
+            "EGL_TEXTURE_RGB" => {
+              "value" => "0x305D"
+            },
+            "EGL_NATIVE_RENDERABLE" => {
+              "value" => "0x302D"
+            }
+          },
+          "unused" => [
+            {
+              "comment" => "for additional errors",
+              "end" => "0x301F",
+              "start" => "0x300F"
+            },
+            {
+              "comment" => "for additional config attributes",
+              "end" => "0x304F",
+              "start" => "0x3044"
+            }
+          ],
+          "vendor" => "KHR",
+          "end" => "0x305F",
+          "start" => "0x3000"
+        },
+        {
+          "comment" => "Reserved for Phil Huxley",
+          "namespace" => "EGL",
+          "unused" => [
+            {
+              "end" => "0x306F",
+              "start" => "0x3060"
+            }
+          ],
+          "vendor" => "TAO",
+          "start" => "0x3060-0x306F"
+        },
+        {
+          "comment" => "Reserved for Jani Vaarala",
+          "namespace" => "EGL",
+          "unused" => [
+            {
+              "end" => "0x307F",
+              "start" => "0x3070"
+            }
+          ],
+          "vendor" => "NOK",
+          "start" => "0x3070-0x307F"
+        },
+        {
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_CL_EVENT_HANDLE_KHR" => {
+              "value" => "0x309C"
+            },
+            "EGL_VG_COLORSPACE_LINEAR" => {
+              "value" => "0x308A"
+            },
+            "EGL_GL_COLORSPACE_LINEAR_KHR" => {
+              "value" => "0x308A",
+              "alias" => "EGL_VG_COLORSPACE_LINEAR"
+            },
+            "EGL_MULTISAMPLE_RESOLVE_BOX" => {
+              "value" => "0x309B"
+            },
+            "EGL_MIPMAP_TEXTURE" => {
+              "value" => "0x3082"
+            },
+            "EGL_CONTEXT_MAJOR_VERSION_KHR" => {
+              "value" => "0x3098",
+              "alias" => "EGL_CONTEXT_CLIENT_VERSION"
+            },
+            "EGL_BUFFER_PRESERVED" => {
+              "value" => "0x3094"
+            },
+            "EGL_VG_COLORSPACE_sRGB" => {
+              "value" => "0x3089"
+            },
+            "EGL_RGB_BUFFER" => {
+              "value" => "0x308E"
+            },
+            "EGL_HORIZONTAL_RESOLUTION" => {
+              "value" => "0x3090"
+            },
+            "EGL_VG_COLORSPACE" => {
+              "value" => "0x3087"
+            },
+            "EGL_MIPMAP_LEVEL" => {
+              "value" => "0x3083"
+            },
+            "EGL_BACK_BUFFER" => {
+              "value" => "0x3084"
+            },
+            "EGL_VG_ALPHA_FORMAT_NONPRE" => {
+              "value" => "0x308B"
+            },
+            "EGL_GL_COLORSPACE_SRGB_KHR" => {
+              "value" => "0x3089",
+              "alias" => "EGL_VG_COLORSPACE_sRGB"
+            },
+            "EGL_TEXTURE_TARGET" => {
+              "value" => "0x3081"
+            },
+            "EGL_CONTEXT_CLIENT_TYPE" => {
+              "value" => "0x3097"
+            },
+            "EGL_VG_ALPHA_FORMAT_PRE" => {
+              "value" => "0x308C"
+            },
+            "EGL_ALPHA_FORMAT_PRE" => {
+              "value" => "0x308C",
+              "alias" => "EGL_VG_ALPHA_FORMAT_PRE"
+            },
+            "EGL_ALPHA_FORMAT" => {
+              "value" => "0x3088",
+              "alias" => "EGL_VG_ALPHA_FORMAT"
+            },
+            "EGL_ALPHA_FORMAT_NONPRE" => {
+              "value" => "0x308B",
+              "alias" => "EGL_VG_ALPHA_FORMAT_NONPRE"
+            },
+            "EGL_VG_ALPHA_FORMAT" => {
+              "value" => "0x3088"
+            },
+            "EGL_PIXEL_ASPECT_RATIO" => {
+              "value" => "0x3092"
+            },
+            "EGL_CLIENT_APIS" => {
+              "value" => "0x308D"
+            },
+            "EGL_SINGLE_BUFFER" => {
+              "value" => "0x3085"
+            },
+            "EGL_LUMINANCE_BUFFER" => {
+              "value" => "0x308F"
+            },
+            "EGL_OPENGL_API" => {
+              "value" => "0x30A2"
+            },
+            "EGL_RENDER_BUFFER" => {
+              "value" => "0x3086"
+            },
+            "EGL_COLORSPACE_LINEAR" => {
+              "value" => "0x308A",
+              "alias" => "EGL_VG_COLORSPACE_LINEAR"
+            },
+            "EGL_MULTISAMPLE_RESOLVE_DEFAULT" => {
+              "value" => "0x309A"
+            },
+            "EGL_OPENVG_API" => {
+              "value" => "0x30A1"
+            },
+            "EGL_BUFFER_DESTROYED" => {
+              "value" => "0x3095"
+            },
+            "EGL_COLORSPACE_sRGB" => {
+              "value" => "0x3089",
+              "alias" => "EGL_VG_COLORSPACE_sRGB"
+            },
+            "EGL_VERTICAL_RESOLUTION" => {
+              "value" => "0x3091"
+            },
+            "EGL_TEXTURE_FORMAT" => {
+              "value" => "0x3080"
+            },
+            "EGL_OPENGL_ES_API" => {
+              "value" => "0x30A0"
+            },
+            "EGL_GL_COLORSPACE_KHR" => {
+              "value" => "0x309D"
+            },
+            "EGL_CONTEXT_CLIENT_VERSION" => {
+              "value" => "0x3098"
+            },
+            "EGL_COLORSPACE" => {
+              "value" => "0x3087",
+              "alias" => "EGL_VG_COLORSPACE"
+            },
+            "EGL_MULTISAMPLE_RESOLVE" => {
+              "value" => "0x3099"
+            },
+            "EGL_SWAP_BEHAVIOR" => {
+              "value" => "0x3093"
+            },
+            "EGL_OPENVG_IMAGE" => {
+              "value" => "0x3096"
+            }
+          },
+          "unused" => [
+            {
+              "comment" => "Placeholders for draft extensions follow",
+              "end" => "0x309F",
+              "start" => "0x309E"
+            },
+            {
+              "comment" => "for additional client API names",
+              "end" => "0x30AF",
+              "start" => "0x30A3"
+            }
+          ],
+          "vendor" => "KHR",
+          "start" => "0x3080-0x30AF"
+        },
+        {
+          "comment" => "Reserved for Ignacio Llamas",
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_NATIVE_PIXMAP_KHR" => {
+              "value" => "0x30B0"
+            },
+            "EGL_GL_TEXTURE_CUBE_MAP_POSITIVE_Z_KHR" => {
+              "value" => "0x30B7"
+            },
+            "EGL_CONTEXT_OPENGL_ROBUST_ACCESS_EXT" => {
+              "value" => "0x30BF"
+            },
+            "EGL_VG_PARENT_IMAGE_KHR" => {
+              "value" => "0x30BA"
+            },
+            "EGL_GL_RENDERBUFFER_KHR" => {
+              "value" => "0x30B9"
+            },
+            "EGL_GL_TEXTURE_3D_KHR" => {
+              "value" => "0x30B2"
+            },
+            "EGL_GL_TEXTURE_ZOFFSET_KHR" => {
+              "value" => "0x30BD"
+            },
+            "EGL_GL_TEXTURE_CUBE_MAP_POSITIVE_X_KHR" => {
+              "value" => "0x30B3"
+            },
+            "EGL_GL_TEXTURE_CUBE_MAP_POSITIVE_Y_KHR" => {
+              "value" => "0x30B5"
+            },
+            "EGL_GL_TEXTURE_LEVEL_KHR" => {
+              "value" => "0x30BC"
+            },
+            "EGL_GL_TEXTURE_2D_KHR" => {
+              "value" => "0x30B1"
+            },
+            "EGL_GL_TEXTURE_CUBE_MAP_NEGATIVE_X_KHR" => {
+              "value" => "0x30B4"
+            },
+            "EGL_POST_SUB_BUFFER_SUPPORTED_NV" => {
+              "value" => "0x30BE"
+            },
+            "EGL_GL_TEXTURE_CUBE_MAP_NEGATIVE_Z_KHR" => {
+              "value" => "0x30B8"
+            },
+            "EGL_GL_TEXTURE_CUBE_MAP_NEGATIVE_Y_KHR" => {
+              "value" => "0x30B6"
+            }
+          },
+          "vendor" => "NV",
+          "start" => "0x30B0-0x30BF"
+        },
+        {
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_LOCK_USAGE_HINT_KHR" => {
+              "value" => "0x30C5"
+            },
+            "EGL_FORMAT_RGBA_8888_EXACT_KHR" => {
+              "value" => "0x30C2"
+            },
+            "EGL_BITMAP_PIXEL_LUMINANCE_OFFSET_KHR" => {
+              "value" => "0x30CD"
+            },
+            "EGL_MAP_PRESERVE_PIXELS_KHR" => {
+              "value" => "0x30C4"
+            },
+            "EGL_BITMAP_ORIGIN_KHR" => {
+              "value" => "0x30C8"
+            },
+            "EGL_BITMAP_PIXEL_ALPHA_OFFSET_KHR" => {
+              "value" => "0x30CC"
+            },
+            "EGL_FORMAT_RGB_565_EXACT_KHR" => {
+              "value" => "0x30C0"
+            },
+            "EGL_FORMAT_RGBA_8888_KHR" => {
+              "value" => "0x30C3"
+            },
+            "EGL_BITMAP_PITCH_KHR" => {
+              "value" => "0x30C7"
+            },
+            "EGL_UPPER_LEFT_KHR" => {
+              "value" => "0x30CF"
+            },
+            "EGL_BITMAP_POINTER_KHR" => {
+              "value" => "0x30C6"
+            },
+            "EGL_BITMAP_PIXEL_RED_OFFSET_KHR" => {
+              "value" => "0x30C9"
+            },
+            "EGL_LOWER_LEFT_KHR" => {
+              "value" => "0x30CE"
+            },
+            "EGL_BITMAP_PIXEL_GREEN_OFFSET_KHR" => {
+              "value" => "0x30CA"
+            },
+            "EGL_BITMAP_PIXEL_BLUE_OFFSET_KHR" => {
+              "value" => "0x30CB"
+            },
+            "EGL_FORMAT_RGB_565_KHR" => {
+              "value" => "0x30C1"
+            }
+          },
+          "vendor" => "KHR",
+          "start" => "0x30C0-0x30CF"
+        },
+        {
+          "comment" => "Reserved for Robert Palmer (bug #2545)",
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_SHARED_IMAGE_NOK" => {
+              "comment" => "Unreleased extension",
+              "value" => "0x30DA"
+            },
+            "EGL_IMAGE_PRESERVED_KHR" => {
+              "value" => "0x30D2"
+            }
+          },
+          "unused" => [
+            {
+              "end" => "0x30D1",
+              "start" => "0x30D0"
+            },
+            {
+              "end" => "0x30D9",
+              "start" => "0x30D3"
+            },
+            {
+              "end" => "0x30DF",
+              "start" => "0x30DB"
+            }
+          ],
+          "vendor" => "Symbian",
+          "end" => "0x30DF",
+          "start" => "0x30D0"
+        },
+        {
+          "comment" => "Reserved for Russell Pflughaupt (bug #3314)",
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_COVERAGE_SAMPLES_NV" => {
+              "value" => "0x30E1"
+            },
+            "EGL_SYNC_CONDITION_NV" => {
+              "value" => "0x30EE"
+            },
+            "EGL_TIMEOUT_EXPIRED_NV" => {
+              "value" => "0x30EB"
+            },
+            "EGL_DEPTH_ENCODING_NONLINEAR_NV" => {
+              "value" => "0x30E3"
+            },
+            "EGL_COVERAGE_BUFFERS_NV" => {
+              "value" => "0x30E0"
+            },
+            "EGL_DEPTH_ENCODING_NV" => {
+              "value" => "0x30E2"
+            },
+            "EGL_CONDITION_SATISFIED_NV" => {
+              "value" => "0x30EC"
+            },
+            "EGL_SIGNALED_NV" => {
+              "value" => "0x30E8"
+            },
+            "EGL_UNSIGNALED_NV" => {
+              "value" => "0x30E9"
+            },
+            "EGL_ALREADY_SIGNALED_NV" => {
+              "value" => "0x30EA"
+            },
+            "EGL_SYNC_PRIOR_COMMANDS_COMPLETE_NV" => {
+              "value" => "0x30E6"
+            },
+            "EGL_SYNC_STATUS_NV" => {
+              "value" => "0x30E7"
+            },
+            "EGL_SYNC_FENCE_NV" => {
+              "value" => "0x30EF"
+            },
+            "EGL_SYNC_TYPE_NV" => {
+              "value" => "0x30ED"
+            }
+          },
+          "unused" => [
+            {
+              "end" => "0x30E5",
+              "start" => "0x30E4"
+            }
+          ],
+          "vendor" => "NV",
+          "end" => "0x30EF",
+          "start" => "0x30E0"
+        },
+        {
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_SYNC_REUSABLE_KHR" => {
+              "value" => "0x30FA"
+            },
+            "EGL_CONDITION_SATISFIED_KHR" => {
+              "value" => "0x30F6"
+            },
+            "EGL_SYNC_STATUS_KHR" => {
+              "value" => "0x30F1"
+            },
+            "EGL_CONTEXT_MINOR_VERSION_KHR" => {
+              "value" => "0x30FB"
+            },
+            "EGL_SYNC_TYPE_KHR" => {
+              "value" => "0x30F7"
+            },
+            "EGL_SYNC_PRIOR_COMMANDS_COMPLETE_KHR" => {
+              "value" => "0x30F0"
+            },
+            "EGL_CONTEXT_OPENGL_PROFILE_MASK_KHR" => {
+              "value" => "0x30FD"
+            },
+            "EGL_SIGNALED_KHR" => {
+              "value" => "0x30F2"
+            },
+            "EGL_TIMEOUT_EXPIRED_KHR" => {
+              "value" => "0x30F5"
+            },
+            "EGL_SYNC_CL_EVENT_COMPLETE_KHR" => {
+              "value" => "0x30FF"
+            },
+            "EGL_SYNC_FENCE_KHR" => {
+              "value" => "0x30F9"
+            },
+            "EGL_UNSIGNALED_KHR" => {
+              "value" => "0x30F3"
+            },
+            "EGL_SYNC_CONDITION_KHR" => {
+              "value" => "0x30F8"
+            },
+            "EGL_SYNC_CL_EVENT_KHR" => {
+              "value" => "0x30FE"
+            },
+            "EGL_CONTEXT_FLAGS_KHR" => {
+              "value" => "0x30FC"
+            }
+          },
+          "vendor" => "KHR",
+          "end" => "0x30FF",
+          "start" => "0x30F0"
+        },
+        {
+          "comment" => "Reserved for Ben Bowman (Khronos bug 4748)",
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_CONTEXT_PRIORITY_HIGH_IMG" => {
+              "value" => "0x3101"
+            },
+            "EGL_CONTEXT_PRIORITY_LEVEL_IMG" => {
+              "value" => "0x3100"
+            },
+            "EGL_CONTEXT_PRIORITY_LOW_IMG" => {
+              "value" => "0x3103"
+            },
+            "EGL_CONTEXT_PRIORITY_MEDIUM_IMG" => {
+              "value" => "0x3102"
+            }
+          },
+          "unused" => [
+            {
+              "end" => "0x310F",
+              "start" => "0x3104"
+            }
+          ],
+          "vendor" => "IMG",
+          "end" => "0x310F",
+          "start" => "0x3100"
+        },
+        {
+          "comment" => "Reserved for Tim Renouf, Antix (Khronos bug 4949)",
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_BITMAP_PIXEL_SIZE_KHR" => {
+              "value" => "0x3110"
+            }
+          },
+          "unused" => [
+            {
+              "end" => "0x311F",
+              "start" => "0x3111"
+            }
+          ],
+          "vendor" => "ATX",
+          "end" => "0x311F",
+          "start" => "0x3110"
+        },
+        {
+          "comment" => "Reserved for David Garcia (Khronos bug 5149)",
+          "namespace" => "EGL",
+          "unused" => [
+            {
+              "end" => "0x312F",
+              "start" => "0x3120"
+            }
+          ],
+          "vendor" => "AMD",
+          "end" => "0x312F",
+          "start" => "0x3120"
+        },
+        {
+          "comment" => "Reserved for Greg Prisament (Khronos bug 5166)",
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_BUFFER_AGE_EXT" => {
+              "value" => "0x313D"
+            },
+            "EGL_AUTO_STEREO_NV" => {
+              "value" => "0x3136"
+            },
+            "EGL_COVERAGE_SAMPLE_RESOLVE_DEFAULT_NV" => {
+              "value" => "0x3132"
+            },
+            "EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY_EXT" => {
+              "value" => "0x3138"
+            },
+            "EGL_MULTIVIEW_VIEW_COUNT_EXT" => {
+              "value" => "0x3134"
+            },
+            "EGL_COVERAGE_SAMPLE_RESOLVE_NONE_NV" => {
+              "value" => "0x3133"
+            },
+            "EGL_COVERAGE_SAMPLE_RESOLVE_NV" => {
+              "value" => "0x3131"
+            }
+          },
+          "unused" => [
+            {
+              "start" => "0x3130"
+            },
+            {
+              "start" => "0x3135"
+            },
+            {
+              "start" => "0x3137"
+            },
+            {
+              "end" => "0x313C",
+              "start" => "0x3139"
+            },
+            {
+              "end" => "0x313F",
+              "start" => "0x313E"
+            }
+          ],
+          "vendor" => "NV",
+          "end" => "0x313F",
+          "start" => "0x3130"
+        },
+        {
+          "comment" => "Reserved for Mathias Agopian (Khronos bug 5199)",
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_NATIVE_BUFFER_ANDROID" => {
+              "value" => "0x3140"
+            },
+            "EGL_RECORDABLE_ANDROID" => {
+              "value" => "0x3142"
+            },
+            "EGL_FRAMEBUFFER_TARGET_ANDROID" => {
+              "value" => "0x3147"
+            },
+            "EGL_SYNC_NATIVE_FENCE_SIGNALED_ANDROID" => {
+              "value" => "0x3146"
+            },
+            "EGL_SYNC_NATIVE_FENCE_FD_ANDROID" => {
+              "value" => "0x3145"
+            },
+            "EGL_SYNC_NATIVE_FENCE_ANDROID" => {
+              "value" => "0x3144"
+            }
+          },
+          "unused" => [
+            {
+              "start" => "0x3141"
+            },
+            {
+              "start" => "0x3143"
+            },
+            {
+              "end" => "0x314F",
+              "start" => "0x3148"
+            }
+          ],
+          "vendor" => "Google",
+          "end" => "0x314F",
+          "start" => "0x3140"
+        },
+        {
+          "comment" => "Reserved for Robert Palmer (Khronos bug 5368)",
+          "namespace" => "EGL",
+          "unused" => [
+            {
+              "end" => "0x315F",
+              "start" => "0x3150"
+            }
+          ],
+          "vendor" => "NOK",
+          "end" => "0x315F",
+          "start" => "0x3150"
+        },
+        {
+          "comment" => "Reserved for Sree Sridharan (Khronos public bug 198)",
+          "namespace" => "EGL",
+          "unused" => [
+            {
+              "end" => "0x316F",
+              "start" => "0x3160"
+            }
+          ],
+          "vendor" => "Seaweed",
+          "end" => "0x316F",
+          "start" => "0x3160"
+        },
+        {
+          "comment" => "Reserved for Joel Pilon (Khronos bug 5834)",
+          "namespace" => "EGL",
+          "unused" => [
+            {
+              "end" => "0x318F",
+              "start" => "0x3170"
+            }
+          ],
+          "vendor" => "QNX",
+          "end" => "0x318F",
+          "start" => "0x3170"
+        },
+        {
+          "comment" => "Reserved for Brian Murray, Freescale (Khronos bug 5939)",
+          "namespace" => "EGL",
+          "unused" => [
+            {
+              "end" => "0x31AF",
+              "start" => "0x3190"
+            }
+          ],
+          "vendor" => "FSL",
+          "end" => "0x31AF",
+          "start" => "0x3190"
+        },
+        {
+          "comment" => "Reserved for Marcus Lorentzon (Khronos bug 6437)",
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_NO_RESET_NOTIFICATION_EXT" => {
+              "value" => "0x31BE"
+            },
+            "EGL_CONTEXT_OPENGL_RESET_NOTIFICATION_STRATEGY_KHR" => {
+              "value" => "0x31BD"
+            },
+            "EGL_LOSE_CONTEXT_ON_RESET_KHR" => {
+              "value" => "0x31BF"
+            },
+            "EGL_NO_RESET_NOTIFICATION_KHR" => {
+              "value" => "0x31BE"
+            },
+            "EGL_LOSE_CONTEXT_ON_RESET_EXT" => {
+              "value" => "0x31BF"
+            }
+          },
+          "unused" => [
+            {
+              "comment" => "Reserved for EGL_image_stream",
+              "end" => "0x31BC",
+              "start" => "0x31B0"
+            }
+          ],
+          "vendor" => "KHR",
+          "end" => "0x31BF",
+          "start" => "0x31B0"
+        },
+        {
+          "comment" => "Reserved for Maurice Ribble (Khronos bug 6644)",
+          "namespace" => "EGL",
+          "unused" => [
+            {
+              "end" => "0x31CF",
+              "start" => "0x31C0"
+            }
+          ],
+          "vendor" => "QCOM",
+          "end" => "0x31CF",
+          "start" => "0x31C0"
+        },
+        {
+          "comment" => "Reserved for Kristian H\x{f8}gsberg (Khronos bug 6757)",
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_DRM_BUFFER_USE_MESA" => {
+              "value" => "0x31D1"
+            },
+            "EGL_PLATFORM_WAYLAND_EXT" => {
+              "value" => "0x31D8"
+            },
+            "EGL_PLATFORM_X11_SCREEN_EXT" => {
+              "value" => "0x31D6"
+            },
+            "EGL_PLATFORM_GBM_MESA" => {
+              "value" => "0x31D7"
+            },
+            "EGL_DRM_BUFFER_FORMAT_ARGB32_MESA" => {
+              "value" => "0x31D2"
+            },
+            "EGL_DRM_BUFFER_STRIDE_MESA" => {
+              "value" => "0x31D4"
+            },
+            "EGL_DRM_BUFFER_MESA" => {
+              "value" => "0x31D3"
+            },
+            "EGL_PLATFORM_X11_EXT" => {
+              "value" => "0x31D5"
+            },
+            "EGL_DRM_BUFFER_FORMAT_MESA" => {
+              "value" => "0x31D0"
+            }
+          },
+          "unused" => [
+            {
+              "end" => "0x31DF",
+              "start" => "0x31D9"
+            }
+          ],
+          "vendor" => "MESA",
+          "end" => "0x31DF",
+          "start" => "0x31D0"
+        },
+        {
+          "comment" => "Reserved for Mark Callow (Khronos bug 6799)",
+          "namespace" => "EGL",
+          "unused" => [
+            {
+              "end" => "0x31EF",
+              "start" => "0x31E0"
+            }
+          ],
+          "vendor" => "HI",
+          "end" => "0x31EF",
+          "start" => "0x31E0"
+        },
+        {
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_STREAM_TIME_PRODUCER_KHR" => {
+              "value" => "0x31FF"
+            },
+            "EGL_STREAM_TIME_NOW_KHR" => {
+              "value" => "0x31FD"
+            },
+            "EGL_STREAM_FIFO_LENGTH_KHR" => {
+              "value" => "0x31FC"
+            },
+            "EGL_STREAM_TIME_CONSUMER_KHR" => {
+              "value" => "0x31FE"
+            }
+          },
+          "unused" => [
+            {
+              "comment" => "Placeholders for draft extensions follow",
+              "end" => "0x31FB",
+              "start" => "0x31F0"
+            }
+          ],
+          "vendor" => "KHR",
+          "end" => "0x31FF",
+          "start" => "0x31F0"
+        },
+        {
+          "comment" => "Reserved for Daniel Koch, ANGLE Project (Khronos bug 7139)",
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_D3D_TEXTURE_2D_SHARE_HANDLE_ANGLE" => {
+              "value" => "0x3200"
+            }
+          },
+          "unused" => [
+            {
+              "end" => "0x320F",
+              "start" => "0x3201"
+            }
+          ],
+          "vendor" => "ANGLE",
+          "end" => "0x320F",
+          "start" => "0x3200"
+        },
+        {
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_STREAM_STATE_KHR" => {
+              "value" => "0x3214"
+            },
+            "EGL_STREAM_STATE_CONNECTING_KHR" => {
+              "value" => "0x3216"
+            },
+            "EGL_CONSUMER_LATENCY_USEC_KHR" => {
+              "value" => "0x3210"
+            },
+            "EGL_BAD_STREAM_KHR" => {
+              "value" => "0x321B"
+            },
+            "EGL_STREAM_STATE_CREATED_KHR" => {
+              "value" => "0x3215"
+            },
+            "EGL_SYNC_NEW_FRAME_NV" => {
+              "value" => "0x321F"
+            },
+            "EGL_BUFFER_COUNT_NV" => {
+              "comment" => "From EGL_NV_stream_producer_eglsurface, which has no known specification and was replaced by a KHR extension",
+              "value" => "0x321D"
+            },
+            "EGL_PRODUCER_FRAME_KHR" => {
+              "value" => "0x3212"
+            },
+            "EGL_STREAM_STATE_EMPTY_KHR" => {
+              "value" => "0x3217"
+            },
+            "EGL_STREAM_STATE_OLD_FRAME_AVAILABLE_KHR" => {
+              "value" => "0x3219"
+            },
+            "EGL_STREAM_STATE_NEW_FRAME_AVAILABLE_KHR" => {
+              "value" => "0x3218"
+            },
+            "EGL_STREAM_STATE_DISCONNECTED_KHR" => {
+              "value" => "0x321A"
+            },
+            "EGL_CONSUMER_FRAME_KHR" => {
+              "value" => "0x3213"
+            },
+            "EGL_CONSUMER_ACQUIRE_TIMEOUT_USEC_KHR" => {
+              "value" => "0x321E"
+            },
+            "EGL_BAD_STATE_KHR" => {
+              "value" => "0x321C"
+            }
+          },
+          "unused" => [
+            {
+              "start" => "0x3211"
+            }
+          ],
+          "vendor" => "KHR",
+          "end" => "0x321F",
+          "start" => "0x3210"
+        },
+        {
+          "comment" => "Reserved for Greg Roth (Bug 8220)",
+          "namespace" => "EGL",
+          "unused" => [
+            {
+              "end" => "0x325F",
+              "start" => "0x3220"
+            }
+          ],
+          "vendor" => "NV",
+          "end" => "0x325F",
+          "start" => "0x3220"
+        },
+        {
+          "comment" => "Reserved for Gary Sweet, Broadcom (Public bug 620)",
+          "namespace" => "EGL",
+          "unused" => [
+            {
+              "end" => "0x326F",
+              "start" => "0x3260"
+            }
+          ],
+          "vendor" => "BCOM",
+          "end" => "0x326F",
+          "start" => "0x3260"
+        },
+        {
+          "comment" => "Reserved for Tom Cooksey (Bug 9963)",
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_ITU_REC2020_EXT" => {
+              "value" => "0x3281"
+            },
+            "EGL_LINUX_DRM_FOURCC_EXT" => {
+              "value" => "0x3271"
+            },
+            "EGL_LINUX_DMA_BUF_EXT" => {
+              "value" => "0x3270"
+            },
+            "EGL_YUV_FULL_RANGE_EXT" => {
+              "value" => "0x3282"
+            },
+            "EGL_YUV_CHROMA_VERTICAL_SITING_HINT_EXT" => {
+              "value" => "0x327E"
+            },
+            "EGL_DMA_BUF_PLANE2_FD_EXT" => {
+              "value" => "0x3278"
+            },
+            "EGL_YUV_COLOR_SPACE_HINT_EXT" => {
+              "value" => "0x327B"
+            },
+            "EGL_DMA_BUF_PLANE1_PITCH_EXT" => {
+              "value" => "0x3277"
+            },
+            "EGL_YUV_NARROW_RANGE_EXT" => {
+              "value" => "0x3283"
+            },
+            "EGL_ITU_REC601_EXT" => {
+              "value" => "0x327F"
+            },
+            "EGL_ITU_REC709_EXT" => {
+              "value" => "0x3280"
+            },
+            "EGL_DMA_BUF_PLANE0_PITCH_EXT" => {
+              "value" => "0x3274"
+            },
+            "EGL_YUV_CHROMA_SITING_0_EXT" => {
+              "value" => "0x3284"
+            },
+            "EGL_DMA_BUF_PLANE1_FD_EXT" => {
+              "value" => "0x3275"
+            },
+            "EGL_YUV_CHROMA_SITING_0_5_EXT" => {
+              "value" => "0x3285"
+            },
+            "EGL_DISCARD_SAMPLES_ARM" => {
+              "value" => "0x3286"
+            },
+            "EGL_DMA_BUF_PLANE0_FD_EXT" => {
+              "value" => "0x3272"
+            },
+            "EGL_SAMPLE_RANGE_HINT_EXT" => {
+              "value" => "0x327C"
+            },
+            "EGL_YUV_CHROMA_HORIZONTAL_SITING_HINT_EXT" => {
+              "value" => "0x327D"
+            },
+            "EGL_DMA_BUF_PLANE1_OFFSET_EXT" => {
+              "value" => "0x3276"
+            },
+            "EGL_DMA_BUF_PLANE2_PITCH_EXT" => {
+              "value" => "0x327A"
+            },
+            "EGL_DMA_BUF_PLANE2_OFFSET_EXT" => {
+              "value" => "0x3279"
+            },
+            "EGL_DMA_BUF_PLANE0_OFFSET_EXT" => {
+              "value" => "0x3273"
+            }
+          },
+          "unused" => [
+            {
+              "end" => "0x328F",
+              "start" => "0x3287"
+            }
+          ],
+          "vendor" => "ARM",
+          "end" => "0x328F",
+          "start" => "0x3270"
+        },
+        {
+          "comment" => "Reserved for John K\x{e5}re Alsaker (Public bug 757)",
+          "namespace" => "EGL",
+          "unused" => [
+            {
+              "end" => "0x329F",
+              "start" => "0x3290"
+            }
+          ],
+          "vendor" => "MESA",
+          "end" => "0x329F",
+          "start" => "0x3290"
+        },
+        {
+          "comment" => "Reserved for Dongyeon Kim (Public bug 880)",
+          "namespace" => "EGL",
+          "unused" => [
+            {
+              "end" => "0x32AF",
+              "start" => "0x32A0"
+            }
+          ],
+          "vendor" => "Samsung",
+          "end" => "0x32AF",
+          "start" => "0x32A0"
+        },
+        {
+          "comment" => "Reserved for Jeff Vigil (Bug 10663)",
+          "namespace" => "EGL",
+          "unused" => [
+            {
+              "end" => "0x32BF",
+              "start" => "0x32B0"
+            }
+          ],
+          "vendor" => "Qualcomm",
+          "end" => "0x32BF",
+          "start" => "0x32B0"
+        },
+        {
+          "namespace" => "EGL",
+          "unused" => [
+            {
+              "comment" => "Reserved for future use",
+              "end" => "0x3FFF",
+              "start" => "0x32C0"
+            }
+          ],
+          "vendor" => "KHR",
+          "end" => "0x3FFF",
+          "start" => "0x32C0"
+        },
+        {
+          "comment" => "For Mark Callow, Khronos bug 4055. Shared with GL.",
+          "namespace" => "EGL",
+          "enum" => {
+            "EGL_COLOR_ARGB_HI" => {
+              "value" => "0x8F73"
+            },
+            "EGL_CLIENT_PIXMAP_POINTER_HI" => {
+              "value" => "0x8F74"
+            },
+            "EGL_COLOR_RGB_HI" => {
+              "value" => "0x8F71"
+            },
+            "EGL_COLOR_RGBA_HI" => {
+              "value" => "0x8F72"
+            },
+            "EGL_COLOR_FORMAT_HI" => {
+              "value" => "0x8F70"
+            }
+          },
+          "vendor" => "HI",
+          "end" => "0x8F7F",
+          "start" => "0x8F70"
+        }
+      ]
+    }
+  ]
+};

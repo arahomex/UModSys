@@ -1,0 +1,95 @@
+begin project-group umodsys
+  option project [] Platforms "$(platforms)"
+  option project [] Configurations "Debug Release ReleaseSpace"
+  option project-order all
+
+  option project * CFLAGS "-fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64"
+  option project * CXXFLAGS "-fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64"
+  option project * LDFLAGS "-fvisibility=hidden -Werror"
+
+  begin project all
+    mode dummy
+  end
+
+  begin project umodsys_lib_core
+    begin file-group src
+      begin file-group $(spname)
+        begin mask $(path-skip) $(path-s-core)/$(ppath)
+          include *.cpp *.h
+        end
+      end
+    end
+    begin file-group headers
+      begin file-group $(spname)
+        begin mask $(path-skip) $(path-inc)/core/$(ppath)
+          include *.h
+        end
+        begin mask $(path-skip) $(path-inc)/core/platform
+          include def_msvc.h def_win32.h
+        end
+      end
+    end
+  end
+
+  begin project umodsys_lib_base
+    begin file-group src
+      begin file-group $(spname)
+        file $(path-s-base)/$(ppath)/umodsys.so_main.linux.cpp
+      end
+    end
+  end
+
+  begin project umodsys_lib_basesys
+    begin file-group src
+      begin file-group $(spname)
+        file $(path-s-basesys)/$(ppath)/umodsys.basesys.rmodule.linux.cpp
+      end
+    end
+  end
+
+  begin project plugin_test1
+    mode plugin
+    libpath $(path-out-bin) $(path-out-tmp)
+#    option !* plugin_NAME plugin_test1.so
+    #
+    depend umodsys_Depends::lib_zlib
+    depend umodsys_Depends::lib_libpng
+    depend umodsys_Depends::lib_jpeglib
+    depend umodsys_Depends::lib_SDL2
+    #
+#    libs zlib libpng jpeglib SDL2
+  end
+
+  begin project plugin_test2
+    mode plugin
+  end
+
+  begin project plugin_libStd
+    mode plugin
+    #
+    depend umodsys_Depends::lib_zlib
+    depend umodsys_Depends::lib_libpng
+    depend umodsys_Depends::lib_jpeglib
+  end
+
+  begin project plugin_libUI
+    mode plugin
+    #
+    depend umodsys_Depends::lib_zlib
+    depend umodsys_Depends::lib_libpng
+    depend umodsys_Depends::lib_jpeglib
+  end
+
+  begin project plugin_libUI_SDL
+    mode plugin
+    #
+    depend umodsys_Depends::lib_SDL2
+  end
+
+  begin project umodsysc
+  end
+
+  begin project umodsysct
+  end
+  
+end

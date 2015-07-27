@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <df root="../../include" name="0">
+      <df name="platform">
+        <df name="linux">
+          <df name="libgd">
+            <in>config.h</in>
+          </df>
+          <in>SDL_config.h</in>
+          <in>ft2build.h</in>
+          <in>jconfig.h</in>
+          <in>jmorecfg.h</in>
+          <in>pnglibconf.h</in>
+        </df>
+        <df name="win32">
+          <in>SDL_config.h</in>
+          <in>ft2build.h</in>
+          <in>jconfig.h</in>
+          <in>jmorecfg.h</in>
+          <in>pnglibconf.h</in>
+        </df>
+      </df>
+      <df name="umodsys">
+        <df name="base">
+          <in>basetypes.h</in>
+          <in>bobjects.h</in>
+          <in>console.h</in>
+          <in>console_ext.h</in>
+          <in>module.h</in>
+          <in>module_impl.h</in>
+          <in>module_ref.h</in>
+          <in>shell.h</in>
+          <in>system.h</in>
+        </df>
+        <df name="core">
+          <df name="arch">
+            <in>arch_code32.h</in>
+            <in>arch_defs.h</in>
+            <in>arch_eb32.h</in>
+            <in>arch_el32.h</in>
+            <in>arch_fromto.h</in>
+            <in>arch_int16.h</in>
+            <in>arch_int32.h</in>
+            <in>arch_int64.h</in>
+          </df>
+          <df name="mem">
+            <in>coremem~.h</in>
+            <in>mem_alloc.h</in>
+            <in>mem_fixed.h</in>
+            <in>mem_shared.h</in>
+            <in>param_private.h</in>
+            <in>param_shared.h</in>
+            <in>prop_adapter.h</in>
+          </df>
+          <df name="platform">
+            <df name="linux">
+              <in>syshlp_linux.h</in>
+            </df>
+            <df name="win32">
+              <in>syshlp_win32.h</in>
+            </df>
+            <in>def_gcc.h</in>
+            <in>def_msvc.h</in>
+            <in>def_win32.h</in>
+          </df>
+          <df name="util">
+            <in>nanotcl.h</in>
+          </df>
+          <in>arch.h</in>
+          <in>arch_cvt.h</in>
+          <in>common_exceptions.h</in>
+          <in>objects.h</in>
+          <in>objects_def.h</in>
+          <in>objects_res.h</in>
+          <in>params.h</in>
+          <in>props.h</in>
+          <in>source.h</in>
+          <in>stddefs.h</in>
+          <in>stdinlines.h</in>
+          <in>stdstrings.h</in>
+          <in>stdtl.h</in>
+          <in>stdtypedefs.h</in>
+          <in>syshlp.h</in>
+          <in>uniqueptr.h</in>
+        </df>
+        <df name="lib">
+          <df name="2d">
+            <in>lib2d.common.h</in>
+            <in>lib2d.convertor.h</in>
+            <in>lib2d.driver.h</in>
+            <in>lib2d.image.h</in>
+            <in>lib2d.typedefs.h</in>
+            <in>lib2d.utils.h</in>
+          </df>
+          <df name="3d">
+            <df name="old">
+              <in>control.h</in>
+              <in>driver3.h</in>
+              <in>emul_font.h</in>
+              <in>emul_light.h</in>
+              <in>emul_outlines.h</in>
+              <in>lib3d.h</in>
+              <in>light.h</in>
+              <in>material.h</in>
+              <in>objects.h</in>
+              <in>objects_def.h</in>
+              <in>outlines.h</in>
+              <in>physics.h</in>
+              <in>plogic.h</in>
+              <in>scene.h</in>
+              <in>types.h</in>
+              <in>visi.h</in>
+            </df>
+            <in>lib3d.common.h</in>
+            <in>lib3d.control.h</in>
+            <in>lib3d.driver.h</in>
+            <in>lib3d.e_font.h</in>
+            <in>lib3d.e_light.h</in>
+            <in>lib3d.e_outline.h</in>
+            <in>lib3d.e_visual.h</in>
+            <in>lib3d.geom.h</in>
+            <in>lib3d.light.h</in>
+            <in>lib3d.logic.h</in>
+            <in>lib3d.material.h</in>
+            <in>lib3d.objects.h</in>
+            <in>lib3d.outlines.h</in>
+            <in>lib3d.physics.h</in>
+            <in>lib3d.renderer.h</in>
+            <in>lib3d.renderstate.h</in>
+            <in>lib3d.scene.h</in>
+            <in>lib3d.typedefs.h</in>
+            <in>lib3d.visual.h</in>
+          </df>
+          <df name="media">
+            <in>libmedia.archive.h</in>
+            <in>libmedia.common.h</in>
+            <in>libmedia.filename.h</in>
+            <in>libmedia.library.h</in>
+            <in>libmedia.serialize.h</in>
+            <in>libmedia.streams.h</in>
+            <in>libmedia.typedefs.h</in>
+            <in>libmedia.utils.h</in>
+          </df>
+          <df name="physics">
+          </df>
+          <df name="script">
+          </df>
+          <df name="ui">
+            <in>libui.common.h</in>
+            <in>libui.frames.h</in>
+            <in>libui.keymap.h</in>
+            <in>libui.theme.h</in>
+          </df>
+          <df name="utils">
+            <in>libutils.time.h</in>
+          </df>
+        </df>
+        <df name="tl">
+          <df name="alloc">
+            <in>allocator.h</in>
+            <in>allocator_fqa.h</in>
+          </df>
+          <df name="composite">
+            <in>array.h</in>
+            <in>dynarray.h</in>
+            <in>isockets.h</in>
+            <in>list2.h</in>
+            <in>pair.h</in>
+            <in>quant_array.h</in>
+            <in>scatter_array.h</in>
+            <in>set.h</in>
+            <in>tree_rb.h</in>
+            <in>tuple.h</in>
+          </df>
+          <df name="math">
+            <in>math_3d.h</in>
+            <in>math_3df.h</in>
+            <in>math_3du.h</in>
+            <in>math_c.h</in>
+          </df>
+          <df name="metastl">
+            <in>array.h</in>
+            <in>bitset.h</in>
+            <in>deque.h</in>
+            <in>forward_list.h</in>
+            <in>list.h</in>
+            <in>map.h</in>
+            <in>priority_queue.h</in>
+            <in>queue.h</in>
+            <in>reverse_iterator.h</in>
+            <in>set.h</in>
+            <in>stack.h</in>
+            <in>throws.h</in>
+            <in>unordered_map.h</in>
+            <in>unordered_set.h</in>
+            <in>utils.h</in>
+            <in>valarray.h</in>
+            <in>vector.h</in>
+          </df>
+          <df name="parsers">
+            <in>parser_tcl.h</in>
+          </df>
+          <df name="string">
+            <in>string_array.h</in>
+            <in>string_buffer.h</in>
+            <in>string_const.h</in>
+            <in>string_list.h</in>
+            <in>string_pool.h</in>
+            <in>strings.h</in>
+            <in>su_base.h</in>
+            <in>su_char.h</in>
+            <in>su_charl.h</in>
+            <in>su_charw.h</in>
+            <in>su_comparer.h</in>
+            <in>su_corealloc.h</in>
+            <in>su_coreprealloc.h</in>
+            <in>su_coreptr.h</in>
+            <in>su_coreshared.h</in>
+            <in>su_typedefs.h</in>
+            <in>su_utf.h</in>
+          </df>
+          <df name="util">
+            <in>flags4state.h</in>
+            <in>node_deleter.h</in>
+            <in>object_id.h</in>
+            <in>ref_pointer.h</in>
+            <in>static_holder.h</in>
+            <in>type_constructor.h</in>
+            <in>wrap_index.h</in>
+          </df>
+        </df>
+        <in>stdbase.h</in>
+        <in>stdcore.h</in>
+        <in>stdmath3d.h</in>
+      </df>
+    </df>
+    <df root="." name="1">
+    </df>
+    <df root="../../patch" name="2">
+      <df name="jpeglib">
+      </df>
+      <df name="lightning">
+        <df name="sys">
+          <in>mman.h</in>
+        </df>
+        <in>jit_x86.c</in>
+        <in>stdint.h</in>
+        <in>unistd.h</in>
+      </df>
+      <df name="luajit">
+        <df name="Linux_x86_64">
+          <in>lj_bcdef.h</in>
+          <in>lj_ffdef.h</in>
+          <in>lj_folddef.h</in>
+          <in>lj_libdef.h</in>
+          <in>lj_obj.h</in>
+          <in>lj_recdef.h</in>
+          <in>lj_vm.s</in>
+        </df>
+        <df name="win32.x64">
+          <in>lj_bcdef.h</in>
+          <in>lj_err_fix.h</in>
+          <in>lj_ffdef.h</in>
+          <in>lj_folddef.h</in>
+          <in>lj_libdef.h</in>
+          <in>lj_recdef.h</in>
+        </df>
+        <df name="win32.x86">
+          <in>lj_bcdef.h</in>
+          <in>lj_ffdef.h</in>
+          <in>lj_folddef.h</in>
+          <in>lj_libdef.h</in>
+          <in>lj_recdef.h</in>
+        </df>
+        <in>lj_err.c</in>
+      </df>
+      <df name="SDL2">
+        <df name="win32">
+          <in>audiodefs.h</in>
+          <in>comdecl.h</in>
+          <in>dinput.h</in>
+          <in>dsound.h</in>
+          <in>dxsdkver.h</in>
+          <in>xaudio2.h</in>
+          <in>xma2defs.h</in>
+        </df>
+      </df>
+    </df>
+  </logicalFolder>
+  <projectmakefile>Makefile.linux</projectmakefile>
+  <confs>
+    <conf name="Default" type="0">
+      <toolsSet>
+        <developmentServer>localhost</developmentServer>
+        <platform>2</platform>
+      </toolsSet>
+      <compile>
+        <compiledirpicklist>
+          <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
+        </compiledirpicklist>
+        <compiledir>${AUTO_FOLDER}</compiledir>
+        <compilecommandpicklist>
+          <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
+        </compilecommandpicklist>
+        <compilecommand>${AUTO_COMPILE}</compilecommand>
+      </compile>
+      <dbx_gdbdebugger version="1">
+        <gdb_pathmaps>
+        </gdb_pathmaps>
+        <gdb_interceptlist>
+          <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
+        </gdb_interceptlist>
+        <gdb_options>
+          <DebugOptions>
+            <option name="debug_command" value="../bin/last/umodsysc"/>
+            <option name="debug_dir"
+                    value="/home/andrew_rewoonenco/SVN/arahomex.of.by/mini/UModSys/data"/>
+          </DebugOptions>
+        </gdb_options>
+        <gdb_buildfirst gdb_buildfirst_overriden="false" gdb_buildfirst_old="false"/>
+      </dbx_gdbdebugger>
+      <nativedebugger version="1">
+        <engine>gdb</engine>
+      </nativedebugger>
+      <runprofile version="9">
+        <runcommandpicklist>
+          <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
+          <runcommandpicklistitem>sh run-debug.sh</runcommandpicklistitem>
+          <runcommandpicklistitem>../bin/last/umodsysc</runcommandpicklistitem>
+        </runcommandpicklist>
+        <runcommand>../bin/last/umodsysc</runcommand>
+        <rundir>/home/andrew_rewoonenco/SVN/arahomex.of.by/mini/UModSys/data</rundir>
+        <buildfirst>true</buildfirst>
+        <terminal-type>0</terminal-type>
+        <remove-instrumentation>0</remove-instrumentation>
+        <environment>
+        </environment>
+      </runprofile>
+    </conf>
+  </confs>
+</configurationDescriptor>

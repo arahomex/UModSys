@@ -1,0 +1,24 @@
+.FILE version-$(name)-auto.bat
+@echo off
+pushd %~d0%~p0..\..\..
+perl build/_gen/update_versions.pl --file:build/_gen/versions.txt --mode:autobuild --name:$(name) --set::platform:$(platform)
+popd
+
+.FILE version-$(name)-build.bat
+@echo off
+pushd %~d0%~p0..\..\..
+perl build/_gen/update_versions.pl --file:build/_gen/versions.txt --mode:build --name:$(name) --set::platform:$(platform)
+popd
+
+.FILE version-$(name)-minor.bat
+@echo off
+pushd %~d0%~p0..\..\..
+perl build/_gen/update_versions.pl --file:build/_gen/versions.txt --mode:minor --name:$(name) --set::platform:$(platform)
+popd
+
+.FILE version-$(name)-major.bat
+@echo off
+pushd %~d0%~p0..\..\..
+perl build/_gen/update_versions.pl --file:build/_gen/versions.txt --mode:major --name:$(name) --set::platform:$(platform)
+popd
+
