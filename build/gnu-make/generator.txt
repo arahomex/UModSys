@@ -18,11 +18,11 @@ set path-out-bin $(path-root)/bin
 set spname linux
 set ppath platform/linux
 
-include ../_gen/gen_options_deppath.txt
+include ../_gen_rules/deppath.txt
 
-include ../_gen/gen_options_main_generic.txt
-include ../_gen/gen_options_main_linux.txt
+include ../_gen_rules/main_generic.txt
+include ../_gen_rules/main_linux.txt
 
-include ../_gen/gen_options_depends_generic.txt
-include ../_gen/gen_options_depends_linux.txt
+include ../_gen_rules/depends_generic.txt
+include ../_gen_rules/depends_linux.txt
 
