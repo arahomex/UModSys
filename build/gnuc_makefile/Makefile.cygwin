@@ -1,9 +1,0 @@
-
-PLATFORM=$(shell uname).$(shell uname -p)
-PLATFORM_ID=linux
-
-BINSUFFIX=.exe
-SOLIBSUFFIX=.dll
-CXXFLAGS += -DUMODSYS_ENABLE_DLLEXPORT -Werror
-
-include Makefile.inc
