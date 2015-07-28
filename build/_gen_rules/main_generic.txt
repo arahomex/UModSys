@@ -12,6 +12,11 @@ begin project-group umodsys
 
   option project-order umodsysc
 
+  #
+  # ----------------------------------------------------------------------
+  # ----------------------------------------------------------------------
+  #
+  
   begin project all
     mode lib
     #
@@ -72,6 +77,11 @@ begin project-group umodsys
     depend umodsys_lib_base
     depend umodsys_lib_core
   end
+
+  #
+  # ----------------------------------------------------------------------
+  # ----------------------------------------------------------------------
+  #
 
   begin project umodsys_lib_core
     mode lib
@@ -211,6 +221,7 @@ begin project-group umodsys
     includes $(path-d-jpeg-inc)
     includes $(path-d-png-inc)
     includes $(path-d-zlib-inc)
+    includes $(path-d-libyaml-inc)
     #
     begin file-group headers_media
       begin mask $(path-skip) $(path-inc)/lib/media
@@ -350,6 +361,11 @@ begin project-group umodsys
     end
   end
 
+  #
+  # ----------------------------------------------------------------------
+  # ----------------------------------------------------------------------
+  #
+  
   begin project plugin_test1
     mode solib
     #
@@ -445,5 +461,10 @@ begin project-group umodsys
     depend umodsys_lib_base
     depend umodsys_lib_core
   end
+
+  #
+  # ----------------------------------------------------------------------
+  # ----------------------------------------------------------------------
+  #
 
 end

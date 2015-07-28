@@ -55,3 +55,6 @@ set path-d-bullet-inc $(path-dep)/Bullet/src
 set path-d-libgd $(path-dep)/libgd
 set path-d-libgd-inc $(path-dep)/libgd/src
 
+set path-d-libyaml $(path-dep)/libyaml/
+set path-d-libyaml-inc $(path-dep)/libyaml/include
+

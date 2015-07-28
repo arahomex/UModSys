@@ -239,9 +239,9 @@ begin project-group umodsys_Depends
   begin project lib_libgd
     mode shared
     #
-    includes $(path-include)
-    includes $(path-include)/$(ppath)
     includes $(path-include)/$(ppath)/libgd
+    includes $(path-include)/$(ppath)
+    includes $(path-include)
     includes $(path-d-libgd-inc)
     #
     includes $(path-d-jpeg-inc)
@@ -262,6 +262,28 @@ begin project-group umodsys_Depends
     begin file-group src
       begin mask $(path-skip) $(path-d-libgd)/src
         include gd.c gd_*.c wbmp.c gdfont*.c gdhelpers.c gdtables.c
+      end
+    end
+  end
+
+  begin project lib_yaml
+    mode shared
+    #
+    includes $(path-include)/$(ppath)/libyaml
+    includes $(path-include)/$(ppath)
+    includes $(path-include)
+    includes $(path-d-libyaml-inc)
+    #
+    defines HAVE_CONFIG_H
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-libyaml-inc)
+        include *.h
+      end
+    end
+    begin file-group src
+      begin mask $(path-skip) $(path-d-libyaml)/src
+        include *.c *.h
       end
     end
   end
