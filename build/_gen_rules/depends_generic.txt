@@ -26,6 +26,217 @@ begin project-group umodsys_Depends
   end
 
   #----------------------------------------------------------------
+  # media libs static
+
+  begin project lib_S_zlib
+    mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-zlib-inc)
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-zlib)
+        include *.h
+      end
+    end
+    begin file-group src
+      begin mask $(path-skip) $(path-d-zlib)
+        include *.c
+      end
+    end
+  end
+
+  begin project lib_S_libpng
+    mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-zlib-inc)
+    includes $(path-d-png-inc)
+    depend lib_S_zlib
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-png)
+        include *.h
+      end
+    end
+    begin file-group src
+      begin mask $(path-skip) $(path-d-png)
+        include *.c
+      end
+    end
+  end
+
+  begin project lib_S_jpeglib
+    mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-jpeg-inc)
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-jpeg)
+        include *.h
+      end
+    end
+    begin file-group src
+      begin mask $(path-skip) $(path-d-jpeg)
+        include j*.c
+        exclude jmemdos.c jmemmac.c jmemname.c jmemnobs.c
+        exclude jpegtran.c
+      end
+    end
+  end
+
+  begin project lib_S_freetype
+    mode lib
+    #
+    defines FT_DEBUG_LEVEL_ERROR FT_DEBUG_LEVEL_TRACE FT2_BUILD_LIBRARY
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-freetype-inc)
+    depend lib_S_zlib
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-freetype)/include
+        include *.h
+        include freetype/*.h
+        include freetype/config/*.h
+        include freetype/internal/*.h
+#        include freetype/services/*.h
+      end
+    end
+    begin file-group xsrc
+      begin file-group bzip2
+        begin mask $(path-skip) $(path-d-freetype)/src/bzip2
+          include *.c *.h
+        end
+      end
+      begin file-group gzip
+        begin mask $(path-skip) $(path-d-freetype)/src/gzip
+#          include *.c *.h
+          include ftgzip.c
+        end
+      end
+      begin file-group lzw
+        begin mask $(path-skip) $(path-d-freetype)/src/lzw
+          include *.c *.h
+          exclude ftzopen.c 
+        end
+      end
+#      begin file-group tools
+#        begin mask $(path-skip) $(path-d-freetype)/src/tools
+#          include *.c *.h
+#        end
+#      end
+      begin file-group winfonts
+        begin mask $(path-skip) $(path-d-freetype)/src/winfonts
+          include *.c *.h
+        end
+      end
+    end
+    begin file-group src
+      begin file-group autofit
+        begin mask $(path-skip) $(path-d-freetype)/src/autofit
+          include autofit.c *.h 
+        end
+      end
+      begin file-group base
+        begin mask $(path-skip) $(path-d-freetype)/src/base
+          include ftbase.c *.h 
+          include ftdebug.c ftsystem.c ftbitmap.c ftglyph.c ftinit.c ftstroke.c
+        end
+      end
+      begin file-group bdf
+        begin mask $(path-skip) $(path-d-freetype)/src/bdf
+          include bdf.c *.h 
+        end
+      end
+      begin file-group cache
+        begin mask $(path-skip) $(path-d-freetype)/src/cache
+          include ftcache.c *.h
+        end
+      end
+      begin file-group cff
+        begin mask $(path-skip) $(path-d-freetype)/src/cff
+          include cff.c *.h
+        end
+      end
+      begin file-group cid
+        begin mask $(path-skip) $(path-d-freetype)/src/cid
+          include type1cid.c *.h
+        end
+      end
+      begin file-group gxvalid
+        begin mask $(path-skip) $(path-d-freetype)/src/gxvalid
+          include gxvalid.c *.h
+        end
+      end
+      begin file-group otvalid
+        begin mask $(path-skip) $(path-d-freetype)/src/otvalid
+          include otvalid.c *.h
+        end
+      end
+      begin file-group pcf
+        begin mask $(path-skip) $(path-d-freetype)/src/pcf
+          include pcf.c *.h
+        end
+      end
+      begin file-group pfr
+        begin mask $(path-skip) $(path-d-freetype)/src/pfr
+          include pfr.c *.h
+        end
+      end
+      begin file-group psaux
+        begin mask $(path-skip) $(path-d-freetype)/src/psaux
+          include psaux.c *.h
+        end
+      end
+      begin file-group pshinter
+        begin mask $(path-skip) $(path-d-freetype)/src/pshinter
+          include pshinter.c *.h
+        end
+      end
+      begin file-group psnames
+        begin mask $(path-skip) $(path-d-freetype)/src/psnames
+          include psnames.c *.h
+        end
+      end
+      begin file-group raster
+        begin mask $(path-skip) $(path-d-freetype)/src/raster
+          include raster.c *.h
+        end
+      end
+      begin file-group sfnt
+        begin mask $(path-skip) $(path-d-freetype)/src/sfnt
+          include sfnt.c *.h
+        end
+      end
+      begin file-group smooth
+        begin mask $(path-skip) $(path-d-freetype)/src/smooth
+          include smooth.c *.h
+        end
+      end
+      begin file-group truetype
+        begin mask $(path-skip) $(path-d-freetype)/src/truetype
+          include truetype.c *.h
+        end
+      end
+      begin file-group type1
+        begin mask $(path-skip) $(path-d-freetype)/src/type1
+          include type1.c *.h
+        end
+      end
+      begin file-group type42
+        begin mask $(path-skip) $(path-d-freetype)/src/type42
+          include type42.c *.h
+        end
+      end
+    end
+  end
+
+  #----------------------------------------------------------------
   # media libs
 
   begin project lib_zlib
@@ -284,6 +495,112 @@ begin project-group umodsys_Depends
     begin file-group src
       begin mask $(path-skip) $(path-d-libyaml)/src
         include *.c *.h
+      end
+    end
+  end
+
+  #----------------------------------------------------------------
+  # UI libs static
+
+  begin project lib_S_SDL2
+    mode lib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-d-SDL2-inc)
+    includes $(path-d-SDL2_ttf-inc)
+    includes $(path-d-freetype-inc)
+    depend lib_S_freetype
+    #
+    begin file-group include
+      begin mask $(path-skip) $(path-d-SDL2)/include
+        include *.h
+      end
+    end
+    begin file-group src
+      begin mask $(path-skip) $(path-d-SDL2)/src
+        include *.c *.h
+      end
+      begin file-group atomic
+        begin mask $(path-skip) $(path-d-SDL2)/src/atomic
+          include *.c *.h
+        end
+      end
+      begin file-group audio
+        begin mask $(path-skip) $(path-d-SDL2)/src/audio
+          include *.c *.h
+        end
+      end
+      begin file-group cpuinfo
+        begin mask $(path-skip) $(path-d-SDL2)/src/cpuinfo
+          include *.c *.h
+        end
+      end
+      begin file-group events
+        begin mask $(path-skip) $(path-d-SDL2)/src/events
+          include *.c *.h
+        end
+      end
+      begin file-group file
+        begin mask $(path-skip) $(path-d-SDL2)/src/file
+          include *.c *.h
+        end
+      end
+      begin file-group haptic
+        begin mask $(path-skip) $(path-d-SDL2)/src/haptic
+          include *.c *.h
+        end
+      end
+      begin file-group joystick
+        begin mask $(path-skip) $(path-d-SDL2)/src/joystick
+          include *.c *.h
+        end
+      end
+      begin file-group libm
+        begin mask $(path-skip) $(path-d-SDL2)/src/libm
+          include *.c *.h
+        end
+      end
+      begin file-group power
+        begin mask $(path-skip) $(path-d-SDL2)/src/power
+          include *.c *.h
+        end
+      end
+      begin file-group render
+        begin mask $(path-skip) $(path-d-SDL2)/src/render
+          include *.c *.h
+        end
+      end
+      begin file-group stdlib
+        begin mask $(path-skip) $(path-d-SDL2)/src/stdlib
+#          include SDL_getenv.c
+#          include SDL_iconv.c
+#          include SDL_malloc.c
+#          include SDL_qsort.c
+#          include SDL_stdlib.c
+#          include SDL_string.c
+          include *.c *.h
+        end
+      end
+      begin file-group thread
+        begin mask $(path-skip) $(path-d-SDL2)/src/thread
+          include *.c *.h
+        end
+      end
+      begin file-group timer
+        begin mask $(path-skip) $(path-d-SDL2)/src/timer
+          include *.c *.h
+        end
+      end
+      begin file-group video
+        begin mask $(path-skip) $(path-d-SDL2)/src/video
+          include *.c *.h
+        end
+      end
+    end
+    begin file-group SDL_ttf
+      begin mask $(path-skip) $(path-d-SDL2_ttf)
+        include SDL_ttf.c SDL_ttf.h
       end
     end
   end

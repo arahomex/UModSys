@@ -4,6 +4,11 @@ all: target
 
 target__umodsys_Depends__all=
 target__umodsys_Depends__lib_SDL2=../../bin/Linux_x86_64.Debug/lib_SDL2.Linux_x86_64.Debug.so
+target__umodsys_Depends__lib_S_SDL2=../../tmp/Linux_x86_64.Debug/lib_S_SDL2.Linux_x86_64.Debug.a
+target__umodsys_Depends__lib_S_freetype=../../tmp/Linux_x86_64.Debug/lib_S_freetype.Linux_x86_64.Debug.a
+target__umodsys_Depends__lib_S_jpeglib=../../tmp/Linux_x86_64.Debug/lib_S_jpeglib.Linux_x86_64.Debug.a
+target__umodsys_Depends__lib_S_libpng=../../tmp/Linux_x86_64.Debug/lib_S_libpng.Linux_x86_64.Debug.a
+target__umodsys_Depends__lib_S_zlib=../../tmp/Linux_x86_64.Debug/lib_S_zlib.Linux_x86_64.Debug.a
 target__umodsys_Depends__lib_angelscript=../../bin/Linux_x86_64.Debug/lib_angelscript.Linux_x86_64.Debug.so
 target__umodsys_Depends__lib_bullet=../../tmp/Linux_x86_64.Debug/lib_bullet.Linux_x86_64.Debug.a
 target__umodsys_Depends__lib_freetype=../../bin/Linux_x86_64.Debug/lib_freetype.Linux_x86_64.Debug.so
@@ -43,6 +48,7 @@ target__umodsys__umodsys_lib_lib3d=../../tmp/Linux_x86_64.Debug/umodsys_lib_lib3
 target__umodsys__umodsys_lib_libmedia=../../tmp/Linux_x86_64.Debug/umodsys_lib_libmedia.Linux_x86_64.Debug.a
 target__umodsys__umodsys_lib_libui=../../tmp/Linux_x86_64.Debug/umodsys_lib_libui.Linux_x86_64.Debug.a
 target__umodsys__umodsysc = ../../bin/Linux_x86_64.Debug/umodsysc.Linux_x86_64.Debug
+target__umodsys__umodsysca = ../../bin/Linux_x86_64.Debug/umodsysca.Linux_x86_64.Debug
 target__umodsys__umodsysct = ../../bin/Linux_x86_64.Debug/umodsysct.Linux_x86_64.Debug
 #**************************************************************** BEGIN projectgroup 'umodsys_Depends'
 
@@ -1156,6 +1162,2180 @@ $(target__umodsys_Depends__lib_SDL2):  $(target__umodsys_Depends__lib_freetype) 
 
 #-------------------------------- epilog 'umodsys_Depends'.'lib_SDL2'
 #---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_SDL2' 
+#---------------------------------------------------------------- BEGIN project 'umodsys_Depends'.'lib_S_SDL2' 
+#-------------------------------- prolog 'umodsys_Depends'.'lib_S_SDL2'
+#--------------------------------
+#-------------------------------- project 'umodsys_Depends'.'lib_S_SDL2' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib:
+target: tp-umodsys_Depends-lib_S_SDL2
+clean: cp-umodsys_Depends-lib_S_SDL2
+tg-umodsys_Depends: tp-umodsys_Depends-lib_S_SDL2
+cg-umodsys_Depends: cp-umodsys_Depends-lib_S_SDL2
+tp-umodsys_Depends-lib_S_SDL2:  $(target__umodsys_Depends__lib_S_freetype) tpp-umodsys_Depends-lib_S_SDL2
+cp-umodsys_Depends-lib_S_SDL2:  cp-umodsys_Depends-lib_S_freetype cpp-umodsys_Depends-lib_S_SDL2
+#.PHONY: tp-umodsys_Depends-lib_S_SDL2 tpp-umodsys_Depends-lib_S_SDL2 cp-umodsys_Depends-lib_S_SDL2 cpp-umodsys_Depends-lib_S_SDL2
+
+tmp__umodsys_Depends__lib_S_SDL2=../../tmp/Linux_x86_64.Debug
+bin__umodsys_Depends__lib_S_SDL2=../../bin/Linux_x86_64.Debug
+tmpx__umodsys_Depends__lib_S_SDL2=../../tmp/Linux_x86_64.Debug/lib_S_SDL2
+CXXFLAGS__umodsys_Depends__lib_S_SDL2=-O0 -g -fPIC -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include -I../../patch/SDL2/linux -DHAVE_LIBC
+CFLAGS__umodsys_Depends__lib_S_SDL2=-O0 -g -fPIC -I../../include -I../../include/platform/linux -I../../depends/SDL2/include -I../../depends/SDL2_ttf -I../../depends/freetype/include -I../../patch/SDL2/linux -DHAVE_LIBC
+LDFLAGS__umodsys_Depends__lib_S_SDL2=-O0 -g -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:lib_S_freetype.Linux_x86_64.Debug.a
+
+
+# file group SDL_ttf :
+# file SDL_ttf : ../../depends/SDL2_ttf/SDL_ttf.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_ttf.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_ttf.o: ../../depends/SDL2_ttf/SDL_ttf.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_ttf.o.d
+# file SDL_ttf : ../../depends/SDL2_ttf/SDL_ttf.h
+# end file group SDL_ttf .
+# file group include :
+# file include : ../../depends/SDL2/include/begin_code.h
+# file include : ../../depends/SDL2/include/close_code.h
+# file include : ../../depends/SDL2/include/SDL.h
+# file include : ../../depends/SDL2/include/SDL_assert.h
+# file include : ../../depends/SDL2/include/SDL_atomic.h
+# file include : ../../depends/SDL2/include/SDL_audio.h
+# file include : ../../depends/SDL2/include/SDL_bits.h
+# file include : ../../depends/SDL2/include/SDL_blendmode.h
+# file include : ../../depends/SDL2/include/SDL_clipboard.h
+# file include : ../../depends/SDL2/include/SDL_config_android.h
+# file include : ../../depends/SDL2/include/SDL_config_iphoneos.h
+# file include : ../../depends/SDL2/include/SDL_config_macosx.h
+# file include : ../../depends/SDL2/include/SDL_config_minimal.h
+# file include : ../../depends/SDL2/include/SDL_config_pandora.h
+# file include : ../../depends/SDL2/include/SDL_config_psp.h
+# file include : ../../depends/SDL2/include/SDL_config_windows.h
+# file include : ../../depends/SDL2/include/SDL_config_wiz.h
+# file include : ../../depends/SDL2/include/SDL_copying.h
+# file include : ../../depends/SDL2/include/SDL_cpuinfo.h
+# file include : ../../depends/SDL2/include/SDL_endian.h
+# file include : ../../depends/SDL2/include/SDL_error.h
+# file include : ../../depends/SDL2/include/SDL_events.h
+# file include : ../../depends/SDL2/include/SDL_filesystem.h
+# file include : ../../depends/SDL2/include/SDL_gamecontroller.h
+# file include : ../../depends/SDL2/include/SDL_gesture.h
+# file include : ../../depends/SDL2/include/SDL_haptic.h
+# file include : ../../depends/SDL2/include/SDL_hints.h
+# file include : ../../depends/SDL2/include/SDL_joystick.h
+# file include : ../../depends/SDL2/include/SDL_keyboard.h
+# file include : ../../depends/SDL2/include/SDL_keycode.h
+# file include : ../../depends/SDL2/include/SDL_loadso.h
+# file include : ../../depends/SDL2/include/SDL_log.h
+# file include : ../../depends/SDL2/include/SDL_main.h
+# file include : ../../depends/SDL2/include/SDL_messagebox.h
+# file include : ../../depends/SDL2/include/SDL_mouse.h
+# file include : ../../depends/SDL2/include/SDL_mutex.h
+# file include : ../../depends/SDL2/include/SDL_name.h
+# file include : ../../depends/SDL2/include/SDL_opengl.h
+# file include : ../../depends/SDL2/include/SDL_opengles.h
+# file include : ../../depends/SDL2/include/SDL_opengles2.h
+# file include : ../../depends/SDL2/include/SDL_pixels.h
+# file include : ../../depends/SDL2/include/SDL_platform.h
+# file include : ../../depends/SDL2/include/SDL_power.h
+# file include : ../../depends/SDL2/include/SDL_quit.h
+# file include : ../../depends/SDL2/include/SDL_rect.h
+# file include : ../../depends/SDL2/include/SDL_render.h
+# file include : ../../depends/SDL2/include/SDL_revision.h
+# file include : ../../depends/SDL2/include/SDL_rwops.h
+# file include : ../../depends/SDL2/include/SDL_scancode.h
+# file include : ../../depends/SDL2/include/SDL_shape.h
+# file include : ../../depends/SDL2/include/SDL_stdinc.h
+# file include : ../../depends/SDL2/include/SDL_surface.h
+# file include : ../../depends/SDL2/include/SDL_system.h
+# file include : ../../depends/SDL2/include/SDL_syswm.h
+# file include : ../../depends/SDL2/include/SDL_test.h
+# file include : ../../depends/SDL2/include/SDL_test_assert.h
+# file include : ../../depends/SDL2/include/SDL_test_common.h
+# file include : ../../depends/SDL2/include/SDL_test_compare.h
+# file include : ../../depends/SDL2/include/SDL_test_crc32.h
+# file include : ../../depends/SDL2/include/SDL_test_font.h
+# file include : ../../depends/SDL2/include/SDL_test_fuzzer.h
+# file include : ../../depends/SDL2/include/SDL_test_harness.h
+# file include : ../../depends/SDL2/include/SDL_test_images.h
+# file include : ../../depends/SDL2/include/SDL_test_log.h
+# file include : ../../depends/SDL2/include/SDL_test_md5.h
+# file include : ../../depends/SDL2/include/SDL_test_random.h
+# file include : ../../depends/SDL2/include/SDL_thread.h
+# file include : ../../depends/SDL2/include/SDL_timer.h
+# file include : ../../depends/SDL2/include/SDL_touch.h
+# file include : ../../depends/SDL2/include/SDL_types.h
+# file include : ../../depends/SDL2/include/SDL_version.h
+# file include : ../../depends/SDL2/include/SDL_video.h
+# end file group include .
+# file group src :
+# file group atomic :
+# file atomic : ../../depends/SDL2/src/atomic/SDL_atomic.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_atomic.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_atomic.o: ../../depends/SDL2/src/atomic/SDL_atomic.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_atomic.o.d
+# file atomic : ../../depends/SDL2/src/atomic/SDL_spinlock.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_spinlock.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_spinlock.o: ../../depends/SDL2/src/atomic/SDL_spinlock.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_spinlock.o.d
+# end file group atomic .
+# file group audio :
+# file audio : ../../depends/SDL2/src/audio/SDL_audio.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_audio.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_audio.o: ../../depends/SDL2/src/audio/SDL_audio.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_audio.o.d
+# file audio : ../../depends/SDL2/src/audio/SDL_audiocvt.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_audiocvt.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_audiocvt.o: ../../depends/SDL2/src/audio/SDL_audiocvt.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_audiocvt.o.d
+# file audio : ../../depends/SDL2/src/audio/SDL_audiodev.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_audiodev.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_audiodev.o: ../../depends/SDL2/src/audio/SDL_audiodev.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_audiodev.o.d
+# file audio : ../../depends/SDL2/src/audio/SDL_audiotypecvt.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_audiotypecvt.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_audiotypecvt.o: ../../depends/SDL2/src/audio/SDL_audiotypecvt.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_audiotypecvt.o.d
+# file audio : ../../depends/SDL2/src/audio/SDL_mixer.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_mixer.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_mixer.o: ../../depends/SDL2/src/audio/SDL_mixer.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_mixer.o.d
+# file audio : ../../depends/SDL2/src/audio/SDL_wave.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_wave.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_wave.o: ../../depends/SDL2/src/audio/SDL_wave.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_wave.o.d
+# file audio : ../../depends/SDL2/src/audio/SDL_audio_c.h
+# file audio : ../../depends/SDL2/src/audio/SDL_audiodev_c.h
+# file audio : ../../depends/SDL2/src/audio/SDL_audiomem.h
+# file audio : ../../depends/SDL2/src/audio/SDL_sysaudio.h
+# file audio : ../../depends/SDL2/src/audio/SDL_wave.h
+# end file group audio .
+# file group cpuinfo :
+# file cpuinfo : ../../depends/SDL2/src/cpuinfo/SDL_cpuinfo.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_cpuinfo.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_cpuinfo.o: ../../depends/SDL2/src/cpuinfo/SDL_cpuinfo.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_cpuinfo.o.d
+# end file group cpuinfo .
+# file group events :
+# file events : ../../depends/SDL2/src/events/SDL_clipboardevents.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_clipboardevents.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_clipboardevents.o: ../../depends/SDL2/src/events/SDL_clipboardevents.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_clipboardevents.o.d
+# file events : ../../depends/SDL2/src/events/SDL_dropevents.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_dropevents.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_dropevents.o: ../../depends/SDL2/src/events/SDL_dropevents.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_dropevents.o.d
+# file events : ../../depends/SDL2/src/events/SDL_events.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_events.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_events.o: ../../depends/SDL2/src/events/SDL_events.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_events.o.d
+# file events : ../../depends/SDL2/src/events/SDL_gesture.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_gesture.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_gesture.o: ../../depends/SDL2/src/events/SDL_gesture.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_gesture.o.d
+# file events : ../../depends/SDL2/src/events/SDL_keyboard.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_keyboard.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_keyboard.o: ../../depends/SDL2/src/events/SDL_keyboard.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_keyboard.o.d
+# file events : ../../depends/SDL2/src/events/SDL_mouse.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_mouse.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_mouse.o: ../../depends/SDL2/src/events/SDL_mouse.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_mouse.o.d
+# file events : ../../depends/SDL2/src/events/SDL_quit.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_quit.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_quit.o: ../../depends/SDL2/src/events/SDL_quit.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_quit.o.d
+# file events : ../../depends/SDL2/src/events/SDL_touch.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_touch.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_touch.o: ../../depends/SDL2/src/events/SDL_touch.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_touch.o.d
+# file events : ../../depends/SDL2/src/events/SDL_windowevents.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_windowevents.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_windowevents.o: ../../depends/SDL2/src/events/SDL_windowevents.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_windowevents.o.d
+# file events : ../../depends/SDL2/src/events/blank_cursor.h
+# file events : ../../depends/SDL2/src/events/default_cursor.h
+# file events : ../../depends/SDL2/src/events/scancodes_darwin.h
+# file events : ../../depends/SDL2/src/events/scancodes_linux.h
+# file events : ../../depends/SDL2/src/events/scancodes_windows.h
+# file events : ../../depends/SDL2/src/events/scancodes_xfree86.h
+# file events : ../../depends/SDL2/src/events/SDL_clipboardevents_c.h
+# file events : ../../depends/SDL2/src/events/SDL_dropevents_c.h
+# file events : ../../depends/SDL2/src/events/SDL_events_c.h
+# file events : ../../depends/SDL2/src/events/SDL_gesture_c.h
+# file events : ../../depends/SDL2/src/events/SDL_keyboard_c.h
+# file events : ../../depends/SDL2/src/events/SDL_mouse_c.h
+# file events : ../../depends/SDL2/src/events/SDL_sysevents.h
+# file events : ../../depends/SDL2/src/events/SDL_touch_c.h
+# file events : ../../depends/SDL2/src/events/SDL_windowevents_c.h
+# end file group events .
+# file group file :
+# file file : ../../depends/SDL2/src/file/SDL_rwops.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rwops.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rwops.o: ../../depends/SDL2/src/file/SDL_rwops.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rwops.o.d
+# end file group file .
+# file group haptic :
+# file haptic : ../../depends/SDL2/src/haptic/SDL_haptic.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_haptic.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_haptic.o: ../../depends/SDL2/src/haptic/SDL_haptic.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_haptic.o.d
+# file haptic : ../../depends/SDL2/src/haptic/SDL_haptic_c.h
+# file haptic : ../../depends/SDL2/src/haptic/SDL_syshaptic.h
+# end file group haptic .
+# file group joystick :
+# file joystick : ../../depends/SDL2/src/joystick/SDL_gamecontroller.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_gamecontroller.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_gamecontroller.o: ../../depends/SDL2/src/joystick/SDL_gamecontroller.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_gamecontroller.o.d
+# file joystick : ../../depends/SDL2/src/joystick/SDL_joystick.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_joystick.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_joystick.o: ../../depends/SDL2/src/joystick/SDL_joystick.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_joystick.o.d
+# file joystick : ../../depends/SDL2/src/joystick/SDL_gamecontrollerdb.h
+# file joystick : ../../depends/SDL2/src/joystick/SDL_joystick_c.h
+# file joystick : ../../depends/SDL2/src/joystick/SDL_sysjoystick.h
+# end file group joystick .
+# file group libm :
+# file libm : ../../depends/SDL2/src/libm/e_atan2.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/e_atan2.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/e_atan2.o: ../../depends/SDL2/src/libm/e_atan2.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/e_atan2.o.d
+# file libm : ../../depends/SDL2/src/libm/e_log.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/e_log.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/e_log.o: ../../depends/SDL2/src/libm/e_log.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/e_log.o.d
+# file libm : ../../depends/SDL2/src/libm/e_pow.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/e_pow.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/e_pow.o: ../../depends/SDL2/src/libm/e_pow.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/e_pow.o.d
+# file libm : ../../depends/SDL2/src/libm/e_rem_pio2.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/e_rem_pio2.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/e_rem_pio2.o: ../../depends/SDL2/src/libm/e_rem_pio2.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/e_rem_pio2.o.d
+# file libm : ../../depends/SDL2/src/libm/e_sqrt.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/e_sqrt.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/e_sqrt.o: ../../depends/SDL2/src/libm/e_sqrt.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/e_sqrt.o.d
+# file libm : ../../depends/SDL2/src/libm/k_cos.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/k_cos.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/k_cos.o: ../../depends/SDL2/src/libm/k_cos.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/k_cos.o.d
+# file libm : ../../depends/SDL2/src/libm/k_rem_pio2.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/k_rem_pio2.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/k_rem_pio2.o: ../../depends/SDL2/src/libm/k_rem_pio2.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/k_rem_pio2.o.d
+# file libm : ../../depends/SDL2/src/libm/k_sin.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/k_sin.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/k_sin.o: ../../depends/SDL2/src/libm/k_sin.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/k_sin.o.d
+# file libm : ../../depends/SDL2/src/libm/s_atan.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/s_atan.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/s_atan.o: ../../depends/SDL2/src/libm/s_atan.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/s_atan.o.d
+# file libm : ../../depends/SDL2/src/libm/s_copysign.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/s_copysign.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/s_copysign.o: ../../depends/SDL2/src/libm/s_copysign.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/s_copysign.o.d
+# file libm : ../../depends/SDL2/src/libm/s_cos.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/s_cos.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/s_cos.o: ../../depends/SDL2/src/libm/s_cos.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/s_cos.o.d
+# file libm : ../../depends/SDL2/src/libm/s_fabs.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/s_fabs.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/s_fabs.o: ../../depends/SDL2/src/libm/s_fabs.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/s_fabs.o.d
+# file libm : ../../depends/SDL2/src/libm/s_floor.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/s_floor.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/s_floor.o: ../../depends/SDL2/src/libm/s_floor.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/s_floor.o.d
+# file libm : ../../depends/SDL2/src/libm/s_scalbn.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/s_scalbn.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/s_scalbn.o: ../../depends/SDL2/src/libm/s_scalbn.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/s_scalbn.o.d
+# file libm : ../../depends/SDL2/src/libm/s_sin.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/s_sin.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/s_sin.o: ../../depends/SDL2/src/libm/s_sin.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/s_sin.o.d
+# file libm : ../../depends/SDL2/src/libm/math_libm.h
+# file libm : ../../depends/SDL2/src/libm/math_private.h
+# end file group libm .
+# file group power :
+# file power : ../../depends/SDL2/src/power/SDL_power.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_power.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_power.o: ../../depends/SDL2/src/power/SDL_power.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_power.o.d
+# end file group power .
+# file group render :
+# file render : ../../depends/SDL2/src/render/SDL_render.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_render.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_render.o: ../../depends/SDL2/src/render/SDL_render.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_render.o.d
+# file render : ../../depends/SDL2/src/render/SDL_yuv_mmx.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_yuv_mmx.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_yuv_mmx.o: ../../depends/SDL2/src/render/SDL_yuv_mmx.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_yuv_mmx.o.d
+# file render : ../../depends/SDL2/src/render/SDL_yuv_sw.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_yuv_sw.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_yuv_sw.o: ../../depends/SDL2/src/render/SDL_yuv_sw.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_yuv_sw.o.d
+# file render : ../../depends/SDL2/src/render/mmx.h
+# file render : ../../depends/SDL2/src/render/SDL_sysrender.h
+# file render : ../../depends/SDL2/src/render/SDL_yuv_sw_c.h
+# end file group render .
+# file group stdlib :
+# file stdlib : ../../depends/SDL2/src/stdlib/SDL_getenv.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_getenv.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_getenv.o: ../../depends/SDL2/src/stdlib/SDL_getenv.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_getenv.o.d
+# file stdlib : ../../depends/SDL2/src/stdlib/SDL_iconv.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_iconv.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_iconv.o: ../../depends/SDL2/src/stdlib/SDL_iconv.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_iconv.o.d
+# file stdlib : ../../depends/SDL2/src/stdlib/SDL_malloc.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_malloc.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_malloc.o: ../../depends/SDL2/src/stdlib/SDL_malloc.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_malloc.o.d
+# file stdlib : ../../depends/SDL2/src/stdlib/SDL_qsort.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_qsort.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_qsort.o: ../../depends/SDL2/src/stdlib/SDL_qsort.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_qsort.o.d
+# file stdlib : ../../depends/SDL2/src/stdlib/SDL_stdlib.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_stdlib.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_stdlib.o: ../../depends/SDL2/src/stdlib/SDL_stdlib.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_stdlib.o.d
+# file stdlib : ../../depends/SDL2/src/stdlib/SDL_string.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_string.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_string.o: ../../depends/SDL2/src/stdlib/SDL_string.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_string.o.d
+# end file group stdlib .
+# file group thread :
+# file thread : ../../depends/SDL2/src/thread/SDL_thread.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_thread.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_thread.o: ../../depends/SDL2/src/thread/SDL_thread.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_thread.o.d
+# file thread : ../../depends/SDL2/src/thread/SDL_systhread.h
+# file thread : ../../depends/SDL2/src/thread/SDL_thread_c.h
+# end file group thread .
+# file group timer :
+# file timer : ../../depends/SDL2/src/timer/SDL_timer.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_timer.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_timer.o: ../../depends/SDL2/src/timer/SDL_timer.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_timer.o.d
+# file timer : ../../depends/SDL2/src/timer/SDL_timer_c.h
+# end file group timer .
+# file group video :
+# file video : ../../depends/SDL2/src/video/SDL_blit.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit.o: ../../depends/SDL2/src/video/SDL_blit.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit.o.d
+# file video : ../../depends/SDL2/src/video/SDL_blit_0.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_0.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_0.o: ../../depends/SDL2/src/video/SDL_blit_0.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_0.o.d
+# file video : ../../depends/SDL2/src/video/SDL_blit_1.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_1.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_1.o: ../../depends/SDL2/src/video/SDL_blit_1.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_1.o.d
+# file video : ../../depends/SDL2/src/video/SDL_blit_A.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_A.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_A.o: ../../depends/SDL2/src/video/SDL_blit_A.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_A.o.d
+# file video : ../../depends/SDL2/src/video/SDL_blit_auto.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_auto.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_auto.o: ../../depends/SDL2/src/video/SDL_blit_auto.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_auto.o.d
+# file video : ../../depends/SDL2/src/video/SDL_blit_copy.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_copy.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_copy.o: ../../depends/SDL2/src/video/SDL_blit_copy.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_copy.o.d
+# file video : ../../depends/SDL2/src/video/SDL_blit_N.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_N.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_N.o: ../../depends/SDL2/src/video/SDL_blit_N.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_N.o.d
+# file video : ../../depends/SDL2/src/video/SDL_blit_slow.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_slow.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_slow.o: ../../depends/SDL2/src/video/SDL_blit_slow.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blit_slow.o.d
+# file video : ../../depends/SDL2/src/video/SDL_bmp.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_bmp.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_bmp.o: ../../depends/SDL2/src/video/SDL_bmp.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_bmp.o.d
+# file video : ../../depends/SDL2/src/video/SDL_clipboard.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_clipboard.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_clipboard.o: ../../depends/SDL2/src/video/SDL_clipboard.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_clipboard.o.d
+# file video : ../../depends/SDL2/src/video/SDL_egl.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_egl.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_egl.o: ../../depends/SDL2/src/video/SDL_egl.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_egl.o.d
+# file video : ../../depends/SDL2/src/video/SDL_fillrect.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_fillrect.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_fillrect.o: ../../depends/SDL2/src/video/SDL_fillrect.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_fillrect.o.d
+# file video : ../../depends/SDL2/src/video/SDL_pixels.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_pixels.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_pixels.o: ../../depends/SDL2/src/video/SDL_pixels.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_pixels.o.d
+# file video : ../../depends/SDL2/src/video/SDL_rect.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rect.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rect.o: ../../depends/SDL2/src/video/SDL_rect.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rect.o.d
+# file video : ../../depends/SDL2/src/video/SDL_RLEaccel.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_RLEaccel.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_RLEaccel.o: ../../depends/SDL2/src/video/SDL_RLEaccel.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_RLEaccel.o.d
+# file video : ../../depends/SDL2/src/video/SDL_shape.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_shape.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_shape.o: ../../depends/SDL2/src/video/SDL_shape.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_shape.o.d
+# file video : ../../depends/SDL2/src/video/SDL_stretch.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_stretch.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_stretch.o: ../../depends/SDL2/src/video/SDL_stretch.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_stretch.o.d
+# file video : ../../depends/SDL2/src/video/SDL_surface.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_surface.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_surface.o: ../../depends/SDL2/src/video/SDL_surface.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_surface.o.d
+# file video : ../../depends/SDL2/src/video/SDL_video.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_video.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_video.o: ../../depends/SDL2/src/video/SDL_video.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_video.o.d
+# file video : ../../depends/SDL2/src/video/SDL_blit.h
+# file video : ../../depends/SDL2/src/video/SDL_blit_auto.h
+# file video : ../../depends/SDL2/src/video/SDL_blit_copy.h
+# file video : ../../depends/SDL2/src/video/SDL_blit_slow.h
+# file video : ../../depends/SDL2/src/video/SDL_egl.h
+# file video : ../../depends/SDL2/src/video/SDL_pixels_c.h
+# file video : ../../depends/SDL2/src/video/SDL_rect_c.h
+# file video : ../../depends/SDL2/src/video/SDL_RLEaccel_c.h
+# file video : ../../depends/SDL2/src/video/SDL_shape_internals.h
+# file video : ../../depends/SDL2/src/video/SDL_sysvideo.h
+# end file group video .
+# file src : ../../depends/SDL2/src/SDL.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL.o: ../../depends/SDL2/src/SDL.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL.o.d
+# file src : ../../depends/SDL2/src/SDL_assert.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_assert.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_assert.o: ../../depends/SDL2/src/SDL_assert.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_assert.o.d
+# file src : ../../depends/SDL2/src/SDL_error.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_error.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_error.o: ../../depends/SDL2/src/SDL_error.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_error.o.d
+# file src : ../../depends/SDL2/src/SDL_hints.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_hints.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_hints.o: ../../depends/SDL2/src/SDL_hints.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_hints.o.d
+# file src : ../../depends/SDL2/src/SDL_log.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_log.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_log.o: ../../depends/SDL2/src/SDL_log.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_log.o.d
+# file src : ../../depends/SDL2/src/SDL_assert_c.h
+# file src : ../../depends/SDL2/src/SDL_error_c.h
+# end file group src .
+# file group src-linux :
+# file group audio :
+# file audio : ../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_alsa_audio.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_alsa_audio.o: ../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_alsa_audio.o.d
+# file audio : ../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.h
+# file audio : ../../depends/SDL2/src/audio/disk/SDL_diskaudio.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_diskaudio.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_diskaudio.o: ../../depends/SDL2/src/audio/disk/SDL_diskaudio.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_diskaudio.o.d
+# file audio : ../../depends/SDL2/src/audio/disk/SDL_diskaudio.h
+# file audio : ../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_dummyaudio.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_dummyaudio.o: ../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_dummyaudio.o.d
+# file audio : ../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.h
+# file audio : ../../depends/SDL2/src/audio/paudio/SDL_paudio.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_paudio.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_paudio.o: ../../depends/SDL2/src/audio/paudio/SDL_paudio.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_paudio.o.d
+# file audio : ../../depends/SDL2/src/audio/paudio/SDL_paudio.h
+# file audio : ../../depends/SDL2/src/audio/dsp/SDL_dspaudio.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_dspaudio.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_dspaudio.o: ../../depends/SDL2/src/audio/dsp/SDL_dspaudio.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_dspaudio.o.d
+# file audio : ../../depends/SDL2/src/audio/dsp/SDL_dspaudio.h
+# file audio : ../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_pulseaudio.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_pulseaudio.o: ../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_pulseaudio.o.d
+# file audio : ../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.h
+# end file group audio .
+# file group core :
+# file core : ../../depends/SDL2/src/core/linux/SDL_udev.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_udev.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_udev.o: ../../depends/SDL2/src/core/linux/SDL_udev.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_udev.o.d
+# file core : ../../depends/SDL2/src/core/linux/SDL_udev.h
+# end file group core .
+# file group filesystem :
+# file filesystem : ../../depends/SDL2/src/filesystem/unix/SDL_sysfilesystem.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_sysfilesystem.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_sysfilesystem.o: ../../depends/SDL2/src/filesystem/unix/SDL_sysfilesystem.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_sysfilesystem.o.d
+# end file group filesystem .
+# file group haptic :
+# file haptic : ../../depends/SDL2/src/haptic/linux/SDL_syshaptic.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_syshaptic.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_syshaptic.o: ../../depends/SDL2/src/haptic/linux/SDL_syshaptic.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_syshaptic.o.d
+# end file group haptic .
+# file group joystick :
+# file joystick : ../../depends/SDL2/src/joystick/linux/SDL_sysjoystick.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_sysjoystick.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_sysjoystick.o: ../../depends/SDL2/src/joystick/linux/SDL_sysjoystick.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_sysjoystick.o.d
+# file joystick : ../../depends/SDL2/src/joystick/linux/SDL_sysjoystick_c.h
+# end file group joystick .
+# file group loadso :
+# file loadso : ../../depends/SDL2/src/loadso/dlopen/SDL_sysloadso.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_sysloadso.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_sysloadso.o: ../../depends/SDL2/src/loadso/dlopen/SDL_sysloadso.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_sysloadso.o.d
+# end file group loadso .
+# file group power :
+# file power : ../../depends/SDL2/src/power/linux/SDL_syspower.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_syspower.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_syspower.o: ../../depends/SDL2/src/power/linux/SDL_syspower.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_syspower.o.d
+# end file group power .
+# file group render :
+# file render : ../../depends/SDL2/src/render/opengl/SDL_render_gl.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_render_gl.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_render_gl.o: ../../depends/SDL2/src/render/opengl/SDL_render_gl.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_render_gl.o.d
+# file render : ../../depends/SDL2/src/render/opengl/SDL_shaders_gl.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_shaders_gl.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_shaders_gl.o: ../../depends/SDL2/src/render/opengl/SDL_shaders_gl.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_shaders_gl.o.d
+# file render : ../../depends/SDL2/src/render/opengl/SDL_glfuncs.h
+# file render : ../../depends/SDL2/src/render/opengl/SDL_shaders_gl.h
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_render_gles2.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_render_gles2.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_render_gles2.o: ../../depends/SDL2/src/render/opengles2/SDL_render_gles2.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_render_gles2.o.d
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_shaders_gles2.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_shaders_gles2.o: ../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_shaders_gles2.o.d
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_gles2funcs.h
+# file render : ../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.h
+# file render : ../../depends/SDL2/src/render/software/SDL_blendfillrect.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blendfillrect.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blendfillrect.o: ../../depends/SDL2/src/render/software/SDL_blendfillrect.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blendfillrect.o.d
+# file render : ../../depends/SDL2/src/render/software/SDL_blendline.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blendline.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blendline.o: ../../depends/SDL2/src/render/software/SDL_blendline.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blendline.o.d
+# file render : ../../depends/SDL2/src/render/software/SDL_blendpoint.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blendpoint.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blendpoint.o: ../../depends/SDL2/src/render/software/SDL_blendpoint.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_blendpoint.o.d
+# file render : ../../depends/SDL2/src/render/software/SDL_drawline.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_drawline.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_drawline.o: ../../depends/SDL2/src/render/software/SDL_drawline.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_drawline.o.d
+# file render : ../../depends/SDL2/src/render/software/SDL_drawpoint.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_drawpoint.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_drawpoint.o: ../../depends/SDL2/src/render/software/SDL_drawpoint.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_drawpoint.o.d
+# file render : ../../depends/SDL2/src/render/software/SDL_render_sw.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_render_sw.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_render_sw.o: ../../depends/SDL2/src/render/software/SDL_render_sw.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_render_sw.o.d
+# file render : ../../depends/SDL2/src/render/software/SDL_rotate.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rotate.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rotate.o: ../../depends/SDL2/src/render/software/SDL_rotate.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rotate.o.d
+# file render : ../../depends/SDL2/src/render/software/SDL_blendfillrect.h
+# file render : ../../depends/SDL2/src/render/software/SDL_blendline.h
+# file render : ../../depends/SDL2/src/render/software/SDL_blendpoint.h
+# file render : ../../depends/SDL2/src/render/software/SDL_draw.h
+# file render : ../../depends/SDL2/src/render/software/SDL_drawline.h
+# file render : ../../depends/SDL2/src/render/software/SDL_drawpoint.h
+# file render : ../../depends/SDL2/src/render/software/SDL_render_sw_c.h
+# file render : ../../depends/SDL2/src/render/software/SDL_rotate.h
+# end file group render .
+# file group thread :
+# file thread : ../../depends/SDL2/src/thread/pthread/SDL_syscond.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_syscond.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_syscond.o: ../../depends/SDL2/src/thread/pthread/SDL_syscond.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_syscond.o.d
+# file thread : ../../depends/SDL2/src/thread/pthread/SDL_sysmutex.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_sysmutex.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_sysmutex.o: ../../depends/SDL2/src/thread/pthread/SDL_sysmutex.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_sysmutex.o.d
+# file thread : ../../depends/SDL2/src/thread/pthread/SDL_syssem.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_syssem.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_syssem.o: ../../depends/SDL2/src/thread/pthread/SDL_syssem.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_syssem.o.d
+# file thread : ../../depends/SDL2/src/thread/pthread/SDL_systhread.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_systhread.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_systhread.o: ../../depends/SDL2/src/thread/pthread/SDL_systhread.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_systhread.o.d
+# file thread : ../../depends/SDL2/src/thread/pthread/SDL_systls.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_systls.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_systls.o: ../../depends/SDL2/src/thread/pthread/SDL_systls.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_systls.o.d
+# file thread : ../../depends/SDL2/src/thread/pthread/SDL_sysmutex_c.h
+# file thread : ../../depends/SDL2/src/thread/pthread/SDL_systhread_c.h
+# end file group thread .
+# file group timer :
+# file timer : ../../depends/SDL2/src/timer/unix/SDL_systimer.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_systimer.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_systimer.o: ../../depends/SDL2/src/timer/unix/SDL_systimer.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_systimer.o.d
+# end file group timer .
+# file group video :
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullevents.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_nullevents.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_nullevents.o: ../../depends/SDL2/src/video/dummy/SDL_nullevents.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_nullevents.o.d
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullframebuffer.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_nullframebuffer.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_nullframebuffer.o: ../../depends/SDL2/src/video/dummy/SDL_nullframebuffer.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_nullframebuffer.o.d
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullvideo.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_nullvideo.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_nullvideo.o: ../../depends/SDL2/src/video/dummy/SDL_nullvideo.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_nullvideo.o.d
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullevents_c.h
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullframebuffer_c.h
+# file video : ../../depends/SDL2/src/video/dummy/SDL_nullvideo.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_dyn.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_dyn.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_dyn.o.d
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_events.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_events.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_events.o.d
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_modes.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_modes.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_modes.o.d
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_mouse.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_mouse.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_mouse.o.d
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_opengl.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_opengl.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_opengl.o.d
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_render.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_render.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_render.o.d
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_shape.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_shape.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_shape.o.d
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_video.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_video.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_video.o.d
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_window.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_window.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_window.o.d
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_WM.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_WM.o: ../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_DirectFB_WM.o.d
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.h
+# file video : ../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpievents.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rpievents.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rpievents.o: ../../depends/SDL2/src/video/raspberry/SDL_rpievents.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rpievents.o.d
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpimouse.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rpimouse.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rpimouse.o: ../../depends/SDL2/src/video/raspberry/SDL_rpimouse.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rpimouse.o.d
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rpiopengles.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rpiopengles.o: ../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rpiopengles.o.d
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpivideo.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rpivideo.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rpivideo.o: ../../depends/SDL2/src/video/raspberry/SDL_rpivideo.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_rpivideo.o.d
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpievents_c.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpimouse.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.h
+# file video : ../../depends/SDL2/src/video/raspberry/SDL_rpivideo.h
+# file video : ../../depends/SDL2/src/video/x11/edid-parse.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/edid-parse.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/edid-parse.o: ../../depends/SDL2/src/video/x11/edid-parse.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/edid-parse.o.d
+# file video : ../../depends/SDL2/src/video/x11/imKStoUCS.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/imKStoUCS.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/imKStoUCS.o: ../../depends/SDL2/src/video/x11/imKStoUCS.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/imKStoUCS.o.d
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11clipboard.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11clipboard.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11clipboard.o: ../../depends/SDL2/src/video/x11/SDL_x11clipboard.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11clipboard.o.d
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11dyn.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11dyn.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11dyn.o: ../../depends/SDL2/src/video/x11/SDL_x11dyn.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11dyn.o.d
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11events.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11events.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11events.o: ../../depends/SDL2/src/video/x11/SDL_x11events.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11events.o.d
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11framebuffer.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11framebuffer.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11framebuffer.o: ../../depends/SDL2/src/video/x11/SDL_x11framebuffer.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11framebuffer.o.d
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11keyboard.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11keyboard.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11keyboard.o: ../../depends/SDL2/src/video/x11/SDL_x11keyboard.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11keyboard.o.d
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11messagebox.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11messagebox.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11messagebox.o: ../../depends/SDL2/src/video/x11/SDL_x11messagebox.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11messagebox.o.d
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11modes.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11modes.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11modes.o: ../../depends/SDL2/src/video/x11/SDL_x11modes.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11modes.o.d
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11mouse.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11mouse.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11mouse.o: ../../depends/SDL2/src/video/x11/SDL_x11mouse.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11mouse.o.d
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengl.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11opengl.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11opengl.o: ../../depends/SDL2/src/video/x11/SDL_x11opengl.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11opengl.o.d
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengles.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11opengles.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11opengles.o: ../../depends/SDL2/src/video/x11/SDL_x11opengles.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11opengles.o.d
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11shape.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11shape.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11shape.o: ../../depends/SDL2/src/video/x11/SDL_x11shape.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11shape.o.d
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11touch.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11touch.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11touch.o: ../../depends/SDL2/src/video/x11/SDL_x11touch.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11touch.o.d
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11video.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11video.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11video.o: ../../depends/SDL2/src/video/x11/SDL_x11video.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11video.o.d
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11window.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11window.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11window.o: ../../depends/SDL2/src/video/x11/SDL_x11window.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11window.o.d
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11xinput2.c
+objs__umodsys_Depends__lib_S_SDL2 += $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11xinput2.o
+$(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11xinput2.o: ../../depends/SDL2/src/video/x11/SDL_x11xinput2.c | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_SDL2) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_SDL2)/SDL_x11xinput2.o.d
+# file video : ../../depends/SDL2/src/video/x11/edid.h
+# file video : ../../depends/SDL2/src/video/x11/imKStoUCS.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11clipboard.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11dyn.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11events.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11framebuffer.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11keyboard.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11messagebox.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11modes.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11mouse.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengl.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11opengles.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11shape.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11sym.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11touch.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11video.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11window.h
+# file video : ../../depends/SDL2/src/video/x11/SDL_x11xinput2.h
+# end file group video .
+# end file group src-linux .
+# library at ../../tmp/Linux_x86_64.Debug/lib_S_SDL2.Linux_x86_64.Debug.a
+tpp-umodsys_Depends-lib_S_SDL2: $(target__umodsys_Depends__lib_S_SDL2)
+cpp-umodsys_Depends-lib_S_SDL2:
+	@-rm $(target__umodsys_Depends__lib_S_SDL2)
+	@-rm $(tmpx__umodsys_Depends__lib_S_SDL2)/*
+$(target__umodsys_Depends__lib_S_SDL2):  $(target__umodsys_Depends__lib_S_freetype) $(objs__umodsys_Depends__lib_S_SDL2) | $(tmpx__umodsys_Depends__lib_S_SDL2)
+	@echo '*** Making lib umodsys_Depends::lib_S_SDL2'
+	@$(AR) r $@ $(objs__umodsys_Depends__lib_S_SDL2)
+
+
+#-------------------------------- /project 'umodsys_Depends'.'lib_S_SDL2' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib
+
+#-------------------------------- epilog 'umodsys_Depends'.'lib_S_SDL2'
+#---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_S_SDL2' 
+#---------------------------------------------------------------- BEGIN project 'umodsys_Depends'.'lib_S_freetype' 
+#-------------------------------- prolog 'umodsys_Depends'.'lib_S_freetype'
+#--------------------------------
+#-------------------------------- project 'umodsys_Depends'.'lib_S_freetype' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib:
+target: tp-umodsys_Depends-lib_S_freetype
+clean: cp-umodsys_Depends-lib_S_freetype
+tg-umodsys_Depends: tp-umodsys_Depends-lib_S_freetype
+cg-umodsys_Depends: cp-umodsys_Depends-lib_S_freetype
+tp-umodsys_Depends-lib_S_freetype:  $(target__umodsys_Depends__lib_S_zlib) tpp-umodsys_Depends-lib_S_freetype
+cp-umodsys_Depends-lib_S_freetype:  cp-umodsys_Depends-lib_S_zlib cpp-umodsys_Depends-lib_S_freetype
+#.PHONY: tp-umodsys_Depends-lib_S_freetype tpp-umodsys_Depends-lib_S_freetype cp-umodsys_Depends-lib_S_freetype cpp-umodsys_Depends-lib_S_freetype
+
+tmp__umodsys_Depends__lib_S_freetype=../../tmp/Linux_x86_64.Debug
+bin__umodsys_Depends__lib_S_freetype=../../bin/Linux_x86_64.Debug
+tmpx__umodsys_Depends__lib_S_freetype=../../tmp/Linux_x86_64.Debug/lib_S_freetype
+CXXFLAGS__umodsys_Depends__lib_S_freetype=-O0 -g -fPIC -I../../include -I../../include/platform/linux -I../../depends/freetype/include -DFT_DEBUG_LEVEL_ERROR -DFT_DEBUG_LEVEL_TRACE -DFT2_BUILD_LIBRARY
+CFLAGS__umodsys_Depends__lib_S_freetype=-O0 -g -fPIC -I../../include -I../../include/platform/linux -I../../depends/freetype/include -DFT_DEBUG_LEVEL_ERROR -DFT_DEBUG_LEVEL_TRACE -DFT2_BUILD_LIBRARY
+LDFLAGS__umodsys_Depends__lib_S_freetype=-O0 -g -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:lib_S_zlib.Linux_x86_64.Debug.a
+
+
+# file group include :
+# file include : ../../depends/freetype/include/ft2build.h
+# file include : ../../depends/freetype/include/freetype/freetype.h
+# file include : ../../depends/freetype/include/freetype/ftadvanc.h
+# file include : ../../depends/freetype/include/freetype/ftautoh.h
+# file include : ../../depends/freetype/include/freetype/ftbbox.h
+# file include : ../../depends/freetype/include/freetype/ftbdf.h
+# file include : ../../depends/freetype/include/freetype/ftbitmap.h
+# file include : ../../depends/freetype/include/freetype/ftbzip2.h
+# file include : ../../depends/freetype/include/freetype/ftcache.h
+# file include : ../../depends/freetype/include/freetype/ftcffdrv.h
+# file include : ../../depends/freetype/include/freetype/ftchapters.h
+# file include : ../../depends/freetype/include/freetype/ftcid.h
+# file include : ../../depends/freetype/include/freetype/fterrdef.h
+# file include : ../../depends/freetype/include/freetype/fterrors.h
+# file include : ../../depends/freetype/include/freetype/ftgasp.h
+# file include : ../../depends/freetype/include/freetype/ftglyph.h
+# file include : ../../depends/freetype/include/freetype/ftgxval.h
+# file include : ../../depends/freetype/include/freetype/ftgzip.h
+# file include : ../../depends/freetype/include/freetype/ftimage.h
+# file include : ../../depends/freetype/include/freetype/ftincrem.h
+# file include : ../../depends/freetype/include/freetype/ftlcdfil.h
+# file include : ../../depends/freetype/include/freetype/ftlist.h
+# file include : ../../depends/freetype/include/freetype/ftlzw.h
+# file include : ../../depends/freetype/include/freetype/ftmac.h
+# file include : ../../depends/freetype/include/freetype/ftmm.h
+# file include : ../../depends/freetype/include/freetype/ftmodapi.h
+# file include : ../../depends/freetype/include/freetype/ftmoderr.h
+# file include : ../../depends/freetype/include/freetype/ftotval.h
+# file include : ../../depends/freetype/include/freetype/ftoutln.h
+# file include : ../../depends/freetype/include/freetype/ftpfr.h
+# file include : ../../depends/freetype/include/freetype/ftrender.h
+# file include : ../../depends/freetype/include/freetype/ftsizes.h
+# file include : ../../depends/freetype/include/freetype/ftsnames.h
+# file include : ../../depends/freetype/include/freetype/ftstroke.h
+# file include : ../../depends/freetype/include/freetype/ftsynth.h
+# file include : ../../depends/freetype/include/freetype/ftsystem.h
+# file include : ../../depends/freetype/include/freetype/fttrigon.h
+# file include : ../../depends/freetype/include/freetype/ftttdrv.h
+# file include : ../../depends/freetype/include/freetype/fttypes.h
+# file include : ../../depends/freetype/include/freetype/ftwinfnt.h
+# file include : ../../depends/freetype/include/freetype/ftxf86.h
+# file include : ../../depends/freetype/include/freetype/t1tables.h
+# file include : ../../depends/freetype/include/freetype/ttnameid.h
+# file include : ../../depends/freetype/include/freetype/tttables.h
+# file include : ../../depends/freetype/include/freetype/tttags.h
+# file include : ../../depends/freetype/include/freetype/ttunpat.h
+# file include : ../../depends/freetype/include/freetype/config/ftconfig.h
+# file include : ../../depends/freetype/include/freetype/config/ftheader.h
+# file include : ../../depends/freetype/include/freetype/config/ftmodule.h
+# file include : ../../depends/freetype/include/freetype/config/ftoption.h
+# file include : ../../depends/freetype/include/freetype/config/ftstdlib.h
+# file include : ../../depends/freetype/include/freetype/internal/autohint.h
+# file include : ../../depends/freetype/include/freetype/internal/ftcalc.h
+# file include : ../../depends/freetype/include/freetype/internal/ftdebug.h
+# file include : ../../depends/freetype/include/freetype/internal/ftdriver.h
+# file include : ../../depends/freetype/include/freetype/internal/ftgloadr.h
+# file include : ../../depends/freetype/include/freetype/internal/ftmemory.h
+# file include : ../../depends/freetype/include/freetype/internal/ftobjs.h
+# file include : ../../depends/freetype/include/freetype/internal/ftpic.h
+# file include : ../../depends/freetype/include/freetype/internal/ftrfork.h
+# file include : ../../depends/freetype/include/freetype/internal/ftserv.h
+# file include : ../../depends/freetype/include/freetype/internal/ftstream.h
+# file include : ../../depends/freetype/include/freetype/internal/fttrace.h
+# file include : ../../depends/freetype/include/freetype/internal/ftvalid.h
+# file include : ../../depends/freetype/include/freetype/internal/internal.h
+# file include : ../../depends/freetype/include/freetype/internal/psaux.h
+# file include : ../../depends/freetype/include/freetype/internal/pshints.h
+# file include : ../../depends/freetype/include/freetype/internal/sfnt.h
+# file include : ../../depends/freetype/include/freetype/internal/t1types.h
+# file include : ../../depends/freetype/include/freetype/internal/tttypes.h
+# end file group include .
+# file group src :
+# file group autofit :
+# file autofit : ../../depends/freetype/src/autofit/autofit.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/autofit.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/autofit.o: ../../depends/freetype/src/autofit/autofit.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/autofit.o.d
+# file autofit : ../../depends/freetype/src/autofit/afangles.h
+# file autofit : ../../depends/freetype/src/autofit/afcjk.h
+# file autofit : ../../depends/freetype/src/autofit/afdummy.h
+# file autofit : ../../depends/freetype/src/autofit/aferrors.h
+# file autofit : ../../depends/freetype/src/autofit/afglobal.h
+# file autofit : ../../depends/freetype/src/autofit/afhints.h
+# file autofit : ../../depends/freetype/src/autofit/afindic.h
+# file autofit : ../../depends/freetype/src/autofit/aflatin.h
+# file autofit : ../../depends/freetype/src/autofit/aflatin2.h
+# file autofit : ../../depends/freetype/src/autofit/afloader.h
+# file autofit : ../../depends/freetype/src/autofit/afmodule.h
+# file autofit : ../../depends/freetype/src/autofit/afpic.h
+# file autofit : ../../depends/freetype/src/autofit/aftypes.h
+# file autofit : ../../depends/freetype/src/autofit/afwarp.h
+# end file group autofit .
+# file group base :
+# file base : ../../depends/freetype/src/base/ftbase.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/ftbase.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/ftbase.o: ../../depends/freetype/src/base/ftbase.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/ftbase.o.d
+# file base : ../../depends/freetype/src/base/basepic.h
+# file base : ../../depends/freetype/src/base/ftbase.h
+# file base : ../../depends/freetype/src/base/md5.h
+# file base : ../../depends/freetype/src/base/ftdebug.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/ftdebug.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/ftdebug.o: ../../depends/freetype/src/base/ftdebug.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/ftdebug.o.d
+# file base : ../../depends/freetype/src/base/ftsystem.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/ftsystem.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/ftsystem.o: ../../depends/freetype/src/base/ftsystem.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/ftsystem.o.d
+# file base : ../../depends/freetype/src/base/ftbitmap.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/ftbitmap.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/ftbitmap.o: ../../depends/freetype/src/base/ftbitmap.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/ftbitmap.o.d
+# file base : ../../depends/freetype/src/base/ftglyph.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/ftglyph.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/ftglyph.o: ../../depends/freetype/src/base/ftglyph.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/ftglyph.o.d
+# file base : ../../depends/freetype/src/base/ftinit.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/ftinit.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/ftinit.o: ../../depends/freetype/src/base/ftinit.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/ftinit.o.d
+# file base : ../../depends/freetype/src/base/ftstroke.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/ftstroke.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/ftstroke.o: ../../depends/freetype/src/base/ftstroke.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/ftstroke.o.d
+# end file group base .
+# file group bdf :
+# file bdf : ../../depends/freetype/src/bdf/bdf.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/bdf.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/bdf.o: ../../depends/freetype/src/bdf/bdf.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/bdf.o.d
+# file bdf : ../../depends/freetype/src/bdf/bdf.h
+# file bdf : ../../depends/freetype/src/bdf/bdfdrivr.h
+# file bdf : ../../depends/freetype/src/bdf/bdferror.h
+# end file group bdf .
+# file group cache :
+# file cache : ../../depends/freetype/src/cache/ftcache.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/ftcache.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/ftcache.o: ../../depends/freetype/src/cache/ftcache.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/ftcache.o.d
+# file cache : ../../depends/freetype/src/cache/ftccache.h
+# file cache : ../../depends/freetype/src/cache/ftccback.h
+# file cache : ../../depends/freetype/src/cache/ftcerror.h
+# file cache : ../../depends/freetype/src/cache/ftcglyph.h
+# file cache : ../../depends/freetype/src/cache/ftcimage.h
+# file cache : ../../depends/freetype/src/cache/ftcmanag.h
+# file cache : ../../depends/freetype/src/cache/ftcmru.h
+# file cache : ../../depends/freetype/src/cache/ftcsbits.h
+# end file group cache .
+# file group cff :
+# file cff : ../../depends/freetype/src/cff/cff.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/cff.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/cff.o: ../../depends/freetype/src/cff/cff.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/cff.o.d
+# file cff : ../../depends/freetype/src/cff/cf2arrst.h
+# file cff : ../../depends/freetype/src/cff/cf2blues.h
+# file cff : ../../depends/freetype/src/cff/cf2error.h
+# file cff : ../../depends/freetype/src/cff/cf2fixed.h
+# file cff : ../../depends/freetype/src/cff/cf2font.h
+# file cff : ../../depends/freetype/src/cff/cf2ft.h
+# file cff : ../../depends/freetype/src/cff/cf2glue.h
+# file cff : ../../depends/freetype/src/cff/cf2hints.h
+# file cff : ../../depends/freetype/src/cff/cf2intrp.h
+# file cff : ../../depends/freetype/src/cff/cf2read.h
+# file cff : ../../depends/freetype/src/cff/cf2stack.h
+# file cff : ../../depends/freetype/src/cff/cf2types.h
+# file cff : ../../depends/freetype/src/cff/cffcmap.h
+# file cff : ../../depends/freetype/src/cff/cffdrivr.h
+# file cff : ../../depends/freetype/src/cff/cfferrs.h
+# file cff : ../../depends/freetype/src/cff/cffgload.h
+# file cff : ../../depends/freetype/src/cff/cffload.h
+# file cff : ../../depends/freetype/src/cff/cffobjs.h
+# file cff : ../../depends/freetype/src/cff/cffparse.h
+# file cff : ../../depends/freetype/src/cff/cffpic.h
+# file cff : ../../depends/freetype/src/cff/cfftoken.h
+# file cff : ../../depends/freetype/src/cff/cfftypes.h
+# end file group cff .
+# file group cid :
+# file cid : ../../depends/freetype/src/cid/type1cid.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/type1cid.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/type1cid.o: ../../depends/freetype/src/cid/type1cid.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/type1cid.o.d
+# file cid : ../../depends/freetype/src/cid/ciderrs.h
+# file cid : ../../depends/freetype/src/cid/cidgload.h
+# file cid : ../../depends/freetype/src/cid/cidload.h
+# file cid : ../../depends/freetype/src/cid/cidobjs.h
+# file cid : ../../depends/freetype/src/cid/cidparse.h
+# file cid : ../../depends/freetype/src/cid/cidriver.h
+# file cid : ../../depends/freetype/src/cid/cidtoken.h
+# end file group cid .
+# file group gxvalid :
+# file gxvalid : ../../depends/freetype/src/gxvalid/gxvalid.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/gxvalid.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/gxvalid.o: ../../depends/freetype/src/gxvalid/gxvalid.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/gxvalid.o.d
+# file gxvalid : ../../depends/freetype/src/gxvalid/gxvalid.h
+# file gxvalid : ../../depends/freetype/src/gxvalid/gxvcommn.h
+# file gxvalid : ../../depends/freetype/src/gxvalid/gxverror.h
+# file gxvalid : ../../depends/freetype/src/gxvalid/gxvfeat.h
+# file gxvalid : ../../depends/freetype/src/gxvalid/gxvmod.h
+# file gxvalid : ../../depends/freetype/src/gxvalid/gxvmort.h
+# file gxvalid : ../../depends/freetype/src/gxvalid/gxvmorx.h
+# end file group gxvalid .
+# file group otvalid :
+# file otvalid : ../../depends/freetype/src/otvalid/otvalid.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/otvalid.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/otvalid.o: ../../depends/freetype/src/otvalid/otvalid.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/otvalid.o.d
+# file otvalid : ../../depends/freetype/src/otvalid/otvalid.h
+# file otvalid : ../../depends/freetype/src/otvalid/otvcommn.h
+# file otvalid : ../../depends/freetype/src/otvalid/otverror.h
+# file otvalid : ../../depends/freetype/src/otvalid/otvgpos.h
+# file otvalid : ../../depends/freetype/src/otvalid/otvmod.h
+# end file group otvalid .
+# file group pcf :
+# file pcf : ../../depends/freetype/src/pcf/pcf.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/pcf.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/pcf.o: ../../depends/freetype/src/pcf/pcf.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/pcf.o.d
+# file pcf : ../../depends/freetype/src/pcf/pcf.h
+# file pcf : ../../depends/freetype/src/pcf/pcfdrivr.h
+# file pcf : ../../depends/freetype/src/pcf/pcferror.h
+# file pcf : ../../depends/freetype/src/pcf/pcfread.h
+# file pcf : ../../depends/freetype/src/pcf/pcfutil.h
+# end file group pcf .
+# file group pfr :
+# file pfr : ../../depends/freetype/src/pfr/pfr.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/pfr.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/pfr.o: ../../depends/freetype/src/pfr/pfr.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/pfr.o.d
+# file pfr : ../../depends/freetype/src/pfr/pfrcmap.h
+# file pfr : ../../depends/freetype/src/pfr/pfrdrivr.h
+# file pfr : ../../depends/freetype/src/pfr/pfrerror.h
+# file pfr : ../../depends/freetype/src/pfr/pfrgload.h
+# file pfr : ../../depends/freetype/src/pfr/pfrload.h
+# file pfr : ../../depends/freetype/src/pfr/pfrobjs.h
+# file pfr : ../../depends/freetype/src/pfr/pfrsbit.h
+# file pfr : ../../depends/freetype/src/pfr/pfrtypes.h
+# end file group pfr .
+# file group psaux :
+# file psaux : ../../depends/freetype/src/psaux/psaux.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/psaux.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/psaux.o: ../../depends/freetype/src/psaux/psaux.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/psaux.o.d
+# file psaux : ../../depends/freetype/src/psaux/afmparse.h
+# file psaux : ../../depends/freetype/src/psaux/psauxerr.h
+# file psaux : ../../depends/freetype/src/psaux/psauxmod.h
+# file psaux : ../../depends/freetype/src/psaux/psconv.h
+# file psaux : ../../depends/freetype/src/psaux/psobjs.h
+# file psaux : ../../depends/freetype/src/psaux/t1cmap.h
+# file psaux : ../../depends/freetype/src/psaux/t1decode.h
+# end file group psaux .
+# file group pshinter :
+# file pshinter : ../../depends/freetype/src/pshinter/pshinter.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/pshinter.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/pshinter.o: ../../depends/freetype/src/pshinter/pshinter.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/pshinter.o.d
+# file pshinter : ../../depends/freetype/src/pshinter/pshalgo.h
+# file pshinter : ../../depends/freetype/src/pshinter/pshglob.h
+# file pshinter : ../../depends/freetype/src/pshinter/pshmod.h
+# file pshinter : ../../depends/freetype/src/pshinter/pshnterr.h
+# file pshinter : ../../depends/freetype/src/pshinter/pshpic.h
+# file pshinter : ../../depends/freetype/src/pshinter/pshrec.h
+# end file group pshinter .
+# file group psnames :
+# file psnames : ../../depends/freetype/src/psnames/psnames.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/psnames.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/psnames.o: ../../depends/freetype/src/psnames/psnames.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/psnames.o.d
+# file psnames : ../../depends/freetype/src/psnames/psmodule.h
+# file psnames : ../../depends/freetype/src/psnames/psnamerr.h
+# file psnames : ../../depends/freetype/src/psnames/pspic.h
+# file psnames : ../../depends/freetype/src/psnames/pstables.h
+# end file group psnames .
+# file group raster :
+# file raster : ../../depends/freetype/src/raster/raster.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/raster.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/raster.o: ../../depends/freetype/src/raster/raster.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/raster.o.d
+# file raster : ../../depends/freetype/src/raster/ftmisc.h
+# file raster : ../../depends/freetype/src/raster/ftraster.h
+# file raster : ../../depends/freetype/src/raster/ftrend1.h
+# file raster : ../../depends/freetype/src/raster/rasterrs.h
+# file raster : ../../depends/freetype/src/raster/rastpic.h
+# end file group raster .
+# file group sfnt :
+# file sfnt : ../../depends/freetype/src/sfnt/sfnt.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/sfnt.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/sfnt.o: ../../depends/freetype/src/sfnt/sfnt.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/sfnt.o.d
+# file sfnt : ../../depends/freetype/src/sfnt/pngshim.h
+# file sfnt : ../../depends/freetype/src/sfnt/sfdriver.h
+# file sfnt : ../../depends/freetype/src/sfnt/sferrors.h
+# file sfnt : ../../depends/freetype/src/sfnt/sfntpic.h
+# file sfnt : ../../depends/freetype/src/sfnt/sfobjs.h
+# file sfnt : ../../depends/freetype/src/sfnt/ttbdf.h
+# file sfnt : ../../depends/freetype/src/sfnt/ttcmap.h
+# file sfnt : ../../depends/freetype/src/sfnt/ttcmapc.h
+# file sfnt : ../../depends/freetype/src/sfnt/ttkern.h
+# file sfnt : ../../depends/freetype/src/sfnt/ttload.h
+# file sfnt : ../../depends/freetype/src/sfnt/ttmtx.h
+# file sfnt : ../../depends/freetype/src/sfnt/ttpost.h
+# file sfnt : ../../depends/freetype/src/sfnt/ttsbit.h
+# end file group sfnt .
+# file group smooth :
+# file smooth : ../../depends/freetype/src/smooth/smooth.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/smooth.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/smooth.o: ../../depends/freetype/src/smooth/smooth.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/smooth.o.d
+# file smooth : ../../depends/freetype/src/smooth/ftgrays.h
+# file smooth : ../../depends/freetype/src/smooth/ftsmerrs.h
+# file smooth : ../../depends/freetype/src/smooth/ftsmooth.h
+# file smooth : ../../depends/freetype/src/smooth/ftspic.h
+# end file group smooth .
+# file group truetype :
+# file truetype : ../../depends/freetype/src/truetype/truetype.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/truetype.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/truetype.o: ../../depends/freetype/src/truetype/truetype.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/truetype.o.d
+# file truetype : ../../depends/freetype/src/truetype/ttdriver.h
+# file truetype : ../../depends/freetype/src/truetype/tterrors.h
+# file truetype : ../../depends/freetype/src/truetype/ttgload.h
+# file truetype : ../../depends/freetype/src/truetype/ttgxvar.h
+# file truetype : ../../depends/freetype/src/truetype/ttinterp.h
+# file truetype : ../../depends/freetype/src/truetype/ttobjs.h
+# file truetype : ../../depends/freetype/src/truetype/ttpic.h
+# file truetype : ../../depends/freetype/src/truetype/ttpload.h
+# file truetype : ../../depends/freetype/src/truetype/ttsubpix.h
+# end file group truetype .
+# file group type1 :
+# file type1 : ../../depends/freetype/src/type1/type1.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/type1.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/type1.o: ../../depends/freetype/src/type1/type1.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/type1.o.d
+# file type1 : ../../depends/freetype/src/type1/t1afm.h
+# file type1 : ../../depends/freetype/src/type1/t1driver.h
+# file type1 : ../../depends/freetype/src/type1/t1errors.h
+# file type1 : ../../depends/freetype/src/type1/t1gload.h
+# file type1 : ../../depends/freetype/src/type1/t1load.h
+# file type1 : ../../depends/freetype/src/type1/t1objs.h
+# file type1 : ../../depends/freetype/src/type1/t1parse.h
+# file type1 : ../../depends/freetype/src/type1/t1tokens.h
+# end file group type1 .
+# file group type42 :
+# file type42 : ../../depends/freetype/src/type42/type42.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/type42.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/type42.o: ../../depends/freetype/src/type42/type42.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/type42.o.d
+# file type42 : ../../depends/freetype/src/type42/t42drivr.h
+# file type42 : ../../depends/freetype/src/type42/t42error.h
+# file type42 : ../../depends/freetype/src/type42/t42objs.h
+# file type42 : ../../depends/freetype/src/type42/t42parse.h
+# file type42 : ../../depends/freetype/src/type42/t42types.h
+# end file group type42 .
+# end file group src .
+# file group xsrc :
+# file group bzip2 :
+# file bzip2 : ../../depends/freetype/src/bzip2/ftbzip2.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/ftbzip2.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/ftbzip2.o: ../../depends/freetype/src/bzip2/ftbzip2.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/ftbzip2.o.d
+# end file group bzip2 .
+# file group gzip :
+# file gzip : ../../depends/freetype/src/gzip/ftgzip.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/ftgzip.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/ftgzip.o: ../../depends/freetype/src/gzip/ftgzip.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/ftgzip.o.d
+# end file group gzip .
+# file group lzw :
+# file lzw : ../../depends/freetype/src/lzw/ftlzw.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/ftlzw.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/ftlzw.o: ../../depends/freetype/src/lzw/ftlzw.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/ftlzw.o.d
+# file lzw : ../../depends/freetype/src/lzw/ftzopen.h
+# end file group lzw .
+# file group winfonts :
+# file winfonts : ../../depends/freetype/src/winfonts/winfnt.c
+objs__umodsys_Depends__lib_S_freetype += $(tmpx__umodsys_Depends__lib_S_freetype)/winfnt.o
+$(tmpx__umodsys_Depends__lib_S_freetype)/winfnt.o: ../../depends/freetype/src/winfonts/winfnt.c | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_freetype) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_freetype)/winfnt.o.d
+# file winfonts : ../../depends/freetype/src/winfonts/fnterrs.h
+# file winfonts : ../../depends/freetype/src/winfonts/winfnt.h
+# end file group winfonts .
+# end file group xsrc .
+# library at ../../tmp/Linux_x86_64.Debug/lib_S_freetype.Linux_x86_64.Debug.a
+tpp-umodsys_Depends-lib_S_freetype: $(target__umodsys_Depends__lib_S_freetype)
+cpp-umodsys_Depends-lib_S_freetype:
+	@-rm $(target__umodsys_Depends__lib_S_freetype)
+	@-rm $(tmpx__umodsys_Depends__lib_S_freetype)/*
+$(target__umodsys_Depends__lib_S_freetype):  $(target__umodsys_Depends__lib_S_zlib) $(objs__umodsys_Depends__lib_S_freetype) | $(tmpx__umodsys_Depends__lib_S_freetype)
+	@echo '*** Making lib umodsys_Depends::lib_S_freetype'
+	@$(AR) r $@ $(objs__umodsys_Depends__lib_S_freetype)
+
+
+#-------------------------------- /project 'umodsys_Depends'.'lib_S_freetype' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib
+
+#-------------------------------- epilog 'umodsys_Depends'.'lib_S_freetype'
+#---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_S_freetype' 
+#---------------------------------------------------------------- BEGIN project 'umodsys_Depends'.'lib_S_jpeglib' 
+#-------------------------------- prolog 'umodsys_Depends'.'lib_S_jpeglib'
+#--------------------------------
+#-------------------------------- project 'umodsys_Depends'.'lib_S_jpeglib' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib:
+target: tp-umodsys_Depends-lib_S_jpeglib
+clean: cp-umodsys_Depends-lib_S_jpeglib
+tg-umodsys_Depends: tp-umodsys_Depends-lib_S_jpeglib
+cg-umodsys_Depends: cp-umodsys_Depends-lib_S_jpeglib
+tp-umodsys_Depends-lib_S_jpeglib:  tpp-umodsys_Depends-lib_S_jpeglib
+cp-umodsys_Depends-lib_S_jpeglib:  cpp-umodsys_Depends-lib_S_jpeglib
+#.PHONY: tp-umodsys_Depends-lib_S_jpeglib tpp-umodsys_Depends-lib_S_jpeglib cp-umodsys_Depends-lib_S_jpeglib cpp-umodsys_Depends-lib_S_jpeglib
+
+tmp__umodsys_Depends__lib_S_jpeglib=../../tmp/Linux_x86_64.Debug
+bin__umodsys_Depends__lib_S_jpeglib=../../bin/Linux_x86_64.Debug
+tmpx__umodsys_Depends__lib_S_jpeglib=../../tmp/Linux_x86_64.Debug/lib_S_jpeglib
+CXXFLAGS__umodsys_Depends__lib_S_jpeglib=-O0 -g -fPIC -I../../include -I../../include/platform/linux -I../../depends/jpeglib
+CFLAGS__umodsys_Depends__lib_S_jpeglib=-O0 -g -fPIC -I../../include -I../../include/platform/linux -I../../depends/jpeglib
+LDFLAGS__umodsys_Depends__lib_S_jpeglib=-O0 -g -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread
+
+
+# file group include :
+# file include : ../../depends/jpeglib/cderror.h
+# file include : ../../depends/jpeglib/cdjpeg.h
+# file include : ../../depends/jpeglib/jdct.h
+# file include : ../../depends/jpeglib/jerror.h
+# file include : ../../depends/jpeglib/jinclude.h
+# file include : ../../depends/jpeglib/jmemsys.h
+# file include : ../../depends/jpeglib/jpegint.h
+# file include : ../../depends/jpeglib/jpeglib.h
+# file include : ../../depends/jpeglib/jversion.h
+# file include : ../../depends/jpeglib/transupp.h
+# end file group include .
+# file group src :
+# file src : ../../depends/jpeglib/jaricom.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jaricom.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jaricom.o: ../../depends/jpeglib/jaricom.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jaricom.o.d
+# file src : ../../depends/jpeglib/jcapimin.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcapimin.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jcapimin.o: ../../depends/jpeglib/jcapimin.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcapimin.o.d
+# file src : ../../depends/jpeglib/jcapistd.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcapistd.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jcapistd.o: ../../depends/jpeglib/jcapistd.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcapistd.o.d
+# file src : ../../depends/jpeglib/jcarith.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcarith.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jcarith.o: ../../depends/jpeglib/jcarith.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcarith.o.d
+# file src : ../../depends/jpeglib/jccoefct.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jccoefct.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jccoefct.o: ../../depends/jpeglib/jccoefct.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jccoefct.o.d
+# file src : ../../depends/jpeglib/jccolor.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jccolor.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jccolor.o: ../../depends/jpeglib/jccolor.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jccolor.o.d
+# file src : ../../depends/jpeglib/jcdctmgr.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcdctmgr.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jcdctmgr.o: ../../depends/jpeglib/jcdctmgr.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcdctmgr.o.d
+# file src : ../../depends/jpeglib/jchuff.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jchuff.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jchuff.o: ../../depends/jpeglib/jchuff.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jchuff.o.d
+# file src : ../../depends/jpeglib/jcinit.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcinit.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jcinit.o: ../../depends/jpeglib/jcinit.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcinit.o.d
+# file src : ../../depends/jpeglib/jcmainct.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcmainct.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jcmainct.o: ../../depends/jpeglib/jcmainct.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcmainct.o.d
+# file src : ../../depends/jpeglib/jcmarker.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcmarker.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jcmarker.o: ../../depends/jpeglib/jcmarker.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcmarker.o.d
+# file src : ../../depends/jpeglib/jcmaster.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcmaster.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jcmaster.o: ../../depends/jpeglib/jcmaster.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcmaster.o.d
+# file src : ../../depends/jpeglib/jcomapi.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcomapi.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jcomapi.o: ../../depends/jpeglib/jcomapi.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcomapi.o.d
+# file src : ../../depends/jpeglib/jcparam.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcparam.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jcparam.o: ../../depends/jpeglib/jcparam.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcparam.o.d
+# file src : ../../depends/jpeglib/jcprepct.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcprepct.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jcprepct.o: ../../depends/jpeglib/jcprepct.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcprepct.o.d
+# file src : ../../depends/jpeglib/jcsample.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcsample.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jcsample.o: ../../depends/jpeglib/jcsample.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jcsample.o.d
+# file src : ../../depends/jpeglib/jctrans.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jctrans.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jctrans.o: ../../depends/jpeglib/jctrans.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jctrans.o.d
+# file src : ../../depends/jpeglib/jdapimin.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdapimin.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdapimin.o: ../../depends/jpeglib/jdapimin.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdapimin.o.d
+# file src : ../../depends/jpeglib/jdapistd.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdapistd.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdapistd.o: ../../depends/jpeglib/jdapistd.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdapistd.o.d
+# file src : ../../depends/jpeglib/jdarith.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdarith.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdarith.o: ../../depends/jpeglib/jdarith.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdarith.o.d
+# file src : ../../depends/jpeglib/jdatadst.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdatadst.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdatadst.o: ../../depends/jpeglib/jdatadst.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdatadst.o.d
+# file src : ../../depends/jpeglib/jdatasrc.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdatasrc.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdatasrc.o: ../../depends/jpeglib/jdatasrc.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdatasrc.o.d
+# file src : ../../depends/jpeglib/jdcoefct.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdcoefct.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdcoefct.o: ../../depends/jpeglib/jdcoefct.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdcoefct.o.d
+# file src : ../../depends/jpeglib/jdcolor.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdcolor.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdcolor.o: ../../depends/jpeglib/jdcolor.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdcolor.o.d
+# file src : ../../depends/jpeglib/jddctmgr.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jddctmgr.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jddctmgr.o: ../../depends/jpeglib/jddctmgr.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jddctmgr.o.d
+# file src : ../../depends/jpeglib/jdhuff.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdhuff.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdhuff.o: ../../depends/jpeglib/jdhuff.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdhuff.o.d
+# file src : ../../depends/jpeglib/jdinput.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdinput.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdinput.o: ../../depends/jpeglib/jdinput.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdinput.o.d
+# file src : ../../depends/jpeglib/jdmainct.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdmainct.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdmainct.o: ../../depends/jpeglib/jdmainct.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdmainct.o.d
+# file src : ../../depends/jpeglib/jdmarker.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdmarker.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdmarker.o: ../../depends/jpeglib/jdmarker.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdmarker.o.d
+# file src : ../../depends/jpeglib/jdmaster.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdmaster.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdmaster.o: ../../depends/jpeglib/jdmaster.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdmaster.o.d
+# file src : ../../depends/jpeglib/jdmerge.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdmerge.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdmerge.o: ../../depends/jpeglib/jdmerge.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdmerge.o.d
+# file src : ../../depends/jpeglib/jdpostct.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdpostct.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdpostct.o: ../../depends/jpeglib/jdpostct.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdpostct.o.d
+# file src : ../../depends/jpeglib/jdsample.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdsample.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdsample.o: ../../depends/jpeglib/jdsample.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdsample.o.d
+# file src : ../../depends/jpeglib/jdtrans.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdtrans.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jdtrans.o: ../../depends/jpeglib/jdtrans.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jdtrans.o.d
+# file src : ../../depends/jpeglib/jerror.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jerror.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jerror.o: ../../depends/jpeglib/jerror.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jerror.o.d
+# file src : ../../depends/jpeglib/jfdctflt.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jfdctflt.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jfdctflt.o: ../../depends/jpeglib/jfdctflt.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jfdctflt.o.d
+# file src : ../../depends/jpeglib/jfdctfst.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jfdctfst.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jfdctfst.o: ../../depends/jpeglib/jfdctfst.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jfdctfst.o.d
+# file src : ../../depends/jpeglib/jfdctint.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jfdctint.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jfdctint.o: ../../depends/jpeglib/jfdctint.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jfdctint.o.d
+# file src : ../../depends/jpeglib/jidctflt.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jidctflt.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jidctflt.o: ../../depends/jpeglib/jidctflt.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jidctflt.o.d
+# file src : ../../depends/jpeglib/jidctfst.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jidctfst.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jidctfst.o: ../../depends/jpeglib/jidctfst.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jidctfst.o.d
+# file src : ../../depends/jpeglib/jidctint.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jidctint.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jidctint.o: ../../depends/jpeglib/jidctint.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jidctint.o.d
+# file src : ../../depends/jpeglib/jmemansi.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jmemansi.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jmemansi.o: ../../depends/jpeglib/jmemansi.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jmemansi.o.d
+# file src : ../../depends/jpeglib/jmemmgr.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jmemmgr.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jmemmgr.o: ../../depends/jpeglib/jmemmgr.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jmemmgr.o.d
+# file src : ../../depends/jpeglib/jquant1.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jquant1.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jquant1.o: ../../depends/jpeglib/jquant1.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jquant1.o.d
+# file src : ../../depends/jpeglib/jquant2.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jquant2.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jquant2.o: ../../depends/jpeglib/jquant2.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jquant2.o.d
+# file src : ../../depends/jpeglib/jutils.c
+objs__umodsys_Depends__lib_S_jpeglib += $(tmpx__umodsys_Depends__lib_S_jpeglib)/jutils.o
+$(tmpx__umodsys_Depends__lib_S_jpeglib)/jutils.o: ../../depends/jpeglib/jutils.c | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_jpeglib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_jpeglib)/jutils.o.d
+# end file group src .
+# library at ../../tmp/Linux_x86_64.Debug/lib_S_jpeglib.Linux_x86_64.Debug.a
+tpp-umodsys_Depends-lib_S_jpeglib: $(target__umodsys_Depends__lib_S_jpeglib)
+cpp-umodsys_Depends-lib_S_jpeglib:
+	@-rm $(target__umodsys_Depends__lib_S_jpeglib)
+	@-rm $(tmpx__umodsys_Depends__lib_S_jpeglib)/*
+$(target__umodsys_Depends__lib_S_jpeglib):  $(objs__umodsys_Depends__lib_S_jpeglib) | $(tmpx__umodsys_Depends__lib_S_jpeglib)
+	@echo '*** Making lib umodsys_Depends::lib_S_jpeglib'
+	@$(AR) r $@ $(objs__umodsys_Depends__lib_S_jpeglib)
+
+
+#-------------------------------- /project 'umodsys_Depends'.'lib_S_jpeglib' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib
+
+#-------------------------------- epilog 'umodsys_Depends'.'lib_S_jpeglib'
+#---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_S_jpeglib' 
+#---------------------------------------------------------------- BEGIN project 'umodsys_Depends'.'lib_S_libpng' 
+#-------------------------------- prolog 'umodsys_Depends'.'lib_S_libpng'
+#--------------------------------
+#-------------------------------- project 'umodsys_Depends'.'lib_S_libpng' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib:
+target: tp-umodsys_Depends-lib_S_libpng
+clean: cp-umodsys_Depends-lib_S_libpng
+tg-umodsys_Depends: tp-umodsys_Depends-lib_S_libpng
+cg-umodsys_Depends: cp-umodsys_Depends-lib_S_libpng
+tp-umodsys_Depends-lib_S_libpng:  $(target__umodsys_Depends__lib_S_zlib) tpp-umodsys_Depends-lib_S_libpng
+cp-umodsys_Depends-lib_S_libpng:  cp-umodsys_Depends-lib_S_zlib cpp-umodsys_Depends-lib_S_libpng
+#.PHONY: tp-umodsys_Depends-lib_S_libpng tpp-umodsys_Depends-lib_S_libpng cp-umodsys_Depends-lib_S_libpng cpp-umodsys_Depends-lib_S_libpng
+
+tmp__umodsys_Depends__lib_S_libpng=../../tmp/Linux_x86_64.Debug
+bin__umodsys_Depends__lib_S_libpng=../../bin/Linux_x86_64.Debug
+tmpx__umodsys_Depends__lib_S_libpng=../../tmp/Linux_x86_64.Debug/lib_S_libpng
+CXXFLAGS__umodsys_Depends__lib_S_libpng=-O0 -g -fPIC -I../../include -I../../include/platform/linux -I../../depends/zlib -I../../depends/libpng
+CFLAGS__umodsys_Depends__lib_S_libpng=-O0 -g -fPIC -I../../include -I../../include/platform/linux -I../../depends/zlib -I../../depends/libpng
+LDFLAGS__umodsys_Depends__lib_S_libpng=-O0 -g -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:lib_S_zlib.Linux_x86_64.Debug.a
+
+
+# file group include :
+# file include : ../../depends/libpng/png.h
+# file include : ../../depends/libpng/pngconf.h
+# file include : ../../depends/libpng/pngdebug.h
+# file include : ../../depends/libpng/pnginfo.h
+# file include : ../../depends/libpng/pngpriv.h
+# file include : ../../depends/libpng/pngstruct.h
+# end file group include .
+# file group src :
+# file src : ../../depends/libpng/example.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/example.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/example.o: ../../depends/libpng/example.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/example.o.d
+# file src : ../../depends/libpng/png.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/png.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/png.o: ../../depends/libpng/png.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/png.o.d
+# file src : ../../depends/libpng/pngerror.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/pngerror.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/pngerror.o: ../../depends/libpng/pngerror.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/pngerror.o.d
+# file src : ../../depends/libpng/pngget.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/pngget.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/pngget.o: ../../depends/libpng/pngget.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/pngget.o.d
+# file src : ../../depends/libpng/pngmem.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/pngmem.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/pngmem.o: ../../depends/libpng/pngmem.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/pngmem.o.d
+# file src : ../../depends/libpng/pngpread.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/pngpread.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/pngpread.o: ../../depends/libpng/pngpread.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/pngpread.o.d
+# file src : ../../depends/libpng/pngread.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/pngread.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/pngread.o: ../../depends/libpng/pngread.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/pngread.o.d
+# file src : ../../depends/libpng/pngrio.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/pngrio.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/pngrio.o: ../../depends/libpng/pngrio.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/pngrio.o.d
+# file src : ../../depends/libpng/pngrtran.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/pngrtran.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/pngrtran.o: ../../depends/libpng/pngrtran.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/pngrtran.o.d
+# file src : ../../depends/libpng/pngrutil.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/pngrutil.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/pngrutil.o: ../../depends/libpng/pngrutil.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/pngrutil.o.d
+# file src : ../../depends/libpng/pngset.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/pngset.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/pngset.o: ../../depends/libpng/pngset.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/pngset.o.d
+# file src : ../../depends/libpng/pngtest.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/pngtest.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/pngtest.o: ../../depends/libpng/pngtest.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/pngtest.o.d
+# file src : ../../depends/libpng/pngtrans.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/pngtrans.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/pngtrans.o: ../../depends/libpng/pngtrans.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/pngtrans.o.d
+# file src : ../../depends/libpng/pngwio.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/pngwio.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/pngwio.o: ../../depends/libpng/pngwio.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/pngwio.o.d
+# file src : ../../depends/libpng/pngwrite.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/pngwrite.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/pngwrite.o: ../../depends/libpng/pngwrite.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/pngwrite.o.d
+# file src : ../../depends/libpng/pngwtran.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/pngwtran.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/pngwtran.o: ../../depends/libpng/pngwtran.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/pngwtran.o.d
+# file src : ../../depends/libpng/pngwutil.c
+objs__umodsys_Depends__lib_S_libpng += $(tmpx__umodsys_Depends__lib_S_libpng)/pngwutil.o
+$(tmpx__umodsys_Depends__lib_S_libpng)/pngwutil.o: ../../depends/libpng/pngwutil.c | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_libpng) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_libpng)/pngwutil.o.d
+# end file group src .
+# library at ../../tmp/Linux_x86_64.Debug/lib_S_libpng.Linux_x86_64.Debug.a
+tpp-umodsys_Depends-lib_S_libpng: $(target__umodsys_Depends__lib_S_libpng)
+cpp-umodsys_Depends-lib_S_libpng:
+	@-rm $(target__umodsys_Depends__lib_S_libpng)
+	@-rm $(tmpx__umodsys_Depends__lib_S_libpng)/*
+$(target__umodsys_Depends__lib_S_libpng):  $(target__umodsys_Depends__lib_S_zlib) $(objs__umodsys_Depends__lib_S_libpng) | $(tmpx__umodsys_Depends__lib_S_libpng)
+	@echo '*** Making lib umodsys_Depends::lib_S_libpng'
+	@$(AR) r $@ $(objs__umodsys_Depends__lib_S_libpng)
+
+
+#-------------------------------- /project 'umodsys_Depends'.'lib_S_libpng' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib
+
+#-------------------------------- epilog 'umodsys_Depends'.'lib_S_libpng'
+#---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_S_libpng' 
+#---------------------------------------------------------------- BEGIN project 'umodsys_Depends'.'lib_S_zlib' 
+#-------------------------------- prolog 'umodsys_Depends'.'lib_S_zlib'
+#--------------------------------
+#-------------------------------- project 'umodsys_Depends'.'lib_S_zlib' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib:
+target: tp-umodsys_Depends-lib_S_zlib
+clean: cp-umodsys_Depends-lib_S_zlib
+tg-umodsys_Depends: tp-umodsys_Depends-lib_S_zlib
+cg-umodsys_Depends: cp-umodsys_Depends-lib_S_zlib
+tp-umodsys_Depends-lib_S_zlib:  tpp-umodsys_Depends-lib_S_zlib
+cp-umodsys_Depends-lib_S_zlib:  cpp-umodsys_Depends-lib_S_zlib
+#.PHONY: tp-umodsys_Depends-lib_S_zlib tpp-umodsys_Depends-lib_S_zlib cp-umodsys_Depends-lib_S_zlib cpp-umodsys_Depends-lib_S_zlib
+
+tmp__umodsys_Depends__lib_S_zlib=../../tmp/Linux_x86_64.Debug
+bin__umodsys_Depends__lib_S_zlib=../../bin/Linux_x86_64.Debug
+tmpx__umodsys_Depends__lib_S_zlib=../../tmp/Linux_x86_64.Debug/lib_S_zlib
+CXXFLAGS__umodsys_Depends__lib_S_zlib=-O0 -g -fPIC -I../../include -I../../include/platform/linux -I../../depends/zlib
+CFLAGS__umodsys_Depends__lib_S_zlib=-O0 -g -fPIC -I../../include -I../../include/platform/linux -I../../depends/zlib
+LDFLAGS__umodsys_Depends__lib_S_zlib=-O0 -g -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread
+
+
+# file group include :
+# file include : ../../depends/zlib/crc32.h
+# file include : ../../depends/zlib/deflate.h
+# file include : ../../depends/zlib/gzguts.h
+# file include : ../../depends/zlib/inffast.h
+# file include : ../../depends/zlib/inffixed.h
+# file include : ../../depends/zlib/inflate.h
+# file include : ../../depends/zlib/inftrees.h
+# file include : ../../depends/zlib/trees.h
+# file include : ../../depends/zlib/zconf.h
+# file include : ../../depends/zlib/zlib.h
+# file include : ../../depends/zlib/zutil.h
+# end file group include .
+# file group src :
+# file src : ../../depends/zlib/adler32.c
+objs__umodsys_Depends__lib_S_zlib += $(tmpx__umodsys_Depends__lib_S_zlib)/adler32.o
+$(tmpx__umodsys_Depends__lib_S_zlib)/adler32.o: ../../depends/zlib/adler32.c | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_zlib)/adler32.o.d
+# file src : ../../depends/zlib/compress.c
+objs__umodsys_Depends__lib_S_zlib += $(tmpx__umodsys_Depends__lib_S_zlib)/compress.o
+$(tmpx__umodsys_Depends__lib_S_zlib)/compress.o: ../../depends/zlib/compress.c | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_zlib)/compress.o.d
+# file src : ../../depends/zlib/crc32.c
+objs__umodsys_Depends__lib_S_zlib += $(tmpx__umodsys_Depends__lib_S_zlib)/crc32.o
+$(tmpx__umodsys_Depends__lib_S_zlib)/crc32.o: ../../depends/zlib/crc32.c | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_zlib)/crc32.o.d
+# file src : ../../depends/zlib/deflate.c
+objs__umodsys_Depends__lib_S_zlib += $(tmpx__umodsys_Depends__lib_S_zlib)/deflate.o
+$(tmpx__umodsys_Depends__lib_S_zlib)/deflate.o: ../../depends/zlib/deflate.c | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_zlib)/deflate.o.d
+# file src : ../../depends/zlib/gzclose.c
+objs__umodsys_Depends__lib_S_zlib += $(tmpx__umodsys_Depends__lib_S_zlib)/gzclose.o
+$(tmpx__umodsys_Depends__lib_S_zlib)/gzclose.o: ../../depends/zlib/gzclose.c | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_zlib)/gzclose.o.d
+# file src : ../../depends/zlib/gzlib.c
+objs__umodsys_Depends__lib_S_zlib += $(tmpx__umodsys_Depends__lib_S_zlib)/gzlib.o
+$(tmpx__umodsys_Depends__lib_S_zlib)/gzlib.o: ../../depends/zlib/gzlib.c | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_zlib)/gzlib.o.d
+# file src : ../../depends/zlib/gzread.c
+objs__umodsys_Depends__lib_S_zlib += $(tmpx__umodsys_Depends__lib_S_zlib)/gzread.o
+$(tmpx__umodsys_Depends__lib_S_zlib)/gzread.o: ../../depends/zlib/gzread.c | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_zlib)/gzread.o.d
+# file src : ../../depends/zlib/gzwrite.c
+objs__umodsys_Depends__lib_S_zlib += $(tmpx__umodsys_Depends__lib_S_zlib)/gzwrite.o
+$(tmpx__umodsys_Depends__lib_S_zlib)/gzwrite.o: ../../depends/zlib/gzwrite.c | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_zlib)/gzwrite.o.d
+# file src : ../../depends/zlib/infback.c
+objs__umodsys_Depends__lib_S_zlib += $(tmpx__umodsys_Depends__lib_S_zlib)/infback.o
+$(tmpx__umodsys_Depends__lib_S_zlib)/infback.o: ../../depends/zlib/infback.c | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_zlib)/infback.o.d
+# file src : ../../depends/zlib/inffast.c
+objs__umodsys_Depends__lib_S_zlib += $(tmpx__umodsys_Depends__lib_S_zlib)/inffast.o
+$(tmpx__umodsys_Depends__lib_S_zlib)/inffast.o: ../../depends/zlib/inffast.c | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_zlib)/inffast.o.d
+# file src : ../../depends/zlib/inflate.c
+objs__umodsys_Depends__lib_S_zlib += $(tmpx__umodsys_Depends__lib_S_zlib)/inflate.o
+$(tmpx__umodsys_Depends__lib_S_zlib)/inflate.o: ../../depends/zlib/inflate.c | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_zlib)/inflate.o.d
+# file src : ../../depends/zlib/inftrees.c
+objs__umodsys_Depends__lib_S_zlib += $(tmpx__umodsys_Depends__lib_S_zlib)/inftrees.o
+$(tmpx__umodsys_Depends__lib_S_zlib)/inftrees.o: ../../depends/zlib/inftrees.c | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_zlib)/inftrees.o.d
+# file src : ../../depends/zlib/trees.c
+objs__umodsys_Depends__lib_S_zlib += $(tmpx__umodsys_Depends__lib_S_zlib)/trees.o
+$(tmpx__umodsys_Depends__lib_S_zlib)/trees.o: ../../depends/zlib/trees.c | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_zlib)/trees.o.d
+# file src : ../../depends/zlib/uncompr.c
+objs__umodsys_Depends__lib_S_zlib += $(tmpx__umodsys_Depends__lib_S_zlib)/uncompr.o
+$(tmpx__umodsys_Depends__lib_S_zlib)/uncompr.o: ../../depends/zlib/uncompr.c | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_zlib)/uncompr.o.d
+# file src : ../../depends/zlib/zutil.c
+objs__umodsys_Depends__lib_S_zlib += $(tmpx__umodsys_Depends__lib_S_zlib)/zutil.o
+$(tmpx__umodsys_Depends__lib_S_zlib)/zutil.o: ../../depends/zlib/zutil.c | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@$(CC) $(CFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@ $<
+	@$(CC) $(CXXFLAGS__umodsys_Depends__lib_S_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys_Depends__lib_S_zlib)/zutil.o.d
+# end file group src .
+# library at ../../tmp/Linux_x86_64.Debug/lib_S_zlib.Linux_x86_64.Debug.a
+tpp-umodsys_Depends-lib_S_zlib: $(target__umodsys_Depends__lib_S_zlib)
+cpp-umodsys_Depends-lib_S_zlib:
+	@-rm $(target__umodsys_Depends__lib_S_zlib)
+	@-rm $(tmpx__umodsys_Depends__lib_S_zlib)/*
+$(target__umodsys_Depends__lib_S_zlib):  $(objs__umodsys_Depends__lib_S_zlib) | $(tmpx__umodsys_Depends__lib_S_zlib)
+	@echo '*** Making lib umodsys_Depends::lib_S_zlib'
+	@$(AR) r $@ $(objs__umodsys_Depends__lib_S_zlib)
+
+
+#-------------------------------- /project 'umodsys_Depends'.'lib_S_zlib' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib
+
+#-------------------------------- epilog 'umodsys_Depends'.'lib_S_zlib'
+#---------------------------------------------------------------- END project 'umodsys_Depends'.'lib_S_zlib' 
 #---------------------------------------------------------------- BEGIN project 'umodsys_Depends'.'lib_angelscript' 
 #-------------------------------- prolog 'umodsys_Depends'.'lib_angelscript'
 #--------------------------------
@@ -5265,8 +7445,8 @@ target: tp-umodsys-all
 clean: cp-umodsys-all
 tg-umodsys: tp-umodsys-all
 cg-umodsys: cp-umodsys-all
-tp-umodsys-all:  $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_basesys) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsysc) $(target__umodsys__umodsysct) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) tpp-umodsys-all
-cp-umodsys-all:  cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_basesys cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsysc cp-umodsys-umodsysct cp-umodsys-plugin_libStd cp-umodsys-plugin_libUI cp-umodsys-plugin_test1 cp-umodsys-plugin_test2 cpp-umodsys-all
+tp-umodsys-all:  $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_basesys) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsysc) $(target__umodsys__umodsysct) $(target__umodsys__umodsysca) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) tpp-umodsys-all
+cp-umodsys-all:  cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_basesys cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsysc cp-umodsys-umodsysct cp-umodsys-umodsysca cp-umodsys-plugin_libStd cp-umodsys-plugin_libUI cp-umodsys-plugin_test1 cp-umodsys-plugin_test2 cpp-umodsys-all
 #.PHONY: tp-umodsys-all tpp-umodsys-all cp-umodsys-all cpp-umodsys-all
 
 # dummy project
@@ -6849,6 +9029,69 @@ $(target__umodsys__umodsysc):  $(target__umodsys__umodsys_lib_libui) $(target__u
 
 #-------------------------------- epilog 'umodsys'.'umodsysc'
 #---------------------------------------------------------------- END project 'umodsys'.'umodsysc' 
+#---------------------------------------------------------------- BEGIN project 'umodsys'.'umodsysca' 
+#-------------------------------- prolog 'umodsys'.'umodsysca'
+#--------------------------------
+#-------------------------------- project 'umodsys'.'umodsysca' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=console:
+target: tp-umodsys-umodsysca
+clean: cp-umodsys-umodsysca
+tg-umodsys: tp-umodsys-umodsysca
+cg-umodsys: cp-umodsys-umodsysca
+tp-umodsys-umodsysca:  $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_basesys) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) $(target__umodsys_Depends__lib_S_zlib) $(target__umodsys_Depends__lib_S_libpng) $(target__umodsys_Depends__lib_S_jpeglib) $(target__umodsys_Depends__lib_S_SDL2) $(target__umodsys_Depends__lib_S_freetype) tpp-umodsys-umodsysca
+cp-umodsys-umodsysca:  cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_basesys cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys-plugin_libStd cp-umodsys-plugin_libUI cp-umodsys-plugin_test1 cp-umodsys-plugin_test2 cp-umodsys_Depends-lib_S_zlib cp-umodsys_Depends-lib_S_libpng cp-umodsys_Depends-lib_S_jpeglib cp-umodsys_Depends-lib_S_SDL2 cp-umodsys_Depends-lib_S_freetype cpp-umodsys-umodsysca
+#.PHONY: tp-umodsys-umodsysca tpp-umodsys-umodsysca cp-umodsys-umodsysca cpp-umodsys-umodsysca
+
+tmp__umodsys__umodsysca=../../tmp/Linux_x86_64.Debug
+bin__umodsys__umodsysca=../../bin/Linux_x86_64.Debug
+tmpx__umodsys__umodsysca=../../tmp/Linux_x86_64.Debug/umodsysca
+CXXFLAGS__umodsys__umodsysca=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux -I../../src/basesys
+CFLAGS__umodsys__umodsysca=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux -I../../src/basesys
+LDFLAGS__umodsys__umodsysca=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_lib2d.Linux_x86_64.Debug.a -l:umodsys_lib_lib3d.Linux_x86_64.Debug.a -l:umodsys_lib_libui.Linux_x86_64.Debug.a -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_basesys.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:lib_S_zlib.Linux_x86_64.Debug.a -l:lib_S_libpng.Linux_x86_64.Debug.a -l:lib_S_jpeglib.Linux_x86_64.Debug.a -l:lib_S_SDL2.Linux_x86_64.Debug.a -l:lib_S_freetype.Linux_x86_64.Debug.a
+
+
+# file group src :
+# file src : ../../src/plugin/main/umodsys.c_maina.cpp
+objs__umodsys__umodsysca += $(tmpx__umodsys__umodsysca)/umodsys.c_maina.o
+$(tmpx__umodsys__umodsysca)/umodsys.c_maina.o: ../../src/plugin/main/umodsys.c_maina.cpp | $(tmpx__umodsys__umodsysca)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsysca) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsysca) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsysca)/umodsys.c_maina.o.d
+# file src : ../../src/plugin/test/plugin_test1.cpp
+objs__umodsys__umodsysca += $(tmpx__umodsys__umodsysca)/plugin_test1.o
+$(tmpx__umodsys__umodsysca)/plugin_test1.o: ../../src/plugin/test/plugin_test1.cpp | $(tmpx__umodsys__umodsysca)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsysca) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsysca) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsysca)/plugin_test1.o.d
+# file src : ../../src/plugin/test/plugin_test1.common.h
+# file src : ../../src/plugin/test/plugin_test1.file_tests.h
+# file src : ../../src/plugin/test/plugin_test1.file_utils.h
+# file src : ../../src/plugin/test/plugin_test1.obj_load.h
+# file src : ../../src/plugin/test/plugin_test1.ui_ctx.h
+# file src : ../../src/plugin/test/plugin_test1.ui_ctx3.h
+# file src : ../../src/plugin/test/plugin_test1.ui_ctx3u.h
+# file src : ../../src/plugin/test/plugin_test1.ui_funcs.h
+# file src : ../../src/plugin/test/plugin_test1.ui_tests.h
+# file src : ../../src/plugin/test/plugin_test2.cpp
+objs__umodsys__umodsysca += $(tmpx__umodsys__umodsysca)/plugin_test2.o
+$(tmpx__umodsys__umodsysca)/plugin_test2.o: ../../src/plugin/test/plugin_test2.cpp | $(tmpx__umodsys__umodsysca)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsysca) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsysca) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsysca)/plugin_test2.o.d
+# end file group src .
+# console binary at ../../bin/Linux_x86_64.Debug/umodsysca.Linux_x86_64.Debug
+tpp-umodsys-umodsysca: $(target__umodsys__umodsysca)
+cpp-umodsys-umodsysca:
+	@-rm $(target__umodsys__umodsysca)
+	@-rm $(tmpx__umodsys__umodsysca)/*
+$(target__umodsys__umodsysca):  $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_basesys) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) $(target__umodsys_Depends__lib_S_zlib) $(target__umodsys_Depends__lib_S_libpng) $(target__umodsys_Depends__lib_S_jpeglib) $(target__umodsys_Depends__lib_S_SDL2) $(target__umodsys_Depends__lib_S_freetype) $(objs__umodsys__umodsysca) | $(bin__umodsys__umodsysca) 
+	@echo '*** Making console umodsys::umodsysca'
+	@$(CXX) -Wl,-rpath,. -o$@ $(objs__umodsys__umodsysca) $(LDFLAGS__umodsys__umodsysca)
+
+
+#-------------------------------- /project 'umodsys'.'umodsysca' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=console
+
+#-------------------------------- epilog 'umodsys'.'umodsysca'
+#---------------------------------------------------------------- END project 'umodsys'.'umodsysca' 
 #---------------------------------------------------------------- BEGIN project 'umodsys'.'umodsysct' 
 #-------------------------------- prolog 'umodsys'.'umodsysct'
 #--------------------------------
@@ -6896,116 +9139,7 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target
 #**************************************************************** END projectgroup 'umodsys'
 ################################################################# XMAP makefile
 # 1
-../../tmp/Linux_x86_64.Debug/lib_angelscript: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_bullet: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_libMedia_zlib: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_libMedia_serializeYaml: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_basesys: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_libui: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_lib2d_stdlib: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_libUI_SDLGL: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_lua: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 36
-../../tmp/Linux_x86_64.Debug:
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_zlib: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_test2: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 36
-../../bin/Linux_x86_64.Debug:
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_lib3d: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 22
-.PHONY: tg-umodsys cg-umodsys
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_libMedia_stdio: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_yaml: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_jpeglib: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_luajit: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_sqlite3: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_base: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_lib3d_stdlib: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_libpng: | ../../tmp/Linux_x86_64.Debug
+../../tmp/Linux_x86_64.Debug/lib_S_freetype: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
@@ -7015,51 +9149,17 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target
 
 
 # 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_core: | ../../tmp/Linux_x86_64.Debug
+../../tmp/Linux_x86_64.Debug/plugin_lib2d_stdlib: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Debug/plugin_libMedia_imagesstd: | ../../tmp/Linux_x86_64.Debug
+../../tmp/Linux_x86_64.Debug/lib_bullet: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_tinyc: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_squirrel: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_libMedia_serializeJson: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsysc: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_lib2d: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 14
-.PHONY: tg-umodsys_Depends cg-umodsys_Depends
 
 
 # 1
 ../../tmp/Linux_x86_64.Debug/plugin_test1: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_libMedia_stdlib: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
@@ -7069,7 +9169,17 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target
 
 
 # 1
-../../tmp/Linux_x86_64.Debug/lib_freetype: | ../../tmp/Linux_x86_64.Debug
+../../tmp/Linux_x86_64.Debug/umodsys_lib_lib2d: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_zlib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_squirrel: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
@@ -7079,7 +9189,131 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target
 
 
 # 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_core: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsysct: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_test2: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_libMedia_serializeJson: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 42
+../../tmp/Linux_x86_64.Debug:
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_libMedia_serializeYaml: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_libMedia_zlib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_libUI_SDLGL: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_freetype: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
 ../../tmp/Linux_x86_64.Debug/plugin_libUI_frames: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_tinyc: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_lua: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_lib3d_stdlib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_basesys: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_libMedia_stdio: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_S_zlib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 42
+../../bin/Linux_x86_64.Debug:
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_libMedia_imagesstd: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_libpng: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 23
+.PHONY: tg-umodsys cg-umodsys
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_libMedia_stdlib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_jpeglib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_sqlite3: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_angelscript: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_S_libpng: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_luajit: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
@@ -7089,7 +9323,46 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target
 
 
 # 1
-../../tmp/Linux_x86_64.Debug/umodsysct: | ../../tmp/Linux_x86_64.Debug
+../../tmp/Linux_x86_64.Debug/umodsys_lib_base: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_libui: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_lib3d: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsysc: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_S_jpeglib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 19
+.PHONY: tg-umodsys_Depends cg-umodsys_Depends
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_S_SDL2: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_yaml: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsysca: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 

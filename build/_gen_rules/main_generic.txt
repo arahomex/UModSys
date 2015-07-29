@@ -31,51 +31,12 @@ begin project-group umodsys
     #
     depend umodsysc
     depend umodsysct
+    depend umodsysca
     #
     depend plugin_libStd
     depend plugin_libUI
     depend plugin_test1
     depend plugin_test2
-  end
-
-  begin project umodsysc
-    mode binary
-    #
-    includes $(path-include)
-    includes $(path-include)/$(ppath)
-    includes $(path-s-basesys)
-    #
-    begin file-group src
-      file $(path-s-plugin)/main/umodsys.c_main.cpp
-    end
-    #
-    depend umodsys_lib_libui
-    depend umodsys_lib_libmedia
-    #
-    depend umodsys_lib_basesys
-    depend umodsys_lib_base
-    depend umodsys_lib_core
-    #
-    depend plugin_libStd
-    depend plugin_libUI
-    depend plugin_test1
-    depend plugin_test2
-  end
-
-  begin project umodsysct
-    mode binary
-    #
-    includes $(path-include)
-    includes $(path-include)/$(ppath)
-    includes $(path-s-basesys)
-    #
-    begin file-group src
-      file $(path-s-plugin)/main/umodsys.c_maint.cpp
-    end
-    #
-    depend umodsys_lib_basesys
-    depend umodsys_lib_base
-    depend umodsys_lib_core
   end
 
   #
@@ -665,6 +626,86 @@ begin project-group umodsys
     #
     depend umodsys_lib_base
     depend umodsys_lib_core
+  end
+
+  #
+  # ----------------------------------------------------------------------
+  # ----------------------------------------------------------------------
+  #
+  
+  begin project umodsysc
+    mode binary
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-s-basesys)
+    #
+    begin file-group src
+      file $(path-s-plugin)/main/umodsys.c_main.cpp
+    end
+    #
+    depend umodsys_lib_libui
+    depend umodsys_lib_libmedia
+    #
+    depend umodsys_lib_basesys
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+    #
+    depend plugin_libStd
+    depend plugin_libUI
+    depend plugin_test1
+    depend plugin_test2
+  end
+
+  begin project umodsysct
+    mode binary
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-s-basesys)
+    #
+    begin file-group src
+      file $(path-s-plugin)/main/umodsys.c_maint.cpp
+    end
+    #
+    depend umodsys_lib_basesys
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project umodsysca
+    mode binary
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-s-basesys)
+    #
+    begin file-group src
+      file $(path-s-plugin)/main/umodsys.c_maina.cpp
+    end
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/test
+        include plugin_test1.cpp
+        include plugin_test1.*.h
+        include plugin_test2.cpp
+        include plugin_test2.*.h
+      end
+    end
+    #
+    depend umodsys_lib_lib2d
+    depend umodsys_lib_lib3d
+    depend umodsys_lib_libui
+    depend umodsys_lib_libmedia
+    #
+    depend umodsys_lib_basesys
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+    #
+    depend plugin_libStd
+    depend plugin_libUI
+    depend plugin_test1
+    depend plugin_test2
   end
 
   #

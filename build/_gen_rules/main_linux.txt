@@ -130,5 +130,13 @@ begin project-group umodsys
 
   begin project umodsysct
   end
+
+  begin project umodsysca
+    depend umodsys_Depends::lib_S_zlib
+    depend umodsys_Depends::lib_S_libpng
+    depend umodsys_Depends::lib_S_jpeglib
+    depend umodsys_Depends::lib_S_SDL2
+    depend umodsys_Depends::lib_S_freetype
+  end
   
 end

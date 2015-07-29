@@ -105,4 +105,83 @@ begin project-group umodsys_Depends
       end
     end
   end
+
+  begin project lib_S_SDL2
+    includes $(path-patch)/SDL2/linux
+    defines HAVE_LIBC
+    #
+    begin file-group src-$(spname)
+      begin file-group audio
+        begin mask $(path-skip) $(path-d-SDL2)/src/audio
+          include alsa/*.c alsa/*.h
+          include disk/*.c disk/*.h
+          include dummy/*.c dummy/*.h
+          include paudio/*.c paudio/*.h
+          include dsp/*.c dsp/*.h
+          include pulseaudio/*.c pulseaudio/*.h
+        end
+      end
+      begin file-group core
+        begin mask $(path-skip) $(path-d-SDL2)/src/core
+          include linux/*.c linux/*.h
+        end
+      end
+      begin file-group filesystem
+        begin mask $(path-skip) $(path-d-SDL2)/src/filesystem
+          include unix/*.c unix/*.h
+        end
+      end
+      begin file-group haptic
+        begin mask $(path-skip) $(path-d-SDL2)/src/haptic
+#          include dummy/*.c dummy/*.h
+          include linux/*.c linux/*.h
+        end
+      end
+      begin file-group joystick
+        begin mask $(path-skip) $(path-d-SDL2)/src/joystick
+#          include dummy/*.c dummy/*.h
+          include linux/*.c linux/*.h
+        end
+      end
+      begin file-group loadso
+        begin mask $(path-skip) $(path-d-SDL2)/src/loadso
+          include dlopen/*.c dlopen/*.h
+        end
+      end
+      begin file-group power
+        begin mask $(path-skip) $(path-d-SDL2)/src/power
+          include linux/*.c linux/*.h
+        end
+      end
+      begin file-group render
+        begin mask $(path-skip) $(path-d-SDL2)/src/render
+          include opengl/*.c opengl/*.h
+          include opengles2/*.c opengles2/*.h
+          include software/*.c software/*.h
+        end
+      end
+      begin file-group thread
+        begin mask $(path-skip) $(path-d-SDL2)/src/thread
+#          include generic/*.c generic/*.h
+#          include generic/SDL_syscond.c
+          include pthread/*.c pthread/*.h
+        end
+      end
+      begin file-group timer
+        begin mask $(path-skip) $(path-d-SDL2)/src/timer
+          include unix/*.c unix/*.h
+        end
+      end
+      begin file-group video
+        begin mask $(path-skip) $(path-d-SDL2)/src/video
+          include dummy/*.c dummy/*.h
+          include directfb/*.c directfb/*.h
+          include raspberry/*.c raspberry/*.h
+          include x11/*.c x11/*.h
+        end
+      end
+    end
+  end
+
+
 end
