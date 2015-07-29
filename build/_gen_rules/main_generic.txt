@@ -402,6 +402,8 @@ begin project-group umodsys
     depend umodsys_lib_base
   end
 
+  # ----------------------------------------------------------------------
+
   begin project plugin_libStd
     mode solib
     #
@@ -457,6 +459,209 @@ begin project-group umodsys
     depend umodsys_lib_libui
     depend umodsys_lib_lib2d
     depend umodsys_lib_lib3d
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  # ----------------------------------------------------------------------
+
+  begin project plugin_libMedia_imagesstd
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/lib1
+        include plugin_libMedia_imagesstd.cpp
+      end
+    end
+    #
+    depend umodsys_lib_libmedia
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_libMedia_serializeJson
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/lib1
+        include plugin_libMedia_serializeJson.cpp
+      end
+    end
+    #
+    depend umodsys_lib_libmedia
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_libMedia_serializeYaml
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/lib1
+        include plugin_libMedia_serializeYaml.cpp
+      end
+    end
+    #
+    depend umodsys_lib_libmedia
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_libMedia_stdio
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/lib1
+        include plugin_libMedia_stdio.cpp
+      end
+    end
+    #
+    depend umodsys_lib_libmedia
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_libMedia_stdlib
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/lib1
+        include plugin_libMedia_stdlib.cpp
+      end
+    end
+    #
+    depend umodsys_lib_libmedia
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_libMedia_zlib
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/lib1
+        include plugin_libMedia_zlib.cpp
+      end
+    end
+    #
+    depend umodsys_lib_libmedia
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_lib2d_stdlib
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/lib1
+        include plugin_lib2d_stdlib.cpp
+      end
+    end
+    #
+    depend umodsys_lib_lib2d
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_lib3d_stdlib
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/lib1
+        include plugin_lib3d_stdlib.cpp
+      end
+    end
+    #
+    depend umodsys_lib_lib3d
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_libUI_SDLGL
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/lib1
+        include plugin_libUI_SDLGL.cpp
+      end
+    end
+    #
+    depend umodsys_lib_libui
+    depend umodsys_lib_lib2d
+    depend umodsys_lib_lib3d
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_libUI_SDLcore
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/lib1
+        include plugin_libUI_SDLcore.cpp
+      end
+    end
+    #
+    depend umodsys_lib_libui
+    depend umodsys_lib_lib2d
+    #
+    depend umodsys_lib_base
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_libUI_frames
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/lib1
+        include plugin_libUI_frames.cpp
+      end
+    end
+    #
+    depend umodsys_lib_libui
     #
     depend umodsys_lib_base
     depend umodsys_lib_core

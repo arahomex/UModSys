@@ -47,6 +47,9 @@ begin project-group umodsys
     end
   end
 
+  # ----------------------------------------------------------------------
+  # ----------------------------------------------------------------------
+
   begin project plugin_test1
     mode plugin
     libpath $(path-out-bin) $(path-out-tmp)
@@ -64,8 +67,11 @@ begin project-group umodsys
     mode plugin
   end
 
+  # ----------------------------------------------------------------------
+
   begin project plugin_libStd
-    mode plugin
+#    mode plugin
+    mode dummy
     #
     depend umodsys_Depends::lib_zlib
     depend umodsys_Depends::lib_libpng
@@ -73,7 +79,8 @@ begin project-group umodsys
   end
 
   begin project plugin_libUI
-    mode plugin
+#    mode plugin
+    mode dummy
     #
     depend umodsys_Depends::lib_zlib
     depend umodsys_Depends::lib_libpng
@@ -81,10 +88,42 @@ begin project-group umodsys
   end
 
   begin project plugin_libUI_SDL
+#    mode plugin
+    mode dummy
+    #
+    depend umodsys_Depends::lib_SDL2
+  end
+
+  # ----------------------------------------------------------------------
+
+  begin project plugin_libMedia_imagesstd
+    mode plugin
+    #
+    depend umodsys_Depends::lib_zlib
+    depend umodsys_Depends::lib_libpng
+    depend umodsys_Depends::lib_jpeglib
+  end
+
+  begin project plugin_libMedia_zlib
+    mode plugin
+    #
+    depend umodsys_Depends::lib_zlib
+  end
+  
+  begin project plugin_libUI_SDLGL
     mode plugin
     #
     depend umodsys_Depends::lib_SDL2
   end
+
+  begin project plugin_libUI_SDLcore
+    mode plugin
+    #
+    depend umodsys_Depends::lib_SDL2
+  end
+
+  # ----------------------------------------------------------------------
+  # ----------------------------------------------------------------------
 
   begin project umodsysc
   end

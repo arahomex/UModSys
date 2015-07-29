@@ -19,9 +19,20 @@ target__umodsys_Depends__lib_tinyc=../../bin/Linux_x86_64.Release/lib_tinyc.Linu
 target__umodsys_Depends__lib_yaml=../../bin/Linux_x86_64.Release/lib_yaml.Linux_x86_64.Release.so
 target__umodsys_Depends__lib_zlib=../../bin/Linux_x86_64.Release/lib_zlib.Linux_x86_64.Release.so
 target__umodsys__all=
-target__umodsys__plugin_libStd=../../bin/Linux_x86_64.Release/plugin_libStd.Linux_x86_64.Release.so
-target__umodsys__plugin_libUI=../../bin/Linux_x86_64.Release/plugin_libUI.Linux_x86_64.Release.so
-target__umodsys__plugin_libUI_SDL=../../bin/Linux_x86_64.Release/plugin_libUI_SDL.Linux_x86_64.Release.so
+target__umodsys__plugin_lib2d_stdlib=../../bin/Linux_x86_64.Release/plugin_lib2d_stdlib.Linux_x86_64.Release.so
+target__umodsys__plugin_lib3d_stdlib=../../bin/Linux_x86_64.Release/plugin_lib3d_stdlib.Linux_x86_64.Release.so
+target__umodsys__plugin_libMedia_imagesstd=../../bin/Linux_x86_64.Release/plugin_libMedia_imagesstd.Linux_x86_64.Release.so
+target__umodsys__plugin_libMedia_serializeJson=../../bin/Linux_x86_64.Release/plugin_libMedia_serializeJson.Linux_x86_64.Release.so
+target__umodsys__plugin_libMedia_serializeYaml=../../bin/Linux_x86_64.Release/plugin_libMedia_serializeYaml.Linux_x86_64.Release.so
+target__umodsys__plugin_libMedia_stdio=../../bin/Linux_x86_64.Release/plugin_libMedia_stdio.Linux_x86_64.Release.so
+target__umodsys__plugin_libMedia_stdlib=../../bin/Linux_x86_64.Release/plugin_libMedia_stdlib.Linux_x86_64.Release.so
+target__umodsys__plugin_libMedia_zlib=../../bin/Linux_x86_64.Release/plugin_libMedia_zlib.Linux_x86_64.Release.so
+target__umodsys__plugin_libStd=
+target__umodsys__plugin_libUI=
+target__umodsys__plugin_libUI_SDL=
+target__umodsys__plugin_libUI_SDLGL=../../bin/Linux_x86_64.Release/plugin_libUI_SDLGL.Linux_x86_64.Release.so
+target__umodsys__plugin_libUI_SDLcore=../../bin/Linux_x86_64.Release/plugin_libUI_SDLcore.Linux_x86_64.Release.so
+target__umodsys__plugin_libUI_frames=../../bin/Linux_x86_64.Release/plugin_libUI_frames.Linux_x86_64.Release.so
 target__umodsys__plugin_test1=../../bin/Linux_x86_64.Release/plugin_test1.Linux_x86_64.Release.so
 target__umodsys__plugin_test2=../../bin/Linux_x86_64.Release/plugin_test2.Linux_x86_64.Release.so
 target__umodsys__umodsys_lib_base=../../tmp/Linux_x86_64.Release/umodsys_lib_base.Linux_x86_64.Release.a
@@ -5267,10 +5278,346 @@ cpp-umodsys-all:
 
 #-------------------------------- epilog 'umodsys'.'all'
 #---------------------------------------------------------------- END project 'umodsys'.'all' 
+#---------------------------------------------------------------- BEGIN project 'umodsys'.'plugin_lib2d_stdlib' 
+#-------------------------------- prolog 'umodsys'.'plugin_lib2d_stdlib'
+#--------------------------------
+#-------------------------------- project 'umodsys'.'plugin_lib2d_stdlib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
+target: tp-umodsys-plugin_lib2d_stdlib
+clean: cp-umodsys-plugin_lib2d_stdlib
+tg-umodsys: tp-umodsys-plugin_lib2d_stdlib
+cg-umodsys: cp-umodsys-plugin_lib2d_stdlib
+tp-umodsys-plugin_lib2d_stdlib:  $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_lib2d_stdlib
+cp-umodsys-plugin_lib2d_stdlib:  cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_lib2d_stdlib
+#.PHONY: tp-umodsys-plugin_lib2d_stdlib tpp-umodsys-plugin_lib2d_stdlib cp-umodsys-plugin_lib2d_stdlib cpp-umodsys-plugin_lib2d_stdlib
+
+tmp__umodsys__plugin_lib2d_stdlib=../../tmp/Linux_x86_64.Release
+bin__umodsys__plugin_lib2d_stdlib=../../bin/Linux_x86_64.Release
+tmpx__umodsys__plugin_lib2d_stdlib=../../tmp/Linux_x86_64.Release/plugin_lib2d_stdlib
+CXXFLAGS__umodsys__plugin_lib2d_stdlib=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+CFLAGS__umodsys__plugin_lib2d_stdlib=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+LDFLAGS__umodsys__plugin_lib2d_stdlib=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -ldl -lpthread -l:umodsys_lib_lib2d.Linux_x86_64.Release.a -l:umodsys_lib_base.Linux_x86_64.Release.a -l:umodsys_lib_core.Linux_x86_64.Release.a
+
+
+# file group src :
+# file src : ../../src/plugin/lib1/plugin_lib2d_stdlib.cpp
+objs__umodsys__plugin_lib2d_stdlib += $(tmpx__umodsys__plugin_lib2d_stdlib)/plugin_lib2d_stdlib.o
+$(tmpx__umodsys__plugin_lib2d_stdlib)/plugin_lib2d_stdlib.o: ../../src/plugin/lib1/plugin_lib2d_stdlib.cpp | $(tmpx__umodsys__plugin_lib2d_stdlib)
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_lib2d_stdlib) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_lib2d_stdlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__plugin_lib2d_stdlib)/plugin_lib2d_stdlib.o.d
+# end file group src .
+# so library at ../../bin/Linux_x86_64.Release/plugin_lib2d_stdlib.Linux_x86_64.Release.so
+tpp-umodsys-plugin_lib2d_stdlib: $(target__umodsys__plugin_lib2d_stdlib)
+cpp-umodsys-plugin_lib2d_stdlib:
+	@-rm $(target__umodsys__plugin_lib2d_stdlib)
+	@-rm $(tmpx__umodsys__plugin_lib2d_stdlib)/*
+$(target__umodsys__plugin_lib2d_stdlib):  $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_lib2d_stdlib) | $(bin__umodsys__plugin_lib2d_stdlib) 
+	@echo '*** Making solib umodsys::plugin_lib2d_stdlib'
+	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_lib2d_stdlib.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_lib2d_stdlib) $(LDFLAGS__umodsys__plugin_lib2d_stdlib)
+
+
+#-------------------------------- /project 'umodsys'.'plugin_lib2d_stdlib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
+
+#-------------------------------- epilog 'umodsys'.'plugin_lib2d_stdlib'
+#---------------------------------------------------------------- END project 'umodsys'.'plugin_lib2d_stdlib' 
+#---------------------------------------------------------------- BEGIN project 'umodsys'.'plugin_lib3d_stdlib' 
+#-------------------------------- prolog 'umodsys'.'plugin_lib3d_stdlib'
+#--------------------------------
+#-------------------------------- project 'umodsys'.'plugin_lib3d_stdlib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
+target: tp-umodsys-plugin_lib3d_stdlib
+clean: cp-umodsys-plugin_lib3d_stdlib
+tg-umodsys: tp-umodsys-plugin_lib3d_stdlib
+cg-umodsys: cp-umodsys-plugin_lib3d_stdlib
+tp-umodsys-plugin_lib3d_stdlib:  $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_lib3d_stdlib
+cp-umodsys-plugin_lib3d_stdlib:  cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_lib3d_stdlib
+#.PHONY: tp-umodsys-plugin_lib3d_stdlib tpp-umodsys-plugin_lib3d_stdlib cp-umodsys-plugin_lib3d_stdlib cpp-umodsys-plugin_lib3d_stdlib
+
+tmp__umodsys__plugin_lib3d_stdlib=../../tmp/Linux_x86_64.Release
+bin__umodsys__plugin_lib3d_stdlib=../../bin/Linux_x86_64.Release
+tmpx__umodsys__plugin_lib3d_stdlib=../../tmp/Linux_x86_64.Release/plugin_lib3d_stdlib
+CXXFLAGS__umodsys__plugin_lib3d_stdlib=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+CFLAGS__umodsys__plugin_lib3d_stdlib=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+LDFLAGS__umodsys__plugin_lib3d_stdlib=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -ldl -lpthread -l:umodsys_lib_lib3d.Linux_x86_64.Release.a -l:umodsys_lib_base.Linux_x86_64.Release.a -l:umodsys_lib_core.Linux_x86_64.Release.a
+
+
+# file group src :
+# file src : ../../src/plugin/lib1/plugin_lib3d_stdlib.cpp
+objs__umodsys__plugin_lib3d_stdlib += $(tmpx__umodsys__plugin_lib3d_stdlib)/plugin_lib3d_stdlib.o
+$(tmpx__umodsys__plugin_lib3d_stdlib)/plugin_lib3d_stdlib.o: ../../src/plugin/lib1/plugin_lib3d_stdlib.cpp | $(tmpx__umodsys__plugin_lib3d_stdlib)
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_lib3d_stdlib) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_lib3d_stdlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__plugin_lib3d_stdlib)/plugin_lib3d_stdlib.o.d
+# end file group src .
+# so library at ../../bin/Linux_x86_64.Release/plugin_lib3d_stdlib.Linux_x86_64.Release.so
+tpp-umodsys-plugin_lib3d_stdlib: $(target__umodsys__plugin_lib3d_stdlib)
+cpp-umodsys-plugin_lib3d_stdlib:
+	@-rm $(target__umodsys__plugin_lib3d_stdlib)
+	@-rm $(tmpx__umodsys__plugin_lib3d_stdlib)/*
+$(target__umodsys__plugin_lib3d_stdlib):  $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_lib3d_stdlib) | $(bin__umodsys__plugin_lib3d_stdlib) 
+	@echo '*** Making solib umodsys::plugin_lib3d_stdlib'
+	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_lib3d_stdlib.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_lib3d_stdlib) $(LDFLAGS__umodsys__plugin_lib3d_stdlib)
+
+
+#-------------------------------- /project 'umodsys'.'plugin_lib3d_stdlib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
+
+#-------------------------------- epilog 'umodsys'.'plugin_lib3d_stdlib'
+#---------------------------------------------------------------- END project 'umodsys'.'plugin_lib3d_stdlib' 
+#---------------------------------------------------------------- BEGIN project 'umodsys'.'plugin_libMedia_imagesstd' 
+#-------------------------------- prolog 'umodsys'.'plugin_libMedia_imagesstd'
+#--------------------------------
+#-------------------------------- project 'umodsys'.'plugin_libMedia_imagesstd' PLATFORM=Linux_x86_64 CONFIG=Release MODE=plugin:
+target: tp-umodsys-plugin_libMedia_imagesstd
+clean: cp-umodsys-plugin_libMedia_imagesstd
+tg-umodsys: tp-umodsys-plugin_libMedia_imagesstd
+cg-umodsys: cp-umodsys-plugin_libMedia_imagesstd
+tp-umodsys-plugin_libMedia_imagesstd:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) tpp-umodsys-plugin_libMedia_imagesstd
+cp-umodsys-plugin_libMedia_imagesstd:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys_Depends-lib_zlib cp-umodsys_Depends-lib_libpng cp-umodsys_Depends-lib_jpeglib cpp-umodsys-plugin_libMedia_imagesstd
+#.PHONY: tp-umodsys-plugin_libMedia_imagesstd tpp-umodsys-plugin_libMedia_imagesstd cp-umodsys-plugin_libMedia_imagesstd cpp-umodsys-plugin_libMedia_imagesstd
+
+tmp__umodsys__plugin_libMedia_imagesstd=../../tmp/Linux_x86_64.Release
+bin__umodsys__plugin_libMedia_imagesstd=../../bin/Linux_x86_64.Release
+tmpx__umodsys__plugin_libMedia_imagesstd=../../tmp/Linux_x86_64.Release/plugin_libMedia_imagesstd
+CXXFLAGS__umodsys__plugin_libMedia_imagesstd=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+CFLAGS__umodsys__plugin_libMedia_imagesstd=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+LDFLAGS__umodsys__plugin_libMedia_imagesstd=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Release.a -l:umodsys_lib_base.Linux_x86_64.Release.a -l:umodsys_lib_core.Linux_x86_64.Release.a -l:lib_zlib.Linux_x86_64.Release.so -l:lib_libpng.Linux_x86_64.Release.so -l:lib_jpeglib.Linux_x86_64.Release.so
+
+
+# file group src :
+# file src : ../../src/plugin/lib1/plugin_libMedia_imagesstd.cpp
+objs__umodsys__plugin_libMedia_imagesstd += $(tmpx__umodsys__plugin_libMedia_imagesstd)/plugin_libMedia_imagesstd.o
+$(tmpx__umodsys__plugin_libMedia_imagesstd)/plugin_libMedia_imagesstd.o: ../../src/plugin/lib1/plugin_libMedia_imagesstd.cpp | $(tmpx__umodsys__plugin_libMedia_imagesstd)
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libMedia_imagesstd) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libMedia_imagesstd) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__plugin_libMedia_imagesstd)/plugin_libMedia_imagesstd.o.d
+# end file group src .
+# so library at ../../bin/Linux_x86_64.Release/plugin_libMedia_imagesstd.Linux_x86_64.Release.so
+tpp-umodsys-plugin_libMedia_imagesstd: $(target__umodsys__plugin_libMedia_imagesstd)
+cpp-umodsys-plugin_libMedia_imagesstd:
+	@-rm $(target__umodsys__plugin_libMedia_imagesstd)
+	@-rm $(tmpx__umodsys__plugin_libMedia_imagesstd)/*
+$(target__umodsys__plugin_libMedia_imagesstd):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) $(objs__umodsys__plugin_libMedia_imagesstd) | $(bin__umodsys__plugin_libMedia_imagesstd) 
+	@echo '*** Making plugin umodsys::plugin_libMedia_imagesstd'
+	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_imagesstd.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libMedia_imagesstd) $(LDFLAGS__umodsys__plugin_libMedia_imagesstd)
+
+
+#-------------------------------- /project 'umodsys'.'plugin_libMedia_imagesstd' PLATFORM=Linux_x86_64 CONFIG=Release MODE=plugin
+
+#-------------------------------- epilog 'umodsys'.'plugin_libMedia_imagesstd'
+#---------------------------------------------------------------- END project 'umodsys'.'plugin_libMedia_imagesstd' 
+#---------------------------------------------------------------- BEGIN project 'umodsys'.'plugin_libMedia_serializeJson' 
+#-------------------------------- prolog 'umodsys'.'plugin_libMedia_serializeJson'
+#--------------------------------
+#-------------------------------- project 'umodsys'.'plugin_libMedia_serializeJson' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
+target: tp-umodsys-plugin_libMedia_serializeJson
+clean: cp-umodsys-plugin_libMedia_serializeJson
+tg-umodsys: tp-umodsys-plugin_libMedia_serializeJson
+cg-umodsys: cp-umodsys-plugin_libMedia_serializeJson
+tp-umodsys-plugin_libMedia_serializeJson:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_libMedia_serializeJson
+cp-umodsys-plugin_libMedia_serializeJson:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_libMedia_serializeJson
+#.PHONY: tp-umodsys-plugin_libMedia_serializeJson tpp-umodsys-plugin_libMedia_serializeJson cp-umodsys-plugin_libMedia_serializeJson cpp-umodsys-plugin_libMedia_serializeJson
+
+tmp__umodsys__plugin_libMedia_serializeJson=../../tmp/Linux_x86_64.Release
+bin__umodsys__plugin_libMedia_serializeJson=../../bin/Linux_x86_64.Release
+tmpx__umodsys__plugin_libMedia_serializeJson=../../tmp/Linux_x86_64.Release/plugin_libMedia_serializeJson
+CXXFLAGS__umodsys__plugin_libMedia_serializeJson=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+CFLAGS__umodsys__plugin_libMedia_serializeJson=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+LDFLAGS__umodsys__plugin_libMedia_serializeJson=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Release.a -l:umodsys_lib_base.Linux_x86_64.Release.a -l:umodsys_lib_core.Linux_x86_64.Release.a
+
+
+# file group src :
+# file src : ../../src/plugin/lib1/plugin_libMedia_serializeJson.cpp
+objs__umodsys__plugin_libMedia_serializeJson += $(tmpx__umodsys__plugin_libMedia_serializeJson)/plugin_libMedia_serializeJson.o
+$(tmpx__umodsys__plugin_libMedia_serializeJson)/plugin_libMedia_serializeJson.o: ../../src/plugin/lib1/plugin_libMedia_serializeJson.cpp | $(tmpx__umodsys__plugin_libMedia_serializeJson)
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libMedia_serializeJson) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libMedia_serializeJson) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__plugin_libMedia_serializeJson)/plugin_libMedia_serializeJson.o.d
+# end file group src .
+# so library at ../../bin/Linux_x86_64.Release/plugin_libMedia_serializeJson.Linux_x86_64.Release.so
+tpp-umodsys-plugin_libMedia_serializeJson: $(target__umodsys__plugin_libMedia_serializeJson)
+cpp-umodsys-plugin_libMedia_serializeJson:
+	@-rm $(target__umodsys__plugin_libMedia_serializeJson)
+	@-rm $(tmpx__umodsys__plugin_libMedia_serializeJson)/*
+$(target__umodsys__plugin_libMedia_serializeJson):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_libMedia_serializeJson) | $(bin__umodsys__plugin_libMedia_serializeJson) 
+	@echo '*** Making solib umodsys::plugin_libMedia_serializeJson'
+	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_serializeJson.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libMedia_serializeJson) $(LDFLAGS__umodsys__plugin_libMedia_serializeJson)
+
+
+#-------------------------------- /project 'umodsys'.'plugin_libMedia_serializeJson' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
+
+#-------------------------------- epilog 'umodsys'.'plugin_libMedia_serializeJson'
+#---------------------------------------------------------------- END project 'umodsys'.'plugin_libMedia_serializeJson' 
+#---------------------------------------------------------------- BEGIN project 'umodsys'.'plugin_libMedia_serializeYaml' 
+#-------------------------------- prolog 'umodsys'.'plugin_libMedia_serializeYaml'
+#--------------------------------
+#-------------------------------- project 'umodsys'.'plugin_libMedia_serializeYaml' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
+target: tp-umodsys-plugin_libMedia_serializeYaml
+clean: cp-umodsys-plugin_libMedia_serializeYaml
+tg-umodsys: tp-umodsys-plugin_libMedia_serializeYaml
+cg-umodsys: cp-umodsys-plugin_libMedia_serializeYaml
+tp-umodsys-plugin_libMedia_serializeYaml:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_libMedia_serializeYaml
+cp-umodsys-plugin_libMedia_serializeYaml:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_libMedia_serializeYaml
+#.PHONY: tp-umodsys-plugin_libMedia_serializeYaml tpp-umodsys-plugin_libMedia_serializeYaml cp-umodsys-plugin_libMedia_serializeYaml cpp-umodsys-plugin_libMedia_serializeYaml
+
+tmp__umodsys__plugin_libMedia_serializeYaml=../../tmp/Linux_x86_64.Release
+bin__umodsys__plugin_libMedia_serializeYaml=../../bin/Linux_x86_64.Release
+tmpx__umodsys__plugin_libMedia_serializeYaml=../../tmp/Linux_x86_64.Release/plugin_libMedia_serializeYaml
+CXXFLAGS__umodsys__plugin_libMedia_serializeYaml=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+CFLAGS__umodsys__plugin_libMedia_serializeYaml=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+LDFLAGS__umodsys__plugin_libMedia_serializeYaml=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Release.a -l:umodsys_lib_base.Linux_x86_64.Release.a -l:umodsys_lib_core.Linux_x86_64.Release.a
+
+
+# file group src :
+# file src : ../../src/plugin/lib1/plugin_libMedia_serializeYaml.cpp
+objs__umodsys__plugin_libMedia_serializeYaml += $(tmpx__umodsys__plugin_libMedia_serializeYaml)/plugin_libMedia_serializeYaml.o
+$(tmpx__umodsys__plugin_libMedia_serializeYaml)/plugin_libMedia_serializeYaml.o: ../../src/plugin/lib1/plugin_libMedia_serializeYaml.cpp | $(tmpx__umodsys__plugin_libMedia_serializeYaml)
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libMedia_serializeYaml) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libMedia_serializeYaml) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__plugin_libMedia_serializeYaml)/plugin_libMedia_serializeYaml.o.d
+# end file group src .
+# so library at ../../bin/Linux_x86_64.Release/plugin_libMedia_serializeYaml.Linux_x86_64.Release.so
+tpp-umodsys-plugin_libMedia_serializeYaml: $(target__umodsys__plugin_libMedia_serializeYaml)
+cpp-umodsys-plugin_libMedia_serializeYaml:
+	@-rm $(target__umodsys__plugin_libMedia_serializeYaml)
+	@-rm $(tmpx__umodsys__plugin_libMedia_serializeYaml)/*
+$(target__umodsys__plugin_libMedia_serializeYaml):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_libMedia_serializeYaml) | $(bin__umodsys__plugin_libMedia_serializeYaml) 
+	@echo '*** Making solib umodsys::plugin_libMedia_serializeYaml'
+	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_serializeYaml.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libMedia_serializeYaml) $(LDFLAGS__umodsys__plugin_libMedia_serializeYaml)
+
+
+#-------------------------------- /project 'umodsys'.'plugin_libMedia_serializeYaml' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
+
+#-------------------------------- epilog 'umodsys'.'plugin_libMedia_serializeYaml'
+#---------------------------------------------------------------- END project 'umodsys'.'plugin_libMedia_serializeYaml' 
+#---------------------------------------------------------------- BEGIN project 'umodsys'.'plugin_libMedia_stdio' 
+#-------------------------------- prolog 'umodsys'.'plugin_libMedia_stdio'
+#--------------------------------
+#-------------------------------- project 'umodsys'.'plugin_libMedia_stdio' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
+target: tp-umodsys-plugin_libMedia_stdio
+clean: cp-umodsys-plugin_libMedia_stdio
+tg-umodsys: tp-umodsys-plugin_libMedia_stdio
+cg-umodsys: cp-umodsys-plugin_libMedia_stdio
+tp-umodsys-plugin_libMedia_stdio:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_libMedia_stdio
+cp-umodsys-plugin_libMedia_stdio:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_libMedia_stdio
+#.PHONY: tp-umodsys-plugin_libMedia_stdio tpp-umodsys-plugin_libMedia_stdio cp-umodsys-plugin_libMedia_stdio cpp-umodsys-plugin_libMedia_stdio
+
+tmp__umodsys__plugin_libMedia_stdio=../../tmp/Linux_x86_64.Release
+bin__umodsys__plugin_libMedia_stdio=../../bin/Linux_x86_64.Release
+tmpx__umodsys__plugin_libMedia_stdio=../../tmp/Linux_x86_64.Release/plugin_libMedia_stdio
+CXXFLAGS__umodsys__plugin_libMedia_stdio=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+CFLAGS__umodsys__plugin_libMedia_stdio=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+LDFLAGS__umodsys__plugin_libMedia_stdio=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Release.a -l:umodsys_lib_base.Linux_x86_64.Release.a -l:umodsys_lib_core.Linux_x86_64.Release.a
+
+
+# file group src :
+# file src : ../../src/plugin/lib1/plugin_libMedia_stdio.cpp
+objs__umodsys__plugin_libMedia_stdio += $(tmpx__umodsys__plugin_libMedia_stdio)/plugin_libMedia_stdio.o
+$(tmpx__umodsys__plugin_libMedia_stdio)/plugin_libMedia_stdio.o: ../../src/plugin/lib1/plugin_libMedia_stdio.cpp | $(tmpx__umodsys__plugin_libMedia_stdio)
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libMedia_stdio) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libMedia_stdio) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__plugin_libMedia_stdio)/plugin_libMedia_stdio.o.d
+# end file group src .
+# so library at ../../bin/Linux_x86_64.Release/plugin_libMedia_stdio.Linux_x86_64.Release.so
+tpp-umodsys-plugin_libMedia_stdio: $(target__umodsys__plugin_libMedia_stdio)
+cpp-umodsys-plugin_libMedia_stdio:
+	@-rm $(target__umodsys__plugin_libMedia_stdio)
+	@-rm $(tmpx__umodsys__plugin_libMedia_stdio)/*
+$(target__umodsys__plugin_libMedia_stdio):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_libMedia_stdio) | $(bin__umodsys__plugin_libMedia_stdio) 
+	@echo '*** Making solib umodsys::plugin_libMedia_stdio'
+	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_stdio.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libMedia_stdio) $(LDFLAGS__umodsys__plugin_libMedia_stdio)
+
+
+#-------------------------------- /project 'umodsys'.'plugin_libMedia_stdio' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
+
+#-------------------------------- epilog 'umodsys'.'plugin_libMedia_stdio'
+#---------------------------------------------------------------- END project 'umodsys'.'plugin_libMedia_stdio' 
+#---------------------------------------------------------------- BEGIN project 'umodsys'.'plugin_libMedia_stdlib' 
+#-------------------------------- prolog 'umodsys'.'plugin_libMedia_stdlib'
+#--------------------------------
+#-------------------------------- project 'umodsys'.'plugin_libMedia_stdlib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
+target: tp-umodsys-plugin_libMedia_stdlib
+clean: cp-umodsys-plugin_libMedia_stdlib
+tg-umodsys: tp-umodsys-plugin_libMedia_stdlib
+cg-umodsys: cp-umodsys-plugin_libMedia_stdlib
+tp-umodsys-plugin_libMedia_stdlib:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_libMedia_stdlib
+cp-umodsys-plugin_libMedia_stdlib:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_libMedia_stdlib
+#.PHONY: tp-umodsys-plugin_libMedia_stdlib tpp-umodsys-plugin_libMedia_stdlib cp-umodsys-plugin_libMedia_stdlib cpp-umodsys-plugin_libMedia_stdlib
+
+tmp__umodsys__plugin_libMedia_stdlib=../../tmp/Linux_x86_64.Release
+bin__umodsys__plugin_libMedia_stdlib=../../bin/Linux_x86_64.Release
+tmpx__umodsys__plugin_libMedia_stdlib=../../tmp/Linux_x86_64.Release/plugin_libMedia_stdlib
+CXXFLAGS__umodsys__plugin_libMedia_stdlib=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+CFLAGS__umodsys__plugin_libMedia_stdlib=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+LDFLAGS__umodsys__plugin_libMedia_stdlib=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Release.a -l:umodsys_lib_base.Linux_x86_64.Release.a -l:umodsys_lib_core.Linux_x86_64.Release.a
+
+
+# file group src :
+# file src : ../../src/plugin/lib1/plugin_libMedia_stdlib.cpp
+objs__umodsys__plugin_libMedia_stdlib += $(tmpx__umodsys__plugin_libMedia_stdlib)/plugin_libMedia_stdlib.o
+$(tmpx__umodsys__plugin_libMedia_stdlib)/plugin_libMedia_stdlib.o: ../../src/plugin/lib1/plugin_libMedia_stdlib.cpp | $(tmpx__umodsys__plugin_libMedia_stdlib)
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libMedia_stdlib) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libMedia_stdlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__plugin_libMedia_stdlib)/plugin_libMedia_stdlib.o.d
+# end file group src .
+# so library at ../../bin/Linux_x86_64.Release/plugin_libMedia_stdlib.Linux_x86_64.Release.so
+tpp-umodsys-plugin_libMedia_stdlib: $(target__umodsys__plugin_libMedia_stdlib)
+cpp-umodsys-plugin_libMedia_stdlib:
+	@-rm $(target__umodsys__plugin_libMedia_stdlib)
+	@-rm $(tmpx__umodsys__plugin_libMedia_stdlib)/*
+$(target__umodsys__plugin_libMedia_stdlib):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_libMedia_stdlib) | $(bin__umodsys__plugin_libMedia_stdlib) 
+	@echo '*** Making solib umodsys::plugin_libMedia_stdlib'
+	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_stdlib.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libMedia_stdlib) $(LDFLAGS__umodsys__plugin_libMedia_stdlib)
+
+
+#-------------------------------- /project 'umodsys'.'plugin_libMedia_stdlib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
+
+#-------------------------------- epilog 'umodsys'.'plugin_libMedia_stdlib'
+#---------------------------------------------------------------- END project 'umodsys'.'plugin_libMedia_stdlib' 
+#---------------------------------------------------------------- BEGIN project 'umodsys'.'plugin_libMedia_zlib' 
+#-------------------------------- prolog 'umodsys'.'plugin_libMedia_zlib'
+#--------------------------------
+#-------------------------------- project 'umodsys'.'plugin_libMedia_zlib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=plugin:
+target: tp-umodsys-plugin_libMedia_zlib
+clean: cp-umodsys-plugin_libMedia_zlib
+tg-umodsys: tp-umodsys-plugin_libMedia_zlib
+cg-umodsys: cp-umodsys-plugin_libMedia_zlib
+tp-umodsys-plugin_libMedia_zlib:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) tpp-umodsys-plugin_libMedia_zlib
+cp-umodsys-plugin_libMedia_zlib:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys_Depends-lib_zlib cpp-umodsys-plugin_libMedia_zlib
+#.PHONY: tp-umodsys-plugin_libMedia_zlib tpp-umodsys-plugin_libMedia_zlib cp-umodsys-plugin_libMedia_zlib cpp-umodsys-plugin_libMedia_zlib
+
+tmp__umodsys__plugin_libMedia_zlib=../../tmp/Linux_x86_64.Release
+bin__umodsys__plugin_libMedia_zlib=../../bin/Linux_x86_64.Release
+tmpx__umodsys__plugin_libMedia_zlib=../../tmp/Linux_x86_64.Release/plugin_libMedia_zlib
+CXXFLAGS__umodsys__plugin_libMedia_zlib=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+CFLAGS__umodsys__plugin_libMedia_zlib=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+LDFLAGS__umodsys__plugin_libMedia_zlib=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Release.a -l:umodsys_lib_base.Linux_x86_64.Release.a -l:umodsys_lib_core.Linux_x86_64.Release.a -l:lib_zlib.Linux_x86_64.Release.so
+
+
+# file group src :
+# file src : ../../src/plugin/lib1/plugin_libMedia_zlib.cpp
+objs__umodsys__plugin_libMedia_zlib += $(tmpx__umodsys__plugin_libMedia_zlib)/plugin_libMedia_zlib.o
+$(tmpx__umodsys__plugin_libMedia_zlib)/plugin_libMedia_zlib.o: ../../src/plugin/lib1/plugin_libMedia_zlib.cpp | $(tmpx__umodsys__plugin_libMedia_zlib)
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libMedia_zlib) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libMedia_zlib) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__plugin_libMedia_zlib)/plugin_libMedia_zlib.o.d
+# end file group src .
+# so library at ../../bin/Linux_x86_64.Release/plugin_libMedia_zlib.Linux_x86_64.Release.so
+tpp-umodsys-plugin_libMedia_zlib: $(target__umodsys__plugin_libMedia_zlib)
+cpp-umodsys-plugin_libMedia_zlib:
+	@-rm $(target__umodsys__plugin_libMedia_zlib)
+	@-rm $(tmpx__umodsys__plugin_libMedia_zlib)/*
+$(target__umodsys__plugin_libMedia_zlib):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) $(objs__umodsys__plugin_libMedia_zlib) | $(bin__umodsys__plugin_libMedia_zlib) 
+	@echo '*** Making plugin umodsys::plugin_libMedia_zlib'
+	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_zlib.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libMedia_zlib) $(LDFLAGS__umodsys__plugin_libMedia_zlib)
+
+
+#-------------------------------- /project 'umodsys'.'plugin_libMedia_zlib' PLATFORM=Linux_x86_64 CONFIG=Release MODE=plugin
+
+#-------------------------------- epilog 'umodsys'.'plugin_libMedia_zlib'
+#---------------------------------------------------------------- END project 'umodsys'.'plugin_libMedia_zlib' 
 #---------------------------------------------------------------- BEGIN project 'umodsys'.'plugin_libStd' 
 #-------------------------------- prolog 'umodsys'.'plugin_libStd'
 #--------------------------------
-#-------------------------------- project 'umodsys'.'plugin_libStd' PLATFORM=Linux_x86_64 CONFIG=Release MODE=plugin:
+#-------------------------------- project 'umodsys'.'plugin_libStd' PLATFORM=Linux_x86_64 CONFIG=Release MODE=dummy:
 target: tp-umodsys-plugin_libStd
 clean: cp-umodsys-plugin_libStd
 tg-umodsys: tp-umodsys-plugin_libStd
@@ -5279,40 +5626,19 @@ tp-umodsys-plugin_libStd:  $(target__umodsys__umodsys_lib_libmedia) $(target__um
 cp-umodsys-plugin_libStd:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys_Depends-lib_zlib cp-umodsys_Depends-lib_libpng cp-umodsys_Depends-lib_jpeglib cpp-umodsys-plugin_libStd
 #.PHONY: tp-umodsys-plugin_libStd tpp-umodsys-plugin_libStd cp-umodsys-plugin_libStd cpp-umodsys-plugin_libStd
 
-tmp__umodsys__plugin_libStd=../../tmp/Linux_x86_64.Release
-bin__umodsys__plugin_libStd=../../bin/Linux_x86_64.Release
-tmpx__umodsys__plugin_libStd=../../tmp/Linux_x86_64.Release/plugin_libStd
-CXXFLAGS__umodsys__plugin_libStd=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-CFLAGS__umodsys__plugin_libStd=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_libStd=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Release.a -l:umodsys_lib_base.Linux_x86_64.Release.a -l:umodsys_lib_core.Linux_x86_64.Release.a -l:lib_zlib.Linux_x86_64.Release.so -l:lib_libpng.Linux_x86_64.Release.so -l:lib_jpeglib.Linux_x86_64.Release.so
-
-
-# file group src :
-# file src : ../../src/plugin/libs/plugin_libStd.cpp
-objs__umodsys__plugin_libStd += $(tmpx__umodsys__plugin_libStd)/plugin_libStd.o
-$(tmpx__umodsys__plugin_libStd)/plugin_libStd.o: ../../src/plugin/libs/plugin_libStd.cpp | $(tmpx__umodsys__plugin_libStd)
-	@$(CXX) $(CXXFLAGS__umodsys__plugin_libStd) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__plugin_libStd) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__plugin_libStd)/plugin_libStd.o.d
-# end file group src .
-# so library at ../../bin/Linux_x86_64.Release/plugin_libStd.Linux_x86_64.Release.so
-tpp-umodsys-plugin_libStd: $(target__umodsys__plugin_libStd)
+# dummy project
+tpp-umodsys-plugin_libStd:
 cpp-umodsys-plugin_libStd:
-	@-rm $(target__umodsys__plugin_libStd)
-	@-rm $(tmpx__umodsys__plugin_libStd)/*
-$(target__umodsys__plugin_libStd):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) $(objs__umodsys__plugin_libStd) | $(bin__umodsys__plugin_libStd) 
-	@echo '*** Making plugin umodsys::plugin_libStd'
-	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libStd.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libStd) $(LDFLAGS__umodsys__plugin_libStd)
 
 
-#-------------------------------- /project 'umodsys'.'plugin_libStd' PLATFORM=Linux_x86_64 CONFIG=Release MODE=plugin
+#-------------------------------- /project 'umodsys'.'plugin_libStd' PLATFORM=Linux_x86_64 CONFIG=Release MODE=dummy
 
 #-------------------------------- epilog 'umodsys'.'plugin_libStd'
 #---------------------------------------------------------------- END project 'umodsys'.'plugin_libStd' 
 #---------------------------------------------------------------- BEGIN project 'umodsys'.'plugin_libUI' 
 #-------------------------------- prolog 'umodsys'.'plugin_libUI'
 #--------------------------------
-#-------------------------------- project 'umodsys'.'plugin_libUI' PLATFORM=Linux_x86_64 CONFIG=Release MODE=plugin:
+#-------------------------------- project 'umodsys'.'plugin_libUI' PLATFORM=Linux_x86_64 CONFIG=Release MODE=dummy:
 target: tp-umodsys-plugin_libUI
 clean: cp-umodsys-plugin_libUI
 tg-umodsys: tp-umodsys-plugin_libUI
@@ -5321,40 +5647,19 @@ tp-umodsys-plugin_libUI:  $(target__umodsys__umodsys_lib_libmedia) $(target__umo
 cp-umodsys-plugin_libUI:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys_Depends-lib_zlib cp-umodsys_Depends-lib_libpng cp-umodsys_Depends-lib_jpeglib cpp-umodsys-plugin_libUI
 #.PHONY: tp-umodsys-plugin_libUI tpp-umodsys-plugin_libUI cp-umodsys-plugin_libUI cpp-umodsys-plugin_libUI
 
-tmp__umodsys__plugin_libUI=../../tmp/Linux_x86_64.Release
-bin__umodsys__plugin_libUI=../../bin/Linux_x86_64.Release
-tmpx__umodsys__plugin_libUI=../../tmp/Linux_x86_64.Release/plugin_libUI
-CXXFLAGS__umodsys__plugin_libUI=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-CFLAGS__umodsys__plugin_libUI=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_libUI=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Release.a -l:umodsys_lib_libui.Linux_x86_64.Release.a -l:umodsys_lib_lib2d.Linux_x86_64.Release.a -l:umodsys_lib_lib3d.Linux_x86_64.Release.a -l:umodsys_lib_base.Linux_x86_64.Release.a -l:umodsys_lib_core.Linux_x86_64.Release.a -l:lib_zlib.Linux_x86_64.Release.so -l:lib_libpng.Linux_x86_64.Release.so -l:lib_jpeglib.Linux_x86_64.Release.so
-
-
-# file group src :
-# file src : ../../src/plugin/libs/plugin_libUI.cpp
-objs__umodsys__plugin_libUI += $(tmpx__umodsys__plugin_libUI)/plugin_libUI.o
-$(tmpx__umodsys__plugin_libUI)/plugin_libUI.o: ../../src/plugin/libs/plugin_libUI.cpp | $(tmpx__umodsys__plugin_libUI)
-	@$(CXX) $(CXXFLAGS__umodsys__plugin_libUI) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__plugin_libUI) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__plugin_libUI)/plugin_libUI.o.d
-# end file group src .
-# so library at ../../bin/Linux_x86_64.Release/plugin_libUI.Linux_x86_64.Release.so
-tpp-umodsys-plugin_libUI: $(target__umodsys__plugin_libUI)
+# dummy project
+tpp-umodsys-plugin_libUI:
 cpp-umodsys-plugin_libUI:
-	@-rm $(target__umodsys__plugin_libUI)
-	@-rm $(tmpx__umodsys__plugin_libUI)/*
-$(target__umodsys__plugin_libUI):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) $(objs__umodsys__plugin_libUI) | $(bin__umodsys__plugin_libUI) 
-	@echo '*** Making plugin umodsys::plugin_libUI'
-	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libUI.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libUI) $(LDFLAGS__umodsys__plugin_libUI)
 
 
-#-------------------------------- /project 'umodsys'.'plugin_libUI' PLATFORM=Linux_x86_64 CONFIG=Release MODE=plugin
+#-------------------------------- /project 'umodsys'.'plugin_libUI' PLATFORM=Linux_x86_64 CONFIG=Release MODE=dummy
 
 #-------------------------------- epilog 'umodsys'.'plugin_libUI'
 #---------------------------------------------------------------- END project 'umodsys'.'plugin_libUI' 
 #---------------------------------------------------------------- BEGIN project 'umodsys'.'plugin_libUI_SDL' 
 #-------------------------------- prolog 'umodsys'.'plugin_libUI_SDL'
 #--------------------------------
-#-------------------------------- project 'umodsys'.'plugin_libUI_SDL' PLATFORM=Linux_x86_64 CONFIG=Release MODE=plugin:
+#-------------------------------- project 'umodsys'.'plugin_libUI_SDL' PLATFORM=Linux_x86_64 CONFIG=Release MODE=dummy:
 target: tp-umodsys-plugin_libUI_SDL
 clean: cp-umodsys-plugin_libUI_SDL
 tg-umodsys: tp-umodsys-plugin_libUI_SDL
@@ -5363,36 +5668,141 @@ tp-umodsys-plugin_libUI_SDL:  $(target__umodsys__umodsys_lib_libmedia) $(target_
 cp-umodsys-plugin_libUI_SDL:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys_Depends-lib_SDL2 cpp-umodsys-plugin_libUI_SDL
 #.PHONY: tp-umodsys-plugin_libUI_SDL tpp-umodsys-plugin_libUI_SDL cp-umodsys-plugin_libUI_SDL cpp-umodsys-plugin_libUI_SDL
 
-tmp__umodsys__plugin_libUI_SDL=../../tmp/Linux_x86_64.Release
-bin__umodsys__plugin_libUI_SDL=../../bin/Linux_x86_64.Release
-tmpx__umodsys__plugin_libUI_SDL=../../tmp/Linux_x86_64.Release/plugin_libUI_SDL
-CXXFLAGS__umodsys__plugin_libUI_SDL=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-CFLAGS__umodsys__plugin_libUI_SDL=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_libUI_SDL=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Release.a -l:umodsys_lib_libui.Linux_x86_64.Release.a -l:umodsys_lib_lib2d.Linux_x86_64.Release.a -l:umodsys_lib_lib3d.Linux_x86_64.Release.a -l:umodsys_lib_base.Linux_x86_64.Release.a -l:umodsys_lib_core.Linux_x86_64.Release.a -l:lib_SDL2.Linux_x86_64.Release.so
-
-
-# file group src :
-# file src : ../../src/plugin/libs/plugin_libUI_SDL.cpp
-objs__umodsys__plugin_libUI_SDL += $(tmpx__umodsys__plugin_libUI_SDL)/plugin_libUI_SDL.o
-$(tmpx__umodsys__plugin_libUI_SDL)/plugin_libUI_SDL.o: ../../src/plugin/libs/plugin_libUI_SDL.cpp | $(tmpx__umodsys__plugin_libUI_SDL)
-	@$(CXX) $(CXXFLAGS__umodsys__plugin_libUI_SDL) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__plugin_libUI_SDL) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__plugin_libUI_SDL)/plugin_libUI_SDL.o.d
-# end file group src .
-# so library at ../../bin/Linux_x86_64.Release/plugin_libUI_SDL.Linux_x86_64.Release.so
-tpp-umodsys-plugin_libUI_SDL: $(target__umodsys__plugin_libUI_SDL)
+# dummy project
+tpp-umodsys-plugin_libUI_SDL:
 cpp-umodsys-plugin_libUI_SDL:
-	@-rm $(target__umodsys__plugin_libUI_SDL)
-	@-rm $(tmpx__umodsys__plugin_libUI_SDL)/*
-$(target__umodsys__plugin_libUI_SDL):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_SDL2) $(objs__umodsys__plugin_libUI_SDL) | $(bin__umodsys__plugin_libUI_SDL) 
-	@echo '*** Making plugin umodsys::plugin_libUI_SDL'
-	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libUI_SDL.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libUI_SDL) $(LDFLAGS__umodsys__plugin_libUI_SDL)
 
 
-#-------------------------------- /project 'umodsys'.'plugin_libUI_SDL' PLATFORM=Linux_x86_64 CONFIG=Release MODE=plugin
+#-------------------------------- /project 'umodsys'.'plugin_libUI_SDL' PLATFORM=Linux_x86_64 CONFIG=Release MODE=dummy
 
 #-------------------------------- epilog 'umodsys'.'plugin_libUI_SDL'
 #---------------------------------------------------------------- END project 'umodsys'.'plugin_libUI_SDL' 
+#---------------------------------------------------------------- BEGIN project 'umodsys'.'plugin_libUI_SDLGL' 
+#-------------------------------- prolog 'umodsys'.'plugin_libUI_SDLGL'
+#--------------------------------
+#-------------------------------- project 'umodsys'.'plugin_libUI_SDLGL' PLATFORM=Linux_x86_64 CONFIG=Release MODE=plugin:
+target: tp-umodsys-plugin_libUI_SDLGL
+clean: cp-umodsys-plugin_libUI_SDLGL
+tg-umodsys: tp-umodsys-plugin_libUI_SDLGL
+cg-umodsys: cp-umodsys-plugin_libUI_SDLGL
+tp-umodsys-plugin_libUI_SDLGL:  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_SDL2) tpp-umodsys-plugin_libUI_SDLGL
+cp-umodsys-plugin_libUI_SDLGL:  cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys_Depends-lib_SDL2 cpp-umodsys-plugin_libUI_SDLGL
+#.PHONY: tp-umodsys-plugin_libUI_SDLGL tpp-umodsys-plugin_libUI_SDLGL cp-umodsys-plugin_libUI_SDLGL cpp-umodsys-plugin_libUI_SDLGL
+
+tmp__umodsys__plugin_libUI_SDLGL=../../tmp/Linux_x86_64.Release
+bin__umodsys__plugin_libUI_SDLGL=../../bin/Linux_x86_64.Release
+tmpx__umodsys__plugin_libUI_SDLGL=../../tmp/Linux_x86_64.Release/plugin_libUI_SDLGL
+CXXFLAGS__umodsys__plugin_libUI_SDLGL=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+CFLAGS__umodsys__plugin_libUI_SDLGL=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+LDFLAGS__umodsys__plugin_libUI_SDLGL=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -ldl -lpthread -l:umodsys_lib_libui.Linux_x86_64.Release.a -l:umodsys_lib_lib2d.Linux_x86_64.Release.a -l:umodsys_lib_lib3d.Linux_x86_64.Release.a -l:umodsys_lib_base.Linux_x86_64.Release.a -l:umodsys_lib_core.Linux_x86_64.Release.a -l:lib_SDL2.Linux_x86_64.Release.so
+
+
+# file group src :
+# file src : ../../src/plugin/lib1/plugin_libUI_SDLGL.cpp
+objs__umodsys__plugin_libUI_SDLGL += $(tmpx__umodsys__plugin_libUI_SDLGL)/plugin_libUI_SDLGL.o
+$(tmpx__umodsys__plugin_libUI_SDLGL)/plugin_libUI_SDLGL.o: ../../src/plugin/lib1/plugin_libUI_SDLGL.cpp | $(tmpx__umodsys__plugin_libUI_SDLGL)
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libUI_SDLGL) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libUI_SDLGL) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__plugin_libUI_SDLGL)/plugin_libUI_SDLGL.o.d
+# end file group src .
+# so library at ../../bin/Linux_x86_64.Release/plugin_libUI_SDLGL.Linux_x86_64.Release.so
+tpp-umodsys-plugin_libUI_SDLGL: $(target__umodsys__plugin_libUI_SDLGL)
+cpp-umodsys-plugin_libUI_SDLGL:
+	@-rm $(target__umodsys__plugin_libUI_SDLGL)
+	@-rm $(tmpx__umodsys__plugin_libUI_SDLGL)/*
+$(target__umodsys__plugin_libUI_SDLGL):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_SDL2) $(objs__umodsys__plugin_libUI_SDLGL) | $(bin__umodsys__plugin_libUI_SDLGL) 
+	@echo '*** Making plugin umodsys::plugin_libUI_SDLGL'
+	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libUI_SDLGL.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libUI_SDLGL) $(LDFLAGS__umodsys__plugin_libUI_SDLGL)
+
+
+#-------------------------------- /project 'umodsys'.'plugin_libUI_SDLGL' PLATFORM=Linux_x86_64 CONFIG=Release MODE=plugin
+
+#-------------------------------- epilog 'umodsys'.'plugin_libUI_SDLGL'
+#---------------------------------------------------------------- END project 'umodsys'.'plugin_libUI_SDLGL' 
+#---------------------------------------------------------------- BEGIN project 'umodsys'.'plugin_libUI_SDLcore' 
+#-------------------------------- prolog 'umodsys'.'plugin_libUI_SDLcore'
+#--------------------------------
+#-------------------------------- project 'umodsys'.'plugin_libUI_SDLcore' PLATFORM=Linux_x86_64 CONFIG=Release MODE=plugin:
+target: tp-umodsys-plugin_libUI_SDLcore
+clean: cp-umodsys-plugin_libUI_SDLcore
+tg-umodsys: tp-umodsys-plugin_libUI_SDLcore
+cg-umodsys: cp-umodsys-plugin_libUI_SDLcore
+tp-umodsys-plugin_libUI_SDLcore:  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_SDL2) tpp-umodsys-plugin_libUI_SDLcore
+cp-umodsys-plugin_libUI_SDLcore:  cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys_Depends-lib_SDL2 cpp-umodsys-plugin_libUI_SDLcore
+#.PHONY: tp-umodsys-plugin_libUI_SDLcore tpp-umodsys-plugin_libUI_SDLcore cp-umodsys-plugin_libUI_SDLcore cpp-umodsys-plugin_libUI_SDLcore
+
+tmp__umodsys__plugin_libUI_SDLcore=../../tmp/Linux_x86_64.Release
+bin__umodsys__plugin_libUI_SDLcore=../../bin/Linux_x86_64.Release
+tmpx__umodsys__plugin_libUI_SDLcore=../../tmp/Linux_x86_64.Release/plugin_libUI_SDLcore
+CXXFLAGS__umodsys__plugin_libUI_SDLcore=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+CFLAGS__umodsys__plugin_libUI_SDLcore=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+LDFLAGS__umodsys__plugin_libUI_SDLcore=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -ldl -lpthread -l:umodsys_lib_libui.Linux_x86_64.Release.a -l:umodsys_lib_lib2d.Linux_x86_64.Release.a -l:umodsys_lib_base.Linux_x86_64.Release.a -l:umodsys_lib_core.Linux_x86_64.Release.a -l:lib_SDL2.Linux_x86_64.Release.so
+
+
+# file group src :
+# file src : ../../src/plugin/lib1/plugin_libUI_SDLcore.cpp
+objs__umodsys__plugin_libUI_SDLcore += $(tmpx__umodsys__plugin_libUI_SDLcore)/plugin_libUI_SDLcore.o
+$(tmpx__umodsys__plugin_libUI_SDLcore)/plugin_libUI_SDLcore.o: ../../src/plugin/lib1/plugin_libUI_SDLcore.cpp | $(tmpx__umodsys__plugin_libUI_SDLcore)
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libUI_SDLcore) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libUI_SDLcore) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__plugin_libUI_SDLcore)/plugin_libUI_SDLcore.o.d
+# end file group src .
+# so library at ../../bin/Linux_x86_64.Release/plugin_libUI_SDLcore.Linux_x86_64.Release.so
+tpp-umodsys-plugin_libUI_SDLcore: $(target__umodsys__plugin_libUI_SDLcore)
+cpp-umodsys-plugin_libUI_SDLcore:
+	@-rm $(target__umodsys__plugin_libUI_SDLcore)
+	@-rm $(tmpx__umodsys__plugin_libUI_SDLcore)/*
+$(target__umodsys__plugin_libUI_SDLcore):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_SDL2) $(objs__umodsys__plugin_libUI_SDLcore) | $(bin__umodsys__plugin_libUI_SDLcore) 
+	@echo '*** Making plugin umodsys::plugin_libUI_SDLcore'
+	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libUI_SDLcore.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libUI_SDLcore) $(LDFLAGS__umodsys__plugin_libUI_SDLcore)
+
+
+#-------------------------------- /project 'umodsys'.'plugin_libUI_SDLcore' PLATFORM=Linux_x86_64 CONFIG=Release MODE=plugin
+
+#-------------------------------- epilog 'umodsys'.'plugin_libUI_SDLcore'
+#---------------------------------------------------------------- END project 'umodsys'.'plugin_libUI_SDLcore' 
+#---------------------------------------------------------------- BEGIN project 'umodsys'.'plugin_libUI_frames' 
+#-------------------------------- prolog 'umodsys'.'plugin_libUI_frames'
+#--------------------------------
+#-------------------------------- project 'umodsys'.'plugin_libUI_frames' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib:
+target: tp-umodsys-plugin_libUI_frames
+clean: cp-umodsys-plugin_libUI_frames
+tg-umodsys: tp-umodsys-plugin_libUI_frames
+cg-umodsys: cp-umodsys-plugin_libUI_frames
+tp-umodsys-plugin_libUI_frames:  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_libUI_frames
+cp-umodsys-plugin_libUI_frames:  cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_libUI_frames
+#.PHONY: tp-umodsys-plugin_libUI_frames tpp-umodsys-plugin_libUI_frames cp-umodsys-plugin_libUI_frames cpp-umodsys-plugin_libUI_frames
+
+tmp__umodsys__plugin_libUI_frames=../../tmp/Linux_x86_64.Release
+bin__umodsys__plugin_libUI_frames=../../bin/Linux_x86_64.Release
+tmpx__umodsys__plugin_libUI_frames=../../tmp/Linux_x86_64.Release/plugin_libUI_frames
+CXXFLAGS__umodsys__plugin_libUI_frames=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+CFLAGS__umodsys__plugin_libUI_frames=-O3 -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+LDFLAGS__umodsys__plugin_libUI_frames=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Release -L../../bin/Linux_x86_64.Release -L../../tmp/Linux_x86_64.Release -ldl -lpthread -l:umodsys_lib_libui.Linux_x86_64.Release.a -l:umodsys_lib_base.Linux_x86_64.Release.a -l:umodsys_lib_core.Linux_x86_64.Release.a
+
+
+# file group src :
+# file src : ../../src/plugin/lib1/plugin_libUI_frames.cpp
+objs__umodsys__plugin_libUI_frames += $(tmpx__umodsys__plugin_libUI_frames)/plugin_libUI_frames.o
+$(tmpx__umodsys__plugin_libUI_frames)/plugin_libUI_frames.o: ../../src/plugin/lib1/plugin_libUI_frames.cpp | $(tmpx__umodsys__plugin_libUI_frames)
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libUI_frames) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__plugin_libUI_frames) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__plugin_libUI_frames)/plugin_libUI_frames.o.d
+# end file group src .
+# so library at ../../bin/Linux_x86_64.Release/plugin_libUI_frames.Linux_x86_64.Release.so
+tpp-umodsys-plugin_libUI_frames: $(target__umodsys__plugin_libUI_frames)
+cpp-umodsys-plugin_libUI_frames:
+	@-rm $(target__umodsys__plugin_libUI_frames)
+	@-rm $(tmpx__umodsys__plugin_libUI_frames)/*
+$(target__umodsys__plugin_libUI_frames):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_libUI_frames) | $(bin__umodsys__plugin_libUI_frames) 
+	@echo '*** Making solib umodsys::plugin_libUI_frames'
+	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libUI_frames.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libUI_frames) $(LDFLAGS__umodsys__plugin_libUI_frames)
+
+
+#-------------------------------- /project 'umodsys'.'plugin_libUI_frames' PLATFORM=Linux_x86_64 CONFIG=Release MODE=solib
+
+#-------------------------------- epilog 'umodsys'.'plugin_libUI_frames'
+#---------------------------------------------------------------- END project 'umodsys'.'plugin_libUI_frames' 
 #---------------------------------------------------------------- BEGIN project 'umodsys'.'plugin_test1' 
 #-------------------------------- prolog 'umodsys'.'plugin_test1'
 #--------------------------------
@@ -6486,22 +6896,27 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target
 #**************************************************************** END projectgroup 'umodsys'
 ################################################################# XMAP makefile
 # 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_core: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/plugin_libMedia_serializeYaml: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_libui: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/plugin_lib2d_stdlib: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Release/lib_SDL2: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/plugin_lib3d_stdlib: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_base: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/plugin_libUI_frames: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsysct: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
@@ -6511,12 +6926,76 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target
 
 
 # 1
-../../tmp/Linux_x86_64.Release/plugin_libUI_SDL: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/plugin_libMedia_stdio: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Release/plugin_test1: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/lib_angelscript: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libUI_SDLGL: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_libmedia: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_core: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 14
+.PHONY: tg-umodsys_Depends cg-umodsys_Depends
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libMedia_stdlib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_libui: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_base: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_squirrel: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 36
+../../bin/Linux_x86_64.Release:
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libUI_SDLcore: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_SDL2: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_libpng: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_lib3d: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
@@ -6530,33 +7009,32 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target
 	mkdir -p $@
 
 
-# 1
-../../tmp/Linux_x86_64.Release/plugin_libStd: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_sqlite3: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_squirrel: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 28
+# 36
 ../../tmp/Linux_x86_64.Release:
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Release/umodsysct: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/umodsys_lib_lib2d: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Release/lib_libpng: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/umodsysc: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libMedia_zlib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 22
+.PHONY: tg-umodsys cg-umodsys
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libMedia_serializeJson: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
@@ -6565,46 +7043,13 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target
 	mkdir -p $@
 
 
-# 14
-.PHONY: tg-umodsys cg-umodsys
-
-
 # 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_libmedia: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_tinyc: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 14
-.PHONY: tg-umodsys_Depends cg-umodsys_Depends
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_libUI: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/lib_yaml: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
 # 1
 ../../tmp/Linux_x86_64.Release/umodsys_lib_basesys: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_lua: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 28
-../../bin/Linux_x86_64.Release:
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_lib3d: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
@@ -6619,7 +7064,17 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target
 
 
 # 1
-../../tmp/Linux_x86_64.Release/lib_angelscript: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/lib_tinyc: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_lua: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_sqlite3: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
@@ -6629,17 +7084,12 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target
 
 
 # 1
-../../tmp/Linux_x86_64.Release/umodsysc: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/plugin_test1: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_lib2d: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_yaml: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/plugin_libMedia_imagesstd: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
