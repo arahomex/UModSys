@@ -15,6 +15,10 @@ using namespace UModSys::base::rsystem;
 #endif
 #define SO_SUFFIX ".dll"
 
+#if defined(_DEBUG) && defined(_MSC_VER)
+#include <crtdbg.h>
+#endif
+
 typedef IModuleLibraryReg* (__stdcall *f_get_moduleinfo)(void);
 
 const int MAX_SO_PATH = 4096;
@@ -181,6 +185,56 @@ size_t RModuleLibrarySO::pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, const
   if(~mask==0) // automatic
     return s_pfd_scan(sys, la, "*", SO_SUFFIX);
   return s_pfd_scan(sys, la, mask, "") + s_pfd_scan(sys, la, mask, SO_SUFFIX);
+}
+
+//***************************************
+// RSystem::
+//***************************************
+
+bool RSystem::platform_init(void)
+{
+  rsys_dbg.mdisable();
+  rsys_dbg.enable(rsdl_SystemTests);
+  rsys_dbg.enable(rsdl_MemoryError);
+//  rsys_dbg.enable(rsdl_Uid);
+//  rsys_dbg.enable(rsdl_System);
+  rsys_dbg.enable(rsdl_Module);
+  rsys_dbg.enable(rsdl_ModuleLibrary);
+  rsys_dbg.enable(rsdl_SoLoad);
+  //
+#if defined(_DEBUG) && defined(_MSC_VER)
+  _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF|_CRTDBG_DELAY_FREE_MEM_DF|_CRTDBG_ALLOC_MEM_DF);
+//  _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF|_CRTDBG_DELAY_FREE_MEM_DF|_CRTDBG_CHECK_CRT_DF);
+//  _CrtSetDbgFlag(/*_CRTDBG_DELAY_FREE_MEM_DF|*/_CRTDBG_ALLOC_MEM_DF|_CRTDBG_CHECK_ALWAYS_DF);
+//  _CrtSetDbgFlag(/*_CRTDBG_DELAY_FREE_MEM_DF|*/_CRTDBG_ALLOC_MEM_DF);
+#endif
+  //
+  return true;
+}
+
+#if defined(_DEBUG) && defined(_MSC_VER)
+static void s_dumper(void *pHeap, void *pSystem)
+{
+  long rq;
+  char *fn;
+  int line;
+  size_t len = _msize_dbg(pHeap, _CLIENT_BLOCK);
+  int rv = _CrtIsMemoryBlock(pHeap, len, &rq, &fn, &line);
+  if(rv) {
+    dbg_put(rsdl_System, "  leak: %p:%ld @%ld %s(%d)\n", pHeap, (long)len, rq, fn, line);
+  }
+}
+#endif
+
+bool RSystem::platform_deinit(void)
+{
+#if defined(_DEBUG) && defined(_MSC_VER)
+//  UMODSYS_MALLOC(10, __FILE__, __LINE__);
+  _CrtDoForAllClientObjects(s_dumper, this);
+//  _CrtDumpMemoryLeaks();
+  _CrtSetDbgFlag(0);
+#endif
+  return true;
 }
 
 //***************************************

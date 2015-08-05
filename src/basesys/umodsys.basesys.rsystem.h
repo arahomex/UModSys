@@ -56,6 +56,16 @@ public:
     sc_quant,
     core::SMemAlloc_Malloc
   > DSrcContextArray;
+  //
+  typedef tl::TScatterArray<
+    IShell::P,
+    DStringSharedMalloc,
+    tl::SStringComparer,
+    tl::TNodeDeleter< 
+      tl::TScatterArrayNode<IShell::P, DStringSharedMalloc >,
+      core::SMemAlloc_Malloc
+    >
+  > DShellArray;
 public:
   RSystem(void);
   ~RSystem(void);
@@ -107,12 +117,17 @@ public:
   //
   DRMemAlloc mema_shared, mema_system;
   //
+  DShellArray shells;
+  //
   void set_console(IConsole* console);
   bool init(void);
   bool exec_args(int argc, char** argv);
   bool exec_main(void);
   bool exec_tests(void);
   bool deinit(void);
+  //
+  bool platform_init(void);
+  bool platform_deinit(void);
   //
   void dump_upis(void);
   //

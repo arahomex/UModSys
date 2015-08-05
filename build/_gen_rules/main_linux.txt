@@ -67,6 +67,18 @@ begin project-group umodsys
     mode plugin
   end
 
+  begin project plugin_test3
+    mode plugin
+  end
+
+  begin project plugin_test4
+    mode plugin
+  end
+
+  begin project plugin_test5
+    mode plugin
+  end
+
   # ----------------------------------------------------------------------
 
   begin project plugin_libStd
@@ -132,11 +144,19 @@ begin project-group umodsys
   end
 
   begin project umodsysca
+#    option * LDFLAGS "-static-libgcc -static-libstdc++ -static -lstdc++ -lm -lc -lm -lc -dynamic"
+#    option * LDFLAGS "-dynamic -ldl -lpthread -static-libgcc -static-libstdc++ -static -lstdc++"
+#    option * LDFLAGS "-static-libgcc -static-libstdc++ -fno-pie -fno-PIE"
+    option * LDFLAGS "-static -static-libgcc -static-libstdc++ -dynamic"
+    #
+    #
+    #
     depend umodsys_Depends::lib_S_zlib
     depend umodsys_Depends::lib_S_libpng
     depend umodsys_Depends::lib_S_jpeglib
     depend umodsys_Depends::lib_S_SDL2
     depend umodsys_Depends::lib_S_freetype
+    libs dl pthread :libm.a :libc.a
   end
   
 end

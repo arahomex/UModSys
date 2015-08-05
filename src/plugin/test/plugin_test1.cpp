@@ -239,23 +239,6 @@ struct RTest1_Shell
     memblock = M().mem_alloc(1024, _UMODSYS_SOURCEINFO);
     M().mem_alloc(511, _UMODSYS_SOURCEINFO);
     //
-    aux_tests();
-    //
-#if 0
-    file_test1();
-    file_test2();
-    file_test3();
-    file_test4();
-    file_test5();
-    file_test6();
-    file_test7();
-#endif
-    //
-#if TEST_SDL_GL
-    ui_test2();
-#elif TEST_SDL_CORE
-    ui_test1();
-#endif
     //
     s_dbg.put(d_Shell, cl_Info, "} // RTest1_Shell()\n");
   }
@@ -278,6 +261,28 @@ struct RTest1_Shell
   }
   bool process_command(int argc, const core::DCString argv[]) {
     s_dbg.put(d_Shell, cl_Info, "RTest1_Shell::command(#%d)\n", argc);
+    if(argc>=1 && argv[0]=="test") {
+      if(argc==1) {
+       aux_tests();
+       //
+#if 0
+       file_test1();
+       file_test2();
+       file_test3();
+       file_test4();
+       file_test5();
+       file_test6();
+       file_test7();
+#endif
+       //
+#if TEST_SDL_GL
+       ui_test2();
+#elif TEST_SDL_CORE
+       ui_test1();
+#endif
+      } else {
+      }
+    }
     return true;
   }
 };

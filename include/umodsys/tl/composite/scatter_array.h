@@ -91,6 +91,14 @@ public:
     inline int operator()(const Node *r) const { return Comparer::compare(index, r->first); }
   };
   //
+  template<typename T>
+  struct CmpT {
+    const T& index;
+    //
+    inline CmpT(const T& x) : index(x) {}
+    inline int operator()(const Node *r) const { return Comparer::compare(index, r->first); }
+  };
+  //
   struct Gen {
     const Value &value;
     //
@@ -133,6 +141,17 @@ public:
     Node *n = hold.find_node_u(Cmp(index));
     return n==NULL ? NULL : &n->second;
   }
+  //
+  inline Value* Get(const Index& index) const {
+    Node *n = hold.find_node_u(Cmp(index));
+    return n==NULL ? NULL : &n->second;
+  }
+  template<typename T>
+  inline Value* GetT(const T& index) const {
+    Node *n = hold.find_node_u(CmpT<T>(index));
+    return n==NULL ? NULL : &n->second;
+  }
+  //
   inline Iter operator()(void) { return hold.min_node(); }
   inline CIter operator()(void) const { return hold.min_node(); }
   //
@@ -248,18 +267,18 @@ public:
   inline iterator find(const key_type& n) UMODSYS_NOTHROW() { return hold.find_node_u(Cmp(n)); }
   inline const_iterator find(const key_type& n) const UMODSYS_NOTHROW() { return hold.find_node_u(Cmp(n)); }
   //
-//  inline void insert(iterator pos, const_reference v) { size_t p = pos - items; if(!InsertAt(p)) throw_memoryerror(); items[p] = v; }
-//  inline void insert(iterator position, const value_type& val) { size_t p = pos - items; if(!InsertAt(p, n)) throw_memoryerror(); TC::acopy1(items+p, n, v); }
-//  template<typename InputIterator> inline void insert(iterator pos, InputIterator first, InputIterator last) { size_t p = pos - items, n = last - first; if(!InsertAt(p, n)) throw_memoryerror(); TC::atcopy(items+p, n, first); }
+//  inline void insert(iterator pos, const_reference v) { size_t p = pos - items; if(!InsertAt(p)) throw_memoryerror(UMODSYS_SOURCEINFO); items[p] = v; }
+//  inline void insert(iterator position, const value_type& val) { size_t p = pos - items; if(!InsertAt(p, n)) throw_memoryerror(UMODSYS_SOURCEINFO); TC::acopy1(items+p, n, v); }
+//  template<typename InputIterator> inline void insert(iterator pos, InputIterator first, InputIterator last) { size_t p = pos - items, n = last - first; if(!InsertAt(p, n)) throw_memoryerror(UMODSYS_SOURCEINFO); TC::atcopy(items+p, n, first); }
   //
   inline void erase(iterator pos) { hold.delete_node(pos.node); }
-  inline void erase(const key_type& k) { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(); hold.delete_node(n); }
+  inline void erase(const key_type& k) { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(UMODSYS_SOURCEINFO); hold.delete_node(n); }
   inline void erase(iterator first, iterator last) { for(iterator x=first; x!=last;) { x++; hold.delete_node(first.node); first=x; } }
   //
-  inline Value& operator[](const key_type& index) { Node *n = hold.genx_node(Cmp(index), Gen0()); if(n==NULL) throw_memoryerror(); return n->second; }
-  inline const Value& operator[](const key_type& index) const { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(); return n->second; }
-  inline Value& at(const key_type& index) { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(); return n->second; }
-  inline const Value& at(const key_type& index) const { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(); return n->second; }
+  inline Value& operator[](const key_type& index) { Node *n = hold.genx_node(Cmp(index), Gen0()); if(n==NULL) throw_memoryerror(UMODSYS_SOURCEINFO); return n->second; }
+  inline const Value& operator[](const key_type& index) const { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(UMODSYS_SOURCEINFO); return n->second; }
+  inline Value& at(const key_type& index) { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(UMODSYS_SOURCEINFO); return n->second; }
+  inline const Value& at(const key_type& index) const { Node *n = hold.find_node_u(Cmp(index)); if(n==NULL) throw_memoryerror(UMODSYS_SOURCEINFO); return n->second; }
 protected:
   Holder hold;
 };

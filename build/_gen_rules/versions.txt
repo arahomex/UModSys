@@ -128,6 +128,18 @@ version plugin-test2
   file-h     src/plugin/test/version_plugin_test2.h prefix:UMODSYS_VERSION_PLUGIN_TEST_TEST2
   check-date src/plugin/test plugin_test2*.h plugin_test2*.cpp
 
+version plugin-test3
+  file-h     src/plugin/test/version_plugin_test3.h prefix:UMODSYS_VERSION_PLUGIN_TEST_TEST3
+  check-date src/plugin/test plugin_test3*.h plugin_test3*.cpp
+
+version plugin-test4
+  file-h     src/plugin/test/version_plugin_test4.h prefix:UMODSYS_VERSION_PLUGIN_TEST_TEST4
+  check-date src/plugin/test plugin_test4*.h plugin_test4*.cpp
+
+version plugin-test5
+  file-h     src/plugin/test/version_plugin_test5.h prefix:UMODSYS_VERSION_PLUGIN_TEST_TEST5
+  check-date src/plugin/test plugin_test5*.h plugin_test5*.cpp
+
 # --------------------------------- groups
 
 #group gbase core base

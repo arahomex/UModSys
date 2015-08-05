@@ -16,5 +16,6 @@
 #include <umodsys/tl/string/string_list.h>
 #include <umodsys/tl/string/string_pool.h>
 #include <umodsys/tl/string/string_array.h>
+#include <umodsys/tl/string/string_util.h>
 
 #endif // __UMODSYS_TL_STRINGS_H

@@ -25,9 +25,11 @@ bool RSystem::exec_test_shells(void)
     TParametersA<1024> pars;
     if(!moddb.t_moduledb_generate(sh, tids[i], pars)) {
       dbg_put(rsdl_System, "    shell gen error\n");
+      continue;
     } else {
       dbg_put(rsdl_System, "    shell generated as %p\n", sh());
     }
+    set_shell(tids[i]->name, sh);
   }
   dbg_put(rsdl_System, "/shells found: %d\n", ns);
   return true;

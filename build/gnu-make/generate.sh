@@ -8,15 +8,16 @@ echo '************************ Generate build files...'
 export PLATFORM="`uname`_`uname -p`"
 export PLATFORMS="`uname`_`uname -p`"
 perl ../_gen/gen_build.pl generator.txt
-exit
+#exit
 echo '************************ Generate version files...'
 cd $bp/../..
 if [ ! -d $bp/Versions ] ; then
   mkdir $bp/Versions
-  rm $bp/Versions/*.sh
+else
+  find $bp/Versions -name '*.sh' | xargs rm
 fi
-perl build/_gen/update_versions.pl --file:build/_gen/versions.txt --genpath:$bp/Versions --gentype:build/_gen/version-generator-sh.txt --set:platform:platform/linux
-perl build/_gen/update_versions.pl --file:build/_gen/versions.txt --set:platform:platform/linux --mode:auto --all
+perl build/_gen/update_versions.pl --file:build/_gen_rules/versions.txt --genpath:$bp/Versions --gentype:build/_gen_rules/version-generator-sh.txt --set:platform:platform/linux
+perl build/_gen/update_versions.pl --file:build/_gen_rules/versions.txt --set:platform:platform/linux --mode:auto --all
 
 echo '************************ Done'
 

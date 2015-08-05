@@ -36,7 +36,8 @@ bool RSystem::set_var(const core::DCString& name, const core::DCString& value, b
 
 bool RSystem::set_shell(const core::DCString& name, IShell* shell)
 {
-  return false;
+  shells[name] = shell;
+  return true;
 }
 
 //***************************************

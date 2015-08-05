@@ -127,18 +127,18 @@ public:
   inline reference back(void) UMODSYS_NOTHROW() { return items[length-1]; }
   //
   inline size_type max_size(void) const UMODSYS_NOTHROW() { return MaxLen(); }
-  inline void reserve(size_type newmaxlen) { if(!Reserve(newmaxlen)) throw_memoryerror(); }
-  inline void resize(size_type newlen) { if(!Resize(newlen)) throw_memoryerror(); }
+  inline void reserve(size_type newmaxlen) { if(!Reserve(newmaxlen)) throw_memoryerror(UMODSYS_SOURCEINFO); }
+  inline void resize(size_type newlen) { if(!Resize(newlen)) throw_memoryerror(UMODSYS_SOURCEINFO); }
   //
-  inline void push_back(const_reference v) { if(!Push(v)) throw_memoryerror(); }
-  inline void pop_back(void) { if(!Pop()) throw_memoryerror(); }
+  inline void push_back(const_reference v) { if(!Push(v)) throw_memoryerror(UMODSYS_SOURCEINFO); }
+  inline void pop_back(void) { if(!Pop()) throw_memoryerror(UMODSYS_SOURCEINFO); }
   //
-  inline void insert(iterator pos, const_reference v) { size_t p = pos - items; if(!InsertAt(p)) throw_memoryerror(); items[p] = v; }
-  inline void insert(iterator pos, size_type n, const_reference v) { size_t p = pos - items; if(!InsertAt(p, n)) throw_memoryerror(); TC::acopy1(items+p, n, v); }
-  template <typename InputIterator> inline void insert(iterator pos, InputIterator first, InputIterator last) { size_t p = pos - items, n = last - first; if(!InsertAt(p, n)) throw_memoryerror(); TC::atcopy(items+p, n, first); }
+  inline void insert(iterator pos, const_reference v) { size_t p = pos - items; if(!InsertAt(p)) throw_memoryerror(UMODSYS_SOURCEINFO); items[p] = v; }
+  inline void insert(iterator pos, size_type n, const_reference v) { size_t p = pos - items; if(!InsertAt(p, n)) throw_memoryerror(UMODSYS_SOURCEINFO); TC::acopy1(items+p, n, v); }
+  template <typename InputIterator> inline void insert(iterator pos, InputIterator first, InputIterator last) { size_t p = pos - items, n = last - first; if(!InsertAt(p, n)) throw_memoryerror(UMODSYS_SOURCEINFO); TC::atcopy(items+p, n, first); }
   //
-  inline void erase(iterator pos) { size_t p = pos - items; if(!RemoveAt(p)) throw_memoryerror(); }
-  inline void erase(iterator first, iterator last) { size_t p = first - items, n = last - first; if(!RemoveAt(p, n)) throw_memoryerror(); }
+  inline void erase(iterator pos) { size_t p = pos - items; if(!RemoveAt(p)) throw_memoryerror(UMODSYS_SOURCEINFO); }
+  inline void erase(iterator first, iterator last) { size_t p = first - items, n = last - first; if(!RemoveAt(p, n)) throw_memoryerror(UMODSYS_SOURCEINFO); }
 };
 
 /*************************************************************/

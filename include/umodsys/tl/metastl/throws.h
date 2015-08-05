@@ -13,7 +13,7 @@ namespace tl {
 
 /*************************************************************/
 
-void throw_memoryerror(void) UMODSYS_THROW((core::EError));
+void throw_memoryerror(const UModSys::core::SSourceContext* ctx) UMODSYS_THROW((core::EError));
 
 /*************************************************************/
 

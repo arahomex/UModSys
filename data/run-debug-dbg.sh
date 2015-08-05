@@ -8,7 +8,7 @@ function make_gm() {
   MODE=''
 
   pushd ../build/gnuc_makefile
-  ./make-linux.sh DEBUG=1 || exit
+  ./make-linux.sh DEBUG=1 || exit $?
   popd
 
   Binary=../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug
@@ -20,7 +20,7 @@ function make_genm() {
 #  MODE=''
 
   pushd ../build/gnu-make
-  ./make.sh Debug || exit
+  ./make.sh @Debug || exit $?
   popd
 
   Binary=../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug
@@ -42,8 +42,16 @@ function dbg() {
   gdb $Binary
 }
 
+function run() {
+  echo "$Binary"
+  $Binary
+}
+
+#make_gm
 make_genm
 
 export LD_LIBRARY_PATH="LD_LIBRARY_PATH:`readlink -e $(dirname $Binary)`"
 
-dbg
+#dbg
+#vg
+run

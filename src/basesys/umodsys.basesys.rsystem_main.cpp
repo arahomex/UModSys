@@ -1,10 +1,6 @@
 #include "umodsys.basesys.rsystem.h"
 #include "umodsys.basesys.rmodule.h"
 
-#if defined(_DEBUG) && defined(_MSC_VER)
-#include <crtdbg.h>
-#endif
-
 using namespace UModSys;
 using namespace UModSys::core;
 using namespace UModSys::base;
@@ -16,21 +12,8 @@ using namespace UModSys::base::rsystem;
 
 bool RSystem::init(void)
 {
-  rsys_dbg.mdisable();
-  rsys_dbg.enable(rsdl_SystemTests);
-  rsys_dbg.enable(rsdl_MemoryError);
-//  rsys_dbg.enable(rsdl_Uid);
-//  rsys_dbg.enable(rsdl_System);
-  rsys_dbg.enable(rsdl_Module);
-  rsys_dbg.enable(rsdl_ModuleLibrary);
-  rsys_dbg.enable(rsdl_SoLoad);
-  //
-#if defined(_DEBUG) && defined(_MSC_VER)
-  _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF|_CRTDBG_DELAY_FREE_MEM_DF|_CRTDBG_ALLOC_MEM_DF);
-//  _CrtSetDbgFlag(_CRTDBG_LEAK_CHECK_DF|_CRTDBG_DELAY_FREE_MEM_DF|_CRTDBG_CHECK_CRT_DF);
-//  _CrtSetDbgFlag(/*_CRTDBG_DELAY_FREE_MEM_DF|*/_CRTDBG_ALLOC_MEM_DF|_CRTDBG_CHECK_ALWAYS_DF);
-//  _CrtSetDbgFlag(/*_CRTDBG_DELAY_FREE_MEM_DF|*/_CRTDBG_ALLOC_MEM_DF);
-#endif
+  if(!platform_init())
+    return false;
   //
   dbg_put(rsdl_System, "RSystem::init()\n");
   //
@@ -58,20 +41,6 @@ bool RSystem::exec_main(void)
   return false;
 }
 
-#if defined(_DEBUG) && defined(_MSC_VER)
-static void s_dumper(void *pHeap, void *pSystem)
-{
-  long rq;
-  char *fn;
-  int line;
-  size_t len = _msize_dbg(pHeap, _CLIENT_BLOCK);
-  int rv = _CrtIsMemoryBlock(pHeap, len, &rq, &fn, &line);
-  if(rv) {
-    dbg_put(rsdl_System, "  leak: %p:%ld @%ld %s(%d)\n", pHeap, (long)len, rq, fn, line);
-  }
-}
-#endif
-
 bool RSystem::deinit(void)
 {
   dbg_put(rsdl_System, "RSystem::deinit()\n");
@@ -87,13 +56,7 @@ bool RSystem::deinit(void)
   sc_strings.free();
   sc_list.free();
   //
-#if defined(_DEBUG) && defined(_MSC_VER)
-//  UMODSYS_MALLOC(10, __FILE__, __LINE__);
-  _CrtDoForAllClientObjects(s_dumper, this);
-//  _CrtDumpMemoryLeaks();
-  _CrtSetDbgFlag(0);
-#endif
-  return true;
+  return platform_deinit();
 }
 
 void RSystem::set_console(IConsole* cc)

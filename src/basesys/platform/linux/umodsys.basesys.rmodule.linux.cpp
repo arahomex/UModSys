@@ -164,5 +164,19 @@ size_t RModuleLibrarySO::pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, const
 }
 
 //***************************************
+// RSystem::
+//***************************************
+
+bool RSystem::platform_init(void)
+{
+  return true;
+}
+
+bool RSystem::platform_deinit(void)
+{
+  return true;
+}
+
+//***************************************
 // ::
 //***************************************

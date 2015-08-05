@@ -62,6 +62,7 @@ begin project-group umodsys
         file $(path-s-core)/umodsys.tl.utf8.cpp
         file $(path-s-core)/umodsys.tl.utf16.cpp
         file $(path-s-core)/umodsys.tl.utfcase.cpp
+        file $(path-s-core)/umodsys.tl.throws.cpp
       end
     end
     begin file-group headers
@@ -357,6 +358,54 @@ begin project-group umodsys
       begin mask $(path-skip) $(path-s-plugin)/test
         include plugin_test2.cpp
         include plugin_test2.*.h
+      end
+    end
+    depend umodsys_lib_core
+    depend umodsys_lib_base
+  end
+
+  begin project plugin_test3
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/test
+        include plugin_test3.cpp
+        include plugin_test3.*.h
+      end
+    end
+    depend umodsys_lib_core
+    depend umodsys_lib_base
+  end
+
+  begin project plugin_test4
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/test
+        include plugin_test4.cpp
+        include plugin_test4.*.h
+      end
+    end
+    depend umodsys_lib_core
+    depend umodsys_lib_base
+  end
+
+  begin project plugin_test5
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/test
+        include plugin_test5.cpp
+        include plugin_test5.*.h
       end
     end
     depend umodsys_lib_core
