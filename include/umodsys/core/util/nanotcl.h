@@ -4,7 +4,7 @@
 // based on Tcl in ~ 500 lines of code by Salvatore antirez Sanfilippo. BSD licensed
 
 #include <umodsys/core/stdcore.h>
-#include <umodsys/tl/composite/array.h>
+#include <umodsys/tl/container/array.h>
 
 namespace UModSys {
 namespace core {

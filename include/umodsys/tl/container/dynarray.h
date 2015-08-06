@@ -1,7 +1,7 @@
-#ifndef __UMODSYS_TL_COMPOSITE_DYNARRAY_H
-#define __UMODSYS_TL_COMPOSITE_DYNARRAY_H 1
+#ifndef __UMODSYS_TL_CONTAINER_DYNARRAY_H
+#define __UMODSYS_TL_CONTAINER_DYNARRAY_H 1
 /*************************************************************/
-// file: umodsys/tl/composite/dynarray.h
+// file: umodsys/tl/container/dynarray.h
 // info: dynamic array of elements
 /*************************************************************/
 
@@ -359,4 +359,4 @@ inline bool TDynarray<SHolder>::Push(const typename TDynarray<SHolder>::Node& de
 } // namespace tl
 } // namespace UModSys
 
-#endif // __UMODSYS_TL_COMPOSITE_ARRAY_H
+#endif // __UMODSYS_TL_CONTAINER_ARRAY_H

@@ -1,14 +1,14 @@
 #ifndef __UMODSYS_TL_SCATTER_ARRAY_H
 #define __UMODSYS_TL_SCATTER_ARRAY_H 1
 /*************************************************************/
-// file: umodsys/tl/composite/tree_rb.h
+// file: umodsys/tl/container/tree_rb.h
 // info: scatter array type based on tree-rb
 /*************************************************************/
 
 #include <umodsys/core/stdinlines.h>
 
-#include <umodsys/tl/composite/tree_rb.h>
-#include <umodsys/tl/composite/pair.h>
+#include <umodsys/tl/container/tree_rb.h>
+#include <umodsys/tl/container/pair.h>
 #include <umodsys/tl/alloc/allocator.h>
 #include <umodsys/tl/util/node_deleter.h>
 #include <umodsys/tl/metastl/throws.h>

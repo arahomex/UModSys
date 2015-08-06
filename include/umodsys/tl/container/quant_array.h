@@ -1,11 +1,11 @@
 #ifndef __UMODSYS_TL_QUANT_ARRAY_H
 #define __UMODSYS_TL_QUANT_ARRAY_H 1
 /*************************************************************/
-// file: umodsys/tl/composite/quant_array.h
+// file: umodsys/tl/container/quant_array.h
 // info: array of elements with quant allocation
 /*************************************************************/
 
-#include <umodsys/tl/composite/tree_rb.h>
+#include <umodsys/tl/container/tree_rb.h>
 
 namespace UModSys {
 namespace tl {

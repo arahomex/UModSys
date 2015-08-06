@@ -7,9 +7,9 @@
 
 #include <umodsys/core/stdtypedefs.h>
 #include <umodsys/core/stdinlines.h>
-#include <umodsys/tl/composite/list2.h>
-#include <umodsys/tl/composite/array.h>
-#include <umodsys/tl/composite/set.h>
+#include <umodsys/tl/container/list2.h>
+#include <umodsys/tl/container/array.h>
+#include <umodsys/tl/container/set.h>
 
 namespace UModSys {
 namespace core {

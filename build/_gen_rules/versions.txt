@@ -36,7 +36,7 @@ version lib2d
   check-date src/lib/2d/ *.h *.cpp
 
 version lib3d
-  file-h     src/lib/2d/version_library.h prefix:UMODSYS_VERSION_LIB3D
+  file-h     src/lib/3d/version_library.h prefix:UMODSYS_VERSION_LIB3D
   check-date include/umodsys/lib/3d/ *.h
   check-date src/lib/3d/ *.h *.cpp
 

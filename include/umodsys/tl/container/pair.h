@@ -1,7 +1,7 @@
-#ifndef __UMODSYS_TL_COMPOSITE_PAIR_H
-#define __UMODSYS_TL_COMPOSITE_PAIR_H 1
+#ifndef __UMODSYS_TL_CONTAINER_PAIR_H
+#define __UMODSYS_TL_CONTAINER_PAIR_H 1
 /*************************************************************/
-// file: umodsys/tl/composite/pair.h
+// file: umodsys/tl/container/pair.h
 // info: pair
 /*************************************************************/
 
@@ -56,4 +56,4 @@ TPairM<A, B>::TPairM(void)
 } // namespace tl
 } // namespace UModSys
 
-#endif // __UMODSYS_TL_COMPOSITE_PAIR_H
+#endif // __UMODSYS_TL_CONTAINER_PAIR_H

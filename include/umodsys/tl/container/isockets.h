@@ -1,7 +1,7 @@
-#ifndef __UMODSYS_TL_COMPOSITE_ISOCKETS_H
-#define __UMODSYS_TL_COMPOSITE_ISOCKETS_H 1
+#ifndef __UMODSYS_TL_CONTAINER_ISOCKETS_H
+#define __UMODSYS_TL_CONTAINER_ISOCKETS_H 1
 /*************************************************************/
-// file: umodsys/tl/composite/isockets.h
+// file: umodsys/tl/container/isockets.h
 // info: sockets to composite objects
 /*************************************************************/
 
@@ -79,4 +79,4 @@ public:
 } // namespace tl
 } // namespace UModSys
 
-#endif // __UMODSYS_TL_COMPOSITE_ISOCKETS_H
+#endif // __UMODSYS_TL_CONTAINER_ISOCKETS_H

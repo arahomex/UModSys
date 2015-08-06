@@ -1,7 +1,7 @@
-#ifndef __UMODSYS_TL_COMPOSITE_SET_H
-#define __UMODSYS_TL_COMPOSITE_SET_H 1
+#ifndef __UMODSYS_TL_CONTAINER_SET_H
+#define __UMODSYS_TL_CONTAINER_SET_H 1
 /*************************************************************/
-// file: umodsys/tl/composite/set.h
+// file: umodsys/tl/container/set.h
 // info: fixed unique array of elements (set)
 /*************************************************************/
 
@@ -143,4 +143,4 @@ inline bool TSet<SArray, SComparer>::Reset(const Node& val) UMODSYS_NOTHROW()
 } // namespace tl
 } // namespace UModSys
 
-#endif // __UMODSYS_TL_COMPOSITE_SET_H
+#endif // __UMODSYS_TL_CONTAINER_SET_H

@@ -6,7 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/lib/ui/libui.frames.h>
-#include <umodsys/tl/composite/scatter_array.h>
+#include <umodsys/tl/container/scatter_array.h>
 
 namespace UModSys {
 namespace libui {

@@ -6,7 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/tl/parsers/parser_tcl.h>
-#include <umodsys/tl/composite/dynarray.h>
+#include <umodsys/tl/container/dynarray.h>
 
 #include "umodsys.basesys.rcommon.h"
 

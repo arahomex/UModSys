@@ -1,7 +1,7 @@
-#ifndef __UMODSYS_TL_COMPOSITE_LIST2_H
-#define __UMODSYS_TL_COMPOSITE_LIST2_H 1
+#ifndef __UMODSYS_TL_CONTAINER_LIST2_H
+#define __UMODSYS_TL_CONTAINER_LIST2_H 1
 /*************************************************************/
-// file: umodsys/tl/composite/list2.h
+// file: umodsys/tl/container/list2.h
 // info: list two way
 /*************************************************************/
 
@@ -38,4 +38,4 @@ public:
 } // namespace tl
 } // namespace UModSys
 
-#endif // __UMODSYS_TL_COMPOSITE_LIST2_H
+#endif // __UMODSYS_TL_CONTAINER_LIST2_H

@@ -8,7 +8,7 @@
 #include <umodsys/lib/3d/lib3d.typedefs.h>
 
 #include <umodsys/lib/2d/lib2d.image.h>
-#include <umodsys/tl/composite/dynarray.h>
+#include <umodsys/tl/container/dynarray.h>
 
 namespace UModSys {
 namespace lib3d {

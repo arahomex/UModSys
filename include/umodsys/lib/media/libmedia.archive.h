@@ -6,7 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/lib/media/libmedia.common.h>
-#include <umodsys/tl/composite/tree_rb.h>
+#include <umodsys/tl/container/tree_rb.h>
 
 namespace UModSys {
 namespace libmedia {

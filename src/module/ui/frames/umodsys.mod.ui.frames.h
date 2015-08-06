@@ -6,8 +6,8 @@
 /*************************************************************/
 
 #include <umodsys/stdbase.h>
-#include <umodsys/tl/composite/scatter_array.h>
-#include <umodsys/tl/composite/dynarray.h>
+#include <umodsys/tl/container/scatter_array.h>
+#include <umodsys/tl/container/dynarray.h>
 //#include <umodsys/core/syshlp.h>
 
 #include <umodsys/lib/ui/libui.common.h>

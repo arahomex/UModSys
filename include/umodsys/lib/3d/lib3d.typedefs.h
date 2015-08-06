@@ -7,7 +7,7 @@
 
 #include <umodsys/lib/2d/lib2d.typedefs.h>
 #include <umodsys/tl/math/math_3df.h>
-#include <umodsys/tl/composite/isockets.h>
+#include <umodsys/tl/container/isockets.h>
 #include <umodsys/core/objects_res.h>
 
 namespace UModSys {

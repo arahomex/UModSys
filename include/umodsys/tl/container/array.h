@@ -1,7 +1,7 @@
-#ifndef __UMODSYS_TL_COMPOSITE_ARRAY_H
-#define __UMODSYS_TL_COMPOSITE_ARRAY_H 1
+#ifndef __UMODSYS_TL_CONTAINER_ARRAY_H
+#define __UMODSYS_TL_CONTAINER_ARRAY_H 1
 /*************************************************************/
-// file: umodsys/tl/composite/array.h
+// file: umodsys/tl/container/array.h
 // info: fixed array of elements
 /*************************************************************/
 
@@ -210,4 +210,4 @@ inline bool TArray<SNode>::RemoveAt(size_t id, size_t n) UMODSYS_NOTHROW()
 } // namespace tl
 } // namespace UModSys
 
-#endif // __UMODSYS_TL_COMPOSITE_ARRAY_H
+#endif // __UMODSYS_TL_CONTAINER_ARRAY_H

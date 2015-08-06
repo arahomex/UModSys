@@ -92,7 +92,7 @@ begin project-group umodsys
       end
       #
       begin file-group tl
-        begin file-group composite
+        begin file-group container
           begin mask $(path-skip) $(path-inc)/tl/composite
             include *.h
           end

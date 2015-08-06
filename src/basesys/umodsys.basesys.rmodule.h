@@ -8,7 +8,7 @@
 #include "umodsys.basesys.rcommon.h"
 #include "umodsys.basesys.rmemalloc.h"
 
-#include <umodsys/tl/composite/dynarray.h>
+#include <umodsys/tl/container/dynarray.h>
 
 namespace UModSys {
 namespace base {

@@ -6,7 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/stdbase.h>
-#include <umodsys/tl/composite/dynarray.h>
+#include <umodsys/tl/container/dynarray.h>
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.serialize.h>
 

@@ -9,9 +9,9 @@
 #include <umodsys/core/syshlp.h>
 #include <umodsys/core/stdstrings.h>
 
-#include <umodsys/tl/composite/dynarray.h>
-#include <umodsys/tl/composite/scatter_array.h>
-#include <umodsys/tl/composite/quant_array.h>
+#include <umodsys/tl/container/dynarray.h>
+#include <umodsys/tl/container/scatter_array.h>
+#include <umodsys/tl/container/quant_array.h>
 
 namespace UModSys {
 namespace base {

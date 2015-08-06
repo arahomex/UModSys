@@ -1,7 +1,7 @@
 #ifndef __UMODSYS_TL_TREE_RB_H
 #define __UMODSYS_TL_TREE_RB_H 1
 /*************************************************************/
-// file: umodsys/tl/composite/tree_rb.h
+// file: umodsys/tl/container/tree_rb.h
 // info: Tree red-black
 /*************************************************************/
 

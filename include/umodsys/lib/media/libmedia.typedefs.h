@@ -6,7 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/stdcore.h>
-#include <umodsys/tl/composite/isockets.h>
+#include <umodsys/tl/container/isockets.h>
 #include <umodsys/tl/util/flags4state.h>
 
 
