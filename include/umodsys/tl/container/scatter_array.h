@@ -247,6 +247,7 @@ public:
   }
 public:
   // stl typedefs
+  inline size_t size(void) const { return Count(); }
   inline iterator begin(void) UMODSYS_NOTHROW() { return hold.min_node(); }
   inline iterator end(void) UMODSYS_NOTHROW() { return NULL; }
   inline const_iterator begin(void) const UMODSYS_NOTHROW() { return hold.min_node(); }

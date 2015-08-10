@@ -25,14 +25,7 @@ bool RSystem::init(void)
   moddb.mod_this->scan();
   moddb.mod_this->cleanup();
   //
-//  sys_library = new RModuleLibrary();
   return true;
-}
-
-bool RSystem::exec_args(int argc, char** argv)
-{
-  dbg_put(rsdl_System, "RSystem::exec_args(%d)\n", argc);
-  return false;
 }
 
 bool RSystem::exec_main(void)

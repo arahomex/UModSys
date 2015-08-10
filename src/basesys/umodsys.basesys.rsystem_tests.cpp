@@ -14,6 +14,35 @@ using namespace UModSys::base::rsystem;
 // RSystem::
 //***************************************
 
+bool RSystem::exec_test_tcl(void)
+{
+  dbg_put(rsdl_System, "TCL begin:\n");
+  //
+  DCString spp(
+    "set hello \"'Hello World!\\n'\"\n"
+    "set {hello world} \"'Hello World!\\n'\"\n"
+    "argdump \"\" \"'Hello World!\\n'\" \"\"\n"
+    "vardump\n"
+    "puts 1: \"'Hello World!\\n'\"\n"
+    "puts 2: {'Hello World!\\n'} ; puts 3: [? {'Hello World!\\n'}]\n"
+    "puts 4: $hello ; puts 5: [? ${hello world}]\n"
+    "if {< 0 1} {puts 0<1} ; if {< 1 0} {puts 1<0}\n"
+    "= i 0; while {< $i 10} {puts $i; ++ i}\n"
+    "for {= i 0} {< $i 10} {++ i} {puts $i;}\n"
+    "vardump;\n"
+  );
+  SExecTCL::Parser pp(spp.begin(), spp.end());
+  SExecTCL col(tcl_ss, this);
+  //
+  pp.Parse(col);
+  //
+  dbg_put(rsdl_System, "TCL end.\n");
+  return true;
+}
+
+//***************************************
+//***************************************
+
 bool RSystem::exec_test_shells(void)
 {
   IRefObject::TypeId tids[0x100];
@@ -47,7 +76,9 @@ bool RSystem::exec_tests(void)
     (unsigned)sizeof(TMemAllocHeader<Void>), (unsigned)sizeof(mem_headers::TMain< TMemAllocHeader<Void> >)
   );
   //
-  exec_test_shells();
+//  exec_test_shells();
+  exec_test_tcl();
+  //
   dbg_put(rsdl_SystemTests, "******************************* } TESTS\n");
   return true;
 }

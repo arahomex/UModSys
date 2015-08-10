@@ -32,9 +32,11 @@ struct IExecutorPure {
   virtual bool get_var(const core::DCString& name, core::DCString& value) const =0;
   virtual bool get_shell(const core::DCString& name, IShell::P& shell) const =0;
   //
-  virtual bool execute(const core::DCString& text) =0;
+  virtual bool execute_text(const core::DCString& text) =0;
+  virtual bool execute_command(const DCString args[], size_t len) =0;
   virtual bool set_var(const core::DCString& name, const core::DCString& value, bool can_new=true) =0;
   virtual bool set_shell(const core::DCString& name, IShell* shell) =0;
+  //
 };
 
 struct IExecutor : public IRefObject, public IExecutorPure {

@@ -57,14 +57,20 @@ struct SExecTCL {
     }
   };
   //
+  struct IExecutor {
+    virtual bool command(SExecTCL& tcl, const String &cmd, const Strings& args) =0;
+  };
+  //
+  //
+  IExecutor *executor;
   SharedState &ss;
   Strings args;
   StringStream stream;
   String result;
   size_t stack_top;
   //
-  SExecTCL(SharedState& ass)
-  : ss(ass), stream(ass.top(), ass.left()) {
+  SExecTCL(SharedState& ass, IExecutor *ee)
+  : ss(ass), stream(ass.top(), ass.left()), executor(ee) {
     stack_top = ss.stack.Len();
   }
   //
@@ -96,7 +102,7 @@ struct SExecTCL {
   void add_cmt(StringP b, StringP e) {}
   //
   bool exec_command(Parser& ps) {
-    Self c2(ss);
+    Self c2(ss, executor);
     Parser ps2(ps.p, ps.e, true);
     ps2.Parse(c2);
     ps.p = ps2.p; // sync
@@ -120,7 +126,10 @@ struct SExecTCL {
     //
     execute_end();
   }
-  bool do_cmd(const String &cmd, Strings& args);
+  //
+  bool do_cmd(const String &cmd, Strings& args) {
+    return executor->command(*this, cmd, args);
+  }
   //
   int eval_expr(const String& expr) {
     if(~expr==0)
@@ -131,7 +140,7 @@ struct SExecTCL {
     return rv;
   }
   String eval(const String& code) {
-    Self c2(ss);
+    Self c2(ss, executor);
     Parser ps2(code, code + ~code);
     ps2.Parse(c2);
     c2.finish();
@@ -225,6 +234,10 @@ struct SExecTCL {
   void add_result(Self &r) {
     add(r.result.begin(), r.result.end());
   }
+  //
+  void prints(const String& val);
+  void prints(StringP val);
+  void printf(StringP val, ...);
 };
 
 

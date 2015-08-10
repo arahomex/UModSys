@@ -22,7 +22,8 @@ struct RSystem :
   public ISystem,
   public IUniquePointerResolver,
   public ISourceContextAdapter,
-  public IExecutorPure
+  public IExecutorPure,
+  public SExecTCL::IExecutor
 {
 public:
   enum { 
@@ -82,9 +83,12 @@ public:
   bool get_var(const core::DCString& name, core::DCString& value) const;
   bool get_shell(const core::DCString& name, IShell::P& shell) const;
   //
-  bool execute(const core::DCString& text);
+  bool execute_text(const core::DCString& text);
+  bool execute_command(const DCString args[], size_t len);
   bool set_var(const core::DCString& name, const core::DCString& value, bool can_new);
   bool set_shell(const core::DCString& name, IShell* shell);
+public:
+  bool command(SExecTCL& tcl, const SExecTCL::String &cmd, const SExecTCL::Strings& args);
 public:
   ISourceContextAdapter* get_sca(void);
   IUniquePointerResolver* get_upr(void);
@@ -117,6 +121,7 @@ public:
   //
   DRMemAlloc mema_shared, mema_system;
   //
+  SExecTCL::SharedState tcl_ss;
   DShellArray shells;
   //
   void set_console(IConsole* console);
@@ -138,6 +143,7 @@ public:
   const DCString& mod_string(const DCString& v) { return moddb.get_string(v); }
 public:
   bool exec_test_shells(void);
+  bool exec_test_tcl(void);
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RSystem, 2, ISystem);
 public:
