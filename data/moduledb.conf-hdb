@@ -1,0 +1,294 @@
+# LIST OF LIBRARY MODULES:
+
+LIBRARY "" {
+} # END LIBRARY ""
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libUI_frames.Linux_x86_64.Debug.so" {
+  MODULE ui::frames(0,2) {
+    GENERATOR UModSys::modules::ui::frames::RGenerator(1) U_MOD::RGenerator:unique(0) {
+      REFOBJECT UModSys::modules::ui::frames::RCollector(2) {
+        TYPE UModSys::modules::ui::frames::RCollector(2)
+        TYPE UModSys::libui::ICollector(2)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::ui::frames::RCollector(2)
+    } # GENERATOR UModSys::modules::ui::frames::RGenerator(1) U_MOD::RGenerator:unique(0)
+  } # MODULE ui::frames(0,2)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libUI_frames.Linux_x86_64.Debug.so"
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libMedia_zlib.Linux_x86_64.Debug.so" {
+  MODULE media::zlib(0,0) {
+    GENERATOR UModSys::modules::media::zlib::RGenerator(1) U_MOD::RGenerator:unique(0) {
+      REFOBJECT UModSys::modules::media::zlib::RBinArchiveFrameClient_ZIP(2) {
+        TYPE UModSys::modules::media::zlib::RBinArchiveFrameClient_ZIP(2)
+        TYPE UModSys::libmedia::IBinArchiveFrame::IClient(2)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::zlib::RBinArchiveFrameClient_ZIP(2)
+    } # GENERATOR UModSys::modules::media::zlib::RGenerator(1) U_MOD::RGenerator:unique(0)
+  } # MODULE media::zlib(0,0)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libMedia_zlib.Linux_x86_64.Debug.so"
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_test5.Linux_x86_64.Debug.so" {
+  MODULE tests::test5(0,0) {
+  } # MODULE tests::test5(0,0)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_test5.Linux_x86_64.Debug.so"
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libMedia_stdio.Linux_x86_64.Debug.so" {
+  MODULE media::stdio(2,4) {
+    GENERATOR UModSys::modules::media::stdio::RGenerator(1) U_MOD::RGenerator:unique(0) {
+      REFOBJECT UModSys::modules::media::stdio::RStreamReader_FILE(1) {
+        TYPE UModSys::modules::media::stdio::RStreamReader_FILE(1)
+        TYPE UModSys::libmedia::IStreamReader(2)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::stdio::RStreamReader_FILE(1)
+      REFOBJECT UModSys::modules::media::stdio::RStreamWriter_FILE(1) {
+        TYPE UModSys::modules::media::stdio::RStreamWriter_FILE(1)
+        TYPE UModSys::libmedia::IStreamWriter(2)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::stdio::RStreamWriter_FILE(1)
+      REFOBJECT UModSys::modules::media::stdio::RDataArchiver_OsDir(1) {
+        TYPE UModSys::modules::media::stdio::RDataArchiver_OsDir(1)
+        TYPE UModSys::libmedia::IBinArchive(2)
+        TYPE UModSys::libmedia::ILibObject(1)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::stdio::RDataArchiver_OsDir(1)
+    } # GENERATOR UModSys::modules::media::stdio::RGenerator(1) U_MOD::RGenerator:unique(0)
+  } # MODULE media::stdio(2,4)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libMedia_stdio.Linux_x86_64.Debug.so"
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libUI_SDLcore.Linux_x86_64.Debug.so" {
+  MODULE ui::SDL_core(0,1) {
+    GENERATOR UModSys::modules::ui::SDL_core::RGenerator(1) U_MOD::RGenerator:unique(0) {
+      REFOBJECT UModSys::modules::ui::SDL_core::RTerminalX(1) {
+        TYPE UModSys::modules::ui::SDL_core::RTerminalX(1)
+        TYPE UModSys::modules::ui::SDL_core::RTerminal(2)
+        TYPE UModSys::libui::ITerminal(2)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::ui::SDL_core::RTerminalX(1)
+    } # GENERATOR UModSys::modules::ui::SDL_core::RGenerator(1) U_MOD::RGenerator:unique(0)
+  } # MODULE ui::SDL_core(0,1)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libUI_SDLcore.Linux_x86_64.Debug.so"
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libUI_SDLGL.Linux_x86_64.Debug.so" {
+  MODULE ui::SDL_GL(2,1) {
+    GENERATOR UModSys::modules::ui::SDL_GL::RGenerator(1) U_MOD::RGenerator:unique(0) {
+      REFOBJECT UModSys::modules::ui::SDL_GL::RTerminalX(1) {
+        TYPE UModSys::modules::ui::SDL_GL::RTerminalX(1)
+        TYPE UModSys::modules::ui::SDL_GL::RTerminal(2)
+        TYPE UModSys::libui::ITerminal(2)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::ui::SDL_GL::RTerminalX(1)
+    } # GENERATOR UModSys::modules::ui::SDL_GL::RGenerator(1) U_MOD::RGenerator:unique(0)
+  } # MODULE ui::SDL_GL(2,1)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libUI_SDLGL.Linux_x86_64.Debug.so"
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_test1.Linux_x86_64.Debug.so" {
+  MODULE tests::test1(2,51) {
+    GENERATOR UModSys::modules::test::test1::RGenerator(1) U_MOD::RGenerator:unique(0) {
+      REFOBJECT UModSys::modules::test::test1::RTest1_Shell(1) {
+        TYPE UModSys::modules::test::test1::RTest1_Shell(1)
+        TYPE UModSys::base::IShell(2)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::test::test1::RTest1_Shell(1)
+    } # GENERATOR UModSys::modules::test::test1::RGenerator(1) U_MOD::RGenerator:unique(0)
+  } # MODULE tests::test1(2,51)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_test1.Linux_x86_64.Debug.so"
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libMedia_imagesstd.Linux_x86_64.Debug.so" {
+  MODULE media::images_std(3,0) {
+    GENERATOR UModSys::modules::media::images_std::RGenerator(1) U_MOD::RGenerator:unique(0) {
+      REFOBJECT UModSys::modules::media::images_std::RMediaFilter(1) {
+        TYPE UModSys::modules::media::images_std::RMediaFilter(1)
+        TYPE UModSys::libmedia::IBinObjFilter(2)
+        TYPE UModSys::libmedia::ILibObject(1)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::images_std::RMediaFilter(1)
+    } # GENERATOR UModSys::modules::media::images_std::RGenerator(1) U_MOD::RGenerator:unique(0)
+  } # MODULE media::images_std(3,0)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libMedia_imagesstd.Linux_x86_64.Debug.so"
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_lib2d_stdlib.Linux_x86_64.Debug.so" {
+  MODULE lib2d::stdlib(2,5) {
+    GENERATOR UModSys::modules::lib2d::stdlib::RGenerator(1) U_MOD::RGenerator:unique(0) {
+      REFOBJECT UModSys::modules::lib2d::stdlib::RImage_Memory(2) {
+        TYPE UModSys::modules::lib2d::stdlib::RImage_Memory(2)
+        TYPE UModSys::lib2d::IImage(2)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::lib2d::stdlib::RImage_Memory(2)
+      REFOBJECT UModSys::modules::lib2d::stdlib::RImageFactory_Memory(1) {
+        TYPE UModSys::modules::lib2d::stdlib::RImageFactory_Memory(1)
+        TYPE UModSys::lib2d::IImageFactory(2)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::lib2d::stdlib::RImageFactory_Memory(1)
+      REFOBJECT UModSys::modules::lib2d::stdlib::RMultiImage(2) {
+        TYPE UModSys::modules::lib2d::stdlib::RMultiImage(2)
+        TYPE UModSys::lib2d::IMultiImage(2)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::lib2d::stdlib::RMultiImage(2)
+    } # GENERATOR UModSys::modules::lib2d::stdlib::RGenerator(1) U_MOD::RGenerator:unique(0)
+  } # MODULE lib2d::stdlib(2,5)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_lib2d_stdlib.Linux_x86_64.Debug.so"
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_lib3d_stdlib.Linux_x86_64.Debug.so" {
+  MODULE lib3d::stdlib(2,0) {
+    GENERATOR UModSys::modules::lib3d::stdlib::RGenerator(1) U_MOD::RGenerator:unique(0) {
+      REFOBJECT UModSys::modules::lib3d::stdlib::RRenderer(2) {
+        TYPE UModSys::modules::lib3d::stdlib::RRenderer(2)
+        TYPE UModSys::lib3d::IRenderer(2)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::lib3d::stdlib::RRenderer(2)
+      REFOBJECT UModSys::modules::lib3d::stdlib::RVisualizerScene(2) {
+        TYPE UModSys::modules::lib3d::stdlib::RVisualizerScene(2)
+        TYPE UModSys::lib3d::IVisualizerScene(2)
+        TYPE UModSys::lib3d::IVisualizer(2)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::lib3d::stdlib::RVisualizerScene(2)
+      REFOBJECT UModSys::modules::lib3d::stdlib::RVisualSceneMapper_Direct(2) {
+        TYPE UModSys::modules::lib3d::stdlib::RVisualSceneMapper_Direct(2)
+        TYPE UModSys::lib3d::IVisualSceneMapper(2)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::lib3d::stdlib::RVisualSceneMapper_Direct(2)
+      REFOBJECT UModSys::modules::lib3d::stdlib::object_camera::RGeneral(2) {
+        TYPE UModSys::modules::lib3d::stdlib::object_camera::RGeneral(2)
+        TYPE UModSys::lib3d::IGeneralObject(2)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::lib3d::stdlib::object_camera::RGeneral(2)
+      REFOBJECT UModSys::modules::lib3d::stdlib::object_primitive::RGeneral(2) {
+        TYPE UModSys::modules::lib3d::stdlib::object_primitive::RGeneral(2)
+        TYPE UModSys::lib3d::IGeneralObject(2)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::lib3d::stdlib::object_primitive::RGeneral(2)
+    } # GENERATOR UModSys::modules::lib3d::stdlib::RGenerator(1) U_MOD::RGenerator:unique(0)
+  } # MODULE lib3d::stdlib(2,0)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_lib3d_stdlib.Linux_x86_64.Debug.so"
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_test2.Linux_x86_64.Debug.so" {
+  MODULE tests::test2(2,4) {
+  } # MODULE tests::test2(2,4)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_test2.Linux_x86_64.Debug.so"
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libMedia_serializeJson.Linux_x86_64.Debug.so" {
+  MODULE media::images_std(0,0) {
+    GENERATOR UModSys::modules::media::serialize_json::RGenerator(1) U_MOD::RGenerator:unique(0) {
+      REFOBJECT UModSys::modules::media::serialize_json::RSerializeWriter(1) {
+        TYPE UModSys::modules::media::serialize_json::RSerializeWriter(1)
+        TYPE UModSys::libmedia::ISerializeWriter(1)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::serialize_json::RSerializeWriter(1)
+      REFOBJECT UModSys::modules::media::serialize_json::RSerializeReader(1) {
+        TYPE UModSys::modules::media::serialize_json::RSerializeReader(1)
+        TYPE UModSys::libmedia::ISerializeReader(1)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::serialize_json::RSerializeReader(1)
+    } # GENERATOR UModSys::modules::media::serialize_json::RGenerator(1) U_MOD::RGenerator:unique(0)
+  } # MODULE media::images_std(0,0)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libMedia_serializeJson.Linux_x86_64.Debug.so"
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_test4.Linux_x86_64.Debug.so" {
+  MODULE tests::test4(0,0) {
+  } # MODULE tests::test4(0,0)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_test4.Linux_x86_64.Debug.so"
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libMedia_serializeYaml.Linux_x86_64.Debug.so" {
+  MODULE media::images_std(0,0) {
+    GENERATOR UModSys::modules::media::serialize_yaml::RGenerator(1) U_MOD::RGenerator:unique(0) {
+      REFOBJECT UModSys::modules::media::serialize_yaml::RSerializeWriter(1) {
+        TYPE UModSys::modules::media::serialize_yaml::RSerializeWriter(1)
+        TYPE UModSys::libmedia::ISerializeWriter(1)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::serialize_yaml::RSerializeWriter(1)
+      REFOBJECT UModSys::modules::media::serialize_yaml::RSerializeReader(1) {
+        TYPE UModSys::modules::media::serialize_yaml::RSerializeReader(1)
+        TYPE UModSys::libmedia::ISerializeReader(1)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::serialize_yaml::RSerializeReader(1)
+    } # GENERATOR UModSys::modules::media::serialize_yaml::RGenerator(1) U_MOD::RGenerator:unique(0)
+  } # MODULE media::images_std(0,0)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libMedia_serializeYaml.Linux_x86_64.Debug.so"
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libMedia_stdlib.Linux_x86_64.Debug.so" {
+  MODULE media::std(2,6) {
+    GENERATOR UModSys::modules::media::stdlib::RGenerator(1) U_MOD::RGenerator:unique(0) {
+      REFOBJECT UModSys::modules::media::stdlib::RLibraryBinCache(1) {
+        TYPE UModSys::modules::media::stdlib::RLibraryBinCache(1)
+        TYPE UModSys::libmedia::ILibraryBinCache(2)
+        TYPE UModSys::libmedia::ILibrary(2)
+        TYPE UModSys::libmedia::ILibObject(1)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::stdlib::RLibraryBinCache(1)
+      REFOBJECT UModSys::modules::media::stdlib::RLibraryBinTree(1) {
+        TYPE UModSys::modules::media::stdlib::RLibraryBinTree(1)
+        TYPE UModSys::libmedia::ILibraryBinTree(2)
+        TYPE UModSys::libmedia::ILibrary(2)
+        TYPE UModSys::libmedia::ILibObject(1)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::stdlib::RLibraryBinTree(1)
+      REFOBJECT UModSys::modules::media::stdlib::RLibraryLayered(1) {
+        TYPE UModSys::modules::media::stdlib::RLibraryLayered(1)
+        TYPE UModSys::libmedia::ILibraryLayered(2)
+        TYPE UModSys::libmedia::ILibrary(2)
+        TYPE UModSys::libmedia::ILibObject(1)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::stdlib::RLibraryLayered(1)
+      REFOBJECT UModSys::modules::media::stdlib::RLibraryObjFilter(1) {
+        TYPE UModSys::modules::media::stdlib::RLibraryObjFilter(1)
+        TYPE UModSys::libmedia::ILibraryObjFilter(2)
+        TYPE UModSys::libmedia::ILibrary(2)
+        TYPE UModSys::libmedia::ILibObject(1)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::stdlib::RLibraryObjFilter(1)
+      REFOBJECT UModSys::modules::media::stdlib::RLibraryObjCache(1) {
+        TYPE UModSys::modules::media::stdlib::RLibraryObjCache(1)
+        TYPE UModSys::libmedia::ILibraryObjCache(2)
+        TYPE UModSys::libmedia::ILibrary(2)
+        TYPE UModSys::libmedia::ILibObject(1)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::stdlib::RLibraryObjCache(1)
+      REFOBJECT UModSys::modules::media::stdlib::RBinArchiveFrame(1) {
+        TYPE UModSys::modules::media::stdlib::RBinArchiveFrame(1)
+        TYPE UModSys::libmedia::IBinArchiveFrame(2)
+        TYPE UModSys::libmedia::IBinArchive(2)
+        TYPE UModSys::libmedia::ILibObject(1)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::stdlib::RBinArchiveFrame(1)
+      REFOBJECT UModSys::modules::media::stdlib::RUtilities(1) {
+        TYPE UModSys::modules::media::stdlib::RUtilities(1)
+        TYPE UModSys::libmedia::IUtilities(1)
+        TYPE UModSys::core::IRefObject(2)
+        TYPE UModSys::core::IRoot(2)
+      } # REFOBJECT UModSys::modules::media::stdlib::RUtilities(1)
+    } # GENERATOR UModSys::modules::media::stdlib::RGenerator(1) U_MOD::RGenerator:unique(0)
+  } # MODULE media::std(2,6)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_libMedia_stdlib.Linux_x86_64.Debug.so"
+
+LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_test3.Linux_x86_64.Debug.so" {
+  MODULE tests::test3(0,0) {
+  } # MODULE tests::test3(0,0)
+} # END LIBRARY "/home/andrew_rewoonenco/SVN/arahomex.of.by/mini.git/UModSys/bin/Linux_x86_64.Debug/plugin_test3.Linux_x86_64.Debug.so"
+

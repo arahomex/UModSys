@@ -5,7 +5,7 @@ version core
   file-h     src/core/version_library.h prefix:UMODSYS_VERSION_CORE
   check-date include/umodsys/core/ *.h arch/*.h mem/*.h util/*.h $(platform)/*.h 
   check-date include/umodsys/ stdcore.h
-  check-date include/umodsys/tl/ alloc/*.h composite/*.h math/*.h metastl/*.h string/*.h util/*.h
+  check-date include/umodsys/tl/ alloc/*.h container/*.h math/*.h metastl/*.h string/*.h util/*.h
   check-date src/core/ *.h *.cpp
   check-date src/core/$(platform) *.h *.cpp
   check-date src/tl/ *.h *.cpp
