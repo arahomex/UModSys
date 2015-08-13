@@ -18,9 +18,6 @@ int main(int argc, char **argv)
   M.Link(&S, S.get_sharemem());
   //
   S.init();
-  S.get_modloader()->moduledb_scan("", false);
-  S.get_modloader()->moduledb_scan("*", true);
-  S.get_modloader()->moduledb_save("moduledb.conf-hdb");
   //
   S.exec_args(argc, argv);
   //

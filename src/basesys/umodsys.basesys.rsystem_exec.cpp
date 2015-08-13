@@ -30,6 +30,18 @@ bool RSystem::exec_args(int argc, char** argv)
 
 bool RSystem::command(SExecTCL& tcl, const SExecTCL::String &cmd, const SExecTCL::Strings& args)
 {
+  {
+    DStringBufMedium tt;
+    tt = cmd;
+    dbg_put(rsdl_System, "RSystem::command(%d:\"%s\" +%d", int(~cmd), tt.c_str(), int(~args));
+    for(size_t i=0; i<~args; i++) {
+      const SExecTCL::String &arg = args[i];
+      tt = arg;
+      dbg_put(rsdl_System, " %d:\"%s\"", int(~arg), tt.c_str());
+    }
+    dbg_put(rsdl_System, ")\n");
+  }
+  //
     if(cmd=="puts") {
       for(int i=1; i<args.size(); i++) {
         if(i>1) printf(" ");
