@@ -118,6 +118,7 @@ struct SExecTCL {
       return;
     //
     execute_begin();
+//    return;
     //
     if(do_cmd(args[0], args)) {
     } else {
@@ -167,37 +168,56 @@ struct SExecTCL {
     tl::su::smemcpy(ss.stack.All()+p, src(), ~src);
     ss.stack[p+~src] = 0;
 //printf("{new=%d+%d}", end-ss.stack.begin(), ss.stack.end()-end);
-    return String(ss.stack.All()+p, ~src);
+    String rv(ss.stack.All()+p, ~src);
+//printf("{new=%p@%d=%.*s}", rv.c_str(), int(~rv), int(~rv), rv.c_str());
+    return rv;
   }
   String detach(void) {
     String rv = stream.get_s();
-    stream.setup(ss.stack.All(), ss.stack.FreeLen(), 0);
-    stream.length = 0;
-    stream.maxlength = ss.stack.MaxLen() - ss.stack.Len();
+    stream_redo();
+//printf("{detach=%p@%d=%.*s}", rv.c_str(), int(~rv), int(~rv), rv.c_str());
     return rv;
   }
+  void parse_start() {
+    stream_redo();
+  }
+  //
+  void stream_redo(void) {
+//printf("{stack=%d/%d}", int(~ss.stack), int(ss.stack.FreeLen()));
+    stream.setup(ss.stack.FreeStart(), ss.stack.FreeLen(), 0);
+    stream.length = 0;
+    stream.maxlength = ss.stack.MaxLen() - ss.stack.Len();
+  }
   void ssync(void) {
+//printf("{size=%d}", int(~stream));
     // ss.stack.count = stream.end()-ss.stack.begin();
-    ss.stack.Resize(~stream);
-//printf("{top=%d}", ss.stack.count);
+    ss.stack.Resize(~stream + (stream - ss.stack.All()));
+//printf("{top=%d}", int(~ss.stack));
   }
   //
   void set_result(const String& src) {
     result = new_string(src);
   }
   void add(char sym) {
+//printf("{chr=0x%x}", sym);
     stream.append(&sym, 1);
     ssync();
   }
   void add(StringP b, StringP e) {
+//printf("{stream:%d:%d}", int(~stream), int(stream.maxlength));
+//printf("{str:%d=%.*s}", int(e-b), int(e-b), b);
     stream.append(b, e-b);
     ssync();
   }
   void add(const String& ss) {
+//printf("{str:%d=%.*s}", int(~ss), int(~ss), ss.c_str());
     stream.append(ss, ~ss);
     ssync();
   }
-  void next_arg(void) { args.Push(detach()); }
+  void next_arg(void) {
+//printf("{next}");
+    args.Push(detach()); 
+  }
   size_t stream_size(void) { return ~stream; }
   //
   String var_get(const String& name) {
@@ -213,9 +233,7 @@ struct SExecTCL {
 /*
     printf("(");
     for(int i=0; i<args.size(); i++) {
-        printf(" %d:'", i);
-        print_str(args[i]);
-        printf("'");
+        printf(" %d:'%.*s'", i, int(~args[i]), args[i].c_str());
     }
     printf(" )\n");
 */

@@ -113,6 +113,8 @@ public:
   //
   inline const Node* All(void) const UMODSYS_NOTHROW() { return items; }
   inline Node* All(void) UMODSYS_NOTHROW() { return items; }
+  inline const Node* FreeStart(void) const UMODSYS_NOTHROW() { return items + length; }
+  inline Node* FreeStart(void) UMODSYS_NOTHROW() { return items + length; }
   //
   inline const Node& CGet(size_t no) const UMODSYS_NOTHROW() { return items[no]; }
   inline const Node& Get(size_t no) const UMODSYS_NOTHROW() { return items[no]; }
@@ -134,6 +136,7 @@ public:
   //
   inline size_t MaxLen(void) const UMODSYS_NOTHROW() { return holder.maxlen(); }
   inline size_t FreeLen(void) const UMODSYS_NOTHROW() { return holder.maxlen() - length; }
+  
   //
   inline bool Push(void) UMODSYS_NOTHROW() { return ResizeRel(1); }
   inline bool PushN(size_t n=1) UMODSYS_NOTHROW() { return ResizeRel(n); }

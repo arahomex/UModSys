@@ -42,6 +42,7 @@ public:
   }
   //
   eToken Parse(Collector& c) {
+    c.parse_start();
     for(ptoken=token; true; ptoken=token) {
       switch(nextToken(c)) {
         case tSeparator:
