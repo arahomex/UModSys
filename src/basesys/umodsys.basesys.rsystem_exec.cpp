@@ -45,7 +45,7 @@ bool RSystem::exec_args(int argc, char** argv)
 
 bool RSystem::command(SExecTCL& tcl, const SExecTCL::String &cmd, const SExecTCL::Strings& args)
 {
-  {
+  if(0) {
     DStringBufMedium tt;
     tt = cmd;
     dbg_put(rsdl_System, "RSystem::command(%d:\"%s\" +%d", int(~cmd), tt.c_str(), int(~args));
@@ -74,6 +74,7 @@ bool RSystem::command(SExecTCL& tcl, const SExecTCL::String &cmd, const SExecTCL
         tcl.prints("'\n");
       }
       tcl.printf("} #Vars\n");
+      return true;
     } else if(cmd=="argdump") {
       tcl.printf("Args: %d {\n", args.size());
       for(int i=0; i<args.size(); i++) {
@@ -136,6 +137,7 @@ bool RSystem::command(SExecTCL& tcl, const SExecTCL::String &cmd, const SExecTCL
         return true;
       }
     }
+    dbg_put(rsdl_System, "RSystem::command(%d:\"%.*s\" +%d)\n", int(~cmd), int(~cmd), cmd(), int(~args));
     return false;
 }
 
@@ -180,7 +182,7 @@ bool RSystem::set_shell(const core::DCString& name, IShell* shell)
 
 void SExecTCL::prints(const String& val)
 {
-  printf("%s", val.c_str());
+  printf("%.*s", int(~val), val.c_str());
 }
 
 void SExecTCL::prints(StringP val)

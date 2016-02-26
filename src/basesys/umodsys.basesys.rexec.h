@@ -113,19 +113,13 @@ struct SExecTCL {
   //printf("ret{%s}\n", cs(c2.result));
     return true;
   }
-  void execute(void) {
+  bool execute(void) {
     if(args.size()==0)
-      return;
-    //
+      return true;
     execute_begin();
-//    return;
-    //
-    if(do_cmd(args[0], args)) {
-    } else {
-      //add("[?"+args[0]+"]");
-    }
-    //
+    bool rv = do_cmd(args[0], args);
     execute_end();
+    return rv;
   }
   //
   bool do_cmd(const String &cmd, Strings& args) {

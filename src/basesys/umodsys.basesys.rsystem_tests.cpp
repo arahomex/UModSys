@@ -34,9 +34,13 @@ bool RSystem::exec_test_tcl(void)
   SExecTCL::Parser pp(spp.begin(), spp.end());
   SExecTCL col(tcl_ss, this);
   //
-  pp.Parse(col);
+  int rv = pp.Parse(col);
+  if(rv!=SExecTCL::Parser::tEnd) {
+    dbg_put(rsdl_System, "TCL end with error %d\n", rv);
+  } else {
+    dbg_put(rsdl_System, "TCL end.\n");
+  }
   //
-  dbg_put(rsdl_System, "TCL end.\n");
   return true;
 }
 

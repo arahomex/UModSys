@@ -24,9 +24,10 @@ public:
   //
   enum eToken {
     tLine        =0, // '\n' ';'
-    tSeparator   =1, // ' '
-    tString      =4, // '\"' .. '\"'
-    tError       =7, // error in syntax
+    tSeparator   =2, // ' '
+    tString      =5, // '\"' .. '\"'
+    tError       =6, // error in syntax
+    tErrorResult =7, // error in execute command
     tEnd             // end of stream
   };
   //
@@ -51,14 +52,18 @@ public:
         case tLine:
           if(ptoken==tString || c.stream_size())
             c.next_arg();
-          c.execute();
+          if(!c.execute())
+            return token = tErrorResult;
           continue;
         case tEnd:
           if(ptoken==tString || c.stream_size())
             c.next_arg();
-          c.execute();
+          if(!c.execute())
+            return token = tErrorResult;
           return token;
         case tError:
+          return token;
+        case tErrorResult:
           return token;
       }
     }
@@ -69,7 +74,7 @@ public:
     return rv;
   }
   eToken _nextToken(Collector &c) {
-    if(token==tEnd || token==tError)
+    if(token>=tError)
       return token;
     if(p==e)
       return (token=tEnd);
@@ -164,14 +169,14 @@ public:
           case '$': 
             c.add(p2, p);
             rv = ptsVar(c);
-            if(rv==tError || rv==tEnd)
+            if(rv>=tError)
               return rv;
             p2 = p;
             break;
           case '[':
             c.add(p2, p);
             rv = ptsCommand(c);
-            if(rv==tError || rv==tEnd)
+            if(rv>=tError)
               return rv;
             p2 = p;
             break;
