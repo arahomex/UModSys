@@ -45,7 +45,7 @@ bool RSystem::exec_args(int argc, char** argv)
 
 bool RSystem::command(SExecTCL& tcl, const SExecTCL::String &cmd, const SExecTCL::Strings& args)
 {
-  if(0) {
+  if(1) {
     DStringBufMedium tt;
     tt = cmd;
     dbg_put(rsdl_System, "RSystem::command(%d:\"%s\" +%d", int(~cmd), tt.c_str(), int(~args));

@@ -218,9 +218,10 @@ struct SExecTCL {
     return ss.vars[StringName(name)].str();
   }
   String var_set(const String& name, const String& value) {
-//printf("{'"); print_str(name); printf("'='"); print_str(value); printf("'}");
-    StringValue& v = ss.vars[StringName(name)];
-    v = StringValue(value);
+    StringName key(name, ~name);
+    StringValue& v = ss.vars[key];
+    v = StringValue(value, ~value);
+//printf("{'"); prints(key); printf("'='"); prints(v); printf("'}");
     return v.str();
   }
   void execute_begin(void) {
