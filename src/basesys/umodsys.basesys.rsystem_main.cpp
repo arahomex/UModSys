@@ -31,6 +31,7 @@ bool RSystem::init(void)
 bool RSystem::exec_main(void)
 {
   dbg_put(rsdl_System, "RSystem::exec_main()\n");
+//  exec_tests();
   return false;
 }
 

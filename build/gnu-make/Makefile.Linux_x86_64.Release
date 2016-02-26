@@ -110,7 +110,7 @@ cpp-umodsys-plugin_lib2d_stdlib:
 	@-rm $(target__umodsys__plugin_lib2d_stdlib)
 	@-rm $(tmpx__umodsys__plugin_lib2d_stdlib)/*
 $(target__umodsys__plugin_lib2d_stdlib):  $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_lib2d_stdlib) | $(bin__umodsys__plugin_lib2d_stdlib) 
-	@echo '*** Making solib umodsys::plugin_lib2d_stdlib'
+	@echo '*** Make solib umodsys::plugin_lib2d_stdlib'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_lib2d_stdlib.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_lib2d_stdlib) $(LDFLAGS__umodsys__plugin_lib2d_stdlib)
 
 
@@ -152,7 +152,7 @@ cpp-umodsys-plugin_lib3d_stdlib:
 	@-rm $(target__umodsys__plugin_lib3d_stdlib)
 	@-rm $(tmpx__umodsys__plugin_lib3d_stdlib)/*
 $(target__umodsys__plugin_lib3d_stdlib):  $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_lib3d_stdlib) | $(bin__umodsys__plugin_lib3d_stdlib) 
-	@echo '*** Making solib umodsys::plugin_lib3d_stdlib'
+	@echo '*** Make solib umodsys::plugin_lib3d_stdlib'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_lib3d_stdlib.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_lib3d_stdlib) $(LDFLAGS__umodsys__plugin_lib3d_stdlib)
 
 
@@ -194,7 +194,7 @@ cpp-umodsys-plugin_libMedia_imagesstd:
 	@-rm $(target__umodsys__plugin_libMedia_imagesstd)
 	@-rm $(tmpx__umodsys__plugin_libMedia_imagesstd)/*
 $(target__umodsys__plugin_libMedia_imagesstd):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) $(objs__umodsys__plugin_libMedia_imagesstd) | $(bin__umodsys__plugin_libMedia_imagesstd) 
-	@echo '*** Making plugin umodsys::plugin_libMedia_imagesstd'
+	@echo '*** Make plugin umodsys::plugin_libMedia_imagesstd'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_imagesstd.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libMedia_imagesstd) $(LDFLAGS__umodsys__plugin_libMedia_imagesstd)
 
 
@@ -236,7 +236,7 @@ cpp-umodsys-plugin_libMedia_serializeJson:
 	@-rm $(target__umodsys__plugin_libMedia_serializeJson)
 	@-rm $(tmpx__umodsys__plugin_libMedia_serializeJson)/*
 $(target__umodsys__plugin_libMedia_serializeJson):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_libMedia_serializeJson) | $(bin__umodsys__plugin_libMedia_serializeJson) 
-	@echo '*** Making solib umodsys::plugin_libMedia_serializeJson'
+	@echo '*** Make solib umodsys::plugin_libMedia_serializeJson'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_serializeJson.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libMedia_serializeJson) $(LDFLAGS__umodsys__plugin_libMedia_serializeJson)
 
 
@@ -278,7 +278,7 @@ cpp-umodsys-plugin_libMedia_serializeYaml:
 	@-rm $(target__umodsys__plugin_libMedia_serializeYaml)
 	@-rm $(tmpx__umodsys__plugin_libMedia_serializeYaml)/*
 $(target__umodsys__plugin_libMedia_serializeYaml):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_libMedia_serializeYaml) | $(bin__umodsys__plugin_libMedia_serializeYaml) 
-	@echo '*** Making solib umodsys::plugin_libMedia_serializeYaml'
+	@echo '*** Make solib umodsys::plugin_libMedia_serializeYaml'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_serializeYaml.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libMedia_serializeYaml) $(LDFLAGS__umodsys__plugin_libMedia_serializeYaml)
 
 
@@ -320,7 +320,7 @@ cpp-umodsys-plugin_libMedia_stdio:
 	@-rm $(target__umodsys__plugin_libMedia_stdio)
 	@-rm $(tmpx__umodsys__plugin_libMedia_stdio)/*
 $(target__umodsys__plugin_libMedia_stdio):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_libMedia_stdio) | $(bin__umodsys__plugin_libMedia_stdio) 
-	@echo '*** Making solib umodsys::plugin_libMedia_stdio'
+	@echo '*** Make solib umodsys::plugin_libMedia_stdio'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_stdio.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libMedia_stdio) $(LDFLAGS__umodsys__plugin_libMedia_stdio)
 
 
@@ -362,7 +362,7 @@ cpp-umodsys-plugin_libMedia_stdlib:
 	@-rm $(target__umodsys__plugin_libMedia_stdlib)
 	@-rm $(tmpx__umodsys__plugin_libMedia_stdlib)/*
 $(target__umodsys__plugin_libMedia_stdlib):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_libMedia_stdlib) | $(bin__umodsys__plugin_libMedia_stdlib) 
-	@echo '*** Making solib umodsys::plugin_libMedia_stdlib'
+	@echo '*** Make solib umodsys::plugin_libMedia_stdlib'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_stdlib.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libMedia_stdlib) $(LDFLAGS__umodsys__plugin_libMedia_stdlib)
 
 
@@ -404,7 +404,7 @@ cpp-umodsys-plugin_libMedia_zlib:
 	@-rm $(target__umodsys__plugin_libMedia_zlib)
 	@-rm $(tmpx__umodsys__plugin_libMedia_zlib)/*
 $(target__umodsys__plugin_libMedia_zlib):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) $(objs__umodsys__plugin_libMedia_zlib) | $(bin__umodsys__plugin_libMedia_zlib) 
-	@echo '*** Making plugin umodsys::plugin_libMedia_zlib'
+	@echo '*** Make plugin umodsys::plugin_libMedia_zlib'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_zlib.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libMedia_zlib) $(LDFLAGS__umodsys__plugin_libMedia_zlib)
 
 
@@ -509,7 +509,7 @@ cpp-umodsys-plugin_libUI_SDLGL:
 	@-rm $(target__umodsys__plugin_libUI_SDLGL)
 	@-rm $(tmpx__umodsys__plugin_libUI_SDLGL)/*
 $(target__umodsys__plugin_libUI_SDLGL):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_SDL2) $(objs__umodsys__plugin_libUI_SDLGL) | $(bin__umodsys__plugin_libUI_SDLGL) 
-	@echo '*** Making plugin umodsys::plugin_libUI_SDLGL'
+	@echo '*** Make plugin umodsys::plugin_libUI_SDLGL'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libUI_SDLGL.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libUI_SDLGL) $(LDFLAGS__umodsys__plugin_libUI_SDLGL)
 
 
@@ -551,7 +551,7 @@ cpp-umodsys-plugin_libUI_SDLcore:
 	@-rm $(target__umodsys__plugin_libUI_SDLcore)
 	@-rm $(tmpx__umodsys__plugin_libUI_SDLcore)/*
 $(target__umodsys__plugin_libUI_SDLcore):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_SDL2) $(objs__umodsys__plugin_libUI_SDLcore) | $(bin__umodsys__plugin_libUI_SDLcore) 
-	@echo '*** Making plugin umodsys::plugin_libUI_SDLcore'
+	@echo '*** Make plugin umodsys::plugin_libUI_SDLcore'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libUI_SDLcore.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libUI_SDLcore) $(LDFLAGS__umodsys__plugin_libUI_SDLcore)
 
 
@@ -593,7 +593,7 @@ cpp-umodsys-plugin_libUI_frames:
 	@-rm $(target__umodsys__plugin_libUI_frames)
 	@-rm $(tmpx__umodsys__plugin_libUI_frames)/*
 $(target__umodsys__plugin_libUI_frames):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_libUI_frames) | $(bin__umodsys__plugin_libUI_frames) 
-	@echo '*** Making solib umodsys::plugin_libUI_frames'
+	@echo '*** Make solib umodsys::plugin_libUI_frames'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libUI_frames.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_libUI_frames) $(LDFLAGS__umodsys__plugin_libUI_frames)
 
 
@@ -644,7 +644,7 @@ cpp-umodsys-plugin_test1:
 	@-rm $(target__umodsys__plugin_test1)
 	@-rm $(tmpx__umodsys__plugin_test1)/*
 $(target__umodsys__plugin_test1):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) $(target__umodsys_Depends__lib_SDL2) $(objs__umodsys__plugin_test1) | $(bin__umodsys__plugin_test1) 
-	@echo '*** Making plugin umodsys::plugin_test1'
+	@echo '*** Make plugin umodsys::plugin_test1'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_test1.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_test1) $(LDFLAGS__umodsys__plugin_test1)
 
 
@@ -686,7 +686,7 @@ cpp-umodsys-plugin_test2:
 	@-rm $(target__umodsys__plugin_test2)
 	@-rm $(tmpx__umodsys__plugin_test2)/*
 $(target__umodsys__plugin_test2):  $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_base) $(objs__umodsys__plugin_test2) | $(bin__umodsys__plugin_test2) 
-	@echo '*** Making plugin umodsys::plugin_test2'
+	@echo '*** Make plugin umodsys::plugin_test2'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_test2.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_test2) $(LDFLAGS__umodsys__plugin_test2)
 
 
@@ -728,7 +728,7 @@ cpp-umodsys-plugin_test3:
 	@-rm $(target__umodsys__plugin_test3)
 	@-rm $(tmpx__umodsys__plugin_test3)/*
 $(target__umodsys__plugin_test3):  $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_base) $(objs__umodsys__plugin_test3) | $(bin__umodsys__plugin_test3) 
-	@echo '*** Making plugin umodsys::plugin_test3'
+	@echo '*** Make plugin umodsys::plugin_test3'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_test3.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_test3) $(LDFLAGS__umodsys__plugin_test3)
 
 
@@ -770,7 +770,7 @@ cpp-umodsys-plugin_test4:
 	@-rm $(target__umodsys__plugin_test4)
 	@-rm $(tmpx__umodsys__plugin_test4)/*
 $(target__umodsys__plugin_test4):  $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_base) $(objs__umodsys__plugin_test4) | $(bin__umodsys__plugin_test4) 
-	@echo '*** Making plugin umodsys::plugin_test4'
+	@echo '*** Make plugin umodsys::plugin_test4'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_test4.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_test4) $(LDFLAGS__umodsys__plugin_test4)
 
 
@@ -812,7 +812,7 @@ cpp-umodsys-plugin_test5:
 	@-rm $(target__umodsys__plugin_test5)
 	@-rm $(tmpx__umodsys__plugin_test5)/*
 $(target__umodsys__plugin_test5):  $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_base) $(objs__umodsys__plugin_test5) | $(bin__umodsys__plugin_test5) 
-	@echo '*** Making plugin umodsys::plugin_test5'
+	@echo '*** Make plugin umodsys::plugin_test5'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_test5.Linux_x86_64.Release.so -o$@ $(objs__umodsys__plugin_test5) $(LDFLAGS__umodsys__plugin_test5)
 
 
@@ -936,7 +936,7 @@ cpp-umodsys-umodsys_lib_base:
 	@-rm $(target__umodsys__umodsys_lib_base)
 	@-rm $(tmpx__umodsys__umodsys_lib_base)/*
 $(target__umodsys__umodsys_lib_base):  $(objs__umodsys__umodsys_lib_base) | $(tmpx__umodsys__umodsys_lib_base)
-	@echo '*** Making lib umodsys::umodsys_lib_base'
+	@echo '*** Make lib umodsys::umodsys_lib_base'
 	@$(AR) r $@ $(objs__umodsys__umodsys_lib_base)
 
 
@@ -1055,7 +1055,7 @@ cpp-umodsys-umodsys_lib_basesys:
 	@-rm $(target__umodsys__umodsys_lib_basesys)
 	@-rm $(tmpx__umodsys__umodsys_lib_basesys)/*
 $(target__umodsys__umodsys_lib_basesys):  $(objs__umodsys__umodsys_lib_basesys) | $(tmpx__umodsys__umodsys_lib_basesys)
-	@echo '*** Making lib umodsys::umodsys_lib_basesys'
+	@echo '*** Make lib umodsys::umodsys_lib_basesys'
 	@$(AR) r $@ $(objs__umodsys__umodsys_lib_basesys)
 
 
@@ -1308,7 +1308,7 @@ cpp-umodsys-umodsys_lib_core:
 	@-rm $(target__umodsys__umodsys_lib_core)
 	@-rm $(tmpx__umodsys__umodsys_lib_core)/*
 $(target__umodsys__umodsys_lib_core):  $(objs__umodsys__umodsys_lib_core) | $(tmpx__umodsys__umodsys_lib_core)
-	@echo '*** Making lib umodsys::umodsys_lib_core'
+	@echo '*** Make lib umodsys::umodsys_lib_core'
 	@$(AR) r $@ $(objs__umodsys__umodsys_lib_core)
 
 
@@ -1376,7 +1376,7 @@ cpp-umodsys-umodsys_lib_lib2d:
 	@-rm $(target__umodsys__umodsys_lib_lib2d)
 	@-rm $(tmpx__umodsys__umodsys_lib_lib2d)/*
 $(target__umodsys__umodsys_lib_lib2d):  $(objs__umodsys__umodsys_lib_lib2d) | $(tmpx__umodsys__umodsys_lib_lib2d)
-	@echo '*** Making lib umodsys::umodsys_lib_lib2d'
+	@echo '*** Make lib umodsys::umodsys_lib_lib2d'
 	@$(AR) r $@ $(objs__umodsys__umodsys_lib_lib2d)
 
 
@@ -1464,7 +1464,7 @@ cpp-umodsys-umodsys_lib_lib3d:
 	@-rm $(target__umodsys__umodsys_lib_lib3d)
 	@-rm $(tmpx__umodsys__umodsys_lib_lib3d)/*
 $(target__umodsys__umodsys_lib_lib3d):  $(objs__umodsys__umodsys_lib_lib3d) | $(tmpx__umodsys__umodsys_lib_lib3d)
-	@echo '*** Making lib umodsys::umodsys_lib_lib3d'
+	@echo '*** Make lib umodsys::umodsys_lib_lib3d'
 	@$(AR) r $@ $(objs__umodsys__umodsys_lib_lib3d)
 
 
@@ -1609,7 +1609,7 @@ cpp-umodsys-umodsys_lib_libmedia:
 	@-rm $(target__umodsys__umodsys_lib_libmedia)
 	@-rm $(tmpx__umodsys__umodsys_lib_libmedia)/*
 $(target__umodsys__umodsys_lib_libmedia):  $(objs__umodsys__umodsys_lib_libmedia) | $(tmpx__umodsys__umodsys_lib_libmedia)
-	@echo '*** Making lib umodsys::umodsys_lib_libmedia'
+	@echo '*** Make lib umodsys::umodsys_lib_libmedia'
 	@$(AR) r $@ $(objs__umodsys__umodsys_lib_libmedia)
 
 
@@ -1730,7 +1730,7 @@ cpp-umodsys-umodsys_lib_libui:
 	@-rm $(target__umodsys__umodsys_lib_libui)
 	@-rm $(tmpx__umodsys__umodsys_lib_libui)/*
 $(target__umodsys__umodsys_lib_libui):  $(objs__umodsys__umodsys_lib_libui) | $(tmpx__umodsys__umodsys_lib_libui)
-	@echo '*** Making lib umodsys::umodsys_lib_libui'
+	@echo '*** Make lib umodsys::umodsys_lib_libui'
 	@$(AR) r $@ $(objs__umodsys__umodsys_lib_libui)
 
 
@@ -1772,7 +1772,7 @@ cpp-umodsys-umodsysc:
 	@-rm $(target__umodsys__umodsysc)
 	@-rm $(tmpx__umodsys__umodsysc)/*
 $(target__umodsys__umodsysc):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_basesys) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) $(objs__umodsys__umodsysc) | $(bin__umodsys__umodsysc) 
-	@echo '*** Making console umodsys::umodsysc'
+	@echo '*** Make console umodsys::umodsysc'
 	@$(CXX) -Wl,-rpath,. -o$@ $(objs__umodsys__umodsysc) $(LDFLAGS__umodsys__umodsysc)
 
 
@@ -1835,7 +1835,7 @@ cpp-umodsys-umodsysca:
 	@-rm $(target__umodsys__umodsysca)
 	@-rm $(tmpx__umodsys__umodsysca)/*
 $(target__umodsys__umodsysca):  $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_basesys) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) $(target__umodsys_Depends__lib_S_zlib) $(target__umodsys_Depends__lib_S_libpng) $(target__umodsys_Depends__lib_S_jpeglib) $(target__umodsys_Depends__lib_S_SDL2) $(target__umodsys_Depends__lib_S_freetype) $(objs__umodsys__umodsysca) | $(bin__umodsys__umodsysca) 
-	@echo '*** Making console umodsys::umodsysca'
+	@echo '*** Make console umodsys::umodsysca'
 	@$(CXX) -Wl,-rpath,. -o$@ $(objs__umodsys__umodsysca) $(LDFLAGS__umodsys__umodsysca)
 
 
@@ -1877,7 +1877,7 @@ cpp-umodsys-umodsysct:
 	@-rm $(target__umodsys__umodsysct)
 	@-rm $(tmpx__umodsys__umodsysct)/*
 $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__umodsysct) | $(bin__umodsys__umodsysct) 
-	@echo '*** Making console umodsys::umodsysct'
+	@echo '*** Make console umodsys::umodsysct'
 	@$(CXX) -Wl,-rpath,. -o$@ $(objs__umodsys__umodsysct) $(LDFLAGS__umodsys__umodsysct)
 
 
@@ -2992,7 +2992,7 @@ cpp-umodsys_Depends-lib_SDL2:
 	@-rm $(target__umodsys_Depends__lib_SDL2)
 	@-rm $(tmpx__umodsys_Depends__lib_SDL2)/*
 $(target__umodsys_Depends__lib_SDL2):  $(target__umodsys_Depends__lib_freetype) $(objs__umodsys_Depends__lib_SDL2) | $(bin__umodsys_Depends__lib_SDL2) 
-	@echo '*** Making solib umodsys_Depends::lib_SDL2'
+	@echo '*** Make solib umodsys_Depends::lib_SDL2'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,lib_SDL2.Linux_x86_64.Release.so -o$@ $(objs__umodsys_Depends__lib_SDL2) $(LDFLAGS__umodsys_Depends__lib_SDL2)
 
 
@@ -4081,7 +4081,7 @@ cpp-umodsys_Depends-lib_S_SDL2:
 	@-rm $(target__umodsys_Depends__lib_S_SDL2)
 	@-rm $(tmpx__umodsys_Depends__lib_S_SDL2)/*
 $(target__umodsys_Depends__lib_S_SDL2):  $(target__umodsys_Depends__lib_S_freetype) $(objs__umodsys_Depends__lib_S_SDL2) | $(tmpx__umodsys_Depends__lib_S_SDL2)
-	@echo '*** Making lib umodsys_Depends::lib_S_SDL2'
+	@echo '*** Make lib umodsys_Depends::lib_S_SDL2'
 	@$(AR) r $@ $(objs__umodsys_Depends__lib_S_SDL2)
 
 
@@ -4557,7 +4557,7 @@ cpp-umodsys_Depends-lib_S_freetype:
 	@-rm $(target__umodsys_Depends__lib_S_freetype)
 	@-rm $(tmpx__umodsys_Depends__lib_S_freetype)/*
 $(target__umodsys_Depends__lib_S_freetype):  $(target__umodsys_Depends__lib_S_zlib) $(objs__umodsys_Depends__lib_S_freetype) | $(tmpx__umodsys_Depends__lib_S_freetype)
-	@echo '*** Making lib umodsys_Depends::lib_S_freetype'
+	@echo '*** Make lib umodsys_Depends::lib_S_freetype'
 	@$(AR) r $@ $(objs__umodsys_Depends__lib_S_freetype)
 
 
@@ -4881,7 +4881,7 @@ cpp-umodsys_Depends-lib_S_jpeglib:
 	@-rm $(target__umodsys_Depends__lib_S_jpeglib)
 	@-rm $(tmpx__umodsys_Depends__lib_S_jpeglib)/*
 $(target__umodsys_Depends__lib_S_jpeglib):  $(objs__umodsys_Depends__lib_S_jpeglib) | $(tmpx__umodsys_Depends__lib_S_jpeglib)
-	@echo '*** Making lib umodsys_Depends::lib_S_jpeglib'
+	@echo '*** Make lib umodsys_Depends::lib_S_jpeglib'
 	@$(AR) r $@ $(objs__umodsys_Depends__lib_S_jpeglib)
 
 
@@ -5027,7 +5027,7 @@ cpp-umodsys_Depends-lib_S_libpng:
 	@-rm $(target__umodsys_Depends__lib_S_libpng)
 	@-rm $(tmpx__umodsys_Depends__lib_S_libpng)/*
 $(target__umodsys_Depends__lib_S_libpng):  $(target__umodsys_Depends__lib_S_zlib) $(objs__umodsys_Depends__lib_S_libpng) | $(tmpx__umodsys_Depends__lib_S_libpng)
-	@echo '*** Making lib umodsys_Depends::lib_S_libpng'
+	@echo '*** Make lib umodsys_Depends::lib_S_libpng'
 	@$(AR) r $@ $(objs__umodsys_Depends__lib_S_libpng)
 
 
@@ -5166,7 +5166,7 @@ cpp-umodsys_Depends-lib_S_zlib:
 	@-rm $(target__umodsys_Depends__lib_S_zlib)
 	@-rm $(tmpx__umodsys_Depends__lib_S_zlib)/*
 $(target__umodsys_Depends__lib_S_zlib):  $(objs__umodsys_Depends__lib_S_zlib) | $(tmpx__umodsys_Depends__lib_S_zlib)
-	@echo '*** Making lib umodsys_Depends::lib_S_zlib'
+	@echo '*** Make lib umodsys_Depends::lib_S_zlib'
 	@$(AR) r $@ $(objs__umodsys_Depends__lib_S_zlib)
 
 
@@ -5469,7 +5469,7 @@ cpp-umodsys_Depends-lib_angelscript:
 	@-rm $(target__umodsys_Depends__lib_angelscript)
 	@-rm $(tmpx__umodsys_Depends__lib_angelscript)/*
 $(target__umodsys_Depends__lib_angelscript):  $(objs__umodsys_Depends__lib_angelscript) | $(bin__umodsys_Depends__lib_angelscript) 
-	@echo '*** Making solib umodsys_Depends::lib_angelscript'
+	@echo '*** Make solib umodsys_Depends::lib_angelscript'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,lib_angelscript.Linux_x86_64.Release.so -o$@ $(objs__umodsys_Depends__lib_angelscript) $(LDFLAGS__umodsys_Depends__lib_angelscript)
 
 
@@ -6751,7 +6751,7 @@ cpp-umodsys_Depends-lib_bullet:
 	@-rm $(target__umodsys_Depends__lib_bullet)
 	@-rm $(tmpx__umodsys_Depends__lib_bullet)/*
 $(target__umodsys_Depends__lib_bullet):  $(objs__umodsys_Depends__lib_bullet) | $(tmpx__umodsys_Depends__lib_bullet)
-	@echo '*** Making lib umodsys_Depends::lib_bullet'
+	@echo '*** Make lib umodsys_Depends::lib_bullet'
 	@$(AR) r $@ $(objs__umodsys_Depends__lib_bullet)
 
 
@@ -7227,7 +7227,7 @@ cpp-umodsys_Depends-lib_freetype:
 	@-rm $(target__umodsys_Depends__lib_freetype)
 	@-rm $(tmpx__umodsys_Depends__lib_freetype)/*
 $(target__umodsys_Depends__lib_freetype):  $(target__umodsys_Depends__lib_zlib) $(objs__umodsys_Depends__lib_freetype) | $(bin__umodsys_Depends__lib_freetype) 
-	@echo '*** Making solib umodsys_Depends::lib_freetype'
+	@echo '*** Make solib umodsys_Depends::lib_freetype'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,lib_freetype.Linux_x86_64.Release.so -o$@ $(objs__umodsys_Depends__lib_freetype) $(LDFLAGS__umodsys_Depends__lib_freetype)
 
 
@@ -7551,7 +7551,7 @@ cpp-umodsys_Depends-lib_jpeglib:
 	@-rm $(target__umodsys_Depends__lib_jpeglib)
 	@-rm $(tmpx__umodsys_Depends__lib_jpeglib)/*
 $(target__umodsys_Depends__lib_jpeglib):  $(objs__umodsys_Depends__lib_jpeglib) | $(bin__umodsys_Depends__lib_jpeglib) 
-	@echo '*** Making solib umodsys_Depends::lib_jpeglib'
+	@echo '*** Make solib umodsys_Depends::lib_jpeglib'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,lib_jpeglib.Linux_x86_64.Release.so -o$@ $(objs__umodsys_Depends__lib_jpeglib) $(LDFLAGS__umodsys_Depends__lib_jpeglib)
 
 
@@ -7846,7 +7846,7 @@ cpp-umodsys_Depends-lib_libgd:
 	@-rm $(target__umodsys_Depends__lib_libgd)
 	@-rm $(tmpx__umodsys_Depends__lib_libgd)/*
 $(target__umodsys_Depends__lib_libgd):  $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) $(objs__umodsys_Depends__lib_libgd) | $(bin__umodsys_Depends__lib_libgd) 
-	@echo '*** Making solib umodsys_Depends::lib_libgd'
+	@echo '*** Make solib umodsys_Depends::lib_libgd'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,lib_libgd.Linux_x86_64.Release.so -o$@ $(objs__umodsys_Depends__lib_libgd) $(LDFLAGS__umodsys_Depends__lib_libgd)
 
 
@@ -7992,7 +7992,7 @@ cpp-umodsys_Depends-lib_libpng:
 	@-rm $(target__umodsys_Depends__lib_libpng)
 	@-rm $(tmpx__umodsys_Depends__lib_libpng)/*
 $(target__umodsys_Depends__lib_libpng):  $(target__umodsys_Depends__lib_zlib) $(objs__umodsys_Depends__lib_libpng) | $(bin__umodsys_Depends__lib_libpng) 
-	@echo '*** Making solib umodsys_Depends::lib_libpng'
+	@echo '*** Make solib umodsys_Depends::lib_libpng'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,lib_libpng.Linux_x86_64.Release.so -o$@ $(objs__umodsys_Depends__lib_libpng) $(LDFLAGS__umodsys_Depends__lib_libpng)
 
 
@@ -8267,7 +8267,7 @@ cpp-umodsys_Depends-lib_lua:
 	@-rm $(target__umodsys_Depends__lib_lua)
 	@-rm $(tmpx__umodsys_Depends__lib_lua)/*
 $(target__umodsys_Depends__lib_lua):  $(objs__umodsys_Depends__lib_lua) | $(bin__umodsys_Depends__lib_lua) 
-	@echo '*** Making solib umodsys_Depends::lib_lua'
+	@echo '*** Make solib umodsys_Depends::lib_lua'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,lib_lua.Linux_x86_64.Release.so -o$@ $(objs__umodsys_Depends__lib_lua) $(LDFLAGS__umodsys_Depends__lib_lua)
 
 
@@ -8746,7 +8746,7 @@ cpp-umodsys_Depends-lib_luajit:
 	@-rm $(target__umodsys_Depends__lib_luajit)
 	@-rm $(tmpx__umodsys_Depends__lib_luajit)/*
 $(target__umodsys_Depends__lib_luajit):  $(objs__umodsys_Depends__lib_luajit) | $(bin__umodsys_Depends__lib_luajit) 
-	@echo '*** Making solib umodsys_Depends::lib_luajit'
+	@echo '*** Make solib umodsys_Depends::lib_luajit'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,lib_luajit.Linux_x86_64.Release.so -o$@ $(objs__umodsys_Depends__lib_luajit) $(LDFLAGS__umodsys_Depends__lib_luajit)
 
 
@@ -8792,7 +8792,7 @@ cpp-umodsys_Depends-lib_sqlite3:
 	@-rm $(target__umodsys_Depends__lib_sqlite3)
 	@-rm $(tmpx__umodsys_Depends__lib_sqlite3)/*
 $(target__umodsys_Depends__lib_sqlite3):  $(objs__umodsys_Depends__lib_sqlite3) | $(bin__umodsys_Depends__lib_sqlite3) 
-	@echo '*** Making solib umodsys_Depends::lib_sqlite3'
+	@echo '*** Make solib umodsys_Depends::lib_sqlite3'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,lib_sqlite3.Linux_x86_64.Release.so -o$@ $(objs__umodsys_Depends__lib_sqlite3) $(LDFLAGS__umodsys_Depends__lib_sqlite3)
 
 
@@ -8979,7 +8979,7 @@ cpp-umodsys_Depends-lib_squirrel:
 	@-rm $(target__umodsys_Depends__lib_squirrel)
 	@-rm $(tmpx__umodsys_Depends__lib_squirrel)/*
 $(target__umodsys_Depends__lib_squirrel):  $(objs__umodsys_Depends__lib_squirrel) | $(bin__umodsys_Depends__lib_squirrel) 
-	@echo '*** Making solib umodsys_Depends::lib_squirrel'
+	@echo '*** Make solib umodsys_Depends::lib_squirrel'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,lib_squirrel.Linux_x86_64.Release.so -o$@ $(objs__umodsys_Depends__lib_squirrel) $(LDFLAGS__umodsys_Depends__lib_squirrel)
 
 
@@ -9035,7 +9035,7 @@ cpp-umodsys_Depends-lib_tinyc:
 	@-rm $(target__umodsys_Depends__lib_tinyc)
 	@-rm $(tmpx__umodsys_Depends__lib_tinyc)/*
 $(target__umodsys_Depends__lib_tinyc):  $(objs__umodsys_Depends__lib_tinyc) | $(bin__umodsys_Depends__lib_tinyc) 
-	@echo '*** Making solib umodsys_Depends::lib_tinyc'
+	@echo '*** Make solib umodsys_Depends::lib_tinyc'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,lib_tinyc.Linux_x86_64.Release.so -o$@ $(objs__umodsys_Depends__lib_tinyc) $(LDFLAGS__umodsys_Depends__lib_tinyc)
 
 
@@ -9123,7 +9123,7 @@ cpp-umodsys_Depends-lib_yaml:
 	@-rm $(target__umodsys_Depends__lib_yaml)
 	@-rm $(tmpx__umodsys_Depends__lib_yaml)/*
 $(target__umodsys_Depends__lib_yaml):  $(objs__umodsys_Depends__lib_yaml) | $(bin__umodsys_Depends__lib_yaml) 
-	@echo '*** Making solib umodsys_Depends::lib_yaml'
+	@echo '*** Make solib umodsys_Depends::lib_yaml'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,lib_yaml.Linux_x86_64.Release.so -o$@ $(objs__umodsys_Depends__lib_yaml) $(LDFLAGS__umodsys_Depends__lib_yaml)
 
 
@@ -9262,7 +9262,7 @@ cpp-umodsys_Depends-lib_zlib:
 	@-rm $(target__umodsys_Depends__lib_zlib)
 	@-rm $(tmpx__umodsys_Depends__lib_zlib)/*
 $(target__umodsys_Depends__lib_zlib):  $(objs__umodsys_Depends__lib_zlib) | $(bin__umodsys_Depends__lib_zlib) 
-	@echo '*** Making solib umodsys_Depends::lib_zlib'
+	@echo '*** Make solib umodsys_Depends::lib_zlib'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,lib_zlib.Linux_x86_64.Release.so -o$@ $(objs__umodsys_Depends__lib_zlib) $(LDFLAGS__umodsys_Depends__lib_zlib)
 
 
@@ -9275,136 +9275,7 @@ $(target__umodsys_Depends__lib_zlib):  $(objs__umodsys_Depends__lib_zlib) | $(bi
 #**************************************************************** END projectgroup 'umodsys_Depends'
 ################################################################# XMAP makefile
 # 1
-../../tmp/Linux_x86_64.Release/lib_squirrel: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_test5: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_S_zlib: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_zlib: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsysct: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_libUI_SDLGL: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_test1: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_S_libpng: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_angelscript: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_basesys: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_SDL2: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_libMedia_zlib: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_lib3d: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_S_freetype: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 19
-.PHONY: tg-umodsys_Depends cg-umodsys_Depends
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_libpng: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_libMedia_stdlib: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_freetype: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_lib2d_stdlib: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_base: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_test2: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_libUI_frames: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_libMedia_stdio: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_libMedia_imagesstd: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_lua: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_test4: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_tinyc: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/lib_bullet: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
@@ -9414,31 +9285,27 @@ $(target__umodsys_Depends__lib_zlib):  $(objs__umodsys_Depends__lib_zlib) | $(bi
 
 
 # 1
+../../tmp/Linux_x86_64.Release/lib_S_freetype: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libUI_SDLGL: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_basesys: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
 ../../tmp/Linux_x86_64.Release/umodsysc: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
-# 26
-.PHONY: tg-umodsys cg-umodsys
-
-
 # 1
-../../tmp/Linux_x86_64.Release/plugin_libMedia_serializeJson: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_bullet: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_libgd: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_libmedia: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/plugin_lib2d_stdlib: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
@@ -9448,7 +9315,150 @@ $(target__umodsys_Depends__lib_zlib):  $(objs__umodsys_Depends__lib_zlib) | $(bi
 
 
 # 1
+../../tmp/Linux_x86_64.Release/plugin_test5: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_test3: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
 ../../tmp/Linux_x86_64.Release/lib_jpeglib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsysct: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_SDL2: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_angelscript: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_freetype: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_sqlite3: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libMedia_serializeYaml: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 26
+.PHONY: tg-umodsys cg-umodsys
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_base: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_test1: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_lib3d: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 45
+../../bin/Linux_x86_64.Release:
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_test2: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_luajit: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_zlib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_test4: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_lua: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libUI_SDLcore: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_yaml: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_squirrel: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libMedia_imagesstd: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_libmedia: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_libgd: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_S_jpeglib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_tinyc: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libMedia_zlib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 19
+.PHONY: tg-umodsys_Depends cg-umodsys_Depends
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libMedia_stdio: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
@@ -9463,42 +9473,22 @@ $(target__umodsys_Depends__lib_zlib):  $(objs__umodsys_Depends__lib_zlib) | $(bi
 
 
 # 1
-../../tmp/Linux_x86_64.Release/lib_yaml: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_libMedia_serializeYaml: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_S_jpeglib: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
 ../../tmp/Linux_x86_64.Release/umodsys_lib_libui: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Release/lib_S_SDL2: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/lib_libpng: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Release/lib_luajit: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 45
-../../bin/Linux_x86_64.Release:
+../../tmp/Linux_x86_64.Release/lib_S_libpng: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Release/plugin_test3: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/plugin_libMedia_serializeJson: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
@@ -9508,12 +9498,22 @@ $(target__umodsys_Depends__lib_zlib):  $(objs__umodsys_Depends__lib_zlib) | $(bi
 
 
 # 1
-../../tmp/Linux_x86_64.Release/lib_sqlite3: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/plugin_libUI_frames: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Release/plugin_libUI_SDLcore: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/plugin_libMedia_stdlib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_S_zlib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_S_SDL2: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 

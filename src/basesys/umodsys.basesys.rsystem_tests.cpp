@@ -67,19 +67,27 @@ bool RSystem::exec_test_shells(void)
 //***************************************
 //***************************************
 
-bool RSystem::exec_tests(void)
+bool RSystem::exec_tests(BStr testid)
 {
 //  dump_upis();
-  dbg_put(rsdl_SystemTests, "******************************* TESTS {\n");
-  dbg_put(rsdl_SystemTests, "sizeof(DRMemAlloc)=%u sizeof(DRMemAlloc::DHeader)=%u\nsizeof(TMemAllocHeader<Void>)=%u sizeof(mem_headers::TMain<TMemAllocHeader<Void>>)=%u\n",
-    (unsigned)sizeof(DRMemAlloc), (unsigned)sizeof(DRMemAlloc::DHeader), 
-    (unsigned)sizeof(TMemAllocHeader<Void>), (unsigned)sizeof(mem_headers::TMain< TMemAllocHeader<Void> >)
-  );
+  dbg_put(rsdl_SystemTests, "******************************* TEST %s {\n", testid);
   //
-//  exec_test_shells();
-  exec_test_tcl();
+  if(tl::su::seq(testid, "list")) {
+    dbg_put(rsdl_SystemTests, "list size shells tcl\n");
+  } else if(tl::su::seq(testid, "size")) {
+    dbg_put(rsdl_SystemTests, "sizeof(DRMemAlloc)=%u sizeof(DRMemAlloc::DHeader)=%u\nsizeof(TMemAllocHeader<Void>)=%u sizeof(mem_headers::TMain<TMemAllocHeader<Void>>)=%u\n",
+      (unsigned)sizeof(DRMemAlloc), (unsigned)sizeof(DRMemAlloc::DHeader), 
+      (unsigned)sizeof(TMemAllocHeader<Void>), (unsigned)sizeof(mem_headers::TMain< TMemAllocHeader<Void> >)
+    );
+  } else if(tl::su::seq(testid, "shells")) {
+    exec_test_shells();
+  } else if(tl::su::seq(testid, "tcl")) {
+    exec_test_tcl();
+  } else {
+    dbg_put(rsdl_SystemTests, "list size shells tcl\n");
+  }
   //
-  dbg_put(rsdl_SystemTests, "******************************* } TESTS\n");
+  dbg_put(rsdl_SystemTests, "******************************* } TEST %s\n", testid);
   return true;
 }
 

@@ -18,6 +18,40 @@ bool RSystem::exec_args(int argc, char** argv)
 {
   dbg_put(rsdl_System, "RSystem::exec_args(%d)\n", argc);
   //
+  if(argc==1)
+    return false;
+  //
+  for(int i=1; i<argc; i++) {
+    if(argv[i][0]=='-') {
+      if(argv[i][1]=='-') { // option
+        BCStr opt=argv[i]+2;
+        BStr value;
+        if(tl::su::sbegin(opt, "test=", &value) || tl::su::sbegin(opt, "test:", &value)) {
+          exec_tests(value);
+        }
+      }
+      continue;
+    }
+  }
+/*
+  DCString spp(
+    "set hello \"'Hello World!\\n'\"\n"
+    "set {hello world} \"'Hello World!\\n'\"\n"
+    "argdump \"\" \"'Hello World!\\n'\" \"\"\n"
+    "vardump\n"
+    "puts 1: \"'Hello World!\\n'\"\n"
+    "puts 2: {'Hello World!\\n'} ; puts 3: [? {'Hello World!\\n'}]\n"
+    "puts 4: $hello ; puts 5: [? ${hello world}]\n"
+    "if {< 0 1} {puts 0<1} ; if {< 1 0} {puts 1<0}\n"
+    "= i 0; while {< $i 10} {puts $i; ++ i}\n"
+    "for {= i 0} {< $i 10} {++ i} {puts $i;}\n"
+    "vardump;\n"
+  );
+  SExecTCL::Parser pp(spp.begin(), spp.end());
+  SExecTCL col(tcl_ss, this);
+  //
+  pp.Parse(col);
+*/
 //  S.get_modloader()->moduledb_scan("", false);
 //  S.get_modloader()->moduledb_scan("*", true);
 //  S.get_modloader()->moduledb_save("moduledb.conf-hdb");

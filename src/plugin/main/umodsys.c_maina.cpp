@@ -20,8 +20,6 @@ int main(int argc, char **argv)
   S.init();
   //
   S.exec_args(argc, argv);
-  //
-  S.exec_tests();
   S.exec_main();
   //
   S.deinit();

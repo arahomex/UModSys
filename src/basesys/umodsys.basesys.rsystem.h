@@ -128,7 +128,7 @@ public:
   bool init(void);
   bool exec_args(int argc, char** argv);
   bool exec_main(void);
-  bool exec_tests(void);
+  bool exec_tests(BStr testid);
   bool deinit(void);
   //
   bool platform_init(void);
