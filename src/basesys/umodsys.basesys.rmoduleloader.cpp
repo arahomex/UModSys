@@ -167,7 +167,7 @@ bool RModuleLoader::moduledb_load(const core::DCString& cachepath)
 
 bool RModuleLoader::moduledb_save(const core::DCString& cachepath)
 {
-  FILE *f = syshlp::u_fopen(cachepath, "wb");
+  FILE *f = syshlp::u_fopen(*cachepath, "wb");
   if(f==NULL)
     return false;
   fprintf(f, "# LIST OF LIBRARY MODULES:\n\n");

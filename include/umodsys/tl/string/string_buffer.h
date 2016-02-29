@@ -32,15 +32,16 @@ struct TStringBuf : public CoreT, public Comparer {
   //
   inline TStringBuf(void) {}
   inline explicit TStringBuf(core::Void* p) : CoreT(p), Comparer(p) {}
+  inline TStringBuf(const ConstStr& R) { set(R); }
   inline TStringBuf(const Self& R) : CoreT(R), Comparer(R) {}
   inline TStringBuf(const Comparer& cmp, core::Void* p) : CoreT(p), Comparer(cmp) {}
   inline /*explicit*/ TStringBuf(Str s) { set(s); }
   inline TStringBuf(Str s, size_t L) { set(s, L); }
   inline TStringBuf(Str s, Str s_end) { set(s, s_end); }
-  inline TStringBuf(const Buf& b, Str s) { CoreT::setup(b); CoreT::set(s); }
+  inline TStringBuf(const Buf& b, Str s) { CoreT::setup(b); set(s); }
   inline TStringBuf(const Buf& b, Str s, size_t L) { CoreT::setup(b); set(s, L); }
   inline TStringBuf(const Buf& b, Str s, Str s_end) { CoreT::setup(b); set(s, s_end); }
-  inline explicit TStringBuf(const Comparer& cmp) : Comparer(cmp) { set(); }
+//  inline explicit TStringBuf(const Comparer& cmp) : Comparer(cmp) { set(); }
   inline TStringBuf(const Buf& b, const Comparer& cmp, Str s) : Comparer(cmp) { CoreT::setup(b); set(s); }
   inline TStringBuf(const Buf& b, const Comparer& cmp, Str s, size_t L) : Comparer(cmp) { CoreT::setup(b); set(s, L); }
   inline TStringBuf(const Buf& b, const Comparer& cmp, Str s, Str s_end) : Comparer(cmp) { CoreT::setup(b); set(s, s_end); }
@@ -127,6 +128,9 @@ struct TStringBuf : public CoreT, public Comparer {
   inline void clear(void) { CoreT::clear(); Comparer::clear(); }
   inline void set(void) { clear(); }
   inline void set(const Comparer& cmp) { Comparer::operator=(cmp); update(); }
+  inline bool set(const ConstStr& s) { bool rv = CoreT::set(s); update(); return rv; }
+  inline bool set(Str s) { bool rv = CoreT::set(s); update(); return rv; }
+  inline bool set(Str s, size_t L) { bool rv = CoreT::set(s, L); update(); return rv; }
   //
   inline bool cpy(const Self& R) { bool rv = CoreT::cpy(R); Comparer::operator=(R); return rv; }
   inline bool safecpy(const Self& R) { bool rv = CoreT::safecpy(R); Comparer::operator=(R); return rv; }
@@ -135,7 +139,6 @@ struct TStringBuf : public CoreT, public Comparer {
   template<typename Core2, typename Cmp2> inline bool append(const TString<Core2, Cmp2>& s) 
     { bool rv = CoreT::append(s, ~s); update(); return rv; }
   //
-  inline bool set(Str s, size_t L) { bool rv = CoreT::set(s, L); update(); return rv; }
   template<typename Core2, typename Cmp2> inline bool set(const TString<Core2, Cmp2>& R) 
     { return set(R.get_text(), R.get_length()); }
   template<typename Core2, typename Cmp2> inline bool set(const TStringBuf<Core2, Cmp2>& R) 

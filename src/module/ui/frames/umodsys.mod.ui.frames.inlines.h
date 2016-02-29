@@ -214,7 +214,7 @@ inline bool SButton::draw_button(const SDrawState& S, int group, int addflag)
 inline bool SButton::draw_text(const SDrawState& S, const DCString& text, int group, int addflag)
 {
   BCharL line[max_line_length+1];
-  int len = tl::su::utf_8to32(line, max_line_length, text, ~text, true);
+  int len = tl::su::utf_8to32(line, max_line_length, *text, ~text, true);
   line[len]=0;
   //
   S->setup_coloralpha( frame->tclr(group, cte_Text|cte_Fore|addflag) );

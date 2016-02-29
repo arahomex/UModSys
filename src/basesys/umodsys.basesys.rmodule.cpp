@@ -303,7 +303,7 @@ bool RModule::alloc_minfo(const SModuleInfo &mi2)
 {
   dbg_put(
     rsdl_Module, "RModule::alloc_minfo({\"%s\", \"%s\", {%d,%d} })\n", 
-    mi2.name(), mi2.info(), mi2.verno.vmajor, mi2.verno.vminor
+    *mi2.name, *mi2.info, mi2.verno.vmajor, mi2.verno.vminor
   );
   minfo.name = refs.owner->sys->get_modloader()->moduledb_get_string(mi2.name);
   minfo.info = refs.owner->sys->get_modloader()->moduledb_get_string(mi2.info);
@@ -385,7 +385,7 @@ bool RModule::save_db(FILE *f)
   }
   fprintf(f, "  END MODULE %s(%d,%d)\n", minfo.name(), minfo.verno.vmajor, minfo.verno.vminor);
 #else
-  fprintf(f, "  MODULE %s(%d,%d) {\n", minfo.name(), minfo.verno.vmajor, minfo.verno.vminor);
+  fprintf(f, "  MODULE %s(%d,%d) {\n", *minfo.name, minfo.verno.vmajor, minfo.verno.vminor);
   for(size_t i=0; i<~mos; i++) {
     const ModuleObjInfo& mi = mos(i);
     dbg_put(
@@ -442,7 +442,7 @@ bool RModule::save_db(FILE *f)
       );
     }
   }
-  fprintf(f, "  } # MODULE %s(%d,%d)\n", minfo.name(), minfo.verno.vmajor, minfo.verno.vminor);
+  fprintf(f, "  } # MODULE %s(%d,%d)\n", *minfo.name, minfo.verno.vmajor, minfo.verno.vminor);
 #endif
   return true;
 }

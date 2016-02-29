@@ -86,10 +86,10 @@ bool RBinArchiveFrame::data_list(const DCString& mask, size_t namestart, DIFileI
   bool rv = false;
   for(NameNode *n = nodes.min_node(); n; n = nodes.next_node(n)) {
     if(ignore_case) {
-      if(!tl::su::wildcmp(mask()+namestart, n->name()))
+      if(!tl::su::wildcmp(mask+namestart, *n->name))
         continue;
     } else {
-      if(!tl::su::wildcmp(mask()+namestart, n->name()))
+      if(!tl::su::wildcmp(mask+namestart, *n->name))
         continue;
     }
     if(list.isfull())
@@ -111,10 +111,10 @@ bool RBinArchiveFrame::data_info(const DCString& mask, size_t namestart, SFileIn
   //
   for(NameNode *n = nodes.min_node(); n; n = nodes.next_node(n)) {
     if(ignore_case) {
-      if(!tl::su::utf_cmp_nocase(mask()+namestart, ~mask, n->namenc(), ~n->namenc)!=0)
+      if(!tl::su::utf_cmp_nocase(mask+namestart, ~mask, *n->namenc, ~n->namenc)!=0)
         continue;
     } else {
-      if(!tl::su::scmp(mask()+namestart, n->name())!=0)
+      if(!tl::su::scmp(mask+namestart, *n->name)!=0)
         continue;
     }
     if(!client->node_info(this, list, n))
@@ -292,8 +292,8 @@ bool RBinArchiveFrame::fill_info(SFileInfo& fi, NameNode *node, const DCString& 
       return false;
     DStringBufShared::BufferStr buf = tmp.get_buf();
     buf.reset();
-    buf.cat(path, namestart);
-    buf.cat(node->name, ~node->name);
+    buf.cat(*path, namestart);
+    buf.cat(*node->name, ~node->name);
     tmp.update(buf);
     fi.name = tmp;
   } else {

@@ -27,11 +27,9 @@ bool RSystem::exec_test_tcl(void)
     "puts 2: {'Hello World!\\n'} ; puts 3: [? {'Hello World!\\n'}]\n"
     "puts 4: $hello ; puts 5: [? ${hello world}]\n"
     "if {< 0 1} {puts 0<1} ; if {< 1 0} {puts 1<0}\n"
-//    "= i 0; while {< $i 10} {puts $i; ++ i}\n"
-    "= i 0; puts ${i}; ++ i\n"
-/*
+    "#= i 0; puts ${i}; ++ i\n"
+    "= i 0; while {< $i 10} {puts $i; ++ i}\n"
     "for {= i 0} {< $i 10} {++ i} {puts $i;}\n"
-*/
     "vardump;\n"
   );
   SExecTCL::Parser pp(spp.begin(), spp.end());

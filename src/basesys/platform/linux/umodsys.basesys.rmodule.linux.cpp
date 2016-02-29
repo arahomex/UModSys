@@ -67,29 +67,29 @@ IModuleLibraryReg* RModuleLibrarySO::pfd_load(PFD_Data* pfd, const core::DCStrin
   if(pfd->module!=NULL)
     return NULL;
 //  SetDllDirectory();
-  pfd->module = dlopen(filename, RTLD_LOCAL|RTLD_DEEPBIND|RTLD_NOW);
-//  dbg_put(rsdl_SoLoad, "          dlopen(\"%s\", ...) => %p\n", filename(), pfd->module);
+  pfd->module = dlopen(*filename, RTLD_LOCAL|RTLD_DEEPBIND|RTLD_NOW);
+//  dbg_put(rsdl_SoLoad, "          dlopen(\"%s\", ...) => %p\n", *filename, pfd->module);
   if(pfd->module==NULL) {
-    dbg_put(rsdl_SoLoad, "          dlopen(\"%s\", ...) error: %s\n", filename(), dlerror());
+    dbg_put(rsdl_SoLoad, "          dlopen(\"%s\", ...) error: %s\n", *filename, dlerror());
     return NULL;
   }
   //
   IModuleLibraryReg* ilib = NULL;
   pfd->entry = (f_get_moduleinfo)(dlsym(pfd->module, MODULE_ENTRY_NAME));
   if(pfd->entry==NULL) {
-    dbg_put(rsdl_SoLoad, "          load so(\"%s\") {%p, %p} => %p\n", filename(), pfd->module, pfd->entry, ilib);
+    dbg_put(rsdl_SoLoad, "          load so(\"%s\") {%p, %p} => %p\n", *filename, pfd->module, pfd->entry, ilib);
     pfd_unload(pfd);
     return ilib;
   }
   //
   ilib = pfd->entry();
   if(ilib==NULL) {
-    dbg_put(rsdl_SoLoad, "          load so(\"%s\") {%p, %p} => %p\n", filename(), pfd->module, pfd->entry, ilib);
+    dbg_put(rsdl_SoLoad, "          load so(\"%s\") {%p, %p} => %p\n", *filename, pfd->module, pfd->entry, ilib);
     pfd_unload(pfd);
     return ilib;
   }
   //
-  dbg_put(rsdl_SoLoad, "          load so(\"%s\") {%p, %p} => %p\n", filename(), pfd->module, pfd->entry, ilib);
+  dbg_put(rsdl_SoLoad, "          load so(\"%s\") {%p, %p} => %p\n", *filename, pfd->module, pfd->entry, ilib);
   return ilib;
 }
 
@@ -160,7 +160,7 @@ size_t RModuleLibrarySO::pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, const
   s_pwd_init();
   if(~mask==0) // automatic
     return s_pfd_scan(sys, la, "*", SO_SUFFIX);
-  return s_pfd_scan(sys, la, mask, "") + s_pfd_scan(sys, la, mask, SO_SUFFIX);
+  return s_pfd_scan(sys, la, *mask, "") + s_pfd_scan(sys, la, *mask, SO_SUFFIX);
 }
 
 //***************************************

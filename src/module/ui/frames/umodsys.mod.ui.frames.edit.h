@@ -132,7 +132,7 @@ bool RFrame_Edit::set_fcp(const SFrameCreateParameters& fcp, const SParameters* 
 {
   if(!RFrame_Common::set_fcp(fcp, args))
     return false;
-  set_buf(fcp.text, ~fcp.text);
+  set_buf(*fcp.text, ~fcp.text);
   if(args) {
     args->get("max_len", max_len);
     set_buf(NULL, max_len+1);
@@ -166,7 +166,7 @@ bool RFrame_Edit::set_value(int kind, const SFrameDataIn& val)
   if(user_db || kind!=0)
     return false;
   if(val.type==fdt_String) {
-    set_buf( val.s(), ~val.s());
+    set_buf( *val.s(), ~val.s());
     caret = text_len;
     return true;
   }

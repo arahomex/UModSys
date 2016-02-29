@@ -200,7 +200,7 @@ bool RFrame_List::draw_post(const SDrawState& S)
       text = li.text;
     }
     BCharL line[max_line_length+1];
-    int len = tl::su::utf_8to32(line, max_line_length, text, ~text, true);
+    int len = tl::su::utf_8to32(line, max_line_length, *text, ~text, true);
     line[len] = 0;
     //
     if(selid==i) {

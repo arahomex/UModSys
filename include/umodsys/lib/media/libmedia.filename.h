@@ -53,7 +53,7 @@ struct SVFileName {
   //
   inline const DCString& operator()(void) const { return name; }
   inline operator const DCString&(void) const { return name; }
-  inline operator const BCStr(void) const { return name; }
+  inline operator const BCStr(void) const { return *name; }
   //
   bool relative_up(bool path, bool name);
   void init(BCStr whole, int wholelen, bool dir);
@@ -183,13 +183,13 @@ template<typename Buf> inline bool path_replacenamepath(Buf& buf, BCStr path, BC
 inline bool SVComplexFileName::begin(const DCString &up, const DCString &un) 
 {
   upath = up; uname = un; iterid = 1;
-  valid = path_replacename(filename, upath, uname, false); 
+  valid = path_replacename(filename, *upath, *uname, false); 
   return valid;
 }
 
 inline bool SVComplexFileName::next(void) 
 {
-  valid = path_replacenamepath(filename, upath, uname, ++iterid, false);
+  valid = path_replacenamepath(filename, *upath, *uname, ++iterid, false);
   return valid;
 }
 

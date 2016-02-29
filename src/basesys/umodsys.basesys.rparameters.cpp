@@ -310,7 +310,7 @@ bool RParameters::add(SParametersData *p, BCStr name, BCStr value)
 
 bool RParameters::add(SParametersData *p, BCStr name, const DCString& value)
 {
-  return RParameters::add_last(p, name, value, ~value, et_String);
+  return RParameters::add_last(p, name, *value, ~value, et_String);
 }
 
 bool RParameters::add(SParametersData *p, BCStr name, int value) 

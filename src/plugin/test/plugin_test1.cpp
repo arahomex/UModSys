@@ -79,11 +79,11 @@ struct RTest1_Shell
   inline static typename T::P generate_type(const DCString &mask, const SParameters& args, BStr xinfo="") {
     TypeId found = NULL;
     typename T::P rv;
-    if(!M.t_generate_first(rv, args, mask, &found)) {
+    if(!M.t_generate_first(rv, args, *mask, &found)) {
       if(found!=NULL)
         s_dbg.put(d_Gen, cl_Error, "  fail generate %s(%s)\n", found->name, xinfo);
       else
-        s_dbg.put(d_Gen, cl_Error, "  fail find %s(%s)\n", T::_root_get_interface_type()->name, mask());
+        s_dbg.put(d_Gen, cl_Error, "  fail find %s(%s)\n", T::_root_get_interface_type()->name, *mask);
       return NULL;
     }
     s_dbg.put(d_Gen, cl_Info, "  generated %s(%s) => %p\n", found->name, xinfo, rv());

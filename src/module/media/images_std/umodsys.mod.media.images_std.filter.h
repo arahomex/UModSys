@@ -70,9 +70,9 @@ bool RMediaFilter::filter_load(const SInfo& info, IRefObject* obj)
     }
     //
     BCStr name=NULL;
-    BCStr suffix = info.media_name;
+    BCStr suffix = *info.media_name;
     while(suffix_replace.enum_names(name)) {
-      if(strstr(info.media_name, name)) {
+      if(strstr(*info.media_name, name)) {
         suffix_replace.get(name, suffix);
       }
     }
@@ -102,9 +102,9 @@ bool RMediaFilter::filter_save(SInfo& info, const IRefObject* obj)
     }
     //
     BCStr name=NULL;
-    BCStr suffix = info.media_name;
+    BCStr suffix = *info.media_name;
     while(suffix_replace.enum_names(name)) {
-      if(strstr(info.media_name, name)) {
+      if(strstr(*info.media_name, name)) {
         suffix_replace.get(name, suffix);
       }
     }

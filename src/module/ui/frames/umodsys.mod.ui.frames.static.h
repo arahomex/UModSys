@@ -104,7 +104,7 @@ bool RFrame_Text::draw_post(const SDrawState& S)
     text = this->text;
   }
   BCharL line[max_text_length+1];
-  int len = tl::su::utf_8to32(line, max_text_length, text, ~text, true);
+  int len = tl::su::utf_8to32(line, max_text_length, *text, ~text, true);
   line[len] = 0;
   //
   int fd = is_enabled() ? 0 : cte_Disabled;

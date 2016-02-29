@@ -30,8 +30,9 @@ struct TSCoreConst {
   inline const ConstStr& get_s(void) const { return *this; }
   inline Str get_text(void) const { return text; }
   inline size_t get_length(void) const { return length; }
-  inline Str operator()(void) const { return text; }
-  inline operator Str(void) const { return text; }
+  inline Str operator*(void) const { return text; }
+  inline Str operator+(size_t shift) const { return text + shift; }
+//  inline operator Str(void) const { return text; }
   inline size_t operator~(void) const { return length; }
   inline Str c_str(void) const { return text ? text : ""; }
   inline bool empty(void) const { return length==0; }
@@ -98,10 +99,12 @@ struct TSCoreBuffer : TSCoreBufferBuffer<CharT> {
   inline explicit TSCoreBuffer(OStr s, Str s_end, Str s_eos) { setup(s, s_end-s, s_eos-s); }
   //
   inline ConstStr get_s(void) const { return ConstStr(Buf::text, length); }
+  inline operator ConstStr(void) const { return ConstStr(Buf::text, length); }
 //  inline ConstStr operator*(void) const { return ConstStr(Buf::text, length); }
   inline Str get_text(void) const { return Buf::text; }
   inline size_t get_length(void) const { return length; }
-//  inline Str operator()(void) const { return Buf::text; }
+  inline Str operator*(void) const { return Buf::text; }
+  inline Str operator+(size_t shift) const { return Buf::text + shift; }
 //  inline operator Str(void) const { return Buf::text; }
   inline size_t operator~(void) const { return length; }
   inline Str c_str(void) const { return Buf::text ? Buf::text : ""; }
@@ -122,6 +125,7 @@ struct TSCoreBuffer : TSCoreBufferBuffer<CharT> {
   //
   inline bool append(Str s, size_t L) { return cat(s, L); }
   inline bool set(Str s, size_t L) { return safecpy(s, L); }
+  inline void set(const ConstStr& s) { set(*s, ~s); }
   //
   inline bool cat(Str s, size_t n) {
     if(n==0)

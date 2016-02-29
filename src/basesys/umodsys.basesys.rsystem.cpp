@@ -74,7 +74,7 @@ HUniquePointer RSystem::upi_add(const SUniquePointerInfo* lupi)
   return rv;
 */
   const SUniquePointerInfo* rv;
-  SUniquePointerInfo nv(g, n, lupi->verno);
+  SUniquePointerInfo nv(*g, *n, lupi->verno);
   //
   rv = uptr_list.find(nv);
   if(rv!=NULL)
@@ -104,7 +104,7 @@ const core::SSourceContext* RSystem::persist_ctx(const core::SSourceContext* sc)
     return NULL; // error
   //
   const SSourceContext* rv;
-  SSourceContext nv(ff, sc->line, fu);
+  SSourceContext nv(*ff, sc->line, *fu);
   //
   rv = sc_list.find(nv);
   if(rv!=NULL)

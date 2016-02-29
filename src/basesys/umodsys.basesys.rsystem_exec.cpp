@@ -43,16 +43,14 @@ bool RSystem::exec_args(int argc, char** argv)
 //***************************************
 //***************************************
 
-bool RSystem::command(SExecTCL& tcl, const SExecTCL::String &cmd, const SExecTCL::Strings& args)
+bool RSystem::command(SExecTCL& tcl, const SExecTCL::Strings& args)
 {
-  if(1) {
-    DStringBufMedium tt;
-    tt = cmd;
-    dbg_put(rsdl_System, "RSystem::command(%d:\"%s\" +%d", int(~cmd), tt.c_str(), int(~args));
-    for(size_t i=0; i<~args; i++) {
+  const SExecTCL::String &cmd = args[0];
+  if(0) {
+    dbg_put(rsdl_System, "RSystem::command(%d \"%.*s\" ", int(~args), int(~cmd), cmd.c_str());
+    for(size_t i=1; i<~args; i++) {
       const SExecTCL::String &arg = args[i];
-      tt = arg;
-      dbg_put(rsdl_System, " %d:\"%s\"", int(~arg), tt.c_str());
+      dbg_put(rsdl_System, " \"%.*s\"", int(~arg), arg.c_str());
     }
     dbg_put(rsdl_System, ")\n");
   }
@@ -137,7 +135,7 @@ bool RSystem::command(SExecTCL& tcl, const SExecTCL::String &cmd, const SExecTCL
         return true;
       }
     }
-    dbg_put(rsdl_System, "RSystem::command(%d:\"%.*s\" +%d)\n", int(~cmd), int(~cmd), cmd(), int(~args));
+    dbg_put(rsdl_System, "RSystem::command(%d:\"%.*s\" +%d)\n", int(~cmd), int(~cmd), *cmd, int(~args));
     return false;
 }
 

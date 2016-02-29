@@ -209,10 +209,10 @@ protected:
       if(kw=="null")
         return parser->put_value(NULL, Value::s_null(), 0) || err("Parser error");
       BChar* ep;
-      long lv = strtol(kw(), &ep, 10);
+      long lv = strtol(*kw, &ep, 10);
       if(*ep==0)
         return parser->put_value(NULL, Value(lv), 0) || err("Parser error");
-      double dv = strtod(kw(), &ep);
+      double dv = strtod(*kw, &ep);
       if(*ep==0)
         return parser->put_value(NULL, Value(dv), 0) || err("Parser error");
       return err("Value error");

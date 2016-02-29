@@ -84,10 +84,10 @@ public:
   const StringElem* append(Str v, size_t len);
   inline const StringElem* append(Str v) { return v!=NULL ? append(v, su::slen(v)) : &s_null; }
   template<typename CoreT, typename Comparer2> 
-  inline const StringElem* append(const TString<CoreT, Comparer>& v) 
+  inline const StringElem* append(const TString<CoreT, Comparer2>& v) 
     { return append(v.get_text(), v.get_length()); }
   template<typename CoreT, typename Comparer2> 
-  inline const StringElem* append(const TStringBuf<CoreT, Comparer>& v) 
+  inline const StringElem* append(const TStringBuf<CoreT, Comparer2>& v) 
     { return append(v.get_text(), v.get_length()); }
   //
   void copyfrom(const Self &R);

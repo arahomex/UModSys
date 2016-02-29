@@ -27,7 +27,7 @@ struct SExecTCL {
   typedef core::DStringBufSmall StringName, StringValue;
   typedef core::DStringBuffer StringStream;
   //
-  typedef tl::TDynarrayStatic<BChar,0x10000> StringStack;
+  typedef tl::TDynarrayStatic<BChar, 0x10000> StringStack;
   typedef tl::TDynarrayStatic<String, 64> Strings;
   typedef tl::TScatterArray<StringName, StringValue> StringMap;
   //
@@ -58,7 +58,7 @@ struct SExecTCL {
   };
   //
   struct IExecutor {
-    virtual bool command(SExecTCL& tcl, const String &cmd, const Strings& args) =0;
+    virtual bool command(SExecTCL& tcl, const Strings& args) =0;
   };
   //
   //
@@ -107,36 +107,38 @@ struct SExecTCL {
     ps2.Parse(c2);
     ps.p = ps2.p; // sync
     c2.finish();
-    if(ps2.token==Parser::tError)
+    if(ps2.token>=Parser::tError)
       return false;
     add_result(c2);
-  //printf("ret{%s}\n", cs(c2.result));
+//printf("ret{%.*s}\n", int(~c2.result), *c2.result);
     return true;
   }
   bool execute(void) {
     if(args.size()==0)
       return true;
     execute_begin();
-    bool rv = do_cmd(args[0], args);
+    bool rv = do_cmd(args);
     execute_end();
     return rv;
   }
   //
-  bool do_cmd(const String &cmd, Strings& args) {
-    return executor->command(*this, cmd, args);
+  bool do_cmd(Strings& args) {
+    return executor->command(*this, args);
   }
   //
   int eval_expr(const String& expr) {
+//printf("?expr{%.*s}", int(~expr), *expr);
     if(~expr==0)
       return 0;
     int rv;
     if(!string_to_int(expr, rv))
       return -1;
+//printf("={%d}", rv);
     return rv;
   }
   String eval(const String& code) {
     Self c2(ss, executor);
-    Parser ps2(code, code + ~code);
+    Parser ps2(*code, code + ~code);
     ps2.Parse(c2);
     c2.finish();
     return new_string(c2.result);
@@ -151,7 +153,7 @@ struct SExecTCL {
   //
   static bool string_to_int(const String& src, int& dest) {
     StringName buf(src);
-    return sscanf(buf.get_text(), "%d", &dest)==1;
+    return sscanf(*buf, "%d", &dest)==1;
   }
   // static void print_str(const String& src) { printf("%.*s", src.count, src.value); }
   //
@@ -159,7 +161,7 @@ struct SExecTCL {
     size_t p = ss.stack.Len();
     if(!ss.stack.ResizeRel(~src+1))
         return String();
-    tl::su::smemcpy(ss.stack.All()+p, src(), ~src);
+    tl::su::smemcpy(ss.stack.All()+p, *src, ~src);
     ss.stack[p+~src] = 0;
 //printf("{new=%d+%d}", end-ss.stack.begin(), ss.stack.end()-end);
     String rv(ss.stack.All()+p, ~src);
@@ -191,6 +193,7 @@ struct SExecTCL {
   //
   void set_result(const String& src) {
     result = new_string(src);
+//printf("set_result{%.*s}\n", int(~result), *result);
   }
   void add(char sym) {
 //printf("{chr=0x%x}", sym);
@@ -205,7 +208,7 @@ struct SExecTCL {
   }
   void add(const String& ss) {
 //printf("{str:%d=%.*s}", int(~ss), int(~ss), ss.c_str());
-    stream.append(ss, ~ss);
+    stream.append(*ss, ~ss);
     ssync();
   }
   void next_arg(void) {
@@ -215,12 +218,20 @@ struct SExecTCL {
   size_t stream_size(void) { return ~stream; }
   //
   String var_get(const String& name) {
-    return ss.vars[StringName(name)].str();
+    StringName key(name);
+    const StringValue* value = ss.vars(key);
+    if(value!=NULL) {
+      String rv(*value);
+//printf("{found '"); prints(name); printf("' = '"); prints(value->get_text()); printf("' %p/%p}", value->get_text(), rv.get_text());
+      return rv;
+    }
+//printf("{Not found '"); prints(name); printf("'}");
+    return String();
   }
   String var_set(const String& name, const String& value) {
-    StringName key(name, ~name);
+    StringName key(name);
     StringValue& v = ss.vars[key];
-    v = StringValue(value, ~value);
+    v = StringValue(value);
 //printf("{'"); prints(key); printf("'='"); prints(v); printf("'}");
     return v.str();
   }
@@ -245,6 +256,7 @@ struct SExecTCL {
 //printf("{finish top=%d}", ss.stack.count);
   }
   void add_result(Self &r) {
+//printf("add_result{%.*s}\n", int(~r.result), *r.result);
     add(r.result.begin(), r.result.end());
   }
   //

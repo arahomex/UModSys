@@ -40,7 +40,7 @@ IStreamReader::P RLibraryBinTree::bin_reader(const DCString& media_name, const S
   for(DMounts::CIter x=mounts(); x; ++x) {
     const SMountInfo& mi = x->second;
     const DCString &mnt = mi.mount_name.get_s();
-    if(~media_name<=~mnt || !tl::su::seq(mnt(), media_name(), ~mnt) 
+    if(~media_name<=~mnt || !tl::su::seq(*mnt, *media_name, ~mnt) 
        || !mi.archive.valid() || !(mi.pm & mp_Read))
       continue;
     IStreamReader::P rv = mi.archive->data_reader(media_name + ~mnt, flags);
@@ -55,7 +55,7 @@ IStreamWriter::P RLibraryBinTree::bin_writer(const DCString& media_name, const S
   for(DMounts::CIter x=mounts(); x; ++x) {
     const SMountInfo& mi = x->second;
     const DCString &mnt = mi.mount_name.get_s();
-    if(~media_name<=~mnt || !tl::su::seq(mnt(), media_name(), ~mnt) 
+    if(~media_name<=~mnt || !tl::su::seq(*mnt, *media_name, ~mnt) 
        || !mi.archive.valid() || !(mi.pm & mp_Write))
       continue;
     IStreamWriter::P rv = mi.archive->data_writer(media_name + ~mnt, flags);
@@ -71,7 +71,7 @@ bool RLibraryBinTree::bin_load(const DCString& media_name, SCMemShared& mem, con
   for(DMounts::CIter x=mounts(); x; ++x) {
     const SMountInfo& mi = x->second;
     const DCString &mnt = mi.mount_name.get_s();
-    if(~media_name<=~mnt || !tl::su::seq(mnt(), media_name(), ~mnt) 
+    if(~media_name<=~mnt || !tl::su::seq(*mnt, *media_name, ~mnt) 
        || !mi.archive.valid() || !(mi.pm & mp_Read))
       continue;
     if(mi.archive->data_load(media_name + ~mnt, mem, flags))
@@ -85,7 +85,7 @@ bool RLibraryBinTree::bin_save(const DCString& media_name, const SCMem& mem, con
   for(DMounts::CIter x=mounts(); x; ++x) {
     const SMountInfo& mi = x->second;
     const DCString &mnt = mi.mount_name.get_s();
-    if(~media_name<=~mnt || !tl::su::seq(mnt(), media_name(), ~mnt) 
+    if(~media_name<=~mnt || !tl::su::seq(*mnt, *media_name, ~mnt) 
        || !mi.archive.valid() || !(mi.pm & mp_Read))
       continue;
     if(mi.archive->data_save(media_name + ~mnt, mem, flags))
@@ -101,7 +101,7 @@ bool RLibraryBinTree::bin_info(const DCString& media_name, SFileInfo& info, cons
     if(!mi.archive.valid() || !(mi.pm & mp_List))
       continue;
     const DCString &mnt = mi.mount_name.get_s();
-    if(~media_name<=~mnt && !tl::su::seq(mnt(), media_name(), ~mnt))
+    if(~media_name<=~mnt && !tl::su::seq(*mnt, *media_name, ~mnt))
       continue;
     if(mi.archive->data_info(media_name, ~mnt, info, flags))
       return true;
@@ -117,7 +117,7 @@ bool RLibraryBinTree::bin_list(const DCString& media_mask, DIFileInfoArray& info
     if(!mi.archive.valid() || !(mi.pm & mp_List))
       continue;
     const DCString &mnt = mi.mount_name.get_s();
-    if(~media_mask>=~mnt && tl::su::seq(mnt(), media_mask(), ~mnt)) {
+    if(~media_mask>=~mnt && tl::su::seq(*mnt, *media_mask, ~mnt)) {
       rv = mi.archive->data_list(media_mask, ~mnt, info, flags) || rv;
     } /*else if(tl::su::wildcmp(media_mask(), mnt())) {
       rv = mi.archive->data_list(media_mask, ~mnt, info, flags) || rv;

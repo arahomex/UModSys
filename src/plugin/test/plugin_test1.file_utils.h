@@ -22,8 +22,8 @@ lib2d::IMultiImage::P RTest1_Shell::new_mem_multiimage(lib2d::IImageFactory* img
 libmedia::IBinArchive::P RTest1_Shell::media_arch_stdio(const DCString &path)
 {
   TParametersA<1024> params;
-  params.add("filepath", path());
-  return generate_type<libmedia::IBinArchive>("*::stdio::*", params, path);
+  params.add("filepath", *path);
+  return generate_type<libmedia::IBinArchive>("*::stdio::*", params, *path);
 }
 
 libmedia::IBinArchive::P RTest1_Shell::media_arch_zip(libmedia::ILibrary* root, libmedia::IUtilities* utl, const DCString &path, bool rw)
@@ -36,7 +36,7 @@ libmedia::IBinArchive::P RTest1_Shell::media_arch_zip(libmedia::ILibrary* root, 
   params.add("client", cli);
   params.add("filename", path);
   params.add("library", root);
-  libmedia::IBinArchiveFrame::P rv = generate_type<libmedia::IBinArchiveFrame>("*::stdlib::*", params, path)();
+  libmedia::IBinArchiveFrame::P rv = generate_type<libmedia::IBinArchiveFrame>("*::stdlib::*", params, *path)();
   if(!rv.valid())
     return NULL;
   rv->utils = utl;
@@ -84,9 +84,9 @@ libmedia::ILibrary::P RTest1_Shell::media_cache(bool isobj)
 void RTest1_Shell::test_op_file(bool f, const DCString &fname, const DCString &operation)
 {
   if(f) {
-    s_dbg.put(d_Shell, cl_Info, "  %s file {%s} ok\n", operation(), fname());
+    s_dbg.put(d_Shell, cl_Info, "  %s file {%s} ok\n", *operation, *fname);
   } else {
-    s_dbg.put(d_Shell, cl_Error, "  ERROR %s file {%s}\n", operation(), fname());
+    s_dbg.put(d_Shell, cl_Error, "  ERROR %s file {%s}\n", *operation, *fname);
   }
 }
 
@@ -94,17 +94,17 @@ void RTest1_Shell::test_op_file(bool f, const DCString &fname, SCMemShared& mem_
 {
   if(isRead) {
     if(f) {
-      s_dbg.put(d_Shell, cl_Info, "  load file {%s} ok, size:%u {", fname(), int(~mem_block));
+      s_dbg.put(d_Shell, cl_Info, "  load file {%s} ok, size:%u {", *fname, int(~mem_block));
       dump_str(mem_block.get_tdata<char>(), ~mem_block);
       s_dbg.put(d_Shell, cl_Info, "}\n");
     } else {
-      s_dbg.put(d_Shell, cl_Error, "  ERROR load file {%s}\n", fname());
+      s_dbg.put(d_Shell, cl_Error, "  ERROR load file {%s}\n", *fname);
     }
   } else {
     if(f) {
-      s_dbg.put(d_Shell, cl_Info, "  save file {%s} ok, size:%u\n", fname(), ~mem_block);
+      s_dbg.put(d_Shell, cl_Info, "  save file {%s} ok, size:%u\n", *fname, ~mem_block);
     } else {
-      s_dbg.put(d_Shell, cl_Error, "  ERROR save file {%s}\n", fname());
+      s_dbg.put(d_Shell, cl_Error, "  ERROR save file {%s}\n", *fname);
     }
   }
 }

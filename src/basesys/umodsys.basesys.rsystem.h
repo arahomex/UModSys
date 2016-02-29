@@ -88,7 +88,7 @@ public:
   bool set_var(const core::DCString& name, const core::DCString& value, bool can_new);
   bool set_shell(const core::DCString& name, IShell* shell);
 public:
-  bool command(SExecTCL& tcl, const SExecTCL::String &cmd, const SExecTCL::Strings& args);
+  bool command(SExecTCL& tcl, const SExecTCL::Strings& args);
 public:
   ISourceContextAdapter* get_sca(void);
   IUniquePointerResolver* get_upr(void);

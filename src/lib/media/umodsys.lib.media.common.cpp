@@ -21,7 +21,7 @@ SVFileName::SVFileName(const DCString &whole, bool dir)
 : valid(false) {
   *namebuf = 0;
   purenamelen = 0;
-  init(whole, whole.length, dir);
+  init(*whole, whole.length, dir);
 }
 
 SVFileName::SVFileName(const DCString &prefix, BCStr suffix, bool dir)

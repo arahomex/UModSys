@@ -29,18 +29,19 @@ struct TString : public CoreT, public Comparer {
   typedef TStringBuf<CoreBuffer, Comparer> SelfBuf;
   typedef TString<ConstStr, Comparer> ConstString;
   //
-//  template<typename Core2> inline TString(const TString<CoreT, Comparer>& R) : CoreT(R), Comparer(R) {}
-//  template<typename Core2> inline TString(const TStringBuf<CoreT, Comparer>& R) : CoreT(R), Comparer(R) {}
+//  template<typename Core2> inline TString(const TString<Core2, Comparer>& R) : CoreT(R), Comparer(R) {}
+//  template<typename Core2> inline TString(const TStringBuf<Core2, Comparer>& R) : CoreT(R), Comparer(R) {}
+  //
   inline TString(void) {}
   inline explicit TString(core::Void* p) : CoreT(p), Comparer(p) {}
+  inline TString(const ConstStr& R) { set(R); }
   inline TString(const Self& R) : CoreT(R), Comparer(R) {}
   inline TString(const SelfBuf& R) : CoreT(R), Comparer(R) {}
   inline TString(const Comparer& cmp, core::Void* p) : CoreT(p), Comparer(cmp) {}
   inline /*explicit*/ TString(Str s) { set(s); }
   inline TString(Str s, size_t L) { set(s, L); }
   inline TString(Str s, Str s_end) { set(s, s_end); }
-  inline TString(const ConstStr& R)  { set(R); }
-  inline explicit TString(const Comparer& cmp) : Comparer(cmp) { set(); }
+//  inline explicit TString(const Comparer& cmp) : Comparer(cmp) { set(); }
   inline TString(const Comparer& cmp, Str s) : Comparer(cmp) { set(s); }
   inline TString(const Comparer& cmp, Str s, size_t L) : Comparer(cmp) { set(s, L); }
   inline TString(const Comparer& cmp, Str s, Str s_end) : Comparer(cmp) { set(s, s_end); }
@@ -122,7 +123,7 @@ struct TString : public CoreT, public Comparer {
   inline void set(Str s) { CoreT::set(s); update(); }
   inline void set(Str s, int L) { CoreT::set(s, L); update(); }
   inline void set(Str s, Str s_end) { CoreT::set(s, s_end); update(); }
-  inline void set(const ConstStr& R) { CoreT::set(R); }
+  inline void set(const ConstStr& R) { CoreT::set(R); update(); }
   inline void set(const Self& R) { CoreT::set(R); Comparer::operator=(R); }
   inline void set(const SelfBuf& R) { CoreT::set(R); Comparer::operator=(R); }
   inline void set(const Comparer& cmp) { Comparer::operator=(cmp); update(); }
