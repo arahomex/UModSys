@@ -197,23 +197,23 @@ bool IModuleLibraryUni::scan(void)
 bool IModuleLibraryUni::save_db(FILE *f)
 {
 #if 0
-  fprintf(f, "BEGIN LIBRARY \"%s\"\n", sys_libname());
+  fprintf(f, "BEGIN LIBRARY \"%s\"\n", sys_libname.get_text());
   for(size_t i=0; i<~modules; i++) {
     if(!modules(i).valid())
       continue;
     if(!modules(i)->save_db(f))
       return false;
   }
-  fprintf(f, "END LIBRARY \"%s\"\n", sys_libname());
+  fprintf(f, "END LIBRARY \"%s\"\n", sys_libname.get_text());
 #else
-  fprintf(f, "LIBRARY \"%s\" {\n", sys_libname());
+  fprintf(f, "LIBRARY \"%s\" {\n", sys_libname.get_text());
   for(size_t i=0; i<~modules; i++) {
     if(!modules(i).valid())
       continue;
     if(!modules(i)->save_db(f))
       return false;
   }
-  fprintf(f, "} # END LIBRARY \"%s\"\n\n", sys_libname());
+  fprintf(f, "} # END LIBRARY \"%s\"\n\n", sys_libname.get_text());
 #endif
   return true;
 }

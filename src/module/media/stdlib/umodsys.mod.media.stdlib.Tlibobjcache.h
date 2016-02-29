@@ -87,7 +87,7 @@ bool RLibraryObjCache::objcache_add(const DCString& media_name, IRefObject* obj)
   SCacheElem* e = cache(media_name);
   if(e==NULL) {
     DStringShared n2 = media_name;
-    e = cache(n2(), void_null());
+    e = cache(n2.get_s(), void_null());
     if(e==NULL)
       return false;
     e->name = n2;

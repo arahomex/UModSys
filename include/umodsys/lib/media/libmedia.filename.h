@@ -75,9 +75,9 @@ struct SVComplexFileName {
   inline SVComplexFileName(void) : iterid(1), valid(false) {}
   //
   operator bool(void) const { return valid; }
-  operator DCString(void) const { return filename(); }
-  BCStr get_bs(void) const { return filename; }
-  DCString operator*(void) const { return filename(); }
+  operator DCString(void) const { return filename.get_s(); }
+  BCStr get_bs(void) const { return filename.get_text(); }
+  DCString operator*(void) const { return filename.get_s(); }
   //
   inline bool operator()(const DCString &up, const DCString &un) { return begin(up, un); }
   inline bool operator()(void) { return next(); }

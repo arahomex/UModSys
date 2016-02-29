@@ -34,7 +34,7 @@ struct TStringBuf : public CoreT, public Comparer {
   inline explicit TStringBuf(core::Void* p) : CoreT(p), Comparer(p) {}
   inline TStringBuf(const Self& R) : CoreT(R), Comparer(R) {}
   inline TStringBuf(const Comparer& cmp, core::Void* p) : CoreT(p), Comparer(cmp) {}
-  inline TStringBuf(Str s) { set(s); }
+  inline /*explicit*/ TStringBuf(Str s) { set(s); }
   inline TStringBuf(Str s, size_t L) { set(s, L); }
   inline TStringBuf(Str s, Str s_end) { set(s, s_end); }
   inline TStringBuf(const Buf& b, Str s) { CoreT::setup(b); CoreT::set(s); }

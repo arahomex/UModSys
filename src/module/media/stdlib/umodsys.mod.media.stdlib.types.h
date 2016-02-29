@@ -230,7 +230,7 @@ struct RLibraryLayered : public ILibraryLayered
     inline SLayerX(void) : SLayer(NULL) {}
     inline void operator=(const SLayer& r) {
       mtag = r.tag;
-      tag = mtag();
+      tag.set( mtag.get_s() );
       lib = r.lib;
       pm = r.pm;
     }

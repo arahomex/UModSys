@@ -166,7 +166,7 @@ void RTest1_Shell::file_test5(void)
     if(lines.valid()) {
       s_dbg.put(d_Shell, cl_Info, "  ILines: %p {\n", lines());
       for(size_t i=0; i<~lines->lines; i++) {
-        s_dbg.put(d_Shell, cl_Info, "    line %u: %s\n", (int)i, lines->lines(i)());
+        s_dbg.put(d_Shell, cl_Info, "    line %u: %s\n", (int)i, lines->lines(i).get_text());
       }
       s_dbg.put(d_Shell, cl_Info, "  } ILines: %p \n", lines());
       test_op_file(
@@ -310,7 +310,7 @@ void RTest1_Shell::file_test7(void)
     bool rv = lib->bin_list("/mc/*.bin", slst);
     s_dbg.put(d_Shell, cl_Info, "find %d : %d elems\n", rv, ~lst);
     for(size_t i=0; i<~lst; i++) {
-      s_dbg.put(d_Shell, cl_Info, "  [%u] : %s\n", i, lst[i].name());
+      s_dbg.put(d_Shell, cl_Info, "  [%u] : %s\n", i, lst[i].name.get_text());
     }
   }
   //
@@ -355,7 +355,7 @@ void RTest1_Shell::file_test7(void)
         if(key2 != key)
           continue; // skipped
         if(key!=0) {
-          s_dbg.put(d_Shell, cl_Debug, "...loaded at %d : '%s' size (%d, %d)\n", i, lst[i].name(), si.size(0), si.size(1));
+          s_dbg.put(d_Shell, cl_Debug, "...loaded at %d : '%s' size (%d, %d)\n", i, lst[i].name.get_text(), si.size(0), si.size(1));
         }
         lib2d::SImageCellInfo ici(lib2d::if_Rect, 0, x, y, src->get_info().size(0), src->get_info().size(1));
         if(ici.start(0)+ici.size(0)>di.size(0)) {
@@ -364,7 +364,7 @@ void RTest1_Shell::file_test7(void)
           row_dy = 0;
         }
         if(y + ici.size(1) > di.size(1)) {
-          s_dbg.put(d_Shell, cl_Warning, "...overflow at %d : '%s'\n", i, lst[i].name());
+          s_dbg.put(d_Shell, cl_Warning, "...overflow at %d : '%s'\n", i, lst[i].name.get_text());
           break; // overflow
         }
         if(row_dy<ici.size(1))
@@ -374,7 +374,7 @@ void RTest1_Shell::file_test7(void)
         if(atlas->setup_variable_cell(&ici, 1, i)) {
           membuf.size = src->get_info().getbinsize();
           if(membuf.size>sizeof(buf)) {
-            s_dbg.put(d_Shell, cl_Error, "...buf overflow at %d : '%s'\n", i, lst[i].name());
+            s_dbg.put(d_Shell, cl_Error, "...buf overflow at %d : '%s'\n", i, lst[i].name.get_text());
             break; // overflow
           }
           if(src->get_data(lib2d::SImagePatchInfo(src->get_info(), lib2d::DPoint(0,0)), membuf)) {

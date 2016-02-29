@@ -52,10 +52,11 @@ struct TSCoreShared : public MemAllocT {
   inline bool allocate(const MemAllocT& A, size_t L) { MemAllocT::operator=(A); return info_alloc(L); }
   //
   inline ConstStr get_s(void) const { return ConstStr(info->text, info->length); }
+//  inline ConstStr operator*(void) const { return ConstStr(info->text, info->length); }
   inline Str get_text(void) const { return info->text; }
   inline size_t get_length(void) const { return info->length; }
-  inline Str operator()(void) const { return info->text; }
-  inline operator Str(void) const { return info->text; }
+//  inline Str operator()(void) const { return info->text; }
+//  inline operator Str(void) const { return info->text; }
   inline size_t operator~(void) const { return info->length; }
   inline Str c_str(void) const { return info ? info->text : ""; }
   inline bool is_null(void) const { return info==NULL || info==get_null(); }

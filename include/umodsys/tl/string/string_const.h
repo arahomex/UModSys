@@ -36,7 +36,7 @@ struct TString : public CoreT, public Comparer {
   inline TString(const Self& R) : CoreT(R), Comparer(R) {}
   inline TString(const SelfBuf& R) : CoreT(R), Comparer(R) {}
   inline TString(const Comparer& cmp, core::Void* p) : CoreT(p), Comparer(cmp) {}
-  inline TString(Str s) { set(s); }
+  inline /*explicit*/ TString(Str s) { set(s); }
   inline TString(Str s, size_t L) { set(s, L); }
   inline TString(Str s, Str s_end) { set(s, s_end); }
   inline TString(const ConstStr& R)  { set(R); }

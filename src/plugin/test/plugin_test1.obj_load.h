@@ -77,7 +77,7 @@ struct RLines_Filter : public libmedia::IBinObjFilter {
         req = 0;
         for(size_t i=0; i<~lines->lines; i++) {
           const DStringShared& ss = lines->lines(i);
-          memcpy(mem.get_data(req), ss(), ~ss);
+          memcpy(mem.get_data(req), ss.get_text(), ~ss);
           req += ~ss;
           *mem.get_tdata<char>(req) = '\n';
           req++;

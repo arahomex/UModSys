@@ -171,7 +171,7 @@ bool RFrame_Edit::set_value(int kind, const SFrameDataIn& val)
     return true;
   }
   if(val.type==fdt_SString) {
-    set_buf( val.ss(), ~val.ss());
+    set_buf( val.ss().get_text(), ~val.ss());
     caret = text_len;
     return true;
   }

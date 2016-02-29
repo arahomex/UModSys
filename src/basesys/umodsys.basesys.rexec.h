@@ -151,14 +151,14 @@ struct SExecTCL {
   //
   static bool string_to_int(const String& src, int& dest) {
     StringName buf(src);
-    return sscanf(buf, "%d", &dest)==1;
+    return sscanf(buf.get_text(), "%d", &dest)==1;
   }
   // static void print_str(const String& src) { printf("%.*s", src.count, src.value); }
   //
   String new_string(const String& src) {
     size_t p = ss.stack.Len();
     if(!ss.stack.ResizeRel(~src+1))
-        return NULL;
+        return String();
     tl::su::smemcpy(ss.stack.All()+p, src(), ~src);
     ss.stack[p+~src] = 0;
 //printf("{new=%d+%d}", end-ss.stack.begin(), ss.stack.end()-end);
@@ -185,7 +185,7 @@ struct SExecTCL {
   void ssync(void) {
 //printf("{size=%d}", int(~stream));
     // ss.stack.count = stream.end()-ss.stack.begin();
-    ss.stack.Resize(~stream + (stream - ss.stack.All()));
+    ss.stack.Resize(~stream + (stream.get_text() - ss.stack.All()));
 //printf("{top=%d}", int(~ss.stack));
   }
   //

@@ -68,9 +68,9 @@ bool RSystem::command(SExecTCL& tcl, const SExecTCL::String &cmd, const SExecTCL
       tcl.printf("Vars: %d {\n", tcl.ss.vars.size());
       for(typename SExecTCL::StringMap::const_iterator x=tcl.ss.vars.begin(), e=tcl.ss.vars.end(); x!=e; ++x) {
         tcl.prints("  '");
-        tcl.prints((*x).first);
+        tcl.prints((*x).first.get_text());
         tcl.prints("'='");
-        tcl.prints((*x).second);
+        tcl.prints((*x).second.get_text());
         tcl.prints("'\n");
       }
       tcl.printf("} #Vars\n");

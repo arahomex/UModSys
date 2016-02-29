@@ -98,10 +98,11 @@ struct TSCoreBuffer : TSCoreBufferBuffer<CharT> {
   inline explicit TSCoreBuffer(OStr s, Str s_end, Str s_eos) { setup(s, s_end-s, s_eos-s); }
   //
   inline ConstStr get_s(void) const { return ConstStr(Buf::text, length); }
+//  inline ConstStr operator*(void) const { return ConstStr(Buf::text, length); }
   inline Str get_text(void) const { return Buf::text; }
   inline size_t get_length(void) const { return length; }
-  inline Str operator()(void) const { return Buf::text; }
-  inline operator Str(void) const { return Buf::text; }
+//  inline Str operator()(void) const { return Buf::text; }
+//  inline operator Str(void) const { return Buf::text; }
   inline size_t operator~(void) const { return length; }
   inline Str c_str(void) const { return Buf::text ? Buf::text : ""; }
   //

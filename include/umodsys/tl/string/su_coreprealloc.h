@@ -36,10 +36,11 @@ struct TSCorePrealloc {
   inline TSCorePrealloc(Str s, Str s_end) { set(s, s_end-s); }
   //
   inline ConstStr get_s(void) const { return ConstStr(text, length); }
+//  inline ConstStr operator()(void) const { return ConstStr(text, length); }
   inline Str get_text(void) const { return text; }
   inline size_t get_length(void) const { return length; }
-  inline Str operator()(void) const { return text; }
-  inline operator Str(void) const { return text; }
+//  inline Str operator*(void) const { return text; }
+//  inline operator Str(void) const { return text; }
   inline size_t operator~(void) const { return length; }
   inline Str c_str(void) const { return text; }
   inline bool empty(void) const { return length==0; }

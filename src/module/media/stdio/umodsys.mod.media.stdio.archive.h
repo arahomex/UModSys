@@ -6,7 +6,7 @@
 #define OSDIR_START(rfail, name, req) \
   if((pm & req)==0 || ~name==0) \
     return rfail; \
-  SVFileName xname(prefix(), name, false); \
+  SVFileName xname(prefix.get_text(), name, false); \
   if(!xname.valid) \
     return rfail; \
 
