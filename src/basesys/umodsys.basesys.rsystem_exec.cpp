@@ -43,7 +43,17 @@ bool RSystem::exec_args(int argc, char** argv)
 //***************************************
 //***************************************
 
-bool RSystem::command(SExecTCL& tcl, const SExecTCL::Strings& args)
+bool RSystem::tcl_getvar(SExecTCL& tcl, const SExecTCL::String& name, SExecTCL::String& value)
+{
+  return false;
+}
+
+bool RSystem::tcl_setvar(SExecTCL& tcl, const SExecTCL::String& name, const SExecTCL::String& value)
+{
+  return false;
+}
+
+bool RSystem::tcl_command(SExecTCL& tcl, const SExecTCL::Strings& args)
 {
   const SExecTCL::String &cmd = args[0];
   if(0) {
@@ -116,6 +126,36 @@ bool RSystem::command(SExecTCL& tcl, const SExecTCL::Strings& args)
           state.reset();
         }
         return true;
+      }
+    } else if(cmd=="foreach") {
+      SExecTCL::State state(tcl.ss);
+      if(args.size()>2+1) {
+        if(args[1]=="range") {
+          if(args.size()==1+3) {
+            for(SExecTCL::Range r(this,
+                                  0, 1,
+                                  atoi(SExecTCL::StringValue(args[2]).c_str())); r.valid(); r++) {
+              tcl.eval(args.Last(), &r);
+            }
+            return true;
+          } else if(args.size()==2+3) {
+            for(SExecTCL::Range r(this,
+                                  atoi(SExecTCL::StringValue(args[2]).c_str()),
+                                  1,
+                                  atoi(SExecTCL::StringValue(args[3]).c_str())); r.valid(); r++) {
+              tcl.eval(args.Last(), &r);
+            }
+            return true;
+          } else if(args.size()==3+3) {
+            for(SExecTCL::Range r(this,
+                                  atoi(SExecTCL::StringValue(args[2]).c_str()),
+                                  atoi(SExecTCL::StringValue(args[3]).c_str()),
+                                  atoi(SExecTCL::StringValue(args[4]).c_str())); r.valid(); r++) {
+              tcl.eval(args.Last(), &r);
+            }
+            return true;
+          }
+        }
       }
     } else if(cmd=="<") {
       if(args.size()==3) {

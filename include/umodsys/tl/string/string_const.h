@@ -117,6 +117,17 @@ struct TString : public CoreT, public Comparer {
   template<typename Core2, typename Cmp2> inline bool operator>=(const TStringBuf<Core2, Cmp2>& s) const 
     { return cmp(s)>=0; }
   //
+  //
+  inline bool starts(const ConstStr& s) const {
+    return Comparer::starts(CoreT::get_text(), CoreT::get_length(), s.get_text(), s.get_length(), s.get_comparer()); 
+  }
+  inline bool starts(const ConstStr& s, ConstStr& left) const {
+    if(!Comparer::starts(CoreT::get_text(), CoreT::get_length(), s.get_text(), s.get_length()))
+      return false;
+    left.set(CoreT::get_text()+s.get_length(), CoreT::get_length()-s.get_length());
+    return true;
+  }
+  //
   inline void update(void) { Comparer::update(CoreT::get_text(), CoreT::get_length()); }
   inline void clear(void) { CoreT::clear(); Comparer::clear(); }
   inline void set(void) { clear(); }

@@ -113,6 +113,16 @@ struct TStringBuf : public CoreT, public Comparer {
     return Comparer::eq2(CoreT::get_text(), CoreT::get_length(), s.get_text(), s.get_length()); 
   }
   //
+  inline bool starts(const ConstStr& s) const {
+    return Comparer::starts(CoreT::get_text(), CoreT::get_length(), s.get_text(), s.get_length(), s.get_comparer()); 
+  }
+  inline bool starts(const ConstStr& s, ConstStr& left) const {
+    if(!Comparer::starts(CoreT::get_text(), CoreT::get_length(), s.get_text(), s.get_length()))
+      return false;
+    left.set(CoreT::get_text()+s.get_length(), CoreT::get_length()-s.get_length());
+    return true;
+  }
+  //
   inline ConstString str(void) const { return ConstString(*this, CoreT::get_text(), CoreT::get_length()); }
   inline SelfConst string(void) const { return SelfConst(*this, CoreT::get_text(), CoreT::get_length()); }
   inline Str begin(void) const { return CoreT::get_text(); }

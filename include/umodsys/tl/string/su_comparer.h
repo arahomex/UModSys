@@ -44,6 +44,11 @@ struct TComparerBinary : public core::Void {
   inline static bool eq3(const CharT* mys, size_t myl, const CharT* r, size_t rl, const core::Void& rh) {
     return eq(mys, myl, r, rl);
   }
+  //
+  inline static bool starts(const CharT* mys, size_t myl, const CharT* r, size_t rl) {
+    if(myl<rl) return false;
+    return su::scmp(mys, r, rl)==0;
+  }
 };
 
 //***************************************
@@ -101,6 +106,11 @@ struct TComparerBinaryHash : public SComparerHash {
   inline bool eq3(const CharT* mys, size_t myl, const CharT* r, size_t rl, const SComparerHash& rh) const {
     return myl==rl && hash==rh.hash && su::scmp(mys, r, myl)==0;
   }
+  //
+  inline static bool starts(const CharT* mys, size_t myl, const CharT* r, size_t rl) {
+    if(myl<rl) return false;
+    return su::scmp(mys, r, rl)==0;
+  }
 };
 
 //***************************************
@@ -147,6 +157,11 @@ struct TComparerUtfNocaseHash : public SComparerHash {
   }
   inline bool eq3(const CharT* mys, size_t myl, const CharT* r, size_t rl, const SComparerHash& rh) const {
     return myl==rl && hash==rh.hash && su::utf_cmp_nocase(mys, r, myl)==0;
+  }
+  //
+  inline static bool starts(const CharT* mys, size_t myl, const CharT* r, size_t rl) {
+    if(myl<rl) return false;
+    return su::utf_cmp_nocase(mys, r, rl)==0;
   }
 };
 

@@ -30,6 +30,9 @@ bool RSystem::exec_test_tcl(void)
     "#= i 0; puts ${i}; ++ i\n"
     "= i 0; while {< $i 10} {puts $i; ++ i}\n"
     "for {= i 0} {< $i 10} {++ i} {puts $i;}\n"
+    "foreach range 10 {puts R$value ;}\n"
+    "foreach range 1 11 {puts r$value ;}\n"
+    "foreach range 5 5 51 {puts R$value ;}\n"
     "vardump;\n"
   );
   SExecTCL::Parser pp(spp.begin(), spp.end());

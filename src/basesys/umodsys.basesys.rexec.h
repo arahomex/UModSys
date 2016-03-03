@@ -58,9 +58,40 @@ struct SExecTCL {
   };
   //
   struct IExecutor {
-    virtual bool command(SExecTCL& tcl, const Strings& args) =0;
+    virtual bool tcl_command(SExecTCL& tcl, const Strings& args) =0;
+    virtual bool tcl_getvar(SExecTCL& tcl, const String& name, String& value) =0;
+    virtual bool tcl_setvar(SExecTCL& tcl, const String& name, const String& value) =0;
   };
   //
+  //
+  struct Range : IExecutor {
+    IExecutor *chain;
+    int begin, end, step, cur;
+    char tmp[64];
+    //
+    bool tcl_command(SExecTCL& tcl, const Strings& args) {
+      return chain ? chain->tcl_command(tcl, args) : false;
+    }
+    bool tcl_getvar(SExecTCL& tcl, const String& name, String& value) {
+      if(name=="value") {
+        sprintf(tmp, "%d", cur);
+        value = tmp;
+        return true;
+      }
+      return chain ? chain->tcl_getvar(tcl, name, value) : false;
+    }
+    bool tcl_setvar(SExecTCL& tcl, const String& name, const String& value) {
+      return chain ? chain->tcl_setvar(tcl, name, value) : false;
+    }
+    //
+    Range(IExecutor* n, int a, int b, int c) : chain(n), begin(a), end(c), step(b) { start(); }
+    //
+    void start(void) { cur = begin; }
+    void operator++(void) { cur += step; }
+    void operator++(int) { cur += step; }
+    bool valid(void) { return cur<end; }
+    //
+  };
   //
   IExecutor *executor;
   SharedState &ss;
@@ -123,7 +154,7 @@ struct SExecTCL {
   }
   //
   bool do_cmd(Strings& args) {
-    return executor->command(*this, args);
+    return executor->tcl_command(*this, args);
   }
   //
   int eval_expr(const String& expr) {
@@ -138,6 +169,13 @@ struct SExecTCL {
   }
   String eval(const String& code) {
     Self c2(ss, executor);
+    Parser ps2(*code, code + ~code);
+    ps2.Parse(c2);
+    c2.finish();
+    return new_string(c2.result);
+  }
+  String eval(const String& code, IExecutor *ex2) {
+    Self c2(ss, ex2);
     Parser ps2(*code, code + ~code);
     ps2.Parse(c2);
     c2.finish();
@@ -218,6 +256,9 @@ struct SExecTCL {
   size_t stream_size(void) { return ~stream; }
   //
   String var_get(const String& name) {
+    String rvx;
+    if(executor->tcl_getvar(*this, name, rvx))
+      return rvx;
     StringName key(name);
     const StringValue* value = ss.vars(key);
     if(value!=NULL) {
@@ -229,6 +270,8 @@ struct SExecTCL {
     return String();
   }
   String var_set(const String& name, const String& value) {
+    if(executor->tcl_setvar(*this, name, value))
+      return value;
     StringName key(name);
     StringValue& v = ss.vars[key];
     v = StringValue(value);
