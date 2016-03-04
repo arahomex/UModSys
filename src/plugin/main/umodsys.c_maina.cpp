@@ -10,8 +10,13 @@ static void refer(void);
 
 int main(int argc, char **argv)
 {
-  syshlp::con_setup();
-  RConsole_std::s_console.reflect("umodsys.log");
+  syshlp::validate_env();
+  syshlp::validate_args(argc, argv);
+  //
+  syshlp::con_setup(syshlp::opt_enable_colors);
+  if(syshlp::opt_stdlog_file!=NULL)
+    RConsole_std::s_console.reflect(syshlp::opt_stdlog_file);
+  //
   RSystem& S = RSystem::s_sys;
   //
   S.set_console(&RConsole_std::s_console);

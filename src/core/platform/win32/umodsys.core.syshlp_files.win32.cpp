@@ -17,8 +17,9 @@ using namespace UModSys::core::syshlp;
 //***************************************
 
 static DWORD s_oldCP = 0;
+static bool no_colors = true;
 
-void syshlp::con_setup(void)
+void syshlp::con_setup(bool enable_colors)
 {
   DWORD err;
   if(s_oldCP==0)
@@ -26,8 +27,11 @@ void syshlp::con_setup(void)
   if(!SetConsoleOutputCP(CP_UTF8)) {
     err = GetLastError();         
   }
-  SetConsoleTextAttribute(stdout, NULL);
-  SetConsoleTextAttribute(stderr, NULL);
+  no_colors = !enable_colors;
+  if(!no_colors) {
+    SetConsoleTextAttribute(stdout, NULL);
+    SetConsoleTextAttribute(stderr, NULL);
+  }
 }
 
 void syshlp::con_restore(void)
@@ -38,12 +42,16 @@ void syshlp::con_restore(void)
   if(!SetConsoleOutputCP(s_oldCP)) {
     err = GetLastError();         
   }
-  SetConsoleTextAttribute(stdout, NULL);
-  SetConsoleTextAttribute(stderr, NULL);
+  if(!no_colors) {
+    SetConsoleTextAttribute(stdout, NULL);
+    SetConsoleTextAttribute(stderr, NULL);
+  }
 }
 
 void syshlp::con_setcolor(FILE* stream, const unsigned char *rgb)
 {
+  if(no_colors)
+    return;
   DWORD err;
   if(stream==NULL)
     return;

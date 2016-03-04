@@ -11,17 +11,72 @@ using namespace UModSys::core::syshlp;
 // syshlp::
 //***************************************
 
-
-void syshlp::con_setup(void)
+static Buint32 s_ansi_colors[256] = 
+#include "ansi-colors.h"
+;
+static int s_find_ansi_color(const unsigned char *rgb, int max=256)
 {
+  int rv = 0;
+  int fdist = 1000000;
+  for(int i=0; i<max; i++) {
+    Buint32 c = s_ansi_colors[i];
+    int dr = int((c>>16)&0xff)-rgb[0];
+    int dg = int((c>>8)&0xff)-rgb[1];
+    int db = int((c>>0)&0xff)-rgb[2];
+    int dist = dr*dr + dg*dg + db*db;
+    if(fdist>dist) {
+      rv = i;
+      fdist = dist;
+    }
+  }
+  return rv;
+}
+
+static int ncolors = 0;
+
+void syshlp::con_setup(bool enable_colors)
+{
+  if(!enable_colors) {
+    ncolors = 0;
+    return;
+  }
+  FILE *f = popen("tput colors", "r");
+  if(f==NULL)
+    return;
+  char buf[256];
+  if(!fgets(buf, sizeof(buf), f)) {
+    *buf = 0;
+  }
+  pclose(f);
+  //
+  ncolors = atoi(buf);
+  if(ncolors<16) {
+    ncolors = 0;
+  }
 }
 
 void syshlp::con_restore(void)
 {
+  if(ncolors!=0) {
+    con_setcolor(stdout, NULL);
+    con_setcolor(stderr, NULL);
+  }
 }
 
 void syshlp::con_setcolor(FILE* stream, const unsigned char *rgb)
 {
+  if(ncolors>=16 && ncolors<=256) {
+    if(rgb==NULL) {
+      fprintf(stream, "\x1b[0m");
+    } else {
+      if(ncolors<256) {
+      } else {
+        int clrf = s_find_ansi_color(rgb, ncolors);
+        int clrb = s_find_ansi_color(rgb+3, ncolors);
+        fprintf(stream, "\x1b[38;5;%dm\x1b[48;5;%dm", clrf, clrb);
+      }
+    }
+  }
 }
 
 //***************************************

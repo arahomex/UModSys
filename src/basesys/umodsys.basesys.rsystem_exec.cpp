@@ -67,30 +67,30 @@ bool RSystem::tcl_command(SExecTCL& tcl, const SExecTCL::Strings& args)
   //
     if(cmd=="puts") {
       for(int i=1; i<args.size(); i++) {
-        if(i>1) printf(" ");
-        tcl.prints(args[i]);
+        if(i>1) tcl.print_f(" ");
+        tcl.print_s(args[i]);
       }
-      tcl.prints("\n");
+      tcl.print_s("\n");
       return true;
     } else if(cmd=="vardump") {
-      tcl.printf("Vars: %d {\n", tcl.ss.vars.size());
+      tcl.print_f("Vars: %d {\n", tcl.ss.vars.size());
       for(typename SExecTCL::StringMap::const_iterator x=tcl.ss.vars.begin(), e=tcl.ss.vars.end(); x!=e; ++x) {
-        tcl.prints("  '");
-        tcl.prints((*x).first.get_text());
-        tcl.prints("'='");
-        tcl.prints((*x).second.get_text());
-        tcl.prints("'\n");
+        tcl.print_s("  '");
+        tcl.print_s((*x).first.get_text());
+        tcl.print_s("'='");
+        tcl.print_s((*x).second.get_text());
+        tcl.print_s("'\n");
       }
-      tcl.printf("} #Vars\n");
+      tcl.print_f("} #Vars\n");
       return true;
     } else if(cmd=="argdump") {
-      tcl.printf("Args: %d {\n", args.size());
+      tcl.print_f("Args: %d {\n", args.size());
       for(int i=0; i<args.size(); i++) {
-        tcl.printf("  %d:'", i);
-        tcl.prints(args[i]);
-        tcl.prints("'\n");
+        tcl.print_f("  %d:'", i);
+        tcl.print_s(args[i]);
+        tcl.print_s("'\n");
       }
-      tcl.prints("} #Args\n");
+      tcl.print_s("} #Args\n");
       return true;
     } else if(cmd=="?") {
       tcl.set_result(args.size()>1 ? args[1] : SExecTCL::String());
@@ -132,23 +132,20 @@ bool RSystem::tcl_command(SExecTCL& tcl, const SExecTCL::Strings& args)
       if(args.size()>2+1) {
         if(args[1]=="range") {
           if(args.size()==1+3) {
-            for(SExecTCL::Range r(this,
-                                  0, 1,
+            for(SExecTCL::Range r(0, 1,
                                   atoi(SExecTCL::StringValue(args[2]).c_str())); r.valid(); r++) {
               tcl.eval(args.Last(), &r);
             }
             return true;
           } else if(args.size()==2+3) {
-            for(SExecTCL::Range r(this,
-                                  atoi(SExecTCL::StringValue(args[2]).c_str()),
+            for(SExecTCL::Range r(atoi(SExecTCL::StringValue(args[2]).c_str()),
                                   1,
                                   atoi(SExecTCL::StringValue(args[3]).c_str())); r.valid(); r++) {
               tcl.eval(args.Last(), &r);
             }
             return true;
           } else if(args.size()==3+3) {
-            for(SExecTCL::Range r(this,
-                                  atoi(SExecTCL::StringValue(args[2]).c_str()),
+            for(SExecTCL::Range r(atoi(SExecTCL::StringValue(args[2]).c_str()),
                                   atoi(SExecTCL::StringValue(args[3]).c_str()),
                                   atoi(SExecTCL::StringValue(args[4]).c_str())); r.valid(); r++) {
               tcl.eval(args.Last(), &r);
@@ -165,13 +162,11 @@ bool RSystem::tcl_command(SExecTCL& tcl, const SExecTCL::Strings& args)
     } else if(cmd=="++") {
       if(args.size()==2) {
         const SExecTCL::String& v = tcl.var_get(args[1]);
-//String oldv = v;
         { 
           char buf[32]; 
           sprintf(buf, "%d", tcl.eval_expr(v)+1);
           tcl.set_result(tcl.var_set(args[1], SExecTCL::String(buf)));
         }
-//printf("{++ '%s'=>'%s'+1/%s}", cs(args[1]), cs(oldv), cs(v));
         return true;
       }
     }
@@ -213,28 +208,6 @@ bool RSystem::set_shell(const core::DCString& name, IShell* shell)
   return true;
 }
 
-
-//***************************************
-// SExecTCL::
-//***************************************
-
-void SExecTCL::prints(const String& val)
-{
-  printf("%.*s", int(~val), val.c_str());
-}
-
-void SExecTCL::prints(StringP val)
-{
-  printf("%s", val);
-}
-
-void SExecTCL::printf(StringP val, ...)
-{
-  va_list va;
-  va_start(va, val);
-  vprintf(val, va);
-  va_end(va);
-}
 
 //***************************************
 // ::

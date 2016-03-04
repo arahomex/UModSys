@@ -30,6 +30,15 @@ extern size_t safe_vsnprintf(char* buf, size_t nbuf, const char* fmt, va_list va
 extern size_t safe_vsnprintf(wchar_t* buf, size_t nbuf, const wchar_t* fmt, va_list va);
 
 /////////////////////////////////////////////////////////////////////////////
+// arguments/options
+
+extern bool opt_enable_colors;
+extern const char* opt_stdlog_file;
+
+bool validate_env(void);
+bool validate_args(int &argc, char **&argv);
+
+/////////////////////////////////////////////////////////////////////////////
 // STRING TYPES
 
 template<size_t Length> 
@@ -176,7 +185,7 @@ struct IListAccepter {
   virtual bool process_file(const char* path, const char* mask, const Filename& fn, int options, bool isParent) =0;
 };
 
-void con_setup(void);
+void con_setup(bool enable_colors=false);
 void con_restore(void);
 void con_setcolor(FILE* stream, const unsigned char *rgb); // f[r,g,b], b[r,g,b]
 

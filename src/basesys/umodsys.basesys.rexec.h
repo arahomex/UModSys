@@ -65,12 +65,11 @@ struct SExecTCL {
   //
   //
   struct Range : IExecutor {
-    IExecutor *chain;
     int begin, end, step, cur;
     char tmp[64];
     //
     bool tcl_command(SExecTCL& tcl, const Strings& args) {
-      return chain ? chain->tcl_command(tcl, args) : false;
+      return false;
     }
     bool tcl_getvar(SExecTCL& tcl, const String& name, String& value) {
       if(name=="value") {
@@ -78,13 +77,13 @@ struct SExecTCL {
         value = tmp;
         return true;
       }
-      return chain ? chain->tcl_getvar(tcl, name, value) : false;
+      return false;
     }
     bool tcl_setvar(SExecTCL& tcl, const String& name, const String& value) {
-      return chain ? chain->tcl_setvar(tcl, name, value) : false;
+      return false;
     }
     //
-    Range(IExecutor* n, int a, int b, int c) : chain(n), begin(a), end(c), step(b) { start(); }
+    Range(int a, int b, int c) : begin(a), end(c), step(b) { start(); }
     //
     void start(void) { cur = begin; }
     void operator++(void) { cur += step; }
@@ -94,14 +93,15 @@ struct SExecTCL {
   };
   //
   IExecutor *executor;
+  SExecTCL *up;
   SharedState &ss;
   Strings args;
   StringStream stream;
   String result;
   size_t stack_top;
   //
-  SExecTCL(SharedState& ass, IExecutor *ee)
-  : ss(ass), stream(ass.top(), ass.left()), executor(ee) {
+  SExecTCL(SharedState& ass, IExecutor *ee, SExecTCL *u=NULL)
+  : ss(ass), stream(ass.top(), ass.left()), executor(ee), up(u) {
     stack_top = ss.stack.Len();
   }
   //
@@ -133,7 +133,7 @@ struct SExecTCL {
   void add_cmt(StringP b, StringP e) {}
   //
   bool exec_command(Parser& ps) {
-    Self c2(ss, executor);
+    Self c2(ss, executor, this);
     Parser ps2(ps.p, ps.e, true);
     ps2.Parse(c2);
     ps.p = ps2.p; // sync
@@ -141,41 +141,34 @@ struct SExecTCL {
     if(ps2.token>=Parser::tError)
       return false;
     add_result(c2);
-//printf("ret{%.*s}\n", int(~c2.result), *c2.result);
     return true;
   }
   bool execute(void) {
     if(args.size()==0)
       return true;
     execute_begin();
-    bool rv = do_cmd(args);
+    bool rv = tcl_cmd(args);
     execute_end();
     return rv;
   }
   //
-  bool do_cmd(Strings& args) {
-    return executor->tcl_command(*this, args);
-  }
-  //
   int eval_expr(const String& expr) {
-//printf("?expr{%.*s}", int(~expr), *expr);
     if(~expr==0)
       return 0;
     int rv;
     if(!string_to_int(expr, rv))
       return -1;
-//printf("={%d}", rv);
     return rv;
   }
   String eval(const String& code) {
-    Self c2(ss, executor);
+    Self c2(ss, executor, this);
     Parser ps2(*code, code + ~code);
     ps2.Parse(c2);
     c2.finish();
     return new_string(c2.result);
   }
   String eval(const String& code, IExecutor *ex2) {
-    Self c2(ss, ex2);
+    Self c2(ss, ex2, this);
     Parser ps2(*code, code + ~code);
     ps2.Parse(c2);
     c2.finish();
@@ -193,7 +186,6 @@ struct SExecTCL {
     StringName buf(src);
     return sscanf(*buf, "%d", &dest)==1;
   }
-  // static void print_str(const String& src) { printf("%.*s", src.count, src.value); }
   //
   String new_string(const String& src) {
     size_t p = ss.stack.Len();
@@ -201,15 +193,12 @@ struct SExecTCL {
         return String();
     tl::su::smemcpy(ss.stack.All()+p, *src, ~src);
     ss.stack[p+~src] = 0;
-//printf("{new=%d+%d}", end-ss.stack.begin(), ss.stack.end()-end);
     String rv(ss.stack.All()+p, ~src);
-//printf("{new=%p@%d=%.*s}", rv.c_str(), int(~rv), int(~rv), rv.c_str());
     return rv;
   }
   String detach(void) {
     String rv = stream.get_s();
     stream_redo();
-//printf("{detach=%p@%d=%.*s}", rv.c_str(), int(~rv), int(~rv), rv.c_str());
     return rv;
   }
   void parse_start() {
@@ -217,65 +206,78 @@ struct SExecTCL {
   }
   //
   void stream_redo(void) {
-//printf("{stack=%d/%d}", int(~ss.stack), int(ss.stack.FreeLen()));
     stream.setup(ss.stack.FreeStart(), ss.stack.FreeLen(), 0);
     stream.length = 0;
     stream.maxlength = ss.stack.MaxLen() - ss.stack.Len();
   }
   void ssync(void) {
-//printf("{size=%d}", int(~stream));
-    // ss.stack.count = stream.end()-ss.stack.begin();
     ss.stack.Resize(~stream + (stream.get_text() - ss.stack.All()));
-//printf("{top=%d}", int(~ss.stack));
   }
   //
   void set_result(const String& src) {
     result = new_string(src);
-//printf("set_result{%.*s}\n", int(~result), *result);
   }
   void add(char sym) {
-//printf("{chr=0x%x}", sym);
     stream.append(&sym, 1);
     ssync();
   }
   void add(StringP b, StringP e) {
-//printf("{stream:%d:%d}", int(~stream), int(stream.maxlength));
-//printf("{str:%d=%.*s}", int(e-b), int(e-b), b);
     stream.append(b, e-b);
     ssync();
   }
   void add(const String& ss) {
-//printf("{str:%d=%.*s}", int(~ss), int(~ss), ss.c_str());
     stream.append(*ss, ~ss);
     ssync();
   }
   void next_arg(void) {
-//printf("{next}");
     args.Push(detach()); 
   }
   size_t stream_size(void) { return ~stream; }
   //
+  bool tcl_cmd(Strings& args) {
+    SExecTCL *tcl = this;
+    while(tcl!=NULL) {
+      if(tcl->executor->tcl_command(*this, args))
+        return true;
+      tcl = tcl->up;
+    }
+    return false;
+  }
+  //
   String var_get(const String& name) {
     String rvx;
-    if(executor->tcl_getvar(*this, name, rvx))
-      return rvx;
-    StringName key(name);
-    const StringValue* value = ss.vars(key);
-    if(value!=NULL) {
-      String rv(*value);
-//printf("{found '"); prints(name); printf("' = '"); prints(value->get_text()); printf("' %p/%p}", value->get_text(), rv.get_text());
-      return rv;
+    SExecTCL *tcl = this;
+    // always get executor vars
+    while(tcl!=NULL) {
+      if(executor->tcl_getvar(*this, name, rvx))
+        return rvx;
+      tcl = tcl->up;
     }
-//printf("{Not found '"); prints(name); printf("'}");
+    // scan for shared state vars
+    StringName key(name);
+    tcl = this;
+    while(tcl!=NULL) {
+      const StringValue* value = tcl->ss.vars(key);
+      if(value!=NULL) {
+        String rv(*value);
+        return rv;
+      }
+      tcl = tcl->up;
+    }
     return String();
   }
   String var_set(const String& name, const String& value) {
-    if(executor->tcl_setvar(*this, name, value))
-      return value;
+    // always set executor vars
+    SExecTCL *tcl = this;
+    while(tcl!=NULL) {
+      if(executor->tcl_setvar(*this, name, value))
+        return value;
+      tcl = tcl->up;
+    }
+    // set shared state var
     StringName key(name);
     StringValue& v = ss.vars[key];
     v = StringValue(value);
-//printf("{'"); prints(key); printf("'='"); prints(v); printf("'}");
     return v.str();
   }
   void execute_begin(void) {
@@ -303,9 +305,9 @@ struct SExecTCL {
     add(r.result.begin(), r.result.end());
   }
   //
-  void prints(const String& val);
-  void prints(StringP val);
-  void printf(StringP val, ...);
+  void print_s(const String& val);
+  void print_s(StringP val);
+  void print_f(StringP val, ...);
 };
 
 
