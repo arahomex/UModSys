@@ -16,7 +16,7 @@ using namespace UModSys::base::rsystem;
 
 bool RSystem::exec_test_tcl(void)
 {
-  dbg_put(rsdl_System, "TCL begin:\n");
+  dbg_put(rsdl_SysTests, "TCL begin:\n");
   //
   DCString spp(
     "set hello \"'Hello World!\\n'\"\n"
@@ -40,9 +40,9 @@ bool RSystem::exec_test_tcl(void)
   //
   int rv = pp.Parse(col);
   if(rv!=SExecTCL::Parser::tEnd) {
-    dbg_put(rsdl_System, "TCL end with error %d\n", rv);
+    dbg_put(rsdl_SysTests, "TCL end with error %d\n", rv);
   } else {
-    dbg_put(rsdl_System, "TCL end.\n");
+    dbg_put(rsdl_SysTests, "TCL end.\n");
   }
   //
   return true;
@@ -55,20 +55,20 @@ bool RSystem::exec_test_shells(void)
 {
   IRefObject::TypeId tids[0x100];
   size_t ns = find_shells(tids, 0x100, NULL);
-  dbg_put(rsdl_System, "shells found: %d\n", ns);
+  dbg_put(rsdl_SysTests, "shells found: %d\n", ns);
   for(size_t i=0; i<ns; i++) {
-    dbg_put(rsdl_System, "  shell: %p %s\n", tids[i], tids[i]->name);
+    dbg_put(rsdl_SysTests, "  shell: %p %s\n", tids[i], tids[i]->name);
     IShell::P sh;
     TParametersA<1024> pars;
     if(!moddb.t_moduledb_generate(sh, tids[i], pars)) {
-      dbg_put(rsdl_System, "    shell gen error\n");
+      dbg_put(rsdl_SysTests, "    shell gen error\n");
       continue;
     } else {
-      dbg_put(rsdl_System, "    shell generated as %p\n", sh());
+      dbg_put(rsdl_SysTests, "    shell generated as %p\n", sh());
     }
     set_shell(tids[i]->name, sh);
   }
-  dbg_put(rsdl_System, "/shells found: %d\n", ns);
+  dbg_put(rsdl_SysTests, "/shells found: %d\n", ns);
   return true;
 }
 
@@ -78,12 +78,12 @@ bool RSystem::exec_test_shells(void)
 bool RSystem::exec_tests(BStr testid)
 {
 //  dump_upis();
-  dbg_put(rsdl_SystemTests, "******************************* TEST %s {\n", testid);
+  dbg_put(rsdl_SysTests, "******************************* TEST %s {\n", testid);
   //
   if(tl::su::seq(testid, "list")) {
-    dbg_put(rsdl_SystemTests, "list size shells tcl\n");
+    dbg_put(rsdl_SysTests, "list size shells tcl\n");
   } else if(tl::su::seq(testid, "size")) {
-    dbg_put(rsdl_SystemTests, "sizeof(DRMemAlloc)=%u sizeof(DRMemAlloc::DHeader)=%u\nsizeof(TMemAllocHeader<Void>)=%u sizeof(mem_headers::TMain<TMemAllocHeader<Void>>)=%u\n",
+    dbg_put(rsdl_SysTests, "sizeof(DRMemAlloc)=%u sizeof(DRMemAlloc::DHeader)=%u\nsizeof(TMemAllocHeader<Void>)=%u sizeof(mem_headers::TMain<TMemAllocHeader<Void>>)=%u\n",
       (unsigned)sizeof(DRMemAlloc), (unsigned)sizeof(DRMemAlloc::DHeader), 
       (unsigned)sizeof(TMemAllocHeader<Void>), (unsigned)sizeof(mem_headers::TMain< TMemAllocHeader<Void> >)
     );
@@ -92,10 +92,10 @@ bool RSystem::exec_tests(BStr testid)
   } else if(tl::su::seq(testid, "tcl")) {
     exec_test_tcl();
   } else {
-    dbg_put(rsdl_SystemTests, "list size shells tcl\n");
+    dbg_put(rsdl_SysTests, "list size shells tcl\n");
   }
   //
-  dbg_put(rsdl_SystemTests, "******************************* } TEST %s\n", testid);
+  dbg_put(rsdl_SysTests, "******************************* } TEST %s\n", testid);
   return true;
 }
 

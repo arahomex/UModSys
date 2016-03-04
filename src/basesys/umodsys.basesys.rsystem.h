@@ -131,6 +131,7 @@ public:
   bool exec_args(int argc, char** argv);
   bool exec_main(void);
   bool exec_tests(BStr testid);
+  bool exec_script(BStr filename);
   bool deinit(void);
   //
   bool platform_init(void);

@@ -169,6 +169,15 @@ size_t RModuleLibrarySO::pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, const
 
 bool RSystem::platform_init(void)
 {
+  rsys_dbg.mdisable();
+  rsys_dbg.enable(rsdl_SysTests);
+  rsys_dbg.enable(rsdl_MemoryError);
+//  rsys_dbg.enable(rsdl_Uid);
+//  rsys_dbg.enable(rsdl_System);
+  rsys_dbg.enable(rsdl_Module);
+  rsys_dbg.enable(rsdl_ModuleLibrary);
+  rsys_dbg.enable(rsdl_SoLoad);
+  rsys_dbg.enable(rsdl_TCL);
   return true;
 }
 

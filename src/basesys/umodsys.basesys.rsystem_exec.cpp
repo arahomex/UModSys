@@ -16,7 +16,7 @@ using namespace UModSys::base::rsystem;
 
 bool RSystem::exec_args(int argc, char** argv)
 {
-  dbg_put(rsdl_System, "RSystem::exec_args(%d)\n", argc);
+  dbg_put(rsdl_TCL, "RSystem::exec_args(%d)\n", argc);
   //
   if(argc==1)
     return false;
@@ -28,6 +28,9 @@ bool RSystem::exec_args(int argc, char** argv)
         BStr value;
         if(tl::su::sbegin(opt, "test=", &value) || tl::su::sbegin(opt, "test:", &value)) {
           exec_tests(value);
+          continue;
+        } else if(tl::su::sbegin(opt, "script=", &value) || tl::su::sbegin(opt, "script:", &value)) {
+          exec_script(value);
         }
       }
       continue;
@@ -57,12 +60,12 @@ bool RSystem::tcl_command(SExecTCL& tcl, const SExecTCL::Strings& args)
 {
   const SExecTCL::String &cmd = args[0];
   if(0) {
-    dbg_put(rsdl_System, "RSystem::command(%d \"%.*s\" ", int(~args), int(~cmd), cmd.c_str());
+    dbg_put(rsdl_TCL, "RSystem::command(%d \"%.*s\" ", int(~args), int(~cmd), cmd.c_str());
     for(size_t i=1; i<~args; i++) {
       const SExecTCL::String &arg = args[i];
-      dbg_put(rsdl_System, " \"%.*s\"", int(~arg), arg.c_str());
+      dbg_put(rsdl_TCL, " \"%.*s\"", int(~arg), arg.c_str());
     }
-    dbg_put(rsdl_System, ")\n");
+    dbg_put(rsdl_TCL, ")\n");
   }
   //
     if(cmd=="puts") {
@@ -169,8 +172,29 @@ bool RSystem::tcl_command(SExecTCL& tcl, const SExecTCL::Strings& args)
         }
         return true;
       }
+    } else if(cmd=="module") {
+      if(args.size()>=2) {
+        if(args[1]=="scan") {
+          if(args.size()==2) {
+            get_modloader()->moduledb_scan("", false);
+            return true;
+          } else if(args.size()==3) {
+            get_modloader()->moduledb_scan(args[2], true);
+            return true;
+          } 
+        } else if(args[1]=="save") {
+          if(args.size()==2) {
+            get_modloader()->moduledb_save("moduledb.conf-hdb");
+            return true;
+          } else if(args.size()==3) {
+            get_modloader()->moduledb_save(args[2]);
+            return true;
+          }
+        }
+      }
     }
-    dbg_put(rsdl_System, "RSystem::command(%d:\"%.*s\" +%d)\n", int(~cmd), int(~cmd), *cmd, int(~args));
+    //
+    dbg_put(rsdl_TCL, "RSystem::command(ERROR %d:\"%.*s\" +%d)\n", int(~cmd), int(~cmd), *cmd, int(~args));
     return false;
 }
 
@@ -208,6 +232,32 @@ bool RSystem::set_shell(const core::DCString& name, IShell* shell)
   return true;
 }
 
+//***************************************
+
+bool RSystem::exec_script(BStr filename)
+{
+  size_t len;
+  char buf[0x10000];
+  if(!syshlp::get_file(filename, len, buf, sizeof(buf), true)) {
+    dbg_put(rsdl_TCL, "No script: %s\n", filename);
+    return false;
+  }
+  dbg_put(rsdl_TCL, "Script begin: %s\n", filename);
+  //
+  DCString spp(buf, len);
+  SExecTCL::Parser pp(spp.begin(), spp.end());
+  SExecTCL col(tcl_ss, this);
+  //
+  int rv = pp.Parse(col);
+  if(rv!=SExecTCL::Parser::tEnd) {
+    dbg_put(rsdl_TCL, "TCL end %s with error %d\n", filename, rv);
+    return false;
+  } else {
+    dbg_put(rsdl_TCL, "TCL end %s.\n", filename);
+  }
+  //
+  return true;
+}
 
 //***************************************
 // ::

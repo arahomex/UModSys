@@ -43,13 +43,14 @@ typedef tl::TStaticStringPool<
 //***************************************
 
 enum eRSystemDebugLevels {
-  rsdl_SystemTests,
   rsdl_MemoryError,
   rsdl_System,
   rsdl_Module,
   rsdl_ModuleLibrary,
   rsdl_SoLoad,
   rsdl_Uid,
+  rsdl_SysTests,
+  rsdl_TCL,
 };
 
 extern SDebug rsys_dbg;

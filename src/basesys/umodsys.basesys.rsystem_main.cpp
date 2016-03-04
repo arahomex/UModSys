@@ -71,7 +71,7 @@ size_t RSystem::find_shells(IRefObject::TypeId tids[], size_t ntids, BCStr mask)
 
 void RSystem::dump_upis(void)
 {
-  dbg_put(rsdl_System, "RSystem::dump_upis() {S:%d C:%d} %u\n", uptr_strings.used_strings(), uptr_strings.used_chars(), (unsigned)~uptr_list);
+  dbg_put(rsdl_Uid, "RSystem::dump_upis() {S:%d C:%d} %u\n", uptr_strings.used_strings(), uptr_strings.used_chars(), (unsigned)~uptr_list);
 /*
   for(const SUniquePointer* x=SUniquePointer::root.next; x!=&SUniquePointer::root; x=x->next) {
     if(x==NULL) {
@@ -84,12 +84,12 @@ void RSystem::dump_upis(void)
   for(size_t i=0, n=~uptr_list; i<n; i++) {
     const SUniquePointerInfo* x = uptr_list(i);
     if(x==NULL) {
-      dbg_put(rsdl_System, "  %u upi NULL\n", (unsigned)i);
+      dbg_put(rsdl_Uid, "  %u upi NULL\n", (unsigned)i);
       continue;
     }
-    dbg_put(rsdl_System, "  %u %p upi{%s %s(%d)}\n", (unsigned)i, x, x->group, x->name, x->verno);
+    dbg_put(rsdl_Uid, "  %u %p upi{%s %s(%d)}\n", (unsigned)i, x, x->group, x->name, x->verno);
   }
-  dbg_put(rsdl_System, "RSystem::dump_upis() / \n");
+  dbg_put(rsdl_Uid, "RSystem::dump_upis() / \n");
 }
 
 //***************************************
