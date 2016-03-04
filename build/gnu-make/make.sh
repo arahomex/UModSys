@@ -2,6 +2,8 @@
 
 cd "`dirname \"$0\"`"
 
+#MAKEOPTS=${MAKEOPTS:--j4}
+
 if [ "$1" == "-" ] ; then
   shift
 else
@@ -22,8 +24,8 @@ if [ -z "$L" ] ; then
 fi
 
 for C in $L ; do
-  echo "make -f Makefile.$P.$C" "$@"
-  make -f Makefile.$P.$C "$@" || exit $?
+  echo "make $MAKEOPTS -f Makefile.$P.$C" "$@"
+  make $MAKEOPTS -f Makefile.$P.$C "$@" || exit $?
 done
 
 

@@ -10,7 +10,7 @@ begin project-group umodsys_Depends
     depend lib_libpng
     depend lib_jpeglib
     #
-    depend lib_libgd
+#    depend lib_libgd
     depend lib_freetype
     #
     depend lib_sqlite3
@@ -448,7 +448,8 @@ begin project-group umodsys_Depends
   end
 
   begin project lib_libgd
-    mode shared
+    #mode shared
+    mode dummy
     #
     includes $(path-include)/$(ppath)/libgd
     includes $(path-include)/$(ppath)
