@@ -43,8 +43,13 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
           <runcommandpicklistitem>./</runcommandpicklistitem>
           <runcommandpicklistitem>./run-debug.sh</runcommandpicklistitem>
+          <runcommandpicklistitem>./run-debug.sh --script:tcl</runcommandpicklistitem>
+          <runcommandpicklistitem>./run-debug.sh --script:debug.umstcl</runcommandpicklistitem>
+          <runcommandpicklistitem>./run-debug.sh --tests=shells --script=debug.umstcl</runcommandpicklistitem>
+          <runcommandpicklistitem>./run-debug.sh --test=shells --script=debug.umstcl</runcommandpicklistitem>
+          <runcommandpicklistitem>./run-debug.sh --test=shells ++script=debug.umstcl</runcommandpicklistitem>
         </runcommandpicklist>
-        <runcommand>./run-debug.sh</runcommand>
+        <runcommand>./run-debug.sh --test=shells ++script=debug.umstcl</runcommand>
         <rundir>.</rundir>
         <buildfirst>false</buildfirst>
         <terminal-type>0</terminal-type>
@@ -60,13 +65,13 @@
       </toolsSet>
       <compile>
         <compiledirpicklist>
-          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
           <compiledirpicklistitem>.</compiledirpicklistitem>
+          <compiledirpicklistitem>${AUTO_FOLDER}</compiledirpicklistitem>
         </compiledirpicklist>
         <compiledir>${AUTO_FOLDER}</compiledir>
         <compilecommandpicklist>
-          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
           <compilecommandpicklistitem>${MAKE} ${ITEM_NAME}.o</compilecommandpicklistitem>
+          <compilecommandpicklistitem>${AUTO_COMPILE}</compilecommandpicklistitem>
         </compilecommandpicklist>
         <compilecommand>${AUTO_COMPILE}</compilecommand>
       </compile>

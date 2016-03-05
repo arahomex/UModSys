@@ -2262,7 +2262,6 @@
       </toolsSet>
       <flagsDictionary>
         <element flagsID="0" commonFlags="-fPIC"/>
-        <element flagsID="1" commonFlags="-g -fPIC"/>
       </flagsDictionary>
       <codeAssistance>
       </codeAssistance>
@@ -2284,2958 +2283,2062 @@
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_builder.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_bytecode.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_callfunc.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_callfunc_arm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_callfunc_mips.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_callfunc_ppc.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_callfunc_ppc_64.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_callfunc_sh4.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_callfunc_x64_gcc.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_callfunc_x64_mingw.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_callfunc_x64_msvc.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_callfunc_x86.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_callfunc_xenon.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_compiler.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_configgroup.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_context.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_datatype.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_gc.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_generic.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_globalproperty.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_memory.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_module.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_objecttype.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_outputbuffer.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_parser.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_restore.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_scriptcode.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_scriptengine.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_scriptfunction.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_scriptnode.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_scriptobject.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_string.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_string_util.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_thread.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_tokenizer.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_typeinfo.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/AngelScript/angelscript/source/as_variablescope.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/BroadphaseCollision/btAxisSweep3.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/BroadphaseCollision/btBroadphaseProxy.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/BroadphaseCollision/btCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/BroadphaseCollision/btDbvt.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/BroadphaseCollision/btDbvtBroadphase.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/BroadphaseCollision/btDispatcher.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/BroadphaseCollision/btMultiSapBroadphase.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/BroadphaseCollision/btOverlappingPairCache.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/BroadphaseCollision/btQuantizedBvh.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/BroadphaseCollision/btSimpleBroadphase.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/SphereTriangleDetector.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btActivatingCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btBox2dBox2dCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btBoxBoxCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btBoxBoxDetector.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btCollisionDispatcher.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btCollisionObject.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btCollisionWorld.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btCompoundCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btCompoundCompoundCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btConvex2dConvex2dAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btConvexConcaveCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btConvexConvexAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btConvexPlaneCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btEmptyCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btGhostObject.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btHashedSimplePairCache.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btInternalEdgeUtility.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btManifoldResult.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btSimulationIslandManager.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btSphereBoxCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btSphereSphereCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btSphereTriangleCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionDispatch/btUnionFind.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btBox2dShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btBoxShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btBvhTriangleMeshShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btCapsuleShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btCollisionShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btCompoundShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btConcaveShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btConeShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btConvex2dShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btConvexHullShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btConvexInternalShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btConvexPointCloudShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btConvexPolyhedron.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btConvexShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btConvexTriangleMeshShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btCylinderShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btEmptyShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btHeightfieldTerrainShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btMinkowskiSumShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btMultiSphereShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btMultimaterialTriangleMeshShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btOptimizedBvh.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btPolyhedralConvexShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btScaledBvhTriangleMeshShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btShapeHull.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btSphereShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btStaticPlaneShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btStridingMeshInterface.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btTetrahedronShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btTriangleBuffer.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btTriangleCallback.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btTriangleIndexVertexArray.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btTriangleIndexVertexMaterialArray.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btTriangleMesh.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btTriangleMeshShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/CollisionShapes/btUniformScalingShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/Gimpact/btContactProcessing.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/Gimpact/btGImpactBvh.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/Gimpact/btGImpactCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/Gimpact/btGImpactQuantizedBvh.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/Gimpact/btGImpactShape.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/Gimpact/btGenericPoolAllocator.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/Gimpact/btTriangleShapeEx.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/Gimpact/gim_box_set.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/Gimpact/gim_contact.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/Gimpact/gim_memory.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/Gimpact/gim_tri_collision.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/NarrowPhaseCollision/btContinuousConvexCollision.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/NarrowPhaseCollision/btConvexCast.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/NarrowPhaseCollision/btGjkConvexCast.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/NarrowPhaseCollision/btGjkEpa2.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/NarrowPhaseCollision/btGjkEpaPenetrationDepthSolver.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/NarrowPhaseCollision/btGjkPairDetector.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/NarrowPhaseCollision/btMinkowskiPenetrationDepthSolver.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/NarrowPhaseCollision/btPersistentManifold.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/NarrowPhaseCollision/btPolyhedralContactClipping.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/NarrowPhaseCollision/btRaycastCallback.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/NarrowPhaseCollision/btSubSimplexConvexCast.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletCollision/NarrowPhaseCollision/btVoronoiSimplexSolver.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/Character/btKinematicCharacterController.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/ConstraintSolver/btConeTwistConstraint.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/ConstraintSolver/btContactConstraint.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/ConstraintSolver/btFixedConstraint.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/ConstraintSolver/btGearConstraint.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/ConstraintSolver/btGeneric6DofConstraint.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/ConstraintSolver/btGeneric6DofSpringConstraint.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/ConstraintSolver/btHinge2Constraint.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/ConstraintSolver/btHingeConstraint.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/ConstraintSolver/btPoint2PointConstraint.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/ConstraintSolver/btSequentialImpulseConstraintSolver.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/ConstraintSolver/btSliderConstraint.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/ConstraintSolver/btSolve2LinearConstraint.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/ConstraintSolver/btTypedConstraint.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/ConstraintSolver/btUniversalConstraint.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/Dynamics/Bullet-C-API.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/Dynamics/btDiscreteDynamicsWorld.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/Dynamics/btRigidBody.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/Dynamics/btSimpleDynamicsWorld.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/Featherstone/btMultiBody.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/Featherstone/btMultiBodyConstraint.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/Featherstone/btMultiBodyConstraintSolver.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/Featherstone/btMultiBodyJointLimitConstraint.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/Featherstone/btMultiBodyJointMotor.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/Featherstone/btMultiBodyPoint2Point.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/MLCPSolvers/btDantzigLCP.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/MLCPSolvers/btMLCPSolver.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/Vehicle/btRaycastVehicle.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletDynamics/Vehicle/btWheelInfo.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/PosixThreadSupport.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/SequentialThreadSupport.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/SpuCollisionObjectWrapper.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/SpuCollisionTaskProcess.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/SpuContactManifoldCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/SpuFakeDma.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/SpuGatheringCollisionDispatcher.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/SpuLibspe2Support.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/SpuNarrowPhaseCollisionTask/SpuCollisionShapes.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/SpuNarrowPhaseCollisionTask/SpuContactResult.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/SpuNarrowPhaseCollisionTask/SpuGatheringCollisionTask.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/SpuNarrowPhaseCollisionTask/SpuMinkowskiPenetrationDepthSolver.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/SpuNarrowPhaseCollisionTask/boxBoxDistance.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/SpuSampleTask/SpuSampleTask.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/SpuSampleTaskProcess.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/Win32ThreadSupport.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/btGpu3DGridBroadphase.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/btParallelConstraintSolver.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletMultiThreaded/btThreadSupportInterface.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletSoftBody/btDefaultSoftBodySolver.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletSoftBody/btSoftBody.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletSoftBody/btSoftBodyConcaveCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletSoftBody/btSoftBodyHelpers.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletSoftBody/btSoftBodyRigidBodyCollisionConfiguration.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletSoftBody/btSoftRigidCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletSoftBody/btSoftRigidDynamicsWorld.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/BulletSoftBody/btSoftSoftCollisionAlgorithm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/LinearMath/btAlignedAllocator.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/LinearMath/btConvexHull.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/LinearMath/btConvexHullComputer.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/LinearMath/btGeometryUtil.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/LinearMath/btPolarDecomposition.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/LinearMath/btQuickprof.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/LinearMath/btSerializer.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Bullet/src/LinearMath/btVector3.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Lua/src/lapi.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lauxlib.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lbaselib.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lbitlib.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lcode.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lcorolib.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lctype.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/ldblib.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/ldebug.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/ldo.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/ldump.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lfunc.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lgc.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/linit.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/liolib.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/llex.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lmathlib.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lmem.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/loadlib.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lobject.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lopcodes.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/loslib.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lparser.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lstate.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lstring.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lstrlib.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/ltable.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/ltablib.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/ltm.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lundump.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lvm.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Lua/src/lzio.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lib_aux.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lib_base.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lib_bit.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lib_debug.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lib_ffi.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lib_init.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lib_io.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lib_jit.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lib_math.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lib_os.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lib_package.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lib_string.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lib_table.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_alloc.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_api.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_asm.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_bc.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_bcread.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_bcwrite.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_carith.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_ccall.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_ccallback.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_cconv.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_cdata.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_char.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_clib.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_cparse.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_crecord.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_ctype.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_debug.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_dispatch.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_ffrecord.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_func.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_gc.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_gdbjit.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_ir.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_lex.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_lib.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_load.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_mcode.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_meta.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_obj.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_opt_dce.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_opt_fold.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_opt_loop.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_opt_mem.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_opt_narrow.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_opt_sink.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_opt_split.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_parse.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_record.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_snap.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_state.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_str.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_strscan.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_tab.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_trace.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_udata.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_vmevent.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/lj_vmmath.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/LuaJIT/src/luajit.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/SDL.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/SDL_assert.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/SDL_error.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/SDL_hints.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/SDL_log.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/atomic/SDL_atomic.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/atomic/SDL_spinlock.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/audio/SDL_audio.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/audio/SDL_audiocvt.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/audio/SDL_audiodev.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/audio/SDL_audiotypecvt.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/audio/SDL_mixer.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/audio/SDL_wave.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/audio/alsa/SDL_alsa_audio.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/audio/disk/SDL_diskaudio.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/audio/dsp/SDL_dspaudio.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/audio/dummy/SDL_dummyaudio.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/audio/paudio/SDL_paudio.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/audio/pulseaudio/SDL_pulseaudio.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/core/linux/SDL_udev.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/cpuinfo/SDL_cpuinfo.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/events/SDL_clipboardevents.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/events/SDL_dropevents.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/events/SDL_events.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/events/SDL_gesture.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/events/SDL_keyboard.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/events/SDL_mouse.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/events/SDL_quit.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/events/SDL_touch.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/events/SDL_windowevents.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/file/SDL_rwops.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/filesystem/unix/SDL_sysfilesystem.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/haptic/SDL_haptic.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/haptic/linux/SDL_syshaptic.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/joystick/SDL_gamecontroller.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/joystick/SDL_joystick.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/joystick/linux/SDL_sysjoystick.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/libm/e_atan2.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/libm/e_log.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/libm/e_pow.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/libm/e_rem_pio2.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/libm/e_sqrt.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/libm/k_cos.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/libm/k_rem_pio2.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/libm/k_sin.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/libm/s_atan.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/libm/s_copysign.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/libm/s_cos.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/libm/s_fabs.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/libm/s_floor.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/libm/s_scalbn.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/libm/s_sin.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/loadso/dlopen/SDL_sysloadso.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/power/SDL_power.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/power/linux/SDL_syspower.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/render/SDL_render.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/render/SDL_yuv_mmx.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/render/SDL_yuv_sw.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/render/opengl/SDL_render_gl.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/render/opengl/SDL_shaders_gl.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/render/opengles2/SDL_render_gles2.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/render/opengles2/SDL_shaders_gles2.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/render/software/SDL_blendfillrect.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/render/software/SDL_blendline.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/render/software/SDL_blendpoint.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/render/software/SDL_drawline.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/render/software/SDL_drawpoint.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/render/software/SDL_render_sw.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/render/software/SDL_rotate.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/stdlib/SDL_getenv.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/stdlib/SDL_iconv.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/stdlib/SDL_malloc.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/stdlib/SDL_qsort.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/stdlib/SDL_stdlib.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/stdlib/SDL_string.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/thread/SDL_thread.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/thread/pthread/SDL_syscond.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/thread/pthread/SDL_sysmutex.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/thread/pthread/SDL_syssem.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/thread/pthread/SDL_systhread.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/thread/pthread/SDL_systls.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/timer/SDL_timer.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/timer/unix/SDL_systimer.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_RLEaccel.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_blit.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_blit_0.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_blit_1.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_blit_A.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_blit_N.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_blit_auto.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_blit_copy.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_blit_slow.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_bmp.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_clipboard.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_egl.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_fillrect.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_pixels.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_rect.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_shape.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_stretch.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_surface.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/SDL_video.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/directfb/SDL_DirectFB_WM.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/directfb/SDL_DirectFB_dyn.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/directfb/SDL_DirectFB_events.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/directfb/SDL_DirectFB_modes.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/directfb/SDL_DirectFB_mouse.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/directfb/SDL_DirectFB_opengl.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/directfb/SDL_DirectFB_render.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/directfb/SDL_DirectFB_shape.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/directfb/SDL_DirectFB_video.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/directfb/SDL_DirectFB_window.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/dummy/SDL_nullevents.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/dummy/SDL_nullframebuffer.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/dummy/SDL_nullvideo.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/raspberry/SDL_rpievents.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/raspberry/SDL_rpimouse.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/raspberry/SDL_rpiopengles.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/raspberry/SDL_rpivideo.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/SDL_x11clipboard.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/SDL_x11dyn.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/SDL_x11events.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/SDL_x11framebuffer.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/SDL_x11keyboard.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/SDL_x11messagebox.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/SDL_x11modes.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/SDL_x11mouse.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/SDL_x11opengl.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/SDL_x11opengles.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/SDL_x11shape.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/SDL_x11touch.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/SDL_x11video.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/SDL_x11window.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/SDL_x11xinput2.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/edid-parse.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2/src/video/x11/imKStoUCS.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/SDL2_ttf/SDL_ttf.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/Squirrel/sqstdlib/sqstdaux.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/sqstdlib/sqstdblob.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/sqstdlib/sqstdio.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/sqstdlib/sqstdmath.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/sqstdlib/sqstdrex.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/sqstdlib/sqstdstream.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/sqstdlib/sqstdstring.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/sqstdlib/sqstdsystem.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/squirrel/sqapi.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/squirrel/sqbaselib.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/squirrel/sqclass.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/squirrel/sqcompiler.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/squirrel/sqdebug.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/squirrel/sqfuncstate.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/squirrel/sqlexer.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/squirrel/sqmem.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/squirrel/sqobject.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/squirrel/sqstate.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/squirrel/sqtable.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/Squirrel/squirrel/sqvm.cpp"
             ex="false"
             tool="1"
             flavor2="4">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../depends/TinyC/i386-asm.c" ex="true" tool="3" flavor2="0">
       </item>
       <item path="../../depends/TinyC/i386-gen.c" ex="true" tool="3" flavor2="0">
       </item>
       <item path="../../depends/TinyC/libtcc.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/TinyC/tccasm.c" ex="true" tool="3" flavor2="0">
       </item>
@@ -5301,8 +4404,6 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/base/basepic.c"
             ex="true"
@@ -5318,15 +4419,11 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/base/ftbitmap.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/base/ftcalc.c"
             ex="true"
@@ -5342,8 +4439,6 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/base/ftgloadr.c"
             ex="true"
@@ -5354,15 +4449,11 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/base/ftinit.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/base/ftobjs.c"
             ex="true"
@@ -5398,15 +4489,11 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/base/ftsystem.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/base/fttrigon.c"
             ex="true"
@@ -5427,8 +4514,6 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/bdf/bdfdrivr.c"
             ex="true"
@@ -5444,15 +4529,11 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/cache/ftcache.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/cache/ftcbasic.c"
             ex="true"
@@ -5543,8 +4624,6 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/cff/cffcmap.c"
             ex="true"
@@ -5610,15 +4689,11 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/gxvalid/gxvalid.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/gxvalid/gxvbsln.c"
             ex="true"
@@ -5739,8 +4814,6 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/gzip/infblock.c"
             ex="true"
@@ -5776,8 +4849,6 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/lzw/ftzopen.c"
             ex="true"
@@ -5788,8 +4859,6 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/otvalid/otvbase.c"
             ex="true"
@@ -5835,8 +4904,6 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/pcf/pcfdrivr.c"
             ex="true"
@@ -5857,8 +4924,6 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/pfr/pfrcmap.c"
             ex="true"
@@ -5899,8 +4964,6 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/psaux/psauxmod.c"
             ex="true"
@@ -5941,8 +5004,6 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/pshinter/pshmod.c"
             ex="true"
@@ -5968,8 +5029,6 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/psnames/pspic.c"
             ex="true"
@@ -5990,8 +5049,6 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/raster/rastpic.c"
             ex="true"
@@ -6012,8 +5069,6 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/sfnt/sfntpic.c"
             ex="true"
@@ -6079,15 +5134,11 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/truetype/truetype.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/truetype/ttdriver.c"
             ex="true"
@@ -6163,8 +5214,6 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/type42/t42drivr.c"
             ex="true"
@@ -6185,369 +5234,191 @@
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/freetype/src/winfonts/winfnt.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jaricom.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jcapimin.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jcapistd.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jcarith.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jccoefct.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jccolor.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jcdctmgr.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jchuff.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jcinit.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jcmainct.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jcmarker.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jcmaster.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jcomapi.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jcparam.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jcprepct.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jcsample.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jctrans.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdapimin.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdapistd.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdarith.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdatadst.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdatasrc.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdcoefct.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdcolor.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jddctmgr.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdhuff.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdinput.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdmainct.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdmarker.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdmaster.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdmerge.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdpostct.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdsample.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jdtrans.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jerror.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jfdctflt.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jfdctfst.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jfdctint.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jidctflt.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jidctfst.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jidctint.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jmemansi.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jmemmgr.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jquant1.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jquant2.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/jpeglib/jutils.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/example.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/png.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/pngerror.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/pngget.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/pngmem.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/pngpread.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/pngread.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/pngrio.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/pngrtran.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/pngrutil.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/pngset.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/pngtest.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/pngtrans.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/pngwio.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/pngwrite.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/pngwtran.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libpng/pngwutil.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libyaml/src/api.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libyaml/src/dumper.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libyaml/src/emitter.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libyaml/src/loader.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libyaml/src/parser.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libyaml/src/reader.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libyaml/src/scanner.c"
             ex="false"
             tool="0"
             flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/libyaml/src/writer.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/sqlite3/sqlite3.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/zlib/adler32.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/zlib/compress.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/zlib/crc32.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/zlib/deflate.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/zlib/gzclose.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/zlib/gzlib.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/zlib/gzread.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/zlib/gzwrite.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/zlib/infback.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/zlib/inffast.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/zlib/inflate.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/zlib/inftrees.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/zlib/trees.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/zlib/uncompr.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../depends/zlib/zutil.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../include/platform/linux/SDL_config.h"
             ex="false"
@@ -7461,8 +6332,6 @@
             flavor2="0">
       </item>
       <item path="../../patch/luajit/lj_err.c" ex="false" tool="0" flavor2="2">
-        <cTool flags="1">
-        </cTool>
       </item>
       <item path="../../patch/luajit/win32.x64/lj_bcdef.h"
             ex="false"
@@ -8569,78 +7438,56 @@
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_lib3d_stdlib.cpp"
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libMedia_imagesstd.cpp"
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libMedia_serializeJson.cpp"
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libMedia_serializeYaml.cpp"
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libMedia_stdio.cpp"
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libMedia_stdlib.cpp"
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libMedia_zlib.cpp"
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libUI_SDLGL.cpp"
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libUI_SDLcore.cpp"
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libUI_frames.cpp"
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/libs/plugin_libStd.cpp"
             ex="false"
@@ -8661,22 +7508,16 @@
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/main/umodsys.c_maina.cpp"
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/main/umodsys.c_maint.cpp"
             ex="false"
             tool="1"
             flavor2="0">
-        <ccTool flags="0">
-        </ccTool>
       </item>
       <item path="../../src/plugin/test/plugin_test1.cpp"
             ex="false"
