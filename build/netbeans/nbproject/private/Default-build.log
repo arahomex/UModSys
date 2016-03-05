@@ -1,10 +1,47 @@
-../gnuc_makefile/Makefile.inc:1: Makefile.defines.inc: No such file or directory
-../gnuc_makefile/Makefile.inc:46: Makefile.dep-core.inc: No such file or directory
-../gnuc_makefile/Makefile.inc:47: Makefile.dep-base.inc: No such file or directory
-../gnuc_makefile/Makefile.inc:49: Makefile.dep-libmedia.inc: No such file or directory
-../gnuc_makefile/Makefile.inc:50: Makefile.dep-lib2d.inc: No such file or directory
-../gnuc_makefile/Makefile.inc:51: Makefile.dep-lib3d.inc: No such file or directory
-../gnuc_makefile/Makefile.inc:52: Makefile.dep-libui.inc: No such file or directory
-../gnuc_makefile/Makefile.inc:54: Makefile.dep-basesys.inc: No such file or directory
-../gnuc_makefile/Makefile.inc:56: Makefile.dep-so-test.inc: No such file or directory
-gmake: *** No rule to make target `Makefile.dep-so-test.inc'.  Stop.
+*** Make lib umodsys::umodsys_lib_core
+ar: создаётся ../../tmp/Linux_x86_64.Debug/umodsys_lib_core.Linux_x86_64.Debug.a
+*** Make lib umodsys::umodsys_lib_base
+ar: создаётся ../../tmp/Linux_x86_64.Debug/umodsys_lib_base.Linux_x86_64.Debug.a
+*** Make lib umodsys::umodsys_lib_basesys
+ar: создаётся ../../tmp/Linux_x86_64.Debug/umodsys_lib_basesys.Linux_x86_64.Debug.a
+*** Make lib umodsys::umodsys_lib_libmedia
+ar: создаётся ../../tmp/Linux_x86_64.Debug/umodsys_lib_libmedia.Linux_x86_64.Debug.a
+*** Make lib umodsys::umodsys_lib_libui
+ar: создаётся ../../tmp/Linux_x86_64.Debug/umodsys_lib_libui.Linux_x86_64.Debug.a
+*** Make lib umodsys::umodsys_lib_lib2d
+ar: создаётся ../../tmp/Linux_x86_64.Debug/umodsys_lib_lib2d.Linux_x86_64.Debug.a
+*** Make lib umodsys::umodsys_lib_lib3d
+ar: создаётся ../../tmp/Linux_x86_64.Debug/umodsys_lib_lib3d.Linux_x86_64.Debug.a
+../../depends/zlib/gzlib.c: В функции «gz_open»:
+../../depends/zlib/gzlib.c:250:24: предупреждение: неявная декларация функции «lseek» [-Wimplicit-function-declaration]
+         state->start = LSEEK(state->fd, 0, SEEK_CUR);
+                        ^
+../../depends/zlib/gzread.c: В функции «gz_load»:
+../../depends/zlib/gzread.c:30:15: предупреждение: неявная декларация функции «read» [-Wimplicit-function-declaration]
+         ret = read(state->fd, buf + *have, len - *have);
+               ^
+../../depends/zlib/gzread.c: В функции «gzclose_r»:
+../../depends/zlib/gzread.c:586:11: предупреждение: неявная декларация функции «close» [-Wimplicit-function-declaration]
+     ret = close(state->fd);
+           ^
+../../depends/zlib/gzwrite.c: В функции «gz_comp»:
+../../depends/zlib/gzwrite.c:84:15: предупреждение: неявная декларация функции «write» [-Wimplicit-function-declaration]
+         got = write(state->fd, strm->next_in, strm->avail_in);
+               ^
+../../depends/zlib/gzwrite.c: В функции «gzclose_w»:
+../../depends/zlib/gzwrite.c:561:9: предупреждение: неявная декларация функции «close» [-Wimplicit-function-declaration]
+     if (close(state->fd) == -1)
+         ^
+*** Make solib umodsys_Depends::lib_zlib
+*** Make solib umodsys_Depends::lib_libpng
+*** Make solib umodsys_Depends::lib_jpeglib
+*** Make solib umodsys_Depends::lib_freetype
+*** Make solib umodsys_Depends::lib_SDL2
+*** Make plugin umodsys::plugin_test1
+*** Make plugin umodsys::plugin_test2
+../../src/plugin/main/umodsys.c_main.cpp: В функции «int main(int, char**)»:
+../../src/plugin/main/umodsys.c_main.cpp:13:3: ошибка: «validate_env2» не является элементом «UModSys::core::syshlp»
+   syshlp::validate_env2();
+   ^
+Makefile.Linux_x86_64.Debug:1778: ошибка выполнения рецепта для цели «../../tmp/Linux_x86_64.Debug/umodsysc/umodsys.c_main.o»
+gmake: *** [../../tmp/Linux_x86_64.Debug/umodsysc/umodsys.c_main.o] Ошибка 1
