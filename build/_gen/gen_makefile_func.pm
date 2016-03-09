@@ -5,6 +5,7 @@ use File::Basename;
 use Data::Dumper;
 
 our $generators;
+our $verbosity;
 our $script_path;
 our ($fout, $pg, $proj, $xmap);
 our ($FILE_PATH, $FNAME, $FPATH, $FEXT);
@@ -713,7 +714,7 @@ sub makefile_projectgroup_generate($$$)
   #
   eprint $fout, eval("<<EOT\n".$template->{'projectgroup-end'}."EOT");
   #
-  print "Written project group '$PROJECTGROUP_NAME'\n";
+  print "Written project group '$PROJECTGROUP_NAME'\n" if $verbosity>=1;
 }
 
 #--------------------------------------------------------------------
@@ -782,7 +783,7 @@ sub makefile_gen_generate($$)
       #
       eprint $F, eval("<<EOT\n".$template->{'makefile-end'}."EOT");
       close $F;
-      print "Written make file '$filename' : ".join(', ', @{$state->{'projects'}})."\n";
+      print "Written make file '$filename' : ".join(', ', @{$state->{'projects'}})."\n" if $verbosity>=1;
     }
   }
 }

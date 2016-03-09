@@ -13,7 +13,11 @@
         <group>
             <file>file:/all/PERSISTENT/home/ara/SVN/mini.git/UModSys/src/basesys/umodsys.basesys.rsystem_exec.cpp</file>
             <file>file:/all/PERSISTENT/home/ara/SVN/mini.git/UModSys/src/plugin/main/umodsys.c_main.cpp</file>
+            <file>file:/all/PERSISTENT/home/ara/SVN/mini.git/UModSys/src/basesys/umodsys.basesys.rsystem.h</file>
+            <file>file:/all/PERSISTENT/home/ara/SVN/mini.git/UModSys/include/umodsys/base/shell.h</file>
+            <file>file:/all/PERSISTENT/home/ara/SVN/mini.git/UModSys/include/umodsys/tl/parsers/parser_tcl.h</file>
             <file>file:/all/PERSISTENT/home/ara/SVN/mini.git/UModSys/src/basesys/umodsys.basesys.rsystem_tests.cpp</file>
+            <file>file:/all/PERSISTENT/home/ara/SVN/mini.git/UModSys/src/basesys/umodsys.basesys.rexec.h</file>
         </group>
     </open-files>
 </project-private>

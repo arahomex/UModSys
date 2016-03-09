@@ -2,6 +2,7 @@ use strict;
 use warnings;
 
 our $generators;
+our $verbosity;
 
 #our $script_path;
 #require "$script_path/gen_makefile_func.pm";

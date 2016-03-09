@@ -6,20 +6,59 @@
 /*************************************************************/
 
 #include <umodsys/base/basetypes.h>
+#include <umodsys/tl/parsers/parser_tcl.h>
 
 namespace UModSys {
 namespace base {
 
+    
+
+//***************************************
+// IExecTCL::  - main module functionality
+//***************************************
+  
+struct IExecTCL {
+  typedef core::BStr StringP;
+  typedef core::DCString String;
+  typedef tl::TParser_TCL<IExecTCL> Parser;
+  typedef IExecTCL Self;
+  typedef core::HUniquePointer TypeId;
+  //
+  struct IExecutor {
+    virtual bool tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) =0;
+    virtual bool tcl_getvar(IExecTCL& tcl, const String& name, String& value) =0;
+    virtual bool tcl_setvar(IExecTCL& tcl, const String& name, const String& value) =0;
+  };
+  //
+  virtual const IExecTCL* get_other(TypeId type) const =0;
+  virtual IExecTCL* get_other(TypeId type) =0;
+  //
+  virtual void parse_start(void) = 0;
+  virtual void add(char sym) =0;
+  virtual void add(StringP b, StringP e) =0;
+  virtual void add(const String& ss) =0;
+  virtual bool add_esc(StringP psym, int &idx) =0;
+  virtual void add_var(StringP b, StringP e) =0;
+  virtual void add_cmt(StringP b, StringP e) =0;
+  virtual void next_arg(void) =0;
+  virtual size_t stream_size(void) =0;
+  virtual bool execute(void) =0;
+  virtual bool exec_command(Parser& ps) =0;
+  //
+  virtual void set_result(const String& src) =0;
+  virtual void print_s(const String& val) =0;
+  virtual void print_s(StringP val) =0;
+  virtual void print_f(StringP val, ...) =0;
+};
 
 //***************************************
 // IShell::  - main module functionality
 //***************************************
 
-struct IShell : public IRefObject {
+struct IShell : public IRefObject, public IExecTCL::IExecutor {
+public:
   virtual bool connect(void) =0;
   virtual bool disconnect(void) =0;
-  virtual bool process_tick(const core::STimeMsec& delta) =0;
-  virtual bool process_command(int argc, const core::DCString argv[]) =0;
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::IShell, 2, IRefObject);
 };

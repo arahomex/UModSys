@@ -247,6 +247,13 @@ struct RTest1_Shell
     s_dbg.put(d_Shell, cl_Info, "~RTest1_Shell()\n");
   }
   //
+/*
+  bool process_tick(const STimeMsec& delta) {
+    s_dbg.put(d_Shell, cl_Info, "RTest1_Shell::tick(%g)\n", delta.fsec());
+    return true;
+  }
+  bool process_command(int argc, const core::DCString argv[]) {
+*/
   bool connect(void) {
     s_dbg.put(d_Shell, cl_Info, "RTest1_Shell::connect()\n");
     return true;
@@ -255,11 +262,14 @@ struct RTest1_Shell
     s_dbg.put(d_Shell, cl_Info, "RTest1_Shell::disconnect()\n");
     return true;
   }
-  bool process_tick(const STimeMsec& delta) {
-    s_dbg.put(d_Shell, cl_Info, "RTest1_Shell::tick(%g)\n", delta.fsec());
-    return true;
+public: // IExecutor
+  bool tcl_getvar(IExecTCL& tcl, const IExecTCL::String& name, IExecTCL::String& value) {
+    return false;
   }
-  bool process_command(int argc, const core::DCString argv[]) {
+  bool tcl_setvar(IExecTCL& tcl, const IExecTCL::String& name, const IExecTCL::String& value) {
+    return false;
+  }
+  bool tcl_command(IExecTCL& tcl, size_t argc, const IExecTCL::String argv[]) {
     s_dbg.put(d_Shell, cl_Info, "RTest1_Shell::command(#%d)\n", argc);
     if(argc>=1 && argv[0]=="test") {
       if(argc==1) {

@@ -21,9 +21,7 @@ using namespace core;
 // SExecTCL
 //***************************************
 
-struct SExecTCL {
-  typedef core::BStr StringP;
-  typedef core::DCString String;
+struct SExecTCL : IExecTCL {
   typedef core::DStringBufSmall StringName, StringValue;
   typedef core::DStringBuffer StringStream;
   //
@@ -31,7 +29,7 @@ struct SExecTCL {
   typedef tl::TDynarrayStatic<String, 64> Strings;
   typedef tl::TScatterArray<StringName, StringValue> StringMap;
   //
-  typedef tl::TParser_TCL<SExecTCL> Parser;
+//  typedef tl::TParser_TCL<SExecTCL> Parser;
   typedef SExecTCL Self;
   //
   struct SharedState {
@@ -57,21 +55,15 @@ struct SExecTCL {
     }
   };
   //
-  struct IExecutor {
-    virtual bool tcl_command(SExecTCL& tcl, const Strings& args) =0;
-    virtual bool tcl_getvar(SExecTCL& tcl, const String& name, String& value) =0;
-    virtual bool tcl_setvar(SExecTCL& tcl, const String& name, const String& value) =0;
-  };
-  //
   //
   struct Range : IExecutor {
     int begin, end, step, cur;
     char tmp[64];
     //
-    bool tcl_command(SExecTCL& tcl, const Strings& args) {
+    bool tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) {
       return false;
     }
-    bool tcl_getvar(SExecTCL& tcl, const String& name, String& value) {
+    bool tcl_getvar(IExecTCL& tcl, const String& name, String& value) {
       if(name=="value") {
         sprintf(tmp, "%d", cur);
         value = tmp;
@@ -79,7 +71,7 @@ struct SExecTCL {
       }
       return false;
     }
-    bool tcl_setvar(SExecTCL& tcl, const String& name, const String& value) {
+    bool tcl_setvar(IExecTCL& tcl, const String& name, const String& value) {
       return false;
     }
     //
@@ -103,6 +95,21 @@ struct SExecTCL {
   SExecTCL(SharedState& ass, IExecutor *ee, SExecTCL *u=NULL)
   : ss(ass), stream(ass.top(), ass.left()), executor(ee), up(u) {
     stack_top = ss.stack.Len();
+  }
+  //
+  inline static TypeId get_tinfo(void) { return tl::TObjectUniqueID<SExecTCL>::get_id(); }
+  inline static const char* _root_get_interface_infoname(void) { return "SExecTCL"; }
+  inline static int _root_get_interface_infover(void) { return 1; }
+  //
+  const IExecTCL* get_other(TypeId type) const {
+    if(type==get_tinfo())
+      return this;
+    return NULL;
+  }
+  IExecTCL* get_other(TypeId type) {
+    if(type==get_tinfo())
+      return this;
+    return NULL;
   }
   //
   bool add_esc(StringP psym, int &idx) {
@@ -237,7 +244,7 @@ struct SExecTCL {
   bool tcl_cmd(Strings& args) {
     SExecTCL *tcl = this;
     while(tcl!=NULL) {
-      if(tcl->executor->tcl_command(*this, args))
+      if(tcl->executor->tcl_command(*this, ~args, args.All()))
         return true;
       tcl = tcl->up;
     }

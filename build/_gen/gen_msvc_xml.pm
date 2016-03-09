@@ -5,6 +5,7 @@ use Storable qw(dclone);
 my $uitf8_header = "\xEF\xBB\xBF";
 
 our $script_path;
+our $verbosity;
 require "$script_path/util_crc32.pm";
 
 #--------------------------------------------------------------------
@@ -192,7 +193,7 @@ sub msvc_xml_solution_generate
   }
   print $fout "\n";
   close $fout;
-  print "Written solution file '$filename'\n";
+  print "Written solution file '$filename'\n" if $verbosity>=1;
 }
 
 sub msvc_xml_solution_option
@@ -491,7 +492,7 @@ use strict 'vars';
   #
   print $fout "\n";
   close $fout;
-  print "Written project file '$filename'\n";
+  print "Written project file '$filename'\n" if $verbosity>=1;
 }
 
 sub msvc_xml_project_cmd

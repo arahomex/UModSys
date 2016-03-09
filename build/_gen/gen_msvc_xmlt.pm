@@ -1,6 +1,7 @@
 use strict;
 
 our $generators;
+our $verbosity;
 our $script_path;
 require "$script_path/gen_msvc_xml.pm";
 

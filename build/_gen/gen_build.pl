@@ -9,8 +9,9 @@ use File::Basename;
 use Carp;
 
 
-our $VERSION = '0.47';
+our $VERSION = '0.48';
 
+our $verbosity = 0;
 our $script_path;
 our $generators = {};
 my($filename, $suffix);
@@ -31,6 +32,18 @@ require "$script_path/gen_msvc8.pm";
 my $input_file = 'gen_options.txt';
 my $input_path = '';
 
+while(@ARGV>0) {
+  my $a = $ARGV[0];
+  if($a =~ /^\-\-verbose[\:\=]?(\w+)/) {
+    $verbosity = $1+0;
+  } elsif($a =~ /^\-\-verbose/ or $a =~ /^\-v/) {
+    $verbosity++;
+  } else {
+    last;
+  }
+  shift @ARGV;
+}
+
 if(@ARGV==1) {
  $input_file = $ARGV[0];
 } elsif(@ARGV==2) {
@@ -40,7 +53,7 @@ if(@ARGV==1) {
 
 local $SIG{__DIE__} = \&Carp::confess;
 
-print "Generator begin\n";
+print "Generator begin\n" if $verbosity>=1;
 
 my $config = init_configuration();
 read_configuration($config, $input_file);

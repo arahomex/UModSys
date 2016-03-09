@@ -46,19 +46,26 @@ bool RSystem::exec_args(int argc, char** argv)
 //***************************************
 //***************************************
 
-bool RSystem::tcl_getvar(SExecTCL& tcl, const SExecTCL::String& name, SExecTCL::String& value)
+bool RSystem::tcl_getvar(IExecTCL& tcl, const IExecTCL::String& name, IExecTCL::String& value)
 {
   return false;
 }
 
-bool RSystem::tcl_setvar(SExecTCL& tcl, const SExecTCL::String& name, const SExecTCL::String& value)
+bool RSystem::tcl_setvar(IExecTCL& tcl, const IExecTCL::String& name, const IExecTCL::String& value)
 {
   return false;
 }
 
-bool RSystem::tcl_command(SExecTCL& tcl, const SExecTCL::Strings& args)
+bool RSystem::tcl_command(IExecTCL& atcl, size_t argc, const IExecTCL::String argv[])
 {
-  const SExecTCL::String &cmd = args[0];
+  tl::TArray<const IExecTCL::String> args(argv, argc, argc);
+  IExecTCL* stcl = atcl.get_other(SExecTCL::get_tinfo());
+  if(stcl==NULL) {
+    dbg_put(rsdl_TCL, "Invalid TCL\n");
+    return false;
+  }
+  SExecTCL& tcl = static_cast<SExecTCL&>(*stcl);
+  const SExecTCL::String &cmd = argv[0];
   if(0) {
     dbg_put(rsdl_TCL, "RSystem::command(%d \"%.*s\" ", int(~args), int(~cmd), cmd.c_str());
     for(size_t i=1; i<~args; i++) {
@@ -188,6 +195,17 @@ bool RSystem::tcl_command(SExecTCL& tcl, const SExecTCL::Strings& args)
             return true;
           } else if(args.size()==3) {
             get_modloader()->moduledb_save(args[2]);
+            return true;
+          }
+        } else if(args[1]=="shell") {
+          if(args.size()==2) {
+            IRefObject::TypeId tids[0x100];
+            size_t ns = find_shells(tids, 0x100, NULL);
+            dbg_put(rsdl_TCL, "shells found: %d\n", ns);
+            for(size_t i=0; i<ns; i++) {
+              dbg_put(rsdl_TCL, "  shell: %p %s\n", tids[i], tids[i]->name);
+            }
+            dbg_put(rsdl_TCL, "/shells found: %d\n", ns);
             return true;
           }
         }

@@ -6585,7 +6585,7 @@
       <item path="../../src/base/platform/linux/umodsys.so_main.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
@@ -6597,7 +6597,7 @@
       <item path="../../src/base/umodsys.base.console.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -6610,7 +6610,7 @@
       <item path="../../src/base/umodsys.base.debug.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -6623,7 +6623,7 @@
       <item path="../../src/base/umodsys.base.module.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -6636,7 +6636,7 @@
       <item path="../../src/base/umodsys.base.modulecontext.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -6649,7 +6649,7 @@
       <item path="../../src/base/umodsys.base.moduleinfo.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -6662,7 +6662,7 @@
       <item path="../../src/base/umodsys.base.moduleloader.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -6675,7 +6675,7 @@
       <item path="../../src/base/umodsys.base.modulereg.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -6688,7 +6688,7 @@
       <item path="../../src/base/umodsys.base.moduleregchain.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -6701,7 +6701,7 @@
       <item path="../../src/base/umodsys.base.system.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -6882,49 +6882,49 @@
       <item path="../../src/core/platform/linux/umodsys.core.syshlp_args.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/core/platform/linux/umodsys.core.syshlp_charcode.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/core/platform/linux/umodsys.core.syshlp_chars.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/core/platform/linux/umodsys.core.syshlp_files.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/core/platform/linux/umodsys.core.syshlp_proc.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/core/platform/linux/umodsys.core.syshlp_thread.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/core/platform/linux/umodsys.core.syshlp_vars.linux.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
@@ -6961,7 +6961,7 @@
       <item path="../../src/core/umodsys.core.objects.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -6974,7 +6974,7 @@
       <item path="../../src/core/umodsys.core.stdtypedefs.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -6987,7 +6987,7 @@
       <item path="../../src/core/umodsys.core.uniqueptr.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -7000,7 +7000,7 @@
       <item path="../../src/core/umodsys.core.uniqueptrlist.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -7013,7 +7013,7 @@
       <item path="../../src/core/umodsys.tl.strings.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -7026,7 +7026,7 @@
       <item path="../../src/core/umodsys.tl.throws.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -7039,7 +7039,7 @@
       <item path="../../src/core/umodsys.tl.utf16.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -7049,7 +7049,7 @@
           </preprocessorList>
         </ccTool>
       </item>
-      <item path="../../src/core/umodsys.tl.utf8.cpp" ex="false" tool="1" flavor2="0">
+      <item path="../../src/core/umodsys.tl.utf8.cpp" ex="false" tool="1" flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -7062,7 +7062,7 @@
       <item path="../../src/core/umodsys.tl.utfcase.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -7075,49 +7075,49 @@
       <item path="../../src/lib/2d/umodsys.lib.2d.common.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/lib/3d/umodsys.lib.3d.common.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/lib/3d/umodsys.lib.3d.objstates.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/lib/media/umodsys.lib.media.common.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/lib/media/umodsys.lib.media.library.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/lib/ui/umodsys.lib.ui.common.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/lib/utils/libutils.common.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
@@ -7201,77 +7201,77 @@
       <item path="../../src/plugin/lib1/plugin_lib2d_stdlib.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_lib3d_stdlib.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libMedia_imagesstd.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libMedia_serializeJson.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libMedia_serializeYaml.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libMedia_stdio.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libMedia_stdlib.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libMedia_zlib.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libUI_SDLGL.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libUI_SDLcore.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/plugin/lib1/plugin_libUI_frames.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
@@ -7293,21 +7293,21 @@
       <item path="../../src/plugin/main/umodsys.c_main.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/plugin/main/umodsys.c_maina.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
       <item path="../../src/plugin/main/umodsys.c_maint.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
         </ccTool>
       </item>
@@ -7317,7 +7317,6 @@
             flavor2="0">
         <ccTool flags="0">
           <incDir>
-            <pElem>../../src/basesys</pElem>
             <pElem>../gnu-make</pElem>
           </incDir>
         </ccTool>
@@ -7325,7 +7324,7 @@
       <item path="../../src/plugin/test/plugin_test2.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../../src/basesys</pElem>
@@ -7336,7 +7335,7 @@
       <item path="../../src/plugin/test/plugin_test3.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -7346,7 +7345,7 @@
       <item path="../../src/plugin/test/plugin_test4.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>
@@ -7356,7 +7355,7 @@
       <item path="../../src/plugin/test/plugin_test5.cpp"
             ex="false"
             tool="1"
-            flavor2="0">
+            flavor2="4">
         <ccTool flags="0">
           <incDir>
             <pElem>../gnu-make</pElem>

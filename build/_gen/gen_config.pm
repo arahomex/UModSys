@@ -6,6 +6,7 @@ use Data::Dumper;
 use File::Basename;
 
 our $VERSION;
+our $verbosity;
 
 #---------------------------------
 #---------------------------------
@@ -196,7 +197,7 @@ sub read_configuration($$)
     push @$lines, $line;
     $lineno++;
   }
-  print "Read file '$filename' $lineno lines.\n";
+  print "Read file '$filename' $lineno lines.\n" if $verbosity>=1;
   close $fin;
 }
 
@@ -226,7 +227,7 @@ sub apply_configuration($$)
 #        print Data::Dumper->Dump([$ctx], [qw(ctx)]);
         $config->{'block'} = $ctx;
         @stack = ();
-        print "Using generator '$genid'\n";
+        print "Using generator '$genid'\n" if $verbosity>=1;
         next;
       }
     } else {

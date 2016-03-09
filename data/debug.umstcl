@@ -1,5 +1,5 @@
 
-#module scan *
-#module save moduledb.conf-hdb
-#module shell 
+module scan plugin_lib*.so
+module save moduledb.conf-hdb
+module shell 
 
