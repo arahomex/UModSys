@@ -82,17 +82,6 @@ bool RSystem::tcl_command(IExecTCL& atcl, size_t argc, const IExecTCL::String ar
       }
       tcl.print_s("\n");
       return true;
-    } else if(cmd=="vardump") {
-      tcl.print_f("Vars: %d {\n", tcl.ss.vars.size());
-      for(typename SExecTCL::StringMap::const_iterator x=tcl.ss.vars.begin(), e=tcl.ss.vars.end(); x!=e; ++x) {
-        tcl.print_s("  '");
-        tcl.print_s((*x).first.get_text());
-        tcl.print_s("'='");
-        tcl.print_s((*x).second.get_text());
-        tcl.print_s("'\n");
-      }
-      tcl.print_f("} #Vars\n");
-      return true;
     } else if(cmd=="argdump") {
       tcl.print_f("Args: %d {\n", args.size());
       for(int i=0; i<args.size(); i++) {
@@ -105,11 +94,6 @@ bool RSystem::tcl_command(IExecTCL& atcl, size_t argc, const IExecTCL::String ar
     } else if(cmd=="?") {
       tcl.set_result(args.size()>1 ? args[1] : SExecTCL::String());
       return true;
-    } else if((cmd=="set") || (cmd=="=")) {
-      if(args.size()==3) {
-        tcl.set_result( tcl.var_set(args[1], args[2]) );
-        return true;
-      }
     } else if(cmd=="if") {
       if(args.size()==3) {
         if(tcl.eval_live_expr(args[1])) {
@@ -211,8 +195,6 @@ bool RSystem::tcl_command(IExecTCL& atcl, size_t argc, const IExecTCL::String ar
         }
       }
     }
-    //
-    dbg_put(rsdl_TCL, "RSystem::command(ERROR %d:\"%.*s\" +%d)\n", int(~cmd), int(~cmd), *cmd, int(~args));
     return false;
 }
 
@@ -264,7 +246,10 @@ bool RSystem::exec_script(BStr filename)
   //
   DCString spp(buf, len);
   SExecTCL::Parser pp(spp.begin(), spp.end());
-  SExecTCL col(tcl_ss, this);
+  SExecTCL::Thread thread;
+  SExecTCL failed(thread, &tcl_ctxfail);
+  SExecTCL master(thread, &tcl_ctx, &failed);
+  SExecTCL col(thread, this, &master);
   //
   int rv = pp.Parse(col);
   if(rv!=SExecTCL::Parser::tEnd) {

@@ -123,7 +123,8 @@ public:
   //
   DRMemAlloc mema_shared, mema_system;
   //
-  SExecTCL::SharedState tcl_ss;
+  SExecTCL::Context tcl_ctx;
+  SExecTCL::FailedContext tcl_ctxfail;
   DShellArray shells;
   //
   void set_console(IConsole* console);

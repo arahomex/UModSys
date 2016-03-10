@@ -32,18 +32,17 @@ struct SExecTCL : IExecTCL {
 //  typedef tl::TParser_TCL<SExecTCL> Parser;
   typedef SExecTCL Self;
   //
-  struct SharedState {
-    StringMap vars;
+  struct Thread {
     StringStack stack;
     //
     char* top(void) { return stack.end(); }
     size_t left(void) const { return stack.MaxLen(); }
   };
   struct State {
-    SharedState &ss;
+    Thread &ss;
     size_t top;
     //
-    State(SharedState& s)
+    State(Thread& s)
     : ss(s) {
       top = ~ss.stack;
     }
@@ -55,6 +54,67 @@ struct SExecTCL : IExecTCL {
     }
   };
   //
+  struct FailedContext : IExecutor {
+    //
+    bool tcl_getvar(IExecTCL& tcl, const String& name, String& value) { 
+      return false;
+    }
+    bool tcl_setvar(IExecTCL& tcl, const String& name, const String& value) {
+      return false;
+    }
+    bool tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) {
+      String cmd = argv[0];
+      dbg_put(rsdl_TCL, "SExecTCL::FailedContext::command(ERROR %d:\"%.*s\" +%d)\n", int(~cmd), int(~cmd), *cmd, int(argc));
+      return false;
+    }
+  };
+  //
+  struct Context : IExecutor {
+    StringMap vars;
+    //
+    bool tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) {
+      String cmd = argv[0];
+      if(cmd=="vardump") {
+        tcl.print_f("Vars: %d {\n", vars.size());
+        for(typename SExecTCL::StringMap::const_iterator x=vars.begin(), e=vars.end(); x!=e; ++x) {
+          tcl.print_s("  '");
+          tcl.print_s((*x).first.get_text());
+          tcl.print_s("'='");
+          tcl.print_s((*x).second.get_text());
+          tcl.print_s("'\n");
+        }
+        tcl.print_f("} #Vars\n");
+        return true;
+      }
+      if((cmd=="set") || (cmd=="=")) {
+        if(argc==3) {
+//          dbg_put(rsdl_TCL, "SExecTCL::Context::command(set \"%.*s\" \"%.*s\")\n", int(~argv[1]), *argv[1], int(~argv[2]), *argv[2]);
+          tcl.set_result( tcl.var_set(argv[1], argv[2]) );
+          return true;
+        }
+      }
+      return false;
+    }
+    bool tcl_getvar(IExecTCL& tcl, const String& name, String& value) {
+      StringName key(name);
+      const StringValue* val = vars(key);
+      if(val!=NULL) {
+//        dbg_put(rsdl_TCL, "SExecTCL::Context::get_var(\"%.*s\")=>\"%.*s\"\n", int(~name), *name, int(~*val), **val);
+        value = *val;
+        return true;
+      }
+      return false;
+    }
+    bool tcl_setvar(IExecTCL& tcl, const String& name, const String& value) {
+      StringName key(name);
+      StringValue& v = vars[key];
+      v = StringValue(value);
+      return true;
+    }
+    //
+    Context(void) {}
+    ~Context(void) {}
+  };
   //
   struct Range : IExecutor {
     int begin, end, step, cur;
@@ -76,6 +136,7 @@ struct SExecTCL : IExecTCL {
     }
     //
     Range(int a, int b, int c) : begin(a), end(c), step(b) { start(); }
+    ~Range(void) {}
     //
     void start(void) { cur = begin; }
     void operator++(void) { cur += step; }
@@ -85,21 +146,26 @@ struct SExecTCL : IExecTCL {
   };
   //
   IExecutor *executor;
-  SExecTCL *up;
-  SharedState &ss;
+  IExecTCL *up;
+  Thread &ss;
   Strings args;
   StringStream stream;
   String result;
   size_t stack_top;
   //
-  SExecTCL(SharedState& ass, IExecutor *ee, SExecTCL *u=NULL)
+  SExecTCL(Thread& ass, IExecutor *ee, IExecTCL *u=NULL)
   : ss(ass), stream(ass.top(), ass.left()), executor(ee), up(u) {
     stack_top = ss.stack.Len();
+  }
+  ~SExecTCL(void) {
   }
   //
   inline static TypeId get_tinfo(void) { return tl::TObjectUniqueID<SExecTCL>::get_id(); }
   inline static const char* _root_get_interface_infoname(void) { return "SExecTCL"; }
   inline static int _root_get_interface_infover(void) { return 1; }
+  //
+  IExecTCL* get_up(void) const { return up; }
+  IExecutor* get_executor(void) const { return executor; }
   //
   const IExecTCL* get_other(TypeId type) const {
     if(type==get_tinfo())
@@ -242,50 +308,35 @@ struct SExecTCL : IExecTCL {
   size_t stream_size(void) { return ~stream; }
   //
   bool tcl_cmd(Strings& args) {
-    SExecTCL *tcl = this;
+    IExecTCL *tcl = this;
     while(tcl!=NULL) {
-      if(tcl->executor->tcl_command(*this, ~args, args.All()))
+      if(tcl->get_executor()->tcl_command(*this, ~args, args.All()))
         return true;
-      tcl = tcl->up;
+      tcl = tcl->get_up();
     }
     return false;
   }
   //
   String var_get(const String& name) {
     String rvx;
-    SExecTCL *tcl = this;
+    IExecTCL *tcl = this;
     // always get executor vars
     while(tcl!=NULL) {
-      if(executor->tcl_getvar(*this, name, rvx))
+      if(tcl->get_executor()->tcl_getvar(*this, name, rvx))
         return rvx;
-      tcl = tcl->up;
-    }
-    // scan for shared state vars
-    StringName key(name);
-    tcl = this;
-    while(tcl!=NULL) {
-      const StringValue* value = tcl->ss.vars(key);
-      if(value!=NULL) {
-        String rv(*value);
-        return rv;
-      }
-      tcl = tcl->up;
+      tcl = tcl->get_up();
     }
     return String();
   }
   String var_set(const String& name, const String& value) {
     // always set executor vars
-    SExecTCL *tcl = this;
+    IExecTCL *tcl = this;
     while(tcl!=NULL) {
-      if(executor->tcl_setvar(*this, name, value))
+      if(tcl->get_executor()->tcl_setvar(*this, name, value))
         return value;
-      tcl = tcl->up;
+      tcl = tcl->get_up();
     }
-    // set shared state var
-    StringName key(name);
-    StringValue& v = ss.vars[key];
-    v = StringValue(value);
-    return v.str();
+    return String();
   }
   void execute_begin(void) {
 /*

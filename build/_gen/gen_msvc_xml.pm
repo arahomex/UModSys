@@ -73,7 +73,7 @@ sub msvc_xml_clone
 {
   my $rv = {};
   while(my $base = shift) {
-    for my $k (keys $base) {
+    for my $k (keys %$base) {
       my $value = $base->{$k};
       my $refv = ref($value);
       if($refv eq 'HASH') {
@@ -116,7 +116,7 @@ sub msvc_xml_gen_generate {
   for my $sn (keys %$sols) {
     my $sol = $sols->{$sn};
     msvc_xml_solution_generate($sol->{'solution'}, $this->{'templates'});
-    for my $pid (keys $sol->{'projects'}) {
+    for my $pid (keys %{$sol->{'projects'}}) {
 #      print "Processing project $pid\n";
       msvc_xml_project_generate($sol->{'projects'}->{$pid}, $this->{'templates'});
     }
@@ -395,7 +395,7 @@ sub msvc_xml_project_generate
     for my $CONF_NAME (@confs) {
       #
       my $opt_var_all = '';
-      for my $opt_var (keys $opt_vars) {
+      for my $opt_var (keys %$opt_vars) {
         my $opt_combiner = $opt_vars->{$opt_var};
 #print "\$opt_var='$opt_var' \$opt_combiner='$opt_combiner'\n";
         my $opt_var_val = &$opt_combiner(

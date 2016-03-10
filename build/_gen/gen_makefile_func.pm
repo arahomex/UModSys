@@ -495,7 +495,7 @@ sub makefile_project_generate($$$)
   my $opt_var_all = '';
   my ($popts, $pgopts) = ($proj->{'a-opts'}, $pg->{'a-project-opts'});
 #  print ref($popts).", ".ref($pgopts)."\n";
-  for my $opt_var (sort keys $opt_vars) {
+  for my $opt_var (sort keys %$opt_vars) {
     my $opt_combiner = $opt_vars->{$opt_var};
     my $opt_var_val = &$opt_combiner((
       makefile_getopta('!*', $opt_var, @$popts),
