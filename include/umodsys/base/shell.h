@@ -45,8 +45,12 @@ struct IExecTCL {
   virtual bool execute(void) =0;
   virtual bool exec_command(Parser& ps) =0;
   //
+  virtual int get_error(void) const =0;
+  virtual String get_error_text(void) const =0;
+  virtual void set_error(int err, const String &text) =0;
   virtual IExecTCL* get_up(void) const =0;
-  virtual IExecutor* get_executor(void) const =0;
+  virtual size_t get_executor_count(void) const =0;
+  virtual IExecutor* get_executor(size_t id) const =0;
   virtual String var_get(const String& name) =0;
   virtual String var_set(const String& name, const String& value) = 0;
   virtual void set_result(const String& src) =0;

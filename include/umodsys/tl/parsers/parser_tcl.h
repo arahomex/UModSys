@@ -25,10 +25,10 @@ public:
   enum eToken {
     tLine        =0, // '\n' ';'
     tSeparator   =2, // ' '
-    tString      =5, // '\"' .. '\"'
+    tString      =3, // '\"' .. '\"'
+    tEnd         =5, // end of stream
     tError       =6, // error in syntax
-    tErrorResult =7, // error in execute command
-    tEnd             // end of stream
+    tErrorResult =7, // error in execute command, can be even more
   };
   //
   StringP p, e;
@@ -74,7 +74,7 @@ public:
     return rv;
   }
   eToken _nextToken(Collector &c) {
-    if(token>=tError)
+    if(token>=tEnd)
       return token;
     if(p==e)
       return (token=tEnd);
@@ -169,14 +169,14 @@ public:
           case '$': 
             c.add(p2, p);
             rv = ptsVar(c);
-            if(rv>=tError)
+            if(rv>tEnd)
               return rv;
             p2 = p;
             break;
           case '[':
             c.add(p2, p);
             rv = ptsCommand(c);
-            if(rv>=tError)
+            if(rv>tEnd)
               return rv;
             p2 = p;
             break;

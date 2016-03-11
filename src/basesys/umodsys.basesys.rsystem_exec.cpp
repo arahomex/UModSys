@@ -75,127 +75,66 @@ bool RSystem::tcl_command(IExecTCL& atcl, size_t argc, const IExecTCL::String ar
     dbg_put(rsdl_TCL, ")\n");
   }
   //
-    if(cmd=="puts") {
-      for(int i=1; i<args.size(); i++) {
-        if(i>1) tcl.print_f(" ");
-        tcl.print_s(args[i]);
-      }
-      tcl.print_s("\n");
-      return true;
-    } else if(cmd=="argdump") {
-      tcl.print_f("Args: %d {\n", args.size());
-      for(int i=0; i<args.size(); i++) {
-        tcl.print_f("  %d:'", i);
-        tcl.print_s(args[i]);
-        tcl.print_s("'\n");
-      }
-      tcl.print_s("} #Args\n");
-      return true;
-    } else if(cmd=="?") {
-      tcl.set_result(args.size()>1 ? args[1] : SExecTCL::String());
-      return true;
-    } else if(cmd=="if") {
-      if(args.size()==3) {
-        if(tcl.eval_live_expr(args[1])) {
-          tcl.eval(args[2]);
-        }
-        return true;
-      }
-    } else if(cmd=="while") {
-      if(args.size()==3) {
-        SExecTCL::State state(tcl.ss);
-        while(tcl.eval_live_expr(args[1])) {
-          tcl.eval(args[2]);
-          state.reset();
-        }
-        return true;
-      }
-    } else if(cmd=="for") {
-      if(args.size()==5) {
-        SExecTCL::State state(tcl.ss);
-        tcl.eval_live_expr(args[1]);
-        while(!tcl.eval_live_expr(args[2])) {
-          tcl.eval(args[3]);
-          tcl.eval(args[2]);
-          state.reset();
-        }
-        return true;
-      }
-    } else if(cmd=="foreach") {
-      SExecTCL::State state(tcl.ss);
-      if(args.size()>2+1) {
-        if(args[1]=="range") {
-          if(args.size()==1+3) {
-            for(SExecTCL::Range r(0, 1,
-                                  atoi(SExecTCL::StringValue(args[2]).c_str())); r.valid(); r++) {
-              tcl.eval(args.Last(), &r);
-            }
-            return true;
-          } else if(args.size()==2+3) {
-            for(SExecTCL::Range r(atoi(SExecTCL::StringValue(args[2]).c_str()),
-                                  1,
-                                  atoi(SExecTCL::StringValue(args[3]).c_str())); r.valid(); r++) {
-              tcl.eval(args.Last(), &r);
-            }
-            return true;
-          } else if(args.size()==3+3) {
-            for(SExecTCL::Range r(atoi(SExecTCL::StringValue(args[2]).c_str()),
-                                  atoi(SExecTCL::StringValue(args[3]).c_str()),
-                                  atoi(SExecTCL::StringValue(args[4]).c_str())); r.valid(); r++) {
-              tcl.eval(args.Last(), &r);
-            }
-            return true;
+  if(cmd=="foreach") {
+    SExecTCL::State state(tcl.ss);
+    if(args.size()>2+1) {
+      if(args[1]=="range") {
+        if(args.size()==1+3) {
+          for(SExecTCL::Range r(0, 1,
+                                atoi(SExecTCL::StringValue(args[2]).c_str())); r.valid(); r++) {
+            tcl.eval(args.Last(), &r);
           }
-        }
-      }
-    } else if(cmd=="<") {
-      if(args.size()==3) {
-        tcl.set_result( SExecTCL::String(tcl.eval_expr(args[1]) < tcl.eval_expr(args[2]) ? "1" : "0") );
-        return true;
-      }
-    } else if(cmd=="++") {
-      if(args.size()==2) {
-        const SExecTCL::String& v = tcl.var_get(args[1]);
-        { 
-          char buf[32]; 
-          sprintf(buf, "%d", tcl.eval_expr(v)+1);
-          tcl.set_result(tcl.var_set(args[1], SExecTCL::String(buf)));
-        }
-        return true;
-      }
-    } else if(cmd=="module") {
-      if(args.size()>=2) {
-        if(args[1]=="scan") {
-          if(args.size()==2) {
-            get_modloader()->moduledb_scan("", false);
-            return true;
-          } else if(args.size()==3) {
-            get_modloader()->moduledb_scan(args[2], true);
-            return true;
-          } 
-        } else if(args[1]=="save") {
-          if(args.size()==2) {
-            get_modloader()->moduledb_save("moduledb.conf-hdb");
-            return true;
-          } else if(args.size()==3) {
-            get_modloader()->moduledb_save(args[2]);
-            return true;
+          return true;
+        } else if(args.size()==2+3) {
+          for(SExecTCL::Range r(atoi(SExecTCL::StringValue(args[2]).c_str()),
+                                1,
+                                atoi(SExecTCL::StringValue(args[3]).c_str())); r.valid(); r++) {
+            tcl.eval(args.Last(), &r);
           }
-        } else if(args[1]=="shell") {
-          if(args.size()==2) {
-            IRefObject::TypeId tids[0x100];
-            size_t ns = find_shells(tids, 0x100, NULL);
-            dbg_put(rsdl_TCL, "shells found: %d\n", ns);
-            for(size_t i=0; i<ns; i++) {
-              dbg_put(rsdl_TCL, "  shell: %p %s\n", tids[i], tids[i]->name);
-            }
-            dbg_put(rsdl_TCL, "/shells found: %d\n", ns);
-            return true;
+          return true;
+        } else if(args.size()==3+3) {
+          for(SExecTCL::Range r(atoi(SExecTCL::StringValue(args[2]).c_str()),
+                                atoi(SExecTCL::StringValue(args[3]).c_str()),
+                                atoi(SExecTCL::StringValue(args[4]).c_str())); r.valid(); r++) {
+            tcl.eval(args.Last(), &r);
           }
+          return true;
         }
       }
     }
-    return false;
+  } else if(cmd=="module") {
+    if(args.size()>=2) {
+      if(args[1]=="scan") {
+        if(args.size()==2) {
+          get_modloader()->moduledb_scan("", false);
+          return true;
+        } else if(args.size()==3) {
+          get_modloader()->moduledb_scan(args[2], true);
+          return true;
+        } 
+      } else if(args[1]=="save") {
+        if(args.size()==2) {
+          get_modloader()->moduledb_save("moduledb.conf-hdb");
+          return true;
+        } else if(args.size()==3) {
+          get_modloader()->moduledb_save(args[2]);
+          return true;
+        }
+      } else if(args[1]=="shell") {
+        if(args.size()==2) {
+          IRefObject::TypeId tids[0x100];
+          size_t ns = find_shells(tids, 0x100, NULL);
+          dbg_put(rsdl_TCL, "shells found: %d\n", ns);
+          for(size_t i=0; i<ns; i++) {
+            dbg_put(rsdl_TCL, "  shell: %p %s\n", tids[i], tids[i]->name);
+          }
+          dbg_put(rsdl_TCL, "/shells found: %d\n", ns);
+          return true;
+        }
+      }
+    }
+  }
+  return false;
 }
 
 //***************************************
@@ -247,9 +186,8 @@ bool RSystem::exec_script(BStr filename)
   DCString spp(buf, len);
   SExecTCL::Parser pp(spp.begin(), spp.end());
   SExecTCL::Thread thread;
-  SExecTCL failed(thread, &tcl_ctxfail);
-  SExecTCL master(thread, &tcl_ctx, &failed);
-  SExecTCL col(thread, this, &master);
+  SExecTCL::IExecutor* exs[4]={ &tcl_ctxfail, &tcl_control, &tcl_ctx, this };
+  SExecTCL col(thread, exs, 4);
   //
   int rv = pp.Parse(col);
   if(rv!=SExecTCL::Parser::tEnd) {

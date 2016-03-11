@@ -125,6 +125,7 @@ public:
   //
   SExecTCL::Context tcl_ctx;
   SExecTCL::FailedContext tcl_ctxfail;
+  SExecTCL::ControlTCL tcl_control;
   DShellArray shells;
   //
   void set_console(IConsole* console);
