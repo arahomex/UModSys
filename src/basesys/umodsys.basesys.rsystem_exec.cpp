@@ -56,15 +56,17 @@ bool RSystem::tcl_setvar(IExecTCL& tcl, const IExecTCL::String& name, const IExe
   return false;
 }
 
-bool RSystem::tcl_command(IExecTCL& atcl, size_t argc, const IExecTCL::String argv[])
+bool RSystem::tcl_command(IExecTCL& tcl, size_t argc, const IExecTCL::String argv[])
 {
   tl::TArray<const IExecTCL::String> args(argv, argc, argc);
+/*
   IExecTCL* stcl = atcl.get_other(SExecTCL::get_tinfo());
   if(stcl==NULL) {
     dbg_put(rsdl_TCL, "Invalid TCL\n");
     return false;
   }
   SExecTCL& tcl = static_cast<SExecTCL&>(*stcl);
+*/
   const SExecTCL::String &cmd = argv[0];
   if(0) {
     dbg_put(rsdl_TCL, "RSystem::command(%d \"%.*s\" ", int(~args), int(~cmd), cmd.c_str());
@@ -76,7 +78,7 @@ bool RSystem::tcl_command(IExecTCL& atcl, size_t argc, const IExecTCL::String ar
   }
   //
   if(cmd=="foreach") {
-    SExecTCL::State state(tcl.ss);
+    SExecTCL::State state(tcl.get_thread());
     if(args.size()>2+1) {
       if(args[1]=="range") {
         if(args.size()==1+3) {

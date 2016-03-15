@@ -10,6 +10,8 @@ using namespace UModSys::core;
 using namespace UModSys::base;
 using namespace UModSys::base::rsystem;
 
+
+
 //***************************************
 // SExecTCL::FailedContext::
 //***************************************
@@ -34,11 +36,11 @@ bool SExecTCL::FailedContext::tcl_setvar(IExecTCL& tcl, const String& name, cons
 bool SExecTCL::FailedContext::tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) 
 {
   String cmd = argv[0];
-  String err = tcl.get_error_text();
+  String err = tcl.get_thread()->get_error_text();
   dbg_put(
     rsdl_TCL, "SExecTCL::FailedContext::command(ERROR %d:\"%.*s\" +%d) %d \"%.*s\"\n", 
     int(~cmd), int(~cmd), *cmd, int(argc),
-    tcl.get_error(), int(~err), *err
+    tcl.get_thread()->get_error(), int(~err), *err
   );
   return false;
 }
@@ -58,15 +60,15 @@ bool SExecTCL::Context::tcl_command(IExecTCL& tcl, size_t argc, const String arg
 {
   String cmd = argv[0];
   if(cmd=="vardump") {
-    tcl.print_f("Vars: %d {\n", vars.size());
+    tcl.get_thread()->print_f("Vars: %d {\n", vars.size());
     for(typename SExecTCL::StringMap::const_iterator x=vars.begin(), e=vars.end(); x!=e; ++x) {
-      tcl.print_s("  '");
-      tcl.print_s((*x).first.get_text());
-      tcl.print_s("'='");
-      tcl.print_s((*x).second.get_text());
-      tcl.print_s("'\n");
+      tcl.get_thread()->print_s("  '");
+      tcl.get_thread()->print_s((*x).first.get_text());
+      tcl.get_thread()->print_s("'='");
+      tcl.get_thread()->print_s((*x).second.get_text());
+      tcl.get_thread()->print_s("'\n");
     }
-    tcl.print_f("} #Vars\n");
+    tcl.get_thread()->print_f("} #Vars\n");
     return true;
   }
   if((cmd=="set") || (cmd=="=")) {
@@ -145,14 +147,16 @@ SExecTCL::ControlTCL::~ControlTCL(void)
 {
 }
 
-bool SExecTCL::ControlTCL::tcl_command(IExecTCL& atcl, size_t argc, const String argv[]) 
+bool SExecTCL::ControlTCL::tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) 
 {
+/*
   IExecTCL* stcl = atcl.get_other(SExecTCL::get_tinfo());
   if(stcl==NULL) {
     dbg_put(rsdl_TCL, "Invalid TCL\n");
     return false;
   }
   SExecTCL& tcl = static_cast<SExecTCL&>(*stcl);
+*/
   String cmd = argv[0];
   // generic 
   if(cmd=="if") {
@@ -164,7 +168,7 @@ bool SExecTCL::ControlTCL::tcl_command(IExecTCL& atcl, size_t argc, const String
     }
   } else if(cmd=="while") {
     if(argc==3) {
-      SExecTCL::State state(tcl.ss);
+      SExecTCL::State state(tcl.get_thread());
       while(tcl.eval_live_expr(argv[1])) {
         tcl.eval(argv[2]);
         state.reset();
@@ -173,21 +177,21 @@ bool SExecTCL::ControlTCL::tcl_command(IExecTCL& atcl, size_t argc, const String
     }
   } else if(cmd=="for") {
     if(argc==5) {
-      SExecTCL::State state(tcl.ss);
+      SExecTCL::State state(tcl.get_thread());
       tcl.eval_live_expr(argv[1]);
-      if(tcl.get_error())
+      if(tcl.get_thread()->get_error())
         return false;
 //dbg_put(rsdl_TCL, "for while \"%.*s\"\n", int(~argv[2]), *argv[2]);
       while(tcl.eval_live_expr(argv[2])) {
-        if(tcl.get_error())
+        if(tcl.get_thread()->get_error())
           return false;
 //dbg_put(rsdl_TCL, "for \"%.*s\"\n", int(~argv[4]), *argv[4]);
         tcl.eval(argv[4]);
-        if(tcl.get_error())
+        if(tcl.get_thread()->get_error())
           return false;
 //dbg_put(rsdl_TCL, "for \"%.*s\"\n", int(~argv[3]), *argv[3]);
         tcl.eval(argv[3]);
-        if(tcl.get_error())
+        if(tcl.get_thread()->get_error())
           return false;
         state.reset();
       }
@@ -196,25 +200,25 @@ bool SExecTCL::ControlTCL::tcl_command(IExecTCL& atcl, size_t argc, const String
   // print
   } else if(cmd=="puts") {
     for(int i=1; i<argc; i++) {
-      if(i>1) tcl.print_f(" ");
-      tcl.print_s(argv[i]);
+      if(i>1) tcl.get_thread()->print_f(" ");
+      tcl.get_thread()->print_s(argv[i]);
     }
-    tcl.print_s("\n");
+    tcl.get_thread()->print_s("\n");
     return true;
   } else if(cmd=="puts,") {
     for(int i=1; i<argc; i++) {
-      if(i>1) tcl.print_f(" ");
-      tcl.print_s(argv[i]);
+      if(i>1) tcl.get_thread()->print_f(" ");
+      tcl.get_thread()->print_s(argv[i]);
     }
     return true;
   } else if(cmd=="argdump") {
-    tcl.print_f("Args: %d {\n", argc);
+    tcl.get_thread()->print_f("Args: %d {\n", argc);
     for(int i=0; i<argc; i++) {
-      tcl.print_f("  %d:'", i);
-      tcl.print_s(argv[i]);
-      tcl.print_s("'\n");
+      tcl.get_thread()->print_f("  %d:'", i);
+      tcl.get_thread()->print_s(argv[i]);
+      tcl.get_thread()->print_s("'\n");
     }
-    tcl.print_s("} #Args\n");
+    tcl.get_thread()->print_s("} #Args\n");
     return true;
   } else if(cmd=="?") {
     tcl.set_result(argc>1 ? argv[1] : SExecTCL::String());

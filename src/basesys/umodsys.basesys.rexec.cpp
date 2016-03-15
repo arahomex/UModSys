@@ -14,40 +14,26 @@ using namespace UModSys::base::rsystem;
 // SExecTCL::
 //***************************************
 
-SExecTCL::SExecTCL(Thread& ass, IExecutor* ee[], size_t nee, IExecTCL *u)
-: ss(ass), stream(ass.top(), ass.left()), executors(ee), executors_len(nee), up(u) 
+SExecTCL::SExecTCL(IThread& ass, IExecutor* ee[], size_t nee, IExecTCL *u)
+: ss(ass), stream(ass.stack_top(), ass.stack_left()), executors(ee), executors_len(nee), up(u) 
 {
-  error_code = 0;
-  stack_top = ss.stack.Len();
+  stack_top = ss.stack_pos();
 }
 
-SExecTCL::SExecTCL(Thread& ass, IExecTCL *u)
-: ss(ass), stream(ass.top(), ass.left()), executors(NULL), executors_len(0), up(u) 
+SExecTCL::SExecTCL(IThread& ass, IExecTCL *u)
+: ss(ass), stream(ass.stack_top(), ass.stack_left()), executors(NULL), executors_len(0), up(u) 
 {
-  error_code = 0;
-  stack_top = ss.stack.Len();
+  stack_top = ss.stack_pos();
 }
 
 SExecTCL::~SExecTCL(void) 
 {
 }
 
-int SExecTCL::get_error(void) const
+SExecTCL::IThread* SExecTCL::get_thread(void) const
 {
-  return error_code;
+  return &ss;
 }
-
-SExecTCL::String SExecTCL::get_error_text(void) const
-{
-  return error_text.get_s();
-}
-
-void SExecTCL::set_error(int err, const String &text)
-{
-  error_code = err;
-  error_text = text;
-}
-
 
 IExecTCL* SExecTCL::get_up(void) const 
 { 
@@ -63,6 +49,8 @@ size_t SExecTCL::get_executor_count(void) const
 {
   return executors_len; 
 }
+
+/*
 const IExecTCL* SExecTCL::get_other(TypeId type) const 
 {
   if(type==get_tinfo())
@@ -75,6 +63,7 @@ IExecTCL* SExecTCL::get_other(TypeId type)
     return this;
   return NULL;
 }
+*/
 
 bool SExecTCL::add_esc(StringP psym, int &idx) 
 {
@@ -146,9 +135,9 @@ int SExecTCL::eval_expr(const String& expr)
 void SExecTCL::eval_check(int ec, const String& txt) 
 {
   if(ec==Parser::tEnd)
-    set_error(0, "");
+    ss.set_error(0, "");
   else
-    set_error(ec, txt);
+    ss.set_error(ec, txt);
 }
 
 SExecTCL::String SExecTCL::eval(const String& code) 
@@ -183,12 +172,13 @@ bool SExecTCL::string_to_int(const String& src, int& dest)
 
 SExecTCL::String SExecTCL::new_string(const String& src) 
 {
-  size_t p = ss.stack.Len();
-  if(!ss.stack.ResizeRel(~src+1))
+  size_t p = ss.stack_pos();
+  if(!ss.stack_add(~src+1))
       return String();
-  tl::su::smemcpy(ss.stack.All()+p, *src, ~src);
-  ss.stack[p+~src] = 0;
-  String rv(ss.stack.All()+p, ~src);
+  char* dest = ss.stack_get(p);
+  tl::su::smemcpy(dest, *src, ~src);
+  dest[~src] = 0;
+  String rv(dest, ~src);
   return rv;
 }
 
@@ -206,14 +196,15 @@ void SExecTCL::parse_start()
 
 void SExecTCL::stream_redo(void) 
 {
-  stream.setup(ss.stack.FreeStart(), ss.stack.FreeLen(), 0);
-  stream.length = 0;
-  stream.maxlength = ss.stack.MaxLen() - ss.stack.Len();
+  stream.setup(ss.stack_top(), ss.stack_left(), 0);
+//  stream.length = 0;
+//  stream.maxlength = ss.stack.MaxLen() - ss.stack.Len();
 }
 
 void SExecTCL::ssync(void) 
 {
-  ss.stack.Resize(~stream + (stream.get_text() - ss.stack.All()));
+  ss.stack_reset( ~stream + (stream.get_text() - ss.stack_get(0)) );
+//  ss.stack.Resize(~stream + (stream.get_text() - ss.stack.All()));
 }
 
 void SExecTCL::set_result(const String& src) 
@@ -308,15 +299,15 @@ void SExecTCL::execute_begin(void)
 void SExecTCL::execute_end(void) 
 {
   args.Clear();
-  ss.stack.Resize(stack_top);
-  stream.text = ss.stack.end();
+  ss.stack_reset(stack_top);
+  stream.text = ss.stack_top();
   stream.length = 0;
 //printf("{exec-end top=%d}", ss.stack.count);
 }
 
 void SExecTCL::finish(void) 
 {
-  ss.stack.Resize(stack_top);
+  ss.stack_reset(stack_top);
 //printf("{finish top=%d}", ss.stack.count);
 }
 
@@ -326,23 +317,55 @@ void SExecTCL::add_result(Self &r)
   add(r.result.begin(), r.result.end());
 }
 
-void SExecTCL::print_s(const String& val)
+//***************************************
+// SExecTCL::Thread::
+//***************************************
+
+SExecTCL::Thread::Thread(void)
+{
+  error_code = 0;
+}
+
+SExecTCL::Thread::~Thread(void)
+{
+}
+
+int SExecTCL::Thread::get_error(void) const
+{
+  return error_code;
+}
+
+SExecTCL::String SExecTCL::Thread::get_error_text(void) const
+{
+  return error_text.get_s();
+}
+
+void SExecTCL::Thread::set_error(int err, const String &text)
+{
+  error_code = err;
+  error_text = text;
+}
+
+
+
+void SExecTCL::Thread::print_s(const String& val)
 {
   M.con().put(cl_Info, "%.*s", int(~val), val.c_str());
 }
 
-void SExecTCL::print_s(StringP val)
+void SExecTCL::Thread::print_s(StringP val)
 {
   M.con().put(cl_Info, "%s", val);
 }
 
-void SExecTCL::print_f(StringP val, ...)
+void SExecTCL::Thread::print_f(StringP val, ...)
 {
   va_list va;
   va_start(va, val);
   M.con().vput(cl_Info, val, va);
   va_end(va);
 }
+
 
 //***************************************
 // ::

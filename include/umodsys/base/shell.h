@@ -11,18 +11,40 @@
 namespace UModSys {
 namespace base {
 
-    
 
 //***************************************
 // IExecTCL::  - main module functionality
 //***************************************
-  
+
 struct IExecTCL {
   typedef core::BStr StringP;
   typedef core::DCString String;
+  typedef core::DStringBuffer StringStream;
+  //
   typedef tl::TParser_TCL<IExecTCL> Parser;
   typedef IExecTCL Self;
-  typedef core::HUniquePointer TypeId;
+//  typedef core::HUniquePointer TypeId;
+  //
+  struct IThread {
+//    virtual bool stack_stream(StringStream &stream) =0; // get all free space
+//    virtual size_t stack_mark(void) const = 0;
+//    virtual void stack_restore(size_t top) = 0;
+    //
+    virtual size_t stack_left(void) const =0;
+    virtual size_t stack_pos(void) const =0;
+    virtual char* stack_top(void) =0;
+    virtual char* stack_get(size_t p) =0;
+    virtual void stack_reset(size_t old) =0;
+    virtual bool stack_add(size_t len) =0;
+    //
+    virtual int get_error(void) const =0;
+    virtual String get_error_text(void) const =0;
+    virtual void set_error(int err, const String &text) =0;
+    //
+    virtual void print_s(const String& val) =0;
+    virtual void print_s(StringP val) =0;
+    virtual void print_f(StringP val, ...) =0;
+  };
   //
   struct IExecutor {
     virtual bool tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) =0;
@@ -30,8 +52,16 @@ struct IExecTCL {
     virtual bool tcl_setvar(IExecTCL& tcl, const String& name, const String& value) =0;
   };
   //
-  virtual const IExecTCL* get_other(TypeId type) const =0;
-  virtual IExecTCL* get_other(TypeId type) =0;
+//  virtual const IExecTCL* get_other(TypeId type) const =0;
+//  virtual IExecTCL* get_other(TypeId type) =0;
+  //
+  virtual IThread* get_thread(void) const =0;
+  virtual IExecTCL* get_up(void) const =0;
+  virtual size_t get_executor_count(void) const =0;
+  virtual IExecutor* get_executor(size_t id) const =0;
+  virtual String var_get(const String& name) =0;
+  virtual String var_set(const String& name, const String& value) = 0;
+  virtual void set_result(const String& src) =0;
   //
   virtual void parse_start(void) = 0;
   virtual void add(char sym) =0;
@@ -45,18 +75,10 @@ struct IExecTCL {
   virtual bool execute(void) =0;
   virtual bool exec_command(Parser& ps) =0;
   //
-  virtual int get_error(void) const =0;
-  virtual String get_error_text(void) const =0;
-  virtual void set_error(int err, const String &text) =0;
-  virtual IExecTCL* get_up(void) const =0;
-  virtual size_t get_executor_count(void) const =0;
-  virtual IExecutor* get_executor(size_t id) const =0;
-  virtual String var_get(const String& name) =0;
-  virtual String var_set(const String& name, const String& value) = 0;
-  virtual void set_result(const String& src) =0;
-  virtual void print_s(const String& val) =0;
-  virtual void print_s(StringP val) =0;
-  virtual void print_f(StringP val, ...) =0;
+  virtual int eval_expr(const String& expr) =0;
+  virtual String eval(const String& code) =0;
+  virtual String eval(const String& code, IExecutor *ex2) =0;
+  virtual int eval_live_expr(const String& expr) =0;
 };
 
 //***************************************
