@@ -78,7 +78,7 @@ bool RSystem::tcl_command(IExecTCL& tcl, size_t argc, const IExecTCL::String arg
   }
   //
   if(cmd=="foreach") {
-    SExecTCL::State state(tcl.get_thread());
+    SExecTCL::ThreadState state(tcl.get_thread());
     if(args.size()>2+1) {
       if(args[1]=="range") {
         if(args.size()==1+3) {

@@ -17,6 +17,7 @@ namespace base {
 //***************************************
 
 struct IExecTCL {
+  typedef core::BChar Char;
   typedef core::BStr StringP;
   typedef core::DCString String;
   typedef core::DStringBuffer StringStream;
@@ -26,16 +27,43 @@ struct IExecTCL {
 //  typedef core::HUniquePointer TypeId;
   //
   struct IThread {
-//    virtual bool stack_stream(StringStream &stream) =0; // get all free space
-//    virtual size_t stack_mark(void) const = 0;
-//    virtual void stack_restore(size_t top) = 0;
+    virtual size_t stack_top(void) const = 0;
+    virtual size_t stack_maxtop(void) const = 0;
+    virtual Char* stack_value(void) = 0;
+    virtual void stack_movetop(size_t top) = 0;
     //
-    virtual size_t stack_left(void) const =0;
-    virtual size_t stack_pos(void) const =0;
-    virtual char* stack_top(void) =0;
-    virtual char* stack_get(size_t p) =0;
-    virtual void stack_reset(size_t old) =0;
-    virtual bool stack_add(size_t len) =0;
+    inline bool stack_stream(StringStream &stream) { // get all free space
+      char* s = stack_value();
+      size_t top = stack_top(), max = stack_maxtop();
+      stream.setup(s+top, max-top, 0);
+      return stream.maxlength>0;
+    }
+    inline Char* stack_add(size_t sz) {
+      size_t top = stack_top(), max = stack_maxtop();
+      if(max-top<sz)
+        return NULL;
+      stack_movetop(top+sz);
+      return stack_value()+top;
+    }
+    inline Char* stack_add(size_t sz, StringP src) {
+      size_t top = stack_top(), max = stack_maxtop();
+      if(max-top<sz)
+        return NULL;
+      stack_movetop(top+sz);
+      Char* rv = stack_value()+top;
+      memmove(rv, src, sz);
+      return rv;
+    }
+    inline Char* stack_addz(size_t sz, StringP src) {
+      size_t top = stack_top(), max = stack_maxtop();
+      if(max-top<=sz)
+        return NULL;
+      stack_movetop(top+sz+1);
+      Char* rv = stack_value()+top;
+      memmove(rv, src, sz);
+      rv[sz] = 0;
+      return rv;
+    }
     //
     virtual int get_error(void) const =0;
     virtual String get_error_text(void) const =0;
@@ -44,6 +72,22 @@ struct IExecTCL {
     virtual void print_s(const String& val) =0;
     virtual void print_s(StringP val) =0;
     virtual void print_f(StringP val, ...) =0;
+  };
+  //
+  struct ThreadState {
+    IThread *ss;
+    size_t mark;
+    //
+    inline ThreadState(IThread& s) : ss(&s), mark(s.stack_top()) {}
+    inline ThreadState(IThread* s) : ss(s), mark(s->stack_top()) {}
+    inline ~ThreadState(void) { reset(); }
+    inline void reset(void) { ss->stack_movetop(mark); }
+    inline IThread* operator->(void) const { return ss; }
+    inline IThread& operator*(void) const { return *ss; }
+    inline operator IThread*(void) const { return ss; }
+    inline operator IThread&(void) const { return *ss; }
+    inline void re(StringStream &s) { s.setup(ss->stack_value()+mark, ss->stack_maxtop()-mark, 0); }
+    inline void next(StringStream &s) { ss->stack_stream(s); }
   };
   //
   struct IExecutor {

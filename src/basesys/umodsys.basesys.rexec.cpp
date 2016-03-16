@@ -15,15 +15,15 @@ using namespace UModSys::base::rsystem;
 //***************************************
 
 SExecTCL::SExecTCL(IThread& ass, IExecutor* ee[], size_t nee, IExecTCL *u)
-: ss(ass), stream(ass.stack_top(), ass.stack_left()), executors(ee), executors_len(nee), up(u) 
+: ss(ass), executors(ee), executors_len(nee), up(u) 
 {
-  stack_top = ss.stack_pos();
+  ss->stack_stream(stream);
 }
 
 SExecTCL::SExecTCL(IThread& ass, IExecTCL *u)
-: ss(ass), stream(ass.stack_top(), ass.stack_left()), executors(NULL), executors_len(0), up(u) 
+: ss(ass), executors(NULL), executors_len(0), up(u) 
 {
-  stack_top = ss.stack_pos();
+  ss->stack_stream(stream);
 }
 
 SExecTCL::~SExecTCL(void) 
@@ -32,7 +32,7 @@ SExecTCL::~SExecTCL(void)
 
 SExecTCL::IThread* SExecTCL::get_thread(void) const
 {
-  return &ss;
+  return ss;
 }
 
 IExecTCL* SExecTCL::get_up(void) const 
@@ -49,21 +49,6 @@ size_t SExecTCL::get_executor_count(void) const
 {
   return executors_len; 
 }
-
-/*
-const IExecTCL* SExecTCL::get_other(TypeId type) const 
-{
-  if(type==get_tinfo())
-    return this;
-  return NULL;
-}
-IExecTCL* SExecTCL::get_other(TypeId type) 
-{
-  if(type==get_tinfo())
-    return this;
-  return NULL;
-}
-*/
 
 bool SExecTCL::add_esc(StringP psym, int &idx) 
 {
@@ -98,6 +83,33 @@ void SExecTCL::add_var(StringP b, StringP e)
 void SExecTCL::add_cmt(StringP b, StringP e) 
 {
 }
+
+void SExecTCL::add(char sym) 
+{
+//  printf("{a c}");
+  stream.append(&sym, 1);
+  ssync();
+}
+
+void SExecTCL::add(StringP b, StringP e) 
+{
+//  printf("{a %u}", e-b);
+  stream.append(b, e-b);
+  ssync();
+}
+
+void SExecTCL::add(const String& ss) 
+{
+//  printf("{a %u}", ~ss);
+  stream.append(*ss, ~ss);
+  ssync();
+}
+
+void SExecTCL::next_arg(void) 
+{
+  args.Push(detach()); 
+}
+
 
 bool SExecTCL::exec_command(Parser& ps) 
 {
@@ -135,9 +147,9 @@ int SExecTCL::eval_expr(const String& expr)
 void SExecTCL::eval_check(int ec, const String& txt) 
 {
   if(ec==Parser::tEnd)
-    ss.set_error(0, "");
+    ss->set_error(0, "");
   else
-    ss.set_error(ec, txt);
+    ss->set_error(ec, txt);
 }
 
 SExecTCL::String SExecTCL::eval(const String& code) 
@@ -172,12 +184,10 @@ bool SExecTCL::string_to_int(const String& src, int& dest)
 
 SExecTCL::String SExecTCL::new_string(const String& src) 
 {
-  size_t p = ss.stack_pos();
-  if(!ss.stack_add(~src+1))
-      return String();
-  char* dest = ss.stack_get(p);
-  tl::su::smemcpy(dest, *src, ~src);
-  dest[~src] = 0;
+  char* dest = ss->stack_addz(~src, *src);
+  if(dest==NULL)
+    return String();
+//  printf("{ns t %u}", ss->stack_top());
   String rv(dest, ~src);
   return rv;
 }
@@ -186,6 +196,7 @@ SExecTCL::String SExecTCL::detach(void)
 {
   String rv = stream.get_s();
   stream_redo();
+//  printf("{dt t %u}", ss->stack_top());
   return rv;
 }
 
@@ -196,43 +207,20 @@ void SExecTCL::parse_start()
 
 void SExecTCL::stream_redo(void) 
 {
-  stream.setup(ss.stack_top(), ss.stack_left(), 0);
-//  stream.length = 0;
-//  stream.maxlength = ss.stack.MaxLen() - ss.stack.Len();
+//  printf("{R t %u}", ss->stack_top());
+  ss.next(stream);
+//  printf("{/R t %u}", ss->stack_top());
 }
 
 void SExecTCL::ssync(void) 
 {
-  ss.stack_reset( ~stream + (stream.get_text() - ss.stack_get(0)) );
-//  ss.stack.Resize(~stream + (stream.get_text() - ss.stack.All()));
+  ss->stack_movetop(stream.get_text() + ~stream - ss->stack_value() );
+//  printf("{mvt %u t %u}", ~stream, ss->stack_top());
 }
 
 void SExecTCL::set_result(const String& src) 
 {
   result = new_string(src);
-}
-
-void SExecTCL::add(char sym) 
-{
-  stream.append(&sym, 1);
-  ssync();
-}
-
-void SExecTCL::add(StringP b, StringP e) 
-{
-  stream.append(b, e-b);
-  ssync();
-}
-
-void SExecTCL::add(const String& ss) 
-{
-  stream.append(*ss, ~ss);
-  ssync();
-}
-
-void SExecTCL::next_arg(void) 
-{
-  args.Push(detach()); 
 }
 
 size_t SExecTCL::stream_size(void) 
@@ -287,6 +275,7 @@ SExecTCL::String SExecTCL::var_set(const String& name, const String& value)
 
 void SExecTCL::execute_begin(void) 
 {
+//  printf("{t %u}", ss->stack_top());
 /*
   printf("(");
   for(int i=0; i<args.size(); i++) {
@@ -298,22 +287,21 @@ void SExecTCL::execute_begin(void)
 
 void SExecTCL::execute_end(void) 
 {
+//  printf("{t %u}", ss->stack_top());
   args.Clear();
-  ss.stack_reset(stack_top);
-  stream.text = ss.stack_top();
-  stream.length = 0;
-//printf("{exec-end top=%d}", ss.stack.count);
+  ss.reset();
+  ss.re(stream);
 }
 
 void SExecTCL::finish(void) 
 {
-  ss.stack_reset(stack_top);
-//printf("{finish top=%d}", ss.stack.count);
+//  printf("{t %u}", ss->stack_top());
+  ss.reset();
 }
 
 void SExecTCL::add_result(Self &r) 
 {
-//printf("add_result{%.*s}\n", int(~r.result), *r.result);
+//  printf("{t %u}", ss->stack_top());
   add(r.result.begin(), r.result.end());
 }
 
@@ -329,6 +317,27 @@ SExecTCL::Thread::Thread(void)
 SExecTCL::Thread::~Thread(void)
 {
 }
+
+size_t SExecTCL::Thread::stack_top(void) const
+{
+  return stack.Len();
+}
+
+size_t SExecTCL::Thread::stack_maxtop(void) const
+{
+  return stack.MaxLen();
+}
+
+char* SExecTCL::Thread::stack_value(void)
+{
+  return stack.All();
+}
+
+void SExecTCL::Thread::stack_movetop(size_t top)
+{
+  stack.resize(top);
+}
+
 
 int SExecTCL::Thread::get_error(void) const
 {

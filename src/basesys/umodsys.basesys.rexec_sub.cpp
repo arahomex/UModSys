@@ -168,7 +168,7 @@ bool SExecTCL::ControlTCL::tcl_command(IExecTCL& tcl, size_t argc, const String 
     }
   } else if(cmd=="while") {
     if(argc==3) {
-      SExecTCL::State state(tcl.get_thread());
+      SExecTCL::ThreadState state(tcl.get_thread());
       while(tcl.eval_live_expr(argv[1])) {
         tcl.eval(argv[2]);
         state.reset();
@@ -177,7 +177,7 @@ bool SExecTCL::ControlTCL::tcl_command(IExecTCL& tcl, size_t argc, const String 
     }
   } else if(cmd=="for") {
     if(argc==5) {
-      SExecTCL::State state(tcl.get_thread());
+      SExecTCL::ThreadState state(tcl.get_thread());
       tcl.eval_live_expr(argv[1]);
       if(tcl.get_thread()->get_error())
         return false;

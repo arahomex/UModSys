@@ -32,7 +32,6 @@ struct SExecTCL : IExecTCL {
   typedef SExecTCL Self;
   //
   struct Thread;
-  struct State;
   //
   struct FailedContext;
   struct Context;
@@ -43,33 +42,23 @@ struct SExecTCL : IExecTCL {
   IExecutor **executors;
   size_t executors_len;
   IExecTCL *up;
-  IThread &ss;
-  Strings args;
+  ThreadState ss;
   StringStream stream;
   String result;
-  size_t stack_top;
+  Strings args;
   //
   SExecTCL(IThread& ass, IExecutor* ee[], size_t nee, IExecTCL *u=NULL);
   SExecTCL(IThread& ass, IExecTCL *u);
   ~SExecTCL(void);
   //
-//  inline static TypeId get_tinfo(void) { return tl::TObjectUniqueID<SExecTCL>::get_id(); }
-//  inline static const char* _root_get_interface_infoname(void) { return "SExecTCL"; }
-//  inline static int _root_get_interface_infover(void) { return 1; }
   inline static String string(StringP b, StringP e) { return String(b, e-b); }
   //
   static bool string_to_int(const String& src, int& dest);
   //
-//  int get_error(void) const;
-//  String get_error_text(void) const;
-//  void set_error(int err, const String &text);
   IThread* get_thread(void) const;
   IExecTCL* get_up(void) const;
   IExecutor* get_executor(size_t id) const;
   size_t get_executor_count(void) const;
-  //
-//  const IExecTCL* get_other(TypeId type) const;
-//  IExecTCL* get_other(TypeId type);
   //
   bool add_esc(StringP psym, int &idx);
   void add_var(StringP b, StringP e);
@@ -122,12 +111,10 @@ public:
   Thread(void);
   ~Thread(void);
   //
-  size_t stack_left(void) const { return stack.MaxLen(); }
-  size_t stack_pos(void) const { return ~stack; }
-  char* stack_top(void) { return stack.end(); }
-  char* stack_get(size_t p) { return stack.All()+p; }
-  void stack_reset(size_t old) { stack.resize(old); }
-  bool stack_add(size_t len) { return stack.ResizeRel(len); }
+  size_t stack_top(void) const;
+  size_t stack_maxtop(void) const;
+  char* stack_value(void);
+  void stack_movetop(size_t top);
   //
   int get_error(void) const;
   String get_error_text(void) const;
@@ -136,30 +123,6 @@ public:
   void print_s(const String& val);
   void print_s(StringP val);
   void print_f(StringP val, ...);
-};
-
-//***************************************
-// SExecTCL::State
-//***************************************
-
-struct SExecTCL::State {
-  IThread &ss;
-  size_t top;
-  //
-  State(IThread& s)
-  : ss(s) {
-    top = ss.stack_pos();
-  }
-  State(IThread* s)
-  : ss(*s) {
-    top = ss.stack_pos();
-  }
-  ~State(void) {
-    reset();
-  }
-  void reset(void) {
-    ss.stack_reset(top);
-  }
 };
 
 //***************************************
