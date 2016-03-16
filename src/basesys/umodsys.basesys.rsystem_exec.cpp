@@ -31,8 +31,25 @@ bool RSystem::exec_args(int argc, char** argv)
           continue;
         } else if(tl::su::sbegin(opt, "script=", &value) || tl::su::sbegin(opt, "script:", &value)) {
           exec_script(value);
+          continue;
+        } else if(tl::su::sbegin(opt, "dflag=", &value) || tl::su::sbegin(opt, "dflag:", &value)) {
+#define DF(flag) \
+  if(tl::su::seq(value, #flag)) { rsys_dbg.enable(flag); dbg_put(rsdl_TCL, "dflag %s %x\n", #flag, flag); continue; } \
+  if(tl::su::seq(value, "+" #flag)) { rsys_dbg.enable(flag); dbg_put(rsdl_TCL, "dflag +%s %x\n", #flag, flag); continue; } \
+  if(tl::su::seq(value, "-" #flag)) { rsys_dbg.disable(flag); dbg_put(rsdl_TCL, "dflag -%s %x\n", #flag, flag); continue; }
+          DF(rsdl_SysTests);
+          DF(rsdl_MemoryError);
+          DF(rsdl_Uid);
+          DF(rsdl_System);
+          DF(rsdl_Module);
+          DF(rsdl_ModuleLibrary);
+          DF(rsdl_SoLoad);
+          DF(rsdl_TCL);
+#undef DF
+          //continue;
         }
       }
+      dbg_put(rsdl_TCL, "RSystem::exec_args(%d) -- Invalid arg %d \"%s\"\n", argc, i, argv[i]);
       continue;
     }
   }
@@ -188,7 +205,7 @@ bool RSystem::exec_script(BStr filename)
   DCString spp(buf, len);
   SExecTCL::Parser pp(spp.begin(), spp.end());
   SExecTCL::Thread thread;
-  SExecTCL::IExecutor* exs[4]={ &tcl_ctxfail, &tcl_control, &tcl_ctx, this };
+  SExecTCL::IExecutor* exs[4]={ this, &tcl_ctx, &tcl_control, &tcl_ctxfail };
   SExecTCL col(thread, exs, 4);
   //
   int rv = pp.Parse(col);
