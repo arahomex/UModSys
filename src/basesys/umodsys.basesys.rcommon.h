@@ -58,6 +58,9 @@ extern SDebug rsys_dbg;
 void dbg_put(eRSystemDebugLevels dl, const char *fmt, ...);
 void err_put(eRSystemDebugLevels dl, const char *fmt, ...);
 
+#define FMT_STR(_x_) int(~(_x_)), *(_x_)
+#define FMT_SS "%.*s"
+
 //***************************************
 // END
 //***************************************

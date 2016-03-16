@@ -140,14 +140,37 @@ bool RSystem::tcl_command(IExecTCL& tcl, size_t argc, const IExecTCL::String arg
           return true;
         }
       } else if(args[1]=="shell") {
+        const int n_shells = 0x1000;
         if(args.size()==2) {
-          IRefObject::TypeId tids[0x100];
-          size_t ns = find_shells(tids, 0x100, NULL);
+          IRefObject::TypeId tids[n_shells];
+          size_t ns = find_shells(tids, n_shells, NULL);
           dbg_put(rsdl_TCL, "shells found: %d\n", ns);
           for(size_t i=0; i<ns; i++) {
             dbg_put(rsdl_TCL, "  shell: %p %s\n", tids[i], tids[i]->name);
           }
           dbg_put(rsdl_TCL, "/shells found: %d\n", ns);
+          return true;
+        } else if(args.size()==4) {
+          IRefObject::TypeId tids[n_shells];
+          size_t ns = find_shells(tids, n_shells, NULL);
+          IRefObject::TypeId tid = NULL;
+          for(size_t i=0; i<ns; i++) {
+            if(tl::su::wildcmp(*args[3], tids[i]->name)) {
+              tid = tids[i];
+              break;
+            }
+          }
+          if(tid!=NULL) {
+            TParametersA<1024> pars;
+            pars.add("shell", args[2]);
+            IShell::P sh;
+            if(M.t_generate(sh, tid, pars)) {
+              set_shell(args[2], sh);
+            }
+            dbg_put(rsdl_TCL, "shell["FMT_SS"]: %p %s for '"FMT_SS"'\n", FMT_STR(args[2]), tid, tid->name, FMT_STR(args[3]));
+          } else {
+            dbg_put(rsdl_TCL, "Error shell["FMT_SS"]: for '"FMT_SS"' can't found\n", FMT_STR(args[2]), FMT_STR(args[3]));
+          }
           return true;
         }
       }

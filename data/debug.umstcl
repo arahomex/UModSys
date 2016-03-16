@@ -1,5 +1,7 @@
 
 module scan plugin_*.so
 module save moduledb.conf-hdb
-module shell 
+module shell
+module shell test1 *::RTest1_Shell
+
 

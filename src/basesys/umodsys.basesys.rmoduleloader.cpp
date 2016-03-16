@@ -149,6 +149,7 @@ size_t RModuleLoader::moduledb_cleanup(void)
     }
     rv += n;
 //    dbg_put(rsdl_System, "RModuleLoader::moduledb_cleanup() { n=%d }\n", n);
+    dbg_put(rsdl_TCL, "RModuleLoader::moduledb_cleanup() { n=%d }\n", n);
   } while(n);
   for(int i=0; i<~mod_list; i++) {
     if(!mod_list(i).valid()) {

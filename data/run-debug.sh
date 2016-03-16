@@ -21,6 +21,7 @@ fi
 
 echo +../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug $DEFARGS "$@"
 ../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug $DEFARGS "$@"
+#gdb --args ../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug $DEFARGS "$@"
 
 echo "End"
 echo -e "\e[0m"
