@@ -39,6 +39,8 @@ bool RSystem::deinit(void)
 {
   dbg_put(rsdl_System, "RSystem::deinit()\n");
   //
+  shells.clear();
+  //
   moddb.cleanup();
   SUniquePointer::s_unresolve(this); // deinitalize all upis
   //

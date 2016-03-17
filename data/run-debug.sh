@@ -9,6 +9,12 @@ PLATFORM=`uname`_`uname -p`
 MODE='t'
 MODE=''
 
+function abort() {
+  echo -ne "\n Abort "
+}
+
+trap abort SIGINT SIGTERM
+
 export LD_LIBRARY_PATH="LD_LIBRARY_PATH:`readlink -e ../bin/$PLATFORM.Debug`"
 export UMS_COLORS=1
 export UMS_STDLOG="UModSys-Std.log"
@@ -23,5 +29,4 @@ echo +../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug $DEFARGS "$@"
 ../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug $DEFARGS "$@"
 #gdb --args ../bin/$PLATFORM.Debug/umodsysc$MODE.$PLATFORM.Debug $DEFARGS "$@"
 
-echo "End"
-echo -e "\e[0m"
+echo -ne " End\e[0m\n"
