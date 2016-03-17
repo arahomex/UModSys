@@ -144,16 +144,16 @@ size_t RModuleLoader::moduledb_cleanup(void)
   size_t n, rv = 0, s=0;
   do {
     n = mod_this->cleanup();
-    dbg_put(rsdl_TCL, "RModuleLoader::moduledb_cleanup() { n=%d }\n", n);
+//    dbg_put(rsdl_TCL, "RModuleLoader::moduledb_cleanup() { n=%d }\n", n);
     for(int i=0; i<~mod_list; i++) {
       int m = mod_list(i)->cleanup();
-      if(m)
-        dbg_put(rsdl_TCL, "RModuleLoader::moduledb_cleanup() { i=%d m=%d nm=%s }\n", i, m, *mod_list(i)->get_sys_libname());
+//      if(m)
+//        dbg_put(rsdl_TCL, "RModuleLoader::moduledb_cleanup() { i=%d m=%d nm=%s }\n", i, m, *mod_list(i)->get_sys_libname());
       n += m;
     }
     rv += n;
 //    dbg_put(rsdl_System, "RModuleLoader::moduledb_cleanup() { n=%d }\n", n);
-    dbg_put(rsdl_TCL, "RModuleLoader::moduledb_cleanup() { n=%d }\n", n);
+//    dbg_put(rsdl_TCL, "RModuleLoader::moduledb_cleanup() { n=%d }\n", n);
   } while(n);
   for(int i=0; i<~mod_list; i++) {
     if(!mod_list(i).valid()) {

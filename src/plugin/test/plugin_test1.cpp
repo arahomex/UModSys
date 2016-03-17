@@ -271,27 +271,23 @@ public: // IExecutor
   }
   bool tcl_command(IExecTCL& tcl, size_t argc, const IExecTCL::String argv[]) {
     s_dbg.put(d_Shell, cl_Info, "RTest1_Shell::command(#%d)\n", argc);
-    if(argc>=1 && argv[0]=="test") {
-      if(argc==1) {
-       aux_tests();
-       //
-#if 0
-       file_test1();
-       file_test2();
-       file_test3();
-       file_test4();
-       file_test5();
-       file_test6();
-       file_test7();
-#endif
-       //
-#if TEST_SDL_GL
-       ui_test2();
-#elif TEST_SDL_CORE
-       ui_test1();
-#endif
-      } else {
-      }
+    if(argc>1) {
+      const IExecTCL::String& cmd = argv[1];
+      if(cmd=="aux") { aux_tests(); return true; }
+      if(cmd=="file1") { file_test1(); return true; }
+      if(cmd=="file2") { file_test2(); return true; }
+      if(cmd=="file3") { file_test3(); return true; }
+      if(cmd=="file4") { file_test4(); return true; }
+      if(cmd=="file5") { file_test5(); return true; }
+      if(cmd=="file6") { file_test6(); return true; }
+      if(cmd=="file7") { file_test7(); return true; }
+//#if TEST_SDL_GL
+      if(cmd=="ui2") { ui_test2(); return true; }
+//#endif
+//#if TEST_SDL_CORE
+      if(cmd=="ui1") { ui_test1(); return true; }
+//#endif
+      s_dbg.put(d_Shell, cl_Info, "RTest1_Shell::command(#%d) unknown command '%.*s'\n", argc, int(~cmd), *cmd);
     }
     return true;
   }

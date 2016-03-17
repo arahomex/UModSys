@@ -4,4 +4,6 @@ module save moduledb.conf-hdb
 module shell
 module shell test1 *::RTest1_Shell
 
+test1 aux
+foreach range 1 7 { puts test1 file${value} ; test1 file${value} ; }
 

@@ -176,6 +176,11 @@ bool RSystem::tcl_command(IExecTCL& tcl, size_t argc, const IExecTCL::String arg
       }
     }
   }
+  //
+  IShell::P shell;
+  if(get_shell(cmd, shell)) {
+    return shell->tcl_command(tcl, argc, argv);
+  }
   return false;
 }
 
@@ -199,7 +204,11 @@ bool RSystem::get_var(const core::DCString& name, core::DCString& value) const
 
 bool RSystem::get_shell(const core::DCString& name, IShell::P& shell) const
 {
-  return false;
+  const IShell::P *found = shells.GetT(name);
+  if(found==NULL)
+    return false;
+  shell = *found;
+  return true;
 }
 
 bool RSystem::set_var(const core::DCString& name, const core::DCString& value, bool can_new)
