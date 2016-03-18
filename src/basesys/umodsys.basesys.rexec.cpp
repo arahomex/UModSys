@@ -155,6 +155,7 @@ void SExecTCL::eval_check(int ec, const String& txt)
 SExecTCL::String SExecTCL::eval(const String& code) 
 {
   Self c2(ss, this);
+//printf("Eval{%.*s}\n", int(~code), *code);
   Parser ps2(*code, code + ~code);
   eval_check(ps2.Parse(c2), code);
   c2.finish();
@@ -303,6 +304,11 @@ void SExecTCL::add_result(Self &r)
 {
 //  printf("{t %u}", ss->stack_top());
   add(r.result.begin(), r.result.end());
+}
+
+void SExecTCL::next_token(int token)
+{
+//  printf("{token %d}", token);
 }
 
 //***************************************

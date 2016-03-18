@@ -107,6 +107,7 @@ struct IExecTCL {
   virtual String var_set(const String& name, const String& value) = 0;
   virtual void set_result(const String& src) =0;
   //
+  virtual void next_token(int token) = 0;
   virtual void parse_start(void) = 0;
   virtual void add(char sym) =0;
   virtual void add(StringP b, StringP e) =0;

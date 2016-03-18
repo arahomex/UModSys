@@ -159,11 +159,42 @@ bool SExecTCL::ControlTCL::tcl_command(IExecTCL& tcl, size_t argc, const String 
 */
   String cmd = argv[0];
   // generic 
-  if(cmd=="if") {
+  if(cmd=="true" || cmd=="1") {
+    tcl.set_result("1");
+    return true;
+  } else if(cmd=="false" || cmd=="0") {
+    tcl.set_result("0");
+    return true;
+  } else if(cmd=="?") {
+    tcl.set_result(argc>1 ? argv[1] : SExecTCL::String());
+    return true;
+//  } else if(cmd=="if") {
+  } else if(cmd=="nop") {
+    return true; // do nothing
+  } else if(cmd=="eval") {
+    for(int i=1; i<argc; i++) {
+      tcl.eval(argv[i]);
+      if(tcl.get_thread()->get_error())
+        return false;
+    }
+    return true;
+  } else if(cmd=="if") {
     if(argc==3) {
       if(tcl.eval_live_expr(argv[1])) {
         tcl.eval(argv[2]);
+        if(tcl.get_thread()->get_error())
+          return false;
       }
+      return true;
+    }
+    if(argc==4) {
+      if(tcl.eval_live_expr(argv[1])) {
+        tcl.eval(argv[2]);
+      } else {
+        tcl.eval(argv[3]);
+      }
+      if(tcl.get_thread()->get_error())
+        return false;
       return true;
     }
   } else if(cmd=="while") {

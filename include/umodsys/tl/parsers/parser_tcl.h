@@ -47,7 +47,8 @@ public:
     for(ptoken=token; true; ptoken=token) {
       switch(nextToken(c)) {
         case tSeparator:
-          c.next_arg();
+          if(ptoken==tString)
+            c.next_arg();
           continue;
         case tLine:
           if(ptoken==tString || c.stream_size())
@@ -71,6 +72,7 @@ public:
   //
   eToken nextToken(Collector &c) {
     eToken rv = _nextToken(c);
+    c.next_token(rv);
     return rv;
   }
   eToken _nextToken(Collector &c) {
@@ -171,7 +173,7 @@ public:
             rv = ptsVar(c);
             if(rv>tEnd)
               return rv;
-            p2 = p;
+            p2 = p--;
             break;
           case '[':
             c.add(p2, p);

@@ -78,6 +78,7 @@ struct SExecTCL : IExecTCL {
   void stream_redo(void);
   void ssync(void);
   //
+  void next_token(int token);
   void set_result(const String& src);
   void add(char sym);
   void add(StringP b, StringP e);
