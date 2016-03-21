@@ -86,7 +86,7 @@ struct SExecTCL : IExecTCL {
   void next_arg(void);
   size_t stream_size(void);
   //
-  bool tcl_cmd(Strings& args);
+  eStatus tcl_cmd(Strings& args);
   String var_get(const String& name);
   String var_set(const String& name, const String& value);
   //
@@ -132,9 +132,9 @@ public:
 
 struct SExecTCL::FailedContext : IExecutor {
   //
-  bool tcl_getvar(IExecTCL& tcl, const String& name, String& value);
-  bool tcl_setvar(IExecTCL& tcl, const String& name, const String& value);
-  bool tcl_command(IExecTCL& tcl, size_t argc, const String argv[]);
+  eStatus tcl_getvar(IExecTCL& tcl, const String& name, String& value);
+  eStatus tcl_setvar(IExecTCL& tcl, const String& name, const String& value);
+  eStatus tcl_command(IExecTCL& tcl, size_t argc, const String argv[]);
   //
   //
   FailedContext(void);
@@ -148,9 +148,9 @@ struct SExecTCL::FailedContext : IExecutor {
 struct SExecTCL::Context : IExecutor {
   StringMap vars;
   //
-  bool tcl_getvar(IExecTCL& tcl, const String& name, String& value);
-  bool tcl_setvar(IExecTCL& tcl, const String& name, const String& value);
-  bool tcl_command(IExecTCL& tcl, size_t argc, const String argv[]);
+  eStatus tcl_getvar(IExecTCL& tcl, const String& name, String& value);
+  eStatus tcl_setvar(IExecTCL& tcl, const String& name, const String& value);
+  eStatus tcl_command(IExecTCL& tcl, size_t argc, const String argv[]);
   //
   //
   Context(void);
@@ -165,9 +165,9 @@ struct SExecTCL::Range : IExecutor {
   int begin, end, step, cur;
   char tmp[64];
   //
-  bool tcl_getvar(IExecTCL& tcl, const String& name, String& value);
-  bool tcl_setvar(IExecTCL& tcl, const String& name, const String& value);
-  bool tcl_command(IExecTCL& tcl, size_t argc, const String argv[]);
+  eStatus tcl_getvar(IExecTCL& tcl, const String& name, String& value);
+  eStatus tcl_setvar(IExecTCL& tcl, const String& name, const String& value);
+  eStatus tcl_command(IExecTCL& tcl, size_t argc, const String argv[]);
   //
   //
   Range(int a, int b, int c);
@@ -185,9 +185,9 @@ struct SExecTCL::Range : IExecutor {
 
 struct SExecTCL::ControlTCL : IExecutor {
   //
-  bool tcl_getvar(IExecTCL& tcl, const String& name, String& value);
-  bool tcl_setvar(IExecTCL& tcl, const String& name, const String& value);
-  bool tcl_command(IExecTCL& tcl, size_t argc, const String argv[]);
+  eStatus tcl_getvar(IExecTCL& tcl, const String& name, String& value);
+  eStatus tcl_setvar(IExecTCL& tcl, const String& name, const String& value);
+  eStatus tcl_command(IExecTCL& tcl, size_t argc, const String argv[]);
   //
   ControlTCL(void);
   ~ControlTCL(void);

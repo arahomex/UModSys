@@ -63,32 +63,24 @@ bool RSystem::exec_args(int argc, char** argv)
 //***************************************
 //***************************************
 
-bool RSystem::tcl_getvar(IExecTCL& tcl, const IExecTCL::String& name, IExecTCL::String& value)
+IExecTCL::eStatus RSystem::tcl_getvar(IExecTCL& tcl, const IExecTCL::String& name, IExecTCL::String& value)
 {
-  return false;
+  return IExecTCL::sFalse;
 }
 
-bool RSystem::tcl_setvar(IExecTCL& tcl, const IExecTCL::String& name, const IExecTCL::String& value)
+IExecTCL::eStatus RSystem::tcl_setvar(IExecTCL& tcl, const IExecTCL::String& name, const IExecTCL::String& value)
 {
-  return false;
+  return IExecTCL::sFalse;
 }
 
-bool RSystem::tcl_command(IExecTCL& tcl, size_t argc, const IExecTCL::String argv[])
+IExecTCL::eStatus RSystem::tcl_command(IExecTCL& tcl, size_t argc, const IExecTCL::String argv[])
 {
-  tl::TArray<const IExecTCL::String> args(argv, argc, argc);
-/*
-  IExecTCL* stcl = atcl.get_other(SExecTCL::get_tinfo());
-  if(stcl==NULL) {
-    dbg_put(rsdl_TCL, "Invalid TCL\n");
-    return false;
-  }
-  SExecTCL& tcl = static_cast<SExecTCL&>(*stcl);
-*/
+//  tl::TArray<const IExecTCL::String> args(argv, argc, argc);
   const SExecTCL::String &cmd = argv[0];
   if(0) {
-    dbg_put(rsdl_TCL, "RSystem::command(%d \"%.*s\" ", int(~args), int(~cmd), cmd.c_str());
-    for(size_t i=1; i<~args; i++) {
-      const SExecTCL::String &arg = args[i];
+    dbg_put(rsdl_TCL, "RSystem::command(%d \"%.*s\" ", int(argc), int(~cmd), cmd.c_str());
+    for(size_t i=1; i<argc; i++) {
+      const SExecTCL::String &arg = argv[i];
       dbg_put(rsdl_TCL, " \"%.*s\"", int(~arg), arg.c_str());
     }
     dbg_put(rsdl_TCL, ")\n");
@@ -96,52 +88,27 @@ bool RSystem::tcl_command(IExecTCL& tcl, size_t argc, const IExecTCL::String arg
   //
   if(cmd=="foreach") {
     SExecTCL::ThreadState state(tcl.get_thread());
-    if(args.size()>2+1) {
-      if(args[1]=="range") {
-        if(args.size()==1+3) {
-          for(SExecTCL::Range r(0, 1,
-                                atoi(SExecTCL::StringValue(args[2]).c_str())); r.valid(); r++) {
-            tcl.eval(args.Last(), &r);
-          }
-          return true;
-        } else if(args.size()==2+3) {
-          for(SExecTCL::Range r(atoi(SExecTCL::StringValue(args[2]).c_str()),
-                                1,
-                                atoi(SExecTCL::StringValue(args[3]).c_str())); r.valid(); r++) {
-            tcl.eval(args.Last(), &r);
-          }
-          return true;
-        } else if(args.size()==3+3) {
-          for(SExecTCL::Range r(atoi(SExecTCL::StringValue(args[2]).c_str()),
-                                atoi(SExecTCL::StringValue(args[3]).c_str()),
-                                atoi(SExecTCL::StringValue(args[4]).c_str())); r.valid(); r++) {
-            tcl.eval(args.Last(), &r);
-          }
-          return true;
-        }
-      }
-    }
   } else if(cmd=="module") {
-    if(args.size()>=2) {
-      if(args[1]=="scan") {
-        if(args.size()==2) {
+    if(argc>=2) {
+      if(argv[1]=="scan") {
+        if(argc==2) {
           get_modloader()->moduledb_scan("", false);
-          return true;
-        } else if(args.size()==3) {
-          get_modloader()->moduledb_scan(args[2], true);
-          return true;
+          return IExecTCL::sTrue;
+        } else if(argc==3) {
+          get_modloader()->moduledb_scan(argv[2], true);
+          return IExecTCL::sTrue;
         } 
-      } else if(args[1]=="save") {
-        if(args.size()==2) {
+      } else if(argv[1]=="save") {
+        if(argc==2) {
           get_modloader()->moduledb_save("moduledb.conf-hdb");
-          return true;
-        } else if(args.size()==3) {
-          get_modloader()->moduledb_save(args[2]);
-          return true;
+          return IExecTCL::sTrue;
+        } else if(argc==3) {
+          get_modloader()->moduledb_save(argv[2]);
+          return IExecTCL::sTrue;
         }
-      } else if(args[1]=="shell") {
+      } else if(argv[1]=="shell") {
         const int n_shells = 0x1000;
-        if(args.size()==2) {
+        if(argc==2) {
           IRefObject::TypeId tids[n_shells];
           size_t ns = find_shells(tids, n_shells, NULL);
           dbg_put(rsdl_TCL, "shells found: %d\n", ns);
@@ -149,29 +116,29 @@ bool RSystem::tcl_command(IExecTCL& tcl, size_t argc, const IExecTCL::String arg
             dbg_put(rsdl_TCL, "  shell: %p %s\n", tids[i], tids[i]->name);
           }
           dbg_put(rsdl_TCL, "/shells found: %d\n", ns);
-          return true;
-        } else if(args.size()==4) {
+          return IExecTCL::sTrue;
+        } else if(argc==4) {
           IRefObject::TypeId tids[n_shells];
           size_t ns = find_shells(tids, n_shells, NULL);
           IRefObject::TypeId tid = NULL;
           for(size_t i=0; i<ns; i++) {
-            if(tl::su::wildcmp(*args[3], tids[i]->name)) {
+            if(tl::su::wildcmp(*argv[3], tids[i]->name)) {
               tid = tids[i];
               break;
             }
           }
           if(tid!=NULL) {
             TParametersA<1024> pars;
-            pars.add("shell", args[2]);
+            pars.add("shell", argv[2]);
             IShell::P sh;
             if(M.t_generate(sh, tid, pars)) {
-              set_shell(args[2], sh);
+              set_shell(argv[2], sh);
             }
-            dbg_put(rsdl_TCL, "shell["FMT_SS"]: %p %s for '"FMT_SS"'\n", FMT_STR(args[2]), tid, tid->name, FMT_STR(args[3]));
+            dbg_put(rsdl_TCL, "shell["FMT_SS"]: %p %s for '"FMT_SS"'\n", FMT_STR(argv[2]), tid, tid->name, FMT_STR(argv[3]));
           } else {
-            dbg_put(rsdl_TCL, "Error shell["FMT_SS"]: for '"FMT_SS"' can't found\n", FMT_STR(args[2]), FMT_STR(args[3]));
+            dbg_put(rsdl_TCL, "Error shell["FMT_SS"]: for '"FMT_SS"' can't found\n", FMT_STR(argv[2]), FMT_STR(argv[3]));
           }
-          return true;
+          return IExecTCL::sTrue;
         }
       }
     }
@@ -181,7 +148,7 @@ bool RSystem::tcl_command(IExecTCL& tcl, size_t argc, const IExecTCL::String arg
   if(get_shell(cmd, shell)) {
     return shell->tcl_command(tcl, argc, argv);
   }
-  return false;
+  return IExecTCL::sFalse;
 }
 
 //***************************************

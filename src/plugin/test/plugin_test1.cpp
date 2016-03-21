@@ -263,33 +263,33 @@ struct RTest1_Shell
     return true;
   }
 public: // IExecutor
-  bool tcl_getvar(IExecTCL& tcl, const IExecTCL::String& name, IExecTCL::String& value) {
-    return false;
+  IExecTCL::eStatus tcl_getvar(IExecTCL& tcl, const IExecTCL::String& name, IExecTCL::String& value) {
+    return IExecTCL::sFalse;
   }
-  bool tcl_setvar(IExecTCL& tcl, const IExecTCL::String& name, const IExecTCL::String& value) {
-    return false;
+  IExecTCL::eStatus  tcl_setvar(IExecTCL& tcl, const IExecTCL::String& name, const IExecTCL::String& value) {
+    return IExecTCL::sFalse;
   }
-  bool tcl_command(IExecTCL& tcl, size_t argc, const IExecTCL::String argv[]) {
+  IExecTCL::eStatus  tcl_command(IExecTCL& tcl, size_t argc, const IExecTCL::String argv[]) {
     s_dbg.put(d_Shell, cl_Info, "RTest1_Shell::command(#%d)\n", argc);
     if(argc>1) {
       const IExecTCL::String& cmd = argv[1];
-      if(cmd=="aux") { aux_tests(); return true; }
-      if(cmd=="file1") { file_test1(); return true; }
-      if(cmd=="file2") { file_test2(); return true; }
-      if(cmd=="file3") { file_test3(); return true; }
-      if(cmd=="file4") { file_test4(); return true; }
-      if(cmd=="file5") { file_test5(); return true; }
-      if(cmd=="file6") { file_test6(); return true; }
-      if(cmd=="file7") { file_test7(); return true; }
+      if(cmd=="aux") { aux_tests(); return IExecTCL::sTrue; }
+      if(cmd=="file1") { file_test1(); return IExecTCL::sTrue; }
+      if(cmd=="file2") { file_test2(); return IExecTCL::sTrue; }
+      if(cmd=="file3") { file_test3(); return IExecTCL::sTrue; }
+      if(cmd=="file4") { file_test4(); return IExecTCL::sTrue; }
+      if(cmd=="file5") { file_test5(); return IExecTCL::sTrue; }
+      if(cmd=="file6") { file_test6(); return IExecTCL::sTrue; }
+      if(cmd=="file7") { file_test7(); return IExecTCL::sTrue; }
 //#if TEST_SDL_GL
-      if(cmd=="ui2") { ui_test2(); return true; }
+      if(cmd=="ui2") { ui_test2(); return IExecTCL::sTrue; }
 //#endif
 //#if TEST_SDL_CORE
-      if(cmd=="ui1") { ui_test1(); return true; }
+      if(cmd=="ui1") { ui_test1(); return IExecTCL::sTrue; }
 //#endif
       s_dbg.put(d_Shell, cl_Info, "RTest1_Shell::command(#%d) unknown command '%.*s'\n", argc, int(~cmd), *cmd);
     }
-    return true;
+    return IExecTCL::sTrue;
   }
 };
 

@@ -23,17 +23,17 @@ SExecTCL::FailedContext::~FailedContext(void)
 {
 }
 
-bool SExecTCL::FailedContext::tcl_getvar(IExecTCL& tcl, const String& name, String& value) 
+IExecTCL::eStatus SExecTCL::FailedContext::tcl_getvar(IExecTCL& tcl, const String& name, String& value) 
 { 
-  return false;
+  return sFalse;
 }
 
-bool SExecTCL::FailedContext::tcl_setvar(IExecTCL& tcl, const String& name, const String& value) 
+IExecTCL::eStatus SExecTCL::FailedContext::tcl_setvar(IExecTCL& tcl, const String& name, const String& value) 
 {
-  return false;
+  return sFalse;
 }
 
-bool SExecTCL::FailedContext::tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) 
+IExecTCL::eStatus SExecTCL::FailedContext::tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) 
 {
   String cmd = argv[0];
   String err = tcl.get_thread()->get_error_text();
@@ -42,7 +42,7 @@ bool SExecTCL::FailedContext::tcl_command(IExecTCL& tcl, size_t argc, const Stri
     int(~cmd), int(~cmd), *cmd, int(argc),
     tcl.get_thread()->get_error(), int(~err), *err
   );
-  return false;
+  return sError;
 }
 
 //***************************************
@@ -56,7 +56,7 @@ SExecTCL::Context::~Context(void)
 {
 }
 
-bool SExecTCL::Context::tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) 
+IExecTCL::eStatus SExecTCL::Context::tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) 
 {
   String cmd = argv[0];
   if(cmd=="vardump") {
@@ -69,36 +69,36 @@ bool SExecTCL::Context::tcl_command(IExecTCL& tcl, size_t argc, const String arg
       tcl.get_thread()->print_s("'\n");
     }
     tcl.get_thread()->print_f("} #Vars\n");
-    return true;
+    return sTrue;
   }
   if((cmd=="set") || (cmd=="=")) {
     if(argc==3) {
 //          dbg_put(rsdl_TCL, "SExecTCL::Context::command(set \"%.*s\" \"%.*s\")\n", int(~argv[1]), *argv[1], int(~argv[2]), *argv[2]);
       tcl.set_result( tcl.var_set(argv[1], argv[2]) );
-      return true;
+      return sTrue;
     }
   }
-  return false;
+  return sFalse;
 }
 
-bool SExecTCL::Context::tcl_getvar(IExecTCL& tcl, const String& name, String& value) 
+IExecTCL::eStatus SExecTCL::Context::tcl_getvar(IExecTCL& tcl, const String& name, String& value) 
 {
   StringName key(name);
   const StringValue* val = vars(key);
   if(val!=NULL) {
 //        dbg_put(rsdl_TCL, "SExecTCL::Context::get_var(\"%.*s\")=>\"%.*s\"\n", int(~name), *name, int(~*val), **val);
     value = *val;
-    return true;
+    return sTrue;
   }
-  return false;
+  return sFalse;
 }
 
-bool SExecTCL::Context::tcl_setvar(IExecTCL& tcl, const String& name, const String& value) 
+IExecTCL::eStatus SExecTCL::Context::tcl_setvar(IExecTCL& tcl, const String& name, const String& value) 
 {
   StringName key(name);
   StringValue& v = vars[key];
   v = StringValue(value);
-  return true;
+  return sTrue;
 }
 
 //***************************************
@@ -115,24 +115,24 @@ SExecTCL::Range::~Range(void)
 {
 }
 
-bool SExecTCL::Range::tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) 
+IExecTCL::eStatus SExecTCL::Range::tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) 
 {
-  return false;
+  return sFalse;
 }
 
-bool SExecTCL::Range::tcl_getvar(IExecTCL& tcl, const String& name, String& value) 
+IExecTCL::eStatus SExecTCL::Range::tcl_getvar(IExecTCL& tcl, const String& name, String& value) 
 {
   if(name=="value") {
     sprintf(tmp, "%d", cur);
     value = tmp;
-    return true;
+    return sTrue;
   }
-  return false;
+  return sFalse;
 }
 
-bool SExecTCL::Range::tcl_setvar(IExecTCL& tcl, const String& name, const String& value) 
+IExecTCL::eStatus SExecTCL::Range::tcl_setvar(IExecTCL& tcl, const String& name, const String& value) 
 {
-  return false;
+  return sFalse;
 }
 
 //***************************************
@@ -147,86 +147,114 @@ SExecTCL::ControlTCL::~ControlTCL(void)
 {
 }
 
-bool SExecTCL::ControlTCL::tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) 
+IExecTCL::eStatus SExecTCL::ControlTCL::tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) 
 {
 /*
   IExecTCL* stcl = atcl.get_other(SExecTCL::get_tinfo());
   if(stcl==NULL) {
     dbg_put(rsdl_TCL, "Invalid TCL\n");
-    return false;
+    return sFalse;
   }
   SExecTCL& tcl = static_cast<SExecTCL&>(*stcl);
 */
+#define ERR() if(tcl.get_thread()->get_error()) return sError
+
   String cmd = argv[0];
   // generic 
   if(cmd=="true" || cmd=="1") {
     tcl.set_result("1");
-    return true;
-  } else if(cmd=="false" || cmd=="0") {
+    return sTrue;
+  } else if(cmd=="sFalse" || cmd=="0") {
     tcl.set_result("0");
-    return true;
+    return sTrue;
   } else if(cmd=="?") {
     tcl.set_result(argc>1 ? argv[1] : SExecTCL::String());
-    return true;
+    return sTrue;
 //  } else if(cmd=="if") {
   } else if(cmd=="nop") {
-    return true; // do nothing
+    return sTrue; // do nothing
   } else if(cmd=="eval") {
     for(int i=1; i<argc; i++) {
       tcl.eval(argv[i]);
-      if(tcl.get_thread()->get_error())
-        return false;
+      ERR();
     }
-    return true;
+    return sTrue;
   } else if(cmd=="if") {
     if(argc==3) {
       if(tcl.eval_live_expr(argv[1])) {
+        ERR();
         tcl.eval(argv[2]);
-        if(tcl.get_thread()->get_error())
-          return false;
+        ERR();
       }
-      return true;
+      return sTrue;
     }
     if(argc==4) {
       if(tcl.eval_live_expr(argv[1])) {
+        ERR();
         tcl.eval(argv[2]);
+        ERR();
       } else {
+        ERR();
         tcl.eval(argv[3]);
+        ERR();
       }
-      if(tcl.get_thread()->get_error())
-        return false;
-      return true;
+      return sTrue;
     }
   } else if(cmd=="while") {
     if(argc==3) {
       SExecTCL::ThreadState state(tcl.get_thread());
       while(tcl.eval_live_expr(argv[1])) {
+        ERR();
         tcl.eval(argv[2]);
+        ERR();
         state.reset();
       }
-      return true;
+      return sTrue;
     }
   } else if(cmd=="for") {
     if(argc==5) {
       SExecTCL::ThreadState state(tcl.get_thread());
       tcl.eval_live_expr(argv[1]);
-      if(tcl.get_thread()->get_error())
-        return false;
-//dbg_put(rsdl_TCL, "for while \"%.*s\"\n", int(~argv[2]), *argv[2]);
+      ERR();
       while(tcl.eval_live_expr(argv[2])) {
-        if(tcl.get_thread()->get_error())
-          return false;
-//dbg_put(rsdl_TCL, "for \"%.*s\"\n", int(~argv[4]), *argv[4]);
+        ERR();
         tcl.eval(argv[4]);
-        if(tcl.get_thread()->get_error())
-          return false;
-//dbg_put(rsdl_TCL, "for \"%.*s\"\n", int(~argv[3]), *argv[3]);
+        ERR();
         tcl.eval(argv[3]);
-        if(tcl.get_thread()->get_error())
-          return false;
+        ERR();
         state.reset();
       }
-      return true;
+      return sTrue;
+    }
+  } else if(cmd=="foreach") {
+    SExecTCL::ThreadState state(tcl.get_thread());
+    if(argc>2+1) {
+      if(argv[1]=="range") {
+        if(argc==1+3) {
+          for(SExecTCL::Range r(0, 1,
+                                atoi(SExecTCL::StringValue(argv[2]).c_str())); r.valid(); r++) {
+            tcl.eval(argv[argc-1], &r);
+            ERR();
+          }
+          return sTrue;
+        } else if(argc==2+3) {
+          for(SExecTCL::Range r(atoi(SExecTCL::StringValue(argv[2]).c_str()),
+                                1,
+                                atoi(SExecTCL::StringValue(argv[3]).c_str())); r.valid(); r++) {
+            tcl.eval(argv[argc-1], &r);
+            ERR();
+          }
+          return sTrue;
+        } else if(argc==3+3) {
+          for(SExecTCL::Range r(atoi(SExecTCL::StringValue(argv[2]).c_str()),
+                                atoi(SExecTCL::StringValue(argv[3]).c_str()),
+                                atoi(SExecTCL::StringValue(argv[4]).c_str())); r.valid(); r++) {
+            tcl.eval(argv[argc-1], &r);
+            ERR();
+          }
+          return sTrue;
+        }
+      }
     }
   // print
   } else if(cmd=="puts") {
@@ -235,13 +263,13 @@ bool SExecTCL::ControlTCL::tcl_command(IExecTCL& tcl, size_t argc, const String 
       tcl.get_thread()->print_s(argv[i]);
     }
     tcl.get_thread()->print_s("\n");
-    return true;
+    return sTrue;
   } else if(cmd=="puts,") {
     for(int i=1; i<argc; i++) {
       if(i>1) tcl.get_thread()->print_f(" ");
       tcl.get_thread()->print_s(argv[i]);
     }
-    return true;
+    return sTrue;
   } else if(cmd=="argdump") {
     tcl.get_thread()->print_f("Args: %d {\n", argc);
     for(int i=0; i<argc; i++) {
@@ -250,17 +278,17 @@ bool SExecTCL::ControlTCL::tcl_command(IExecTCL& tcl, size_t argc, const String 
       tcl.get_thread()->print_s("'\n");
     }
     tcl.get_thread()->print_s("} #Args\n");
-    return true;
+    return sTrue;
   } else if(cmd=="?") {
     tcl.set_result(argc>1 ? argv[1] : SExecTCL::String());
-    return true;
+    return sTrue;
   // math
 #define OP(comd, sign) \
   } else if(cmd==#comd) { \
     if(argc==3) { \
       /*dbg_put(rsdl_TCL, "%s [%.*s] [%.*s]\n", #comd, int(~argv[1]), *argv[1], int(~argv[2]), *argv[2])*/; \
       tcl.set_result( SExecTCL::String(tcl.eval_expr(argv[1]) sign tcl.eval_expr(argv[2]) ? "1" : "0") ); \
-      return true; \
+      return sTrue; \
     }
   OP(<, <) OP(>, >) OP(<=, <=) OP(>=, >=) OP(==, ==) OP(!=, !=)
   OP(lt, <) OP(gt, >) OP(le, <=) OP(ge, >=) OP(eq, ==) OP(ne, !=)
@@ -277,7 +305,7 @@ bool SExecTCL::ControlTCL::tcl_command(IExecTCL& tcl, size_t argc, const String 
         sprintf(buf, "%d", modif tcl.eval_expr(v)); \
         tcl.set_result(tcl.var_set(argv[1], SExecTCL::String(buf))); \
       } \
-      return true; \
+      return sTrue; \
     }
   OP(++, 1+)
   OP(--, -1+)
@@ -286,17 +314,18 @@ bool SExecTCL::ControlTCL::tcl_command(IExecTCL& tcl, size_t argc, const String 
 #undef OP
   } else {
   }
-  return false;
+  return sFalse;
+#undef ERR
 }
 
-bool SExecTCL::ControlTCL::tcl_getvar(IExecTCL& tcl, const String& name, String& value) 
+IExecTCL::eStatus SExecTCL::ControlTCL::tcl_getvar(IExecTCL& tcl, const String& name, String& value) 
 {
-  return false;
+  return sFalse;
 }
 
-bool SExecTCL::ControlTCL::tcl_setvar(IExecTCL& tcl, const String& name, const String& value) 
+IExecTCL::eStatus SExecTCL::ControlTCL::tcl_setvar(IExecTCL& tcl, const String& name, const String& value) 
 {
-  return false;
+  return sFalse;
 }
 
 //***************************************

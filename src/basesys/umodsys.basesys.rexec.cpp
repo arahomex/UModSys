@@ -129,9 +129,9 @@ bool SExecTCL::execute(void)
   if(args.size()==0)
     return true;
   execute_begin();
-  bool rv = tcl_cmd(args);
+  eStatus rv = tcl_cmd(args);
   execute_end();
-  return rv;
+  return sResult(rv);
 }
 
 int SExecTCL::eval_expr(const String& expr) 
@@ -229,18 +229,20 @@ size_t SExecTCL::stream_size(void)
   return ~stream; 
 }
 
-bool SExecTCL::tcl_cmd(Strings& args) 
+IExecTCL::eStatus SExecTCL::tcl_cmd(Strings& args) 
 {
   IExecTCL *tcl = this;
   while(tcl!=NULL) {
     for(size_t i=0; i<tcl->get_executor_count(); i++) {
       IExecutor *ex = tcl->get_executor(i);
-      if(ex!=NULL && ex->tcl_command(*this, ~args, args.All()))
-        return true;
+      if(ex==NULL) continue;
+      eStatus rv = ex->tcl_command(*this, ~args, args.All());
+      if(sHave(rv))
+        return rv;
     }
     tcl = tcl->get_up();
   }
-  return false;
+  return sFalse;
 }
 
 SExecTCL::String SExecTCL::var_get(const String& name) 
@@ -251,8 +253,12 @@ SExecTCL::String SExecTCL::var_get(const String& name)
   while(tcl!=NULL) {
     for(size_t i=0; i<tcl->get_executor_count(); i++) {
       IExecutor *ex = tcl->get_executor(i);
-      if(ex!=NULL && ex->tcl_getvar(*this, name, rvx))
+      if(ex==NULL) continue;
+      eStatus rv = ex->tcl_getvar(*this, name, rvx);
+      if(sResult(rv))
         return rvx;
+      if(sFailed(rv))
+        return String(); // failed
     }
     tcl = tcl->get_up();
   }
@@ -266,8 +272,13 @@ SExecTCL::String SExecTCL::var_set(const String& name, const String& value)
   while(tcl!=NULL) {
     for(size_t i=0; i<tcl->get_executor_count(); i++) {
       IExecutor *ex = tcl->get_executor(i);
-      if(ex!=NULL && ex->tcl_setvar(*this, name, value))
+      if(ex==NULL) continue;
+      eStatus rv = ex->tcl_setvar(*this, name, value);
+      if(sResult(rv))
         return value;
+      if(sFailed(rv))
+        return String(); // failed
+
     }
     tcl = tcl->get_up();
   }

@@ -24,7 +24,17 @@ struct IExecTCL {
   //
   typedef tl::TParser_TCL<IExecTCL> Parser;
   typedef IExecTCL Self;
-//  typedef core::HUniquePointer TypeId;
+  //
+  enum eStatus {
+    sFalse       =0,   // ok, no result
+    sTrue        =1,   // ok, got result
+    sError       =-1,  // failed, error
+  };
+  //
+  inline static bool sFailed(eStatus s) { return s<0; }
+  inline static bool sOk(eStatus s) { return s>=0; }
+  inline static bool sResult(eStatus s) { return s>0; }
+  inline static bool sHave(eStatus s) { return s!=0; }
   //
   struct IThread {
     virtual size_t stack_top(void) const = 0;
@@ -91,9 +101,9 @@ struct IExecTCL {
   };
   //
   struct IExecutor {
-    virtual bool tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) =0;
-    virtual bool tcl_getvar(IExecTCL& tcl, const String& name, String& value) =0;
-    virtual bool tcl_setvar(IExecTCL& tcl, const String& name, const String& value) =0;
+    virtual eStatus tcl_command(IExecTCL& tcl, size_t argc, const String argv[]) =0;
+    virtual eStatus tcl_getvar(IExecTCL& tcl, const String& name, String& value) =0;
+    virtual eStatus tcl_setvar(IExecTCL& tcl, const String& name, const String& value) =0;
   };
   //
 //  virtual const IExecTCL* get_other(TypeId type) const =0;
