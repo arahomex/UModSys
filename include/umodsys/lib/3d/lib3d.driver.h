@@ -31,6 +31,7 @@ struct IRenderDriver : public lib2d::IRenderDriver {
   virtual bool camera_ortho(const DPoint &center, const DPoint &size) =0;
   virtual bool camera_frustum(const DPoint &center, const DPoint &size) =0;
   virtual bool camera_frustum(const DPoint &center, const DTexPoint &fov, DScalar min, DScalar max) =0;
+  //
   // -- allocate vector-cache
   // all data will be reset after end of frame
 /*
@@ -53,6 +54,7 @@ struct IRenderDriver : public lib2d::IRenderDriver {
   virtual void phase_2d(bool nearmode=true) =0; // begin 2d phase (after or before all other)
   virtual void render_start(void) =0; // caches is filled, begin render elements
   virtual void render_stop(void) =0; // caches is not required anymore
+  //
   // -- register
   // return ptr, try to adapt data to required ptr
 //  virtual IConsoleHFCSDisplay::P new_console_HFCSD(const SIntPoint& pos, const SIntPoint& size, const SParameters* params) =0;
@@ -84,10 +86,12 @@ struct IRenderDriver : public lib2d::IRenderDriver {
   virtual bool setup_state(const SRenderState& S) =0; // discarded on phase end or render start/stop
   virtual bool setup_2d(const DPoint2i* vsize, const DPoint2i* voffset=NULL,
                         const DTexPoint* relsize=NULL, const DTexPoint *reloffset=NULL) =0; // window coordinates
+  //
   // -- render pictures
   virtual void render_picture(const SPicture& A) =0;
   virtual void render_picture(const SPicture& A, const SPicture& B, DColorElem trans) =0;
   virtual void render_particles(const SObjectParticle* op) =0;
+  //
   // -- render text
   virtual void render_text_3d(BStrL piclist, int count) =0;
   //

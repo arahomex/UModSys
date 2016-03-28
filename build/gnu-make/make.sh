@@ -18,9 +18,12 @@ while [[ $1 =~ @(.*) ]] ; do
   L="$L ${BASH_REMATCH[1]}"
   shift
 done
+#echo "'L=$L'"
 
 if [ -z "$L" ] ; then
- L=Debug
+  L=Debug
+elif [ "$L" == " all" ] ; then
+  L="Debug Release ReleaseSpace"
 fi
 
 for C in $L ; do

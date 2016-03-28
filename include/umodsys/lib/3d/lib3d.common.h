@@ -16,6 +16,8 @@ namespace lib3d {
 
 //***************************************
 // IGeneralObject::
+//   -- this object generates data for 3D - visual/render, logic, physics
+//      so it can contain any shared data used in other parts
 
 struct IGeneralObject : public IRefObject {
 public:
@@ -32,6 +34,7 @@ protected:
 
 //***************************************
 // ILogicObject::
+//   -- this is object contains logic scene only data (per object instance)
 
 struct ILogicObject : public IRefObject {
   virtual bool valid(void) const =0;
@@ -42,6 +45,7 @@ protected:
 
 //***************************************
 // IRenderObject::
+//   -- this is object contains shared visual scene only data (per renderer)
 
 struct IRenderObject : public IRefObject {
   PRenderer renderer;
@@ -61,6 +65,7 @@ protected:
 
 //***************************************
 // IVisualObject::
+//   -- this is object contains private visual scene only data (per object instance)
 
 struct IVisualObject : public IRefObject {
   int seqno;
@@ -70,16 +75,17 @@ struct IVisualObject : public IRefObject {
   virtual bool valid(void) const =0;
   virtual PGeneralObject object_get(void) const =0; // get object
   virtual PRenderObject render_get(void) const =0; // get object
-  virtual bool visual_update(void) =0; // re-initalize links
-  virtual bool logic_sync(void) =0; // update data
+  virtual bool visual_update(void) =0; // re-initalize links from logic
+  virtual bool logic_sync(void) =0; // update logic data from this one
   // depending of type functionality
-  virtual bool render_state(const SRenderState& state) =0;
+  virtual bool render_state(const SRenderState& state) =0; // render itself
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::IVisualObject, 2, IRefObject);
 };
 
 //***************************************
 // IObjectBrushOutline::
+//   -- this is object contains object outline used in all kinds of scene
 
 struct IObjectBrushOutline {
   virtual eObjectBrushOutline get_type(void) =0; // eObjectBrushOutline

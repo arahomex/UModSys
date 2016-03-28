@@ -321,10 +321,10 @@ enum eRenderPrimitiveType {
   rp_Quad         = 4,
   rp_4 = rp_Quad,
   rp_Poly         = 10,
-  rp_Strip        = 11,
-  rp_Fan          = 12,
-  rp_PolyLine     = 20,
-  rp_MultiLine    = 21,
+  rp_Strip        = 11, // triangle strip
+  rp_Fan          = 12, // triangle fan
+  rp_PolyLine     = 20, // polygon closed
+  rp_MultiLine    = 21, // polygon non-closed
   rp_Unknown      = -1
 };
 
