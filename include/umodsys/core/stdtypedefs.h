@@ -6,6 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/core/stddefs.h>
+//#include <umodsys/core/mem/gc_base.h>
 
 namespace UModSys {
 
@@ -43,7 +44,7 @@ namespace core {
   // Outlines
   //***************************************
 
-  unsigned char lost(const void* data);
+  extern unsigned char lost(const void* data);
 
   // defined in 'stdinlines.h'
   template<typename T> int ptr_compare(T a, T b);

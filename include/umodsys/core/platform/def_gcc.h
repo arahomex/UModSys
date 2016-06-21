@@ -18,6 +18,8 @@
 
 #include <stddef.h> // offsetof macro
 
+#include <stdint.h>
+
 #include <new>
 // /includes
 
@@ -27,6 +29,7 @@
 //  #pragma GCC visibility push(hidden)
 
 // ---------------------- arch defines
+
 #ifdef __BYTE_ORDER__
   #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
     #ifndef UMODSYS_ARCH_LE
@@ -55,4 +58,8 @@
     #define UMODSYS_ARCH_NONALIGNED 1
   #endif
 #endif
+
+#define UMODSYS_ARCH_INCLUDE "arch/arch_stdint.h"
+
 // ---------------------- /arch defines
+

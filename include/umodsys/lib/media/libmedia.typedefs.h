@@ -97,29 +97,29 @@ typedef tl::TStringBuf<
   tl::su::TComparerBinaryHash<core::BChar> 
 > DFixedFileName;
 
-typedef sint64 DFilePosition;
+typedef Bsint64 DFilePosition;
 
-typedef tl::TFlags4State<SMediaFlagUid, uint32> DMediaFlags;
+typedef tl::TFlags4State<SMediaFlagUid, Buint32> DMediaFlags;
 
 // binary operations
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  0> mf_archive;     // get binary from archives
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  1> mf_cache;       // get binary from cache
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  2> mf_failwrite;   // record binary failures
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  3> mf_failuse;     // use binary failures
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  4> mf_cachesave;   // update binary cache
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32,  0> mf_archive;     // get binary from archives
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32,  1> mf_cache;       // get binary from cache
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32,  2> mf_failwrite;   // record binary failures
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32,  3> mf_failuse;     // use binary failures
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32,  4> mf_cachesave;   // update binary cache
 // object operations
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  5> mf_filter;      // get object from filter
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  6> mf_objects;     // get object from object cache
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  7> mf_nullwrite;   // record object failures
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  8> mf_nulluse;     // use object failures
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32,  9> mf_objsave;     // update object cache
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32,  5> mf_filter;      // get object from filter
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32,  6> mf_objects;     // get object from object cache
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32,  7> mf_nullwrite;   // record object failures
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32,  8> mf_nulluse;     // use object failures
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32,  9> mf_objsave;     // update object cache
 // miscelaneous operations
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 10> mf_safe;        // safe writes
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 11> mf_relpath;     // relative pathes
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 12> mf_relname;     // relative names
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 13> mf_groupnew;    // auto-create groups
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 14> mf_reserved1;   // R1
-typedef struct tl::TFlags4StateShift<SMediaFlagUid, uint32, 15> mf_reserved2;   // R2
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32, 10> mf_safe;        // safe writes
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32, 11> mf_relpath;     // relative pathes
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32, 12> mf_relname;     // relative names
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32, 13> mf_groupnew;    // auto-create groups
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32, 14> mf_reserved1;   // R1
+typedef struct tl::TFlags4StateShift<SMediaFlagUid, Buint32, 15> mf_reserved2;   // R2
 
 typedef tl::TIStackSocket<SFileInfo> DIFileInfoArray;
 

@@ -161,9 +161,9 @@ struct IMultiImage : public IRefObject {
   virtual DPoint get_max_layer_size(void) const =0;
   virtual DPoint get_max_cell_size(void) const =0;
   virtual DPoint get_fixed_cell_size(void) const =0; // 0,0 for variable
-  virtual uint16 get_layer_count(void) const =0;
+  virtual Buint16 get_layer_count(void) const =0;
   virtual IImage* get_layer(Buint16 idx=0) const =0;
-  virtual uint32 get_cell_count(void) const =0;
+  virtual Buint32 get_cell_count(void) const =0;
   virtual bool get_cell(uint32 idx, DPoint &size, DPoint* ofs=NULL, uint16* lay=NULL) const =0;
   virtual bool get_cell(uint32 idx, SImageCellInfo& info) const =0;
   //

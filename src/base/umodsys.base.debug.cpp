@@ -8,7 +8,7 @@ using namespace UModSys::base;
 // SDebug::
 //***************************************
 
-SDebug::SDebug(IConsole* ic, uint32 m)
+SDebug::SDebug(IConsole* ic, Buint32 m)
 : console(ic), mask(m) {
 }
 
@@ -18,7 +18,7 @@ SDebug::~SDebug(void)
 
 bool SDebug::put(core::byte src, eConsoleLevels lev, const char* fmt, ...) const
 {
-  if((mask & (uint32(1)<<src))==0)
+  if((mask & (Buint32(1)<<src))==0)
     return false;
   if(!console.valid())
     return false;
@@ -31,7 +31,7 @@ bool SDebug::put(core::byte src, eConsoleLevels lev, const char* fmt, ...) const
 
 bool SDebug::dput(core::byte src, const char* fmt, ...) const
 {
-  if((mask & (uint32(1)<<src))==0)
+  if((mask & (Buint32(1)<<src))==0)
     return false;
   if(!console.valid())
     return false;

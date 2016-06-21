@@ -37,7 +37,7 @@ struct sva_list {
 // Inlines
 //***************************************
 
-template<typename Func> inline void lost_func(Func fn) { lost((void*)fn); }
+template<typename Func> inline void lost_func(Func fn) { core::lost((void*)fn); }
 
 //***************************************
 

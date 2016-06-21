@@ -1,4 +1,6 @@
 
+#define INT_SIZE
+
 typedef signed char Bsint8, BSI8;
 typedef unsigned char Buint8, BUI8;
 

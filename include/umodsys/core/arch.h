@@ -15,6 +15,13 @@ namespace core {
 //***************************************
 //***************************************
 
+#ifdef UMODSYS_ARCH_INCLUDE
+  #include UMODSYS_ARCH_INCLUDE
+#else
+  #error "Undefined ARCH type"
+#endif
+
+/*
 #if UCHAR_MAX==0xff
   #ifndef UMODSYS_ARCH_BYTE8
     #define UMODSYS_ARCH_BYTE8
@@ -41,6 +48,8 @@ namespace core {
 #else // UMODSYS_ARCH_BYTE8
   #error "Undefined ARCH byte type"
 #endif // UMODSYS_ARCH_BYTE8
+*/
+
 //***************************************
 
 typedef time_t BTime;

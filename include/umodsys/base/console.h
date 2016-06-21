@@ -38,18 +38,18 @@ protected:
 struct SDebug {
 public:
   IConsole::P console;
-  core::uint32 mask;
+  core::Buint32 mask;
 public:
-  SDebug(IConsole* ic=NULL, core::uint32 m=~core::uint32(0));
+  SDebug(IConsole* ic=NULL, core::Buint32 m=~core::Buint32(0));
   ~SDebug(void);
   //
-  inline void enable(core::byte src) { mask |= core::uint32(1)<<src; }
-  inline void disable(core::byte src) { mask &= ~(core::uint32(1)<<src); }
-  inline void menable(core::uint32 src=~core::uint32(0)) { mask |= src; }
-  inline void mdisable(core::uint32 src=~core::uint32(0)) { mask &= ~src; }
+  inline void enable(core::byte src) { mask |= core::Buint32(1)<<src; }
+  inline void disable(core::byte src) { mask &= ~(core::Buint32(1)<<src); }
+  inline void menable(core::Buint32 src=~core::Buint32(0)) { mask |= src; }
+  inline void mdisable(core::Buint32 src=~core::Buint32(0)) { mask &= ~src; }
   //
   inline bool vput(core::byte src, eConsoleLevels lev, const char* fmt, va_list va) const {
-    if((mask & (core::uint32(1)<<src))==0 || !console.valid())
+    if((mask & (core::Buint32(1)<<src))==0 || !console.valid())
       return false;
     return console->vput(lev, fmt, va);
   }

@@ -15,14 +15,14 @@ namespace UModSys {
 #define UMODSYS_MULTI_TYPE(_templ) \
   /* Inlines for UModSys Level */ \
   UMODSYS_SCALAR_CONSTRUCTOR_T1(T, math3d::_templ<T>) \
-  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::uint8> ) \
-  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::sint8> ) \
-  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::uint16> ) \
-  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::sint16> ) \
-  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::uint32> ) \
-  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::sint32> ) \
-  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::float32> ) \
-  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::float64> )
+  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::Buint8> ) \
+  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::Bsint8> ) \
+  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::Buint16> ) \
+  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::Bsint16> ) \
+  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::Buint32> ) \
+  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::Bsint32> ) \
+  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::Bfloat32> ) \
+  UMODSYS_TL_TDATAUNIQUEID_ATOM( math3d::_templ<core::Bfloat64> )
 
 UMODSYS_MULTI_TYPE(TVector4)
 UMODSYS_MULTI_TYPE(TVector3)

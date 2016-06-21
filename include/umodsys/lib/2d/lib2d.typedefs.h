@@ -43,9 +43,9 @@ struct SBlendColorf;
 
 //***************************************
 
-typedef float32                       DColorElemf, DCoordf;
-typedef sint32                        DColorElemi, DCoordi;
-typedef uint8                         DColorElemb;
+typedef Bfloat32                      DColorElemf, DCoordf;
+typedef Bsint32                       DColorElemi, DCoordi;
+typedef Buint8                        DColorElemb;
 
 typedef math3d::TVector2<DCoordf>     DPointf;
 typedef math3d::TVector3<DColorElemf> DColorf;
@@ -162,7 +162,7 @@ enum eImageType {
 // INLINES/OUTLINES
 //***************************************
 
-uint8 GetPlaneCount(eImageType type);
+Buint8 GetPlaneCount(eImageType type);
 size_t GetPixelSize(eImageType type, int plane=0);
 
 //***************************************

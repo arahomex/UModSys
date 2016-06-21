@@ -7,6 +7,7 @@
 
 #include <umodsys/core/objects_def.h>
 #include <umodsys/core/uniqueptr.h>
+#include <umodsys/core/mem/gc_base.h>
 
 namespace UModSys {
 namespace core {
