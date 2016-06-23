@@ -43,9 +43,9 @@ target__umodsys__plugin_test2=../../bin/Linux_x86_64.Debug/plugin_test2.Linux_x8
 target__umodsys__plugin_test3=../../bin/Linux_x86_64.Debug/plugin_test3.Linux_x86_64.Debug.so
 target__umodsys__plugin_test4=../../bin/Linux_x86_64.Debug/plugin_test4.Linux_x86_64.Debug.so
 target__umodsys__plugin_test5=../../bin/Linux_x86_64.Debug/plugin_test5.Linux_x86_64.Debug.so
-target__umodsys__umodsys_lib_base=../../tmp/Linux_x86_64.Debug/umodsys_lib_base.Linux_x86_64.Debug.a
-target__umodsys__umodsys_lib_basesys=../../tmp/Linux_x86_64.Debug/umodsys_lib_basesys.Linux_x86_64.Debug.a
+target__umodsys__umodsys_lib_common=../../tmp/Linux_x86_64.Debug/umodsys_lib_common.Linux_x86_64.Debug.a
 target__umodsys__umodsys_lib_core=../../tmp/Linux_x86_64.Debug/umodsys_lib_core.Linux_x86_64.Debug.a
+target__umodsys__umodsys_lib_kernel=../../tmp/Linux_x86_64.Debug/umodsys_lib_kernel.Linux_x86_64.Debug.a
 target__umodsys__umodsys_lib_lib2d=../../tmp/Linux_x86_64.Debug/umodsys_lib_lib2d.Linux_x86_64.Debug.a
 target__umodsys__umodsys_lib_lib3d=../../tmp/Linux_x86_64.Debug/umodsys_lib_lib3d.Linux_x86_64.Debug.a
 target__umodsys__umodsys_lib_libmedia=../../tmp/Linux_x86_64.Debug/umodsys_lib_libmedia.Linux_x86_64.Debug.a
@@ -7174,8 +7174,8 @@ target: tp-umodsys-all
 clean: cp-umodsys-all
 tg-umodsys: tp-umodsys-all
 cg-umodsys: cp-umodsys-all
-tp-umodsys-all:  $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_basesys) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsysc) $(target__umodsys__umodsysct) $(target__umodsys__umodsysca) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) tpp-umodsys-all
-cp-umodsys-all:  cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_basesys cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsysc cp-umodsys-umodsysct cp-umodsys-umodsysca cp-umodsys-plugin_libStd cp-umodsys-plugin_libUI cp-umodsys-plugin_test1 cp-umodsys-plugin_test2 cpp-umodsys-all
+tp-umodsys-all:  $(target__umodsys__umodsys_lib_common) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_kernel) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsysc) $(target__umodsys__umodsysct) $(target__umodsys__umodsysca) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) tpp-umodsys-all
+cp-umodsys-all:  cp-umodsys-umodsys_lib_common cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_kernel cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsysc cp-umodsys-umodsysct cp-umodsys-umodsysca cp-umodsys-plugin_libStd cp-umodsys-plugin_libUI cp-umodsys-plugin_test1 cp-umodsys-plugin_test2 cpp-umodsys-all
 #.PHONY: tp-umodsys-all tpp-umodsys-all cp-umodsys-all cpp-umodsys-all
 
 # dummy project
@@ -7195,8 +7195,8 @@ target: tp-umodsys-plugin_lib2d_stdlib
 clean: cp-umodsys-plugin_lib2d_stdlib
 tg-umodsys: tp-umodsys-plugin_lib2d_stdlib
 cg-umodsys: cp-umodsys-plugin_lib2d_stdlib
-tp-umodsys-plugin_lib2d_stdlib:  $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_lib2d_stdlib
-cp-umodsys-plugin_lib2d_stdlib:  cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_lib2d_stdlib
+tp-umodsys-plugin_lib2d_stdlib:  $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) tpp-umodsys-plugin_lib2d_stdlib
+cp-umodsys-plugin_lib2d_stdlib:  cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cpp-umodsys-plugin_lib2d_stdlib
 #.PHONY: tp-umodsys-plugin_lib2d_stdlib tpp-umodsys-plugin_lib2d_stdlib cp-umodsys-plugin_lib2d_stdlib cpp-umodsys-plugin_lib2d_stdlib
 
 tmp__umodsys__plugin_lib2d_stdlib=../../tmp/Linux_x86_64.Debug
@@ -7204,7 +7204,7 @@ bin__umodsys__plugin_lib2d_stdlib=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_lib2d_stdlib=../../tmp/Linux_x86_64.Debug/plugin_lib2d_stdlib
 CXXFLAGS__umodsys__plugin_lib2d_stdlib=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_lib2d_stdlib=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_lib2d_stdlib=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_lib2d.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a
+LDFLAGS__umodsys__plugin_lib2d_stdlib=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_lib2d.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_common.Linux_x86_64.Debug.a
 
 
 # file group src :
@@ -7220,7 +7220,7 @@ tpp-umodsys-plugin_lib2d_stdlib: $(target__umodsys__plugin_lib2d_stdlib)
 cpp-umodsys-plugin_lib2d_stdlib:
 	@-rm $(target__umodsys__plugin_lib2d_stdlib)
 	@-rm $(tmpx__umodsys__plugin_lib2d_stdlib)/*
-$(target__umodsys__plugin_lib2d_stdlib):  $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_lib2d_stdlib) | $(bin__umodsys__plugin_lib2d_stdlib) 
+$(target__umodsys__plugin_lib2d_stdlib):  $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(objs__umodsys__plugin_lib2d_stdlib) | $(bin__umodsys__plugin_lib2d_stdlib) 
 	@echo '*** Make solib umodsys::plugin_lib2d_stdlib'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_lib2d_stdlib.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_lib2d_stdlib) $(LDFLAGS__umodsys__plugin_lib2d_stdlib)
 
@@ -7237,8 +7237,8 @@ target: tp-umodsys-plugin_lib3d_stdlib
 clean: cp-umodsys-plugin_lib3d_stdlib
 tg-umodsys: tp-umodsys-plugin_lib3d_stdlib
 cg-umodsys: cp-umodsys-plugin_lib3d_stdlib
-tp-umodsys-plugin_lib3d_stdlib:  $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_lib3d_stdlib
-cp-umodsys-plugin_lib3d_stdlib:  cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_lib3d_stdlib
+tp-umodsys-plugin_lib3d_stdlib:  $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) tpp-umodsys-plugin_lib3d_stdlib
+cp-umodsys-plugin_lib3d_stdlib:  cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cpp-umodsys-plugin_lib3d_stdlib
 #.PHONY: tp-umodsys-plugin_lib3d_stdlib tpp-umodsys-plugin_lib3d_stdlib cp-umodsys-plugin_lib3d_stdlib cpp-umodsys-plugin_lib3d_stdlib
 
 tmp__umodsys__plugin_lib3d_stdlib=../../tmp/Linux_x86_64.Debug
@@ -7246,7 +7246,7 @@ bin__umodsys__plugin_lib3d_stdlib=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_lib3d_stdlib=../../tmp/Linux_x86_64.Debug/plugin_lib3d_stdlib
 CXXFLAGS__umodsys__plugin_lib3d_stdlib=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_lib3d_stdlib=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_lib3d_stdlib=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_lib3d.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a
+LDFLAGS__umodsys__plugin_lib3d_stdlib=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_lib3d.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_common.Linux_x86_64.Debug.a
 
 
 # file group src :
@@ -7262,7 +7262,7 @@ tpp-umodsys-plugin_lib3d_stdlib: $(target__umodsys__plugin_lib3d_stdlib)
 cpp-umodsys-plugin_lib3d_stdlib:
 	@-rm $(target__umodsys__plugin_lib3d_stdlib)
 	@-rm $(tmpx__umodsys__plugin_lib3d_stdlib)/*
-$(target__umodsys__plugin_lib3d_stdlib):  $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_lib3d_stdlib) | $(bin__umodsys__plugin_lib3d_stdlib) 
+$(target__umodsys__plugin_lib3d_stdlib):  $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(objs__umodsys__plugin_lib3d_stdlib) | $(bin__umodsys__plugin_lib3d_stdlib) 
 	@echo '*** Make solib umodsys::plugin_lib3d_stdlib'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_lib3d_stdlib.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_lib3d_stdlib) $(LDFLAGS__umodsys__plugin_lib3d_stdlib)
 
@@ -7279,8 +7279,8 @@ target: tp-umodsys-plugin_libMedia_imagesstd
 clean: cp-umodsys-plugin_libMedia_imagesstd
 tg-umodsys: tp-umodsys-plugin_libMedia_imagesstd
 cg-umodsys: cp-umodsys-plugin_libMedia_imagesstd
-tp-umodsys-plugin_libMedia_imagesstd:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) tpp-umodsys-plugin_libMedia_imagesstd
-cp-umodsys-plugin_libMedia_imagesstd:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys_Depends-lib_zlib cp-umodsys_Depends-lib_libpng cp-umodsys_Depends-lib_jpeglib cpp-umodsys-plugin_libMedia_imagesstd
+tp-umodsys-plugin_libMedia_imagesstd:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) tpp-umodsys-plugin_libMedia_imagesstd
+cp-umodsys-plugin_libMedia_imagesstd:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cp-umodsys_Depends-lib_zlib cp-umodsys_Depends-lib_libpng cp-umodsys_Depends-lib_jpeglib cpp-umodsys-plugin_libMedia_imagesstd
 #.PHONY: tp-umodsys-plugin_libMedia_imagesstd tpp-umodsys-plugin_libMedia_imagesstd cp-umodsys-plugin_libMedia_imagesstd cpp-umodsys-plugin_libMedia_imagesstd
 
 tmp__umodsys__plugin_libMedia_imagesstd=../../tmp/Linux_x86_64.Debug
@@ -7288,7 +7288,7 @@ bin__umodsys__plugin_libMedia_imagesstd=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_libMedia_imagesstd=../../tmp/Linux_x86_64.Debug/plugin_libMedia_imagesstd
 CXXFLAGS__umodsys__plugin_libMedia_imagesstd=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_libMedia_imagesstd=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_libMedia_imagesstd=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:lib_zlib.Linux_x86_64.Debug.so -l:lib_libpng.Linux_x86_64.Debug.so -l:lib_jpeglib.Linux_x86_64.Debug.so
+LDFLAGS__umodsys__plugin_libMedia_imagesstd=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_common.Linux_x86_64.Debug.a -l:lib_zlib.Linux_x86_64.Debug.so -l:lib_libpng.Linux_x86_64.Debug.so -l:lib_jpeglib.Linux_x86_64.Debug.so
 
 
 # file group src :
@@ -7304,7 +7304,7 @@ tpp-umodsys-plugin_libMedia_imagesstd: $(target__umodsys__plugin_libMedia_images
 cpp-umodsys-plugin_libMedia_imagesstd:
 	@-rm $(target__umodsys__plugin_libMedia_imagesstd)
 	@-rm $(tmpx__umodsys__plugin_libMedia_imagesstd)/*
-$(target__umodsys__plugin_libMedia_imagesstd):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) $(objs__umodsys__plugin_libMedia_imagesstd) | $(bin__umodsys__plugin_libMedia_imagesstd) 
+$(target__umodsys__plugin_libMedia_imagesstd):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) $(objs__umodsys__plugin_libMedia_imagesstd) | $(bin__umodsys__plugin_libMedia_imagesstd) 
 	@echo '*** Make plugin umodsys::plugin_libMedia_imagesstd'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_imagesstd.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_libMedia_imagesstd) $(LDFLAGS__umodsys__plugin_libMedia_imagesstd)
 
@@ -7321,8 +7321,8 @@ target: tp-umodsys-plugin_libMedia_serializeJson
 clean: cp-umodsys-plugin_libMedia_serializeJson
 tg-umodsys: tp-umodsys-plugin_libMedia_serializeJson
 cg-umodsys: cp-umodsys-plugin_libMedia_serializeJson
-tp-umodsys-plugin_libMedia_serializeJson:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_libMedia_serializeJson
-cp-umodsys-plugin_libMedia_serializeJson:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_libMedia_serializeJson
+tp-umodsys-plugin_libMedia_serializeJson:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) tpp-umodsys-plugin_libMedia_serializeJson
+cp-umodsys-plugin_libMedia_serializeJson:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cpp-umodsys-plugin_libMedia_serializeJson
 #.PHONY: tp-umodsys-plugin_libMedia_serializeJson tpp-umodsys-plugin_libMedia_serializeJson cp-umodsys-plugin_libMedia_serializeJson cpp-umodsys-plugin_libMedia_serializeJson
 
 tmp__umodsys__plugin_libMedia_serializeJson=../../tmp/Linux_x86_64.Debug
@@ -7330,7 +7330,7 @@ bin__umodsys__plugin_libMedia_serializeJson=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_libMedia_serializeJson=../../tmp/Linux_x86_64.Debug/plugin_libMedia_serializeJson
 CXXFLAGS__umodsys__plugin_libMedia_serializeJson=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_libMedia_serializeJson=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_libMedia_serializeJson=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a
+LDFLAGS__umodsys__plugin_libMedia_serializeJson=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_common.Linux_x86_64.Debug.a
 
 
 # file group src :
@@ -7346,7 +7346,7 @@ tpp-umodsys-plugin_libMedia_serializeJson: $(target__umodsys__plugin_libMedia_se
 cpp-umodsys-plugin_libMedia_serializeJson:
 	@-rm $(target__umodsys__plugin_libMedia_serializeJson)
 	@-rm $(tmpx__umodsys__plugin_libMedia_serializeJson)/*
-$(target__umodsys__plugin_libMedia_serializeJson):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_libMedia_serializeJson) | $(bin__umodsys__plugin_libMedia_serializeJson) 
+$(target__umodsys__plugin_libMedia_serializeJson):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(objs__umodsys__plugin_libMedia_serializeJson) | $(bin__umodsys__plugin_libMedia_serializeJson) 
 	@echo '*** Make solib umodsys::plugin_libMedia_serializeJson'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_serializeJson.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_libMedia_serializeJson) $(LDFLAGS__umodsys__plugin_libMedia_serializeJson)
 
@@ -7363,8 +7363,8 @@ target: tp-umodsys-plugin_libMedia_serializeYaml
 clean: cp-umodsys-plugin_libMedia_serializeYaml
 tg-umodsys: tp-umodsys-plugin_libMedia_serializeYaml
 cg-umodsys: cp-umodsys-plugin_libMedia_serializeYaml
-tp-umodsys-plugin_libMedia_serializeYaml:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_libMedia_serializeYaml
-cp-umodsys-plugin_libMedia_serializeYaml:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_libMedia_serializeYaml
+tp-umodsys-plugin_libMedia_serializeYaml:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) tpp-umodsys-plugin_libMedia_serializeYaml
+cp-umodsys-plugin_libMedia_serializeYaml:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cpp-umodsys-plugin_libMedia_serializeYaml
 #.PHONY: tp-umodsys-plugin_libMedia_serializeYaml tpp-umodsys-plugin_libMedia_serializeYaml cp-umodsys-plugin_libMedia_serializeYaml cpp-umodsys-plugin_libMedia_serializeYaml
 
 tmp__umodsys__plugin_libMedia_serializeYaml=../../tmp/Linux_x86_64.Debug
@@ -7372,7 +7372,7 @@ bin__umodsys__plugin_libMedia_serializeYaml=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_libMedia_serializeYaml=../../tmp/Linux_x86_64.Debug/plugin_libMedia_serializeYaml
 CXXFLAGS__umodsys__plugin_libMedia_serializeYaml=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_libMedia_serializeYaml=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_libMedia_serializeYaml=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a
+LDFLAGS__umodsys__plugin_libMedia_serializeYaml=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_common.Linux_x86_64.Debug.a
 
 
 # file group src :
@@ -7388,7 +7388,7 @@ tpp-umodsys-plugin_libMedia_serializeYaml: $(target__umodsys__plugin_libMedia_se
 cpp-umodsys-plugin_libMedia_serializeYaml:
 	@-rm $(target__umodsys__plugin_libMedia_serializeYaml)
 	@-rm $(tmpx__umodsys__plugin_libMedia_serializeYaml)/*
-$(target__umodsys__plugin_libMedia_serializeYaml):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_libMedia_serializeYaml) | $(bin__umodsys__plugin_libMedia_serializeYaml) 
+$(target__umodsys__plugin_libMedia_serializeYaml):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(objs__umodsys__plugin_libMedia_serializeYaml) | $(bin__umodsys__plugin_libMedia_serializeYaml) 
 	@echo '*** Make solib umodsys::plugin_libMedia_serializeYaml'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_serializeYaml.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_libMedia_serializeYaml) $(LDFLAGS__umodsys__plugin_libMedia_serializeYaml)
 
@@ -7405,8 +7405,8 @@ target: tp-umodsys-plugin_libMedia_stdio
 clean: cp-umodsys-plugin_libMedia_stdio
 tg-umodsys: tp-umodsys-plugin_libMedia_stdio
 cg-umodsys: cp-umodsys-plugin_libMedia_stdio
-tp-umodsys-plugin_libMedia_stdio:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_libMedia_stdio
-cp-umodsys-plugin_libMedia_stdio:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_libMedia_stdio
+tp-umodsys-plugin_libMedia_stdio:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) tpp-umodsys-plugin_libMedia_stdio
+cp-umodsys-plugin_libMedia_stdio:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cpp-umodsys-plugin_libMedia_stdio
 #.PHONY: tp-umodsys-plugin_libMedia_stdio tpp-umodsys-plugin_libMedia_stdio cp-umodsys-plugin_libMedia_stdio cpp-umodsys-plugin_libMedia_stdio
 
 tmp__umodsys__plugin_libMedia_stdio=../../tmp/Linux_x86_64.Debug
@@ -7414,7 +7414,7 @@ bin__umodsys__plugin_libMedia_stdio=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_libMedia_stdio=../../tmp/Linux_x86_64.Debug/plugin_libMedia_stdio
 CXXFLAGS__umodsys__plugin_libMedia_stdio=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_libMedia_stdio=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_libMedia_stdio=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a
+LDFLAGS__umodsys__plugin_libMedia_stdio=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_common.Linux_x86_64.Debug.a
 
 
 # file group src :
@@ -7430,7 +7430,7 @@ tpp-umodsys-plugin_libMedia_stdio: $(target__umodsys__plugin_libMedia_stdio)
 cpp-umodsys-plugin_libMedia_stdio:
 	@-rm $(target__umodsys__plugin_libMedia_stdio)
 	@-rm $(tmpx__umodsys__plugin_libMedia_stdio)/*
-$(target__umodsys__plugin_libMedia_stdio):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_libMedia_stdio) | $(bin__umodsys__plugin_libMedia_stdio) 
+$(target__umodsys__plugin_libMedia_stdio):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(objs__umodsys__plugin_libMedia_stdio) | $(bin__umodsys__plugin_libMedia_stdio) 
 	@echo '*** Make solib umodsys::plugin_libMedia_stdio'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_stdio.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_libMedia_stdio) $(LDFLAGS__umodsys__plugin_libMedia_stdio)
 
@@ -7447,8 +7447,8 @@ target: tp-umodsys-plugin_libMedia_stdlib
 clean: cp-umodsys-plugin_libMedia_stdlib
 tg-umodsys: tp-umodsys-plugin_libMedia_stdlib
 cg-umodsys: cp-umodsys-plugin_libMedia_stdlib
-tp-umodsys-plugin_libMedia_stdlib:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_libMedia_stdlib
-cp-umodsys-plugin_libMedia_stdlib:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_libMedia_stdlib
+tp-umodsys-plugin_libMedia_stdlib:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) tpp-umodsys-plugin_libMedia_stdlib
+cp-umodsys-plugin_libMedia_stdlib:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cpp-umodsys-plugin_libMedia_stdlib
 #.PHONY: tp-umodsys-plugin_libMedia_stdlib tpp-umodsys-plugin_libMedia_stdlib cp-umodsys-plugin_libMedia_stdlib cpp-umodsys-plugin_libMedia_stdlib
 
 tmp__umodsys__plugin_libMedia_stdlib=../../tmp/Linux_x86_64.Debug
@@ -7456,7 +7456,7 @@ bin__umodsys__plugin_libMedia_stdlib=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_libMedia_stdlib=../../tmp/Linux_x86_64.Debug/plugin_libMedia_stdlib
 CXXFLAGS__umodsys__plugin_libMedia_stdlib=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_libMedia_stdlib=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_libMedia_stdlib=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a
+LDFLAGS__umodsys__plugin_libMedia_stdlib=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_common.Linux_x86_64.Debug.a
 
 
 # file group src :
@@ -7472,7 +7472,7 @@ tpp-umodsys-plugin_libMedia_stdlib: $(target__umodsys__plugin_libMedia_stdlib)
 cpp-umodsys-plugin_libMedia_stdlib:
 	@-rm $(target__umodsys__plugin_libMedia_stdlib)
 	@-rm $(tmpx__umodsys__plugin_libMedia_stdlib)/*
-$(target__umodsys__plugin_libMedia_stdlib):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_libMedia_stdlib) | $(bin__umodsys__plugin_libMedia_stdlib) 
+$(target__umodsys__plugin_libMedia_stdlib):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(objs__umodsys__plugin_libMedia_stdlib) | $(bin__umodsys__plugin_libMedia_stdlib) 
 	@echo '*** Make solib umodsys::plugin_libMedia_stdlib'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_stdlib.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_libMedia_stdlib) $(LDFLAGS__umodsys__plugin_libMedia_stdlib)
 
@@ -7489,8 +7489,8 @@ target: tp-umodsys-plugin_libMedia_zlib
 clean: cp-umodsys-plugin_libMedia_zlib
 tg-umodsys: tp-umodsys-plugin_libMedia_zlib
 cg-umodsys: cp-umodsys-plugin_libMedia_zlib
-tp-umodsys-plugin_libMedia_zlib:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) tpp-umodsys-plugin_libMedia_zlib
-cp-umodsys-plugin_libMedia_zlib:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys_Depends-lib_zlib cpp-umodsys-plugin_libMedia_zlib
+tp-umodsys-plugin_libMedia_zlib:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys_Depends__lib_zlib) tpp-umodsys-plugin_libMedia_zlib
+cp-umodsys-plugin_libMedia_zlib:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cp-umodsys_Depends-lib_zlib cpp-umodsys-plugin_libMedia_zlib
 #.PHONY: tp-umodsys-plugin_libMedia_zlib tpp-umodsys-plugin_libMedia_zlib cp-umodsys-plugin_libMedia_zlib cpp-umodsys-plugin_libMedia_zlib
 
 tmp__umodsys__plugin_libMedia_zlib=../../tmp/Linux_x86_64.Debug
@@ -7498,7 +7498,7 @@ bin__umodsys__plugin_libMedia_zlib=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_libMedia_zlib=../../tmp/Linux_x86_64.Debug/plugin_libMedia_zlib
 CXXFLAGS__umodsys__plugin_libMedia_zlib=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_libMedia_zlib=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_libMedia_zlib=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:lib_zlib.Linux_x86_64.Debug.so
+LDFLAGS__umodsys__plugin_libMedia_zlib=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_common.Linux_x86_64.Debug.a -l:lib_zlib.Linux_x86_64.Debug.so
 
 
 # file group src :
@@ -7514,7 +7514,7 @@ tpp-umodsys-plugin_libMedia_zlib: $(target__umodsys__plugin_libMedia_zlib)
 cpp-umodsys-plugin_libMedia_zlib:
 	@-rm $(target__umodsys__plugin_libMedia_zlib)
 	@-rm $(tmpx__umodsys__plugin_libMedia_zlib)/*
-$(target__umodsys__plugin_libMedia_zlib):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) $(objs__umodsys__plugin_libMedia_zlib) | $(bin__umodsys__plugin_libMedia_zlib) 
+$(target__umodsys__plugin_libMedia_zlib):  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys_Depends__lib_zlib) $(objs__umodsys__plugin_libMedia_zlib) | $(bin__umodsys__plugin_libMedia_zlib) 
 	@echo '*** Make plugin umodsys::plugin_libMedia_zlib'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libMedia_zlib.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_libMedia_zlib) $(LDFLAGS__umodsys__plugin_libMedia_zlib)
 
@@ -7531,8 +7531,8 @@ target: tp-umodsys-plugin_libStd
 clean: cp-umodsys-plugin_libStd
 tg-umodsys: tp-umodsys-plugin_libStd
 cg-umodsys: cp-umodsys-plugin_libStd
-tp-umodsys-plugin_libStd:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) tpp-umodsys-plugin_libStd
-cp-umodsys-plugin_libStd:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys_Depends-lib_zlib cp-umodsys_Depends-lib_libpng cp-umodsys_Depends-lib_jpeglib cpp-umodsys-plugin_libStd
+tp-umodsys-plugin_libStd:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) tpp-umodsys-plugin_libStd
+cp-umodsys-plugin_libStd:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cp-umodsys_Depends-lib_zlib cp-umodsys_Depends-lib_libpng cp-umodsys_Depends-lib_jpeglib cpp-umodsys-plugin_libStd
 #.PHONY: tp-umodsys-plugin_libStd tpp-umodsys-plugin_libStd cp-umodsys-plugin_libStd cpp-umodsys-plugin_libStd
 
 # dummy project
@@ -7552,8 +7552,8 @@ target: tp-umodsys-plugin_libUI
 clean: cp-umodsys-plugin_libUI
 tg-umodsys: tp-umodsys-plugin_libUI
 cg-umodsys: cp-umodsys-plugin_libUI
-tp-umodsys-plugin_libUI:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) tpp-umodsys-plugin_libUI
-cp-umodsys-plugin_libUI:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys_Depends-lib_zlib cp-umodsys_Depends-lib_libpng cp-umodsys_Depends-lib_jpeglib cpp-umodsys-plugin_libUI
+tp-umodsys-plugin_libUI:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) tpp-umodsys-plugin_libUI
+cp-umodsys-plugin_libUI:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cp-umodsys_Depends-lib_zlib cp-umodsys_Depends-lib_libpng cp-umodsys_Depends-lib_jpeglib cpp-umodsys-plugin_libUI
 #.PHONY: tp-umodsys-plugin_libUI tpp-umodsys-plugin_libUI cp-umodsys-plugin_libUI cpp-umodsys-plugin_libUI
 
 # dummy project
@@ -7573,8 +7573,8 @@ target: tp-umodsys-plugin_libUI_SDL
 clean: cp-umodsys-plugin_libUI_SDL
 tg-umodsys: tp-umodsys-plugin_libUI_SDL
 cg-umodsys: cp-umodsys-plugin_libUI_SDL
-tp-umodsys-plugin_libUI_SDL:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_SDL2) tpp-umodsys-plugin_libUI_SDL
-cp-umodsys-plugin_libUI_SDL:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys_Depends-lib_SDL2 cpp-umodsys-plugin_libUI_SDL
+tp-umodsys-plugin_libUI_SDL:  $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys_Depends__lib_SDL2) tpp-umodsys-plugin_libUI_SDL
+cp-umodsys-plugin_libUI_SDL:  cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cp-umodsys_Depends-lib_SDL2 cpp-umodsys-plugin_libUI_SDL
 #.PHONY: tp-umodsys-plugin_libUI_SDL tpp-umodsys-plugin_libUI_SDL cp-umodsys-plugin_libUI_SDL cpp-umodsys-plugin_libUI_SDL
 
 # dummy project
@@ -7594,8 +7594,8 @@ target: tp-umodsys-plugin_libUI_SDLGL
 clean: cp-umodsys-plugin_libUI_SDLGL
 tg-umodsys: tp-umodsys-plugin_libUI_SDLGL
 cg-umodsys: cp-umodsys-plugin_libUI_SDLGL
-tp-umodsys-plugin_libUI_SDLGL:  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_SDL2) tpp-umodsys-plugin_libUI_SDLGL
-cp-umodsys-plugin_libUI_SDLGL:  cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys_Depends-lib_SDL2 cpp-umodsys-plugin_libUI_SDLGL
+tp-umodsys-plugin_libUI_SDLGL:  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys_Depends__lib_SDL2) tpp-umodsys-plugin_libUI_SDLGL
+cp-umodsys-plugin_libUI_SDLGL:  cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cp-umodsys_Depends-lib_SDL2 cpp-umodsys-plugin_libUI_SDLGL
 #.PHONY: tp-umodsys-plugin_libUI_SDLGL tpp-umodsys-plugin_libUI_SDLGL cp-umodsys-plugin_libUI_SDLGL cpp-umodsys-plugin_libUI_SDLGL
 
 tmp__umodsys__plugin_libUI_SDLGL=../../tmp/Linux_x86_64.Debug
@@ -7603,7 +7603,7 @@ bin__umodsys__plugin_libUI_SDLGL=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_libUI_SDLGL=../../tmp/Linux_x86_64.Debug/plugin_libUI_SDLGL
 CXXFLAGS__umodsys__plugin_libUI_SDLGL=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_libUI_SDLGL=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_libUI_SDLGL=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libui.Linux_x86_64.Debug.a -l:umodsys_lib_lib2d.Linux_x86_64.Debug.a -l:umodsys_lib_lib3d.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:lib_SDL2.Linux_x86_64.Debug.so
+LDFLAGS__umodsys__plugin_libUI_SDLGL=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libui.Linux_x86_64.Debug.a -l:umodsys_lib_lib2d.Linux_x86_64.Debug.a -l:umodsys_lib_lib3d.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_common.Linux_x86_64.Debug.a -l:lib_SDL2.Linux_x86_64.Debug.so
 
 
 # file group src :
@@ -7619,7 +7619,7 @@ tpp-umodsys-plugin_libUI_SDLGL: $(target__umodsys__plugin_libUI_SDLGL)
 cpp-umodsys-plugin_libUI_SDLGL:
 	@-rm $(target__umodsys__plugin_libUI_SDLGL)
 	@-rm $(tmpx__umodsys__plugin_libUI_SDLGL)/*
-$(target__umodsys__plugin_libUI_SDLGL):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_SDL2) $(objs__umodsys__plugin_libUI_SDLGL) | $(bin__umodsys__plugin_libUI_SDLGL) 
+$(target__umodsys__plugin_libUI_SDLGL):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys_Depends__lib_SDL2) $(objs__umodsys__plugin_libUI_SDLGL) | $(bin__umodsys__plugin_libUI_SDLGL) 
 	@echo '*** Make plugin umodsys::plugin_libUI_SDLGL'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libUI_SDLGL.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_libUI_SDLGL) $(LDFLAGS__umodsys__plugin_libUI_SDLGL)
 
@@ -7636,8 +7636,8 @@ target: tp-umodsys-plugin_libUI_SDLcore
 clean: cp-umodsys-plugin_libUI_SDLcore
 tg-umodsys: tp-umodsys-plugin_libUI_SDLcore
 cg-umodsys: cp-umodsys-plugin_libUI_SDLcore
-tp-umodsys-plugin_libUI_SDLcore:  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_SDL2) tpp-umodsys-plugin_libUI_SDLcore
-cp-umodsys-plugin_libUI_SDLcore:  cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys_Depends-lib_SDL2 cpp-umodsys-plugin_libUI_SDLcore
+tp-umodsys-plugin_libUI_SDLcore:  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys_Depends__lib_SDL2) tpp-umodsys-plugin_libUI_SDLcore
+cp-umodsys-plugin_libUI_SDLcore:  cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cp-umodsys_Depends-lib_SDL2 cpp-umodsys-plugin_libUI_SDLcore
 #.PHONY: tp-umodsys-plugin_libUI_SDLcore tpp-umodsys-plugin_libUI_SDLcore cp-umodsys-plugin_libUI_SDLcore cpp-umodsys-plugin_libUI_SDLcore
 
 tmp__umodsys__plugin_libUI_SDLcore=../../tmp/Linux_x86_64.Debug
@@ -7645,7 +7645,7 @@ bin__umodsys__plugin_libUI_SDLcore=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_libUI_SDLcore=../../tmp/Linux_x86_64.Debug/plugin_libUI_SDLcore
 CXXFLAGS__umodsys__plugin_libUI_SDLcore=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_libUI_SDLcore=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_libUI_SDLcore=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libui.Linux_x86_64.Debug.a -l:umodsys_lib_lib2d.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:lib_SDL2.Linux_x86_64.Debug.so
+LDFLAGS__umodsys__plugin_libUI_SDLcore=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libui.Linux_x86_64.Debug.a -l:umodsys_lib_lib2d.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_common.Linux_x86_64.Debug.a -l:lib_SDL2.Linux_x86_64.Debug.so
 
 
 # file group src :
@@ -7661,7 +7661,7 @@ tpp-umodsys-plugin_libUI_SDLcore: $(target__umodsys__plugin_libUI_SDLcore)
 cpp-umodsys-plugin_libUI_SDLcore:
 	@-rm $(target__umodsys__plugin_libUI_SDLcore)
 	@-rm $(tmpx__umodsys__plugin_libUI_SDLcore)/*
-$(target__umodsys__plugin_libUI_SDLcore):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_SDL2) $(objs__umodsys__plugin_libUI_SDLcore) | $(bin__umodsys__plugin_libUI_SDLcore) 
+$(target__umodsys__plugin_libUI_SDLcore):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys_Depends__lib_SDL2) $(objs__umodsys__plugin_libUI_SDLcore) | $(bin__umodsys__plugin_libUI_SDLcore) 
 	@echo '*** Make plugin umodsys::plugin_libUI_SDLcore'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libUI_SDLcore.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_libUI_SDLcore) $(LDFLAGS__umodsys__plugin_libUI_SDLcore)
 
@@ -7678,8 +7678,8 @@ target: tp-umodsys-plugin_libUI_frames
 clean: cp-umodsys-plugin_libUI_frames
 tg-umodsys: tp-umodsys-plugin_libUI_frames
 cg-umodsys: cp-umodsys-plugin_libUI_frames
-tp-umodsys-plugin_libUI_frames:  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_libUI_frames
-cp-umodsys-plugin_libUI_frames:  cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_libUI_frames
+tp-umodsys-plugin_libUI_frames:  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) tpp-umodsys-plugin_libUI_frames
+cp-umodsys-plugin_libUI_frames:  cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cpp-umodsys-plugin_libUI_frames
 #.PHONY: tp-umodsys-plugin_libUI_frames tpp-umodsys-plugin_libUI_frames cp-umodsys-plugin_libUI_frames cpp-umodsys-plugin_libUI_frames
 
 tmp__umodsys__plugin_libUI_frames=../../tmp/Linux_x86_64.Debug
@@ -7687,7 +7687,7 @@ bin__umodsys__plugin_libUI_frames=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_libUI_frames=../../tmp/Linux_x86_64.Debug/plugin_libUI_frames
 CXXFLAGS__umodsys__plugin_libUI_frames=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_libUI_frames=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_libUI_frames=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libui.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a
+LDFLAGS__umodsys__plugin_libUI_frames=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libui.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_common.Linux_x86_64.Debug.a
 
 
 # file group src :
@@ -7703,7 +7703,7 @@ tpp-umodsys-plugin_libUI_frames: $(target__umodsys__plugin_libUI_frames)
 cpp-umodsys-plugin_libUI_frames:
 	@-rm $(target__umodsys__plugin_libUI_frames)
 	@-rm $(tmpx__umodsys__plugin_libUI_frames)/*
-$(target__umodsys__plugin_libUI_frames):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_libUI_frames) | $(bin__umodsys__plugin_libUI_frames) 
+$(target__umodsys__plugin_libUI_frames):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(objs__umodsys__plugin_libUI_frames) | $(bin__umodsys__plugin_libUI_frames) 
 	@echo '*** Make solib umodsys::plugin_libUI_frames'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_libUI_frames.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_libUI_frames) $(LDFLAGS__umodsys__plugin_libUI_frames)
 
@@ -7720,8 +7720,8 @@ target: tp-umodsys-plugin_test1
 clean: cp-umodsys-plugin_test1
 tg-umodsys: tp-umodsys-plugin_test1
 cg-umodsys: cp-umodsys-plugin_test1
-tp-umodsys-plugin_test1:  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) $(target__umodsys_Depends__lib_SDL2) tpp-umodsys-plugin_test1
-cp-umodsys-plugin_test1:  cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys_Depends-lib_zlib cp-umodsys_Depends-lib_libpng cp-umodsys_Depends-lib_jpeglib cp-umodsys_Depends-lib_SDL2 cpp-umodsys-plugin_test1
+tp-umodsys-plugin_test1:  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) $(target__umodsys_Depends__lib_SDL2) tpp-umodsys-plugin_test1
+cp-umodsys-plugin_test1:  cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cp-umodsys_Depends-lib_zlib cp-umodsys_Depends-lib_libpng cp-umodsys_Depends-lib_jpeglib cp-umodsys_Depends-lib_SDL2 cpp-umodsys-plugin_test1
 #.PHONY: tp-umodsys-plugin_test1 tpp-umodsys-plugin_test1 cp-umodsys-plugin_test1 cpp-umodsys-plugin_test1
 
 tmp__umodsys__plugin_test1=../../tmp/Linux_x86_64.Debug
@@ -7729,7 +7729,7 @@ bin__umodsys__plugin_test1=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_test1=../../tmp/Linux_x86_64.Debug/plugin_test1
 CXXFLAGS__umodsys__plugin_test1=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_test1=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_test1=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libui.Linux_x86_64.Debug.a -l:umodsys_lib_lib2d.Linux_x86_64.Debug.a -l:umodsys_lib_lib3d.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:lib_zlib.Linux_x86_64.Debug.so -l:lib_libpng.Linux_x86_64.Debug.so -l:lib_jpeglib.Linux_x86_64.Debug.so -l:lib_SDL2.Linux_x86_64.Debug.so -L../../bin -L../../tmp
+LDFLAGS__umodsys__plugin_test1=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libui.Linux_x86_64.Debug.a -l:umodsys_lib_lib2d.Linux_x86_64.Debug.a -l:umodsys_lib_lib3d.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_common.Linux_x86_64.Debug.a -l:lib_zlib.Linux_x86_64.Debug.so -l:lib_libpng.Linux_x86_64.Debug.so -l:lib_jpeglib.Linux_x86_64.Debug.so -l:lib_SDL2.Linux_x86_64.Debug.so -L../../bin -L../../tmp
 
 
 # file group src :
@@ -7754,7 +7754,7 @@ tpp-umodsys-plugin_test1: $(target__umodsys__plugin_test1)
 cpp-umodsys-plugin_test1:
 	@-rm $(target__umodsys__plugin_test1)
 	@-rm $(tmpx__umodsys__plugin_test1)/*
-$(target__umodsys__plugin_test1):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) $(target__umodsys_Depends__lib_SDL2) $(objs__umodsys__plugin_test1) | $(bin__umodsys__plugin_test1) 
+$(target__umodsys__plugin_test1):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys_Depends__lib_zlib) $(target__umodsys_Depends__lib_libpng) $(target__umodsys_Depends__lib_jpeglib) $(target__umodsys_Depends__lib_SDL2) $(objs__umodsys__plugin_test1) | $(bin__umodsys__plugin_test1) 
 	@echo '*** Make plugin umodsys::plugin_test1'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_test1.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_test1) $(LDFLAGS__umodsys__plugin_test1)
 
@@ -7771,8 +7771,8 @@ target: tp-umodsys-plugin_test2
 clean: cp-umodsys-plugin_test2
 tg-umodsys: tp-umodsys-plugin_test2
 cg-umodsys: cp-umodsys-plugin_test2
-tp-umodsys-plugin_test2:  $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_base) tpp-umodsys-plugin_test2
-cp-umodsys-plugin_test2:  cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_base cpp-umodsys-plugin_test2
+tp-umodsys-plugin_test2:  $(target__umodsys__umodsys_lib_common) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_test2
+cp-umodsys-plugin_test2:  cp-umodsys-umodsys_lib_common cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_test2
 #.PHONY: tp-umodsys-plugin_test2 tpp-umodsys-plugin_test2 cp-umodsys-plugin_test2 cpp-umodsys-plugin_test2
 
 tmp__umodsys__plugin_test2=../../tmp/Linux_x86_64.Debug
@@ -7780,7 +7780,7 @@ bin__umodsys__plugin_test2=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_test2=../../tmp/Linux_x86_64.Debug/plugin_test2
 CXXFLAGS__umodsys__plugin_test2=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_test2=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_test2=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a
+LDFLAGS__umodsys__plugin_test2=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_common.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a
 
 
 # file group src :
@@ -7796,7 +7796,7 @@ tpp-umodsys-plugin_test2: $(target__umodsys__plugin_test2)
 cpp-umodsys-plugin_test2:
 	@-rm $(target__umodsys__plugin_test2)
 	@-rm $(tmpx__umodsys__plugin_test2)/*
-$(target__umodsys__plugin_test2):  $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_base) $(objs__umodsys__plugin_test2) | $(bin__umodsys__plugin_test2) 
+$(target__umodsys__plugin_test2):  $(target__umodsys__umodsys_lib_common) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_test2) | $(bin__umodsys__plugin_test2) 
 	@echo '*** Make plugin umodsys::plugin_test2'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_test2.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_test2) $(LDFLAGS__umodsys__plugin_test2)
 
@@ -7813,8 +7813,8 @@ target: tp-umodsys-plugin_test3
 clean: cp-umodsys-plugin_test3
 tg-umodsys: tp-umodsys-plugin_test3
 cg-umodsys: cp-umodsys-plugin_test3
-tp-umodsys-plugin_test3:  $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_base) tpp-umodsys-plugin_test3
-cp-umodsys-plugin_test3:  cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_base cpp-umodsys-plugin_test3
+tp-umodsys-plugin_test3:  $(target__umodsys__umodsys_lib_common) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_test3
+cp-umodsys-plugin_test3:  cp-umodsys-umodsys_lib_common cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_test3
 #.PHONY: tp-umodsys-plugin_test3 tpp-umodsys-plugin_test3 cp-umodsys-plugin_test3 cpp-umodsys-plugin_test3
 
 tmp__umodsys__plugin_test3=../../tmp/Linux_x86_64.Debug
@@ -7822,7 +7822,7 @@ bin__umodsys__plugin_test3=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_test3=../../tmp/Linux_x86_64.Debug/plugin_test3
 CXXFLAGS__umodsys__plugin_test3=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_test3=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_test3=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a
+LDFLAGS__umodsys__plugin_test3=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_common.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a
 
 
 # file group src :
@@ -7838,7 +7838,7 @@ tpp-umodsys-plugin_test3: $(target__umodsys__plugin_test3)
 cpp-umodsys-plugin_test3:
 	@-rm $(target__umodsys__plugin_test3)
 	@-rm $(tmpx__umodsys__plugin_test3)/*
-$(target__umodsys__plugin_test3):  $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_base) $(objs__umodsys__plugin_test3) | $(bin__umodsys__plugin_test3) 
+$(target__umodsys__plugin_test3):  $(target__umodsys__umodsys_lib_common) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_test3) | $(bin__umodsys__plugin_test3) 
 	@echo '*** Make plugin umodsys::plugin_test3'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_test3.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_test3) $(LDFLAGS__umodsys__plugin_test3)
 
@@ -7855,8 +7855,8 @@ target: tp-umodsys-plugin_test4
 clean: cp-umodsys-plugin_test4
 tg-umodsys: tp-umodsys-plugin_test4
 cg-umodsys: cp-umodsys-plugin_test4
-tp-umodsys-plugin_test4:  $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_base) tpp-umodsys-plugin_test4
-cp-umodsys-plugin_test4:  cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_base cpp-umodsys-plugin_test4
+tp-umodsys-plugin_test4:  $(target__umodsys__umodsys_lib_common) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_test4
+cp-umodsys-plugin_test4:  cp-umodsys-umodsys_lib_common cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_test4
 #.PHONY: tp-umodsys-plugin_test4 tpp-umodsys-plugin_test4 cp-umodsys-plugin_test4 cpp-umodsys-plugin_test4
 
 tmp__umodsys__plugin_test4=../../tmp/Linux_x86_64.Debug
@@ -7864,7 +7864,7 @@ bin__umodsys__plugin_test4=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_test4=../../tmp/Linux_x86_64.Debug/plugin_test4
 CXXFLAGS__umodsys__plugin_test4=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_test4=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_test4=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a
+LDFLAGS__umodsys__plugin_test4=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_common.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a
 
 
 # file group src :
@@ -7880,7 +7880,7 @@ tpp-umodsys-plugin_test4: $(target__umodsys__plugin_test4)
 cpp-umodsys-plugin_test4:
 	@-rm $(target__umodsys__plugin_test4)
 	@-rm $(tmpx__umodsys__plugin_test4)/*
-$(target__umodsys__plugin_test4):  $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_base) $(objs__umodsys__plugin_test4) | $(bin__umodsys__plugin_test4) 
+$(target__umodsys__plugin_test4):  $(target__umodsys__umodsys_lib_common) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_test4) | $(bin__umodsys__plugin_test4) 
 	@echo '*** Make plugin umodsys::plugin_test4'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_test4.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_test4) $(LDFLAGS__umodsys__plugin_test4)
 
@@ -7897,8 +7897,8 @@ target: tp-umodsys-plugin_test5
 clean: cp-umodsys-plugin_test5
 tg-umodsys: tp-umodsys-plugin_test5
 cg-umodsys: cp-umodsys-plugin_test5
-tp-umodsys-plugin_test5:  $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_base) tpp-umodsys-plugin_test5
-cp-umodsys-plugin_test5:  cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_base cpp-umodsys-plugin_test5
+tp-umodsys-plugin_test5:  $(target__umodsys__umodsys_lib_common) $(target__umodsys__umodsys_lib_core) tpp-umodsys-plugin_test5
+cp-umodsys-plugin_test5:  cp-umodsys-umodsys_lib_common cp-umodsys-umodsys_lib_core cpp-umodsys-plugin_test5
 #.PHONY: tp-umodsys-plugin_test5 tpp-umodsys-plugin_test5 cp-umodsys-plugin_test5 cpp-umodsys-plugin_test5
 
 tmp__umodsys__plugin_test5=../../tmp/Linux_x86_64.Debug
@@ -7906,7 +7906,7 @@ bin__umodsys__plugin_test5=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__plugin_test5=../../tmp/Linux_x86_64.Debug/plugin_test5
 CXXFLAGS__umodsys__plugin_test5=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
 CFLAGS__umodsys__plugin_test5=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__plugin_test5=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a
+LDFLAGS__umodsys__plugin_test5=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_common.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a
 
 
 # file group src :
@@ -7922,7 +7922,7 @@ tpp-umodsys-plugin_test5: $(target__umodsys__plugin_test5)
 cpp-umodsys-plugin_test5:
 	@-rm $(target__umodsys__plugin_test5)
 	@-rm $(tmpx__umodsys__plugin_test5)/*
-$(target__umodsys__plugin_test5):  $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_base) $(objs__umodsys__plugin_test5) | $(bin__umodsys__plugin_test5) 
+$(target__umodsys__plugin_test5):  $(target__umodsys__umodsys_lib_common) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__plugin_test5) | $(bin__umodsys__plugin_test5) 
 	@echo '*** Make plugin umodsys::plugin_test5'
 	@$(CXX) -shared -Wl,-rpath,. -Wl,-soname,plugin_test5.Linux_x86_64.Debug.so -o$@ $(objs__umodsys__plugin_test5) $(LDFLAGS__umodsys__plugin_test5)
 
@@ -7931,329 +7931,76 @@ $(target__umodsys__plugin_test5):  $(target__umodsys__umodsys_lib_core) $(target
 
 #-------------------------------- epilog 'umodsys'.'plugin_test5'
 #---------------------------------------------------------------- END project 'umodsys'.'plugin_test5' 
-#---------------------------------------------------------------- BEGIN project 'umodsys'.'umodsys_lib_base' 
-#-------------------------------- prolog 'umodsys'.'umodsys_lib_base'
+#---------------------------------------------------------------- BEGIN project 'umodsys'.'umodsys_lib_common' 
+#-------------------------------- prolog 'umodsys'.'umodsys_lib_common'
 #--------------------------------
-#-------------------------------- project 'umodsys'.'umodsys_lib_base' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib:
-target: tp-umodsys-umodsys_lib_base
-clean: cp-umodsys-umodsys_lib_base
-tg-umodsys: tp-umodsys-umodsys_lib_base
-cg-umodsys: cp-umodsys-umodsys_lib_base
-tp-umodsys-umodsys_lib_base:  tpp-umodsys-umodsys_lib_base
-cp-umodsys-umodsys_lib_base:  cpp-umodsys-umodsys_lib_base
-#.PHONY: tp-umodsys-umodsys_lib_base tpp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_base cpp-umodsys-umodsys_lib_base
+#-------------------------------- project 'umodsys'.'umodsys_lib_common' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib:
+target: tp-umodsys-umodsys_lib_common
+clean: cp-umodsys-umodsys_lib_common
+tg-umodsys: tp-umodsys-umodsys_lib_common
+cg-umodsys: cp-umodsys-umodsys_lib_common
+tp-umodsys-umodsys_lib_common:  tpp-umodsys-umodsys_lib_common
+cp-umodsys-umodsys_lib_common:  cpp-umodsys-umodsys_lib_common
+#.PHONY: tp-umodsys-umodsys_lib_common tpp-umodsys-umodsys_lib_common cp-umodsys-umodsys_lib_common cpp-umodsys-umodsys_lib_common
 
-tmp__umodsys__umodsys_lib_base=../../tmp/Linux_x86_64.Debug
-bin__umodsys__umodsys_lib_base=../../bin/Linux_x86_64.Debug
-tmpx__umodsys__umodsys_lib_base=../../tmp/Linux_x86_64.Debug/umodsys_lib_base
-CXXFLAGS__umodsys__umodsys_lib_base=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-CFLAGS__umodsys__umodsys_lib_base=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_base=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread
+tmp__umodsys__umodsys_lib_common=../../tmp/Linux_x86_64.Debug
+bin__umodsys__umodsys_lib_common=../../bin/Linux_x86_64.Debug
+tmpx__umodsys__umodsys_lib_common=../../tmp/Linux_x86_64.Debug/umodsys_lib_common
+CXXFLAGS__umodsys__umodsys_lib_common=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+CFLAGS__umodsys__umodsys_lib_common=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+LDFLAGS__umodsys__umodsys_lib_common=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread
 
 
 # file group headers :
-# file group base :
-# file base : ../../include/umodsys/base/basetypes.h
-# file base : ../../include/umodsys/base/bobjects.h
-# file base : ../../include/umodsys/base/console.h
-# file base : ../../include/umodsys/base/console_ext.h
-# file base : ../../include/umodsys/base/module.h
-# file base : ../../include/umodsys/base/module_impl.h
-# file base : ../../include/umodsys/base/module_ref.h
-# file base : ../../include/umodsys/base/shell.h
-# file base : ../../include/umodsys/base/system.h
-# end file group base .
-# file headers : ../../include/umodsys/stdbase.h
-# end file group headers .
-# file group headers_utils :
-# file headers_utils : ../../include/umodsys/lib/utils/libutils.time.h
-# end file group headers_utils .
-# file group lib_utils :
-# file lib_utils : ../../src/lib/utils/libutils.common.cpp
-objs__umodsys__umodsys_lib_base += $(tmpx__umodsys__umodsys_lib_base)/libutils.common.o
-$(tmpx__umodsys__umodsys_lib_base)/libutils.common.o: ../../src/lib/utils/libutils.common.cpp | $(tmpx__umodsys__umodsys_lib_base)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_base)/libutils.common.o.d
-# end file group lib_utils .
-# file group src :
-# file group linux :
-# file linux : ../../src/base/platform/linux/umodsys.so_main.linux.cpp
-objs__umodsys__umodsys_lib_base += $(tmpx__umodsys__umodsys_lib_base)/umodsys.so_main.linux.o
-$(tmpx__umodsys__umodsys_lib_base)/umodsys.so_main.linux.o: ../../src/base/platform/linux/umodsys.so_main.linux.cpp | $(tmpx__umodsys__umodsys_lib_base)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_base)/umodsys.so_main.linux.o.d
-# end file group linux .
-# file src : ../../src/base/umodsys.base.console.cpp
-objs__umodsys__umodsys_lib_base += $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.console.o
-$(tmpx__umodsys__umodsys_lib_base)/umodsys.base.console.o: ../../src/base/umodsys.base.console.cpp | $(tmpx__umodsys__umodsys_lib_base)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.console.o.d
-# file src : ../../src/base/umodsys.base.debug.cpp
-objs__umodsys__umodsys_lib_base += $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.debug.o
-$(tmpx__umodsys__umodsys_lib_base)/umodsys.base.debug.o: ../../src/base/umodsys.base.debug.cpp | $(tmpx__umodsys__umodsys_lib_base)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.debug.o.d
-# file src : ../../src/base/umodsys.base.module.cpp
-objs__umodsys__umodsys_lib_base += $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.module.o
-$(tmpx__umodsys__umodsys_lib_base)/umodsys.base.module.o: ../../src/base/umodsys.base.module.cpp | $(tmpx__umodsys__umodsys_lib_base)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.module.o.d
-# file src : ../../src/base/umodsys.base.modulecontext.cpp
-objs__umodsys__umodsys_lib_base += $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.modulecontext.o
-$(tmpx__umodsys__umodsys_lib_base)/umodsys.base.modulecontext.o: ../../src/base/umodsys.base.modulecontext.cpp | $(tmpx__umodsys__umodsys_lib_base)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.modulecontext.o.d
-# file src : ../../src/base/umodsys.base.moduleinfo.cpp
-objs__umodsys__umodsys_lib_base += $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.moduleinfo.o
-$(tmpx__umodsys__umodsys_lib_base)/umodsys.base.moduleinfo.o: ../../src/base/umodsys.base.moduleinfo.cpp | $(tmpx__umodsys__umodsys_lib_base)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.moduleinfo.o.d
-# file src : ../../src/base/umodsys.base.moduleloader.cpp
-objs__umodsys__umodsys_lib_base += $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.moduleloader.o
-$(tmpx__umodsys__umodsys_lib_base)/umodsys.base.moduleloader.o: ../../src/base/umodsys.base.moduleloader.cpp | $(tmpx__umodsys__umodsys_lib_base)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.moduleloader.o.d
-# file src : ../../src/base/umodsys.base.modulereg.cpp
-objs__umodsys__umodsys_lib_base += $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.modulereg.o
-$(tmpx__umodsys__umodsys_lib_base)/umodsys.base.modulereg.o: ../../src/base/umodsys.base.modulereg.cpp | $(tmpx__umodsys__umodsys_lib_base)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.modulereg.o.d
-# file src : ../../src/base/umodsys.base.moduleregchain.cpp
-objs__umodsys__umodsys_lib_base += $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.moduleregchain.o
-$(tmpx__umodsys__umodsys_lib_base)/umodsys.base.moduleregchain.o: ../../src/base/umodsys.base.moduleregchain.cpp | $(tmpx__umodsys__umodsys_lib_base)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.moduleregchain.o.d
-# file src : ../../src/base/umodsys.base.system.cpp
-objs__umodsys__umodsys_lib_base += $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.system.o
-$(tmpx__umodsys__umodsys_lib_base)/umodsys.base.system.o: ../../src/base/umodsys.base.system.cpp | $(tmpx__umodsys__umodsys_lib_base)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_base) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_base)/umodsys.base.system.o.d
-# file src : ../../src/base/version_library.h
-# end file group src .
-# library at ../../tmp/Linux_x86_64.Debug/umodsys_lib_base.Linux_x86_64.Debug.a
-tpp-umodsys-umodsys_lib_base: $(target__umodsys__umodsys_lib_base)
-cpp-umodsys-umodsys_lib_base:
-	@-rm $(target__umodsys__umodsys_lib_base)
-	@-rm $(tmpx__umodsys__umodsys_lib_base)/*
-$(target__umodsys__umodsys_lib_base):  $(objs__umodsys__umodsys_lib_base) | $(tmpx__umodsys__umodsys_lib_base)
-	@echo '*** Make lib umodsys::umodsys_lib_base'
-	@$(AR) r $@ $(objs__umodsys__umodsys_lib_base)
-
-
-#-------------------------------- /project 'umodsys'.'umodsys_lib_base' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib
-
-#-------------------------------- epilog 'umodsys'.'umodsys_lib_base'
-#---------------------------------------------------------------- END project 'umodsys'.'umodsys_lib_base' 
-#---------------------------------------------------------------- BEGIN project 'umodsys'.'umodsys_lib_basesys' 
-#-------------------------------- prolog 'umodsys'.'umodsys_lib_basesys'
-#--------------------------------
-#-------------------------------- project 'umodsys'.'umodsys_lib_basesys' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib:
-target: tp-umodsys-umodsys_lib_basesys
-clean: cp-umodsys-umodsys_lib_basesys
-tg-umodsys: tp-umodsys-umodsys_lib_basesys
-cg-umodsys: cp-umodsys-umodsys_lib_basesys
-tp-umodsys-umodsys_lib_basesys:  tpp-umodsys-umodsys_lib_basesys
-cp-umodsys-umodsys_lib_basesys:  cpp-umodsys-umodsys_lib_basesys
-#.PHONY: tp-umodsys-umodsys_lib_basesys tpp-umodsys-umodsys_lib_basesys cp-umodsys-umodsys_lib_basesys cpp-umodsys-umodsys_lib_basesys
-
-tmp__umodsys__umodsys_lib_basesys=../../tmp/Linux_x86_64.Debug
-bin__umodsys__umodsys_lib_basesys=../../bin/Linux_x86_64.Debug
-tmpx__umodsys__umodsys_lib_basesys=../../tmp/Linux_x86_64.Debug/umodsys_lib_basesys
-CXXFLAGS__umodsys__umodsys_lib_basesys=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-CFLAGS__umodsys__umodsys_lib_basesys=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_basesys=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread
-
-
-# file group src :
-# file group linux :
-# file linux : ../../src/basesys/platform/linux/umodsys.basesys.rmodule.linux.cpp
-objs__umodsys__umodsys_lib_basesys += $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmodule.linux.o
-$(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmodule.linux.o: ../../src/basesys/platform/linux/umodsys.basesys.rmodule.linux.cpp | $(tmpx__umodsys__umodsys_lib_basesys)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmodule.linux.o.d
-# end file group linux .
-# file src : ../../src/basesys/umodsys.basesys.rconsole_std.cpp
-objs__umodsys__umodsys_lib_basesys += $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rconsole_std.o
-$(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rconsole_std.o: ../../src/basesys/umodsys.basesys.rconsole_std.cpp | $(tmpx__umodsys__umodsys_lib_basesys)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rconsole_std.o.d
-# file src : ../../src/basesys/umodsys.basesys.rexec.cpp
-objs__umodsys__umodsys_lib_basesys += $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rexec.o
-$(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rexec.o: ../../src/basesys/umodsys.basesys.rexec.cpp | $(tmpx__umodsys__umodsys_lib_basesys)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rexec.o.d
-# file src : ../../src/basesys/umodsys.basesys.rexec_sub.cpp
-objs__umodsys__umodsys_lib_basesys += $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rexec_sub.o
-$(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rexec_sub.o: ../../src/basesys/umodsys.basesys.rexec_sub.cpp | $(tmpx__umodsys__umodsys_lib_basesys)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rexec_sub.o.d
-# file src : ../../src/basesys/umodsys.basesys.rmodule.cpp
-objs__umodsys__umodsys_lib_basesys += $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmodule.o
-$(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmodule.o: ../../src/basesys/umodsys.basesys.rmodule.cpp | $(tmpx__umodsys__umodsys_lib_basesys)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmodule.o.d
-# file src : ../../src/basesys/umodsys.basesys.rmodulelib.cpp
-objs__umodsys__umodsys_lib_basesys += $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmodulelib.o
-$(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmodulelib.o: ../../src/basesys/umodsys.basesys.rmodulelib.cpp | $(tmpx__umodsys__umodsys_lib_basesys)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmodulelib.o.d
-# file src : ../../src/basesys/umodsys.basesys.rmodulelibso.cpp
-objs__umodsys__umodsys_lib_basesys += $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmodulelibso.o
-$(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmodulelibso.o: ../../src/basesys/umodsys.basesys.rmodulelibso.cpp | $(tmpx__umodsys__umodsys_lib_basesys)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmodulelibso.o.d
-# file src : ../../src/basesys/umodsys.basesys.rmodulelibthis.cpp
-objs__umodsys__umodsys_lib_basesys += $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmodulelibthis.o
-$(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmodulelibthis.o: ../../src/basesys/umodsys.basesys.rmodulelibthis.cpp | $(tmpx__umodsys__umodsys_lib_basesys)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmodulelibthis.o.d
-# file src : ../../src/basesys/umodsys.basesys.rmoduleloader.cpp
-objs__umodsys__umodsys_lib_basesys += $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmoduleloader.o
-$(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmoduleloader.o: ../../src/basesys/umodsys.basesys.rmoduleloader.cpp | $(tmpx__umodsys__umodsys_lib_basesys)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rmoduleloader.o.d
-# file src : ../../src/basesys/umodsys.basesys.rparameters.cpp
-objs__umodsys__umodsys_lib_basesys += $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rparameters.o
-$(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rparameters.o: ../../src/basesys/umodsys.basesys.rparameters.cpp | $(tmpx__umodsys__umodsys_lib_basesys)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rparameters.o.d
-# file src : ../../src/basesys/umodsys.basesys.rsystem.cpp
-objs__umodsys__umodsys_lib_basesys += $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rsystem.o
-$(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rsystem.o: ../../src/basesys/umodsys.basesys.rsystem.cpp | $(tmpx__umodsys__umodsys_lib_basesys)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rsystem.o.d
-# file src : ../../src/basesys/umodsys.basesys.rsystem_exec.cpp
-objs__umodsys__umodsys_lib_basesys += $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rsystem_exec.o
-$(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rsystem_exec.o: ../../src/basesys/umodsys.basesys.rsystem_exec.cpp | $(tmpx__umodsys__umodsys_lib_basesys)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rsystem_exec.o.d
-# file src : ../../src/basesys/umodsys.basesys.rsystem_main.cpp
-objs__umodsys__umodsys_lib_basesys += $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rsystem_main.o
-$(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rsystem_main.o: ../../src/basesys/umodsys.basesys.rsystem_main.cpp | $(tmpx__umodsys__umodsys_lib_basesys)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rsystem_main.o.d
-# file src : ../../src/basesys/umodsys.basesys.rsystem_tests.cpp
-objs__umodsys__umodsys_lib_basesys += $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rsystem_tests.o
-$(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rsystem_tests.o: ../../src/basesys/umodsys.basesys.rsystem_tests.cpp | $(tmpx__umodsys__umodsys_lib_basesys)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_basesys) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_basesys)/umodsys.basesys.rsystem_tests.o.d
-# file src : ../../src/basesys/umodsys.basesys.rcommon.h
-# file src : ../../src/basesys/umodsys.basesys.rconsole_std.h
-# file src : ../../src/basesys/umodsys.basesys.rexec.h
-# file src : ../../src/basesys/umodsys.basesys.rmemalloc.h
-# file src : ../../src/basesys/umodsys.basesys.rmodule.h
-# file src : ../../src/basesys/umodsys.basesys.rparameters.h
-# file src : ../../src/basesys/umodsys.basesys.rsystem.h
-# file src : ../../src/basesys/version_library.h
-# file src : ../../src/basesys/version_main.h
-# end file group src .
-# library at ../../tmp/Linux_x86_64.Debug/umodsys_lib_basesys.Linux_x86_64.Debug.a
-tpp-umodsys-umodsys_lib_basesys: $(target__umodsys__umodsys_lib_basesys)
-cpp-umodsys-umodsys_lib_basesys:
-	@-rm $(target__umodsys__umodsys_lib_basesys)
-	@-rm $(tmpx__umodsys__umodsys_lib_basesys)/*
-$(target__umodsys__umodsys_lib_basesys):  $(objs__umodsys__umodsys_lib_basesys) | $(tmpx__umodsys__umodsys_lib_basesys)
-	@echo '*** Make lib umodsys::umodsys_lib_basesys'
-	@$(AR) r $@ $(objs__umodsys__umodsys_lib_basesys)
-
-
-#-------------------------------- /project 'umodsys'.'umodsys_lib_basesys' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib
-
-#-------------------------------- epilog 'umodsys'.'umodsys_lib_basesys'
-#---------------------------------------------------------------- END project 'umodsys'.'umodsys_lib_basesys' 
-#---------------------------------------------------------------- BEGIN project 'umodsys'.'umodsys_lib_core' 
-#-------------------------------- prolog 'umodsys'.'umodsys_lib_core'
-#--------------------------------
-#-------------------------------- project 'umodsys'.'umodsys_lib_core' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib:
-target: tp-umodsys-umodsys_lib_core
-clean: cp-umodsys-umodsys_lib_core
-tg-umodsys: tp-umodsys-umodsys_lib_core
-cg-umodsys: cp-umodsys-umodsys_lib_core
-tp-umodsys-umodsys_lib_core:  tpp-umodsys-umodsys_lib_core
-cp-umodsys-umodsys_lib_core:  cpp-umodsys-umodsys_lib_core
-#.PHONY: tp-umodsys-umodsys_lib_core tpp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_core cpp-umodsys-umodsys_lib_core
-
-tmp__umodsys__umodsys_lib_core=../../tmp/Linux_x86_64.Debug
-bin__umodsys__umodsys_lib_core=../../bin/Linux_x86_64.Debug
-tmpx__umodsys__umodsys_lib_core=../../tmp/Linux_x86_64.Debug/umodsys_lib_core
-CXXFLAGS__umodsys__umodsys_lib_core=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-CFLAGS__umodsys__umodsys_lib_core=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
-LDFLAGS__umodsys__umodsys_lib_core=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread
-
-
-# file group headers :
+# file group basis :
+# end file group basis .
 # file group core :
 # file group arch :
-# file arch : ../../include/umodsys/core/arch/arch_code32.h
-# file arch : ../../include/umodsys/core/arch/arch_defines.h
-# file arch : ../../include/umodsys/core/arch/arch_defs.h
-# file arch : ../../include/umodsys/core/arch/arch_eb32.h
-# file arch : ../../include/umodsys/core/arch/arch_el32.h
-# file arch : ../../include/umodsys/core/arch/arch_fromto.h
-# file arch : ../../include/umodsys/core/arch/arch_int16.h
-# file arch : ../../include/umodsys/core/arch/arch_int32.h
-# file arch : ../../include/umodsys/core/arch/arch_int64.h
-# file arch : ../../include/umodsys/core/arch/arch_stdint.h
+# file arch : ../../include/umodsys/common/arch/arch_code32.h
+# file arch : ../../include/umodsys/common/arch/arch_defines.h
+# file arch : ../../include/umodsys/common/arch/arch_defs.h
+# file arch : ../../include/umodsys/common/arch/arch_eb32.h
+# file arch : ../../include/umodsys/common/arch/arch_el32.h
+# file arch : ../../include/umodsys/common/arch/arch_fromto.h
+# file arch : ../../include/umodsys/common/arch/arch_int16.h
+# file arch : ../../include/umodsys/common/arch/arch_int32.h
+# file arch : ../../include/umodsys/common/arch/arch_int64.h
+# file arch : ../../include/umodsys/common/arch/arch_stdint.h
 # end file group arch .
 # file group mem :
-# file mem : ../../include/umodsys/core/mem/coremem~.h
-# file mem : ../../include/umodsys/core/mem/gc_base.h
-# file mem : ../../include/umodsys/core/mem/mem_alloc.h
-# file mem : ../../include/umodsys/core/mem/mem_fixed.h
-# file mem : ../../include/umodsys/core/mem/mem_shared.h
-# file mem : ../../include/umodsys/core/mem/param_private.h
-# file mem : ../../include/umodsys/core/mem/param_shared.h
-# file mem : ../../include/umodsys/core/mem/prop_adapter.h
+# file mem : ../../include/umodsys/common/mem/coremem~.h
+# file mem : ../../include/umodsys/common/mem/gc_base.h
+# file mem : ../../include/umodsys/common/mem/mem_alloc.h
+# file mem : ../../include/umodsys/common/mem/mem_fixed.h
+# file mem : ../../include/umodsys/common/mem/mem_shared.h
+# file mem : ../../include/umodsys/common/mem/param_private.h
+# file mem : ../../include/umodsys/common/mem/param_shared.h
+# file mem : ../../include/umodsys/common/mem/prop_adapter.h
 # end file group mem .
 # file group util :
-# file util : ../../include/umodsys/core/util/nanotcl.h
+# file util : ../../include/umodsys/common/util/nanotcl.h
 # end file group util .
-# file core : ../../include/umodsys/core/arch.h
-# file core : ../../include/umodsys/core/arch_cvt.h
-# file core : ../../include/umodsys/core/common_exceptions.h
-# file core : ../../include/umodsys/core/objects.h
-# file core : ../../include/umodsys/core/objects_def.h
-# file core : ../../include/umodsys/core/objects_res.h
-# file core : ../../include/umodsys/core/params.h
-# file core : ../../include/umodsys/core/props.h
-# file core : ../../include/umodsys/core/source.h
-# file core : ../../include/umodsys/core/stddefs.h
-# file core : ../../include/umodsys/core/stdinlines.h
-# file core : ../../include/umodsys/core/stdstrings.h
-# file core : ../../include/umodsys/core/stdtl.h
-# file core : ../../include/umodsys/core/stdtypedefs.h
-# file core : ../../include/umodsys/core/syshlp.h
-# file core : ../../include/umodsys/core/uniqueptr.h
+# file core : ../../include/umodsys/common/arch.h
+# file core : ../../include/umodsys/common/arch_cvt.h
+# file core : ../../include/umodsys/common/common_exceptions.h
+# file core : ../../include/umodsys/common/objects.h
+# file core : ../../include/umodsys/common/objects_def.h
+# file core : ../../include/umodsys/common/objects_res.h
+# file core : ../../include/umodsys/common/params.h
+# file core : ../../include/umodsys/common/props.h
+# file core : ../../include/umodsys/common/source.h
+# file core : ../../include/umodsys/common/stddefs.h
+# file core : ../../include/umodsys/common/stdinlines.h
+# file core : ../../include/umodsys/common/stdstrings.h
+# file core : ../../include/umodsys/common/stdtl.h
+# file core : ../../include/umodsys/common/stdtypedefs.h
+# file core : ../../include/umodsys/common/syshlp.h
+# file core : ../../include/umodsys/common/uniqueptr.h
 # end file group core .
 # file group linux :
-# file linux : ../../include/umodsys/core/platform/linux/syshlp_linux.h
-# file linux : ../../include/umodsys/core/platform/def_msvc.h
-# file linux : ../../include/umodsys/core/platform/def_win32.h
+# file linux : ../../include/umodsys/common/platform/linux/syshlp_linux.h
+# file linux : ../../include/umodsys/common/platform/def_msvc.h
+# file linux : ../../include/umodsys/common/platform/def_win32.h
 # end file group linux .
 # file group tl :
 # file group alloc :
@@ -8332,108 +8079,232 @@ LDFLAGS__umodsys__umodsys_lib_core=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,
 # end file group headers .
 # file group src :
 # file group core :
-# file core : ../../src/core/umodsys.core.objects.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.objects.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.core.objects.o: ../../src/core/umodsys.core.objects.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.objects.o.d
-# file core : ../../src/core/umodsys.core.stdtypedefs.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.stdtypedefs.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.core.stdtypedefs.o: ../../src/core/umodsys.core.stdtypedefs.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.stdtypedefs.o.d
-# file core : ../../src/core/umodsys.core.uniqueptr.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.uniqueptr.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.core.uniqueptr.o: ../../src/core/umodsys.core.uniqueptr.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.uniqueptr.o.d
-# file core : ../../src/core/umodsys.core.uniqueptrlist.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.uniqueptrlist.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.core.uniqueptrlist.o: ../../src/core/umodsys.core.uniqueptrlist.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.uniqueptrlist.o.d
+# file core : ../../src/common/umodsys.core.objects.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.objects.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.core.objects.o: ../../src/common/umodsys.core.objects.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.objects.o.d
+# file core : ../../src/common/umodsys.core.stdtypedefs.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.stdtypedefs.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.core.stdtypedefs.o: ../../src/common/umodsys.core.stdtypedefs.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.stdtypedefs.o.d
+# file core : ../../src/common/umodsys.core.uniqueptr.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.uniqueptr.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.core.uniqueptr.o: ../../src/common/umodsys.core.uniqueptr.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.uniqueptr.o.d
+# file core : ../../src/common/umodsys.core.uniqueptrlist.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.uniqueptrlist.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.core.uniqueptrlist.o: ../../src/common/umodsys.core.uniqueptrlist.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.uniqueptrlist.o.d
 # end file group core .
 # file group linux :
-# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_args.linux.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_args.linux.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_args.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_args.linux.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_args.linux.o.d
-# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_charcode.linux.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_charcode.linux.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_charcode.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_charcode.linux.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_charcode.linux.o.d
-# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_chars.linux.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_chars.linux.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_chars.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_chars.linux.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_chars.linux.o.d
-# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_files.linux.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_files.linux.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_files.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_files.linux.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_files.linux.o.d
-# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_proc.linux.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_proc.linux.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_proc.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_proc.linux.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_proc.linux.o.d
-# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_thread.linux.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_thread.linux.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_thread.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_thread.linux.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_thread.linux.o.d
-# file linux : ../../src/core/platform/linux/umodsys.core.syshlp_vars.linux.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_vars.linux.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_vars.linux.o: ../../src/core/platform/linux/umodsys.core.syshlp_vars.linux.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.core.syshlp_vars.linux.o.d
-# file linux : ../../src/core/platform/linux/ansi-colors.h
+# file linux : ../../src/basis/platform/linux/umodsys.core.syshlp_args.linux.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_args.linux.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_args.linux.o: ../../src/basis/platform/linux/umodsys.core.syshlp_args.linux.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_args.linux.o.d
+# file linux : ../../src/basis/platform/linux/umodsys.core.syshlp_charcode.linux.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_charcode.linux.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_charcode.linux.o: ../../src/basis/platform/linux/umodsys.core.syshlp_charcode.linux.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_charcode.linux.o.d
+# file linux : ../../src/basis/platform/linux/umodsys.core.syshlp_chars.linux.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_chars.linux.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_chars.linux.o: ../../src/basis/platform/linux/umodsys.core.syshlp_chars.linux.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_chars.linux.o.d
+# file linux : ../../src/basis/platform/linux/umodsys.core.syshlp_files.linux.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_files.linux.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_files.linux.o: ../../src/basis/platform/linux/umodsys.core.syshlp_files.linux.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_files.linux.o.d
+# file linux : ../../src/basis/platform/linux/umodsys.core.syshlp_proc.linux.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_proc.linux.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_proc.linux.o: ../../src/basis/platform/linux/umodsys.core.syshlp_proc.linux.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_proc.linux.o.d
+# file linux : ../../src/basis/platform/linux/umodsys.core.syshlp_thread.linux.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_thread.linux.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_thread.linux.o: ../../src/basis/platform/linux/umodsys.core.syshlp_thread.linux.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_thread.linux.o.d
+# file linux : ../../src/basis/platform/linux/umodsys.core.syshlp_vars.linux.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_vars.linux.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_vars.linux.o: ../../src/basis/platform/linux/umodsys.core.syshlp_vars.linux.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_vars.linux.o.d
+# file linux : ../../src/basis/platform/linux/ansi-colors.h
 # end file group linux .
 # file group tl :
-# file tl : ../../src/core/umodsys.tl.strings.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.tl.strings.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.tl.strings.o: ../../src/core/umodsys.tl.strings.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.tl.strings.o.d
-# file tl : ../../src/core/umodsys.tl.utf8.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.tl.utf8.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.tl.utf8.o: ../../src/core/umodsys.tl.utf8.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.tl.utf8.o.d
-# file tl : ../../src/core/umodsys.tl.utf16.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.tl.utf16.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.tl.utf16.o: ../../src/core/umodsys.tl.utf16.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.tl.utf16.o.d
-# file tl : ../../src/core/umodsys.tl.utfcase.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.tl.utfcase.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.tl.utfcase.o: ../../src/core/umodsys.tl.utfcase.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.tl.utfcase.o.d
-# file tl : ../../src/core/umodsys.tl.throws.cpp
-objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.tl.throws.o
-$(tmpx__umodsys__umodsys_lib_core)/umodsys.tl.throws.o: ../../src/core/umodsys.tl.throws.cpp | $(tmpx__umodsys__umodsys_lib_core)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_core)/umodsys.tl.throws.o.d
+# file tl : ../../src/common/umodsys.tl.strings.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.strings.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.strings.o: ../../src/common/umodsys.tl.strings.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.strings.o.d
+# file tl : ../../src/common/umodsys.tl.utf8.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf8.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf8.o: ../../src/common/umodsys.tl.utf8.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf8.o.d
+# file tl : ../../src/common/umodsys.tl.utf16.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf16.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf16.o: ../../src/common/umodsys.tl.utf16.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf16.o.d
+# file tl : ../../src/common/umodsys.tl.utfcase.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utfcase.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utfcase.o: ../../src/common/umodsys.tl.utfcase.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utfcase.o.d
+# file tl : ../../src/common/umodsys.tl.throws.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.throws.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.throws.o: ../../src/common/umodsys.tl.throws.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.throws.o.d
 # end file group tl .
+# end file group src .
+# library at ../../tmp/Linux_x86_64.Debug/umodsys_lib_common.Linux_x86_64.Debug.a
+tpp-umodsys-umodsys_lib_common: $(target__umodsys__umodsys_lib_common)
+cpp-umodsys-umodsys_lib_common:
+	@-rm $(target__umodsys__umodsys_lib_common)
+	@-rm $(tmpx__umodsys__umodsys_lib_common)/*
+$(target__umodsys__umodsys_lib_common):  $(objs__umodsys__umodsys_lib_common) | $(tmpx__umodsys__umodsys_lib_common)
+	@echo '*** Make lib umodsys::umodsys_lib_common'
+	@$(AR) r $@ $(objs__umodsys__umodsys_lib_common)
+
+
+#-------------------------------- /project 'umodsys'.'umodsys_lib_common' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib
+
+#-------------------------------- epilog 'umodsys'.'umodsys_lib_common'
+#---------------------------------------------------------------- END project 'umodsys'.'umodsys_lib_common' 
+#---------------------------------------------------------------- BEGIN project 'umodsys'.'umodsys_lib_core' 
+#-------------------------------- prolog 'umodsys'.'umodsys_lib_core'
+#--------------------------------
+#-------------------------------- project 'umodsys'.'umodsys_lib_core' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib:
+target: tp-umodsys-umodsys_lib_core
+clean: cp-umodsys-umodsys_lib_core
+tg-umodsys: tp-umodsys-umodsys_lib_core
+cg-umodsys: cp-umodsys-umodsys_lib_core
+tp-umodsys-umodsys_lib_core:  tpp-umodsys-umodsys_lib_core
+cp-umodsys-umodsys_lib_core:  cpp-umodsys-umodsys_lib_core
+#.PHONY: tp-umodsys-umodsys_lib_core tpp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_core cpp-umodsys-umodsys_lib_core
+
+tmp__umodsys__umodsys_lib_core=../../tmp/Linux_x86_64.Debug
+bin__umodsys__umodsys_lib_core=../../bin/Linux_x86_64.Debug
+tmpx__umodsys__umodsys_lib_core=../../tmp/Linux_x86_64.Debug/umodsys_lib_core
+CXXFLAGS__umodsys__umodsys_lib_core=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+CFLAGS__umodsys__umodsys_lib_core=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+LDFLAGS__umodsys__umodsys_lib_core=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread
+
+
+# file group headers :
+# file group core :
+# file core : ../../include/umodsys/core/basetypes.h
+# file core : ../../include/umodsys/core/bobjects.h
+# file core : ../../include/umodsys/core/console.h
+# file core : ../../include/umodsys/core/console_ext.h
+# file core : ../../include/umodsys/core/module.h
+# file core : ../../include/umodsys/core/module_impl.h
+# file core : ../../include/umodsys/core/module_ref.h
+# file core : ../../include/umodsys/core/shell.h
+# file core : ../../include/umodsys/core/system.h
+# end file group core .
+# file headers : ../../include/umodsys/stdbase.h
+# end file group headers .
+# file group headers_utils :
+# file headers_utils : ../../include/umodsys/lib/utils/libutils.time.h
+# end file group headers_utils .
+# file group lib_utils :
+# file lib_utils : ../../src/lib/utils/libutils.common.cpp
+objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/libutils.common.o
+$(tmpx__umodsys__umodsys_lib_core)/libutils.common.o: ../../src/lib/utils/libutils.common.cpp | $(tmpx__umodsys__umodsys_lib_core)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core)/libutils.common.o.d
+# end file group lib_utils .
+# file group src :
+# file group linux :
+# file linux : ../../src/core/platform/linux/umodsys.so_main.linux.cpp
+objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.so_main.linux.o
+$(tmpx__umodsys__umodsys_lib_core)/umodsys.so_main.linux.o: ../../src/core/platform/linux/umodsys.so_main.linux.cpp | $(tmpx__umodsys__umodsys_lib_core)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core)/umodsys.so_main.linux.o.d
+# end file group linux .
+# file src : ../../src/core/umodsys.base.console.cpp
+objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.console.o
+$(tmpx__umodsys__umodsys_lib_core)/umodsys.base.console.o: ../../src/core/umodsys.base.console.cpp | $(tmpx__umodsys__umodsys_lib_core)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.console.o.d
+# file src : ../../src/core/umodsys.base.debug.cpp
+objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.debug.o
+$(tmpx__umodsys__umodsys_lib_core)/umodsys.base.debug.o: ../../src/core/umodsys.base.debug.cpp | $(tmpx__umodsys__umodsys_lib_core)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.debug.o.d
+# file src : ../../src/core/umodsys.base.module.cpp
+objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.module.o
+$(tmpx__umodsys__umodsys_lib_core)/umodsys.base.module.o: ../../src/core/umodsys.base.module.cpp | $(tmpx__umodsys__umodsys_lib_core)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.module.o.d
+# file src : ../../src/core/umodsys.base.modulecontext.cpp
+objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.modulecontext.o
+$(tmpx__umodsys__umodsys_lib_core)/umodsys.base.modulecontext.o: ../../src/core/umodsys.base.modulecontext.cpp | $(tmpx__umodsys__umodsys_lib_core)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.modulecontext.o.d
+# file src : ../../src/core/umodsys.base.moduleinfo.cpp
+objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.moduleinfo.o
+$(tmpx__umodsys__umodsys_lib_core)/umodsys.base.moduleinfo.o: ../../src/core/umodsys.base.moduleinfo.cpp | $(tmpx__umodsys__umodsys_lib_core)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.moduleinfo.o.d
+# file src : ../../src/core/umodsys.base.moduleloader.cpp
+objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.moduleloader.o
+$(tmpx__umodsys__umodsys_lib_core)/umodsys.base.moduleloader.o: ../../src/core/umodsys.base.moduleloader.cpp | $(tmpx__umodsys__umodsys_lib_core)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.moduleloader.o.d
+# file src : ../../src/core/umodsys.base.modulereg.cpp
+objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.modulereg.o
+$(tmpx__umodsys__umodsys_lib_core)/umodsys.base.modulereg.o: ../../src/core/umodsys.base.modulereg.cpp | $(tmpx__umodsys__umodsys_lib_core)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.modulereg.o.d
+# file src : ../../src/core/umodsys.base.moduleregchain.cpp
+objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.moduleregchain.o
+$(tmpx__umodsys__umodsys_lib_core)/umodsys.base.moduleregchain.o: ../../src/core/umodsys.base.moduleregchain.cpp | $(tmpx__umodsys__umodsys_lib_core)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.moduleregchain.o.d
+# file src : ../../src/core/umodsys.base.system.cpp
+objs__umodsys__umodsys_lib_core += $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.system.o
+$(tmpx__umodsys__umodsys_lib_core)/umodsys.base.system.o: ../../src/core/umodsys.base.system.cpp | $(tmpx__umodsys__umodsys_lib_core)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_core) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_core)/umodsys.base.system.o.d
+# file src : ../../src/core/version_library.h
 # end file group src .
 # library at ../../tmp/Linux_x86_64.Debug/umodsys_lib_core.Linux_x86_64.Debug.a
 tpp-umodsys-umodsys_lib_core: $(target__umodsys__umodsys_lib_core)
@@ -8449,6 +8320,137 @@ $(target__umodsys__umodsys_lib_core):  $(objs__umodsys__umodsys_lib_core) | $(tm
 
 #-------------------------------- epilog 'umodsys'.'umodsys_lib_core'
 #---------------------------------------------------------------- END project 'umodsys'.'umodsys_lib_core' 
+#---------------------------------------------------------------- BEGIN project 'umodsys'.'umodsys_lib_kernel' 
+#-------------------------------- prolog 'umodsys'.'umodsys_lib_kernel'
+#--------------------------------
+#-------------------------------- project 'umodsys'.'umodsys_lib_kernel' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib:
+target: tp-umodsys-umodsys_lib_kernel
+clean: cp-umodsys-umodsys_lib_kernel
+tg-umodsys: tp-umodsys-umodsys_lib_kernel
+cg-umodsys: cp-umodsys-umodsys_lib_kernel
+tp-umodsys-umodsys_lib_kernel:  tpp-umodsys-umodsys_lib_kernel
+cp-umodsys-umodsys_lib_kernel:  cpp-umodsys-umodsys_lib_kernel
+#.PHONY: tp-umodsys-umodsys_lib_kernel tpp-umodsys-umodsys_lib_kernel cp-umodsys-umodsys_lib_kernel cpp-umodsys-umodsys_lib_kernel
+
+tmp__umodsys__umodsys_lib_kernel=../../tmp/Linux_x86_64.Debug
+bin__umodsys__umodsys_lib_kernel=../../bin/Linux_x86_64.Debug
+tmpx__umodsys__umodsys_lib_kernel=../../tmp/Linux_x86_64.Debug/umodsys_lib_kernel
+CXXFLAGS__umodsys__umodsys_lib_kernel=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+CFLAGS__umodsys__umodsys_lib_kernel=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux
+LDFLAGS__umodsys__umodsys_lib_kernel=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread
+
+
+# file group src :
+# file group linux :
+# file linux : ../../src/kernel/platform/linux/umodsys.basesys.rmodule.linux.cpp
+objs__umodsys__umodsys_lib_kernel += $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmodule.linux.o
+$(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmodule.linux.o: ../../src/kernel/platform/linux/umodsys.basesys.rmodule.linux.cpp | $(tmpx__umodsys__umodsys_lib_kernel)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmodule.linux.o.d
+# end file group linux .
+# file src : ../../src/kernel/umodsys.basesys.rconsole_std.cpp
+objs__umodsys__umodsys_lib_kernel += $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rconsole_std.o
+$(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rconsole_std.o: ../../src/kernel/umodsys.basesys.rconsole_std.cpp | $(tmpx__umodsys__umodsys_lib_kernel)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rconsole_std.o.d
+# file src : ../../src/kernel/umodsys.basesys.rexec.cpp
+objs__umodsys__umodsys_lib_kernel += $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rexec.o
+$(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rexec.o: ../../src/kernel/umodsys.basesys.rexec.cpp | $(tmpx__umodsys__umodsys_lib_kernel)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rexec.o.d
+# file src : ../../src/kernel/umodsys.basesys.rexec_sub.cpp
+objs__umodsys__umodsys_lib_kernel += $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rexec_sub.o
+$(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rexec_sub.o: ../../src/kernel/umodsys.basesys.rexec_sub.cpp | $(tmpx__umodsys__umodsys_lib_kernel)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rexec_sub.o.d
+# file src : ../../src/kernel/umodsys.basesys.rmodule.cpp
+objs__umodsys__umodsys_lib_kernel += $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmodule.o
+$(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmodule.o: ../../src/kernel/umodsys.basesys.rmodule.cpp | $(tmpx__umodsys__umodsys_lib_kernel)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmodule.o.d
+# file src : ../../src/kernel/umodsys.basesys.rmodulelib.cpp
+objs__umodsys__umodsys_lib_kernel += $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmodulelib.o
+$(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmodulelib.o: ../../src/kernel/umodsys.basesys.rmodulelib.cpp | $(tmpx__umodsys__umodsys_lib_kernel)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmodulelib.o.d
+# file src : ../../src/kernel/umodsys.basesys.rmodulelibso.cpp
+objs__umodsys__umodsys_lib_kernel += $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmodulelibso.o
+$(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmodulelibso.o: ../../src/kernel/umodsys.basesys.rmodulelibso.cpp | $(tmpx__umodsys__umodsys_lib_kernel)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmodulelibso.o.d
+# file src : ../../src/kernel/umodsys.basesys.rmodulelibthis.cpp
+objs__umodsys__umodsys_lib_kernel += $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmodulelibthis.o
+$(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmodulelibthis.o: ../../src/kernel/umodsys.basesys.rmodulelibthis.cpp | $(tmpx__umodsys__umodsys_lib_kernel)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmodulelibthis.o.d
+# file src : ../../src/kernel/umodsys.basesys.rmoduleloader.cpp
+objs__umodsys__umodsys_lib_kernel += $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmoduleloader.o
+$(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmoduleloader.o: ../../src/kernel/umodsys.basesys.rmoduleloader.cpp | $(tmpx__umodsys__umodsys_lib_kernel)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rmoduleloader.o.d
+# file src : ../../src/kernel/umodsys.basesys.rparameters.cpp
+objs__umodsys__umodsys_lib_kernel += $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rparameters.o
+$(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rparameters.o: ../../src/kernel/umodsys.basesys.rparameters.cpp | $(tmpx__umodsys__umodsys_lib_kernel)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rparameters.o.d
+# file src : ../../src/kernel/umodsys.basesys.rsystem.cpp
+objs__umodsys__umodsys_lib_kernel += $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rsystem.o
+$(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rsystem.o: ../../src/kernel/umodsys.basesys.rsystem.cpp | $(tmpx__umodsys__umodsys_lib_kernel)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rsystem.o.d
+# file src : ../../src/kernel/umodsys.basesys.rsystem_exec.cpp
+objs__umodsys__umodsys_lib_kernel += $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rsystem_exec.o
+$(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rsystem_exec.o: ../../src/kernel/umodsys.basesys.rsystem_exec.cpp | $(tmpx__umodsys__umodsys_lib_kernel)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rsystem_exec.o.d
+# file src : ../../src/kernel/umodsys.basesys.rsystem_main.cpp
+objs__umodsys__umodsys_lib_kernel += $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rsystem_main.o
+$(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rsystem_main.o: ../../src/kernel/umodsys.basesys.rsystem_main.cpp | $(tmpx__umodsys__umodsys_lib_kernel)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rsystem_main.o.d
+# file src : ../../src/kernel/umodsys.basesys.rsystem_tests.cpp
+objs__umodsys__umodsys_lib_kernel += $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rsystem_tests.o
+$(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rsystem_tests.o: ../../src/kernel/umodsys.basesys.rsystem_tests.cpp | $(tmpx__umodsys__umodsys_lib_kernel)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_kernel) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_kernel)/umodsys.basesys.rsystem_tests.o.d
+# file src : ../../src/kernel/umodsys.basesys.rcommon.h
+# file src : ../../src/kernel/umodsys.basesys.rconsole_std.h
+# file src : ../../src/kernel/umodsys.basesys.rexec.h
+# file src : ../../src/kernel/umodsys.basesys.rmemalloc.h
+# file src : ../../src/kernel/umodsys.basesys.rmodule.h
+# file src : ../../src/kernel/umodsys.basesys.rparameters.h
+# file src : ../../src/kernel/umodsys.basesys.rsystem.h
+# file src : ../../src/kernel/version_library.h
+# file src : ../../src/kernel/version_main.h
+# end file group src .
+# library at ../../tmp/Linux_x86_64.Debug/umodsys_lib_kernel.Linux_x86_64.Debug.a
+tpp-umodsys-umodsys_lib_kernel: $(target__umodsys__umodsys_lib_kernel)
+cpp-umodsys-umodsys_lib_kernel:
+	@-rm $(target__umodsys__umodsys_lib_kernel)
+	@-rm $(tmpx__umodsys__umodsys_lib_kernel)/*
+$(target__umodsys__umodsys_lib_kernel):  $(objs__umodsys__umodsys_lib_kernel) | $(tmpx__umodsys__umodsys_lib_kernel)
+	@echo '*** Make lib umodsys::umodsys_lib_kernel'
+	@$(AR) r $@ $(objs__umodsys__umodsys_lib_kernel)
+
+
+#-------------------------------- /project 'umodsys'.'umodsys_lib_kernel' PLATFORM=Linux_x86_64 CONFIG=Debug MODE=lib
+
+#-------------------------------- epilog 'umodsys'.'umodsys_lib_kernel'
+#---------------------------------------------------------------- END project 'umodsys'.'umodsys_lib_kernel' 
 #---------------------------------------------------------------- BEGIN project 'umodsys'.'umodsys_lib_lib2d' 
 #-------------------------------- prolog 'umodsys'.'umodsys_lib_lib2d'
 #--------------------------------
@@ -8879,16 +8881,16 @@ target: tp-umodsys-umodsysc
 clean: cp-umodsys-umodsysc
 tg-umodsys: tp-umodsys-umodsysc
 cg-umodsys: cp-umodsys-umodsysc
-tp-umodsys-umodsysc:  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_basesys) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) tpp-umodsys-umodsysc
-cp-umodsys-umodsysc:  cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_basesys cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys-plugin_libStd cp-umodsys-plugin_libUI cp-umodsys-plugin_test1 cp-umodsys-plugin_test2 cpp-umodsys-umodsysc
+tp-umodsys-umodsysc:  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_kernel) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) tpp-umodsys-umodsysc
+cp-umodsys-umodsysc:  cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_kernel cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cp-umodsys-plugin_libStd cp-umodsys-plugin_libUI cp-umodsys-plugin_test1 cp-umodsys-plugin_test2 cpp-umodsys-umodsysc
 #.PHONY: tp-umodsys-umodsysc tpp-umodsys-umodsysc cp-umodsys-umodsysc cpp-umodsys-umodsysc
 
 tmp__umodsys__umodsysc=../../tmp/Linux_x86_64.Debug
 bin__umodsys__umodsysc=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__umodsysc=../../tmp/Linux_x86_64.Debug/umodsysc
-CXXFLAGS__umodsys__umodsysc=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux -I../../src/basesys
-CFLAGS__umodsys__umodsysc=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux -I../../src/basesys
-LDFLAGS__umodsys__umodsysc=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libui.Linux_x86_64.Debug.a -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_basesys.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a
+CXXFLAGS__umodsys__umodsysc=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux -I../../src/kernel
+CFLAGS__umodsys__umodsysc=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux -I../../src/kernel
+LDFLAGS__umodsys__umodsysc=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_libui.Linux_x86_64.Debug.a -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_kernel.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_common.Linux_x86_64.Debug.a
 
 
 # file group src :
@@ -8904,7 +8906,7 @@ tpp-umodsys-umodsysc: $(target__umodsys__umodsysc)
 cpp-umodsys-umodsysc:
 	@-rm $(target__umodsys__umodsysc)
 	@-rm $(tmpx__umodsys__umodsysc)/*
-$(target__umodsys__umodsysc):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_basesys) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) $(objs__umodsys__umodsysc) | $(bin__umodsys__umodsysc) 
+$(target__umodsys__umodsysc):  $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_kernel) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) $(objs__umodsys__umodsysc) | $(bin__umodsys__umodsysc) 
 	@echo '*** Make console umodsys::umodsysc'
 	@$(CXX) -Wl,-rpath,. -o$@ $(objs__umodsys__umodsysc) $(LDFLAGS__umodsys__umodsysc)
 
@@ -8921,16 +8923,16 @@ target: tp-umodsys-umodsysca
 clean: cp-umodsys-umodsysca
 tg-umodsys: tp-umodsys-umodsysca
 cg-umodsys: cp-umodsys-umodsysca
-tp-umodsys-umodsysca:  $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_basesys) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) $(target__umodsys_Depends__lib_S_zlib) $(target__umodsys_Depends__lib_S_libpng) $(target__umodsys_Depends__lib_S_jpeglib) $(target__umodsys_Depends__lib_S_SDL2) $(target__umodsys_Depends__lib_S_freetype) tpp-umodsys-umodsysca
-cp-umodsys-umodsysca:  cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_basesys cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cp-umodsys-plugin_libStd cp-umodsys-plugin_libUI cp-umodsys-plugin_test1 cp-umodsys-plugin_test2 cp-umodsys_Depends-lib_S_zlib cp-umodsys_Depends-lib_S_libpng cp-umodsys_Depends-lib_S_jpeglib cp-umodsys_Depends-lib_S_SDL2 cp-umodsys_Depends-lib_S_freetype cpp-umodsys-umodsysca
+tp-umodsys-umodsysca:  $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_kernel) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) $(target__umodsys_Depends__lib_S_zlib) $(target__umodsys_Depends__lib_S_libpng) $(target__umodsys_Depends__lib_S_jpeglib) $(target__umodsys_Depends__lib_S_SDL2) $(target__umodsys_Depends__lib_S_freetype) tpp-umodsys-umodsysca
+cp-umodsys-umodsysca:  cp-umodsys-umodsys_lib_lib2d cp-umodsys-umodsys_lib_lib3d cp-umodsys-umodsys_lib_libui cp-umodsys-umodsys_lib_libmedia cp-umodsys-umodsys_lib_kernel cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cp-umodsys-plugin_libStd cp-umodsys-plugin_libUI cp-umodsys-plugin_test1 cp-umodsys-plugin_test2 cp-umodsys_Depends-lib_S_zlib cp-umodsys_Depends-lib_S_libpng cp-umodsys_Depends-lib_S_jpeglib cp-umodsys_Depends-lib_S_SDL2 cp-umodsys_Depends-lib_S_freetype cpp-umodsys-umodsysca
 #.PHONY: tp-umodsys-umodsysca tpp-umodsys-umodsysca cp-umodsys-umodsysca cpp-umodsys-umodsysca
 
 tmp__umodsys__umodsysca=../../tmp/Linux_x86_64.Debug
 bin__umodsys__umodsysca=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__umodsysca=../../tmp/Linux_x86_64.Debug/umodsysca
-CXXFLAGS__umodsys__umodsysca=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux -I../../src/basesys
-CFLAGS__umodsys__umodsysca=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux -I../../src/basesys
-LDFLAGS__umodsys__umodsysca=-O0 -g -static -static-libgcc -static-libstdc++ -dynamic -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_lib2d.Linux_x86_64.Debug.a -l:umodsys_lib_lib3d.Linux_x86_64.Debug.a -l:umodsys_lib_libui.Linux_x86_64.Debug.a -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_basesys.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:lib_S_zlib.Linux_x86_64.Debug.a -l:lib_S_libpng.Linux_x86_64.Debug.a -l:lib_S_jpeglib.Linux_x86_64.Debug.a -l:lib_S_SDL2.Linux_x86_64.Debug.a -l:lib_S_freetype.Linux_x86_64.Debug.a -ldl -lpthread -l:libm.a -l:libc.a
+CXXFLAGS__umodsys__umodsysca=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux -I../../src/kernel
+CFLAGS__umodsys__umodsysca=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux -I../../src/kernel
+LDFLAGS__umodsys__umodsysca=-O0 -g -static -static-libgcc -static-libstdc++ -dynamic -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_lib2d.Linux_x86_64.Debug.a -l:umodsys_lib_lib3d.Linux_x86_64.Debug.a -l:umodsys_lib_libui.Linux_x86_64.Debug.a -l:umodsys_lib_libmedia.Linux_x86_64.Debug.a -l:umodsys_lib_kernel.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_common.Linux_x86_64.Debug.a -l:lib_S_zlib.Linux_x86_64.Debug.a -l:lib_S_libpng.Linux_x86_64.Debug.a -l:lib_S_jpeglib.Linux_x86_64.Debug.a -l:lib_S_SDL2.Linux_x86_64.Debug.a -l:lib_S_freetype.Linux_x86_64.Debug.a -ldl -lpthread -l:libm.a -l:libc.a
 
 
 # file group src :
@@ -8967,7 +8969,7 @@ tpp-umodsys-umodsysca: $(target__umodsys__umodsysca)
 cpp-umodsys-umodsysca:
 	@-rm $(target__umodsys__umodsysca)
 	@-rm $(tmpx__umodsys__umodsysca)/*
-$(target__umodsys__umodsysca):  $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_basesys) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) $(target__umodsys_Depends__lib_S_zlib) $(target__umodsys_Depends__lib_S_libpng) $(target__umodsys_Depends__lib_S_jpeglib) $(target__umodsys_Depends__lib_S_SDL2) $(target__umodsys_Depends__lib_S_freetype) $(objs__umodsys__umodsysca) | $(bin__umodsys__umodsysca) 
+$(target__umodsys__umodsysca):  $(target__umodsys__umodsys_lib_lib2d) $(target__umodsys__umodsys_lib_lib3d) $(target__umodsys__umodsys_lib_libui) $(target__umodsys__umodsys_lib_libmedia) $(target__umodsys__umodsys_lib_kernel) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(target__umodsys__plugin_libStd) $(target__umodsys__plugin_libUI) $(target__umodsys__plugin_test1) $(target__umodsys__plugin_test2) $(target__umodsys_Depends__lib_S_zlib) $(target__umodsys_Depends__lib_S_libpng) $(target__umodsys_Depends__lib_S_jpeglib) $(target__umodsys_Depends__lib_S_SDL2) $(target__umodsys_Depends__lib_S_freetype) $(objs__umodsys__umodsysca) | $(bin__umodsys__umodsysca) 
 	@echo '*** Make console umodsys::umodsysca'
 	@$(CXX) -Wl,-rpath,. -o$@ $(objs__umodsys__umodsysca) $(LDFLAGS__umodsys__umodsysca)
 
@@ -8984,16 +8986,16 @@ target: tp-umodsys-umodsysct
 clean: cp-umodsys-umodsysct
 tg-umodsys: tp-umodsys-umodsysct
 cg-umodsys: cp-umodsys-umodsysct
-tp-umodsys-umodsysct:  $(target__umodsys__umodsys_lib_basesys) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) tpp-umodsys-umodsysct
-cp-umodsys-umodsysct:  cp-umodsys-umodsys_lib_basesys cp-umodsys-umodsys_lib_base cp-umodsys-umodsys_lib_core cpp-umodsys-umodsysct
+tp-umodsys-umodsysct:  $(target__umodsys__umodsys_lib_kernel) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) tpp-umodsys-umodsysct
+cp-umodsys-umodsysct:  cp-umodsys-umodsys_lib_kernel cp-umodsys-umodsys_lib_core cp-umodsys-umodsys_lib_common cpp-umodsys-umodsysct
 #.PHONY: tp-umodsys-umodsysct tpp-umodsys-umodsysct cp-umodsys-umodsysct cpp-umodsys-umodsysct
 
 tmp__umodsys__umodsysct=../../tmp/Linux_x86_64.Debug
 bin__umodsys__umodsysct=../../bin/Linux_x86_64.Debug
 tmpx__umodsys__umodsysct=../../tmp/Linux_x86_64.Debug/umodsysct
-CXXFLAGS__umodsys__umodsysct=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux -I../../src/basesys
-CFLAGS__umodsys__umodsysct=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux -I../../src/basesys
-LDFLAGS__umodsys__umodsysct=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_basesys.Linux_x86_64.Debug.a -l:umodsys_lib_base.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a
+CXXFLAGS__umodsys__umodsysct=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux -I../../src/kernel
+CFLAGS__umodsys__umodsysct=-O0 -g -fvisibility=hidden -Werror -D_FILE_OFFSET_BITS=64 -fPIC -I../../include -I../../include/platform/linux -I../../src/kernel
+LDFLAGS__umodsys__umodsysct=-O0 -g -fvisibility=hidden -Werror -fPIC -Wl,-z,defs -Wl,-rpath-link,../../bin/Linux_x86_64.Debug -L../../bin/Linux_x86_64.Debug -L../../tmp/Linux_x86_64.Debug -ldl -lpthread -l:umodsys_lib_kernel.Linux_x86_64.Debug.a -l:umodsys_lib_core.Linux_x86_64.Debug.a -l:umodsys_lib_common.Linux_x86_64.Debug.a
 
 
 # file group src :
@@ -9009,7 +9011,7 @@ tpp-umodsys-umodsysct: $(target__umodsys__umodsysct)
 cpp-umodsys-umodsysct:
 	@-rm $(target__umodsys__umodsysct)
 	@-rm $(tmpx__umodsys__umodsysct)/*
-$(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target__umodsys__umodsys_lib_base) $(target__umodsys__umodsys_lib_core) $(objs__umodsys__umodsysct) | $(bin__umodsys__umodsysct) 
+$(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_kernel) $(target__umodsys__umodsys_lib_core) $(target__umodsys__umodsys_lib_common) $(objs__umodsys__umodsysct) | $(bin__umodsys__umodsysct) 
 	@echo '*** Make console umodsys::umodsysct'
 	@$(CXX) -Wl,-rpath,. -o$@ $(objs__umodsys__umodsysct) $(LDFLAGS__umodsys__umodsysct)
 
@@ -9023,105 +9025,7 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target
 #**************************************************************** END projectgroup 'umodsys'
 ################################################################# XMAP makefile
 # 1
-../../tmp/Linux_x86_64.Debug/umodsysca: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_S_zlib: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_freetype: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 44
-../../tmp/Linux_x86_64.Debug:
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_libMedia_zlib: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_test1: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_lib3d_stdlib: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 26
-.PHONY: tg-umodsys cg-umodsys
-
-
-# 18
-.PHONY: tg-umodsys_Depends cg-umodsys_Depends
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsysc: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_libMedia_stdio: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
 ../../tmp/Linux_x86_64.Debug/plugin_test3: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_libMedia_stdlib: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_luajit: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_libUI_frames: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_S_SDL2: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_libMedia_imagesstd: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_libMedia_serializeYaml: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_lib2d: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_S_libpng: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_libpng: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
@@ -9131,67 +9035,7 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target
 
 
 # 1
-../../tmp/Linux_x86_64.Debug/plugin_test2: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_lib2d_stdlib: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_bullet: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_libmedia: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_SDL2: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_angelscript: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsysct: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_lib3d: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_S_freetype: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_libMedia_serializeJson: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_sqlite3: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_libui: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_libUI_SDLGL: | ../../tmp/Linux_x86_64.Debug
+../../tmp/Linux_x86_64.Debug/plugin_libUI_SDLcore: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
@@ -9201,47 +9045,67 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target
 
 
 # 1
+../../tmp/Linux_x86_64.Debug/plugin_libMedia_serializeJson: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_libMedia_stdio: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_test2: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_angelscript: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
 ../../tmp/Linux_x86_64.Debug/umodsys_lib_core: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Debug/plugin_libUI_SDLcore: | ../../tmp/Linux_x86_64.Debug
+../../tmp/Linux_x86_64.Debug/lib_sqlite3: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Debug/lib_lua: | ../../tmp/Linux_x86_64.Debug
+../../tmp/Linux_x86_64.Debug/umodsysct: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_libMedia_imagesstd: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_S_freetype: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_lib3d_stdlib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_S_zlib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_lib3d: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
 # 1
 ../../tmp/Linux_x86_64.Debug/lib_squirrel: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 44
-../../bin/Linux_x86_64.Debug:
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_jpeglib: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_yaml: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/plugin_test5: | ../../tmp/Linux_x86_64.Debug
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Debug/lib_S_jpeglib: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
@@ -9251,12 +9115,150 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_basesys) $(target
 
 
 # 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_basesys: | ../../tmp/Linux_x86_64.Debug
+../../tmp/Linux_x86_64.Debug/lib_S_SDL2: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Debug/umodsys_lib_base: | ../../tmp/Linux_x86_64.Debug
+../../tmp/Linux_x86_64.Debug/plugin_libMedia_zlib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_luajit: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 26
+.PHONY: tg-umodsys cg-umodsys
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_libpng: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_lua: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_SDL2: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_S_jpeglib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_lib2d: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_lib2d_stdlib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_libUI_SDLGL: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 44
+../../bin/Linux_x86_64.Debug:
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_test1: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_jpeglib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_libmedia: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_libMedia_stdlib: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsysca: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_common: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_yaml: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_freetype: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_S_libpng: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_libUI_frames: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsysc: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/lib_bullet: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 44
+../../tmp/Linux_x86_64.Debug:
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_libMedia_serializeYaml: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 18
+.PHONY: tg-umodsys_Depends cg-umodsys_Depends
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_libui: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/plugin_test5: | ../../tmp/Linux_x86_64.Debug
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Debug/umodsys_lib_kernel: | ../../tmp/Linux_x86_64.Debug
 	mkdir -p $@
 
 

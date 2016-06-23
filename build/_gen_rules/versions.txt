@@ -1,32 +1,32 @@
 
 # --------------------------------- core libraries
 
-version core
-  file-h     src/core/version_library.h prefix:UMODSYS_VERSION_CORE
-  check-date include/umodsys/core/ *.h arch/*.h mem/*.h util/*.h $(platform)/*.h 
-  check-date include/umodsys/ stdcore.h
+version common
+  file-h     src/common/version_library.h prefix:UMODSYS_VERSION_COMMON
+  check-date include/umodsys/common/ *.h arch/*.h mem/*.h util/*.h $(platform)/*.h 
+  check-date include/umodsys/ stdcommon.h
   check-date include/umodsys/tl/ alloc/*.h container/*.h math/*.h metastl/*.h string/*.h util/*.h
-  check-date src/core/ *.h *.cpp
-  check-date src/core/$(platform) *.h *.cpp
+  check-date src/common/ *.h *.cpp
+  check-date src/common/$(platform) *.h *.cpp
   check-date src/tl/ *.h *.cpp
 
-version base
-  file-h     src/base/version_library.h prefix:UMODSYS_VERSION_BASE
-  check-date include/umodsys/base/ *.h
-  check-date include/umodsys/ stdcore.h
-  check-date src/base/ *.cpp *.h 
+version core
+  file-h     src/core/version_library.h prefix:UMODSYS_VERSION_CORE
+  check-date include/umodsys/core/ *.h
+  check-date include/umodsys/ stdcommon.h
+  check-date src/core/ *.cpp *.h 
 
 # --------------------------------- core system/binaries
 
-version basesys
-  file-h     src/basesys/version_library.h prefix:UMODSYS_VERSION_BASESYS
-  check-date src/basesys/ *.cpp *.h !*main*
-  check-date src/basesys/$(platform) *.cpp *.h !*main*
+version kernel
+  file-h     src/kernel/version_library.h prefix:UMODSYS_VERSION_KERNEL
+  check-date src/kernel/ *.cpp *.h !*main*
+  check-date src/kernel/$(platform) *.cpp *.h !*main*
 
 version umodsysc
-  file-h     src/basesys/version_main.h prefix:UMODSYS_VERSION_MAIN
-  check-date src/basesys/ *main*
-  check-date src/basesys/$(platform) *main*
+  file-h     src/kernel/version_main.h prefix:UMODSYS_VERSION_MAIN
+  check-date src/kernel/ *main*
+  check-date src/kernel/$(platform) *main*
 
 # --------------------------------- lib libraries
 
@@ -142,7 +142,7 @@ version plugin-test5
 
 # --------------------------------- groups
 
-#group gbase core base
-#group gmain basesys umodsysc
+#group gcore core core
+#group gmain kernel umodsysc
 #group glibs lib2d libui libmedia
 

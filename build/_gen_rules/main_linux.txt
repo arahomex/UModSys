@@ -11,38 +11,38 @@ begin project-group umodsys
     mode dummy
   end
 
-  begin project umodsys_lib_core
+  begin project umodsys_lib_common
     begin file-group src
       begin file-group $(spname)
-        begin mask $(path-skip) $(path-s-core)/$(ppath)
+        begin mask $(path-skip) $(path-s-basis)/$(ppath)
           include *.cpp *.h
         end
       end
     end
     begin file-group headers
       begin file-group $(spname)
-        begin mask $(path-skip) $(path-inc)/core/$(ppath)
+        begin mask $(path-skip) $(path-inc)/common/$(ppath)
           include *.h
         end
-        begin mask $(path-skip) $(path-inc)/core/platform
+        begin mask $(path-skip) $(path-inc)/common/platform
           include def_msvc.h def_win32.h
         end
       end
     end
   end
 
-  begin project umodsys_lib_base
+  begin project umodsys_lib_core
     begin file-group src
       begin file-group $(spname)
-        file $(path-s-base)/$(ppath)/umodsys.so_main.linux.cpp
+        file $(path-s-core)/$(ppath)/umodsys.so_main.linux.cpp
       end
     end
   end
 
-  begin project umodsys_lib_basesys
+  begin project umodsys_lib_kernel
     begin file-group src
       begin file-group $(spname)
-        file $(path-s-basesys)/$(ppath)/umodsys.basesys.rmodule.linux.cpp
+        file $(path-s-kernel)/$(ppath)/umodsys.basesys.rmodule.linux.cpp
       end
     end
   end

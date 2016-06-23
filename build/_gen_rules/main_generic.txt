@@ -2,9 +2,10 @@ begin project-group umodsys
   set path-inc $(path-root)/include/umodsys
   set path-src $(path-root)/src
   
-  set path-s-base $(path-src)/base
-  set path-s-basesys $(path-src)/basesys
+  set path-s-basis $(path-src)/basis
   set path-s-core $(path-src)/core
+  set path-s-kernel $(path-src)/kernel
+  set path-s-common $(path-src)/common
 
   set path-s-lib $(path-src)/lib
   set path-s-mod $(path-src)/module
@@ -20,9 +21,9 @@ begin project-group umodsys
   begin project all
     mode lib
     #
+    depend umodsys_lib_common
     depend umodsys_lib_core
-    depend umodsys_lib_base
-    depend umodsys_lib_basesys
+    depend umodsys_lib_kernel
     #
     depend umodsys_lib_libmedia
     depend umodsys_lib_libui
@@ -44,7 +45,7 @@ begin project-group umodsys
   # ----------------------------------------------------------------------
   #
 
-  begin project umodsys_lib_core
+  begin project umodsys_lib_common
     mode lib
     #
     includes $(path-include)
@@ -52,17 +53,17 @@ begin project-group umodsys
     #
     begin file-group src
       begin file-group core
-        file $(path-s-core)/umodsys.core.objects.cpp
-        file $(path-s-core)/umodsys.core.stdtypedefs.cpp
-        file $(path-s-core)/umodsys.core.uniqueptr.cpp
-        file $(path-s-core)/umodsys.core.uniqueptrlist.cpp
+        file $(path-s-common)/umodsys.core.objects.cpp
+        file $(path-s-common)/umodsys.core.stdtypedefs.cpp
+        file $(path-s-common)/umodsys.core.uniqueptr.cpp
+        file $(path-s-common)/umodsys.core.uniqueptrlist.cpp
       end
       begin file-group tl
-        file $(path-s-core)/umodsys.tl.strings.cpp
-        file $(path-s-core)/umodsys.tl.utf8.cpp
-        file $(path-s-core)/umodsys.tl.utf16.cpp
-        file $(path-s-core)/umodsys.tl.utfcase.cpp
-        file $(path-s-core)/umodsys.tl.throws.cpp
+        file $(path-s-common)/umodsys.tl.strings.cpp
+        file $(path-s-common)/umodsys.tl.utf8.cpp
+        file $(path-s-common)/umodsys.tl.utf16.cpp
+        file $(path-s-common)/umodsys.tl.utfcase.cpp
+        file $(path-s-common)/umodsys.tl.throws.cpp
       end
     end
     begin file-group headers
@@ -70,22 +71,24 @@ begin project-group umodsys
         include stdcore.h
         include stdmath3d.h
       end
+      begin file-group basis
+      end
       begin file-group core
-        begin mask $(path-skip) $(path-inc)/core
+        begin mask $(path-skip) $(path-inc)/common
           include *.h
         end
         begin file-group arch
-          begin mask $(path-skip) $(path-inc)/core/arch
+          begin mask $(path-skip) $(path-inc)/common/arch
             include *.h
           end
         end
         begin file-group mem
-          begin mask $(path-skip) $(path-inc)/core/mem
+          begin mask $(path-skip) $(path-inc)/common/mem
             include *.h
           end
         end
         begin file-group util
-          begin mask $(path-skip) $(path-inc)/core/util
+          begin mask $(path-skip) $(path-inc)/common/util
             include *.h
           end
         end
@@ -126,28 +129,28 @@ begin project-group umodsys
     end
   end
 
-  begin project umodsys_lib_basesys
+  begin project umodsys_lib_kernel
     mode lib
     #
     includes $(path-include)
     includes $(path-include)/$(ppath)
     #
     begin file-group src
-      begin mask $(path-skip) $(path-s-basesys)
+      begin mask $(path-skip) $(path-s-kernel)
         include *.cpp
         include *.h
       end
     end
   end
 
-  begin project umodsys_lib_base
+  begin project umodsys_lib_core
     mode lib
     #
     includes $(path-include)
     includes $(path-include)/$(ppath)
     #
     begin file-group src
-      begin mask $(path-skip) $(path-s-base)
+      begin mask $(path-skip) $(path-s-core)
         include *.cpp
         include *.h
       end
@@ -156,8 +159,8 @@ begin project-group umodsys
       begin mask $(path-skip) $(path-inc)
         include stdbase.h
       end
-      begin file-group base
-        begin mask $(path-skip) $(path-inc)/base
+      begin file-group core
+        begin mask $(path-skip) $(path-inc)/core
           include *.h
         end
       end
@@ -344,8 +347,8 @@ begin project-group umodsys
     depend umodsys_lib_lib2d
     depend umodsys_lib_lib3d
     #
-    depend umodsys_lib_base
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   begin project plugin_test2
@@ -360,8 +363,8 @@ begin project-group umodsys
         include plugin_test2.*.h
       end
     end
+    depend umodsys_lib_common
     depend umodsys_lib_core
-    depend umodsys_lib_base
   end
 
   begin project plugin_test3
@@ -376,8 +379,8 @@ begin project-group umodsys
         include plugin_test3.*.h
       end
     end
+    depend umodsys_lib_common
     depend umodsys_lib_core
-    depend umodsys_lib_base
   end
 
   begin project plugin_test4
@@ -392,8 +395,8 @@ begin project-group umodsys
         include plugin_test4.*.h
       end
     end
+    depend umodsys_lib_common
     depend umodsys_lib_core
-    depend umodsys_lib_base
   end
 
   begin project plugin_test5
@@ -408,8 +411,8 @@ begin project-group umodsys
         include plugin_test5.*.h
       end
     end
+    depend umodsys_lib_common
     depend umodsys_lib_core
-    depend umodsys_lib_base
   end
 
   # ----------------------------------------------------------------------
@@ -428,8 +431,8 @@ begin project-group umodsys
     #
     depend umodsys_lib_libmedia
     #
-    depend umodsys_lib_base
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   begin project plugin_libUI
@@ -449,8 +452,8 @@ begin project-group umodsys
     depend umodsys_lib_lib2d
     depend umodsys_lib_lib3d
     #
-    depend umodsys_lib_base
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   begin project plugin_libUI_SDL
@@ -470,8 +473,8 @@ begin project-group umodsys
     depend umodsys_lib_lib2d
     depend umodsys_lib_lib3d
     #
-    depend umodsys_lib_base
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   # ----------------------------------------------------------------------
@@ -490,8 +493,8 @@ begin project-group umodsys
     #
     depend umodsys_lib_libmedia
     #
-    depend umodsys_lib_base
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   begin project plugin_libMedia_serializeJson
@@ -508,8 +511,8 @@ begin project-group umodsys
     #
     depend umodsys_lib_libmedia
     #
-    depend umodsys_lib_base
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   begin project plugin_libMedia_serializeYaml
@@ -526,8 +529,8 @@ begin project-group umodsys
     #
     depend umodsys_lib_libmedia
     #
-    depend umodsys_lib_base
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   begin project plugin_libMedia_stdio
@@ -544,8 +547,8 @@ begin project-group umodsys
     #
     depend umodsys_lib_libmedia
     #
-    depend umodsys_lib_base
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   begin project plugin_libMedia_stdlib
@@ -562,8 +565,8 @@ begin project-group umodsys
     #
     depend umodsys_lib_libmedia
     #
-    depend umodsys_lib_base
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   begin project plugin_libMedia_zlib
@@ -580,8 +583,8 @@ begin project-group umodsys
     #
     depend umodsys_lib_libmedia
     #
-    depend umodsys_lib_base
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   begin project plugin_lib2d_stdlib
@@ -598,8 +601,8 @@ begin project-group umodsys
     #
     depend umodsys_lib_lib2d
     #
-    depend umodsys_lib_base
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   begin project plugin_lib3d_stdlib
@@ -616,8 +619,8 @@ begin project-group umodsys
     #
     depend umodsys_lib_lib3d
     #
-    depend umodsys_lib_base
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   begin project plugin_libUI_SDLGL
@@ -636,8 +639,8 @@ begin project-group umodsys
     depend umodsys_lib_lib2d
     depend umodsys_lib_lib3d
     #
-    depend umodsys_lib_base
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   begin project plugin_libUI_SDLcore
@@ -655,8 +658,8 @@ begin project-group umodsys
     depend umodsys_lib_libui
     depend umodsys_lib_lib2d
     #
-    depend umodsys_lib_base
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   begin project plugin_libUI_frames
@@ -673,8 +676,8 @@ begin project-group umodsys
     #
     depend umodsys_lib_libui
     #
-    depend umodsys_lib_base
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   #
@@ -687,7 +690,7 @@ begin project-group umodsys
     #
     includes $(path-include)
     includes $(path-include)/$(ppath)
-    includes $(path-s-basesys)
+    includes $(path-s-kernel)
     #
     begin file-group src
       file $(path-s-plugin)/main/umodsys.c_main.cpp
@@ -696,9 +699,9 @@ begin project-group umodsys
     depend umodsys_lib_libui
     depend umodsys_lib_libmedia
     #
-    depend umodsys_lib_basesys
-    depend umodsys_lib_base
+    depend umodsys_lib_kernel
     depend umodsys_lib_core
+    depend umodsys_lib_common
     #
     depend plugin_libStd
     depend plugin_libUI
@@ -711,15 +714,15 @@ begin project-group umodsys
     #
     includes $(path-include)
     includes $(path-include)/$(ppath)
-    includes $(path-s-basesys)
+    includes $(path-s-kernel)
     #
     begin file-group src
       file $(path-s-plugin)/main/umodsys.c_maint.cpp
     end
     #
-    depend umodsys_lib_basesys
-    depend umodsys_lib_base
+    depend umodsys_lib_kernel
     depend umodsys_lib_core
+    depend umodsys_lib_common
   end
 
   begin project umodsysca
@@ -727,7 +730,7 @@ begin project-group umodsys
     #
     includes $(path-include)
     includes $(path-include)/$(ppath)
-    includes $(path-s-basesys)
+    includes $(path-s-kernel)
     #
     begin file-group src
       file $(path-s-plugin)/main/umodsys.c_maina.cpp
@@ -747,9 +750,9 @@ begin project-group umodsys
     depend umodsys_lib_libui
     depend umodsys_lib_libmedia
     #
-    depend umodsys_lib_basesys
-    depend umodsys_lib_base
+    depend umodsys_lib_kernel
     depend umodsys_lib_core
+    depend umodsys_lib_common
     #
     depend plugin_libStd
     depend plugin_libUI
