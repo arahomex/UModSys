@@ -5,7 +5,7 @@
 // info: list two way
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
+#include <umodsys/common/stdtypedefs.h>
 
 namespace UModSys {
 namespace tl {

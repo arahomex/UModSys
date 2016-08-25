@@ -1,7 +1,7 @@
 #ifndef __UMODSYS_CORE_STDTL_H
 #define __UMODSYS_CORE_STDTL_H 1
 /*************************************************************/
-// file: umodsys/core/stdtl.h
+// file: umodsys/common/stdtl.h
 // info: std templates
 /*************************************************************/
 

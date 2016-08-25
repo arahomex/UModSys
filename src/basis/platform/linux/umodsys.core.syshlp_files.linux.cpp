@@ -1,7 +1,7 @@
-#include <umodsys/core/syshlp.h>
+#include <umodsys/common/syshlp.h>
 
-#include <umodsys/core/platform/linux/syshlp_linux.h>
-#include <umodsys/core/stdstrings.h>
+#include <umodsys/common/platform/linux/syshlp_linux.h>
+#include <umodsys/common/stdstrings.h>
 
 using namespace UModSys;
 using namespace UModSys::core;

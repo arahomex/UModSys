@@ -5,8 +5,8 @@
 // info: throws exception
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
-#include <umodsys/core/common_exceptions.h>
+#include <umodsys/common/stdtypedefs.h>
+#include <umodsys/common/common_exceptions.h>
 
 namespace UModSys {
 namespace tl {

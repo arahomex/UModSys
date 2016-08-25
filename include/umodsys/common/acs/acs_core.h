@@ -5,7 +5,7 @@
 // info: ACS core objects
 /*************************************************************/
 
-#include <umodsys/core/stdstrings.h>
+#include <umodsys/common/stdstrings.h>
 
 namespace UModSys {
 namespace core {

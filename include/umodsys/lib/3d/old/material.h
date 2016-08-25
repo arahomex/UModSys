@@ -9,7 +9,7 @@
 #include <ums/lib2d/lib2d.h>
 #include <ums/lib2d/image.h>
 
-#include <ums/core/types/array.h>
+#include <ums/common/types/array.h>
 
 namespace UMS {
 namespace lib3d {

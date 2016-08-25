@@ -1,12 +1,12 @@
 #ifndef __UMODSYS_CORE_OBJECTS_DEF_H
 #define __UMODSYS_CORE_OBJECTS_DEF_H 1
 /*************************************************************/
-// file: umodsys/core/objects_def.h
+// file: umodsys/common/objects_def.h
 // info: objects and interface bases defines
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
-#include <umodsys/core/source.h>
+#include <umodsys/common/stdtypedefs.h>
+#include <umodsys/common/source.h>
 
 #include <umodsys/tl/util/ref_pointer.h>
 #include <umodsys/tl/util/object_id.h>

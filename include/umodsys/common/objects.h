@@ -1,13 +1,13 @@
 #ifndef __UMODSYS_CORE_OBJECTS_H
 #define __UMODSYS_CORE_OBJECTS_H 1
 /*************************************************************/
-// file: umodsys/core/objects.h
+// file: umodsys/common/objects.h
 // info: objects and interface bases
 /*************************************************************/
 
-#include <umodsys/core/objects_def.h>
-#include <umodsys/core/uniqueptr.h>
-#include <umodsys/core/mem/gc_base.h>
+#include <umodsys/common/objects_def.h>
+#include <umodsys/common/uniqueptr.h>
+#include <umodsys/common/gc/gc-tiny.h>
 
 namespace UModSys {
 namespace core {

@@ -1,6 +1,6 @@
-#include <umodsys/core/syshlp.h>
+#include <umodsys/common/syshlp.h>
 
-#include <umodsys/core/platform/win32/syshlp_win32.h>
+#include <umodsys/common/platform/win32/syshlp_win32.h>
 
 using namespace UModSys;
 using namespace UModSys::core;

@@ -4,8 +4,8 @@
 // lib3d/scene.h: common 3d library interfaces, scene management
 //*****************************************************
 
-#include <ums/core/types/array.h>
-#include <ums/core/types/tree_rb.h>
+#include <ums/common/types/array.h>
+#include <ums/common/types/tree_rb.h>
 
 #include <ums/lib3d/lib3d.h>
 #include <ums/lib3d/objects.h>

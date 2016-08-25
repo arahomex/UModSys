@@ -6,7 +6,7 @@
 
 #include <ums/lib3d/types.h>
 
-#include <ums/core/objects/console_help.h>
+#include <ums/common/objects/console_help.h>
 
 namespace UMS {
 namespace lib3d {

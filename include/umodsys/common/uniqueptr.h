@@ -1,12 +1,12 @@
 #ifndef __UMODSYS_CORE_UNIQUEPTR_H
 #define __UMODSYS_CORE_UNIQUEPTR_H 1
 /*************************************************************/
-// file: umodsys/core/uniqueptr.h
+// file: umodsys/common/uniqueptr.h
 // info: unique pointer used for type/module comparission
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
-#include <umodsys/core/stdinlines.h>
+#include <umodsys/common/stdtypedefs.h>
+#include <umodsys/common/stdinlines.h>
 #include <umodsys/tl/container/list2.h>
 #include <umodsys/tl/container/array.h>
 #include <umodsys/tl/container/set.h>

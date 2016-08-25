@@ -52,18 +52,15 @@ begin project-group umodsys
     includes $(path-include)/$(ppath)
     #
     begin file-group src
-      begin file-group core
-        file $(path-s-common)/umodsys.core.objects.cpp
-        file $(path-s-common)/umodsys.core.stdtypedefs.cpp
-        file $(path-s-common)/umodsys.core.uniqueptr.cpp
-        file $(path-s-common)/umodsys.core.uniqueptrlist.cpp
+      begin file-group common
+        begin mask $(path-skip) $(path-s-common)
+          include umodsys.common.*.cpp
+        end
       end
       begin file-group tl
-        file $(path-s-common)/umodsys.tl.strings.cpp
-        file $(path-s-common)/umodsys.tl.utf8.cpp
-        file $(path-s-common)/umodsys.tl.utf16.cpp
-        file $(path-s-common)/umodsys.tl.utfcase.cpp
-        file $(path-s-common)/umodsys.tl.throws.cpp
+        begin mask $(path-skip) $(path-s-common)
+          include umodsys.tl.*.cpp
+        end
       end
     end
     begin file-group headers
@@ -73,7 +70,7 @@ begin project-group umodsys
       end
       begin file-group basis
       end
-      begin file-group core
+      begin file-group common
         begin mask $(path-skip) $(path-inc)/common
           include *.h
         end

@@ -5,7 +5,7 @@
 // info: contruct types
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
+#include <umodsys/common/stdtypedefs.h>
 
 namespace UModSys {
 namespace tl {

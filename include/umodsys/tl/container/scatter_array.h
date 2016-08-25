@@ -5,7 +5,7 @@
 // info: scatter array type based on tree-rb
 /*************************************************************/
 
-#include <umodsys/core/stdinlines.h>
+#include <umodsys/common/stdinlines.h>
 
 #include <umodsys/tl/container/tree_rb.h>
 #include <umodsys/tl/container/pair.h>

@@ -7954,7 +7954,7 @@ LDFLAGS__umodsys__umodsys_lib_common=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-
 # file group headers :
 # file group basis :
 # end file group basis .
-# file group core :
+# file group common :
 # file group arch :
 # file arch : ../../include/umodsys/common/arch/arch_code32.h
 # file arch : ../../include/umodsys/common/arch/arch_defines.h
@@ -7969,7 +7969,6 @@ LDFLAGS__umodsys__umodsys_lib_common=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-
 # end file group arch .
 # file group mem :
 # file mem : ../../include/umodsys/common/mem/coremem~.h
-# file mem : ../../include/umodsys/common/mem/gc_base.h
 # file mem : ../../include/umodsys/common/mem/mem_alloc.h
 # file mem : ../../include/umodsys/common/mem/mem_fixed.h
 # file mem : ../../include/umodsys/common/mem/mem_shared.h
@@ -7980,23 +7979,23 @@ LDFLAGS__umodsys__umodsys_lib_common=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-
 # file group util :
 # file util : ../../include/umodsys/common/util/nanotcl.h
 # end file group util .
-# file core : ../../include/umodsys/common/arch.h
-# file core : ../../include/umodsys/common/arch_cvt.h
-# file core : ../../include/umodsys/common/common_exceptions.h
-# file core : ../../include/umodsys/common/objects.h
-# file core : ../../include/umodsys/common/objects_def.h
-# file core : ../../include/umodsys/common/objects_res.h
-# file core : ../../include/umodsys/common/params.h
-# file core : ../../include/umodsys/common/props.h
-# file core : ../../include/umodsys/common/source.h
-# file core : ../../include/umodsys/common/stddefs.h
-# file core : ../../include/umodsys/common/stdinlines.h
-# file core : ../../include/umodsys/common/stdstrings.h
-# file core : ../../include/umodsys/common/stdtl.h
-# file core : ../../include/umodsys/common/stdtypedefs.h
-# file core : ../../include/umodsys/common/syshlp.h
-# file core : ../../include/umodsys/common/uniqueptr.h
-# end file group core .
+# file common : ../../include/umodsys/common/arch.h
+# file common : ../../include/umodsys/common/arch_cvt.h
+# file common : ../../include/umodsys/common/common_exceptions.h
+# file common : ../../include/umodsys/common/objects.h
+# file common : ../../include/umodsys/common/objects_def.h
+# file common : ../../include/umodsys/common/objects_res.h
+# file common : ../../include/umodsys/common/params.h
+# file common : ../../include/umodsys/common/props.h
+# file common : ../../include/umodsys/common/source.h
+# file common : ../../include/umodsys/common/stddefs.h
+# file common : ../../include/umodsys/common/stdinlines.h
+# file common : ../../include/umodsys/common/stdstrings.h
+# file common : ../../include/umodsys/common/stdtl.h
+# file common : ../../include/umodsys/common/stdtypedefs.h
+# file common : ../../include/umodsys/common/syshlp.h
+# file common : ../../include/umodsys/common/uniqueptr.h
+# end file group common .
 # file group linux :
 # file linux : ../../include/umodsys/common/platform/linux/syshlp_linux.h
 # file linux : ../../include/umodsys/common/platform/def_msvc.h
@@ -8078,32 +8077,32 @@ LDFLAGS__umodsys__umodsys_lib_common=-O3 -fvisibility=hidden -Werror -fPIC -Wl,-
 # file headers : ../../include/umodsys/stdmath3d.h
 # end file group headers .
 # file group src :
-# file group core :
-# file core : ../../src/common/umodsys.core.objects.cpp
-objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.objects.o
-$(tmpx__umodsys__umodsys_lib_common)/umodsys.core.objects.o: ../../src/common/umodsys.core.objects.cpp | $(tmpx__umodsys__umodsys_lib_common)
+# file group common :
+# file common : ../../src/common/umodsys.common.objects.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.common.objects.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.common.objects.o: ../../src/common/umodsys.common.objects.cpp | $(tmpx__umodsys__umodsys_lib_common)
 	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
 	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.objects.o.d
-# file core : ../../src/common/umodsys.core.stdtypedefs.cpp
-objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.stdtypedefs.o
-$(tmpx__umodsys__umodsys_lib_common)/umodsys.core.stdtypedefs.o: ../../src/common/umodsys.core.stdtypedefs.cpp | $(tmpx__umodsys__umodsys_lib_common)
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.common.objects.o.d
+# file common : ../../src/common/umodsys.common.stdtypedefs.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.common.stdtypedefs.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.common.stdtypedefs.o: ../../src/common/umodsys.common.stdtypedefs.cpp | $(tmpx__umodsys__umodsys_lib_common)
 	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
 	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.stdtypedefs.o.d
-# file core : ../../src/common/umodsys.core.uniqueptr.cpp
-objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.uniqueptr.o
-$(tmpx__umodsys__umodsys_lib_common)/umodsys.core.uniqueptr.o: ../../src/common/umodsys.core.uniqueptr.cpp | $(tmpx__umodsys__umodsys_lib_common)
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.common.stdtypedefs.o.d
+# file common : ../../src/common/umodsys.common.uniqueptr.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.common.uniqueptr.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.common.uniqueptr.o: ../../src/common/umodsys.common.uniqueptr.cpp | $(tmpx__umodsys__umodsys_lib_common)
 	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
 	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.uniqueptr.o.d
-# file core : ../../src/common/umodsys.core.uniqueptrlist.cpp
-objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.uniqueptrlist.o
-$(tmpx__umodsys__umodsys_lib_common)/umodsys.core.uniqueptrlist.o: ../../src/common/umodsys.core.uniqueptrlist.cpp | $(tmpx__umodsys__umodsys_lib_common)
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.common.uniqueptr.o.d
+# file common : ../../src/common/umodsys.common.uniqueptrlist.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.common.uniqueptrlist.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.common.uniqueptrlist.o: ../../src/common/umodsys.common.uniqueptrlist.cpp | $(tmpx__umodsys__umodsys_lib_common)
 	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
 	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.uniqueptrlist.o.d
-# end file group core .
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.common.uniqueptrlist.o.d
+# end file group common .
 # file group linux :
 # file linux : ../../src/basis/platform/linux/umodsys.core.syshlp_args.linux.cpp
 objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.core.syshlp_args.linux.o
@@ -8156,30 +8155,30 @@ $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.strings.o: ../../src/common/umod
 	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
 	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
 -include $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.strings.o.d
-# file tl : ../../src/common/umodsys.tl.utf8.cpp
-objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf8.o
-$(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf8.o: ../../src/common/umodsys.tl.utf8.cpp | $(tmpx__umodsys__umodsys_lib_common)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf8.o.d
-# file tl : ../../src/common/umodsys.tl.utf16.cpp
-objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf16.o
-$(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf16.o: ../../src/common/umodsys.tl.utf16.cpp | $(tmpx__umodsys__umodsys_lib_common)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf16.o.d
-# file tl : ../../src/common/umodsys.tl.utfcase.cpp
-objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utfcase.o
-$(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utfcase.o: ../../src/common/umodsys.tl.utfcase.cpp | $(tmpx__umodsys__umodsys_lib_common)
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
-	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
--include $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utfcase.o.d
 # file tl : ../../src/common/umodsys.tl.throws.cpp
 objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.throws.o
 $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.throws.o: ../../src/common/umodsys.tl.throws.cpp | $(tmpx__umodsys__umodsys_lib_common)
 	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
 	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
 -include $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.throws.o.d
+# file tl : ../../src/common/umodsys.tl.utf16.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf16.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf16.o: ../../src/common/umodsys.tl.utf16.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf16.o.d
+# file tl : ../../src/common/umodsys.tl.utf8.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf8.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf8.o: ../../src/common/umodsys.tl.utf8.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utf8.o.d
+# file tl : ../../src/common/umodsys.tl.utfcase.cpp
+objs__umodsys__umodsys_lib_common += $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utfcase.o
+$(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utfcase.o: ../../src/common/umodsys.tl.utfcase.cpp | $(tmpx__umodsys__umodsys_lib_common)
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@ $<
+	@$(CXX) $(CXXFLAGS__umodsys__umodsys_lib_common) -c -o$@.d -MM -MT$@ $<
+-include $(tmpx__umodsys__umodsys_lib_common)/umodsys.tl.utfcase.o.d
 # end file group tl .
 # end file group src .
 # library at ../../tmp/Linux_x86_64.Release/umodsys_lib_common.Linux_x86_64.Release.a
@@ -9025,46 +9024,12 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_kernel) $(target_
 #**************************************************************** END projectgroup 'umodsys'
 ################################################################# XMAP makefile
 # 1
-../../tmp/Linux_x86_64.Release/lib_zlib: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/umodsysca: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_freetype: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 26
-.PHONY: tg-umodsys cg-umodsys
 
 
 # 1
 ../../tmp/Linux_x86_64.Release/plugin_test1: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_S_zlib: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 44
-../../tmp/Linux_x86_64.Release:
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_lib2d_stdlib: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_jpeglib: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_S_jpeglib: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
@@ -9074,7 +9039,7 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_kernel) $(target_
 
 
 # 1
-../../tmp/Linux_x86_64.Release/plugin_libMedia_serializeYaml: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/lib_sqlite3: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
@@ -9084,126 +9049,16 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_kernel) $(target_
 
 
 # 1
-../../tmp/Linux_x86_64.Release/lib_S_SDL2: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/umodsys_lib_core: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
-# 1
-../../tmp/Linux_x86_64.Release/lib_S_libpng: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_libMedia_serializeJson: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_lib3d_stdlib: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_lua: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_yaml: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_kernel: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_test3: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_lib2d: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_test5: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsysct: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_luajit: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_libMedia_imagesstd: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_libMedia_stdlib: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
+# 26
+.PHONY: tg-umodsys cg-umodsys
 
 
 # 1
 ../../tmp/Linux_x86_64.Release/plugin_libMedia_zlib: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_common: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_libUI_frames: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_lib3d: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_angelscript: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_sqlite3: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 18
-.PHONY: tg-umodsys_Depends cg-umodsys_Depends
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_libpng: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_SDL2: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_libUI_SDLcore: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsysc: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
@@ -9213,32 +9068,12 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_kernel) $(target_
 
 
 # 1
-../../tmp/Linux_x86_64.Release/lib_squirrel: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/umodsys_lib_kernel: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
 # 1
-../../tmp/Linux_x86_64.Release/lib_S_freetype: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/plugin_libMedia_stdio: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/lib_tinyc: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsys_lib_core: | ../../tmp/Linux_x86_64.Release
-	mkdir -p $@
-
-
-# 1
-../../tmp/Linux_x86_64.Release/umodsysca: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/umodsys_lib_common: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
@@ -9248,7 +9083,96 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_kernel) $(target_
 
 
 # 1
-../../tmp/Linux_x86_64.Release/plugin_libUI_SDLGL: | ../../tmp/Linux_x86_64.Release
+../../tmp/Linux_x86_64.Release/lib_tinyc: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 44
+../../bin/Linux_x86_64.Release:
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_S_freetype: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_S_libpng: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 44
+../../tmp/Linux_x86_64.Release:
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_squirrel: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_lib3d: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libMedia_stdlib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libMedia_serializeYaml: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_zlib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_freetype: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 18
+.PHONY: tg-umodsys_Depends cg-umodsys_Depends
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_luajit: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libUI_frames: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_test5: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_S_jpeglib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libMedia_serializeJson: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_lua: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libUI_SDLcore: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 
@@ -9257,8 +9181,83 @@ $(target__umodsys__umodsysct):  $(target__umodsys__umodsys_lib_kernel) $(target_
 	mkdir -p $@
 
 
-# 44
-../../bin/Linux_x86_64.Release:
+# 1
+../../tmp/Linux_x86_64.Release/lib_S_zlib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_test3: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsysc: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_lib3d_stdlib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsys_lib_lib2d: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/umodsysct: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_yaml: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_angelscript: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libMedia_imagesstd: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libUI_SDLGL: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_SDL2: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_S_SDL2: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_libpng: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_libMedia_stdio: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/lib_jpeglib: | ../../tmp/Linux_x86_64.Release
+	mkdir -p $@
+
+
+# 1
+../../tmp/Linux_x86_64.Release/plugin_lib2d_stdlib: | ../../tmp/Linux_x86_64.Release
 	mkdir -p $@
 
 

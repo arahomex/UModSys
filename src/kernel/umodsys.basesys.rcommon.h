@@ -6,8 +6,8 @@
 /*************************************************************/
 
 #include <umodsys/stdbase.h>
-#include <umodsys/core/syshlp.h>
-#include <umodsys/core/stdstrings.h>
+#include <umodsys/common/syshlp.h>
+#include <umodsys/common/stdstrings.h>
 
 #include <umodsys/tl/container/dynarray.h>
 #include <umodsys/tl/container/scatter_array.h>

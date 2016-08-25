@@ -1,10 +1,10 @@
 #ifndef __NANOUTL_TYPES_WRAP_INDEX_H
 #define __NANOUTL_TYPES_WRAP_INDEX_H 1
 //*****************************************************
-// ums/core/types/wrap_index.h: simple wrappers for defined types
+// ums/common/types/wrap_index.h: simple wrappers for defined types
 //*****************************************************
 
-#include <nanoutl/core/typedefs.h>
+#include <nanoutl/common/typedefs.h>
 
 namespace NanoUTL {
 namespace types {

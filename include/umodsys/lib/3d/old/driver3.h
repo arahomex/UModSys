@@ -4,7 +4,7 @@
 // lib3d/render.h: common 3d library interfaces, driver
 //*****************************************************
 
-#include <ums/core/objects/console_help.h>
+#include <ums/common/objects/console_help.h>
 
 #include <ums/lib2d/lib2d.h>
 #include <ums/lib2d/driver2.h>

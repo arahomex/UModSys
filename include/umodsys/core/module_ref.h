@@ -5,7 +5,7 @@
 // info: base module object
 /*************************************************************/
 
-#include <umodsys/stdcore.h>
+#include <umodsys/stdcommon.h>
 
 namespace UModSys {
 namespace modules {

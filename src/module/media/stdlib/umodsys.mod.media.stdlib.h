@@ -10,7 +10,7 @@
 #include <umodsys/lib/media/libmedia.library.h>
 #include <umodsys/lib/media/libmedia.archive.h>
 #include <umodsys/lib/media/libmedia.utils.h>
-#include <umodsys/core/syshlp.h>
+#include <umodsys/common/syshlp.h>
 
 #include <umodsys/tl/container/dynarray.h>
 #include <umodsys/tl/container/scatter_array.h>

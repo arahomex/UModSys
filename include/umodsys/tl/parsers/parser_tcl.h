@@ -5,7 +5,7 @@
 // info: Parser of TCL-like languages
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
+#include <umodsys/common/stdtypedefs.h>
 
 namespace UModSys {
 namespace tl {

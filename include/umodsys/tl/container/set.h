@@ -5,7 +5,7 @@
 // info: fixed unique array of elements (set)
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
+#include <umodsys/common/stdtypedefs.h>
 
 #include <umodsys/tl/metastl/throws.h>
 #include <umodsys/tl/metastl/reverse_iterator.h>

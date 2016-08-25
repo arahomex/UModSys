@@ -1,14 +1,14 @@
 #ifndef __UMODSYS_CORE_PROP_ADAPTER_H
 #define __UMODSYS_CORE_PROP_ADAPTER_H 1
 /*************************************************************/
-// file: umodsys/core/param/prop_adapter.h
+// file: umodsys/common/param/prop_adapter.h
 // info: set/get data via specialized interface
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
-#include <umodsys/core/stdstrings.h>
-#include <umodsys/core/objects.h>
-#include <umodsys/core/mem/mem_fixed.h>
+#include <umodsys/common/stdtypedefs.h>
+#include <umodsys/common/stdstrings.h>
+#include <umodsys/common/objects.h>
+#include <umodsys/common/mem/mem_fixed.h>
 
 namespace UModSys {
 namespace core {

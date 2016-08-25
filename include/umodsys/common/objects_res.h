@@ -1,11 +1,11 @@
 #ifndef __UMODSYS_CORE_OBJECTS_RESOURCE_H
 #define __UMODSYS_CORE_OBJECTS_RESOURCE_H 1
 /*************************************************************/
-// file: umodsys/core/objects_res.h
+// file: umodsys/common/objects_res.h
 // info: resource objects
 /*************************************************************/
 
-#include <umodsys/core/objects.h>
+#include <umodsys/common/objects.h>
 
 namespace UModSys {
 namespace core {

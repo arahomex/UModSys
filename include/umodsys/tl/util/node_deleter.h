@@ -5,7 +5,7 @@
 // info: fixed array of elements
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
+#include <umodsys/common/stdtypedefs.h>
 
 namespace UModSys {
 namespace tl {

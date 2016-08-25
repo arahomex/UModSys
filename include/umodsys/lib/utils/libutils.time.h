@@ -5,8 +5,8 @@
 // info: time measure
 /*************************************************************/
 
-#include <umodsys/stdcore.h>
-#include <umodsys/core/syshlp.h>
+#include <umodsys/stdcommon.h>
+#include <umodsys/common/syshlp.h>
 
 namespace UModSys {
 namespace libutils {

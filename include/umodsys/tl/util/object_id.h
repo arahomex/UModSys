@@ -5,8 +5,8 @@
 // info: x-map of object UniPtr
 /*************************************************************/
 
-#include <umodsys/core/source.h>
-#include <umodsys/core/uniqueptr.h>
+#include <umodsys/common/source.h>
+#include <umodsys/common/uniqueptr.h>
 
 namespace UModSys {
 namespace tl {

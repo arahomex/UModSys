@@ -5,7 +5,7 @@
 // info: base types & forwareds
 /*************************************************************/
 
-#include <umodsys/stdcore.h>
+#include <umodsys/stdcommon.h>
 #include <umodsys/tl/util/static_holder.h>
 
 

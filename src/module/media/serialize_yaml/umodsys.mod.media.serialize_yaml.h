@@ -10,7 +10,7 @@
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.serialize.h>
 
-#include <umodsys/core/syshlp.h>
+#include <umodsys/common/syshlp.h>
 
 #include <yaml.h>
 

@@ -1,11 +1,11 @@
 #ifndef __UMODSYS_CORE_COMMONEXCEPTIONS_H
 #define __UMODSYS_CORE_COMMONEXCEPTIONS_H 1
 /*************************************************************/
-// file: umodsys/core/common_exceptions.h
+// file: umodsys/common/common_exceptions.h
 // info: common exceptions
 /*************************************************************/
 
-#include <umodsys/core/source.h>
+#include <umodsys/common/source.h>
 
 namespace UModSys {
 namespace core {

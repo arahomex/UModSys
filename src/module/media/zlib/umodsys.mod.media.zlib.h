@@ -9,9 +9,9 @@
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.utils.h>
 #include <umodsys/lib/media/libmedia.archive.h>
-#include <umodsys/core/syshlp.h>
+#include <umodsys/common/syshlp.h>
 
-#include <umodsys/core/arch_cvt.h>
+#include <umodsys/common/arch_cvt.h>
 
 #include <zlib.h>
 

@@ -1,12 +1,12 @@
 #ifndef __UMODSYS_CORE_ARCH_H
 #define __UMODSYS_CORE_ARCH_H 1
 //*****************************************************
-// umodsys/core/arch.h: defined arhitect-related types
+// umodsys/common/arch.h: defined arhitect-related types
 //*****************************************************
 
-#include <umodsys/core/stddefs.h>
-#include <umodsys/core/stdtypedefs.h>
-#include <umodsys/core/stdinlines.h>
+#include <umodsys/common/stddefs.h>
+#include <umodsys/common/stdtypedefs.h>
+#include <umodsys/common/stdinlines.h>
 
 namespace UModSys {
 namespace core {

@@ -1,12 +1,11 @@
 #ifndef __UMODSYS_CORE_STDTYPEDEFS_H
 #define __UMODSYS_CORE_STDTYPEDEFS_H 1
 /*************************************************************/
-// file: umodsys/core/stdtypedefs.h
+// file: umodsys/common/stdtypedefs.h
 // info: define core types
 /*************************************************************/
 
-#include <umodsys/core/stddefs.h>
-//#include <umodsys/core/mem/gc_base.h>
+#include <umodsys/common/stddefs.h>
 
 namespace UModSys {
 

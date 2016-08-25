@@ -1,11 +1,11 @@
 #ifndef __UMODSYS_CORE_PLATFORM_LINUX_SYSHLP_H
 #define __UMODSYS_CORE_PLATFORM_LINUX_SYSHLP_H 1
 /*************************************************************/
-// file: umodsys/core/platform/linux/syshlp.h
+// file: umodsys/common/platform/linux/syshlp.h
 // info: sys helper for linuc platform
 /*************************************************************/
 
-#include <umodsys/core/syshlp.h>
+#include <umodsys/common/syshlp.h>
 
 /*******************************************************************************/
 

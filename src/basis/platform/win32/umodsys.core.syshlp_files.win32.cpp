@@ -1,12 +1,12 @@
-#include <umodsys/core/syshlp.h>
+#include <umodsys/common/syshlp.h>
 
 #include <io.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <fcntl.h>
 
-#include <umodsys/core/platform/win32/syshlp_win32.h>
-#include <umodsys/core/stdstrings.h>
+#include <umodsys/common/platform/win32/syshlp_win32.h>
+#include <umodsys/common/stdstrings.h>
 
 using namespace UModSys;
 using namespace UModSys::core;

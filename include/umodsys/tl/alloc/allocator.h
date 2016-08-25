@@ -5,9 +5,9 @@
 // info: simple allocator
 /*************************************************************/
 
-#include <umodsys/stdcore.h>
-#include <umodsys/core/source.h>
-#include <umodsys/core/mem/mem_alloc.h>
+#include <umodsys/stdcommon.h>
+#include <umodsys/common/source.h>
+#include <umodsys/common/mem/mem_alloc.h>
 
 namespace UModSys {
 namespace tl {

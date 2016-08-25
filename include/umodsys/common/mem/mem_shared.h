@@ -1,13 +1,13 @@
 #ifndef __UMODSYS_CORE_MEM_SHARED_H
 #define __UMODSYS_CORE_MEM_SHARED_H 1
 /*************************************************************/
-// file: umodsys/core/mem/mem_fixed.h
+// file: umodsys/common/mem/mem_fixed.h
 // info: shared chunk memory functions
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
-#include <umodsys/core/mem/mem_fixed.h>
-#include <umodsys/core/mem/mem_alloc.h>
+#include <umodsys/common/stdtypedefs.h>
+#include <umodsys/common/mem/mem_fixed.h>
+#include <umodsys/common/mem/mem_alloc.h>
 
 namespace UModSys {
 namespace core {

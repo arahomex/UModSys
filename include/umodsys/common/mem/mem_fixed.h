@@ -1,12 +1,12 @@
 #ifndef __UMODSYS_CORE_MEM_FIXED_H
 #define __UMODSYS_CORE_MEM_FIXED_H 1
 /*************************************************************/
-// file: umodsys/core/mem/mem_fixed.h
+// file: umodsys/common/mem/mem_fixed.h
 // info: fixed chunk memory functions
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
-#include <umodsys/core/arch.h>
+#include <umodsys/common/stdtypedefs.h>
+#include <umodsys/common/arch.h>
 
 namespace UModSys {
 namespace core {

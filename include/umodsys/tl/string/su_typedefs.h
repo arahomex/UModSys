@@ -5,8 +5,8 @@
 // info: string utilities and strings typedefs
 /*************************************************************/
 
-#include <umodsys/core/arch.h>
-#include <umodsys/core/mem/mem_alloc.h>
+#include <umodsys/common/arch.h>
+#include <umodsys/common/mem/mem_alloc.h>
 
 namespace UModSys {
 namespace tl {

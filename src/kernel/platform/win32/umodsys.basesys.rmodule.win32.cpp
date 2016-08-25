@@ -1,4 +1,4 @@
-#include <umodsys/core/platform/win32/syshlp_win32.h>
+#include <umodsys/common/platform/win32/syshlp_win32.h>
 
 #include "../../umodsys.basesys.rsystem.h"
 #include "../../umodsys.basesys.rmodule.h"

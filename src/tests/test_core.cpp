@@ -1,2 +1,2 @@
-#include <umodsys/core/stdcore.h>
+#include <umodsys/common/stdcore.h>
 

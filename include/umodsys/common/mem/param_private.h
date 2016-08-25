@@ -1,14 +1,14 @@
 #ifndef __UMODSYS_CORE_PARAM_PRIVATE_H
 #define __UMODSYS_CORE_PARAM_PRIVATE_H 1
 /*************************************************************/
-// file: umodsys/core/param/param_private.h
+// file: umodsys/common/param/param_private.h
 // info: universal memory parameters, private
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
-#include <umodsys/core/stdstrings.h>
-#include <umodsys/core/objects.h>
-#include <umodsys/core/mem/mem_fixed.h>
+#include <umodsys/common/stdtypedefs.h>
+#include <umodsys/common/stdstrings.h>
+#include <umodsys/common/objects.h>
+#include <umodsys/common/mem/mem_fixed.h>
 
 namespace UModSys {
 namespace core {

@@ -5,7 +5,7 @@
 // info: media common structures
 /*************************************************************/
 
-#include <umodsys/stdcore.h>
+#include <umodsys/stdcommon.h>
 #include <umodsys/tl/container/isockets.h>
 #include <umodsys/tl/util/flags4state.h>
 

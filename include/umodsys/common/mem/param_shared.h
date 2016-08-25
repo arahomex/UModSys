@@ -1,7 +1,7 @@
 #ifndef __UMS_CORE_MEDIA_PARAMETERS_TYPE2_H
 #define __UMS_CORE_MEDIA_PARAMETERS_TYPE2_H 1
 //*****************************************************
-// ums/core/media/parameter_shared.h: universal memory parameter
+// ums/common/media/parameter_shared.h: universal memory parameter
 //*****************************************************
 
 namespace UMS {

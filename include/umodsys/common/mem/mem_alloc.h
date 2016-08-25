@@ -1,11 +1,11 @@
 #ifndef __UMODSYS_CORE_MEM_ALLOCATOR_H
 #define __UMODSYS_CORE_MEM_ALLOCATOR_H 1
 /*************************************************************/
-// file: umodsys/core/mem/mem_alloc.h
+// file: umodsys/common/mem/mem_alloc.h
 // info: allocator bases
 /*************************************************************/
 
-#include <umodsys/core/source.h>
+#include <umodsys/common/source.h>
 
 namespace UModSys {
 namespace core {

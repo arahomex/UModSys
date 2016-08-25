@@ -5,7 +5,7 @@
 // info: flags with 4 states
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
+#include <umodsys/common/stdtypedefs.h>
 
 namespace UModSys {
 namespace tl {

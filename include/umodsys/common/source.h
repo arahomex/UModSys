@@ -1,11 +1,11 @@
 #ifndef __UMODSYS_CORE_SOURCE_H
 #define __UMODSYS_CORE_SOURCE_H 1
 /*************************************************************/
-// file: umodsys/core/source.h
+// file: umodsys/common/source.h
 // info: source information structures
 /*************************************************************/
 
-#include <umodsys/core/stddefs.h>
+#include <umodsys/common/stddefs.h>
 
 namespace UModSys {
 namespace core {

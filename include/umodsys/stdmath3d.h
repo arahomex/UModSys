@@ -5,7 +5,7 @@
 // info: math3d instantiation
 /*************************************************************/
 
-#include <umodsys/stdcore.h>
+#include <umodsys/stdcommon.h>
 #include <umodsys/tl/math/math_3d.h>
 #include <umodsys/tl/util/type_constructor.h>
 #include <umodsys/tl/util/object_id.h>

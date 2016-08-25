@@ -8,7 +8,7 @@
 #include <umodsys/stdbase.h>
 #include <umodsys/tl/container/scatter_array.h>
 #include <umodsys/tl/container/dynarray.h>
-//#include <umodsys/core/syshlp.h>
+//#include <umodsys/common/syshlp.h>
 
 #include <umodsys/lib/ui/libui.common.h>
 #include <umodsys/lib/ui/libui.frames.h>

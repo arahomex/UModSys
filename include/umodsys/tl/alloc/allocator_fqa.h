@@ -4,9 +4,9 @@
 // nanoutl/types/allocator_malloc.h: simple allocator
 /*************************************************************/
 
-#include <nanoutl/core/std.h>
-#include <nanoutl/core/source.h>
-#include <nanoutl/core/arch.h>
+#include <nanoutl/common/std.h>
+#include <nanoutl/common/source.h>
+#include <nanoutl/common/arch.h>
 
 #include <nanoutl/types/list2.h>
 #include <nanoutl/types/scatter_array.h>

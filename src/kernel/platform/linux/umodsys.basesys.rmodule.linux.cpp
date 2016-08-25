@@ -1,4 +1,4 @@
-#include <umodsys/core/platform/linux/syshlp_linux.h>
+#include <umodsys/common/platform/linux/syshlp_linux.h>
 
 #include "../../umodsys.basesys.rsystem.h"
 #include "../../umodsys.basesys.rmodule.h"

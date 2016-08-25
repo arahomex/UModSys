@@ -5,7 +5,7 @@
 // info: Tree red-black
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
+#include <umodsys/common/stdtypedefs.h>
 
 #include <umodsys/tl/util/node_deleter.h>
 #include <umodsys/tl/alloc/allocator.h>

@@ -4,7 +4,7 @@
 // nanoutl/types/tuple.h: unnamed list of different values
 /*************************************************************/
 
-#include <nanoutl/core/std.h>
+#include <nanoutl/common/std.h>
 #include <nanoutl/types/fast.h>
 
 namespace NanoUTL {

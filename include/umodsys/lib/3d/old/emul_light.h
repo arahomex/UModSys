@@ -6,7 +6,7 @@
 
 #include <ums/lib3d/objects.h>
 #include <ums/lib3d/light.h>
-#include <ums/core/types/array.h>
+#include <ums/common/types/array.h>
 
 namespace UMS {
 namespace lib3d {

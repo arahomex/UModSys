@@ -4,8 +4,8 @@
 // lib3d/physics.h: common 3d library interfaces, general physics
 //*****************************************************
 
-#include <ums/core/common.h>
-#include <ums/core/types/math3d.h>
+#include <ums/common/common.h>
+#include <ums/common/types/math3d.h>
 
 #include <ums/lib3d/lib3d.h>
 //#include <ums/lib3d/scene.h>

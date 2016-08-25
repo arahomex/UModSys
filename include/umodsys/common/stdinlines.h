@@ -1,12 +1,12 @@
 #ifndef __UMODSYS_CORE_STDINLINES_H
 #define __UMODSYS_CORE_STDINLINES_H 1
 /*************************************************************/
-// file: umodsys/core/stdinlines.h
+// file: umodsys/common/stdinlines.h
 // info: core inlines
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
-#include <umodsys/core/source.h>
+#include <umodsys/common/stdtypedefs.h>
+#include <umodsys/common/source.h>
 
 namespace UModSys {
 namespace core {

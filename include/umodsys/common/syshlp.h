@@ -1,12 +1,12 @@
 #ifndef __UMODSYS_CORE_SYSHLP_H
 #define __UMODSYS_CORE_SYSHLP_H 1
 /*************************************************************/
-// file: umodsys/core/syshlp.h
+// file: umodsys/common/syshlp.h
 // info: sys helper for all platform
 /*************************************************************/
 
-#include <umodsys/core/stddefs.h>
-#include <umodsys/core/mem/mem_alloc.h>
+#include <umodsys/common/stddefs.h>
+#include <umodsys/common/mem/mem_alloc.h>
 
 namespace UModSys {
 namespace core {

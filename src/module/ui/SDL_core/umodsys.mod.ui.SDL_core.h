@@ -7,7 +7,7 @@
 
 #include <umodsys/stdbase.h>
 #include <umodsys/tl/container/scatter_array.h>
-//#include <umodsys/core/syshlp.h>
+//#include <umodsys/common/syshlp.h>
 
 #include <umodsys/lib/ui/libui.common.h>
 #include <umodsys/lib/2d/lib2d.driver.h>

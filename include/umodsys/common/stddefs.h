@@ -1,7 +1,7 @@
 #ifndef __UMODSYS_CORE_STDDEFS_H
 #define __UMODSYS_CORE_STDDEFS_H 1
 /*************************************************************/
-// file: umodsys/core/stddefs.h
+// file: umodsys/common/stddefs.h
 // info: include all shared required h files
 //       also define basic compiler and os defines
 /*************************************************************/

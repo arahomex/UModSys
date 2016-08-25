@@ -5,7 +5,7 @@
 // info: dynamic array of elements
 /*************************************************************/
 
-#include <umodsys/core/stdtypedefs.h>
+#include <umodsys/common/stdtypedefs.h>
 
 #include <umodsys/tl/util/type_constructor.h>
 #include <umodsys/tl/alloc/allocator.h>

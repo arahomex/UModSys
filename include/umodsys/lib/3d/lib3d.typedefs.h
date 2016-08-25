@@ -8,7 +8,7 @@
 #include <umodsys/lib/2d/lib2d.typedefs.h>
 #include <umodsys/tl/math/math_3df.h>
 #include <umodsys/tl/container/isockets.h>
-#include <umodsys/core/objects_res.h>
+#include <umodsys/common/objects_res.h>
 
 namespace UModSys {
 namespace lib3d {

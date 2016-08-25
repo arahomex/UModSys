@@ -1,7 +1,7 @@
 #ifndef __UMODSYS_CORE_STDSTRINGS_H
 #define __UMODSYS_CORE_STDSTRINGS_H 1
 /*************************************************************/
-// file: umodsys/core/stdstrings.h
+// file: umodsys/common/stdstrings.h
 // info: std string typedefs
 /*************************************************************/
 
