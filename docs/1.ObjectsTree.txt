@@ -1,0 +1,15 @@
+
+
++- IRoot                        -- root object
+   +- IPersistent               -- object active whole main
+   +- ITemporary                -- object active only for one call
+   +- IRefObject                -- reference-counted object
+   |  +- media::ILibrary        -- media library
+   |  +- media::IArchive
+   |  +- media::IFilter
+   |  +- media::ICodec
+   +- IGCObject                 -- garbage collected object
+      +- lib3d::ISceneNode
+      +- libui::IFrame
+
+

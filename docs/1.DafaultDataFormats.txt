@@ -1,0 +1,5 @@
+
+1. Text format for machine data is JSON
+2. Text format for user-data is: JSON, YAML, HOCON
+3. Binary fromat for machine data is MessagePack
+
