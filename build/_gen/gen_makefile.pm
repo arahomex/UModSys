@@ -48,6 +48,7 @@ EOT
     'project-cg-name' => 'cg-${PROJECTGROUP_NAME}',
     'project-tt-name' => 'target',
     'project-cc-name' => 'clean',
+    'project-ls-name' => 'ls',
     'project-id-name' => '${PROJECTGROUP_NAME}__${PROJECT_NAME}',
     #
     'project-include1' => ' -I${INCLUDE1}',
@@ -87,11 +88,17 @@ EOT
 EOT
     'makefile-begin' => <<'EOT',
 ################################################################# BEGIN makefile
-.PHONY: all target clean
+.PHONY: all target clean ls
 all: target
 EOT
     'makefile-xmap' => <<'EOT',
 ################################################################# XMAP makefile
+EOT
+    'makefile-ls-item' => <<'EOT',
+	\@echo "$TARGET_TNAME" "$TARGET_CNAME"
+EOT
+    'makefile-ls-begin' => <<'EOT',
+ls:
 EOT
     'makefile-end' => <<'EOT',
 ################################################################# END makefile

@@ -9,7 +9,7 @@ use File::Basename;
 use Carp;
 
 
-our $VERSION = '0.48';
+our $VERSION = '0.49';
 
 our $verbosity = 0;
 our $script_path;

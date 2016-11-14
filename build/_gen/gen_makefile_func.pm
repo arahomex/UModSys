@@ -9,10 +9,11 @@ our $verbosity;
 our $script_path;
 our ($fout, $pg, $proj, $xmap);
 our ($FILE_PATH, $FNAME, $FPATH, $FEXT);
-our ($TARGET_TNAME, $TARGET_CNAME, $TARGET_CONF_TNAME, $TARGET_CONF_CNAME);
+our ($TARGET_TNAME, $TARGET_CNAME, $TARGET_LSNAME, $TARGET_CONF_TNAME, $TARGET_CONF_CNAME);
 our ($PROJECT_NAME, $PROJECT_CONTENTS, $PROJECT_TNAME, $PROJECT_CNAME, $PROJECT_TPNAME, $PROJECT_CPNAME);
 our ($PROJECT_ID);
 our ($MODE, @PROJECT_INCLUDES, @PROJECT_DEFINES, @PROJECT_DEPENDS, @PROJECT_LIBS, @PROJECT_LIBPATH);
+our (%TARGET_LS_NAMES);
 our ($OPT_CFLAGS, $OPT_LDFLAGS, $OPT_CXXFLAGS);
 our ($OPT_lib_NAME, $OPT_solib_NAME, $OPT_plugin_NAME, $OPT_console_NAME);
 our ($OPT_lib_OUT, $OPT_solib_OUT, $OPT_plugin_OUT, $OPT_console_OUT);
@@ -485,12 +486,16 @@ sub makefile_project_generate($$$)
   ($N, $C,$P) = ($PROJECT_NAME, $CONF_NAME, $PLATFORM_NAME);
   local $TARGET_TNAME = eval('"'.$template->{'project-tt-name'}.'"');
   local $TARGET_CNAME = eval('"'.$template->{'project-cc-name'}.'"');
+  local $TARGET_LSNAME = eval('"'.$template->{'project-ls-name'}.'"');
   local $PROJECTGROUP_TNAME = eval('"'.$template->{'project-tg-name'}.'"');
   local $PROJECTGROUP_CNAME = eval('"'.$template->{'project-cg-name'}.'"');
   local $PROJECT_TNAME = eval('"'.$template->{'project-tp-name'}.'"');
   local $PROJECT_CNAME = eval('"'.$template->{'project-cp-name'}.'"');
   local $PROJECT_TPNAME = eval('"'.$template->{'project-tpp-name'}.'"');
   local $PROJECT_CPNAME = eval('"'.$template->{'project-cpp-name'}.'"');
+  #
+  $TARGET_LS_NAMES{$TARGET_TNAME} = [$TARGET_TNAME, $TARGET_CNAME];
+  $TARGET_LS_NAMES{$PROJECT_TNAME} = [$PROJECT_TNAME, $PROJECT_CNAME];
   #
   my $opt_var_all = '';
   my ($popts, $pgopts) = ($proj->{'a-opts'}, $pg->{'a-project-opts'});
@@ -739,6 +744,8 @@ sub makefile_gen_generate($$)
   for my $PLATFORM_NAME (keys %{$this->{'pc-targets'}->{'platforms'}}) {
     for my $CONF_NAME (keys %{$this->{'pc-targets'}->{'configs'}}) {
       my ($id, $filename, $F) = ("$PLATFORM_NAME.$CONF_NAME", "Makefile.$PLATFORM_NAME.$CONF_NAME");
+      #
+      local %TARGET_LS_NAMES = ();
       make_filename_dir($filename);
       open $F,'>',$filename or die "File '$filename' create error.";
       my $tvalue = $template->{'makefile-begin'};
@@ -779,6 +786,12 @@ sub makefile_gen_generate($$)
       for my $xk (keys %$xmap) {
         print $fout "# ".$xmap->{$xk}."\n";
         print $fout "$xk\n";
+      }
+      #
+      eprint $F, eval("<<EOT\n".$template->{'makefile-ls-begin'}."EOT");
+      for my $kk (sort keys %TARGET_LS_NAMES) {
+        local ($TARGET_TNAME, $TARGET_CNAME) = @{$TARGET_LS_NAMES{$kk}};
+        eprint $F, eval("<<EOT\n".$template->{'makefile-ls-item'}."EOT");
       }
       #
       eprint $F, eval("<<EOT\n".$template->{'makefile-end'}."EOT");
