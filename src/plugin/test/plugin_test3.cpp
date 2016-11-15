@@ -43,7 +43,7 @@ struct RTest3_Shell : public IShell {
 static tl::TTypeStaticHolder<RTest3_Shell> shell;
 */
 struct RTest3_ModuleReg : public IModuleReg {
-  UMODSYS_BASE_MODREG_DEF(RTest3_ModuleReg)
+  UMODSYS_CORE_MODREG_DEF(RTest3_ModuleReg)
   //
   RTest3_ModuleReg(void) 
   : UMODSYS_MODULEREG(

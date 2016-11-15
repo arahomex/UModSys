@@ -10,7 +10,7 @@ UMODSYS_MODULE_BODY0()
 #include "umodsys.mod.2d.stdlib.Tmultiimage.h"
 
 struct RModuleReg : public IModuleReg {
-  UMODSYS_BASE_MODREG_DEF(RModuleReg)
+  UMODSYS_CORE_MODREG_DEF(RModuleReg)
   //
   RModuleReg(void) 
   : UMODSYS_MODULEREG(
@@ -24,6 +24,6 @@ struct RModuleReg : public IModuleReg {
 };
 
 UMODSYS_BASE_MODREG_BODY(RModuleReg)
-UMODSYS_BASE_GENERATOR_BODY(RGenerator, RModuleReg)
+UMODSYS_CORE_GENERATOR_BODY(RGenerator, RModuleReg)
 
 UMODSYS_MODULE_END()

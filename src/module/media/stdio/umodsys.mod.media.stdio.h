@@ -60,7 +60,7 @@ struct RGenerator : public IGenerator {
     ;
   }
   //
-  UMODSYS_BASE_GENERATOR_IMPLEMENT(U_MOD::RGenerator, 1, IGenerator)
+  UMODSYS_CORE_GENERATOR_IMPLEMENT(U_MOD::RGenerator, 1, IGenerator)
 };
 
 //***************************************

@@ -1,28 +1,7 @@
-#ifndef __UMODSYS_COMMON_OBJECTS_DEF_H
-#define __UMODSYS_COMMON_OBJECTS_DEF_H 1
-/*************************************************************/
-// file: umodsys/common/base/obj_def.h
-// info: objects and interface bases defines
-/*************************************************************/
-
-#include <umodsys/common/stdtypedefs.h>
-#include <umodsys/common/base/source.h>
-
-#include <umodsys/tl/util/ref_pointer.h>
-#include <umodsys/tl/util/object_id.h>
-
-namespace UModSys {
-namespace core {
 
 //***************************************
 // DEFINES
 //***************************************
-
-//*************************************** ANY ROOT
-//***************************************
-
-//#define UMODSYS_ROOT_LUP(_type) \
-//  SUniquePointer _type::s_interface_type("typeinfo", #_type)
 
 #define UMODSYS_ROOT_INTIMPLEMENT_XNAME(_type, _verno, _interface) \
   protected: \
@@ -166,8 +145,3 @@ namespace core {
 //***************************************
 // END
 //***************************************
-
-} // namespace core
-} // namespace UModSys
-
-#endif // __UMODSYS_COMMON_OBJECTS_H

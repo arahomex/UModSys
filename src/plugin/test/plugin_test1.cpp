@@ -323,11 +323,11 @@ struct RGenerator : public IGenerator {
     return false;
   }
   //
-  UMODSYS_BASE_GENERATOR_IMPLEMENT(U_MOD::RGenerator, 1, IGenerator)
+  UMODSYS_CORE_GENERATOR_IMPLEMENT(U_MOD::RGenerator, 1, IGenerator)
 };
 
 struct RModuleReg : public IModuleReg {
-  UMODSYS_BASE_MODREG_DEF(RModuleReg)
+  UMODSYS_CORE_MODREG_DEF(RModuleReg)
   //
   RModuleReg(void) 
   : UMODSYS_MODULEREG(
@@ -354,7 +354,7 @@ struct RModuleReg : public IModuleReg {
 };
 
 UMODSYS_BASE_MODREG_BODY(RModuleReg)
-UMODSYS_BASE_GENERATOR_BODY(RGenerator, RModuleReg)
+UMODSYS_CORE_GENERATOR_BODY(RGenerator, RModuleReg)
 
 UMODSYS_MODULE_END()
 
