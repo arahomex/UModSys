@@ -1,14 +1,14 @@
-#ifndef __UMODSYS_BASE_SYSTEM_H
-#define __UMODSYS_BASE_SYSTEM_H 1
+#ifndef __UMODSYS_CORE_SYSTEM_H
+#define __UMODSYS_CORE_SYSTEM_H 1
 /*************************************************************/
-// file: umodsys/base/system.h
+// file: umodsys/core/system.h
 // info: base system object
 /*************************************************************/
 
-#include <umodsys/base/basetypes.h>
+#include <umodsys/core/basetypes.h>
 
-#include <umodsys/base/console.h>
-//#include <umodsys/base/module.h>
+#include <umodsys/core/console.h>
+//#include <umodsys/core/module.h>
 
 namespace UModSys {
 namespace base {
@@ -161,4 +161,4 @@ inline core::SIMemAlloc::SIMemAlloc(void)
 
 } // namespace UModSys
 
-#endif // __UMODSYS_BASE_SYSTEM_H
+#endif // __UMODSYS_CORE_SYSTEM_H

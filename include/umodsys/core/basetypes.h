@@ -1,7 +1,7 @@
-#ifndef __UMODSYS_BASE_TYPES_H
-#define __UMODSYS_BASE_TYPES_H 1
+#ifndef __UMODSYS_CORE_TYPES_H
+#define __UMODSYS_CORE_TYPES_H 1
 /*************************************************************/
-// file: umodsys/base/basetypes.h
+// file: umodsys/core/basetypes.h
 // info: base types & forwareds
 /*************************************************************/
 
@@ -88,4 +88,4 @@ extern base::SModuleContext M;
 
 } // namespace UModSys
 
-#endif // __UMODSYS_BASE_TYPES_H
+#endif // __UMODSYS_CORE_TYPES_H

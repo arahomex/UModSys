@@ -1,4 +1,4 @@
-#include <umodsys/base/console.h>
+#include <umodsys/core/console.h>
 
 using namespace UModSys;
 using namespace UModSys::core;

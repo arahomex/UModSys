@@ -1,11 +1,11 @@
-#ifndef __UMODSYS_BASE_CONSOLE_H
-#define __UMODSYS_BASE_CONSOLE_H 1
+#ifndef __UMODSYS_CORE_CONSOLE_H
+#define __UMODSYS_CORE_CONSOLE_H 1
 /*************************************************************/
-// file: umodsys/base/console.h
+// file: umodsys/core/console.h
 // info: base console object
 /*************************************************************/
 
-#include <umodsys/base/basetypes.h>
+#include <umodsys/core/basetypes.h>
 
 namespace UModSys {
 namespace base {
@@ -68,4 +68,4 @@ public:
 } // namespace base
 } // namespace UModSys
 
-#endif // __UMODSYS_BASE_CONSOLE_H
+#endif // __UMODSYS_CORE_CONSOLE_H

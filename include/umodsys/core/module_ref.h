@@ -1,7 +1,7 @@
-#ifndef __UMODSYS_BASE_MODULEREF_H
-#define __UMODSYS_BASE_MODULEREF_H 1
+#ifndef __UMODSYS_CORE_MODULEREF_H
+#define __UMODSYS_CORE_MODULEREF_H 1
 /*************************************************************/
-// file: umodsys/base/module.h
+// file: umodsys/core/module.h
 // info: base module object
 /*************************************************************/
 
@@ -45,4 +45,4 @@ namespace modules {
 #define UMODSYS_MODULE_USE(_modulegroup, _modulename) \
   ::UModSys::core::lost(&::UMODSYS_MODULE_NAME(_modulegroup, _modulename)::fmodule)
 
-#endif // __UMODSYS_BASE_MODULEREF_H
+#endif // __UMODSYS_CORE_MODULEREF_H

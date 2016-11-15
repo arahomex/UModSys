@@ -5,7 +5,8 @@
 // info: common constants and variables
 /*************************************************************/
 
-#include <umodsys/stdbase.h>
+#include <umodsys/stdcore.h>
+
 #include <umodsys/common/stdsyshlp.h>
 #include <umodsys/common/stdstrings.h>
 

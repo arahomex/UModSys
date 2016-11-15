@@ -7,7 +7,8 @@
 
 #include "umodsys.basesys.rcommon.h"
 
-#include <umodsys/core/common_exceptions.h>
+#include <umodsys/common/base/err_common.h>
+
 #include <umodsys/tl/container/list2.h>
 
 namespace UModSys {

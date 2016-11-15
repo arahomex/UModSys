@@ -1,19 +1,19 @@
-#ifndef __UMODSYS_BASE_STDBASE_H
-#define __UMODSYS_BASE_STDBASE_H 1
+#ifndef __UMODSYS_CORE_STDBASE_H
+#define __UMODSYS_CORE_STDBASE_H 1
 /*************************************************************/
-// file: umodsys/base/stdbase.h
+// file: umodsys/core/stdbase.h
 // info: base std
 /*************************************************************/
 
 #include <umodsys/stdcommon.h>
 
-#include <umodsys/base/basetypes.h>
-#include <umodsys/base/bobjects.h>
-#include <umodsys/base/console.h>
-#include <umodsys/base/module.h>
-#include <umodsys/base/module_impl.h>
-#include <umodsys/base/system.h>
-#include <umodsys/base/module_ref.h>
-#include <umodsys/base/shell.h>
+#include <umodsys/core/basetypes.h>
+#include <umodsys/core/bobjects.h>
+#include <umodsys/core/console.h>
+#include <umodsys/core/module.h>
+#include <umodsys/core/module_impl.h>
+#include <umodsys/core/system.h>
+#include <umodsys/core/module_ref.h>
+#include <umodsys/core/shell.h>
 
-#endif // __UMODSYS_BASE_STDBASE_H
+#endif // __UMODSYS_CORE_STDBASE_H

@@ -1,12 +1,12 @@
-#ifndef __UMODSYS_BASE_OBJECTS_H
-#define __UMODSYS_BASE_OBJECTS_H 1
+#ifndef __UMODSYS_CORE_OBJECTS_H
+#define __UMODSYS_CORE_OBJECTS_H 1
 /*************************************************************/
-// file: umodsys/base/bobjects.h
+// file: umodsys/core/bobjects.h
 // info: base objects
 /*************************************************************/
 
-#include <umodsys/base/basetypes.h>
-#include <umodsys/base/module.h>
+#include <umodsys/core/basetypes.h>
+#include <umodsys/core/module.h>
 
 namespace UModSys {
 namespace base {
@@ -20,11 +20,11 @@ namespace base {
   tl::TRefObjectLinksModObject<Self, IModObject> refs; \
   UMODSYS_REFOBJECT_UNIIMPLEMENT() \
 
-#define UMODSYS_BASE_SHELL_IMPLEMENT(_type, _verno, _interface) \
+#define UMODSYS_CORE_SHELL_IMPLEMENT(_type, _verno, _interface) \
   UMODSYS_REFOBJECT_IMPLEMENT1(_type, _verno, _interface) \
   UMODSYS_REFOBJECT_REFMODULE()
 
-#define UMODSYS_BASE_GENERATOR_IMPLEMENT(_type, _verno, _interface) \
+#define UMODSYS_CORE_GENERATOR_IMPLEMENT(_type, _verno, _interface) \
   UMODSYS_REFOBJECT_IMPLEMENT1(_type, _verno, _interface) \
   tl::TRefObjectLinks<Self> refs; \
   UMODSYS_REFOBJECT_UNIIMPLEMENT0() \
@@ -40,7 +40,7 @@ namespace base {
   static bool s_unreg(IModuleReg* imr); \
   static const char* s_name_uid(void) { return #_type ":unique"; }
 
-#define UMODSYS_BASE_MODOBJECT_BODY(_type, _mod) \
+#define UMODSYS_CORE_MODOBJECT_BODY(_type, _mod) \
   IModule* _type::get_module(void) const { return _mod::s_modreg.module; } \
   bool _type::mod_inc(void) const { return _mod::s_modreg.module->open(); } \
   bool _type::mod_dec(void) const { return _mod::s_modreg.module->close(); } \
@@ -50,15 +50,15 @@ namespace base {
   bool _type::s_unreg(IModuleReg* imr) { bool rv = imr->unreg(s_holder()); s_holder().deinit(); return rv; }
 
 
-#define UMODSYS_BASE_GENERATOR_BODY(_type, _mod) \
-  UMODSYS_BASE_MODOBJECT_BODY(_type, _mod)
+#define UMODSYS_CORE_GENERATOR_BODY(_type, _mod) \
+  UMODSYS_CORE_MODOBJECT_BODY(_type, _mod)
   
 
-#define UMODSYS_BASE_MODREG_DEF(_type) \
+#define UMODSYS_CORE_MODREG_DEF(_type) \
   static _type s_modreg; static SModuleRegChain s_modreg_chain; \
   void so_reg(void);
 
-#define UMODSYS_BASE_MODREG_BODY(_type) \
+#define UMODSYS_CORE_MODREG_BODY(_type) \
   _type _type::s_modreg; SModuleRegChain _type::s_modreg_chain(_type::s_modreg); \
   void _type::so_reg(void) { core::lost(&so_entry_enabled_flag); }
 
@@ -127,4 +127,4 @@ protected:
 } // namespace base
 } // namespace UModSys
 
-#endif // __UMODSYS_BASE_OBJECTS_H
+#endif // __UMODSYS_CORE_OBJECTS_H

@@ -6,7 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/stdcommon.h>
-#include <umodsys/common/syshlp.h>
+#include <umodsys/common/stdsyshlp.h>
 
 namespace UModSys {
 namespace libutils {

@@ -1,11 +1,11 @@
-#ifndef __UMODSYS_BASE_CONSOLEEXT_H
-#define __UMODSYS_BASE_CONSOLEEXT_H 1
+#ifndef __UMODSYS_CORE_CONSOLEEXT_H
+#define __UMODSYS_CORE_CONSOLEEXT_H 1
 /*************************************************************/
-// file: umodsys/base/console_ext.h
+// file: umodsys/core/console_ext.h
 // info: extended console object
 /*************************************************************/
 
-#include <umodsys/base/console.h>
+#include <umodsys/core/console.h>
 
 namespace UModSys {
 namespace base {
@@ -235,4 +235,4 @@ protected:
 } // namespace base
 } // namespace UModSys
 
-#endif // __UMODSYS_BASE_CONSOLEEXT_H
+#endif // __UMODSYS_CORE_CONSOLEEXT_H

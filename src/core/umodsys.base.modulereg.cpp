@@ -1,4 +1,4 @@
-#include <umodsys/base/module_impl.h>
+#include <umodsys/core/module_impl.h>
 
 using namespace UModSys;
 using namespace UModSys::core;

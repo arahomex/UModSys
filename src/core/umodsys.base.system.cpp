@@ -1,5 +1,5 @@
-#include <umodsys/base/module.h>
-#include <umodsys/base/system.h>
+#include <umodsys/core/module.h>
+#include <umodsys/core/system.h>
 
 using namespace UModSys;
 using namespace UModSys::core;

@@ -1,11 +1,11 @@
-#ifndef __UMODSYS_BASE_SHELL_H
-#define __UMODSYS_BASE_SHELL_H 1
+#ifndef __UMODSYS_CORE_SHELL_H
+#define __UMODSYS_CORE_SHELL_H 1
 /*************************************************************/
-// file: umodsys/base/shell.h
+// file: umodsys/core/shell.h
 // info: base shell (TCL-like commands)
 /*************************************************************/
 
-#include <umodsys/base/basetypes.h>
+#include <umodsys/core/basetypes.h>
 #include <umodsys/tl/parsers/parser_tcl.h>
 
 namespace UModSys {
@@ -175,4 +175,4 @@ protected:
 } // namespace base
 } // namespace UModSys
 
-#endif // __UMODSYS_BASE_SHELL_H
+#endif // __UMODSYS_CORE_SHELL_H

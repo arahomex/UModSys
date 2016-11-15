@@ -7,7 +7,7 @@
 
 #include <umodsys/lib/2d/lib2d.common.h>
 #include <umodsys/lib/ui/libui.keymap.h>
-#include <umodsys/base/console_ext.h>
+#include <umodsys/core/console_ext.h>
 
 namespace UModSys {
 namespace libui {
