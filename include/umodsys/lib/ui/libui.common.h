@@ -177,7 +177,7 @@ struct SJoystickInput {
   // coordinates
   lib2d::DPoint axis[max_joystick_axes]; // trackpad, joy have 2 axis
   // buttons states
-  sint8 buttons[max_joystick_buttons]; // hat have 2 buttons
+  Bsint8 buttons[max_joystick_buttons]; // hat have 2 buttons
 };
 
 //***************************************

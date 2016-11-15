@@ -5,14 +5,14 @@
 
 BByte RVertexArray::vat_sizes[vaet__Count] = {
   0,                // vaet_None,
-  sizeof(sint8),    // vaet_Int8,
-  sizeof(uint8),    // vaet_UInt8,
-  sizeof(sint8),    // vaet_Int16,
-  sizeof(uint8),    // vaet_UInt16,
-  sizeof(sint8),    // vaet_Int32,
-  sizeof(uint8),    // vaet_UInt32,
-  sizeof(float32),  // vaet_Float32,
-  sizeof(float64)   // vaet_Float64,
+  sizeof(Bsint8),    // vaet_Int8,
+  sizeof(Buint8),    // vaet_UInt8,
+  sizeof(Bsint8),    // vaet_Int16,
+  sizeof(Buint8),    // vaet_UInt16,
+  sizeof(Bsint8),    // vaet_Int32,
+  sizeof(Buint8),    // vaet_UInt32,
+  sizeof(Bfloat32),  // vaet_Float32,
+  sizeof(Bfloat64)   // vaet_Float64,
 };
 
 BByte RVertexArray::count_class[vc__Count][2] = {

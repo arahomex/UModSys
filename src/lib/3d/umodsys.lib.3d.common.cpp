@@ -28,7 +28,7 @@ using namespace UModSys::lib3d;
 // lib3d::
 //***************************************
 
-sint8 lib3d::cube_face_normals[6][4] = { // [faces]{x,y,z,_}
+Bsint8 lib3d::cube_face_normals[6][4] = { // [faces]{x,y,z,_}
   {0, 1,0},    // Top
   {0,-1,0},    // Bottom
   {0,0, 1},    // Front
@@ -39,7 +39,7 @@ sint8 lib3d::cube_face_normals[6][4] = { // [faces]{x,y,z,_}
 
 //***************************************
 
-uint8 lib3d::cube_quad_texpoints[6][4][2] = { // [faces][verts]{u,v}
+Buint8 lib3d::cube_quad_texpoints[6][4][2] = { // [faces][verts]{u,v}
   {
     {1,0},    // Top Right Of The Quad (Top)
     {0,0},    // Top Left Of The Quad (Top)
@@ -80,7 +80,7 @@ uint8 lib3d::cube_quad_texpoints[6][4][2] = { // [faces][verts]{u,v}
 
 //***************************************
 
-uint8 lib3d::cube_quad_points[6][4][4] = { // [faces][verts]{x,y,z,_}
+Buint8 lib3d::cube_quad_points[6][4][4] = { // [faces][verts]{x,y,z,_}
   {
     {1,1,0},    // Top Right Of The Quad (Top)
     {0,1,0},    // Top Left Of The Quad (Top)

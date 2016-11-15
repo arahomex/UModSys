@@ -164,10 +164,10 @@ struct IMultiImage : public IRefObject {
   virtual Buint16 get_layer_count(void) const =0;
   virtual IImage* get_layer(Buint16 idx=0) const =0;
   virtual Buint32 get_cell_count(void) const =0;
-  virtual bool get_cell(uint32 idx, DPoint &size, DPoint* ofs=NULL, uint16* lay=NULL) const =0;
-  virtual bool get_cell(uint32 idx, SImageCellInfo& info) const =0;
+  virtual bool get_cell(Buint32 idx, DPoint &size, DPoint* ofs=NULL, Buint16* lay=NULL) const =0;
+  virtual bool get_cell(Buint32 idx, SImageCellInfo& info) const =0;
   //
-  virtual bool set_layer_count(uint16 num) =0;
+  virtual bool set_layer_count(Buint16 num) =0;
   virtual bool set_hint(BCStr hint, BCStr value) =0; // must suport "mode":{"fixed","variable"}
   //
   virtual bool setup_fixed_cell(int nx, int ny) =0;
@@ -185,7 +185,7 @@ inline size_t GetPixelSize(eImageType type, int plane)
   return (plane<0 || plane>4) ? 0 : (type>>(plane<<2)) & it_Mask_Plane1;
 }
 
-inline uint8 GetPlaneCount(eImageType type)
+inline Buint8 GetPlaneCount(eImageType type)
 {
   int c = type & it_Mask_Class;
   return c==it_Class_Linear ? 1 

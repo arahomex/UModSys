@@ -39,13 +39,13 @@ public:
   lib2d::DPoint get_max_layer_size(void) const { return lib2d::DPoint(0,0); }
   lib2d::DPoint get_max_cell_size(void) const { return lib2d::DPoint(0,0); }
   lib2d::DPoint get_fixed_cell_size(void) const { return lib2d::DPoint(0,0); }
-  uint16 get_layer_count(void) const { return 0; }
+  Buint16 get_layer_count(void) const { return 0; }
   lib2d::IImage* get_layer(Buint16 idx) const { return NULL; }
-  uint32 get_cell_count(void) const { return 0; }
-  bool get_cell(uint32 idx, lib2d::DPoint &size, lib2d::DPoint* ofs, uint16* lay) const { return false; }
-  bool get_cell(uint32 idx, lib2d::SImageCellInfo& info) const { return false; }
+  Buint32 get_cell_count(void) const { return 0; }
+  bool get_cell(Buint32 idx, lib2d::DPoint &size, lib2d::DPoint* ofs, Buint16* lay) const { return false; }
+  bool get_cell(Buint32 idx, lib2d::SImageCellInfo& info) const { return false; }
   //
-  bool set_layer_count(uint16 num) { return false; }
+  bool set_layer_count(Buint16 num) { return false; }
   bool set_hint(BCStr hint, BCStr value) { return false; }
   //
   bool setup_fixed_cell(int nx, int ny) { return false; }

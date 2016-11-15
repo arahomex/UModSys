@@ -10,12 +10,12 @@ struct RBinArchiveFrameClient_ZIP : public IBinArchiveFrame::IClient
   //
   typedef IBinArchiveFrame::NameNode NameNode;
   struct FileInfo {
-    uint32 pos;
-    uint32 csize;
-    uint32 compression;
-    uint32 crc;
-    uint32 mt, md;
-    uint32 attr, xattr;
+    Buint32 pos;
+    Buint32 csize;
+    Buint32 compression;
+    Buint32 crc;
+    Buint32 mt, md;
+    Buint32 attr, xattr;
   };
   //
   bool valid;

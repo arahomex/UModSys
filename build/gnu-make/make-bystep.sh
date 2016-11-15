@@ -9,7 +9,7 @@ all=(
   tp-umodsys-umodsys_lib_core
   tp-umodsys-umodsys_lib_kernel
 
-#  tp-umodsys-umodsysc
+  tp-umodsys-umodsysc
 #  tp-umodsys-umodsysca
   tp-umodsys-umodsysct
 

@@ -31,36 +31,36 @@ struct TVertexAType {
 //***************************************
 
 template<> 
-struct TVertexAType<sint32> {
+struct TVertexAType<Bsint32> {
   inline static eVertexAType type_of() { return vaet_Int32; }
   inline static int count_of() { return 1; }
 };
 
 template<> 
-struct TVertexAType<sint16> {
+struct TVertexAType<Bsint16> {
   inline static eVertexAType type_of() { return vaet_Int16; }
   inline static int count_of() { return 1; }
 };
 
 template<> 
-struct TVertexAType<sint8> {
+struct TVertexAType<Bsint8> {
   inline static eVertexAType type_of() { return vaet_Int8; }
   inline static int count_of() { return 1; }
 };
 template<> 
-struct TVertexAType<uint8> {
+struct TVertexAType<Buint8> {
   inline static eVertexAType type_of() { return vaet_UInt8; }
   inline static int count_of() { return 1; }
 };
 
 template<> 
-struct TVertexAType<float32> {
+struct TVertexAType<Bfloat32> {
   inline static eVertexAType type_of() { return vaet_Float32; }
   inline static int count_of() { return 1; }
 };
 
 template<> 
-struct TVertexAType<float64> {
+struct TVertexAType<Bfloat64> {
   inline static eVertexAType type_of() { return vaet_Float64; }
   inline static int count_of() { return 1; }
 };
@@ -92,26 +92,26 @@ struct TVertexAType< math3d::TVector4<TT> > {
 struct SVertexElemInfo {
   eVertexClass vclass;
   eVertexAType aitype;
-  uint8 acount, inf;
+  Buint8 acount, inf;
   //
-  inline SVertexElemInfo(eVertexClass vc, eVertexAType ait, uint8 ac=1, uint8 ii=0) 
+  inline SVertexElemInfo(eVertexClass vc, eVertexAType ait, Buint8 ac=1, Buint8 ii=0) 
   : vclass(vc), aitype(ait), acount(ac), inf(ii) {
   }
   inline SVertexElemInfo(void) 
   : vclass(vc_None), aitype(vaet_None), acount(0), inf(0) {
   }
   //
-  template<typename T> inline static SVertexElemInfo based_on(eVertexClass vc, uint8 ii=0) {
+  template<typename T> inline static SVertexElemInfo based_on(eVertexClass vc, Buint8 ii=0) {
     return SVertexElemInfo(vc, TVertexAType<T>::type_of(), TVertexAType<T>::count_of(), ii);
   }
-  template<typename T> inline static SVertexElemInfo based_on(const T& val, eVertexClass vc, uint8 ii=0) {
+  template<typename T> inline static SVertexElemInfo based_on(const T& val, eVertexClass vc, Buint8 ii=0) {
     return SVertexElemInfo(vc, TVertexAType<T>::type_of(), TVertexAType<T>::count_of(), ii);
   }
   //
-  template<typename T> inline static SVertexElemInfo based_on_a(eVertexClass vc, uint8 nelem, uint8 ii=0) {
+  template<typename T> inline static SVertexElemInfo based_on_a(eVertexClass vc, Buint8 nelem, Buint8 ii=0) {
     return SVertexElemInfo(vc, TVertexAType<T>::type_of(), TVertexAType<T>::count_of()*nelem, ii);
   }
-  template<typename T> inline static SVertexElemInfo based_on_a(const T* val, eVertexClass vc, uint8 nelem, uint8 ii=0) {
+  template<typename T> inline static SVertexElemInfo based_on_a(const T* val, eVertexClass vc, Buint8 nelem, Buint8 ii=0) {
     return SVertexElemInfo(vc, TVertexAType<T>::type_of(), TVertexAType<T>::count_of()*nelem, ii);
   }
 };
@@ -158,10 +158,10 @@ protected:
 // EXTERNALS
 //***************************************
 
-extern sint8 cube_face_normals[6][4]; // [faces]{x,y,z,_}
+extern Bsint8 cube_face_normals[6][4]; // [faces]{x,y,z,_}
 // coordinate system is RIGHT xyz
-extern uint8 cube_quad_texpoints[6][4][2]; // [faces][verts]{u,v}
-extern uint8 cube_quad_points[6][4][4]; // XYZ [faces][verts]{x,y,z,_}
+extern Buint8 cube_quad_texpoints[6][4][2]; // [faces][verts]{u,v}
+extern Buint8 cube_quad_points[6][4][4]; // XYZ [faces][verts]{x,y,z,_}
 
 //***************************************
 // END

@@ -8,11 +8,11 @@ bool RTest1_Shell::UI_Info::new_va_1(void)
   };
   lib3d::SVertexElemInfo s_lys2[2] = {
     lib3d::SVertexElemInfo::based_on_a<float32>(lib3d::vc_Coord, 3),              
-    lib3d::SVertexElemInfo::based_on_a<uint8>(lib3d::vc_Color, 4)
+    lib3d::SVertexElemInfo::based_on_a<Buint8>(lib3d::vc_Color, 4)
   };
   lib3d::SVertexElemInfo s_lys3[3] = {
     lib3d::SVertexElemInfo::based_on_a<float32>(lib3d::vc_Coord, 3),              
-    lib3d::SVertexElemInfo::based_on_a<uint8>(lib3d::vc_Color, 4),
+    lib3d::SVertexElemInfo::based_on_a<Buint8>(lib3d::vc_Color, 4),
     lib3d::SVertexElemInfo::based_on_a<float32>(lib3d::vc_TexCoord, 2)
   };
   {
@@ -40,7 +40,7 @@ bool RTest1_Shell::UI_Info::new_va_1(void)
     for(int i=0; i<6; i++) {
       for(int j=0; j<4; j++) {
         VertexPC& v = q[i][j];
-        const uint8 *xyz = lib3d::cube_quad_points[i][j];
+        const Buint8 *xyz = lib3d::cube_quad_points[i][j];
         v.set_xyz(xyz[0]*0.3f+0.3f, xyz[1]*0.3f+0.3f, xyz[2]*0.3f+0.3f);
         v.set_rgba(i&4 ? 255 : 127, i&2 ? 255 : 127, i&1 ? 255 : 127);
       }
@@ -55,8 +55,8 @@ bool RTest1_Shell::UI_Info::new_va_1(void)
     for(int i=0; i<6; i++) {
       for(int j=0; j<4; j++) {
         VertexPCT& v = q[i][j];
-        const uint8 *xyz = lib3d::cube_quad_points[i][j];
-        const uint8 *uv = lib3d::cube_quad_texpoints[i][j];
+        const Buint8 *xyz = lib3d::cube_quad_points[i][j];
+        const Buint8 *uv = lib3d::cube_quad_texpoints[i][j];
         v.set_xyz(xyz[0]*0.3f+0.3f, xyz[1]*0.3f+0.3f, xyz[2]*0.3f+0.3f);
         v.set_rgba(i&4 ? 255 : 127, i&2 ? 255 : 127, i&1 ? 255 : 127);
         v.set_uv((uv[0]+i)/32.0f, (1-uv[1])/16.0f);
@@ -73,7 +73,7 @@ bool RTest1_Shell::UI_Info::new_va_qc(void)
 {
   lib3d::SVertexElemInfo s_lys2[2] = {
     lib3d::SVertexElemInfo::based_on_a<float32>(lib3d::vc_Coord, 3),              
-    lib3d::SVertexElemInfo::based_on_a<uint8>(lib3d::vc_Color, 4)
+    lib3d::SVertexElemInfo::based_on_a<Buint8>(lib3d::vc_Color, 4)
   };
   lib3d::DColorb clrs[6];
   for(int i=0; i<6; i++) {
@@ -94,7 +94,7 @@ bool RTest1_Shell::UI_Info::new_va_qc(void)
       for(int z=0; z<dz; z++) {
         for(int f=0; f<6; f++) {
           const lib3d::DColorb& clr = clrs[(f+x+y+z)%8];
-          const sint8 *norm = lib3d::cube_face_normals[f];
+          const Bsint8 *norm = lib3d::cube_face_normals[f];
           int xx = norm[0] + x;
           int yy = norm[1] + y;
           int zz = norm[2] + z;
@@ -109,7 +109,7 @@ bool RTest1_Shell::UI_Info::new_va_qc(void)
             return false;
           VertexPC *p = &qc[n];
           for(int i=0; i<4; i++, p++) {
-            const uint8 *xyz = lib3d::cube_quad_points[f][i];
+            const Buint8 *xyz = lib3d::cube_quad_points[f][i];
             p->set_rgba(clr.v[0], clr.v[1], clr.v[2]);
             p->set_xyz(xyz[0] + x, xyz[1] + y, xyz[2] + z);
           }

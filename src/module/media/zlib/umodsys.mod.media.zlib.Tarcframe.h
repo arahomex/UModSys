@@ -295,9 +295,9 @@ bool RBinArchiveFrameClient_ZIP::filer_scan(IBinArchiveFrame* arch, SMem& memto,
 {
   if(!arch->filer->reader_seek(arch->user_flags[0]))
     return false;
-  uint32 count = arch->user_flags[1];
+  Buint32 count = arch->user_flags[1];
   //
-  for(uint32 i=0; i<count; i++) {
+  for(Buint32 i=0; i<count; i++) {
     fileDirEntry::Holder E;
     BChar tmpbuf[syshlp::MAX_FILENAME_LEN];
     if(!arch->filer->reader_read(E.bytes, E.SIZE))
@@ -340,8 +340,8 @@ bool RBinArchiveFrameClient_ZIP::filew_init(IBinArchiveFrame* arch, const SParam
 bool RBinArchiveFrameClient_ZIP::filew_copy_data(IBinArchiveFrame* arch, NameNode* node)
 {
   FileInfo *x = fi(node);
-  uint32 pos1 = x->pos;
-  uint32 pos2 = arch->filew->writer_pos();
+  Buint32 pos1 = x->pos;
+  Buint32 pos2 = arch->filew->writer_pos();
   fileFilePrefix::Holder FP;
   if(!arch->filer->reader_read(FP.bytes, FP.SIZE))
     return false;

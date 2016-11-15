@@ -116,7 +116,7 @@ bool RRenderDriver3D::setup_state(const SRenderState& S) // discarded on phase e
 
 bool RRenderDriver3D::setup_2d(const DPoint2i* vsize, const DPoint2i* voffset, const DTexPoint* relsize, const DTexPoint *reloffset) // window coordinates
 {
-  sint8 m2d = mode2d;
+  Bsint8 m2d = mode2d;
   if(m2d) {
     Mode_2d_end();
   }

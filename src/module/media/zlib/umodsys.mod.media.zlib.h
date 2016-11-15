@@ -5,7 +5,7 @@
 // info: zlib media
 /*************************************************************/
 
-#include <umodsys/stdbase.h>
+#include <umodsys/stdcore.h>
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.utils.h>
 #include <umodsys/lib/media/libmedia.archive.h>

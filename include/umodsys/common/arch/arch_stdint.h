@@ -1,3 +1,4 @@
+//#error stdint
 
 namespace arch_types {
 typedef int64_t        sint64;

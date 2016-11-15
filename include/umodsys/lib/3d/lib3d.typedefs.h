@@ -8,7 +8,7 @@
 #include <umodsys/lib/2d/lib2d.typedefs.h>
 #include <umodsys/tl/math/math_3df.h>
 #include <umodsys/tl/container/isockets.h>
-#include <umodsys/common/objects_res.h>
+#include <umodsys/common/base/obj_res.h>
 
 namespace UModSys {
 namespace lib3d {
@@ -33,10 +33,10 @@ typedef lib2d::SBlendColorf                 DBlendColor;
 typedef lib2d::DColor                       DColori;
 typedef lib2d::DColorb                      DColorb;
 
-typedef float64                             DScalar;
-typedef float32                             DScalarNormal, DScalarM, DTexScalar;
-typedef sint32                              DInt;
-typedef uint8                               DByte;
+typedef Bfloat64                            DScalar;
+typedef Bfloat32                            DScalarNormal, DScalarM, DTexScalar;
+typedef Bsint32                             DInt;
+typedef Buint8                              DByte;
 typedef math3d::TVector2<DTexScalar>        DTexPoint;
 typedef math3d::TVector3<DInt>              DPointInt;
 typedef math3d::TVector3<DColorElem>        DColor;

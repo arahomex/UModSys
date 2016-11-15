@@ -79,9 +79,9 @@ void RTest1_Shell::dump_str(const char *s, size_t n)
 struct RTest1_Shell::Aux {
   struct Prop : IPropAdapter {
     bool set_value(const SPropValueR& value) {
-      const sint32 *iv;
+      const Bsint32 *iv;
       if(value.get_as(iv)) {
-        s_dbg.put(d_Shell, cl_Info, "set {sint32 %d}\n", *iv);
+        s_dbg.put(d_Shell, cl_Info, "set {Bsint32 %d}\n", *iv);
         return true;
       }
       const float32 *fv;
@@ -99,9 +99,9 @@ struct RTest1_Shell::Aux {
   struct PropX : IPropIdAdapter {
     bool set_value(HUniquePointer id, const SPropValueR& value) {
       if(id==tl::TConstUniqueID<eConsoleLevels, cl_Info>::get_id()) {
-        const sint32 *iv;
+        const Bsint32 *iv;
         if(value.get_as(iv)) {
-          s_dbg.put(d_Shell, cl_Info, "info::set {sint32 %d}\n", *iv);
+          s_dbg.put(d_Shell, cl_Info, "info::set {Bsint32 %d}\n", *iv);
           return true;
         }
         const float32 *fv;
@@ -113,9 +113,9 @@ struct RTest1_Shell::Aux {
         return false;
       }
       if(id==tl::TConstUniqueID<eConsoleLevels, cl_Debug>::get_id()) {
-        const sint32 *iv;
+        const Bsint32 *iv;
         if(value.get_as(iv)) {
-          s_dbg.put(d_Shell, cl_Info, "debug::set {sint32 %d}\n", *iv);
+          s_dbg.put(d_Shell, cl_Info, "debug::set {Bsint32 %d}\n", *iv);
           return true;
         }
         const float32 *fv;
@@ -140,16 +140,16 @@ void RTest1_Shell::aux_tests(void)
   {
     s_dbg.put(d_Shell, cl_Info, "Begin prop test\n");
     Aux::Prop ap;
-    ap.set_value(TPropValueRV<sint32>(10));
-    ap.set_value(TPropValueRV<sint16>(10));
+    ap.set_value(TPropValueRV<Bsint32>(10));
+    ap.set_value(TPropValueRV<Bsint16>(10));
     ap.set_value(TPropValueRV<float32>(10));
     s_dbg.put(d_Shell, cl_Info, "End prop test\n");
   }
   {
     s_dbg.put(d_Shell, cl_Info, "Begin prop id test\n");
     Aux::PropX ap;
-    ap.set_value(tl::const_unique_id<eConsoleLevels, cl_Info>(), TPropValueRV<sint32>(10));
-    ap.set_value(tl::const_unique_id<eConsoleLevels, cl_Debug>(), TPropValueRV<sint16>(10));
+    ap.set_value(tl::const_unique_id<eConsoleLevels, cl_Info>(), TPropValueRV<Bsint32>(10));
+    ap.set_value(tl::const_unique_id<eConsoleLevels, cl_Debug>(), TPropValueRV<Bsint16>(10));
     ap.set_value(tl::const_unique_id<eConsoleLevels, cl_Error>(), TPropValueRV<float32>(10));
 //    ap.set_value(tl::const_unique_id<eConsoleLevels, cl_Warning>(), TPropValueRV<float32>(10));
     s_dbg.put(d_Shell, cl_Info, "End prop id test\n");

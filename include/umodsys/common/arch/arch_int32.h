@@ -1,3 +1,4 @@
+#error int32
 
 #define INT_SIZE
 

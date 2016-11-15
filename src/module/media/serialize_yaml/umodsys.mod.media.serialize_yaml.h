@@ -5,7 +5,7 @@
 // info: 
 /*************************************************************/
 
-#include <umodsys/stdbase.h>
+#include <umodsys/stdcore.h>
 #include <umodsys/tl/container/dynarray.h>
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.serialize.h>

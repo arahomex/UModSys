@@ -5,7 +5,7 @@
 // info: 
 /*************************************************************/
 
-#include <umodsys/stdbase.h>
+#include <umodsys/stdbcore.h>
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.utils.h>
 #include <umodsys/lib/2d/lib2d.image.h>

@@ -67,13 +67,13 @@ public:
   DPoint get_max_layer_size(void) const;
   DPoint get_max_cell_size(void) const;
   DPoint get_fixed_cell_size(void) const; // 0,0 for variable
-  uint16 get_layer_count(void) const;
+  Buint16 get_layer_count(void) const;
   IImage* get_layer(Buint16 idx) const;
-  uint32 get_cell_count(void) const;
-  bool get_cell(uint32 idx, DPoint &size, DPoint* ofs, uint16* lay) const;
-  bool get_cell(uint32 idx, SImageCellInfo& info) const;
+  Buint32 get_cell_count(void) const;
+  bool get_cell(Buint32 idx, DPoint &size, DPoint* ofs, Buint16* lay) const;
+  bool get_cell(Buint32 idx, SImageCellInfo& info) const;
   //
-  bool set_layer_count(uint16 num);
+  bool set_layer_count(Buint16 num);
   bool set_hint(BCStr hint, BCStr value); // must suport "mode":{"fixed","variable"}
   //
   bool setup_fixed_cell(int nx, int ny);

@@ -23,7 +23,7 @@ DPoint RMultiImage::get_fixed_cell_size(void) const
   return fixed_size;
 }
 
-uint16 RMultiImage::get_layer_count(void) const
+Buint16 RMultiImage::get_layer_count(void) const
 {
   if(!factory.valid())
     return 0;
@@ -37,14 +37,14 @@ IImage* RMultiImage::get_layer(Buint16 idx) const
   return idx<~layers ? layers(idx)() : NULL;
 }
 
-uint32 RMultiImage::get_cell_count(void) const
+Buint32 RMultiImage::get_cell_count(void) const
 {
   if(!factory.valid())
     return 0;
   return ~cells;
 }
 
-bool RMultiImage::get_cell(uint32 idx, DPoint &size, DPoint* ofs, uint16* lay) const
+bool RMultiImage::get_cell(Buint32 idx, DPoint &size, DPoint* ofs, Buint16* lay) const
 {
   if(factory.valid())
     return false;
@@ -58,7 +58,7 @@ bool RMultiImage::get_cell(uint32 idx, DPoint &size, DPoint* ofs, uint16* lay) c
   return true;
 }
 
-bool RMultiImage::get_cell(uint32 idx, SImageCellInfo& info) const
+bool RMultiImage::get_cell(Buint32 idx, SImageCellInfo& info) const
 {
   if(factory.valid())
     return false;
@@ -68,7 +68,7 @@ bool RMultiImage::get_cell(uint32 idx, SImageCellInfo& info) const
 
 //------------------------------------
 
-bool RMultiImage::set_layer_count(uint16 num)
+bool RMultiImage::set_layer_count(Buint16 num)
 {
   if(!factory.valid())
     return false;

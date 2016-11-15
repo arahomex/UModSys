@@ -8,7 +8,7 @@
 //       - image2d convertor
 /*************************************************************/
 
-#include <umodsys/stdbase.h>
+#include <umodsys/stdcore.h>
 #include <umodsys/tl/container/scatter_array.h>
 #include <umodsys/tl/container/dynarray.h>
 //#include <umodsys/common/stdsyshlp.h>

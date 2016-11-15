@@ -39,7 +39,7 @@ protected:
   TParametersA<1024> frame_values;
   SDL_GLContext glctx;
   ePhaseMode phm;
-  sint8 mode2d;
+  Bsint8 mode2d;
   lib3d::DPoint2i screen2d_voffset, screen2d_vsize;
   lib3d::DTexPoint screen2d_reloffset, screen2d_relsize;
   bool debug_matrix;
@@ -269,8 +269,8 @@ public:
   bool Use(unsigned laymask=~0);
   //
   static bool StrideConvert(
-    eVertexAType t1, uint8 c1, void* p1, int s1,
-    eVertexAType t2, uint8 c2, const void* p2, int s2,
+    eVertexAType t1, Buint8 c1, void* p1, int s1,
+    eVertexAType t2, Buint8 c2, const void* p2, int s2,
     int num
   );
 public:

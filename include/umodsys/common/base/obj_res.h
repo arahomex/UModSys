@@ -1,7 +1,7 @@
 #ifndef __UMODSYS_COMMON_OBJECTS_RESOURCE_H
 #define __UMODSYS_COMMON_OBJECTS_RESOURCE_H 1
 /*************************************************************/
-// file: umodsys/common/objects_res.h
+// file: umodsys/common/base/obj_res.h
 // info: resource objects
 /*************************************************************/
 

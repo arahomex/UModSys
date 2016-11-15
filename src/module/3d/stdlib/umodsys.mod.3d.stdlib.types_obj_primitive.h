@@ -16,12 +16,12 @@ enum eObjectKind {
 #pragma pack(push, 1)
 struct VertexPC {
   float32 x, y, z;
-  uint8 r,g,b,a;
+  Buint8 r,g,b,a;
   //
   void set_xyz(float32 xx, float32 yy, float32 zz) {
     x = xx; y = yy; z = zz;
   }
-  void set_rgba(uint8 rr, uint8 gg, uint8 bb, uint8 aa=255) {
+  void set_rgba(Buint8 rr, Buint8 gg, Buint8 bb, Buint8 aa=255) {
     r = rr; g = gg; b = bb; a = aa;
   }
   void set(const DPoint& p, const DColor& c) {

@@ -1,4 +1,4 @@
-#include <umodsys/stdbase.h>
+#include <umodsys/stdcore.h>
 #include <umodsys/tl/container/dynarray.h>
 #include <umodsys/common/stdsyshlp.h>
 
@@ -122,12 +122,12 @@ struct RTest1_Shell
 #pragma pack(push, 1)
     struct VertexPC {
       float32 x, y, z;
-      uint8 r,g,b,a;
+      Buint8 r,g,b,a;
       //
       void set_xyz(float32 xx, float32 yy, float32 zz) {
         x = xx; y = yy; z = zz;
       }
-      void set_rgba(uint8 rr, uint8 gg, uint8 bb, uint8 aa=255) {
+      void set_rgba(Buint8 rr, Buint8 gg, Buint8 bb, Buint8 aa=255) {
         r = rr; g = gg; b = bb; a = aa;
       }
       void set(const lib3d::DPoint& p, const lib3d::DColor& c) {
@@ -138,7 +138,7 @@ struct RTest1_Shell
     //
     struct VertexPCT {
       float32 x, y, z;
-      uint8 r,g,b,a;
+      Buint8 r,g,b,a;
       float32 u, v;
       //
       void set_xyz(float32 xx, float32 yy, float32 zz) {
@@ -147,7 +147,7 @@ struct RTest1_Shell
       void set_uv(float32 uu, float32 vv) {
         u=uu; v = vv;
       }
-      void set_rgba(uint8 rr, uint8 gg, uint8 bb, uint8 aa=255) {
+      void set_rgba(Buint8 rr, Buint8 gg, Buint8 bb, Buint8 aa=255) {
         r = rr; g = gg; b = bb; a = aa;
       }
       void set(const lib3d::DPoint& p, const lib3d::DColor& c) {

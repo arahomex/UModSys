@@ -1,4 +1,1 @@
-namespace cpu {
-
-} // namespace cpu
-
+#error int64
