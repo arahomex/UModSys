@@ -7,20 +7,19 @@
 
 #include <umodsys/common/stdtypedefs.h>
 #include <umodsys/common/stdinlines.h>
+#include <umodsys/common/stdarch.h>
 
-#include <umodsys/common/arch.h>
-#include <umodsys/common/source.h>
+#include <umodsys/common/base/source.h>
+#include <umodsys/common/base/mem_alloc.h>
+#include <umodsys/common/base/mem_fixed.h>
+#include <umodsys/common/base/mem_shared.h>
+#include <umodsys/common/base/uniq.h>
+#include <umodsys/common/base/err_common.h>
+#include <umodsys/common/base/obj_core.h>
 
-#include <umodsys/common/mem/mem_alloc.h>
-#include <umodsys/common/mem/mem_fixed.h>
-#include <umodsys/common/mem/mem_shared.h>
-
-#include <umodsys/common/uniqueptr.h>
-#include <umodsys/common/common_exceptions.h>
-#include <umodsys/common/objects.h>
 #include <umodsys/common/stdstrings.h>
 #include <umodsys/common/stdtl.h>
-#include <umodsys/common/params.h>
-#include <umodsys/common/props.h>
+#include <umodsys/common/stdparams.h>
+#include <umodsys/common/stdprops.h>
 
 #endif // __UMODSYS_CORE_STDCOMMON_H

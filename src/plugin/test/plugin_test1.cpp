@@ -1,6 +1,6 @@
 #include <umodsys/stdbase.h>
 #include <umodsys/tl/container/dynarray.h>
-#include <umodsys/common/syshlp.h>
+#include <umodsys/common/stdsyshlp.h>
 
 
 #define TEST_SDL_GL 0

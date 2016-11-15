@@ -1,0 +1,1 @@
+../_gen/sh/clean-file.sh

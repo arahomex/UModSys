@@ -16,7 +16,7 @@
 #include <umodsys/lib/3d/lib3d.e_light.h>
 #include <umodsys/lib/3d/lib3d.e_outline.h>
 
-#include <umodsys/common/syshlp.h>
+#include <umodsys/common/stdsyshlp.h>
 
 using namespace UModSys;
 using namespace UModSys::core;

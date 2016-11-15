@@ -1,5 +1,5 @@
-#ifndef __UMODSYS_CORE_STDTL_H
-#define __UMODSYS_CORE_STDTL_H 1
+#ifndef __UMODSYS_COMMON_STDTL_H
+#define __UMODSYS_COMMON_STDTL_H 1
 /*************************************************************/
 // file: umodsys/common/stdtl.h
 // info: std templates
@@ -19,4 +19,4 @@ namespace core {
 } // namespace core
 } // namespace UModSys
 
-#endif // __UMODSYS_CORE_STDTL_H
+#endif // __UMODSYS_COMMON_STDTL_H

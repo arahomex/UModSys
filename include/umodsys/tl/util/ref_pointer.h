@@ -5,7 +5,7 @@
 // info: template pointer types
 /*************************************************************/
 
-#include <umodsys/common/mem/mem_alloc.h>
+#include <umodsys/common/base/mem_alloc.h>
 #include <umodsys/common/stdtypedefs.h>
 
 namespace UModSys {

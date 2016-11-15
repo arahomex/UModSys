@@ -1,12 +1,12 @@
-#ifndef __UMODSYS_CORE_STDINLINES_H
-#define __UMODSYS_CORE_STDINLINES_H 1
+#ifndef __UMODSYS_COMMON_STDINLINES_H
+#define __UMODSYS_COMMON_STDINLINES_H 1
 /*************************************************************/
 // file: umodsys/common/stdinlines.h
 // info: core inlines
 /*************************************************************/
 
 #include <umodsys/common/stdtypedefs.h>
-#include <umodsys/common/source.h>
+#include <umodsys/common/base/source.h>
 
 namespace UModSys {
 namespace core {
@@ -110,4 +110,4 @@ inline int scalar_compare(const SSourceContext *p1, const SSourceContext *p2)
 } // namespace core
 } // namespace UModSys
 
-#endif // __UMODSYS_CORE_STDINLINES_H
+#endif // __UMODSYS_COMMON_STDINLINES_H

@@ -9,7 +9,7 @@
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.utils.h>
 #include <umodsys/lib/media/libmedia.archive.h>
-#include <umodsys/common/syshlp.h>
+#include <umodsys/common/stdsyshlp.h>
 
 #include <umodsys/common/arch_cvt.h>
 

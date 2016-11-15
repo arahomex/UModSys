@@ -1,11 +1,11 @@
-#ifndef __UMODSYS_CORE_PLATFORM_WIN32_SYSHLP_H
-#define __UMODSYS_CORE_PLATFORM_WIN32_SYSHLP_H 1
+#ifndef __UMODSYS_COMMON_PLATFORM_WIN32_SYSHLP_H
+#define __UMODSYS_COMMON_PLATFORM_WIN32_SYSHLP_H 1
 /*************************************************************/
 // file: umodsys/common/platform/win32/syshlp.h
 // info: sys helper for win32 platform
 /*************************************************************/
 
-#include <umodsys/common/syshlp.h>
+#include <umodsys/common/stdsyshlp.h>
 
 /*******************************************************************************/
 

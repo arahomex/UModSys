@@ -5,8 +5,8 @@
 /*************************************************************/
 
 #include <nanoutl/common/std.h>
-#include <nanoutl/common/source.h>
-#include <nanoutl/common/arch.h>
+#include <nanoutl/common/stdarch.h>
+#include <nanoutl/common/base/source.h>
 
 #include <nanoutl/types/list2.h>
 #include <nanoutl/types/scatter_array.h>

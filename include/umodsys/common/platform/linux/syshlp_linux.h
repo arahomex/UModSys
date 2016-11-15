@@ -1,11 +1,11 @@
-#ifndef __UMODSYS_CORE_PLATFORM_LINUX_SYSHLP_H
-#define __UMODSYS_CORE_PLATFORM_LINUX_SYSHLP_H 1
+#ifndef __UMODSYS_COMMON_PLATFORM_LINUX_SYSHLP_H
+#define __UMODSYS_COMMON_PLATFORM_LINUX_SYSHLP_H 1
 /*************************************************************/
 // file: umodsys/common/platform/linux/syshlp.h
 // info: sys helper for linuc platform
 /*************************************************************/
 
-#include <umodsys/common/syshlp.h>
+#include <umodsys/common/stdsyshlp.h>
 
 /*******************************************************************************/
 
@@ -49,5 +49,5 @@ namespace syshlp {
 } // namespace core
 } // namespace UModSys
 
-#endif // __UMODSYS_CORE_PLATFORM_LINUX_SYSHLP_H
+#endif // __UMODSYS_COMMON_PLATFORM_LINUX_SYSHLP_H
 

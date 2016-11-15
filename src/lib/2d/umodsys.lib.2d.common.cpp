@@ -3,7 +3,7 @@
 #include <umodsys/lib/2d/lib2d.convertor.h>
 #include <umodsys/lib/2d/lib2d.driver.h>
 #include <umodsys/lib/2d/lib2d.utils.h>
-#include <umodsys/common/syshlp.h>
+#include <umodsys/common/stdsyshlp.h>
 
 using namespace UModSys;
 using namespace UModSys::core;

@@ -6,8 +6,8 @@
 /*************************************************************/
 
 #include <umodsys/stdcommon.h>
-#include <umodsys/common/source.h>
-#include <umodsys/common/mem/mem_alloc.h>
+#include <umodsys/common/base/source.h>
+#include <umodsys/common/base/mem_alloc.h>
 
 namespace UModSys {
 namespace tl {

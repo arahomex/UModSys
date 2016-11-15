@@ -6,7 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/common/stdtypedefs.h>
-#include <umodsys/common/common_exceptions.h>
+#include <umodsys/common/base/err_common.h>
 
 namespace UModSys {
 namespace tl {

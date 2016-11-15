@@ -1,5 +1,5 @@
-#ifndef __UMODSYS_CORE_STDSTRINGS_H
-#define __UMODSYS_CORE_STDSTRINGS_H 1
+#ifndef __UMODSYS_COMMON_STDSTRINGS_H
+#define __UMODSYS_COMMON_STDSTRINGS_H 1
 /*************************************************************/
 // file: umodsys/common/stdstrings.h
 // info: std string typedefs
@@ -80,4 +80,4 @@ typedef tl::TString<
 } // namespace core
 } // namespace UModSys
 
-#endif // __UMODSYS_CORE_STDSTRINGS_H
+#endif // __UMODSYS_COMMON_STDSTRINGS_H

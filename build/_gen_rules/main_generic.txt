@@ -1,8 +1,7 @@
 begin project-group umodsys
   set path-inc $(path-root)/include/umodsys
   set path-src $(path-root)/src
-  
-  set path-s-basis $(path-src)/basis
+
   set path-s-core $(path-src)/core
   set path-s-kernel $(path-src)/kernel
   set path-s-common $(path-src)/common
@@ -68,8 +67,6 @@ begin project-group umodsys
         include stdcore.h
         include stdmath3d.h
       end
-      begin file-group basis
-      end
       begin file-group common
         begin mask $(path-skip) $(path-inc)/common
           include *.h
@@ -79,8 +76,8 @@ begin project-group umodsys
             include *.h
           end
         end
-        begin file-group mem
-          begin mask $(path-skip) $(path-inc)/common/mem
+        begin file-group base
+          begin mask $(path-skip) $(path-inc)/common/base
             include *.h
           end
         end

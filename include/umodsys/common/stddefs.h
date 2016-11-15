@@ -1,5 +1,5 @@
-#ifndef __UMODSYS_CORE_STDDEFS_H
-#define __UMODSYS_CORE_STDDEFS_H 1
+#ifndef __UMODSYS_COMMON_STDDEFS_H
+#define __UMODSYS_COMMON_STDDEFS_H 1
 /*************************************************************/
 // file: umodsys/common/stddefs.h
 // info: include all shared required h files
@@ -73,4 +73,4 @@
 //***************************************
 //***************************************
 
-#endif // __UMODSYS_CORE_STDDEFS_H
+#endif // __UMODSYS_COMMON_STDDEFS_H

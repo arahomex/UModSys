@@ -6,7 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/stdbase.h>
-#include <umodsys/common/syshlp.h>
+#include <umodsys/common/stdsyshlp.h>
 #include <umodsys/common/stdstrings.h>
 
 #include <umodsys/tl/container/dynarray.h>

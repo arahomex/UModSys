@@ -1,4 +1,4 @@
-#include <umodsys/common/uniqueptr.h>
+#include <umodsys/common/base/uniq.h>
 #include <umodsys/common/stdinlines.h>
 
 using namespace UModSys;

@@ -1,6 +1,6 @@
-#include <umodsys/common/objects.h>
-#include <umodsys/common/objects_res.h>
-#include <umodsys/common/mem/mem_alloc.h>
+#include <umodsys/common/base/obj_core.h>
+#include <umodsys/common/base/obj_res.h>
+#include <umodsys/common/base/mem_alloc.h>
 
 using namespace UModSys;
 using namespace UModSys::core;

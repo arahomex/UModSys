@@ -1,5 +1,5 @@
-#ifndef __UMODSYS_CORE_STDTYPEDEFS_H
-#define __UMODSYS_CORE_STDTYPEDEFS_H 1
+#ifndef __UMODSYS_COMMON_STDTYPEDEFS_H
+#define __UMODSYS_COMMON_STDTYPEDEFS_H 1
 /*************************************************************/
 // file: umodsys/common/stdtypedefs.h
 // info: define core types
@@ -163,4 +163,4 @@ namespace media {
 
 } // namespace UModSys
 
-#endif // __UMODSYS_CORE_STDTYPEDEFS_H
+#endif // __UMODSYS_COMMON_STDTYPEDEFS_H

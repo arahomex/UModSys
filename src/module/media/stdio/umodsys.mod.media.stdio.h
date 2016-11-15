@@ -8,7 +8,7 @@
 #include <umodsys/stdbase.h>
 #include <umodsys/lib/media/libmedia.common.h>
 #include <umodsys/lib/media/libmedia.utils.h>
-#include <umodsys/common/syshlp.h>
+#include <umodsys/common/stdsyshlp.h>
 
 #define U_MOD UMODSYS_MODULE_NAME(media, stdio)
 UMODSYS_MODULE_BEGIN(media, stdio)

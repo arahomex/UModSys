@@ -182,8 +182,7 @@ EOT
 # console binary at ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}
 $PROJECT_TPNAME: \$(target__${PROJECT_ID})
 $PROJECT_CPNAME:
-	\@-rm \$(target__${PROJECT_ID})
-	\@-rm \$(tmpx__${PROJECT_ID})/*
+	\@./clean-file.sh \$(target__${PROJECT_ID}) \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}): $TARGET_DEPENDS \$(objs__${PROJECT_ID}) | \$(bin__${PROJECT_ID}) 
 	\@echo '*** Make $MODE $PROJECTGROUP_NAME::$PROJECT_NAME'
 	\@\$(CXX) ${OPT_console_OPTIONS} -o\$@ \$(objs__${PROJECT_ID}) \$(LDFLAGS__${PROJECT_ID})
@@ -192,8 +191,7 @@ EOT
 # so library at ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so
 $PROJECT_TPNAME: \$(target__${PROJECT_ID})
 $PROJECT_CPNAME:
-	\@-rm \$(target__${PROJECT_ID})
-	\@-rm \$(tmpx__${PROJECT_ID})/*
+	\@./clean-file.sh \$(target__${PROJECT_ID}) \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}): $TARGET_DEPENDS \$(objs__${PROJECT_ID}) | \$(bin__${PROJECT_ID}) 
 	\@echo '*** Make $MODE $PROJECTGROUP_NAME::$PROJECT_NAME'
 	\@\$(CXX) ${OPT_solib_OPTIONS} -o\$@ \$(objs__${PROJECT_ID}) \$(LDFLAGS__${PROJECT_ID})
@@ -202,8 +200,7 @@ EOT
 # so library at ${PATH_BIN}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.so
 $PROJECT_TPNAME: \$(target__${PROJECT_ID})
 $PROJECT_CPNAME:
-	\@-rm \$(target__${PROJECT_ID})
-	\@-rm \$(tmpx__${PROJECT_ID})/*
+	\@./clean-file.sh \$(target__${PROJECT_ID}) \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}): $TARGET_DEPENDS \$(objs__${PROJECT_ID}) | \$(bin__${PROJECT_ID}) 
 	\@echo '*** Make $MODE $PROJECTGROUP_NAME::$PROJECT_NAME'
 	\@\$(CXX) ${OPT_plugin_OPTIONS} -o\$@ \$(objs__${PROJECT_ID}) \$(LDFLAGS__${PROJECT_ID})
@@ -212,8 +209,7 @@ EOT
 # library at ${PATH_TMP}/${PLATFORM_NAME}.${CONF_NAME}/${PROJECT_NAME}.${PLATFORM_NAME}.${CONF_NAME}.a
 $PROJECT_TPNAME: \$(target__${PROJECT_ID})
 $PROJECT_CPNAME:
-	\@-rm \$(target__${PROJECT_ID})
-	\@-rm \$(tmpx__${PROJECT_ID})/*
+	\@./clean-file.sh \$(target__${PROJECT_ID}) \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}): $TARGET_DEPENDS \$(objs__${PROJECT_ID}) | \$(tmpx__${PROJECT_ID})
 	\@echo '*** Make $MODE $PROJECTGROUP_NAME::$PROJECT_NAME'
 	\@\$(AR) ${OPT_lib_OPTIONS} \$@ \$(objs__${PROJECT_ID})

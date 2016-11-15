@@ -1,5 +1,5 @@
 #include <umodsys/lib/media/libmedia.common.h>
-#include <umodsys/common/syshlp.h>
+#include <umodsys/common/stdsyshlp.h>
 
 using namespace UModSys;
 using namespace UModSys::core;

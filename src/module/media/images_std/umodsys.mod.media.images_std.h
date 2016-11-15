@@ -15,7 +15,7 @@ extern "C" {
   #include <png.h>
 } // extern "C"
 
-#include <umodsys/common/syshlp.h>
+#include <umodsys/common/stdsyshlp.h>
 
 #define U_MOD UMODSYS_MODULE_NAME(media, images_std)
 UMODSYS_MODULE_BEGIN(media, images_std)

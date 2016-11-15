@@ -1,5 +1,5 @@
 #include <umodsys/common/stdtypedefs.h>
-#include <umodsys/common/arch.h>
+#include <umodsys/common/stdarch.h>
 
 using namespace UModSys;
 using namespace UModSys::core;
