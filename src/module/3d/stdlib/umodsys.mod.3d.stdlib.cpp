@@ -25,7 +25,7 @@ struct RModuleReg : public IModuleReg {
   bool do_close(void) { RGenerator::s_unreg(this); return true; }
 };
 
-UMODSYS_BASE_MODREG_BODY(RModuleReg)
+UMODSYS_CORE_MODREG_BODY(RModuleReg)
 UMODSYS_CORE_GENERATOR_BODY(RGenerator, RModuleReg)
 
 UMODSYS_MODULE_END()

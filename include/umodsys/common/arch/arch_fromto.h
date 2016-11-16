@@ -133,21 +133,21 @@ inline T to_type_s(void* p, const T& v)
   #error Unknown UMODSYS_ARCH endianess flag
 #endif
 
-template<> inline sint8 from_be<sint8>(const void* p) { return from_type_u<sint8>(p); }
-template<> inline void from_be<sint8>(sint8& rv, const void* p) { return from_type_u<sint8>(rv, p); }
-template<> inline void to_be<sint8>(void* p, const sint8& v) { return to_type_u<sint8>(p, v); }
+template<> inline Bsint8 from_be<Bsint8>(const void* p) { return from_type_u<Bsint8>(p); }
+template<> inline void from_be<Bsint8>(Bsint8& rv, const void* p) { return from_type_u<Bsint8>(rv, p); }
+template<> inline void to_be<Bsint8>(void* p, const Bsint8& v) { return to_type_u<Bsint8>(p, v); }
 
-template<> inline uint8 from_be<uint8>(const void* p) { return from_type_u<uint8>(p); }
-template<> inline void from_be<uint8>(uint8& rv, const void* p) { return from_type_u<uint8>(rv, p); }
-template<> inline void to_be<uint8>(void* p, const uint8& v) { return to_type_u<uint8>(p, v); }
+template<> inline Buint8 from_be<Buint8>(const void* p) { return from_type_u<Buint8>(p); }
+template<> inline void from_be<Buint8>(Buint8& rv, const void* p) { return from_type_u<Buint8>(rv, p); }
+template<> inline void to_be<Buint8>(void* p, const Buint8& v) { return to_type_u<Buint8>(p, v); }
 
-template<> inline sint8 from_le<sint8>(const void* p) { return from_type_u<sint8>(p); }
-template<> inline void from_le<sint8>(sint8& rv, const void* p) { return from_type_u<sint8>(rv, p); }
-template<> inline void to_le<sint8>(void* p, const sint8& v) { return to_type_u<sint8>(p, v); }
+template<> inline Bsint8 from_le<Bsint8>(const void* p) { return from_type_u<Bsint8>(p); }
+template<> inline void from_le<Bsint8>(Bsint8& rv, const void* p) { return from_type_u<Bsint8>(rv, p); }
+template<> inline void to_le<Bsint8>(void* p, const Bsint8& v) { return to_type_u<Bsint8>(p, v); }
 
-template<> inline uint8 from_le<uint8>(const void* p) { return from_type_u<uint8>(p); }
-template<> inline void from_le<uint8>(uint8& rv, const void* p) { return from_type_u<uint8>(rv, p); }
-template<> inline void to_le<uint8>(void* p, const uint8& v) { return to_type_u<uint8>(p, v); }
+template<> inline Buint8 from_le<Buint8>(const void* p) { return from_type_u<Buint8>(p); }
+template<> inline void from_le<Buint8>(Buint8& rv, const void* p) { return from_type_u<Buint8>(rv, p); }
+template<> inline void to_le<Buint8>(void* p, const Buint8& v) { return to_type_u<Buint8>(p, v); }
 
 /*************************************************************
  End

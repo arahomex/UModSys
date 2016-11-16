@@ -84,9 +84,9 @@ struct RTest1_Shell::Aux {
         s_dbg.put(d_Shell, cl_Info, "set {Bsint32 %d}\n", *iv);
         return true;
       }
-      const float32 *fv;
+      const Bfloat32 *fv;
       if(value.get_as(fv)) {
-        s_dbg.put(d_Shell, cl_Info, "set {float32 %g}\n", *fv);
+        s_dbg.put(d_Shell, cl_Info, "set {Bfloat32 %g}\n", *fv);
         return true;
       }
       s_dbg.put(d_Shell, cl_Info, "set {?'%s' %p:%p}\n", value.id->name, value.value.data, value.value.size);
@@ -104,9 +104,9 @@ struct RTest1_Shell::Aux {
           s_dbg.put(d_Shell, cl_Info, "info::set {Bsint32 %d}\n", *iv);
           return true;
         }
-        const float32 *fv;
+        const Bfloat32 *fv;
         if(value.get_as(fv)) {
-          s_dbg.put(d_Shell, cl_Info, "info::set {float32 %g}\n", *fv);
+          s_dbg.put(d_Shell, cl_Info, "info::set {Bfloat32 %g}\n", *fv);
           return true;
         }
         s_dbg.put(d_Shell, cl_Info, "info::set {?'%s' %p:%p}\n", value.id->name, value.value.data, value.value.size);
@@ -118,9 +118,9 @@ struct RTest1_Shell::Aux {
           s_dbg.put(d_Shell, cl_Info, "debug::set {Bsint32 %d}\n", *iv);
           return true;
         }
-        const float32 *fv;
+        const Bfloat32 *fv;
         if(value.get_as(fv)) {
-          s_dbg.put(d_Shell, cl_Info, "debug::set {float32 %g}\n", *fv);
+          s_dbg.put(d_Shell, cl_Info, "debug::set {Bfloat32 %g}\n", *fv);
           return true;
         }
         s_dbg.put(d_Shell, cl_Info, "debug::set {?'%s' %p:%p}\n", value.id->name, value.value.data, value.value.size);
@@ -142,7 +142,7 @@ void RTest1_Shell::aux_tests(void)
     Aux::Prop ap;
     ap.set_value(TPropValueRV<Bsint32>(10));
     ap.set_value(TPropValueRV<Bsint16>(10));
-    ap.set_value(TPropValueRV<float32>(10));
+    ap.set_value(TPropValueRV<Bfloat32>(10));
     s_dbg.put(d_Shell, cl_Info, "End prop test\n");
   }
   {
@@ -150,8 +150,8 @@ void RTest1_Shell::aux_tests(void)
     Aux::PropX ap;
     ap.set_value(tl::const_unique_id<eConsoleLevels, cl_Info>(), TPropValueRV<Bsint32>(10));
     ap.set_value(tl::const_unique_id<eConsoleLevels, cl_Debug>(), TPropValueRV<Bsint16>(10));
-    ap.set_value(tl::const_unique_id<eConsoleLevels, cl_Error>(), TPropValueRV<float32>(10));
-//    ap.set_value(tl::const_unique_id<eConsoleLevels, cl_Warning>(), TPropValueRV<float32>(10));
+    ap.set_value(tl::const_unique_id<eConsoleLevels, cl_Error>(), TPropValueRV<Bfloat32>(10));
+//    ap.set_value(tl::const_unique_id<eConsoleLevels, cl_Warning>(), TPropValueRV<Bfloat32>(10));
     s_dbg.put(d_Shell, cl_Info, "End prop id test\n");
   }
 }

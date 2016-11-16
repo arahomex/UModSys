@@ -25,10 +25,10 @@ struct ISceneController
   virtual bool ctrl_frame(HSceneNode node, DScalar dt) =0;
   virtual bool ctrl_command(HSceneNode node, HUniquePointer id, const SPropValueR& value) =0;
   //
-  inline bool ctrl_commandi(HSceneNode node, HUniquePointer id, sint32 value=0)
-    { return ctrl_command(node, id, TPropValueRV<sint32>(value)); }
-  bool ctrl_commandf(HSceneNode node, HUniquePointer id, float32 value=1)
-    { return ctrl_command(node, id, TPropValueRV<float32>(value)); }
+  inline bool ctrl_commandi(HSceneNode node, HUniquePointer id, Bsint32 value=0)
+    { return ctrl_command(node, id, TPropValueRV<Bsint32>(value)); }
+  bool ctrl_commandf(HSceneNode node, HUniquePointer id, Bfloat32 value=1)
+    { return ctrl_command(node, id, TPropValueRV<Bfloat32>(value)); }
 protected:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::lib3d::ISceneController, 2, IRefObject);
 };

@@ -14,6 +14,7 @@ using namespace UModSys::core::syshlp;
 static Buint32 s_ansi_colors[256] = 
 #include "ansi-colors.h"
 ;
+
 static int s_find_ansi_color(const unsigned char *rgb, int max=256)
 {
   int rv = 0;

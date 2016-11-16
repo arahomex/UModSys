@@ -143,7 +143,7 @@ bool RRender::build_cube(void)
   for(int i=0; i<6; i++) {
     for(int j=0; j<4; j++) {
       VertexPC& v = q[i][j];
-      const uint8 *xyz = cube_quad_points[i][j];
+      const Buint8 *xyz = cube_quad_points[i][j];
       v.set_xyz(xyz[0]*0.3f+0.3f, xyz[1]*0.3f+0.3f, xyz[2]*0.3f+0.3f);
       v.set_rgba(i&4 ? 255 : 127, i&2 ? 255 : 127, i&1 ? 255 : 127);
     }
@@ -227,8 +227,8 @@ RVisual::~RVisual(void)
 //------------------------------------
 
 SVertexElemInfo VertexPC::s_inf[2] = {
-  SVertexElemInfo::based_on_a<float32>(vc_Coord, 3),              
-  SVertexElemInfo::based_on_a<uint8>(vc_Color, 4)
+  SVertexElemInfo::based_on_a<Bfloat32>(vc_Coord, 3),              
+  SVertexElemInfo::based_on_a<Buint8>(vc_Color, 4)
 };
 
 //------------------------------------

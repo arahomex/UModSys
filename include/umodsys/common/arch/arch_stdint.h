@@ -1,6 +1,7 @@
 //#error stdint
 
 namespace arch_types {
+
 typedef int64_t        sint64;
 typedef uint64_t       uint64;
 typedef int32_t        sint32;
@@ -17,6 +18,8 @@ typedef long double           float80;
 typedef uint64 OSTime;
 typedef uint64 OSTimeMsec;
 } // namespace arch_types
+
+#define UMODSYS_ARCH_BYTE_BITS 8
 
 #define UMODSYS_HAS_INT64
 

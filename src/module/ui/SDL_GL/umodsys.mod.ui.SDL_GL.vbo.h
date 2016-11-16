@@ -309,7 +309,7 @@ bool RVertexArray::Use(unsigned laymask)
   return true;
 }
 
-bool RVertexArray::StrideConvert(eVertexAType t1, uint8 c1, void* p1, int s1, eVertexAType t2, uint8 c2, const void* p2, int s2, int num)
+bool RVertexArray::StrideConvert(eVertexAType t1, Buint8 c1, void* p1, int s1, eVertexAType t2, Buint8 c2, const void* p2, int s2, int num)
 {
   const BByte* src = reinterpret_cast<const BByte*>(p2);
   BByte* dest = reinterpret_cast<BByte*>(p1);

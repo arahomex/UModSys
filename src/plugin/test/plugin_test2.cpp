@@ -69,7 +69,7 @@ struct RTest2_ModuleReg : public IModuleReg {
   }
 };
 
-UMODSYS_BASE_MODREG_BODY(RTest2_ModuleReg)
+UMODSYS_CORE_MODREG_BODY(RTest2_ModuleReg)
 
 //IModule* RTest2_Shell::get_module(void) const { return reg.module; }
 

@@ -4,7 +4,7 @@
 // umodsys/common/arch_cvt.h: defined arhitect-related conversions
 //*****************************************************
 
-#include <umodsys/common/arch.h>
+#include <umodsys/common/stdarch.h>
 #include <umodsys/common/base/mem_fixed.h>
 
 namespace UModSys {

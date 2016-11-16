@@ -43,21 +43,21 @@
 
 
 
-#define UMODSYS_CPU_DEF_FIELD_uint32_le(field, prevfield) UMODSYS_CPU_DEF_FIELD(prevfield, field, uint32, le)
-#define UMODSYS_CPU_DEF_FIELD_uint16_le(field, prevfield) UMODSYS_CPU_DEF_FIELD(prevfield, field, uint16, le)
-#define UMODSYS_CPU_DEF_FIELD_uint8_le(field, prevfield) UMODSYS_CPU_DEF_FIELD(prevfield, field, uint8, le)
-#define UMODSYS_CPU_DEF_FIELD_sint32_le(field, prevfield) UMODSYS_CPU_DEF_FIELD(prevfield, field, sint32, le)
-#define UMODSYS_CPU_DEF_FIELD_sint16_le(field, prevfield) UMODSYS_CPU_DEF_FIELD(prevfield, field, sint16, le)
-#define UMODSYS_CPU_DEF_FIELD_sint8_le(field, prevfield) UMODSYS_CPU_DEF_FIELD(prevfield, field, sint8, le)
-#define UMODSYS_CPU_DEF_FIELD_float32_le(field, prevfield) UMODSYS_CPU_DEF_FIELD(prevfield, field, float32, le)
+#define UMODSYS_CPU_DEF_FIELD_uint32_le(field, prevfield) UMODSYS_CPU_DEF_FIELD(prevfield, field, Buint32, le)
+#define UMODSYS_CPU_DEF_FIELD_uint16_le(field, prevfield) UMODSYS_CPU_DEF_FIELD(prevfield, field, Buint16, le)
+#define UMODSYS_CPU_DEF_FIELD_uint8_le(field, prevfield) UMODSYS_CPU_DEF_FIELD(prevfield, field, Buint8, le)
+#define UMODSYS_CPU_DEF_FIELD_sint32_le(field, prevfield) UMODSYS_CPU_DEF_FIELD(prevfield, field, Bsint32, le)
+#define UMODSYS_CPU_DEF_FIELD_sint16_le(field, prevfield) UMODSYS_CPU_DEF_FIELD(prevfield, field, Bsint16, le)
+#define UMODSYS_CPU_DEF_FIELD_sint8_le(field, prevfield) UMODSYS_CPU_DEF_FIELD(prevfield, field, Bsint8, le)
+#define UMODSYS_CPU_DEF_FIELD_float32_le(field, prevfield) UMODSYS_CPU_DEF_FIELD(prevfield, field, Bfloat32, le)
 
-#define UMODSYS_CPU_DEF_FIELDA_uint32_le(field, prevfield, _count) UMODSYS_CPU_DEF_FIELD_ARRAY(prevfield, field, uint32, le, _count)
-#define UMODSYS_CPU_DEF_FIELDA_uint16_le(field, prevfield, _count) UMODSYS_CPU_DEF_FIELD_ARRAY(prevfield, field, uint16, le, _count)
-#define UMODSYS_CPU_DEF_FIELDA_uint8_le(field, prevfield, _count) UMODSYS_CPU_DEF_FIELD_ARRAY(prevfield, field, uint8, le, _count)
-#define UMODSYS_CPU_DEF_FIELDA_sint32_le(field, prevfield, _count) UMODSYS_CPU_DEF_FIELD_ARRAY(prevfield, field, sint32, le, _count)
-#define UMODSYS_CPU_DEF_FIELDA_sint16_le(field, prevfield, _count) UMODSYS_CPU_DEF_FIELD_ARRAY(prevfield, field, sint16, le, _count)
-#define UMODSYS_CPU_DEF_FIELDA_sint8_le(field, prevfield, _count) UMODSYS_CPU_DEF_FIELD_ARRAY(prevfield, field, sint8, le, _count)
-#define UMODSYS_CPU_DEF_FIELDA_float32_le(field, prevfield, _count) UMODSYS_CPU_DEF_FIELD_ARRAY(prevfield, field, float32, le, _count)
+#define UMODSYS_CPU_DEF_FIELDA_uint32_le(field, prevfield, _count) UMODSYS_CPU_DEF_FIELD_ARRAY(prevfield, field, Buint32, le, _count)
+#define UMODSYS_CPU_DEF_FIELDA_uint16_le(field, prevfield, _count) UMODSYS_CPU_DEF_FIELD_ARRAY(prevfield, field, Buint16, le, _count)
+#define UMODSYS_CPU_DEF_FIELDA_uint8_le(field, prevfield, _count) UMODSYS_CPU_DEF_FIELD_ARRAY(prevfield, field, Buint8, le, _count)
+#define UMODSYS_CPU_DEF_FIELDA_sint32_le(field, prevfield, _count) UMODSYS_CPU_DEF_FIELD_ARRAY(prevfield, field, Bsint32, le, _count)
+#define UMODSYS_CPU_DEF_FIELDA_sint16_le(field, prevfield, _count) UMODSYS_CPU_DEF_FIELD_ARRAY(prevfield, field, Bsint16, le, _count)
+#define UMODSYS_CPU_DEF_FIELDA_sint8_le(field, prevfield, _count) UMODSYS_CPU_DEF_FIELD_ARRAY(prevfield, field, Bsint8, le, _count)
+#define UMODSYS_CPU_DEF_FIELDA_float32_le(field, prevfield, _count) UMODSYS_CPU_DEF_FIELD_ARRAY(prevfield, field, Bfloat32, le, _count)
 
 // ************** /Complex structure definition macroses:
 

@@ -7,13 +7,13 @@ bool RTest1_Shell::UI_Info::new_va_1(void)
     lib3d::SVertexElemInfo::based_on<lib3d::DColor>(lib3d::vc_Color)
   };
   lib3d::SVertexElemInfo s_lys2[2] = {
-    lib3d::SVertexElemInfo::based_on_a<float32>(lib3d::vc_Coord, 3),              
+    lib3d::SVertexElemInfo::based_on_a<Bfloat32>(lib3d::vc_Coord, 3),              
     lib3d::SVertexElemInfo::based_on_a<Buint8>(lib3d::vc_Color, 4)
   };
   lib3d::SVertexElemInfo s_lys3[3] = {
-    lib3d::SVertexElemInfo::based_on_a<float32>(lib3d::vc_Coord, 3),              
+    lib3d::SVertexElemInfo::based_on_a<Bfloat32>(lib3d::vc_Coord, 3),              
     lib3d::SVertexElemInfo::based_on_a<Buint8>(lib3d::vc_Color, 4),
-    lib3d::SVertexElemInfo::based_on_a<float32>(lib3d::vc_TexCoord, 2)
+    lib3d::SVertexElemInfo::based_on_a<Bfloat32>(lib3d::vc_TexCoord, 2)
   };
   {
     va_tri = rd3d->create_array(2, s_lys, 3);
@@ -72,7 +72,7 @@ bool RTest1_Shell::UI_Info::new_va_1(void)
 bool RTest1_Shell::UI_Info::new_va_qc(void)
 {
   lib3d::SVertexElemInfo s_lys2[2] = {
-    lib3d::SVertexElemInfo::based_on_a<float32>(lib3d::vc_Coord, 3),              
+    lib3d::SVertexElemInfo::based_on_a<Bfloat32>(lib3d::vc_Coord, 3),              
     lib3d::SVertexElemInfo::based_on_a<Buint8>(lib3d::vc_Color, 4)
   };
   lib3d::DColorb clrs[6];

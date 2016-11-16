@@ -2,6 +2,13 @@
 // consts
 //***************************************
 
+enum {
+  SIZE_Bsint32 = sizeof(Bsint32),
+  SIZE_Buint32 = sizeof(Buint32),
+  SIZE_Bsint16 = sizeof(Bsint16),
+  SIZE_Buint16 = sizeof(Buint16),
+};
+
 enum ZipVersions {
   zv_Archiver = 25,
   zv_Minimal  = 20

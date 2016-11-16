@@ -121,10 +121,10 @@ struct RTest1_Shell
   struct UI_Info : libui::IKeyboardClient, libui::IMouseClient {
 #pragma pack(push, 1)
     struct VertexPC {
-      float32 x, y, z;
+      Bfloat32 x, y, z;
       Buint8 r,g,b,a;
       //
-      void set_xyz(float32 xx, float32 yy, float32 zz) {
+      void set_xyz(Bfloat32 xx, Bfloat32 yy, Bfloat32 zz) {
         x = xx; y = yy; z = zz;
       }
       void set_rgba(Buint8 rr, Buint8 gg, Buint8 bb, Buint8 aa=255) {
@@ -137,14 +137,14 @@ struct RTest1_Shell
     };
     //
     struct VertexPCT {
-      float32 x, y, z;
+      Bfloat32 x, y, z;
       Buint8 r,g,b,a;
-      float32 u, v;
+      Bfloat32 u, v;
       //
-      void set_xyz(float32 xx, float32 yy, float32 zz) {
+      void set_xyz(Bfloat32 xx, Bfloat32 yy, Bfloat32 zz) {
         x = xx; y = yy; z = zz;
       }
-      void set_uv(float32 uu, float32 vv) {
+      void set_uv(Bfloat32 uu, Bfloat32 vv) {
         u=uu; v = vv;
       }
       void set_rgba(Buint8 rr, Buint8 gg, Buint8 bb, Buint8 aa=255) {
@@ -353,7 +353,7 @@ struct RModuleReg : public IModuleReg {
   }
 };
 
-UMODSYS_BASE_MODREG_BODY(RModuleReg)
+UMODSYS_CORE_MODREG_BODY(RModuleReg)
 UMODSYS_CORE_GENERATOR_BODY(RGenerator, RModuleReg)
 
 UMODSYS_MODULE_END()

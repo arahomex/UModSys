@@ -15,10 +15,10 @@ enum eObjectKind {
 
 #pragma pack(push, 1)
 struct VertexPC {
-  float32 x, y, z;
+  Bfloat32 x, y, z;
   Buint8 r,g,b,a;
   //
-  void set_xyz(float32 xx, float32 yy, float32 zz) {
+  void set_xyz(Bfloat32 xx, Bfloat32 yy, Bfloat32 zz) {
     x = xx; y = yy; z = zz;
   }
   void set_rgba(Buint8 rr, Buint8 gg, Buint8 bb, Buint8 aa=255) {
