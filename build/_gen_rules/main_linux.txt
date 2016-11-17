@@ -50,6 +50,10 @@ begin project-group umodsys
   # ----------------------------------------------------------------------
   # ----------------------------------------------------------------------
 
+  begin project plugin_test0
+    mode plugin
+  end
+
   begin project plugin_test1
     mode plugin
     libpath $(path-out-bin) $(path-out-tmp)
@@ -76,6 +80,14 @@ begin project-group umodsys
   end
 
   begin project plugin_test5
+    mode plugin
+  end
+
+  begin project plugin_test6
+    mode plugin
+  end
+
+  begin project plugin_test7
     mode plugin
   end
 
@@ -141,6 +153,13 @@ begin project-group umodsys
   end
 
   begin project umodsysct
+  end
+
+  begin project umodsysci
+    option * LDFLAGS "-static -static-libgcc -static-libstdc++ -dynamic"
+    #
+    depend umodsys_Depends::lib_S_zlib
+    libs dl pthread :libm.a :libc.a
   end
 
   begin project umodsysca

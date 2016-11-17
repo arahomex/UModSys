@@ -69,7 +69,7 @@ struct RTest1_Shell
   public libui::IController
 {
   //
-  UMODSYS_BASE_SHELL_IMPLEMENT(U_MOD::RTest1_Shell, 1, IShell)
+  UMODSYS_CORE_SHELL_IMPLEMENT(U_MOD::RTest1_Shell, 1, IShell)
   //
   void* memblock;
   //

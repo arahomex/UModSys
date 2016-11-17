@@ -120,6 +120,10 @@ version mod-media-images_std
   
 # --------------------------------- plugins
 
+version plugin-test0
+  file-h     src/plugin/test/version_plugin_test0.h prefix:UMODSYS_VERSION_PLUGIN_TEST_TEST0
+  check-date src/plugin/test plugin_test0*.h plugin_test0*.cpp
+
 version plugin-test1
   file-h     src/plugin/test/version_plugin_test1.h prefix:UMODSYS_VERSION_PLUGIN_TEST_TEST1
   check-date src/plugin/test plugin_test1*.h plugin_test1*.cpp
@@ -139,6 +143,14 @@ version plugin-test4
 version plugin-test5
   file-h     src/plugin/test/version_plugin_test5.h prefix:UMODSYS_VERSION_PLUGIN_TEST_TEST5
   check-date src/plugin/test plugin_test5*.h plugin_test5*.cpp
+
+version plugin-test6
+  file-h     src/plugin/test/version_plugin_test6.h prefix:UMODSYS_VERSION_PLUGIN_TEST_TEST6
+  check-date src/plugin/test plugin_test6*.h plugin_test6*.cpp
+
+version plugin-test7
+  file-h     src/plugin/test/version_plugin_test7.h prefix:UMODSYS_VERSION_PLUGIN_TEST_TEST7
+  check-date src/plugin/test plugin_test7*.h plugin_test7*.cpp
 
 # --------------------------------- groups
 

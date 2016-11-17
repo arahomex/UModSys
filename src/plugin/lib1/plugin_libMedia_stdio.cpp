@@ -1,4 +1,4 @@
-#include <umodsys/base/module_ref.h>
+#include <umodsys/core/module_ref.h>
 
 UMODSYS_MODULE_DEF(media,stdio);
 

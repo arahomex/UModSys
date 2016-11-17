@@ -35,8 +35,14 @@ begin project-group umodsys
     #
     depend plugin_libStd
     depend plugin_libUI
+    depend plugin_test0
     depend plugin_test1
     depend plugin_test2
+    depend plugin_test3
+    depend plugin_test4
+    depend plugin_test5
+    depend plugin_test6
+    depend plugin_test7
   end
 
   #
@@ -324,7 +330,23 @@ begin project-group umodsys
   # ----------------------------------------------------------------------
   # ----------------------------------------------------------------------
   #
-  
+
+  begin project plugin_test0
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/test
+        include plugin_test0.cpp
+        include plugin_test0.*.h
+      end
+    end
+    depend umodsys_lib_common
+    depend umodsys_lib_core
+  end
+
   begin project plugin_test1
     mode solib
     #
@@ -409,6 +431,37 @@ begin project-group umodsys
     depend umodsys_lib_core
   end
 
+  begin project plugin_test6
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/test
+        include plugin_test6.cpp
+        include plugin_test6.*.h
+      end
+    end
+    depend umodsys_lib_common
+    depend umodsys_lib_core
+  end
+
+  begin project plugin_test7
+    mode solib
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    #
+    begin file-group src
+      begin mask $(path-skip) $(path-s-plugin)/test
+        include plugin_test7.cpp
+        include plugin_test7.*.h
+      end
+    end
+    depend umodsys_lib_common
+    depend umodsys_lib_core
+  end
   # ----------------------------------------------------------------------
 
   begin project plugin_libStd
@@ -717,6 +770,26 @@ begin project-group umodsys
     depend umodsys_lib_kernel
     depend umodsys_lib_core
     depend umodsys_lib_common
+  end
+
+  begin project umodsysci
+    mode binary
+    #
+    includes $(path-include)
+    includes $(path-include)/$(ppath)
+    includes $(path-s-kernel)
+    #
+    begin file-group src
+      file $(path-s-plugin)/main/umodsys.c_maini.cpp
+    end
+    #
+    depend umodsys_lib_libmedia
+    #
+    depend umodsys_lib_kernel
+    depend umodsys_lib_core
+    depend umodsys_lib_common
+    #
+    depend plugin_libStd
   end
 
   begin project umodsysca
