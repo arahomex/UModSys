@@ -149,6 +149,7 @@ public:
 public:
   bool exec_test_shells(void);
   bool exec_test_tcl(void);
+  bool exec_test_json(void);
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RSystem, 2, ISystem);
 public:
