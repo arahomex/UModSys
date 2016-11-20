@@ -47,8 +47,15 @@ struct SJSON_Emit_Base {
     sObjectValue = 0x40,
     sError       = 0x80,
     //
-    sMValue      = sNone | sArray | sArrayValue | sObjectValue,
+    sMValue      = sNone | sArray | sArrayValue | sObjectKey,
     sMKey        = sObject | sObjectValue,
+  };
+  //
+  struct Error {
+    eError errorcode;
+    int auxkey;
+    //
+    Error(eError e, int a) : errorcode(e), auxkey(a) {}
   };
 };
 
@@ -80,9 +87,9 @@ struct TJSON_Emit : SJSON_Emit_Base {
     Array(const Array& R) : generator(R.generator), idx(R.idx) { R.idx = -1; }
     ~Array(void) {}
     //
-    void res_lock(void) const { if(idx<0) generator.raw_error(eInvalidSequence); }
+    void res_lock(void) const { if(idx<0) generator.raw_error(eInvalidSequence, __LINE__); }
     void res_unlock(void) const { 
-      if(generator.errorcode!=eNoError)
+      if(generator.last_error.errorcode!=eNoError)
         return; // do nothing
       end();
     }
@@ -109,17 +116,17 @@ struct TJSON_Emit : SJSON_Emit_Base {
   };
   //
 protected:
-  eError errorcode;
+  Error last_error;
   Writer& writer;
   StateArray stack;
 public:
   int padq;
-  TJSON_Emit(Writer* wr, int pad=0) : writer(*wr), padq(pad), errorcode(eNoError) {}
-  TJSON_Emit(Writer& wr, int pad=0) : writer(wr), padq(pad), errorcode(eNoError)  {}
+  TJSON_Emit(Writer* wr, int pad=0) : writer(*wr), padq(pad), last_error(eNoError, 0) {}
+  TJSON_Emit(Writer& wr, int pad=0) : writer(wr),  padq(pad), last_error(eNoError, 0) {}
   ~TJSON_Emit(void) {}
   //
 public: // raw functions
-  void raw_error(eError code);
+  void raw_error(eError code, int aux=0);
   //
   void raw_pad(int len);
   void raw_number_s(core::Bsint64 value);
@@ -128,9 +135,9 @@ public: // raw functions
   void raw_string(const char *value, size_t vlen);
   void raw_string(const char *value) { raw_string(value, su::slen(value)); }
   //
-  void raw_atom(const char *text, size_t len) { if(!writer.write_chars(text, len)) raw_error(eWriteError); }
+  void raw_atom(const char *text, size_t len) { if(!writer.write_chars(text, len)) raw_error(eWriteError, __LINE__); }
   void raw_atom(const char *text)             { raw_atom(text, su::slen(text)); }
-  void raw_atom(char ch)                      { if(!writer.write_char(ch)) raw_error(eWriteError); }
+  void raw_atom(char ch)                      { if(!writer.write_char(ch)) raw_error(eWriteError, __LINE__); }
   //
   void raw_null(void)         { raw_atom("null", 4); }
   void raw_bool(bool value)   { value ? raw_atom("true", 4) : raw_atom("false", 5); }
@@ -152,8 +159,8 @@ protected: // ctx functions
   void ctx_key(int idx, const char *value, size_t len) { ctx_pre(idx, sMKey); raw_string(value, len); ctx_post(idx, true); }
   void ctx_key(int idx, const char *value) { ctx_pre(idx, sMKey); raw_string(value); ctx_post(idx, true); }
   //
-  int  ctx_obj(int idx)  { ctx_pre(idx, sMValue); raw_object_end(); return ctx_push(idx, sObject); }
-  int  ctx_arr(int idx)  { ctx_pre(idx, sMValue); raw_object_end(); return ctx_push(idx, sArray); }
+  int  ctx_obj(int idx)  { ctx_pre(idx, sMValue); raw_object_begin(); ctx_post(idx); return ctx_push(idx, sObject); }
+  int  ctx_arr(int idx)  { ctx_pre(idx, sMValue); raw_array_begin(); ctx_post(idx); return ctx_push(idx, sArray); }
   void ctx_end(int idx);
   //
   void ctx_pre(int idx, int state);
@@ -161,17 +168,18 @@ protected: // ctx functions
   int  ctx_push(int idx, int state);
   void ctx_init(void);
 public: // ctx public functions
-  Object obj(void) { ctx_init(); return Object(*this, ctx_push(0, sObject)); }
-  Array arr(void) { ctx_init(); return Object(*this, ctx_push(0, sArray)); }
+  Object obj(void) { ctx_init(); raw_object_begin(); return Object(*this, ctx_push(0, sObject)); }
+  Array arr(void) { ctx_init(); raw_array_begin(); return Object(*this, ctx_push(0, sArray)); }
 };
 
 /*************************************************************/
 
 template<typename Writer, typename StateArray>
-void TJSON_Emit<Writer, StateArray>::raw_error(eError code)
+void TJSON_Emit<Writer, StateArray>::raw_error(eError code, int aux)
 {
-  errorcode = code;
-  throw code;
+  last_error.errorcode = code;
+  last_error.auxkey = aux;
+  throw last_error;
 }
 
 template<typename Writer, typename StateArray>
@@ -233,9 +241,9 @@ void TJSON_Emit<Writer, StateArray>::raw_string(const char *value, size_t len)
 template<typename Writer, typename StateArray>
 inline void TJSON_Emit<Writer, StateArray>::ctx_pre(int idx, int state)
 {
-  if(idx<0 || idx!=(~stack-1)) raw_error(eInvalidSequence);
+  if(idx<0 || idx!=(~stack-1)) raw_error(eInvalidSequence, __LINE__);
   int ss = stack[idx];
-  if((ss & state)!=ss) raw_error(eInvalidSequence);
+  if((ss & state)!=ss) raw_error(eInvalidSequence, __LINE__);
   //
   if((ss & (sArrayValue | sObjectValue))) {
     raw_delim_value();
@@ -253,10 +261,10 @@ template<typename Writer, typename StateArray>
 inline void TJSON_Emit<Writer, StateArray>::ctx_post(int idx, bool isKey)
 {
   int ss = stack[idx];
-  if(ss & sObject) {
+  if(ss & (sObject | sObjectKey | sObjectValue)) {
     stack[idx] = isKey ? sObjectKey : sObjectValue;
-  } else if(ss & sArray) {
-    stack[idx] = sObjectValue;
+  } else if(ss & (sArray | sArrayValue)) {
+    stack[idx] = sArrayValue;
   } else {
     stack[idx] = sValue;
   }
@@ -265,38 +273,38 @@ inline void TJSON_Emit<Writer, StateArray>::ctx_post(int idx, bool isKey)
 template<typename Writer, typename StateArray>
 inline int TJSON_Emit<Writer, StateArray>::ctx_push(int idx, int state)
 {
-  if(!stack.Push(state)) raw_error(eMemoryError);
+  if(!stack.Push(state)) raw_error(eMemoryError, __LINE__);
   return int(~stack-1);
 }
 
 template<typename Writer, typename StateArray>
 inline void TJSON_Emit<Writer, StateArray>::ctx_end(int idx)
 {
-  if(idx<0 || idx!=(~stack-1)) raw_error(eInvalidSequence);
+  if(idx<0 || idx!=(~stack-1)) raw_error(eInvalidSequence, __LINE__);
   int ss = stack[idx];
   if(ss & sArray) {
-    if(!stack.Pop()) raw_error(eMemoryError);
+    if(!stack.Pop()) raw_error(eMemoryError, __LINE__);
     raw_array_end();
   } else if(ss & sArrayValue) {
-    if(!stack.Pop()) raw_error(eMemoryError);
+    if(!stack.Pop()) raw_error(eMemoryError, __LINE__);
     if(padq) raw_pad(padq * ~stack);
     raw_array_end();
   } else if(ss & sObject) {
-    if(!stack.Pop()) raw_error(eMemoryError);
+    if(!stack.Pop()) raw_error(eMemoryError, __LINE__);
     raw_object_end();
   } else if(ss & sObjectValue) {
-    if(!stack.Pop()) raw_error(eMemoryError);
+    if(!stack.Pop()) raw_error(eMemoryError, __LINE__);
     if(padq) raw_pad(padq * ~stack);
     raw_object_end();
   } else {
-    raw_error(eInvalidSequence);
+    raw_error(eInvalidSequence, __LINE__);
   }
 }
 
 template<typename Writer, typename StateArray>
 inline void TJSON_Emit<Writer, StateArray>::ctx_init(void)
 {
-  if(~stack!=0) raw_error(eInvalidSequence);
+  if(~stack!=0) raw_error(eInvalidSequence, __LINE__);
 }
 
 /*************************************************************/

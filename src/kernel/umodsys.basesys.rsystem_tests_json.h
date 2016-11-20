@@ -22,6 +22,7 @@ namespace UModSys {
 
 bool RSystem::exec_test_json(void)
 {
+#define OP(x) dbg_put(rsdl_SysTests, "%s...", #x); x; dbg_put(rsdl_SysTests, "ok\n")
   using namespace kernel_test::json;
   char buf[1024];
   //
@@ -47,35 +48,43 @@ bool RSystem::exec_test_json(void)
       //
       *wr.p = 0;
       //
-      dbg_put(rsdl_SysTests, "JSON[%d]:\n%s\n/JSON.", int(wr.p-buf), buf);
+      dbg_put(rsdl_SysTests, "JSON[%d]:\n%s\n/JSON.\n", int(wr.p-buf), buf);
     }
     {
       Writer wr(buf, sizeof(buf)-1);
       Generator gen(wr, 2);
       //
       {
-        Generator::DObject obj(gen.obj());
-        obj->key("array");
+        OP(Generator::DObject obj(gen.obj()));
+        OP(obj->key("key"));
+        OP(obj->str("value"));
+        OP(obj->key("array"));
         {
-          Generator::DArray arr(obj->arr());
-          arr->str("value1");
-          arr->str("value2");
-          arr->nums(100);
+          OP(Generator::DArray arr(obj->arr()));
+          OP(arr->str("value1"));
+          OP(arr->str("value2"));
+          OP(arr->nums(100));
         }
+        OP(obj->key("key2"));
+        OP(obj->str("value2"));
       }
       //
       *wr.p = 0;
       //
-      dbg_put(rsdl_SysTests, "JSON[%d]:\n%s\n/JSON.", int(wr.p-buf), buf);
+      dbg_put(rsdl_SysTests, "JSON[%d]:\n%s\n/JSON.\n", int(wr.p-buf), buf);
     }
-  } catch(Generator::eError ge) {
-    dbg_put(rsdl_SysTests, "JSON end with Generator::eError %d\n", ge);
+/*
+  } catch(Generator::Error ge) {
+    dbg_put(rsdl_SysTests, "JSON end with Generator::eError %d:%d\n", ge.errorcode, ge.auxkey);
     return false;
+*/
 //  } catch(Parser::eError) {
+  } catch(bool dummy) {
   }
   //
   dbg_put(rsdl_SysTests, "JSON end.\n");
   return true;
+#undef OP
 }
 
 //***************************************
