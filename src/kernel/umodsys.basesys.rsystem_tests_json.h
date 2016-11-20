@@ -15,7 +15,7 @@ namespace UModSys {
         bool write_chars(const char *chs, size_t len) { if(s<len) return false; memcpy(p, chs, len); s-=len; p+=len; return true; }
       };
 
-      typedef tl::TGenerator_JSON<Writer> Generator;
+      typedef tl::TJSON_Emit<Writer, tl::TDynarrayStatic<BByte, 1024> > Generator;
     }
   }
 }
@@ -30,7 +30,7 @@ bool RSystem::exec_test_json(void)
   try {
     {
       Writer wr(buf, sizeof(buf)-1);
-      Generator gen(wr); gen.padq = 2;
+      Generator gen(wr);
       //
 //      gen.raw_string(buf, 1024);
       gen.raw_object_begin();
@@ -44,6 +44,25 @@ bool RSystem::exec_test_json(void)
         gen.raw_number_s(100);
        gen.raw_array_end();
       gen.raw_object_end();
+      //
+      *wr.p = 0;
+      //
+      dbg_put(rsdl_SysTests, "JSON[%d]:\n%s\n/JSON.", int(wr.p-buf), buf);
+    }
+    {
+      Writer wr(buf, sizeof(buf)-1);
+      Generator gen(wr, 2);
+      //
+      {
+        Generator::DObject obj(gen.obj());
+        obj->key("array");
+        {
+          Generator::DArray arr(obj->arr());
+          arr->str("value1");
+          arr->str("value2");
+          arr->nums(100);
+        }
+      }
       //
       *wr.p = 0;
       //

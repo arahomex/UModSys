@@ -13,6 +13,8 @@ namespace tl {
 
 /*************************************************************/
 
+struct SJSON_Emit_Base;
+
 template<typename Writer, typename StateArray> struct TJSON_Emit;
 
 
@@ -24,24 +26,9 @@ template<typename Writer, typename StateArray> struct TJSON_Emit;
   StateArray must support normal dynarray functions, type is at least byte
 */
 
-
 /*************************************************************/
 
-template<typename Writer, typename StateArray>
-struct TJSON_Emit {
-  struct Object;
-  struct Array;
-  //
-  friend struct Object;
-  friend struct Array;
-  //
-  typedef TResLock<const Object> DObject;
-  typedef TResLock<const Array> DArray;
-  //
-  typedef Writer DWriter;
-  typedef StateArray DStateArray;
-  typedef TJSON_Emit<Writer, StateArray> Self;
-  //
+struct SJSON_Emit_Base {
   enum eError {
     eNoError,
     eWriteError,
@@ -63,6 +50,27 @@ struct TJSON_Emit {
     sMValue      = sNone | sArray | sArrayValue | sObjectValue,
     sMKey        = sObject | sObjectValue,
   };
+};
+
+/*************************************************************/
+
+template<typename Writer, typename StateArray>
+struct TJSON_Emit : SJSON_Emit_Base {
+  struct Object;
+  struct Array;
+  //
+  friend struct Object;
+  friend struct Array;
+  //
+//  typedef SJSON_Emit_Base::eError eError;
+//  typedef SJSON_Emit_Base::eState eState;
+  //
+  typedef TResLock<const Object> DObject;
+  typedef TResLock<const Array> DArray;
+  //
+  typedef Writer DWriter;
+  typedef StateArray DStateArray;
+  typedef TJSON_Emit<Writer, StateArray> Self;
   //
   struct Array {
     Self& generator;
@@ -70,23 +78,23 @@ struct TJSON_Emit {
     //
     Array(Self& gen, int i) : generator(gen), idx(i) {}
     Array(const Array& R) : generator(R.generator), idx(R.idx) { R.idx = -1; }
-    ~Array(void) { end(); }
+    ~Array(void) {}
     //
-    void res_lock(void) {
-      if(idx<0) generator.raw_error(eInvalidSequence);
+    void res_lock(void) const { if(idx<0) generator.raw_error(eInvalidSequence); }
+    void res_unlock(void) const { 
+      if(generator.errorcode!=eNoError)
+        return; // do nothing
+      end();
     }
-    void end(void) {
-      if(idx<0) return;
-      generator.ctx_end(idx);
-    }
+    void end(void) const { if(idx>=0) { generator.ctx_end(idx); idx=-1; } }
     //
-    void val_null(bool value) const { generator.ctx_val_null(idx); }
-    void val_bool(bool value) const { generator.ctx_val_bool(idx, value); }
-    void val_numf(Bfloat64 value) const { generator.ctx_val_numf(idx, value); }
-    void val_nums(Bsint64 value) const { generator.ctx_val_nums(idx, value); }
-    void val_numu(Buint64 value) const { generator.ctx_val_numu(idx, value); }
-    void val_str(const char *value, size_t len) const { generator.ctx_val_str(idx, value, len); }
-    void val_str(const char *value) const { generator.ctx_val_str(idx, value); }
+    void null(bool value) const { generator.ctx_val_null(idx); }
+    void boolv(bool value) const { generator.ctx_val_bool(idx, value); }
+    void numf(Bfloat64 value) const { generator.ctx_val_numf(idx, value); }
+    void nums(Bsint64 value) const { generator.ctx_val_nums(idx, value); }
+    void numu(Buint64 value) const { generator.ctx_val_numu(idx, value); }
+    void str(const char *value, size_t len) const { generator.ctx_val_str(idx, value, len); }
+    void str(const char *value) const { generator.ctx_val_str(idx, value); }
     //
     Array arr(void) const { return Array(generator, generator.ctx_arr(idx)); }
     Object obj(void) const;
@@ -106,8 +114,8 @@ protected:
   StateArray stack;
 public:
   int padq;
-  TJSON_Emit(Writer* wr, int pad=0) : writer(*wr), padq(pad) {}
-  TJSON_Emit(Writer& wr, int pad=0) : writer(wr), padq(pad)  {}
+  TJSON_Emit(Writer* wr, int pad=0) : writer(*wr), padq(pad), errorcode(eNoError) {}
+  TJSON_Emit(Writer& wr, int pad=0) : writer(wr), padq(pad), errorcode(eNoError)  {}
   ~TJSON_Emit(void) {}
   //
 public: // raw functions
@@ -294,9 +302,9 @@ inline void TJSON_Emit<Writer, StateArray>::ctx_init(void)
 /*************************************************************/
 
 template<typename Writer, typename StateArray>
-inline void TJSON_Emit<Writer, StateArray>::Array::obj(void) const
+inline typename TJSON_Emit<Writer, StateArray>::Object TJSON_Emit<Writer, StateArray>::Array::obj(void) const
 {
-  return Array(generator, generator.ctx_obj(idx));
+  return Object(generator, generator.ctx_obj(idx));
 }
 
 

@@ -1,5 +1,8 @@
 #!/bin/sh
 
+ME="$(readlink -e "$0")"
+cd "$(dirname "$ME")"
+
 Binary=''
 
 function make_gm() {
@@ -38,8 +41,8 @@ function vg() {
 }
 
 function dbg() {
-  echo "gdb $Binary"
-  gdb $Binary
+  echo "gdb --args $Binary ${ARGS[@]}"
+  gdb --args $Binary "${ARGS[@]}"
 }
 
 function run() {
@@ -52,6 +55,8 @@ make_genm
 
 export LD_LIBRARY_PATH="LD_LIBRARY_PATH:`readlink -e $(dirname $Binary)`"
 
-#dbg
+ARGS="$@"
+
+dbg
 #vg
-run
+#run
