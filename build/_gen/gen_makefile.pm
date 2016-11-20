@@ -15,6 +15,7 @@ $generators->{'makefile'} = {
     'file-cpp' => <<'EOT',
 objs__${PROJECT_ID} += \$(tmpx__${PROJECT_ID})/$FNAME.o
 \$(tmpx__${PROJECT_ID})/$FNAME.o: $FILE_PATH | \$(tmpx__${PROJECT_ID})
+	\@echo -n '+' >&2
 	\@\$(CXX) \$(CXXFLAGS__${PROJECT_ID}) -c -o\$@ \$<
 	\@\$(CXX) \$(CXXFLAGS__${PROJECT_ID}) -c -o\$@.d -MM -MT\$@ \$<
 -include \$(tmpx__${PROJECT_ID})/$FNAME.o.d
@@ -22,6 +23,7 @@ EOT
     'file-c' => <<'EOT',
 objs__${PROJECT_ID} += \$(tmpx__${PROJECT_ID})/$FNAME.o
 \$(tmpx__${PROJECT_ID})/$FNAME.o: $FILE_PATH | \$(tmpx__${PROJECT_ID})
+	\@echo -n '.' >&2
 	\@\$(CC) \$(CFLAGS__${PROJECT_ID}) -c -o\$@ \$<
 	\@\$(CC) \$(CXXFLAGS__${PROJECT_ID}) -c -o\$@.d -MM -MT\$@ \$<
 -include \$(tmpx__${PROJECT_ID})/$FNAME.o.d
@@ -29,6 +31,7 @@ EOT
     'file-S' => <<'EOT',
 objs__${PROJECT_ID} += \$(tmpx__${PROJECT_ID})/$FNAME.o
 \$(tmpx__${PROJECT_ID})/$FNAME.o: $FILE_PATH | \$(tmpx__${PROJECT_ID})
+	\@echo -n 's' >&2
 	\@\$(AS) \$(ASFLAGS__${PROJECT_ID}) -c -o\$@ \$<
 EOT
     #
@@ -184,7 +187,7 @@ $PROJECT_TPNAME: \$(target__${PROJECT_ID})
 $PROJECT_CPNAME:
 	\@./clean-file.sh \$(target__${PROJECT_ID}) \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}): $TARGET_DEPENDS \$(objs__${PROJECT_ID}) | \$(bin__${PROJECT_ID}) 
-	\@echo '*** Make $MODE $PROJECTGROUP_NAME::$PROJECT_NAME'
+	\@echo '*** Make $MODE $PROJECTGROUP_NAME::$PROJECT_NAME' >&2
 	\@\$(CXX) ${OPT_console_OPTIONS} -o\$@ \$(objs__${PROJECT_ID}) \$(LDFLAGS__${PROJECT_ID})
 EOT
     'project-config-M:solib' => <<'EOT',
@@ -193,7 +196,7 @@ $PROJECT_TPNAME: \$(target__${PROJECT_ID})
 $PROJECT_CPNAME:
 	\@./clean-file.sh \$(target__${PROJECT_ID}) \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}): $TARGET_DEPENDS \$(objs__${PROJECT_ID}) | \$(bin__${PROJECT_ID}) 
-	\@echo '*** Make $MODE $PROJECTGROUP_NAME::$PROJECT_NAME'
+	\@echo '*** Make $MODE $PROJECTGROUP_NAME::$PROJECT_NAME' >&2
 	\@\$(CXX) ${OPT_solib_OPTIONS} -o\$@ \$(objs__${PROJECT_ID}) \$(LDFLAGS__${PROJECT_ID})
 EOT
     'project-config-M:plugin' => <<'EOT',
@@ -202,7 +205,7 @@ $PROJECT_TPNAME: \$(target__${PROJECT_ID})
 $PROJECT_CPNAME:
 	\@./clean-file.sh \$(target__${PROJECT_ID}) \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}): $TARGET_DEPENDS \$(objs__${PROJECT_ID}) | \$(bin__${PROJECT_ID}) 
-	\@echo '*** Make $MODE $PROJECTGROUP_NAME::$PROJECT_NAME'
+	\@echo '*** Make $MODE $PROJECTGROUP_NAME::$PROJECT_NAME' >&2
 	\@\$(CXX) ${OPT_plugin_OPTIONS} -o\$@ \$(objs__${PROJECT_ID}) \$(LDFLAGS__${PROJECT_ID})
 EOT
     'project-config-M:lib' => <<'EOT',
@@ -211,7 +214,7 @@ $PROJECT_TPNAME: \$(target__${PROJECT_ID})
 $PROJECT_CPNAME:
 	\@./clean-file.sh \$(target__${PROJECT_ID}) \$(tmpx__${PROJECT_ID})/*
 \$(target__${PROJECT_ID}): $TARGET_DEPENDS \$(objs__${PROJECT_ID}) | \$(tmpx__${PROJECT_ID})
-	\@echo '*** Make $MODE $PROJECTGROUP_NAME::$PROJECT_NAME'
+	\@echo '*** Make $MODE $PROJECTGROUP_NAME::$PROJECT_NAME' >&2
 	\@\$(AR) ${OPT_lib_OPTIONS} \$@ \$(objs__${PROJECT_ID})
 EOT
     #----------------------------------------------------------------------------------------------------------------------------

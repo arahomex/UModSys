@@ -1,7 +1,7 @@
 #ifndef __UMODSYS_TL_PARSER_TCL_H
 #define __UMODSYS_TL_PARSER_TCL_H 1
 /*************************************************************/
-// file: umodsys/tl/parser/parser_tcl.h
+// file: umodsys/tl/codec/tcl_parse.h
 // info: Parser of TCL-like languages
 /*************************************************************/
 

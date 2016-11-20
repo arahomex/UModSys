@@ -28,9 +28,10 @@ fi
 
 for C in $L ; do
   echo "make $MAKEOPTS -f Makefile.$P.$C" "$@"
-  make $MAKEOPTS -f Makefile.$P.$C "$@" || exit $?
+  make $MAKEOPTS -f Makefile.$P.$C "$@" 2>&1 | head -n 50
+  err=${PIPESTATUS[0]}
+  (( $err )) || exit $err
 done
-
 
 
 

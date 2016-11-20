@@ -6,7 +6,7 @@
 /*************************************************************/
 
 #include <umodsys/core/basetypes.h>
-#include <umodsys/tl/parsers/parser_tcl.h>
+#include <umodsys/tl/codec/tcl_parse.h>
 
 namespace UModSys {
 namespace base {

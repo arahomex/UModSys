@@ -10,7 +10,7 @@ using namespace UModSys::core;
 using namespace UModSys::base;
 using namespace UModSys::base::rsystem;
 
-#include <umodsys/tl/parsers/generator_json.h>
+#include <umodsys/tl/codec/json_emit.h>
 
 //***************************************
 // RSystem::

@@ -1,7 +1,7 @@
 #ifndef __UMODSYS_TL_PARSER_JSON_H
 #define __UMODSYS_TL_PARSER_JSON_H 1
 /*************************************************************/
-// file: umodsys/tl/parser/parser_json.h
+// file: umodsys/tl/parser/json_parse.h
 // info: Parser of JSON
 /*************************************************************/
 
