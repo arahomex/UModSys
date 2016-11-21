@@ -1,0 +1,1 @@
+../../data/run-release.sh

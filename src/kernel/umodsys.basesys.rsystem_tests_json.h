@@ -16,6 +16,28 @@ namespace UModSys {
       };
 
       typedef tl::TJSON_Emit<Writer, tl::TDynarrayStatic<BByte, 1024> > Generator;
+
+      void test_one_pass(Writer &wr)
+      {
+        Generator gen(wr, 2);
+        //
+        {
+          Generator::DObject obj(gen.obj());
+          obj->key("key");
+          obj->str("value");
+          obj->key("array");
+          {
+            Generator::DArray arr(obj->arr());
+            arr->str("value1");
+            arr->str("value2");
+            arr->nums(100);
+          }
+          obj->key("key2");
+          obj->str("value2");
+        }
+        //
+        *wr.p = 0;
+      }
     }
   }
 }
@@ -48,7 +70,7 @@ bool RSystem::exec_test_json(void)
       //
       *wr.p = 0;
       //
-      dbg_put(rsdl_SysTests, "JSON[%d]:\n%s\n/JSON.\n", int(wr.p-buf), buf);
+      dbg_put(rsdl_SysTests, "1.JSON[%d]:\n%s\n/JSON.\n", int(wr.p-buf), buf);
     }
     {
       Writer wr(buf, sizeof(buf)-1);
@@ -71,7 +93,27 @@ bool RSystem::exec_test_json(void)
       //
       *wr.p = 0;
       //
-      dbg_put(rsdl_SysTests, "JSON[%d]:\n%s\n/JSON.\n", int(wr.p-buf), buf);
+      dbg_put(rsdl_SysTests, "2.JSON[%d]:\n%s\n/JSON.\n", int(wr.p-buf), buf);
+    }
+    //
+    {
+#ifdef _DEBUG
+      const int count = 256*1024;
+#else
+      const int count = 4096*1024;
+#endif
+      clock_t t1, t2;
+      t1 = clock();
+      size_t bytes = 0;
+      for(int i=0; i<count; i++) {
+        Writer wr(buf, sizeof(buf)-1);
+        test_one_pass(wr);
+        bytes += wr.p - buf;
+      }
+      t2 = clock();
+      double dt = double(t2-t1)/CLOCKS_PER_SEC;
+      //
+      dbg_put(rsdl_SysTests, "3.JSON:\n%s\n/JSON. -- %.3f sec %.3fkOps/sec %.3fMb %.3fMb/sec\n", buf, dt, count/1e3/dt, bytes/1e6, bytes/1e6/dt);
     }
 /*
   } catch(Generator::Error ge) {
