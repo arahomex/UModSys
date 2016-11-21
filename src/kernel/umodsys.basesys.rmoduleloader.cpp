@@ -172,24 +172,25 @@ bool RModuleLoader::moduledb_load(const core::DCString& cachepath)
 
 bool RModuleLoader::moduledb_save(const core::DCString& cachepath)
 {
-  FILE *f = syshlp::u_fopen(*cachepath, "wb");
-  if(f==NULL)
+  RWriterFile f( syshlp::u_fopen(*cachepath, "wb") );
+  if(f.f==NULL)
     return false;
-  fprintf(f, "# LIST OF LIBRARY MODULES:\n\n");
-  if(!mod_this->save_db(f)) {
-    fclose(f);
-    return false;
-  }
-  for(size_t i=0; i<~mod_list; i++) {
-    RModuleLibrarySO* ml = mod_list(i);
-    if(ml==NULL)
-      continue;
-    if(!ml->save_db(f)) {
-      fclose(f);
+  try {
+    DJsonEmitterFile fx(f, 2);
+    DJsonEmitterFile::DArray root(fx.arr());
+    if(!mod_this->save_db(root))
       return false;
+    for(size_t i=0; i<~mod_list; i++) {
+      RModuleLibrarySO* ml = mod_list(i);
+      if(ml==NULL)
+        continue;
+      if(!ml->save_db(root))
+        return false;
     }
+  } catch(DJsonEmitterFile::Error ee) {
+    dbg_put(rsdl_MemoryError, "JSON eError %d:%d\n", ee.errorcode, ee.auxkey);
+    return false;
   }
-  fclose(f);
   return true;
 }
 

@@ -86,7 +86,7 @@ public:
   //
   bool alloc_minfo(const SModuleInfo &mi2);
   bool scan(void);
-  bool save_db(FILE *f);
+  bool save_db(DJsonEmitterFile::DArray& f);
   //
   size_t mod_findobjname(core::IRefObject::TypeId intr, core::IRefObject::TypeId found[], size_t nfound, BCStr mask);
   bool mod_generate(core::IRefObject::P& obj, core::IRefObject::TypeId name, const core::SParameters& args);
@@ -139,7 +139,7 @@ public:
   bool link(void);
   bool unlink(void);
   bool load0(void);
-  bool save_db(FILE *f);
+  bool save_db(DJsonEmitterFile::DArray& f);
 public:
   UMODSYS_REFOBJECT_INTIMPLEMENT(UModSys::base::rsystem::IModuleLibraryUni, 2, IModuleLibrary);
 };

@@ -57,6 +57,10 @@ struct SJSON_Emit_Base {
     //
     Error(eError e, int a) : errorcode(e), auxkey(a) {}
   };
+  //
+  typedef core::Bsint64 Dint;
+  typedef core::Buint64 Duint;
+  typedef core::Bfloat64 Dfloat;
 };
 
 /*************************************************************/
@@ -97,9 +101,9 @@ struct TJSON_Emit : SJSON_Emit_Base {
     //
     void null(bool value) const { generator.ctx_val_null(idx); }
     void boolv(bool value) const { generator.ctx_val_bool(idx, value); }
-    void numf(Bfloat64 value) const { generator.ctx_val_numf(idx, value); }
-    void nums(Bsint64 value) const { generator.ctx_val_nums(idx, value); }
-    void numu(Buint64 value) const { generator.ctx_val_numu(idx, value); }
+    void numf(Dfloat value) const { generator.ctx_val_numf(idx, value); }
+    void nums(Dint value) const { generator.ctx_val_nums(idx, value); }
+    void numu(Duint value) const { generator.ctx_val_numu(idx, value); }
     void str(const char *value, size_t len) const { generator.ctx_val_str(idx, value, len); }
     void str(const char *value) const { generator.ctx_val_str(idx, value); }
     //
@@ -129,9 +133,9 @@ public: // raw functions
   void raw_error(eError code, int aux=0);
   //
   void raw_pad(int len);
-  void raw_number_s(core::Bsint64 value);
-  void raw_number_u(core::Buint64 value);
-  void raw_number_f(core::Bfloat64 value);
+  void raw_number_s(Dint value);
+  void raw_number_u(Duint value);
+  void raw_number_f(Dfloat value);
   void raw_string(const char *value, size_t vlen);
   void raw_string(const char *value) { raw_string(value, su::slen(value)); }
   //
@@ -150,9 +154,9 @@ public: // raw functions
 protected: // ctx functions
   void ctx_val_null(int idx) { ctx_pre(idx, sMValue); raw_null(); ctx_post(idx); }
   void ctx_val_bool(int idx, bool value) { ctx_pre(idx, sMValue); raw_bool(value); ctx_post(idx); }
-  void ctx_val_numf(int idx, Bfloat64 value) { ctx_pre(idx, sMValue); raw_number_f(value); ctx_post(idx); }
-  void ctx_val_numu(int idx, Buint64 value) { ctx_pre(idx, sMValue); raw_number_u(value); ctx_post(idx); }
-  void ctx_val_nums(int idx, Bsint64 value) { ctx_pre(idx, sMValue); raw_number_s(value); ctx_post(idx); }
+  void ctx_val_numf(int idx, Dfloat value) { ctx_pre(idx, sMValue); raw_number_f(value); ctx_post(idx); }
+  void ctx_val_numu(int idx, Duint value) { ctx_pre(idx, sMValue); raw_number_u(value); ctx_post(idx); }
+  void ctx_val_nums(int idx, Dint value) { ctx_pre(idx, sMValue); raw_number_s(value); ctx_post(idx); }
   void ctx_val_str(int idx, const char *value, size_t len) { ctx_pre(idx, sMValue); raw_string(value, len); ctx_post(idx); }
   void ctx_val_str(int idx, const char *value) { ctx_pre(idx, sMValue); raw_string(value); ctx_post(idx); }
   //
@@ -192,7 +196,7 @@ void TJSON_Emit<Writer, StateArray>::raw_pad(int len)
 }
 
 template<typename Writer, typename StateArray>
-void TJSON_Emit<Writer, StateArray>::raw_number_s(core::Bsint64 value)
+void TJSON_Emit<Writer, StateArray>::raw_number_s(SJSON_Emit_Base::Dint value)
 {
   char buf[128];
   sprintf(buf, "%lld", value);
@@ -200,7 +204,7 @@ void TJSON_Emit<Writer, StateArray>::raw_number_s(core::Bsint64 value)
 }
 
 template<typename Writer, typename StateArray>
-void TJSON_Emit<Writer, StateArray>::raw_number_u(core::Buint64 value)
+void TJSON_Emit<Writer, StateArray>::raw_number_u(SJSON_Emit_Base::Duint value)
 {
   char buf[128];
   sprintf(buf, "%llu", value);
@@ -208,7 +212,7 @@ void TJSON_Emit<Writer, StateArray>::raw_number_u(core::Buint64 value)
 }
 
 template<typename Writer, typename StateArray>
-void TJSON_Emit<Writer, StateArray>::raw_number_f(core::Bfloat64 value)
+void TJSON_Emit<Writer, StateArray>::raw_number_f(SJSON_Emit_Base::Dfloat value)
 {
   char buf[128];
   sprintf(buf, "%g", value);

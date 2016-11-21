@@ -2,4 +2,6 @@ tmp/*
 bin/*
 *.log
 *.conf-hdb
+*moduledb.json
+*moduledb.json.yaml
 *.Debug

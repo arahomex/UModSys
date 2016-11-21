@@ -323,10 +323,14 @@ bool RModule::scan(void)
   return true;
 }
 
-bool RModule::save_db(FILE *f)
+bool RModule::save_db(DJsonEmitterFile::DArray& f)
 {
-#if 0
-  fprintf(f, "  BEGIN MODULE %s(%d,%d)\n", minfo.name(), minfo.verno.vmajor, minfo.verno.vminor);
+  DJsonEmitterFile::DObject mo(f->obj());
+  keyvalue(mo, "name", *minfo.name);
+  keyvalue(mo, "version", minfo.verno);
+  //
+  mo->key("infos");
+  DJsonEmitterFile::DArray mioa(mo->arr());
   for(size_t i=0; i<~mos; i++) {
     const ModuleObjInfo& mi = mos(i);
     dbg_put(
@@ -336,114 +340,31 @@ bool RModule::save_db(FILE *f)
       mi.tid, 
       mi.uid
     );
-/*
-    dbg_put(
-      rsdl_Module, 
-      "RModule(%p)::save_db(...) -- { %p:%s(%d) %p:%s(%d) }\n", 
-      this,
-      mi.tid, mi.tid->name, mi.tid->verno,
-      mi.uid, mi.uid->name, mi.uid->verno
-    );
-*/
+    DJsonEmitterFile::DObject mio(mioa->obj());
     if(mi.start_gen==array_index_none) { // modobjects
-      fprintf(
-        f, "    MODOBJECT %s(%d) %s(%d)\n", 
-        mi.tid->name, mi.tid->verno,
-        mi.uid->name, mi.uid->verno
-      );
+      keyvalue(mio, "type", "MODOBJECT");
+      keyvalue(mio, "tid", mi.tid);
+      keyvalue(mio, "uid", mi.uid);
     } else {
-      fprintf(
-        f, "    BEGIN GENERATOR %s(%d) %s(%d)\n", 
-        mi.tid->name, mi.tid->verno,
-        mi.uid->name, mi.uid->verno
-      );
+      keyvalue(mio, "type", "GENERATOR");
+      keyvalue(mio, "tid", mi.tid);
+      keyvalue(mio, "uid", mi.uid);
       size_t bp = mi.start_gen;
+      mio->key("objects");
+      DJsonEmitterFile::DArray mra(mio->arr());
       for(size_t k=0; k<mi.count_gen; k++) {
         const GeneratedObjInfo& gi = mogis(bp+k);
-        fprintf(
-          f, "      BEGIN REFOBJECT %s(%d)\n", 
-          gi.tid->name, gi.tid->verno
-        );
+        DJsonEmitterFile::DObject ro(mra->obj());
+        keyvalue(ro, "tid", gi.tid);
+        ro->key("implements");
+        DJsonEmitterFile::DArray mria(ro->arr());
         for(size_t kk=0; kk<gi.count_elem; kk++) {
           TypeId tid = mogts(gi.start_elem+kk);
-          fprintf(
-            f, "        TYPE %s(%d)\n", 
-            tid->name, tid->verno
-          );
+          value(mria, tid);
         }
-        fprintf(
-          f, "      END REFOBJECT %s(%d)\n", 
-          gi.tid->name, gi.tid->verno
-        );
       }
-      fprintf(
-        f, "    END GENERATOR %s(%d) %s(%d)\n", 
-        mi.tid->name, mi.tid->verno,
-        mi.uid->name, mi.uid->verno
-      );
     }
   }
-  fprintf(f, "  END MODULE %s(%d,%d)\n", minfo.name(), minfo.verno.vmajor, minfo.verno.vminor);
-#else
-  fprintf(f, "  MODULE %s(%d,%d) {\n", *minfo.name, minfo.verno.vmajor, minfo.verno.vminor);
-  for(size_t i=0; i<~mos; i++) {
-    const ModuleObjInfo& mi = mos(i);
-    dbg_put(
-      rsdl_Module, 
-      "RModule(%p)::save_db(...) -- { %p %p }\n", 
-      this,
-      mi.tid, 
-      mi.uid
-    );
-/*
-    dbg_put(
-      rsdl_Module, 
-      "RModule(%p)::save_db(...) -- { %p:%s(%d) %p:%s(%d) }\n", 
-      this,
-      mi.tid, mi.tid->name, mi.tid->verno,
-      mi.uid, mi.uid->name, mi.uid->verno
-    );
-*/
-    if(mi.start_gen==array_index_none) { // modobjects
-      fprintf(
-        f, "    MODOBJECT %s(%d) %s(%d)\n", 
-        mi.tid->name, mi.tid->verno,
-        mi.uid->name, mi.uid->verno
-      );
-    } else {
-      fprintf(
-        f, "    GENERATOR %s(%d) %s(%d) {\n", 
-        mi.tid->name, mi.tid->verno,
-        mi.uid->name, mi.uid->verno
-      );
-      size_t bp = mi.start_gen;
-      for(size_t k=0; k<mi.count_gen; k++) {
-        const GeneratedObjInfo& gi = mogis(bp+k);
-        fprintf(
-          f, "      REFOBJECT %s(%d) {\n", 
-          gi.tid->name, gi.tid->verno
-        );
-        for(size_t kk=0; kk<gi.count_elem; kk++) {
-          TypeId tid = mogts(gi.start_elem+kk);
-          fprintf(
-            f, "        TYPE %s(%d)\n", 
-            tid->name, tid->verno
-          );
-        }
-        fprintf(
-          f, "      } # REFOBJECT %s(%d)\n", 
-          gi.tid->name, gi.tid->verno
-        );
-      }
-      fprintf(
-        f, "    } # GENERATOR %s(%d) %s(%d)\n", 
-        mi.tid->name, mi.tid->verno,
-        mi.uid->name, mi.uid->verno
-      );
-    }
-  }
-  fprintf(f, "  } # MODULE %s(%d,%d)\n", *minfo.name, minfo.verno.vmajor, minfo.verno.vminor);
-#endif
   return true;
 }
 

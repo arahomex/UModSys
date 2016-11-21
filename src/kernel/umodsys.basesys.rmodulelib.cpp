@@ -194,27 +194,19 @@ bool IModuleLibraryUni::scan(void)
   return true;
 }
 
-bool IModuleLibraryUni::save_db(FILE *f)
+bool IModuleLibraryUni::save_db(DJsonEmitterFile::DArray& f)
 {
-#if 0
-  fprintf(f, "BEGIN LIBRARY \"%s\"\n", sys_libname.get_text());
+  DJsonEmitterFile::DObject mo(f->obj());
+  keyvalue(mo, "library", sys_libname.get_text());
+  //
+  mo->key("modules");
+  DJsonEmitterFile::DArray moa(mo->arr());
   for(size_t i=0; i<~modules; i++) {
     if(!modules(i).valid())
       continue;
-    if(!modules(i)->save_db(f))
+    if(!modules(i)->save_db(moa))
       return false;
   }
-  fprintf(f, "END LIBRARY \"%s\"\n", sys_libname.get_text());
-#else
-  fprintf(f, "LIBRARY \"%s\" {\n", sys_libname.get_text());
-  for(size_t i=0; i<~modules; i++) {
-    if(!modules(i).valid())
-      continue;
-    if(!modules(i)->save_db(f))
-      return false;
-  }
-  fprintf(f, "} # END LIBRARY \"%s\"\n\n", sys_libname.get_text());
-#endif
   return true;
 }
 

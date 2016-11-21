@@ -100,7 +100,7 @@ IExecTCL::eStatus RSystem::tcl_command(IExecTCL& tcl, size_t argc, const IExecTC
         } 
       } else if(argv[1]=="save") {
         if(argc==2) {
-          get_modloader()->moduledb_save("moduledb.conf-hdb");
+          get_modloader()->moduledb_save("moduledb.json");
           return IExecTCL::sTrue;
         } else if(argc==3) {
           get_modloader()->moduledb_save(argv[2]);

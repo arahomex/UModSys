@@ -10,8 +10,6 @@ using namespace UModSys::core;
 using namespace UModSys::base;
 using namespace UModSys::base::rsystem;
 
-#include <umodsys/tl/codec/json_emit.h>
-
 //***************************************
 // RSystem::
 //***************************************
