@@ -227,8 +227,8 @@ void TJSON_Emit<Writer, StateArray>::raw_string(const char *value, size_t len)
     char ch = value[i];
     switch(ch) {
       case '\"': raw_atom("\\\"", 2); break;
-      case '\\': raw_atom("\\/", 2); break;
-      case '/':  raw_atom("\\\\", 2); break;
+      case '\\': raw_atom("\\\\", 2); break;
+//      case '/':  raw_atom("\\/", 2); break;
       case '\b': raw_atom("\\\b", 2); break;
       case '\f': raw_atom("\\\f", 2); break;
       case '\n': raw_atom("\\\n", 2); break;
