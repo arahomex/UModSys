@@ -76,8 +76,8 @@ struct RWriterFile {
   RWriterFile(FILE *ff) : f(ff) {}
   ~RWriterFile(void) { if(f!=NULL) fclose(f); }
   //
-  bool write_char(char ch) { return f!=NULL && fputc(ch, f)!=EOF; }
-  bool write_chars(const char *chs, size_t len) { return f!=NULL && fwrite(chs, 1, len, f)==len; }
+  bool put_c(char ch) { return f!=NULL && fputc(ch, f)!=EOF; }
+  bool put_n(const char *chs, size_t len) { return f!=NULL && fwrite(chs, 1, len, f)==len; }
 };
 
 inline void keyvalue(DJsonEmitterFile::DObject& obj, const char *key, int value) { obj->key(key); obj->nums(value); }

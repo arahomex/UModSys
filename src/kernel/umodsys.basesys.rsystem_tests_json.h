@@ -11,8 +11,8 @@ namespace UModSys {
         size_t s;
         //
         Writer(char* ap, size_t as) : p(ap), s(as) {}
-        bool write_char(char ch) { if(s==0) return false; *p++=ch; s--; return true; }
-        bool write_chars(const char *chs, size_t len) { if(s<len) return false; memcpy(p, chs, len); s-=len; p+=len; return true; }
+        bool put_c(char ch) { if(s==0) return false; *p++=ch; s--; return true; }
+        bool put_n(const char *chs, size_t len) { if(s<len) return false; memcpy(p, chs, len); s-=len; p+=len; return true; }
       };
 
       typedef tl::TJSON_Emit<Writer, tl::TDynarrayStatic<BByte, 1024> > Generator;

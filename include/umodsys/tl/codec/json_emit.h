@@ -7,6 +7,7 @@
 
 #include <umodsys/common/stdtypedefs.h>
 #include <umodsys/tl/util/res_lock.h>
+#include <umodsys/tl/util/streams.h>
 
 namespace UModSys {
 namespace tl {
@@ -19,10 +20,10 @@ template<typename Writer, typename StateArray> struct TJSON_Emit;
 
 
 /*
-  Writer must have inside:
-    bool write_char(char ch);
-    bool write_chars(const char *chs, size_t len);
-    
+  Writer must have inside default text stream functions:
+    bool put_c(char ch);
+    bool put_n(const char *chs, size_t len);
+
   StateArray must support normal dynarray functions, type is at least byte
 */
 
@@ -139,9 +140,9 @@ public: // raw functions
   void raw_string(const char *value, size_t vlen);
   void raw_string(const char *value) { raw_string(value, su::slen(value)); }
   //
-  void raw_atom(const char *text, size_t len) { if(!writer.write_chars(text, len)) raw_error(eWriteError, __LINE__); }
+  void raw_atom(const char *text, size_t len) { if(!writer.put_n(text, len)) raw_error(eWriteError, __LINE__); }
   void raw_atom(const char *text)             { raw_atom(text, su::slen(text)); }
-  void raw_atom(char ch)                      { if(!writer.write_char(ch)) raw_error(eWriteError, __LINE__); }
+  void raw_atom(char ch)                      { if(!writer.put_c(ch)) raw_error(eWriteError, __LINE__); }
   //
   void raw_null(void)         { raw_atom("null", 4); }
   void raw_bool(bool value)   { value ? raw_atom("true", 4) : raw_atom("false", 5); }
