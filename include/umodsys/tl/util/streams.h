@@ -124,9 +124,6 @@ public:
   inline bool put_z(const Char* b) { return put_chars(b, tl::su::slen(b)); }
   inline bool put_z(const Char* b1, const Char* b2) { return put_chars(b1, tl::su::slen(b1)) && put_chars(b2, tl::su::slen(b2)); }
 public:
-  bool write_char(char ch) { return put_c(ch); }
-  bool write_chars(const char *chs, size_t len) { return put_n(chs, len); }
-  //
   inline bool put_chars(const Char* b, size_t n)
   {
     while(n) {
