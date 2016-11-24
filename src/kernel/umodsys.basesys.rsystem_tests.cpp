@@ -11,7 +11,7 @@ using namespace UModSys::base;
 using namespace UModSys::base::rsystem;
 
 //***************************************
-// RSystem::
+// RSystemKernel::
 //***************************************
 
 #include "umodsys.basesys.rsystem_tests_shell.h"
@@ -22,7 +22,7 @@ using namespace UModSys::base::rsystem;
 //***************************************
 //***************************************
 
-bool RSystem::exec_tests(BStr testid)
+bool RSystemKernel::exec_tests(BStr testid)
 {
 //  dump_upis();
   dbg_put(rsdl_SysTests, "******************************* TEST %s {\n", testid);

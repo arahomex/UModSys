@@ -89,7 +89,7 @@ IModuleReg* RModuleLibraryReg_Chain::mlr_get(size_t id) const
   return SModuleRegChain::s_get(id);
 }
 
-bool RModuleLibraryReg_Chain::mlr_open(ISystem* isys, core::IMemAlloc* privmem)
+bool RModuleLibraryReg_Chain::mlr_open(IKernel* isys, core::IMemAlloc* privmem)
 {
   M.Link(isys, privmem);
   SUniquePointer::s_resolve(M->get_upr()); // initalize all upis

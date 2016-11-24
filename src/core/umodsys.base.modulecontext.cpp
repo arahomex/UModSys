@@ -17,7 +17,7 @@ SModuleContext::SModuleContext(void)
 {
 }
 
-void SModuleContext::Link(ISystem* is, IMemAlloc* privmem)
+void SModuleContext::Link(IKernel* is, IMemAlloc* privmem)
 {
   isys = is;
   if(isys!=NULL) {

@@ -1,8 +1,8 @@
 //***************************************
-// RSystem::
+// RSystemKernel::
 //***************************************
 
-bool RSystem::exec_test_shells(void)
+bool RSystemKernel::exec_test_shells(void)
 {
   IRefObject::TypeId tids[0x100];
   size_t ns = find_shells(tids, 0x100, NULL);

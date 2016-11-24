@@ -7,7 +7,7 @@ using namespace UModSys::base;
 using namespace UModSys::base::rsystem;
 
 //***************************************
-// RSystem::
+// RSystemKernel::
 //***************************************
 /*
 va_list rsystem::val(va_list va)
@@ -16,16 +16,16 @@ va_list rsystem::val(va_list va)
 }
 */
 //***************************************
-// RSystem::
+// RSystemKernel::
 //***************************************
 
-//void RSystem::ref_add(void) const {}
-//void RSystem::ref_remove(void) const {}
-//int  RSystem::ref_links(void) const { return 0; }
+//void RSystemKernel::ref_add(void) const {}
+//void RSystemKernel::ref_remove(void) const {}
+//int  RSystemKernel::ref_links(void) const { return 0; }
 
 //***************************************
 
-HUniquePointer RSystem::upi_add(const SUniquePointerInfo* lupi)
+HUniquePointer RSystemKernel::upi_add(const SUniquePointerInfo* lupi)
 {
   if(lupi==NULL)
     return NULL; // error
@@ -37,7 +37,7 @@ HUniquePointer RSystem::upi_add(const SUniquePointerInfo* lupi)
     return NULL; // error
   //
   dbg_put(
-    rsdl_Uid, "RSystem::upi_add(%p:{\"%s\",\"%s\",%d})...\n", 
+    rsdl_Uid, "RSystemKernel::upi_add(%p:{\"%s\",\"%s\",%d})...\n", 
     lupi, lupi->group, lupi->name, lupi->verno
   );
 /*
@@ -68,7 +68,7 @@ HUniquePointer RSystem::upi_add(const SUniquePointerInfo* lupi)
   //
   *rv = nv;
 //  dbg_put(
-//    rsdl_System, "RSystem::upi_add(%p:{\"%s\",\"%s\",%d}) => %p\n", 
+//    rsdl_System, "RSystemKernel::upi_add(%p:{\"%s\",\"%s\",%d}) => %p\n", 
 //    lupi, lupi->group, lupi->name, lupi->verno, rv
 //  );
   return rv;
@@ -85,14 +85,14 @@ HUniquePointer RSystem::upi_add(const SUniquePointerInfo* lupi)
   return NULL;
 }
 
-int RSystem::upi_remove(HUniquePointer upi)
+int RSystemKernel::upi_remove(HUniquePointer upi)
 {
   return -1;
 }
 
 //***************************************
 
-const core::SSourceContext* RSystem::persist_ctx(const core::SSourceContext* sc)
+const core::SSourceContext* RSystemKernel::persist_ctx(const core::SSourceContext* sc)
 {
   if(sc==NULL)
     return NULL;
@@ -117,47 +117,47 @@ const core::SSourceContext* RSystem::persist_ctx(const core::SSourceContext* sc)
 
 //***************************************
 
-IParameters* RSystem::get_params(void)
+IParameters* RSystemKernel::get_params(void)
 {
   return params;
 }
 
-IConsole* RSystem::get_console(void)
+IConsole* RSystemKernel::get_console(void)
 {
   return console;
 }
 
-IMemAlloc* RSystem::get_sysmem(void)
+IMemAlloc* RSystemKernel::get_sysmem(void)
 {
   return &mema_system;
 }
 
-IMemAlloc* RSystem::get_sharemem(void)
+IMemAlloc* RSystemKernel::get_sharemem(void)
 {
   return &mema_shared;
 }
 
-IModuleLibrary* RSystem::get_syslib(void)
+IModuleLibrary* RSystemKernel::get_syslib(void)
 {
   return NULL;
 }
 
-IModuleLoader* RSystem::get_modloader(void)
+IModuleLoader* RSystemKernel::get_modloader(void)
 {
   return &moddb;
 }
 
-IUniquePointerResolver* RSystem::get_upr(void)
+IUniquePointerResolver* RSystemKernel::get_upr(void)
 {
   return this;
 }
 
-ISourceContextAdapter* RSystem::get_sca(void)
+ISourceContextAdapter* RSystemKernel::get_sca(void)
 {
   return this;
 }
 
-IExecutorPure* RSystem::get_executor(void)
+IExecutorPure* RSystemKernel::get_executor(void)
 {
   return this;
 }
@@ -165,37 +165,37 @@ IExecutorPure* RSystem::get_executor(void)
 //***************************************
 
 #if 0
-core::DCString RSystem::get_sys_libname(void) const
+core::DCString RSystemKernel::get_sys_libname(void) const
 {
   return DCString("system");
 }
 
-core::IMemAlloc* RSystem::get_privmem(void) const
+core::IMemAlloc* RSystemKernel::get_privmem(void) const
 {
   return get_sharedmem();
 }
 
-size_t RSystem::get_module_count(void) const
+size_t RSystemKernel::get_module_count(void) const
 {
   return 0;
 }
 
-IModule* RSystem::get_module(size_t id) const
+IModule* RSystemKernel::get_module(size_t id) const
 {
   return NULL;
 }
 
-bool RSystem::lib_loaded(void) const
+bool RSystemKernel::lib_loaded(void) const
 {
   return true;
 }
 
-bool RSystem::lib_load(void)
+bool RSystemKernel::lib_load(void)
 {
   return false;
 }
 
-bool RSystem::lib_unload(void)
+bool RSystemKernel::lib_unload(void)
 {
   return false;
 }

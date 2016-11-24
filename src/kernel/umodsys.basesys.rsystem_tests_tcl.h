@@ -1,8 +1,8 @@
 //***************************************
-// RSystem::
+// RSystemKernel::
 //***************************************
 
-bool RSystem::exec_test_tcl(void)
+bool RSystemKernel::exec_test_tcl(void)
 {
   dbg_put(rsdl_SysTests, "TCL begin:\n");
   //

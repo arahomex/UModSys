@@ -7,15 +7,15 @@ using namespace UModSys::base;
 using namespace UModSys::base::rsystem;
 
 //***************************************
-// RSystem::
+// RSystemKernel::
 //***************************************
 
-bool RSystem::init(void)
+bool RSystemKernel::init(void)
 {
   if(!platform_init())
     return false;
   //
-  dbg_put(rsdl_System, "RSystem::init()\n");
+  dbg_put(rsdl_System, "RSystemKernel::init()\n");
   //
   SUniquePointer::s_resolve(this); // initalize all upis
 //  dump_upis(); // list all upis
@@ -28,16 +28,16 @@ bool RSystem::init(void)
   return true;
 }
 
-bool RSystem::exec_main(void)
+bool RSystemKernel::exec_main(void)
 {
-  dbg_put(rsdl_System, "RSystem::exec_main()\n");
+  dbg_put(rsdl_System, "RSystemKernel::exec_main()\n");
 //  exec_tests();
   return false;
 }
 
-bool RSystem::deinit(void)
+bool RSystemKernel::deinit(void)
 {
-  dbg_put(rsdl_System, "RSystem::deinit()\n");
+  dbg_put(rsdl_System, "RSystemKernel::deinit()\n");
   //
   shells.clear();
   //
@@ -55,7 +55,7 @@ bool RSystem::deinit(void)
   return platform_deinit();
 }
 
-void RSystem::set_console(IConsole* cc)
+void RSystemKernel::set_console(IConsole* cc)
 {
   console = cc;
   rsys_dbg.console = cc;
@@ -63,7 +63,7 @@ void RSystem::set_console(IConsole* cc)
 
 //***************************************
 
-size_t RSystem::find_shells(IRefObject::TypeId tids[], size_t ntids, BCStr mask)
+size_t RSystemKernel::find_shells(IRefObject::TypeId tids[], size_t ntids, BCStr mask)
 {
   return moddb.moduledb_findobjname(IShell::_root_get_interface_type(), tids, ntids, mask);
 }
@@ -71,9 +71,9 @@ size_t RSystem::find_shells(IRefObject::TypeId tids[], size_t ntids, BCStr mask)
 //***************************************
 //***************************************
 
-void RSystem::dump_upis(void)
+void RSystemKernel::dump_upis(void)
 {
-  dbg_put(rsdl_Uid, "RSystem::dump_upis() {S:%d C:%d} %u\n", uptr_strings.used_strings(), uptr_strings.used_chars(), (unsigned)~uptr_list);
+  dbg_put(rsdl_Uid, "RSystemKernel::dump_upis() {S:%d C:%d} %u\n", uptr_strings.used_strings(), uptr_strings.used_chars(), (unsigned)~uptr_list);
 /*
   for(const SUniquePointer* x=SUniquePointer::root.next; x!=&SUniquePointer::root; x=x->next) {
     if(x==NULL) {
@@ -91,25 +91,25 @@ void RSystem::dump_upis(void)
     }
     dbg_put(rsdl_Uid, "  %u %p upi{%s %s(%d)}\n", (unsigned)i, x, x->group, x->name, x->verno);
   }
-  dbg_put(rsdl_Uid, "RSystem::dump_upis() / \n");
+  dbg_put(rsdl_Uid, "RSystemKernel::dump_upis() / \n");
 }
 
 //***************************************
 //***************************************
 
-RSystem::RSystem(void)
+RSystemKernel::RSystemKernel(void)
 : console(NULL), moddb(this), /* sys_library(NULL),*/ 
   mema_shared(NULL), mema_system(NULL)
 {
 }
 
-RSystem::~RSystem(void)
+RSystemKernel::~RSystemKernel(void)
 {
 }
 
 //***************************************
 
-RSystem RSystem::s_sys;
+RSystemKernel RSystemKernel::s_sys;
 
 //***************************************
 // rsystem::
@@ -117,7 +117,7 @@ RSystem RSystem::s_sys;
 
 SDebug rsystem::rsys_dbg;
 
-void rsystem::dbg_put(eRSystemDebugLevels dl, const char *fmt, ...)
+void rsystem::dbg_put(eKernelDebugLevels dl, const char *fmt, ...)
 {
   va_list va;
   va_start(va, fmt);
@@ -125,7 +125,7 @@ void rsystem::dbg_put(eRSystemDebugLevels dl, const char *fmt, ...)
   va_end(va);
 }
 
-void rsystem::err_put(eRSystemDebugLevels dl, const char *fmt, ...)
+void rsystem::err_put(eKernelDebugLevels dl, const char *fmt, ...)
 {
   va_list va;
   va_start(va, fmt);

@@ -232,7 +232,7 @@ void RModuleLoader::cleanup(void)
 //***************************************
 //***************************************
 
-RModuleLoader::RModuleLoader(ISystem* s)
+RModuleLoader::RModuleLoader(IKernel* s)
 : sys(s)
 {
 }

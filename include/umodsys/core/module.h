@@ -72,7 +72,7 @@ public:
 public:
   virtual core::DCString get_sys_libname(void) const =0;
   virtual core::IMemAlloc* get_privmem(void) const =0;
-  virtual ISystem* get_system(void) const =0;
+  virtual IKernel* get_system(void) const =0;
   virtual size_t get_module_count(void) const =0;
   virtual IModule* get_module(size_t id) const =0;
   //

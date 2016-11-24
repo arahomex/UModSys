@@ -1,5 +1,5 @@
 //***************************************
-// RSystem::
+// RSystemKernel::
 //***************************************
 
 namespace UModSys {
@@ -42,7 +42,7 @@ namespace UModSys {
   }
 }
 
-bool RSystem::exec_test_json(void)
+bool RSystemKernel::exec_test_json(void)
 {
 #define OP(x) dbg_put(rsdl_SysTests, "%s...", #x); x; dbg_put(rsdl_SysTests, "ok\n")
   using namespace kernel_test::json;

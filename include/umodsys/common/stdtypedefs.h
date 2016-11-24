@@ -81,7 +81,7 @@ namespace base {
   struct SModuleInfo;
   struct SModuleContext;
 
-  struct ISystem;
+  struct IKernel;
 
   struct IModObject;
   struct IGenerator;
@@ -124,7 +124,7 @@ namespace system {
   typedef TModule_Allocator<false, true > SModule_AllocatorFast_Shared;
   typedef TModule_Allocator<true,  true > SModule_AllocatorPrecise_Shared;
 
-  struct ISystem;
+  struct IKernel;
   struct IModuleDefinition;   // module definition, only for module declaration
   struct IModule;             // module loaded
   struct IShell;              // main script executor

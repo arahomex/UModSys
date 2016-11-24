@@ -15,11 +15,11 @@ namespace base {
 namespace rsystem {
 
 //***************************************
-// ISystem
+// IKernel
 //***************************************
 
-struct RSystem : 
-  public ISystem,
+struct RSystemKernel : 
+  public IKernel,
   public IUniquePointerResolver,
   public ISourceContextAdapter,
   public IExecutorPure,
@@ -68,8 +68,8 @@ public:
     >
   > DShellArray;
 public:
-  RSystem(void);
-  ~RSystem(void);
+  RSystemKernel(void);
+  ~RSystemKernel(void);
 public:
 //  void ref_add(void) const;
 //  void ref_remove(void) const;
@@ -151,15 +151,15 @@ public:
   bool exec_test_tcl(void);
   bool exec_test_json(void);
 public:
-  UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RSystem, 2, ISystem);
+  UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RSystemKernel, 2, IKernel);
 public:
-  static RSystem s_sys;
+  static RSystemKernel s_sys;
 };
 
 template<typename Header, typename SubAllocator>
 const core::SSourceContext* TRMemAlloc_CC<Header, SubAllocator>::persist_ctx(const core::SSourceContext* sc)
 {
-  return RSystem::s_sys.persist_ctx(sc);
+  return RSystemKernel::s_sys.persist_ctx(sc);
 }
 
 //***************************************

@@ -104,12 +104,12 @@ struct IModuleLibraryUni : public IModuleLibrary
 public:
   typedef tl::TDynarrayDynamic<RModule::SelfP, tl::DAllocatorMallocFast> Modules;
 public:
-  IModuleLibraryUni(ISystem* sys, IModuleLibraryReg* imlr);
+  IModuleLibraryUni(IKernel* sys, IModuleLibraryReg* imlr);
   ~IModuleLibraryUni(void);
 public:
   DCString get_sys_libname(void) const;
   IMemAlloc* get_privmem(void) const;
-  ISystem* get_system(void) const;
+  IKernel* get_system(void) const;
   size_t get_module_count(void) const;
   IModule* get_module(size_t id) const;
   //
@@ -126,7 +126,7 @@ public:
   virtual bool uni_open(void) =0;
   virtual bool uni_close(void) =0;
 public:
-  ISystem* sys;
+  IKernel* sys;
   Modules modules;
   DStringSharedMalloc sys_libname;
   IModuleLibraryReg* ireg;
@@ -151,8 +151,8 @@ public:
   typedef int PFD_Raw[16];
   typedef tl::TDynarrayDynamic<RModule::SelfP, tl::DAllocatorMallocFast> Modules;
 public:
-  RModuleLibrarySO(ISystem* sys, PFD_Data* pfd, IModuleLibraryReg* imlr);
-  RModuleLibrarySO(ISystem* sys);
+  RModuleLibrarySO(IKernel* sys, PFD_Data* pfd, IModuleLibraryReg* imlr);
+  RModuleLibrarySO(IKernel* sys);
   ~RModuleLibrarySO(void);
   //
   bool uni_load(void);
@@ -161,7 +161,7 @@ public:
   bool uni_close(void);
 public:
   static size_t s_find_dup(const RModuleLibrarySOArray& la, IModuleLibraryReg* ireg);
-  static bool s_add(ISystem* sys, RModuleLibrarySOArray& la, const char *filename);
+  static bool s_add(IKernel* sys, RModuleLibrarySOArray& la, const char *filename);
   //
 //  inline bool eq(const PFD_Data* pfd2) { return pfd_eq(get_pfd(), pfd2); }
   //
@@ -177,7 +177,7 @@ public:
   static IModuleLibraryReg* pfd_load(PFD_Data* pfd, const core::DCString& filename);
   static bool pfd_unload(PFD_Data* pfd);
   //
-  static size_t pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, const core::DCString& mask);
+  static size_t pfd_scan(IKernel* sys, RModuleLibrarySOArray& la, const core::DCString& mask);
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RModuleLibrarySO, 1, IModuleLibraryUni);
   UMODSYS_REFOBJECT_SINGLE()
@@ -186,7 +186,7 @@ public:
 struct RModuleLibraryThis : public IModuleLibraryUni
 {
 public:
-  RModuleLibraryThis(ISystem* sys);
+  RModuleLibraryThis(IKernel* sys);
   RModuleLibraryThis(void);
   ~RModuleLibraryThis(void);
   //
@@ -206,7 +206,7 @@ public:
 struct RModuleLoader : public IModuleLoader
 {
 public:
-  RModuleLoader(ISystem* sys);
+  RModuleLoader(IKernel* sys);
   ~RModuleLoader(void);
 public:
   size_t moduledb_findobjname(IRefObject::TypeId intr, IRefObject::TypeId found[], size_t nfound, BCStr mask);
@@ -227,7 +227,7 @@ public:
   size_t moduledb_scan(const core::DCString& mask, bool docleanup);
   const DCString& moduledb_get_string(const DCString &s);
 public:
-  ISystem* sys;
+  IKernel* sys;
   DSystemStaticPool mod_pool;
   RModuleLibrarySOArray mod_list;
   RModuleLibraryThis::SelfP mod_this;

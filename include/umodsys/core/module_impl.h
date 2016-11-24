@@ -58,7 +58,7 @@ public:
   virtual size_t mlr_count(void) const =0;
   virtual IModuleReg* mlr_get(size_t id) const =0;
   virtual bool mlr_isopen(void) const =0;
-  virtual bool mlr_open(ISystem* isys, core::IMemAlloc* privmem) =0;
+  virtual bool mlr_open(IKernel* isys, core::IMemAlloc* privmem) =0;
   virtual bool mlr_close(void) =0;
 };
 
@@ -93,7 +93,7 @@ public:
   size_t mlr_count(void) const;
   IModuleReg* mlr_get(size_t id) const;
   bool mlr_isopen(void) const;
-  bool mlr_open(ISystem* isys, core::IMemAlloc* privmem);
+  bool mlr_open(IKernel* isys, core::IMemAlloc* privmem);
   bool mlr_close(void);
 public:
   static RModuleLibraryReg_Chain s_library;

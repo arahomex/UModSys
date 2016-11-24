@@ -392,7 +392,7 @@ bool RParameters::get(const SParametersData *p, BCStr name, IRefObject* &value) 
 //***************************************
 //***************************************
 
-RParameters::RParameters(ISystem* s)
+RParameters::RParameters(IKernel* s)
 : sys(s), strict(true) 
 {
 }

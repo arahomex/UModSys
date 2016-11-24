@@ -17,7 +17,7 @@ int main(int argc, char **argv)
   if(syshlp::opt_stdlog_file!=NULL)
     RConsole_std::s_console.reflect(syshlp::opt_stdlog_file);
   //
-  RSystem& S = RSystem::s_sys;
+  RSystemKernel& S = RSystemKernel::s_sys;
   //
   S.set_console(&RConsole_std::s_console);
   M.Link(&S, S.get_sharemem());

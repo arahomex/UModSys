@@ -15,13 +15,13 @@ namespace base {
 
 
 //***************************************
-// ISystem
+// IKernel
 //***************************************
 
-struct ISystem : public core::IRoot
+struct IKernel : public core::IRoot
 {
 public:
-  ~ISystem(void);
+  ~IKernel(void);
 public:
   virtual core::IUniquePointerResolver* get_upr(void) =0;
   virtual core::ISourceContextAdapter* get_sca(void) =0;
@@ -35,7 +35,7 @@ public:
   virtual IExecutorPure* get_executor(void) =0;
   virtual IConsole* get_console(void) =0;
 public:
-  UMODSYS_ROOT_IMPLEMENT1(UModSys::base::ISystem, 3, IRoot);
+  UMODSYS_ROOT_IMPLEMENT1(UModSys::base::IKernel, 4, IRoot);
 };
 
 //***************************************
@@ -47,7 +47,7 @@ public:
   typedef core::IRefObject::TypeId TypeId;
   typedef core::BCStr BCStr;
 protected:
-  ISystem* isys;
+  IKernel* isys;
   IConsole* icon;
   core::SIMemAlloc smem;
   core::SIMemAlloc smem_shared;
@@ -55,16 +55,16 @@ protected:
 public:
   ~SModuleContext(void);
   SModuleContext(void);
-  void Link(ISystem* is, core::IMemAlloc* privmem);
+  void Link(IKernel* is, core::IMemAlloc* privmem);
   //
-  inline operator ISystem*(void) const { return isys; }
+  inline operator IKernel*(void) const { return isys; }
   inline operator IConsole*(void) const { return icon; }
   inline operator core::IMemAlloc*(void) const { return smem.imem; }
-  inline ISystem* operator->(void) const { return isys; }
+  inline IKernel* operator->(void) const { return isys; }
   inline const core::SIMemAlloc& operator()(void) const { return smem; }
-  inline ISystem* operator*(void) const { return isys; }
+  inline IKernel* operator*(void) const { return isys; }
   //
-  inline ISystem& sys(void) const { return *isys; }
+  inline IKernel& sys(void) const { return *isys; }
   inline IConsole& con(void) const { return *icon; }
   inline core::IMemAlloc& imem(void) const { return *smem.imem; }
   inline const core::SIMemAlloc& mem(void) const { return smem; }

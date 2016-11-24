@@ -6,10 +6,10 @@ using namespace UModSys::core;
 using namespace UModSys::base;
 
 //***************************************
-// ISystem::
+// IKernel::
 //***************************************
 
-ISystem::~ISystem(void)
+IKernel::~IKernel(void)
 {
 }
 

@@ -108,7 +108,7 @@ bool RModuleLibrarySO::pfd_unload(PFD_Data* pfd)
 //***************************************
 //***************************************
 
-static size_t s_pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, core::BStr bpath, core::BStr mask, core::BStr suffix)
+static size_t s_pfd_scan(IKernel* sys, RModuleLibrarySOArray& la, core::BStr bpath, core::BStr mask, core::BStr suffix)
 {
   dbg_put(rsdl_SoLoad, "scan so: \"%s%s%s\"\n", bpath, mask, suffix);
   syshlp::U8String<> ls(bpath, mask, suffix), umask(bpath, mask, suffix);
@@ -150,12 +150,12 @@ next:;
   return gn;
 }
 
-inline static size_t s_pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, core::BStr mask, core::BStr suffix)
+inline static size_t s_pfd_scan(IKernel* sys, RModuleLibrarySOArray& la, core::BStr mask, core::BStr suffix)
 {
   return s_pfd_scan(sys, la, "./", mask, suffix) + s_pfd_scan(sys, la, s_pwd, mask, suffix);
 }
 
-size_t RModuleLibrarySO::pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, const core::DCString& mask)
+size_t RModuleLibrarySO::pfd_scan(IKernel* sys, RModuleLibrarySOArray& la, const core::DCString& mask)
 {
   s_pwd_init();
   if(~mask==0) // automatic
@@ -164,10 +164,10 @@ size_t RModuleLibrarySO::pfd_scan(ISystem* sys, RModuleLibrarySOArray& la, const
 }
 
 //***************************************
-// RSystem::
+// RSystemKernel::
 //***************************************
 
-bool RSystem::platform_init(void)
+bool RSystemKernel::platform_init(void)
 {
   rsys_dbg.mdisable();
   rsys_dbg.enable(rsdl_SysTests);
@@ -181,7 +181,7 @@ bool RSystem::platform_init(void)
   return true;
 }
 
-bool RSystem::platform_deinit(void)
+bool RSystemKernel::platform_deinit(void)
 {
   return true;
 }

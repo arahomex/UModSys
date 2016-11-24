@@ -19,7 +19,7 @@ core::IMemAlloc* IModuleLibraryUni::get_privmem(void) const
   return &mema;
 }
 
-ISystem* IModuleLibraryUni::get_system(void) const
+IKernel* IModuleLibraryUni::get_system(void) const
 {
   return sys;
 }
@@ -213,7 +213,7 @@ bool IModuleLibraryUni::save_db(DJsonEmitterFile::DArray& f)
 //***************************************
 //***************************************
 
-IModuleLibraryUni::IModuleLibraryUni(ISystem* s, IModuleLibraryReg* imlr = NULL)
+IModuleLibraryUni::IModuleLibraryUni(IKernel* s, IModuleLibraryReg* imlr = NULL)
 : ireg(imlr), load_count(0), linked(false), sys(s), mema(NULL)
 {
 }

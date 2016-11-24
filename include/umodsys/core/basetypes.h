@@ -24,7 +24,7 @@ using core::IRefObject;
 // Forwards
 
 // system.h
-struct ISystem;
+struct IKernel;
 struct SModuleContext;
 
 // console.h

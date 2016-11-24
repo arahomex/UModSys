@@ -44,7 +44,7 @@ size_t RModuleLibrarySO::s_find_dup(const RModuleLibrarySOArray& la, IModuleLibr
   return array_index_none;
 }
 
-bool RModuleLibrarySO::s_add(ISystem* sys, RModuleLibrarySOArray& la, const char *filename)
+bool RModuleLibrarySO::s_add(IKernel* sys, RModuleLibrarySOArray& la, const char *filename)
 {
   PFD_Raw raw_data;
   PFD_Data *pfd = reinterpret_cast<PFD_Data*>(raw_data);
@@ -76,13 +76,13 @@ bool RModuleLibrarySO::s_add(ISystem* sys, RModuleLibrarySOArray& la, const char
 //***************************************
 //***************************************
 
-RModuleLibrarySO::RModuleLibrarySO(ISystem* s, PFD_Data* pfd, IModuleLibraryReg* imlr)
+RModuleLibrarySO::RModuleLibrarySO(IKernel* s, PFD_Data* pfd, IModuleLibraryReg* imlr)
 : IModuleLibraryUni(s, imlr)
 {
   pfd_init(get_pfd(), pfd);
 }
 
-RModuleLibrarySO::RModuleLibrarySO(ISystem* s)
+RModuleLibrarySO::RModuleLibrarySO(IKernel* s)
 : IModuleLibraryUni(s, NULL)
 {
   pfd_init(get_pfd());

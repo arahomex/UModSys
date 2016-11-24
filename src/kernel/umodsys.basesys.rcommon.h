@@ -51,7 +51,7 @@ typedef tl::TJSON_Emit<RWriterFile, tl::TDynarrayStatic<BByte, 1024> > DJsonEmit
 // DEBUG CONST
 //***************************************
 
-enum eRSystemDebugLevels {
+enum eKernelDebugLevels {
   rsdl_MemoryError,
   rsdl_System,
   rsdl_Module,
@@ -64,8 +64,8 @@ enum eRSystemDebugLevels {
 
 extern SDebug rsys_dbg;
 
-void dbg_put(eRSystemDebugLevels dl, const char *fmt, ...);
-void err_put(eRSystemDebugLevels dl, const char *fmt, ...);
+void dbg_put(eKernelDebugLevels dl, const char *fmt, ...);
+void err_put(eKernelDebugLevels dl, const char *fmt, ...);
 
 #define FMT_STR(_x_) int(~(_x_)), *(_x_)
 #define FMT_SS "%.*s"

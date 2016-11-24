@@ -86,7 +86,7 @@ public:
   };
   //
 protected:
-  ISystem* sys;
+  IKernel* sys;
   bool strict;
   //
   const Elem* find_elem(const void *data, int max, int type, int namehash, BCStr name); // if NULL - not found desired type
@@ -96,7 +96,7 @@ protected:
   void alloc_elems(void *data, int max);
   bool add_last(SParametersData *p, BCStr name, const void *value, size_t valsize, int type);
 public:
-  RParameters(ISystem* s);
+  RParameters(IKernel* s);
   ~RParameters(void);
 public:
   UMODSYS_REFOBJECT_IMPLEMENT1(UModSys::base::rsystem::RParameters, 2, IParameters);

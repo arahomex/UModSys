@@ -11,12 +11,12 @@ using namespace UModSys::base;
 using namespace UModSys::base::rsystem;
 
 //***************************************
-// RSystem::
+// RSystemKernel::
 //***************************************
 
-bool RSystem::exec_args(int argc, char** argv)
+bool RSystemKernel::exec_args(int argc, char** argv)
 {
-  dbg_put(rsdl_TCL, "RSystem::exec_args(%d)\n", argc);
+  dbg_put(rsdl_TCL, "RSystemKernel::exec_args(%d)\n", argc);
   //
   if(argc==1)
     return false;
@@ -49,7 +49,7 @@ bool RSystem::exec_args(int argc, char** argv)
           //continue;
         }
       }
-      dbg_put(rsdl_TCL, "RSystem::exec_args(%d) -- Invalid arg %d \"%s\"\n", argc, i, argv[i]);
+      dbg_put(rsdl_TCL, "RSystemKernel::exec_args(%d) -- Invalid arg %d \"%s\"\n", argc, i, argv[i]);
       continue;
     }
   }
@@ -63,22 +63,22 @@ bool RSystem::exec_args(int argc, char** argv)
 //***************************************
 //***************************************
 
-IExecTCL::eStatus RSystem::tcl_getvar(IExecTCL& tcl, const IExecTCL::String& name, IExecTCL::String& value)
+IExecTCL::eStatus RSystemKernel::tcl_getvar(IExecTCL& tcl, const IExecTCL::String& name, IExecTCL::String& value)
 {
   return IExecTCL::sFalse;
 }
 
-IExecTCL::eStatus RSystem::tcl_setvar(IExecTCL& tcl, const IExecTCL::String& name, const IExecTCL::String& value)
+IExecTCL::eStatus RSystemKernel::tcl_setvar(IExecTCL& tcl, const IExecTCL::String& name, const IExecTCL::String& value)
 {
   return IExecTCL::sFalse;
 }
 
-IExecTCL::eStatus RSystem::tcl_command(IExecTCL& tcl, size_t argc, const IExecTCL::String argv[])
+IExecTCL::eStatus RSystemKernel::tcl_command(IExecTCL& tcl, size_t argc, const IExecTCL::String argv[])
 {
 //  tl::TArray<const IExecTCL::String> args(argv, argc, argc);
   const SExecTCL::String &cmd = argv[0];
   if(0) {
-    dbg_put(rsdl_TCL, "RSystem::command(%d \"%.*s\" ", int(argc), int(~cmd), cmd.c_str());
+    dbg_put(rsdl_TCL, "RSystemKernel::command(%d \"%.*s\" ", int(argc), int(~cmd), cmd.c_str());
     for(size_t i=1; i<argc; i++) {
       const SExecTCL::String &arg = argv[i];
       dbg_put(rsdl_TCL, " \"%.*s\"", int(~arg), arg.c_str());
@@ -154,22 +154,22 @@ IExecTCL::eStatus RSystem::tcl_command(IExecTCL& tcl, size_t argc, const IExecTC
 //***************************************
 //***************************************
 
-bool RSystem::execute_command(const DCString args[], size_t len)
+bool RSystemKernel::execute_command(const DCString args[], size_t len)
 {
   return false;
 }
 
-bool RSystem::execute_text(const core::DCString& text)
+bool RSystemKernel::execute_text(const core::DCString& text)
 {
   return false;
 }
 
-bool RSystem::get_var(const core::DCString& name, core::DCString& value) const
+bool RSystemKernel::get_var(const core::DCString& name, core::DCString& value) const
 {
   return false;
 }
 
-bool RSystem::get_shell(const core::DCString& name, IShell::P& shell) const
+bool RSystemKernel::get_shell(const core::DCString& name, IShell::P& shell) const
 {
   const IShell::P *found = shells.GetT(name);
   if(found==NULL)
@@ -178,12 +178,12 @@ bool RSystem::get_shell(const core::DCString& name, IShell::P& shell) const
   return true;
 }
 
-bool RSystem::set_var(const core::DCString& name, const core::DCString& value, bool can_new)
+bool RSystemKernel::set_var(const core::DCString& name, const core::DCString& value, bool can_new)
 {
   return false;
 }
 
-bool RSystem::set_shell(const core::DCString& name, IShell* shell)
+bool RSystemKernel::set_shell(const core::DCString& name, IShell* shell)
 {
   shells[name] = shell;
   return true;
@@ -191,7 +191,7 @@ bool RSystem::set_shell(const core::DCString& name, IShell* shell)
 
 //***************************************
 
-bool RSystem::exec_script(BStr filename)
+bool RSystemKernel::exec_script(BStr filename)
 {
   size_t len;
   char buf[0x10000];
